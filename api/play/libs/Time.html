@@ -55,7 +55,7 @@ function windowTitle()
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
 &nbsp;<A HREF="../../play/libs/OpenID.UserInfo.html" title="class in play.libs"><B>PREV CLASS</B></A>&nbsp;
-&nbsp;<A HREF="../../play/libs/WS.html" title="class in play.libs"><B>NEXT CLASS</B></A></FONT></TD>
+&nbsp;<A HREF="../../play/libs/Time.CronExpression.html" title="class in play.libs"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../index.html?play/libs/Time.html" target="_top"><B>FRAMES</B></A>  &nbsp;
 &nbsp;<A HREF="Time.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
@@ -75,7 +75,7 @@ function windowTitle()
 </TR>
 <TR>
 <TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
-  SUMMARY:&nbsp;NESTED&nbsp;|&nbsp;FIELD&nbsp;|&nbsp;<A HREF="#constructor_summary">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
+  SUMMARY:&nbsp;<A HREF="#nested_class_summary">NESTED</A>&nbsp;|&nbsp;FIELD&nbsp;|&nbsp;<A HREF="#constructor_summary">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
 <TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
 DETAIL:&nbsp;FIELD&nbsp;|&nbsp;<A HREF="#constructor_detail">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_detail">METHOD</A></FONT></TD>
 </TR>
@@ -107,7 +107,26 @@ Time utils
 <HR>
 
 <P>
+<!-- ======== NESTED CLASS SUMMARY ======== -->
 
+<A NAME="nested_class_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Nested Class Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../play/libs/Time.CronExpression.html" title="class in play.libs">Time.CronExpression</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thanks to Quartz project, https://quartz.dev.java.net
+ 
+ Provides a parser and evaluator for unix-like cron expressions.</TD>
+</TR>
+</TABLE>
+&nbsp;
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 
 <A NAME="constructor_summary"><!-- --></A>
@@ -131,6 +150,23 @@ Time utils
 <TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
 <TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
 <B>Method Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;long</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../play/libs/Time.html#cronInterval(java.lang.String)">cronInterval</A></B>(java.lang.String&nbsp;cron)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Compute the number of milliseconds between the next valid date and the one after</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;long</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../play/libs/Time.html#cronInterval(java.lang.String, java.util.Date)">cronInterval</A></B>(java.lang.String&nbsp;cron,
+             java.util.Date&nbsp;date)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Compute the number of milliseconds between the next valid date and the one after</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -211,7 +247,38 @@ public static java.util.Date <B>parseCRONExpression</B>(java.lang.String&nbsp;cr
 <P>
 <DD><DL>
 <DT><B>Parameters:</B><DD><CODE>cron</CODE> - The CRON String
-<DT><B>Returns:</B><DD>The next Date that satisfie teh expression</DL>
+<DT><B>Returns:</B><DD>The next Date that satisfy the expression</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="cronInterval(java.lang.String)"><!-- --></A><H3>
+cronInterval</H3>
+<PRE>
+public static long <B>cronInterval</B>(java.lang.String&nbsp;cron)</PRE>
+<DL>
+<DD>Compute the number of milliseconds between the next valid date and the one after
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>cron</CODE> - The CRON String
+<DT><B>Returns:</B><DD>the number of milliseconds between the next valid date and the one after,
+ with an invalid interval between</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="cronInterval(java.lang.String, java.util.Date)"><!-- --></A><H3>
+cronInterval</H3>
+<PRE>
+public static long <B>cronInterval</B>(java.lang.String&nbsp;cron,
+                                java.util.Date&nbsp;date)</PRE>
+<DL>
+<DD>Compute the number of milliseconds between the next valid date and the one after
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>cron</CODE> - The CRON String<DD><CODE>date</CODE> - The date to start search
+<DT><B>Returns:</B><DD>the number of milliseconds between the next valid date and the one after,
+ with an invalid interval between</DL>
 </DD>
 </DL>
 <!-- ========= END OF CLASS DATA ========= -->
@@ -246,7 +313,7 @@ public static java.util.Date <B>parseCRONExpression</B>(java.lang.String&nbsp;cr
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
 &nbsp;<A HREF="../../play/libs/OpenID.UserInfo.html" title="class in play.libs"><B>PREV CLASS</B></A>&nbsp;
-&nbsp;<A HREF="../../play/libs/WS.html" title="class in play.libs"><B>NEXT CLASS</B></A></FONT></TD>
+&nbsp;<A HREF="../../play/libs/Time.CronExpression.html" title="class in play.libs"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../index.html?play/libs/Time.html" target="_top"><B>FRAMES</B></A>  &nbsp;
 &nbsp;<A HREF="Time.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
@@ -266,7 +333,7 @@ public static java.util.Date <B>parseCRONExpression</B>(java.lang.String&nbsp;cr
 </TR>
 <TR>
 <TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
-  SUMMARY:&nbsp;NESTED&nbsp;|&nbsp;FIELD&nbsp;|&nbsp;<A HREF="#constructor_summary">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
+  SUMMARY:&nbsp;<A HREF="#nested_class_summary">NESTED</A>&nbsp;|&nbsp;FIELD&nbsp;|&nbsp;<A HREF="#constructor_summary">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
 <TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
 DETAIL:&nbsp;FIELD&nbsp;|&nbsp;<A HREF="#constructor_detail">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_detail">METHOD</A></FONT></TD>
 </TR>

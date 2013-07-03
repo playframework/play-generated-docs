@@ -156,6 +156,25 @@ XML utils
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Serialize to XML String</TD>
 </TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;org.w3c.dom.Document</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../play/libs/XML.html#sign(org.w3c.dom.Document, java.security.interfaces.RSAPublicKey, java.security.interfaces.RSAPrivateKey)">sign</A></B>(org.w3c.dom.Document&nbsp;document,
+     java.security.interfaces.RSAPublicKey&nbsp;publicKey,
+     java.security.interfaces.RSAPrivateKey&nbsp;privateKey)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sign the XML document using xmldsig.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../play/libs/XML.html#validSignature(org.w3c.dom.Document, java.security.Key)">validSignature</A></B>(org.w3c.dom.Document&nbsp;document,
+               java.security.Key&nbsp;publicKey)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Check the xmldsig signature of the XML document.</TD>
+</TR>
 </TABLE>
 &nbsp;<A NAME="methods_inherited_from_class_java.lang.Object"><!-- --></A>
 <TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
@@ -234,6 +253,37 @@ public static org.w3c.dom.Document <B>getDocument</B>(java.lang.String&nbsp;xml)
 <DD><DL>
 
 <DT><B>Returns:</B><DD>null if an error occurs during parsing.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="validSignature(org.w3c.dom.Document, java.security.Key)"><!-- --></A><H3>
+validSignature</H3>
+<PRE>
+public static boolean <B>validSignature</B>(org.w3c.dom.Document&nbsp;document,
+                                     java.security.Key&nbsp;publicKey)</PRE>
+<DL>
+<DD>Check the xmldsig signature of the XML document.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>document</CODE> - the document to test<DD><CODE>publicKey</CODE> - the public key corresponding to the key pair the document was signed with
+<DT><B>Returns:</B><DD>true if a correct signature is present, false otherwise</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="sign(org.w3c.dom.Document, java.security.interfaces.RSAPublicKey, java.security.interfaces.RSAPrivateKey)"><!-- --></A><H3>
+sign</H3>
+<PRE>
+public static org.w3c.dom.Document <B>sign</B>(org.w3c.dom.Document&nbsp;document,
+                                        java.security.interfaces.RSAPublicKey&nbsp;publicKey,
+                                        java.security.interfaces.RSAPrivateKey&nbsp;privateKey)</PRE>
+<DL>
+<DD>Sign the XML document using xmldsig.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>document</CODE> - the document to sign; it will be modified by the method.<DD><CODE>publicKey</CODE> - the public key from the key pair to sign the document.<DD><CODE>privateKey</CODE> - the private key from the key pair to sign the document.
+<DT><B>Returns:</B><DD>the signed document for chaining.</DL>
 </DD>
 </DL>
 <!-- ========= END OF CLASS DATA ========= -->

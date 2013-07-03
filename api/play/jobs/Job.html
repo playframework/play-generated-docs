@@ -123,8 +123,24 @@ A job is an asynchronously executed unit of work
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;java.lang.String</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../play/jobs/Job.html#applicationBaseUrl_configPropertyName">applicationBaseUrl_configPropertyName</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>protected &nbsp;java.util.concurrent.ExecutorService</CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../play/jobs/Job.html#executor">executor</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;java.lang.String</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../play/jobs/Job.html#invocationType">invocationType</A></B></CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
@@ -237,7 +253,15 @@ A job is an asynchronously executed unit of work
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>&nbsp;java.util.concurrent.Future&lt;<A HREF="../../play/jobs/Job.html" title="type parameter in Job">V</A>&gt;</CODE></FONT></TD>
+<CODE>&nbsp;<A HREF="../../play/Invoker.InvocationContext.html" title="class in play">Invoker.InvocationContext</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../play/jobs/Job.html#getInvocationContext()">getInvocationContext</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</A>&lt;<A HREF="../../play/jobs/Job.html" title="type parameter in Job">V</A>&gt;</CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../play/jobs/Job.html#in(int)">in</A></B>(int&nbsp;seconds)</CODE>
 
 <BR>
@@ -245,7 +269,7 @@ A job is an asynchronously executed unit of work
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>&nbsp;java.util.concurrent.Future&lt;<A HREF="../../play/jobs/Job.html" title="type parameter in Job">V</A>&gt;</CODE></FONT></TD>
+<CODE>&nbsp;<A HREF="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</A>&lt;<A HREF="../../play/jobs/Job.html" title="type parameter in Job">V</A>&gt;</CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../play/jobs/Job.html#in(java.lang.String)">in</A></B>(java.lang.String&nbsp;delay)</CODE>
 
 <BR>
@@ -253,7 +277,7 @@ A job is an asynchronously executed unit of work
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>&nbsp;java.util.concurrent.Future&lt;<A HREF="../../play/jobs/Job.html" title="type parameter in Job">V</A>&gt;</CODE></FONT></TD>
+<CODE>&nbsp;<A HREF="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</A>&lt;<A HREF="../../play/jobs/Job.html" title="type parameter in Job">V</A>&gt;</CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../play/jobs/Job.html#now()">now</A></B>()</CODE>
 
 <BR>
@@ -314,6 +338,26 @@ A job is an asynchronously executed unit of work
 <B>Field Detail</B></FONT></TH>
 </TR>
 </TABLE>
+
+<A NAME="invocationType"><!-- --></A><H3>
+invocationType</H3>
+<PRE>
+public static final java.lang.String <B>invocationType</B></PRE>
+<DL>
+<DL>
+<DT><B>See Also:</B><DD><A HREF="../../constant-values.html#play.jobs.Job.invocationType">Constant Field Values</A></DL>
+</DL>
+<HR>
+
+<A NAME="applicationBaseUrl_configPropertyName"><!-- --></A><H3>
+applicationBaseUrl_configPropertyName</H3>
+<PRE>
+public static final java.lang.String <B>applicationBaseUrl_configPropertyName</B></PRE>
+<DL>
+<DL>
+<DT><B>See Also:</B><DD><A HREF="../../constant-values.html#play.jobs.Job.applicationBaseUrl_configPropertyName">Constant Field Values</A></DL>
+</DL>
+<HR>
 
 <A NAME="executor"><!-- --></A><H3>
 executor</H3>
@@ -381,6 +425,20 @@ public <B>Job</B>()</PRE>
 </TR>
 </TABLE>
 
+<A NAME="getInvocationContext()"><!-- --></A><H3>
+getInvocationContext</H3>
+<PRE>
+public <A HREF="../../play/Invoker.InvocationContext.html" title="class in play">Invoker.InvocationContext</A> <B>getInvocationContext</B>()</PRE>
+<DL>
+<DD><DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../play/Invoker.Invocation.html#getInvocationContext()">getInvocationContext</A></CODE> in class <CODE><A HREF="../../play/Invoker.Invocation.html" title="class in play">Invoker.Invocation</A></CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
 <A NAME="doJob()"><!-- --></A><H3>
 doJob</H3>
 <PRE>
@@ -442,7 +500,7 @@ public void <B>execute</B>()
 <A NAME="now()"><!-- --></A><H3>
 now</H3>
 <PRE>
-public java.util.concurrent.Future&lt;<A HREF="../../play/jobs/Job.html" title="type parameter in Job">V</A>&gt; <B>now</B>()</PRE>
+public <A HREF="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</A>&lt;<A HREF="../../play/jobs/Job.html" title="type parameter in Job">V</A>&gt; <B>now</B>()</PRE>
 <DL>
 <DD>Start this job now (well ASAP)
 <P>
@@ -459,7 +517,7 @@ public java.util.concurrent.Future&lt;<A HREF="../../play/jobs/Job.html" title="
 <A NAME="in(java.lang.String)"><!-- --></A><H3>
 in</H3>
 <PRE>
-public java.util.concurrent.Future&lt;<A HREF="../../play/jobs/Job.html" title="type parameter in Job">V</A>&gt; <B>in</B>(java.lang.String&nbsp;delay)</PRE>
+public <A HREF="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</A>&lt;<A HREF="../../play/jobs/Job.html" title="type parameter in Job">V</A>&gt; <B>in</B>(java.lang.String&nbsp;delay)</PRE>
 <DL>
 <DD>Start this job in several seconds
 <P>
@@ -476,7 +534,7 @@ public java.util.concurrent.Future&lt;<A HREF="../../play/jobs/Job.html" title="
 <A NAME="in(int)"><!-- --></A><H3>
 in</H3>
 <PRE>
-public java.util.concurrent.Future&lt;<A HREF="../../play/jobs/Job.html" title="type parameter in Job">V</A>&gt; <B>in</B>(int&nbsp;seconds)</PRE>
+public <A HREF="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</A>&lt;<A HREF="../../play/jobs/Job.html" title="type parameter in Job">V</A>&gt; <B>in</B>(int&nbsp;seconds)</PRE>
 <DL>
 <DD>Start this job in several seconds
 <P>

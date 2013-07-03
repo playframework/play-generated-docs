@@ -98,7 +98,7 @@ java.lang.Object
 <DT><B>All Implemented Interfaces:</B> <DD>java.lang.Comparable&lt;<A HREF="../play/PlayPlugin.html" title="class in play">PlayPlugin</A>&gt;</DD>
 </DL>
 <DL>
-<DT><B>Direct Known Subclasses:</B> <DD><A HREF="../play/CorePlugin.html" title="class in play">CorePlugin</A>, <A HREF="../play/db/DBPlugin.html" title="class in play.db">DBPlugin</A>, <A HREF="../play/jobs/JobsPlugin.html" title="class in play.jobs">JobsPlugin</A>, <A HREF="../play/db/jpa/JPAPlugin.html" title="class in play.db.jpa">JPAPlugin</A>, <A HREF="../play/i18n/MessagesPlugin.html" title="class in play.i18n">MessagesPlugin</A>, <A HREF="../play/data/parsing/TempFilePlugin.html" title="class in play.data.parsing">TempFilePlugin</A>, <A HREF="../play/data/validation/ValidationPlugin.html" title="class in play.data.validation">ValidationPlugin</A>, <A HREF="../play/libs/WS.html" title="class in play.libs">WS</A></DD>
+<DT><B>Direct Known Subclasses:</B> <DD><A HREF="../play/plugins/ConfigurablePluginDisablingPlugin.html" title="class in play.plugins">ConfigurablePluginDisablingPlugin</A>, <A HREF="../play/CorePlugin.html" title="class in play">CorePlugin</A>, <A HREF="../play/db/DBPlugin.html" title="class in play.db">DBPlugin</A>, <A HREF="../play/db/Evolutions.html" title="class in play.db">Evolutions</A>, <A HREF="../play/jobs/JobsPlugin.html" title="class in play.jobs">JobsPlugin</A>, <A HREF="../play/db/jpa/JPAPlugin.html" title="class in play.db.jpa">JPAPlugin</A>, <A HREF="../play/i18n/MessagesPlugin.html" title="class in play.i18n">MessagesPlugin</A>, <A HREF="../play/data/parsing/TempFilePlugin.html" title="class in play.data.parsing">TempFilePlugin</A>, <A HREF="../play/data/validation/ValidationPlugin.html" title="class in play.data.validation">ValidationPlugin</A>, <A HREF="../play/libs/WS.html" title="class in play.libs">WS</A></DD>
 </DL>
 <HR>
 <DL>
@@ -240,7 +240,7 @@ A framework plugin
      java.util.Map&lt;java.lang.String,java.lang.String[]&gt;&nbsp;params)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Called when play need to bind an existing Java object from HTTP params</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -281,6 +281,16 @@ A framework plugin
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Retun the plugin status in JSON format</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;java.lang.String</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../play/PlayPlugin.html#getMessage(java.lang.String, java.lang.Object, java.lang.Object...)">getMessage</A></B>(java.lang.String&nbsp;locale,
+           java.lang.Object&nbsp;key,
+           java.lang.Object...&nbsp;args)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Translate the given key for the given locale and arguments.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -423,6 +433,15 @@ A framework plugin
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;java.lang.String</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../play/PlayPlugin.html#overrideTemplateSource(play.templates.BaseTemplate, java.lang.String)">overrideTemplateSource</A></B>(<A HREF="../play/templates/BaseTemplate.html" title="class in play.templates">BaseTemplate</A>&nbsp;template,
+                       java.lang.String&nbsp;source)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>static&nbsp;void</CODE></FONT></TD>
 <TD><CODE><B><A HREF="../play/PlayPlugin.html#postEvent(java.lang.String, java.lang.Object)">postEvent</A></B>(java.lang.String&nbsp;message,
           java.lang.Object&nbsp;context)</CODE>
@@ -464,6 +483,23 @@ A framework plugin
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Let a chance to this plugin to manage a static ressource</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;java.util.Map&lt;java.lang.String,java.lang.Object&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../play/PlayPlugin.html#unBind(java.lang.Object, java.lang.String)">unBind</A></B>(java.lang.Object&nbsp;src,
+       java.lang.String&nbsp;name)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;java.lang.Object</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../play/PlayPlugin.html#willBeValidated(java.lang.Object)">willBeValidated</A></B>(java.lang.Object&nbsp;value)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
 </TR>
 </TABLE>
 &nbsp;<A NAME="methods_inherited_from_class_java.lang.Object"><!-- --></A>
@@ -583,6 +619,43 @@ public java.lang.Object <B>bind</B>(java.lang.String&nbsp;name,
                              java.lang.Object&nbsp;o,
                              java.util.Map&lt;java.lang.String,java.lang.String[]&gt;&nbsp;params)</PRE>
 <DL>
+<DD>Called when play need to bind an existing Java object from HTTP params
+<P>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="unBind(java.lang.Object, java.lang.String)"><!-- --></A><H3>
+unBind</H3>
+<PRE>
+public java.util.Map&lt;java.lang.String,java.lang.Object&gt; <B>unBind</B>(java.lang.Object&nbsp;src,
+                                                               java.lang.String&nbsp;name)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getMessage(java.lang.String, java.lang.Object, java.lang.Object...)"><!-- --></A><H3>
+getMessage</H3>
+<PRE>
+public java.lang.String <B>getMessage</B>(java.lang.String&nbsp;locale,
+                                   java.lang.Object&nbsp;key,
+                                   java.lang.Object...&nbsp;args)</PRE>
+<DL>
+<DD>Translate the given key for the given locale and arguments.
+ If null is returned, Play's normal message translation mechanism will be
+ used.
+<P>
 <DD><DL>
 </DL>
 </DD>
@@ -1121,6 +1194,35 @@ public int <B>compareTo</B>(<A HREF="../play/PlayPlugin.html" title="class in pl
 <DL>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE>compareTo</CODE> in interface <CODE>java.lang.Comparable&lt;<A HREF="../play/PlayPlugin.html" title="class in play">PlayPlugin</A>&gt;</CODE></DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="overrideTemplateSource(play.templates.BaseTemplate, java.lang.String)"><!-- --></A><H3>
+overrideTemplateSource</H3>
+<PRE>
+public java.lang.String <B>overrideTemplateSource</B>(<A HREF="../play/templates/BaseTemplate.html" title="class in play.templates">BaseTemplate</A>&nbsp;template,
+                                               java.lang.String&nbsp;source)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="willBeValidated(java.lang.Object)"><!-- --></A><H3>
+willBeValidated</H3>
+<PRE>
+public java.lang.Object <B>willBeValidated</B>(java.lang.Object&nbsp;value)</PRE>
+<DL>
+<DD><DL>
+</DL>
 </DD>
 <DD><DL>
 </DL>

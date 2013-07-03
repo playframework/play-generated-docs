@@ -213,11 +213,12 @@ A template
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>&nbsp;java.lang.String</CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../play/templates/GroovyTemplate.html#render(java.util.Map)">render</A></B>(java.util.Map&lt;java.lang.String,java.lang.Object&gt;&nbsp;args)</CODE>
+<CODE>protected &nbsp;java.lang.String</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../play/templates/GroovyTemplate.html#internalRender(java.util.Map)">internalRender</A></B>(java.util.Map&lt;java.lang.String,java.lang.Object&gt;&nbsp;args)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The internal rendering method - When one templated calls another template,
+ this method is used.</TD>
 </TR>
 </TABLE>
 &nbsp;<A NAME="methods_inherited_from_class_play.templates.BaseTemplate"><!-- --></A>
@@ -227,6 +228,15 @@ A template
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD><CODE><A HREF="../../play/templates/BaseTemplate.html#loadFromCache()">loadFromCache</A>, <A HREF="../../play/templates/BaseTemplate.html#loadPrecompiled()">loadPrecompiled</A></CODE></TD>
+</TR>
+</TABLE>
+&nbsp;<A NAME="methods_inherited_from_class_play.templates.Template"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#EEEEFF" CLASS="TableSubHeadingColor">
+<TH ALIGN="left"><B>Methods inherited from class play.templates.<A HREF="../../play/templates/Template.html" title="class in play.templates">Template</A></B></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><A HREF="../../play/templates/Template.html#getName()">getName</A>, <A HREF="../../play/templates/Template.html#render()">render</A>, <A HREF="../../play/templates/Template.html#render(java.util.Map)">render</A></CODE></TD>
 </TR>
 </TABLE>
 &nbsp;<A NAME="methods_inherited_from_class_java.lang.Object"><!-- --></A>
@@ -291,13 +301,18 @@ public void <B>compile</B>()</PRE>
 </DL>
 <HR>
 
-<A NAME="render(java.util.Map)"><!-- --></A><H3>
-render</H3>
+<A NAME="internalRender(java.util.Map)"><!-- --></A><H3>
+internalRender</H3>
 <PRE>
-public java.lang.String <B>render</B>(java.util.Map&lt;java.lang.String,java.lang.Object&gt;&nbsp;args)</PRE>
+protected java.lang.String <B>internalRender</B>(java.util.Map&lt;java.lang.String,java.lang.Object&gt;&nbsp;args)</PRE>
 <DL>
+<DD><B>Description copied from class: <CODE><A HREF="../../play/templates/Template.html#internalRender(java.util.Map)">Template</A></CODE></B></DD>
+<DD>The internal rendering method - When one templated calls another template,
+ this method is used. The input args-map is constantly being modified, as different
+ templates "communicate" with each other by storing info in the map
+<P>
 <DD><DL>
-<DT><B>Specified by:</B><DD><CODE><A HREF="../../play/templates/Template.html#render(java.util.Map)">render</A></CODE> in class <CODE><A HREF="../../play/templates/Template.html" title="class in play.templates">Template</A></CODE></DL>
+<DT><B>Specified by:</B><DD><CODE><A HREF="../../play/templates/Template.html#internalRender(java.util.Map)">internalRender</A></CODE> in class <CODE><A HREF="../../play/templates/Template.html" title="class in play.templates">Template</A></CODE></DL>
 </DD>
 <DD><DL>
 </DL>

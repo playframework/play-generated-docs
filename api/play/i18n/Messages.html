@@ -178,12 +178,40 @@ I18n Helper
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;java.util.Properties</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../play/i18n/Messages.html#find(java.lang.String, java.util.Set)">find</A></B>(java.lang.String&nbsp;locale,
+     java.util.Set&lt;java.lang.String&gt;&nbsp;keys)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Return several messages for a locale</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;java.lang.String</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../play/i18n/Messages.html#formatString(java.lang.String, java.lang.Object...)">formatString</A></B>(java.lang.String&nbsp;value,
+             java.lang.Object...&nbsp;args)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>static&nbsp;java.lang.String</CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../play/i18n/Messages.html#get(java.lang.Object, java.lang.Object...)">get</A></B>(java.lang.Object&nbsp;key,
     java.lang.Object...&nbsp;args)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Given a message code, translate it using current locale.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;java.lang.String</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../play/i18n/Messages.html#getMessage(java.lang.String, java.lang.Object, java.lang.Object...)">getMessage</A></B>(java.lang.String&nbsp;locale,
+           java.lang.Object&nbsp;key,
+           java.lang.Object...&nbsp;args)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
 </TR>
 </TABLE>
 &nbsp;<A NAME="methods_inherited_from_class_java.lang.Object"><!-- --></A>
@@ -261,11 +289,51 @@ public static java.lang.String <B>get</B>(java.lang.Object&nbsp;key,
                                    java.lang.Object...&nbsp;args)</PRE>
 <DL>
 <DD>Given a message code, translate it using current locale.
- Notice that if the message can't be found, the string <em>!code!</em> is returned.
+ If there is no message in the current locale for the given key, the key
+ is returned.
 <P>
 <DD><DL>
 <DT><B>Parameters:</B><DD><CODE>key</CODE> - the message code<DD><CODE>args</CODE> - optional message format arguments
 <DT><B>Returns:</B><DD>translated message</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="find(java.lang.String, java.util.Set)"><!-- --></A><H3>
+find</H3>
+<PRE>
+public static java.util.Properties <B>find</B>(java.lang.String&nbsp;locale,
+                                        java.util.Set&lt;java.lang.String&gt;&nbsp;keys)</PRE>
+<DL>
+<DD>Return several messages for a locale
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>locale</CODE> - the locale code, e.g. fr, fr_FR<DD><CODE>keys</CODE> - the keys to get messages from. Wildcards can be used at the end: {'title', 'login.*'}</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getMessage(java.lang.String, java.lang.Object, java.lang.Object...)"><!-- --></A><H3>
+getMessage</H3>
+<PRE>
+public static java.lang.String <B>getMessage</B>(java.lang.String&nbsp;locale,
+                                          java.lang.Object&nbsp;key,
+                                          java.lang.Object...&nbsp;args)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="formatString(java.lang.String, java.lang.Object...)"><!-- --></A><H3>
+formatString</H3>
+<PRE>
+public static java.lang.String <B>formatString</B>(java.lang.String&nbsp;value,
+                                            java.lang.Object...&nbsp;args)</PRE>
+<DL>
+<DD><DL>
+</DL>
 </DD>
 </DL>
 <HR>

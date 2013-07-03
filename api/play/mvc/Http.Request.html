@@ -54,7 +54,7 @@ function windowTitle()
 
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
-&nbsp;<A HREF="../../play/mvc/Http.Header.html" title="class in play.mvc"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../play/mvc/Http.Outbound.html" title="class in play.mvc"><B>PREV CLASS</B></A>&nbsp;
 &nbsp;<A HREF="../../play/mvc/Http.Response.html" title="class in play.mvc"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../index.html?play/mvc/Http.Request.html" target="_top"><B>FRAMES</B></A>  &nbsp;
@@ -361,7 +361,7 @@ An HTTP Request
 <TD><CODE><B><A HREF="../../play/mvc/Http.Request.html#Http.Request()">Http.Request</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B>Deprecated.</B>&nbsp;</TD>
 </TR>
 </TABLE>
 &nbsp;
@@ -379,7 +379,7 @@ An HTTP Request
 <TD><CODE><B><A HREF="../../play/mvc/Http.Request.html#_init()">_init</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B>Deprecated.</B>&nbsp;</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -391,11 +391,48 @@ An HTTP Request
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../play/mvc/Http.Request.html#authorizationInit()">authorizationInit</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;<A HREF="../../play/mvc/Http.Request.html" title="class in play.mvc">Http.Request</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../play/mvc/Http.Request.html#createRequest(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.io.InputStream, java.lang.String, java.lang.String, boolean, int, java.lang.String, boolean, java.util.Map, java.util.Map)">createRequest</A></B>(java.lang.String&nbsp;_remoteAddress,
+              java.lang.String&nbsp;_method,
+              java.lang.String&nbsp;_path,
+              java.lang.String&nbsp;_querystring,
+              java.lang.String&nbsp;_contentType,
+              java.io.InputStream&nbsp;_body,
+              java.lang.String&nbsp;_url,
+              java.lang.String&nbsp;_host,
+              boolean&nbsp;_isLoopback,
+              int&nbsp;_port,
+              java.lang.String&nbsp;_domain,
+              boolean&nbsp;_secure,
+              java.util.Map&lt;java.lang.String,<A HREF="../../play/mvc/Http.Header.html" title="class in play.mvc">Http.Header</A>&gt;&nbsp;_headers,
+              java.util.Map&lt;java.lang.String,<A HREF="../../play/mvc/Http.Cookie.html" title="class in play.mvc">Http.Cookie</A>&gt;&nbsp;_cookies)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All creation / initing of new requests should use this method.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>static&nbsp;<A HREF="../../play/mvc/Http.Request.html" title="class in play.mvc">Http.Request</A></CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../play/mvc/Http.Request.html#current()">current</A></B>()</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Retrieve the current request</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../play/mvc/Http.Request.html" title="class in play.mvc">Http.Request</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../play/mvc/Http.Request.html#get()">get</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Useful because we sometime use a lazy request loader</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -418,6 +455,14 @@ An HTTP Request
 <CODE>&nbsp;boolean</CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../play/mvc/Http.Request.html#isModified(java.lang.String, long)">isModified</A></B>(java.lang.String&nbsp;etag,
            long&nbsp;last)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../play/mvc/Http.Request.html#parseXForwarded()">parseXForwarded</A></B>()</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
@@ -810,8 +855,16 @@ public final <A HREF="../../play/mvc/Scope.Params.html" title="class in play.mvc
 <A NAME="Http.Request()"><!-- --></A><H3>
 Http.Request</H3>
 <PRE>
-public <B>Http.Request</B>()</PRE>
+<FONT SIZE="-1">@Deprecated
+</FONT>public <B>Http.Request</B>()</PRE>
 <DL>
+<DD><B>Deprecated.</B>&nbsp;
+<P>
+<DD>Deprecate the default constructor to encourage the use of createRequest() when creating new
+ requests.
+
+ Cannot hide it with protected because we have to be backward compatible with modules - ie PlayGrizzlyAdapter.java
+<P>
 </DL>
 
 <!-- ============ METHOD DETAIL ========== -->
@@ -824,10 +877,74 @@ public <B>Http.Request</B>()</PRE>
 </TR>
 </TABLE>
 
+<A NAME="createRequest(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.io.InputStream, java.lang.String, java.lang.String, boolean, int, java.lang.String, boolean, java.util.Map, java.util.Map)"><!-- --></A><H3>
+createRequest</H3>
+<PRE>
+public static <A HREF="../../play/mvc/Http.Request.html" title="class in play.mvc">Http.Request</A> <B>createRequest</B>(java.lang.String&nbsp;_remoteAddress,
+                                         java.lang.String&nbsp;_method,
+                                         java.lang.String&nbsp;_path,
+                                         java.lang.String&nbsp;_querystring,
+                                         java.lang.String&nbsp;_contentType,
+                                         java.io.InputStream&nbsp;_body,
+                                         java.lang.String&nbsp;_url,
+                                         java.lang.String&nbsp;_host,
+                                         boolean&nbsp;_isLoopback,
+                                         int&nbsp;_port,
+                                         java.lang.String&nbsp;_domain,
+                                         boolean&nbsp;_secure,
+                                         java.util.Map&lt;java.lang.String,<A HREF="../../play/mvc/Http.Header.html" title="class in play.mvc">Http.Header</A>&gt;&nbsp;_headers,
+                                         java.util.Map&lt;java.lang.String,<A HREF="../../play/mvc/Http.Cookie.html" title="class in play.mvc">Http.Cookie</A>&gt;&nbsp;_cookies)</PRE>
+<DL>
+<DD>All creation / initing of new requests should use this method.
+ The purpose of this is to "show" what is needed when creating new Requests.
+<P>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>the newly created Request object</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="parseXForwarded()"><!-- --></A><H3>
+parseXForwarded</H3>
+<PRE>
+protected void <B>parseXForwarded</B>()</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
 <A NAME="_init()"><!-- --></A><H3>
 _init</H3>
 <PRE>
-public void <B>_init</B>()</PRE>
+<FONT SIZE="-1">@Deprecated
+</FONT>public void <B>_init</B>()</PRE>
+<DL>
+<DD><B>Deprecated.</B>&nbsp;
+<P>
+<DD>Deprecated to encourage users to use createRequest() instead.
+<P>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="authorizationInit()"><!-- --></A><H3>
+authorizationInit</H3>
+<PRE>
+protected void <B>authorizationInit</B>()</PRE>
 <DL>
 <DD><DL>
 </DL>
@@ -868,6 +985,23 @@ public static <A HREF="../../play/mvc/Http.Request.html" title="class in play.mv
 <DD><DL>
 
 <DT><B>Returns:</B><DD>the current request</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="get()"><!-- --></A><H3>
+get</H3>
+<PRE>
+public <A HREF="../../play/mvc/Http.Request.html" title="class in play.mvc">Http.Request</A> <B>get</B>()</PRE>
+<DL>
+<DD>Useful because we sometime use a lazy request loader
+<P>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>itself</DL>
 </DD>
 </DL>
 <HR>
@@ -982,7 +1116,7 @@ public boolean <B>isModified</B>(java.lang.String&nbsp;etag,
 
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
-&nbsp;<A HREF="../../play/mvc/Http.Header.html" title="class in play.mvc"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../play/mvc/Http.Outbound.html" title="class in play.mvc"><B>PREV CLASS</B></A>&nbsp;
 &nbsp;<A HREF="../../play/mvc/Http.Response.html" title="class in play.mvc"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../index.html?play/mvc/Http.Request.html" target="_top"><B>FRAMES</B></A>  &nbsp;

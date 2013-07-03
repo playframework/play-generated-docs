@@ -254,11 +254,19 @@ Main framework class
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;<A HREF="../play/plugins/PluginCollection.html" title="class in play.plugins">PluginCollection</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../play/Play.html#pluginCollection">pluginCollection</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pluginCollection that holds all loaded plugins and all enabled plugins..</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>static&nbsp;java.util.List&lt;<A HREF="../play/PlayPlugin.html" title="class in play">PlayPlugin</A>&gt;</CODE></FONT></TD>
 <TD><CODE><B><A HREF="../play/Play.html#plugins">plugins</A></B></CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Play plugins</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B>Deprecated.</B>&nbsp;</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -414,7 +422,7 @@ Main framework class
 <TD><CODE><B><A HREF="../play/Play.html#initStaticStuff()">initStaticStuff</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Allow some code to run very eraly in Play! - Use with caution !</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Allow some code to run very early in Play - Use with caution !</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -423,14 +431,6 @@ Main framework class
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Load all modules.</TD>
-</TR>
-<TR BGCOLOR="white" CLASS="TableRowColor">
-<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>static&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B><A HREF="../play/Play.html#loadPlugins()">loadPlugins</A></B>()</CODE>
-
-<BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enable found plugins</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -446,6 +446,22 @@ Main framework class
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../play/Play.html#readConfiguration()">readConfiguration</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Read application.conf and resolve overriden key using the play id mechanism.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../play/Play.html#runingInTestMode()">runingInTestMode</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns true if application is runing in test-mode.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -714,12 +730,28 @@ public static java.lang.String <B>secretKey</B></PRE>
 </DL>
 <HR>
 
+<A NAME="pluginCollection"><!-- --></A><H3>
+pluginCollection</H3>
+<PRE>
+public static <A HREF="../play/plugins/PluginCollection.html" title="class in play.plugins">PluginCollection</A> <B>pluginCollection</B></PRE>
+<DL>
+<DD>pluginCollection that holds all loaded plugins and all enabled plugins..
+<P>
+<DL>
+</DL>
+</DL>
+<HR>
+
 <A NAME="plugins"><!-- --></A><H3>
 plugins</H3>
 <PRE>
-public static java.util.List&lt;<A HREF="../play/PlayPlugin.html" title="class in play">PlayPlugin</A>&gt; <B>plugins</B></PRE>
+<FONT SIZE="-1">@Deprecated
+</FONT>public static java.util.List&lt;<A HREF="../play/PlayPlugin.html" title="class in play">PlayPlugin</A>&gt; <B>plugins</B></PRE>
 <DL>
-<DD>Play plugins
+<DD><B>Deprecated.</B>&nbsp;<DD>Readonly list containing currently enabled plugins.
+ This list is updated from pluginCollection when pluginCollection is modified
+ Play plugins
+ Use pluginCollection instead.
 <P>
 <DL>
 </DL>
@@ -834,6 +866,19 @@ public static void <B>init</B>(java.io.File&nbsp;root,
 </DL>
 <HR>
 
+<A NAME="readConfiguration()"><!-- --></A><H3>
+readConfiguration</H3>
+<PRE>
+public static void <B>readConfiguration</B>()</PRE>
+<DL>
+<DD>Read application.conf and resolve overriden key using the play id mechanism.
+<P>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
 <A NAME="start()"><!-- --></A><H3>
 start</H3>
 <PRE>
@@ -885,25 +930,12 @@ public static &lt;T&gt; T <B>plugin</B>(java.lang.Class&lt;T&gt;&nbsp;clazz)</PR
 </DL>
 <HR>
 
-<A NAME="loadPlugins()"><!-- --></A><H3>
-loadPlugins</H3>
-<PRE>
-public static void <B>loadPlugins</B>()</PRE>
-<DL>
-<DD>Enable found plugins
-<P>
-<DD><DL>
-</DL>
-</DD>
-</DL>
-<HR>
-
 <A NAME="initStaticStuff()"><!-- --></A><H3>
 initStaticStuff</H3>
 <PRE>
 public static void <B>initStaticStuff</B>()</PRE>
 <DL>
-<DD>Allow some code to run very eraly in Play! - Use with caution !
+<DD>Allow some code to run very early in Play - Use with caution !
 <P>
 <DD><DL>
 </DL>
@@ -963,6 +995,24 @@ public static java.io.File <B>getFile</B>(java.lang.String&nbsp;path)</PRE>
 <DD><DL>
 <DT><B>Parameters:</B><DD><CODE>path</CODE> - Relative path from the application root
 <DT><B>Returns:</B><DD>The file even if it doesn't exist</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="runingInTestMode()"><!-- --></A><H3>
+runingInTestMode</H3>
+<PRE>
+public static boolean <B>runingInTestMode</B>()</PRE>
+<DL>
+<DD>Returns true if application is runing in test-mode.
+ Test-mode is resolved from the framework id.
+
+ Your app is running in test-mode if the framwork id (Play.id)
+ is 'test' or 'test-?.*'
+<P>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>true if testmode</DL>
 </DD>
 </DL>
 <!-- ========= END OF CLASS DATA ========= -->

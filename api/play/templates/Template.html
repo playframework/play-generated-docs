@@ -166,11 +166,36 @@ java.lang.Object
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>abstract &nbsp;java.lang.String</CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../play/templates/Template.html#render(java.util.Map)">render</A></B>(java.util.Map&lt;java.lang.String,java.lang.Object&gt;&nbsp;args)</CODE>
+<CODE>&nbsp;java.lang.String</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../play/templates/Template.html#getName()">getName</A></B>()</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected abstract &nbsp;java.lang.String</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../play/templates/Template.html#internalRender(java.util.Map)">internalRender</A></B>(java.util.Map&lt;java.lang.String,java.lang.Object&gt;&nbsp;args)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The internal rendering method - When one templated calls another template,
+ this method is used.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;java.lang.String</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../play/templates/Template.html#render()">render</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;java.lang.String</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../play/templates/Template.html#render(java.util.Map)">render</A></B>(java.util.Map&lt;java.lang.String,java.lang.Object&gt;&nbsp;args)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Starts the rendering process without modifying the args-map</TD>
 </TR>
 </TABLE>
 &nbsp;<A NAME="methods_inherited_from_class_java.lang.Object"><!-- --></A>
@@ -255,7 +280,47 @@ public abstract void <B>compile</B>()</PRE>
 <A NAME="render(java.util.Map)"><!-- --></A><H3>
 render</H3>
 <PRE>
-public abstract java.lang.String <B>render</B>(java.util.Map&lt;java.lang.String,java.lang.Object&gt;&nbsp;args)</PRE>
+public java.lang.String <B>render</B>(java.util.Map&lt;java.lang.String,java.lang.Object&gt;&nbsp;args)</PRE>
+<DL>
+<DD>Starts the rendering process without modifying the args-map
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>args</CODE> - map containing data binding info
+<DT><B>Returns:</B><DD>the result of the complete rendering</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="internalRender(java.util.Map)"><!-- --></A><H3>
+internalRender</H3>
+<PRE>
+protected abstract java.lang.String <B>internalRender</B>(java.util.Map&lt;java.lang.String,java.lang.Object&gt;&nbsp;args)</PRE>
+<DL>
+<DD>The internal rendering method - When one templated calls another template,
+ this method is used. The input args-map is constantly being modified, as different
+ templates "communicate" with each other by storing info in the map
+<P>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="render()"><!-- --></A><H3>
+render</H3>
+<PRE>
+public java.lang.String <B>render</B>()</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="getName()"><!-- --></A><H3>
+getName</H3>
+<PRE>
+public java.lang.String <B>getName</B>()</PRE>
 <DL>
 <DD><DL>
 </DL>
