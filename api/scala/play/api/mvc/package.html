@@ -55,7 +55,30 @@ object Application extends Controller {
 
         <div class="types members" id="types">
               <h3>Type Members</h3>
-              <ol><li visbl="pub" name="play.api.mvc.Action" data-isabs="true">
+              <ol><li visbl="pub" name="play.api.mvc.AcceptExtractors" data-isabs="true">
+      <a id="AcceptExtractors:AcceptExtractors"></a>
+      <h4 class="signature">
+      <span class="kind">trait</span>
+      <span class="symbol"> 
+        <a href="AcceptExtractors.html"><span class="name">AcceptExtractors</span></a>
+        
+        <span class="result"> extends AnyRef</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Define a set of extractors allowing to pattern match on the Accept HTTP header of a request
+</p>
+    </li><li visbl="pub" name="play.api.mvc.Accepting" data-isabs="false">
+      <a id="Accepting:Accepting"></a>
+      <h4 class="signature">
+      <span class="kind">case class</span>
+      <span class="symbol"> 
+        <a href="Accepting.html"><span class="name">Accepting</span></a>
+        
+        <span class="params">(<span name="mimeType">mimeType: String</span>)</span><span class="result"> extends Product with Serializable</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Convenient class to generate extractors checking if a given mime type matches the Accept header of a request.</p>
+    </li><li visbl="pub" name="play.api.mvc.Action" data-isabs="true">
       <a id="Action:Action[A]"></a>
       <h4 class="signature">
       <span class="kind">trait</span>
@@ -233,7 +256,7 @@ handles a request and generates a result to be sent to the client.</p>
       <span class="symbol"> 
         <a href="Controller.html"><span class="name">Controller</span></a>
         
-        <span class="result"> extends Results with BodyParsers with Status with HeaderNames with ContentTypes</span>
+        <span class="result"> extends Results with BodyParsers with Status with HeaderNames with ContentTypes with RequestExtractors</span>
       </span>
       </h4>
       <p class="comment cmt">Defines utility methods to generate <code>Action</code> and <code>Results</code> types.</p>
@@ -403,6 +426,17 @@ handles a request and generates a result to be sent to the client.</p>
       </span>
       </h4>
       <p class="comment cmt">The complete HTTP request.</p>
+    </li><li visbl="pub" name="play.api.mvc.RequestExtractors" data-isabs="true">
+      <a id="RequestExtractors:RequestExtractors"></a>
+      <h4 class="signature">
+      <span class="kind">trait</span>
+      <span class="symbol"> 
+        <a href="RequestExtractors.html"><span class="name">RequestExtractors</span></a>
+        
+        <span class="result"> extends AcceptExtractors</span>
+      </span>
+      </h4>
+      
     </li><li visbl="pub" name="play.api.mvc.RequestHeader" data-isabs="true">
       <a id="RequestHeader:RequestHeader"></a>
       <h4 class="signature">

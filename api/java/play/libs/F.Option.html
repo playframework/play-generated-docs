@@ -6,7 +6,7 @@
 F.Option (playframework)
 </TITLE>
 
-<META NAME="date" CONTENT="2012-05-02">
+<META NAME="date" CONTENT="2012-06-25">
 
 <LINK REL ="stylesheet" TYPE="text/css" HREF="../../stylesheet.css" TITLE="Style">
 
@@ -154,7 +154,7 @@ Represents optional values. Instances of <code>Option</code> are either an insta
 <TD><CODE><B><A HREF="../../play/libs/F.Option.html#getOrElse(T)">getOrElse</A></B>(<A HREF="../../play/libs/F.Option.html" title="type parameter in F.Option">T</A>&nbsp;defaultValue)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Get the value if defined, otherwise return the supplied <code>defaultValue</code>.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -162,7 +162,7 @@ Represents optional values. Instances of <code>Option</code> are either an insta
 <TD><CODE><B><A HREF="../../play/libs/F.Option.html#isDefined()">isDefined</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns <code>true</code> if this value is defined.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Is the value of this option defined?</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -174,10 +174,10 @@ Represents optional values. Instances of <code>Option</code> are either an insta
 </TR>
 </TABLE>
 </CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../play/libs/F.Option.html#map(play.libs.F.Function)">map</A></B>(<A HREF="../../play/libs/F.Function.html" title="interface in play.libs">F.Function</A>&lt;<A HREF="../../play/libs/F.Option.html" title="type parameter in F.Option">T</A>,A&gt;&nbsp;f)</CODE>
+<TD><CODE><B><A HREF="../../play/libs/F.Option.html#map(play.libs.F.Function)">map</A></B>(<A HREF="../../play/libs/F.Function.html" title="interface in play.libs">F.Function</A>&lt;<A HREF="../../play/libs/F.Option.html" title="type parameter in F.Option">T</A>,A&gt;&nbsp;function)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Map this option to another value.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -263,13 +263,14 @@ isDefined</H3>
 <PRE>
 public abstract boolean <B>isDefined</B>()</PRE>
 <DL>
-<DD>Returns <code>true</code> if this value is defined.
+<DD>Is the value of this option defined?
 <P>
 <DD><DL>
 </DL>
 </DD>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD><code>true</code> if the value is defined, otherwise <code>false</code>.</DL>
 </DD>
 </DL>
 <HR>
@@ -285,7 +286,8 @@ public abstract <A HREF="../../play/libs/F.Option.html" title="type parameter in
 </DL>
 </DD>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>The value if defined, otherwise <code>null</code>.</DL>
 </DD>
 </DL>
 <HR>
@@ -301,7 +303,8 @@ public static &lt;T&gt; <A HREF="../../play/libs/F.None.html" title="class in pl
 </DL>
 </DD>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>None</DL>
 </DD>
 </DL>
 <HR>
@@ -317,7 +320,8 @@ public static &lt;T&gt; <A HREF="../../play/libs/F.Some.html" title="class in pl
 </DL>
 </DD>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>value</CODE> - The value to make optional
+<DT><B>Returns:</B><DD>Some <code>T</code>.</DL>
 </DD>
 </DL>
 <HR>
@@ -327,11 +331,14 @@ getOrElse</H3>
 <PRE>
 public <A HREF="../../play/libs/F.Option.html" title="type parameter in F.Option">T</A> <B>getOrElse</B>(<A HREF="../../play/libs/F.Option.html" title="type parameter in F.Option">T</A>&nbsp;defaultValue)</PRE>
 <DL>
+<DD>Get the value if defined, otherwise return the supplied <code>defaultValue</code>.
+<P>
 <DD><DL>
 </DL>
 </DD>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>defaultValue</CODE> - The value to return if the value of this option is not defined
+<DT><B>Returns:</B><DD>The value of this option, or <code>defaultValue</code>.</DL>
 </DD>
 </DL>
 <HR>
@@ -339,13 +346,20 @@ public <A HREF="../../play/libs/F.Option.html" title="type parameter in F.Option
 <A NAME="map(play.libs.F.Function)"><!-- --></A><H3>
 map</H3>
 <PRE>
-public &lt;A&gt; <A HREF="../../play/libs/F.Option.html" title="class in play.libs">F.Option</A>&lt;A&gt; <B>map</B>(<A HREF="../../play/libs/F.Function.html" title="interface in play.libs">F.Function</A>&lt;<A HREF="../../play/libs/F.Option.html" title="type parameter in F.Option">T</A>,A&gt;&nbsp;f)</PRE>
+public &lt;A&gt; <A HREF="../../play/libs/F.Option.html" title="class in play.libs">F.Option</A>&lt;A&gt; <B>map</B>(<A HREF="../../play/libs/F.Function.html" title="interface in play.libs">F.Function</A>&lt;<A HREF="../../play/libs/F.Option.html" title="type parameter in F.Option">T</A>,A&gt;&nbsp;function)</PRE>
 <DL>
+<DD>Map this option to another value.
+<P>
 <DD><DL>
 </DL>
 </DD>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>function</CODE> - The function to map the option using.
+<DT><B>Returns:</B><DD>The mapped option.
+<DT><B>Throws:</B>
+<DD><CODE>java.lang.RuntimeException</CODE> - if <code>function</code> threw an Exception.  If the exception is a
+      <code>RuntimeException</code>, it will be rethrown as is, otherwise it will be wrapped in a
+      <code>RuntimeException</code>.</DL>
 </DD>
 </DL>
 <!-- ========= END OF CLASS DATA ========= -->

@@ -6,7 +6,7 @@
 FakeRequest (playframework)
 </TITLE>
 
-<META NAME="date" CONTENT="2012-05-02">
+<META NAME="date" CONTENT="2012-06-25">
 
 <LINK REL ="stylesheet" TYPE="text/css" HREF="../../stylesheet.css" TITLE="Style">
 
@@ -149,6 +149,23 @@ Fake HTTP request implementation.
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;<A HREF="../../play/test/FakeRequest.html" title="class in play.test">FakeRequest</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../play/test/FakeRequest.html#withCookies(play.mvc.Http.Cookie...)">withCookies</A></B>(<A HREF="../../play/mvc/Http.Cookie.html" title="class in play.mvc">Http.Cookie</A>...&nbsp;cookies)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add cookies to this request</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../play/test/FakeRequest.html" title="class in play.test">FakeRequest</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../play/test/FakeRequest.html#withFlash(java.lang.String, java.lang.String)">withFlash</A></B>(java.lang.String&nbsp;name,
+          java.lang.String&nbsp;value)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add addtional session to this request.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../play/test/FakeRequest.html" title="class in play.test">FakeRequest</A></CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../play/test/FakeRequest.html#withFormUrlEncodedBody(java.util.Map)">withFormUrlEncodedBody</A></B>(java.util.Map&lt;java.lang.String,java.lang.String&gt;&nbsp;data)</CODE>
 
 <BR>
@@ -162,6 +179,32 @@ Fake HTTP request implementation.
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add addtional headers to this request.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../play/test/FakeRequest.html" title="class in play.test">FakeRequest</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../play/test/FakeRequest.html#withJsonBody(org.codehaus.jackson.JsonNode)">withJsonBody</A></B>(org.codehaus.jackson.JsonNode&nbsp;node)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set a Json Body to this request.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../play/test/FakeRequest.html" title="class in play.test">FakeRequest</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../play/test/FakeRequest.html#withJsonBody(org.codehaus.jackson.JsonNode, java.lang.String)">withJsonBody</A></B>(org.codehaus.jackson.JsonNode&nbsp;node,
+             java.lang.String&nbsp;method)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set a Json Body to this request.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../play/test/FakeRequest.html" title="class in play.test">FakeRequest</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../play/test/FakeRequest.html#withSession(java.lang.String, java.lang.String)">withSession</A></B>(java.lang.String&nbsp;name,
+            java.lang.String&nbsp;value)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add addtional session to this request.</TD>
 </TR>
 </TABLE>
 &nbsp;<A NAME="methods_inherited_from_class_java.lang.Object"><!-- --></A>
@@ -223,6 +266,79 @@ public <A HREF="../../play/test/FakeRequest.html" title="class in play.test">Fak
                               java.lang.String&nbsp;value)</PRE>
 <DL>
 <DD>Add addtional headers to this request.
+<P>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="withJsonBody(org.codehaus.jackson.JsonNode)"><!-- --></A><H3>
+withJsonBody</H3>
+<PRE>
+public <A HREF="../../play/test/FakeRequest.html" title="class in play.test">FakeRequest</A> <B>withJsonBody</B>(org.codehaus.jackson.JsonNode&nbsp;node)</PRE>
+<DL>
+<DD>Set a Json Body to this request.
+ The <tt>Content-Type</tt> header of the request is set to <tt>application/json</tt>.
+ The method is set to <tt>POST</tt>.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>node</CODE> - the Json Node
+<DT><B>Returns:</B><DD>the Fake Request</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="withJsonBody(org.codehaus.jackson.JsonNode, java.lang.String)"><!-- --></A><H3>
+withJsonBody</H3>
+<PRE>
+public <A HREF="../../play/test/FakeRequest.html" title="class in play.test">FakeRequest</A> <B>withJsonBody</B>(org.codehaus.jackson.JsonNode&nbsp;node,
+                                java.lang.String&nbsp;method)</PRE>
+<DL>
+<DD>Set a Json Body to this request.
+ The <tt>Content-Type</tt> header of the request is set to <tt>application/json</tt>.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>node</CODE> - the Json Node<DD><CODE>method</CODE> - the HTTP method. <tt>POST</tt> if set to <code>null</code>
+<DT><B>Returns:</B><DD>the Fake Request</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="withFlash(java.lang.String, java.lang.String)"><!-- --></A><H3>
+withFlash</H3>
+<PRE>
+public <A HREF="../../play/test/FakeRequest.html" title="class in play.test">FakeRequest</A> <B>withFlash</B>(java.lang.String&nbsp;name,
+                             java.lang.String&nbsp;value)</PRE>
+<DL>
+<DD>Add addtional session to this request.
+<P>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="withSession(java.lang.String, java.lang.String)"><!-- --></A><H3>
+withSession</H3>
+<PRE>
+public <A HREF="../../play/test/FakeRequest.html" title="class in play.test">FakeRequest</A> <B>withSession</B>(java.lang.String&nbsp;name,
+                               java.lang.String&nbsp;value)</PRE>
+<DL>
+<DD>Add addtional session to this request.
+<P>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="withCookies(play.mvc.Http.Cookie...)"><!-- --></A><H3>
+withCookies</H3>
+<PRE>
+public <A HREF="../../play/test/FakeRequest.html" title="class in play.test">FakeRequest</A> <B>withCookies</B>(<A HREF="../../play/mvc/Http.Cookie.html" title="class in play.mvc">Http.Cookie</A>...&nbsp;cookies)</PRE>
+<DL>
+<DD>Add cookies to this request
 <P>
 <DD><DL>
 </DL>

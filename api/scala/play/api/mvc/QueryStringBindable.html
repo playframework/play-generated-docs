@@ -28,8 +28,35 @@
       </span>
       </h4>
       
-          <div class="fullcommenttop" id="comment"><div class="comment cmt"><p>Binder for query string parameters.
-</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+          <div class="fullcommenttop" id="comment"><div class="comment cmt"><p>Binder for query string parameters.</p><p>You can provide an implementation of <code>QueryStringBindable[A]</code> for any type <code>A</code> you want to be able to
+bind directly from the request query string.</p><p>For example, if you have the following type to encode pagination:</p><pre>
+  /**
+   * @param index Current page index
+   * @param size Number of items in a page
+   */ *   case class Pager(index: Int, size: Int)
+</pre><p>Play will create a <code>Pager(5, 42)</code> value from a query string looking like <code>/foo?p.index=5&amp;p.size=42</code> if you define
+an instance of <code>QueryStringBindable[Pager]</code> available in the implicit scope.</p><p>For example:</p><pre>
+  object Pager {
+    implicit def queryStringBinder(implicit intBinder: QueryStringBindable[Int]) = new QueryStringBindable[Pager] {
+      override def bind(key: String, params: Map[String, Seq[String]]): Option[Either[String, Pager]] = {
+        for {
+          index &lt;- intBinder.bind(key + &quot;.index&quot;, params)
+          size &lt;- intBinder.bind(key + &quot;.size&quot;, params)
+        } yield {
+          (index, size) match {
+            case (Right(index), Right(size)) =&gt; Right(Pager(index, size))
+            case _ =&gt; Left(&quot;Unable to bind a Pager&quot;)
+          }
+        }
+      }
+      override def unbind(key: String, pager: Pager): String = {
+        intBinder.unbind(key + &quot;.index&quot;, pager.index) + &quot;&amp;&quot; + intBinder.unbind(key + &quot;.size&quot;, pager.size)
+      }
+    }
+  }
+</pre><p>To use it in a route, just write a type annotation aside the parameter you want to bind:</p><pre>
+  GET  /foo        controllers.foo(p: Pager)
+</pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@implicitNotFound</span><span class="args">(<span>
       
       <span name="&quot;No QueryString binder found for type ${A}. Try to implement an implicit QueryStringBindable for this type.&quot;" class="defval">...</span>
@@ -78,7 +105,8 @@
       </span>
       </h4>
       <p class="shortcomment cmt">Bind a query string parameter.</p><div class="fullcomment"><div class="comment cmt"><p>Bind a query string parameter.
-</p></div><dl class="paramcmts block"><dt class="param">key</dt><dd class="cmt"><p>Parameter key</p></dd><dt class="param">params</dt><dd class="cmt"><p>QueryString data
+</p></div><dl class="paramcmts block"><dt class="param">key</dt><dd class="cmt"><p>Parameter key</p></dd><dt class="param">params</dt><dd class="cmt"><p>QueryString data</p></dd><dt>returns</dt><dd class="cmt"><p><code>None</code> if the parameter was not present in the query string data. Otherwise, returns <code>Some</code> of either
+<code>Right</code> of the parameter value, or <code>Left</code> of an error message if the binding failed.
 </p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>abstract </dd></dl></div>
     </li><li visbl="pub" name="play.api.mvc.QueryStringBindable#unbind" data-isabs="true">
       <a id="unbind(String,A):String"></a>
@@ -91,7 +119,7 @@
       </span>
       </h4>
       <p class="shortcomment cmt">Unbind a query string parameter.</p><div class="fullcomment"><div class="comment cmt"><p>Unbind a query string parameter.
-</p></div><dl class="paramcmts block"><dt class="param">key</dt><dd class="cmt"><p>Parameter key</p></dd><dt class="param">value</dt><dd class="cmt"><p>Parameter value.
+</p></div><dl class="paramcmts block"><dt class="param">key</dt><dd class="cmt"><p>Parameter key</p></dd><dt class="param">value</dt><dd class="cmt"><p>Parameter value.</p></dd><dt>returns</dt><dd class="cmt"><p>a query string fragment containing the key and its value. E.g. &quot;foo=42&quot;
 </p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>abstract </dd></dl></div>
     </li></ol>
             </div>

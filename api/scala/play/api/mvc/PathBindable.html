@@ -28,8 +28,34 @@
       </span>
       </h4>
       
-          <div class="fullcommenttop" id="comment"><div class="comment cmt"><p>Binder for URL path parameters.
-</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+          <div class="fullcommenttop" id="comment"><div class="comment cmt"><p>Binder for URL path parameters.</p><p>You can provide an implementation of <code>PathBindable[A]</code> for any type <code>A</code> you want to be able to
+bind directly from the request path.</p><p>For example, given this class definition:</p><pre>
+  case class User(id: Int, name: String, age: Int)
+</pre><p>You can define a binder retrieving a <code>User</code> instance from its id, useable like the following:</p><pre>
+  // In your routes:
+  // GET  /show/:user      controllers.Application.show(user)
+  // For example: /show/42
+
+  object Application extends Controller {
+    def show(user: User) = Action {
+      …
+    }
+  }
+</pre><p>The definition the binder can look like the following:</p><pre>
+  object User {
+    implicit def pathBinder(implicit intBinder: QueryStringBindable[Int]) = new PathBindable[User] {
+      override def bind(key: String, value: String): Either[String, User] = {
+        for {
+          id &lt;- intBinder.bind(key, value).right
+          user &lt;- User.findById(id).toRight(&quot;User not found&quot;).right
+        } yield user
+      }
+      override def unbind(key: String, user: User): String = {
+        intBinder.unbind(user.id)
+      }
+    }
+  }
+</pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@implicitNotFound</span><span class="args">(<span>
       
       <span name="&quot;No URL path binder found for type ${A}. Try to implement an implicit PathBindable for this type.&quot;" class="defval">...</span>
@@ -78,7 +104,7 @@
       </span>
       </h4>
       <p class="shortcomment cmt">Bind an URL path parameter.</p><div class="fullcomment"><div class="comment cmt"><p>Bind an URL path parameter.
-</p></div><dl class="paramcmts block"><dt class="param">key</dt><dd class="cmt"><p>Parameter key</p></dd><dt class="param">value</dt><dd class="cmt"><p>The value as String (extracted from the URL path)
+</p></div><dl class="paramcmts block"><dt class="param">key</dt><dd class="cmt"><p>Parameter key</p></dd><dt class="param">value</dt><dd class="cmt"><p>The value as String (extracted from the URL path)</p></dd><dt>returns</dt><dd class="cmt"><p><code>Right</code> of the value or <code>Left</code> of an error message if the binding failed
 </p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>abstract </dd></dl></div>
     </li><li visbl="pub" name="play.api.mvc.PathBindable#unbind" data-isabs="true">
       <a id="unbind(String,A):String"></a>

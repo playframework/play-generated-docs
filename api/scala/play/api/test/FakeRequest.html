@@ -24,12 +24,12 @@
       <span class="symbol"> 
         <span class="name">FakeRequest</span>
         <span class="tparams">[<span name="A">A</span>]</span>
-        <span class="params">(<span name="method">method: String</span>, <span name="uri">uri: String</span>, <span name="headers">headers: <a name="play.api.test.FakeHeaders" class="extype" href="FakeHeaders.html">FakeHeaders</a></span>, <span name="body">body: A</span>)</span><span class="result"> extends <a name="play.api.mvc.Request" class="extype" href="../mvc/Request.html">Request</a>[A] with <span name="scala.Product" class="extype">Product</span> with <span name="scala.Serializable" class="extype">Serializable</span></span>
+        <span class="params">(<span name="method">method: String</span>, <span name="uri">uri: String</span>, <span name="headers">headers: <a name="play.api.test.FakeHeaders" class="extype" href="FakeHeaders.html">FakeHeaders</a></span>, <span name="body">body: A</span>, <span name="remoteAddress">remoteAddress: String</span>)</span><span class="result"> extends <a name="play.api.mvc.Request" class="extype" href="../mvc/Request.html">Request</a>[A] with <span name="scala.Product" class="extype">Product</span> with <span name="scala.Serializable" class="extype">Serializable</span></span>
       </span>
       </h4>
       
           <div class="fullcommenttop" id="comment"><div class="comment cmt"><p>Fake HTTP request implementation.
-</p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>The body type.</p></dd><dt class="param">method</dt><dd class="cmt"><p>The request HTTP method.</p></dd><dt class="param">uri</dt><dd class="cmt"><p>The request uri.</p></dd><dt class="param">headers</dt><dd class="cmt"><p>The request HTTP headers.</p></dd><dt class="param">body</dt><dd class="cmt"><p>The request body.
+</p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>The body type.</p></dd><dt class="param">method</dt><dd class="cmt"><p>The request HTTP method.</p></dd><dt class="param">uri</dt><dd class="cmt"><p>The request uri.</p></dd><dt class="param">headers</dt><dd class="cmt"><p>The request HTTP headers.</p></dd><dt class="param">body</dt><dd class="cmt"><p>The request body.</p></dd><dt class="param">remoteAddress</dt><dd class="cmt"><p>The client IP.
 </p></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span name="scala.Serializable" class="extype">Serializable</span>, <span name="java.io.Serializable" class="extype">Serializable</span>, <span name="scala.Product" class="extype">Product</span>, <span name="scala.Equals" class="extype">Equals</span>, <a name="play.api.mvc.Request" class="extype" href="../mvc/Request.html">Request</a>[A], <a name="play.api.mvc.RequestHeader" class="extype" href="../mvc/RequestHeader.html">RequestHeader</a>, AnyRef, <span name="scala.Any" class="extype">Any</span></div>
@@ -65,10 +65,10 @@
       <span class="symbol"> 
         <span class="name">FakeRequest</span>
         
-        <span class="params">(<span name="method">method: String</span>, <span name="uri">uri: String</span>, <span name="headers">headers: <a name="play.api.test.FakeHeaders" class="extype" href="FakeHeaders.html">FakeHeaders</a></span>, <span name="body">body: A</span>)</span>
+        <span class="params">(<span name="method">method: String</span>, <span name="uri">uri: String</span>, <span name="headers">headers: <a name="play.api.test.FakeHeaders" class="extype" href="FakeHeaders.html">FakeHeaders</a></span>, <span name="body">body: A</span>, <span name="remoteAddress">remoteAddress: String</span>)</span>
       </span>
       </h4>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">method</dt><dd class="cmt"><p>The request HTTP method.</p></dd><dt class="param">uri</dt><dd class="cmt"><p>The request uri.</p></dd><dt class="param">headers</dt><dd class="cmt"><p>The request HTTP headers.</p></dd><dt class="param">body</dt><dd class="cmt"><p>The request body.
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">method</dt><dd class="cmt"><p>The request HTTP method.</p></dd><dt class="param">uri</dt><dd class="cmt"><p>The request uri.</p></dd><dt class="param">headers</dt><dd class="cmt"><p>The request HTTP headers.</p></dd><dt class="param">body</dt><dd class="cmt"><p>The request body.</p></dd><dt class="param">remoteAddress</dt><dd class="cmt"><p>The client IP.
 </p></dd></dl></div>
     </li></ol>
             </div>
@@ -134,6 +134,18 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>final </dd><dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li visbl="pub" name="play.api.mvc.RequestHeader#accept" data-isabs="false">
+      <a id="accept:Seq[String]"></a>
+      <h4 class="signature">
+      <span class="kind">lazy val</span>
+      <span class="symbol"> 
+        <span class="name">accept</span>
+        
+        <span class="result">: Seq[String]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>The media types set in the request Accept header, not sorted in any particular order.
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="play.api.mvc.RequestHeader" class="extype" href="../mvc/RequestHeader.html">RequestHeader</a></dd></dl></div>
     </li><li visbl="pub" name="play.api.mvc.RequestHeader#acceptLanguages" data-isabs="false">
       <a id="acceptLanguages:Seq[Lang]"></a>
       <h4 class="signature">
@@ -146,6 +158,17 @@
       </h4>
       <p class="shortcomment cmt">The Request Langs, extracted from the Accept-Language header.</p><div class="fullcomment"><div class="comment cmt"><p>The Request Langs, extracted from the Accept-Language header.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="play.api.mvc.RequestHeader" class="extype" href="../mvc/RequestHeader.html">RequestHeader</a></dd></dl></div>
+    </li><li visbl="pub" name="play.api.mvc.RequestHeader#accepts" data-isabs="false">
+      <a id="accepts(String):Boolean"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">accepts</span>
+        
+        <span class="params">(<span name="mediaType">mediaType: String</span>)</span><span class="result">: <span name="scala.Boolean" class="extype">Boolean</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Check if this request accepts a given media type.</p><div class="fullcomment"><div class="comment cmt"><p>Check if this request accepts a given media type.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="play.api.mvc.RequestHeader" class="extype" href="../mvc/RequestHeader.html">RequestHeader</a></dd></dl></div>
     </li><li visbl="pub" name="scala.Any#asInstanceOf" data-isabs="false">
       <a id="asInstanceOf[T0]:T0"></a>
       <h4 class="signature">
@@ -167,8 +190,7 @@
         <span class="result">: A</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">The request body.</p><div class="fullcomment"><div class="comment cmt"><p>The request body.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="play.api.test.FakeRequest" class="extype" href="">FakeRequest</a> → <a name="play.api.mvc.Request" class="extype" href="../mvc/Request.html">Request</a></dd></dl></div>
+      <p class="shortcomment cmt">The request body.</p><div class="fullcomment"><div class="comment cmt"><p>The request body.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="play.api.test.FakeRequest" class="extype" href="">FakeRequest</a> → <a name="play.api.mvc.Request" class="extype" href="../mvc/Request.html">Request</a></dd></dl></div>
     </li><li visbl="pub" name="play.api.test.FakeRequest#canEqual" data-isabs="false">
       <a id="canEqual(Any):Boolean"></a>
       <h4 class="signature">
@@ -487,6 +509,18 @@
       </h4>
       <p class="shortcomment cmt">Returns the raw query string.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the raw query string.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="play.api.mvc.RequestHeader" class="extype" href="../mvc/RequestHeader.html">RequestHeader</a></dd></dl></div>
+    </li><li visbl="pub" name="play.api.test.FakeRequest#remoteAddress" data-isabs="false">
+      <a id="remoteAddress:String"></a>
+      <h4 class="signature">
+      <span class="kind">val</span>
+      <span class="symbol"> 
+        <span class="name">remoteAddress</span>
+        
+        <span class="result">: String</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">The client IP.</p><div class="fullcomment"><div class="comment cmt"><p>The client IP.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a name="play.api.test.FakeRequest" class="extype" href="">FakeRequest</a> → <a name="play.api.mvc.RequestHeader" class="extype" href="../mvc/RequestHeader.html">RequestHeader</a></dd></dl></div>
     </li><li visbl="pub" name="play.api.mvc.RequestHeader#session" data-isabs="false">
       <a id="session:Session"></a>
       <h4 class="signature">
@@ -574,6 +608,28 @@
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li visbl="pub" name="play.api.test.FakeRequest#withCookies" data-isabs="false">
+      <a id="withCookies(Cookie*):FakeRequest[A]"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withCookies</span>
+        
+        <span class="params">(<span name="cookies">cookies: <a name="play.api.mvc.Cookie" class="extype" href="../mvc/Cookie.html">Cookie</a>*</span>)</span><span class="result">: <a name="play.api.test.FakeRequest" class="extype" href="">FakeRequest</a>[A]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Constructs a new request with additional Cookies.</p>
+    </li><li visbl="pub" name="play.api.test.FakeRequest#withFlash" data-isabs="false">
+      <a id="withFlash((String, String)*):FakeRequest[A]"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withFlash</span>
+        
+        <span class="params">(<span name="data">data: (String, String)*</span>)</span><span class="result">: <a name="play.api.test.FakeRequest" class="extype" href="">FakeRequest</a>[A]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Constructs a new request with additional Flash.</p>
     </li><li visbl="pub" name="play.api.test.FakeRequest#withFormUrlEncodedBody" data-isabs="false">
       <a id="withFormUrlEncodedBody((String, String)*):FakeRequest[AnyContentAsFormUrlEncoded]"></a>
       <h4 class="signature">
@@ -596,6 +652,32 @@
       </span>
       </h4>
       <p class="shortcomment cmt">Constructs a new request with additional headers.</p>
+    </li><li visbl="pub" name="play.api.test.FakeRequest#withJsonBody" data-isabs="false">
+      <a id="withJsonBody(JsValue,String):FakeRequest[AnyContentAsJson]"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withJsonBody</span>
+        
+        <span class="params">(<span name="node">node: <a name="play.api.libs.json.JsValue" class="extype" href="../libs/json/JsValue.html">JsValue</a></span>, <span name="_method">_method: String = <span class="symbol"><span class="name"><a href="Helpers$.html">Helpers.POST</a></span></span></span>)</span><span class="result">: <a name="play.api.test.FakeRequest" class="extype" href="">FakeRequest</a>[<a name="play.api.mvc.AnyContentAsJson" class="extype" href="../mvc/AnyContentAsJson.html">AnyContentAsJson</a>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Sets a JSON body to this request.</p><div class="fullcomment"><div class="comment cmt"><p>Sets a JSON body to this request.
+The content type is set to <tt>application/json</tt>.
+The method is set to <tt>POST</tt>.
+</p></div><dl class="paramcmts block"><dt class="param">node</dt><dd class="cmt"><p>the JSON Node.</p></dd><dt class="param">_method</dt><dd class="cmt"><p>The request HTTP method, <tt>POST</tt> by default.</p></dd><dt>returns</dt><dd class="cmt"><p>the current fake request
+</p></dd></dl></div>
+    </li><li visbl="pub" name="play.api.test.FakeRequest#withSession" data-isabs="false">
+      <a id="withSession((String, String)*):FakeRequest[A]"></a>
+      <h4 class="signature">
+      <span class="kind">def</span>
+      <span class="symbol"> 
+        <span class="name">withSession</span>
+        
+        <span class="params">(<span name="newSessions">newSessions: (String, String)*</span>)</span><span class="result">: <a name="play.api.test.FakeRequest" class="extype" href="">FakeRequest</a>[A]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Constructs a new request with additional session.</p>
     </li></ol>
             </div>
 

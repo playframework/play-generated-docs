@@ -6,7 +6,7 @@
 GlobalSettings (playframework)
 </TITLE>
 
-<META NAME="date" CONTENT="2012-05-02">
+<META NAME="date" CONTENT="2012-06-25">
 
 <LINK REL ="stylesheet" TYPE="text/css" HREF="../stylesheet.css" TITLE="Style">
 
@@ -145,7 +145,7 @@ GlobalSettings is instantiated by the framework when an application starts, to l
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;<A HREF="../play/mvc/Result.html" title="interface in play.mvc">Result</A></CODE></FONT></TD>
-<TD><CODE><B><A HREF="../play/GlobalSettings.html#onBadRequest(java.lang.String, java.lang.String)">onBadRequest</A></B>(java.lang.String&nbsp;uri,
+<TD><CODE><B><A HREF="../play/GlobalSettings.html#onBadRequest(play.mvc.Http.RequestHeader, java.lang.String)">onBadRequest</A></B>(<A HREF="../play/mvc/Http.RequestHeader.html" title="class in play.mvc">Http.RequestHeader</A>&nbsp;request,
              java.lang.String&nbsp;error)</CODE>
 
 <BR>
@@ -155,7 +155,8 @@ GlobalSettings is instantiated by the framework when an application starts, to l
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;<A HREF="../play/mvc/Result.html" title="interface in play.mvc">Result</A></CODE></FONT></TD>
-<TD><CODE><B><A HREF="../play/GlobalSettings.html#onError(java.lang.Throwable)">onError</A></B>(java.lang.Throwable&nbsp;t)</CODE>
+<TD><CODE><B><A HREF="../play/GlobalSettings.html#onError(play.mvc.Http.RequestHeader, java.lang.Throwable)">onError</A></B>(<A HREF="../play/mvc/Http.RequestHeader.html" title="class in play.mvc">Http.RequestHeader</A>&nbsp;request,
+        java.lang.Throwable&nbsp;t)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns a Result that could be a custom error page.</TD>
@@ -163,7 +164,7 @@ GlobalSettings is instantiated by the framework when an application starts, to l
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;<A HREF="../play/mvc/Result.html" title="interface in play.mvc">Result</A></CODE></FONT></TD>
-<TD><CODE><B><A HREF="../play/GlobalSettings.html#onHandlerNotFound(java.lang.String)">onHandlerNotFound</A></B>(java.lang.String&nbsp;uri)</CODE>
+<TD><CODE><B><A HREF="../play/GlobalSettings.html#onHandlerNotFound(play.mvc.Http.RequestHeader)">onHandlerNotFound</A></B>(<A HREF="../play/mvc/Http.RequestHeader.html" title="class in play.mvc">Http.RequestHeader</A>&nbsp;request)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Triggered when a resource was requested but not found.</TD>
@@ -180,7 +181,7 @@ GlobalSettings is instantiated by the framework when an application starts, to l
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;play.api.mvc.Handler</CODE></FONT></TD>
-<TD><CODE><B><A HREF="../play/GlobalSettings.html#onRouteRequest(play.api.mvc.RequestHeader)">onRouteRequest</A></B>(play.api.mvc.RequestHeader&nbsp;request)</CODE>
+<TD><CODE><B><A HREF="../play/GlobalSettings.html#onRouteRequest(play.mvc.Http.RequestHeader)">onRouteRequest</A></B>(<A HREF="../play/mvc/Http.RequestHeader.html" title="class in play.mvc">Http.RequestHeader</A>&nbsp;request)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Called when an HTTP request has been received.</TD>
@@ -281,10 +282,11 @@ public void <B>onStop</B>(<A HREF="../play/Application.html" title="class in pla
 </DL>
 <HR>
 
-<A NAME="onError(java.lang.Throwable)"><!-- --></A><H3>
+<A NAME="onError(play.mvc.Http.RequestHeader, java.lang.Throwable)"><!-- --></A><H3>
 onError</H3>
 <PRE>
-public <A HREF="../play/mvc/Result.html" title="interface in play.mvc">Result</A> <B>onError</B>(java.lang.Throwable&nbsp;t)</PRE>
+public <A HREF="../play/mvc/Result.html" title="interface in play.mvc">Result</A> <B>onError</B>(<A HREF="../play/mvc/Http.RequestHeader.html" title="class in play.mvc">Http.RequestHeader</A>&nbsp;request,
+                      java.lang.Throwable&nbsp;t)</PRE>
 <DL>
 <DD>Returns a Result that could be a custom error page.
  The default implementation returns <code>null</code>, so that the Scala engine handles the excepetion and show an error page.
@@ -312,10 +314,10 @@ public <A HREF="../play/mvc/Action.html" title="class in play.mvc">Action</A> <B
 </DL>
 <HR>
 
-<A NAME="onRouteRequest(play.api.mvc.RequestHeader)"><!-- --></A><H3>
+<A NAME="onRouteRequest(play.mvc.Http.RequestHeader)"><!-- --></A><H3>
 onRouteRequest</H3>
 <PRE>
-public play.api.mvc.Handler <B>onRouteRequest</B>(play.api.mvc.RequestHeader&nbsp;request)</PRE>
+public play.api.mvc.Handler <B>onRouteRequest</B>(<A HREF="../play/mvc/Http.RequestHeader.html" title="class in play.mvc">Http.RequestHeader</A>&nbsp;request)</PRE>
 <DL>
 <DD>Called when an HTTP request has been received.
  The default implementation (return null) means to use the application router to find the appropriate action 
@@ -330,32 +332,32 @@ public play.api.mvc.Handler <B>onRouteRequest</B>(play.api.mvc.RequestHeader&nbs
 </DL>
 <HR>
 
-<A NAME="onHandlerNotFound(java.lang.String)"><!-- --></A><H3>
+<A NAME="onHandlerNotFound(play.mvc.Http.RequestHeader)"><!-- --></A><H3>
 onHandlerNotFound</H3>
 <PRE>
-public <A HREF="../play/mvc/Result.html" title="interface in play.mvc">Result</A> <B>onHandlerNotFound</B>(java.lang.String&nbsp;uri)</PRE>
+public <A HREF="../play/mvc/Result.html" title="interface in play.mvc">Result</A> <B>onHandlerNotFound</B>(<A HREF="../play/mvc/Http.RequestHeader.html" title="class in play.mvc">Http.RequestHeader</A>&nbsp;request)</PRE>
 <DL>
 <DD>Triggered when a resource was requested but not found. The default implementation returns <code>null</code>, so that
  the Scala engine handles the <code>onActionNotFound</code>.
 <P>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>uri</CODE> - the request URI
+<DT><B>Parameters:</B><DD><CODE>request</CODE> - the HTTP request
 <DT><B>Returns:</B><DD>null in the default implementation, you can return your own custom Result in your Global class.</DL>
 </DD>
 </DL>
 <HR>
 
-<A NAME="onBadRequest(java.lang.String, java.lang.String)"><!-- --></A><H3>
+<A NAME="onBadRequest(play.mvc.Http.RequestHeader, java.lang.String)"><!-- --></A><H3>
 onBadRequest</H3>
 <PRE>
-public <A HREF="../play/mvc/Result.html" title="interface in play.mvc">Result</A> <B>onBadRequest</B>(java.lang.String&nbsp;uri,
+public <A HREF="../play/mvc/Result.html" title="interface in play.mvc">Result</A> <B>onBadRequest</B>(<A HREF="../play/mvc/Http.RequestHeader.html" title="class in play.mvc">Http.RequestHeader</A>&nbsp;request,
                            java.lang.String&nbsp;error)</PRE>
 <DL>
 <DD>Triggered when a resource was requested but not found, the default implementation returns <code>null</code>, so that
  the Scala engine handles the <code>onBadRequest</code>.
 <P>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>uri</CODE> - the request URI
+<DT><B>Parameters:</B><DD><CODE>request</CODE> - the HTTP request
 <DT><B>Returns:</B><DD>null in the default implementation, you can return your own custom Result in your Global class.</DL>
 </DD>
 </DL>

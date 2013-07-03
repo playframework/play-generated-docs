@@ -6,7 +6,7 @@
 F.Promise (playframework)
 </TITLE>
 
-<META NAME="date" CONTENT="2012-05-02">
+<META NAME="date" CONTENT="2012-06-25">
 
 <LINK REL ="stylesheet" TYPE="text/css" HREF="../../stylesheet.css" TITLE="Style">
 
@@ -102,6 +102,10 @@ java.lang.Object
 </PRE>
 
 <P>
+A promise to produce a result of type <code>A</code>.
+<P>
+
+<P>
 <HR>
 
 <P>
@@ -115,10 +119,16 @@ java.lang.Object
 <B>Constructor Summary</B></FONT></TH>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><B><A HREF="../../play/libs/F.Promise.html#F.Promise(A)">F.Promise</A></B>(<A HREF="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</A>&nbsp;a)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Create a new pure promise, that is, a promise with a constant value from the start.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
 <TD><CODE><B><A HREF="../../play/libs/F.Promise.html#F.Promise(play.api.libs.concurrent.Promise)">F.Promise</A></B>(play.api.libs.concurrent.Promise&lt;<A HREF="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</A>&gt;&nbsp;promise)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Create a new promise wrapping the given Scala promise</TD>
 </TR>
 </TABLE>
 &nbsp;
@@ -140,10 +150,11 @@ java.lang.Object
 </TR>
 </TABLE>
 </CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../play/libs/F.Promise.html#flatMap(play.libs.F.Function)">flatMap</A></B>(<A HREF="../../play/libs/F.Function.html" title="interface in play.libs">F.Function</A>&lt;<A HREF="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</A>,<A HREF="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</A>&lt;B&gt;&gt;&nbsp;f)</CODE>
+<TD><CODE><B><A HREF="../../play/libs/F.Promise.html#flatMap(play.libs.F.Function)">flatMap</A></B>(<A HREF="../../play/libs/F.Function.html" title="interface in play.libs">F.Function</A>&lt;<A HREF="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</A>,<A HREF="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</A>&lt;B&gt;&gt;&nbsp;function)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Maps the result of this promise to a promise for a result of type <code>B</code>, and flattens that to be
+ a single promise for <code>B</code>.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -151,7 +162,24 @@ java.lang.Object
 <TD><CODE><B><A HREF="../../play/libs/F.Promise.html#get()">get</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Awaits for the promise to get the result using the default timeout (5000 milliseconds).</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../play/libs/F.Promise.html#get(java.lang.Long)">get</A></B>(java.lang.Long&nbsp;timeout)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Awaits for the promise to get the result.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../play/libs/F.Promise.html#get(java.lang.Long, java.util.concurrent.TimeUnit)">get</A></B>(java.lang.Long&nbsp;timeout,
+    java.util.concurrent.TimeUnit&nbsp;unit)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Awaits for the promise to get the result.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -159,7 +187,7 @@ java.lang.Object
 <TD><CODE><B><A HREF="../../play/libs/F.Promise.html#getWrappedPromise()">getWrappedPromise</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Get the underlying Scala promise</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -171,10 +199,10 @@ java.lang.Object
 </TR>
 </TABLE>
 </CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../play/libs/F.Promise.html#map(play.libs.F.Function)">map</A></B>(<A HREF="../../play/libs/F.Function.html" title="interface in play.libs">F.Function</A>&lt;<A HREF="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</A>,B&gt;&nbsp;f)</CODE>
+<TD><CODE><B><A HREF="../../play/libs/F.Promise.html#map(play.libs.F.Function)">map</A></B>(<A HREF="../../play/libs/F.Function.html" title="interface in play.libs">F.Function</A>&lt;<A HREF="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</A>,B&gt;&nbsp;function)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Maps this promise to a promise of type <code>B</code>.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -182,7 +210,45 @@ java.lang.Object
 <TD><CODE><B><A HREF="../../play/libs/F.Promise.html#onRedeem(play.libs.F.Callback)">onRedeem</A></B>(<A HREF="../../play/libs/F.Callback.html" title="interface in play.libs">F.Callback</A>&lt;<A HREF="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</A>&gt;&nbsp;action)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Perform the given <code>action</code> callback when the Promise is redeemed.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;<A HREF="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</A>&lt;<A HREF="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</A>&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../play/libs/F.Promise.html#recover(play.libs.F.Function)">recover</A></B>(<A HREF="../../play/libs/F.Function.html" title="interface in play.libs">F.Function</A>&lt;java.lang.Throwable,<A HREF="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</A>&gt;&nbsp;function)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Wraps this promise in a promise that will handle exceptions thrown by this Promise.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" SUMMARY="">
+<TR ALIGN="right" VALIGN="">
+<TD NOWRAP><FONT SIZE="-1">
+<CODE>&lt;A&gt; <A HREF="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</A>&lt;java.util.List&lt;A&gt;&gt;</CODE></FONT></TD>
+</TR>
+</TABLE>
+</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../play/libs/F.Promise.html#waitAll(play.libs.F.Promise...)">waitAll</A></B>(<A HREF="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</A>&lt;A&gt;...&nbsp;promises)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Combine the given promises into a single promise for the list of results.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" SUMMARY="">
+<TR ALIGN="right" VALIGN="">
+<TD NOWRAP><FONT SIZE="-1">
+<CODE>&lt;A&gt; <A HREF="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</A>&lt;java.util.List&lt;A&gt;&gt;</CODE></FONT></TD>
+</TR>
+</TABLE>
+</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../play/libs/F.Promise.html#waitAll(java.lang.Iterable)">waitAll</A></B>(java.lang.Iterable&lt;<A HREF="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</A>&lt;A&gt;&gt;&nbsp;promises)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Combine the given promises into a single promise for the list of results.</TD>
 </TR>
 </TABLE>
 &nbsp;<A NAME="methods_inherited_from_class_java.lang.Object"><!-- --></A>
@@ -212,6 +278,22 @@ F.Promise</H3>
 <PRE>
 public <B>F.Promise</B>(play.api.libs.concurrent.Promise&lt;<A HREF="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</A>&gt;&nbsp;promise)</PRE>
 <DL>
+<DD>Create a new promise wrapping the given Scala promise
+<P>
+<DL>
+<DT><B>Parameters:</B><DD><CODE>promise</CODE> - The scala promise to wrap</DL>
+</DL>
+<HR>
+
+<A NAME="F.Promise(java.lang.Object)"><!-- --></A><A NAME="F.Promise(A)"><!-- --></A><H3>
+F.Promise</H3>
+<PRE>
+public <B>F.Promise</B>(<A HREF="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</A>&nbsp;a)</PRE>
+<DL>
+<DD>Create a new pure promise, that is, a promise with a constant value from the start.
+<P>
+<DL>
+<DT><B>Parameters:</B><DD><CODE>a</CODE> - the value for the promise</DL>
 </DL>
 
 <!-- ============ METHOD DETAIL ========== -->
@@ -224,13 +306,79 @@ public <B>F.Promise</B>(play.api.libs.concurrent.Promise&lt;<A HREF="../../play/
 </TR>
 </TABLE>
 
+<A NAME="waitAll(play.libs.F.Promise...)"><!-- --></A><H3>
+waitAll</H3>
+<PRE>
+public static &lt;A&gt; <A HREF="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</A>&lt;java.util.List&lt;A&gt;&gt; <B>waitAll</B>(<A HREF="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</A>&lt;A&gt;...&nbsp;promises)</PRE>
+<DL>
+<DD>Combine the given promises into a single promise for the list of results.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>promises</CODE> - The promises to combine
+<DT><B>Returns:</B><DD>A single promise whose methods act on the list of redeemed promises</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="waitAll(java.lang.Iterable)"><!-- --></A><H3>
+waitAll</H3>
+<PRE>
+public static &lt;A&gt; <A HREF="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</A>&lt;java.util.List&lt;A&gt;&gt; <B>waitAll</B>(java.lang.Iterable&lt;<A HREF="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</A>&lt;A&gt;&gt;&nbsp;promises)</PRE>
+<DL>
+<DD>Combine the given promises into a single promise for the list of results.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>promises</CODE> - The promises to combine
+<DT><B>Returns:</B><DD>A single promise whose methods act on the list of redeemed promises</DL>
+</DD>
+</DL>
+<HR>
+
 <A NAME="get()"><!-- --></A><H3>
 get</H3>
 <PRE>
 public <A HREF="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</A> <B>get</B>()</PRE>
 <DL>
+<DD>Awaits for the promise to get the result using the default timeout (5000 milliseconds).
+<P>
 <DD><DL>
+
+<DT><B>Returns:</B><DD>The promised object
+<DT><B>Throws:</B>
+<DD><CODE>java.lang.RuntimeException</CODE> - if the calculation providing the promise threw an exception</DL>
+</DD>
 </DL>
+<HR>
+
+<A NAME="get(java.lang.Long, java.util.concurrent.TimeUnit)"><!-- --></A><H3>
+get</H3>
+<PRE>
+public <A HREF="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</A> <B>get</B>(java.lang.Long&nbsp;timeout,
+             java.util.concurrent.TimeUnit&nbsp;unit)</PRE>
+<DL>
+<DD>Awaits for the promise to get the result.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>timeout</CODE> - A user defined timeout<DD><CODE>unit</CODE> - timeout for timeout
+<DT><B>Returns:</B><DD>The promised result
+<DT><B>Throws:</B>
+<DD><CODE>java.lang.RuntimeException</CODE> - if the calculation providing the promise threw an exception</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="get(java.lang.Long)"><!-- --></A><H3>
+get</H3>
+<PRE>
+public <A HREF="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</A> <B>get</B>(java.lang.Long&nbsp;timeout)</PRE>
+<DL>
+<DD>Awaits for the promise to get the result.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>timeout</CODE> - A user defined timeout in milliseconds
+<DT><B>Returns:</B><DD>The promised result
+<DT><B>Throws:</B>
+<DD><CODE>java.lang.RuntimeException</CODE> - if the calculation providing the promise threw an exception</DL>
 </DD>
 </DL>
 <HR>
@@ -240,8 +388,10 @@ onRedeem</H3>
 <PRE>
 public void <B>onRedeem</B>(<A HREF="../../play/libs/F.Callback.html" title="interface in play.libs">F.Callback</A>&lt;<A HREF="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</A>&gt;&nbsp;action)</PRE>
 <DL>
+<DD>Perform the given <code>action</code> callback when the Promise is redeemed.
+<P>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>action</CODE> - The action to perform.</DL>
 </DD>
 </DL>
 <HR>
@@ -249,10 +399,36 @@ public void <B>onRedeem</B>(<A HREF="../../play/libs/F.Callback.html" title="int
 <A NAME="map(play.libs.F.Function)"><!-- --></A><H3>
 map</H3>
 <PRE>
-public &lt;B&gt; <A HREF="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</A>&lt;B&gt; <B>map</B>(<A HREF="../../play/libs/F.Function.html" title="interface in play.libs">F.Function</A>&lt;<A HREF="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</A>,B&gt;&nbsp;f)</PRE>
+public &lt;B&gt; <A HREF="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</A>&lt;B&gt; <B>map</B>(<A HREF="../../play/libs/F.Function.html" title="interface in play.libs">F.Function</A>&lt;<A HREF="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</A>,B&gt;&nbsp;function)</PRE>
 <DL>
+<DD>Maps this promise to a promise of type <code>B</code>.  The function <code>function</code> is applied as
+ soon as the promise is redeemed.
+
+ Exceptions thrown by <code>function</code> will be wrapped in <CODE>RuntimeException</CODE>, unless
+ they are <code>RuntimeException</code>'s themselves.
+<P>
 <DD><DL>
+<DT><B>Parameters:</B><DD><CODE>function</CODE> - The function to map <code>A</code> to <code>B</code>.
+<DT><B>Returns:</B><DD>A wrapped promise that maps the type from <code>A</code> to <code>B</code>.</DL>
+</DD>
 </DL>
+<HR>
+
+<A NAME="recover(play.libs.F.Function)"><!-- --></A><H3>
+recover</H3>
+<PRE>
+public <A HREF="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</A>&lt;<A HREF="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</A>&gt; <B>recover</B>(<A HREF="../../play/libs/F.Function.html" title="interface in play.libs">F.Function</A>&lt;java.lang.Throwable,<A HREF="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</A>&gt;&nbsp;function)</PRE>
+<DL>
+<DD>Wraps this promise in a promise that will handle exceptions thrown by this Promise.
+
+ Exceptions thrown by <code>function</code> will be wrapped in <CODE>RuntimeException</CODE>, unless
+ they are <code>RuntimeException</code>'s themselves.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>function</CODE> - The function to handle the exception. This may, for example, convert the exception into something
+      of type <code>T</code>, or it may throw another exception, or it may do some other handling.
+<DT><B>Returns:</B><DD>A wrapped promise that will only throw an exception if the supplied <code>function</code> throws an
+      exception.</DL>
 </DD>
 </DL>
 <HR>
@@ -260,10 +436,17 @@ public &lt;B&gt; <A HREF="../../play/libs/F.Promise.html" title="class in play.l
 <A NAME="flatMap(play.libs.F.Function)"><!-- --></A><H3>
 flatMap</H3>
 <PRE>
-public &lt;B&gt; <A HREF="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</A>&lt;B&gt; <B>flatMap</B>(<A HREF="../../play/libs/F.Function.html" title="interface in play.libs">F.Function</A>&lt;<A HREF="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</A>,<A HREF="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</A>&lt;B&gt;&gt;&nbsp;f)</PRE>
+public &lt;B&gt; <A HREF="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</A>&lt;B&gt; <B>flatMap</B>(<A HREF="../../play/libs/F.Function.html" title="interface in play.libs">F.Function</A>&lt;<A HREF="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</A>,<A HREF="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</A>&lt;B&gt;&gt;&nbsp;function)</PRE>
 <DL>
+<DD>Maps the result of this promise to a promise for a result of type <code>B</code>, and flattens that to be
+ a single promise for <code>B</code>.
+
+ Exceptions thrown by <code>function</code> will be wrapped in <CODE>RuntimeException</CODE>, unless
+ they are <code>RuntimeException</code>'s themselves.
+<P>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>function</CODE> - The function to map <code>A</code> to a promise for <code>B</code>.
+<DT><B>Returns:</B><DD>A wrapped promise for a result of type <code>B</code></DL>
 </DD>
 </DL>
 <HR>
@@ -273,8 +456,11 @@ getWrappedPromise</H3>
 <PRE>
 public play.api.libs.concurrent.Promise&lt;<A HREF="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</A>&gt; <B>getWrappedPromise</B>()</PRE>
 <DL>
+<DD>Get the underlying Scala promise
+<P>
 <DD><DL>
-</DL>
+
+<DT><B>Returns:</B><DD>The scala promise</DL>
 </DD>
 </DL>
 <!-- ========= END OF CLASS DATA ========= -->
