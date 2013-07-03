@@ -130,7 +130,7 @@ java.lang.Object
 <TH ALIGN="left"><B>Fields inherited from class play.libs.<A HREF="../../../play/libs/WS.WSRequest.html" title="class in play.libs">WS.WSRequest</A></B></TH>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
-<TD><CODE><A HREF="../../../play/libs/WS.WSRequest.html#body">body</A>, <A HREF="../../../play/libs/WS.WSRequest.html#fileParams">fileParams</A>, <A HREF="../../../play/libs/WS.WSRequest.html#followRedirects">followRedirects</A>, <A HREF="../../../play/libs/WS.WSRequest.html#headers">headers</A>, <A HREF="../../../play/libs/WS.WSRequest.html#mimeType">mimeType</A>, <A HREF="../../../play/libs/WS.WSRequest.html#oauthInfo">oauthInfo</A>, <A HREF="../../../play/libs/WS.WSRequest.html#oauthTokens">oauthTokens</A>, <A HREF="../../../play/libs/WS.WSRequest.html#parameters">parameters</A>, <A HREF="../../../play/libs/WS.WSRequest.html#password">password</A>, <A HREF="../../../play/libs/WS.WSRequest.html#scheme">scheme</A>, <A HREF="../../../play/libs/WS.WSRequest.html#timeout">timeout</A>, <A HREF="../../../play/libs/WS.WSRequest.html#url">url</A>, <A HREF="../../../play/libs/WS.WSRequest.html#username">username</A></CODE></TD>
+<TD><CODE><A HREF="../../../play/libs/WS.WSRequest.html#body">body</A>, <A HREF="../../../play/libs/WS.WSRequest.html#encoding">encoding</A>, <A HREF="../../../play/libs/WS.WSRequest.html#fileParams">fileParams</A>, <A HREF="../../../play/libs/WS.WSRequest.html#followRedirects">followRedirects</A>, <A HREF="../../../play/libs/WS.WSRequest.html#headers">headers</A>, <A HREF="../../../play/libs/WS.WSRequest.html#mimeType">mimeType</A>, <A HREF="../../../play/libs/WS.WSRequest.html#oauthInfo">oauthInfo</A>, <A HREF="../../../play/libs/WS.WSRequest.html#oauthSecret">oauthSecret</A>, <A HREF="../../../play/libs/WS.WSRequest.html#oauthToken">oauthToken</A>, <A HREF="../../../play/libs/WS.WSRequest.html#parameters">parameters</A>, <A HREF="../../../play/libs/WS.WSRequest.html#password">password</A>, <A HREF="../../../play/libs/WS.WSRequest.html#scheme">scheme</A>, <A HREF="../../../play/libs/WS.WSRequest.html#timeout">timeout</A>, <A HREF="../../../play/libs/WS.WSRequest.html#url">url</A>, <A HREF="../../../play/libs/WS.WSRequest.html#username">username</A></CODE></TD>
 </TR>
 </TABLE>
 &nbsp;
@@ -145,7 +145,8 @@ java.lang.Object
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>protected </CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../play/libs/ws/WSAsync.WSAsyncRequest.html#WSAsync.WSAsyncRequest(java.lang.String)">WSAsync.WSAsyncRequest</A></B>(java.lang.String&nbsp;url)</CODE>
+<TD><CODE><B><A HREF="../../../play/libs/ws/WSAsync.WSAsyncRequest.html#WSAsync.WSAsyncRequest(java.lang.String, java.lang.String)">WSAsync.WSAsyncRequest</A></B>(java.lang.String&nbsp;url,
+                       java.lang.String&nbsp;encoding)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
@@ -159,6 +160,14 @@ java.lang.Object
 <TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
 <TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
 <B>Method Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../play/libs/ws/WSAsync.WSAsyncRequest.html#addQueryString(com.ning.http.client.AsyncHttpClient.BoundRequestBuilder)">addQueryString</A></B>(com.ning.http.client.AsyncHttpClient.BoundRequestBuilder&nbsp;requestBuilder)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adds the queryString-part of the url to the BoundRequestBuilder</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -191,6 +200,15 @@ java.lang.Object
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Execute a GET request asynchronously.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;java.lang.String</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../play/libs/ws/WSAsync.WSAsyncRequest.html#getUrlWithoutQueryString()">getUrlWithoutQueryString</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returns the url but removed the queryString-part of it
+ The QueryString-info is later added with addQueryString()</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -242,6 +260,54 @@ java.lang.Object
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;com.ning.http.client.AsyncHttpClient.BoundRequestBuilder</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../play/libs/ws/WSAsync.WSAsyncRequest.html#prepareDelete()">prepareDelete</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;com.ning.http.client.AsyncHttpClient.BoundRequestBuilder</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../play/libs/ws/WSAsync.WSAsyncRequest.html#prepareGet()">prepareGet</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;com.ning.http.client.AsyncHttpClient.BoundRequestBuilder</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../play/libs/ws/WSAsync.WSAsyncRequest.html#prepareHead()">prepareHead</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;com.ning.http.client.AsyncHttpClient.BoundRequestBuilder</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../play/libs/ws/WSAsync.WSAsyncRequest.html#prepareOptions()">prepareOptions</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;com.ning.http.client.AsyncHttpClient.BoundRequestBuilder</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../play/libs/ws/WSAsync.WSAsyncRequest.html#preparePost()">preparePost</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;com.ning.http.client.AsyncHttpClient.BoundRequestBuilder</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../play/libs/ws/WSAsync.WSAsyncRequest.html#preparePut()">preparePut</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;<A HREF="../../../play/libs/WS.HttpResponse.html" title="class in play.libs">WS.HttpResponse</A></CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../../play/libs/ws/WSAsync.WSAsyncRequest.html#put()">put</A></B>()</CODE>
 
@@ -279,7 +345,7 @@ java.lang.Object
 <TH ALIGN="left"><B>Methods inherited from class play.libs.<A HREF="../../../play/libs/WS.WSRequest.html" title="class in play.libs">WS.WSRequest</A></B></TH>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
-<TD><CODE><A HREF="../../../play/libs/WS.WSRequest.html#authenticate(java.lang.String, java.lang.String)">authenticate</A>, <A HREF="../../../play/libs/WS.WSRequest.html#authenticate(java.lang.String, java.lang.String, play.libs.WS.Scheme)">authenticate</A>, <A HREF="../../../play/libs/WS.WSRequest.html#basicAuthHeader()">basicAuthHeader</A>, <A HREF="../../../play/libs/WS.WSRequest.html#body(java.lang.Object)">body</A>, <A HREF="../../../play/libs/WS.WSRequest.html#createQueryString()">createQueryString</A>, <A HREF="../../../play/libs/WS.WSRequest.html#files(java.io.File...)">files</A>, <A HREF="../../../play/libs/WS.WSRequest.html#files(play.libs.WS.FileParam...)">files</A>, <A HREF="../../../play/libs/WS.WSRequest.html#followRedirects(boolean)">followRedirects</A>, <A HREF="../../../play/libs/WS.WSRequest.html#headers(java.util.Map)">headers</A>, <A HREF="../../../play/libs/WS.WSRequest.html#mimeType(java.lang.String)">mimeType</A>, <A HREF="../../../play/libs/WS.WSRequest.html#oauth(play.libs.OAuth.ServiceInfo, play.libs.OAuth.TokenPair)">oauth</A>, <A HREF="../../../play/libs/WS.WSRequest.html#params(java.util.Map)">params</A>, <A HREF="../../../play/libs/WS.WSRequest.html#setHeader(java.lang.String, java.lang.String)">setHeader</A>, <A HREF="../../../play/libs/WS.WSRequest.html#setParameter(java.lang.String, java.lang.Object)">setParameter</A>, <A HREF="../../../play/libs/WS.WSRequest.html#setParameter(java.lang.String, java.lang.String)">setParameter</A>, <A HREF="../../../play/libs/WS.WSRequest.html#setParameters(java.util.Map)">setParameters</A>, <A HREF="../../../play/libs/WS.WSRequest.html#timeout(java.lang.String)">timeout</A></CODE></TD>
+<TD><CODE><A HREF="../../../play/libs/WS.WSRequest.html#authenticate(java.lang.String, java.lang.String)">authenticate</A>, <A HREF="../../../play/libs/WS.WSRequest.html#authenticate(java.lang.String, java.lang.String, play.libs.WS.Scheme)">authenticate</A>, <A HREF="../../../play/libs/WS.WSRequest.html#basicAuthHeader()">basicAuthHeader</A>, <A HREF="../../../play/libs/WS.WSRequest.html#body(java.lang.Object)">body</A>, <A HREF="../../../play/libs/WS.WSRequest.html#createQueryString()">createQueryString</A>, <A HREF="../../../play/libs/WS.WSRequest.html#encode(java.lang.String)">encode</A>, <A HREF="../../../play/libs/WS.WSRequest.html#files(java.io.File...)">files</A>, <A HREF="../../../play/libs/WS.WSRequest.html#files(play.libs.WS.FileParam...)">files</A>, <A HREF="../../../play/libs/WS.WSRequest.html#followRedirects(boolean)">followRedirects</A>, <A HREF="../../../play/libs/WS.WSRequest.html#headers(java.util.Map)">headers</A>, <A HREF="../../../play/libs/WS.WSRequest.html#mimeType(java.lang.String)">mimeType</A>, <A HREF="../../../play/libs/WS.WSRequest.html#oauth(play.libs.OAuth.ServiceInfo, play.libs.OAuth.TokenPair)">oauth</A>, <A HREF="../../../play/libs/WS.WSRequest.html#oauth(play.libs.OAuth.ServiceInfo, java.lang.String, java.lang.String)">oauth</A>, <A HREF="../../../play/libs/WS.WSRequest.html#params(java.util.Map)">params</A>, <A HREF="../../../play/libs/WS.WSRequest.html#setHeader(java.lang.String, java.lang.String)">setHeader</A>, <A HREF="../../../play/libs/WS.WSRequest.html#setParameter(java.lang.String, java.lang.Object)">setParameter</A>, <A HREF="../../../play/libs/WS.WSRequest.html#setParameter(java.lang.String, java.lang.String)">setParameter</A>, <A HREF="../../../play/libs/WS.WSRequest.html#setParameters(java.util.Map)">setParameters</A>, <A HREF="../../../play/libs/WS.WSRequest.html#timeout(java.lang.String)">timeout</A></CODE></TD>
 </TR>
 </TABLE>
 &nbsp;<A NAME="methods_inherited_from_class_java.lang.Object"><!-- --></A>
@@ -323,10 +389,11 @@ protected java.lang.String <B>type</B></PRE>
 </TR>
 </TABLE>
 
-<A NAME="WSAsync.WSAsyncRequest(java.lang.String)"><!-- --></A><H3>
+<A NAME="WSAsync.WSAsyncRequest(java.lang.String, java.lang.String)"><!-- --></A><H3>
 WSAsync.WSAsyncRequest</H3>
 <PRE>
-protected <B>WSAsync.WSAsyncRequest</B>(java.lang.String&nbsp;url)</PRE>
+protected <B>WSAsync.WSAsyncRequest</B>(java.lang.String&nbsp;url,
+                                 java.lang.String&nbsp;encoding)</PRE>
 <DL>
 </DL>
 
@@ -339,6 +406,99 @@ protected <B>WSAsync.WSAsyncRequest</B>(java.lang.String&nbsp;url)</PRE>
 <B>Method Detail</B></FONT></TH>
 </TR>
 </TABLE>
+
+<A NAME="getUrlWithoutQueryString()"><!-- --></A><H3>
+getUrlWithoutQueryString</H3>
+<PRE>
+protected java.lang.String <B>getUrlWithoutQueryString</B>()</PRE>
+<DL>
+<DD>Returns the url but removed the queryString-part of it
+ The QueryString-info is later added with addQueryString()
+<P>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="addQueryString(com.ning.http.client.AsyncHttpClient.BoundRequestBuilder)"><!-- --></A><H3>
+addQueryString</H3>
+<PRE>
+protected void <B>addQueryString</B>(com.ning.http.client.AsyncHttpClient.BoundRequestBuilder&nbsp;requestBuilder)</PRE>
+<DL>
+<DD>Adds the queryString-part of the url to the BoundRequestBuilder
+<P>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="prepareGet()"><!-- --></A><H3>
+prepareGet</H3>
+<PRE>
+public com.ning.http.client.AsyncHttpClient.BoundRequestBuilder <B>prepareGet</B>()</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="prepareOptions()"><!-- --></A><H3>
+prepareOptions</H3>
+<PRE>
+public com.ning.http.client.AsyncHttpClient.BoundRequestBuilder <B>prepareOptions</B>()</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="prepareHead()"><!-- --></A><H3>
+prepareHead</H3>
+<PRE>
+public com.ning.http.client.AsyncHttpClient.BoundRequestBuilder <B>prepareHead</B>()</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="preparePost()"><!-- --></A><H3>
+preparePost</H3>
+<PRE>
+public com.ning.http.client.AsyncHttpClient.BoundRequestBuilder <B>preparePost</B>()</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="preparePut()"><!-- --></A><H3>
+preparePut</H3>
+<PRE>
+public com.ning.http.client.AsyncHttpClient.BoundRequestBuilder <B>preparePut</B>()</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="prepareDelete()"><!-- --></A><H3>
+prepareDelete</H3>
+<PRE>
+public com.ning.http.client.AsyncHttpClient.BoundRequestBuilder <B>prepareDelete</B>()</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
 
 <A NAME="get()"><!-- --></A><H3>
 get</H3>

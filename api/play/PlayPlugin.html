@@ -157,6 +157,14 @@ A framework plugin
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;java.util.Map&lt;java.lang.String,java.lang.String&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../play/PlayPlugin.html#addMimeTypes()">addMimeTypes</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Override to provide additional mime types from your plugin.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;java.util.List&lt;java.lang.String&gt;</CODE></FONT></TD>
 <TD><CODE><B><A HREF="../play/PlayPlugin.html#addTemplateExtensions()">addTemplateExtensions</A></B>()</CODE>
 
@@ -256,12 +264,28 @@ A framework plugin
 <TD><CODE><B><A HREF="../play/PlayPlugin.html#compileAll(java.util.List)">compileAll</A></B>(java.util.List&lt;<A HREF="../play/classloading/ApplicationClasses.ApplicationClass.html" title="class in play.classloading">ApplicationClasses.ApplicationClass</A>&gt;&nbsp;classes)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Let a chance to the plugin to compile it owns classes.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B>Deprecated.</B>&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../play/PlayPlugin.html#compileSources()">compileSources</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;void</CODE></FONT></TD>
 <TD><CODE><B><A HREF="../play/PlayPlugin.html#detectChange()">detectChange</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;It's time for the plugin to detect changes.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../play/PlayPlugin.html#detectClassesChange()">detectClassesChange</A></B>()</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;It's time for the plugin to detect changes.</TD>
@@ -280,7 +304,7 @@ A framework plugin
 <TD><CODE><B><A HREF="../play/PlayPlugin.html#getJsonStatus()">getJsonStatus</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Retun the plugin status in JSON format</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Return the plugin status in JSON format</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -298,7 +322,7 @@ A framework plugin
 <TD><CODE><B><A HREF="../play/PlayPlugin.html#getStatus()">getStatus</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Retun the plugin status</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Return the plugin status</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -347,7 +371,7 @@ A framework plugin
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Called at application start (and at each reloading)
- Time to start statefull things.</TD>
+ Time to start stateful things.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -356,7 +380,7 @@ A framework plugin
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Called at application stop (and before each reloading)
- Time to shutdown statefull things.</TD>
+ Time to shutdown stateful things.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -372,7 +396,7 @@ A framework plugin
 <TD><CODE><B><A HREF="../play/PlayPlugin.html#onConfigurationRead()">onConfigurationRead</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Called when the application.cond has been read.</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Called when the application.conf has been read.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -472,7 +496,7 @@ A framework plugin
 <TD><CODE><B><A HREF="../play/PlayPlugin.html#runTest(java.lang.Class)">runTest</A></B>(java.lang.Class&lt;<A HREF="../play/test/BaseTest.html" title="class in play.test">BaseTest</A>&gt;&nbsp;clazz)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Run a test class</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -482,7 +506,7 @@ A framework plugin
             <A HREF="../play/mvc/Http.Response.html" title="class in play.mvc">Http.Response</A>&nbsp;response)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Let a chance to this plugin to manage a static ressource</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Let a chance to this plugin to manage a static resource</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -578,11 +602,27 @@ public void <B>onLoad</B>()</PRE>
 </DL>
 <HR>
 
+<A NAME="compileSources()"><!-- --></A><H3>
+compileSources</H3>
+<PRE>
+public boolean <B>compileSources</B>()</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
 <A NAME="runTest(java.lang.Class)"><!-- --></A><H3>
 runTest</H3>
 <PRE>
 public <A HREF="../play/test/TestEngine.TestResults.html" title="class in play.test">TestEngine.TestResults</A> <B>runTest</B>(java.lang.Class&lt;<A HREF="../play/test/BaseTest.html" title="class in play.test">BaseTest</A>&gt;&nbsp;clazz)</PRE>
 <DL>
+<DD>Run a test class
+<P>
 <DD><DL>
 </DL>
 </DD>
@@ -670,7 +710,7 @@ getStatus</H3>
 <PRE>
 public java.lang.String <B>getStatus</B>()</PRE>
 <DL>
-<DD>Retun the plugin status
+<DD>Return the plugin status
 <P>
 <DD><DL>
 </DL>
@@ -686,7 +726,7 @@ getJsonStatus</H3>
 <PRE>
 public <A HREF="http://google-gson.googlecode.com/svn/tags/1.2.3/docs/javadocs/com/google/gson/JsonObject.html?is-external=true" title="class or interface in com.google.gson">JsonObject</A> <B>getJsonStatus</B>()</PRE>
 <DL>
-<DD>Retun the plugin status in JSON format
+<DD>Return the plugin status in JSON format
 <P>
 <DD><DL>
 </DL>
@@ -763,7 +803,7 @@ public boolean <B>serveStatic</B>(<A HREF="../play/vfs/VirtualFile.html" title="
                            <A HREF="../play/mvc/Http.Request.html" title="class in play.mvc">Http.Request</A>&nbsp;request,
                            <A HREF="../play/mvc/Http.Response.html" title="class in play.mvc">Http.Response</A>&nbsp;response)</PRE>
 <DL>
-<DD>Let a chance to this plugin to manage a static ressource
+<DD>Let a chance to this plugin to manage a static resource
 <P>
 <DD><DL>
 </DL>
@@ -820,13 +860,30 @@ public void <B>detectChange</B>()</PRE>
 </DL>
 <HR>
 
+<A NAME="detectClassesChange()"><!-- --></A><H3>
+detectClassesChange</H3>
+<PRE>
+public boolean <B>detectClassesChange</B>()</PRE>
+<DL>
+<DD>It's time for the plugin to detect changes.
+ Throw an exception is the application must be reloaded.
+<P>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
 <A NAME="onApplicationStart()"><!-- --></A><H3>
 onApplicationStart</H3>
 <PRE>
 public void <B>onApplicationStart</B>()</PRE>
 <DL>
 <DD>Called at application start (and at each reloading)
- Time to start statefull things.
+ Time to start stateful things.
 <P>
 <DD><DL>
 </DL>
@@ -859,7 +916,7 @@ onApplicationStop</H3>
 public void <B>onApplicationStop</B>()</PRE>
 <DL>
 <DD>Called at application stop (and before each reloading)
- Time to shutdown statefull things.
+ Time to shutdown stateful things.
 <P>
 <DD><DL>
 </DL>
@@ -1023,7 +1080,7 @@ onConfigurationRead</H3>
 <PRE>
 public void <B>onConfigurationRead</B>()</PRE>
 <DL>
-<DD>Called when the application.cond has been read.
+<DD>Called when the application.conf has been read.
 <P>
 <DD><DL>
 </DL>
@@ -1095,11 +1152,32 @@ public java.util.List&lt;java.lang.String&gt; <B>addTemplateExtensions</B>()</PR
 </DL>
 <HR>
 
+<A NAME="addMimeTypes()"><!-- --></A><H3>
+addMimeTypes</H3>
+<PRE>
+public java.util.Map&lt;java.lang.String,java.lang.String&gt; <B>addMimeTypes</B>()</PRE>
+<DL>
+<DD>Override to provide additional mime types from your plugin. These mimetypes get priority over
+ the default framework mimetypes but not over the application's configuration.
+<P>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+
+<DT><B>Returns:</B><DD>a Map from extensions (without dot) to mimetypes</DL>
+</DD>
+</DL>
+<HR>
+
 <A NAME="compileAll(java.util.List)"><!-- --></A><H3>
 compileAll</H3>
 <PRE>
-public void <B>compileAll</B>(java.util.List&lt;<A HREF="../play/classloading/ApplicationClasses.ApplicationClass.html" title="class in play.classloading">ApplicationClasses.ApplicationClass</A>&gt;&nbsp;classes)</PRE>
+<FONT SIZE="-1">@Deprecated
+</FONT>public void <B>compileAll</B>(java.util.List&lt;<A HREF="../play/classloading/ApplicationClasses.ApplicationClass.html" title="class in play.classloading">ApplicationClasses.ApplicationClass</A>&gt;&nbsp;classes)</PRE>
 <DL>
+<DD><B>Deprecated.</B>&nbsp;
+<P>
 <DD>Let a chance to the plugin to compile it owns classes.
  Must be added to the mutable list.
 <P>
