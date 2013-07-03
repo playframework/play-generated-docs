@@ -120,6 +120,14 @@ Application controller support
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;java.lang.ThreadLocal&lt;<A HREF="../../play/mvc/Router.ActionDefinition.html" title="class in play.mvc">Router.ActionDefinition</A>&gt;</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../play/mvc/Controller.html#_currentReverse">_currentReverse</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Don't use this directly if you don't know why</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>protected static&nbsp;<A HREF="../../play/mvc/Scope.Flash.html" title="class in play.mvc">Scope.Flash</A></CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../play/mvc/Controller.html#flash">flash</A></B></CODE>
 
@@ -323,7 +331,7 @@ T</CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../play/mvc/Controller.html#notFound(java.lang.String)">notFound</A></B>(java.lang.String&nbsp;what)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Send a 404 Not Found reponse</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Send a 404 Not Found response</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -331,7 +339,15 @@ T</CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../play/mvc/Controller.html#notFoundIfNull(java.lang.Object)">notFoundIfNull</A></B>(java.lang.Object&nbsp;o)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Send a 404 Not Found reponse if object is null</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Send a 404 Not Found response if object is null</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected static&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../play/mvc/Controller.html#notModified()">notModified</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Send a 304 Not Modified response</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -339,7 +355,7 @@ T</CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../play/mvc/Controller.html#ok()">ok</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Send a 200 OK reponse</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Send a 200 OK response</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -520,6 +536,14 @@ T</CODE></FONT></TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected static&nbsp;<A HREF="../../play/mvc/Router.ActionDefinition.html" title="class in play.mvc">Router.ActionDefinition</A></CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../play/mvc/Controller.html#reverse()">reverse</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>protected static&nbsp;void</CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../play/mvc/Controller.html#suspend(java.lang.String)">suspend</A></B>(java.lang.String&nbsp;timeout)</CODE>
 
@@ -647,6 +671,18 @@ protected static <A HREF="../../play/data/validation/Validation.html" title="cla
 <DL>
 </DL>
 </DL>
+<HR>
+
+<A NAME="_currentReverse"><!-- --></A><H3>
+_currentReverse</H3>
+<PRE>
+public static java.lang.ThreadLocal&lt;<A HREF="../../play/mvc/Router.ActionDefinition.html" title="class in play.mvc">Router.ActionDefinition</A>&gt; <B>_currentReverse</B></PRE>
+<DL>
+<DD>Don't use this directly if you don't know why
+<P>
+<DL>
+</DL>
+</DL>
 
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 
@@ -703,7 +739,7 @@ protected static void <B>renderText</B>(java.lang.CharSequence&nbsp;pattern,
 </DL>
 </DD>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>text</CODE> - The response content to be formatted (with String.format)<DD><CODE>args</CODE> - Args for String.format</DL>
+<DT><B>Parameters:</B><DD><CODE>pattern</CODE> - The response content to be formatted (with String.format)<DD><CODE>args</CODE> - Args for String.format</DL>
 </DD>
 </DL>
 <HR>
@@ -855,6 +891,22 @@ protected static void <B>renderJSON</B>(java.lang.Object&nbsp;o,
 </DL>
 <HR>
 
+<A NAME="notModified()"><!-- --></A><H3>
+notModified</H3>
+<PRE>
+protected static void <B>notModified</B>()</PRE>
+<DL>
+<DD>Send a 304 Not Modified response
+<P>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
 <A NAME="unauthorized(java.lang.String)"><!-- --></A><H3>
 unauthorized</H3>
 <PRE>
@@ -876,7 +928,7 @@ notFound</H3>
 <PRE>
 protected static void <B>notFound</B>(java.lang.String&nbsp;what)</PRE>
 <DL>
-<DD>Send a 404 Not Found reponse
+<DD>Send a 404 Not Found response
 <P>
 <DD><DL>
 </DL>
@@ -892,7 +944,7 @@ ok</H3>
 <PRE>
 protected static void <B>ok</B>()</PRE>
 <DL>
-<DD>Send a 200 OK reponse
+<DD>Send a 200 OK response
 <P>
 <DD><DL>
 </DL>
@@ -908,7 +960,7 @@ notFoundIfNull</H3>
 <PRE>
 protected static void <B>notFoundIfNull</B>(java.lang.Object&nbsp;o)</PRE>
 <DL>
-<DD>Send a 404 Not Found reponse if object is null
+<DD>Send a 404 Not Found response if object is null
 <P>
 <DD><DL>
 </DL>
@@ -1060,7 +1112,7 @@ protected static void <B>redirectToStatic</B>(java.lang.String&nbsp;file)</PRE>
 </DL>
 </DD>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>url</CODE> - The Location to redirect</DL>
+<DT><B>Parameters:</B><DD><CODE>file</CODE> - The Location to redirect</DL>
 </DD>
 </DL>
 <HR>
@@ -1145,7 +1197,7 @@ protected static void <B>render</B>(java.lang.Object...&nbsp;args)</PRE>
 </DL>
 </DD>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>templateName</CODE> - The template name<DD><CODE>args</CODE> - The template data</DL>
+<DT><B>Parameters:</B><DD><CODE>args</CODE> - The template data</DL>
 </DD>
 </DL>
 <HR>
@@ -1212,7 +1264,7 @@ protected static java.lang.Class <B>getControllerClass</B>()</PRE>
 </DL>
 </DD>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>clazz</CODE> - The annotation class
+
 <DT><B>Returns:</B><DD>Annotation object or null if not found</DL>
 </DD>
 </DL>
@@ -1289,6 +1341,20 @@ protected static void <B>waitFor</B>(java.util.concurrent.Future&nbsp;task)</PRE
 <DL>
 <DD>Suspend this request and wait for the task completion
 <P>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="reverse()"><!-- --></A><H3>
+reverse</H3>
+<PRE>
+protected static <A HREF="../../play/mvc/Router.ActionDefinition.html" title="class in play.mvc">Router.ActionDefinition</A> <B>reverse</B>()</PRE>
+<DL>
 <DD><DL>
 </DL>
 </DD>
