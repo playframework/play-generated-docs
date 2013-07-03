@@ -59,6 +59,8 @@ The controller's class name has to be the model class name with a final 's'. If 
 
 bc. package controllers;
  
+import models.User;
+ 
 @CRUD.For(User.class)
 public class AdminUsers extends CRUD {
    
@@ -194,8 +196,7 @@ bc. #{crud.table fields:['name', 'company', 'edit']}
 
 h2. List of String and List of enumeration
 
-The CRUD module is showing them as a text field. In this text field, the list is represented by a comma separated list of String.
-For example:
+The CRUD module is showing them as a text field. In this text field, the list is represented by a comma separated list of String. For example:
 
 bc. @Entity
 public class Account extends Model {
@@ -211,12 +212,9 @@ public class Account extends Model {
                 this.usernames = usernames;
         }
 }
-~
 
-is showed as:
-
-"myEnumId1","myEnumId2" for the contentTypes and "string1","string2" for the usernames. Per definition, this is what you should first customize in your CRUD module.
+This is shown as: "myEnumId1","myEnumId2" for the contentTypes and "string1","string2" for the user names. Per definition, this is what you should first customize in your CRUD module.
 
 h2. <a>Limitation</a>
 
-The crud module will show the relations that are unidirectional in one entity: the one that  does not have the mappedBy attribute.
+The CRUD module will show the relationships that are unidirectional in one entity: the one that does not have the **mappedBy** attribute.

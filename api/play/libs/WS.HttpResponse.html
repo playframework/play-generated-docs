@@ -6,7 +6,7 @@
 WS.HttpResponse (Play! API)
 </TITLE>
 
-<META NAME="date" CONTENT="2010-07-28">
+<META NAME="date" CONTENT="2011-10-05">
 
 <LINK REL ="stylesheet" TYPE="text/css" HREF="../../stylesheet.css" TITLE="Style">
 
@@ -55,7 +55,7 @@ function windowTitle()
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
 &nbsp;<A HREF="../../play/libs/WS.FileParam.html" title="class in play.libs"><B>PREV CLASS</B></A>&nbsp;
-&nbsp;<A HREF="../../play/libs/WS.WSRequest.html" title="class in play.libs"><B>NEXT CLASS</B></A></FONT></TD>
+&nbsp;<A HREF="../../play/libs/WS.WSImpl.html" title="interface in play.libs"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../index.html?play/libs/WS.HttpResponse.html" target="_top"><B>FRAMES</B></A>  &nbsp;
 &nbsp;<A HREF="WS.HttpResponse.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
@@ -91,15 +91,18 @@ play.libs</FONT>
 <BR>
 Class WS.HttpResponse</H2>
 <PRE>
-<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</A>
+java.lang.Object
   <IMG SRC="../../resources/inherit.gif" ALT="extended by "><B>play.libs.WS.HttpResponse</B>
 </PRE>
+<DL>
+<DT><B>Direct Known Subclasses:</B> <DD><A HREF="../../play/libs/ws/WSAsync.HttpAsyncResponse.html" title="class in play.libs.ws">WSAsync.HttpAsyncResponse</A>, <A HREF="../../play/libs/ws/WSUrlFetch.HttpUrlfetchResponse.html" title="class in play.libs.ws">WSUrlFetch.HttpUrlfetchResponse</A></DD>
+</DL>
 <DL>
 <DT><B>Enclosing class:</B><DD><A HREF="../../play/libs/WS.html" title="class in play.libs">WS</A></DD>
 </DL>
 <HR>
 <DL>
-<DT><PRE>public static class <B>WS.HttpResponse</B><DT>extends <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></DL>
+<DT><PRE>public abstract static class <B>WS.HttpResponse</B><DT>extends java.lang.Object</DL>
 </PRE>
 
 <P>
@@ -120,10 +123,10 @@ An HTTP response wrapper
 <B>Constructor Summary</B></FONT></TH>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
-<TD><CODE><B><A HREF="../../play/libs/WS.HttpResponse.html#WS.HttpResponse(org.apache.commons.httpclient.HttpMethod)">WS.HttpResponse</A></B>(org.apache.commons.httpclient.HttpMethod&nbsp;method)</CODE>
+<TD><CODE><B><A HREF="../../play/libs/WS.HttpResponse.html#WS.HttpResponse()">WS.HttpResponse</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;you shouldnt have to create an HttpResponse yourself</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
 </TR>
 </TABLE>
 &nbsp;
@@ -137,7 +140,7 @@ An HTTP response wrapper
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A></CODE></FONT></TD>
+<CODE>&nbsp;java.lang.String</CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../play/libs/WS.HttpResponse.html#getContentType()">getContentType</A></B>()</CODE>
 
 <BR>
@@ -145,15 +148,15 @@ An HTTP response wrapper
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A></CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../play/libs/WS.HttpResponse.html#getHeader(java.lang.String)">getHeader</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;key)</CODE>
+<CODE>abstract &nbsp;java.lang.String</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../play/libs/WS.HttpResponse.html#getHeader(java.lang.String)">getHeader</A></B>(java.lang.String&nbsp;key)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>&nbsp;org.apache.commons.httpclient.Header[]</CODE></FONT></TD>
+<CODE>abstract &nbsp;java.util.List&lt;<A HREF="../../play/mvc/Http.Header.html" title="class in play.mvc">Http.Header</A>&gt;</CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../play/libs/WS.HttpResponse.html#getHeaders()">getHeaders</A></B>()</CODE>
 
 <BR>
@@ -161,15 +164,15 @@ An HTTP response wrapper
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>&nbsp;com.google.gson.JsonElement</CODE></FONT></TD>
+<CODE>&nbsp;<A HREF="http://google-gson.googlecode.com/svn/tags/1.2.3/docs/javadocs/com/google/gson/JsonElement.html?is-external=true" title="class or interface in com.google.gson">JsonElement</A></CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../play/libs/WS.HttpResponse.html#getJson()">getJson</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;get the response body as a <CODE>com.google.gson.JSONObject</CODE></TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;get the response body as a <A HREF="http://google-gson.googlecode.com/svn/tags/1.2.3/docs/javadocs/com/google/gson/JSONObject.html?is-external=true" title="class or interface in com.google.gson"><CODE>JSONObject</CODE></A></TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</A></CODE></FONT></TD>
+<CODE>abstract &nbsp;java.lang.Integer</CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../play/libs/WS.HttpResponse.html#getStatus()">getStatus</A></B>()</CODE>
 
 <BR>
@@ -177,7 +180,7 @@ An HTTP response wrapper
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io">InputStream</A></CODE></FONT></TD>
+<CODE>abstract &nbsp;java.io.InputStream</CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../play/libs/WS.HttpResponse.html#getStream()">getStream</A></B>()</CODE>
 
 <BR>
@@ -185,7 +188,7 @@ An HTTP response wrapper
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A></CODE></FONT></TD>
+<CODE>abstract &nbsp;java.lang.String</CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../play/libs/WS.HttpResponse.html#getString()">getString</A></B>()</CODE>
 
 <BR>
@@ -193,28 +196,28 @@ An HTTP response wrapper
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Document.html?is-external=true" title="class or interface in org.w3c.dom">Document</A></CODE></FONT></TD>
+<CODE>&nbsp;org.w3c.dom.Document</CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../play/libs/WS.HttpResponse.html#getXml()">getXml</A></B>()</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Parse and get the response body as a <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Document.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>DOM document</CODE></A></TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Parse and get the response body as a <CODE>DOM document</CODE></TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Document.html?is-external=true" title="class or interface in org.w3c.dom">Document</A></CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../play/libs/WS.HttpResponse.html#getXml(java.lang.String)">getXml</A></B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;encoding)</CODE>
+<CODE>&nbsp;org.w3c.dom.Document</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../play/libs/WS.HttpResponse.html#getXml(java.lang.String)">getXml</A></B>(java.lang.String&nbsp;encoding)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parse and get the response body as a <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Document.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>DOM document</CODE></A></TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;parse and get the response body as a <CODE>DOM document</CODE></TD>
 </TR>
 </TABLE>
 &nbsp;<A NAME="methods_inherited_from_class_java.lang.Object"><!-- --></A>
 <TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
 <TR BGCOLOR="#EEEEFF" CLASS="TableSubHeadingColor">
-<TH ALIGN="left"><B>Methods inherited from class java.lang.<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></B></TH>
+<TH ALIGN="left"><B>Methods inherited from class java.lang.Object</B></TH>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
-<TD><CODE><A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#clone()" title="class or interface in java.lang">clone</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#equals(java.lang.Object)" title="class or interface in java.lang">equals</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#finalize()" title="class or interface in java.lang">finalize</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#getClass()" title="class or interface in java.lang">getClass</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#hashCode()" title="class or interface in java.lang">hashCode</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#notify()" title="class or interface in java.lang">notify</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#notifyAll()" title="class or interface in java.lang">notifyAll</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#toString()" title="class or interface in java.lang">toString</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#wait()" title="class or interface in java.lang">wait</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#wait(long)" title="class or interface in java.lang">wait</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#wait(long, int)" title="class or interface in java.lang">wait</A></CODE></TD>
+<TD><CODE>clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</CODE></TD>
 </TR>
 </TABLE>
 &nbsp;
@@ -230,15 +233,11 @@ An HTTP response wrapper
 </TR>
 </TABLE>
 
-<A NAME="WS.HttpResponse(org.apache.commons.httpclient.HttpMethod)"><!-- --></A><H3>
+<A NAME="WS.HttpResponse()"><!-- --></A><H3>
 WS.HttpResponse</H3>
 <PRE>
-public <B>WS.HttpResponse</B>(org.apache.commons.httpclient.HttpMethod&nbsp;method)</PRE>
+public <B>WS.HttpResponse</B>()</PRE>
 <DL>
-<DD>you shouldnt have to create an HttpResponse yourself
-<P>
-<DL>
-<DT><B>Parameters:</B><DD><CODE>method</CODE> - </DL>
 </DL>
 
 <!-- ============ METHOD DETAIL ========== -->
@@ -254,7 +253,7 @@ public <B>WS.HttpResponse</B>(org.apache.commons.httpclient.HttpMethod&nbsp;meth
 <A NAME="getStatus()"><!-- --></A><H3>
 getStatus</H3>
 <PRE>
-public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</A> <B>getStatus</B>()</PRE>
+public abstract java.lang.Integer <B>getStatus</B>()</PRE>
 <DL>
 <DD>the HTTP status code
 <P>
@@ -268,7 +267,7 @@ public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Integer.html?i
 <A NAME="getContentType()"><!-- --></A><H3>
 getContentType</H3>
 <PRE>
-public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A> <B>getContentType</B>()</PRE>
+public java.lang.String <B>getContentType</B>()</PRE>
 <DL>
 <DD>The http response content type
 <P>
@@ -282,7 +281,7 @@ public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is
 <A NAME="getHeader(java.lang.String)"><!-- --></A><H3>
 getHeader</H3>
 <PRE>
-public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A> <B>getHeader</B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;key)</PRE>
+public abstract java.lang.String <B>getHeader</B>(java.lang.String&nbsp;key)</PRE>
 <DL>
 <DD><DL>
 </DL>
@@ -293,7 +292,7 @@ public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is
 <A NAME="getHeaders()"><!-- --></A><H3>
 getHeaders</H3>
 <PRE>
-public org.apache.commons.httpclient.Header[] <B>getHeaders</B>()</PRE>
+public abstract java.util.List&lt;<A HREF="../../play/mvc/Http.Header.html" title="class in play.mvc">Http.Header</A>&gt; <B>getHeaders</B>()</PRE>
 <DL>
 <DD><DL>
 </DL>
@@ -304,9 +303,9 @@ public org.apache.commons.httpclient.Header[] <B>getHeaders</B>()</PRE>
 <A NAME="getXml()"><!-- --></A><H3>
 getXml</H3>
 <PRE>
-public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Document.html?is-external=true" title="class or interface in org.w3c.dom">Document</A> <B>getXml</B>()</PRE>
+public org.w3c.dom.Document <B>getXml</B>()</PRE>
 <DL>
-<DD>Parse and get the response body as a <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Document.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>DOM document</CODE></A>
+<DD>Parse and get the response body as a <CODE>DOM document</CODE>
 <P>
 <DD><DL>
 
@@ -318,9 +317,9 @@ public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Document.htm
 <A NAME="getXml(java.lang.String)"><!-- --></A><H3>
 getXml</H3>
 <PRE>
-public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Document.html?is-external=true" title="class or interface in org.w3c.dom">Document</A> <B>getXml</B>(<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A>&nbsp;encoding)</PRE>
+public org.w3c.dom.Document <B>getXml</B>(java.lang.String&nbsp;encoding)</PRE>
 <DL>
-<DD>parse and get the response body as a <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Document.html?is-external=true" title="class or interface in org.w3c.dom"><CODE>DOM document</CODE></A>
+<DD>parse and get the response body as a <CODE>DOM document</CODE>
 <P>
 <DD><DL>
 <DT><B>Parameters:</B><DD><CODE>encoding</CODE> - xml charset encoding
@@ -332,7 +331,7 @@ public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/org/w3c/dom/Document.htm
 <A NAME="getString()"><!-- --></A><H3>
 getString</H3>
 <PRE>
-public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</A> <B>getString</B>()</PRE>
+public abstract java.lang.String <B>getString</B>()</PRE>
 <DL>
 <DD>get the response body as a string
 <P>
@@ -346,7 +345,7 @@ public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/String.html?is
 <A NAME="getStream()"><!-- --></A><H3>
 getStream</H3>
 <PRE>
-public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/InputStream.html?is-external=true" title="class or interface in java.io">InputStream</A> <B>getStream</B>()</PRE>
+public abstract java.io.InputStream <B>getStream</B>()</PRE>
 <DL>
 <DD>get the response as a stream
 <P>
@@ -360,9 +359,9 @@ public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/InputStream.html
 <A NAME="getJson()"><!-- --></A><H3>
 getJson</H3>
 <PRE>
-public com.google.gson.JsonElement <B>getJson</B>()</PRE>
+public <A HREF="http://google-gson.googlecode.com/svn/tags/1.2.3/docs/javadocs/com/google/gson/JsonElement.html?is-external=true" title="class or interface in com.google.gson">JsonElement</A> <B>getJson</B>()</PRE>
 <DL>
-<DD>get the response body as a <CODE>com.google.gson.JSONObject</CODE>
+<DD>get the response body as a <A HREF="http://google-gson.googlecode.com/svn/tags/1.2.3/docs/javadocs/com/google/gson/JSONObject.html?is-external=true" title="class or interface in com.google.gson"><CODE>JSONObject</CODE></A>
 <P>
 <DD><DL>
 
@@ -401,7 +400,7 @@ public com.google.gson.JsonElement <B>getJson</B>()</PRE>
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
 &nbsp;<A HREF="../../play/libs/WS.FileParam.html" title="class in play.libs"><B>PREV CLASS</B></A>&nbsp;
-&nbsp;<A HREF="../../play/libs/WS.WSRequest.html" title="class in play.libs"><B>NEXT CLASS</B></A></FONT></TD>
+&nbsp;<A HREF="../../play/libs/WS.WSImpl.html" title="interface in play.libs"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../index.html?play/libs/WS.HttpResponse.html" target="_top"><B>FRAMES</B></A>  &nbsp;
 &nbsp;<A HREF="WS.HttpResponse.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
@@ -430,6 +429,6 @@ DETAIL:&nbsp;FIELD&nbsp;|&nbsp;<A HREF="#constructor_detail">CONSTR</A>&nbsp;|&n
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
 
 <HR>
-<a href="http://guillaume.bort.fr">Guillaume Bort</a> & <a href="http://www.zenexity.fr">zenexity</a> - Distributed under <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache 2 licence</a>, without any warrantly
+<a href="http://guillaume.bort.fr">Guillaume Bort</a> &amp; <a href="http://www.zenexity.fr">zenexity</a> - Distributed under <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache 2 licence</a>, without any warrantly
 </BODY>
 </HTML>

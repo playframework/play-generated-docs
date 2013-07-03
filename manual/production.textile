@@ -2,7 +2,7 @@ h1. Put your application in production
 
 Here some simple tips to optimize your application for production.
 
-h2. <a>Configure your application.conf for production</a>
+h2. <a name="application">Configure your application.conf</a>
 
 First off, the best way to specify production mode is to give a specific ID to your production framework. Let’s pick **production** as an example. Refer "manage application.conf in several environments":ids to see how.
 
@@ -25,7 +25,7 @@ h3. Disable JPA automatic schema update:
 
 If you have used the automatic schema update feature provided by Hibernate, you should disable this feature for production. 
 
-For your production server, it’s usually a bad idea to let Hibernate automatically ALTER your productions schema and data… 
+For your production server, it’s usually a bad idea to let Hibernate automatically ALTER your production database’s schema and data…
 
 The initial deployment is potentially a different issue. In this case only specify:
 
@@ -40,11 +40,11 @@ bc. %production.application.secret=c12d1c59af499d20f4955d07255ed8ea333
 You can use the **play secret** command to generate a new secure and random key (at least on a ‘real’ OS). If you plan to distribute your application to several servers, remember to use the **same key** for all application instances!
 
 
-h2. <a>Configure logging</a>
+h2. <a name="logging">Configure logging</a>
 
 For production it’s a good idea to use rolling log files. Do not send logging to the Console, since it will be written to the **logs/system.out** file and it will grow without bound!
 
-Create a custom **log4j.properties** in the **conf/**, directory:
+Create a custom **log4j.properties** in the **conf/** directory:
 
 bc. log4j.rootLogger=ERROR, Rolling
  
@@ -58,7 +58,7 @@ log4j.appender.Rolling.MaxBackupIndex=100
 log4j.appender.Rolling.layout=org.apache.log4j.PatternLayout
 log4j.appender.Rolling.layout.ConversionPattern=%d{ABSOLUTE} %-5p ~ %m%n
 
-h2. <a>Set-up a front-end HTTP server</a>
+h2. <a name="server">Set-up a front-end HTTP server</a>
 
 You can easily deploy your application as a stand-alone server by setting the application HTTP port to **80**:
 
@@ -110,7 +110,7 @@ h3. Apache as a front proxy to allow transparent upgrade of your application
 
 The basic idea is to run 2 Play instances of your web application and let the front-end proxy load-balance them. In case one is not available, it will forward all the requests to the available one.
 
-Let’s start our the same Play application two times: one on port 9999 and one on port 9998.
+Let’s start the same Play application two times: one on port 9999 and one on port 9998.
 
 Copy the application 2 times and edit the application.conf in the conf directory to change the port numbers.
 
@@ -151,7 +151,7 @@ Every time you want to upgrade mysuperwebapp, here is what you need to do:
 
 bc. play stop mysuperwebapp1
 
-The load-balancer then forward everything to mysuperwebapp2. In the meantime update mysuperwebapp1. Once you are done:
+The load-balancer then forwards everything to mysuperwebapp2. In the meantime update mysuperwebapp1. Once you are done:
 
 bc. play start mysuperwebapp1
 
@@ -163,9 +163,9 @@ Because Play is completely stateless you don’t have to manage sessions between
 
 h3. Advanced proxy settings
 
-When using a HTTP frontal server, request addresses are seen as coming from the HTTP server. In a usual set-up, where you both have the Play app and the proxy running on the same machine, the Play app will see the requests coming from 127.0.0.1.
+When using an HTTP frontal server, request addresses are seen as coming from the HTTP server. In a usual set-up, where you both have the Play app and the proxy running on the same machine, the Play app will see the requests coming from 127.0.0.1.
 
-Proxy servers can add a specific header to request to tell the proxied application where the request came from. Most web servers will add a X-Forwarded-For header with the remote client IP address as first argument. If you enable the forward support in your Play app configuration:
+Proxy servers can add a specific header to the request to tell the proxied application where the request came from. Most web servers will add an X-Forwarded-For header with the remote client IP address as first argument. If you enable the forward support in your Play app configuration:
 
 bc. XForwardedSupport=127.0.0.1,10.0.0.25
 
@@ -176,3 +176,8 @@ However, the host header is untouched, it’ll remain issued by the proxy. If yo
 bc. ProxyPreserveHost on
 
 The host: header will be the original host request header issued by the client. By combining theses two techniques, your app will appear to be directly exposed.
+
+
+p(note). **Continuing the discussion**
+ 
+Next: %(next)"Play modules":modules%.

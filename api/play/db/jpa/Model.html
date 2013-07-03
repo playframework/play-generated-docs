@@ -6,7 +6,7 @@
 Model (Play! API)
 </TITLE>
 
-<META NAME="date" CONTENT="2010-07-28">
+<META NAME="date" CONTENT="2011-10-05">
 
 <LINK REL ="stylesheet" TYPE="text/css" HREF="../../../stylesheet.css" TITLE="Style">
 
@@ -54,7 +54,7 @@ function windowTitle()
 
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
-&nbsp;<A HREF="../../../play/db/jpa/JPQLDialect.html" title="class in play.db.jpa"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../play/db/jpa/JPQL.html" title="class in play.db.jpa"><B>PREV CLASS</B></A>&nbsp;
 &nbsp;<A HREF="../../../play/db/jpa/MySQLDialect.html" title="class in play.db.jpa"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../index.html?play/db/jpa/Model.html" target="_top"><B>FRAMES</B></A>  &nbsp;
@@ -75,7 +75,7 @@ function windowTitle()
 </TR>
 <TR>
 <TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
-  SUMMARY:&nbsp;<A HREF="#nested_classes_inherited_from_class_play.db.jpa.JPASupport">NESTED</A>&nbsp;|&nbsp;<A HREF="#field_summary">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_summary">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
+  SUMMARY:&nbsp;<A HREF="#nested_classes_inherited_from_class_play.db.jpa.GenericModel">NESTED</A>&nbsp;|&nbsp;<A HREF="#field_summary">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_summary">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
 <TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
 DETAIL:&nbsp;<A HREF="#field_detail">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_detail">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_detail">METHOD</A></FONT></TD>
 </TR>
@@ -91,19 +91,18 @@ play.db.jpa</FONT>
 <BR>
 Class Model</H2>
 <PRE>
-<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">java.lang.Object</A>
-  <IMG SRC="../../../resources/inherit.gif" ALT="extended by "><A HREF="../../../play/db/jpa/JPASupport.html" title="class in play.db.jpa">play.db.jpa.JPASupport</A>
-      <IMG SRC="../../../resources/inherit.gif" ALT="extended by "><B>play.db.jpa.Model</B>
+java.lang.Object
+  <IMG SRC="../../../resources/inherit.gif" ALT="extended by "><A HREF="../../../play/db/jpa/JPABase.html" title="class in play.db.jpa">play.db.jpa.JPABase</A>
+      <IMG SRC="../../../resources/inherit.gif" ALT="extended by "><A HREF="../../../play/db/jpa/GenericModel.html" title="class in play.db.jpa">play.db.jpa.GenericModel</A>
+          <IMG SRC="../../../resources/inherit.gif" ALT="extended by "><B>play.db.jpa.Model</B>
 </PRE>
 <DL>
-<DT><B>All Implemented Interfaces:</B> <DD><A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/io/Serializable.html?is-external=true" title="class or interface in java.io">Serializable</A></DD>
-</DL>
-<DL>
-<DT><B>Direct Known Subclasses:</B> <DD><A HREF="../../../play/db/jpa/JPAModel.html" title="class in play.db.jpa">JPAModel</A></DD>
+<DT><B>All Implemented Interfaces:</B> <DD>java.io.Serializable, <A HREF="../../../play/db/Model.html" title="interface in play.db">Model</A></DD>
 </DL>
 <HR>
 <DL>
-<DT><PRE>public class <B>Model</B><DT>extends <A HREF="../../../play/db/jpa/JPASupport.html" title="class in play.db.jpa">JPASupport</A></DL>
+<DT><PRE><FONT SIZE="-1"><A HREF="http://java.sun.com/javaee/5/docs/api/javax/persistence/MappedSuperclass.html?is-external=true" title="class or interface in javax.persistence">@MappedSuperclass</A>
+</FONT>public class <B>Model</B><DT>extends <A HREF="../../../play/db/jpa/GenericModel.html" title="class in play.db.jpa">GenericModel</A></DL>
 </PRE>
 
 <P>
@@ -126,13 +125,33 @@ Base class for JPA model objects
 <B>Nested Class Summary</B></FONT></TH>
 </TR>
 </TABLE>
-&nbsp;<A NAME="nested_classes_inherited_from_class_play.db.jpa.JPASupport"><!-- --></A>
+&nbsp;<A NAME="nested_classes_inherited_from_class_play.db.jpa.GenericModel"><!-- --></A>
 <TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
 <TR BGCOLOR="#EEEEFF" CLASS="TableSubHeadingColor">
-<TH ALIGN="left"><B>Nested classes/interfaces inherited from class play.db.jpa.<A HREF="../../../play/db/jpa/JPASupport.html" title="class in play.db.jpa">JPASupport</A></B></TH>
+<TH ALIGN="left"><B>Nested classes/interfaces inherited from class play.db.jpa.<A HREF="../../../play/db/jpa/GenericModel.html" title="class in play.db.jpa">GenericModel</A></B></TH>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
-<TD><CODE><A HREF="../../../play/db/jpa/JPASupport.JPAQuery.html" title="class in play.db.jpa">JPASupport.JPAQuery</A>, <A HREF="../../../play/db/jpa/JPASupport.JPAQueryException.html" title="class in play.db.jpa">JPASupport.JPAQueryException</A></CODE></TD>
+<TD><CODE><A HREF="../../../play/db/jpa/GenericModel.JPAQuery.html" title="class in play.db.jpa">GenericModel.JPAQuery</A></CODE></TD>
+</TR>
+</TABLE>
+&nbsp;
+<A NAME="nested_classes_inherited_from_class_play.db.jpa.JPABase"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#EEEEFF" CLASS="TableSubHeadingColor">
+<TH ALIGN="left"><B>Nested classes/interfaces inherited from class play.db.jpa.<A HREF="../../../play/db/jpa/JPABase.html" title="class in play.db.jpa">JPABase</A></B></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><A HREF="../../../play/db/jpa/JPABase.JPAQueryException.html" title="class in play.db.jpa">JPABase.JPAQueryException</A></CODE></TD>
+</TR>
+</TABLE>
+&nbsp;
+<A NAME="nested_classes_inherited_from_class_play.db.Model"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#EEEEFF" CLASS="TableSubHeadingColor">
+<TH ALIGN="left"><B>Nested classes/interfaces inherited from interface play.db.<A HREF="../../../play/db/Model.html" title="interface in play.db">Model</A></B></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><A HREF="../../../play/db/Model.BinaryField.html" title="interface in play.db">Model.BinaryField</A>, <A HREF="../../../play/db/Model.Choices.html" title="interface in play.db">Model.Choices</A>, <A HREF="../../../play/db/Model.Factory.html" title="interface in play.db">Model.Factory</A>, <A HREF="../../../play/db/Model.Manager.html" title="class in play.db">Model.Manager</A>, <A HREF="../../../play/db/Model.Property.html" title="class in play.db">Model.Property</A></CODE></TD>
 </TR>
 </TABLE>
 &nbsp;
@@ -146,20 +165,20 @@ Base class for JPA model objects
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</A></CODE></FONT></TD>
+<CODE>&nbsp;java.lang.Long</CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../../play/db/jpa/Model.html#id">id</A></B></CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
 </TR>
 </TABLE>
-&nbsp;<A NAME="fields_inherited_from_class_play.db.jpa.JPASupport"><!-- --></A>
+&nbsp;<A NAME="fields_inherited_from_class_play.db.jpa.JPABase"><!-- --></A>
 <TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
 <TR BGCOLOR="#EEEEFF" CLASS="TableSubHeadingColor">
-<TH ALIGN="left"><B>Fields inherited from class play.db.jpa.<A HREF="../../../play/db/jpa/JPASupport.html" title="class in play.db.jpa">JPASupport</A></B></TH>
+<TH ALIGN="left"><B>Fields inherited from class play.db.jpa.<A HREF="../../../play/db/jpa/JPABase.html" title="class in play.db.jpa">JPABase</A></B></TH>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
-<TD><CODE><A HREF="../../../play/db/jpa/JPASupport.html#willBeSaved">willBeSaved</A></CODE></TD>
+<TD><CODE><A HREF="../../../play/db/jpa/JPABase.html#willBeSaved">willBeSaved</A></CODE></TD>
 </TR>
 </TABLE>
 &nbsp;
@@ -189,29 +208,38 @@ Base class for JPA model objects
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>&nbsp;<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</A></CODE></FONT></TD>
+<CODE>&nbsp;java.lang.Long</CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../../play/db/jpa/Model.html#getId()">getId</A></B>()</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
 </TR>
 </TABLE>
-&nbsp;<A NAME="methods_inherited_from_class_play.db.jpa.JPASupport"><!-- --></A>
+&nbsp;<A NAME="methods_inherited_from_class_play.db.jpa.GenericModel"><!-- --></A>
 <TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
 <TR BGCOLOR="#EEEEFF" CLASS="TableSubHeadingColor">
-<TH ALIGN="left"><B>Methods inherited from class play.db.jpa.<A HREF="../../../play/db/jpa/JPASupport.html" title="class in play.db.jpa">JPASupport</A></B></TH>
+<TH ALIGN="left"><B>Methods inherited from class play.db.jpa.<A HREF="../../../play/db/jpa/GenericModel.html" title="class in play.db.jpa">GenericModel</A></B></TH>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
-<TD><CODE><A HREF="../../../play/db/jpa/JPASupport.html#afterLoad()">afterLoad</A>, <A HREF="../../../play/db/jpa/JPASupport.html#afterSave()">afterSave</A>, <A HREF="../../../play/db/jpa/JPASupport.html#all()">all</A>, <A HREF="../../../play/db/jpa/JPASupport.html#count()">count</A>, <A HREF="../../../play/db/jpa/JPASupport.html#count(java.lang.String, java.lang.Object...)">count</A>, <A HREF="../../../play/db/jpa/JPASupport.html#create(java.lang.Class, java.lang.String, java.util.Map)">create</A>, <A HREF="../../../play/db/jpa/JPASupport.html#create(java.lang.String, play.mvc.Scope.Params)">create</A>, <A HREF="../../../play/db/jpa/JPASupport.html#delete()">delete</A>, <A HREF="../../../play/db/jpa/JPASupport.html#delete(java.lang.String, java.lang.Object...)">delete</A>, <A HREF="../../../play/db/jpa/JPASupport.html#deleteAll()">deleteAll</A>, <A HREF="../../../play/db/jpa/JPASupport.html#edit(java.lang.Object, java.lang.String, java.util.Map)">edit</A>, <A HREF="../../../play/db/jpa/JPASupport.html#edit(java.lang.String, play.mvc.Scope.Params)">edit</A>, <A HREF="../../../play/db/jpa/JPASupport.html#em()">em</A>, <A HREF="../../../play/db/jpa/JPASupport.html#equals(java.lang.Object)">equals</A>, <A HREF="../../../play/db/jpa/JPASupport.html#find()">find</A>, <A HREF="../../../play/db/jpa/JPASupport.html#find(java.lang.String, java.lang.Object...)">find</A>, <A HREF="../../../play/db/jpa/JPASupport.html#findAll()">findAll</A>, <A HREF="../../../play/db/jpa/JPASupport.html#findBy(java.lang.String, java.lang.Object...)">findBy</A>, <A HREF="../../../play/db/jpa/JPASupport.html#findById(java.lang.Object)">findById</A>, <A HREF="../../../play/db/jpa/JPASupport.html#findKey(java.lang.Object)">findKey</A>, <A HREF="../../../play/db/jpa/JPASupport.html#findKeyType(java.lang.Class)">findKeyType</A>, <A HREF="../../../play/db/jpa/JPASupport.html#findOneBy(java.lang.String, java.lang.Object...)">findOneBy</A>, <A HREF="../../../play/db/jpa/JPASupport.html#getEntityId()">getEntityId</A>, <A HREF="../../../play/db/jpa/JPASupport.html#getEntityManager()">getEntityManager</A>, <A HREF="../../../play/db/jpa/JPASupport.html#hashCode()">hashCode</A>, <A HREF="../../../play/db/jpa/JPASupport.html#merge()">merge</A>, <A HREF="../../../play/db/jpa/JPASupport.html#refresh()">refresh</A>, <A HREF="../../../play/db/jpa/JPASupport.html#save()">save</A>, <A HREF="../../../play/db/jpa/JPASupport.html#saveAttachment()">saveAttachment</A>, <A HREF="../../../play/db/jpa/JPASupport.html#setupAttachment()">setupAttachment</A>, <A HREF="../../../play/db/jpa/JPASupport.html#toString()">toString</A>, <A HREF="../../../play/db/jpa/JPASupport.html#validateAndSave()">validateAndSave</A></CODE></TD>
+<TD><CODE><A HREF="../../../play/db/jpa/GenericModel.html#_saveAttachment()">_saveAttachment</A>, <A HREF="../../../play/db/jpa/GenericModel.html#_setupAttachment()">_setupAttachment</A>, <A HREF="../../../play/db/jpa/GenericModel.html#all()">all</A>, <A HREF="../../../play/db/jpa/GenericModel.html#count()">count</A>, <A HREF="../../../play/db/jpa/GenericModel.html#count(java.lang.String, java.lang.Object...)">count</A>, <A HREF="../../../play/db/jpa/GenericModel.html#create(java.lang.Class, java.lang.String, java.util.Map, java.lang.annotation.Annotation[])">create</A>, <A HREF="../../../play/db/jpa/GenericModel.html#create(java.lang.String, play.mvc.Scope.Params)">create</A>, <A HREF="../../../play/db/jpa/GenericModel.html#delete()">delete</A>, <A HREF="../../../play/db/jpa/GenericModel.html#delete(java.lang.String, java.lang.Object...)">delete</A>, <A HREF="../../../play/db/jpa/GenericModel.html#deleteAll()">deleteAll</A>, <A HREF="../../../play/db/jpa/GenericModel.html#edit(java.lang.Object, java.lang.String, java.util.Map, java.lang.annotation.Annotation[])">edit</A>, <A HREF="../../../play/db/jpa/GenericModel.html#edit(java.lang.String, java.util.Map)">edit</A>, <A HREF="../../../play/db/jpa/GenericModel.html#find(java.lang.String, java.lang.Object...)">find</A>, <A HREF="../../../play/db/jpa/GenericModel.html#findAll()">findAll</A>, <A HREF="../../../play/db/jpa/GenericModel.html#findById(java.lang.Object)">findById</A>, <A HREF="../../../play/db/jpa/GenericModel.html#merge()">merge</A>, <A HREF="../../../play/db/jpa/GenericModel.html#refresh()">refresh</A>, <A HREF="../../../play/db/jpa/GenericModel.html#save()">save</A>, <A HREF="../../../play/db/jpa/GenericModel.html#validateAndSave()">validateAndSave</A></CODE></TD>
+</TR>
+</TABLE>
+&nbsp;<A NAME="methods_inherited_from_class_play.db.jpa.JPABase"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#EEEEFF" CLASS="TableSubHeadingColor">
+<TH ALIGN="left"><B>Methods inherited from class play.db.jpa.<A HREF="../../../play/db/jpa/JPABase.html" title="class in play.db.jpa">JPABase</A></B></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD><CODE><A HREF="../../../play/db/jpa/JPABase.html#_delete()">_delete</A>, <A HREF="../../../play/db/jpa/JPABase.html#_key()">_key</A>, <A HREF="../../../play/db/jpa/JPABase.html#_save()">_save</A>, <A HREF="../../../play/db/jpa/JPABase.html#em()">em</A>, <A HREF="../../../play/db/jpa/JPABase.html#equals(java.lang.Object)">equals</A>, <A HREF="../../../play/db/jpa/JPABase.html#getEntityId()">getEntityId</A>, <A HREF="../../../play/db/jpa/JPABase.html#hashCode()">hashCode</A>, <A HREF="../../../play/db/jpa/JPABase.html#isPersistent()">isPersistent</A>, <A HREF="../../../play/db/jpa/JPABase.html#toString()">toString</A></CODE></TD>
 </TR>
 </TABLE>
 &nbsp;<A NAME="methods_inherited_from_class_java.lang.Object"><!-- --></A>
 <TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
 <TR BGCOLOR="#EEEEFF" CLASS="TableSubHeadingColor">
-<TH ALIGN="left"><B>Methods inherited from class java.lang.<A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</A></B></TH>
+<TH ALIGN="left"><B>Methods inherited from class java.lang.Object</B></TH>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
-<TD><CODE><A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#clone()" title="class or interface in java.lang">clone</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#finalize()" title="class or interface in java.lang">finalize</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#getClass()" title="class or interface in java.lang">getClass</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#notify()" title="class or interface in java.lang">notify</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#notifyAll()" title="class or interface in java.lang">notifyAll</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#wait()" title="class or interface in java.lang">wait</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#wait(long)" title="class or interface in java.lang">wait</A>, <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Object.html?is-external=true#wait(long, int)" title="class or interface in java.lang">wait</A></CODE></TD>
+<TD><CODE>clone, finalize, getClass, notify, notifyAll, wait, wait, wait</CODE></TD>
 </TR>
 </TABLE>
 &nbsp;
@@ -230,7 +258,7 @@ Base class for JPA model objects
 <A NAME="id"><!-- --></A><H3>
 id</H3>
 <PRE>
-public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</A> <B>id</B></PRE>
+public java.lang.Long <B>id</B></PRE>
 <DL>
 <DL>
 </DL>
@@ -266,7 +294,7 @@ public <B>Model</B>()</PRE>
 <A NAME="getId()"><!-- --></A><H3>
 getId</H3>
 <PRE>
-public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</A> <B>getId</B>()</PRE>
+public java.lang.Long <B>getId</B>()</PRE>
 <DL>
 <DD><DL>
 </DL>
@@ -303,7 +331,7 @@ public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Long.html?is-e
 
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
-&nbsp;<A HREF="../../../play/db/jpa/JPQLDialect.html" title="class in play.db.jpa"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../play/db/jpa/JPQL.html" title="class in play.db.jpa"><B>PREV CLASS</B></A>&nbsp;
 &nbsp;<A HREF="../../../play/db/jpa/MySQLDialect.html" title="class in play.db.jpa"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../index.html?play/db/jpa/Model.html" target="_top"><B>FRAMES</B></A>  &nbsp;
@@ -324,7 +352,7 @@ public <A HREF="http://java.sun.com/j2se/1.5.0/docs/api/java/lang/Long.html?is-e
 </TR>
 <TR>
 <TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
-  SUMMARY:&nbsp;<A HREF="#nested_classes_inherited_from_class_play.db.jpa.JPASupport">NESTED</A>&nbsp;|&nbsp;<A HREF="#field_summary">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_summary">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
+  SUMMARY:&nbsp;<A HREF="#nested_classes_inherited_from_class_play.db.jpa.GenericModel">NESTED</A>&nbsp;|&nbsp;<A HREF="#field_summary">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_summary">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
 <TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
 DETAIL:&nbsp;<A HREF="#field_detail">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_detail">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_detail">METHOD</A></FONT></TD>
 </TR>
@@ -333,6 +361,6 @@ DETAIL:&nbsp;<A HREF="#field_detail">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor
 <!-- ======== END OF BOTTOM NAVBAR ======= -->
 
 <HR>
-<a href="http://guillaume.bort.fr">Guillaume Bort</a> & <a href="http://www.zenexity.fr">zenexity</a> - Distributed under <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache 2 licence</a>, without any warrantly
+<a href="http://guillaume.bort.fr">Guillaume Bort</a> &amp; <a href="http://www.zenexity.fr">zenexity</a> - Distributed under <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache 2 licence</a>, without any warrantly
 </BODY>
 </HTML>

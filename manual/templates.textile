@@ -22,7 +22,34 @@ If you can’t be sure of client being null, there is a Groovy shortcut:
 
 bc. <h1>Client ${client?.name}</h1>
 
-Which will only display the client name if the client is not null. 
+Which will only display the client name if the client is not null.
+
+h3. Template decorators : #{extends  /} and  #{doLayout  /}
+
+Decorators provide a clean solution to share a page layout (or design) across several templates. 
+
+p(note). Use "#{get}":tags#ageta and "#{set}":tags#aseta tags to share variables between the template and the decorator. 
+
+Embedding a page in a decorator is the matter of a one liner:
+
+bc. #{extends 'simpledesign.html' /}
+ 
+#{set title:'A decorated page' /}
+This content will be decorated.
+
+The decorator : **simpledesign.html**
+
+bc. <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>#{get 'title' /}</title>
+  <link rel="stylesheet" type="text/css" href="@{'/public/stylesheets/main.css'}" />
+</head>
+<body>
+  <h1>#{get 'title' /}</h1>
+  #{doLayout /}
+  <div class="footer">Built with the play! framework</div>
+</body>
+</html>
 
 h3. Tags: #{tagName /}
 
@@ -149,9 +176,9 @@ bc. <h1>Main template</h1>
     #{doLayout /}
 </div>
 
-h2. <a name="tags">Create tags</a>
+h2. <a name="tags">Custom tags</a>
 
-You can easily create specifics tags for your application. A tag is a simple template file, stored in the **app/views/tags** directory. The template’s file name is used as the tag name.
+You can easily create specific tags for your application. A tag is a simple template file, stored in the **app/views/tags** directory. The template’s file name is used as the tag name.
 
 To create a **hello** tag, just create the **app/views/tags/hello.html** file.
 
@@ -161,7 +188,7 @@ No need to configure anything. You can use the tag directly:
 
 bc. #{hello /}
 
-h3. Retrieve tags parameters
+h3. Retrieve tag parameters
 
 Tag parameters are exposed as template variables. The variable names are constructed with the ‘_’ character prepended to the parameter name. 
 
@@ -212,7 +239,10 @@ bc. <ul>
 #{/list}
 </ul>
 
-You can find a list of available methods within the "API documentation":/@api/play/templates/JavaExtensions.html.
+The same applies to **java.util.Date**.
+
+The "Java extensions":javaextensions manual page lists the available methods, by type.
+
 
 h3. Create custom extensions
 
@@ -243,7 +273,7 @@ bc. <em>Price: ${123456.324234.ccyAmount()}</em>
 
 Template extension classes are automatically detected by Play at start-up. You just have to restart your application to make them available.
 
-h2. <a name="implicits">Implicit objects available from a template</a>
+h2. <a name="implicits">Implicit objects available in a template</a>
 
 All objects added to the **renderArgs** scope are directly injected as template variables. 
 
@@ -253,17 +283,15 @@ bc. renderArgs.put("user", user );
 
 When you render a template from an action, the framework also adds implicit objects:
 
-* **session**, the Session object
-* **flash**, the Flash scope
-* **request**, the current Request
-* **params**, HTTP params 
-* **play**, a reference to play.Play
-* **lang**, the current language
-* **messages**, the messages map
-* **out**, the Writer
+|| Variable || Description || API documentation || See also ||
+| **errors** | Validation errors | "play.data.validation.Validation.errors()":/@api/play/data/validation/Validation.html#errors%28%29 | "Validating HTTP data":validation |
+| **flash** | Flash scope | "play.mvc.Scope.Flash":/@api/play/mvc/Scope.Flash.html  | "Controllers - Session & Flash Scope":controllers#session |
+| **lang** | The current language | "play.i18n.Lang":/@api/play/i18n/Lang.html | "Setting up I18N - Define languages":i18n#languages |
+| **messages** | The messages map | "play.i18n.Messages":/@api/play/i18n/Messages.html | "Setting up I18N - Externalize messages":i18n#messages |
+| **out** | The output stream writer | java.io.PrintWriter |  |
+| **params** | Current parameters | "play.mvc.Scope.Params":/@api/play/mvc/Scope.Params.html  | "Controllers - HTTP parameters":controllers#params |
+| **play** | Main framework class | "play.Play":/@api/play/Play.html |  |
+| **request** | The current HTTP request | "play.mvc.Http.Request":/@api/play/mvc/Http.Request.html  |  |
+| **session** | Session scope | "play.mvc.Scope.Session":/@api/play/mvc/Scope.Session.html  | "Controllers - Session & Flash Scope":controllers#session |
 
-p(note). **Continuing the discussion**
- 
-The last layer of a Play application is the "domain object model":model.
-
- 
+p(note). Next: %(next)"Form data validation":validation%

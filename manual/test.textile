@@ -6,7 +6,7 @@ Play tests are built using "JUnit 4":http://www.junit.org/ or "Selenium":http://
 
 h2. <a name="writing">Writing tests</a>
 
-The tests must be created in the **test/** directory. This folder will only be added to sources path when the application is run in **test** mode. You can write 3 differents kind of test.
+The tests must be created in the **test/** directory. This folder will only be added to the sources path when the application is run in **test** mode. You can write 3 different kinds of tests.
 
 h3. Unit test
 
@@ -108,6 +108,8 @@ public void setUp() {
     Fixtures.load("data.yml");
 }
 
+p(note). You can read more about Play and YAML in the "YAML manual page":yaml.
+
 For Selenium tests, you can use the **#{fixture /}** tag:
 
 bc. #{fixture delete:'all', load:'data.yml' /}
@@ -141,7 +143,7 @@ bc. %test.db=mem
 
 h2. <a name="continuous">Continuous integration, and running the tests automatically</a>
 
-The **auto-test** command do the same than the **test** command, but it automatically launch a browser, run all the tests, and stop.
+The **auto-test** command does the same as the **test** command, but it automatically launches a browser, runs all the tests, and stops.
 
 This is a useful command if you want to set up a continuous integration system; 
 
@@ -155,3 +157,7 @@ So setting up a continuous integration system to test your application, could be
 * Check for the marker file **result.passed** or **result.failed** in the **/test-result** directory
 
 Run these steps in a CRON tab, and you’re done!
+
+p(note). **Continuing the discussion**
+ 
+Next: %(next)"Deployment options":deployment%.
