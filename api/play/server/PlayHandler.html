@@ -6,7 +6,7 @@
 PlayHandler (Play! API)
 </TITLE>
 
-<META NAME="date" CONTENT="2011-08-23">
+<META NAME="date" CONTENT="2011-12-02">
 
 <LINK REL ="stylesheet" TYPE="text/css" HREF="../../stylesheet.css" TITLE="Style">
 
@@ -181,6 +181,22 @@ java.lang.Object
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../play/server/PlayHandler.html#adjustPipelineToHixie(org.jboss.netty.channel.ChannelHandlerContext)">adjustPipelineToHixie</A></B>(org.jboss.netty.channel.ChannelHandlerContext&nbsp;ctx)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected &nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../play/server/PlayHandler.html#adjustPipelineToHybi(org.jboss.netty.channel.ChannelHandlerContext)">adjustPipelineToHybi</A></B>(org.jboss.netty.channel.ChannelHandlerContext&nbsp;ctx)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;void</CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../play/server/PlayHandler.html#channelDisconnected(org.jboss.netty.channel.ChannelHandlerContext, org.jboss.netty.channel.ChannelStateEvent)">channelDisconnected</A></B>(org.jboss.netty.channel.ChannelHandlerContext&nbsp;ctx,
                     org.jboss.netty.channel.ChannelStateEvent&nbsp;e)</CODE>
@@ -266,7 +282,7 @@ java.lang.Object
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;void</CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../play/server/PlayHandler.html#messageReceived(org.jboss.netty.channel.ChannelHandlerContext, org.jboss.netty.channel.MessageEvent)">messageReceived</A></B>(org.jboss.netty.channel.ChannelHandlerContext&nbsp;ctx,
-                org.jboss.netty.channel.MessageEvent&nbsp;e)</CODE>
+                org.jboss.netty.channel.MessageEvent&nbsp;messageEvent)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
@@ -274,8 +290,9 @@ java.lang.Object
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;<A HREF="../../play/mvc/Http.Request.html" title="class in play.mvc">Http.Request</A></CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../play/server/PlayHandler.html#parseRequest(org.jboss.netty.channel.ChannelHandlerContext, org.jboss.netty.handler.codec.http.HttpRequest)">parseRequest</A></B>(org.jboss.netty.channel.ChannelHandlerContext&nbsp;ctx,
-             org.jboss.netty.handler.codec.http.HttpRequest&nbsp;nettyRequest)</CODE>
+<TD><CODE><B><A HREF="../../play/server/PlayHandler.html#parseRequest(org.jboss.netty.channel.ChannelHandlerContext, org.jboss.netty.handler.codec.http.HttpRequest, org.jboss.netty.channel.MessageEvent)">parseRequest</A></B>(org.jboss.netty.channel.ChannelHandlerContext&nbsp;ctx,
+             org.jboss.netty.handler.codec.http.HttpRequest&nbsp;nettyRequest,
+             org.jboss.netty.channel.MessageEvent&nbsp;messageEvent)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
@@ -399,7 +416,7 @@ public <B>PlayHandler</B>()</PRE>
 messageReceived</H3>
 <PRE>
 public void <B>messageReceived</B>(org.jboss.netty.channel.ChannelHandlerContext&nbsp;ctx,
-                            org.jboss.netty.channel.MessageEvent&nbsp;e)
+                            org.jboss.netty.channel.MessageEvent&nbsp;messageEvent)
                      throws java.lang.Exception</PRE>
 <DL>
 <DD><DL>
@@ -456,11 +473,12 @@ public void <B>copyResponse</B>(org.jboss.netty.channel.ChannelHandlerContext&nb
 </DL>
 <HR>
 
-<A NAME="parseRequest(org.jboss.netty.channel.ChannelHandlerContext, org.jboss.netty.handler.codec.http.HttpRequest)"><!-- --></A><H3>
+<A NAME="parseRequest(org.jboss.netty.channel.ChannelHandlerContext, org.jboss.netty.handler.codec.http.HttpRequest, org.jboss.netty.channel.MessageEvent)"><!-- --></A><H3>
 parseRequest</H3>
 <PRE>
 public <A HREF="../../play/mvc/Http.Request.html" title="class in play.mvc">Http.Request</A> <B>parseRequest</B>(org.jboss.netty.channel.ChannelHandlerContext&nbsp;ctx,
-                                 org.jboss.netty.handler.codec.http.HttpRequest&nbsp;nettyRequest)
+                                 org.jboss.netty.handler.codec.http.HttpRequest&nbsp;nettyRequest,
+                                 org.jboss.netty.channel.MessageEvent&nbsp;messageEvent)
                           throws java.lang.Exception</PRE>
 <DL>
 <DD><DL>
@@ -624,6 +642,28 @@ public void <B>closeChunked</B>(<A HREF="../../play/mvc/Http.Request.html" title
                          <A HREF="../../play/mvc/Http.Response.html" title="class in play.mvc">Http.Response</A>&nbsp;playResponse,
                          org.jboss.netty.channel.ChannelHandlerContext&nbsp;ctx,
                          org.jboss.netty.handler.codec.http.HttpRequest&nbsp;nettyRequest)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="adjustPipelineToHixie(org.jboss.netty.channel.ChannelHandlerContext)"><!-- --></A><H3>
+adjustPipelineToHixie</H3>
+<PRE>
+protected void <B>adjustPipelineToHixie</B>(org.jboss.netty.channel.ChannelHandlerContext&nbsp;ctx)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="adjustPipelineToHybi(org.jboss.netty.channel.ChannelHandlerContext)"><!-- --></A><H3>
+adjustPipelineToHybi</H3>
+<PRE>
+protected void <B>adjustPipelineToHybi</B>(org.jboss.netty.channel.ChannelHandlerContext&nbsp;ctx)</PRE>
 <DL>
 <DD><DL>
 </DL>

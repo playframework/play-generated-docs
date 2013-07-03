@@ -6,7 +6,7 @@
 FileArrayBinder (Play! API)
 </TITLE>
 
-<META NAME="date" CONTENT="2011-08-23">
+<META NAME="date" CONTENT="2011-12-02">
 
 <LINK REL ="stylesheet" TYPE="text/css" HREF="../../../../stylesheet.css" TITLE="Style">
 
@@ -146,7 +146,7 @@ Bind a file array form multipart/form-data request. This is nearly the same as t
      java.lang.reflect.Type&nbsp;genericType)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Called when your parameter needs to be bound.</TD>
 </TR>
 </TABLE>
 &nbsp;<A NAME="methods_inherited_from_class_java.lang.Object"><!-- --></A>
@@ -197,11 +197,15 @@ public java.io.File[] <B>bind</B>(java.lang.String&nbsp;name,
                            java.lang.Class&nbsp;actualClass,
                            java.lang.reflect.Type&nbsp;genericType)</PRE>
 <DL>
+<DD><B>Description copied from interface: <CODE><A HREF="../../../../play/data/binding/TypeBinder.html#bind(java.lang.String, java.lang.annotation.Annotation[], java.lang.String, java.lang.Class, java.lang.reflect.Type)">TypeBinder</A></CODE></B></DD>
+<DD>Called when your parameter needs to be bound.
+<P>
 <DD><DL>
 <DT><B>Specified by:</B><DD><CODE><A HREF="../../../../play/data/binding/TypeBinder.html#bind(java.lang.String, java.lang.annotation.Annotation[], java.lang.String, java.lang.Class, java.lang.reflect.Type)">bind</A></CODE> in interface <CODE><A HREF="../../../../play/data/binding/TypeBinder.html" title="interface in play.data.binding">TypeBinder</A>&lt;java.io.File[]&gt;</CODE></DL>
 </DD>
 <DD><DL>
-</DL>
+<DT><B>Parameters:</B><DD><CODE>name</CODE> - the name of you parameter ie myparam for a simple param but can also be a complex one : mybean.address.street<DD><CODE>annotations</CODE> - An array of annotation that may be bound to your method parameter or your bean property<DD><CODE>value</CODE> - the actual value as a string that needs to be bound<DD><CODE>actualClass</CODE> - The class of the object you want to associate the value with<DD><CODE>genericType</CODE> - The generic type associated with the object you want to bound the value to
+<DT><B>Returns:</B><DD>the 'bound' object for example a date object if the value was '12/12/2002'</DL>
 </DD>
 </DL>
 <!-- ========= END OF CLASS DATA ========= -->

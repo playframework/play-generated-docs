@@ -6,7 +6,7 @@
 Binder (Play! API)
 </TITLE>
 
-<META NAME="date" CONTENT="2011-08-23">
+<META NAME="date" CONTENT="2011-12-02">
 
 <LINK REL ="stylesheet" TYPE="text/css" HREF="../../../stylesheet.css" TITLE="Style">
 
@@ -55,7 +55,7 @@ function windowTitle()
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
 &nbsp;<A HREF="../../../play/data/binding/BeanWrapper.Property.html" title="class in play.data.binding"><B>PREV CLASS</B></A>&nbsp;
-&nbsp;<A HREF="../../../play/data/binding/Global.html" title="annotation in play.data.binding"><B>NEXT CLASS</B></A></FONT></TD>
+&nbsp;<A HREF="../../../play/data/binding/Binder.MethodAndParamInfo.html" title="class in play.data.binding"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../index.html?play/data/binding/Binder.html" target="_top"><B>FRAMES</B></A>  &nbsp;
 &nbsp;<A HREF="Binder.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
@@ -75,7 +75,7 @@ function windowTitle()
 </TR>
 <TR>
 <TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
-  SUMMARY:&nbsp;NESTED&nbsp;|&nbsp;<A HREF="#field_summary">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_summary">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
+  SUMMARY:&nbsp;<A HREF="#nested_class_summary">NESTED</A>&nbsp;|&nbsp;<A HREF="#field_summary">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_summary">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
 <TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
 DETAIL:&nbsp;<A HREF="#field_detail">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_detail">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_detail">METHOD</A></FONT></TD>
 </TR>
@@ -96,7 +96,7 @@ java.lang.Object
 </PRE>
 <HR>
 <DL>
-<DT><PRE>public class <B>Binder</B><DT>extends java.lang.Object</DL>
+<DT><PRE>public abstract class <B>Binder</B><DT>extends java.lang.Object</DL>
 </PRE>
 
 <P>
@@ -107,7 +107,24 @@ The binder try to convert String values to Java objects.
 <HR>
 
 <P>
-<!-- =========== FIELD SUMMARY =========== -->
+<!-- ======== NESTED CLASS SUMMARY ======== -->
+
+<A NAME="nested_class_summary"><!-- --></A>
+<TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
+<TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
+<B>Nested Class Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../play/data/binding/Binder.MethodAndParamInfo.html" title="class in play.data.binding">Binder.MethodAndParamInfo</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+</TABLE>
+&nbsp;<!-- =========== FIELD SUMMARY =========== -->
 
 <A NAME="field_summary"><!-- --></A>
 <TABLE BORDER="1" WIDTH="100%" CELLPADDING="3" CELLSPACING="0" SUMMARY="">
@@ -165,6 +182,31 @@ The binder try to convert String values to Java objects.
      java.util.Map&lt;java.lang.String,java.lang.String[]&gt;&nbsp;params)</CODE>
 
 <BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B>Deprecated.</B>&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;java.lang.Object</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../play/data/binding/Binder.html#bind(play.data.binding.RootParamNode, java.lang.String, java.lang.Class, java.lang.reflect.Type, java.lang.annotation.Annotation[])">bind</A></B>(<A HREF="../../../play/data/binding/RootParamNode.html" title="class in play.data.binding">RootParamNode</A>&nbsp;parentParamNode,
+     java.lang.String&nbsp;name,
+     java.lang.Class&lt;?&gt;&nbsp;clazz,
+     java.lang.reflect.Type&nbsp;type,
+     java.lang.annotation.Annotation[]&nbsp;annotations)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;java.lang.Object</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../play/data/binding/Binder.html#bind(play.data.binding.RootParamNode, java.lang.String, java.lang.Class, java.lang.reflect.Type, java.lang.annotation.Annotation[], play.data.binding.Binder.MethodAndParamInfo)">bind</A></B>(<A HREF="../../../play/data/binding/RootParamNode.html" title="class in play.data.binding">RootParamNode</A>&nbsp;parentParamNode,
+     java.lang.String&nbsp;name,
+     java.lang.Class&lt;?&gt;&nbsp;clazz,
+     java.lang.reflect.Type&nbsp;type,
+     java.lang.annotation.Annotation[]&nbsp;annotations,
+     <A HREF="../../../play/data/binding/Binder.MethodAndParamInfo.html" title="class in play.data.binding">Binder.MethodAndParamInfo</A>&nbsp;methodAndParamInfo)</CODE>
+
+<BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
@@ -177,28 +219,35 @@ The binder try to convert String values to Java objects.
      java.util.Map&lt;java.lang.String,java.lang.String[]&gt;&nbsp;params)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<B>Deprecated.</B>&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../play/data/binding/Binder.html#bindBean(play.data.binding.ParamNode, java.lang.Object, java.lang.annotation.Annotation[])">bindBean</A></B>(<A HREF="../../../play/data/binding/ParamNode.html" title="class in play.data.binding">ParamNode</A>&nbsp;paramNode,
+         java.lang.Object&nbsp;bean,
+         java.lang.annotation.Annotation[]&nbsp;annotations)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Does NOT invoke plugins</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../play/data/binding/Binder.html#bindBean(play.data.binding.RootParamNode, java.lang.String, java.lang.Object)">bindBean</A></B>(<A HREF="../../../play/data/binding/RootParamNode.html" title="class in play.data.binding">RootParamNode</A>&nbsp;rootParamNode,
+         java.lang.String&nbsp;name,
+         java.lang.Object&nbsp;bean)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Invokes the plugins before using the internal bindBean.</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>static&nbsp;java.lang.Object</CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../play/data/binding/Binder.html#bind(java.lang.String, java.lang.Class, java.lang.reflect.Type, java.lang.annotation.Annotation[], java.util.Map, java.lang.Object, java.lang.reflect.Method, int)">bind</A></B>(java.lang.String&nbsp;name,
-     java.lang.Class&lt;?&gt;&nbsp;clazz,
-     java.lang.reflect.Type&nbsp;type,
-     java.lang.annotation.Annotation[]&nbsp;annotations,
-     java.util.Map&lt;java.lang.String,java.lang.String[]&gt;&nbsp;params,
-     java.lang.Object&nbsp;o,
-     java.lang.reflect.Method&nbsp;method,
-     int&nbsp;parameterIndex)</CODE>
-
-<BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
-</TR>
-<TR BGCOLOR="white" CLASS="TableRowColor">
-<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>static&nbsp;boolean</CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../play/data/binding/Binder.html#contains(java.lang.String[], java.lang.String[])">contains</A></B>(java.lang.String[]&nbsp;profiles,
-         java.lang.String[]&nbsp;localProfiles)</CODE>
+<TD><CODE><B><A HREF="../../../play/data/binding/Binder.html#directBind(java.lang.annotation.Annotation[], java.lang.String, java.lang.Class, java.lang.reflect.Type)">directBind</A></B>(java.lang.annotation.Annotation[]&nbsp;annotations,
+           java.lang.String&nbsp;value,
+           java.lang.Class&lt;?&gt;&nbsp;clazz,
+           java.lang.reflect.Type&nbsp;type)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
@@ -224,13 +273,24 @@ The binder try to convert String values to Java objects.
            java.lang.reflect.Type&nbsp;type)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This method calls the user's defined binders prior to bind simple type</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>static&nbsp;java.lang.Object</CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../../play/data/binding/Binder.html#directBind(java.lang.String, java.lang.Class)">directBind</A></B>(java.lang.String&nbsp;value,
            java.lang.Class&lt;?&gt;&nbsp;clazz)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>protected static&nbsp;java.lang.Object</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../play/data/binding/Binder.html#internalBind(play.data.binding.ParamNode, java.lang.Class, java.lang.reflect.Type, play.data.binding.BindingAnnotations)">internalBind</A></B>(<A HREF="../../../play/data/binding/ParamNode.html" title="class in play.data.binding">ParamNode</A>&nbsp;paramNode,
+             java.lang.Class&lt;?&gt;&nbsp;clazz,
+             java.lang.reflect.Type&nbsp;type,
+             play.data.binding.BindingAnnotations&nbsp;bindingAnnotations)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
@@ -332,25 +392,18 @@ public static &lt;T&gt; void <B>register</B>(java.lang.Class&lt;T&gt;&nbsp;clazz
 </DL>
 <HR>
 
-<A NAME="contains(java.lang.String[], java.lang.String[])"><!-- --></A><H3>
-contains</H3>
-<PRE>
-public static boolean <B>contains</B>(java.lang.String[]&nbsp;profiles,
-                               java.lang.String[]&nbsp;localProfiles)</PRE>
-<DL>
-<DD><DL>
-</DL>
-</DD>
-</DL>
-<HR>
-
 <A NAME="bind(java.lang.Object, java.lang.String, java.util.Map)"><!-- --></A><H3>
 bind</H3>
 <PRE>
-public static java.lang.Object <B>bind</B>(java.lang.Object&nbsp;o,
-                                    java.lang.String&nbsp;name,
-                                    java.util.Map&lt;java.lang.String,java.lang.String[]&gt;&nbsp;params)</PRE>
+<FONT SIZE="-1">@Deprecated
+</FONT>public static java.lang.Object <B>bind</B>(java.lang.Object&nbsp;o,
+                                               java.lang.String&nbsp;name,
+                                               java.util.Map&lt;java.lang.String,java.lang.String[]&gt;&nbsp;params)</PRE>
 <DL>
+<DD><B>Deprecated.</B>&nbsp;
+<P>
+<DD>Deprecated. Use bindBean() instead.
+<P>
 <DD><DL>
 </DL>
 </DD>
@@ -360,11 +413,29 @@ public static java.lang.Object <B>bind</B>(java.lang.Object&nbsp;o,
 <A NAME="bind(java.lang.String, java.lang.Class, java.lang.reflect.Type, java.lang.annotation.Annotation[], java.util.Map)"><!-- --></A><H3>
 bind</H3>
 <PRE>
-public static java.lang.Object <B>bind</B>(java.lang.String&nbsp;name,
+<FONT SIZE="-1">@Deprecated
+</FONT>public static java.lang.Object <B>bind</B>(java.lang.String&nbsp;name,
+                                               java.lang.Class&lt;?&gt;&nbsp;clazz,
+                                               java.lang.reflect.Type&nbsp;type,
+                                               java.lang.annotation.Annotation[]&nbsp;annotations,
+                                               java.util.Map&lt;java.lang.String,java.lang.String[]&gt;&nbsp;params)</PRE>
+<DL>
+<DD><B>Deprecated.</B>&nbsp;
+<P>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="bind(play.data.binding.RootParamNode, java.lang.String, java.lang.Class, java.lang.reflect.Type, java.lang.annotation.Annotation[])"><!-- --></A><H3>
+bind</H3>
+<PRE>
+public static java.lang.Object <B>bind</B>(<A HREF="../../../play/data/binding/RootParamNode.html" title="class in play.data.binding">RootParamNode</A>&nbsp;parentParamNode,
+                                    java.lang.String&nbsp;name,
                                     java.lang.Class&lt;?&gt;&nbsp;clazz,
                                     java.lang.reflect.Type&nbsp;type,
-                                    java.lang.annotation.Annotation[]&nbsp;annotations,
-                                    java.util.Map&lt;java.lang.String,java.lang.String[]&gt;&nbsp;params)</PRE>
+                                    java.lang.annotation.Annotation[]&nbsp;annotations)</PRE>
 <DL>
 <DD><DL>
 </DL>
@@ -372,20 +443,65 @@ public static java.lang.Object <B>bind</B>(java.lang.String&nbsp;name,
 </DL>
 <HR>
 
-<A NAME="bind(java.lang.String, java.lang.Class, java.lang.reflect.Type, java.lang.annotation.Annotation[], java.util.Map, java.lang.Object, java.lang.reflect.Method, int)"><!-- --></A><H3>
+<A NAME="bind(play.data.binding.RootParamNode, java.lang.String, java.lang.Class, java.lang.reflect.Type, java.lang.annotation.Annotation[], play.data.binding.Binder.MethodAndParamInfo)"><!-- --></A><H3>
 bind</H3>
 <PRE>
-public static java.lang.Object <B>bind</B>(java.lang.String&nbsp;name,
+public static java.lang.Object <B>bind</B>(<A HREF="../../../play/data/binding/RootParamNode.html" title="class in play.data.binding">RootParamNode</A>&nbsp;parentParamNode,
+                                    java.lang.String&nbsp;name,
                                     java.lang.Class&lt;?&gt;&nbsp;clazz,
                                     java.lang.reflect.Type&nbsp;type,
                                     java.lang.annotation.Annotation[]&nbsp;annotations,
-                                    java.util.Map&lt;java.lang.String,java.lang.String[]&gt;&nbsp;params,
-                                    java.lang.Object&nbsp;o,
-                                    java.lang.reflect.Method&nbsp;method,
-                                    int&nbsp;parameterIndex)</PRE>
+                                    <A HREF="../../../play/data/binding/Binder.MethodAndParamInfo.html" title="class in play.data.binding">Binder.MethodAndParamInfo</A>&nbsp;methodAndParamInfo)</PRE>
 <DL>
 <DD><DL>
 </DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="internalBind(play.data.binding.ParamNode, java.lang.Class, java.lang.reflect.Type, play.data.binding.BindingAnnotations)"><!-- --></A><H3>
+internalBind</H3>
+<PRE>
+protected static java.lang.Object <B>internalBind</B>(<A HREF="../../../play/data/binding/ParamNode.html" title="class in play.data.binding">ParamNode</A>&nbsp;paramNode,
+                                               java.lang.Class&lt;?&gt;&nbsp;clazz,
+                                               java.lang.reflect.Type&nbsp;type,
+                                               play.data.binding.BindingAnnotations&nbsp;bindingAnnotations)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="bindBean(play.data.binding.RootParamNode, java.lang.String, java.lang.Object)"><!-- --></A><H3>
+bindBean</H3>
+<PRE>
+public static void <B>bindBean</B>(<A HREF="../../../play/data/binding/RootParamNode.html" title="class in play.data.binding">RootParamNode</A>&nbsp;rootParamNode,
+                            java.lang.String&nbsp;name,
+                            java.lang.Object&nbsp;bean)</PRE>
+<DL>
+<DD>Invokes the plugins before using the internal bindBean.
+<P>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="bindBean(play.data.binding.ParamNode, java.lang.Object, java.lang.annotation.Annotation[])"><!-- --></A><H3>
+bindBean</H3>
+<PRE>
+public static void <B>bindBean</B>(<A HREF="../../../play/data/binding/ParamNode.html" title="class in play.data.binding">ParamNode</A>&nbsp;paramNode,
+                            java.lang.Object&nbsp;bean,
+                            java.lang.annotation.Annotation[]&nbsp;annotations)
+                     throws java.lang.Exception</PRE>
+<DL>
+<DD>Does NOT invoke plugins
+<P>
+<DD><DL>
+
+<DT><B>Throws:</B>
+<DD><CODE>java.lang.Exception</CODE></DL>
 </DD>
 </DL>
 <HR>
@@ -398,7 +514,8 @@ public static java.lang.Object <B>directBind</B>(java.lang.String&nbsp;value,
                                    throws java.lang.Exception</PRE>
 <DL>
 <DD><DL>
-
+<DT><B>Parameters:</B><DD><CODE>value</CODE> - <DD><CODE>clazz</CODE> - 
+<DT><B>Returns:</B><DD>
 <DT><B>Throws:</B>
 <DD><CODE>java.lang.Exception</CODE></DL>
 </DD>
@@ -415,7 +532,26 @@ public static java.lang.Object <B>directBind</B>(java.lang.String&nbsp;name,
                                    throws java.lang.Exception</PRE>
 <DL>
 <DD><DL>
+<DT><B>Parameters:</B><DD><CODE>name</CODE> - <DD><CODE>annotations</CODE> - <DD><CODE>value</CODE> - <DD><CODE>clazz</CODE> - <DD><CODE>type</CODE> - 
+<DT><B>Returns:</B><DD>
+<DT><B>Throws:</B>
+<DD><CODE>java.lang.Exception</CODE></DL>
+</DD>
+</DL>
+<HR>
 
+<A NAME="directBind(java.lang.annotation.Annotation[], java.lang.String, java.lang.Class, java.lang.reflect.Type)"><!-- --></A><H3>
+directBind</H3>
+<PRE>
+public static java.lang.Object <B>directBind</B>(java.lang.annotation.Annotation[]&nbsp;annotations,
+                                          java.lang.String&nbsp;value,
+                                          java.lang.Class&lt;?&gt;&nbsp;clazz,
+                                          java.lang.reflect.Type&nbsp;type)
+                                   throws java.lang.Exception</PRE>
+<DL>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>annotations</CODE> - <DD><CODE>value</CODE> - <DD><CODE>clazz</CODE> - <DD><CODE>type</CODE> - 
+<DT><B>Returns:</B><DD>
 <DT><B>Throws:</B>
 <DD><CODE>java.lang.Exception</CODE></DL>
 </DD>
@@ -432,8 +568,11 @@ public static java.lang.Object <B>directBind</B>(java.lang.String&nbsp;name,
                                           java.lang.reflect.Type&nbsp;type)
                                    throws java.lang.Exception</PRE>
 <DL>
+<DD>This method calls the user's defined binders prior to bind simple type
+<P>
 <DD><DL>
-
+<DT><B>Parameters:</B><DD><CODE>name</CODE> - <DD><CODE>annotations</CODE> - <DD><CODE>value</CODE> - <DD><CODE>clazz</CODE> - <DD><CODE>type</CODE> - 
+<DT><B>Returns:</B><DD>
 <DT><B>Throws:</B>
 <DD><CODE>java.lang.Exception</CODE></DL>
 </DD>
@@ -470,7 +609,7 @@ public static java.lang.Object <B>directBind</B>(java.lang.String&nbsp;name,
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
 &nbsp;<A HREF="../../../play/data/binding/BeanWrapper.Property.html" title="class in play.data.binding"><B>PREV CLASS</B></A>&nbsp;
-&nbsp;<A HREF="../../../play/data/binding/Global.html" title="annotation in play.data.binding"><B>NEXT CLASS</B></A></FONT></TD>
+&nbsp;<A HREF="../../../play/data/binding/Binder.MethodAndParamInfo.html" title="class in play.data.binding"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../index.html?play/data/binding/Binder.html" target="_top"><B>FRAMES</B></A>  &nbsp;
 &nbsp;<A HREF="Binder.html" target="_top"><B>NO FRAMES</B></A>  &nbsp;
@@ -490,7 +629,7 @@ public static java.lang.Object <B>directBind</B>(java.lang.String&nbsp;name,
 </TR>
 <TR>
 <TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
-  SUMMARY:&nbsp;NESTED&nbsp;|&nbsp;<A HREF="#field_summary">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_summary">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
+  SUMMARY:&nbsp;<A HREF="#nested_class_summary">NESTED</A>&nbsp;|&nbsp;<A HREF="#field_summary">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_summary">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_summary">METHOD</A></FONT></TD>
 <TD VALIGN="top" CLASS="NavBarCell3"><FONT SIZE="-2">
 DETAIL:&nbsp;<A HREF="#field_detail">FIELD</A>&nbsp;|&nbsp;<A HREF="#constructor_detail">CONSTR</A>&nbsp;|&nbsp;<A HREF="#method_detail">METHOD</A></FONT></TD>
 </TR>

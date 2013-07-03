@@ -39,7 +39,7 @@ bc. …
 public void testAdminSecurity() {
     Response response = GET("/admin");
     assertStatus(302, response);
-    assertHeaderEquals("Location", "http://localhost/login", response);
+    assertHeaderEquals("Location", "/login", response);
 }
 …
 
@@ -57,7 +57,7 @@ h2. <a name="selenium">Writing Selenium tests</a>
 
 "Selenium":http://seleniumhq.org is a testing tool specifically for testing web applications. The cool thing here is that Selenium allows to run the test suite directly in any existing browser. As it does not use any ‘browser simulator’, you can be sure that you’re testing what your users will use.
 
-A Selenium test suite is typically written as an HTML file. The HTML syntax required by Selenium is a little tedious to write (formatted using an HTML table element). The good news is that Play helps you generate it using the Play template engine and a set of tags that support a simplified syntax for Selenium scenarios. An interesting side effect of using templates is that your are not tied to ‘static scenarios’ any more and you can use the power of Play templates (looping, conditional blocks) to write more complicated tests.
+A Selenium test suite is typically written as an HTML file. The HTML syntax required by Selenium is a little tedious to write (formatted using an HTML table element). The good news is that Play helps you generate it using the Play template engine and a set of tags that support a simplified syntax for Selenium scenarios. An interesting side effect of using templates is that you are not tied to ‘static scenarios’ any more and you can use the power of Play templates (looping, conditional blocks) to write more complicated tests.
 
 p(note). However you can still write plain HTML Selenium syntax in the template and forget the specific Selenium tags if needed. It can become interesting if you use one of the several Selenium tools that generates the test scenarios for you, like "Selenium IDE":http://seleniumhq.org/projects/ide.
 
@@ -196,6 +196,8 @@ Now reopen the browser at the "http://localhost:9000/@tests":http://localhost:90
 When all tests are passed, stop the application and cobertura will then generate the code coverage report. You can then open the @yabe/test-result/code-coverage/index.html@ in your browser and check the report.
 
 !images/guide10-4!
+
+If you start the application again, you can also view it at "http://localhost:9000/@cobertura":http://localhost:9000/@cobertura.
 
 As you see we’re far from testing all of the application’s cases. A good testing suite should approach 100%, even if it is of course nearly impossible to check all the code. Typically because we often need to hack in test mode, like we did for the captcha.
 

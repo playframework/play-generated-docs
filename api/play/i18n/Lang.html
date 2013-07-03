@@ -6,7 +6,7 @@
 Lang (Play! API)
 </TITLE>
 
-<META NAME="date" CONTENT="2011-08-23">
+<META NAME="date" CONTENT="2011-12-02">
 
 <LINK REL ="stylesheet" TYPE="text/css" HREF="../../stylesheet.css" TITLE="Style">
 
@@ -159,6 +159,15 @@ Language support
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../play/i18n/Lang.html#clear()">clear</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Clears the current language - This wil trigger resolving language from request
+ if not manually set.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>static&nbsp;java.lang.String</CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../play/i18n/Lang.html#get()">get</A></B>()</CODE>
 
@@ -183,24 +192,19 @@ Language support
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>static&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../play/i18n/Lang.html#resolvefrom(play.mvc.Http.Request)">resolvefrom</A></B>(<A HREF="../../play/mvc/Http.Request.html" title="class in play.mvc">Http.Request</A>&nbsp;request)</CODE>
-
-<BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Guess the language for current request in the following order:
- 
- if a <b>PLAY_LANG</b> cookie is set, use this value
- if <b>Accept-Language</b> header is set, use it only if the Play! application allows it.<br/>supported language may be defined in application configuration, eg : <em>play.langs=fr,en,de)</em>
- otherwise, server's locale language is assumed
- </TD>
-</TR>
-<TR BGCOLOR="white" CLASS="TableRowColor">
-<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>static&nbsp;boolean</CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../play/i18n/Lang.html#set(java.lang.String)">set</A></B>(java.lang.String&nbsp;locale)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Force the current language</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../play/i18n/Lang.html#setDefaultLocale()">setDefaultLocale</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
 </TR>
 </TABLE>
 &nbsp;<A NAME="methods_inherited_from_class_java.lang.Object"><!-- --></A>
@@ -289,6 +293,20 @@ public static boolean <B>set</B>(java.lang.String&nbsp;locale)</PRE>
 </DL>
 <HR>
 
+<A NAME="clear()"><!-- --></A><H3>
+clear</H3>
+<PRE>
+public static void <B>clear</B>()</PRE>
+<DL>
+<DD>Clears the current language - This wil trigger resolving language from request
+ if not manually set.
+<P>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
 <A NAME="change(java.lang.String)"><!-- --></A><H3>
 change</H3>
 <PRE>
@@ -302,20 +320,13 @@ public static void <B>change</B>(java.lang.String&nbsp;locale)</PRE>
 </DL>
 <HR>
 
-<A NAME="resolvefrom(play.mvc.Http.Request)"><!-- --></A><H3>
-resolvefrom</H3>
+<A NAME="setDefaultLocale()"><!-- --></A><H3>
+setDefaultLocale</H3>
 <PRE>
-public static void <B>resolvefrom</B>(<A HREF="../../play/mvc/Http.Request.html" title="class in play.mvc">Http.Request</A>&nbsp;request)</PRE>
+public static void <B>setDefaultLocale</B>()</PRE>
 <DL>
-<DD>Guess the language for current request in the following order:
- <ol>
- <li>if a <b>PLAY_LANG</b> cookie is set, use this value</li>
- <li>if <b>Accept-Language</b> header is set, use it only if the Play! application allows it.<br/>supported language may be defined in application configuration, eg : <em>play.langs=fr,en,de)</em></li>
- <li>otherwise, server's locale language is assumed
- </ol>
-<P>
 <DD><DL>
-<DT><B>Parameters:</B><DD><CODE>request</CODE> - </DL>
+</DL>
 </DD>
 </DL>
 <HR>

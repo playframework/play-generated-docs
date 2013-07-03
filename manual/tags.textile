@@ -285,7 +285,7 @@ h2. <a name="if">if</a>
 
 Evaluates the given test, and if true, evaluates the tag body.
 
-bc. #{if user.countryCode == 'en"' }
+bc. #{if user.countryCode == 'en' }
     Connected user is ${user}
 #{/if}
 
@@ -349,6 +349,26 @@ bc. <script type="text/javascript">
     var displayUserDetail = function(userId) {
         $('userDetail').load( showUserAction({id: userId}) )
     }
+</script>
+
+
+h2. <a name="jsroute">jsRoute</a>
+
+The @#{jsRoute /}@ tag is similar to the @#{jsAction /}@ tag, it returns an object containing both the function which consctructs the URL based on the server action, and the corresponding HTTP method (GET, POST, etc.).
+
+Example:
+
+bc. PUT     /users/{id}        Users.update
+
+Then, in a template:
+
+bc. <script type="text/javascript">
+    var updateUserRoute = #{jsRoute @Users.update(':id') /}
+    $.ajax({
+      url: updateUserRoute.url({id: userId}),
+      type: updateUserRoute.method,
+      data: 'user.name=Guillaume'
+    });
 </script>
 
 
@@ -446,7 +466,7 @@ Insert a @select@ tag in the template.
 
 * @name@ (required) - attribute sets a name to the select element.
 
-Any unknow attribute will be considered as an HTML attribute, and rendered "as is"
+Any unknown attribute will be considered as an HTML attribute, and rendered "as is"
 
 bc. #{select 'booking.beds', value:2, id:'select1'}
 	#{option 1}One king-size bed#{/option}
@@ -466,11 +486,11 @@ bc. <select name="booking.beds" size="1" id="select1" >
 This tag can generate options using @items@ attribute.
 
 * @items@ (optional) - list of objects, used to create @options@
-* @value@ (optional) - selected element in @items@
+* @value@ (optional) - selected element in @items@ (note that multiple selections are not supported)
 * @labelProperty@ (optional) - for each item, attribute used as option's label 
 * @valueProperty@ (optional) - for each item, attribute used as option's value. @id@ is used by default
 
-p(note). The @labelProperty@ and @valueProperty@ shouldn't be primitives value. So, for example, instead of using @int@ or @long@ use an @Integer@ or @Long@ variable.
+p(note). The @labelProperty@ and @valueProperty@ shouldn't be primitive values. So, for example, use an @Integer@ or @Long@ variable instead of an @int@ or @long@.
 
 For example, giving a list of User, each having a name attribute:
 

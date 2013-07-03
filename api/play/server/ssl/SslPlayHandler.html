@@ -6,7 +6,7 @@
 SslPlayHandler (Play! API)
 </TITLE>
 
-<META NAME="date" CONTENT="2011-08-23">
+<META NAME="date" CONTENT="2011-12-02">
 
 <LINK REL ="stylesheet" TYPE="text/css" HREF="../../../stylesheet.css" TITLE="Style">
 
@@ -183,8 +183,9 @@ java.lang.Object
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;<A HREF="../../../play/mvc/Http.Request.html" title="class in play.mvc">Http.Request</A></CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../play/server/ssl/SslPlayHandler.html#parseRequest(org.jboss.netty.channel.ChannelHandlerContext, org.jboss.netty.handler.codec.http.HttpRequest)">parseRequest</A></B>(org.jboss.netty.channel.ChannelHandlerContext&nbsp;ctx,
-             org.jboss.netty.handler.codec.http.HttpRequest&nbsp;nettyRequest)</CODE>
+<TD><CODE><B><A HREF="../../../play/server/ssl/SslPlayHandler.html#parseRequest(org.jboss.netty.channel.ChannelHandlerContext, org.jboss.netty.handler.codec.http.HttpRequest, org.jboss.netty.channel.MessageEvent)">parseRequest</A></B>(org.jboss.netty.channel.ChannelHandlerContext&nbsp;ctx,
+             org.jboss.netty.handler.codec.http.HttpRequest&nbsp;nettyRequest,
+             org.jboss.netty.channel.MessageEvent&nbsp;e)</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
@@ -196,7 +197,7 @@ java.lang.Object
 <TH ALIGN="left"><B>Methods inherited from class play.server.<A HREF="../../../play/server/PlayHandler.html" title="class in play.server">PlayHandler</A></B></TH>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
-<TD><CODE><A HREF="../../../play/server/PlayHandler.html#addToResponse(play.mvc.Http.Response, org.jboss.netty.handler.codec.http.HttpResponse)">addToResponse</A>, <A HREF="../../../play/server/PlayHandler.html#channelDisconnected(org.jboss.netty.channel.ChannelHandlerContext, org.jboss.netty.channel.ChannelStateEvent)">channelDisconnected</A>, <A HREF="../../../play/server/PlayHandler.html#closeChunked(play.mvc.Http.Request, play.mvc.Http.Response, org.jboss.netty.channel.ChannelHandlerContext, org.jboss.netty.handler.codec.http.HttpRequest)">closeChunked</A>, <A HREF="../../../play/server/PlayHandler.html#copyResponse(org.jboss.netty.channel.ChannelHandlerContext, play.mvc.Http.Request, play.mvc.Http.Response, org.jboss.netty.handler.codec.http.HttpRequest)">copyResponse</A>, <A HREF="../../../play/server/PlayHandler.html#getBindingForErrors(java.lang.Exception, boolean)">getBindingForErrors</A>, <A HREF="../../../play/server/PlayHandler.html#getCookies(org.jboss.netty.handler.codec.http.HttpRequest)">getCookies</A>, <A HREF="../../../play/server/PlayHandler.html#getHeaders(org.jboss.netty.handler.codec.http.HttpRequest)">getHeaders</A>, <A HREF="../../../play/server/PlayHandler.html#isKeepAlive(org.jboss.netty.handler.codec.http.HttpMessage)">isKeepAlive</A>, <A HREF="../../../play/server/PlayHandler.html#isModified(java.lang.String, long, org.jboss.netty.handler.codec.http.HttpRequest)">isModified</A>, <A HREF="../../../play/server/PlayHandler.html#messageReceived(org.jboss.netty.channel.ChannelHandlerContext, org.jboss.netty.channel.MessageEvent)">messageReceived</A>, <A HREF="../../../play/server/PlayHandler.html#serve404(play.mvc.results.NotFound, org.jboss.netty.channel.ChannelHandlerContext, play.mvc.Http.Request, org.jboss.netty.handler.codec.http.HttpRequest)">serve404</A>, <A HREF="../../../play/server/PlayHandler.html#serve500(java.lang.Exception, org.jboss.netty.channel.ChannelHandlerContext, org.jboss.netty.handler.codec.http.HttpRequest)">serve500</A>, <A HREF="../../../play/server/PlayHandler.html#serveStatic(play.mvc.results.RenderStatic, org.jboss.netty.channel.ChannelHandlerContext, play.mvc.Http.Request, play.mvc.Http.Response, org.jboss.netty.handler.codec.http.HttpRequest, org.jboss.netty.channel.MessageEvent)">serveStatic</A>, <A HREF="../../../play/server/PlayHandler.html#setContentLength(org.jboss.netty.handler.codec.http.HttpMessage, long)">setContentLength</A>, <A HREF="../../../play/server/PlayHandler.html#writeChunk(play.mvc.Http.Request, play.mvc.Http.Response, org.jboss.netty.channel.ChannelHandlerContext, org.jboss.netty.handler.codec.http.HttpRequest, java.lang.Object)">writeChunk</A>, <A HREF="../../../play/server/PlayHandler.html#writeResponse(org.jboss.netty.channel.ChannelHandlerContext, play.mvc.Http.Response, org.jboss.netty.handler.codec.http.HttpResponse, org.jboss.netty.handler.codec.http.HttpRequest)">writeResponse</A></CODE></TD>
+<TD><CODE><A HREF="../../../play/server/PlayHandler.html#addToResponse(play.mvc.Http.Response, org.jboss.netty.handler.codec.http.HttpResponse)">addToResponse</A>, <A HREF="../../../play/server/PlayHandler.html#adjustPipelineToHixie(org.jboss.netty.channel.ChannelHandlerContext)">adjustPipelineToHixie</A>, <A HREF="../../../play/server/PlayHandler.html#adjustPipelineToHybi(org.jboss.netty.channel.ChannelHandlerContext)">adjustPipelineToHybi</A>, <A HREF="../../../play/server/PlayHandler.html#channelDisconnected(org.jboss.netty.channel.ChannelHandlerContext, org.jboss.netty.channel.ChannelStateEvent)">channelDisconnected</A>, <A HREF="../../../play/server/PlayHandler.html#closeChunked(play.mvc.Http.Request, play.mvc.Http.Response, org.jboss.netty.channel.ChannelHandlerContext, org.jboss.netty.handler.codec.http.HttpRequest)">closeChunked</A>, <A HREF="../../../play/server/PlayHandler.html#copyResponse(org.jboss.netty.channel.ChannelHandlerContext, play.mvc.Http.Request, play.mvc.Http.Response, org.jboss.netty.handler.codec.http.HttpRequest)">copyResponse</A>, <A HREF="../../../play/server/PlayHandler.html#getBindingForErrors(java.lang.Exception, boolean)">getBindingForErrors</A>, <A HREF="../../../play/server/PlayHandler.html#getCookies(org.jboss.netty.handler.codec.http.HttpRequest)">getCookies</A>, <A HREF="../../../play/server/PlayHandler.html#getHeaders(org.jboss.netty.handler.codec.http.HttpRequest)">getHeaders</A>, <A HREF="../../../play/server/PlayHandler.html#isKeepAlive(org.jboss.netty.handler.codec.http.HttpMessage)">isKeepAlive</A>, <A HREF="../../../play/server/PlayHandler.html#isModified(java.lang.String, long, org.jboss.netty.handler.codec.http.HttpRequest)">isModified</A>, <A HREF="../../../play/server/PlayHandler.html#messageReceived(org.jboss.netty.channel.ChannelHandlerContext, org.jboss.netty.channel.MessageEvent)">messageReceived</A>, <A HREF="../../../play/server/PlayHandler.html#serve404(play.mvc.results.NotFound, org.jboss.netty.channel.ChannelHandlerContext, play.mvc.Http.Request, org.jboss.netty.handler.codec.http.HttpRequest)">serve404</A>, <A HREF="../../../play/server/PlayHandler.html#serve500(java.lang.Exception, org.jboss.netty.channel.ChannelHandlerContext, org.jboss.netty.handler.codec.http.HttpRequest)">serve500</A>, <A HREF="../../../play/server/PlayHandler.html#serveStatic(play.mvc.results.RenderStatic, org.jboss.netty.channel.ChannelHandlerContext, play.mvc.Http.Request, play.mvc.Http.Response, org.jboss.netty.handler.codec.http.HttpRequest, org.jboss.netty.channel.MessageEvent)">serveStatic</A>, <A HREF="../../../play/server/PlayHandler.html#setContentLength(org.jboss.netty.handler.codec.http.HttpMessage, long)">setContentLength</A>, <A HREF="../../../play/server/PlayHandler.html#writeChunk(play.mvc.Http.Request, play.mvc.Http.Response, org.jboss.netty.channel.ChannelHandlerContext, org.jboss.netty.handler.codec.http.HttpRequest, java.lang.Object)">writeChunk</A>, <A HREF="../../../play/server/PlayHandler.html#writeResponse(org.jboss.netty.channel.ChannelHandlerContext, play.mvc.Http.Response, org.jboss.netty.handler.codec.http.HttpResponse, org.jboss.netty.handler.codec.http.HttpRequest)">writeResponse</A></CODE></TD>
 </TR>
 </TABLE>
 &nbsp;<A NAME="methods_inherited_from_class_org.jboss.netty.channel.SimpleChannelUpstreamHandler"><!-- --></A>
@@ -247,15 +248,16 @@ public <B>SslPlayHandler</B>()</PRE>
 </TR>
 </TABLE>
 
-<A NAME="parseRequest(org.jboss.netty.channel.ChannelHandlerContext, org.jboss.netty.handler.codec.http.HttpRequest)"><!-- --></A><H3>
+<A NAME="parseRequest(org.jboss.netty.channel.ChannelHandlerContext, org.jboss.netty.handler.codec.http.HttpRequest, org.jboss.netty.channel.MessageEvent)"><!-- --></A><H3>
 parseRequest</H3>
 <PRE>
 public <A HREF="../../../play/mvc/Http.Request.html" title="class in play.mvc">Http.Request</A> <B>parseRequest</B>(org.jboss.netty.channel.ChannelHandlerContext&nbsp;ctx,
-                                 org.jboss.netty.handler.codec.http.HttpRequest&nbsp;nettyRequest)
+                                 org.jboss.netty.handler.codec.http.HttpRequest&nbsp;nettyRequest,
+                                 org.jboss.netty.channel.MessageEvent&nbsp;e)
                           throws java.lang.Exception</PRE>
 <DL>
 <DD><DL>
-<DT><B>Overrides:</B><DD><CODE><A HREF="../../../play/server/PlayHandler.html#parseRequest(org.jboss.netty.channel.ChannelHandlerContext, org.jboss.netty.handler.codec.http.HttpRequest)">parseRequest</A></CODE> in class <CODE><A HREF="../../../play/server/PlayHandler.html" title="class in play.server">PlayHandler</A></CODE></DL>
+<DT><B>Overrides:</B><DD><CODE><A HREF="../../../play/server/PlayHandler.html#parseRequest(org.jboss.netty.channel.ChannelHandlerContext, org.jboss.netty.handler.codec.http.HttpRequest, org.jboss.netty.channel.MessageEvent)">parseRequest</A></CODE> in class <CODE><A HREF="../../../play/server/PlayHandler.html" title="class in play.server">PlayHandler</A></CODE></DL>
 </DD>
 <DD><DL>
 

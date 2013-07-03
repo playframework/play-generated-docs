@@ -6,7 +6,7 @@
 TypeBinder (Play! API)
 </TITLE>
 
-<META NAME="date" CONTENT="2011-08-23">
+<META NAME="date" CONTENT="2011-12-02">
 
 <LINK REL ="stylesheet" TYPE="text/css" HREF="../../../stylesheet.css" TITLE="Style">
 
@@ -54,7 +54,7 @@ function windowTitle()
 
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
-&nbsp;<A HREF="../../../play/data/binding/NoBinding.html" title="annotation in play.data.binding"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../play/data/binding/RootParamNode.html" title="class in play.data.binding"><B>PREV CLASS</B></A>&nbsp;
 &nbsp;<A HREF="../../../play/data/binding/Unbinder.html" title="class in play.data.binding"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../index.html?play/data/binding/TypeBinder.html" target="_top"><B>FRAMES</B></A>  &nbsp;
@@ -99,7 +99,7 @@ Interface TypeBinder&lt;T&gt;</H2>
 </PRE>
 
 <P>
-Supported type for binding
+Supported type for binding. This interface is used to implement custom binders.
 <P>
 
 <P>
@@ -125,7 +125,7 @@ Supported type for binding
      java.lang.reflect.Type&nbsp;genericType)</CODE>
 
 <BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Called when your parameter needs to be bound.</TD>
 </TR>
 </TABLE>
 &nbsp;
@@ -151,8 +151,11 @@ java.lang.Object <B>bind</B>(java.lang.String&nbsp;name,
                       java.lang.reflect.Type&nbsp;genericType)
                       throws java.lang.Exception</PRE>
 <DL>
+<DD>Called when your parameter needs to be bound.
+<P>
 <DD><DL>
-
+<DT><B>Parameters:</B><DD><CODE>name</CODE> - the name of you parameter ie myparam for a simple param but can also be a complex one : mybean.address.street<DD><CODE>annotations</CODE> - An array of annotation that may be bound to your method parameter or your bean property<DD><CODE>value</CODE> - the actual value as a string that needs to be bound<DD><CODE>actualClass</CODE> - The class of the object you want to associate the value with<DD><CODE>genericType</CODE> - The generic type associated with the object you want to bound the value to
+<DT><B>Returns:</B><DD>the 'bound' object for example a date object if the value was '12/12/2002'
 <DT><B>Throws:</B>
 <DD><CODE>java.lang.Exception</CODE></DL>
 </DD>
@@ -188,7 +191,7 @@ java.lang.Object <B>bind</B>(java.lang.String&nbsp;name,
 
 <TR>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
-&nbsp;<A HREF="../../../play/data/binding/NoBinding.html" title="annotation in play.data.binding"><B>PREV CLASS</B></A>&nbsp;
+&nbsp;<A HREF="../../../play/data/binding/RootParamNode.html" title="class in play.data.binding"><B>PREV CLASS</B></A>&nbsp;
 &nbsp;<A HREF="../../../play/data/binding/Unbinder.html" title="class in play.data.binding"><B>NEXT CLASS</B></A></FONT></TD>
 <TD BGCOLOR="white" CLASS="NavBarCell2"><FONT SIZE="-2">
   <A HREF="../../../index.html?play/data/binding/TypeBinder.html" target="_top"><B>FRAMES</B></A>  &nbsp;
