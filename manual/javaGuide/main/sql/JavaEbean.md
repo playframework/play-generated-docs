@@ -54,6 +54,7 @@ public class Task extends Model {
 
 }
 ```
+> Play has been designed to generate getter/setter automatically, to ensure compatibility with libraries that expect them to be available at runtime (ORM, Databinder, JSON Binder, etc). **If Play detects any user-written getter/setter in the Model, it will not generate getter/setter in order to avoid any conflict.**
 
 As you can see, we've added a `find` static field, defining a `Finder` for an entity of type `Task` with a `Long` identifier. This helper field is then used to simplify querying our model:
 
@@ -78,6 +79,12 @@ List<Task> tasks = find.where()
 ## Transactional actions
 
 By default Ebean will not use transactions. However, you can use any transaction helper provided by Ebean to create a transaction. For example:
+
+:: Rob Bygrave - 
+The above statement is not correct. Ebean will use implicit transactions. To demarcate transactions you have 3 options: @Transactional, TxRunnable() or a beginTransaction(), commitTransaction()
+
+See http://www.avaje.org/ebean/introtrans.html for examples and an explanation.
+:: - end note
 
 ```
 // run in Transactional scope...  

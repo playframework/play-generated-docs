@@ -28,6 +28,8 @@ Alternatively you can directly use `play start` at your OS command prompt, which
 $ play start
 ```
 
+> Note: the HTTP port can be set by passing -Dhttp.port system variable
+
 ## Using the stage task
 
 The problem with the `start` command is that it starts the application interactively, which means that human interaction is needed, and `Ctrl+D` is required to detach the process. This solution is not really convenient for automated deployment.

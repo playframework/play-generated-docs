@@ -71,7 +71,7 @@ Process       State               Command
 web.1         up for 10s          target/start 
 ```
 
-The web process is up. Review the logs for more information:
+The web process is up.  Review the logs for more information:
 
 ```bash
 $ heroku logs
@@ -83,6 +83,11 @@ $ heroku logs
 ```
 
 Looks good. We can now visit the app with `heroku open`.
+
+If you don't see the web process, and you see `Error H14 (No web processes running)` in your logs, you probably need to add a web dyno:
+
+    heroku ps:scale web=1
+    heroku restart
 
 ## Running play commands remotely
 
@@ -106,4 +111,45 @@ play! 2.0-beta, http://www.playframework.org
 > Type "exit" or use Ctrl+D to leave this console.
 
 [My first application] $
+```
+
+## Finetuning
+
+Even for simple apps, the heroku slug size will soon exceed 100MB, which is the allowed range.
+The reason is the .ivy cache that is included in the slug. You can easily overcome that using your own custom heroku "build pack". A build pack is a bunch of scripts stored in a remote git repository. The are fetched and executed at compile time. The original build pack is available here: https://github.com/heroku/heroku-buildpack-scala.
+
+You simply fork it on github and change the ```bin/compile``` script towards its end:
+
+```
+...
+mkdir -p $CACHE_DIR
+for DIR in $CACHED_DIRS ; do
+  rm -rf $CACHE_DIR/$DIR
+  mkdir -p $CACHE_DIR/$DIR
+  cp -r $DIR/.  $CACHE_DIR/$DIR
+echo "-----> Dropping ivy cache from the slug: $DIR"
+rm -rf $SBT_USER_HOME/.ivy2
+done
+```
+
+Using the same tool, you can overcome another problem: On heroku, the scala template compilation needs the UTF8 encoding to be explicitly set. Simply change that in your build pack like that:
+
+```
+...
+echo "-----> Running: sbt $SBT_TASKS"
+test -e "$SBT_BINDIR"/sbt.boot.properties && PROPS_OPTION="-Dsbt.boot.properties=$SBT_BINDIR/sbt.boot.properties"
+HOME="$SBT_USER_HOME_ABSOLUTE" java -Xmx512M -Dfile.encoding=UTF8 -Duser.home="$SBT_USER_HOME_ABSOLUTE" -Divy.default.ivy.user.dir="$SBT_USER_HOME_ABSOLUTE/.ivy2" $PROPS_OPTION -jar "$SBT_BINDIR"/$SBT_JAR $SBT_TASKS 2>&1 | sed -u 's/^/       /'
+if [ "${PIPESTATUS[*]}" != "0 0" ]; then
+  echo " !     Failed to build app with SBT $SBT_VERSION"
+  exit 1
+fi
+...
+```
+
+Here you can find an example of a working build pack: https://github.com/joergviola/heroku-buildpack-scala.
+
+Last step: Add the build pack address as a config var to heroku:
+
+```
+heroku config:add BUILDPACK_URL='git@github.com:joergviola/heroku-buildpack-scala.git'
 ```

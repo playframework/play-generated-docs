@@ -46,7 +46,7 @@ val userForm = Form(
   )(User.apply)(User.unapply)
 )
 
-val anyData = Map("email" -> "bob@gmail.com", "age" -> "18")
+val anyData = Map("name" -> "bob", "age" -> "18")
 val user: User = userForm.bind(anyData).get
 ```
 
@@ -64,10 +64,8 @@ val userForm = Form(
     "name" -> text,
     "age" -> number,
     "accept" -> checked("Please accept the terms and conditions")
-  )( 
-    (name, age, _) => User(name, age),
-    (user: User) => Some(user.name, user.age, false)
-  )
+  )((name, age, _) => User(name, age))
+   ((user: User) => Some((user.name, user.age, false))
 )
 ```
 
@@ -86,8 +84,8 @@ case class User(name: String, age: Int)
 
 val userForm = Form(
   mapping(
-    "name" -> text verifying(required),
-    "age" -> number verifying(min(0), max(100))
+    "name" -> text.verifying(required),
+    "age" -> number.verifying(min(0), max(100))
   )(User.apply)(User.unapply)
 )
 ```
@@ -110,7 +108,7 @@ val loginForm = Form(
   tuple(
     "email" -> nonEmptyText,
     "password" -> text
-  ) verifying("Invalid user name or password", { 
+  ) verifying("Invalid user name or password", fields => fields match { 
       case (e, p) => User.authenticate(e,p).isDefined 
   })
 )
@@ -190,10 +188,25 @@ val userForm = Form(
 
 > **Note:** The email field will be ignored and set to `None` if the field `email` is missing in the request payload or if it contains a blank value.
 
+## Ignored values
+
+If you want a form to have a static value for a field:
+
+```scala
+case class User(id: Long, name: String, email: Option[String])
+
+val userForm = Form(
+  mapping(
+    "id" -> ignored(1234),
+    "name" -> text,
+    "email" -> optional(text)
+  )(User.apply, User.unapply)
+)
+```
+
 Now you can mix optional, nested and repeated mappings any way you want to create complex forms.
 
 > **Next:** [[Using the form template helpers | ScalaFormHelpers]]
-
 
 
 

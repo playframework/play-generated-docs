@@ -8,6 +8,6 @@ While one can really take advantage of most play features while building a full 
 
 A ```Global``` object extending ```GlobalSettings``` in the global name space is the key wiring point. GlobalSettings has a method ``` def onRouteRequest(request: RequestHeader): Option[Handler] ``` that's handling play's routing. 
 
-One could easily provide an alternative implementation and start using play as an REST library! 
+One could easily provide an alternative implementation and start using play as a REST library! 
 
 See [this](https://github.com/typesafehub/play2-mini/blob/master/src/main/scala/com/typesafe/play/mini/Setup.scala) for an example.

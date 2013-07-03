@@ -7,9 +7,9 @@ As a template is a standard Scala function, you can execute it from a test and c
 ```
 @Test
 public void renderTemplate() {
-    Content html = views.html.index.render("Coco");
-    assertThat(contentType(html)).isEqualTo("text/html");
-    assertThat(contentAsString(html)).contains("Coco");
+  Content html = views.html.index.render("Coco");
+  assertThat(contentType(html)).isEqualTo("text/html");
+  assertThat(contentAsString(html)).contains("Coco");
 }
 ```
 
@@ -20,7 +20,9 @@ You can also retrieve an action reference from the reverse router, such as `cont
 ```
 @Test
 public void callIndex() {
-    Result result = callAction(controllers.routes.ref.Application.index("Kiki"));   
+    Result result = callAction(
+      controllers.routes.ref.Application.index("Kiki")
+    );
     assertThat(status(result)).isEqualTo(OK);
     assertThat(contentType(result)).isEqualTo("text/html");
     assertThat(charset(result)).isEqualTo("utf-8");
@@ -35,8 +37,8 @@ Instead of calling the `Action` yourself, you can let the `Router` do it:
 ```
 @Test
 public void badRoute() {
-    Result result = routeAndCall(fakeRequest(GET, "/xx/Kiki"));
-    assertThat(result).isNull();
+  Result result = routeAndCall(fakeRequest(GET, "/xx/Kiki"));
+  assertThat(result).isNull();
 }
 ```
 

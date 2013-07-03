@@ -34,4 +34,11 @@ def feedTitle(feedUrl: String) = Action {
 }
 ```
 
+## Post url-form-encoded data
+
+To post url-form-encoded data a `Map[String, Seq[String]]` needs to be passed into post()
+
+```scala
+WS.url(url).post(Map("key" -> Seq("value")))
+```
 > **Next:** [[OpenID Support in Play | ScalaOpenID]]

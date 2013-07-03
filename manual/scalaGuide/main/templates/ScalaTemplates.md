@@ -90,13 +90,13 @@ You can also use default values for parameters:
 Or even several parameter groups:
 
 ```scala
-@(title:String)(body: => Html)
+@(title:String)(body: Html)
 ```
 
 And even implicit parameters:
 
 ```scala
-@(title: String)(body: => Html)(implicit request: play.api.mvc.Request)
+@(title: String)(body: Html)(implicit request: RequestHeader)
 ```
 
 ## Iterating

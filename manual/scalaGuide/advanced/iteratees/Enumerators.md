@@ -70,7 +70,7 @@ val eventuallyResult: Promise[String] = {
 Since an `Enumerator` pushes some input into an iteratee and eventually return a new state of the iteratee, we can go on pushing more input into the returned iteratee using another `Enumerator`. This can be done either by using the `flatMap` function on `Promise`s or more simply by combining `Enumerator` instancess using the `andThen` method, as follows:
 
 ```scala
-val colorsEnumerators = Enumerator("Red","Blue","Green")
+val colors = Enumerator("Red","Blue","Green")
 
 val moreColors = Enumerator("Grey","Orange","Yellow")
 
@@ -159,13 +159,13 @@ Indeed one interesting way of organizing a streamful application is by creating 
 ```scala
 object AvailableStreams {
 
-  val cpu: Enumerator[JsValue] = Enumerator.fromCallback( /* code here */ )
+  val cpu: Enumerator[JsValue] = Enumerator.fromCallback(/* code here */)
 
-  val memory: Enumerator[JsValue] = Enumerator.fromCallback( /* code here */ )
+  val memory: Enumerator[JsValue] = Enumerator.fromCallback(/* code here */)
 
-  val threads: Enumerator[JsValue] = Enumerator.fromCallback( /* code here */ ) 
+  val threads: Enumerator[JsValue] = Enumerator.fromCallback(/* code here */)
 
-  val heap: Enumerator[JsValue] = Enumerator.fromCallback( /* code here */ )
+  val heap: Enumerator[JsValue] = Enumerator.fromCallback(/* code here */)
 
 }
 

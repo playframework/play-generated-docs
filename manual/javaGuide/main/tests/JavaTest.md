@@ -25,6 +25,8 @@ public class SimpleTest {
         int a = 1 + 1;
         assertThat(a).isEqualTo(2);
     }
+
+}
 ```
 
 ## Running in a fake application
@@ -34,13 +36,13 @@ If the code you want to test depends on a running application, you can easily cr
 ```
 @Test
 public void findById() {
-    running(fakeApplication(), new Runnable() {
-       public void run() {
-           Computer macintosh = Computer.find.byId(21l);
-           assertThat(macintosh.name).isEqualTo("Macintosh");
-           assertThat(formatted(macintosh.introduced)).isEqualTo("1984-01-24");
-       }
-    });
+  running(fakeApplication(), new Runnable() {
+    public void run() {
+      Computer macintosh = Computer.find.byId(21l);
+      assertThat(macintosh.name).isEqualTo("Macintosh");
+      assertThat(formatted(macintosh.introduced)).isEqualTo("1984-01-24");
+    }
+  });
 }
 ```
 

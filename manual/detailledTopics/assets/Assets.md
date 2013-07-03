@@ -53,6 +53,20 @@ controllers.Assets.at("public", "javascripts/jquery.js")
 
 This action will look-up the file and serve it, if it exists.
 
+Note, if you define asset mappings outside "public," you'll need to tell
+sbt about it, e.g. if you want:
+
+```
+GET  /assets/*file               Assets.at("public", file)
+GET  /liabilities/*file          Assets.at("foo", file)
+```
+
+you should add this to Build.scala:
+
+```
+playAssetsDirectories <+= baseDirectory / "foo"
+```
+
 ## Reverse routing for public assets
 
 As for any controller mapped in the routes file, a reverse controller is created in `controllers.routes.Assets`. You use this to reverse the URL needed to fetch a public resource. For example, from a template:
@@ -106,5 +120,17 @@ Usually, using Etag is enough to have proper caching. However if you want to spe
 # ~~~~~
 "assets.cache./public/stylesheets/bootstrap.min.css"="max-age=3600"
 ```
+
+## Managed assets
+
+By default play compiles all managed assets that are kept in the ```app/assets``` folder. The compilation process will clean and recompile all managed assets regardless of the change. This is the safest strategy since tracking dependencies can be very tricky with front end technologies. 
+
+>Note if you are dealing with a lot of managed assets this strategy can be very slow. For this reason there is a way to recompile only the change file and its supposed dependencies. You can turn on this experimental feature by adding the following to your settings:
+```
+incrementalAssetsCompilation := true
+```
+
+You will learn more about managed assets on the next few pages.
+
 
 > **Next:** [[Using CoffeeScript | AssetsCoffeeScript]]

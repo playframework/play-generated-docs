@@ -24,6 +24,16 @@ You can retrieve the data later:
 News news = Cache.get("item.key");
 ```
 
+How to remove the key is as follows.
+
+```
+// 2.0 final
+Cache.set("item.key", null, 0)
+// later
+Cache.remove("item.key")
+
+```
+
 ## Caching HTTP responses
 
 You can easily create a smart cached action using standard `Action` composition. 

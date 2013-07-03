@@ -100,7 +100,7 @@ It generates Html like:
     <div class="input">
         <input type="text" name="username" id="username" value="">
         <span class="help-inline">This field is required!, Another error</span>
-        <span class="help-block">Required, Another constraint</d</span> 
+        <span class="help-block">Required, Another constraint</span> 
     </div>
 </div>
 ```

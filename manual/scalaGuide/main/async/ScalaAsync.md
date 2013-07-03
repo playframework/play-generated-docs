@@ -58,8 +58,8 @@ def index = Action {
   Async {
     promiseOfInt.orTimeout("Oops", 1000).map { eitherIntorTimeout =>
       eitherIorTimeout.fold(
-        timeout => InternalServerError(timeout),
-        i => Ok("Got result: " + i)    
+        i => Ok("Got result: " + i),
+        timeout => InternalServerError(timeout)
       )    
     }  
   }

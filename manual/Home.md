@@ -43,7 +43,7 @@
     1. [[Deploying to Heroku | ProductionHeroku]]
     1. [[Set-up a front-end HTTP server | HTTPServer]]
 
-## Additional documentations
+## Additional documentation
 
 1. [[Scala|http://docs.scala-lang.org/]]
 1. [[Akka|http://akka.io/docs/]]
@@ -60,13 +60,12 @@
 1. [[Pull requests | PullRequests]]
 1. [[Contributor guidelines | Guidelines]]
 
+## Modules and plugins
+
+1. [[Temporary modules directory | Modules]]
+
 ## Contributing to this documentation
 
 > The documentation is freely editable on [[https://github.com/playframework/Play20/wiki]]. Feel free to fix mistakes directly in the pages. 
 >
 > However if you want to provide additional documentation, please create new pages and reference them from here. A member of the core team will take care of integrating it in the most appropriate section.
-
-### To be integrated:
-
-1. [[Missing parts | Missing]]
-1. [[Tips and tricks | Tips]]

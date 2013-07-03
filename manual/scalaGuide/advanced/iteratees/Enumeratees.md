@@ -26,12 +26,12 @@ val toInt: Enumeratee[String,Int] = Enumeratee.map[String]{ s => s.toInt }
 val adaptedIteratee: Iteratee[String,Int] = toInt.transform(sum)
 
 //this works!
-strings >>| adaptedIteratee
+strings |>> adaptedIteratee
 ```
 There is a symbolic alternative to the `transform` method, `&>>` which we can use in our previous example:
 
 ```scala
-strings >>> toInt &>> sum 
+strings |>> toInt &>> sum 
 ```
 
 The `map` method will create an 'Enumeratee' that uses a provided `From => To` function to map the input from the `From` type to the `To` type. We can also adapt the `Enumerator`:
@@ -40,13 +40,13 @@ The `map` method will create an 'Enumeratee' that uses a provided `From => To` f
 val adaptedEnumerator: Enumerator[Int] = strings.through(toInt)
 
 //this works!
-adaptedEnumerator >>> sum
+adaptedEnumerator |>> sum
 ```
 
 Here too, we can use a symbolic version of the `through` method:
 
 ```scala
-strings &> toInt >>> sum
+strings &> toInt |>> sum
 ```
 
 Let’s have a look at the `transform` signature defined in the `Enumeratee` trait:
@@ -140,7 +140,7 @@ val limitTo100: Enumeratee[Array[Byte],[Array[Byte]]] = {
 }
 
 val limitedFillInMemory: Iteratee[Array[Byte,Int]] = {
-  limit &>> fillInMemory
+  limitTo100 &>> fillInMemory
 }
 ```
 
@@ -160,7 +160,7 @@ val limitTo100: Enumeratee[Array[Byte],[Array[Byte]]] = {
 
 // We are sure not to get more than 100 bytes loaded into memory
 val limitedFillInMemory: Iteratee[Array[Byte,Int]] = {
-  limit &>> fillInMemory
+  limitTo100 &>> fillInMemory
 }
 ```
 

@@ -8,10 +8,10 @@ Play supports special url format for both **MySQL** and **PostgreSQL**:
 
 ```
 # To configure MySQL
-db.default.url=mysql://localhost:root@secret/myDatabase
+db.default.url="mysql://user:password@localhost/database"
 
 # To configure PostgreSQL
-db.default.url=postgres://localhost:root@secret/myDatabase
+db.default.url="postgres://user:password@localhost/database"
 ```
 
 ## Reference

@@ -33,7 +33,7 @@ def index = Action { implicit request =>
   session.get("connected").map { user =>
     Ok("Hello " + user)
   }.getOrElse {
-    Unauthaurized("Oops, you are not connected")
+    Unauthorized("Oops, you are not connected")
   }
 }
 ```

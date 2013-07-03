@@ -17,14 +17,13 @@
 - [[The Build system | Build]]
 - [[Working with public assets | Assets]]
 - [[Managing database evolutions | Evolutions]]
-- [[Configuration | Configuration]]
+- [[Configuration file syntax and features | Configuration]]
 - [[Deploying your application | Production]]
 
-### Additional documentations
+### Additional documentation
 
 - [[Scala|http://docs.scala-lang.org/]]
 - [[Akka|http://akka.io/docs/]]
 - [[sbt|http://www.scala-sbt.org/learn.html]]
 - [[Configuration|https://github.com/typesafehub/config]]
 - [[Logback|http://logback.qos.ch/documentation.html]]
-

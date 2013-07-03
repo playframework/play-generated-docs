@@ -107,3 +107,5 @@ object ApplicationBuild extends Build {
 }
 
 ```
+
+> **Next:** [[Working with sub-projects | SBTSubProjects]]

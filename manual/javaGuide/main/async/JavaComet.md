@@ -10,7 +10,7 @@ Let’s write a first proof-of-concept: create an enumerator generating `<script
 public static Result index() {
   // Prepare a chunked text stream
   Chunks<String> chunks = new StringChunks() {
-    
+
     // Called when the stream is ready
     public void onReady(Chunks.Out<String> out) {
       out.write("<script>console.log('kiki')</script>");
@@ -18,12 +18,11 @@ public static Result index() {
       out.write("<script>console.log('bar')</script>");
       out.close();
     }
-    
-  }
-  
+
+  };
+
   response().setContentType("text/html");
-  
-  ok(chunks);
+  return ok(chunks);
 }
 ```
 

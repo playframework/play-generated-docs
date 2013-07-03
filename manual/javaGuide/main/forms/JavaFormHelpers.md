@@ -96,12 +96,12 @@ This field constructor generates HTML like the following:
 
 ```
 <div class="clearfix error" id="username_field">
-    <label for="username">Username:</label>
-    <div class="input">
-        <input type="text" name="username" id="username" value="">
-        <span class="help-inline">This field is required!, Another error</span>
-        <span class="help-block">Required, Another constraint</d</span> 
-    </div>
+  <label for="username">Username:</label>
+  <div class="input">
+    <input type="text" name="username" id="username" value="">
+    <span class="help-inline">This field is required!, Another error</span>
+    <span class="help-block">Required, Another constraint</d</span> 
+  </div>
 </div>
 ```
 

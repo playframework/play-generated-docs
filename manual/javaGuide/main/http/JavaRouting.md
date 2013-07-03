@@ -199,4 +199,14 @@ public static Result index() {
 }
 ```
 
+
+##Imports
+If you are tired to always write `controller.Application`, then you can define  default import
+
+```scala
+val main = PlayProject(…).settings(
+  routesImport += "controller._"
+)
+```
+
 > **Next:** [[Manipulating the response | JavaResponse]]

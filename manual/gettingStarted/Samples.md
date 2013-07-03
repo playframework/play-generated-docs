@@ -74,7 +74,9 @@ This mobile web application monitors Play server performance. It demonstrates:
 
 - advanced usage of Enumerators and Enumeratees.
 
+----
+
 > **Next:** 
 >
->   - [[Play 2.0 for Scala developers | ScalaHome]]
->   - [[Play 2.0 for Java developers | JavaHome]]
+> – [[Play 2.0 for Scala developers | ScalaHome]]
+> – [[Play 2.0 for Java developers | JavaHome]]

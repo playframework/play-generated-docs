@@ -16,7 +16,7 @@ You can externalize messages in the `conf/messages.xxx` files.
 
 The default `conf/messages` file matches all languages. You can specify additional language messages files, such as `conf/messages.fr` or `conf/messages.en-US`.
 
-You can retrieve messages for the current language using the `play.api.i18n.Messages` object:
+You can retrieve messages for the current language using the `play.i18n.Messages` object:
 
 ```
 String title = Messages.get("home.title")

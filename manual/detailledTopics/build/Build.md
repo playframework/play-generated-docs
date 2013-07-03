@@ -48,3 +48,8 @@ The Play console and all development features like live reloading are implemente
 ```
 addSbtPlugin("play" % "sbt-plugin" % "2.0")
 ```
+
+You might need to add the Typesafe repository in your list of resolvers, see : http://github.com/playframework/Play20/wiki/Repositories
+
+
+> **Next:** [[About SBT Settings | SBTSettings]]

@@ -35,11 +35,17 @@ Two JavaScript files will be compiled: `public/javascripts/main.js` and `public/
 
 ## Options
 
-CoffeeScript compilation can be configured in your project’s `Build.scala` file. The only option currently supported is *bare* mode.
+CoffeeScript compilation can be configured in your project’s `Build.scala` file (in the settings part of the `PlayProject`). The only option currently supported is *bare* mode.
 
 ```
-coffeeScriptOptions := Seq("bare")
+coffeescriptOptions := Seq("bare")
 ```
+> Note there is a new experimental option which lets you use the native coffee script compiler. The benefit is that it's way faster, the disadvantage is that it's an external dependency. If you want to try this, add this to your settings:
+
+```
+coffeescriptOptions := Seq("native", "/usr/local/bin/coffe -p")
+```
+
 
 By default, the JavaScript code is generated inside a top-level function safety wrapper, preventing it from polluting the global scope. The `bare` option removes this function wrapper.
 

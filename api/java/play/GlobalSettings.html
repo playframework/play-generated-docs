@@ -6,7 +6,7 @@
 GlobalSettings (playframework)
 </TITLE>
 
-<META NAME="date" CONTENT="2012-03-13">
+<META NAME="date" CONTENT="2012-05-02">
 
 <LINK REL ="stylesheet" TYPE="text/css" HREF="../stylesheet.css" TITLE="Style">
 
@@ -179,6 +179,14 @@ GlobalSettings is instantiated by the framework when an application starts, to l
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;play.api.mvc.Handler</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../play/GlobalSettings.html#onRouteRequest(play.api.mvc.RequestHeader)">onRouteRequest</A></B>(play.api.mvc.RequestHeader&nbsp;request)</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Called when an HTTP request has been received.</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;void</CODE></FONT></TD>
 <TD><CODE><B><A HREF="../play/GlobalSettings.html#onStart(play.Application)">onStart</A></B>(<A HREF="../play/Application.html" title="class in play">Application</A>&nbsp;app)</CODE>
 
@@ -300,6 +308,24 @@ public <A HREF="../play/mvc/Action.html" title="class in play.mvc">Action</A> <B
 <DD><DL>
 <DT><B>Parameters:</B><DD><CODE>request</CODE> - The HTTP Request<DD><CODE>actionMethod</CODE> - The action method containing the user code for this Action.
 <DT><B>Returns:</B><DD>The default implementation returns a raw Action calling the method.</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="onRouteRequest(play.api.mvc.RequestHeader)"><!-- --></A><H3>
+onRouteRequest</H3>
+<PRE>
+public play.api.mvc.Handler <B>onRouteRequest</B>(play.api.mvc.RequestHeader&nbsp;request)</PRE>
+<DL>
+<DD>Called when an HTTP request has been received.
+ The default implementation (return null) means to use the application router to find the appropriate action 
+ 
+ By overriding this method one can provide an alternative routing mechanism. 
+ Please note, though, this API is very low level, useful for plugin/module authors only.
+<P>
+<DD><DL>
+<DT><B>Parameters:</B><DD><CODE>request</CODE> - the HTTP request header as seen by the core framework (the body has not been parsed yet)
+<DT><B>Returns:</B><DD>an action to handle this request - if no action is returned, a 404 not found result will be sent to client</DL>
 </DD>
 </DL>
 <HR>

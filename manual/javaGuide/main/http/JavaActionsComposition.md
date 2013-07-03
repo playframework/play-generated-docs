@@ -44,7 +44,7 @@ At one point you need to delegate to the wrapped action using `delegate.call(...
 You also mix with several actions:
 
 ```
-@With(Authenticated.class, Cached.class)
+@With({Authenticated.class, Cached.class})
 public static Result index() {
   return ok("It works!");
 }

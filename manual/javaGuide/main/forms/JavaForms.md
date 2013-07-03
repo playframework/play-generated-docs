@@ -84,8 +84,10 @@ if(userForm.hasErrors()) {
 Sometimes you’ll want to fill a form with existing values, typically for editing:
 
 ```java
-userForm.fill(new User("bob@gmail.com", "secret"))
+userForm = userForm.fill(new User("bob@gmail.com", "secret"))
 ```
+
+> **Tip:** `Form` objects are immutable - calls to methods like `bind()` and `fill()` will return a new object filled with the new data.
 
 ## Register a custom DataBinder
 
@@ -93,27 +95,29 @@ In case you want to define a mapping from a custom object to a form field string
 For an object like JodaTime's `LocalTime` it could look like this:
 
 ```java
-Formatters.register(LocalTime.class, new Formatters.SimpleFormatter<LocalTime>() {
+Formatters.register(LocalTime.class, new SimpleFormatter<LocalTime>() {
 
-	private Pattern timePattern = Pattern.compile("([012]?\\\\d)(?:[\\\\s:\\\\._\\\\-]+([0-5]\\\\d))?"); 
-	
-	@Override
-	public LocalTime parse(String input, Locale l) throws ParseException {
-		Matcher m = timePattern.matcher(input);
-		if (!m.find()) throw new ParseException("No valid Input",0);
-		int hour = Integer.valueOf(m.group(1));
-		int min = m.group(2) == null ? 0 : Integer.valueOf(m.group(2));
-		return new LocalTime(hour, min);
-	}
-
-	@Override
-	public String print(LocalTime localTime, Locale l) {
-		return localTime.toString("HH:mm");
-	}
+    private Pattern timePattern = Pattern.compile(
+        "([012]?\\\\d)(?:[\\\\s:\\\\._\\\\-]+([0-5]\\\\d))?"
+    ); 
+    
+    @Override
+    public LocalTime parse(String input, Locale l) throws ParseException {
+        Matcher m = timePattern.matcher(input);
+        if (!m.find()) throw new ParseException("No valid Input",0);
+        int hour = Integer.valueOf(m.group(1));
+        int min = m.group(2) == null ? 0 : Integer.valueOf(m.group(2));
+        return new LocalTime(hour, min);
+    }
+    
+    @Override
+    public String print(LocalTime localTime, Locale l) {
+        return localTime.toString("HH:mm");
+    }
+  
 });
 ```
 
 > **Next:** [[Using the form template helpers | JavaFormHelpers]]
-
 
 

@@ -32,7 +32,7 @@ The `play new` command creates a new directory `todolist/` and populates it with
 * `public/` contains all the publicly available resources, which includes JavaScript, stylesheets and images directories.
 * `test/` contains all the application tests. Tests can be written as JUnit tests.
 
-> Because Play uses UTF-8 as the single encoding, it’s very important that all text files hosted in these directories use this encoding. Make sure to configure your text editor accordingly.
+> Because Play uses UTF-8 as the single encoding, it’s very important that all text files hosted in these directories use this encoding. Make sure to configure your text editor accordingly. In the windows system the editor configuration must be ANSI encode
 
 ## Using the Play console
 
@@ -183,7 +183,7 @@ public class Application extends Controller {
 }
 ```
 
-As you see we use `TODO` as result in our actions implementation. Because we don’t want to write the actions implementation yet, we can use the built-in `TODO` result that will return a `503 Not Implemented` response. 
+As you see we use `TODO` as result in our actions implementation. Because we don’t want to write the actions implementation yet, we can use the built-in `TODO` result that will return a `501 Not Implemented` response. 
 
 You can try to access the [[http://localhost:9000/tasks]] to see that:
 

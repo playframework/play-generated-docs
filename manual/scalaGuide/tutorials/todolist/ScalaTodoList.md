@@ -14,13 +14,13 @@ You will of course need a text editor. You can also use a Scala IDE such as Ecli
 
 Now that Play is correctly installed, it’s time to create the new application. Creating a Play application is pretty easy and fully managed by the Play command line utility. That allows for standard project layouts between all Play applications.
 
-On the command line and type:
+On the command line type:
 
 ```
 $ play new todolist
 ```
 
-It will prompt you for a few question. Select the _Create a simple Scala application_ project template.
+It will prompt you for a few questions. Select the _Create a simple Scala application_ project template.
 
 [[images/new.png]]
 
@@ -28,9 +28,9 @@ The `play new` command creates a new directory `todolist/` and populates it with
 
 - `app/` contains the application’s core, split between models, controllers and views directories. This is the directory where .scala source files live.
 - `conf/` contains all the application’s configuration files, especially the main `application.conf` file, the `routes` definition files and the `messages` files used for internationalization.
-- `project` contains the build scripts. The build system is based on sbt. But a new play application comes with a default build script that will just works fine for our application.
+- `project` contains the build scripts. The build system is based on sbt. But a new Play application comes with a default build script that will just work fine for our application.
 - `public/` contains all the publicly available resources, which includes JavaScript, stylesheets and images directories.
-- `test/` contains all the application tests. Tests are written either as Specs2 specifications.
+- `test/` contains all the application tests. Tests are written as Specs2 specifications.
 
 > Because Play uses UTF-8 as single encoding, it’s very important that all text files hosted in these directories are encoded using this charset. Make sure to configure your text editor accordingly.
 
@@ -137,7 +137,7 @@ As you see errors are beautifully displayed directly in your browser.
 
 ## Preparing the application
 
-For our to do list application, we need a few actions and the corresponding urls. Let’s start by defining the **routes**. 
+For our to do list application, we need a few actions and the corresponding URLs. Let’s start by defining the **routes**. 
 
 Edit the `conf/routes` file:
 
@@ -153,7 +153,7 @@ POST    /tasks/:id/delete       controllers.Application.deleteTask(id: Long)
 
 We create a route to list all tasks, and a couple of others to handle task creation and deletion. The route to handle task deletion defines a variable argument `id` in the URL path. This value is then passed to the `deleteTask` method that will create the `Action`.
 
-Now if your reload in your browser, you will see that Play cannot compile your `routes` file:
+Now if you reload in your browser, you will see that Play cannot compile your `routes` file:
 
 [[images/routes.png]]
 
@@ -175,7 +175,7 @@ object Application extends Controller {
 }
 ```
 
-As you see we use `TODO` to define our action implementations. Because we don’t want to write the action implementations yet, we can use the built-in `TODO` action that will return a `503 Not Implemented` HTTP response. 
+As you see we use `TODO` to define our action implementations. Because we don’t want to write the action implementations yet, we can use the built-in `TODO` action that will return a `501 Not Implemented` HTTP response. 
 
 You can try to access the [[http://localhost:9000/tasks]] to see that:
 
@@ -284,6 +284,8 @@ The type of `taskForm` is then `Form[String]` since it is a form generating a si
 Now we have all elements needed to display the application page. Let’s write the `tasks` action:
 
 ```
+import models.Task
+
 def tasks = Action {
   Ok(views.html.index(Task.all(), taskForm))
 }
@@ -311,7 +313,7 @@ def newTask = Action { implicit request =>
 }
 ```
 
-To fill the form we need to have the `request` in the scope, used by `bindFromRequest` to create a new form filled with the request data. If there are any errors in the form, we redisplay it (here we use **400 Bad Request** instead of **200 OK**). If there are no errors, we create the task and then redirect to the task list.
+To fill the form we need to have the `request` in the scope, so it can be used by `bindFromRequest` to create a new form filled with the request data. If there are any errors in the form, we redisplay it (here we use **400 Bad Request** instead of **200 OK**). If there are no errors, we create the task and then redirect to the task list.
 
 > **Note:** Read more about the [[Form submissions|ScalaForms]].
 
@@ -423,7 +425,7 @@ def deleteTask(id: Long) = Action {
 
 ## Deploying to Heroku
 
-All features are complete, so it’s time to deploy our application in production. Let’s deploy it to Heroku. First, you need to create a `Procfile` for Heroku. Create the `Procfile` in the root application directory:
+All features are complete, so it’s time to deploy our application to production. Let’s deploy it to Heroku. First, you need to create a `Procfile` for Heroku. Create the `Procfile` in the root application directory:
 
 ```
 web: target/start -Dhttp.port=${PORT} -DapplyEvolutions.default=true -Ddb.default.url=${DATABASE_URL} -Ddb.default.driver=org.postgresql.Driver
@@ -431,7 +433,7 @@ web: target/start -Dhttp.port=${PORT} -DapplyEvolutions.default=true -Ddb.defaul
 
 > **Note:** Read more about [[Deploying to Heroku|ProductionHeroku]].
 
-We use system properties to override the application configuration, when running on Heroku. Since Heroku provides an PostgreSQL database, we need to add the required driver to our application dependencies. 
+We use system properties to override the application configuration, when running on Heroku. Since Heroku provides a PostgreSQL database, we need to add the required driver to our application dependencies. 
 
 Specify it into the `project/Build.scala` file:
 

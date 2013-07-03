@@ -67,7 +67,7 @@ You can ask Play to start a **JPDA** debug port when starting the console. You c
 $ play debug
 ```
 
-When a JPDA port is available, the JVM wil log this line during boot:
+When a JPDA port is available, the JVM will log this line during boot:
 
 ```
 Listening for transport dt_socket at address: 9999

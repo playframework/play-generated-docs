@@ -56,7 +56,7 @@ object Global extends GlobalSettings {
 
 ## Handling missing actions and binding errors
 
-If the framework doesn’t find an `Action` for a request, the `onActionNotFound` operation will be called:
+If the framework doesn’t find an `Action` for a request, the `onHandlerNotFound` operation will be called:
 
 ```scala
 import play.api._
@@ -65,7 +65,7 @@ import play.api.mvc.Results.__
 
 object Global extends GlobalSettings {
 
-  override def onActionNotFound(request: RequestHeader) = {
+  override def onHandlerNotFound(request: RequestHeader): Result = {
     NotFound(
       views.html.notFoundPage(request.path)
     )

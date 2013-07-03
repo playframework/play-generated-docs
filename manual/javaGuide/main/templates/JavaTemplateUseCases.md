@@ -126,4 +126,61 @@ Again, there’s nothing special here. You can just call any other template you 
 </div>
 ```
 
+## moreScripts and moreStyles equivalents
+
+To define old moreScripts or moreStyles variables equivalents (like on Play! 1.x) on a Scala template, you can define a variable in the main template like this :
+
+```html
+@(title: String, scripts: Html = Html(""))(content: Html)
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>@title</title>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+        <script src="@routes.Assets.at("javascripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+        @scripts
+    </head>
+    <body>
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="brand" href="#">Movies</a>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            @content
+        </div>
+    </body>
+</html>
+```
+
+And on an extended template that need an extra script : 
+
+```html
+@scripts = {
+    <script type="text/javascript">alert("hello !");</script>
+}
+
+@main("Title",scripts){
+
+   Html content here ...
+
+}
+
+```
+
+And on an extended template that not need an extra script, just like this :
+
+```html
+@main("Title"){
+
+   Html content here ...
+
+}
+```
+
 > **Next:** [[HTTP form submission and validation | JavaForms]]

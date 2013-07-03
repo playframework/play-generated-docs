@@ -13,9 +13,9 @@ An HTTP request (at least for those using the POST and PUT operations) contains 
 In the Java API, all body parsers must generate a `play.mvc.Http.RequestBody` value. This value computed by the body parser can then be retrieved via `request().body()`:
 
 ```
-pulic static Result index() {
+public static Result index() {
   RequestBody body = request().body();
-  ok("Got body: " + body);
+  return ok("Got body: " + body);
 }
 ```
 
@@ -23,9 +23,9 @@ You can specify the `BodyParser` to use for a particular action using the `@Body
 
 ```
 @BodyParser.Of(BodyParser.Json.class)
-pulic static Result index() {
+public static Result index() {
   RequestBody body = request().body();
-  ok("Got json: " + body.asJson());
+  return ok("Got json: " + body.asJson());
 }
 ```
 

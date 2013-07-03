@@ -69,6 +69,12 @@ To execute an update, you can use `executeUpdate()`, which returns the number of
 val result: Int = SQL("delete from City where id = 99").executeUpdate()
 ```
 
+If you are inserting data that has an auto-generated `Long` primary key, you can call `executeInsert()`. If you have more than one generated key, or it is not a Long, `executeInsert` can be passed a `ResultSetParser` to return the correct key.
+
+```scala
+val id: Int = SQL("insert into City(name, country) values ({name}, {country}")
+              .on("Cambridge", "New Zealand").executeInsert()
+```
 Since Scala supports multi-line strings, feel free to use them for complex SQL statements:
 
 ```scala
@@ -81,7 +87,7 @@ val sqlQuery = SQL(
 )
 ```
 
-If your SQL query needs dynamic parameters, you can declare placeholders like `{name}` in the query string, and later assign them a value:
+If your SQL query needs dynamic parameters, you can declare placeholders like `{name}` in the query string, and later assign a value to them:
 
 ```scala
 SQL(
@@ -103,13 +109,13 @@ When you call `apply()` on any SQL statement, you will receive a lazy `Stream` o
 // Create an SQL query
 val selectCountries = SQL("Select * from Country")
  
-// Transform the resulting Stream[Row] as a List[(String,String)]
+// Transform the resulting Stream[Row] to a List[(String,String)]
 val countries = selectCountries().map(row => 
   row[String]("code") -> row[String]("name")
 ).toList
 ```
 
-In the following example we will count the number of `Country` entries in the database, so result set will be a single row with a single column:
+In the following example we will count the number of `Country` entries in the database, so the result set will be a single row with a single column:
 
 ```scala
 // First retrieve the first row
@@ -123,7 +129,7 @@ val countryCount = firstRow[Long]("c")
 
 You can also use Pattern Matching to match and extract the `Row` content. In this case the column name doesn’t matter. Only the order and the type of the parameters is used to match.
 
-The following example transform each row to the correct Scala type:
+The following example transforms each row to the correct Scala type:
 
 ```scala
 case class SmallCountry(name:String) 
@@ -139,6 +145,30 @@ val countries = SQL("Select name,population from Country")().collect {
 
 Note that since `collect(…)` ignores the cases where the partial function isn’t defined, it allows your code to safely ignore rows that you don’t expect.
 
+## Special data types
+
+### Clobs
+
+CLOBs/TEXTs can be extracted as so:
+
+```scala
+SQL("Select name,summary from Country")().map {
+  case Row(name: String, summary: java.sql.Clob) => name -> summary
+}
+```
+
+Here we specifically chose to use `map`, as we want an exception if the row isn't in the format we expect.
+
+### Binary
+
+Extracting binary data is similarly possible:
+
+```scala
+SQL("Select name,image from Country")().map {
+  case Row(name: String, image: Array[Byte]) => name -> image
+}
+```
+
 ## Dealing with Nullable columns
 
 If a column can contain `Null` values in the database schema, you need to manipulate it as an `Option` type.
@@ -151,7 +181,7 @@ SQL("Select name,indepYear from Country")().collect {
 }
 ```
 
-If you try to match this column as `Int` it won’t be able to parse `Null` cases. Suppose you try to retrieve the column content as `Int` directly from the dictionary:
+If you try to match this column as `Int` it won’t be able to parse `Null` values. Suppose you try to retrieve the column content as `Int` directly from the dictionary:
 
 ```scala
 SQL("Select name,indepYear from Country")().map { row =>
@@ -215,13 +245,13 @@ val result:List[String~Int] = {
 }
 ```
 
-Now what about the `String~Int` type? This is an **Anorm** type that is not really convenient to use outside of your database access code. You would want have a simple tuple `(String, Int)` instead. You can use the `map` function on a `RowParser` to transform its result to a more convenient type:
+Now what about the `String~Int` type? This is an **Anorm** type that is not really convenient to use outside of your database access code. You would rather have a simple tuple `(String, Int)` instead. You can use the `map` function on a `RowParser` to transform its result to a more convenient type:
 
 ```scala
 str("name") ~ int("population") map { case n~p => (n,p) }
 ```
 
-> **Note:** We created a tuple `(String,Int)` here, but there is nothing stoping you from transforming the `RowParser` result to any other type, such as a custom case class.
+> **Note:** We created a tuple `(String,Int)` here, but there is nothing stopping you from transforming the `RowParser` result to any other type, such as a custom case class.
 
 Now, because transforming `A~B~C` types to `(A,B,C)` is a common task, we provide a `flatten` function that does exactly that. So you finally write:
 

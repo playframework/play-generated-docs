@@ -10,7 +10,7 @@ A Play application defines a special actor system to be used by the application.
 
 > **Note:** Nothing prevents you from using another actor system from within a Play application. The provided default is convenient if you only need to start a few actors without bothering to set-up your own actor system.
 
-You can access the default application actor system using the `play.libs.concurrent.Akka` helper:
+You can access the default application actor system using the `play.api.libs.concurrent.Akka` helper:
 
 ```scala
 val myActor = Akka.system.actorOf(Props[MyActor], name = "myactor")
@@ -21,15 +21,15 @@ val myActor = Akka.system.actorOf(Props[MyActor], name = "myactor")
 The default actor system configuration is read from the Play application configuration file. For example, to configure the default dispatcher of the application actor system, add these lines to the `conf/application.conf` file:
 
 ```
-akka.default-dispatcher.core-pool-size-max = 64
-akka.debug.receive = on
+akka.default-dispatcher.fork-join-executor.pool-size-max =64
+akka.actor.debug.receive = on
 ```
 
 > **Note:** You can also configure any other actor system from the same file; just provide a top configuration key.
 
 ## Converting Akka `Future` to Play `Promise`
 
-When you interact asynchronously with an Akka actor we will get `Future` object. You can easily convert it to a Play `Promise` using the implicit conversion provided in `play.libs.Akka._`:
+When you interact asynchronously with an Akka actor we will get `Future` object. You can easily convert it to a Play `Promise` using the implicit conversion provided in `play.api.libs.concurrent._`:
 
 ```scala
 def index = Action {

@@ -2,7 +2,7 @@
 
 ## About sbt settings
 
-The sbt build script defines settings for your project. You can also define you own custom settings for your project, as described in the [[sbt documentation | https://github.com/harrah/xsbt/wiki]].
+The sbt build script defines settings for your project. You can also define your own custom settings for your project, as described in the [[sbt documentation | https://github.com/harrah/xsbt/wiki]].
 
 To set a basic setting, use the `:=` operator:
 
@@ -37,75 +37,132 @@ These default settings define the default imports for generated templates (such 
 When you define your sbt project using `PlayProject` instead of `Project`, you will get a default set of settings. Here is the default configuration:
 
 ```scala
-resolvers ++= Seq(
-  "Maven Repository" at "http://repo1.maven.org/maven2/",
-  "Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases/"
-),
+    resolvers ++= Seq(
+      "Typesafe Releases Repository" at "http://repo.typesafe.com/typesafe/releases/",
+      "Typesafe Snapshots Repository" at "http://repo.typesafe.com/typesafe/snapshots/"
+    ),
 
-target <<= baseDirectory / "target",
+    target <<= baseDirectory / "target",
 
-sourceDirectory in Compile <<= baseDirectory / "app",
+    sourceDirectory in Compile <<= baseDirectory / "app",
+    sourceDirectory in Test <<= baseDirectory / "test",
 
-confDirectory <<= baseDirectory / "conf",
+    confDirectory <<= baseDirectory / "conf",
 
-scalaSource in Compile <<= baseDirectory / "app",
+    resourceDirectory in Compile <<= baseDirectory / "conf",
 
-javaSource in Compile <<= baseDirectory / "app",
+    scalaSource in Compile <<= baseDirectory / "app",
+    scalaSource in Test <<= baseDirectory / "test",
 
-distDirectory <<= baseDirectory / "dist",
+    javaSource in Compile <<= baseDirectory / "app",
+    javaSource in Test <<= baseDirectory / "test",
 
-libraryDependencies += "play" %% "play" % play.core.PlayVersion.current,
+    distDirectory <<= baseDirectory / "dist",
 
-sourceGenerators in Compile <+= (confDirectory, sourceManaged in Compile) map RouteFiles,
+    libraryDependencies += "play" %% "play" % play.core.PlayVersion.current,
 
-sourceGenerators in Compile <+= (sourceDirectory in Compile, sourceManaged in Compile, templatesTypes, templatesImport) map ScalaTemplates,
+    libraryDependencies += "play" %% "play-test" % play.core.PlayVersion.current % "test",
 
-commands ++= Seq(
-  playCommand, playRunCommand, playStartCommand, playHelpCommand, h2Command, classpathCommand, licenseCommand, computeDependenciesCommand
-),
+    parallelExecution in Test := false,
 
-shellPrompt := playPrompt,
+    testOptions in Test += Tests.Setup { loader =>
+      loader.loadClass("play.api.Logger").getMethod("init", classOf[java.io.File]).invoke(null, new java.io.File("."))
+    },
 
-copyResources in Compile <<= (copyResources in Compile, playCopyResources) map { (r, pr) => r ++ pr },
+    testOptions in Test += Tests.Cleanup { loader =>
+      loader.loadClass("play.api.Logger").getMethod("shutdown").invoke(null)
+    },
 
-mainClass in (Compile, run) := Some(classOf[play.core.server.NettyServer].getName),
+    testOptions in Test += Tests.Argument("sequential", "true"),
 
-compile in (Compile) <<= PostCompile,
+    testOptions in Test += Tests.Argument("junitxml", "console"),
 
-dist <<= distTask,
+    testListeners <<= (target, streams).map((t, s) => Seq(new eu.henkelmann.sbt.JUnitXmlTestsListener(t.getAbsolutePath, s.log))),
 
-computeDependencies <<= computeDependenciesTask,
+    testResultReporter <<= testResultReporterTask,
 
-playCopyResources <<= playCopyResourcesTask,
+    testResultReporterReset <<= testResultReporterResetTask,
 
-playCompileEverything <<= playCompileEverythingTask,
+    sourceGenerators in Compile <+= (confDirectory, sourceManaged in Compile, routesImport) map RouteFiles,
 
-playPackageEverything <<= playPackageEverythingTask,
+    // Adds config/routes to continious triggers
+    watchSources <+= confDirectory map { _ / "routes" },
 
-playReload <<= playReloadTask,
+    sourceGenerators in Compile <+= (sourceDirectory in Compile, sourceManaged in Compile, templatesTypes, templatesImport) map ScalaTemplates,
 
-playStage <<= playStageTask,
+    // Adds views template to continious triggers
+    watchSources <++= baseDirectory map { path => ((path / "app") ** "*.scala.*").get },
 
-cleanFiles <+= distDirectory.identity,
+    commands ++= Seq(shCommand, playCommand, playRunCommand, playStartCommand, h2Command, classpathCommand, licenseCommand, computeDependenciesCommand),
 
-resourceGenerators in Compile <+= LessCompiler,
+    shellPrompt := playPrompt,
 
-resourceGenerators in Compile <+= CoffeescriptCompiler,
+    copyResources in Compile <<= (copyResources in Compile, playCopyAssets) map { (r, pr) => r ++ pr },
 
-resourceGenerators in Compile <+= JavascriptCompiler,
+    mainClass in (Compile, run) := Some(classOf[play.core.server.NettyServer].getName),
 
-playResourceDirectories := Seq.empty[File],
+    compile in (Compile) <<= PostCompile,
 
-playResourceDirectories <+= baseDirectory / "conf",
+    dist <<= distTask,
 
-playResourceDirectories <+= baseDirectory / "public",
+    computeDependencies <<= computeDependenciesTask,
 
-templatesImport := Seq("play.api.templates._", "play.api.templates.PlayMagic._"),
+    playVersion := play.core.PlayVersion.current,
 
-templatesTypes := {	
-  case "html" => ("play.api.templates.Html", "play.api.templates.HtmlFormat")
-  case "txt" => ("play.api.templates.Txt", "play.api.templates.TxtFormat")
-  case "xml" => ("play.api.templates.Xml", "play.api.templates.XmlFormat")
-}
+    playCommonClassloader <<= playCommonClassloaderTask,
+
+    playCopyAssets <<= playCopyAssetsTask,
+
+    playCompileEverything <<= playCompileEverythingTask,
+
+    playPackageEverything <<= playPackageEverythingTask,
+
+    playReload <<= playReloadTask,
+
+    playStage <<= playStageTask,
+
+    cleanFiles <+= distDirectory,
+
+    ebeanEnabled := false,
+
+    logManager <<= extraLoggers(PlayLogManager.default),
+
+    ivyLoggingLevel := UpdateLogging.DownloadOnly,
+
+    routesImport := Seq.empty[String],
+
+    playIntellij <<= playIntellijTask,
+
+    playHash <<= playHashTask,
+
+    // Assets
+
+    playAssetsDirectories := Seq.empty[File],
+
+    playAssetsDirectories <+= baseDirectory / "public",
+
+    resourceGenerators in Compile <+= LessCompiler,
+    resourceGenerators in Compile <+= CoffeescriptCompiler,
+    resourceGenerators in Compile <+= JavascriptCompiler,
+
+    lessEntryPoints <<= (sourceDirectory in Compile)(base => ((base / "assets" ** "*.less") --- base / "assets" ** "_*")),
+    coffeescriptEntryPoints <<= (sourceDirectory in Compile)(base => base / "assets" ** "*.coffee"),
+    javascriptEntryPoints <<= (sourceDirectory in Compile)(base => ((base / "assets" ** "*.js") --- (base / "assets" ** "_*"))),
+
+    lessOptions := Seq.empty[String],
+    coffeescriptOptions := Seq.empty[String],
+    closureCompilerOptions := Seq.empty[String],
+
+    // Templates
+
+    templatesImport := Seq("play.api.templates._", "play.api.templates.PlayMagic._"),
+
+    templatesTypes := {
+      case "html" => ("play.api.templates.Html", "play.api.templates.HtmlFormat")
+      case "txt" => ("play.api.templates.Txt", "play.api.templates.TxtFormat")
+      case "xml" => ("play.api.templates.Xml", "play.api.templates.XmlFormat")
+    })
 
 ```
+
+> **Next:** [[Managing library dependencies | SBTDependencies]]

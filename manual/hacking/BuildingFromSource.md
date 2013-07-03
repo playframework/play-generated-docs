@@ -51,7 +51,10 @@ resolvers ++= Seq(
   ...
 )
 
-addSbtPlugin("play" % "sbt-plugin" % "2.0-RC1-SNAPSHOT")
+addSbtPlugin("play" % "sbt-plugin" % "2.1-SNAPSHOT")
 ```
 
 to project/plugins.sbt.
+
+## Using Code in eclipse.
+You can find at [Stackoverflow](http://stackoverflow.com/questions/10053201/how-to-setup-eclipse-ide-work-on-the-playframework-2-0/10055419#10055419) some information how to setup eclipse to work on the code.

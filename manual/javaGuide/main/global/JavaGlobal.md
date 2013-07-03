@@ -58,7 +58,7 @@ public class Global extends GlobalSettings {
 
 ## Handling action not found
 
-If the framework doesn’t find an action method for a request, the `onActionNotFound` operation will be called:
+If the framework doesn’t find an action method for a request, the `onHandlerNotFound` operation will be called:
 
 ```java
 import play.*;
@@ -69,7 +69,7 @@ import static play.mvc.Results.*;
 public class Global extends GlobalSettings {
 
   @Override
-  public Result onActionNotFound(String uri) {
+  public Result onHandlerNotFound(String uri) {
     return notFound(
       views.html.pageNotFound(uri)
     );

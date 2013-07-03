@@ -12,7 +12,7 @@ app                      → Application sources
  └ controllers           → Application controllers
  └ models                → Application business layer
  └ views                 → Templates
-conf                     → Configurations files
+conf                     → Configurations files and other non-compiled resources (on classpath)
  └ application.conf      → Main configuration file
  └ routes                → Routes definition
 public                   → Public assets

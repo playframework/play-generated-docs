@@ -65,7 +65,7 @@ showSum([2,3], 4);
 
 ## Minification
 
-A minified file is also generated, where `.js` is replaces by `.min.js`. In our example, it would be `test.min.js`. If you want to use the minified file instead of the regular file, you need to change the script source attribute in your HTML.
+A minified file is also generated, where `.js` is replaced by `.min.js`. In our example, it would be `test.min.js`. If you want to use the minified file instead of the regular file, you need to change the script source attribute in your HTML.
 
 ## Entry Points
 

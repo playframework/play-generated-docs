@@ -29,18 +29,58 @@ import play.mvc.*;
 
 public class Controller extends Controller {
 
- public static Result feedTitle(String feedUrl) {
+  public static Result feedTitle(String feedUrl) {
     return async(
-        WS.url(feedUrl).get().map(
-	    new Function<WS.Response, Result>() {
-	        public Result apply(WS.Response response) {
-	            return ok("Feed title:" + response.asJson().findPath("title"));
-	        }
-	    }
-	)
+      WS.url(feedUrl).get().map(
+        new Function<WS.Response, Result>() {
+          public Result apply(WS.Response response) {
+            return ok("Feed title:" + response.asJson().findPath("title"));
+          }
+        }
+      )
     );
- }
+  }
+  
 }
+```
+
+## Composing results
+
+If you want to make multiple calls in sequence, this can be achieved using `flatMap`:
+
+```
+  public static Result feedComments(String feedUrl) {
+    return async(
+      WS.url(feedUrl).get().flatMap(
+        new Function<WS.Response, Promise<Result>>() {
+          public Promise<Result> apply(WS.Response response) {
+            return WS.url(response.asJson().findPath("commentsUrl").get().map(
+              new Function<WS.Response, Result>() {
+                public Result apply(WS.Response response) {
+                  return ok("Number of comments: " + response.asJson().findPath("count"));
+                }
+              }
+            );
+          }
+        }
+      )
+    );
+  }
+```
+
+## Configuring the HTTP client
+
+The HTTP client can be configured globally in `application.conf` via a few properties:
+
+```
+# Follow redirects (default true)
+ws.followRedirects=true
+# Connection timeout in ms (default 120000)
+ws.timeout=120000
+# Whether to use http.proxy* JVM system properties (default true)
+ws.useProxyProperties=true
+# A user agent string to set on each request (default none)
+ws.useragent="My Play Application"
 ```
 
 > **Next:** [[Integrating with Akka | JavaAkka]]

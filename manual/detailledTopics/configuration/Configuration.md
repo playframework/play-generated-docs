@@ -8,7 +8,7 @@ The default configuration file of a Play 2.0 application must be defined in `con
 
 System properties can be used to force a different config source:
 
-* `config.resource` specifies a resource name - not a basename, i.e. application.conf not application
+* `config.resource` specifies a resource name - not a basename, i.e. application and not application.conf
 * `config.file` specifies a filesystem path, again it should include the extension, not be a basename
 * `config.url` specifies a URL
 

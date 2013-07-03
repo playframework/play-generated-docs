@@ -35,7 +35,7 @@ A simple way to execute a block of code asynchronously and to get a `Promise` is
 Promise<Integer> promiseOfInt = Akka.future(
   new Callable<Integer>() {
     public Integer call() {
-      intensiveComputation();
+      return intensiveComputation();
     }
   }
 );
@@ -52,11 +52,11 @@ public static Result index() {
   Promise<Integer> promiseOfInt = Akka.future(
     new Callable<Integer>() {
       public Integer call() {
-        intensiveComputation();
+        return intensiveComputation();
       }
     }
   );
-  async(
+  return async(
     promiseOfInt.map(
       new Function<Integer,Result>() {
         public Result apply(Integer i) {

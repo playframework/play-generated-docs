@@ -21,8 +21,8 @@ ActorRef myActor = Akka.system().actorOf(new Props(MyActor.class));
 The default actor system configuration is read from the Play application configuration file. For example to configure the default dispatcher of the application actor system, add these lines to the `conf/application.conf` file:
 
 ```
-akka.default-dispatcher.core-pool-size-max = 64
-akka.debug.receive = on
+akka.default-dispatcher.fork-join-executor.pool-size-max =64
+akka.actor.debug.receive = on
 ```
 
 > **Note:** You can also configure any other actor system from the same file, just provide a top configuration key.
