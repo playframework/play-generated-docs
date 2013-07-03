@@ -98,7 +98,7 @@ java.lang.Object
 <DT><B>All Implemented Interfaces:</B> <DD>java.io.Serializable</DD>
 </DL>
 <DL>
-<DT><B>Direct Known Subclasses:</B> <DD><A HREF="../../../play/db/jpa/JPAModel.html" title="class in play.db.jpa">JPAModel</A></DD>
+<DT><B>Direct Known Subclasses:</B> <DD><A HREF="../../../play/db/jpa/Model.html" title="class in play.db.jpa">Model</A></DD>
 </DL>
 <HR>
 <DL>
@@ -130,6 +130,14 @@ A super class for JPA entities
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A JPAQuery</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>static&nbsp;class</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../play/db/jpa/JPASupport.JPAQueryException.html" title="class in play.db.jpa">JPASupport.JPAQueryException</A></B></CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
 </TR>
 </TABLE>
 &nbsp;<!-- =========== FIELD SUMMARY =========== -->
@@ -173,6 +181,22 @@ A super class for JPA entities
 <TR BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
 <TH ALIGN="left" COLSPAN="2"><FONT SIZE="+2">
 <B>Method Summary</B></FONT></TH>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../play/db/jpa/JPASupport.html#afterLoad()">afterLoad</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;void</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../play/db/jpa/JPASupport.html#afterSave()">afterSave</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
@@ -469,22 +493,6 @@ T</CODE></FONT></TD>
 </TR>
 <TR BGCOLOR="white" CLASS="TableRowColor">
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../play/db/jpa/JPASupport.html#onLoad()">onLoad</A></B>()</CODE>
-
-<BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
-</TR>
-<TR BGCOLOR="white" CLASS="TableRowColor">
-<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
-<CODE>&nbsp;void</CODE></FONT></TD>
-<TD><CODE><B><A HREF="../../../play/db/jpa/JPASupport.html#onSave()">onSave</A></B>()</CODE>
-
-<BR>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
-</TR>
-<TR BGCOLOR="white" CLASS="TableRowColor">
-<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>
 <TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" SUMMARY="">
 <TR ALIGN="right" VALIGN="">
@@ -537,6 +545,14 @@ T</CODE></FONT></TD>
 <TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
 <CODE>&nbsp;java.lang.String</CODE></FONT></TD>
 <TD><CODE><B><A HREF="../../../play/db/jpa/JPASupport.html#toString()">toString</A></B>()</CODE>
+
+<BR>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
+</TR>
+<TR BGCOLOR="white" CLASS="TableRowColor">
+<TD ALIGN="right" VALIGN="top" WIDTH="1%"><FONT SIZE="-1">
+<CODE>&nbsp;boolean</CODE></FONT></TD>
+<TD><CODE><B><A HREF="../../../play/db/jpa/JPASupport.html#validateAndSave()">validateAndSave</A></B>()</CODE>
 
 <BR>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</TD>
@@ -637,6 +653,20 @@ edit</H3>
 public static &lt;T extends <A HREF="../../../play/db/jpa/JPASupport.html" title="class in play.db.jpa">JPASupport</A>&gt; T <B>edit</B>(java.lang.Object&nbsp;o,
                                             java.lang.String&nbsp;name,
                                             java.util.Map&lt;java.lang.String,java.lang.String[]&gt;&nbsp;params)</PRE>
+<DL>
+<DD><DL>
+</DL>
+</DD>
+<DD><DL>
+</DL>
+</DD>
+</DL>
+<HR>
+
+<A NAME="validateAndSave()"><!-- --></A><H3>
+validateAndSave</H3>
+<PRE>
+public boolean <B>validateAndSave</B>()</PRE>
 <DL>
 <DD><DL>
 </DL>
@@ -1078,10 +1108,10 @@ public java.lang.Object <B>getEntityId</B>()</PRE>
 </DL>
 <HR>
 
-<A NAME="onLoad()"><!-- --></A><H3>
-onLoad</H3>
+<A NAME="afterLoad()"><!-- --></A><H3>
+afterLoad</H3>
 <PRE>
-public void <B>onLoad</B>()</PRE>
+public void <B>afterLoad</B>()</PRE>
 <DL>
 <DD><DL>
 </DL>
@@ -1092,10 +1122,10 @@ public void <B>onLoad</B>()</PRE>
 </DL>
 <HR>
 
-<A NAME="onSave()"><!-- --></A><H3>
-onSave</H3>
+<A NAME="afterSave()"><!-- --></A><H3>
+afterSave</H3>
 <PRE>
-public void <B>onSave</B>()</PRE>
+public void <B>afterSave</B>()</PRE>
 <DL>
 <DD><DL>
 </DL>

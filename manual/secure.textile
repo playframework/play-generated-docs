@@ -16,7 +16,7 @@ In the **conf/routes** file, import the default module routes by adding this lin
 bc. # Import Secure routes
 *      /                module:secure
 
-p(note). **Note** that it's not required to use the default routes file. You can also define your own routes, or mix the two.
+p(note). **Note** that it’s not required to use the default routes file. You can also define your own routes, or mix the two.
 
 h2. <a>Protecting a controller</a>
 
@@ -35,14 +35,14 @@ This controller will be automatically protected with the default authentication 
 
 h2. <a>Customize the authentication mechanism</a>
 
-By default, the login page will accept any login/password. To customize it your application has to provide a **Security** provider. Just create a class in the **controllers** package that extends the **controllers.Secure.Security** class. Then you can override the **authentify(String username, String password)** method.
+By default, the login page will accept any login/password. To customize it your application has to provide a **Security** provider. Just create a class in the **controllers** package that extends the **controllers.Secure.Security** class. Then you can override the **authenticate(String username, String password)** method.
 
 bc. package controllers;
  
 public class Security extends Secure.Security {
     
-    static boolean authentify(String username, String password) {
-        User user = User.find("byEmail", username);
+    static boolean authenticate(String username, String password) {
+        User user = User.find("byEmail", username).first();
         return user != null && user.password.equals(password);
     }    
     
@@ -52,7 +52,7 @@ p(note). **Note** that you can override other methods as well to customize how t
 
 h2. <a>Retrieving the connected user</a>
 
-From your application code, your can reuse the Security helper that you've just created to retrieve the connected user.
+From your application code, your can reuse the Security helper that you’ve just created to retrieve the connected user.
 
 bc. @With(Secure.class)
 public class Application extends Controller {
