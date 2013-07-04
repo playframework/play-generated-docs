@@ -46,7 +46,7 @@
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A full configuration set.</p><p>The underlying implementation is provided by https://github.com/typesafehub/config.
 </p></div><dl class="paramcmts block"><dt class="param">underlying</dt><dd class="cmt"><p>the underlying Config implementation
-</p></dd></dl><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/Play20/tree/2.1.2-RC2/framework/src/play/src/main/scala/play/api/Configuration.scala" target="_blank">Configuration.scala</a></dd></dl><div class="toggleContainer block">
+</p></dd></dl><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/Play20/tree/master/framework/src/play/src/main/scala/play/api/Configuration.scala" target="_blank">Configuration.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -272,9 +272,9 @@ config objects.</p>
       </span>
       </h4>
       <p class="shortcomment cmt">Retrieves a configuration value as a <code>Boolean</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a configuration value as a <code>Boolean</code>.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
-<span class="kw">val</span> isEnabled = configuration.getString(<span class="lit">"engine.isEnabled"</span>)</pre><p>A configuration error will be thrown if the configuration value is not a valid <code>Boolean</code>.
+<span class="kw">val</span> isEnabled = configuration.getBoolean(<span class="lit">"engine.isEnabled"</span>)</pre><p>A configuration error will be thrown if the configuration value is not a valid <code>Boolean</code>.
 Authorized vales are <code>yes/no or true/false.
-</code></p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a configuration value
+</code></p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>the configuration key, relative to the configuration root key</p></dd><dt>returns</dt><dd class="cmt"><p>a configuration value
 </p></dd></dl></div>
     </li><li name="play.api.Configuration#getBooleanList" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getBooleanList(path:String):Option[java.util.List[Boolean]]"></a>
@@ -347,7 +347,7 @@ Authorized vales are <code>yes/no or true/false.
       </h4>
       <p class="shortcomment cmt">Retrieves a sub-configuration, i.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a sub-configuration, i.e. a configuration instance containing all keys starting with a given prefix.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
 <span class="kw">val</span> engineConfig = configuration.getSub(<span class="lit">"engine"</span>)</pre><p>The root key of this new configuration will be ‘engine’, and you can access any sub-keys relatively.
-</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a new configuration
+</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>the root prefix for this sub-configuration</p></dd><dt>returns</dt><dd class="cmt"><p>a new configuration
 </p></dd></dl></div>
     </li><li name="play.api.Configuration#getConfigList" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getConfigList(path:String):Option[java.util.List[play.api.Configuration]]"></a>
@@ -378,7 +378,7 @@ Authorized vales are <code>yes/no or true/false.
       </h4>
       <p class="shortcomment cmt">Retrieves a configuration value as a <code>Double</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a configuration value as a <code>Double</code>.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
 <span class="kw">val</span> population = configuration.getDouble(<span class="lit">"world.population"</span>)</pre><p>A configuration error will be thrown if the configuration value is not a valid <code>Double</code>.
-</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a configuration value
+</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>the configuration key, relative to the configuration root key</p></dd><dt>returns</dt><dd class="cmt"><p>a configuration value
 </p></dd></dl></div>
     </li><li name="play.api.Configuration#getDoubleList" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getDoubleList(path:String):Option[java.util.List[Double]]"></a>
@@ -408,7 +408,7 @@ Authorized vales are <code>yes/no or true/false.
       </h4>
       <p class="shortcomment cmt">Retrieves a configuration value as an <code>Int</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a configuration value as an <code>Int</code>.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
 <span class="kw">val</span> poolSize = configuration.getInt(<span class="lit">"engine.pool.size"</span>)</pre><p>A configuration error will be thrown if the configuration value is not a valid <code>Int</code>.
-</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a configuration value
+</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>the configuration key, relative to the configuration root key</p></dd><dt>returns</dt><dd class="cmt"><p>a configuration value
 </p></dd></dl></div>
     </li><li name="play.api.Configuration#getIntList" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getIntList(path:String):Option[java.util.List[Integer]]"></a>
@@ -452,7 +452,7 @@ Authorized vales are <code>yes/no or true/false.
       </h4>
       <p class="shortcomment cmt">Retrieves a configuration value as a <code>Long</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a configuration value as a <code>Long</code>.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
 <span class="kw">val</span> duration = configuration.getLong(<span class="lit">"timeout.duration"</span>)</pre><p>A configuration error will be thrown if the configuration value is not a valid <code>Long</code>.
-</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a configuration value
+</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>the configuration key, relative to the configuration root key</p></dd><dt>returns</dt><dd class="cmt"><p>a configuration value
 </p></dd></dl></div>
     </li><li name="play.api.Configuration#getLongList" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getLongList(path:String):Option[java.util.List[Long]]"></a>
@@ -538,7 +538,7 @@ Authorized vales are <code>yes/no or true/false.
       </h4>
       <p class="shortcomment cmt">Retrieves a configuration value as a <code>Number</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a configuration value as a <code>Number</code>.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
 <span class="kw">val</span> counter = configuration.getNumber(<span class="lit">"foo.counter"</span>)</pre><p>A configuration error will be thrown if the configuration value is not a valid <code>Number</code>.
-</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a configuration value
+</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>the configuration key, relative to the configuration root key</p></dd><dt>returns</dt><dd class="cmt"><p>a configuration value
 </p></dd></dl></div>
     </li><li name="play.api.Configuration#getNumberList" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getNumberList(path:String):Option[java.util.List[Number]]"></a>
@@ -596,7 +596,7 @@ Authorized vales are <code>yes/no or true/false.
       </h4>
       <p class="shortcomment cmt">Retrieves a configuration value as a <code>String</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a configuration value as a <code>String</code>.</p><p>This method supports an optional set of valid values:</p><pre><span class="kw">val</span> config = Configuration.load()
 <span class="kw">val</span> mode = config.getString(<span class="lit">"engine.mode"</span>, <span class="std">Some</span>(<span class="std">Set</span>(<span class="lit">"dev"</span>,<span class="lit">"prod"</span>)))</pre><p>A configuration error will be thrown if the configuration value does not match any of the required values.
-</p></div><dl class="paramcmts block"><dt class="param">validValues</dt><dd class="cmt"><p>valid values for this configuration</p></dd><dt>returns</dt><dd class="cmt"><p>a configuration value
+</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>the configuration key, relative to configuration root key</p></dd><dt class="param">validValues</dt><dd class="cmt"><p>valid values for this configuration</p></dd><dt>returns</dt><dd class="cmt"><p>a configuration value
 </p></dd></dl></div>
     </li><li name="play.api.Configuration#getStringList" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getStringList(path:String):Option[java.util.List[String]]"></a>
@@ -707,7 +707,7 @@ Authorized vales are <code>yes/no or true/false.
       </span>
       </h4>
       <p class="shortcomment cmt">Creates a configuration error for a specific configuration key.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a configuration error for a specific configuration key.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
-<span class="kw">throw</span> configuration.reportError(<span class="lit">"engine.connectionUrl"</span>, <span class="lit">"Cannot connect!"</span>)</pre></div><dl class="paramcmts block"><dt class="param">message</dt><dd class="cmt"><p>the error message</p></dd><dt class="param">e</dt><dd class="cmt"><p>the related exception</p></dd><dt>returns</dt><dd class="cmt"><p>a configuration exception
+<span class="kw">throw</span> configuration.reportError(<span class="lit">"engine.connectionUrl"</span>, <span class="lit">"Cannot connect!"</span>)</pre></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>the configuration key, related to this error</p></dd><dt class="param">message</dt><dd class="cmt"><p>the error message</p></dd><dt class="param">e</dt><dd class="cmt"><p>the related exception</p></dd><dt>returns</dt><dd class="cmt"><p>a configuration exception
 </p></dd></dl></div>
     </li><li name="play.api.Configuration#subKeys" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="subKeys:Set[String]"></a>

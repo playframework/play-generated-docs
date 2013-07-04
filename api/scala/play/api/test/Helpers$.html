@@ -45,7 +45,7 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Helper functions to run tests.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/Play20/tree/2.1.2-RC2/framework/src/play-test/src/main/scala/play/api/test/Helpers.scala" target="_blank">Helpers.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/Play20/tree/master/framework/src/play-test/src/main/scala/play/api/test/Helpers.scala" target="_blank">Helpers.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="../http/HeaderNames.html" class="extype" name="play.api.http.HeaderNames">HeaderNames</a>, <a href="../http/Status.html" class="extype" name="play.api.http.Status">Status</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -1730,15 +1730,15 @@
       </h4>
       <p class="shortcomment cmt">Block until a Promise is redeemed.</p>
     </li><li name="play.api.test.Helpers#charset" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="charset(of:play.api.mvc.Result):Option[String]"></a>
-      <a id="charset(Result):Option[String]"></a>
+      <a id="charset(of:scala.concurrent.Future[play.api.mvc.SimpleResult]):Option[String]"></a>
+      <a id="charset(Future[SimpleResult]):Option[String]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">charset</span><span class="params">(<span name="of">of: <a href="../mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+        <span class="name">charset</span><span class="params">(<span name="of">of: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Extracts the Charset of this Result value.</p>
@@ -1759,15 +1759,15 @@
               
         </dd></dl></div>
     </li><li name="play.api.test.Helpers#contentAsBytes" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="contentAsBytes(of:play.api.mvc.Result):Array[Byte]"></a>
-      <a id="contentAsBytes(Result):Array[Byte]"></a>
+      <a id="contentAsBytes(of:scala.concurrent.Future[play.api.mvc.SimpleResult]):Array[Byte]"></a>
+      <a id="contentAsBytes(Future[SimpleResult]):Array[Byte]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">contentAsBytes</span><span class="params">(<span name="of">of: <a href="../mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]</span>
+        <span class="name">contentAsBytes</span><span class="params">(<span name="of">of: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>]</span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Extracts the content as bytes.</p>
@@ -1784,16 +1784,42 @@
       </span>
       </h4>
       <p class="shortcomment cmt">Extracts the content as bytes.</p>
-    </li><li name="play.api.test.Helpers#contentAsString" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="contentAsString(of:play.api.mvc.Result):String"></a>
-      <a id="contentAsString(Result):String"></a>
+    </li><li name="play.api.test.Helpers#contentAsJson" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="contentAsJson(of:scala.concurrent.Future[play.api.mvc.SimpleResult]):play.api.libs.json.JsValue"></a>
+      <a id="contentAsJson(Future[SimpleResult]):JsValue"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">contentAsString</span><span class="params">(<span name="of">of: <a href="../mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">contentAsJson</span><span class="params">(<span name="of">of: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>]</span>)</span><span class="result">: <a href="../libs/json/JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Extracts the content as Json.</p>
+    </li><li name="play.api.test.Helpers#contentAsJson" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="contentAsJson(of:play.api.mvc.Content):play.api.libs.json.JsValue"></a>
+      <a id="contentAsJson(Content):JsValue"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">contentAsJson</span><span class="params">(<span name="of">of: <a href="../mvc/Content.html" class="extype" name="play.api.mvc.Content">Content</a></span>)</span><span class="result">: <a href="../libs/json/JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Extracts the content as Json.</p>
+    </li><li name="play.api.test.Helpers#contentAsString" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="contentAsString(of:scala.concurrent.Future[play.api.mvc.SimpleResult]):String"></a>
+      <a id="contentAsString(Future[SimpleResult]):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">contentAsString</span><span class="params">(<span name="of">of: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Extracts the content as String.</p>
@@ -1811,15 +1837,15 @@
       </h4>
       <p class="shortcomment cmt">Extracts the content as String.</p>
     </li><li name="play.api.test.Helpers#contentType" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="contentType(of:play.api.mvc.Result):Option[String]"></a>
-      <a id="contentType(Result):Option[String]"></a>
+      <a id="contentType(of:scala.concurrent.Future[play.api.mvc.SimpleResult]):Option[String]"></a>
+      <a id="contentType(Future[SimpleResult]):Option[String]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">contentType</span><span class="params">(<span name="of">of: <a href="../mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+        <span class="name">contentType</span><span class="params">(<span name="of">of: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Extracts the Content-Type of this Result value.</p>
@@ -1837,15 +1863,15 @@
       </h4>
       <p class="shortcomment cmt">Extracts the Content-Type of this Content value.</p>
     </li><li name="play.api.test.Helpers#cookies" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="cookies(of:play.api.mvc.Result):play.api.mvc.Cookies"></a>
-      <a id="cookies(Result):Cookies"></a>
+      <a id="cookies(of:scala.concurrent.Future[play.api.mvc.SimpleResult]):play.api.mvc.Cookies"></a>
+      <a id="cookies(Future[SimpleResult]):Cookies"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">cookies</span><span class="params">(<span name="of">of: <a href="../mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>)</span><span class="result">: <a href="../mvc/Cookies.html" class="extype" name="play.api.mvc.Cookies">Cookies</a></span>
+        <span class="name">cookies</span><span class="params">(<span name="of">of: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>]</span>)</span><span class="result">: <a href="../mvc/Cookies.html" class="extype" name="play.api.mvc.Cookies">Cookies</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Extracts the Cookies of this Result value.</p>
@@ -1892,15 +1918,15 @@
               
         </dd></dl></div>
     </li><li name="play.api.test.Helpers#flash" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="flash(of:play.api.mvc.Result):play.api.mvc.Flash"></a>
-      <a id="flash(Result):Flash"></a>
+      <a id="flash(of:scala.concurrent.Future[play.api.mvc.SimpleResult]):play.api.mvc.Flash"></a>
+      <a id="flash(Future[SimpleResult]):Flash"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">flash</span><span class="params">(<span name="of">of: <a href="../mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>)</span><span class="result">: <a href="../mvc/Flash.html" class="extype" name="play.api.mvc.Flash">Flash</a></span>
+        <span class="name">flash</span><span class="params">(<span name="of">of: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>]</span>)</span><span class="result">: <a href="../mvc/Flash.html" class="extype" name="play.api.mvc.Flash">Flash</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Extracts the Flash values of this Result value.</p>
@@ -1931,28 +1957,28 @@
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="play.api.test.Helpers#header" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="header(header:String,of:play.api.mvc.Result):Option[String]"></a>
-      <a id="header(String,Result):Option[String]"></a>
+      <a id="header(header:String,of:scala.concurrent.Future[play.api.mvc.SimpleResult]):Option[String]"></a>
+      <a id="header(String,Future[SimpleResult]):Option[String]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">header</span><span class="params">(<span name="header">header: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="of">of: <a href="../mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+        <span class="name">header</span><span class="params">(<span name="header">header: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="of">of: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Extracts an Header value of this Result value.</p>
     </li><li name="play.api.test.Helpers#headers" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="headers(of:play.api.mvc.Result):Map[String,String]"></a>
-      <a id="headers(Result):Map[String,String]"></a>
+      <a id="headers(of:scala.concurrent.Future[play.api.mvc.SimpleResult]):Map[String,String]"></a>
+      <a id="headers(Future[SimpleResult]):Map[String,String]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">headers</span><span class="params">(<span name="of">of: <a href="../mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>)</span><span class="result">: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>]</span>
+        <span class="name">headers</span><span class="params">(<span name="of">of: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Extracts all Headers of this Result value.</p>
@@ -1983,54 +2009,54 @@
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="play.api.test.Helpers#jRoute" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="jRoute[T](app:play.api.Application,r:play.api.test.FakeRequest[T]):Option[play.api.mvc.Result]"></a>
-      <a id="jRoute[T](Application,FakeRequest[T]):Option[Result]"></a>
+      <a id="jRoute[T](app:play.api.Application,r:play.api.test.FakeRequest[T]):Option[scala.concurrent.Future[play.api.mvc.SimpleResult]]"></a>
+      <a id="jRoute[T](Application,FakeRequest[T]):Option[Future[SimpleResult]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">jRoute</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="app">app: <a href="../Application.html" class="extype" name="play.api.Application">Application</a></span>, <span name="r">r: <a href="FakeRequest.html" class="extype" name="play.api.test.FakeRequest">FakeRequest</a>[<span class="extype" name="play.api.test.Helpers.jRoute.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="../mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>
+        <span class="name">jRoute</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="app">app: <a href="../Application.html" class="extype" name="play.api.Application">Application</a></span>, <span name="r">r: <a href="FakeRequest.html" class="extype" name="play.api.test.FakeRequest">FakeRequest</a>[<span class="extype" name="play.api.test.Helpers.jRoute.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>]]</span>
       </span>
       </h4>
       
     </li><li name="play.api.test.Helpers#jRoute" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="jRoute(rh:play.api.mvc.RequestHeader,body:Array[Byte]):Option[play.api.mvc.Result]"></a>
-      <a id="jRoute(RequestHeader,Array[Byte]):Option[Result]"></a>
+      <a id="jRoute(rh:play.api.mvc.RequestHeader,body:Array[Byte]):Option[scala.concurrent.Future[play.api.mvc.SimpleResult]]"></a>
+      <a id="jRoute(RequestHeader,Array[Byte]):Option[Future[SimpleResult]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">jRoute</span><span class="params">(<span name="rh">rh: <a href="../mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>, <span name="body">body: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="../mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>
+        <span class="name">jRoute</span><span class="params">(<span name="rh">rh: <a href="../mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>, <span name="body">body: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>]]</span>
       </span>
       </h4>
       
     </li><li name="play.api.test.Helpers#jRoute" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="jRoute(app:play.api.Application,rh:play.api.mvc.RequestHeader,body:Array[Byte]):Option[play.api.mvc.Result]"></a>
-      <a id="jRoute(Application,RequestHeader,Array[Byte]):Option[Result]"></a>
+      <a id="jRoute(app:play.api.Application,rh:play.api.mvc.RequestHeader,body:Array[Byte]):Option[scala.concurrent.Future[play.api.mvc.SimpleResult]]"></a>
+      <a id="jRoute(Application,RequestHeader,Array[Byte]):Option[Future[SimpleResult]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">jRoute</span><span class="params">(<span name="app">app: <a href="../Application.html" class="extype" name="play.api.Application">Application</a></span>, <span name="rh">rh: <a href="../mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>, <span name="body">body: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="../mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>
+        <span class="name">jRoute</span><span class="params">(<span name="app">app: <a href="../Application.html" class="extype" name="play.api.Application">Application</a></span>, <span name="rh">rh: <a href="../mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>, <span name="body">body: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>]]</span>
       </span>
       </h4>
       
     </li><li name="play.api.test.Helpers#jRoute" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="jRoute(app:play.api.Application,rh:play.api.mvc.RequestHeader):Option[play.api.mvc.Result]"></a>
-      <a id="jRoute(Application,RequestHeader):Option[Result]"></a>
+      <a id="jRoute(app:play.api.Application,rh:play.api.mvc.RequestHeader):Option[scala.concurrent.Future[play.api.mvc.SimpleResult]]"></a>
+      <a id="jRoute(Application,RequestHeader):Option[Future[SimpleResult]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">jRoute</span><span class="params">(<span name="app">app: <a href="../Application.html" class="extype" name="play.api.Application">Application</a></span>, <span name="rh">rh: <a href="../mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="../mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>
+        <span class="name">jRoute</span><span class="params">(<span name="app">app: <a href="../Application.html" class="extype" name="play.api.Application">Application</a></span>, <span name="rh">rh: <a href="../mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>]]</span>
       </span>
       </h4>
       
@@ -2074,70 +2100,70 @@
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="play.api.test.Helpers#redirectLocation" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="redirectLocation(of:play.api.mvc.Result):Option[String]"></a>
-      <a id="redirectLocation(Result):Option[String]"></a>
+      <a id="redirectLocation(of:scala.concurrent.Future[play.api.mvc.SimpleResult]):Option[String]"></a>
+      <a id="redirectLocation(Future[SimpleResult]):Option[String]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">redirectLocation</span><span class="params">(<span name="of">of: <a href="../mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+        <span class="name">redirectLocation</span><span class="params">(<span name="of">of: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Extracts the Location header of this Result value if this Result is a Redirect.</p>
     </li><li name="play.api.test.Helpers#route" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="route[T](req:play.api.mvc.Request[T])(implicitw:play.api.http.Writeable[T]):Option[play.api.mvc.Result]"></a>
-      <a id="route[T](Request[T])(Writeable[T]):Option[Result]"></a>
+      <a id="route[T](req:play.api.mvc.Request[T])(implicitw:play.api.http.Writeable[T]):Option[scala.concurrent.Future[play.api.mvc.SimpleResult]]"></a>
+      <a id="route[T](Request[T])(Writeable[T]):Option[Future[SimpleResult]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">route</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="req">req: <a href="../mvc/Request.html" class="extype" name="play.api.mvc.Request">Request</a>[<span class="extype" name="play.api.test.Helpers.route.T">T</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="w">w: <a href="../http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<span class="extype" name="play.api.test.Helpers.route.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="../mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>
+        <span class="name">route</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="req">req: <a href="../mvc/Request.html" class="extype" name="play.api.mvc.Request">Request</a>[<span class="extype" name="play.api.test.Helpers.route.T">T</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="w">w: <a href="../http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<span class="extype" name="play.api.test.Helpers.route.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>]]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Use the Router to determine the Action to call for this request and execute it.</p><div class="fullcomment"><div class="comment cmt"><p>Use the Router to determine the Action to call for this request and execute it.</p><p>The body is serialised using the implicit writable, so that the action body parser can deserialise it.
 </p></div></div>
     </li><li name="play.api.test.Helpers#route" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="route[T](app:play.api.Application,req:play.api.mvc.Request[T])(implicitw:play.api.http.Writeable[T]):Option[play.api.mvc.Result]"></a>
-      <a id="route[T](Application,Request[T])(Writeable[T]):Option[Result]"></a>
+      <a id="route[T](app:play.api.Application,req:play.api.mvc.Request[T])(implicitw:play.api.http.Writeable[T]):Option[scala.concurrent.Future[play.api.mvc.SimpleResult]]"></a>
+      <a id="route[T](Application,Request[T])(Writeable[T]):Option[Future[SimpleResult]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">route</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="app">app: <a href="../Application.html" class="extype" name="play.api.Application">Application</a></span>, <span name="req">req: <a href="../mvc/Request.html" class="extype" name="play.api.mvc.Request">Request</a>[<span class="extype" name="play.api.test.Helpers.route.T">T</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="w">w: <a href="../http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<span class="extype" name="play.api.test.Helpers.route.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="../mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>
+        <span class="name">route</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="app">app: <a href="../Application.html" class="extype" name="play.api.Application">Application</a></span>, <span name="req">req: <a href="../mvc/Request.html" class="extype" name="play.api.mvc.Request">Request</a>[<span class="extype" name="play.api.test.Helpers.route.T">T</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="w">w: <a href="../http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<span class="extype" name="play.api.test.Helpers.route.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>]]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Use the Router to determine the Action to call for this request and execute it.</p><div class="fullcomment"><div class="comment cmt"><p>Use the Router to determine the Action to call for this request and execute it.</p><p>The body is serialised using the implicit writable, so that the action body parser can deserialise it.
 </p></div></div>
     </li><li name="play.api.test.Helpers#route" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="route[T](rh:play.api.mvc.RequestHeader,body:T)(implicitw:play.api.http.Writeable[T]):Option[play.api.mvc.Result]"></a>
-      <a id="route[T](RequestHeader,T)(Writeable[T]):Option[Result]"></a>
+      <a id="route[T](rh:play.api.mvc.RequestHeader,body:T)(implicitw:play.api.http.Writeable[T]):Option[scala.concurrent.Future[play.api.mvc.SimpleResult]]"></a>
+      <a id="route[T](RequestHeader,T)(Writeable[T]):Option[Future[SimpleResult]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">route</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="rh">rh: <a href="../mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>, <span name="body">body: <span class="extype" name="play.api.test.Helpers.route.T">T</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="w">w: <a href="../http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<span class="extype" name="play.api.test.Helpers.route.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="../mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>
+        <span class="name">route</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="rh">rh: <a href="../mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>, <span name="body">body: <span class="extype" name="play.api.test.Helpers.route.T">T</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="w">w: <a href="../http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<span class="extype" name="play.api.test.Helpers.route.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>]]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Use the Router to determine the Action to call for this request and execute it.</p><div class="fullcomment"><div class="comment cmt"><p>Use the Router to determine the Action to call for this request and execute it.</p><p>The body is serialised using the implicit writable, so that the action body parser can deserialise it.
 </p></div></div>
     </li><li name="play.api.test.Helpers#route" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="route[T](app:play.api.Application,rh:play.api.mvc.RequestHeader,body:T)(implicitw:play.api.http.Writeable[T]):Option[play.api.mvc.Result]"></a>
-      <a id="route[T](Application,RequestHeader,T)(Writeable[T]):Option[Result]"></a>
+      <a id="route[T](app:play.api.Application,rh:play.api.mvc.RequestHeader,body:T)(implicitw:play.api.http.Writeable[T]):Option[scala.concurrent.Future[play.api.mvc.SimpleResult]]"></a>
+      <a id="route[T](Application,RequestHeader,T)(Writeable[T]):Option[Future[SimpleResult]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">route</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="app">app: <a href="../Application.html" class="extype" name="play.api.Application">Application</a></span>, <span name="rh">rh: <a href="../mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>, <span name="body">body: <span class="extype" name="play.api.test.Helpers.route.T">T</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="w">w: <a href="../http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<span class="extype" name="play.api.test.Helpers.route.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="../mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>
+        <span class="name">route</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="app">app: <a href="../Application.html" class="extype" name="play.api.Application">Application</a></span>, <span name="rh">rh: <a href="../mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>, <span name="body">body: <span class="extype" name="play.api.test.Helpers.route.T">T</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="w">w: <a href="../http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<span class="extype" name="play.api.test.Helpers.route.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>]]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Use the Router to determine the Action to call for this request and execute it.</p><div class="fullcomment"><div class="comment cmt"><p>Use the Router to determine the Action to call for this request and execute it.</p><p>The body is serialised using the implicit writable, so that the action body parser can deserialise it.
@@ -2182,30 +2208,30 @@
       </h4>
       <p class="shortcomment cmt">Executes a block of code in a running application.</p>
     </li><li name="play.api.test.Helpers#session" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="session(of:play.api.mvc.Result):play.api.mvc.Session"></a>
-      <a id="session(Result):Session"></a>
+      <a id="session(of:scala.concurrent.Future[play.api.mvc.SimpleResult]):play.api.mvc.Session"></a>
+      <a id="session(Future[SimpleResult]):Session"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">session</span><span class="params">(<span name="of">of: <a href="../mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>)</span><span class="result">: <a href="../mvc/Session.html" class="extype" name="play.api.mvc.Session">Session</a></span>
+        <span class="name">session</span><span class="params">(<span name="of">of: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>]</span>)</span><span class="result">: <a href="../mvc/Session.html" class="extype" name="play.api.mvc.Session">Session</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Extracts the Session of this Result value.</p><div class="fullcomment"><div class="comment cmt"><p>Extracts the Session of this Result value.
 Extracts the Session from this Result value.
 </p></div></div>
     </li><li name="play.api.test.Helpers#status" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="status(of:play.api.mvc.Result):Int"></a>
-      <a id="status(Result):Int"></a>
+      <a id="status(of:scala.concurrent.Future[play.api.mvc.SimpleResult]):Int"></a>
+      <a id="status(Future[SimpleResult]):Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">status</span><span class="params">(<span name="of">of: <a href="../mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>)</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+        <span class="name">status</span><span class="params">(<span name="of">of: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>]</span>)</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Extracts the Status code of this Result value.</p>
@@ -2410,15 +2436,15 @@ testserver.port
         <div id="values" class="values members">
               <h3>Deprecated Value Members</h3>
               <ol><li name="play.api.test.Helpers#routeAndCall" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="routeAndCall[T,ROUTER&lt;:play.core.Router.Routes](router:Class[ROUTER],request:play.api.test.FakeRequest[T]):Option[play.api.mvc.Result]"></a>
-      <a id="routeAndCall[T,ROUTER&lt;:core.Router.Routes](Class[ROUTER],FakeRequest[T]):Option[Result]"></a>
+      <a id="routeAndCall[T,ROUTER&lt;:play.core.Router.Routes](router:Class[ROUTER],request:play.api.test.FakeRequest[T]):Option[scala.concurrent.Future[play.api.mvc.SimpleResult]]"></a>
+      <a id="routeAndCall[T,ROUTER&lt;:core.Router.Routes](Class[ROUTER],FakeRequest[T]):Option[Future[SimpleResult]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 2.1.0) Use route instead.">routeAndCall</span><span class="tparams">[<span name="T">T</span>, <span name="ROUTER">ROUTER &lt;: <span class="extype" name="play.core.Router.Routes">core.Router.Routes</span></span>]</span><span class="params">(<span name="router">router: <span class="extype" name="scala.Predef.Class">Class</span>[<span class="extype" name="play.api.test.Helpers.routeAndCall.ROUTER">ROUTER</span>]</span>, <span name="request">request: <a href="FakeRequest.html" class="extype" name="play.api.test.FakeRequest">FakeRequest</a>[<span class="extype" name="play.api.test.Helpers.routeAndCall.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="../mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>
+        <span class="name deprecated" title="Deprecated: (Since version 2.1.0) Use route instead.">routeAndCall</span><span class="tparams">[<span name="T">T</span>, <span name="ROUTER">ROUTER &lt;: <a href="../../core/Router$$Routes.html" class="extype" name="play.core.Router.Routes">core.Router.Routes</a></span>]</span><span class="params">(<span name="router">router: <span class="extype" name="scala.Predef.Class">Class</span>[<span class="extype" name="play.api.test.Helpers.routeAndCall.ROUTER">ROUTER</span>]</span>, <span name="request">request: <a href="FakeRequest.html" class="extype" name="play.api.test.FakeRequest">FakeRequest</a>[<span class="extype" name="play.api.test.Helpers.routeAndCall.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>]]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Use the Router to determine the Action to call for this request and executes it.</p><div class="fullcomment"><div class="comment cmt"><p>Use the Router to determine the Action to call for this request and executes it.
@@ -2427,15 +2453,15 @@ testserver.port
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.1.0)</i> Use <code>route</code> instead.</p></dd></dl></div>
     </li><li name="play.api.test.Helpers#routeAndCall" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="routeAndCall[T](request:play.api.test.FakeRequest[T]):Option[play.api.mvc.Result]"></a>
-      <a id="routeAndCall[T](FakeRequest[T]):Option[Result]"></a>
+      <a id="routeAndCall[T](request:play.api.test.FakeRequest[T]):Option[scala.concurrent.Future[play.api.mvc.SimpleResult]]"></a>
+      <a id="routeAndCall[T](FakeRequest[T]):Option[Future[SimpleResult]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 2.1.0) Use route instead.">routeAndCall</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="request">request: <a href="FakeRequest.html" class="extype" name="play.api.test.FakeRequest">FakeRequest</a>[<span class="extype" name="play.api.test.Helpers.routeAndCall.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="../mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>
+        <span class="name deprecated" title="Deprecated: (Since version 2.1.0) Use route instead.">routeAndCall</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="request">request: <a href="FakeRequest.html" class="extype" name="play.api.test.FakeRequest">FakeRequest</a>[<span class="extype" name="play.api.test.Helpers.routeAndCall.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>]]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Use the Router to determine the Action to call for this request and executes it.</p><div class="fullcomment"><div class="comment cmt"><p>Use the Router to determine the Action to call for this request and executes it.

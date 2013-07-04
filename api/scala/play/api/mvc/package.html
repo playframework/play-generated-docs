@@ -134,15 +134,15 @@
       <p class="comment cmt">An action is essentially a (Request[A] =&gt; Result) function that
 handles a request and generates a result to be sent to the client.</p>
     </li><li name="play.api.mvc.ActionBuilder" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="ActionBuilderextendsObject"></a>
-      <a id="ActionBuilder:ActionBuilder"></a>
+      <a id="ActionBuilder[R[_]]extendsObject"></a>
+      <a id="ActionBuilder[R[_]]:ActionBuilder[R]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="ActionBuilder.html"><span class="name">ActionBuilder</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a href="ActionBuilder.html"><span class="name">ActionBuilder</span></a><span class="tparams">[<span name="R">R<span class="tparams">[<span name="_">_</span>]</span></span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       <p class="comment cmt">Provides helpers for creating <code>Action</code> values.</p>
@@ -242,21 +242,8 @@ handles a request and generates a result to be sent to the client.</p>
       </h4>
       <p class="comment cmt">AnyContent - XML body
 </p>
-    </li><li name="play.api.mvc.AsyncResult" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="AsyncResultextendsResultwithWithHeaders[play.api.mvc.AsyncResult]withProductwithSerializable"></a>
-      <a id="AsyncResult:AsyncResult"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">case class</span>
-      </span>
-      <span class="symbol">
-        <a href="AsyncResult.html"><span class="name">AsyncResult</span></a><span class="params">(<span name="result">result: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>)</span><span class="result"> extends <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a> with <a href="WithHeaders.html" class="extype" name="play.api.mvc.WithHeaders">WithHeaders</a>[<a href="AsyncResult.html" class="extype" name="play.api.mvc.AsyncResult">AsyncResult</a>] with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
-      </span>
-      </h4>
-      <p class="comment cmt">An <code>AsyncResult</code> handles a <code>Promise</code> of result for cases where the result is not ready yet.</p>
     </li><li name="play.api.mvc.BodyParser" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="BodyParser[+A]extendsplay.api.mvc.RequestHeader=&gt;play.api.libs.iteratee.Iteratee[Array[Byte],Either[play.api.mvc.Result,A]]"></a>
+      <a id="BodyParser[+A]extendsplay.api.mvc.RequestHeader=&gt;play.api.libs.iteratee.Iteratee[Array[Byte],Either[play.api.mvc.SimpleResult,A]]"></a>
       <a id="BodyParser[+A]:BodyParser[A]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -264,7 +251,7 @@ handles a request and generates a result to be sent to the client.</p>
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="BodyParser.html"><span class="name">BodyParser</span></a><span class="tparams">[<span name="A">+A</span>]</span><span class="result"> extends (<a href="RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <a href="../libs/iteratee/Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>], <span class="extype" name="scala.Either">Either</span>[<a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a>, <span class="extype" name="play.api.mvc.BodyParser.A">A</span>]]</span>
+        <a href="BodyParser.html"><span class="name">BodyParser</span></a><span class="tparams">[<span name="A">+A</span>]</span><span class="result"> extends (<a href="RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <a href="../libs/iteratee/Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>], <span class="extype" name="scala.Either">Either</span>[<a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>, <span class="extype" name="play.api.mvc.BodyParser.A">A</span>]]</span>
       </span>
       </h4>
       <p class="comment cmt">A body parser parses the HTTP request body content.</p>
@@ -294,19 +281,6 @@ handles a request and generates a result to be sent to the client.</p>
       </span>
       </h4>
       <p class="comment cmt">Defines a <code>Call</code>, which describes an HTTP request and can be used to create links or fill redirect data.</p>
-    </li><li name="play.api.mvc.ChunkedResult" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="ChunkedResult[A]extendsPlainResultwithProductwithSerializable"></a>
-      <a id="ChunkedResult[A]:ChunkedResult[A]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">case class</span>
-      </span>
-      <span class="symbol">
-        <a href="ChunkedResult.html"><span class="name">ChunkedResult</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="header">header: <a href="ResponseHeader.html" class="extype" name="play.api.mvc.ResponseHeader">ResponseHeader</a></span>, <span name="chunks">chunks: <span class="extype" name="scala.Function1">Function1</span>[<a href="../libs/iteratee/Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="play.api.mvc.ChunkedResult.A">A</span>, <span class="extype" name="scala.Unit">Unit</span>], _]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="writeable">writeable: <a href="../http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<span class="extype" name="play.api.mvc.ChunkedResult.A">A</span>]</span>)</span><span class="result"> extends <a href="PlainResult.html" class="extype" name="play.api.mvc.PlainResult">PlainResult</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
-      </span>
-      </h4>
-      <p class="comment cmt">A chunked result, which defines the response header and a chunks enumerator to send asynchronously to the client.</p>
     </li><li name="play.api.mvc.Codec" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="CodecextendsProductwithSerializable"></a>
       <a id="Codec:Codec"></a>
@@ -399,7 +373,7 @@ handles a request and generates a result to be sent to the client.</p>
       </h4>
       <p class="comment cmt">A cookie to be discarded.</p>
     </li><li name="play.api.mvc.EssentialAction" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="EssentialActionextendsplay.api.mvc.RequestHeader=&gt;play.api.libs.iteratee.Iteratee[Array[Byte],play.api.mvc.Result]withHandler"></a>
+      <a id="EssentialActionextendsplay.api.mvc.RequestHeader=&gt;play.api.libs.iteratee.Iteratee[Array[Byte],play.api.mvc.SimpleResult]withHandler"></a>
       <a id="EssentialAction:EssentialAction"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -407,7 +381,7 @@ handles a request and generates a result to be sent to the client.</p>
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="EssentialAction.html"><span class="name">EssentialAction</span></a><span class="result"> extends (<a href="RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <a href="../libs/iteratee/Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>], <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a>] with <a href="Handler.html" class="extype" name="play.api.mvc.Handler">Handler</a></span>
+        <a href="EssentialAction.html"><span class="name">EssentialAction</span></a><span class="result"> extends (<a href="RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <a href="../libs/iteratee/Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>], <a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>] with <a href="Handler.html" class="extype" name="play.api.mvc.Handler">Handler</a></span>
       </span>
       </h4>
       
@@ -542,19 +516,6 @@ handles a request and generates a result to be sent to the client.</p>
       </span>
       </h4>
       <p class="comment cmt">Binder for URL path parameters.</p>
-    </li><li name="play.api.mvc.PlainResult" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="PlainResultextendsResultwithWithHeaders[play.api.mvc.PlainResult]"></a>
-      <a id="PlainResult:PlainResult"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">trait</span>
-      </span>
-      <span class="symbol">
-        <a href="PlainResult.html"><span class="name">PlainResult</span></a><span class="result"> extends <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a> with <a href="WithHeaders.html" class="extype" name="play.api.mvc.WithHeaders">WithHeaders</a>[<a href="PlainResult.html" class="extype" name="play.api.mvc.PlainResult">PlainResult</a>]</span>
-      </span>
-      </h4>
-      <p class="comment cmt">A plain HTTP result.</p>
     </li><li name="play.api.mvc.QueryStringBindable" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="QueryStringBindable[A]extendsObject"></a>
       <a id="QueryStringBindable[A]:QueryStringBindable[A]"></a>
@@ -647,19 +608,6 @@ handles a request and generates a result to be sent to the client.</p>
       </h4>
       <p class="comment cmt">A handler that is able to tag requests
 </p>
-    </li><li name="play.api.mvc.Response" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="ResponseextendsObject"></a>
-      <a id="Response:Response"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">trait</span>
-      </span>
-      <span class="symbol">
-        <a href="Response.html"><span class="name">Response</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
-      </span>
-      </h4>
-      <p class="comment cmt">The HTTP response.</p>
     </li><li name="play.api.mvc.ResponseHeader" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="ResponseHeaderextendsProductwithSerializable"></a>
       <a id="ResponseHeader:ResponseHeader"></a>
@@ -673,19 +621,6 @@ handles a request and generates a result to be sent to the client.</p>
       </span>
       </h4>
       <p class="comment cmt">A simple HTTP response header, used for standard responses.</p>
-    </li><li name="play.api.mvc.Result" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="ResultextendsNotNullwithWithHeaders[play.api.mvc.Result]"></a>
-      <a id="Result:Result"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">sealed </span>
-        <span class="kind">trait</span>
-      </span>
-      <span class="symbol">
-        <a href="Result.html"><span class="name">Result</span></a><span class="result"> extends <span class="extype" name="scala.NotNull">NotNull</span> with <a href="WithHeaders.html" class="extype" name="play.api.mvc.WithHeaders">WithHeaders</a>[<a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>
-      </span>
-      </h4>
-      <p class="comment cmt">Any Action result.</p>
     </li><li name="play.api.mvc.Results" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="ResultsextendsObject"></a>
       <a id="Results:Results"></a>
@@ -713,18 +648,31 @@ handles a request and generates a result to be sent to the client.</p>
       </h4>
       <p class="comment cmt">HTTP Session.</p>
     </li><li name="play.api.mvc.SimpleResult" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="SimpleResult[A]extendsPlainResultwithProductwithSerializable"></a>
-      <a id="SimpleResult[A]:SimpleResult[A]"></a>
+      <a id="SimpleResultextendsPlainResultwithProductwithSerializable"></a>
+      <a id="SimpleResult:SimpleResult"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="SimpleResult.html"><span class="name">SimpleResult</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="header">header: <a href="ResponseHeader.html" class="extype" name="play.api.mvc.ResponseHeader">ResponseHeader</a></span>, <span name="body">body: <a href="../libs/iteratee/Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.mvc.SimpleResult.A">A</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="writeable">writeable: <a href="../http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<span class="extype" name="play.api.mvc.SimpleResult.A">A</span>]</span>)</span><span class="result"> extends <a href="PlainResult.html" class="extype" name="play.api.mvc.PlainResult">PlainResult</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="SimpleResult.html"><span class="name">SimpleResult</span></a><span class="params">(<span name="header">header: <a href="ResponseHeader.html" class="extype" name="play.api.mvc.ResponseHeader">ResponseHeader</a></span>, <span name="body">body: <a href="../libs/iteratee/Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]]</span>, <span name="streamingStrategy">streamingStrategy: <a href="StreamingStrategy.html" class="extype" name="play.api.mvc.StreamingStrategy">StreamingStrategy</a> = <span class="symbol">StreamingStrategy.Buffer.apply()</span></span>)</span><span class="result"> extends <a href="PlainResult.html" class="extype" name="play.api.mvc.PlainResult">PlainResult</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       <p class="comment cmt">A simple result, which defines the response header and a body ready to send to the client.</p>
+    </li><li name="play.api.mvc.StreamingStrategy" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="StreamingStrategyextendsObject"></a>
+      <a id="StreamingStrategy:StreamingStrategy"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="StreamingStrategy.html"><span class="name">StreamingStrategy</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">The streaming strategy for the result.</p>
     </li><li name="play.api.mvc.WebSocket" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="WebSocket[A]extendsHandlerwithProductwithSerializable"></a>
       <a id="WebSocket[A]:WebSocket[A]"></a>
@@ -777,6 +725,58 @@ handles a request and generates a result to be sent to the client.</p>
       </span>
       </h4>
       <p class="comment cmt">Wrap an existing request.</p>
+    </li><li name="play.api.mvc.AsyncResult" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="AsyncResultextendsResultwithWithHeaders[play.api.mvc.AsyncResult]withProductwithSerializable"></a>
+      <a id="AsyncResult:AsyncResult"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="AsyncResult.html"><span class="name deprecated" title="Deprecated: (Since version 2.2.0) Use Future[SimpleResult] with Action.async action builder instead. Will be removed in Play 2.3.">AsyncResult</span></a><span class="params">(<span name="result">result: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>)</span><span class="result"> extends <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a> with <a href="WithHeaders.html" class="extype" name="play.api.mvc.WithHeaders">WithHeaders</a>[<a href="AsyncResult.html" class="extype" name="play.api.mvc.AsyncResult">AsyncResult</a>] with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">An <code>AsyncResult</code> handles a <code>Promise</code> of result for cases where the result is not ready yet.</p>
+    </li><li name="play.api.mvc.ChunkedResult" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ChunkedResult[A]extendsSimpleResult"></a>
+      <a id="ChunkedResult[A]:ChunkedResult[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ChunkedResult.html"><span class="name deprecated" title="Deprecated: (Since version 2.2.0) Use SimpleResult with Chunked streaming strategy instead. Will be removed in Play 2.3.">ChunkedResult</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A chunked result, which defines the response header and a chunks enumerator to send asynchronously to the client.</p>
+    </li><li name="play.api.mvc.PlainResult" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="PlainResultextendsResultwithWithHeaders[play.api.mvc.PlainResult]"></a>
+      <a id="PlainResult:PlainResult"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="PlainResult.html"><span class="name deprecated" title="Deprecated: (Since version 2.2.0) In Play 2.3, SimpleResult will be the only type of result">PlainResult</span></a><span class="result"> extends <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a> with <a href="WithHeaders.html" class="extype" name="play.api.mvc.WithHeaders">WithHeaders</a>[<a href="PlainResult.html" class="extype" name="play.api.mvc.PlainResult">PlainResult</a>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">A plain HTTP result.</p>
+    </li><li name="play.api.mvc.Result" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ResultextendsNotNullwithWithHeaders[play.api.mvc.Result]"></a>
+      <a id="Result:Result"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Result.html"><span class="name deprecated" title="Deprecated: (Since version 2.2.0) Result will become SimpleResult in Play 2.3">Result</span></a><span class="result"> extends <span class="extype" name="scala.NotNull">NotNull</span> with <a href="WithHeaders.html" class="extype" name="play.api.mvc.WithHeaders">WithHeaders</a>[<a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">Any Action result.</p>
     </li></ol>
             </div>
 
@@ -793,7 +793,7 @@ handles a request and generates a result to be sent to the client.</p>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="Action$.html"><span class="name">Action</span></a><span class="result"> extends <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a></span>
+        <a href="Action$.html"><span class="name">Action</span></a><span class="result"> extends <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>[<a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>]</span>
       </span>
       </h4>
       <p class="comment cmt">Helper object to create <code>Action</code> values.</p>
@@ -969,19 +969,6 @@ handles a request and generates a result to be sent to the client.</p>
       </span>
       </h4>
       <p class="comment cmt">Default binders for URL path part.</p>
-    </li><li name="play.api.mvc.PlainResult" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="PlainResult"></a>
-      <a id="PlainResult:PlainResult"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a href="PlainResult$.html"><span class="name">PlainResult</span></a>
-      </span>
-      </h4>
-      <p class="comment cmt">Helper utilities for Result values.</p>
     </li><li name="play.api.mvc.QueryStringBindable" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="QueryStringBindable"></a>
       <a id="QueryStringBindable:QueryStringBindable"></a>
@@ -1075,6 +1062,19 @@ handles a request and generates a result to be sent to the client.</p>
       </h4>
       <p class="comment cmt">Alias types for Sockets
 </p>
+    </li><li name="play.api.mvc.StreamingStrategy" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="StreamingStrategy"></a>
+      <a id="StreamingStrategy:StreamingStrategy"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="StreamingStrategy$.html"><span class="name">StreamingStrategy</span></a>
+      </span>
+      </h4>
+      
     </li><li name="play.api.mvc.WebSocket" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="WebSocket"></a>
       <a id="WebSocket:WebSocket"></a>
@@ -1093,7 +1093,39 @@ handles a request and generates a result to be sent to the client.</p>
 
         
 
-        
+        <div id="values" class="values members">
+              <h3>Deprecated Value Members</h3>
+              <ol><li name="play.api.mvc.ChunkedResult" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ChunkedResult"></a>
+      <a id="ChunkedResult:ChunkedResult"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ChunkedResult$.html"><span class="name deprecated" title="Deprecated: (Since version 2.2.0) Use SimpleResult with Chunked streaming strategy instead. Will be removed in Play 2.3.">ChunkedResult</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.2.0)</i> Use SimpleResult with Chunked streaming strategy instead. Will be removed in Play 2.3.</p></dd></dl></div>
+    </li><li name="play.api.mvc.PlainResult" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="PlainResult"></a>
+      <a id="PlainResult:PlainResult"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="PlainResult$.html"><span class="name deprecated" title="Deprecated: (Since version 2.2.0) In Play 2.3, SimpleResult will be the only type of result">PlainResult</span></a>
+      </span>
+      </h4>
+      <p class="comment cmt">Helper utilities for Result values.</p>
+    </li></ol>
+            </div>
         </div>
 
         <div id="inheritedMembers">

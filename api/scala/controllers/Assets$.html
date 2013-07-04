@@ -45,7 +45,7 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Controller that serves static resources.</p><p>Resources are searched in the classpath.</p><p>It handles Last-Modified and ETag header automatically.
-If a gzipped version of a resource is found (Same resource name with the .gz suffix), it is served instead.</p><p>You can set a custom Cache directive for a particular resource if needed. For example in your application.conf file:</p><pre><span class="lit">"assets.cache./public/images/logo.png"</span> = <span class="lit">"max-age=3600"</span></pre><p>You can use this controller in any application, just by declaring the appropriate route. For example:</p><pre>GET     /assets/￯ﾻ﾿*file               controllers.Assets.at(path=<span class="lit">"/public"</span>, file)</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/Play20/tree/2.1.2-RC2/framework/src/play/src/main/scala/play/api/controllers/Assets.scala" target="_blank">Assets.scala</a></dd></dl><div class="toggleContainer block">
+If a gzipped version of a resource is found (Same resource name with the .gz suffix), it is served instead.</p><p>You can set a custom Cache directive for a particular resource if needed. For example in your application.conf file:</p><pre><span class="lit">"assets.cache./public/images/logo.png"</span> = <span class="lit">"max-age=3600"</span></pre><p>You can use this controller in any application, just by declaring the appropriate route. For example:</p><pre>GET     /assets/￯ﾻ﾿*file               controllers.Assets.at(path=<span class="lit">"/public"</span>, file)</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/Play20/tree/master/framework/src/play/src/main/scala/play/api/controllers/Assets.scala" target="_blank">Assets.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="AssetsBuilder.html" class="extype" name="controllers.AssetsBuilder">AssetsBuilder</a>, <a href="../play/api/mvc/Controller.html" class="extype" name="play.api.mvc.Controller">Controller</a>, <a href="../play/api/mvc/Rendering.html" class="extype" name="play.api.mvc.Rendering">Rendering</a>, <a href="../play/api/mvc/RequestExtractors.html" class="extype" name="play.api.mvc.RequestExtractors">RequestExtractors</a>, <a href="../play/api/mvc/AcceptExtractors.html" class="extype" name="play.api.mvc.AcceptExtractors">AcceptExtractors</a>, <a href="../play/api/http/ContentTypes.html" class="extype" name="play.api.http.ContentTypes">ContentTypes</a>, <a href="../play/api/http/HeaderNames.html" class="extype" name="play.api.http.HeaderNames">HeaderNames</a>, <a href="../play/api/http/Status.html" class="extype" name="play.api.http.Status">play.api.http.Status</a>, <a href="../play/api/mvc/BodyParsers.html" class="extype" name="play.api.mvc.BodyParsers">BodyParsers</a>, <a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -88,7 +88,7 @@ If a gzipped version of a resource is found (Same resource name with the .gz suf
         <div id="types" class="types members">
               <h3>Type Members</h3>
               <ol><li name="play.api.mvc.Results.Status" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]"></a>
+      <a id="StatusextendsSimpleResult"></a>
       <a id="Status:Status"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -96,7 +96,7 @@ If a gzipped version of a resource is found (Same resource name with the .gz suf
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="../play/api/mvc/Results$Status.html"><span class="name">Status</span></a><span class="result"> extends <a href="../play/api/mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>[<a href="../play/api/mvc/Results$$EmptyContent.html" class="extype" name="play.api.mvc.Results.EmptyContent">EmptyContent</a>]</span>
+        <a href="../play/api/mvc/Results$Status.html"><span class="name">Status</span></a><span class="result"> extends <a href="../play/api/mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a></span>
       </span>
       </h4>
       <p class="comment cmt">Generates default <code>SimpleResult</code> from a content type, headers and content.</p>
@@ -415,7 +415,7 @@ If a gzipped version of a resource is found (Same resource name with the .gz suf
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">Accepted</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
+        <span class="name">Accepted</span><span class="result">: <a href="#StatusextendsSimpleResult" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Generates a ‘202 ACCEPTED’ result.</p><div class="fullcomment"><div class="comment cmt"><p>Generates a ‘202 ACCEPTED’ result.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a></dd></dl></div>
@@ -432,19 +432,6 @@ If a gzipped version of a resource is found (Same resource name with the .gz suf
       </span>
       </h4>
       <p class="comment cmt">Common extractors to check if a request accepts JSON, Html, etc.</p>
-    </li><li name="play.api.mvc.Results#Async" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="Async(promise:scala.concurrent.Future[play.api.mvc.Result]):play.api.mvc.AsyncResult"></a>
-      <a id="Async(Future[Result]):AsyncResult"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">Async</span><span class="params">(<span name="promise">promise: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../play/api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>)</span><span class="result">: <a href="../play/api/mvc/AsyncResult.html" class="extype" name="play.api.mvc.AsyncResult">AsyncResult</a></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a></dd></dl></div>
     </li><li name="play.api.http.Status#BAD_GATEWAY" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="BAD_GATEWAY:Int"></a>
       <a id="BAD_GATEWAY:Int"></a>
@@ -494,7 +481,7 @@ If a gzipped version of a resource is found (Same resource name with the .gz suf
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">BadGateway</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
+        <span class="name">BadGateway</span><span class="result">: <a href="#StatusextendsSimpleResult" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Generates a ‘502 BAD_GATEWAY’ result.</p><div class="fullcomment"><div class="comment cmt"><p>Generates a ‘502 BAD_GATEWAY’ result.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a></dd></dl></div>
@@ -507,7 +494,7 @@ If a gzipped version of a resource is found (Same resource name with the .gz suf
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">BadRequest</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
+        <span class="name">BadRequest</span><span class="result">: <a href="#StatusextendsSimpleResult" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Generates a ‘400 BAD_REQUEST’ result.</p><div class="fullcomment"><div class="comment cmt"><p>Generates a ‘400 BAD_REQUEST’ result.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a></dd></dl></div>
@@ -729,7 +716,7 @@ If a gzipped version of a resource is found (Same resource name with the .gz suf
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">Conflict</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
+        <span class="name">Conflict</span><span class="result">: <a href="#StatusextendsSimpleResult" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Generates a ‘409 CONFLICT’ result.</p><div class="fullcomment"><div class="comment cmt"><p>Generates a ‘409 CONFLICT’ result.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a></dd></dl></div>
@@ -742,7 +729,7 @@ If a gzipped version of a resource is found (Same resource name with the .gz suf
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">Created</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
+        <span class="name">Created</span><span class="result">: <a href="#StatusextendsSimpleResult" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Generates a ‘201 CREATED’ result.</p><div class="fullcomment"><div class="comment cmt"><p>Generates a ‘201 CREATED’ result.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a></dd></dl></div>
@@ -834,7 +821,7 @@ If a gzipped version of a resource is found (Same resource name with the .gz suf
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">EntityTooLarge</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
+        <span class="name">EntityTooLarge</span><span class="result">: <a href="#StatusextendsSimpleResult" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Generates a ‘413 REQUEST_ENTITY_TOO_LARGE’ result.</p><div class="fullcomment"><div class="comment cmt"><p>Generates a ‘413 REQUEST_ENTITY_TOO_LARGE’ result.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a></dd></dl></div>
@@ -847,7 +834,7 @@ If a gzipped version of a resource is found (Same resource name with the .gz suf
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">ExpectationFailed</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
+        <span class="name">ExpectationFailed</span><span class="result">: <a href="#StatusextendsSimpleResult" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Generates a ‘417 EXPECTATION_FAILED’ result.</p><div class="fullcomment"><div class="comment cmt"><p>Generates a ‘417 EXPECTATION_FAILED’ result.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a></dd></dl></div>
@@ -926,7 +913,7 @@ If a gzipped version of a resource is found (Same resource name with the .gz suf
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">FailedDependency</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
+        <span class="name">FailedDependency</span><span class="result">: <a href="#StatusextendsSimpleResult" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Generates a ‘424 FAILED_DEPENDENCY’ result.</p><div class="fullcomment"><div class="comment cmt"><p>Generates a ‘424 FAILED_DEPENDENCY’ result.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a></dd></dl></div>
@@ -939,20 +926,20 @@ If a gzipped version of a resource is found (Same resource name with the .gz suf
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">Forbidden</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
+        <span class="name">Forbidden</span><span class="result">: <a href="#StatusextendsSimpleResult" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Generates a ‘403 FORBIDDEN’ result.</p><div class="fullcomment"><div class="comment cmt"><p>Generates a ‘403 FORBIDDEN’ result.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a></dd></dl></div>
     </li><li name="play.api.mvc.Results#Found" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="Found(url:String):play.api.mvc.SimpleResult[play.api.mvc.Results.EmptyContent]"></a>
-      <a id="Found(String):SimpleResult[EmptyContent]"></a>
+      <a id="Found(url:String):play.api.mvc.SimpleResult"></a>
+      <a id="Found(String):SimpleResult"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">Found</span><span class="params">(<span name="url">url: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="../play/api/mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>[<a href="../play/api/mvc/Results$$EmptyContent.html" class="extype" name="play.api.mvc.Results.EmptyContent">EmptyContent</a>]</span>
+        <span class="name">Found</span><span class="params">(<span name="url">url: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="../play/api/mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Generates a ‘302 FOUND’ simple result.</p><div class="fullcomment"><div class="comment cmt"><p>Generates a ‘302 FOUND’ simple result.
@@ -993,7 +980,7 @@ If a gzipped version of a resource is found (Same resource name with the .gz suf
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">GatewayTimeout</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
+        <span class="name">GatewayTimeout</span><span class="result">: <a href="#StatusextendsSimpleResult" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Generates a ‘504 GATEWAY_TIMEOUT’ result.</p><div class="fullcomment"><div class="comment cmt"><p>Generates a ‘504 GATEWAY_TIMEOUT’ result.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a></dd></dl></div>
@@ -1006,7 +993,7 @@ If a gzipped version of a resource is found (Same resource name with the .gz suf
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">Gone</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
+        <span class="name">Gone</span><span class="result">: <a href="#StatusextendsSimpleResult" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Generates a ‘410 GONE’ result.</p><div class="fullcomment"><div class="comment cmt"><p>Generates a ‘410 GONE’ result.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a></dd></dl></div>
@@ -1059,7 +1046,7 @@ If a gzipped version of a resource is found (Same resource name with the .gz suf
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">HttpVersionNotSupported</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
+        <span class="name">HttpVersionNotSupported</span><span class="result">: <a href="#StatusextendsSimpleResult" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Generates a ‘505 HTTP_VERSION_NOT_SUPPORTED’ result.</p><div class="fullcomment"><div class="comment cmt"><p>Generates a ‘505 HTTP_VERSION_NOT_SUPPORTED’ result.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a></dd></dl></div>
@@ -1163,7 +1150,7 @@ If a gzipped version of a resource is found (Same resource name with the .gz suf
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">InsufficientStorage</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
+        <span class="name">InsufficientStorage</span><span class="result">: <a href="#StatusextendsSimpleResult" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Generates a ‘507 INSUFFICIENT_STORAGE’ result.</p><div class="fullcomment"><div class="comment cmt"><p>Generates a ‘507 INSUFFICIENT_STORAGE’ result.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a></dd></dl></div>
@@ -1176,7 +1163,7 @@ If a gzipped version of a resource is found (Same resource name with the .gz suf
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">InternalServerError</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
+        <span class="name">InternalServerError</span><span class="result">: <a href="#StatusextendsSimpleResult" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Generates a ‘500 INTERNAL_SERVER_ERROR’ result.</p><div class="fullcomment"><div class="comment cmt"><p>Generates a ‘500 INTERNAL_SERVER_ERROR’ result.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a></dd></dl></div>
@@ -1269,7 +1256,7 @@ If a gzipped version of a resource is found (Same resource name with the .gz suf
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">Locked</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
+        <span class="name">Locked</span><span class="result">: <a href="#StatusextendsSimpleResult" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Generates a ‘423 LOCKED’ result.</p><div class="fullcomment"><div class="comment cmt"><p>Generates a ‘423 LOCKED’ result.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a></dd></dl></div>
@@ -1347,20 +1334,20 @@ If a gzipped version of a resource is found (Same resource name with the .gz suf
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">MethodNotAllowed</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
+        <span class="name">MethodNotAllowed</span><span class="result">: <a href="#StatusextendsSimpleResult" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Generates a ‘405 METHOD_NOT_ALLOWED’ result.</p><div class="fullcomment"><div class="comment cmt"><p>Generates a ‘405 METHOD_NOT_ALLOWED’ result.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a></dd></dl></div>
     </li><li name="play.api.mvc.Results#MovedPermanently" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="MovedPermanently(url:String):play.api.mvc.SimpleResult[play.api.mvc.Results.EmptyContent]"></a>
-      <a id="MovedPermanently(String):SimpleResult[EmptyContent]"></a>
+      <a id="MovedPermanently(url:String):play.api.mvc.SimpleResult"></a>
+      <a id="MovedPermanently(String):SimpleResult"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">MovedPermanently</span><span class="params">(<span name="url">url: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="../play/api/mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>[<a href="../play/api/mvc/Results$$EmptyContent.html" class="extype" name="play.api.mvc.Results.EmptyContent">EmptyContent</a>]</span>
+        <span class="name">MovedPermanently</span><span class="params">(<span name="url">url: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="../play/api/mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Generates a ‘301 MOVED_PERMANENTLY’ simple result.</p><div class="fullcomment"><div class="comment cmt"><p>Generates a ‘301 MOVED_PERMANENTLY’ simple result.
@@ -1375,7 +1362,7 @@ If a gzipped version of a resource is found (Same resource name with the .gz suf
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">MultiStatus</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
+        <span class="name">MultiStatus</span><span class="result">: <a href="#StatusextendsSimpleResult" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Generates a ‘207 MULTI_STATUS’ result.</p><div class="fullcomment"><div class="comment cmt"><p>Generates a ‘207 MULTI_STATUS’ result.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a></dd></dl></div>
@@ -1458,15 +1445,15 @@ If a gzipped version of a resource is found (Same resource name with the .gz suf
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/http/Status.html" class="extype" name="play.api.http.Status">Status</a></dd></dl></div>
     </li><li name="play.api.mvc.Results#NoContent" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="NoContent:play.api.mvc.SimpleResult[play.api.mvc.Results.EmptyContent]"></a>
-      <a id="NoContent:SimpleResult[EmptyContent]"></a>
+      <a id="NoContent:play.api.mvc.SimpleResult"></a>
+      <a id="NoContent:SimpleResult"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">NoContent</span><span class="result">: <a href="../play/api/mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>[<a href="../play/api/mvc/Results$$EmptyContent.html" class="extype" name="play.api.mvc.Results.EmptyContent">EmptyContent</a>]</span>
+        <span class="name">NoContent</span><span class="result">: <a href="../play/api/mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Generates a ‘204 NO_CONTENT’ result.</p><div class="fullcomment"><div class="comment cmt"><p>Generates a ‘204 NO_CONTENT’ result.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a></dd></dl></div>
@@ -1479,7 +1466,7 @@ If a gzipped version of a resource is found (Same resource name with the .gz suf
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">NonAuthoritativeInformation</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
+        <span class="name">NonAuthoritativeInformation</span><span class="result">: <a href="#StatusextendsSimpleResult" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Generates a ‘203 NON_AUTHORITATIVE_INFORMATION’ result.</p><div class="fullcomment"><div class="comment cmt"><p>Generates a ‘203 NON_AUTHORITATIVE_INFORMATION’ result.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a></dd></dl></div>
@@ -1492,7 +1479,7 @@ If a gzipped version of a resource is found (Same resource name with the .gz suf
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">NotAcceptable</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
+        <span class="name">NotAcceptable</span><span class="result">: <a href="#StatusextendsSimpleResult" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Generates a ‘406 NOT_ACCEPTABLE’ result.</p><div class="fullcomment"><div class="comment cmt"><p>Generates a ‘406 NOT_ACCEPTABLE’ result.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a></dd></dl></div>
@@ -1505,7 +1492,7 @@ If a gzipped version of a resource is found (Same resource name with the .gz suf
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">NotFound</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
+        <span class="name">NotFound</span><span class="result">: <a href="#StatusextendsSimpleResult" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Generates a ‘404 NOT_FOUND’ result.</p><div class="fullcomment"><div class="comment cmt"><p>Generates a ‘404 NOT_FOUND’ result.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a></dd></dl></div>
@@ -1518,20 +1505,20 @@ If a gzipped version of a resource is found (Same resource name with the .gz suf
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">NotImplemented</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
+        <span class="name">NotImplemented</span><span class="result">: <a href="#StatusextendsSimpleResult" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Generates a ‘501 NOT_IMPLEMENTED’ result.</p><div class="fullcomment"><div class="comment cmt"><p>Generates a ‘501 NOT_IMPLEMENTED’ result.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a></dd></dl></div>
     </li><li name="play.api.mvc.Results#NotModified" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="NotModified:play.api.mvc.SimpleResult[play.api.mvc.Results.EmptyContent]"></a>
-      <a id="NotModified:SimpleResult[EmptyContent]"></a>
+      <a id="NotModified:play.api.mvc.SimpleResult"></a>
+      <a id="NotModified:SimpleResult"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">NotModified</span><span class="result">: <a href="../play/api/mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>[<a href="../play/api/mvc/Results$$EmptyContent.html" class="extype" name="play.api.mvc.Results.EmptyContent">EmptyContent</a>]</span>
+        <span class="name">NotModified</span><span class="result">: <a href="../play/api/mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Generates a ‘304 NOT_MODIFIED’ result.</p><div class="fullcomment"><div class="comment cmt"><p>Generates a ‘304 NOT_MODIFIED’ result.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a></dd></dl></div>
@@ -1570,7 +1557,7 @@ If a gzipped version of a resource is found (Same resource name with the .gz suf
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">Ok</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
+        <span class="name">Ok</span><span class="result">: <a href="#StatusextendsSimpleResult" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Generates a ‘200 OK’ result.</p><div class="fullcomment"><div class="comment cmt"><p>Generates a ‘200 OK’ result.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a></dd></dl></div>
@@ -1674,7 +1661,7 @@ If a gzipped version of a resource is found (Same resource name with the .gz suf
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">PartialContent</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
+        <span class="name">PartialContent</span><span class="result">: <a href="#StatusextendsSimpleResult" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Generates a ‘206 PARTIAL_CONTENT’ result.</p><div class="fullcomment"><div class="comment cmt"><p>Generates a ‘206 PARTIAL_CONTENT’ result.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a></dd></dl></div>
@@ -1687,7 +1674,7 @@ If a gzipped version of a resource is found (Same resource name with the .gz suf
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">PreconditionFailed</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
+        <span class="name">PreconditionFailed</span><span class="result">: <a href="#StatusextendsSimpleResult" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Generates a ‘412 PRECONDITION_FAILED’ result.</p><div class="fullcomment"><div class="comment cmt"><p>Generates a ‘412 PRECONDITION_FAILED’ result.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a></dd></dl></div>
@@ -1796,45 +1783,45 @@ If a gzipped version of a resource is found (Same resource name with the .gz suf
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/http/HeaderNames.html" class="extype" name="play.api.http.HeaderNames">HeaderNames</a></dd></dl></div>
     </li><li name="play.api.mvc.Results#Redirect" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="Redirect(call:play.api.mvc.Call):play.api.mvc.SimpleResult[play.api.mvc.Results.EmptyContent]"></a>
-      <a id="Redirect(Call):SimpleResult[EmptyContent]"></a>
+      <a id="Redirect(call:play.api.mvc.Call):play.api.mvc.SimpleResult"></a>
+      <a id="Redirect(Call):SimpleResult"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">Redirect</span><span class="params">(<span name="call">call: <a href="../play/api/mvc/Call.html" class="extype" name="play.api.mvc.Call">Call</a></span>)</span><span class="result">: <a href="../play/api/mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>[<a href="../play/api/mvc/Results$$EmptyContent.html" class="extype" name="play.api.mvc.Results.EmptyContent">EmptyContent</a>]</span>
+        <span class="name">Redirect</span><span class="params">(<span name="call">call: <a href="../play/api/mvc/Call.html" class="extype" name="play.api.mvc.Call">Call</a></span>)</span><span class="result">: <a href="../play/api/mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Generates a redirect simple result.</p><div class="fullcomment"><div class="comment cmt"><p>Generates a redirect simple result.
 </p></div><dl class="paramcmts block"><dt class="param">call</dt><dd class="cmt"><p>Call defining the URL to redirect to, which typically comes from the reverse router
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a></dd></dl></div>
     </li><li name="play.api.mvc.Results#Redirect" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="Redirect(url:String,queryString:Map[String,Seq[String]],status:Int):play.api.mvc.SimpleResult[play.api.mvc.Results.EmptyContent]"></a>
-      <a id="Redirect(String,Map[String,Seq[String]],Int):SimpleResult[EmptyContent]"></a>
+      <a id="Redirect(url:String,queryString:Map[String,Seq[String]],status:Int):play.api.mvc.SimpleResult"></a>
+      <a id="Redirect(String,Map[String,Seq[String]],Int):SimpleResult"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">Redirect</span><span class="params">(<span name="url">url: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="queryString">queryString: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]] = <span class="symbol">Map.empty</span></span>, <span name="status">status: <span class="extype" name="scala.Int">Int</span> = <span class="symbol"><span class="name"><a href="../play/package.html">SEE_OTHER</a></span></span></span>)</span><span class="result">: <a href="../play/api/mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>[<a href="../play/api/mvc/Results$$EmptyContent.html" class="extype" name="play.api.mvc.Results.EmptyContent">EmptyContent</a>]</span>
+        <span class="name">Redirect</span><span class="params">(<span name="url">url: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="queryString">queryString: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]] = <span class="symbol">Map.empty</span></span>, <span name="status">status: <span class="extype" name="scala.Int">Int</span> = <span class="symbol"><span class="name"><a href="../play/package.html">SEE_OTHER</a></span></span></span>)</span><span class="result">: <a href="../play/api/mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Generates a redirect simple result.</p><div class="fullcomment"><div class="comment cmt"><p>Generates a redirect simple result.
 </p></div><dl class="paramcmts block"><dt class="param">url</dt><dd class="cmt"><p>the URL to redirect to</p></dd><dt class="param">queryString</dt><dd class="cmt"><p>queryString parameters to add to the queryString</p></dd><dt class="param">status</dt><dd class="cmt"><p>HTTP status
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a></dd></dl></div>
     </li><li name="play.api.mvc.Results#Redirect" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="Redirect(url:String,status:Int):play.api.mvc.SimpleResult[play.api.mvc.Results.EmptyContent]"></a>
-      <a id="Redirect(String,Int):SimpleResult[EmptyContent]"></a>
+      <a id="Redirect(url:String,status:Int):play.api.mvc.SimpleResult"></a>
+      <a id="Redirect(String,Int):SimpleResult"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">Redirect</span><span class="params">(<span name="url">url: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="status">status: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="../play/api/mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>[<a href="../play/api/mvc/Results$$EmptyContent.html" class="extype" name="play.api.mvc.Results.EmptyContent">EmptyContent</a>]</span>
+        <span class="name">Redirect</span><span class="params">(<span name="url">url: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="status">status: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="../play/api/mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Generates a redirect simple result.</p><div class="fullcomment"><div class="comment cmt"><p>Generates a redirect simple result.
@@ -1849,20 +1836,20 @@ If a gzipped version of a resource is found (Same resource name with the .gz suf
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">RequestTimeout</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
+        <span class="name">RequestTimeout</span><span class="result">: <a href="#StatusextendsSimpleResult" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Generates a ‘408 REQUEST_TIMEOUT’ result.</p><div class="fullcomment"><div class="comment cmt"><p>Generates a ‘408 REQUEST_TIMEOUT’ result.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a></dd></dl></div>
     </li><li name="play.api.mvc.Results#ResetContent" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="ResetContent:play.api.mvc.SimpleResult[play.api.mvc.Results.EmptyContent]"></a>
-      <a id="ResetContent:SimpleResult[EmptyContent]"></a>
+      <a id="ResetContent:play.api.mvc.SimpleResult"></a>
+      <a id="ResetContent:SimpleResult"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">ResetContent</span><span class="result">: <a href="../play/api/mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>[<a href="../play/api/mvc/Results$$EmptyContent.html" class="extype" name="play.api.mvc.Results.EmptyContent">EmptyContent</a>]</span>
+        <span class="name">ResetContent</span><span class="result">: <a href="../play/api/mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Generates a ‘205 RESET_CONTENT’ result.</p><div class="fullcomment"><div class="comment cmt"><p>Generates a ‘205 RESET_CONTENT’ result.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a></dd></dl></div>
@@ -1945,15 +1932,15 @@ If a gzipped version of a resource is found (Same resource name with the .gz suf
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/http/Status.html" class="extype" name="play.api.http.Status">Status</a></dd></dl></div>
     </li><li name="play.api.mvc.Results#SeeOther" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="SeeOther(url:String):play.api.mvc.SimpleResult[play.api.mvc.Results.EmptyContent]"></a>
-      <a id="SeeOther(String):SimpleResult[EmptyContent]"></a>
+      <a id="SeeOther(url:String):play.api.mvc.SimpleResult"></a>
+      <a id="SeeOther(String):SimpleResult"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">SeeOther</span><span class="params">(<span name="url">url: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="../play/api/mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>[<a href="../play/api/mvc/Results$$EmptyContent.html" class="extype" name="play.api.mvc.Results.EmptyContent">EmptyContent</a>]</span>
+        <span class="name">SeeOther</span><span class="params">(<span name="url">url: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="../play/api/mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Generates a ‘303 SEE_OTHER’ simple result.</p><div class="fullcomment"><div class="comment cmt"><p>Generates a ‘303 SEE_OTHER’ simple result.
@@ -1968,7 +1955,7 @@ If a gzipped version of a resource is found (Same resource name with the .gz suf
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">ServiceUnavailable</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
+        <span class="name">ServiceUnavailable</span><span class="result">: <a href="#StatusextendsSimpleResult" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Generates a ‘503 SERVICE_UNAVAILABLE’ result.</p><div class="fullcomment"><div class="comment cmt"><p>Generates a ‘503 SERVICE_UNAVAILABLE’ result.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a></dd></dl></div>
@@ -1981,7 +1968,7 @@ If a gzipped version of a resource is found (Same resource name with the .gz suf
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">Status</span><span class="params">(<span name="code">code: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
+        <span class="name">Status</span><span class="params">(<span name="code">code: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="#StatusextendsSimpleResult" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Generates a simple result.</p><div class="fullcomment"><div class="comment cmt"><p>Generates a simple result.
@@ -2080,15 +2067,15 @@ If a gzipped version of a resource is found (Same resource name with the .gz suf
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/http/HeaderNames.html" class="extype" name="play.api.http.HeaderNames">HeaderNames</a></dd></dl></div>
     </li><li name="play.api.mvc.Results#TemporaryRedirect" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="TemporaryRedirect(url:String):play.api.mvc.SimpleResult[play.api.mvc.Results.EmptyContent]"></a>
-      <a id="TemporaryRedirect(String):SimpleResult[EmptyContent]"></a>
+      <a id="TemporaryRedirect(url:String):play.api.mvc.SimpleResult"></a>
+      <a id="TemporaryRedirect(String):SimpleResult"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">TemporaryRedirect</span><span class="params">(<span name="url">url: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="../play/api/mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>[<a href="../play/api/mvc/Results$$EmptyContent.html" class="extype" name="play.api.mvc.Results.EmptyContent">EmptyContent</a>]</span>
+        <span class="name">TemporaryRedirect</span><span class="params">(<span name="url">url: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="../play/api/mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Generates a ‘307 TEMPORARY_REDIRECT’ simple result.</p><div class="fullcomment"><div class="comment cmt"><p>Generates a ‘307 TEMPORARY_REDIRECT’ simple result.
@@ -2103,7 +2090,7 @@ If a gzipped version of a resource is found (Same resource name with the .gz suf
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">TooManyRequest</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
+        <span class="name">TooManyRequest</span><span class="result">: <a href="#StatusextendsSimpleResult" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Generates a ‘429 TOO_MANY_REQUEST’ result.</p><div class="fullcomment"><div class="comment cmt"><p>Generates a ‘429 TOO_MANY_REQUEST’ result.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a></dd></dl></div>
@@ -2194,7 +2181,7 @@ If a gzipped version of a resource is found (Same resource name with the .gz suf
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">Unauthorized</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
+        <span class="name">Unauthorized</span><span class="result">: <a href="#StatusextendsSimpleResult" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Generates a ‘401 UNAUTHORIZED’ result.</p><div class="fullcomment"><div class="comment cmt"><p>Generates a ‘401 UNAUTHORIZED’ result.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a></dd></dl></div>
@@ -2207,7 +2194,7 @@ If a gzipped version of a resource is found (Same resource name with the .gz suf
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">UnprocessableEntity</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
+        <span class="name">UnprocessableEntity</span><span class="result">: <a href="#StatusextendsSimpleResult" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Generates a ‘422 UNPROCESSABLE_ENTITY’ result.</p><div class="fullcomment"><div class="comment cmt"><p>Generates a ‘422 UNPROCESSABLE_ENTITY’ result.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a></dd></dl></div>
@@ -2220,7 +2207,7 @@ If a gzipped version of a resource is found (Same resource name with the .gz suf
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">UnsupportedMediaType</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
+        <span class="name">UnsupportedMediaType</span><span class="result">: <a href="#StatusextendsSimpleResult" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Generates a ‘415 UNSUPPORTED_MEDIA_TYPE’ result.</p><div class="fullcomment"><div class="comment cmt"><p>Generates a ‘415 UNSUPPORTED_MEDIA_TYPE’ result.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a></dd></dl></div>
@@ -2233,7 +2220,7 @@ If a gzipped version of a resource is found (Same resource name with the .gz suf
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">UriTooLong</span><span class="result">: <a href="#StatusextendsSimpleResult[play.api.mvc.Results.EmptyContent]" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
+        <span class="name">UriTooLong</span><span class="result">: <a href="#StatusextendsSimpleResult" class="extmbr" name="play.api.mvc.Results.Status">Status</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Generates a ‘414 REQUEST_URI_TOO_LONG’ result.</p><div class="fullcomment"><div class="comment cmt"><p>Generates a ‘414 REQUEST_URI_TOO_LONG’ result.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a></dd></dl></div>
@@ -2687,7 +2674,26 @@ Ok(<span class="lit">"Hello "</span> + username)
 
         
 
-        
+        <div id="values" class="values members">
+              <h3>Deprecated Value Members</h3>
+              <ol><li name="play.api.mvc.Results#Async" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Async(promise:scala.concurrent.Future[play.api.mvc.Result]):play.api.mvc.AsyncResult"></a>
+      <a id="Async(Future[Result]):AsyncResult"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 2.2.0) Use Action.async to build async actions instead">Async</span><span class="params">(<span name="promise">promise: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../play/api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>)</span><span class="result">: <a href="../play/api/mvc/AsyncResult.html" class="extype" name="play.api.mvc.AsyncResult">AsyncResult</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a></dd><dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.2.0)</i> Use Action.async to build async actions instead</p></dd></dl></div>
+    </li></ol>
+            </div>
         </div>
 
         <div id="inheritedMembers">

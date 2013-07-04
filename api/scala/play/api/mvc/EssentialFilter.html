@@ -45,12 +45,11 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Implement this interface if you want to add a Filter to your application</p><pre><span class="kw">object</span> AccessLog <span class="kw">extends</span> Filter {
-  <span class="kw">override</span> <span class="kw">def</span> apply(next: RequestHeader <span class="kw">=&gt;</span> Result)(request: RequestHeader): Result = {
-	 <span class="kw">val</span> result = next(request)
-	 play.Logger.info(request + <span class="lit">"\n\t => "</span> + result)
-	 result
- }
-}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/Play20/tree/2.1.2-RC2/framework/src/play/src/main/scala/play/api/mvc/Filters.scala" target="_blank">Filters.scala</a></dd></dl><div class="toggleContainer block">
+  <span class="kw">override</span> <span class="kw">def</span> apply(next: RequestHeader <span class="kw">=&gt;</span> Future[SimpleResult])(request: RequestHeader): Future[SimpleResult] = {
+		 <span class="kw">val</span> result = next(request)
+		 result.map { r <span class="kw">=&gt;</span> play.Logger.info(request + <span class="lit">"\n\t => "</span> + r; r }
+	 }
+}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/Play20/tree/master/framework/src/play/src/main/scala/play/api/mvc/Filters.scala" target="_blank">Filters.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">

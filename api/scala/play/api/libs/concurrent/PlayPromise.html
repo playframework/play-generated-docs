@@ -40,7 +40,7 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">PlayPromise</span><span class="tparams">[<span name="A">+A</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <span class="name deprecated" title="Deprecated: (Since version 2.2) Use scala.concurrent.Promise instead.">PlayPromise</span><span class="tparams">[<span name="A">+A</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       
@@ -48,7 +48,10 @@
 The value of the promise is to be computed asynchronously.
 The promise will be completed either with the expected value type or with
 an exception.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/Play20/tree/2.1.2-RC2/framework/src/play/src/main/scala/play/api/libs/concurrent/Promise.scala" target="_blank">Promise.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.2)</i> Use scala.concurrent.Promise instead.</p></dd><dt>Source</dt><dd><a href="https://github.com/playframework/Play20/tree/master/framework/src/play/src/main/scala/play/api/libs/concurrent/Promise.scala" target="_blank">Promise.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -455,8 +458,8 @@ an exception which could be from either of the two promises.</p></div><dl class=
         <span class="name">orTimeout</span><span class="params">(<span name="e">e: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="play.api.libs.concurrent.PlayPromise.A">A</span>]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Creates a timer promise with  Throwable e (using the deafult Promise timeout).</p><div class="fullcomment"><div class="comment cmt"><p>Creates a timer promise with  Throwable e (using the deafult Promise timeout).
-Exception e is shown if timer promise redeemds first</p></div><dl class="paramcmts block"><dt class="param">e</dt><dd class="cmt"><p>exception to be thrown</p></dd><dt>returns</dt><dd class="cmt"><p>a Promise which may throw an exception
+      <p class="shortcomment cmt">Creates a scheduled promise with  Throwable e (using the deafult Promise timeout).</p><div class="fullcomment"><div class="comment cmt"><p>Creates a scheduled promise with  Throwable e (using the deafult Promise timeout).
+Exception e is shown if scheduled promise redeemds first</p></div><dl class="paramcmts block"><dt class="param">e</dt><dd class="cmt"><p>exception to be thrown</p></dd><dt>returns</dt><dd class="cmt"><p>a Promise which may throw an exception
 </p></dd></dl></div>
     </li><li name="play.api.libs.concurrent.PlayPromise#orTimeout" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="orTimeout[B](message:B):scala.concurrent.Future[Either[A,B]]"></a>
@@ -470,8 +473,8 @@ Exception e is shown if timer promise redeemds first</p></div><dl class="paramcm
         <span class="name">orTimeout</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="message">message: <span class="extype" name="play.api.libs.concurrent.PlayPromise.orTimeout.B">B</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="scala.Either">Either</span>[<span class="extype" name="play.api.libs.concurrent.PlayPromise.A">A</span>, <span class="extype" name="play.api.libs.concurrent.PlayPromise.orTimeout.B">B</span>]]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Creates a timer promise with the given message (using the deafult Promise timeout).</p><div class="fullcomment"><div class="comment cmt"><p>Creates a timer promise with the given message (using the deafult Promise timeout).
-Message a is shown if the timer promise redeems before the current promise</p></div><dl class="paramcmts block"><dt class="param">message</dt><dd class="cmt"><p>message to be displayed if the timer promise redeems first</p></dd><dt>returns</dt><dd class="cmt"><p>either the timer message or the current promise
+      <p class="shortcomment cmt">Creates a scheduled promise with the given message (using the deafult Promise timeout).</p><div class="fullcomment"><div class="comment cmt"><p>Creates a scheduled promise with the given message (using the deafult Promise timeout).
+Message a is shown if the scheduled promise redeems before the current promise</p></div><dl class="paramcmts block"><dt class="param">message</dt><dd class="cmt"><p>message to be displayed if the scheduled promise redeems first</p></dd><dt>returns</dt><dd class="cmt"><p>either the scheduled message or the current promise
 </p></dd></dl></div>
     </li><li name="play.api.libs.concurrent.PlayPromise#orTimeout" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="orTimeout[B](message:=&gt;B,duration:Long,unit:java.util.concurrent.TimeUnit)(implicitec:scala.concurrent.ExecutionContext):scala.concurrent.Future[Either[A,B]]"></a>
@@ -485,8 +488,8 @@ Message a is shown if the timer promise redeems before the current promise</p></
         <span class="name">orTimeout</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="message">message: ⇒ <span class="extype" name="play.api.libs.concurrent.PlayPromise.orTimeout.B">B</span></span>, <span name="duration">duration: <span class="extype" name="scala.Long">Long</span></span>, <span name="unit">unit: <span class="extype" name="java.util.concurrent.TimeUnit">TimeUnit</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="scala.Either">Either</span>[<span class="extype" name="play.api.libs.concurrent.PlayPromise.A">A</span>, <span class="extype" name="play.api.libs.concurrent.PlayPromise.orTimeout.B">B</span>]]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Creates a timer promise with the given message.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a timer promise with the given message.  Message a is shown if the timer promise
-redeems before the current promise</p></div><dl class="paramcmts block"><dt class="param">message</dt><dd class="cmt"><p>message to be displayed if the timer promise redeems first</p></dd><dt class="param">duration</dt><dd class="cmt"><p>duration</p></dd><dt>returns</dt><dd class="cmt"><p>either the timer message or the current promise
+      <p class="shortcomment cmt">Creates a scheduled promise with the given message.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a scheduled promise with the given message.  Message a is shown if the scheduled promise
+redeems before the current promise</p></div><dl class="paramcmts block"><dt class="param">message</dt><dd class="cmt"><p>message to be displayed if the scheduled promise redeems first</p></dd><dt class="param">duration</dt><dd class="cmt"><p>duration</p></dd><dt>returns</dt><dd class="cmt"><p>either the scheduled message or the current promise
 </p></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
