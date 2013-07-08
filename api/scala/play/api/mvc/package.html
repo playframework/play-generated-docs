@@ -656,23 +656,10 @@ handles a request and generates a result to be sent to the client.</p>
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="SimpleResult.html"><span class="name">SimpleResult</span></a><span class="params">(<span name="header">header: <a href="ResponseHeader.html" class="extype" name="play.api.mvc.ResponseHeader">ResponseHeader</a></span>, <span name="body">body: <a href="../libs/iteratee/Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]]</span>, <span name="streamingStrategy">streamingStrategy: <a href="StreamingStrategy.html" class="extype" name="play.api.mvc.StreamingStrategy">StreamingStrategy</a> = <span class="symbol">StreamingStrategy.Buffer.apply()</span></span>)</span><span class="result"> extends <a href="PlainResult.html" class="extype" name="play.api.mvc.PlainResult">PlainResult</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="SimpleResult.html"><span class="name">SimpleResult</span></a><span class="params">(<span name="header">header: <a href="ResponseHeader.html" class="extype" name="play.api.mvc.ResponseHeader">ResponseHeader</a></span>, <span name="body">body: <a href="../libs/iteratee/Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]]</span>, <span name="connection">connection: <a href="HttpConnection$.html#Connection=play.api.mvc.HttpConnection.Value" class="extmbr" name="play.api.mvc.HttpConnection.Connection">Connection</a> = <span class="symbol">HttpConnection.KeepAlive</span></span>)</span><span class="result"> extends <a href="PlainResult.html" class="extype" name="play.api.mvc.PlainResult">PlainResult</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       <p class="comment cmt">A simple result, which defines the response header and a body ready to send to the client.</p>
-    </li><li name="play.api.mvc.StreamingStrategy" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="StreamingStrategyextendsObject"></a>
-      <a id="StreamingStrategy:StreamingStrategy"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">sealed </span>
-        <span class="kind">trait</span>
-      </span>
-      <span class="symbol">
-        <a href="StreamingStrategy.html"><span class="name">StreamingStrategy</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
-      </span>
-      </h4>
-      <p class="comment cmt">The streaming strategy for the result.</p>
     </li><li name="play.api.mvc.WebSocket" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="WebSocket[A]extendsHandlerwithProductwithSerializable"></a>
       <a id="WebSocket[A]:WebSocket[A]"></a>
@@ -747,7 +734,7 @@ handles a request and generates a result to be sent to the client.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="ChunkedResult.html"><span class="name deprecated" title="Deprecated: (Since version 2.2.0) Use SimpleResult with Chunked streaming strategy instead. Will be removed in Play 2.3.">ChunkedResult</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a></span>
+        <a href="ChunkedResult.html"><span class="name deprecated" title="Deprecated: (Since version 2.2.0) Use SimpleResult with Results.chunk enumeratee instead. Will be removed in Play 2.3.">ChunkedResult</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a></span>
       </span>
       </h4>
       <p class="comment cmt">A chunked result, which defines the response header and a chunks enumerator to send asynchronously to the client.</p>
@@ -930,6 +917,19 @@ handles a request and generates a result to be sent to the client.</p>
       </span>
       </h4>
       <p class="comment cmt">Helper utilities to manage the Flash cookie.</p>
+    </li><li name="play.api.mvc.HttpConnection" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="HttpConnection"></a>
+      <a id="HttpConnection:HttpConnection"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="HttpConnection$.html"><span class="name">HttpConnection</span></a><span class="result"> extends <span class="extype" name="scala.Enumeration">Enumeration</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">The connection semantics for the result.</p>
     </li><li name="play.api.mvc.JavascriptLitteral" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="JavascriptLitteral"></a>
       <a id="JavascriptLitteral:JavascriptLitteral"></a>
@@ -1062,19 +1062,6 @@ handles a request and generates a result to be sent to the client.</p>
       </h4>
       <p class="comment cmt">Alias types for Sockets
 </p>
-    </li><li name="play.api.mvc.StreamingStrategy" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="StreamingStrategy"></a>
-      <a id="StreamingStrategy:StreamingStrategy"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a href="StreamingStrategy$.html"><span class="name">StreamingStrategy</span></a>
-      </span>
-      </h4>
-      
     </li><li name="play.api.mvc.WebSocket" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="WebSocket"></a>
       <a id="WebSocket:WebSocket"></a>
@@ -1104,13 +1091,13 @@ handles a request and generates a result to be sent to the client.</p>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="ChunkedResult$.html"><span class="name deprecated" title="Deprecated: (Since version 2.2.0) Use SimpleResult with Chunked streaming strategy instead. Will be removed in Play 2.3.">ChunkedResult</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="ChunkedResult$.html"><span class="name deprecated" title="Deprecated: (Since version 2.2.0) Use SimpleResult with Results.chunk enumeratee instead. Will be removed in Play 2.3.">ChunkedResult</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@deprecated</span>
               
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.2.0)</i> Use SimpleResult with Chunked streaming strategy instead. Will be removed in Play 2.3.</p></dd></dl></div>
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.2.0)</i> Use SimpleResult with Results.chunk enumeratee instead. Will be removed in Play 2.3.</p></dd></dl></div>
     </li><li name="play.api.mvc.PlainResult" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="PlainResult"></a>
       <a id="PlainResult:PlainResult"></a>

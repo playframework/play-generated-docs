@@ -186,7 +186,7 @@
       </span>
       </h4>
       <p class="shortcomment cmt">Set the result's content.</p><div class="fullcomment"><div class="comment cmt"><p>Set the result's content.
-</p></div><dl class="paramcmts block"><dt class="tparam">C</dt><dd class="cmt"><p>the content type</p></dd><dt class="param">content</dt><dd class="cmt"><p>content to send</p></dd><dt>returns</dt><dd class="cmt"><p>a <code>SimpleResult</code>
+</p></div><dl class="paramcmts block"><dt class="param">content</dt><dd class="cmt"><p>The content to send.
 </p></dd></dl></div>
     </li><li name="play.api.mvc.SimpleResult#as" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="as(contentType:String):play.api.mvc.SimpleResult"></a>
@@ -228,6 +228,23 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a></dd></dl></div>
+    </li><li name="play.api.mvc.Results.Status#chunked" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="chunked[C](content:play.api.libs.iteratee.Enumerator[C])(implicitwriteable:play.api.http.Writeable[C]):play.api.mvc.SimpleResult"></a>
+      <a id="chunked[C](Enumerator[C])(Writeable[C]):SimpleResult"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">chunked</span><span class="tparams">[<span name="C">C</span>]</span><span class="params">(<span name="content">content: <a href="../libs/iteratee/Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.mvc.Results.Status.chunked.C">C</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="writeable">writeable: <a href="../http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<span class="extype" name="play.api.mvc.Results.Status.chunked.C">C</span>]</span>)</span><span class="result">: <a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Feed the content as the response, using chunked transfer encoding.</p><div class="fullcomment"><div class="comment cmt"><p>Feed the content as the response, using chunked transfer encoding.</p><p>Chunked transfer encoding is only supported for HTTP 1.1 clients.  If the client is an HTTP 1.0 client, Play will
+instead return a 505 error code.</p><p>Chunked encoding allows the server to send a response where the content length is not known, or for potentially
+infinite streams, while still allowing the connection to be kept alive and reused for the next request.
+</p></div><dl class="paramcmts block"><dt class="param">content</dt><dd class="cmt"><p>Enumerator providing the content to stream.
+</p></dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
@@ -244,6 +261,19 @@
                 <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="play.api.mvc.SimpleResult#connection" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="connection:play.api.mvc.HttpConnection.Connection"></a>
+      <a id="connection:Connection"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">connection</span><span class="result">: <a href="HttpConnection$.html#Connection=play.api.mvc.HttpConnection.Value" class="extmbr" name="play.api.mvc.HttpConnection.Connection">Connection</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a></dd></dl></div>
     </li><li name="play.api.mvc.SimpleResult#discardingCookies" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="discardingCookies(cookies:play.api.mvc.DiscardingCookie*):play.api.mvc.SimpleResult"></a>
       <a id="discardingCookies(DiscardingCookie*):SimpleResult"></a>
@@ -271,6 +301,22 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="play.api.mvc.Results.Status#feed" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="feed[C](content:play.api.libs.iteratee.Enumerator[C])(implicitwriteable:play.api.http.Writeable[C]):play.api.mvc.SimpleResult"></a>
+      <a id="feed[C](Enumerator[C])(Writeable[C]):SimpleResult"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">feed</span><span class="tparams">[<span name="C">C</span>]</span><span class="params">(<span name="content">content: <a href="../libs/iteratee/Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.mvc.Results.Status.feed.C">C</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="writeable">writeable: <a href="../http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<span class="extype" name="play.api.mvc.Results.Status.feed.C">C</span>]</span>)</span><span class="result">: <a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Feed the content as the response.</p><div class="fullcomment"><div class="comment cmt"><p>Feed the content as the response.</p><p>The connection will be closed after the response is sent, regardless of whether there is a content length or
+transfer encoding defined.
+</p></div><dl class="paramcmts block"><dt class="param">content</dt><dd class="cmt"><p>Enumerator providing the content to stream.
+</p></dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
@@ -408,36 +454,8 @@
       </span>
       </h4>
       <p class="shortcomment cmt">Send a file.</p><div class="fullcomment"><div class="comment cmt"><p>Send a file.
-</p></div><dl class="paramcmts block"><dt class="param">content</dt><dd class="cmt"><p>The file to send</p></dd><dt class="param">inline</dt><dd class="cmt"><p>Use Content-Disposition inline or attachment.</p></dd><dt class="param">fileName</dt><dd class="cmt"><p>function to retrieve the file name (only used for Content-Disposition attachment)
+</p></div><dl class="paramcmts block"><dt class="param">content</dt><dd class="cmt"><p>The file to send.</p></dd><dt class="param">inline</dt><dd class="cmt"><p>Use Content-Disposition inline or attachment.</p></dd><dt class="param">fileName</dt><dd class="cmt"><p>function to retrieve the file name (only used for Content-Disposition attachment).
 </p></dd></dl></div>
-    </li><li name="play.api.mvc.Results.Status#stream" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="stream[C](content:play.api.libs.iteratee.Enumerator[C],streamingStrategy:play.api.mvc.StreamingStrategy)(implicitwriteable:play.api.http.Writeable[C]):play.api.mvc.SimpleResult"></a>
-      <a id="stream[C](Enumerator[C],StreamingStrategy)(Writeable[C]):SimpleResult"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">stream</span><span class="tparams">[<span name="C">C</span>]</span><span class="params">(<span name="content">content: <a href="../libs/iteratee/Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.mvc.Results.Status.stream.C">C</span>]</span>, <span name="streamingStrategy">streamingStrategy: <a href="StreamingStrategy.html" class="extype" name="play.api.mvc.StreamingStrategy">StreamingStrategy</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="writeable">writeable: <a href="../http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<span class="extype" name="play.api.mvc.Results.Status.stream.C">C</span>]</span>)</span><span class="result">: <a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Set the result's content as chunked.</p><div class="fullcomment"><div class="comment cmt"><p>Set the result's content as chunked.
-</p></div><dl class="paramcmts block"><dt class="tparam">C</dt><dd class="cmt"><p>the chunk type</p></dd><dt class="param">content</dt><dd class="cmt"><p>Enumerator providing the chunked content.</p></dd><dt>returns</dt><dd class="cmt"><p>a <code>ChunkedResult</code>
-</p></dd></dl></div>
-    </li><li name="play.api.mvc.SimpleResult#streamingStrategy" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="streamingStrategy:play.api.mvc.StreamingStrategy"></a>
-      <a id="streamingStrategy:StreamingStrategy"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">streamingStrategy</span><span class="result">: <a href="StreamingStrategy.html" class="extype" name="play.api.mvc.StreamingStrategy">StreamingStrategy</a></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -621,22 +639,6 @@ Ok(Messages(<span class="lit">"hello.world"</span>)).withLang(lang)</pre></div><
                 <span class="name">@deprecated</span>
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.1)</i> This method can only discard cookies on the / path with no domain and without secure set.  Use discardingCookies(DiscardingCookie*) instead.</p></dd></dl></div>
-    </li><li name="play.api.mvc.Results.Status#feed" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="feed[C](content:play.api.libs.iteratee.Enumerator[C])(implicitwriteable:play.api.http.Writeable[C]):play.api.mvc.SimpleResult"></a>
-      <a id="feed[C](Enumerator[C])(Writeable[C]):SimpleResult"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 2.2.0) Use stream(content, StreamingStrategy.Simple) instead">feed</span><span class="tparams">[<span name="C">C</span>]</span><span class="params">(<span name="content">content: <a href="../libs/iteratee/Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.mvc.Results.Status.feed.C">C</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="writeable">writeable: <a href="../http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<span class="extype" name="play.api.mvc.Results.Status.feed.C">C</span>]</span>)</span><span class="result">: <a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.2.0)</i> Use stream(content, StreamingStrategy.Simple) instead</p></dd></dl></div>
     </li><li name="play.api.mvc.Results.Status#stream" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="stream[C](content:play.api.libs.iteratee.Iteratee[C,Unit]=&gt;Unit)(implicitwriteable:play.api.http.Writeable[C]):play.api.mvc.ChunkedResult[C]"></a>
       <a id="stream[C]((Iteratee[C,Unit])⇒Unit)(Writeable[C]):ChunkedResult[C]"></a>
@@ -646,15 +648,33 @@ Ok(Messages(<span class="lit">"hello.world"</span>)).withLang(lang)</pre></div><
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 2.2.0) Use stream(Enumerator, StreamingStrategy.Chunked) instead.  Will be removed in Play 2.3.">stream</span><span class="tparams">[<span name="C">C</span>]</span><span class="params">(<span name="content">content: (<a href="../libs/iteratee/Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="play.api.mvc.Results.Status.stream.C">C</span>, <span class="extype" name="scala.Unit">Unit</span>]) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="writeable">writeable: <a href="../http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<span class="extype" name="play.api.mvc.Results.Status.stream.C">C</span>]</span>)</span><span class="result">: <a href="ChunkedResult.html" class="extype" name="play.api.mvc.ChunkedResult">ChunkedResult</a>[<span class="extype" name="play.api.mvc.Results.Status.stream.C">C</span>]</span>
+        <span class="name deprecated" title="Deprecated: (Since version 2.2.0) Use stream(Enumerator) instead.  Will be removed in Play 2.3.">stream</span><span class="tparams">[<span name="C">C</span>]</span><span class="params">(<span name="content">content: (<a href="../libs/iteratee/Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="play.api.mvc.Results.Status.stream.C">C</span>, <span class="extype" name="scala.Unit">Unit</span>]) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="writeable">writeable: <a href="../http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<span class="extype" name="play.api.mvc.Results.Status.stream.C">C</span>]</span>)</span><span class="result">: <a href="ChunkedResult.html" class="extype" name="play.api.mvc.ChunkedResult">ChunkedResult</a>[<span class="extype" name="play.api.mvc.Results.Status.stream.C">C</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Set the result's content as chunked.</p><div class="fullcomment"><div class="comment cmt"><p>Set the result's content as chunked.
-</p></div><dl class="paramcmts block"><dt class="tparam">C</dt><dd class="cmt"><p>the chunk type</p></dd><dt class="param">content</dt><dd class="cmt"><p>A function that will give you the Iteratee to write in once ready.</p></dd><dt>returns</dt><dd class="cmt"><p>a <code>ChunkedResult</code>
+</p></div><dl class="paramcmts block"><dt class="param">content</dt><dd class="cmt"><p>A function that will give you the Iteratee to write in once ready.
 </p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@deprecated</span>
               
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.2.0)</i> Use stream(Enumerator, StreamingStrategy.Chunked) instead.  Will be removed in Play 2.3.</p></dd></dl></div>
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.2.0)</i> Use stream(Enumerator) instead.  Will be removed in Play 2.3.</p></dd></dl></div>
+    </li><li name="play.api.mvc.Results.Status#stream" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="stream[C](content:play.api.libs.iteratee.Enumerator[C])(implicitwriteable:play.api.http.Writeable[C]):play.api.mvc.SimpleResult"></a>
+      <a id="stream[C](Enumerator[C])(Writeable[C]):SimpleResult"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 2.3.0) Use Status.chunked instead">stream</span><span class="tparams">[<span name="C">C</span>]</span><span class="params">(<span name="content">content: <a href="../libs/iteratee/Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.mvc.Results.Status.stream.C">C</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="writeable">writeable: <a href="../http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<span class="extype" name="play.api.mvc.Results.Status.stream.C">C</span>]</span>)</span><span class="result">: <a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Stream the results content as chunked.</p><div class="fullcomment"><div class="comment cmt"><p>Stream the results content as chunked.
+</p></div><dl class="paramcmts block"><dt class="param">content</dt><dd class="cmt"><p>Enumerator providing the content to stream.
+</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.3.0)</i> Use Status.chunked instead</p></dd></dl></div>
     </li></ol>
             </div>
         </div>
