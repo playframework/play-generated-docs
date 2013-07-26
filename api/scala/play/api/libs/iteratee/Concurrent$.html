@@ -9,11 +9,6 @@
           
       <link href="../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
-      <script type="text/javascript" src="../../../../lib/jquery.js" id="jquery-js"></script>
-      <script type="text/javascript" src="../../../../lib/jquery-ui.js"></script>
-      <script type="text/javascript" src="../../../../lib/template.js"></script>
-      <script type="text/javascript" src="../../../../lib/tools.tooltip.js"></script>
-      
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../../index.html';
@@ -87,7 +82,7 @@
         <div id="types" class="types members">
               <h3>Type Members</h3>
               <ol><li name="play.api.libs.iteratee.Concurrent.Broadcaster" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="BroadcasterextendsObject"></a>
+      <a id="BroadcasterextendsAnyRef"></a>
       <a id="Broadcaster:Broadcaster"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -100,7 +95,7 @@
       </h4>
       <p class="comment cmt">A broadcaster.</p>
     </li><li name="play.api.libs.iteratee.Concurrent.Channel" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="Channel[E]extendsObject"></a>
+      <a id="Channel[E]extendsAnyRef"></a>
       <a id="Channel[E]:Channel[E]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -113,7 +108,7 @@
       </h4>
       <p class="comment cmt">A channel for imperative style feeding of input into one or more iteratees.</p>
     </li><li name="play.api.libs.iteratee.Concurrent.PatchPanel" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="PatchPanel[E]extendsObject"></a>
+      <a id="PatchPanel[E]extendsAnyRef"></a>
       <a id="PatchPanel[E]:PatchPanel[E]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -219,7 +214,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">broadcast</span><span class="tparams">[<span name="E">E</span>]</span><span class="params">(<span name="e">e: <a href="Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.libs.iteratee.Concurrent.broadcast.E">E</span>]</span>, <span name="interestIsDownToZero">interestIsDownToZero: (<a href="Concurrent$$Broadcaster.html" class="extype" name="play.api.libs.iteratee.Concurrent.Broadcaster">Broadcaster</a>) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: (<a href="Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.libs.iteratee.Concurrent.broadcast.E">E</span>], <a href="Concurrent$$Broadcaster.html" class="extype" name="play.api.libs.iteratee.Concurrent.Broadcaster">Broadcaster</a>)</span>
+        <span class="name">broadcast</span><span class="tparams">[<span name="E">E</span>]</span><span class="params">(<span name="e">e: <a href="Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.libs.iteratee.Concurrent.broadcast.E">E</span>]</span>, <span name="interestIsDownToZero">interestIsDownToZero: (<a href="Concurrent$$Broadcaster.html" class="extype" name="play.api.libs.iteratee.Concurrent.Broadcaster">Broadcaster</a>) ⇒ <span class="extype" name="scala.Unit">Unit</span> = <span class="symbol">_ =&gt; ()</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: (<a href="Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.libs.iteratee.Concurrent.broadcast.E">E</span>], <a href="Concurrent$$Broadcaster.html" class="extype" name="play.api.libs.iteratee.Concurrent.Broadcaster">Broadcaster</a>)</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Create a broadcaster from the given enumerator.</p><div class="fullcomment"><div class="comment cmt"><p>Create a broadcaster from the given enumerator.  This allows iteratees to attach (and unattach by returning a done
@@ -295,8 +290,11 @@ serialised and fed directly to an HTTP response.
         <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">java.lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.CloneNotSupportedException]">...</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="play.api.libs.iteratee.Concurrent#dropInputIfNotReady" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -354,8 +352,11 @@ handle it within the given timeout, otherwise it drops it.
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">java.lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[java.lang.Throwable]</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -501,7 +502,7 @@ handle it within the given timeout, otherwise it drops it.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">unicast</span><span class="tparams">[<span name="E">E</span>]</span><span class="params">(<span name="onStart">onStart: (<a href="Concurrent$$Channel.html" class="extype" name="play.api.libs.iteratee.Concurrent.Channel">Channel</a>[<span class="extype" name="play.api.libs.iteratee.Concurrent.unicast.E">E</span>]) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>, <span name="onComplete">onComplete: ⇒ <span class="extype" name="scala.Unit">Unit</span></span>, <span name="onError">onError: (<span class="extype" name="scala.Predef.String">String</span>, <a href="Input.html" class="extype" name="play.api.libs.iteratee.Input">Input</a>[<span class="extype" name="play.api.libs.iteratee.Concurrent.unicast.E">E</span>]) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: <a href="Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.libs.iteratee.Concurrent.unicast.E">E</span>] { val pec: scala.concurrent.ExecutionContext }</span>
+        <span class="name">unicast</span><span class="tparams">[<span name="E">E</span>]</span><span class="params">(<span name="onStart">onStart: (<a href="Concurrent$$Channel.html" class="extype" name="play.api.libs.iteratee.Concurrent.Channel">Channel</a>[<span class="extype" name="play.api.libs.iteratee.Concurrent.unicast.E">E</span>]) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>, <span name="onComplete">onComplete: ⇒ <span class="extype" name="scala.Unit">Unit</span> = <span class="symbol">()</span></span>, <span name="onError">onError: (<span class="extype" name="scala.Predef.String">String</span>, <a href="Input.html" class="extype" name="play.api.libs.iteratee.Input">Input</a>[<span class="extype" name="play.api.libs.iteratee.Concurrent.unicast.E">E</span>]) ⇒ <span class="extype" name="scala.Unit">Unit</span> = <span class="symbol">(_: String, _: Input[E]) =&gt; ()</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: <a href="Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.libs.iteratee.Concurrent.unicast.E">E</span>] { val pec: scala.concurrent.ExecutionContext }</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Create an enumerator that allows imperative style pushing of input into a single iteratee.</p><div class="fullcomment"><div class="comment cmt"><p>Create an enumerator that allows imperative style pushing of input into a single iteratee.</p><p>The enumerator may be used multiple times, each time will cause a new invocation of <code>onStart</code>, which will pass a
@@ -524,7 +525,10 @@ there is no way for the caller to know which iteratee is finished or encountered
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -540,7 +544,10 @@ there is no way for the caller to know which iteratee is finished or encountered
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -556,7 +563,10 @@ there is no way for the caller to know which iteratee is finished or encountered
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li></ol>
@@ -588,7 +598,6 @@ there is no way for the caller to know which iteratee is finished or encountered
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-
-
+      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../lib/template.js"></script>
     </body>
       </html>
