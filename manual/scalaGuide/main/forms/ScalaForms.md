@@ -148,7 +148,7 @@ val userForm = Form(
         "street" -> text,
         "city" -> text
     )(Address.apply)(Address.unapply)
-  )(User.apply, User.unapply)
+  )(User.apply)(User.unapply)
 )
 ```
 
@@ -165,7 +165,7 @@ val userForm = Form(
   mapping(
     "name" -> text,
     "emails" -> list(text)
-  )(User.apply, User.unapply)
+  )(User.apply)(User.unapply)
 )
 ```
 
@@ -182,7 +182,7 @@ val userForm = Form(
   mapping(
     "name" -> text,
     "email" -> optional(text)
-  )(User.apply, User.unapply)
+  )(User.apply)(User.unapply)
 )
 ```
 
@@ -200,7 +200,7 @@ val userForm = Form(
     "id" -> ignored(1234),
     "name" -> text,
     "email" -> optional(text)
-  )(User.apply, User.unapply)
+  )(User.apply)(User.unapply)
 )
 ```
 
