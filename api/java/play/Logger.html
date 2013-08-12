@@ -103,7 +103,26 @@ extends java.lang.Object</pre>
 
  Example, logging with a custom logger:
  <pre>
- Logger.of("my.logger").info("Hello!")</pre></div>
+ Logger.of("my.logger").info("Hello!")</pre>
+
+ Each of the logging methods is overloaded to be able to take an array of arguments.  These are formatted into the
+ message String, replacing occurrences of '{}'.  For example:
+
+ <pre>
+ Logger.info("A {} request was received at {}", request.method(), request.uri());
+ </pre>
+
+ This might print out:
+
+ <pre>
+ A POST request was received at /api/items
+ </pre>
+
+ This saves on the cost of String construction when logging is turned off.
+
+ This API is intended as a simple logging API to meet 99% percent of the most common logging needs with minimal code
+ overhead.  For more complex needs, the underlying() methods may be used to get the underlying SLF4J logger, or
+ SLF4J may be used directly.</div>
 </li>
 </ul>
 </div>
@@ -168,14 +187,28 @@ extends java.lang.Object</pre>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>static void</code></td>
-<td class="colLast"><code><strong><a href="../play/Logger.html#debug(java.lang.String, java.lang.Throwable)">debug</a></strong>(java.lang.String&nbsp;message,
-     java.lang.Throwable&nbsp;error)</code>
+<td class="colLast"><code><strong><a href="../play/Logger.html#debug(java.lang.String, java.lang.Object...)">debug</a></strong>(java.lang.String&nbsp;message,
+     java.lang.Object...&nbsp;args)</code>
 <div class="block">Log a message with the DEBUG level.</div>
 </td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>static void</code></td>
+<td class="colLast"><code><strong><a href="../play/Logger.html#debug(java.lang.String, java.lang.Throwable)">debug</a></strong>(java.lang.String&nbsp;message,
+     java.lang.Throwable&nbsp;error)</code>
+<div class="block">Log a message with the DEBUG level.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static void</code></td>
 <td class="colLast"><code><strong><a href="../play/Logger.html#error(java.lang.String)">error</a></strong>(java.lang.String&nbsp;message)</code>
+<div class="block">Log a message with the ERROR level.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static void</code></td>
+<td class="colLast"><code><strong><a href="../play/Logger.html#error(java.lang.String, java.lang.Object...)">error</a></strong>(java.lang.String&nbsp;message,
+     java.lang.Object...&nbsp;args)</code>
 <div class="block">Log a message with the ERROR level.</div>
 </td>
 </tr>
@@ -194,56 +227,70 @@ extends java.lang.Object</pre>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>static void</code></td>
+<td class="colLast"><code><strong><a href="../play/Logger.html#info(java.lang.String, java.lang.Object...)">info</a></strong>(java.lang.String&nbsp;message,
+    java.lang.Object...&nbsp;args)</code>
+<div class="block">Log a message with the INFO level.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static void</code></td>
 <td class="colLast"><code><strong><a href="../play/Logger.html#info(java.lang.String, java.lang.Throwable)">info</a></strong>(java.lang.String&nbsp;message,
     java.lang.Throwable&nbsp;error)</code>
 <div class="block">Log a message with the INFO level.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>static boolean</code></td>
 <td class="colLast"><code><strong><a href="../play/Logger.html#isDebugEnabled()">isDebugEnabled</a></strong>()</code>
 <div class="block">Returns <code>true</code> if the logger instance enabled for the DEBUG level?</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>static boolean</code></td>
 <td class="colLast"><code><strong><a href="../play/Logger.html#isErrorEnabled()">isErrorEnabled</a></strong>()</code>
 <div class="block">Returns <code>true</code> if the logger instance enabled for the ERROR level?</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>static boolean</code></td>
 <td class="colLast"><code><strong><a href="../play/Logger.html#isInfoEnabled()">isInfoEnabled</a></strong>()</code>
 <div class="block">Returns <code>true</code> if the logger instance enabled for the INFO level?</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>static boolean</code></td>
 <td class="colLast"><code><strong><a href="../play/Logger.html#isTraceEnabled()">isTraceEnabled</a></strong>()</code>
 <div class="block">Returns <code>true</code> if the logger instance enabled for the TRACE level?</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>static boolean</code></td>
 <td class="colLast"><code><strong><a href="../play/Logger.html#isWarnEnabled()">isWarnEnabled</a></strong>()</code>
 <div class="block">Returns <code>true</code> if the logger instance enabled for the WARN level?</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>static <a href="../play/Logger.ALogger.html" title="class in play">Logger.ALogger</a></code></td>
 <td class="colLast"><code><strong><a href="../play/Logger.html#of(java.lang.Class)">of</a></strong>(java.lang.Class&lt;?&gt;&nbsp;clazz)</code>
 <div class="block">Obtain a logger instance.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>static <a href="../play/Logger.ALogger.html" title="class in play">Logger.ALogger</a></code></td>
 <td class="colLast"><code><strong><a href="../play/Logger.html#of(java.lang.String)">of</a></strong>(java.lang.String&nbsp;name)</code>
 <div class="block">Obtain a logger instance.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>static void</code></td>
 <td class="colLast"><code><strong><a href="../play/Logger.html#trace(java.lang.String)">trace</a></strong>(java.lang.String&nbsp;message)</code>
+<div class="block">Log a message with the TRACE level.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static void</code></td>
+<td class="colLast"><code><strong><a href="../play/Logger.html#trace(java.lang.String, java.lang.Object...)">trace</a></strong>(java.lang.String&nbsp;message,
+     java.lang.Object...&nbsp;args)</code>
 <div class="block">Log a message with the TRACE level.</div>
 </td>
 </tr>
@@ -255,8 +302,21 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr class="rowColor">
+<td class="colFirst"><code>static org.slf4j.Logger</code></td>
+<td class="colLast"><code><strong><a href="../play/Logger.html#underlying()">underlying</a></strong>()</code>
+<div class="block">Get the underlying application SLF4J logger.</div>
+</td>
+</tr>
+<tr class="altColor">
 <td class="colFirst"><code>static void</code></td>
 <td class="colLast"><code><strong><a href="../play/Logger.html#warn(java.lang.String)">warn</a></strong>(java.lang.String&nbsp;message)</code>
+<div class="block">Log a message with the WARN level.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static void</code></td>
+<td class="colLast"><code><strong><a href="../play/Logger.html#warn(java.lang.String, java.lang.Object...)">warn</a></strong>(java.lang.String&nbsp;message,
+    java.lang.Object...&nbsp;args)</code>
 <div class="block">Log a message with the WARN level.</div>
 </td>
 </tr>
@@ -330,6 +390,16 @@ extends java.lang.Object</pre>
 <dt><span class="strong">Returns:</span></dt><dd>a logger</dd></dl>
 </li>
 </ul>
+<a name="underlying()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>underlying</h4>
+<pre>public static&nbsp;org.slf4j.Logger&nbsp;underlying()</pre>
+<div class="block">Get the underlying application SLF4J logger.</div>
+</li>
+</ul>
 <a name="isTraceEnabled()">
 <!--   -->
 </a>
@@ -391,6 +461,18 @@ extends java.lang.Object</pre>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>message</code> - message to log</dd></dl>
 </li>
 </ul>
+<a name="trace(java.lang.String, java.lang.Object...)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>trace</h4>
+<pre>public static&nbsp;void&nbsp;trace(java.lang.String&nbsp;message,
+         java.lang.Object...&nbsp;args)</pre>
+<div class="block">Log a message with the TRACE level.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>message</code> - message to log</dd><dd><code>args</code> - The arguments to apply to the message String</dd></dl>
+</li>
+</ul>
 <a name="trace(java.lang.String, java.lang.Throwable)">
 <!--   -->
 </a>
@@ -412,6 +494,18 @@ extends java.lang.Object</pre>
 <pre>public static&nbsp;void&nbsp;debug(java.lang.String&nbsp;message)</pre>
 <div class="block">Log a message with the DEBUG level.</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>message</code> - message to log</dd></dl>
+</li>
+</ul>
+<a name="debug(java.lang.String, java.lang.Object...)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>debug</h4>
+<pre>public static&nbsp;void&nbsp;debug(java.lang.String&nbsp;message,
+         java.lang.Object...&nbsp;args)</pre>
+<div class="block">Log a message with the DEBUG level.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>message</code> - message to log</dd><dd><code>args</code> - The arguments to apply to the message String</dd></dl>
 </li>
 </ul>
 <a name="debug(java.lang.String, java.lang.Throwable)">
@@ -437,6 +531,18 @@ extends java.lang.Object</pre>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>message</code> - message to log</dd></dl>
 </li>
 </ul>
+<a name="info(java.lang.String, java.lang.Object...)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>info</h4>
+<pre>public static&nbsp;void&nbsp;info(java.lang.String&nbsp;message,
+        java.lang.Object...&nbsp;args)</pre>
+<div class="block">Log a message with the INFO level.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>message</code> - message to log</dd><dd><code>args</code> - The arguments to apply to the message string</dd></dl>
+</li>
+</ul>
 <a name="info(java.lang.String, java.lang.Throwable)">
 <!--   -->
 </a>
@@ -460,6 +566,18 @@ extends java.lang.Object</pre>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>message</code> - message to log</dd></dl>
 </li>
 </ul>
+<a name="warn(java.lang.String, java.lang.Object...)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>warn</h4>
+<pre>public static&nbsp;void&nbsp;warn(java.lang.String&nbsp;message,
+        java.lang.Object...&nbsp;args)</pre>
+<div class="block">Log a message with the WARN level.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>message</code> - message to log</dd><dd><code>args</code> - The arguments to apply to the message string</dd></dl>
+</li>
+</ul>
 <a name="warn(java.lang.String, java.lang.Throwable)">
 <!--   -->
 </a>
@@ -481,6 +599,18 @@ extends java.lang.Object</pre>
 <pre>public static&nbsp;void&nbsp;error(java.lang.String&nbsp;message)</pre>
 <div class="block">Log a message with the ERROR level.</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>message</code> - message to log</dd></dl>
+</li>
+</ul>
+<a name="error(java.lang.String, java.lang.Object...)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>error</h4>
+<pre>public static&nbsp;void&nbsp;error(java.lang.String&nbsp;message,
+         java.lang.Object...&nbsp;args)</pre>
+<div class="block">Log a message with the ERROR level.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>message</code> - message to log</dd><dd><code>args</code> - The arguments to apply to the message string</dd></dl>
 </li>
 </ul>
 <a name="error(java.lang.String, java.lang.Throwable)">
