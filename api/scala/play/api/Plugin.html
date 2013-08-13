@@ -39,7 +39,11 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A Play plugin.</p><p>You can define a Play plugin this way:</p><pre><span class="kw">class</span> MyPlugin(app: <span class="std">Application</span>) <span class="kw">extends</span> Plugin</pre><p>The plugin class must be declared in a play.plugins file available in the classpath root:</p><pre><span class="num">1000</span>:myapp.MyPlugin</pre><p>The associated int defines the plugin priority.
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A Play plugin.</p><p>A plugin must define a single argument constructor that accepts an <a href="Application.html" class="extype" name="play.api.Application">play.api.Application</a>.  For example:</p><pre><span class="kw">class</span> MyPlugin(app: <span class="std">Application</span>) <span class="kw">extends</span> Plugin {
+<span class="kw">override</span> <span class="kw">def</span> onStart() = {
+  Logger.info(<span class="lit">"Plugin started!"</span>)
+}
+}</pre><p>The plugin class must be declared in a play.plugins file available in the classpath root:</p><pre><span class="num">1000</span>:myapp.MyPlugin</pre><p>The associated int defines the plugin priority.
 </p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/scratch/jenkins/workspace/play2-master-apidocs/framework/src/play/src/main/scala/play/api/Plugins.scala" target="_blank">Plugins.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>

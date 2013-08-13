@@ -104,7 +104,21 @@
 <pre>public class <span class="strong">Plugin</span>
 extends java.lang.Object
 implements play.api.Plugin</pre>
-<div class="block">A Play plugin.</div>
+<div class="block">A Play plugin.
+
+ A plugin must define a single argument constructor that accepts an <a href="../play/Application.html" title="class in play"><code>Application</code></a>, for example:
+
+ <pre>
+ public class MyPlugin extends Plugin {
+     private final Application app;
+     public MyPlugin(Application app) {
+         this.app = app;
+     }
+     public void onStart() {
+         Logger.info("Plugin started!");
+     }
+ }
+ </pre></div>
 </li>
 </ul>
 </div>
