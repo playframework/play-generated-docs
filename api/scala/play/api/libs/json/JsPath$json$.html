@@ -199,8 +199,8 @@
 - creates a new branch from JsPath and copies previous value into it</u></p><div class="fullcomment"><div class="comment cmt"><p>(<u> \ 'key).json.copyFrom(reads) is a Reads[JsObject] that:
 - copies a JsValue using passed Reads[A]
 - creates a new branch from JsPath and copies previous value into it</u></p><p>Useful to copy a value from a Json branch into another branch</p><p>Example :</p><pre><span class="kw">val</span> js = Json.obj(<span class="lit">"key1"</span> -&gt; <span class="lit">"value1"</span>, <span class="lit">"key2"</span> -&gt; <span class="lit">"value2"</span>)
-js.validate( (__ \ 'key3).copyFrom( (__ \ 'key2).json.pick
-<span class="kw">=&gt;</span> JsSuccess(JsObject(<span class="std">Seq</span>( (<span class="lit">"key3"</span>, JsString(<span class="lit">"value2"</span>)) )))</pre></div></div>
+js.validate( (__ \ 'key3).json.copyFrom((__ \ 'key2).json.pick))
+<span class="kw">=&gt;</span> JsSuccess({<span class="lit">"key3"</span>:<span class="lit">"value2"</span>},/key2)</pre></div></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -343,8 +343,8 @@ js.validate( (__ \ 'key3).copyFrom( (__ \ 'key2).json.pick
 - picks the given value at the given JsPath (WITHOUT THE PATH) from the input JS
 - validates this element as an object of type JsValue
 - returns a JsResult[JsValue]</u></p><p>Useful to pick a JsValue at a given JsPath</p><p>Example :</p><pre><span class="kw">val</span> js = Json.obj(<span class="lit">"key1"</span> -&gt; <span class="lit">"value1"</span>, <span class="lit">"key2"</span> -&gt; <span class="lit">"value2"</span>)
-js.validate( (__ \ 'key2).json.pick )
-<span class="kw">=&gt;</span> JsSuccess(JsString(<span class="lit">"value2"</span>))</pre></div></div>
+js.validate((__ \ 'key2).json.pick)
+<span class="kw">=&gt;</span> JsSuccess(<span class="lit">"value2"</span>,/key2)</pre></div></div>
     </li><li name="play.api.libs.json.JsPath.json#pick" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="pick[A&lt;:play.api.libs.json.JsValue](implicitr:play.api.libs.json.Reads[A]):play.api.libs.json.Reads[A]"></a>
       <a id="pick[A&lt;:JsValue](Reads[A]):Reads[A]"></a>
@@ -364,8 +364,8 @@ js.validate( (__ \ 'key2).json.pick )
 - picks the given value at the given JsPath (WITHOUT THE PATH) from the input JS
 - validates this element as an object of type A (inheriting JsValue)
 - returns a JsResult[A]</u></p><p>Useful to pick a typed JsValue at a given JsPath</p><p>Example :</p><pre><span class="kw">val</span> js = Json.obj(<span class="lit">"key1"</span> -&gt; <span class="lit">"value1"</span>, <span class="lit">"key2"</span> -&gt; <span class="num">123</span>)
-js.validate( (__ \ 'key2).json.pick[JsNumber] )
-<span class="kw">=&gt;</span> JsSuccess(JsNumber(<span class="num">123</span>))</pre></div></div>
+js.validate((__ \ 'key2).json.pick[JsNumber])
+<span class="kw">=&gt;</span> JsSuccess(JsNumber(<span class="num">123</span>),/key2)</pre></div></div>
     </li><li name="play.api.libs.json.JsPath.json#pickBranch" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="pickBranch:play.api.libs.json.Reads[play.api.libs.json.JsObject]"></a>
       <a id="pickBranch:Reads[JsObject]"></a>
@@ -386,7 +386,7 @@ js.validate( (__ \ 'key2).json.pick[JsNumber] )
 - creates a JsObject from JsPath and JsValue
 - returns a JsResult[JsObject]</u></p><p>Useful to create/validate an JsObject from a single JsPath (potentially modifying it)</p><p>Example :</p><pre><span class="kw">val</span> js = Json.obj(<span class="lit">"key1"</span> -&gt; <span class="lit">"value1"</span>, <span class="lit">"key2"</span> -&gt; Json.obj( <span class="lit">"key21"</span> -&gt; <span class="lit">"value2"</span>) )
 js.validate( (__ \ 'key2).json.pickBranch )
-<span class="kw">=&gt;</span> JsSuccess(JsObject(<span class="std">Seq</span>( (<span class="lit">"key2"</span>, Json.obj(<span class="lit">"key21"</span> -&gt; <span class="lit">"value2"</span>)) )))</pre></div></div>
+<span class="kw">=&gt;</span> JsSuccess({<span class="lit">"key2"</span>:{<span class="lit">"key21"</span>:<span class="lit">"value2"</span>}},/key2)</pre></div></div>
     </li><li name="play.api.libs.json.JsPath.json#pickBranch" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="pickBranch[A&lt;:play.api.libs.json.JsValue](reads:play.api.libs.json.Reads[A]):play.api.libs.json.Reads[play.api.libs.json.JsObject]"></a>
       <a id="pickBranch[A&lt;:JsValue](Reads[A]):Reads[JsObject]"></a>
@@ -408,8 +408,8 @@ js.validate( (__ \ 'key2).json.pickBranch )
 - validates this relative JsValue as an object of type A (inheriting JsValue) potentially modifying it
 - creates a JsObject from JsPath and validated JsValue
 - returns a JsResult[JsObject]</u></p><p>Useful to create/validate an JsObject from a single JsPath (potentially modifying it)</p><p>Example :</p><pre><span class="kw">val</span> js = Json.obj(<span class="lit">"key1"</span> -&gt; <span class="lit">"value1"</span>, <span class="lit">"key2"</span> -&gt; Json.obj( <span class="lit">"key21"</span> -&gt; <span class="lit">"value2"</span>) )
-js.validate( (__ \ 'key2).json.pickBranch[JsString]( (__ \ <span class="lit">'key21'</span>).json.pick[JsString].map( (js: JsString) <span class="kw">=&gt;</span> JsString(js.value ++ <span class="lit">"3456"</span>) ) ) )
-<span class="kw">=&gt;</span> JsSuccess(JsObject(<span class="std">Seq</span>( (<span class="lit">"key2"</span>, JsString(value23456<span class="lit">")) )))</span></pre></div></div>
+js.validate( (__ \ 'key2).json.pickBranch[JsString]( (__ \ 'key21).json.pick[JsString].map( (js: JsString) <span class="kw">=&gt;</span> JsString(js.value ++ <span class="lit">"3456"</span>) ) ) )
+<span class="kw">=&gt;</span> JsSuccess({<span class="lit">"key2"</span>:<span class="lit">"value23456"</span>},/key2/key21)</pre></div></div>
     </li><li name="play.api.libs.json.JsPath.json#prune" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="prune:play.api.libs.json.Reads[play.api.libs.json.JsObject]"></a>
       <a id="prune:Reads[JsObject]"></a>
@@ -423,8 +423,8 @@ js.validate( (__ \ 'key2).json.pickBranch[JsString]( (__ \ <span class="lit">'ke
       </span>
       </h4>
       <p class="shortcomment cmt">(<u> \ 'key).json.prune is Reads[JsObject] that prunes the branch and returns remaining JsValue</u></p><div class="fullcomment"><div class="comment cmt"><p>(<u> \ 'key).json.prune is Reads[JsObject] that prunes the branch and returns remaining JsValue</u></p><p>Example :</p><pre><span class="kw">val</span> js = Json.obj(<span class="lit">"key1"</span> -&gt; <span class="lit">"value1"</span>, <span class="lit">"key2"</span> -&gt; <span class="lit">"value2"</span>)
-js.validate( (__ \ 'key2).prune
-<span class="kw">=&gt;</span> JsSuccess(JsObject(<span class="std">Seq</span>( (<span class="lit">"key1"</span>, JsString(<span class="lit">"value1"</span>)) )))</pre></div></div>
+js.validate( (__ \ 'key2).json.prune )
+<span class="kw">=&gt;</span> JsSuccess({<span class="lit">"key1"</span>:<span class="lit">"value1"</span>},/key2)</pre></div></div>
     </li><li name="play.api.libs.json.JsPath.json#put" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="put(a:=&gt;play.api.libs.json.JsValue):play.api.libs.json.Reads[play.api.libs.json.JsObject]"></a>
       <a id="put(⇒JsValue):Reads[JsObject]"></a>
@@ -443,8 +443,8 @@ js.validate( (__ \ 'key2).prune
 - creates a JsObject setting A (inheriting JsValue) at given JsPath
 - returns a JsResult[JsObject]</u></p><p>This Reads doesn't care about the input JS and is mainly used to set a fixed at a given JsPath
 Please that A is passed by name allowing to use an expression reevaluated at each time.</p><p>Example :</p><pre><span class="kw">val</span> js = Json.obj(<span class="lit">"key1"</span> -&gt; <span class="lit">"value1"</span>, <span class="lit">"key2"</span> -&gt; <span class="lit">"value2"</span>)
-js.validate( (__ \ 'key3).put( { JsNumber((<span class="kw">new</span> java.util.Date).getTime()) } ) )
-<span class="kw">=&gt;</span> JsSuccess(JsObject(<span class="std">Seq</span>( (<span class="lit">"key3"</span>, JsNumber(<span class="num">123364687568756</span>)) )))</pre></div></div>
+js.validate( (__ \ 'key3).json.put( { JsNumber((<span class="kw">new</span> java.util.Date).getTime()) } ) )
+<span class="kw">=&gt;</span> JsSuccess({<span class="lit">"key3"</span>:<span class="num">1376419773171</span>},)</pre></div></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -490,8 +490,8 @@ js.validate( (__ \ 'key3).put( { JsNumber((<span class="kw">new</span> java.util
 - copies the whole JsValue =&gt; A
 - applies the passed Reads[A] on JsValue =&gt; B
 - deep merges both JsValues (A ++ B) so B overwrites A identical branches</u></p><p>Please note that if you have prune a branch in B, it is still in A so you'll see it in the result</p><p>Example :</p><pre><span class="kw">val</span> js = Json.obj(<span class="lit">"key1"</span> -&gt; <span class="lit">"value1"</span>, <span class="lit">"key2"</span> -&gt; <span class="lit">"value2"</span>)
-js.validate( (__ \ 'key3).update( (__ \ 'key3).write(<span class="lit">"value3"</span>) )
-<span class="kw">=&gt;</span> JsSuccess(JsObject(<span class="std">Seq</span>( (<span class="lit">"key1"</span>, JsString(<span class="lit">"value1"</span>)), (<span class="lit">"key2"</span>, JsString(<span class="lit">"value2"</span>)), (<span class="lit">"key3"</span>, JsString(<span class="lit">"value3"</span>)) )))</pre></div></div>
+js.validate(__.json.update((__ \ 'key3).json.put(JsString(<span class="lit">"value3"</span>))))
+<span class="kw">=&gt;</span> JsSuccess({<span class="lit">"key1"</span>:<span class="lit">"value1"</span>,<span class="lit">"key2"</span>:<span class="lit">"value2"</span>,<span class="lit">"key3"</span>:<span class="lit">"value3"</span>},)</pre></div></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
