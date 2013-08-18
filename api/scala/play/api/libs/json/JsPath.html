@@ -730,7 +730,7 @@ recursive case classes for ex</p><p>Please note that it's not writeOpt to be coh
 and other cases are Error).</p><div class="fullcomment"><div class="comment cmt"><p>Reads a Option[T] search optional or nullable field at JsPath (field not found or null is None
 and other cases are Error).</p><p>It runs through JsValue following all JsPath nodes on JsValue except last node:
 - If one node in JsPath is not found before last node =&gt; returns JsError( &quot;missing-path&quot; )
-- If all nodes are found till last node, it runs through JsValue with last node =&gt;</p><ul><li>If last node if not found =&gt; returns None</li><li>If last node is found with value &quot;null&quot; =&gt; returns None</li><li>If last node is found =&gt; applies implicit Reads[T]
+- If all nodes are found till last node, it runs through JsValue with last node =&gt;</p><ul><li>If last node is not found =&gt; returns None</li><li>If last node is found with value &quot;null&quot; =&gt; returns None</li><li>If last node is found =&gt; applies implicit Reads[T]
 </li></ul></div></div>
     </li><li name="play.api.libs.json.JsPath#rw" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="rw[T](implicitr:play.api.libs.json.Reads[T],implicitw:play.api.libs.json.Writes[T]):play.api.libs.json.OFormat[T]"></a>
