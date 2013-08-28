@@ -398,30 +398,30 @@ value that is <code>true</code> on its first call only.
          future eventually redeemed with None if the end of the stream has been reached.</p></dd><dt class="param">onComplete</dt><dd class="cmt"><p>Called when the end of the stream is reached.</p></dd><dt class="param">onError</dt><dd class="cmt"><p>FIXME: Never called.</p></dd><dt class="param">ec</dt><dd class="cmt"><p>The context to execute the supplied functions with. The context is prepared on the calling thread before being used.
 </p></dd></dl></div>
     </li><li name="play.api.libs.iteratee.Enumerator#fromFile" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="fromFile(file:java.io.File,chunkSize:Int):play.api.libs.iteratee.Enumerator[Array[Byte]]"></a>
-      <a id="fromFile(File,Int):Enumerator[Array[Byte]]"></a>
+      <a id="fromFile(file:java.io.File,chunkSize:Int)(implicitec:scala.concurrent.ExecutionContext):play.api.libs.iteratee.Enumerator[Array[Byte]]"></a>
+      <a id="fromFile(File,Int)(ExecutionContext):Enumerator[Array[Byte]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">fromFile</span><span class="params">(<span name="file">file: <span class="extype" name="java.io.File">File</span></span>, <span name="chunkSize">chunkSize: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1024 * 8</span></span>)</span><span class="result">: <a href="Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]]</span>
+        <span class="name">fromFile</span><span class="params">(<span name="file">file: <span class="extype" name="java.io.File">File</span></span>, <span name="chunkSize">chunkSize: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1024 * 8</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: <a href="Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Create an enumerator from the given input stream.</p><div class="fullcomment"><div class="comment cmt"><p>Create an enumerator from the given input stream.</p><p>Note that this enumerator will block when it reads from the file.
 </p></div><dl class="paramcmts block"><dt class="param">file</dt><dd class="cmt"><p>The file to create the enumerator from.</p></dd><dt class="param">chunkSize</dt><dd class="cmt"><p>The size of chunks to read from the file.
 </p></dd></dl></div>
     </li><li name="play.api.libs.iteratee.Enumerator#fromStream" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="fromStream(input:java.io.InputStream,chunkSize:Int):play.api.libs.iteratee.Enumerator[Array[Byte]]"></a>
-      <a id="fromStream(InputStream,Int):Enumerator[Array[Byte]]"></a>
+      <a id="fromStream(input:java.io.InputStream,chunkSize:Int)(implicitec:scala.concurrent.ExecutionContext):play.api.libs.iteratee.Enumerator[Array[Byte]]"></a>
+      <a id="fromStream(InputStream,Int)(ExecutionContext):Enumerator[Array[Byte]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">fromStream</span><span class="params">(<span name="input">input: <span class="extype" name="java.io.InputStream">InputStream</span></span>, <span name="chunkSize">chunkSize: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1024 * 8</span></span>)</span><span class="result">: <a href="Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]]</span>
+        <span class="name">fromStream</span><span class="params">(<span name="input">input: <span class="extype" name="java.io.InputStream">InputStream</span></span>, <span name="chunkSize">chunkSize: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1024 * 8</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: <a href="Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Create an enumerator from the given input stream.</p><div class="fullcomment"><div class="comment cmt"><p>Create an enumerator from the given input stream.</p><p>This enumerator will block on reading the input stream, in the default iteratee thread pool.  Care must therefore
@@ -582,7 +582,7 @@ is undefined.
         <span class="name">outputStream</span><span class="params">(<span name="a">a: (<span class="extype" name="java.io.OutputStream">OutputStream</span>) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: <a href="Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Create an Enumerator of bytes with an OutputStream.</p><div class="fullcomment"><div class="comment cmt"><p>Create an Enumerator of bytes with an OutputStream.</p><p>Not that calls to write will not block, so if the iteratee that is being fed to is slow to consume the input, the
+      <p class="shortcomment cmt">Create an Enumerator of bytes with an OutputStream.</p><div class="fullcomment"><div class="comment cmt"><p>Create an Enumerator of bytes with an OutputStream.</p><p>Note that calls to write will not block, so if the iteratee that is being fed to is slow to consume the input, the
 OutputStream will not push back.  This means it should not be used with large streams since there is a risk of
 running out of memory.
 </p></div><dl class="paramcmts block"><dt class="param">a</dt><dd class="cmt"><p>A callback that provides the output stream when this enumerator is written to an iteratee.</p></dd><dt class="param">ec</dt><dd class="cmt"><p>The context to execute the supplied function with. The context is prepared on the calling thread before being used.
@@ -644,22 +644,22 @@ running out of memory.
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="play.api.libs.iteratee.Enumerator#unfold" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="unfold[S,E](s:S)(f:S=&gt;Option[(S,E)]):play.api.libs.iteratee.Enumerator[E]"></a>
-      <a id="unfold[S,E](S)((S)⇒Option[(S,E)]):Enumerator[E]"></a>
+      <a id="unfold[S,E](s:S)(f:S=&gt;Option[(S,E)])(implicitec:scala.concurrent.ExecutionContext):play.api.libs.iteratee.Enumerator[E]"></a>
+      <a id="unfold[S,E](S)((S)⇒Option[(S,E)])(ExecutionContext):Enumerator[E]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">unfold</span><span class="tparams">[<span name="S">S</span>, <span name="E">E</span>]</span><span class="params">(<span name="s">s: <span class="extype" name="play.api.libs.iteratee.Enumerator.unfold.S">S</span></span>)</span><span class="params">(<span name="f">f: (<span class="extype" name="play.api.libs.iteratee.Enumerator.unfold.S">S</span>) ⇒ <span class="extype" name="scala.Option">Option</span>[(<span class="extype" name="play.api.libs.iteratee.Enumerator.unfold.S">S</span>, <span class="extype" name="play.api.libs.iteratee.Enumerator.unfold.E">E</span>)]</span>)</span><span class="result">: <a href="Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.libs.iteratee.Enumerator.unfold.E">E</span>]</span>
+        <span class="name">unfold</span><span class="tparams">[<span name="S">S</span>, <span name="E">E</span>]</span><span class="params">(<span name="s">s: <span class="extype" name="play.api.libs.iteratee.Enumerator.unfold.S">S</span></span>)</span><span class="params">(<span name="f">f: (<span class="extype" name="play.api.libs.iteratee.Enumerator.unfold.S">S</span>) ⇒ <span class="extype" name="scala.Option">Option</span>[(<span class="extype" name="play.api.libs.iteratee.Enumerator.unfold.S">S</span>, <span class="extype" name="play.api.libs.iteratee.Enumerator.unfold.E">E</span>)]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: <a href="Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.libs.iteratee.Enumerator.unfold.E">E</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Unfold a value of type S into input for an enumerator.</p><div class="fullcomment"><div class="comment cmt"><p>Unfold a value of type S into input for an enumerator.</p><p>For example, the following would enumerate the elements of a list, implementing the same behavior as
 Enumerator.enumerate:</p><pre>Enumerator.sequence[<span class="std">List</span>[<span class="std">Int</span>], <span class="std">Int</span>]{ list <span class="kw">=&gt;</span>
 list.headOption.map(input <span class="kw">=&gt;</span> list.tail -&gt; input)
 }</pre></div><dl class="paramcmts block"><dt class="param">s</dt><dd class="cmt"><p>The value to unfold</p></dd><dt class="param">f</dt><dd class="cmt"><p>The unfolding function. This will take the value, and return some tuple of the next value to unfold and
-         the next input, or none if the value is completely unfolded.
+         the next input, or none if the value is completely unfolded.</p></dd><dt class="param">ec</dt><dd class="cmt"><p>The context to execute the supplied function with. The context is prepared on the calling thread before being used.
 </p></dd></dl></div>
     </li><li name="play.api.libs.iteratee.Enumerator#unfoldM" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="unfoldM[S,E](s:S)(f:S=&gt;scala.concurrent.Future[Option[(S,E)]])(implicitec:scala.concurrent.ExecutionContext):play.api.libs.iteratee.Enumerator[E]"></a>
@@ -673,7 +673,7 @@ list.headOption.map(input <span class="kw">=&gt;</span> list.tail -&gt; input)
         <span class="name">unfoldM</span><span class="tparams">[<span name="S">S</span>, <span name="E">E</span>]</span><span class="params">(<span name="s">s: <span class="extype" name="play.api.libs.iteratee.Enumerator.unfoldM.S">S</span></span>)</span><span class="params">(<span name="f">f: (<span class="extype" name="play.api.libs.iteratee.Enumerator.unfoldM.S">S</span>) ⇒ <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="scala.Option">Option</span>[(<span class="extype" name="play.api.libs.iteratee.Enumerator.unfoldM.S">S</span>, <span class="extype" name="play.api.libs.iteratee.Enumerator.unfoldM.E">E</span>)]]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: <a href="Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.libs.iteratee.Enumerator.unfoldM.E">E</span>]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Like <a href="#unfold[S,E](s:S)(f:S=&gt;Option[(S,E)]):play.api.libs.iteratee.Enumerator[E]" class="extmbr" name="play.api.libs.iteratee.Enumerator#unfold">play.api.libs.iteratee.Enumerator.unfold</a>, but allows the unfolding to be done asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Like <a href="#unfold[S,E](s:S)(f:S=&gt;Option[(S,E)]):play.api.libs.iteratee.Enumerator[E]" class="extmbr" name="play.api.libs.iteratee.Enumerator#unfold">play.api.libs.iteratee.Enumerator.unfold</a>, but allows the unfolding to be done asynchronously.
+      <p class="shortcomment cmt">Like <a href="#unfold[S,E](s:S)(f:S=&gt;Option[(S,E)])(implicitec:scala.concurrent.ExecutionContext):play.api.libs.iteratee.Enumerator[E]" class="extmbr" name="play.api.libs.iteratee.Enumerator#unfold">play.api.libs.iteratee.Enumerator.unfold</a>, but allows the unfolding to be done asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Like <a href="#unfold[S,E](s:S)(f:S=&gt;Option[(S,E)])(implicitec:scala.concurrent.ExecutionContext):play.api.libs.iteratee.Enumerator[E]" class="extmbr" name="play.api.libs.iteratee.Enumerator#unfold">play.api.libs.iteratee.Enumerator.unfold</a>, but allows the unfolding to be done asynchronously.
 </p></div><dl class="paramcmts block"><dt class="param">s</dt><dd class="cmt"><p>The value to unfold</p></dd><dt class="param">f</dt><dd class="cmt"><p>The unfolding function. This will take the value, and return a future for some tuple of the next value
          to unfold and the next input, or none if the value is completely unfolded.</p></dd><dt class="param">ec</dt><dd class="cmt"><p>The context to execute the supplied function with. The context is prepared on the calling thread before being used.
 </p></dd></dl></div>

@@ -387,6 +387,25 @@ all other iteratee operations.
       </h4>
       <p class="shortcomment cmt">This method provides the means to check on the state of the Iteratee and eventually extract a value in a Promise</p><div class="fullcomment"><div class="comment cmt"><p>This method provides the means to check on the state of the Iteratee and eventually extract a value in a Promise</p></div><dl class="paramcmts block"><dt class="param">done</dt><dd class="cmt"><p>a function that will be called if the Iteratee is a Done</p></dd><dt class="param">cont</dt><dd class="cmt"><p>a function that will be called if the Iteratee is a Cont</p></dd><dt class="param">error</dt><dd class="cmt"><p>a function that will be called if the Iteratee is an Error</p></dd><dt class="param">ec</dt><dd class="cmt"><p>The context to execute the supplied functions with. The context is prepared on the calling thread.</p></dd><dt>returns</dt><dd class="cmt"><p>a <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span> of a value extracted by calling the appropriate provided function
 </p></dd></dl></div>
+    </li><li name="play.api.libs.iteratee.Iteratee#foldNoEC" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="foldNoEC[B](folder:play.api.libs.iteratee.Step[E,A]=&gt;scala.concurrent.Future[B]):scala.concurrent.Future[B]"></a>
+      <a id="foldNoEC[B]((Step[E,A])⇒Future[B]):Future[B]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">foldNoEC</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="folder">folder: (<a href="Step.html" class="extype" name="play.api.libs.iteratee.Step">Step</a>[<span class="extype" name="play.api.libs.iteratee.Iteratee.E">E</span>, <span class="extype" name="play.api.libs.iteratee.Iteratee.A">A</span>]) ⇒ <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="play.api.libs.iteratee.Iteratee.foldNoEC.B">B</span>]</span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="play.api.libs.iteratee.Iteratee.foldNoEC.B">B</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">A version of <code>fold</code> that runs <code>folder</code> in the current thread rather than in a
+supplied ExecutionContext, called in several places where we are sure the stack
+cannot overflow.</p><div class="fullcomment"><div class="comment cmt"><p>A version of <code>fold</code> that runs <code>folder</code> in the current thread rather than in a
+supplied ExecutionContext, called in several places where we are sure the stack
+cannot overflow. This method is designed to be overridden by <code>ImmediateIteratee</code>,
+which can execute the <code>folder</code> function immediately.
+</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../package.html" class="extype" name="play">play</a>] </dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>
@@ -539,6 +558,25 @@ all other iteratee operations.
 </p><div class="fullcomment"><div class="comment cmt"><p>Like pureFold, except taking functions that return an Iteratee
 </p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>an Iteratee extracted by calling the appropriate provided function
 </p></dd></dl></div>
+    </li><li name="play.api.libs.iteratee.Iteratee#pureFlatFoldNoEC" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="pureFlatFoldNoEC[B,C](folder:play.api.libs.iteratee.Step[E,A]=&gt;play.api.libs.iteratee.Iteratee[B,C]):play.api.libs.iteratee.Iteratee[B,C]"></a>
+      <a id="pureFlatFoldNoEC[B,C]((Step[E,A])⇒Iteratee[B,C]):Iteratee[B,C]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">pureFlatFoldNoEC</span><span class="tparams">[<span name="B">B</span>, <span name="C">C</span>]</span><span class="params">(<span name="folder">folder: (<a href="Step.html" class="extype" name="play.api.libs.iteratee.Step">Step</a>[<span class="extype" name="play.api.libs.iteratee.Iteratee.E">E</span>, <span class="extype" name="play.api.libs.iteratee.Iteratee.A">A</span>]) ⇒ <a href="" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="play.api.libs.iteratee.Iteratee.pureFlatFoldNoEC.B">B</span>, <span class="extype" name="play.api.libs.iteratee.Iteratee.pureFlatFoldNoEC.C">C</span>]</span>)</span><span class="result">: <a href="" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="play.api.libs.iteratee.Iteratee.pureFlatFoldNoEC.B">B</span>, <span class="extype" name="play.api.libs.iteratee.Iteratee.pureFlatFoldNoEC.C">C</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">A version of <code>pureFlatFold</code> that runs <code>folder</code> in the current thread rather than in a
+supplied ExecutionContext, called in several places where we are sure the stack
+cannot overflow.</p><div class="fullcomment"><div class="comment cmt"><p>A version of <code>pureFlatFold</code> that runs <code>folder</code> in the current thread rather than in a
+supplied ExecutionContext, called in several places where we are sure the stack
+cannot overflow. This method is designed to be overridden by <code>ImmediateIteratee</code>,
+which can execute the <code>folder</code> function immediately.
+</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../package.html" class="extype" name="play">play</a>] </dd></dl></div>
     </li><li name="play.api.libs.iteratee.Iteratee#pureFold" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="pureFold[B](folder:play.api.libs.iteratee.Step[E,A]=&gt;B)(implicitec:scala.concurrent.ExecutionContext):scala.concurrent.Future[B]"></a>
       <a id="pureFold[B]((Step[E,A])⇒B)(ExecutionContext):Future[B]"></a>
@@ -555,6 +593,25 @@ all other iteratee operations.
 </p><div class="fullcomment"><div class="comment cmt"><p>Like fold but taking functions returning pure values (not in promises)
 </p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span> of a value extracted by calling the appropriate provided function
 </p></dd></dl></div>
+    </li><li name="play.api.libs.iteratee.Iteratee#pureFoldNoEC" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="pureFoldNoEC[B](folder:play.api.libs.iteratee.Step[E,A]=&gt;B):scala.concurrent.Future[B]"></a>
+      <a id="pureFoldNoEC[B]((Step[E,A])⇒B):Future[B]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">pureFoldNoEC</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="folder">folder: (<a href="Step.html" class="extype" name="play.api.libs.iteratee.Step">Step</a>[<span class="extype" name="play.api.libs.iteratee.Iteratee.E">E</span>, <span class="extype" name="play.api.libs.iteratee.Iteratee.A">A</span>]) ⇒ <span class="extype" name="play.api.libs.iteratee.Iteratee.pureFoldNoEC.B">B</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="play.api.libs.iteratee.Iteratee.pureFoldNoEC.B">B</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">A version of <code>pureFold</code> that runs <code>folder</code> in the current thread rather than in a
+supplied ExecutionContext, called in several places where we are sure the stack
+cannot overflow.</p><div class="fullcomment"><div class="comment cmt"><p>A version of <code>pureFold</code> that runs <code>folder</code> in the current thread rather than in a
+supplied ExecutionContext, called in several places where we are sure the stack
+cannot overflow. This method is designed to be overridden by <code>ImmediateIteratee</code>,
+which can execute the <code>folder</code> function immediately.
+</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../package.html" class="extype" name="play">play</a>] </dd></dl></div>
     </li><li name="play.api.libs.iteratee.Iteratee#run" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="run:scala.concurrent.Future[A]"></a>
       <a id="run:Future[A]"></a>

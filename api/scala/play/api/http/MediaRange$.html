@@ -305,19 +305,25 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="play.api.http.MediaRange#ordering" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="ordering:Ordering[play.api.http.MediaRange]"></a>
-      <a id="ordering:Ordering[MediaRange]"></a>
+    </li><li name="play.api.http.MediaRange#ordering" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ordering:Ordering[play.api.http.MediaRange]{defcompareQValues(x:Option[BigDecimal],y:Option[BigDecimal]):Int}"></a>
+      <a id="ordering:Ordering[MediaRange]{defcompareQValues(x:Option[BigDecimal],y:Option[BigDecimal]):Int}"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">implicit </span>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">ordering</span><span class="result">: <span class="extype" name="scala.Ordering">Ordering</span>[<a href="MediaRange.html" class="extype" name="play.api.http.MediaRange">MediaRange</a>]</span>
+        <span class="name">ordering</span><span class="result">: <span class="extype" name="scala.Ordering">Ordering</span>[<a href="MediaRange.html" class="extype" name="play.api.http.MediaRange">MediaRange</a>] { def compareQValues(x: Option[BigDecimal],y: Option[BigDecimal]): Int }</span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt">Ordering for MediaRanges, in order of highest priority to lowest priority.</p><div class="fullcomment"><div class="comment cmt"><p>Ordering for MediaRanges, in order of highest priority to lowest priority.</p><p>The reason it is highest to lowest instead of lowest to highest is to ensure sorting is stable, so if two media
+ranges have the same ordering weight, they will not change order.</p><p>Ordering rules for MediaRanges:</p><p>First compare by qValue, default to 1.  Higher means higher priority.
+Then compare the media type.  If they are not the same, then the least specific (ie, if one is *) has a lower
+priority, otherwise if they have same priority.
+Then compare the sub media type.  If they are the same, the one with the more parameters has a higher priority.
+Otherwise the least specific has the lower priority, otherwise they have the same priority.
+</p></div></div>
     </li><li name="play.api.http.MediaRange.parse" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="parse"></a>
       <a id="parse:parse"></a>
@@ -422,22 +428,22 @@
         <div id="values" class="values members">
               <h3>Deprecated Value Members</h3>
               <ol><li name="play.api.http.MediaRange#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="apply(mediaRange:String):play.api.http.MediaRange"></a>
-      <a id="apply(String):MediaRange"></a>
+      <a id="apply(mediaRange:String):play.api.http.MediaType"></a>
+      <a id="apply(String):MediaType"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 2.2) Use MediaRange.parse function or extractor object instead">apply</span><span class="params">(<span name="mediaRange">mediaRange: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="MediaRange.html" class="extype" name="play.api.http.MediaRange">MediaRange</a></span>
+        <span class="name deprecated" title="Deprecated: (Since version 2.2) Use MediaType.parse function or extractor object instead">apply</span><span class="params">(<span name="mediaRange">mediaRange: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="MediaType.html" class="extype" name="play.api.http.MediaType">MediaType</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Convenient factory method to create a MediaRange from its MIME type followed by the type parameters.</p><div class="fullcomment"><div class="comment cmt"><p>Convenient factory method to create a MediaRange from its MIME type followed by the type parameters.</p><pre>MediaRange(<span class="lit">"text/html"</span>)
 MediaRange(<span class="lit">"text/html;level=1"</span>)</pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@deprecated</span>
               
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.2)</i> Use MediaRange.parse function or extractor object instead</p></dd></dl></div>
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.2)</i> Use MediaType.parse function or extractor object instead</p></dd></dl></div>
     </li></ol>
             </div>
         </div>

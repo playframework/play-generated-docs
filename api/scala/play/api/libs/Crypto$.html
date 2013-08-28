@@ -186,6 +186,35 @@ needs.</p><p>For more information about cryptography, we recommend reading the O
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="play.api.libs.Crypto#compareSignedTokens" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="compareSignedTokens(tokenA:String,tokenB:String):Boolean"></a>
+      <a id="compareSignedTokens(String,String):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">compareSignedTokens</span><span class="params">(<span name="tokenA">tokenA: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="tokenB">tokenB: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Compare two signed tokens
+</p>
+    </li><li name="play.api.libs.Crypto#constantTimeEquals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="constantTimeEquals(a:String,b:String):Boolean"></a>
+      <a id="constantTimeEquals(String,String):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">constantTimeEquals</span><span class="params">(<span name="a">a: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="b">b: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Constant time equals method.</p><div class="fullcomment"><div class="comment cmt"><p>Constant time equals method.</p><p>Given a length that both Strings are equal to, this method will always run in constant time.  This prevents
+timing attacks.
+</p></div></div>
     </li><li name="play.api.libs.Crypto#decryptAES" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="decryptAES(value:String,privateKey:String):String"></a>
       <a id="decryptAES(String,String):String"></a>
@@ -290,6 +319,21 @@ is always AES, so only AES transformation algorithms will work.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="play.api.libs.Crypto#extractSignedToken" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="extractSignedToken(token:String):Option[String]"></a>
+      <a id="extractSignedToken(String):Option[String]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">extractSignedToken</span><span class="params">(<span name="token">token: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Extract a signed token that was signed by <a href="#signToken(token:String):String" class="extmbr" name="play.api.libs.Crypto#signToken">play.api.libs.Crypto.signToken</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Extract a signed token that was signed by <a href="#signToken(token:String):String" class="extmbr" name="play.api.libs.Crypto#signToken">play.api.libs.Crypto.signToken</a>.
+</p></div><dl class="paramcmts block"><dt class="param">token</dt><dd class="cmt"><p>The signed token to extract.</p></dd><dt>returns</dt><dd class="cmt"><p>The verified raw token, or None if the token isn't valid.
+</p></dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
@@ -309,6 +353,34 @@ is always AES, so only AES transformation algorithms will work.
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="play.api.libs.Crypto#generateSignedToken" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="generateSignedToken:String"></a>
+      <a id="generateSignedToken:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">generateSignedToken</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Generate a signed token
+</p>
+    </li><li name="play.api.libs.Crypto#generateToken" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="generateToken:String"></a>
+      <a id="generateToken:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">generateToken</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Generate a cryptographically secure token
+</p>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>
@@ -418,6 +490,22 @@ is always AES, so only AES transformation algorithms will work.
       <p class="shortcomment cmt">Signs the given String with HMAC-SHA1 using the given key.</p><div class="fullcomment"><div class="comment cmt"><p>Signs the given String with HMAC-SHA1 using the given key.</p><p>By default this uses the platform default JSSE provider.  This can be overridden by defining
 <code>application.crypto.provider</code> in <code>application.conf</code>.
 </p></div><dl class="paramcmts block"><dt class="param">message</dt><dd class="cmt"><p>The message to sign.</p></dd><dt class="param">key</dt><dd class="cmt"><p>The private key to sign with.</p></dd><dt>returns</dt><dd class="cmt"><p>A hexadecimal encoded signature.
+</p></dd></dl></div>
+    </li><li name="play.api.libs.Crypto#signToken" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="signToken(token:String):String"></a>
+      <a id="signToken(String):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">signToken</span><span class="params">(<span name="token">token: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Sign a token.</p><div class="fullcomment"><div class="comment cmt"><p>Sign a token.  This produces a new token, that has this token signed with a nonce.</p><p>This primarily exists to defeat the BREACH vulnerability, as it allows the token to effectively be random per
+request, without actually changing the value.
+</p></div><dl class="paramcmts block"><dt class="param">token</dt><dd class="cmt"><p>The token to sign</p></dd><dt>returns</dt><dd class="cmt"><p>The signed token
 </p></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>

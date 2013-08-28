@@ -398,6 +398,22 @@ handle it within the given timeout, otherwise it drops it.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="play.api.libs.iteratee.Concurrent#joined" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="joined[A]:(play.api.libs.iteratee.Iteratee[A,Unit],play.api.libs.iteratee.Enumerator[A])"></a>
+      <a id="joined[A]:(Iteratee[A,Unit],Enumerator[A])"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">joined</span><span class="tparams">[<span name="A">A</span>]</span><span class="result">: (<a href="Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="play.api.libs.iteratee.Concurrent.joined.A">A</span>, <span class="extype" name="scala.Unit">Unit</span>], <a href="Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.libs.iteratee.Concurrent.joined.A">A</span>])</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Create a joined iteratee enumerator pair.</p><div class="fullcomment"><div class="comment cmt"><p>Create a joined iteratee enumerator pair.</p><p>When the enumerator is applied to an iteratee, the iteratee subsequently consumes whatever the iteratee in the pair
+is applied to.  Consequently the enumerator is &quot;one shot&quot;, applying it to subsequent iteratees will throw an
+exception.
+</p></div></div>
     </li><li name="play.api.libs.iteratee.Concurrent#lazyAndErrIfNotReady" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="lazyAndErrIfNotReady[E](timeout:Long,unit:java.util.concurrent.TimeUnit):play.api.libs.iteratee.Enumeratee[E,E]"></a>
       <a id="lazyAndErrIfNotReady[E](Long,TimeUnit):Enumeratee[E,E]"></a>
@@ -410,7 +426,7 @@ handle it within the given timeout, otherwise it drops it.
         <span class="name">lazyAndErrIfNotReady</span><span class="tparams">[<span name="E">E</span>]</span><span class="params">(<span name="timeout">timeout: <span class="extype" name="scala.Long">Long</span></span>, <span name="unit">unit: <span class="extype" name="java.util.concurrent.TimeUnit">TimeUnit</span> = <span class="symbol">TimeUnit.MILLISECONDS</span></span>)</span><span class="result">: <a href="Enumeratee.html" class="extype" name="play.api.libs.iteratee.Enumeratee">Enumeratee</a>[<span class="extype" name="play.api.libs.iteratee.Concurrent.lazyAndErrIfNotReady.E">E</span>, <span class="extype" name="play.api.libs.iteratee.Concurrent.lazyAndErrIfNotReady.E">E</span>]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Enumeratee that times out if the iteratee it feeds to takes to long to consume available input.</p><div class="fullcomment"><div class="comment cmt"><p>Enumeratee that times out if the iteratee it feeds to takes to long to consume available input.
+      <p class="shortcomment cmt">Enumeratee that times out if the iteratee it feeds to takes too long to consume available input.</p><div class="fullcomment"><div class="comment cmt"><p>Enumeratee that times out if the iteratee it feeds to takes too long to consume available input.
 </p></div><dl class="paramcmts block"><dt class="param">timeout</dt><dd class="cmt"><p>The timeout period</p></dd><dt class="param">unit</dt><dd class="cmt"><p>the time unit
 </p></dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -467,6 +483,20 @@ handle it within the given timeout, otherwise it drops it.
       <p class="shortcomment cmt">An enumerator that allows patching in enumerators to supply it with input.</p><div class="fullcomment"><div class="comment cmt"><p>An enumerator that allows patching in enumerators to supply it with input.
 </p></div><dl class="paramcmts block"><dt class="param">patcher</dt><dd class="cmt"><p>A function that passes a patch panel whenever the enumerator is applied to an iteratee.</p></dd><dt class="param">ec</dt><dd class="cmt"><p>The context to execute the supplied function with. The context is prepared on the calling thread before being used.
 </p></dd></dl></div>
+    </li><li name="play.api.libs.iteratee.Concurrent#runPartial" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="runPartial[E,A](enumerator:play.api.libs.iteratee.Enumerator[E],iteratee:play.api.libs.iteratee.Iteratee[E,A]):scala.concurrent.Future[(A,play.api.libs.iteratee.Enumerator[E])]"></a>
+      <a id="runPartial[E,A](Enumerator[E],Iteratee[E,A]):Future[(A,Enumerator[E])]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">runPartial</span><span class="tparams">[<span name="E">E</span>, <span name="A">A</span>]</span><span class="params">(<span name="enumerator">enumerator: <a href="Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.libs.iteratee.Concurrent.runPartial.E">E</span>]</span>, <span name="iteratee">iteratee: <a href="Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="play.api.libs.iteratee.Concurrent.runPartial.E">E</span>, <span class="extype" name="play.api.libs.iteratee.Concurrent.runPartial.A">A</span>]</span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[(<span class="extype" name="play.api.libs.iteratee.Concurrent.runPartial.A">A</span>, <a href="Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.libs.iteratee.Concurrent.runPartial.E">E</span>])]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Run the enumerator, and produce the remaining enumerator as part the result.</p><div class="fullcomment"><div class="comment cmt"><p>Run the enumerator, and produce the remaining enumerator as part the result.</p><p>The result will be the result of the iteratee, and an enumerator containing the remaining input.
+</p></div></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>

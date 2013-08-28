@@ -40,7 +40,7 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Provides helpers for creating <code>Action</code> values.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/scratch/jenkins/workspace/play2-master-apidocs/framework/src/play/src/main/scala/play/api/mvc/Action.scala" target="_blank">Action.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>[<span class="extype" name="play.api.mvc.ActionBuilder.R">R</span>]</dd><dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/scratch/jenkins/workspace/play2-master-apidocs/framework/src/play/src/main/scala/play/api/mvc/Action.scala" target="_blank">Action.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
@@ -87,7 +87,7 @@
 
         <div id="values" class="values members">
               <h3>Abstract Value Members</h3>
-              <ol><li name="play.api.mvc.ActionBuilder#invokeBlock" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+              <ol><li name="play.api.mvc.ActionBuilder#invokeBlock" visbl="prt" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="invokeBlock[A](request:play.api.mvc.Request[A],block:R[A]=&gt;scala.concurrent.Future[play.api.mvc.SimpleResult]):scala.concurrent.Future[play.api.mvc.SimpleResult]"></a>
       <a id="invokeBlock[A](Request[A],(R[A])⇒Future[SimpleResult]):Future[SimpleResult]"></a>
       <h4 class="signature">
@@ -102,7 +102,7 @@
       <p class="shortcomment cmt">Invoke the block.</p><div class="fullcomment"><div class="comment cmt"><p>Invoke the block.  This is the main method that an ActionBuilder has to implement, at this stage it can wrap it in
 any other actions, modify the request object or potentially use a different class to represent the request.
 </p></div><dl class="paramcmts block"><dt class="param">request</dt><dd class="cmt"><p>The request</p></dd><dt class="param">block</dt><dd class="cmt"><p>The block of code to invoke</p></dd><dt>returns</dt><dd class="cmt"><p>A future of the result
-</p></dd></dl></div>
+</p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li></ol>
             </div>
 
@@ -178,7 +178,7 @@ any other actions, modify the request object or potentially use a different clas
       <a id="apply(⇒Result):Action[AnyContent]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
-        <span class="modifier"></span>
+        <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
@@ -194,7 +194,7 @@ Ok(<span class="lit">"Hello!"</span>)
       <a id="apply((R[AnyContent])⇒Result):Action[AnyContent]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
-        <span class="modifier"></span>
+        <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
@@ -210,7 +210,7 @@ Ok(<span class="lit">"Got request ["</span> + request + <span class="lit">"]"</s
       <a id="apply[A](BodyParser[A])((R[A])⇒Result):Action[A]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
-        <span class="modifier"></span>
+        <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
@@ -239,7 +239,7 @@ Ok(<span class="lit">"Got request ["</span> + request + <span class="lit">"]"</s
       <a id="async[A](BodyParser[A])((R[A])⇒Future[SimpleResult]):Action[A]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
-        <span class="modifier"></span>
+        <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
@@ -257,7 +257,7 @@ WS.url(request.getQueryString(<span class="lit">"url"</span>).get).get().map { r
       <a id="async((R[AnyContent])⇒Future[SimpleResult]):Action[AnyContent]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
-        <span class="modifier"></span>
+        <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
@@ -275,7 +275,7 @@ WS.url(request.getQueryString(<span class="lit">"url"</span>).get).get().map { r
       <a id="async(⇒Future[SimpleResult]):Action[AnyContent]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
-        <span class="modifier"></span>
+        <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
@@ -307,7 +307,20 @@ WS.url(<span class="lit">"http://www.playframework.com"</span>).get().map { r <s
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="play.api.mvc.ActionBuilder#composeParser" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="play.api.mvc.ActionBuilder#composeAction" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="composeAction[A](action:play.api.mvc.Action[A]):play.api.mvc.Action[A]"></a>
+      <a id="composeAction[A](Action[A]):Action[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">composeAction</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="action">action: <a href="Action.html" class="extype" name="play.api.mvc.Action">Action</a>[<span class="extype" name="play.api.mvc.ActionBuilder.composeAction.A">A</span>]</span>)</span><span class="result">: <a href="Action.html" class="extype" name="play.api.mvc.Action">Action</a>[<span class="extype" name="play.api.mvc.ActionBuilder.composeAction.A">A</span>]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
+    </li><li name="play.api.mvc.ActionBuilder#composeParser" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="composeParser[A](bodyParser:play.api.mvc.BodyParser[A]):play.api.mvc.BodyParser[A]"></a>
       <a id="composeParser[A](BodyParser[A]):BodyParser[A]"></a>
       <h4 class="signature">
@@ -321,7 +334,7 @@ WS.url(<span class="lit">"http://www.playframework.com"</span>).get().map { r <s
       </h4>
       <p class="shortcomment cmt">Compose the parser.</p><div class="fullcomment"><div class="comment cmt"><p>Compose the parser.  This allows the action builder to potentially intercept requests before they are parsed.
 </p></div><dl class="paramcmts block"><dt class="param">bodyParser</dt><dd class="cmt"><p>The body parser to compose</p></dd><dt>returns</dt><dd class="cmt"><p>The composed body parser
-</p></dd></dl></div>
+</p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -348,7 +361,7 @@ WS.url(<span class="lit">"http://www.playframework.com"</span>).get().map { r <s
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="play.api.mvc.ActionBuilder#executionContext" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="play.api.mvc.ActionBuilder#executionContext" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="executionContext:scala.concurrent.ExecutionContext"></a>
       <a id="executionContext:ExecutionContext"></a>
       <h4 class="signature">
@@ -362,7 +375,7 @@ WS.url(<span class="lit">"http://www.playframework.com"</span>).get().map { r <s
       </h4>
       <p class="shortcomment cmt">Get the execution context to run the request in.</p><div class="fullcomment"><div class="comment cmt"><p>Get the execution context to run the request in.  Override this if you want a custom execution context
 </p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>The execution context
-</p></dd></dl></div>
+</p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
