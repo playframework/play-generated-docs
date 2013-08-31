@@ -2,9 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
         <head>
-          <title>Action - play.api.mvc.Action</title>
-          <meta name="description" content="Action - play.api.mvc.Action" />
-          <meta name="keywords" content="Action play.api.mvc.Action" />
+          <title>AuthenticatedBuilder - play.api.mvc.Security.AuthenticatedBuilder</title>
+          <meta name="description" content="AuthenticatedBuilder - play.api.mvc.Security.AuthenticatedBuilder" />
+          <meta name="keywords" content="AuthenticatedBuilder play.api.mvc.Security.AuthenticatedBuilder" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
@@ -12,7 +12,7 @@
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../index.html';
-            var hash = 'play.api.mvc.Action$';
+            var hash = 'play.api.mvc.Security$$AuthenticatedBuilder';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -22,27 +22,44 @@
    	  </script>
     
         </head>
-        <body class="value">
+        <body class="type">
       <div id="definition">
-        <a href="Action.html" title="Go to companion"><img src="../../../lib/object_to_trait_big.png" /></a>
-        <p id="owner"><a href="../../package.html" class="extype" name="play">play</a>.<a href="../package.html" class="extype" name="play.api">api</a>.<a href="package.html" class="extype" name="play.api.mvc">mvc</a></p>
-        <h1><a href="Action.html" title="Go to companion">Action</a></h1>
+        <a href="Security$$AuthenticatedBuilder$.html" title="Go to companion"><img src="../../../lib/class_to_object_big.png" /></a>
+        <p id="owner"><a href="../../package.html" class="extype" name="play">play</a>.<a href="../package.html" class="extype" name="play.api">api</a>.<a href="package.html" class="extype" name="play.api.mvc">mvc</a>.<a href="Security$.html" class="extype" name="play.api.mvc.Security">Security</a></p>
+        <h1><a href="Security$$AuthenticatedBuilder$.html" title="Go to companion">AuthenticatedBuilder</a></h1>
       </div>
 
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">object</span>
+        <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">Action</span><span class="result"> extends <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>[<a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>]</span>
+        <span class="name">AuthenticatedBuilder</span><span class="tparams">[<span name="U">U</span>]</span><span class="result"> extends <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>[[A]<a href="Security$$AuthenticatedRequest.html" class="extype" name="play.api.mvc.Security.AuthenticatedRequest">AuthenticatedRequest</a>[<span class="extype" name="play.api.mvc.Security.&lt;refinement&gt;.R.A">A</span>, <span class="extype" name="play.api.mvc.Security.AuthenticatedBuilder.U">U</span>]]</span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Helper object to create <code>Action</code> values.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/scratch/jenkins/workspace/play2-master-apidocs/framework/src/play/src/main/scala/play/api/mvc/Action.scala" target="_blank">Action.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>An authenticated action builder.</p><p>This can be used to create an action builder, like so:</p><pre><span class="cmt">// in a Security trait</span>
+<span class="kw">object</span> Authenticated <span class="kw">extends</span> AuthenticationBuilder(req <span class="kw">=&gt;</span> getUserFromRequest(req))
+
+<span class="cmt">// then in a controller</span>
+<span class="kw">def</span> index = Authenticated { <span class="kw">implicit</span> request <span class="kw">=&gt;</span>
+  Ok(<span class="lit">"Hello "</span> + request.user)
+}</pre><p>It can also be used from an action builder, for example:</p><pre><span class="kw">class</span> AuthenticatedDbRequest[A](<span class="kw">val</span> user: User,
+                                <span class="kw">val</span> conn: Connection,
+                                request: Request[A]) <span class="kw">extends</span> WrappedRequest[A)(request)
+
+<span class="kw">object</span> Authenticated <span class="kw">extends</span> ActionBuilder[AuthenticatedDbRequest] {
+  <span class="kw">def</span> invokeBlock[A](request: Request[A], block: (AuthenticatedDbRequest[A]) <span class="kw">=&gt;</span> Future[SimpleResult]) = {
+    AuthenticatedBuilder(req <span class="kw">=&gt;</span> getUserFromRequest(req)).authenticate(request, { authRequest <span class="kw">=&gt;</span>
+      DB.withConnection { conn <span class="kw">=&gt;</span>
+        <span class="kw">new</span> AuthenticatedDbRequest(authRequest.user, conn, request)
+      })
+    }
+  }
+}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/scratch/jenkins/workspace/play2-master-apidocs/framework/src/play/src/main/scala/play/api/mvc/Security.scala" target="_blank">Security.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>[<a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>], <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>[[A]<a href="Security$$AuthenticatedRequest.html" class="extype" name="play.api.mvc.Security.AuthenticatedRequest">AuthenticatedRequest</a>[<span class="extype" name="play.api.mvc.Security.&lt;refinement&gt;.R.A">A</span>, <span class="extype" name="play.api.mvc.Security.AuthenticatedBuilder.U">U</span>]], <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -60,7 +77,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="play.api.mvc.Action"><span>Action</span></li><li class="in" name="play.api.mvc.ActionBuilder"><span>ActionBuilder</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="play.api.mvc.Security.AuthenticatedBuilder"><span>AuthenticatedBuilder</span></li><li class="in" name="play.api.mvc.ActionBuilder"><span>ActionBuilder</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -78,7 +95,24 @@
 
       <div id="template">
         <div id="allMembers">
-        
+        <div id="constructors" class="members">
+              <h3>Instance Constructors</h3>
+              <ol><li name="play.api.mvc.Security.AuthenticatedBuilder#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="&lt;init&gt;(userinfo:play.api.mvc.RequestHeader=&gt;Option[U],onUnauthorized:play.api.mvc.RequestHeader=&gt;play.api.mvc.SimpleResult):play.api.mvc.Security.AuthenticatedBuilder[U]"></a>
+      <a id="&lt;init&gt;:AuthenticatedBuilder[U]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">new</span>
+      </span>
+      <span class="symbol">
+        <span class="name">AuthenticatedBuilder</span><span class="params">(<span name="userinfo">userinfo: (<a href="RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="play.api.mvc.Security.AuthenticatedBuilder.U">U</span>]</span>, <span name="onUnauthorized">onUnauthorized: (<a href="RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a> = <span class="defval" name="((x$3: play.api.mvc.RequestHeader) =&gt; play.api.mvc.Results.Unauthorized.apply[play.api.templates.HtmlFormat.Appendable](views.html.defaultpages.unauthorized.apply())(http.this.Writeable.writeableOf_Content[play.api.templates.HtmlFormat.Appendable](mvc.this.Codec.utf_8, http.this.ContentTypeOf.contentTypeOf_Html(mvc.this.Codec.utf_8))))">...</span></span>)</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">userinfo</dt><dd class="cmt"><p>The function that looks up the user info.</p></dd><dt class="param">onUnauthorized</dt><dd class="cmt"><p>The function to get the result for when no authenticated user can be found.
+</p></dd></dl></div>
+    </li></ol>
+            </div>
 
         
 
@@ -169,14 +203,14 @@ Ok(<span class="lit">"Hello!"</span>)
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a></dd></dl></div>
     </li><li name="play.api.mvc.ActionBuilder#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="apply(block:R[play.api.mvc.AnyContent]=&gt;play.api.mvc.Result):play.api.mvc.Action[play.api.mvc.AnyContent]"></a>
-      <a id="apply((Request[AnyContent])⇒Result):Action[AnyContent]"></a>
+      <a id="apply((AuthenticatedRequest[AnyContent,U])⇒Result):Action[AnyContent]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">apply</span><span class="params">(<span name="block">block: (<a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>[<a href="AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a>]) ⇒ <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>)</span><span class="result">: <a href="Action.html" class="extype" name="play.api.mvc.Action">Action</a>[<a href="AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a>]</span>
+        <span class="name">apply</span><span class="params">(<span name="block">block: (<a href="Security$$AuthenticatedRequest.html" class="extype" name="play.api.mvc.Security.AuthenticatedRequest">AuthenticatedRequest</a>[<a href="AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a>, <span class="extype" name="play.api.mvc.Security.AuthenticatedBuilder.U">U</span>]) ⇒ <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>)</span><span class="result">: <a href="Action.html" class="extype" name="play.api.mvc.Action">Action</a>[<a href="AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Constructs an <code>Action</code> with default content.</p><div class="fullcomment"><div class="comment cmt"><p>Constructs an <code>Action</code> with default content.</p><p>For example:</p><pre><span class="kw">val</span> echo = Action { request <span class="kw">=&gt;</span>
@@ -185,14 +219,14 @@ Ok(<span class="lit">"Got request ["</span> + request + <span class="lit">"]"</s
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a></dd></dl></div>
     </li><li name="play.api.mvc.ActionBuilder#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="apply[A](bodyParser:play.api.mvc.BodyParser[A])(block:R[A]=&gt;play.api.mvc.Result):play.api.mvc.Action[A]"></a>
-      <a id="apply[A](BodyParser[A])((Request[A])⇒Result):Action[A]"></a>
+      <a id="apply[A](BodyParser[A])((AuthenticatedRequest[A,U])⇒Result):Action[A]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">apply</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="bodyParser">bodyParser: <a href="BodyParser.html" class="extype" name="play.api.mvc.BodyParser">BodyParser</a>[<span class="extype" name="play.api.mvc.ActionBuilder.apply.A">A</span>]</span>)</span><span class="params">(<span name="block">block: (<a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>[<span class="extype" name="play.api.mvc.ActionBuilder.apply.A">A</span>]) ⇒ <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>)</span><span class="result">: <a href="Action.html" class="extype" name="play.api.mvc.Action">Action</a>[<span class="extype" name="play.api.mvc.ActionBuilder.apply.A">A</span>]</span>
+        <span class="name">apply</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="bodyParser">bodyParser: <a href="BodyParser.html" class="extype" name="play.api.mvc.BodyParser">BodyParser</a>[<span class="extype" name="play.api.mvc.ActionBuilder.apply.A">A</span>]</span>)</span><span class="params">(<span name="block">block: (<a href="Security$$AuthenticatedRequest.html" class="extype" name="play.api.mvc.Security.AuthenticatedRequest">AuthenticatedRequest</a>[<span class="extype" name="play.api.mvc.ActionBuilder.apply.A">A</span>, <span class="extype" name="play.api.mvc.Security.AuthenticatedBuilder.U">U</span>]) ⇒ <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>)</span><span class="result">: <a href="Action.html" class="extype" name="play.api.mvc.Action">Action</a>[<span class="extype" name="play.api.mvc.ActionBuilder.apply.A">A</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Constructs an <code>Action</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Constructs an <code>Action</code>.</p><p>For example:</p><pre><span class="kw">val</span> echo = Action(parse.anyContent) { request <span class="kw">=&gt;</span>
@@ -214,14 +248,14 @@ Ok(<span class="lit">"Got request ["</span> + request + <span class="lit">"]"</s
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="play.api.mvc.ActionBuilder#async" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="async[A](bodyParser:play.api.mvc.BodyParser[A])(block:R[A]=&gt;scala.concurrent.Future[play.api.mvc.SimpleResult]):play.api.mvc.Action[A]"></a>
-      <a id="async[A](BodyParser[A])((Request[A])⇒Future[SimpleResult]):Action[A]"></a>
+      <a id="async[A](BodyParser[A])((AuthenticatedRequest[A,U])⇒Future[SimpleResult]):Action[A]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">async</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="bodyParser">bodyParser: <a href="BodyParser.html" class="extype" name="play.api.mvc.BodyParser">BodyParser</a>[<span class="extype" name="play.api.mvc.ActionBuilder.async.A">A</span>]</span>)</span><span class="params">(<span name="block">block: (<a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>[<span class="extype" name="play.api.mvc.ActionBuilder.async.A">A</span>]) ⇒ <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>]</span>)</span><span class="result">: <a href="Action.html" class="extype" name="play.api.mvc.Action">Action</a>[<span class="extype" name="play.api.mvc.ActionBuilder.async.A">A</span>]</span>
+        <span class="name">async</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="bodyParser">bodyParser: <a href="BodyParser.html" class="extype" name="play.api.mvc.BodyParser">BodyParser</a>[<span class="extype" name="play.api.mvc.ActionBuilder.async.A">A</span>]</span>)</span><span class="params">(<span name="block">block: (<a href="Security$$AuthenticatedRequest.html" class="extype" name="play.api.mvc.Security.AuthenticatedRequest">AuthenticatedRequest</a>[<span class="extype" name="play.api.mvc.ActionBuilder.async.A">A</span>, <span class="extype" name="play.api.mvc.Security.AuthenticatedBuilder.U">U</span>]) ⇒ <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>]</span>)</span><span class="result">: <a href="Action.html" class="extype" name="play.api.mvc.Action">Action</a>[<span class="extype" name="play.api.mvc.ActionBuilder.async.A">A</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Constructs an <code>Action</code> that returns a future of a result, with default content.</p><div class="fullcomment"><div class="comment cmt"><p>Constructs an <code>Action</code> that returns a future of a result, with default content.</p><p>For example:</p><pre><span class="kw">val</span> hello = Action.async { request <span class="kw">=&gt;</span>
@@ -232,14 +266,14 @@ WS.url(request.getQueryString(<span class="lit">"url"</span>).get).get().map { r
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a></dd></dl></div>
     </li><li name="play.api.mvc.ActionBuilder#async" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="async(block:R[play.api.mvc.AnyContent]=&gt;scala.concurrent.Future[play.api.mvc.SimpleResult]):play.api.mvc.Action[play.api.mvc.AnyContent]"></a>
-      <a id="async((Request[AnyContent])⇒Future[SimpleResult]):Action[AnyContent]"></a>
+      <a id="async((AuthenticatedRequest[AnyContent,U])⇒Future[SimpleResult]):Action[AnyContent]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">async</span><span class="params">(<span name="block">block: (<a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>[<a href="AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a>]) ⇒ <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>]</span>)</span><span class="result">: <a href="Action.html" class="extype" name="play.api.mvc.Action">Action</a>[<a href="AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a>]</span>
+        <span class="name">async</span><span class="params">(<span name="block">block: (<a href="Security$$AuthenticatedRequest.html" class="extype" name="play.api.mvc.Security.AuthenticatedRequest">AuthenticatedRequest</a>[<a href="AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a>, <span class="extype" name="play.api.mvc.Security.AuthenticatedBuilder.U">U</span>]) ⇒ <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>]</span>)</span><span class="result">: <a href="Action.html" class="extype" name="play.api.mvc.Action">Action</a>[<a href="AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Constructs an <code>Action</code> that returns a future of a result, with default content.</p><div class="fullcomment"><div class="comment cmt"><p>Constructs an <code>Action</code> that returns a future of a result, with default content.</p><p>For example:</p><pre><span class="kw">val</span> hello = Action.async { request <span class="kw">=&gt;</span>
@@ -266,6 +300,19 @@ WS.url(<span class="lit">"http://www.playframework.com"</span>).get().map { r <s
 }
 }</pre></div><dl class="paramcmts block"><dt class="param">block</dt><dd class="cmt"><p>the action code</p></dd><dt>returns</dt><dd class="cmt"><p>an action
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a></dd></dl></div>
+    </li><li name="play.api.mvc.Security.AuthenticatedBuilder#authenticate" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="authenticate[A](request:play.api.mvc.Request[A],block:play.api.mvc.Security.AuthenticatedRequest[A,U]=&gt;scala.concurrent.Future[play.api.mvc.SimpleResult]):scala.concurrent.Future[play.api.mvc.SimpleResult]"></a>
+      <a id="authenticate[A](Request[A],(AuthenticatedRequest[A,U])⇒Future[SimpleResult]):Future[SimpleResult]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">authenticate</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="request">request: <a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>[<span class="extype" name="play.api.mvc.Security.AuthenticatedBuilder.authenticate.A">A</span>]</span>, <span name="block">block: (<a href="Security$$AuthenticatedRequest.html" class="extype" name="play.api.mvc.Security.AuthenticatedRequest">AuthenticatedRequest</a>[<span class="extype" name="play.api.mvc.Security.AuthenticatedBuilder.authenticate.A">A</span>, <span class="extype" name="play.api.mvc.Security.AuthenticatedBuilder.U">U</span>]) ⇒ <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>]</span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Authenticate the given block.</p>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
@@ -401,22 +448,22 @@ WS.url(<span class="lit">"http://www.playframework.com"</span>).get().map { r <s
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="play.api.mvc.Action#invokeBlock" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="invokeBlock[A](request:play.api.mvc.Request[A],block:play.api.mvc.Request[A]=&gt;scala.concurrent.Future[play.api.mvc.SimpleResult]):scala.concurrent.Future[play.api.mvc.SimpleResult]"></a>
-      <a id="invokeBlock[A](Request[A],(Request[A])⇒Future[SimpleResult]):Future[SimpleResult]"></a>
+    </li><li name="play.api.mvc.Security.AuthenticatedBuilder#invokeBlock" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="invokeBlock[A](request:play.api.mvc.Request[A],block:play.api.mvc.Security.AuthenticatedRequest[A,U]=&gt;scala.concurrent.Future[play.api.mvc.SimpleResult]):scala.concurrent.Future[play.api.mvc.SimpleResult]"></a>
+      <a id="invokeBlock[A](Request[A],(AuthenticatedRequest[A,U])⇒Future[SimpleResult]):Future[SimpleResult]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">invokeBlock</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="request">request: <a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>[<span class="extype" name="play.api.mvc.Action.invokeBlock.A">A</span>]</span>, <span name="block">block: (<a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>[<span class="extype" name="play.api.mvc.Action.invokeBlock.A">A</span>]) ⇒ <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>]</span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>]</span>
+        <span class="name">invokeBlock</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="request">request: <a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>[<span class="extype" name="play.api.mvc.Security.AuthenticatedBuilder.invokeBlock.A">A</span>]</span>, <span name="block">block: (<a href="Security$$AuthenticatedRequest.html" class="extype" name="play.api.mvc.Security.AuthenticatedRequest">AuthenticatedRequest</a>[<span class="extype" name="play.api.mvc.Security.AuthenticatedBuilder.invokeBlock.A">A</span>, <span class="extype" name="play.api.mvc.Security.AuthenticatedBuilder.U">U</span>]) ⇒ <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>]</span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Invoke the block.</p><div class="fullcomment"><div class="comment cmt"><p>Invoke the block.  This is the main method that an ActionBuilder has to implement, at this stage it can wrap it in
 any other actions, modify the request object or potentially use a different class to represent the request.
 </p></div><dl class="paramcmts block"><dt class="param">request</dt><dd class="cmt"><p>The request</p></dd><dt class="param">block</dt><dd class="cmt"><p>The block of code to invoke</p></dd><dt>returns</dt><dd class="cmt"><p>A future of the result
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.mvc.Action">Action</a> → <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a></dd></dl></div>
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.mvc.Security.AuthenticatedBuilder">AuthenticatedBuilder</a> → <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a></dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -562,7 +609,7 @@ any other actions, modify the request object or potentially use a different clas
 
         <div id="inheritedMembers">
         <div class="parent" name="play.api.mvc.ActionBuilder">
-              <h3>Inherited from <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>[<a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>]</h3>
+              <h3>Inherited from <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>[[A]<a href="Security$$AuthenticatedRequest.html" class="extype" name="play.api.mvc.Security.AuthenticatedRequest">AuthenticatedRequest</a>[<span class="extype" name="play.api.mvc.Security.&lt;refinement&gt;.R.A">A</span>, <span class="extype" name="play.api.mvc.Security.AuthenticatedBuilder.U">U</span>]]</h3>
             </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">
