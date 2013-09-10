@@ -184,8 +184,60 @@
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="play.utils.UriEncoding#decodePath" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="decodePath(s:String,outputCharset:String):String"></a>
+      <a id="decodePath(String,String):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">decodePath</span><span class="params">(<span name="s">s: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="outputCharset">outputCharset: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Decode the path path of a URI.</p><div class="fullcomment"><div class="comment cmt"><p>Decode the path path of a URI. Each path segment will be decoded
+using the same rules as <code><code>decodePathSegment</code></code>. No normalization is performed:
+leading, trailing and duplicated slashes, if present are left as they are and
+if absent remain absent; dot-segments (&quot;..&quot; and &quot;.&quot;) are ignored.</p><p>Encoded slash characters are will appear as slashes in the output, thus &quot;a/b&quot;
+will be indistinguishable from &quot;a%2Fb&quot;.
+</p></div><dl class="paramcmts block"><dt class="param">s</dt><dd class="cmt"><p>The string to decode. Must use the US-ASCII character set.</p></dd><dt class="param">outputCharset</dt><dd class="cmt"><p>The name of the encoding that the output should be encoded with.
+    The output string will be converted from octets (bytes) using this character encoding.</p></dd><dt>returns</dt><dd class="cmt"><p>A decoded string in the <code>outputCharset</code> character set.
+</p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt">InvalidEncodingException<p>If the input is not a valid encoded path.</p></span></dd></dl></div>
+    </li><li name="play.utils.UriEncoding#decodePathSegment" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="decodePathSegment(s:String,outputCharset:String):String"></a>
+      <a id="decodePathSegment(String,String):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">decodePathSegment</span><span class="params">(<span name="s">s: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="outputCharset">outputCharset: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Decode a string according to the rules for the &quot;path segment&quot;
+part of a URI.</p><div class="fullcomment"><div class="comment cmt"><p>Decode a string according to the rules for the &quot;path segment&quot;
+part of a URI. A path segment is defined in RFC 3986. In a URI such
+as <code>http://www.example.com/abc/def?a=1&amp;b=2</code> both <code>abc</code> and <code>def</code>
+are path segments.</p><p>Path segment encoding differs from encoding for other parts of a URI.
+For example, the &quot;&amp;&quot; character is permitted in a path segment, but
+has special meaning in query parameters. On the other hand, the &quot;/&quot;
+character cannot appear in a path segment, as it is the path delimiter,
+so it must be encoded as &quot;%2F&quot;. These are just two examples of the
+differences between path segment and query string encoding; there are
+other differences too.</p><p>When decoding path segments the <code>decodePathSegment</code> method should always
+be used in preference to the <span class="extype" name="java.net.URLDecoder.decode(String,String)">java.net.URLDecoder.decode(String,String)</span>
+method. <code>URLDecoder.decode</code>, despite its name, actually decodes
+the <code>application/x-www-form-urlencoded</code> MIME format which is the encoding
+used for form data in HTTP GET and POST requests. This format is suitable
+for inclusion in the query part of a URI. But <code>URLDecoder.decoder</code> should not
+be used for path segment encoding or decoding.
+</p></div><dl class="paramcmts block"><dt class="param">s</dt><dd class="cmt"><p>The string to decode. Must use the US-ASCII character set.</p></dd><dt class="param">outputCharset</dt><dd class="cmt"><p>The name of the encoding that the output should be encoded with.
+    The output string will be converted from octets (bytes) using this character encoding.</p></dd><dt>returns</dt><dd class="cmt"><p>A decoded string in the <code>outputCharset</code> character set.
+</p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt">InvalidEncodingException<p>If the input is not a valid encoded path segment.</p></span></dd></dl></div>
     </li><li name="play.utils.UriEncoding#encodePathSegment" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="encodePathSegment(s:String,encoding:String):String"></a>
+      <a id="encodePathSegment(s:String,inputCharset:String):String"></a>
       <a id="encodePathSegment(String,String):String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -193,7 +245,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">encodePathSegment</span><span class="params">(<span name="s">s: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="encoding">encoding: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">encodePathSegment</span><span class="params">(<span name="s">s: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="inputCharset">inputCharset: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Encode a string so that it can be used safely in the &quot;path segment&quot;
@@ -215,7 +267,7 @@ for inclusion in the query part of a URI. But <code>URLEncoder.encode</code> sho
 be used for path segment encoding. (Also note that <code>URLEncoder.encode</code> is
 not quite spec compliant. For example, it percent-encodes the <code>~</code> character when
 really it should leave it as unencoded.)
-</p></div><dl class="paramcmts block"><dt class="param">s</dt><dd class="cmt"><p>The string to encode.</p></dd><dt class="param">encoding</dt><dd class="cmt"><p>The name of the encoding that the string <code>s</code> is encoded with.
+</p></div><dl class="paramcmts block"><dt class="param">s</dt><dd class="cmt"><p>The string to encode.</p></dd><dt class="param">inputCharset</dt><dd class="cmt"><p>The name of the encoding that the string <code>s</code> is encoded with.
     The string <code>s</code> will be converted to octets (bytes) using this character encoding.</p></dd><dt>returns</dt><dd class="cmt"><p>An encoded string in the US-ASCII character set.
 </p></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
