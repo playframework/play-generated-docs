@@ -296,23 +296,6 @@ implements <a href="../../play/mvc/Http.Status.html" title="interface in play.mv
 </td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>static <a href="../../play/test/FakeApplication.html" title="class in play.test">FakeApplication</a></code></td>
-<td class="colLast"><code><strong><a href="../../play/test/Helpers.html#fakeApplication(java.util.Map, java.util.List, java.util.List)">fakeApplication</a></strong>(java.util.Map&lt;java.lang.String,? extends java.lang.Object&gt;&nbsp;additionalConfiguration,
-               java.util.List&lt;java.lang.String&gt;&nbsp;additionalPlugins,
-               java.util.List&lt;java.lang.String&gt;&nbsp;withoutPlugins)</code>
-<div class="block">Build a new fake application.</div>
-</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>static <a href="../../play/test/FakeApplication.html" title="class in play.test">FakeApplication</a></code></td>
-<td class="colLast"><code><strong><a href="../../play/test/Helpers.html#fakeApplication(java.util.Map, java.util.List, java.util.List, play.GlobalSettings)">fakeApplication</a></strong>(java.util.Map&lt;java.lang.String,? extends java.lang.Object&gt;&nbsp;additionalConfiguration,
-               java.util.List&lt;java.lang.String&gt;&nbsp;additionalPlugins,
-               java.util.List&lt;java.lang.String&gt;&nbsp;withoutPlugins,
-               <a href="../../play/GlobalSettings.html" title="class in play">GlobalSettings</a>&nbsp;global)</code>
-<div class="block">Build a new fake application.</div>
-</td>
-</tr>
-<tr class="altColor">
 <td class="colFirst"><code>static <a href="../../play/GlobalSettings.html" title="class in play">GlobalSettings</a></code></td>
 <td class="colLast"><code><strong><a href="../../play/test/Helpers.html#fakeGlobal()">fakeGlobal</a></strong>()</code>
 <div class="block">A fake Global</div>
@@ -381,7 +364,7 @@ implements <a href="../../play/mvc/Http.Status.html" title="interface in play.mv
      <a href="../../play/test/FakeRequest.html" title="class in play.test">FakeRequest</a>&nbsp;fakeRequest)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>static <a href="../../play/mvc/Result.html" title="interface in play.mvc">Result</a></code></td>
+<td class="colFirst"><code>static &lt;T&gt;&nbsp;<a href="../../play/mvc/Result.html" title="interface in play.mvc">Result</a></code></td>
 <td class="colLast"><code><strong><a href="../../play/test/Helpers.html#route(play.Application, play.test.FakeRequest, byte[])">route</a></strong>(<a href="../../play/Application.html" title="class in play">Application</a>&nbsp;app,
      <a href="../../play/test/FakeRequest.html" title="class in play.test">FakeRequest</a>&nbsp;fakeRequest,
      byte[]&nbsp;body)</code>&nbsp;</td>
@@ -391,7 +374,7 @@ implements <a href="../../play/mvc/Http.Status.html" title="interface in play.mv
 <td class="colLast"><code><strong><a href="../../play/test/Helpers.html#route(play.test.FakeRequest)">route</a></strong>(<a href="../../play/test/FakeRequest.html" title="class in play.test">FakeRequest</a>&nbsp;fakeRequest)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>static <a href="../../play/mvc/Result.html" title="interface in play.mvc">Result</a></code></td>
+<td class="colFirst"><code>static &lt;T&gt;&nbsp;<a href="../../play/mvc/Result.html" title="interface in play.mvc">Result</a></code></td>
 <td class="colLast"><code><strong><a href="../../play/test/Helpers.html#route(play.test.FakeRequest, byte[])">route</a></strong>(<a href="../../play/test/FakeRequest.html" title="class in play.test">FakeRequest</a>&nbsp;fakeRequest,
      byte[]&nbsp;body)</code>&nbsp;</td>
 </tr>
@@ -774,31 +757,6 @@ implements <a href="../../play/mvc/Http.Status.html" title="interface in play.mv
 <div class="block">Build a new fake application.</div>
 </li>
 </ul>
-<a name="fakeApplication(java.util.Map, java.util.List, java.util.List)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>fakeApplication</h4>
-<pre>public static&nbsp;<a href="../../play/test/FakeApplication.html" title="class in play.test">FakeApplication</a>&nbsp;fakeApplication(java.util.Map&lt;java.lang.String,? extends java.lang.Object&gt;&nbsp;additionalConfiguration,
-                              java.util.List&lt;java.lang.String&gt;&nbsp;additionalPlugins,
-                              java.util.List&lt;java.lang.String&gt;&nbsp;withoutPlugins)</pre>
-<div class="block">Build a new fake application.</div>
-</li>
-</ul>
-<a name="fakeApplication(java.util.Map, java.util.List, java.util.List, play.GlobalSettings)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>fakeApplication</h4>
-<pre>public static&nbsp;<a href="../../play/test/FakeApplication.html" title="class in play.test">FakeApplication</a>&nbsp;fakeApplication(java.util.Map&lt;java.lang.String,? extends java.lang.Object&gt;&nbsp;additionalConfiguration,
-                              java.util.List&lt;java.lang.String&gt;&nbsp;additionalPlugins,
-                              java.util.List&lt;java.lang.String&gt;&nbsp;withoutPlugins,
-                              <a href="../../play/GlobalSettings.html" title="class in play">GlobalSettings</a>&nbsp;global)</pre>
-<div class="block">Build a new fake application.</div>
-</li>
-</ul>
 <a name="status(play.mvc.Result)">
 <!--   -->
 </a>
@@ -991,9 +949,9 @@ implements <a href="../../play/mvc/Http.Status.html" title="interface in play.mv
 <ul class="blockList">
 <li class="blockList">
 <h4>route</h4>
-<pre>public static&nbsp;<a href="../../play/mvc/Result.html" title="interface in play.mvc">Result</a>&nbsp;route(<a href="../../play/Application.html" title="class in play">Application</a>&nbsp;app,
-           <a href="../../play/test/FakeRequest.html" title="class in play.test">FakeRequest</a>&nbsp;fakeRequest,
-           byte[]&nbsp;body)</pre>
+<pre>public static&nbsp;&lt;T&gt;&nbsp;<a href="../../play/mvc/Result.html" title="interface in play.mvc">Result</a>&nbsp;route(<a href="../../play/Application.html" title="class in play">Application</a>&nbsp;app,
+               <a href="../../play/test/FakeRequest.html" title="class in play.test">FakeRequest</a>&nbsp;fakeRequest,
+               byte[]&nbsp;body)</pre>
 </li>
 </ul>
 <a name="route(play.test.FakeRequest, byte[])">
@@ -1002,8 +960,8 @@ implements <a href="../../play/mvc/Http.Status.html" title="interface in play.mv
 <ul class="blockList">
 <li class="blockList">
 <h4>route</h4>
-<pre>public static&nbsp;<a href="../../play/mvc/Result.html" title="interface in play.mvc">Result</a>&nbsp;route(<a href="../../play/test/FakeRequest.html" title="class in play.test">FakeRequest</a>&nbsp;fakeRequest,
-           byte[]&nbsp;body)</pre>
+<pre>public static&nbsp;&lt;T&gt;&nbsp;<a href="../../play/mvc/Result.html" title="interface in play.mvc">Result</a>&nbsp;route(<a href="../../play/test/FakeRequest.html" title="class in play.test">FakeRequest</a>&nbsp;fakeRequest,
+               byte[]&nbsp;body)</pre>
 </li>
 </ul>
 <a name="start(play.test.FakeApplication)">

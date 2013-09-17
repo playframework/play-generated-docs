@@ -142,9 +142,7 @@ extends java.lang.Object</pre>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>&lt;T extends play.api.mvc.EssentialFilter&gt;&nbsp;<br>java.lang.Class&lt;T&gt;[]</code></td>
-<td class="colLast"><code><strong><a href="../play/GlobalSettings.html#filters()">filters</a></strong>()</code>
-<div class="block">Get the filters that should be used to handle each request.</div>
-</td>
+<td class="colLast"><code><strong><a href="../play/GlobalSettings.html#filters()">filters</a></strong>()</code>&nbsp;</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>&lt;A&gt;&nbsp;A</code></td>
@@ -153,21 +151,21 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code><a href="../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;<a href="../play/mvc/SimpleResult.html" title="class in play.mvc">SimpleResult</a>&gt;</code></td>
+<td class="colFirst"><code><a href="../play/mvc/Result.html" title="interface in play.mvc">Result</a></code></td>
 <td class="colLast"><code><strong><a href="../play/GlobalSettings.html#onBadRequest(play.mvc.Http.RequestHeader, java.lang.String)">onBadRequest</a></strong>(<a href="../play/mvc/Http.RequestHeader.html" title="class in play.mvc">Http.RequestHeader</a>&nbsp;request,
             java.lang.String&nbsp;error)</code>
 <div class="block">Called when an action has been found, but the request parsing has failed.</div>
 </td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code><a href="../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;<a href="../play/mvc/SimpleResult.html" title="class in play.mvc">SimpleResult</a>&gt;</code></td>
+<td class="colFirst"><code><a href="../play/mvc/Result.html" title="interface in play.mvc">Result</a></code></td>
 <td class="colLast"><code><strong><a href="../play/GlobalSettings.html#onError(play.mvc.Http.RequestHeader, java.lang.Throwable)">onError</a></strong>(<a href="../play/mvc/Http.RequestHeader.html" title="class in play.mvc">Http.RequestHeader</a>&nbsp;request,
        java.lang.Throwable&nbsp;t)</code>
 <div class="block">Called when an exception occurred.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code><a href="../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;<a href="../play/mvc/SimpleResult.html" title="class in play.mvc">SimpleResult</a>&gt;</code></td>
+<td class="colFirst"><code><a href="../play/mvc/Result.html" title="interface in play.mvc">Result</a></code></td>
 <td class="colLast"><code><strong><a href="../play/GlobalSettings.html#onHandlerNotFound(play.mvc.Http.RequestHeader)">onHandlerNotFound</a></strong>(<a href="../play/mvc/Http.RequestHeader.html" title="class in play.mvc">Http.RequestHeader</a>&nbsp;request)</code>
 <div class="block">Called when no action was found to serve a request.</div>
 </td>
@@ -281,8 +279,8 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>onError</h4>
-<pre>public&nbsp;<a href="../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;<a href="../play/mvc/SimpleResult.html" title="class in play.mvc">SimpleResult</a>&gt;&nbsp;onError(<a href="../play/mvc/Http.RequestHeader.html" title="class in play.mvc">Http.RequestHeader</a>&nbsp;request,
-                              java.lang.Throwable&nbsp;t)</pre>
+<pre>public&nbsp;<a href="../play/mvc/Result.html" title="interface in play.mvc">Result</a>&nbsp;onError(<a href="../play/mvc/Http.RequestHeader.html" title="class in play.mvc">Http.RequestHeader</a>&nbsp;request,
+             java.lang.Throwable&nbsp;t)</pre>
 <div class="block">Called when an exception occurred.
  
  The default is to send the framework's default error page. This is achieved by returning <code>null</code>, 
@@ -329,7 +327,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>onHandlerNotFound</h4>
-<pre>public&nbsp;<a href="../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;<a href="../play/mvc/SimpleResult.html" title="class in play.mvc">SimpleResult</a>&gt;&nbsp;onHandlerNotFound(<a href="../play/mvc/Http.RequestHeader.html" title="class in play.mvc">Http.RequestHeader</a>&nbsp;request)</pre>
+<pre>public&nbsp;<a href="../play/mvc/Result.html" title="interface in play.mvc">Result</a>&nbsp;onHandlerNotFound(<a href="../play/mvc/Http.RequestHeader.html" title="class in play.mvc">Http.RequestHeader</a>&nbsp;request)</pre>
 <div class="block">Called when no action was found to serve a request.
 
  The default behavior is to render the framework's default 404 page. This is achieved by returning <code>null</code>, 
@@ -346,8 +344,8 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>onBadRequest</h4>
-<pre>public&nbsp;<a href="../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;<a href="../play/mvc/SimpleResult.html" title="class in play.mvc">SimpleResult</a>&gt;&nbsp;onBadRequest(<a href="../play/mvc/Http.RequestHeader.html" title="class in play.mvc">Http.RequestHeader</a>&nbsp;request,
-                                   java.lang.String&nbsp;error)</pre>
+<pre>public&nbsp;<a href="../play/mvc/Result.html" title="interface in play.mvc">Result</a>&nbsp;onBadRequest(<a href="../play/mvc/Http.RequestHeader.html" title="class in play.mvc">Http.RequestHeader</a>&nbsp;request,
+                  java.lang.String&nbsp;error)</pre>
 <div class="block">Called when an action has been found, but the request parsing has failed.
 
  The default behavior is to render the framework's default 400 page. This is achieved by returning <code>null</code>, 
@@ -394,7 +392,6 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>filters</h4>
 <pre>public&nbsp;&lt;T extends play.api.mvc.EssentialFilter&gt;&nbsp;java.lang.Class&lt;T&gt;[]&nbsp;filters()</pre>
-<div class="block">Get the filters that should be used to handle each request.</div>
 </li>
 </ul>
 </li>

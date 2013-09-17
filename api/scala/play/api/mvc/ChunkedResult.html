@@ -9,6 +9,11 @@
           
       <link href="../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../lib/tools.tooltip.js"></script>
+      
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../index.html';
@@ -24,28 +29,26 @@
         </head>
         <body class="type">
       <div id="definition">
-        <a href="ChunkedResult$.html" title="Go to companion"><img src="../../../lib/class_to_object_big.png" /></a>
+        <img src="../../../lib/class_big.png" />
         <p id="owner"><a href="../../package.html" class="extype" name="play">play</a>.<a href="../package.html" class="extype" name="play.api">api</a>.<a href="package.html" class="extype" name="play.api.mvc">mvc</a></p>
-        <h1><a href="ChunkedResult$.html" title="Go to companion">ChunkedResult</a></h1>
+        <h1>ChunkedResult</h1>
       </div>
 
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">class</span>
+        <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 2.2.0) Use SimpleResult with Results.chunk enumeratee instead. Will be removed in Play 2.3.">ChunkedResult</span><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a></span>
+        <span class="name">ChunkedResult</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="header">header: <a href="ResponseHeader.html" class="extype" name="play.api.mvc.ResponseHeader">ResponseHeader</a></span>, <span name="chunks">chunks: <span class="extype" name="scala.Function1">Function1</span>[<a href="../libs/iteratee/Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="play.api.mvc.ChunkedResult.A">A</span>, <span class="extype" name="scala.Unit">Unit</span>], _]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="writeable">writeable: <a href="../http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<span class="extype" name="play.api.mvc.ChunkedResult.A">A</span>]</span>)</span><span class="result"> extends <a href="PlainResult.html" class="extype" name="play.api.mvc.PlainResult">PlainResult</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A chunked result, which defines the response header and a chunks enumerator to send asynchronously to the client.
-</p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>the response body content type.</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.2.0)</i> Use SimpleResult with Results.chunk enumeratee instead. Will be removed in Play 2.3.</p></dd><dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/scratch/jenkins/workspace/play2-master-apidocs/framework/src/play/src/main/scala/play/api/mvc/Results.scala" target="_blank">Results.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>the response body content type.</p></dd><dt class="param">header</dt><dd class="cmt"><p>the response header, which contains status code and HTTP headers</p></dd><dt class="param">chunks</dt><dd class="cmt"><p>the chunks enumerator
+</p></dd></dl><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/Play20/tree/2.2.x/framework/src/play/src/main/scala/play/api/mvc/Results.scala" target="_blank">Results.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>, <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <a href="PlainResult.html" class="extype" name="play.api.mvc.PlainResult">PlainResult</a>, <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a>, <a href="WithHeaders.html" class="extype" name="play.api.mvc.WithHeaders">WithHeaders</a>[<a href="PlainResult.html" class="extype" name="play.api.mvc.PlainResult">PlainResult</a>], <span class="extype" name="scala.NotNull">NotNull</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <a href="PlainResult.html" class="extype" name="play.api.mvc.PlainResult">PlainResult</a>, <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a>, <a href="WithHeaders.html" class="extype" name="play.api.mvc.WithHeaders">WithHeaders</a>[<a href="PlainResult.html" class="extype" name="play.api.mvc.PlainResult">PlainResult</a>], <span class="extype" name="scala.NotNull">NotNull</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -63,7 +66,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="play.api.mvc.ChunkedResult"><span>ChunkedResult</span></li><li class="in" name="play.api.mvc.SimpleResult"><span>SimpleResult</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="play.api.mvc.PlainResult"><span>PlainResult</span></li><li class="in" name="play.api.mvc.Result"><span>Result</span></li><li class="in" name="play.api.mvc.WithHeaders"><span>WithHeaders</span></li><li class="in" name="scala.NotNull"><span>NotNull</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="play.api.mvc.ChunkedResult"><span>ChunkedResult</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="play.api.mvc.PlainResult"><span>PlainResult</span></li><li class="in" name="play.api.mvc.Result"><span>Result</span></li><li class="in" name="play.api.mvc.WithHeaders"><span>WithHeaders</span></li><li class="in" name="scala.NotNull"><span>NotNull</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -187,20 +190,20 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="play.api.mvc.SimpleResult#as" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="as(contentType:String):play.api.mvc.SimpleResult"></a>
-      <a id="as(String):SimpleResult"></a>
+    </li><li name="play.api.mvc.PlainResult#as" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="as(contentType:String):play.api.mvc.PlainResult"></a>
+      <a id="as(String):PlainResult"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">as</span><span class="params">(<span name="contentType">contentType: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a></span>
+        <span class="name">as</span><span class="params">(<span name="contentType">contentType: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="PlainResult.html" class="extype" name="play.api.mvc.PlainResult">PlainResult</a></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Changes the result content type.</p><div class="fullcomment"><div class="comment cmt"><p>Changes the result content type.</p><p>For example:</p><pre>Ok(<span class="lit">"<text>Hello world</text>"</span>).as(<span class="lit">"application/xml"</span>)</pre></div><dl class="paramcmts block"><dt class="param">contentType</dt><dd class="cmt"><p>the new content type.</p></dd><dt>returns</dt><dd class="cmt"><p>the new result
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a> → <a href="WithHeaders.html" class="extype" name="play.api.mvc.WithHeaders">WithHeaders</a></dd></dl></div>
+      <p class="shortcomment cmt">Changes the result content type.</p><div class="fullcomment"><div class="comment cmt"><p>Changes the result content type.</p><p>For example:</p><pre>Ok(<span class="lit">"<text>Hello world</text>"</span>).as(<span class="lit">"text/xml"</span>)</pre></div><dl class="paramcmts block"><dt class="param">contentType</dt><dd class="cmt"><p>the new content type.</p></dd><dt>returns</dt><dd class="cmt"><p>the new result
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="PlainResult.html" class="extype" name="play.api.mvc.PlainResult">PlainResult</a> → <a href="WithHeaders.html" class="extype" name="play.api.mvc.WithHeaders">WithHeaders</a></dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -214,19 +217,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="play.api.mvc.SimpleResult#body" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="body:play.api.libs.iteratee.Enumerator[Array[Byte]]"></a>
-      <a id="body:Enumerator[Array[Byte]]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">body</span><span class="result">: <a href="../libs/iteratee/Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]]</span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a></dd></dl></div>
     </li><li name="play.api.mvc.ChunkedResult#chunks" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="chunks:Function1[play.api.libs.iteratee.Iteratee[A,Unit],_]"></a>
       <a id="chunks:Function1[Iteratee[A,Unit],_]"></a>
@@ -241,20 +231,6 @@
       </h4>
       <p class="shortcomment cmt">the chunks enumerator
 </p>
-    </li><li name="play.api.mvc.WithHeaders#clearingLang" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="clearingLang(implicitapp:play.api.Application):A"></a>
-      <a id="clearingLang(Application):PlainResult"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">clearingLang</span><span class="params">(<span class="implicit">implicit </span><span name="app">app: <a href="../Application.html" class="extype" name="play.api.Application">Application</a></span>)</span><span class="result">: <a href="PlainResult.html" class="extype" name="play.api.mvc.PlainResult">PlainResult</a></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Clears the user's language by discarding the language cookie set by withLang</p><div class="fullcomment"><div class="comment cmt"><p>Clears the user's language by discarding the language cookie set by withLang</p><p>For example:</p><pre>Ok(Messages(<span class="lit">"hello.world"</span>)).clearingLang</pre></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the new result
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="WithHeaders.html" class="extype" name="play.api.mvc.WithHeaders">WithHeaders</a></dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
@@ -267,40 +243,24 @@
         <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="defval" name="classOf[java.lang.CloneNotSupportedException]">...</span>
-    </span>)</span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">java.lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="play.api.mvc.SimpleResult#connection" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="connection:play.api.mvc.HttpConnection.Connection"></a>
-      <a id="connection:Connection"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">connection</span><span class="result">: <a href="HttpConnection$.html#Connection=play.api.mvc.HttpConnection.Value" class="extmbr" name="play.api.mvc.HttpConnection.Connection">Connection</a></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a></dd></dl></div>
-    </li><li name="play.api.mvc.SimpleResult#discardingCookies" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="discardingCookies(cookies:play.api.mvc.DiscardingCookie*):play.api.mvc.SimpleResult"></a>
-      <a id="discardingCookies(DiscardingCookie*):SimpleResult"></a>
+    </li><li name="play.api.mvc.PlainResult#discardingCookies" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="discardingCookies(cookies:play.api.mvc.DiscardingCookie*):play.api.mvc.PlainResult"></a>
+      <a id="discardingCookies(DiscardingCookie*):PlainResult"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">discardingCookies</span><span class="params">(<span name="cookies">cookies: <a href="DiscardingCookie.html" class="extype" name="play.api.mvc.DiscardingCookie">DiscardingCookie</a>*</span>)</span><span class="result">: <a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a></span>
+        <span class="name">discardingCookies</span><span class="params">(<span name="cookies">cookies: <a href="DiscardingCookie.html" class="extype" name="play.api.mvc.DiscardingCookie">DiscardingCookie</a>*</span>)</span><span class="result">: <a href="PlainResult.html" class="extype" name="play.api.mvc.PlainResult">PlainResult</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Discards cookies along this result.</p><div class="fullcomment"><div class="comment cmt"><p>Discards cookies along this result.</p><p>For example:</p><pre>Ok(<span class="lit">"Hello world"</span>).discardingCookies(<span class="lit">"theme"</span>)</pre></div><dl class="paramcmts block"><dt class="param">cookies</dt><dd class="cmt"><p>the cookies to discard along to this result</p></dd><dt>returns</dt><dd class="cmt"><p>the new result
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a> → <a href="WithHeaders.html" class="extype" name="play.api.mvc.WithHeaders">WithHeaders</a></dd></dl></div>
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="PlainResult.html" class="extype" name="play.api.mvc.PlainResult">PlainResult</a> → <a href="WithHeaders.html" class="extype" name="play.api.mvc.WithHeaders">WithHeaders</a></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -326,41 +286,38 @@
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="symbol">classOf[java.lang.Throwable]</span>
-    </span>)</span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">java.lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="play.api.mvc.SimpleResult#flashing" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="flashing(values:(String,String)*):play.api.mvc.SimpleResult"></a>
-      <a id="flashing((String,String)*):SimpleResult"></a>
+    </li><li name="play.api.mvc.PlainResult#flashing" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="flashing(values:(String,String)*):play.api.mvc.PlainResult"></a>
+      <a id="flashing((String,String)*):PlainResult"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">flashing</span><span class="params">(<span name="values">values: (<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>)*</span>)</span><span class="result">: <a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a></span>
+        <span class="name">flashing</span><span class="params">(<span name="values">values: (<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>)*</span>)</span><span class="result">: <a href="PlainResult.html" class="extype" name="play.api.mvc.PlainResult">PlainResult</a></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Adds values to the flash scope for this result.</p><div class="fullcomment"><div class="comment cmt"><p>Adds values to the flash scope for this result.</p><p>For example:</p><pre>Ok(<span class="lit">"Hello world"</span>).flashing(<span class="lit">"success"</span> -&gt; <span class="lit">"Done!"</span>)</pre></div><dl class="paramcmts block"><dt class="param">values</dt><dd class="cmt"><p>the flash values to set with this result</p></dd><dt>returns</dt><dd class="cmt"><p>the new result
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a> → <a href="WithHeaders.html" class="extype" name="play.api.mvc.WithHeaders">WithHeaders</a></dd></dl></div>
-    </li><li name="play.api.mvc.SimpleResult#flashing" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="flashing(flash:play.api.mvc.Flash):play.api.mvc.SimpleResult"></a>
-      <a id="flashing(Flash):SimpleResult"></a>
+      <p class="shortcomment cmt">Adds values to the flash scope for this result.</p><div class="fullcomment"><div class="comment cmt"><p>Adds values to the flash scope for this result.</p><p>For example:</p><pre>Ok(<span class="lit">"Hello world"</span>).flashing(<span class="lit">"success"</span> -&gt; <span class="lit">"Done!"</span>)</pre></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the new result
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="PlainResult.html" class="extype" name="play.api.mvc.PlainResult">PlainResult</a> → <a href="WithHeaders.html" class="extype" name="play.api.mvc.WithHeaders">WithHeaders</a></dd></dl></div>
+    </li><li name="play.api.mvc.PlainResult#flashing" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="flashing(flash:play.api.mvc.Flash):play.api.mvc.PlainResult"></a>
+      <a id="flashing(Flash):PlainResult"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">flashing</span><span class="params">(<span name="flash">flash: <a href="Flash.html" class="extype" name="play.api.mvc.Flash">Flash</a></span>)</span><span class="result">: <a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a></span>
+        <span class="name">flashing</span><span class="params">(<span name="flash">flash: <a href="Flash.html" class="extype" name="play.api.mvc.Flash">Flash</a></span>)</span><span class="result">: <a href="PlainResult.html" class="extype" name="play.api.mvc.PlainResult">PlainResult</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Adds values to the flash scope for this result.</p><div class="fullcomment"><div class="comment cmt"><p>Adds values to the flash scope for this result.</p><p>For example:</p><pre>Ok(<span class="lit">"Hello world"</span>).flashing(flash + (<span class="lit">"success"</span> -&gt; <span class="lit">"Done!"</span>))</pre></div><dl class="paramcmts block"><dt class="param">flash</dt><dd class="cmt"><p>the flash scope to set with this result</p></dd><dt>returns</dt><dd class="cmt"><p>the new result
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a> → <a href="WithHeaders.html" class="extype" name="play.api.mvc.WithHeaders">WithHeaders</a></dd></dl></div>
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="PlainResult.html" class="extype" name="play.api.mvc.PlainResult">PlainResult</a> → <a href="WithHeaders.html" class="extype" name="play.api.mvc.WithHeaders">WithHeaders</a></dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>
@@ -386,7 +343,7 @@
         <span class="name">header</span><span class="result">: <a href="ResponseHeader.html" class="extype" name="play.api.mvc.ResponseHeader">ResponseHeader</a></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">the response header, which contains status code and HTTP headers</p><div class="fullcomment"><div class="comment cmt"><p>the response header, which contains status code and HTTP headers</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.mvc.ChunkedResult">ChunkedResult</a> → <a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a> → <a href="PlainResult.html" class="extype" name="play.api.mvc.PlainResult">PlainResult</a></dd></dl></div>
+      <p class="shortcomment cmt">the response header, which contains status code and HTTP headers</p><div class="fullcomment"><div class="comment cmt"><p>the response header, which contains status code and HTTP headers</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.mvc.ChunkedResult">ChunkedResult</a> → <a href="PlainResult.html" class="extype" name="play.api.mvc.PlainResult">PlainResult</a></dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -452,19 +409,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="play.api.mvc.SimpleResult#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="toString():String"></a>
-      <a id="toString():String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a> → AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
@@ -478,10 +422,7 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
-    </span>)</span>
+                <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -497,10 +438,7 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
-    </span>)</span>
+                <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -516,40 +454,37 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
-    </span>)</span>
+                <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="play.api.mvc.SimpleResult#withCookies" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="withCookies(cookies:play.api.mvc.Cookie*):play.api.mvc.SimpleResult"></a>
-      <a id="withCookies(Cookie*):SimpleResult"></a>
+    </li><li name="play.api.mvc.PlainResult#withCookies" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="withCookies(cookies:play.api.mvc.Cookie*):play.api.mvc.PlainResult"></a>
+      <a id="withCookies(Cookie*):PlainResult"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">withCookies</span><span class="params">(<span name="cookies">cookies: <a href="Cookie.html" class="extype" name="play.api.mvc.Cookie">Cookie</a>*</span>)</span><span class="result">: <a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a></span>
+        <span class="name">withCookies</span><span class="params">(<span name="cookies">cookies: <a href="Cookie.html" class="extype" name="play.api.mvc.Cookie">Cookie</a>*</span>)</span><span class="result">: <a href="PlainResult.html" class="extype" name="play.api.mvc.PlainResult">PlainResult</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Adds cookies to this result.</p><div class="fullcomment"><div class="comment cmt"><p>Adds cookies to this result.</p><p>For example:</p><pre>Ok(<span class="lit">"Hello world"</span>).withCookies(Cookie(<span class="lit">"theme"</span>, <span class="lit">"blue"</span>))</pre></div><dl class="paramcmts block"><dt class="param">cookies</dt><dd class="cmt"><p>the cookies to add to this result</p></dd><dt>returns</dt><dd class="cmt"><p>the new result
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a> → <a href="WithHeaders.html" class="extype" name="play.api.mvc.WithHeaders">WithHeaders</a></dd></dl></div>
-    </li><li name="play.api.mvc.SimpleResult#withHeaders" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="withHeaders(headers:(String,String)*):play.api.mvc.SimpleResult"></a>
-      <a id="withHeaders((String,String)*):SimpleResult"></a>
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="PlainResult.html" class="extype" name="play.api.mvc.PlainResult">PlainResult</a> → <a href="WithHeaders.html" class="extype" name="play.api.mvc.WithHeaders">WithHeaders</a></dd></dl></div>
+    </li><li name="play.api.mvc.ChunkedResult#withHeaders" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="withHeaders(headers:(String,String)*):play.api.mvc.ChunkedResult[A]"></a>
+      <a id="withHeaders((String,String)*):ChunkedResult[A]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">withHeaders</span><span class="params">(<span name="headers">headers: (<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>)*</span>)</span><span class="result">: <a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a></span>
+        <span class="name">withHeaders</span><span class="params">(<span name="headers">headers: (<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>)*</span>)</span><span class="result">: <a href="" class="extype" name="play.api.mvc.ChunkedResult">ChunkedResult</a>[<span class="extype" name="play.api.mvc.ChunkedResult.A">A</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Adds headers to this result.</p><div class="fullcomment"><div class="comment cmt"><p>Adds headers to this result.</p><p>For example:</p><pre>Ok(<span class="lit">"Hello world"</span>).withHeaders(ETAG -&gt; <span class="lit">"0"</span>)</pre></div><dl class="paramcmts block"><dt class="param">headers</dt><dd class="cmt"><p>the headers to add to this result.</p></dd><dt>returns</dt><dd class="cmt"><p>the new result
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a> → <a href="WithHeaders.html" class="extype" name="play.api.mvc.WithHeaders">WithHeaders</a></dd></dl></div>
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.mvc.ChunkedResult">ChunkedResult</a> → <a href="WithHeaders.html" class="extype" name="play.api.mvc.WithHeaders">WithHeaders</a></dd></dl></div>
     </li><li name="play.api.mvc.WithHeaders#withLang" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="withLang(lang:play.api.i18n.Lang)(implicitapp:play.api.Application):A"></a>
       <a id="withLang(Lang)(Application):PlainResult"></a>
@@ -562,51 +497,51 @@
         <span class="name">withLang</span><span class="params">(<span name="lang">lang: <a href="../i18n/Lang.html" class="extype" name="play.api.i18n.Lang">Lang</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="app">app: <a href="../Application.html" class="extype" name="play.api.Application">Application</a></span>)</span><span class="result">: <a href="PlainResult.html" class="extype" name="play.api.mvc.PlainResult">PlainResult</a></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Sets the user's language permanently for future requests by storing it in a cookie.</p><div class="fullcomment"><div class="comment cmt"><p>Sets the user's language permanently for future requests by storing it in a cookie.</p><p>For example:</p><pre><span class="kw">implicit</span> <span class="kw">val</span> lang = Lang(<span class="lit">"fr-FR"</span>)
+      <p class="shortcomment cmt">Sets the users language permanently for future requests by storing it in a cookie.</p><div class="fullcomment"><div class="comment cmt"><p>Sets the users language permanently for future requests by storing it in a cookie.</p><p>For example:</p><pre><span class="kw">implicit</span> <span class="kw">val</span> lang = Lang(<span class="lit">"fr-FR"</span>)
 Ok(Messages(<span class="lit">"hello.world"</span>)).withLang(lang)</pre></div><dl class="paramcmts block"><dt class="param">lang</dt><dd class="cmt"><p>the language to store for the user</p></dd><dt>returns</dt><dd class="cmt"><p>the new result
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="WithHeaders.html" class="extype" name="play.api.mvc.WithHeaders">WithHeaders</a></dd></dl></div>
-    </li><li name="play.api.mvc.SimpleResult#withNewSession" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="withNewSession:play.api.mvc.SimpleResult"></a>
-      <a id="withNewSession:SimpleResult"></a>
+    </li><li name="play.api.mvc.PlainResult#withNewSession" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="withNewSession:play.api.mvc.PlainResult"></a>
+      <a id="withNewSession:PlainResult"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">withNewSession</span><span class="result">: <a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a></span>
+        <span class="name">withNewSession</span><span class="result">: <a href="PlainResult.html" class="extype" name="play.api.mvc.PlainResult">PlainResult</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Discards the existing session for this result.</p><div class="fullcomment"><div class="comment cmt"><p>Discards the existing session for this result.</p><p>For example:</p><pre>Ok(<span class="lit">"Hello world"</span>).withNewSession</pre></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the new result
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a> → <a href="WithHeaders.html" class="extype" name="play.api.mvc.WithHeaders">WithHeaders</a></dd></dl></div>
-    </li><li name="play.api.mvc.SimpleResult#withSession" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="withSession(session:(String,String)*):play.api.mvc.SimpleResult"></a>
-      <a id="withSession((String,String)*):SimpleResult"></a>
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="PlainResult.html" class="extype" name="play.api.mvc.PlainResult">PlainResult</a> → <a href="WithHeaders.html" class="extype" name="play.api.mvc.WithHeaders">WithHeaders</a></dd></dl></div>
+    </li><li name="play.api.mvc.PlainResult#withSession" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="withSession(session:(String,String)*):play.api.mvc.PlainResult"></a>
+      <a id="withSession((String,String)*):PlainResult"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">withSession</span><span class="params">(<span name="session">session: (<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>)*</span>)</span><span class="result">: <a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a></span>
+        <span class="name">withSession</span><span class="params">(<span name="session">session: (<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>)*</span>)</span><span class="result">: <a href="PlainResult.html" class="extype" name="play.api.mvc.PlainResult">PlainResult</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Sets a new session for this result, discarding the existing session.</p><div class="fullcomment"><div class="comment cmt"><p>Sets a new session for this result, discarding the existing session.</p><p>For example:</p><pre>Ok(<span class="lit">"Hello world"</span>).withSession(<span class="lit">"saidHello"</span> -&gt; <span class="lit">"yes"</span>)</pre></div><dl class="paramcmts block"><dt class="param">session</dt><dd class="cmt"><p>the session to set with this result</p></dd><dt>returns</dt><dd class="cmt"><p>the new result
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a> → <a href="WithHeaders.html" class="extype" name="play.api.mvc.WithHeaders">WithHeaders</a></dd></dl></div>
-    </li><li name="play.api.mvc.SimpleResult#withSession" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="withSession(session:play.api.mvc.Session):play.api.mvc.SimpleResult"></a>
-      <a id="withSession(Session):SimpleResult"></a>
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="PlainResult.html" class="extype" name="play.api.mvc.PlainResult">PlainResult</a> → <a href="WithHeaders.html" class="extype" name="play.api.mvc.WithHeaders">WithHeaders</a></dd></dl></div>
+    </li><li name="play.api.mvc.PlainResult#withSession" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="withSession(session:play.api.mvc.Session):play.api.mvc.PlainResult"></a>
+      <a id="withSession(Session):PlainResult"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">withSession</span><span class="params">(<span name="session">session: <a href="Session.html" class="extype" name="play.api.mvc.Session">Session</a></span>)</span><span class="result">: <a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a></span>
+        <span class="name">withSession</span><span class="params">(<span name="session">session: <a href="Session.html" class="extype" name="play.api.mvc.Session">Session</a></span>)</span><span class="result">: <a href="PlainResult.html" class="extype" name="play.api.mvc.PlainResult">PlainResult</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Sets a new session for this result.</p><div class="fullcomment"><div class="comment cmt"><p>Sets a new session for this result.</p><p>For example:</p><pre>Ok(<span class="lit">"Hello world"</span>).withSession(session + (<span class="lit">"saidHello"</span> -&gt; <span class="lit">"true"</span>))</pre></div><dl class="paramcmts block"><dt class="param">session</dt><dd class="cmt"><p>the session to set with this result</p></dd><dt>returns</dt><dd class="cmt"><p>the new result
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a> → <a href="WithHeaders.html" class="extype" name="play.api.mvc.WithHeaders">WithHeaders</a></dd></dl></div>
+</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="PlainResult.html" class="extype" name="play.api.mvc.PlainResult">PlainResult</a> → <a href="WithHeaders.html" class="extype" name="play.api.mvc.WithHeaders">WithHeaders</a></dd></dl></div>
     </li><li name="play.api.mvc.ChunkedResult#writeable" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="writeable:play.api.http.Writeable[A]"></a>
       <a id="writeable:Writeable[A]"></a>
@@ -649,9 +584,7 @@ Ok(Messages(<span class="lit">"hello.world"</span>)).withLang(lang)</pre></div><
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="play.api.mvc.SimpleResult">
-              <h3>Inherited from <a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a></h3>
-            </div><div class="parent" name="scala.Serializable">
+        <div class="parent" name="scala.Serializable">
               <h3>Inherited from <span class="extype" name="scala.Serializable">Serializable</span></h3>
             </div><div class="parent" name="java.io.Serializable">
               <h3>Inherited from <span class="extype" name="java.io.Serializable">Serializable</span></h3>
@@ -687,6 +620,7 @@ Ok(Messages(<span class="lit">"hello.world"</span>)).withLang(lang)</pre></div><
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../lib/template.js"></script>
+
+
     </body>
       </html>

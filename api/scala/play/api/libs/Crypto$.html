@@ -9,6 +9,11 @@
           
       <link href="../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../lib/tools.tooltip.js"></script>
+      
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../index.html';
@@ -39,11 +44,8 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Cryptographic utilities.</p><p>These utilities are intended as a convenience, however it is important to read each methods documentation and
-understand the concepts behind encryption to use this class properly.  Safe encryption is hard, and there is no
-substitute for an adequate understanding of cryptography.  These methods will not be suitable for all encryption
-needs.</p><p>For more information about cryptography, we recommend reading the OWASP Cryptographic Storage Cheatsheet:</p><p>https://www.owasp.org/index.php/Cryptographic_Storage_Cheat_Sheet
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/scratch/jenkins/workspace/play2-master-apidocs/framework/src/play/src/main/scala/play/api/libs/Crypto.scala" target="_blank">Crypto.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Cryptographic utilities.
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/Play20/tree/2.2.x/framework/src/play/src/main/scala/play/api/libs/Crypto.scala" target="_blank">Crypto.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -179,42 +181,10 @@ needs.</p><p>For more information about cryptography, we recommend reading the O
         <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="defval" name="classOf[java.lang.CloneNotSupportedException]">...</span>
-    </span>)</span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">java.lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="play.api.libs.Crypto#compareSignedTokens" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="compareSignedTokens(tokenA:String,tokenB:String):Boolean"></a>
-      <a id="compareSignedTokens(String,String):Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">compareSignedTokens</span><span class="params">(<span name="tokenA">tokenA: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="tokenB">tokenB: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Compare two signed tokens
-</p>
-    </li><li name="play.api.libs.Crypto#constantTimeEquals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="constantTimeEquals(a:String,b:String):Boolean"></a>
-      <a id="constantTimeEquals(String,String):Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">constantTimeEquals</span><span class="params">(<span name="a">a: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="b">b: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Constant time equals method.</p><div class="fullcomment"><div class="comment cmt"><p>Constant time equals method.</p><p>Given a length that both Strings are equal to, this method will always run in constant time.  This prevents
-timing attacks.
-</p></div></div>
     </li><li name="play.api.libs.Crypto#decryptAES" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="decryptAES(value:String,privateKey:String):String"></a>
       <a id="decryptAES(String,String):String"></a>
@@ -227,11 +197,7 @@ timing attacks.
         <span class="name">decryptAES</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="privateKey">privateKey: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Decrypt a String with the AES encryption standard.</p><div class="fullcomment"><div class="comment cmt"><p>Decrypt a String with the AES encryption standard.</p><p>The private key must have a length of 16 bytes.</p><p>The provider used is by default this uses the platform default JSSE provider.  This can be overridden by defining
-<code>application.crypto.provider</code> in <code>application.conf</code>.</p><p>The transformation used is by default <code>AES/ECB/PKCS5Padding</code>.  It can be configured by defining
-<code>application.crypto.aes.transformation</code> in <code>application.conf</code>.  Although any cipher transformation algorithm can
-be selected here, the secret key spec used is always AES, so only AES transformation algorithms will work.
-</p></div><dl class="paramcmts block"><dt class="param">value</dt><dd class="cmt"><p>An hexadecimal encrypted string.</p></dd><dt class="param">privateKey</dt><dd class="cmt"><p>The key used to encrypt.</p></dd><dt>returns</dt><dd class="cmt"><p>The decrypted String.
+      <p class="shortcomment cmt">Decrypt a String with the AES encryption standard.</p><div class="fullcomment"><div class="comment cmt"><p>Decrypt a String with the AES encryption standard. Private key must have a length of 16 bytes</p></div><dl class="paramcmts block"><dt class="param">value</dt><dd class="cmt"><p>An hexadecimal encrypted string</p></dd><dt class="param">privateKey</dt><dd class="cmt"><p>The key used to encrypt</p></dd><dt>returns</dt><dd class="cmt"><p>The decrypted String
 </p></dd></dl></div>
     </li><li name="play.api.libs.Crypto#decryptAES" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="decryptAES(value:String):String"></a>
@@ -245,11 +211,7 @@ be selected here, the secret key spec used is always AES, so only AES transforma
         <span class="name">decryptAES</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Decrypt a String with the AES encryption standard using the application's secret key.</p><div class="fullcomment"><div class="comment cmt"><p>Decrypt a String with the AES encryption standard using the application's secret key.</p><p>The provider used is by default this uses the platform default JSSE provider.  This can be overridden by defining
-<code>application.crypto.provider</code> in <code>application.conf</code>.</p><p>The transformation used is by default <code>AES/ECB/PKCS5Padding</code>.  It can be configured by defining
-<code>application.crypto.aes.transformation</code> in <code>application.conf</code>.  Although any cipher transformation algorithm can
-be selected here, the secret key spec used is always AES, so only AES transformation algorithms will work.
-</p></div><dl class="paramcmts block"><dt class="param">value</dt><dd class="cmt"><p>An hexadecimal encrypted string.</p></dd><dt>returns</dt><dd class="cmt"><p>The decrypted String.
+      <p class="shortcomment cmt">Decrypt a String with the AES encryption standard using the application secret</p><div class="fullcomment"><div class="comment cmt"><p>Decrypt a String with the AES encryption standard using the application secret</p></div><dl class="paramcmts block"><dt class="param">value</dt><dd class="cmt"><p>An hexadecimal encrypted string</p></dd><dt>returns</dt><dd class="cmt"><p>The decrypted String
 </p></dd></dl></div>
     </li><li name="play.api.libs.Crypto#encryptAES" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="encryptAES(value:String,privateKey:String):String"></a>
@@ -263,14 +225,7 @@ be selected here, the secret key spec used is always AES, so only AES transforma
         <span class="name">encryptAES</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="privateKey">privateKey: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Encrypt a String with the AES encryption standard and the supplied private key.</p><div class="fullcomment"><div class="comment cmt"><p>Encrypt a String with the AES encryption standard and the supplied private key.</p><p>The private key must have a length of 16 bytes.</p><p>The provider used is by default this uses the platform default JSSE provider.  This can be overridden by defining
-<code>application.crypto.provider</code> in <code>application.conf</code>.</p><p>The transformation algorithm used is the provider specific implementation of the <code>AES</code> name.  On Oracles JDK,
-this is <code>AES/ECB/PKCS5Padding</code>.  This algorithm is suitable for small amounts of data, typically less than 32
-bytes, hence is useful for encrypting credit card numbers, passwords etc.  For larger blocks of data, this
-algorithm may expose patterns and be vulnerable to repeat attacks.</p><p>The transformation algorithm can be configured by defining <code>application.crypto.aes.transformation</code> in
-<code>application.conf</code>.  Although any cipher transformation algorithm can be selected here, the secret key spec used
-is always AES, so only AES transformation algorithms will work.
-</p></div><dl class="paramcmts block"><dt class="param">value</dt><dd class="cmt"><p>The String to encrypt.</p></dd><dt class="param">privateKey</dt><dd class="cmt"><p>The key used to encrypt.</p></dd><dt>returns</dt><dd class="cmt"><p>An hexadecimal encrypted string.
+      <p class="shortcomment cmt">Encrypt a String with the AES encryption standard.</p><div class="fullcomment"><div class="comment cmt"><p>Encrypt a String with the AES encryption standard. Private key must have a length of 16 bytes</p></div><dl class="paramcmts block"><dt class="param">value</dt><dd class="cmt"><p>The String to encrypt</p></dd><dt class="param">privateKey</dt><dd class="cmt"><p>The key used to encrypt</p></dd><dt>returns</dt><dd class="cmt"><p>An hexadecimal encrypted string
 </p></dd></dl></div>
     </li><li name="play.api.libs.Crypto#encryptAES" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="encryptAES(value:String):String"></a>
@@ -284,14 +239,7 @@ is always AES, so only AES transformation algorithms will work.
         <span class="name">encryptAES</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Encrypt a String with the AES encryption standard using the application's secret key.</p><div class="fullcomment"><div class="comment cmt"><p>Encrypt a String with the AES encryption standard using the application's secret key.</p><p>The provider used is by default this uses the platform default JSSE provider.  This can be overridden by defining
-<code>application.crypto.provider</code> in <code>application.conf</code>.</p><p>The transformation algorithm used is the provider specific implementation of the <code>AES</code> name.  On Oracles JDK,
-this is <code>AES/ECB/PKCS5Padding</code>.  This algorithm is suitable for small amounts of data, typically less than 32
-bytes, hence is useful for encrypting credit card numbers, passwords etc.  For larger blocks of data, this
-algorithm may expose patterns and be vulnerable to repeat attacks.</p><p>The transformation algorithm can be configured by defining <code>application.crypto.aes.transformation</code> in
-<code>application.conf</code>.  Although any cipher transformation algorithm can be selected here, the secret key spec used
-is always AES, so only AES transformation algorithms will work.
-</p></div><dl class="paramcmts block"><dt class="param">value</dt><dd class="cmt"><p>The String to encrypt.</p></dd><dt>returns</dt><dd class="cmt"><p>An hexadecimal encrypted string.
+      <p class="shortcomment cmt">Encrypt a String with the AES encryption standard using the application secret</p><div class="fullcomment"><div class="comment cmt"><p>Encrypt a String with the AES encryption standard using the application secret</p></div><dl class="paramcmts block"><dt class="param">value</dt><dd class="cmt"><p>The String to encrypt</p></dd><dt>returns</dt><dd class="cmt"><p>An hexadecimal encrypted string
 </p></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
@@ -319,21 +267,6 @@ is always AES, so only AES transformation algorithms will work.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="play.api.libs.Crypto#extractSignedToken" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="extractSignedToken(token:String):Option[String]"></a>
-      <a id="extractSignedToken(String):Option[String]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">extractSignedToken</span><span class="params">(<span name="token">token: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Extract a signed token that was signed by <a href="#signToken(token:String):String" class="extmbr" name="play.api.libs.Crypto#signToken">play.api.libs.Crypto.signToken</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Extract a signed token that was signed by <a href="#signToken(token:String):String" class="extmbr" name="play.api.libs.Crypto#signToken">play.api.libs.Crypto.signToken</a>.
-</p></div><dl class="paramcmts block"><dt class="param">token</dt><dd class="cmt"><p>The signed token to extract.</p></dd><dt>returns</dt><dd class="cmt"><p>The verified raw token, or None if the token isn't valid.
-</p></dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
@@ -346,41 +279,10 @@ is always AES, so only AES transformation algorithms will work.
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="symbol">classOf[java.lang.Throwable]</span>
-    </span>)</span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">java.lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="play.api.libs.Crypto#generateSignedToken" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="generateSignedToken:String"></a>
-      <a id="generateSignedToken:String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">generateSignedToken</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Generate a signed token
-</p>
-    </li><li name="play.api.libs.Crypto#generateToken" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="generateToken:String"></a>
-      <a id="generateToken:String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">generateToken</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Generate a cryptographically secure token
-</p>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>
@@ -459,7 +361,7 @@ is always AES, so only AES transformation algorithms will work.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="play.api.libs.Crypto#sign" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="play.api.libs.Crypto#sign" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="sign(message:String):String"></a>
       <a id="sign(String):String"></a>
       <h4 class="signature">
@@ -471,11 +373,8 @@ is always AES, so only AES transformation algorithms will work.
         <span class="name">sign</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Signs the given String with HMAC-SHA1 using the application’s secret key.</p><div class="fullcomment"><div class="comment cmt"><p>Signs the given String with HMAC-SHA1 using the application’s secret key.</p><p>By default this uses the platform default JSSE provider.  This can be overridden by defining
-<code>application.crypto.provider</code> in <code>application.conf</code>.
-</p></div><dl class="paramcmts block"><dt class="param">message</dt><dd class="cmt"><p>The message to sign.</p></dd><dt>returns</dt><dd class="cmt"><p>A hexadecimal encoded signature.
-</p></dd></dl></div>
-    </li><li name="play.api.libs.Crypto#sign" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <p class="shortcomment cmt">Signs the given String with HMAC-SHA1 using the application’s secret key.</p>
+    </li><li name="play.api.libs.Crypto#sign" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="sign(message:String,key:Array[Byte]):String"></a>
       <a id="sign(String,Array[Byte]):String"></a>
       <h4 class="signature">
@@ -487,26 +386,7 @@ is always AES, so only AES transformation algorithms will work.
         <span class="name">sign</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="key">key: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Signs the given String with HMAC-SHA1 using the given key.</p><div class="fullcomment"><div class="comment cmt"><p>Signs the given String with HMAC-SHA1 using the given key.</p><p>By default this uses the platform default JSSE provider.  This can be overridden by defining
-<code>application.crypto.provider</code> in <code>application.conf</code>.
-</p></div><dl class="paramcmts block"><dt class="param">message</dt><dd class="cmt"><p>The message to sign.</p></dd><dt class="param">key</dt><dd class="cmt"><p>The private key to sign with.</p></dd><dt>returns</dt><dd class="cmt"><p>A hexadecimal encoded signature.
-</p></dd></dl></div>
-    </li><li name="play.api.libs.Crypto#signToken" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="signToken(token:String):String"></a>
-      <a id="signToken(String):String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">signToken</span><span class="params">(<span name="token">token: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Sign a token.</p><div class="fullcomment"><div class="comment cmt"><p>Sign a token.  This produces a new token, that has this token signed with a nonce.</p><p>This primarily exists to defeat the BREACH vulnerability, as it allows the token to effectively be random per
-request, without actually changing the value.
-</p></div><dl class="paramcmts block"><dt class="param">token</dt><dd class="cmt"><p>The token to sign</p></dd><dt>returns</dt><dd class="cmt"><p>The signed token
-</p></dd></dl></div>
+      <p class="shortcomment cmt">Signs the given String with HMAC-SHA1 using the given key.</p>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -546,10 +426,7 @@ request, without actually changing the value.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
-    </span>)</span>
+                <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -565,10 +442,7 @@ request, without actually changing the value.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
-    </span>)</span>
+                <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -584,10 +458,7 @@ request, without actually changing the value.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
-    </span>)</span>
+                <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
     </li></ol>
@@ -619,6 +490,7 @@ request, without actually changing the value.
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../lib/template.js"></script>
+
+
     </body>
       </html>

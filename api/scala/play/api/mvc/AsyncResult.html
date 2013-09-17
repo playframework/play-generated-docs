@@ -9,6 +9,11 @@
           
       <link href="../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../lib/tools.tooltip.js"></script>
+      
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../index.html';
@@ -35,16 +40,13 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 2.2.0) Use Future[SimpleResult] with Action.async action builder instead. Will be removed in Play 2.3.">AsyncResult</span><span class="params">(<span name="result">result: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>)</span><span class="result"> extends <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a> with <a href="WithHeaders.html" class="extype" name="play.api.mvc.WithHeaders">WithHeaders</a>[<a href="" class="extype" name="play.api.mvc.AsyncResult">AsyncResult</a>] with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name">AsyncResult</span><span class="params">(<span name="result">result: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>)</span><span class="result"> extends <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a> with <a href="WithHeaders.html" class="extype" name="play.api.mvc.WithHeaders">WithHeaders</a>[<a href="" class="extype" name="play.api.mvc.AsyncResult">AsyncResult</a>] with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>An <code>AsyncResult</code> handles a <code>Promise</code> of result for cases where the result is not ready yet.
 </p></div><dl class="paramcmts block"><dt class="param">result</dt><dd class="cmt"><p>the promise of result, which can be any other result type
-</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.2.0)</i> Use Future[SimpleResult] with Action.async action builder instead. Will be removed in Play 2.3.</p></dd><dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/scratch/jenkins/workspace/play2-master-apidocs/framework/src/play/src/main/scala/play/api/mvc/Results.scala" target="_blank">Results.scala</a></dd></dl><div class="toggleContainer block">
+</p></dd></dl><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/Play20/tree/2.2.x/framework/src/play/src/main/scala/play/api/mvc/Results.scala" target="_blank">Results.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a>, <a href="WithHeaders.html" class="extype" name="play.api.mvc.WithHeaders">WithHeaders</a>[<a href="" class="extype" name="play.api.mvc.AsyncResult">AsyncResult</a>], <span class="extype" name="scala.NotNull">NotNull</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -184,7 +186,7 @@
         <span class="name">as</span><span class="params">(<span name="contentType">contentType: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="play.api.mvc.AsyncResult">AsyncResult</a></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Changes the result content type.</p><div class="fullcomment"><div class="comment cmt"><p>Changes the result content type.</p><p>For example:</p><pre>Ok(<span class="lit">"<text>Hello world</text>"</span>).as(<span class="lit">"application/xml"</span>)</pre></div><dl class="paramcmts block"><dt class="param">contentType</dt><dd class="cmt"><p>the new content type.</p></dd><dt>returns</dt><dd class="cmt"><p>the new result
+      <p class="shortcomment cmt">Changes the result content type.</p><div class="fullcomment"><div class="comment cmt"><p>Changes the result content type.</p><p>For example:</p><pre>Ok(<span class="lit">"<text>Hello world</text>"</span>).as(<span class="lit">"text/xml"</span>)</pre></div><dl class="paramcmts block"><dt class="param">contentType</dt><dd class="cmt"><p>the new content type.</p></dd><dt>returns</dt><dd class="cmt"><p>the new result
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.mvc.AsyncResult">AsyncResult</a> → <a href="WithHeaders.html" class="extype" name="play.api.mvc.WithHeaders">WithHeaders</a></dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
@@ -199,20 +201,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="play.api.mvc.WithHeaders#clearingLang" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="clearingLang(implicitapp:play.api.Application):A"></a>
-      <a id="clearingLang(Application):AsyncResult"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">clearingLang</span><span class="params">(<span class="implicit">implicit </span><span name="app">app: <a href="../Application.html" class="extype" name="play.api.Application">Application</a></span>)</span><span class="result">: <a href="" class="extype" name="play.api.mvc.AsyncResult">AsyncResult</a></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Clears the user's language by discarding the language cookie set by withLang</p><div class="fullcomment"><div class="comment cmt"><p>Clears the user's language by discarding the language cookie set by withLang</p><p>For example:</p><pre>Ok(Messages(<span class="lit">"hello.world"</span>)).clearingLang</pre></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the new result
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="WithHeaders.html" class="extype" name="play.api.mvc.WithHeaders">WithHeaders</a></dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
@@ -225,11 +213,8 @@
         <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="defval" name="classOf[java.lang.CloneNotSupportedException]">...</span>
-    </span>)</span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">java.lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
     </li><li name="play.api.mvc.AsyncResult#discardingCookies" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -271,11 +256,8 @@
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="symbol">classOf[java.lang.Throwable]</span>
-    </span>)</span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">java.lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
     </li><li name="play.api.mvc.AsyncResult#flashing" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -290,7 +272,7 @@
         <span class="name">flashing</span><span class="params">(<span name="values">values: (<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>)*</span>)</span><span class="result">: <a href="" class="extype" name="play.api.mvc.AsyncResult">AsyncResult</a></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Adds values to the flash scope for this result.</p><div class="fullcomment"><div class="comment cmt"><p>Adds values to the flash scope for this result.</p><p>For example:</p><pre>Ok(<span class="lit">"Hello world"</span>).flashing(<span class="lit">"success"</span> -&gt; <span class="lit">"Done!"</span>)</pre></div><dl class="paramcmts block"><dt class="param">values</dt><dd class="cmt"><p>the flash values to set with this result</p></dd><dt>returns</dt><dd class="cmt"><p>the new result
+      <p class="shortcomment cmt">Adds values to the flash scope for this result.</p><div class="fullcomment"><div class="comment cmt"><p>Adds values to the flash scope for this result.</p><p>For example:</p><pre>Ok(<span class="lit">"Hello world"</span>).flashing(<span class="lit">"success"</span> -&gt; <span class="lit">"Done!"</span>)</pre></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the new result
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.mvc.AsyncResult">AsyncResult</a> → <a href="WithHeaders.html" class="extype" name="play.api.mvc.WithHeaders">WithHeaders</a></dd></dl></div>
     </li><li name="play.api.mvc.AsyncResult#flashing" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="flashing(flash:play.api.mvc.Flash):play.api.mvc.AsyncResult"></a>
@@ -428,15 +410,15 @@
 </p></div><dl class="paramcmts block"><dt class="param">f</dt><dd class="cmt"><p>The transformation function</p></dd><dt>returns</dt><dd class="cmt"><p>The transformed <code>AsyncResult</code>
 </p></dd></dl></div>
     </li><li name="play.api.mvc.AsyncResult#unflatten" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="unflatten:scala.concurrent.Future[play.api.mvc.SimpleResult]"></a>
-      <a id="unflatten:Future[SimpleResult]"></a>
+      <a id="unflatten:scala.concurrent.Future[play.api.mvc.PlainResult]"></a>
+      <a id="unflatten:Future[PlainResult]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">unflatten</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>]</span>
+        <span class="name">unflatten</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="PlainResult.html" class="extype" name="play.api.mvc.PlainResult">PlainResult</a>]</span>
       </span>
       </h4>
       
@@ -453,10 +435,7 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
-    </span>)</span>
+                <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -472,10 +451,7 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
-    </span>)</span>
+                <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -491,10 +467,7 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
-    </span>)</span>
+                <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
     </li><li name="play.api.mvc.AsyncResult#withCookies" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -537,7 +510,7 @@
         <span class="name">withLang</span><span class="params">(<span name="lang">lang: <a href="../i18n/Lang.html" class="extype" name="play.api.i18n.Lang">Lang</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="app">app: <a href="../Application.html" class="extype" name="play.api.Application">Application</a></span>)</span><span class="result">: <a href="" class="extype" name="play.api.mvc.AsyncResult">AsyncResult</a></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Sets the user's language permanently for future requests by storing it in a cookie.</p><div class="fullcomment"><div class="comment cmt"><p>Sets the user's language permanently for future requests by storing it in a cookie.</p><p>For example:</p><pre><span class="kw">implicit</span> <span class="kw">val</span> lang = Lang(<span class="lit">"fr-FR"</span>)
+      <p class="shortcomment cmt">Sets the users language permanently for future requests by storing it in a cookie.</p><div class="fullcomment"><div class="comment cmt"><p>Sets the users language permanently for future requests by storing it in a cookie.</p><p>For example:</p><pre><span class="kw">implicit</span> <span class="kw">val</span> lang = Lang(<span class="lit">"fr-FR"</span>)
 Ok(Messages(<span class="lit">"hello.world"</span>)).withLang(lang)</pre></div><dl class="paramcmts block"><dt class="param">lang</dt><dd class="cmt"><p>the language to store for the user</p></dd><dt>returns</dt><dd class="cmt"><p>the new result
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="WithHeaders.html" class="extype" name="play.api.mvc.WithHeaders">WithHeaders</a></dd></dl></div>
     </li><li name="play.api.mvc.AsyncResult#withNewSession" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -645,6 +618,7 @@ Ok(Messages(<span class="lit">"hello.world"</span>)).withLang(lang)</pre></div><
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../lib/template.js"></script>
+
+
     </body>
       </html>

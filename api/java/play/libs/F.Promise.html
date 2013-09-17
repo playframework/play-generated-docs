@@ -34,7 +34,7 @@
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../play/libs/F.Option.html" title="class in play.libs"><span class="strong">Prev Class</span></a></li>
-<li><a href="../../play/libs/F.Some.html" title="class in play.libs"><span class="strong">Next Class</span></a></li>
+<li><a href="../../play/libs/F.Promise.PromiseActor.html" title="class in play.libs"><span class="strong">Next Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../index.html?play/libs/F.Promise.html" target="_top">Frames</a></li>
@@ -58,7 +58,7 @@
 <div>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
-<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#nested_class_summary">Nested</a>&nbsp;|&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method_summary">Method</a></li>
@@ -106,6 +106,25 @@ extends java.lang.Object</pre>
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
+<!-- ======== NESTED CLASS SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="nested_class_summary">
+<!--   -->
+</a>
+<h3>Nested Class Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Nested Class Summary table, listing nested classes, and an explanation">
+<caption><span>Nested Classes</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Class and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static class&nbsp;</code></td>
+<td class="colLast"><code><strong><a href="../../play/libs/F.Promise.PromiseActor.html" title="class in play.libs">F.Promise.PromiseActor</a></strong></code>&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor_summary">
@@ -118,10 +137,8 @@ extends java.lang.Object</pre>
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><strong><a href="../../play/libs/F.Promise.html#F.Promise(scala.concurrent.Future)">F.Promise</a></strong>(scala.concurrent.Future&lt;<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>&gt;&nbsp;future)</code>
-<div class="block"><strong>Deprecated.</strong>&nbsp;
-<div class="block"><i>Since 2.2. Use <a href="../../play/libs/F.Promise.html#wrap(scala.concurrent.Future)"><code>wrap(Future)</code></a> instead.</i></div>
-</div>
+<td class="colOne"><code><strong><a href="../../play/libs/F.Promise.html#F.Promise(scala.concurrent.Future)">F.Promise</a></strong>(scala.concurrent.Future&lt;<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>&gt;&nbsp;promise)</code>
+<div class="block">Create a new promise wrapping the given Scala promise</div>
 </td>
 </tr>
 </table>
@@ -140,25 +157,6 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>static &lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;A&gt;</code></td>
-<td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#delayed(play.libs.F.Function0, long, java.util.concurrent.TimeUnit)">delayed</a></strong>(<a href="../../play/libs/F.Function0.html" title="interface in play.libs">F.Function0</a>&lt;A&gt;&nbsp;function,
-       long&nbsp;delay,
-       java.util.concurrent.TimeUnit&nbsp;unit)</code>
-<div class="block">Create a Promise which, after a delay, will be redeemed with the result of a
- given function.</div>
-</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>static &lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;A&gt;</code></td>
-<td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#delayed(play.libs.F.Function0, long, java.util.concurrent.TimeUnit, scala.concurrent.ExecutionContext)">delayed</a></strong>(<a href="../../play/libs/F.Function0.html" title="interface in play.libs">F.Function0</a>&lt;A&gt;&nbsp;function,
-       long&nbsp;delay,
-       java.util.concurrent.TimeUnit&nbsp;unit,
-       scala.concurrent.ExecutionContext&nbsp;ec)</code>
-<div class="block">Create a Promise which, after a delay, will be redeemed with the result of a
- given function.</div>
-</td>
-</tr>
-<tr class="altColor">
 <td class="colFirst"><code>&lt;B&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;B&gt;</code></td>
 <td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#flatMap(play.libs.F.Function)">flatMap</a></strong>(<a href="../../play/libs/F.Function.html" title="interface in play.libs">F.Function</a>&lt;<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>,<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;B&gt;&gt;&nbsp;function)</code>
 <div class="block">Maps the result of this promise to a promise for a result of type <code>B</code>, and flattens that to be
@@ -166,83 +164,34 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>&lt;B&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;B&gt;</code></td>
-<td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#flatMap(play.libs.F.Function, scala.concurrent.ExecutionContext)">flatMap</a></strong>(<a href="../../play/libs/F.Function.html" title="interface in play.libs">F.Function</a>&lt;<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>,<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;B&gt;&gt;&nbsp;function,
-       scala.concurrent.ExecutionContext&nbsp;ec)</code>
-<div class="block">Maps the result of this promise to a promise for a result of type <code>B</code>, and flattens that to be
- a single promise for <code>B</code>.</div>
-</td>
-</tr>
-<tr class="altColor">
 <td class="colFirst"><code><a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a></code></td>
 <td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#get()">get</a></strong>()</code>
-<div class="block"><strong>Deprecated.</strong>&nbsp;
-<div class="block"><i>Since 2.2. Use <a href="../../play/libs/F.Promise.html#get(long, java.util.concurrent.TimeUnit)"><code>get(long, TimeUnit)</code></a> or <a href="../../play/libs/F.Promise.html#get(long)"><code>get(long)</code></a> instead.</i></div>
-</div>
-</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code><a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a></code></td>
-<td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#get(long)">get</a></strong>(long&nbsp;timeout)</code>
-<div class="block">Awaits for the promise to get the result.</div>
+<div class="block">Awaits for the promise to get the result using the default timeout (5000 milliseconds).</div>
 </td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code><a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a></code></td>
 <td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#get(java.lang.Long)">get</a></strong>(java.lang.Long&nbsp;timeout)</code>
-<div class="block"><strong>Deprecated.</strong>&nbsp;
-<div class="block"><i>Since 2.2. Use {<a href="../../play/libs/F.Promise.html#get(long)"><code>get(long)</code></a> instead.</i></div>
-</div>
+<div class="block">Awaits for the promise to get the result.</div>
 </td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code><a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a></code></td>
-<td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#get(long, java.util.concurrent.TimeUnit)">get</a></strong>(long&nbsp;timeout,
+<td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#get(java.lang.Long, java.util.concurrent.TimeUnit)">get</a></strong>(java.lang.Long&nbsp;timeout,
    java.util.concurrent.TimeUnit&nbsp;unit)</code>
 <div class="block">Awaits for the promise to get the result.</div>
 </td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code><a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a></code></td>
-<td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#get(java.lang.Long, java.util.concurrent.TimeUnit)">get</a></strong>(java.lang.Long&nbsp;timeout,
-   java.util.concurrent.TimeUnit&nbsp;unit)</code>
-<div class="block"><strong>Deprecated.</strong>&nbsp;
-<div class="block"><i>Since 2.2. Use <a href="../../play/libs/F.Promise.html#get(long, java.util.concurrent.TimeUnit)"><code>get(long, TimeUnit)</code></a> instead.</i></div>
-</div>
+<td class="colFirst"><code>scala.concurrent.Future&lt;<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#getWrappedPromise()">getWrappedPromise</a></strong>()</code>
+<div class="block">Get the underlying Scala promise</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>scala.concurrent.Future&lt;<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>&gt;</code></td>
-<td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#getWrappedPromise()">getWrappedPromise</a></strong>()</code>
-<div class="block"><strong>Deprecated.</strong>&nbsp;
-<div class="block"><i>Since 2.2. Use <a href="../../play/libs/F.Promise.html#wrapped()"><code>wrapped()</code></a> instead.</i></div>
-</div>
-</td>
-</tr>
-<tr class="altColor">
 <td class="colFirst"><code>&lt;B&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;B&gt;</code></td>
 <td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#map(play.libs.F.Function)">map</a></strong>(<a href="../../play/libs/F.Function.html" title="interface in play.libs">F.Function</a>&lt;<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>,B&gt;&nbsp;function)</code>
 <div class="block">Maps this promise to a promise of type <code>B</code>.</div>
-</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>&lt;B&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;B&gt;</code></td>
-<td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#map(play.libs.F.Function, scala.concurrent.ExecutionContext)">map</a></strong>(<a href="../../play/libs/F.Function.html" title="interface in play.libs">F.Function</a>&lt;<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>,B&gt;&nbsp;function,
-   scala.concurrent.ExecutionContext&nbsp;ec)</code>
-<div class="block">Maps this promise to a promise of type <code>B</code>.</div>
-</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#onFailure(play.libs.F.Callback)">onFailure</a></strong>(<a href="../../play/libs/F.Callback.html" title="interface in play.libs">F.Callback</a>&lt;java.lang.Throwable&gt;&nbsp;action)</code>
-<div class="block">Perform the given <code>action</code> callback if the promise encounters an exception.</div>
-</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#onFailure(play.libs.F.Callback, scala.concurrent.ExecutionContext)">onFailure</a></strong>(<a href="../../play/libs/F.Callback.html" title="interface in play.libs">F.Callback</a>&lt;java.lang.Throwable&gt;&nbsp;action,
-         scala.concurrent.ExecutionContext&nbsp;ec)</code>
-<div class="block">Perform the given <code>action</code> callback if the promise encounters an exception.</div>
 </td>
 </tr>
 <tr class="altColor">
@@ -252,56 +201,26 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#onRedeem(play.libs.F.Callback, scala.concurrent.ExecutionContext)">onRedeem</a></strong>(<a href="../../play/libs/F.Callback.html" title="interface in play.libs">F.Callback</a>&lt;<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>&gt;&nbsp;action,
-        scala.concurrent.ExecutionContext&nbsp;ec)</code>
-<div class="block">Perform the given <code>action</code> callback when the Promise is redeemed.</div>
-</td>
-</tr>
-<tr class="altColor">
 <td class="colFirst"><code>&lt;B&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;<a href="../../play/libs/F.Either.html" title="class in play.libs">F.Either</a>&lt;<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>,B&gt;&gt;</code></td>
 <td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#or(play.libs.F.Promise)">or</a></strong>(<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;B&gt;&nbsp;another)</code>
 <div class="block">combines the current promise with <code>another</code> promise using `or`</div>
 </td>
 </tr>
-<tr class="rowColor">
-<td class="colFirst"><code>static &lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;A&gt;</code></td>
-<td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#promise(play.libs.F.Function0)">promise</a></strong>(<a href="../../play/libs/F.Function0.html" title="interface in play.libs">F.Function0</a>&lt;A&gt;&nbsp;function)</code>
-<div class="block">Create a Promise which will be redeemed with the result of a given function.</div>
-</td>
-</tr>
 <tr class="altColor">
-<td class="colFirst"><code>static &lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;A&gt;</code></td>
-<td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#promise(play.libs.F.Function0, scala.concurrent.ExecutionContext)">promise</a></strong>(<a href="../../play/libs/F.Function0.html" title="interface in play.libs">F.Function0</a>&lt;A&gt;&nbsp;function,
-       scala.concurrent.ExecutionContext&nbsp;ec)</code>
-<div class="block">Create a Promise which will be redeemed with the result of a given Function0.</div>
-</td>
-</tr>
-<tr class="rowColor">
 <td class="colFirst"><code>static &lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;A&gt;</code></td>
 <td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#pure(A)">pure</a></strong>(A&nbsp;a)</code>
 <div class="block">Create a new pure promise, that is, a promise with a constant value from the start.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code><a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>&gt;</code></td>
 <td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#recover(play.libs.F.Function)">recover</a></strong>(<a href="../../play/libs/F.Function.html" title="interface in play.libs">F.Function</a>&lt;java.lang.Throwable,<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>&gt;&nbsp;function)</code>
 <div class="block">Wraps this promise in a promise that will handle exceptions thrown by this Promise.</div>
 </td>
 </tr>
-<tr class="rowColor">
-<td class="colFirst"><code><a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>&gt;</code></td>
-<td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#recover(play.libs.F.Function, scala.concurrent.ExecutionContext)">recover</a></strong>(<a href="../../play/libs/F.Function.html" title="interface in play.libs">F.Function</a>&lt;java.lang.Throwable,<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>&gt;&nbsp;function,
-       scala.concurrent.ExecutionContext&nbsp;ec)</code>
-<div class="block">Wraps this promise in a promise that will handle exceptions thrown by this Promise.</div>
-</td>
-</tr>
 <tr class="altColor">
-<td class="colFirst"><code>static &lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;java.util.List&lt;A&gt;&gt;</code></td>
-<td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#sequence(scala.concurrent.ExecutionContext, play.libs.F.Promise...)">sequence</a></strong>(scala.concurrent.ExecutionContext&nbsp;ec,
-        <a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;? extends A&gt;...&nbsp;promises)</code>
-<div class="block">Combine the given promises into a single promise for the list of results.</div>
-</td>
+<td class="colFirst"><code>static void</code></td>
+<td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#resetActors()">resetActors</a></strong>()</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>static &lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;java.util.List&lt;A&gt;&gt;</code></td>
@@ -316,107 +235,46 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>static &lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;java.util.List&lt;A&gt;&gt;</code></td>
-<td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#sequence(java.lang.Iterable, scala.concurrent.ExecutionContext)">sequence</a></strong>(java.lang.Iterable&lt;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;? extends A&gt;&gt;&nbsp;promises,
-        scala.concurrent.ExecutionContext&nbsp;ec)</code>
-<div class="block">Combine the given promises into a single promise for the list of results.</div>
-</td>
-</tr>
-<tr class="altColor">
 <td class="colFirst"><code>static &lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;A&gt;</code></td>
 <td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#throwing(java.lang.Throwable)">throwing</a></strong>(java.lang.Throwable&nbsp;throwable)</code>
 <div class="block">Create a new promise throwing an exception.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>static <a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;scala.Unit&gt;</code></td>
 <td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#timeout()">timeout</a></strong>()</code>
-<div class="block"><strong>Deprecated.</strong>&nbsp;
-<div class="block"><i>Since 2.2. Use <a href="../../play/libs/F.Promise.html#timeout(long)"><code>timeout(long)</code></a> or <a href="../../play/libs/F.Promise.html#timeout(long, java.util.concurrent.TimeUnit)"><code>timeout(long, TimeUnit)</code></a> instead.</i></div>
-</div>
-</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static &lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;A&gt;</code></td>
-<td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#timeout(A, long)">timeout</a></strong>(A&nbsp;message,
-       long&nbsp;delay)</code>
-<div class="block">Create a Promise that is redeemed after a timeout.</div>
+<div class="block">Create a Promise timer that is throwing a TimeoutException after the default timeout duration expires.</div>
 </td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>static &lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;A&gt;</code></td>
 <td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#timeout(A, java.lang.Long)">timeout</a></strong>(A&nbsp;message,
        java.lang.Long&nbsp;delay)</code>
-<div class="block"><strong>Deprecated.</strong>&nbsp;
-<div class="block"><i>Since 2.2. Use <a href="../../play/libs/F.Promise.html#timeout(A, long)"><code>timeout(Object, long)</code></a> instead.</i></div>
-</div>
+<div class="block">Create a Promise that is redeemed after a timeout.</div>
 </td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>static &lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;A&gt;</code></td>
-<td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#timeout(A, long, java.util.concurrent.TimeUnit)">timeout</a></strong>(A&nbsp;message,
-       long&nbsp;delay,
+<td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#timeout(A, java.lang.Long, java.util.concurrent.TimeUnit)">timeout</a></strong>(A&nbsp;message,
+       java.lang.Long&nbsp;delay,
        java.util.concurrent.TimeUnit&nbsp;unit)</code>
 <div class="block">Create a Promise that is redeemed after a timeout.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>static &lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;A&gt;</code></td>
-<td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#timeout(A, java.lang.Long, java.util.concurrent.TimeUnit)">timeout</a></strong>(A&nbsp;message,
-       java.lang.Long&nbsp;delay,
-       java.util.concurrent.TimeUnit&nbsp;unit)</code>
-<div class="block"><strong>Deprecated.</strong>&nbsp;
-<div class="block"><i>Since 2.2. Use <a href="../../play/libs/F.Promise.html#timeout(A, long, java.util.concurrent.TimeUnit)"><code>timeout(Object, long, TimeUnit)</code></a> instead.</i></div>
-</div>
-</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static &lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;scala.Unit&gt;</code></td>
-<td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#timeout(long)">timeout</a></strong>(long&nbsp;delay)</code>
-<div class="block">Create a Promise timer that throws a TimeoutException after a
- given timeout.</div>
-</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>static &lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;scala.Unit&gt;</code></td>
-<td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#timeout(long, java.util.concurrent.TimeUnit)">timeout</a></strong>(long&nbsp;delay,
-       java.util.concurrent.TimeUnit&nbsp;unit)</code>
-<div class="block">Create a Promise timer that throws a TimeoutException after a
- given timeout.</div>
-</td>
-</tr>
-<tr class="altColor">
 <td class="colFirst"><code>static &lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;java.util.List&lt;A&gt;&gt;</code></td>
 <td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#waitAll(play.libs.F.Promise...)">waitAll</a></strong>(<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;? extends A&gt;...&nbsp;promises)</code>
 <div class="block"><strong>Deprecated.</strong>&nbsp;
-<div class="block"><i>Since 2.1. Use <code>#sequence(Promise...)</code> instead.</i></div>
+<div class="block"><i>As of release 2.1, replaced by <a href="../../play/libs/F.Promise.html#sequence(play.libs.F.Promise...)"><code>sequence(play.libs.F.Promise&lt;? extends A&gt;...)</code></a></i></div>
 </div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>static &lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;java.util.List&lt;A&gt;&gt;</code></td>
 <td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#waitAll(java.lang.Iterable)">waitAll</a></strong>(java.lang.Iterable&lt;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;? extends A&gt;&gt;&nbsp;promises)</code>
 <div class="block"><strong>Deprecated.</strong>&nbsp;
-<div class="block"><i>Since 2.1. Use <a href="../../play/libs/F.Promise.html#sequence(java.lang.Iterable)"><code>sequence(Iterable)</code></a> instead.</i></div>
+<div class="block"><i>As of release 2.1, replaced by <a href="../../play/libs/F.Promise.html#sequence(play.libs.F.Promise...)"><code>sequence(play.libs.F.Promise&lt;? extends A&gt;...)</code></a></i></div>
 </div>
-</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>static &lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;A&gt;</code></td>
-<td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#wrap(scala.concurrent.Future)">wrap</a></strong>(scala.concurrent.Future&lt;A&gt;&nbsp;future)</code>
-<div class="block">Creates a Promise that wraps a Scala Future.</div>
-</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>scala.concurrent.Future&lt;<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>&gt;</code></td>
-<td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#wrapped()">wrapped</a></strong>()</code>
-<div class="block">Gets the Scala Future wrapped by this Promise.</div>
-</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>&lt;B&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;<a href="../../play/libs/F.Tuple.html" title="class in play.libs">F.Tuple</a>&lt;<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>,B&gt;&gt;</code></td>
-<td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#zip(play.libs.F.Promise)">zip</a></strong>(<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;B&gt;&nbsp;another)</code>
-<div class="block">Zips the values of this promise with <code>another</code>, and creates a new promise holding the tuple of their results</div>
 </td>
 </tr>
 </table>
@@ -447,11 +305,9 @@ extends java.lang.Object</pre>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>F.Promise</h4>
-<pre>@Deprecated
-public&nbsp;F.Promise(scala.concurrent.Future&lt;<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>&gt;&nbsp;future)</pre>
-<div class="block"><span class="strong">Deprecated.</span>&nbsp;<i>Since 2.2. Use <a href="../../play/libs/F.Promise.html#wrap(scala.concurrent.Future)"><code>wrap(Future)</code></a> instead.</i></div>
-<div class="block">Creates a Promise that wraps a Scala Future.</div>
-<dl><dt><span class="strong">Parameters:</span></dt><dd><code>future</code> - The Scala Future to wrap</dd></dl>
+<pre>public&nbsp;F.Promise(scala.concurrent.Future&lt;<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>&gt;&nbsp;promise)</pre>
+<div class="block">Create a new promise wrapping the given Scala promise</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>promise</code> - The scala promise to wrap</dd></dl>
 </li>
 </ul>
 </li>
@@ -462,15 +318,13 @@ public&nbsp;F.Promise(scala.concurrent.Future&lt;<a href="../../play/libs/F.Prom
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="wrap(scala.concurrent.Future)">
+<a name="resetActors()">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>wrap</h4>
-<pre>public static&nbsp;&lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;A&gt;&nbsp;wrap(scala.concurrent.Future&lt;A&gt;&nbsp;future)</pre>
-<div class="block">Creates a Promise that wraps a Scala Future.</div>
-<dl><dt><span class="strong">Parameters:</span></dt><dd><code>future</code> - The Scala Future to wrap</dd></dl>
+<h4>resetActors</h4>
+<pre>public static&nbsp;void&nbsp;resetActors()</pre>
 </li>
 </ul>
 <a name="sequence(play.libs.F.Promise...)">
@@ -480,23 +334,8 @@ public&nbsp;F.Promise(scala.concurrent.Future&lt;<a href="../../play/libs/F.Prom
 <li class="blockList">
 <h4>sequence</h4>
 <pre>public static&nbsp;&lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;java.util.List&lt;A&gt;&gt;&nbsp;sequence(<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;? extends A&gt;...&nbsp;promises)</pre>
-<div class="block">Combine the given promises into a single promise for the list of results.
-
- The sequencing operations are performed in the default ExecutionContext.</div>
-<dl><dt><span class="strong">Parameters:</span></dt><dd><code>promises</code> - The promises to combine</dd>
-<dt><span class="strong">Returns:</span></dt><dd>A single promise whose methods act on the list of redeemed promises</dd></dl>
-</li>
-</ul>
-<a name="sequence(scala.concurrent.ExecutionContext, play.libs.F.Promise...)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>sequence</h4>
-<pre>public static&nbsp;&lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;java.util.List&lt;A&gt;&gt;&nbsp;sequence(scala.concurrent.ExecutionContext&nbsp;ec,
-                                        <a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;? extends A&gt;...&nbsp;promises)</pre>
 <div class="block">Combine the given promises into a single promise for the list of results.</div>
-<dl><dt><span class="strong">Parameters:</span></dt><dd><code>ec</code> - Used to execute the sequencing operations.</dd><dd><code>promises</code> - The promises to combine</dd>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>promises</code> - The promises to combine</dd>
 <dt><span class="strong">Returns:</span></dt><dd>A single promise whose methods act on the list of redeemed promises</dd></dl>
 </li>
 </ul>
@@ -508,25 +347,10 @@ public&nbsp;F.Promise(scala.concurrent.Future&lt;<a href="../../play/libs/F.Prom
 <h4>waitAll</h4>
 <pre>@Deprecated
 public static&nbsp;&lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;java.util.List&lt;A&gt;&gt;&nbsp;waitAll(<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;? extends A&gt;...&nbsp;promises)</pre>
-<div class="block"><span class="strong">Deprecated.</span>&nbsp;<i>Since 2.1. Use <code>#sequence(Promise...)</code> instead.</i></div>
+<div class="block"><span class="strong">Deprecated.</span>&nbsp;<i>As of release 2.1, replaced by <a href="../../play/libs/F.Promise.html#sequence(play.libs.F.Promise...)"><code>sequence(play.libs.F.Promise&lt;? extends A&gt;...)</code></a></i></div>
 <div class="block">Combine the given promises into a single promise for the list of results.</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>promises</code> - The promises to combine</dd>
 <dt><span class="strong">Returns:</span></dt><dd>A single promise whose methods act on the list of redeemed promises</dd></dl>
-</li>
-</ul>
-<a name="timeout(java.lang.Object,long,java.util.concurrent.TimeUnit)">
-<!--   -->
-</a><a name="timeout(A, long, java.util.concurrent.TimeUnit)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>timeout</h4>
-<pre>public static&nbsp;&lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;A&gt;&nbsp;timeout(A&nbsp;message,
-                       long&nbsp;delay,
-                       java.util.concurrent.TimeUnit&nbsp;unit)</pre>
-<div class="block">Create a Promise that is redeemed after a timeout.</div>
-<dl><dt><span class="strong">Parameters:</span></dt><dd><code>message</code> - The message to use to redeem the Promise.</dd><dd><code>delay</code> - The delay (expressed with the corresponding unit).</dd><dd><code>unit</code> - The Unit.</dd></dl>
 </li>
 </ul>
 <a name="timeout(java.lang.Object,java.lang.Long,java.util.concurrent.TimeUnit)">
@@ -537,11 +361,9 @@ public static&nbsp;&lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title
 <ul class="blockList">
 <li class="blockList">
 <h4>timeout</h4>
-<pre>@Deprecated
-public static&nbsp;&lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;A&gt;&nbsp;timeout(A&nbsp;message,
-                                  java.lang.Long&nbsp;delay,
-                                  java.util.concurrent.TimeUnit&nbsp;unit)</pre>
-<div class="block"><span class="strong">Deprecated.</span>&nbsp;<i>Since 2.2. Use <a href="../../play/libs/F.Promise.html#timeout(A, long, java.util.concurrent.TimeUnit)"><code>timeout(Object, long, TimeUnit)</code></a> instead.</i></div>
+<pre>public static&nbsp;&lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;A&gt;&nbsp;timeout(A&nbsp;message,
+                       java.lang.Long&nbsp;delay,
+                       java.util.concurrent.TimeUnit&nbsp;unit)</pre>
 <div class="block">Create a Promise that is redeemed after a timeout.</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>message</code> - The message to use to redeem the Promise.</dd><dd><code>delay</code> - The delay (expressed with the corresponding unit).</dd><dd><code>unit</code> - The Unit.</dd></dl>
 </li>
@@ -552,31 +374,14 @@ public static&nbsp;&lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title
 <ul class="blockList">
 <li class="blockList">
 <h4>timeout</h4>
-<pre>@Deprecated
-public static&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;scala.Unit&gt;&nbsp;timeout()
+<pre>public static&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;scala.Unit&gt;&nbsp;timeout()
                                      throws java.util.concurrent.TimeoutException</pre>
-<div class="block"><span class="strong">Deprecated.</span>&nbsp;<i>Since 2.2. Use <a href="../../play/libs/F.Promise.html#timeout(long)"><code>timeout(long)</code></a> or <a href="../../play/libs/F.Promise.html#timeout(long, java.util.concurrent.TimeUnit)"><code>timeout(long, TimeUnit)</code></a> instead.</i></div>
-<div class="block">Create a Promise timer that throws a TimeoutException after the
- default timeout duration expires.
+<div class="block">Create a Promise timer that is throwing a TimeoutException after the default timeout duration expires.
 
  The returned Promise is usually combined with other Promises.</div>
 <dl><dt><span class="strong">Returns:</span></dt><dd>a promise without a real value</dd>
 <dt><span class="strong">Throws:</span></dt>
 <dd><code>java.util.concurrent.TimeoutException</code></dd></dl>
-</li>
-</ul>
-<a name="timeout(java.lang.Object,long)">
-<!--   -->
-</a><a name="timeout(A, long)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>timeout</h4>
-<pre>public static&nbsp;&lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;A&gt;&nbsp;timeout(A&nbsp;message,
-                       long&nbsp;delay)</pre>
-<div class="block">Create a Promise that is redeemed after a timeout.</div>
-<dl><dt><span class="strong">Parameters:</span></dt><dd><code>message</code> - The message to use to redeem the Promise.</dd><dd><code>delay</code> - The delay expressed in milliseconds.</dd></dl>
 </li>
 </ul>
 <a name="timeout(java.lang.Object,java.lang.Long)">
@@ -587,43 +392,10 @@ public static&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play
 <ul class="blockList">
 <li class="blockList">
 <h4>timeout</h4>
-<pre>@Deprecated
-public static&nbsp;&lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;A&gt;&nbsp;timeout(A&nbsp;message,
-                                  java.lang.Long&nbsp;delay)</pre>
-<div class="block"><span class="strong">Deprecated.</span>&nbsp;<i>Since 2.2. Use <a href="../../play/libs/F.Promise.html#timeout(A, long)"><code>timeout(Object, long)</code></a> instead.</i></div>
+<pre>public static&nbsp;&lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;A&gt;&nbsp;timeout(A&nbsp;message,
+                       java.lang.Long&nbsp;delay)</pre>
 <div class="block">Create a Promise that is redeemed after a timeout.</div>
-<dl><dt><span class="strong">Parameters:</span></dt><dd><code>message</code> - The message to use to redeem the Promise.</dd><dd><code>delay</code> - The delay expressed in milliseconds.</dd></dl>
-</li>
-</ul>
-<a name="timeout(long)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>timeout</h4>
-<pre>public static&nbsp;&lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;scala.Unit&gt;&nbsp;timeout(long&nbsp;delay)</pre>
-<div class="block">Create a Promise timer that throws a TimeoutException after a
- given timeout.
-
- The returned Promise is usually combined with other Promises.</div>
-<dl><dt><span class="strong">Parameters:</span></dt><dd><code>delay</code> - The delay expressed in milliseconds.</dd>
-<dt><span class="strong">Returns:</span></dt><dd>a promise without a real value</dd></dl>
-</li>
-</ul>
-<a name="timeout(long, java.util.concurrent.TimeUnit)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>timeout</h4>
-<pre>public static&nbsp;&lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;scala.Unit&gt;&nbsp;timeout(long&nbsp;delay,
-                                java.util.concurrent.TimeUnit&nbsp;unit)</pre>
-<div class="block">Create a Promise timer that throws a TimeoutException after a
- given timeout.
-
- The returned Promise is usually combined with other Promises.</div>
-<dl><dt><span class="strong">Parameters:</span></dt><dd><code>delay</code> - The delay (expressed with the corresponding unit).</dd><dd><code>unit</code> - The Unit.</dd>
-<dt><span class="strong">Returns:</span></dt><dd>a promise without a real value</dd></dl>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>message</code> - The message to use to redeem the Promise.</dd><dd><code>delay</code> - The delay expressed in Milliseconds.</dd></dl>
 </li>
 </ul>
 <a name="sequence(java.lang.Iterable)">
@@ -633,23 +405,8 @@ public static&nbsp;&lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title
 <li class="blockList">
 <h4>sequence</h4>
 <pre>public static&nbsp;&lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;java.util.List&lt;A&gt;&gt;&nbsp;sequence(java.lang.Iterable&lt;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;? extends A&gt;&gt;&nbsp;promises)</pre>
-<div class="block">Combine the given promises into a single promise for the list of results.
-
- The sequencing operations are performed in the default ExecutionContext.</div>
-<dl><dt><span class="strong">Parameters:</span></dt><dd><code>promises</code> - The promises to combine</dd>
-<dt><span class="strong">Returns:</span></dt><dd>A single promise whose methods act on the list of redeemed promises</dd></dl>
-</li>
-</ul>
-<a name="sequence(java.lang.Iterable, scala.concurrent.ExecutionContext)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>sequence</h4>
-<pre>public static&nbsp;&lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;java.util.List&lt;A&gt;&gt;&nbsp;sequence(java.lang.Iterable&lt;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;? extends A&gt;&gt;&nbsp;promises,
-                                        scala.concurrent.ExecutionContext&nbsp;ec)</pre>
 <div class="block">Combine the given promises into a single promise for the list of results.</div>
-<dl><dt><span class="strong">Parameters:</span></dt><dd><code>promises</code> - The promises to combine</dd><dd><code>ec</code> - Used to execute the sequencing operations.</dd>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>promises</code> - The promises to combine</dd>
 <dt><span class="strong">Returns:</span></dt><dd>A single promise whose methods act on the list of redeemed promises</dd></dl>
 </li>
 </ul>
@@ -661,7 +418,7 @@ public static&nbsp;&lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title
 <h4>waitAll</h4>
 <pre>@Deprecated
 public static&nbsp;&lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;java.util.List&lt;A&gt;&gt;&nbsp;waitAll(java.lang.Iterable&lt;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;? extends A&gt;&gt;&nbsp;promises)</pre>
-<div class="block"><span class="strong">Deprecated.</span>&nbsp;<i>Since 2.1. Use <a href="../../play/libs/F.Promise.html#sequence(java.lang.Iterable)"><code>sequence(Iterable)</code></a> instead.</i></div>
+<div class="block"><span class="strong">Deprecated.</span>&nbsp;<i>As of release 2.1, replaced by <a href="../../play/libs/F.Promise.html#sequence(play.libs.F.Promise...)"><code>sequence(play.libs.F.Promise&lt;? extends A&gt;...)</code></a></i></div>
 <div class="block">Combine the given promises into a single promise for the list of results.</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>promises</code> - The promises to combine</dd>
 <dt><span class="strong">Returns:</span></dt><dd>A single promise whose methods act on the list of redeemed promises</dd></dl>
@@ -691,76 +448,17 @@ public static&nbsp;&lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>throwable</code> - Value to throw</dd></dl>
 </li>
 </ul>
-<a name="promise(play.libs.F.Function0)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>promise</h4>
-<pre>public static&nbsp;&lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;A&gt;&nbsp;promise(<a href="../../play/libs/F.Function0.html" title="interface in play.libs">F.Function0</a>&lt;A&gt;&nbsp;function)</pre>
-<div class="block">Create a Promise which will be redeemed with the result of a given function.
-
- The Function0 will be run in the default ExecutionContext.</div>
-<dl><dt><span class="strong">Parameters:</span></dt><dd><code>function</code> - Used to fulfill the Promise.</dd></dl>
-</li>
-</ul>
-<a name="promise(play.libs.F.Function0, scala.concurrent.ExecutionContext)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>promise</h4>
-<pre>public static&nbsp;&lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;A&gt;&nbsp;promise(<a href="../../play/libs/F.Function0.html" title="interface in play.libs">F.Function0</a>&lt;A&gt;&nbsp;function,
-                       scala.concurrent.ExecutionContext&nbsp;ec)</pre>
-<div class="block">Create a Promise which will be redeemed with the result of a given Function0.</div>
-<dl><dt><span class="strong">Parameters:</span></dt><dd><code>function</code> - Used to fulfill the Promise.</dd><dd><code>ec</code> - The ExecutionContext to run the function in.</dd></dl>
-</li>
-</ul>
-<a name="delayed(play.libs.F.Function0, long, java.util.concurrent.TimeUnit)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>delayed</h4>
-<pre>public static&nbsp;&lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;A&gt;&nbsp;delayed(<a href="../../play/libs/F.Function0.html" title="interface in play.libs">F.Function0</a>&lt;A&gt;&nbsp;function,
-                       long&nbsp;delay,
-                       java.util.concurrent.TimeUnit&nbsp;unit)</pre>
-<div class="block">Create a Promise which, after a delay, will be redeemed with the result of a
- given function. The function will be called after the delay.
-
- The function will be run in the default ExecutionContext.</div>
-<dl><dt><span class="strong">Parameters:</span></dt><dd><code>function</code> - The function to call to fulfill the Promise.</dd><dd><code>delay</code> - The time to wait.</dd><dd><code>units</code> - The units to use for the delay.</dd></dl>
-</li>
-</ul>
-<a name="delayed(play.libs.F.Function0, long, java.util.concurrent.TimeUnit, scala.concurrent.ExecutionContext)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>delayed</h4>
-<pre>public static&nbsp;&lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;A&gt;&nbsp;delayed(<a href="../../play/libs/F.Function0.html" title="interface in play.libs">F.Function0</a>&lt;A&gt;&nbsp;function,
-                       long&nbsp;delay,
-                       java.util.concurrent.TimeUnit&nbsp;unit,
-                       scala.concurrent.ExecutionContext&nbsp;ec)</pre>
-<div class="block">Create a Promise which, after a delay, will be redeemed with the result of a
- given function. The function will be called after the delay.</div>
-<dl><dt><span class="strong">Parameters:</span></dt><dd><code>function</code> - The function to call to fulfill the Promise.</dd><dd><code>delay</code> - The time to wait.</dd><dd><code>units</code> - The units to use for the delay.</dd><dd><code>ec</code> - The ExecutionContext to run the Function0 in.</dd></dl>
-</li>
-</ul>
 <a name="get()">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>get</h4>
-<pre>@Deprecated
-public&nbsp;<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>&nbsp;get()</pre>
-<div class="block"><span class="strong">Deprecated.</span>&nbsp;<i>Since 2.2. Use <a href="../../play/libs/F.Promise.html#get(long, java.util.concurrent.TimeUnit)"><code>get(long, TimeUnit)</code></a> or <a href="../../play/libs/F.Promise.html#get(long)"><code>get(long)</code></a> instead.</i></div>
-<div class="block">Awaits for the promise to get the result using a default timeout
- (currently 10000 milliseconds).</div>
+<pre>public&nbsp;<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>&nbsp;get()</pre>
+<div class="block">Awaits for the promise to get the result using the default timeout (5000 milliseconds).</div>
 <dl><dt><span class="strong">Returns:</span></dt><dd>The promised object</dd>
 <dt><span class="strong">Throws:</span></dt>
-<dd><code>java.lang.Throwable</code> - if the calculation providing the promise threw an exception</dd></dl>
+<dd><code>java.lang.RuntimeException</code> - if the calculation providing the promise threw an exception</dd></dl>
 </li>
 </ul>
 <a name="get(java.lang.Long, java.util.concurrent.TimeUnit)">
@@ -769,30 +467,13 @@ public&nbsp;<a href="../../play/libs/F.Promise.html" title="type parameter in F.
 <ul class="blockList">
 <li class="blockList">
 <h4>get</h4>
-<pre>@Deprecated
-public&nbsp;<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>&nbsp;get(java.lang.Long&nbsp;timeout,
-               java.util.concurrent.TimeUnit&nbsp;unit)</pre>
-<div class="block"><span class="strong">Deprecated.</span>&nbsp;<i>Since 2.2. Use <a href="../../play/libs/F.Promise.html#get(long, java.util.concurrent.TimeUnit)"><code>get(long, TimeUnit)</code></a> instead.</i></div>
-<div class="block">Awaits for the promise to get the result.</div>
-<dl><dt><span class="strong">Parameters:</span></dt><dd><code>timeout</code> - A user defined timeout</dd><dd><code>unit</code> - timeout for timeout</dd>
-<dt><span class="strong">Returns:</span></dt><dd>The promised result</dd>
-<dt><span class="strong">Throws:</span></dt>
-<dd><code>java.lang.Throwable</code> - if the calculation providing the promise threw an exception</dd></dl>
-</li>
-</ul>
-<a name="get(long, java.util.concurrent.TimeUnit)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>get</h4>
-<pre>public&nbsp;<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>&nbsp;get(long&nbsp;timeout,
+<pre>public&nbsp;<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>&nbsp;get(java.lang.Long&nbsp;timeout,
     java.util.concurrent.TimeUnit&nbsp;unit)</pre>
 <div class="block">Awaits for the promise to get the result.</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>timeout</code> - A user defined timeout</dd><dd><code>unit</code> - timeout for timeout</dd>
 <dt><span class="strong">Returns:</span></dt><dd>The promised result</dd>
 <dt><span class="strong">Throws:</span></dt>
-<dd><code>java.lang.Throwable</code> - if the calculation providing the promise threw an exception</dd></dl>
+<dd><code>java.lang.RuntimeException</code> - if the calculation providing the promise threw an exception</dd></dl>
 </li>
 </ul>
 <a name="get(java.lang.Long)">
@@ -801,28 +482,12 @@ public&nbsp;<a href="../../play/libs/F.Promise.html" title="type parameter in F.
 <ul class="blockList">
 <li class="blockList">
 <h4>get</h4>
-<pre>@Deprecated
-public&nbsp;<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>&nbsp;get(java.lang.Long&nbsp;timeout)</pre>
-<div class="block"><span class="strong">Deprecated.</span>&nbsp;<i>Since 2.2. Use {<a href="../../play/libs/F.Promise.html#get(long)"><code>get(long)</code></a> instead.</i></div>
+<pre>public&nbsp;<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>&nbsp;get(java.lang.Long&nbsp;timeout)</pre>
 <div class="block">Awaits for the promise to get the result.</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>timeout</code> - A user defined timeout in milliseconds</dd>
 <dt><span class="strong">Returns:</span></dt><dd>The promised result</dd>
 <dt><span class="strong">Throws:</span></dt>
-<dd><code>java.lang.Throwable</code> - if the calculation providing the promise threw an exception</dd></dl>
-</li>
-</ul>
-<a name="get(long)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>get</h4>
-<pre>public&nbsp;<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>&nbsp;get(long&nbsp;timeout)</pre>
-<div class="block">Awaits for the promise to get the result.</div>
-<dl><dt><span class="strong">Parameters:</span></dt><dd><code>timeout</code> - A user defined timeout in milliseconds</dd>
-<dt><span class="strong">Returns:</span></dt><dd>The promised result</dd>
-<dt><span class="strong">Throws:</span></dt>
-<dd><code>java.lang.Throwable</code> - if the calculation providing the promise threw an exception</dd></dl>
+<dd><code>java.lang.RuntimeException</code> - if the calculation providing the promise threw an exception</dd></dl>
 </li>
 </ul>
 <a name="or(play.libs.F.Promise)">
@@ -843,22 +508,8 @@ public&nbsp;<a href="../../play/libs/F.Promise.html" title="type parameter in F.
 <li class="blockList">
 <h4>onRedeem</h4>
 <pre>public&nbsp;void&nbsp;onRedeem(<a href="../../play/libs/F.Callback.html" title="interface in play.libs">F.Callback</a>&lt;<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>&gt;&nbsp;action)</pre>
-<div class="block">Perform the given <code>action</code> callback when the Promise is redeemed.
- 
- The callback will be run in the default execution context.</div>
-<dl><dt><span class="strong">Parameters:</span></dt><dd><code>action</code> - The action to perform.</dd></dl>
-</li>
-</ul>
-<a name="onRedeem(play.libs.F.Callback, scala.concurrent.ExecutionContext)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>onRedeem</h4>
-<pre>public&nbsp;void&nbsp;onRedeem(<a href="../../play/libs/F.Callback.html" title="interface in play.libs">F.Callback</a>&lt;<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>&gt;&nbsp;action,
-            scala.concurrent.ExecutionContext&nbsp;ec)</pre>
 <div class="block">Perform the given <code>action</code> callback when the Promise is redeemed.</div>
-<dl><dt><span class="strong">Parameters:</span></dt><dd><code>action</code> - The action to perform.</dd><dd><code>ec</code> - The ExecutionContext to execute the action in.</dd></dl>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>action</code> - The action to perform.</dd></dl>
 </li>
 </ul>
 <a name="map(play.libs.F.Function)">
@@ -871,22 +522,9 @@ public&nbsp;<a href="../../play/libs/F.Promise.html" title="type parameter in F.
 <div class="block">Maps this promise to a promise of type <code>B</code>.  The function <code>function</code> is applied as
  soon as the promise is redeemed.
 
- The function will be run in the default execution context.</div>
+ Exceptions thrown by <code>function</code> will be wrapped in <code>RuntimeException</code>, unless
+ they are <code>RuntimeException</code>'s themselves.</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>function</code> - The function to map <code>A</code> to <code>B</code>.</dd>
-<dt><span class="strong">Returns:</span></dt><dd>A wrapped promise that maps the type from <code>A</code> to <code>B</code>.</dd></dl>
-</li>
-</ul>
-<a name="map(play.libs.F.Function, scala.concurrent.ExecutionContext)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>map</h4>
-<pre>public&nbsp;&lt;B&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;B&gt;&nbsp;map(<a href="../../play/libs/F.Function.html" title="interface in play.libs">F.Function</a>&lt;<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>,B&gt;&nbsp;function,
-                   scala.concurrent.ExecutionContext&nbsp;ec)</pre>
-<div class="block">Maps this promise to a promise of type <code>B</code>.  The function <code>function</code> is applied as
- soon as the promise is redeemed.</div>
-<dl><dt><span class="strong">Parameters:</span></dt><dd><code>function</code> - The function to map <code>A</code> to <code>B</code>.</dd><dd><code>ec</code> - The ExecutionContext to execute the function in.</dd>
 <dt><span class="strong">Returns:</span></dt><dd>A wrapped promise that maps the type from <code>A</code> to <code>B</code>.</dd></dl>
 </li>
 </ul>
@@ -899,51 +537,12 @@ public&nbsp;<a href="../../play/libs/F.Promise.html" title="type parameter in F.
 <pre>public&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>&gt;&nbsp;recover(<a href="../../play/libs/F.Function.html" title="interface in play.libs">F.Function</a>&lt;java.lang.Throwable,<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>&gt;&nbsp;function)</pre>
 <div class="block">Wraps this promise in a promise that will handle exceptions thrown by this Promise.
 
- The function will be run in the default execution context.</div>
+ Exceptions thrown by <code>function</code> will be wrapped in <code>RuntimeException</code>, unless
+ they are <code>RuntimeException</code>'s themselves.</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>function</code> - The function to handle the exception. This may, for example, convert the exception into something
       of type <code>T</code>, or it may throw another exception, or it may do some other handling.</dd>
 <dt><span class="strong">Returns:</span></dt><dd>A wrapped promise that will only throw an exception if the supplied <code>function</code> throws an
       exception.</dd></dl>
-</li>
-</ul>
-<a name="recover(play.libs.F.Function, scala.concurrent.ExecutionContext)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>recover</h4>
-<pre>public&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>&gt;&nbsp;recover(<a href="../../play/libs/F.Function.html" title="interface in play.libs">F.Function</a>&lt;java.lang.Throwable,<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>&gt;&nbsp;function,
-                   scala.concurrent.ExecutionContext&nbsp;ec)</pre>
-<div class="block">Wraps this promise in a promise that will handle exceptions thrown by this Promise.</div>
-<dl><dt><span class="strong">Parameters:</span></dt><dd><code>function</code> - The function to handle the exception. This may, for example, convert the exception into something
-      of type <code>T</code>, or it may throw another exception, or it may do some other handling.</dd><dd><code>ec</code> - The ExecutionContext to execute the function in.</dd>
-<dt><span class="strong">Returns:</span></dt><dd>A wrapped promise that will only throw an exception if the supplied <code>function</code> throws an
-      exception.</dd></dl>
-</li>
-</ul>
-<a name="onFailure(play.libs.F.Callback)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>onFailure</h4>
-<pre>public&nbsp;void&nbsp;onFailure(<a href="../../play/libs/F.Callback.html" title="interface in play.libs">F.Callback</a>&lt;java.lang.Throwable&gt;&nbsp;action)</pre>
-<div class="block">Perform the given <code>action</code> callback if the promise encounters an exception.
-
- This action will be run in the default exceution context.</div>
-<dl><dt><span class="strong">Parameters:</span></dt><dd><code>action</code> - The action to perform.</dd></dl>
-</li>
-</ul>
-<a name="onFailure(play.libs.F.Callback, scala.concurrent.ExecutionContext)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>onFailure</h4>
-<pre>public&nbsp;void&nbsp;onFailure(<a href="../../play/libs/F.Callback.html" title="interface in play.libs">F.Callback</a>&lt;java.lang.Throwable&gt;&nbsp;action,
-             scala.concurrent.ExecutionContext&nbsp;ec)</pre>
-<div class="block">Perform the given <code>action</code> callback if the promise encounters an exception.</div>
-<dl><dt><span class="strong">Parameters:</span></dt><dd><code>action</code> - The action to perform.</dd><dd><code>ec</code> - The ExecutionContext to execute the callback in.</dd></dl>
 </li>
 </ul>
 <a name="flatMap(play.libs.F.Function)">
@@ -956,45 +555,10 @@ public&nbsp;<a href="../../play/libs/F.Promise.html" title="type parameter in F.
 <div class="block">Maps the result of this promise to a promise for a result of type <code>B</code>, and flattens that to be
  a single promise for <code>B</code>.
 
- The function will be run in the default execution context.</div>
+ Exceptions thrown by <code>function</code> will be wrapped in <code>RuntimeException</code>, unless
+ they are <code>RuntimeException</code>'s themselves.</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>function</code> - The function to map <code>A</code> to a promise for <code>B</code>.</dd>
 <dt><span class="strong">Returns:</span></dt><dd>A wrapped promise for a result of type <code>B</code></dd></dl>
-</li>
-</ul>
-<a name="flatMap(play.libs.F.Function, scala.concurrent.ExecutionContext)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>flatMap</h4>
-<pre>public&nbsp;&lt;B&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;B&gt;&nbsp;flatMap(<a href="../../play/libs/F.Function.html" title="interface in play.libs">F.Function</a>&lt;<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>,<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;B&gt;&gt;&nbsp;function,
-                       scala.concurrent.ExecutionContext&nbsp;ec)</pre>
-<div class="block">Maps the result of this promise to a promise for a result of type <code>B</code>, and flattens that to be
- a single promise for <code>B</code>.</div>
-<dl><dt><span class="strong">Parameters:</span></dt><dd><code>function</code> - The function to map <code>A</code> to a promise for <code>B</code>.</dd><dd><code>ec</code> - The ExecutionContext to execute the function in.</dd>
-<dt><span class="strong">Returns:</span></dt><dd>A wrapped promise for a result of type <code>B</code></dd></dl>
-</li>
-</ul>
-<a name="zip(play.libs.F.Promise)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>zip</h4>
-<pre>public&nbsp;&lt;B&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;<a href="../../play/libs/F.Tuple.html" title="class in play.libs">F.Tuple</a>&lt;<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>,B&gt;&gt;&nbsp;zip(<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;B&gt;&nbsp;another)</pre>
-<div class="block">Zips the values of this promise with <code>another</code>, and creates a new promise holding the tuple of their results</div>
-<dl><dt><span class="strong">Parameters:</span></dt><dd><code>another</code> - </dd></dl>
-</li>
-</ul>
-<a name="wrapped()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>wrapped</h4>
-<pre>public&nbsp;scala.concurrent.Future&lt;<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>&gt;&nbsp;wrapped()</pre>
-<div class="block">Gets the Scala Future wrapped by this Promise.</div>
-<dl><dt><span class="strong">Returns:</span></dt><dd>The Scala Future</dd></dl>
 </li>
 </ul>
 <a name="getWrappedPromise()">
@@ -1003,11 +567,9 @@ public&nbsp;<a href="../../play/libs/F.Promise.html" title="type parameter in F.
 <ul class="blockListLast">
 <li class="blockList">
 <h4>getWrappedPromise</h4>
-<pre>@Deprecated
-public&nbsp;scala.concurrent.Future&lt;<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>&gt;&nbsp;getWrappedPromise()</pre>
-<div class="block"><span class="strong">Deprecated.</span>&nbsp;<i>Since 2.2. Use <a href="../../play/libs/F.Promise.html#wrapped()"><code>wrapped()</code></a> instead.</i></div>
-<div class="block">Gets the Scala Future wrapped by this Promise.</div>
-<dl><dt><span class="strong">Returns:</span></dt><dd>The Scala Future</dd></dl>
+<pre>public&nbsp;scala.concurrent.Future&lt;<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>&gt;&nbsp;getWrappedPromise()</pre>
+<div class="block">Get the underlying Scala promise</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>The scala promise</dd></dl>
 </li>
 </ul>
 </li>
@@ -1036,7 +598,7 @@ public&nbsp;scala.concurrent.Future&lt;<a href="../../play/libs/F.Promise.html" 
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../play/libs/F.Option.html" title="class in play.libs"><span class="strong">Prev Class</span></a></li>
-<li><a href="../../play/libs/F.Some.html" title="class in play.libs"><span class="strong">Next Class</span></a></li>
+<li><a href="../../play/libs/F.Promise.PromiseActor.html" title="class in play.libs"><span class="strong">Next Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../index.html?play/libs/F.Promise.html" target="_top">Frames</a></li>
@@ -1060,7 +622,7 @@ public&nbsp;scala.concurrent.Future&lt;<a href="../../play/libs/F.Promise.html" 
 <div>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
-<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#nested_class_summary">Nested</a>&nbsp;|&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method_summary">Method</a></li>

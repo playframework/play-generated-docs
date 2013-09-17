@@ -9,6 +9,11 @@
           
       <link href="../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../../lib/tools.tooltip.js"></script>
+      
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../../index.html';
@@ -39,7 +44,7 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>This object defines several default formatters.</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/scratch/jenkins/workspace/play2-master-apidocs/framework/src/play/src/main/scala/play/api/data/format/Format.scala" target="_blank">Format.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>This object defines several default formatters.</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/Play20/tree/2.2.x/framework/src/play/src/main/scala/play/api/data/format/Format.scala" target="_blank">Format.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -215,11 +220,8 @@
         <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="defval" name="classOf[java.lang.CloneNotSupportedException]">...</span>
-    </span>)</span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">java.lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
     </li><li name="play.api.data.format.Formats#dateFormat" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -235,7 +237,7 @@
       </span>
       </h4>
       <p class="shortcomment cmt">Formatter for the <code>java.util.Date</code> type.</p><div class="fullcomment"><div class="comment cmt"><p>Formatter for the <code>java.util.Date</code> type.
-</p></div><dl class="paramcmts block"><dt class="param">pattern</dt><dd class="cmt"><p>a date pattern, as specified in <code>org.joda.time.format.DateTimeFormat</code>.</p></dd><dt class="param">timeZone</dt><dd class="cmt"><p>the <code>java.util.TimeZone</code> to use for parsing and formatting
+</p></div><dl class="paramcmts block"><dt class="param">pattern</dt><dd class="cmt"><p>a date pattern, as specified in <code>java.text.SimpleDateFormat</code>.</p></dd><dt class="param">timeZone</dt><dd class="cmt"><p>the <code>java.util.TimeZone</code> to use for parsing and formatting
 </p></dd></dl></div>
     </li><li name="play.api.data.format.Formats#dateFormat" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="dateFormat:play.api.data.format.Formatter[java.util.Date]"></a>
@@ -301,11 +303,8 @@
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="symbol">classOf[java.lang.Throwable]</span>
-    </span>)</span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">java.lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
     </li><li name="play.api.data.format.Formats#floatFormat" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
@@ -505,11 +504,11 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">sqlDateFormat</span><span class="params">(<span name="pattern">pattern: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="timeZone">timeZone: <span class="extype" name="java.util.TimeZone">TimeZone</span> = <span class="symbol">TimeZone.getDefault</span></span>)</span><span class="result">: <a href="Formatter.html" class="extype" name="play.api.data.format.Formatter">Formatter</a>[<span class="extype" name="java.sql.Date">Date</span>]</span>
+        <span class="name">sqlDateFormat</span><span class="params">(<span name="pattern">pattern: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="timeZone">timeZone: <span class="extype" name="java.util.TimeZone">TimeZone</span> = <span class="symbol">java.util.TimeZone.getDefault</span></span>)</span><span class="result">: <a href="Formatter.html" class="extype" name="play.api.data.format.Formatter">Formatter</a>[<span class="extype" name="java.sql.Date">Date</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Formatter for the <code>java.sql.Date</code> type.</p><div class="fullcomment"><div class="comment cmt"><p>Formatter for the <code>java.sql.Date</code> type.
-</p></div><dl class="paramcmts block"><dt class="param">pattern</dt><dd class="cmt"><p>a date pattern as specified in <code>org.joda.time.format.DateTimeFormat</code>.</p></dd><dt class="param">timeZone</dt><dd class="cmt"><p>the <code>java.util.TimeZone</code> to use for parsing and formatting
+</p></div><dl class="paramcmts block"><dt class="param">pattern</dt><dd class="cmt"><p>a date pattern as specified in <code>java.text.SimpleDateFormat</code>.</p></dd><dt class="param">timeZone</dt><dd class="cmt"><p>the <code>java.util.TimeZone</code> to use for parsing and formatting
 </p></dd></dl></div>
     </li><li name="play.api.data.format.Formats#sqlDateFormat" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="sqlDateFormat:play.api.data.format.Formatter[java.sql.Date]"></a>
@@ -576,10 +575,7 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
-    </span>)</span>
+                <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -595,10 +591,7 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
-    </span>)</span>
+                <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -614,10 +607,7 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
-    </span>)</span>
+                <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
     </li></ol>
@@ -649,6 +639,7 @@
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../lib/template.js"></script>
+
+
     </body>
       </html>

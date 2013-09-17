@@ -9,6 +9,11 @@
           
       <link href="../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../lib/template.js"></script>
+      <script type="text/javascript" src="../../lib/tools.tooltip.js"></script>
+      
       <script type="text/javascript">
          if(top === self) {
             var url = '../../index.html';
@@ -39,17 +44,13 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A Play plugin.</p><p>A plugin must define a single argument constructor that accepts an <a href="Application.html" class="extype" name="play.api.Application">play.api.Application</a>.  For example:</p><pre><span class="kw">class</span> MyPlugin(app: <span class="std">Application</span>) <span class="kw">extends</span> Plugin {
-<span class="kw">override</span> <span class="kw">def</span> onStart() = {
-  Logger.info(<span class="lit">"Plugin started!"</span>)
-}
-}</pre><p>The plugin class must be declared in a play.plugins file available in the classpath root:</p><pre><span class="num">1000</span>:myapp.MyPlugin</pre><p>The associated int defines the plugin priority.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/scratch/jenkins/workspace/play2-master-apidocs/framework/src/play/src/main/scala/play/api/Plugins.scala" target="_blank">Plugins.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A Play plugin.</p><p>You can define a Play plugin this way:</p><pre><span class="kw">class</span> MyPlugin(app: <span class="std">Application</span>) <span class="kw">extends</span> Plugin</pre><p>The plugin class must be declared in a play.plugins file available in the classpath root:</p><pre><span class="num">1000</span>:myapp.MyPlugin</pre><p>The associated int defines the plugin priority.
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/Play20/tree/2.2.x/framework/src/play/src/main/scala/play/api/Plugins.scala" target="_blank">Plugins.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
           <span class="toggle">Known Subclasses</span>
-          <div class="subClasses hiddenContent"><a href="libs/concurrent/AkkaPlugin.html" class="extype" name="play.api.libs.concurrent.AkkaPlugin">AkkaPlugin</a>, <a href="db/BoneCPPlugin.html" class="extype" name="play.api.db.BoneCPPlugin">BoneCPPlugin</a>, <a href="cache/CachePlugin.html" class="extype" name="play.api.cache.CachePlugin">CachePlugin</a>, <a href="db/DBPlugin.html" class="extype" name="play.api.db.DBPlugin">DBPlugin</a>, <a href="cache/EhCachePlugin.html" class="extype" name="play.api.cache.EhCachePlugin">EhCachePlugin</a>, <a href="db/evolutions/EvolutionsPlugin.html" class="extype" name="play.api.db.evolutions.EvolutionsPlugin">EvolutionsPlugin</a>, <a href="GlobalPlugin.html" class="extype" name="play.api.GlobalPlugin">GlobalPlugin</a>, <a href="i18n/MessagesPlugin.html" class="extype" name="play.api.i18n.MessagesPlugin">MessagesPlugin</a>, <a href="../core/ObjectMapperPlugin.html" class="extype" name="play.core.ObjectMapperPlugin">ObjectMapperPlugin</a>, <a href="../core/RouterCacheLifecycle.html" class="extype" name="play.core.RouterCacheLifecycle">RouterCacheLifecycle</a></div>
+          <div class="subClasses hiddenContent"><a href="libs/concurrent/AkkaPlugin.html" class="extype" name="play.api.libs.concurrent.AkkaPlugin">AkkaPlugin</a>, <a href="db/BoneCPPlugin.html" class="extype" name="play.api.db.BoneCPPlugin">BoneCPPlugin</a>, <a href="cache/CachePlugin.html" class="extype" name="play.api.cache.CachePlugin">CachePlugin</a>, <a href="db/DBPlugin.html" class="extype" name="play.api.db.DBPlugin">DBPlugin</a>, <a href="cache/EhCachePlugin.html" class="extype" name="play.api.cache.EhCachePlugin">EhCachePlugin</a>, <a href="db/evolutions/EvolutionsPlugin.html" class="extype" name="play.api.db.evolutions.EvolutionsPlugin">EvolutionsPlugin</a>, <a href="GlobalPlugin.html" class="extype" name="play.api.GlobalPlugin">GlobalPlugin</a>, <a href="i18n/MessagesPlugin.html" class="extype" name="play.api.i18n.MessagesPlugin">MessagesPlugin</a></div>
         </div></div>
         
 
@@ -183,11 +184,8 @@
         <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="defval" name="classOf[java.lang.CloneNotSupportedException]">...</span>
-    </span>)</span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">java.lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
     </li><li name="play.api.Plugin#enabled" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
@@ -242,11 +240,8 @@
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="symbol">classOf[java.lang.Throwable]</span>
-    </span>)</span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">java.lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -392,10 +387,7 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
-    </span>)</span>
+                <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -411,10 +403,7 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
-    </span>)</span>
+                <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -430,10 +419,7 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
-    </span>)</span>
+                <span class="name">@throws</span><span class="args">()</span>
               
         </dd></dl></div>
     </li></ol>
@@ -465,6 +451,7 @@
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-      <script defer="defer" type="text/javascript" id="jquery-js" src="../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../lib/template.js"></script>
+
+
     </body>
       </html>

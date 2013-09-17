@@ -9,6 +9,11 @@
           
       <link href="../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../lib/tools.tooltip.js"></script>
+      
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../index.html';
@@ -42,7 +47,7 @@
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Contains standard HTTP constants.
 For example:</p><pre><span class="kw">val</span> text = ContentTypes.TEXT
 <span class="kw">val</span> ok = Status.OK
-<span class="kw">val</span> accept = HeaderNames.ACCEPT</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/scratch/jenkins/workspace/play2-master-apidocs/framework/src/play/src/main/scala/play/api/http/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
+<span class="kw">val</span> accept = HeaderNames.ACCEPT</pre></div><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -98,7 +103,7 @@ For example:</p><pre><span class="kw">val</span> text = ContentTypes.TEXT
       </h4>
       <p class="comment cmt">Defines the default content type for type <code>A</code>.</p>
     </li><li name="play.api.http.ContentTypes" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="ContentTypesextendsAnyRef"></a>
+      <a id="ContentTypesextendsObject"></a>
       <a id="ContentTypes:ContentTypes"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -111,7 +116,7 @@ For example:</p><pre><span class="kw">val</span> text = ContentTypes.TEXT
       </h4>
       <p class="comment cmt">Defines common HTTP Content-Type header values, according to the current available Codec.</p>
     </li><li name="play.api.http.DefaultContentTypeOfs" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="DefaultContentTypeOfsextendsAnyRef"></a>
+      <a id="DefaultContentTypeOfsextendsObject"></a>
       <a id="DefaultContentTypeOfs:DefaultContentTypeOfs"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -137,7 +142,7 @@ For example:</p><pre><span class="kw">val</span> text = ContentTypes.TEXT
       </h4>
       <p class="comment cmt">Default Writeable.</p>
     </li><li name="play.api.http.HeaderNames" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="HeaderNamesextendsAnyRef"></a>
+      <a id="HeaderNamesextendsObject"></a>
       <a id="HeaderNames:HeaderNames"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -149,22 +154,8 @@ For example:</p><pre><span class="kw">val</span> text = ContentTypes.TEXT
       </span>
       </h4>
       <p class="comment cmt">Defines all standard HTTP headers.</p>
-    </li><li name="play.api.http.HttpProtocol" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="HttpProtocolextendsAnyRef"></a>
-      <a id="HttpProtocol:HttpProtocol"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">trait</span>
-      </span>
-      <span class="symbol">
-        <a href="HttpProtocol.html"><span class="name">HttpProtocol</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
-      </span>
-      </h4>
-      <p class="comment cmt">Defines HTTP protocol constants
-</p>
     </li><li name="play.api.http.LowPriorityWriteables" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="LowPriorityWriteablesextendsAnyRef"></a>
+      <a id="LowPriorityWriteablesextendsObject"></a>
       <a id="LowPriorityWriteables:LowPriorityWriteables"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -177,33 +168,20 @@ For example:</p><pre><span class="kw">val</span> text = ContentTypes.TEXT
       </h4>
       <p class="comment cmt">Default Writeable with lowwe priority.</p>
     </li><li name="play.api.http.MediaRange" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="MediaRangeextendsMediaType"></a>
+      <a id="MediaRangeextendsProductwithSerializable"></a>
       <a id="MediaRange:MediaRange"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">class</span>
-      </span>
-      <span class="symbol">
-        <a href="MediaRange.html"><span class="name">MediaRange</span></a><span class="result"> extends <a href="MediaType.html" class="extype" name="play.api.http.MediaType">MediaType</a></span>
-      </span>
-      </h4>
-      <p class="comment cmt">A media range as defined by RFC 2616 14.</p>
-    </li><li name="play.api.http.MediaType" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="MediaTypeextendsProductwithSerializable"></a>
-      <a id="MediaType:MediaType"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="MediaType.html"><span class="name">MediaType</span></a><span class="params">(<span name="mediaType">mediaType: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="mediaSubType">mediaSubType: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="parameters">parameters: <span class="extype" name="scala.Seq">Seq</span>[(<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>])]</span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="MediaRange.html"><span class="name">MediaRange</span></a><span class="params">(<span name="mediaType">mediaType: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="mediaSubType">mediaSubType: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="parameters">parameters: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
-      <p class="comment cmt">A media type as defined by RFC 2616 3.</p>
+      <p class="comment cmt">Represent a media range as defined by the RFC 2616.</p>
     </li><li name="play.api.http.MimeTypes" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="MimeTypesextendsAnyRef"></a>
+      <a id="MimeTypesextendsObject"></a>
       <a id="MimeTypes:MimeTypes"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -216,7 +194,7 @@ For example:</p><pre><span class="kw">val</span> text = ContentTypes.TEXT
       </h4>
       <p class="comment cmt">Common HTTP MIME types</p>
     </li><li name="play.api.http.Status" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="StatusextendsAnyRef"></a>
+      <a id="StatusextendsObject"></a>
       <a id="Status:Status"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -287,20 +265,6 @@ For example:</p><pre><span class="kw">val</span> text = ContentTypes.TEXT
       </span>
       </h4>
       <p class="comment cmt">Defines all standard HTTP headers.</p>
-    </li><li name="play.api.http.HttpProtocol" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="HttpProtocol"></a>
-      <a id="HttpProtocol:HttpProtocol"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a href="HttpProtocol$.html"><span class="name">HttpProtocol</span></a><span class="result"> extends <a href="HttpProtocol.html" class="extype" name="play.api.http.HttpProtocol">HttpProtocol</a></span>
-      </span>
-      </h4>
-      <p class="comment cmt">Defines HTTP protocol constants
-</p>
     </li><li name="play.api.http.MediaRange" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="MediaRange"></a>
       <a id="MediaRange:MediaRange"></a>
@@ -311,19 +275,6 @@ For example:</p><pre><span class="kw">val</span> text = ContentTypes.TEXT
       </span>
       <span class="symbol">
         <a href="MediaRange$.html"><span class="name">MediaRange</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
-      </span>
-      </h4>
-      
-    </li><li name="play.api.http.MediaType" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="MediaType"></a>
-      <a id="MediaType:MediaType"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a href="MediaType$.html"><span class="name">MediaType</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
@@ -366,19 +317,6 @@ For example:</p><pre><span class="kw">val</span> text = ContentTypes.TEXT
       </span>
       </h4>
       <p class="comment cmt">Helper utilities for <code>Writeable</code>.</p>
-    </li><li name="play.api.http.package#dateFormat" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="dateFormat:org.joda.time.format.DateTimeFormatter"></a>
-      <a id="dateFormat:DateTimeFormatter"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">dateFormat</span><span class="result">: <span class="extype" name="org.joda.time.format.DateTimeFormatter">DateTimeFormatter</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">HTTP date formatter, compliant to RFC 1123</p>
     </li></ol>
             </div>
 
@@ -408,6 +346,7 @@ For example:</p><pre><span class="kw">val</span> text = ContentTypes.TEXT
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../lib/template.js"></script>
+
+
     </body>
       </html>
