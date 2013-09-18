@@ -9,11 +9,6 @@
           
       <link href="../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
-      <script type="text/javascript" src="../../../lib/jquery.js" id="jquery-js"></script>
-      <script type="text/javascript" src="../../../lib/jquery-ui.js"></script>
-      <script type="text/javascript" src="../../../lib/template.js"></script>
-      <script type="text/javascript" src="../../../lib/tools.tooltip.js"></script>
-      
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../index.html';
@@ -51,12 +46,12 @@
       <span class="defval" name="&quot;Cannot find any HTTP Request Header here&quot;">...</span>
     </span>)</span>
               
-        </dd><dt>Source</dt><dd><a href="https://github.com/playframework/Play20/tree/2.2.x/framework/src/play/src/main/scala/play/api/mvc/Http.scala" target="_blank">Http.scala</a></dd></dl><div class="toggleContainer block">
+        </dd><dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.2.x/framework/scratch/jenkins/workspace/play-2.2.x-apidocs/framework/src/play/src/main/scala/play/api/mvc/Http.scala" target="_blank">Http.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
           <span class="toggle">Known Subclasses</span>
-          <div class="subClasses hiddenContent"><a href="../test/FakeRequest.html" class="extype" name="play.api.test.FakeRequest">FakeRequest</a>, <a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>, <a href="WrappedRequest.html" class="extype" name="play.api.mvc.WrappedRequest">WrappedRequest</a></div>
+          <div class="subClasses hiddenContent"><a href="Security$$AuthenticatedRequest.html" class="extype" name="play.api.mvc.Security.AuthenticatedRequest">AuthenticatedRequest</a>, <a href="../test/FakeRequest.html" class="extype" name="play.api.test.FakeRequest">FakeRequest</a>, <a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>, <a href="WrappedRequest.html" class="extype" name="play.api.mvc.WrappedRequest">WrappedRequest</a></div>
         </div></div>
         
 
@@ -288,20 +283,6 @@ application configuration file.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="play.api.mvc.RequestHeader#accept" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="accept:Seq[String]"></a>
-      <a id="accept:Seq[String]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">accept</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>The media types list of the request’s Accept header, not sorted in any particular order.
-</p></dd></dl></div>
     </li><li name="play.api.mvc.RequestHeader#acceptLanguages" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="acceptLanguages:Seq[play.api.i18n.Lang]"></a>
       <a id="acceptLanguages:Seq[Lang]"></a>
@@ -382,8 +363,11 @@ application configuration file.
         <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">java.lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.CloneNotSupportedException]">...</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="play.api.mvc.RequestHeader#contentType" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
@@ -398,7 +382,7 @@ application configuration file.
         <span class="name">contentType</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Returns the value of the Content-Type header (without the ;charset= part if exists)
+      <p class="shortcomment cmt">Returns the value of the Content-Type header (without the parameters (eg charset))
 </p>
     </li><li name="play.api.mvc.RequestHeader#cookies" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="cookies:play.api.mvc.Cookies"></a>
@@ -478,8 +462,11 @@ application configuration file.
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">java.lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[java.lang.Throwable]</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="play.api.mvc.RequestHeader#flash" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
@@ -561,6 +548,20 @@ application configuration file.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="play.api.mvc.RequestHeader#mediaType" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="mediaType:Option[play.api.http.MediaType]"></a>
+      <a id="mediaType:Option[MediaType]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">mediaType</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="../http/MediaType.html" class="extype" name="play.api.http.MediaType">MediaType</a>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">The media type of this request.</p><div class="fullcomment"><div class="comment cmt"><p>The media type of this request.  Same as contentType, except returns a fully parsed media type with parameters.
+</p></div></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>
@@ -665,7 +666,10 @@ application configuration file.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -681,7 +685,10 @@ application configuration file.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -697,7 +704,10 @@ application configuration file.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li></ol>
@@ -705,7 +715,27 @@ application configuration file.
 
         
 
-        
+        <div id="values" class="values members">
+              <h3>Deprecated Value Members</h3>
+              <ol><li name="play.api.mvc.RequestHeader#accept" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="accept:Seq[String]"></a>
+      <a id="accept:Seq[String]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 2.1) Use acceptedTypes instead">accept</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>The media types list of the request’s Accept header, not sorted in any particular order.
+</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.1)</i> Use acceptedTypes instead</p></dd></dl></div>
+    </li></ol>
+            </div>
         </div>
 
         <div id="inheritedMembers">
@@ -729,7 +759,6 @@ application configuration file.
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-
-
+      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../lib/template.js"></script>
     </body>
       </html>

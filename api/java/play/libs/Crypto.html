@@ -34,7 +34,7 @@
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../play/libs/Comet.html" title="class in play.libs"><span class="strong">Prev Class</span></a></li>
-<li><a href="../../play/libs/F.html" title="class in play.libs"><span class="strong">Next Class</span></a></li>
+<li><a href="../../play/libs/EventSource.html" title="class in play.libs"><span class="strong">Next Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../index.html?play/libs/Crypto.html" target="_top">Frames</a></li>
@@ -95,6 +95,16 @@
 <br>
 <pre>public class <span class="strong">Crypto</span>
 extends java.lang.Object</pre>
+<div class="block">Cryptographic utilities.
+ <p/>
+ These utilities are intended as a convenience, however it is important to read each methods documentation and
+ understand the concepts behind encryption to use this class properly.  Safe encryption is hard, and there is no
+ substitute for an adequate understanding of cryptography.  These methods will not be suitable for all encryption
+ needs.
+
+ For more information about cryptography, we recommend reading the OWASP Cryptographic Storage Cheatsheet:
+
+ https://www.owasp.org/index.php/Cryptographic_Storage_Cheat_Sheet</div>
 </li>
 </ul>
 </div>
@@ -131,9 +141,23 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr class="altColor">
+<td class="colFirst"><code>static boolean</code></td>
+<td class="colLast"><code><strong><a href="../../play/libs/Crypto.html#compareSignedTokens(java.lang.String, java.lang.String)">compareSignedTokens</a></strong>(java.lang.String&nbsp;tokenA,
+                   java.lang.String&nbsp;tokenB)</code>
+<div class="block">Compare two signed tokens</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static boolean</code></td>
+<td class="colLast"><code><strong><a href="../../play/libs/Crypto.html#constantTimeEquals(java.lang.String, java.lang.String)">constantTimeEquals</a></strong>(java.lang.String&nbsp;a,
+                  java.lang.String&nbsp;b)</code>
+<div class="block">Constant time equals method.</div>
+</td>
+</tr>
+<tr class="altColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><strong><a href="../../play/libs/Crypto.html#decryptAES(java.lang.String)">decryptAES</a></strong>(java.lang.String&nbsp;value)</code>
-<div class="block">Decrypt a String with the AES encryption standard using the application secret</div>
+<div class="block">Decrypt a String with the AES encryption standard using the application's secret key.</div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -146,27 +170,51 @@ extends java.lang.Object</pre>
 <tr class="altColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><strong><a href="../../play/libs/Crypto.html#encryptAES(java.lang.String)">encryptAES</a></strong>(java.lang.String&nbsp;value)</code>
-<div class="block">Encrypt a String with the AES encryption standard using the application secret</div>
+<div class="block">Encrypt a String with the AES encryption standard using the application's secret key.</div>
 </td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><strong><a href="../../play/libs/Crypto.html#encryptAES(java.lang.String, java.lang.String)">encryptAES</a></strong>(java.lang.String&nbsp;value,
           java.lang.String&nbsp;privateKey)</code>
-<div class="block">Encrypt a String with the AES encryption standard.</div>
+<div class="block">Encrypt a String with the AES encryption standard and the supplied private key.</div>
 </td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
-<td class="colLast"><code><strong><a href="../../play/libs/Crypto.html#sign(java.lang.String)">sign</a></strong>(java.lang.String&nbsp;message)</code>
-<div class="block">Signs the given String with HMAC-SHA1 using the application secret key.</div>
+<td class="colLast"><code><strong><a href="../../play/libs/Crypto.html#extractSignedToken(java.lang.String)">extractSignedToken</a></strong>(java.lang.String&nbsp;token)</code>
+<div class="block">Extract a signed token that was signed by <a href="../../play/libs/Crypto.html#signToken(java.lang.String)"><code>signToken(String)</code></a>.</div>
 </td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
+<td class="colLast"><code><strong><a href="../../play/libs/Crypto.html#generateSignedToken()">generateSignedToken</a></strong>()</code>
+<div class="block">Generate a signed token</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static java.lang.String</code></td>
+<td class="colLast"><code><strong><a href="../../play/libs/Crypto.html#generateToken()">generateToken</a></strong>()</code>
+<div class="block">Generate a cryptographically secure token</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static java.lang.String</code></td>
+<td class="colLast"><code><strong><a href="../../play/libs/Crypto.html#sign(java.lang.String)">sign</a></strong>(java.lang.String&nbsp;message)</code>
+<div class="block">Signs the given String with HMAC-SHA1 using the application's secret key.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><strong><a href="../../play/libs/Crypto.html#sign(java.lang.String, byte[])">sign</a></strong>(java.lang.String&nbsp;message,
     byte[]&nbsp;key)</code>
 <div class="block">Signs the given String with HMAC-SHA1 using the given key.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static java.lang.String</code></td>
+<td class="colLast"><code><strong><a href="../../play/libs/Crypto.html#signToken(java.lang.String)">signToken</a></strong>(java.lang.String&nbsp;token)</code>
+<div class="block">Sign a token.</div>
 </td>
 </tr>
 </table>
@@ -216,7 +264,12 @@ extends java.lang.Object</pre>
 <h4>sign</h4>
 <pre>public static&nbsp;java.lang.String&nbsp;sign(java.lang.String&nbsp;message,
                     byte[]&nbsp;key)</pre>
-<div class="block">Signs the given String with HMAC-SHA1 using the given key.</div>
+<div class="block">Signs the given String with HMAC-SHA1 using the given key.
+ <p/>
+ By default this uses the platform default JSSE provider.  This can be overridden by defining
+ <code>application.crypto.provider</code> in <codeapplication.conf</code>.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>message</code> - The message to sign.</dd><dd><code>key</code> - The private key to sign with.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>A hexadecimal encoded signature.</dd></dl>
 </li>
 </ul>
 <a name="sign(java.lang.String)">
@@ -226,7 +279,84 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>sign</h4>
 <pre>public static&nbsp;java.lang.String&nbsp;sign(java.lang.String&nbsp;message)</pre>
-<div class="block">Signs the given String with HMAC-SHA1 using the application secret key.</div>
+<div class="block">Signs the given String with HMAC-SHA1 using the application's secret key.
+ <p/>
+ By default this uses the platform default JSSE provider.  This can be overridden by defining
+ <code>application.crypto.provider</code> in <codeapplication.conf</code>.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>message</code> - The message to sign.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>A hexadecimal encoded signature.</dd></dl>
+</li>
+</ul>
+<a name="signToken(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>signToken</h4>
+<pre>public static&nbsp;java.lang.String&nbsp;signToken(java.lang.String&nbsp;token)</pre>
+<div class="block">Sign a token.  This produces a new token, that has this token signed with a nonce.
+
+ This primarily exists to defeat the BREACH vulnerability, as it allows the token to effectively be random per
+ request, without actually changing the value.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>token</code> - The token to sign</dd>
+<dt><span class="strong">Returns:</span></dt><dd>The signed token</dd></dl>
+</li>
+</ul>
+<a name="extractSignedToken(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>extractSignedToken</h4>
+<pre>public static&nbsp;java.lang.String&nbsp;extractSignedToken(java.lang.String&nbsp;token)</pre>
+<div class="block">Extract a signed token that was signed by <a href="../../play/libs/Crypto.html#signToken(java.lang.String)"><code>signToken(String)</code></a>.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>token</code> - The signed token to extract.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>The verified raw token, or null if the token isn't valid.</dd></dl>
+</li>
+</ul>
+<a name="generateToken()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>generateToken</h4>
+<pre>public static&nbsp;java.lang.String&nbsp;generateToken()</pre>
+<div class="block">Generate a cryptographically secure token</div>
+</li>
+</ul>
+<a name="generateSignedToken()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>generateSignedToken</h4>
+<pre>public static&nbsp;java.lang.String&nbsp;generateSignedToken()</pre>
+<div class="block">Generate a signed token</div>
+</li>
+</ul>
+<a name="compareSignedTokens(java.lang.String, java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>compareSignedTokens</h4>
+<pre>public static&nbsp;boolean&nbsp;compareSignedTokens(java.lang.String&nbsp;tokenA,
+                          java.lang.String&nbsp;tokenB)</pre>
+<div class="block">Compare two signed tokens</div>
+</li>
+</ul>
+<a name="constantTimeEquals(java.lang.String, java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>constantTimeEquals</h4>
+<pre>public static&nbsp;boolean&nbsp;constantTimeEquals(java.lang.String&nbsp;a,
+                         java.lang.String&nbsp;b)</pre>
+<div class="block">Constant time equals method.
+
+ Given a length that both Strings are equal to, this method will always run in constant time.  This prevents
+ timing attacks.</div>
 </li>
 </ul>
 <a name="encryptAES(java.lang.String)">
@@ -236,9 +366,21 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>encryptAES</h4>
 <pre>public static&nbsp;java.lang.String&nbsp;encryptAES(java.lang.String&nbsp;value)</pre>
-<div class="block">Encrypt a String with the AES encryption standard using the application secret</div>
-<dl><dt><span class="strong">Parameters:</span></dt><dd><code>value</code> - The String to encrypt</dd>
-<dt><span class="strong">Returns:</span></dt><dd>An hexadecimal encrypted string</dd></dl>
+<div class="block">Encrypt a String with the AES encryption standard using the application's secret key.
+ <p/>
+ The provider used is by default this uses the platform default JSSE provider.  This can be overridden by defining
+ <code>application.crypto.provider</code> in <code>application.conf</code>.
+ <p/>
+ The transformation algorithm used is the provider specific implementation of the <code>AES</code> name.  On
+ Oracles JDK, this is <code>AES/ECB/PKCS5Padding</code>.  This algorithm is suitable for small amounts of data,
+ typically less than 32 bytes, hence is useful for encrypting credit card numbers, passwords etc.  For larger
+ blocks of data, this algorithm may expose patterns and be vulnerable to repeat attacks.
+ <p/>
+ The transformation algorithm can be configured by defining <code>application.crypto.aes.transformation</code> in
+ <code>application.conf</code>.  Although any cipher transformation algorithm can be selected here, the secret key
+ spec used is always AES, so only AES transformation algorithms will work.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>value</code> - The String to encrypt.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>An hexadecimal encrypted string.</dd></dl>
 </li>
 </ul>
 <a name="encryptAES(java.lang.String, java.lang.String)">
@@ -249,9 +391,23 @@ extends java.lang.Object</pre>
 <h4>encryptAES</h4>
 <pre>public static&nbsp;java.lang.String&nbsp;encryptAES(java.lang.String&nbsp;value,
                           java.lang.String&nbsp;privateKey)</pre>
-<div class="block">Encrypt a String with the AES encryption standard. Private key must have a length of 16 bytes</div>
-<dl><dt><span class="strong">Parameters:</span></dt><dd><code>value</code> - The String to encrypt</dd><dd><code>privateKey</code> - The key used to encrypt</dd>
-<dt><span class="strong">Returns:</span></dt><dd>An hexadecimal encrypted string</dd></dl>
+<div class="block">Encrypt a String with the AES encryption standard and the supplied private key.
+ <p/>
+ The private key must have a length of 16 bytes.
+ <p/>
+ The provider used is by default this uses the platform default JSSE provider.  This can be overridden by defining
+ <code>application.crypto.provider</code> in <code>application.conf</code>.
+ <p/>
+ The transformation algorithm used is the provider specific implementation of the <code>AES</code> name.  On
+ Oracles JDK, this is <code>AES/ECB/PKCS5Padding</code>.  This algorithm is suitable for small amounts of data,
+ typically less than 32bytes, hence is useful for encrypting credit card numbers, passwords etc.  For larger
+ blocks of data, this algorithm may expose patterns and be vulnerable to repeat attacks.
+ <p/>
+ The transformation algorithm can be configured by defining <code>application.crypto.aes.transformation</code> in
+ <code>application.conf</code>.  Although any cipher transformation algorithm can be selected here, the secret key
+ spec used is always AES, so only AES transformation algorithms will work.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>value</code> - The String to encrypt.</dd><dd><code>privateKey</code> - The key used to encrypt.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>An hexadecimal encrypted string.</dd></dl>
 </li>
 </ul>
 <a name="decryptAES(java.lang.String)">
@@ -261,9 +417,17 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>decryptAES</h4>
 <pre>public static&nbsp;java.lang.String&nbsp;decryptAES(java.lang.String&nbsp;value)</pre>
-<div class="block">Decrypt a String with the AES encryption standard using the application secret</div>
-<dl><dt><span class="strong">Parameters:</span></dt><dd><code>value</code> - An hexadecimal encrypted string</dd>
-<dt><span class="strong">Returns:</span></dt><dd>The decrypted String</dd></dl>
+<div class="block">Decrypt a String with the AES encryption standard using the application's secret key.
+ <p/>
+ The provider used is by default this uses the platform default JSSE provider.  This can be overridden by defining
+ <code>application.crypto.provider</code> in <code>application.conf</code>.
+ <p/>
+ The transformation used is by default <code>AES/ECB/PKCS5Padding</code>.  It can be configured by defining
+ <code>application.crypto.aes.transformation</code> in <code>application.conf</code>.  Although any cipher
+ transformation algorithm can be selected here, the secret key spec used is always AES, so only AES transformation
+ algorithms will work.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>value</code> - An hexadecimal encrypted string.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>The decrypted String.</dd></dl>
 </li>
 </ul>
 <a name="decryptAES(java.lang.String, java.lang.String)">
@@ -274,9 +438,19 @@ extends java.lang.Object</pre>
 <h4>decryptAES</h4>
 <pre>public static&nbsp;java.lang.String&nbsp;decryptAES(java.lang.String&nbsp;value,
                           java.lang.String&nbsp;privateKey)</pre>
-<div class="block">Decrypt a String with the AES encryption standard. Private key must have a length of 16 bytes</div>
-<dl><dt><span class="strong">Parameters:</span></dt><dd><code>value</code> - An hexadecimal encrypted string</dd><dd><code>privateKey</code> - The key used to encrypt</dd>
-<dt><span class="strong">Returns:</span></dt><dd>The decrypted String</dd></dl>
+<div class="block">Decrypt a String with the AES encryption standard.
+ <p/>
+ The private key must have a length of 16 bytes.
+ <p/>
+ The provider used is by default this uses the platform default JSSE provider.  This can be overridden by defining
+ <code>application.crypto.provider</code> in <code>application.conf</code>.
+ <p/>
+ The transformation used is by default <code>AES/ECB/PKCS5Padding</code>.  It can be configured by defining
+ <code>application.crypto.aes.transformation</code> in <code>application.conf</code>.  Although any cipher
+ transformation algorithm can be selected here, the secret key spec used is always AES, so only AES transformation
+ algorithms will work.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>value</code> - An hexadecimal encrypted string.</dd><dd><code>privateKey</code> - The key used to encrypt.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>The decrypted String.</dd></dl>
 </li>
 </ul>
 </li>
@@ -305,7 +479,7 @@ extends java.lang.Object</pre>
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../play/libs/Comet.html" title="class in play.libs"><span class="strong">Prev Class</span></a></li>
-<li><a href="../../play/libs/F.html" title="class in play.libs"><span class="strong">Next Class</span></a></li>
+<li><a href="../../play/libs/EventSource.html" title="class in play.libs"><span class="strong">Next Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../index.html?play/libs/Crypto.html" target="_top">Frames</a></li>

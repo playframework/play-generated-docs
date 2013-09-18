@@ -9,11 +9,6 @@
           
       <link href="../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
-      <script type="text/javascript" src="../../../../lib/jquery.js" id="jquery-js"></script>
-      <script type="text/javascript" src="../../../../lib/jquery-ui.js"></script>
-      <script type="text/javascript" src="../../../../lib/template.js"></script>
-      <script type="text/javascript" src="../../../../lib/tools.tooltip.js"></script>
-      
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../../index.html';
@@ -44,8 +39,7 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Utilities for concurrent usage of iteratees, enumerators and enumeratees.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/Play20/tree/2.2.x/framework/src/iteratees/src/main/scala/play/api/libs/iteratee/Concurrent.scala" target="_blank">Concurrent.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Utilities for concurrent usage of iteratees, enumerators and enumeratees.</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.2.x/framework/scratch/jenkins/workspace/play-2.2.x-apidocs/framework/src/iteratees/src/main/scala/play/api/libs/iteratee/Concurrent.scala" target="_blank">Concurrent.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -88,7 +82,7 @@
         <div id="types" class="types members">
               <h3>Type Members</h3>
               <ol><li name="play.api.libs.iteratee.Concurrent.Broadcaster" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="BroadcasterextendsObject"></a>
+      <a id="BroadcasterextendsAnyRef"></a>
       <a id="Broadcaster:Broadcaster"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -101,7 +95,7 @@
       </h4>
       <p class="comment cmt">A broadcaster.</p>
     </li><li name="play.api.libs.iteratee.Concurrent.Channel" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="Channel[E]extendsObject"></a>
+      <a id="Channel[E]extendsAnyRef"></a>
       <a id="Channel[E]:Channel[E]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -114,7 +108,7 @@
       </h4>
       <p class="comment cmt">A channel for imperative style feeding of input into one or more iteratees.</p>
     </li><li name="play.api.libs.iteratee.Concurrent.PatchPanel" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="PatchPanel[E]extendsObject"></a>
+      <a id="PatchPanel[E]extendsAnyRef"></a>
       <a id="PatchPanel[E]:PatchPanel[E]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -126,22 +120,6 @@
       </span>
       </h4>
       <p class="comment cmt">Allows patching in enumerators to an iteratee.</p>
-    </li><li name="play.api.libs.iteratee.Concurrent.Hub" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="Hub[E]extendsConcurrent.Broadcaster"></a>
-      <a id="Hub[E]:Hub[E]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">trait</span>
-      </span>
-      <span class="symbol">
-        <a href="Concurrent$$Hub.html"><span class="name deprecated" title="Deprecated: (Since version 2.1.0) use Concurrent.broadcast instead">Hub</span></a><span class="tparams">[<span name="E">E</span>]</span><span class="result"> extends <a href="Concurrent$$Broadcaster.html" class="extype" name="play.api.libs.iteratee.Concurrent.Broadcaster">Broadcaster</a></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.1.0)</i> use Concurrent.broadcast instead</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -228,21 +206,21 @@
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="play.api.libs.iteratee.Concurrent#broadcast" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="broadcast[E](e:play.api.libs.iteratee.Enumerator[E],interestIsDownToZero:play.api.libs.iteratee.Concurrent.Broadcaster=&gt;Unit):(play.api.libs.iteratee.Enumerator[E],play.api.libs.iteratee.Concurrent.Broadcaster)"></a>
-      <a id="broadcast[E](Enumerator[E],(Broadcaster)⇒Unit):(Enumerator[E],Broadcaster)"></a>
+      <a id="broadcast[E](e:play.api.libs.iteratee.Enumerator[E],interestIsDownToZero:play.api.libs.iteratee.Concurrent.Broadcaster=&gt;Unit)(implicitec:scala.concurrent.ExecutionContext):(play.api.libs.iteratee.Enumerator[E],play.api.libs.iteratee.Concurrent.Broadcaster)"></a>
+      <a id="broadcast[E](Enumerator[E],(Broadcaster)⇒Unit)(ExecutionContext):(Enumerator[E],Broadcaster)"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">broadcast</span><span class="tparams">[<span name="E">E</span>]</span><span class="params">(<span name="e">e: <a href="Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.libs.iteratee.Concurrent.broadcast.E">E</span>]</span>, <span name="interestIsDownToZero">interestIsDownToZero: (<a href="Concurrent$$Broadcaster.html" class="extype" name="play.api.libs.iteratee.Concurrent.Broadcaster">Broadcaster</a>) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: (<a href="Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.libs.iteratee.Concurrent.broadcast.E">E</span>], <a href="Concurrent$$Broadcaster.html" class="extype" name="play.api.libs.iteratee.Concurrent.Broadcaster">Broadcaster</a>)</span>
+        <span class="name">broadcast</span><span class="tparams">[<span name="E">E</span>]</span><span class="params">(<span name="e">e: <a href="Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.libs.iteratee.Concurrent.broadcast.E">E</span>]</span>, <span name="interestIsDownToZero">interestIsDownToZero: (<a href="Concurrent$$Broadcaster.html" class="extype" name="play.api.libs.iteratee.Concurrent.Broadcaster">Broadcaster</a>) ⇒ <span class="extype" name="scala.Unit">Unit</span> = <span class="symbol">_ =&gt; ()</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: (<a href="Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.libs.iteratee.Concurrent.broadcast.E">E</span>], <a href="Concurrent$$Broadcaster.html" class="extype" name="play.api.libs.iteratee.Concurrent.Broadcaster">Broadcaster</a>)</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Create a broadcaster from the given enumerator.</p><div class="fullcomment"><div class="comment cmt"><p>Create a broadcaster from the given enumerator.  This allows iteratees to attach (and unattach by returning a done
 state) to a single enumerator.  Iteratees will only receive input sent from the enumerator after they have
 attached to the broadcasting enumerator.
-</p></div><dl class="paramcmts block"><dt class="param">e</dt><dd class="cmt"><p>The enumerator to broadcast</p></dd><dt class="param">interestIsDownToZero</dt><dd class="cmt"><p>Function that is invoked when all iteratees are done.  May be invoked multiple times.</p></dd><dt>returns</dt><dd class="cmt"><p>A tuple of the broadcasting enumerator, that can be applied to each iteratee that wants to receive the
+</p></div><dl class="paramcmts block"><dt class="param">e</dt><dd class="cmt"><p>The enumerator to broadcast</p></dd><dt class="param">interestIsDownToZero</dt><dd class="cmt"><p>Function that is invoked when all iteratees are done.  May be invoked multiple times.</p></dd><dt class="param">ec</dt><dd class="cmt"><p>The context to execute the supplied function with. The context is prepared on the calling thread before being used.</p></dd><dt>returns</dt><dd class="cmt"><p>A tuple of the broadcasting enumerator, that can be applied to each iteratee that wants to receive the
         input, and the broadcaster.
 </p></dd></dl></div>
     </li><li name="play.api.libs.iteratee.Concurrent#broadcast" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -265,22 +243,22 @@ chatEnumerator |&gt;&gt;&gt; chatClient2
 
 chatChannel.push(Message(<span class="lit">"Hello world!"</span>))</pre></div></div>
     </li><li name="play.api.libs.iteratee.Concurrent#buffer" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="buffer[E](maxBuffer:Int,length:play.api.libs.iteratee.Input[E]=&gt;Int):play.api.libs.iteratee.Enumeratee[E,E]"></a>
-      <a id="buffer[E](Int,(Input[E])⇒Int):Enumeratee[E,E]"></a>
+      <a id="buffer[E](maxBuffer:Int,length:play.api.libs.iteratee.Input[E]=&gt;Int)(implicitec:scala.concurrent.ExecutionContext):play.api.libs.iteratee.Enumeratee[E,E]"></a>
+      <a id="buffer[E](Int,(Input[E])⇒Int)(ExecutionContext):Enumeratee[E,E]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">buffer</span><span class="tparams">[<span name="E">E</span>]</span><span class="params">(<span name="maxBuffer">maxBuffer: <span class="extype" name="scala.Int">Int</span></span>, <span name="length">length: (<a href="Input.html" class="extype" name="play.api.libs.iteratee.Input">Input</a>[<span class="extype" name="play.api.libs.iteratee.Concurrent.buffer.E">E</span>]) ⇒ <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="Enumeratee.html" class="extype" name="play.api.libs.iteratee.Enumeratee">Enumeratee</a>[<span class="extype" name="play.api.libs.iteratee.Concurrent.buffer.E">E</span>, <span class="extype" name="play.api.libs.iteratee.Concurrent.buffer.E">E</span>]</span>
+        <span class="name">buffer</span><span class="tparams">[<span name="E">E</span>]</span><span class="params">(<span name="maxBuffer">maxBuffer: <span class="extype" name="scala.Int">Int</span></span>, <span name="length">length: (<a href="Input.html" class="extype" name="play.api.libs.iteratee.Input">Input</a>[<span class="extype" name="play.api.libs.iteratee.Concurrent.buffer.E">E</span>]) ⇒ <span class="extype" name="scala.Int">Int</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: <a href="Enumeratee.html" class="extype" name="play.api.libs.iteratee.Enumeratee">Enumeratee</a>[<span class="extype" name="play.api.libs.iteratee.Concurrent.buffer.E">E</span>, <span class="extype" name="play.api.libs.iteratee.Concurrent.buffer.E">E</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">A buffering enumeratee.</p><div class="fullcomment"><div class="comment cmt"><p>A buffering enumeratee.</p><p>Maintains a buffer of maximum size maxBuffer, consuming as much of the input as the buffer will allow as quickly
 as it comes, while allowing the iteratee it feeds to consume it as slowly as it likes.</p><p>This is useful in situations where the enumerator holds expensive resources open, while the iteratee may be slow,
 for example if the enumerator is a database result set that holds a transaction open, but the result set is being
 serialised and fed directly to an HTTP response.
-</p></div><dl class="paramcmts block"><dt class="param">maxBuffer</dt><dd class="cmt"><p>The maximum size to buffer.  The size is computed using the given <code>length</code> function.</p></dd><dt class="param">length</dt><dd class="cmt"><p>A function that computes the length of an input item
+</p></div><dl class="paramcmts block"><dt class="param">maxBuffer</dt><dd class="cmt"><p>The maximum size to buffer.  The size is computed using the given <code>length</code> function.</p></dd><dt class="param">length</dt><dd class="cmt"><p>A function that computes the length of an input item</p></dd><dt class="param">ec</dt><dd class="cmt"><p>The context to execute the supplied function with. The context is prepared on the calling thread before being used.
 </p></dd></dl></div>
     </li><li name="play.api.libs.iteratee.Concurrent#buffer" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="buffer[E](maxBuffer:Int):play.api.libs.iteratee.Enumeratee[E,E]"></a>
@@ -312,8 +290,11 @@ serialised and fed directly to an HTTP response.
         <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">java.lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.CloneNotSupportedException]">...</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="play.api.libs.iteratee.Concurrent#dropInputIfNotReady" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -371,8 +352,11 @@ handle it within the given timeout, otherwise it drops it.
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">java.lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[java.lang.Throwable]</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -414,6 +398,22 @@ handle it within the given timeout, otherwise it drops it.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="play.api.libs.iteratee.Concurrent#joined" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="joined[A]:(play.api.libs.iteratee.Iteratee[A,Unit],play.api.libs.iteratee.Enumerator[A])"></a>
+      <a id="joined[A]:(Iteratee[A,Unit],Enumerator[A])"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">joined</span><span class="tparams">[<span name="A">A</span>]</span><span class="result">: (<a href="Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="play.api.libs.iteratee.Concurrent.joined.A">A</span>, <span class="extype" name="scala.Unit">Unit</span>], <a href="Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.libs.iteratee.Concurrent.joined.A">A</span>])</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Create a joined iteratee enumerator pair.</p><div class="fullcomment"><div class="comment cmt"><p>Create a joined iteratee enumerator pair.</p><p>When the enumerator is applied to an iteratee, the iteratee subsequently consumes whatever the iteratee in the pair
+is applied to.  Consequently the enumerator is &quot;one shot&quot;, applying it to subsequent iteratees will throw an
+exception.
+</p></div></div>
     </li><li name="play.api.libs.iteratee.Concurrent#lazyAndErrIfNotReady" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="lazyAndErrIfNotReady[E](timeout:Long,unit:java.util.concurrent.TimeUnit):play.api.libs.iteratee.Enumeratee[E,E]"></a>
       <a id="lazyAndErrIfNotReady[E](Long,TimeUnit):Enumeratee[E,E]"></a>
@@ -426,7 +426,7 @@ handle it within the given timeout, otherwise it drops it.
         <span class="name">lazyAndErrIfNotReady</span><span class="tparams">[<span name="E">E</span>]</span><span class="params">(<span name="timeout">timeout: <span class="extype" name="scala.Long">Long</span></span>, <span name="unit">unit: <span class="extype" name="java.util.concurrent.TimeUnit">TimeUnit</span> = <span class="symbol">TimeUnit.MILLISECONDS</span></span>)</span><span class="result">: <a href="Enumeratee.html" class="extype" name="play.api.libs.iteratee.Enumeratee">Enumeratee</a>[<span class="extype" name="play.api.libs.iteratee.Concurrent.lazyAndErrIfNotReady.E">E</span>, <span class="extype" name="play.api.libs.iteratee.Concurrent.lazyAndErrIfNotReady.E">E</span>]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Enumeratee that times out if the iteratee it feeds to takes to long to consume available input.</p><div class="fullcomment"><div class="comment cmt"><p>Enumeratee that times out if the iteratee it feeds to takes to long to consume available input.
+      <p class="shortcomment cmt">Enumeratee that times out if the iteratee it feeds to takes too long to consume available input.</p><div class="fullcomment"><div class="comment cmt"><p>Enumeratee that times out if the iteratee it feeds to takes too long to consume available input.
 </p></div><dl class="paramcmts block"><dt class="param">timeout</dt><dd class="cmt"><p>The timeout period</p></dd><dt class="param">unit</dt><dd class="cmt"><p>the time unit
 </p></dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -469,20 +469,34 @@ handle it within the given timeout, otherwise it drops it.
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="play.api.libs.iteratee.Concurrent#patchPanel" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="patchPanel[E](patcher:play.api.libs.iteratee.Concurrent.PatchPanel[E]=&gt;Unit):play.api.libs.iteratee.Enumerator[E]"></a>
-      <a id="patchPanel[E]((PatchPanel[E])⇒Unit):Enumerator[E]"></a>
+      <a id="patchPanel[E](patcher:play.api.libs.iteratee.Concurrent.PatchPanel[E]=&gt;Unit)(implicitec:scala.concurrent.ExecutionContext):play.api.libs.iteratee.Enumerator[E]"></a>
+      <a id="patchPanel[E]((PatchPanel[E])⇒Unit)(ExecutionContext):Enumerator[E]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">patchPanel</span><span class="tparams">[<span name="E">E</span>]</span><span class="params">(<span name="patcher">patcher: (<a href="Concurrent$$PatchPanel.html" class="extype" name="play.api.libs.iteratee.Concurrent.PatchPanel">PatchPanel</a>[<span class="extype" name="play.api.libs.iteratee.Concurrent.patchPanel.E">E</span>]) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <a href="Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.libs.iteratee.Concurrent.patchPanel.E">E</span>]</span>
+        <span class="name">patchPanel</span><span class="tparams">[<span name="E">E</span>]</span><span class="params">(<span name="patcher">patcher: (<a href="Concurrent$$PatchPanel.html" class="extype" name="play.api.libs.iteratee.Concurrent.PatchPanel">PatchPanel</a>[<span class="extype" name="play.api.libs.iteratee.Concurrent.patchPanel.E">E</span>]) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: <a href="Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.libs.iteratee.Concurrent.patchPanel.E">E</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">An enumerator that allows patching in enumerators to supply it with input.</p><div class="fullcomment"><div class="comment cmt"><p>An enumerator that allows patching in enumerators to supply it with input.
-</p></div><dl class="paramcmts block"><dt class="param">patcher</dt><dd class="cmt"><p>A function that passes a patch panel whenever the enumerator is applied to an iteratee.
+</p></div><dl class="paramcmts block"><dt class="param">patcher</dt><dd class="cmt"><p>A function that passes a patch panel whenever the enumerator is applied to an iteratee.</p></dd><dt class="param">ec</dt><dd class="cmt"><p>The context to execute the supplied function with. The context is prepared on the calling thread before being used.
 </p></dd></dl></div>
+    </li><li name="play.api.libs.iteratee.Concurrent#runPartial" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="runPartial[E,A](enumerator:play.api.libs.iteratee.Enumerator[E],iteratee:play.api.libs.iteratee.Iteratee[E,A]):scala.concurrent.Future[(A,play.api.libs.iteratee.Enumerator[E])]"></a>
+      <a id="runPartial[E,A](Enumerator[E],Iteratee[E,A]):Future[(A,Enumerator[E])]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">runPartial</span><span class="tparams">[<span name="E">E</span>, <span name="A">A</span>]</span><span class="params">(<span name="enumerator">enumerator: <a href="Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.libs.iteratee.Concurrent.runPartial.E">E</span>]</span>, <span name="iteratee">iteratee: <a href="Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="play.api.libs.iteratee.Concurrent.runPartial.E">E</span>, <span class="extype" name="play.api.libs.iteratee.Concurrent.runPartial.A">A</span>]</span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[(<span class="extype" name="play.api.libs.iteratee.Concurrent.runPartial.A">A</span>, <a href="Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.libs.iteratee.Concurrent.runPartial.E">E</span>])]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Run the enumerator, and produce the remaining enumerator as part the result.</p><div class="fullcomment"><div class="comment cmt"><p>Run the enumerator, and produce the remaining enumerator as part the result.</p><p>The result will be the result of the iteratee, and an enumerator containing the remaining input.
+</p></div></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -510,15 +524,15 @@ handle it within the given timeout, otherwise it drops it.
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="play.api.libs.iteratee.Concurrent#unicast" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="unicast[E](onStart:play.api.libs.iteratee.Concurrent.Channel[E]=&gt;Unit,onComplete:=&gt;Unit,onError:(String,play.api.libs.iteratee.Input[E])=&gt;Unit):play.api.libs.iteratee.Enumerator[E]"></a>
-      <a id="unicast[E]((Channel[E])⇒Unit,⇒Unit,(String,Input[E])⇒Unit):Enumerator[E]"></a>
+      <a id="unicast[E](onStart:play.api.libs.iteratee.Concurrent.Channel[E]=&gt;Unit,onComplete:=&gt;Unit,onError:(String,play.api.libs.iteratee.Input[E])=&gt;Unit)(implicitec:scala.concurrent.ExecutionContext):play.api.libs.iteratee.Enumerator[E]{valpec:scala.concurrent.ExecutionContext}"></a>
+      <a id="unicast[E]((Channel[E])⇒Unit,⇒Unit,(String,Input[E])⇒Unit)(ExecutionContext):Enumerator[E]{valpec:scala.concurrent.ExecutionContext}"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">unicast</span><span class="tparams">[<span name="E">E</span>]</span><span class="params">(<span name="onStart">onStart: (<a href="Concurrent$$Channel.html" class="extype" name="play.api.libs.iteratee.Concurrent.Channel">Channel</a>[<span class="extype" name="play.api.libs.iteratee.Concurrent.unicast.E">E</span>]) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>, <span name="onComplete">onComplete: ⇒ <span class="extype" name="scala.Unit">Unit</span></span>, <span name="onError">onError: (<span class="extype" name="scala.Predef.String">String</span>, <a href="Input.html" class="extype" name="play.api.libs.iteratee.Input">Input</a>[<span class="extype" name="play.api.libs.iteratee.Concurrent.unicast.E">E</span>]) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <a href="Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.libs.iteratee.Concurrent.unicast.E">E</span>]</span>
+        <span class="name">unicast</span><span class="tparams">[<span name="E">E</span>]</span><span class="params">(<span name="onStart">onStart: (<a href="Concurrent$$Channel.html" class="extype" name="play.api.libs.iteratee.Concurrent.Channel">Channel</a>[<span class="extype" name="play.api.libs.iteratee.Concurrent.unicast.E">E</span>]) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>, <span name="onComplete">onComplete: ⇒ <span class="extype" name="scala.Unit">Unit</span> = <span class="symbol">()</span></span>, <span name="onError">onError: (<span class="extype" name="scala.Predef.String">String</span>, <a href="Input.html" class="extype" name="play.api.libs.iteratee.Input">Input</a>[<span class="extype" name="play.api.libs.iteratee.Concurrent.unicast.E">E</span>]) ⇒ <span class="extype" name="scala.Unit">Unit</span> = <span class="symbol">(_: String, _: Input[E]) =&gt; ()</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: <a href="Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.libs.iteratee.Concurrent.unicast.E">E</span>] { val pec: scala.concurrent.ExecutionContext }</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Create an enumerator that allows imperative style pushing of input into a single iteratee.</p><div class="fullcomment"><div class="comment cmt"><p>Create an enumerator that allows imperative style pushing of input into a single iteratee.</p><p>The enumerator may be used multiple times, each time will cause a new invocation of <code>onStart</code>, which will pass a
@@ -526,7 +540,7 @@ handle it within the given timeout, otherwise it drops it.
 there is no way for the caller to know which iteratee is finished or encountered an error in the <code>onComplete</code> or
 <code>onError</code> functions.
 </p></div><dl class="paramcmts block"><dt class="param">onStart</dt><dd class="cmt"><p>Called when an enumerator is applied to an iteratee, providing the channel to feed input into that
-               iteratee.</p></dd><dt class="param">onComplete</dt><dd class="cmt"><p>Called when an iteratee is done.</p></dd><dt class="param">onError</dt><dd class="cmt"><p>Called when an iteratee encounters an error, supplying the error and the input that caused the error.</p></dd><dt>returns</dt><dd class="cmt"><p>
+               iteratee.</p></dd><dt class="param">onComplete</dt><dd class="cmt"><p>Called when an iteratee is done.</p></dd><dt class="param">onError</dt><dd class="cmt"><p>Called when an iteratee encounters an error, supplying the error and the input that caused the error.</p></dd><dt class="param">ec</dt><dd class="cmt"><p>The context to execute the supplied functions with. The context is prepared on the calling thread before being used.
 </p></dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
@@ -541,7 +555,10 @@ there is no way for the caller to know which iteratee is finished or encountered
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -557,7 +574,10 @@ there is no way for the caller to know which iteratee is finished or encountered
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -573,7 +593,10 @@ there is no way for the caller to know which iteratee is finished or encountered
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li></ol>
@@ -581,26 +604,7 @@ there is no way for the caller to know which iteratee is finished or encountered
 
         
 
-        <div id="values" class="values members">
-              <h3>Deprecated Value Members</h3>
-              <ol><li name="play.api.libs.iteratee.Concurrent#hub" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="hub[E](e:play.api.libs.iteratee.Enumerator[E],interestIsDownToZero:()=&gt;Unit):play.api.libs.iteratee.Concurrent.Hub[E]"></a>
-      <a id="hub[E](Enumerator[E],()⇒Unit):Hub[E]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 2.1.0) use Concurrent.broadcast instead">hub</span><span class="tparams">[<span name="E">E</span>]</span><span class="params">(<span name="e">e: <a href="Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.libs.iteratee.Concurrent.hub.E">E</span>]</span>, <span name="interestIsDownToZero">interestIsDownToZero: () ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="result">: <a href="Concurrent$$Hub.html" class="extype" name="play.api.libs.iteratee.Concurrent.Hub">Hub</a>[<span class="extype" name="play.api.libs.iteratee.Concurrent.hub.E">E</span>]</span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.1.0)</i> use Concurrent.broadcast instead</p></dd></dl></div>
-    </li></ol>
-            </div>
+        
         </div>
 
         <div id="inheritedMembers">
@@ -624,7 +628,6 @@ there is no way for the caller to know which iteratee is finished or encountered
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-
-
+      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../lib/template.js"></script>
     </body>
       </html>

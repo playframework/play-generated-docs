@@ -92,14 +92,33 @@
 <ul class="blockList">
 <li class="blockList">
 <dl>
+<dt>All Implemented Interfaces:</dt>
+<dd>play.api.Plugin</dd>
+</dl>
+<dl>
 <dt>Direct Known Subclasses:</dt>
 <dd><a href="../play/db/ebean/EbeanPlugin.html" title="class in play.db.ebean">EbeanPlugin</a>, <a href="../play/db/jpa/JPAPlugin.html" title="class in play.db.jpa">JPAPlugin</a></dd>
 </dl>
 <hr>
 <br>
 <pre>public class <span class="strong">Plugin</span>
-extends java.lang.Object</pre>
-<div class="block">A Play plugin.</div>
+extends java.lang.Object
+implements play.api.Plugin</pre>
+<div class="block">A Play plugin.
+
+ A plugin must define a single argument constructor that accepts an <a href="../play/Application.html" title="class in play"><code>Application</code></a>, for example:
+
+ <pre>
+ public class MyPlugin extends Plugin {
+     private final Application app;
+     public MyPlugin(Application app) {
+         this.app = app;
+     }
+     public void onStart() {
+         Logger.info("Plugin started!");
+     }
+ }
+ </pre></div>
 </li>
 </ul>
 </div>
@@ -200,6 +219,10 @@ extends java.lang.Object</pre>
 <h4>onStart</h4>
 <pre>public&nbsp;void&nbsp;onStart()</pre>
 <div class="block">Called when the application starts.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code>onStart</code>&nbsp;in interface&nbsp;<code>play.api.Plugin</code></dd>
+</dl>
 </li>
 </ul>
 <a name="onStop()">
@@ -210,6 +233,10 @@ extends java.lang.Object</pre>
 <h4>onStop</h4>
 <pre>public&nbsp;void&nbsp;onStop()</pre>
 <div class="block">Called when the application stops.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code>onStop</code>&nbsp;in interface&nbsp;<code>play.api.Plugin</code></dd>
+</dl>
 </li>
 </ul>
 <a name="enabled()">
@@ -220,6 +247,10 @@ extends java.lang.Object</pre>
 <h4>enabled</h4>
 <pre>public&nbsp;boolean&nbsp;enabled()</pre>
 <div class="block">Is this plugin enabled.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code>enabled</code>&nbsp;in interface&nbsp;<code>play.api.Plugin</code></dd>
+</dl>
 </li>
 </ul>
 </li>

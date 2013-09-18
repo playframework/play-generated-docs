@@ -9,11 +9,6 @@
           
       <link href="../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
-      <script type="text/javascript" src="../../../lib/jquery.js" id="jquery-js"></script>
-      <script type="text/javascript" src="../../../lib/jquery-ui.js"></script>
-      <script type="text/javascript" src="../../../lib/template.js"></script>
-      <script type="text/javascript" src="../../../lib/tools.tooltip.js"></script>
-      
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../index.html';
@@ -29,24 +24,28 @@
         </head>
         <body class="type">
       <div id="definition">
-        <a href="CSRFFilter$.html" title="Go to companion"><img src="../../../lib/class_to_object_big.png" /></a>
+        <img src="../../../lib/class_big.png" />
         <p id="owner"><a href="../../package.html" class="extype" name="play">play</a>.<a href="../package.html" class="extype" name="play.filters">filters</a>.<a href="package.html" class="extype" name="play.filters.csrf">csrf</a></p>
-        <h1><a href="CSRFFilter$.html" title="Go to companion">CSRFFilter</a></h1>
+        <h1>CSRFFilter</h1>
       </div>
 
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">class</span>
+        <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">CSRFFilter</span><span class="result"> extends <a href="../../api/mvc/EssentialFilter.html" class="extype" name="play.api.mvc.EssentialFilter">EssentialFilter</a></span>
+        <span class="name">CSRFFilter</span><span class="params">(<span name="tokenName">tokenName: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">CSRFConf.TokenName</span></span>, <span name="cookieName">cookieName: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">CSRFConf.CookieName</span></span>, <span name="secureCookie">secureCookie: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">CSRFConf.SecureCookie</span></span>, <span name="createIfNotFound">createIfNotFound: (<a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span> = <span class="defval" name="{<br/>&amp;nbsp;&amp;nbsp;  ((request: play.api.mvc.RequestHeader) =&gt; CSRFConf.defaultCreateIfNotFound(request))<br/>&amp;nbsp;&amp;nbsp;}">...</span></span>)</span><span class="result"> extends <a href="../../api/mvc/EssentialFilter.html" class="extype" name="play.api.mvc.EssentialFilter">EssentialFilter</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/Play20/tree/2.2.x/framework/src/play-filters-helpers/src/main/scala/csrf.scala" target="_blank">csrf.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A filter that provides CSRF protection.
+</p></div><dl class="paramcmts block"><dt class="param">tokenName</dt><dd class="cmt"><p>The key used to store the token in the Play session.  Defaults to csrfToken.</p></dd><dt class="param">cookieName</dt><dd class="cmt"><p>If defined, causes the filter to store the token in a Cookie with this name instead of the session.</p></dd><dt class="param">secureCookie</dt><dd class="cmt"><p>If storing the token in a cookie, whether this Cookie should set the secure flag.  Defaults to
+                    whether the session cookie is configured to be secure.</p></dd><dt class="param">createIfNotFound</dt><dd class="cmt"><p>Whether a new CSRF token should be created if it's not found.  Default creates one if it's
+                        a GET request that accepts HTML.
+</p></dd></dl><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.2.x/framework/scratch/jenkins/workspace/play-2.2.x-apidocs/framework/src/play-filters-helpers/src/main/scala/play/filters/csrf/CSRFFilter.scala" target="_blank">CSRFFilter.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="../../api/mvc/EssentialFilter.html" class="extype" name="play.api.mvc.EssentialFilter">EssentialFilter</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <a href="../../api/mvc/EssentialFilter.html" class="extype" name="play.api.mvc.EssentialFilter">EssentialFilter</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -64,7 +63,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="play.filters.csrf.CSRFFilter"><span>CSRFFilter</span></li><li class="in" name="play.api.mvc.EssentialFilter"><span>EssentialFilter</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="play.filters.csrf.CSRFFilter"><span>CSRFFilter</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="play.api.mvc.EssentialFilter"><span>EssentialFilter</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -96,9 +95,10 @@
         <span class="name">CSRFFilter</span><span class="params">()</span>
       </span>
       </h4>
-      
-    </li><li name="play.filters.csrf.CSRFFilter#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(generator:()=&gt;play.filters.csrf.CSRF.Token):play.filters.csrf.CSRFFilter"></a>
+      <p class="shortcomment cmt">Default constructor, useful from Java
+</p>
+    </li><li name="play.filters.csrf.CSRFFilter#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="&lt;init&gt;(tokenName:String,cookieName:Option[String],secureCookie:Boolean,createIfNotFound:play.api.mvc.RequestHeader=&gt;Boolean):play.filters.csrf.CSRFFilter"></a>
       <a id="&lt;init&gt;:CSRFFilter"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -106,10 +106,13 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">CSRFFilter</span><span class="params">(<span name="generator">generator: () ⇒ <a href="CSRF$$Token.html" class="extype" name="play.filters.csrf.CSRF.Token">Token</a></span>)</span>
+        <span class="name">CSRFFilter</span><span class="params">(<span name="tokenName">tokenName: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">CSRFConf.TokenName</span></span>, <span name="cookieName">cookieName: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">CSRFConf.CookieName</span></span>, <span name="secureCookie">secureCookie: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">CSRFConf.SecureCookie</span></span>, <span name="createIfNotFound">createIfNotFound: (<a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span> = <span class="defval" name="{<br/>&amp;nbsp;&amp;nbsp;  ((request: play.api.mvc.RequestHeader) =&gt; CSRFConf.defaultCreateIfNotFound(request))<br/>&amp;nbsp;&amp;nbsp;}">...</span></span>)</span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">tokenName</dt><dd class="cmt"><p>The key used to store the token in the Play session.  Defaults to csrfToken.</p></dd><dt class="param">cookieName</dt><dd class="cmt"><p>If defined, causes the filter to store the token in a Cookie with this name instead of the session.</p></dd><dt class="param">secureCookie</dt><dd class="cmt"><p>If storing the token in a cookie, whether this Cookie should set the secure flag.  Defaults to
+                    whether the session cookie is configured to be secure.</p></dd><dt class="param">createIfNotFound</dt><dd class="cmt"><p>Whether a new CSRF token should be created if it's not found.  Default creates one if it's
+                        a GET request that accepts HTML.
+</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -210,46 +213,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="play.filters.csrf.CSRFFilter#checkFormUrlEncodedBody" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="checkFormUrlEncodedBody:(play.api.mvc.RequestHeader,play.filters.csrf.CSRF.Token,play.api.mvc.EssentialAction)=&gt;play.api.libs.iteratee.Iteratee[Array[Byte],play.api.mvc.Result]"></a>
-      <a id="checkFormUrlEncodedBody:(RequestHeader,Token,EssentialAction)⇒Iteratee[Array[Byte],Result]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">checkFormUrlEncodedBody</span><span class="result">: (<a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>, <a href="CSRF$$Token.html" class="extype" name="play.filters.csrf.CSRF.Token">Token</a>, <a href="../../api/mvc/EssentialAction.html" class="extype" name="play.api.mvc.EssentialAction">EssentialAction</a>) ⇒ <a href="../../api/libs/iteratee/Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>], <a href="../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>
-      </span>
-      </h4>
-      
-    </li><li name="play.filters.csrf.CSRFFilter#checkMultipart" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="checkMultipart:(play.api.mvc.RequestHeader,play.filters.csrf.CSRF.Token,play.api.mvc.EssentialAction)=&gt;play.api.libs.iteratee.Iteratee[Array[Byte],play.api.mvc.Result]"></a>
-      <a id="checkMultipart:(RequestHeader,Token,EssentialAction)⇒Iteratee[Array[Byte],Result]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">checkMultipart</span><span class="result">: (<a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>, <a href="CSRF$$Token.html" class="extype" name="play.filters.csrf.CSRF.Token">Token</a>, <a href="../../api/mvc/EssentialAction.html" class="extype" name="play.api.mvc.EssentialAction">EssentialAction</a>) ⇒ <a href="../../api/libs/iteratee/Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>], <a href="../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>
-      </span>
-      </h4>
-      
-    </li><li name="play.filters.csrf.CSRFFilter#checkTextBody" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="checkTextBody(request:play.api.mvc.RequestHeader,token:play.filters.csrf.CSRF.Token,next:play.api.mvc.EssentialAction):play.api.libs.iteratee.Iteratee[Array[Byte],play.api.mvc.Result]"></a>
-      <a id="checkTextBody(RequestHeader,Token,EssentialAction):Iteratee[Array[Byte],Result]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">checkTextBody</span><span class="params">(<span name="request">request: <a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>, <span name="token">token: <a href="CSRF$$Token.html" class="extype" name="play.filters.csrf.CSRF.Token">Token</a></span>, <span name="next">next: <a href="../../api/mvc/EssentialAction.html" class="extype" name="play.api.mvc.EssentialAction">EssentialAction</a></span>)</span><span class="result">: <a href="../../api/libs/iteratee/Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>], <a href="../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Attackers can use text/plain to exploit some CSRF attacks, using</p><div class="fullcomment"><div class="comment cmt"><p>Attackers can use text/plain to exploit some CSRF attacks, using</p><pre>&lt;form enctype=<span class="lit">"text/plain"</span>&gt;</pre><p>So check that too, however, only check the query string, as it doesn't really make sense to check the body.
-</p></div></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
@@ -262,10 +225,41 @@
         <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">java.lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.CloneNotSupportedException]">...</span>
+    </span>)</span>
               
         </dd></dl></div>
+    </li><li name="play.filters.csrf.CSRFFilter#cookieName" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="cookieName:Option[String]"></a>
+      <a id="cookieName:Option[String]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">cookieName</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">If defined, causes the filter to store the token in a Cookie with this name instead of the session.</p>
+    </li><li name="play.filters.csrf.CSRFFilter#createIfNotFound" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="createIfNotFound:play.api.mvc.RequestHeader=&gt;Boolean"></a>
+      <a id="createIfNotFound:(RequestHeader)⇒Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">createIfNotFound</span><span class="result">: (<a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Whether a new CSRF token should be created if it's not found.</p><div class="fullcomment"><div class="comment cmt"><p>Whether a new CSRF token should be created if it's not found.  Default creates one if it's
+                        a GET request that accepts HTML.
+</p></div></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -279,19 +273,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.AnyRef#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="equals(x$1:Any):Boolean"></a>
-      <a id="equals(Any):Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
@@ -304,8 +285,11 @@
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">java.lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[java.lang.Throwable]</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -318,19 +302,6 @@
       </span>
       <span class="symbol">
         <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="hashCode():Int"></a>
-      <a id="hashCode():Int"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -386,6 +357,20 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="play.filters.csrf.CSRFFilter#secureCookie" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="secureCookie:Boolean"></a>
+      <a id="secureCookie:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">secureCookie</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">If storing the token in a cookie, whether this Cookie should set the secure flag.</p><div class="fullcomment"><div class="comment cmt"><p>If storing the token in a cookie, whether this Cookie should set the secure flag.  Defaults to
+                    whether the session cookie is configured to be secure.</p></div></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -399,19 +384,19 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.AnyRef#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="toString():String"></a>
-      <a id="toString():String"></a>
+    </li><li name="play.filters.csrf.CSRFFilter#tokenName" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="tokenName:String"></a>
+      <a id="tokenName:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">def</span>
+        <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+        <span class="name">tokenName</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+      <p class="shortcomment cmt">The key used to store the token in the Play session.</p><div class="fullcomment"><div class="comment cmt"><p>The key used to store the token in the Play session.  Defaults to csrfToken.</p></div></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
@@ -425,7 +410,10 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -441,7 +429,10 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -457,7 +448,10 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li></ol>
@@ -469,7 +463,15 @@
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="play.api.mvc.EssentialFilter">
+        <div class="parent" name="scala.Serializable">
+              <h3>Inherited from <span class="extype" name="scala.Serializable">Serializable</span></h3>
+            </div><div class="parent" name="java.io.Serializable">
+              <h3>Inherited from <span class="extype" name="java.io.Serializable">Serializable</span></h3>
+            </div><div class="parent" name="scala.Product">
+              <h3>Inherited from <span class="extype" name="scala.Product">Product</span></h3>
+            </div><div class="parent" name="scala.Equals">
+              <h3>Inherited from <span class="extype" name="scala.Equals">Equals</span></h3>
+            </div><div class="parent" name="play.api.mvc.EssentialFilter">
               <h3>Inherited from <a href="../../api/mvc/EssentialFilter.html" class="extype" name="play.api.mvc.EssentialFilter">EssentialFilter</a></h3>
             </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
@@ -491,7 +493,6 @@
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-
-
+      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../lib/template.js"></script>
     </body>
       </html>

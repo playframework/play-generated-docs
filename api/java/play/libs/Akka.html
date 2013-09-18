@@ -133,14 +133,18 @@ extends java.lang.Object</pre>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>static &lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;A&gt;</code></td>
-<td class="colLast"><code><strong><a href="../../play/libs/Akka.html#asPromise(scala.concurrent.Future)">asPromise</a></strong>(scala.concurrent.Future&lt;A&gt;&nbsp;akkaFuture)</code>
-<div class="block">Transform this Akka future to a Play Promise.</div>
+<td class="colLast"><code><strong><a href="../../play/libs/Akka.html#asPromise(scala.concurrent.Future)">asPromise</a></strong>(scala.concurrent.Future&lt;A&gt;&nbsp;future)</code>
+<div class="block"><strong>Deprecated.</strong>&nbsp;
+<div class="block"><i>Since 2.2. Use <a href="../../play/libs/F.Promise.html#wrap(scala.concurrent.Future)"><code>F.Promise.wrap(Future)</code></a> instead.</i></div>
+</div>
 </td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>static &lt;T&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;T&gt;</code></td>
 <td class="colLast"><code><strong><a href="../../play/libs/Akka.html#future(java.util.concurrent.Callable)">future</a></strong>(java.util.concurrent.Callable&lt;T&gt;&nbsp;callable)</code>
-<div class="block">Executes a block of code asynchronously in the application Akka Actor system.</div>
+<div class="block"><strong>Deprecated.</strong>&nbsp;
+<div class="block"><i>Since 2.2. Use <code>Promise#promise(Function0)</code> instead.</i></div>
+</div>
 </td>
 </tr>
 <tr class="altColor">
@@ -154,7 +158,9 @@ extends java.lang.Object</pre>
 <td class="colLast"><code><strong><a href="../../play/libs/Akka.html#timeout(java.util.concurrent.Callable, java.lang.Long, java.util.concurrent.TimeUnit)">timeout</a></strong>(java.util.concurrent.Callable&lt;T&gt;&nbsp;callable,
        java.lang.Long&nbsp;duration,
        java.util.concurrent.TimeUnit&nbsp;unit)</code>
-<div class="block">Returns a Promise which is redeemed after a period of time.</div>
+<div class="block"><strong>Deprecated.</strong>&nbsp;
+<div class="block"><i>Since 2.2. Use <code>Promise#delayed(Function0,long,TimeUnit)</code> instead.</i></div>
+</div>
 </td>
 </tr>
 </table>
@@ -202,8 +208,10 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>asPromise</h4>
-<pre>public static&nbsp;&lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;A&gt;&nbsp;asPromise(scala.concurrent.Future&lt;A&gt;&nbsp;akkaFuture)</pre>
-<div class="block">Transform this Akka future to a Play Promise.</div>
+<pre>@Deprecated
+public static&nbsp;&lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;A&gt;&nbsp;asPromise(scala.concurrent.Future&lt;A&gt;&nbsp;future)</pre>
+<div class="block"><span class="strong">Deprecated.</span>&nbsp;<i>Since 2.2. Use <a href="../../play/libs/F.Promise.html#wrap(scala.concurrent.Future)"><code>F.Promise.wrap(Future)</code></a> instead.</i></div>
+<div class="block">Transforms a Scala Future into a Play Promise.</div>
 </li>
 </ul>
 <a name="system()">
@@ -222,7 +230,9 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>future</h4>
-<pre>public static&nbsp;&lt;T&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;T&gt;&nbsp;future(java.util.concurrent.Callable&lt;T&gt;&nbsp;callable)</pre>
+<pre>@Deprecated
+public static&nbsp;&lt;T&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;T&gt;&nbsp;future(java.util.concurrent.Callable&lt;T&gt;&nbsp;callable)</pre>
+<div class="block"><span class="strong">Deprecated.</span>&nbsp;<i>Since 2.2. Use <code>Promise#promise(Function0)</code> instead.</i></div>
 <div class="block">Executes a block of code asynchronously in the application Akka Actor system.</div>
 </li>
 </ul>
@@ -232,9 +242,11 @@ extends java.lang.Object</pre>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>timeout</h4>
-<pre>public static&nbsp;&lt;T&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;T&gt;&nbsp;timeout(java.util.concurrent.Callable&lt;T&gt;&nbsp;callable,
-                       java.lang.Long&nbsp;duration,
-                       java.util.concurrent.TimeUnit&nbsp;unit)</pre>
+<pre>@Deprecated
+public static&nbsp;&lt;T&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;T&gt;&nbsp;timeout(java.util.concurrent.Callable&lt;T&gt;&nbsp;callable,
+                                  java.lang.Long&nbsp;duration,
+                                  java.util.concurrent.TimeUnit&nbsp;unit)</pre>
+<div class="block"><span class="strong">Deprecated.</span>&nbsp;<i>Since 2.2. Use <code>Promise#delayed(Function0,long,TimeUnit)</code> instead.</i></div>
 <div class="block">Returns a Promise which is redeemed after a period of time.</div>
 </li>
 </ul>

@@ -9,11 +9,6 @@
           
       <link href="../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
-      <script type="text/javascript" src="../../../../lib/jquery.js" id="jquery-js"></script>
-      <script type="text/javascript" src="../../../../lib/jquery-ui.js"></script>
-      <script type="text/javascript" src="../../../../lib/template.js"></script>
-      <script type="text/javascript" src="../../../../lib/tools.tooltip.js"></script>
-      
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../../index.html';
@@ -45,7 +40,7 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Defines Evolutions utilities functions.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/Play20/tree/2.2.x/framework/src/play-jdbc/src/main/scala/play/api/db/evolutions/Evolutions.scala" target="_blank">Evolutions.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.2.x/framework/scratch/jenkins/workspace/play-2.2.x-apidocs/framework/src/play-jdbc/src/main/scala/play/api/db/evolutions/Evolutions.scala" target="_blank">Evolutions.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -169,7 +164,7 @@
       </span>
       </h4>
       <p class="shortcomment cmt">Reads the evolutions from the application.</p><div class="fullcomment"><div class="comment cmt"><p>Reads the evolutions from the application.
-</p></div><dl class="paramcmts block"><dt class="param">db</dt><dd class="cmt"><p>the database name
+</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>the application path</p></dd><dt class="param">applicationClassloader</dt><dd class="cmt"><p>the classloader used to load the driver</p></dd><dt class="param">db</dt><dd class="cmt"><p>the database name
 </p></dd></dl></div>
     </li><li name="play.api.db.evolutions.Evolutions#applyFor" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="applyFor(dbName:String,path:java.io.File):Unit"></a>
@@ -239,10 +234,28 @@
         <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">java.lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.CloneNotSupportedException]">...</span>
+    </span>)</span>
               
         </dd></dl></div>
+    </li><li name="play.api.db.evolutions.Evolutions#conflictings" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="conflictings(downRest:Seq[play.api.db.evolutions.Evolution],upRest:Seq[play.api.db.evolutions.Evolution]):(Seq[play.api.db.evolutions.Evolution],Seq[play.api.db.evolutions.Evolution])"></a>
+      <a id="conflictings(Seq[Evolution],Seq[Evolution]):(Seq[Evolution],Seq[Evolution])"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">conflictings</span><span class="params">(<span name="downRest">downRest: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="play.api.db.evolutions.Evolution">Evolution</span>]</span>, <span name="upRest">upRest: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="play.api.db.evolutions.Evolution">Evolution</span>]</span>)</span><span class="result">: (<span class="extype" name="scala.collection.Seq">Seq</span>[<span class="extype" name="play.api.db.evolutions.Evolution">Evolution</span>], <span class="extype" name="scala.collection.Seq">Seq</span>[<span class="extype" name="play.api.db.evolutions.Evolution">Evolution</span>])</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Compares the two evolution sequences.</p><div class="fullcomment"><div class="comment cmt"><p>Compares the two evolution sequences.
+</p></div><dl class="paramcmts block"><dt class="param">downRest</dt><dd class="cmt"><p>the seq of downs</p></dd><dt class="param">upRest</dt><dd class="cmt"><p>the seq of ups</p></dd><dt>returns</dt><dd class="cmt"><p>the downs and ups to run to have the db synced to the current stage
+</p></dd></dl></div>
     </li><li name="play.api.db.evolutions.Evolutions#databaseEvolutions" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="databaseEvolutions(api:play.api.db.DBApi,db:String):Seq[play.api.db.evolutions.Evolution]"></a>
       <a id="databaseEvolutions(DBApi,String):Seq[Evolution]"></a>
@@ -297,7 +310,7 @@
       </span>
       </h4>
       <p class="shortcomment cmt">Computes the evolution script.</p><div class="fullcomment"><div class="comment cmt"><p>Computes the evolution script.
-</p></div><dl class="paramcmts block"><dt class="param">api</dt><dd class="cmt"><p>the <code>DBApi</code> to use</p></dd><dt class="param">db</dt><dd class="cmt"><p>the database name
+</p></div><dl class="paramcmts block"><dt class="param">api</dt><dd class="cmt"><p>the <code>DBApi</code> to use</p></dd><dt class="param">path</dt><dd class="cmt"><p>the application path</p></dd><dt class="param">applicationClassloader</dt><dd class="cmt"><p>the classloader used to load the driver</p></dd><dt class="param">db</dt><dd class="cmt"><p>the database name</p></dd><dt>returns</dt><dd class="cmt"><p>evolution scripts
 </p></dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
@@ -311,8 +324,11 @@
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">java.lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[java.lang.Throwable]</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -434,7 +450,7 @@
       </span>
       </h4>
       <p class="shortcomment cmt">Translates an evolution script to something human-readable.</p><div class="fullcomment"><div class="comment cmt"><p>Translates an evolution script to something human-readable.
-</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a formatted script
+</p></div><dl class="paramcmts block"><dt class="param">script</dt><dd class="cmt"><p>the script</p></dd><dt>returns</dt><dd class="cmt"><p>a formatted script
 </p></dd></dl></div>
     </li><li name="scala.AnyRef#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
@@ -475,7 +491,10 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -491,7 +510,10 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -507,7 +529,10 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li></ol>
@@ -539,7 +564,6 @@
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-
-
+      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../lib/template.js"></script>
     </body>
       </html>

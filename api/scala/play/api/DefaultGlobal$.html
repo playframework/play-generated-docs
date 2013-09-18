@@ -9,11 +9,6 @@
           
       <link href="../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
-      <script type="text/javascript" src="../../lib/jquery.js" id="jquery-js"></script>
-      <script type="text/javascript" src="../../lib/jquery-ui.js"></script>
-      <script type="text/javascript" src="../../lib/template.js"></script>
-      <script type="text/javascript" src="../../lib/tools.tooltip.js"></script>
-      
       <script type="text/javascript">
          if(top === self) {
             var url = '../../index.html';
@@ -45,7 +40,7 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>The default global settings if not defined in the application.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/Play20/tree/2.2.x/framework/src/play/src/main/scala/play/api/GlobalSettings.scala" target="_blank">GlobalSettings.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.2.x/framework/scratch/jenkins/workspace/play-2.2.x-apidocs/framework/src/play/src/main/scala/play/api/GlobalSettings.scala" target="_blank">GlobalSettings.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="GlobalSettings.html" class="extype" name="play.api.GlobalSettings">GlobalSettings</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -196,8 +191,11 @@
         <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">java.lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.CloneNotSupportedException]">...</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="play.api.GlobalSettings#configuration" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -216,7 +214,7 @@
 onConfigLoad, so if you override that, this won't be invoked.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GlobalSettings.html" class="extype" name="play.api.GlobalSettings">GlobalSettings</a></dd></dl></div>
     </li><li name="play.api.GlobalSettings#doFilter" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="doFilter(a:play.api.mvc.EssentialAction):play.api.mvc.EssentialAction"></a>
+      <a id="doFilter(next:play.api.mvc.EssentialAction):play.api.mvc.EssentialAction"></a>
       <a id="doFilter(EssentialAction):EssentialAction"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -224,10 +222,25 @@ onConfigLoad, so if you override that, this won't be invoked.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">doFilter</span><span class="params">(<span name="a">a: <a href="mvc/EssentialAction.html" class="extype" name="play.api.mvc.EssentialAction">EssentialAction</a></span>)</span><span class="result">: <a href="mvc/EssentialAction.html" class="extype" name="play.api.mvc.EssentialAction">EssentialAction</a></span>
+        <span class="name">doFilter</span><span class="params">(<span name="next">next: <a href="mvc/EssentialAction.html" class="extype" name="play.api.mvc.EssentialAction">EssentialAction</a></span>)</span><span class="result">: <a href="mvc/EssentialAction.html" class="extype" name="play.api.mvc.EssentialAction">EssentialAction</a></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Called Just before the action is used.</p><div class="fullcomment"><div class="comment cmt"><p>Called Just before the action is used.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GlobalSettings.html" class="extype" name="play.api.GlobalSettings">GlobalSettings</a></dd></dl></div>
+      <p class="shortcomment cmt">Filters for EssentialAction.</p><div class="fullcomment"><div class="comment cmt"><p>Filters for EssentialAction.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GlobalSettings.html" class="extype" name="play.api.GlobalSettings">GlobalSettings</a></dd></dl></div>
+    </li><li name="play.api.GlobalSettings#doFilter" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="doFilter(next:play.api.mvc.RequestHeader=&gt;play.api.mvc.Handler):play.api.mvc.RequestHeader=&gt;play.api.mvc.Handler"></a>
+      <a id="doFilter((RequestHeader)⇒Handler):(RequestHeader)⇒Handler"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">doFilter</span><span class="params">(<span name="next">next: (<a href="mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <a href="mvc/Handler.html" class="extype" name="play.api.mvc.Handler">Handler</a></span>)</span><span class="result">: (<a href="mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <a href="mvc/Handler.html" class="extype" name="play.api.mvc.Handler">Handler</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Filters.</p><div class="fullcomment"><div class="comment cmt"><p>Filters.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GlobalSettings.html" class="extype" name="play.api.GlobalSettings">GlobalSettings</a></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -266,8 +279,11 @@ onConfigLoad, so if you override that, this won't be invoked.
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">java.lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[java.lang.Throwable]</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -364,45 +380,45 @@ onConfigLoad, so if you override that, this won't be invoked.
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="play.api.GlobalSettings#onBadRequest" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="onBadRequest(request:play.api.mvc.RequestHeader,error:String):play.api.mvc.Result"></a>
-      <a id="onBadRequest(RequestHeader,String):Result"></a>
+      <a id="onBadRequest(request:play.api.mvc.RequestHeader,error:String):scala.concurrent.Future[play.api.mvc.SimpleResult]"></a>
+      <a id="onBadRequest(RequestHeader,String):Future[SimpleResult]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">onBadRequest</span><span class="params">(<span name="request">request: <a href="mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>, <span name="error">error: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>
+        <span class="name">onBadRequest</span><span class="params">(<span name="request">request: <a href="mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>, <span name="error">error: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Called when an action has been found, but the request parsing has failed.</p><div class="fullcomment"><div class="comment cmt"><p>Called when an action has been found, but the request parsing has failed.</p><p>The default is to send the framework default 400 page.
 </p></div><dl class="paramcmts block"><dt class="param">request</dt><dd class="cmt"><p>the HTTP request header</p></dd><dt>returns</dt><dd class="cmt"><p>the result to send to the client
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GlobalSettings.html" class="extype" name="play.api.GlobalSettings">GlobalSettings</a></dd></dl></div>
     </li><li name="play.api.GlobalSettings#onError" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="onError(request:play.api.mvc.RequestHeader,ex:Throwable):play.api.mvc.Result"></a>
-      <a id="onError(RequestHeader,Throwable):Result"></a>
+      <a id="onError(request:play.api.mvc.RequestHeader,ex:Throwable):scala.concurrent.Future[play.api.mvc.SimpleResult]"></a>
+      <a id="onError(RequestHeader,Throwable):Future[SimpleResult]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">onError</span><span class="params">(<span name="request">request: <a href="mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>, <span name="ex">ex: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <a href="mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>
+        <span class="name">onError</span><span class="params">(<span name="request">request: <a href="mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>, <span name="ex">ex: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Called when an exception occurred.</p><div class="fullcomment"><div class="comment cmt"><p>Called when an exception occurred.</p><p>The default is to send the framework default error page.
 </p></div><dl class="paramcmts block"><dt class="param">request</dt><dd class="cmt"><p>The HTTP request header</p></dd><dt class="param">ex</dt><dd class="cmt"><p>The exception</p></dd><dt>returns</dt><dd class="cmt"><p>The result to send to the client
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GlobalSettings.html" class="extype" name="play.api.GlobalSettings">GlobalSettings</a></dd></dl></div>
     </li><li name="play.api.GlobalSettings#onHandlerNotFound" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="onHandlerNotFound(request:play.api.mvc.RequestHeader):play.api.mvc.Result"></a>
-      <a id="onHandlerNotFound(RequestHeader):Result"></a>
+      <a id="onHandlerNotFound(request:play.api.mvc.RequestHeader):scala.concurrent.Future[play.api.mvc.SimpleResult]"></a>
+      <a id="onHandlerNotFound(RequestHeader):Future[SimpleResult]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">onHandlerNotFound</span><span class="params">(<span name="request">request: <a href="mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>)</span><span class="result">: <a href="mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>
+        <span class="name">onHandlerNotFound</span><span class="params">(<span name="request">request: <a href="mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="mvc/SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Called when no action was found to serve a request.</p><div class="fullcomment"><div class="comment cmt"><p>Called when no action was found to serve a request.</p><p>The default is to send the framework default 404 page.
@@ -436,6 +452,21 @@ onConfigLoad, so if you override that, this won't be invoked.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GlobalSettings.html" class="extype" name="play.api.GlobalSettings">GlobalSettings</a></dd></dl></div>
+    </li><li name="play.api.GlobalSettings#onRequestReceived" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="onRequestReceived(request:play.api.mvc.RequestHeader):(play.api.mvc.RequestHeader,play.api.mvc.Handler)"></a>
+      <a id="onRequestReceived(RequestHeader):(RequestHeader,Handler)"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">onRequestReceived</span><span class="params">(<span name="request">request: <a href="mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>)</span><span class="result">: (<a href="mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>, <a href="mvc/Handler.html" class="extype" name="play.api.mvc.Handler">Handler</a>)</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Retrieve the (RequestHeader,Handler) to use to serve this request.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieve the (RequestHeader,Handler) to use to serve this request.
+Default is: route, tag request, then apply filters
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GlobalSettings.html" class="extype" name="play.api.GlobalSettings">GlobalSettings</a></dd></dl></div>
     </li><li name="play.api.GlobalSettings#onRouteRequest" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="onRouteRequest(request:play.api.mvc.RequestHeader):Option[play.api.mvc.Handler]"></a>
       <a id="onRouteRequest(RequestHeader):Option[Handler]"></a>
@@ -449,7 +480,7 @@ onConfigLoad, so if you override that, this won't be invoked.
       </span>
       </h4>
       <p class="shortcomment cmt">Called when an HTTP request has been received.</p><div class="fullcomment"><div class="comment cmt"><p>Called when an HTTP request has been received.</p><p>The default is to use the application router to find the appropriate action.
-</p></div><dl class="paramcmts block"><dt class="param">request</dt><dd class="cmt"><p>the HTTP request header (the body has not been parsed yet)</p></dd><dt>returns</dt><dd class="cmt"><p>an action to handle this request - if no action is returned, a 404 not found result will be sent to client</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GlobalSettings.html" class="extype" name="play.api.GlobalSettings">GlobalSettings</a></dd><dt>See also</dt><dd><span class="cmt"><p>onActionNotFound
+</p></div><dl class="paramcmts block"><dt class="param">request</dt><dd class="cmt"><p>the HTTP request header (the body has not been parsed yet)</p></dd><dt>returns</dt><dd class="cmt"><p>an action to handle this request - if no action is returned, a 404 not found result will be sent to client</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GlobalSettings.html" class="extype" name="play.api.GlobalSettings">GlobalSettings</a></dd><dt>See also</dt><dd><span class="cmt"><p>onHandlerNotFound
 </p></span></dd></dl></div>
     </li><li name="play.api.GlobalSettings#onStart" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="onStart(app:play.api.Application):Unit"></a>
@@ -520,7 +551,10 @@ onConfigLoad, so if you override that, this won't be invoked.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -536,7 +570,10 @@ onConfigLoad, so if you override that, this won't be invoked.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -552,7 +589,10 @@ onConfigLoad, so if you override that, this won't be invoked.
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">()</span>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
               
         </dd></dl></div>
     </li></ol>
@@ -586,7 +626,6 @@ onConfigLoad, so if you override that, this won't be invoked.
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-
-
+      <script defer="defer" type="text/javascript" id="jquery-js" src="../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../lib/template.js"></script>
     </body>
       </html>
