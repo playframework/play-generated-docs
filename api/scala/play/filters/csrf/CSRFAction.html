@@ -81,7 +81,7 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="play.filters.csrf.CSRFAction#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(next:play.api.mvc.EssentialAction,tokenName:String,cookieName:Option[String],secureCookie:Boolean,createIfNotFound:play.api.mvc.RequestHeader=&gt;Boolean):play.filters.csrf.CSRFAction"></a>
+      <a id="&lt;init&gt;(next:play.api.mvc.EssentialAction,tokenName:String,cookieName:Option[String],secureCookie:Boolean,createIfNotFound:play.api.mvc.RequestHeader=&gt;Boolean,tokenProvider:play.filters.csrf.CSRF.TokenProvider):play.filters.csrf.CSRFAction"></a>
       <a id="&lt;init&gt;:CSRFAction"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -89,13 +89,13 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">CSRFAction</span><span class="params">(<span name="next">next: <a href="../../api/mvc/EssentialAction.html" class="extype" name="play.api.mvc.EssentialAction">EssentialAction</a></span>, <span name="tokenName">tokenName: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">CSRFConf.TokenName</span></span>, <span name="cookieName">cookieName: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">CSRFConf.CookieName</span></span>, <span name="secureCookie">secureCookie: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">CSRFConf.SecureCookie</span></span>, <span name="createIfNotFound">createIfNotFound: (<a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span> = <span class="defval" name="{<br/>&amp;nbsp;&amp;nbsp;  ((request: play.api.mvc.RequestHeader) =&gt; CSRFConf.defaultCreateIfNotFound(request))<br/>&amp;nbsp;&amp;nbsp;}">...</span></span>)</span>
+        <span class="name">CSRFAction</span><span class="params">(<span name="next">next: <a href="../../api/mvc/EssentialAction.html" class="extype" name="play.api.mvc.EssentialAction">EssentialAction</a></span>, <span name="tokenName">tokenName: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">CSRFConf.TokenName</span></span>, <span name="cookieName">cookieName: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">CSRFConf.CookieName</span></span>, <span name="secureCookie">secureCookie: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">CSRFConf.SecureCookie</span></span>, <span name="createIfNotFound">createIfNotFound: (<a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span> = <span class="defval" name="{<br/>&amp;nbsp;&amp;nbsp;  ((request: play.api.mvc.RequestHeader) =&gt; CSRFConf.defaultCreateIfNotFound(request))<br/>&amp;nbsp;&amp;nbsp;}">...</span></span>, <span name="tokenProvider">tokenProvider: <a href="CSRF$$TokenProvider.html" class="extype" name="play.filters.csrf.CSRF.TokenProvider">TokenProvider</a> = <span class="symbol">CSRFConf.defaultTokenProvider</span></span>)</span>
       </span>
       </h4>
       <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">next</dt><dd class="cmt"><p>The composed action that is being protected.
 </p></dd><dt class="param">tokenName</dt><dd class="cmt"><p>The key used to store the token in the Play session.  Defaults to csrfToken.</p></dd><dt class="param">cookieName</dt><dd class="cmt"><p>If defined, causes the filter to store the token in a Cookie with this name instead of the session.</p></dd><dt class="param">secureCookie</dt><dd class="cmt"><p>If storing the token in a cookie, whether this Cookie should set the secure flag.  Defaults to
                     whether the session cookie is configured to be secure.</p></dd><dt class="param">createIfNotFound</dt><dd class="cmt"><p>Whether a new CSRF token should be created if it's not found.  Default creates one if it's
-                        a GET request that accepts HTML.</p></dd></dl></div>
+                        a GET request that accepts HTML.</p></dd><dt class="param">tokenProvider</dt><dd class="cmt"><p>A token provider to use.</p></dd></dl></div>
     </li></ol>
             </div>
 
