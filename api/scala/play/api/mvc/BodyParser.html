@@ -409,6 +409,21 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Function1 → AnyRef → Any</dd></dl></div>
+    </li><li name="play.api.mvc.BodyParser#validate" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="validate[B](f:A=&gt;Either[play.api.mvc.SimpleResult,B]):play.api.mvc.BodyParser[B]"></a>
+      <a id="validate[B]((A)⇒Either[SimpleResult,B]):BodyParser[B]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">validate</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="f">f: (<span class="extype" name="play.api.mvc.BodyParser.A">A</span>) ⇒ <span class="extype" name="scala.Either">Either</span>[<a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>, <span class="extype" name="play.api.mvc.BodyParser.validate.B">B</span>]</span>)</span><span class="result">: <a href="" class="extype" name="play.api.mvc.BodyParser">BodyParser</a>[<span class="extype" name="play.api.mvc.BodyParser.validate.B">B</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Validate the result of this BodyParser[A] to create a BodyParser[B]</p><div class="fullcomment"><div class="comment cmt"><p>Validate the result of this BodyParser[A] to create a BodyParser[B]</p><p>Example:</p><pre><span class="kw">def</span> validateJson[A : Reads] = parse.json.validate(
+_.validate[A].asEither.left.map(e <span class="kw">=&gt;</span> BadRequest(JsError.toFlatJson(e)))
+)</pre></div></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
