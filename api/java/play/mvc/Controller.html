@@ -187,72 +187,78 @@ implements <a href="../../play/mvc/Http.Status.html" title="interface in play.mv
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>static boolean</code></td>
-<td class="colLast"><code><strong><a href="../../play/mvc/Controller.html#changeLang(java.lang.String)">changeLang</a></strong>(java.lang.String&nbsp;code)</code>
+<td class="colLast"><code><strong><a href="../../play/mvc/Controller.html#changeLang(play.i18n.Lang)">changeLang</a></strong>(<a href="../../play/i18n/Lang.html" title="class in play.i18n">Lang</a>&nbsp;lang)</code>
 <div class="block">Change durably the lang for the current user</div>
 </td>
 </tr>
 <tr class="rowColor">
+<td class="colFirst"><code>static boolean</code></td>
+<td class="colLast"><code><strong><a href="../../play/mvc/Controller.html#changeLang(java.lang.String)">changeLang</a></strong>(java.lang.String&nbsp;code)</code>
+<div class="block">Change durably the lang for the current user</div>
+</td>
+</tr>
+<tr class="altColor">
 <td class="colFirst"><code>static void</code></td>
 <td class="colLast"><code><strong><a href="../../play/mvc/Controller.html#clearLang()">clearLang</a></strong>()</code>
 <div class="block">Clear the lang for the current user.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>static <a href="../../play/mvc/Http.Context.html" title="class in play.mvc">Http.Context</a></code></td>
 <td class="colLast"><code><strong><a href="../../play/mvc/Controller.html#ctx()">ctx</a></strong>()</code>
 <div class="block">Returns the current HTTP context.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>static <a href="../../play/mvc/Http.Flash.html" title="class in play.mvc">Http.Flash</a></code></td>
 <td class="colLast"><code><strong><a href="../../play/mvc/Controller.html#flash()">flash</a></strong>()</code>
 <div class="block">Returns the current HTTP flash scope.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><strong><a href="../../play/mvc/Controller.html#flash(java.lang.String)">flash</a></strong>(java.lang.String&nbsp;key)</code>
 <div class="block">Returns a value from the flash scope.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>static void</code></td>
 <td class="colLast"><code><strong><a href="../../play/mvc/Controller.html#flash(java.lang.String, java.lang.String)">flash</a></strong>(java.lang.String&nbsp;key,
      java.lang.String&nbsp;value)</code>
 <div class="block">Puts a new value into the flash scope.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>static <a href="../../play/i18n/Lang.html" title="class in play.i18n">Lang</a></code></td>
 <td class="colLast"><code><strong><a href="../../play/mvc/Controller.html#lang()">lang</a></strong>()</code>
 <div class="block">Returns the current lang.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>static <a href="../../play/mvc/Http.Request.html" title="class in play.mvc">Http.Request</a></code></td>
 <td class="colLast"><code><strong><a href="../../play/mvc/Controller.html#request()">request</a></strong>()</code>
 <div class="block">Returns the current HTTP request.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>static <a href="../../play/mvc/Http.Response.html" title="class in play.mvc">Http.Response</a></code></td>
 <td class="colLast"><code><strong><a href="../../play/mvc/Controller.html#response()">response</a></strong>()</code>
 <div class="block">Returns the current HTTP response.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>static <a href="../../play/mvc/Http.Session.html" title="class in play.mvc">Http.Session</a></code></td>
 <td class="colLast"><code><strong><a href="../../play/mvc/Controller.html#session()">session</a></strong>()</code>
 <div class="block">Returns the current HTTP session.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
 <td class="colLast"><code><strong><a href="../../play/mvc/Controller.html#session(java.lang.String)">session</a></strong>(java.lang.String&nbsp;key)</code>
 <div class="block">Returns a value from the session.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>static void</code></td>
 <td class="colLast"><code><strong><a href="../../play/mvc/Controller.html#session(java.lang.String, java.lang.String)">session</a></strong>(java.lang.String&nbsp;key,
        java.lang.String&nbsp;value)</code>
@@ -344,6 +350,18 @@ implements <a href="../../play/mvc/Http.Status.html" title="interface in play.mv
 <pre>public static&nbsp;boolean&nbsp;changeLang(java.lang.String&nbsp;code)</pre>
 <div class="block">Change durably the lang for the current user</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>code</code> - New lang code to use (e.g. "fr", "en_US", etc.)</dd>
+<dt><span class="strong">Returns:</span></dt><dd>true if the requested lang was supported by the application, otherwise false.</dd></dl>
+</li>
+</ul>
+<a name="changeLang(play.i18n.Lang)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>changeLang</h4>
+<pre>public static&nbsp;boolean&nbsp;changeLang(<a href="../../play/i18n/Lang.html" title="class in play.i18n">Lang</a>&nbsp;lang)</pre>
+<div class="block">Change durably the lang for the current user</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>lang</code> - New Lang object to use</dd>
 <dt><span class="strong">Returns:</span></dt><dd>true if the requested lang was supported by the application, otherwise false.</dd></dl>
 </li>
 </ul>
