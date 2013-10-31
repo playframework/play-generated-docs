@@ -24,7 +24,7 @@
         </head>
         <body class="type">
       <div id="definition">
-        <img src="../../../lib/class_big.png" />
+        <img src="../../../lib/trait_big.png" />
         <p id="owner"><a href="../../package.html" class="extype" name="play">play</a>.<a href="../package.html" class="extype" name="play.api">api</a>.<a href="package.html" class="extype" name="play.api.i18n">i18n</a></p>
         <h1>MessagesPlugin</h1>
       </div>
@@ -32,7 +32,7 @@
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">class</span>
+        <span class="kind">trait</span>
       </span>
       <span class="symbol">
         <span class="name">MessagesPlugin</span><span class="result"> extends <a href="../Plugin.html" class="extype" name="play.api.Plugin">Plugin</a></span>
@@ -43,6 +43,9 @@
 </p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play/src/main/scala/play/api/i18n/Messages.scala" target="_blank">Messages.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="../Plugin.html" class="extype" name="play.api.Plugin">Plugin</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+        </div><div class="toggleContainer block">
+          <span class="toggle">Known Subclasses</span>
+          <div class="subClasses hiddenContent"><a href="DefaultMessagesPlugin.html" class="extype" name="play.api.i18n.DefaultMessagesPlugin">DefaultMessagesPlugin</a></div>
         </div></div>
         
 
@@ -78,30 +81,30 @@
 
       <div id="template">
         <div id="allMembers">
-        <div id="constructors" class="members">
-              <h3>Instance Constructors</h3>
-              <ol><li name="play.api.i18n.MessagesPlugin#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(app:play.api.Application):play.api.i18n.MessagesPlugin"></a>
-      <a id="&lt;init&gt;:MessagesPlugin"></a>
+        
+
+        
+
+        <div id="values" class="values members">
+              <h3>Abstract Value Members</h3>
+              <ol><li name="play.api.i18n.MessagesPlugin#api" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="api:play.api.i18n.MessagesApi"></a>
+      <a id="api:MessagesApi"></a>
       <h4 class="signature">
       <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">new</span>
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">MessagesPlugin</span><span class="params">(<span name="app">app: <a href="../Application.html" class="extype" name="play.api.Application">Application</a></span>)</span>
+        <span class="name">api</span><span class="result">: <a href="MessagesApi.html" class="extype" name="play.api.i18n.MessagesApi">MessagesApi</a></span>
       </span>
       </h4>
       
     </li></ol>
             </div>
 
-        
-
-        
-
         <div id="values" class="values members">
-              <h3>Value Members</h3>
+              <h3>Concrete Value Members</h3>
               <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:AnyRef):Boolean"></a>
       <a id="!=(AnyRef):Boolean"></a>
@@ -167,19 +170,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="play.api.i18n.MessagesPlugin#api" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="api:play.api.i18n.MessagesApi"></a>
-      <a id="api:MessagesApi"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">api</span><span class="result">: <a href="MessagesApi.html" class="extype" name="play.api.i18n.MessagesApi">MessagesApi</a></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">The underlying internationalisation API.</p>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -350,7 +340,7 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="play.api.i18n.MessagesPlugin#onStart" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="play.api.Plugin#onStart" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="onStart():Unit"></a>
       <a id="onStart():Unit"></a>
       <h4 class="signature">
@@ -362,8 +352,8 @@
         <span class="name">onStart</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Loads all configuration and message files defined in the classpath.</p><div class="fullcomment"><div class="comment cmt"><p>Loads all configuration and message files defined in the classpath.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.i18n.MessagesPlugin">MessagesPlugin</a> → <a href="../Plugin.html" class="extype" name="play.api.Plugin">Plugin</a></dd></dl></div>
+      <p class="shortcomment cmt">Called when the application starts.</p><div class="fullcomment"><div class="comment cmt"><p>Called when the application starts.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../Plugin.html" class="extype" name="play.api.Plugin">Plugin</a></dd></dl></div>
     </li><li name="play.api.Plugin#onStop" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="onStop():Unit"></a>
       <a id="onStop():Unit"></a>
