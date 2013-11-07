@@ -34,7 +34,7 @@
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../play/libs/Crypto.html" title="class in play.libs"><span class="strong">Prev Class</span></a></li>
-<li><a href="../../play/libs/F.html" title="class in play.libs"><span class="strong">Next Class</span></a></li>
+<li><a href="../../play/libs/EventSource.Event.html" title="class in play.libs"><span class="strong">Next Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../index.html?play/libs/EventSource.html" target="_top">Frames</a></li>
@@ -58,7 +58,7 @@
 <div>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
-<li><a href="#nested_classes_inherited_from_class_play.mvc.Results.Chunks">Nested</a>&nbsp;|&nbsp;</li>
+<li><a href="#nested_class_summary">Nested</a>&nbsp;|&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method_summary">Method</a></li>
@@ -100,6 +100,8 @@
 <br>
 <pre>public abstract class <span class="strong">EventSource</span>
 extends <a href="../../play/mvc/Results.Chunks.html" title="class in play.mvc">Results.Chunks</a>&lt;java.lang.String&gt;</pre>
+<div class="block">Implementation of Server-Sent Events.</div>
+<dl><dt><span class="strong">See Also:</span></dt><dd><a href="http://dev.w3.org/html5/eventsource/">Server-Sent Events specification</a></dd></dl>
 </li>
 </ul>
 </div>
@@ -112,6 +114,19 @@ extends <a href="../../play/mvc/Results.Chunks.html" title="class in play.mvc">R
 <!--   -->
 </a>
 <h3>Nested Class Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Nested Class Summary table, listing nested classes, and an explanation">
+<caption><span>Nested Classes</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Class and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static class&nbsp;</code></td>
+<td class="colLast"><code><strong><a href="../../play/libs/EventSource.Event.html" title="class in play.libs">EventSource.Event</a></strong></code>
+<div class="block">Utility class to build events.</div>
+</td>
+</tr>
+</table>
 <ul class="blockList">
 <li class="blockList"><a name="nested_classes_inherited_from_class_play.mvc.Results.Chunks">
 <!--   -->
@@ -178,23 +193,34 @@ extends <a href="../../play/mvc/Results.Chunks.html" title="class in play.mvc">R
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><strong><a href="../../play/libs/EventSource.html#sendData(java.lang.String)">sendData</a></strong>(java.lang.String&nbsp;data)</code>
-<div class="block">Sending a generic event.</div>
+<td class="colLast"><code><strong><a href="../../play/libs/EventSource.html#send(play.libs.EventSource.Event)">send</a></strong>(<a href="../../play/libs/EventSource.Event.html" title="class in play.libs">EventSource.Event</a>&nbsp;event)</code>
+<div class="block">Send an event.</div>
 </td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><strong><a href="../../play/libs/EventSource.html#sendDataById(java.lang.String, java.lang.String)">sendDataById</a></strong>(java.lang.String&nbsp;eventId,
-            java.lang.String&nbsp;data)</code>
-<div class="block">Setting an ID lets the browser keep track of the last event fired so that if, the connection to the server is dropped,
- a special HTTP header (Last-Event-ID) is set with the new request.</div>
+<td class="colLast"><code><strong><a href="../../play/libs/EventSource.html#sendData(java.lang.String)">sendData</a></strong>(java.lang.String&nbsp;data)</code>
+<div class="block"><strong>Deprecated.</strong>&nbsp;
+<div class="block"><i>Replaced by send</i></div>
+</div>
 </td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../play/libs/EventSource.html#sendDataById(java.lang.String, java.lang.String)">sendDataById</a></strong>(java.lang.String&nbsp;eventId,
+            java.lang.String&nbsp;data)</code>
+<div class="block"><strong>Deprecated.</strong>&nbsp;
+<div class="block"><i>Replaced by send</i></div>
+</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../play/libs/EventSource.html#sendDataByName(java.lang.String, java.lang.String)">sendDataByName</a></strong>(java.lang.String&nbsp;eventName,
               java.lang.String&nbsp;data)</code>
-<div class="block">A single event source can generate different types events by including an event name.</div>
+<div class="block"><strong>Deprecated.</strong>&nbsp;
+<div class="block"><i>Replaced by send</i></div>
+</div>
 </td>
 </tr>
 </table>
@@ -258,11 +284,13 @@ extends <a href="../../play/mvc/Results.Chunks.html" title="class in play.mvc">R
 <ul class="blockList">
 <li class="blockList">
 <h4>sendDataByName</h4>
-<pre>public&nbsp;void&nbsp;sendDataByName(java.lang.String&nbsp;eventName,
-                  java.lang.String&nbsp;data)</pre>
+<pre>@Deprecated
+public&nbsp;void&nbsp;sendDataByName(java.lang.String&nbsp;eventName,
+                             java.lang.String&nbsp;data)</pre>
+<div class="block"><span class="strong">Deprecated.</span>&nbsp;<i>Replaced by send</i></div>
 <div class="block">A single event source can generate different types events by including an event name. On the client, an event listener can be
  setup to listen to that particular event.</div>
-<dl><dt><span class="strong">Parameters:</span></dt><dd><code>eventName</code> - Unique name of the event.</dd><dd><code>data</code> - data associated with event</dd></dl>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>eventName</code> - Unique name of the event.</dd><dd><code>data</code> - data associated with event</dd><dt><span class="strong">See Also:</span></dt><dd><a href="../../play/libs/EventSource.html#send(play.libs.EventSource.Event)"><code>send(play.libs.EventSource.Event)</code></a></dd></dl>
 </li>
 </ul>
 <a name="sendDataById(java.lang.String, java.lang.String)">
@@ -271,12 +299,14 @@ extends <a href="../../play/mvc/Results.Chunks.html" title="class in play.mvc">R
 <ul class="blockList">
 <li class="blockList">
 <h4>sendDataById</h4>
-<pre>public&nbsp;void&nbsp;sendDataById(java.lang.String&nbsp;eventId,
-                java.lang.String&nbsp;data)</pre>
+<pre>@Deprecated
+public&nbsp;void&nbsp;sendDataById(java.lang.String&nbsp;eventId,
+                           java.lang.String&nbsp;data)</pre>
+<div class="block"><span class="strong">Deprecated.</span>&nbsp;<i>Replaced by send</i></div>
 <div class="block">Setting an ID lets the browser keep track of the last event fired so that if, the connection to the server is dropped,
  a special HTTP header (Last-Event-ID) is set with the new request. This lets the browser determine which event is
  appropriate to fire.</div>
-<dl><dt><span class="strong">Parameters:</span></dt><dd><code>eventId</code> - Unique event id.</dd><dd><code>data</code> - data associated with event</dd></dl>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>eventId</code> - Unique event id.</dd><dd><code>data</code> - data associated with event</dd><dt><span class="strong">See Also:</span></dt><dd><a href="../../play/libs/EventSource.html#send(play.libs.EventSource.Event)"><code>send(play.libs.EventSource.Event)</code></a></dd></dl>
 </li>
 </ul>
 <a name="sendData(java.lang.String)">
@@ -285,9 +315,22 @@ extends <a href="../../play/mvc/Results.Chunks.html" title="class in play.mvc">R
 <ul class="blockList">
 <li class="blockList">
 <h4>sendData</h4>
-<pre>public&nbsp;void&nbsp;sendData(java.lang.String&nbsp;data)</pre>
+<pre>@Deprecated
+public&nbsp;void&nbsp;sendData(java.lang.String&nbsp;data)</pre>
+<div class="block"><span class="strong">Deprecated.</span>&nbsp;<i>Replaced by send</i></div>
 <div class="block">Sending a generic event. On the client, 'message' event listener can be setup to listen to this event.</div>
-<dl><dt><span class="strong">Parameters:</span></dt><dd><code>data</code> - data associated with event</dd></dl>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>data</code> - data associated with event</dd><dt><span class="strong">See Also:</span></dt><dd><a href="../../play/libs/EventSource.html#send(play.libs.EventSource.Event)"><code>send(play.libs.EventSource.Event)</code></a></dd></dl>
+</li>
+</ul>
+<a name="send(play.libs.EventSource.Event)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>send</h4>
+<pre>public&nbsp;void&nbsp;send(<a href="../../play/libs/EventSource.Event.html" title="class in play.libs">EventSource.Event</a>&nbsp;event)</pre>
+<div class="block">Send an event. On the client, a 'message' event listener can be setup to listen to this event.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>event</code> - Event content</dd></dl>
 </li>
 </ul>
 <a name="onConnected()">
@@ -346,7 +389,7 @@ extends <a href="../../play/mvc/Results.Chunks.html" title="class in play.mvc">R
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../play/libs/Crypto.html" title="class in play.libs"><span class="strong">Prev Class</span></a></li>
-<li><a href="../../play/libs/F.html" title="class in play.libs"><span class="strong">Next Class</span></a></li>
+<li><a href="../../play/libs/EventSource.Event.html" title="class in play.libs"><span class="strong">Next Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../index.html?play/libs/EventSource.html" target="_top">Frames</a></li>
@@ -370,7 +413,7 @@ extends <a href="../../play/mvc/Results.Chunks.html" title="class in play.mvc">R
 <div>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
-<li><a href="#nested_classes_inherited_from_class_play.mvc.Results.Chunks">Nested</a>&nbsp;|&nbsp;</li>
+<li><a href="#nested_class_summary">Nested</a>&nbsp;|&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method_summary">Method</a></li>
