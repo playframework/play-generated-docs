@@ -35,7 +35,7 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">SimpleResult</span><span class="params">(<span name="header">header: <a href="ResponseHeader.html" class="extype" name="play.api.mvc.ResponseHeader">ResponseHeader</a></span>, <span name="body">body: <a href="../libs/iteratee/Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]]</span>, <span name="connection">connection: <a href="HttpConnection$.html#Connection=play.api.mvc.HttpConnection.Value" class="extmbr" name="play.api.mvc.HttpConnection.Connection">Connection</a> = <span class="symbol">HttpConnection.KeepAlive</span></span>)</span><span class="result"> extends <a href="PlainResult.html" class="extype" name="play.api.mvc.PlainResult">PlainResult</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name">SimpleResult</span><span class="params">(<span name="header">header: <a href="ResponseHeader.html" class="extype" name="play.api.mvc.ResponseHeader">ResponseHeader</a></span>, <span name="body">body: <a href="../libs/iteratee/Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]]</span>, <span name="connection">connection: <a href="HttpConnection$.html#Connection=play.api.mvc.HttpConnection.Value" class="extmbr" name="play.api.mvc.HttpConnection.Connection">Connection</a> = <span class="symbol">HttpConnection.KeepAlive</span></span>)</span><span class="result"> extends <a href="PlainResult.html" class="extype" name="play.api.mvc.PlainResult">PlainResult</a> with <a href="WithHeaders.html" class="extype" name="play.api.mvc.WithHeaders">WithHeaders</a>[<a href="" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>] with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
@@ -43,7 +43,7 @@
 </p></div><dl class="paramcmts block"><dt class="param">header</dt><dd class="cmt"><p>the response header, which contains status code and HTTP headers</p></dd><dt class="param">body</dt><dd class="cmt"><p>the response body</p></dd><dt class="param">connection</dt><dd class="cmt"><p>the connection semantics to use
 </p></dd></dl><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.2.x/framework/src/play/src/main/scala/play/api/mvc/Results.scala" target="_blank">Results.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <a href="PlainResult.html" class="extype" name="play.api.mvc.PlainResult">PlainResult</a>, <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a>, <a href="WithHeaders.html" class="extype" name="play.api.mvc.WithHeaders">WithHeaders</a>[<a href="PlainResult.html" class="extype" name="play.api.mvc.PlainResult">PlainResult</a>], <span class="extype" name="scala.NotNull">NotNull</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <a href="PlainResult.html" class="extype" name="play.api.mvc.PlainResult">PlainResult</a>, <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a>, <a href="WithHeaders.html" class="extype" name="play.api.mvc.WithHeaders">WithHeaders</a>[<a href="" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>], <span class="extype" name="scala.NotNull">NotNull</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
           <span class="toggle">Known Subclasses</span>
           <div class="subClasses hiddenContent"><a href="ChunkedResult.html" class="extype" name="play.api.mvc.ChunkedResult">ChunkedResult</a>, <a href="Results$Status.html" class="extype" name="play.api.mvc.Results.Status">Status</a></div>
@@ -214,14 +214,14 @@
       <p class="shortcomment cmt">the response body</p>
     </li><li name="play.api.mvc.WithHeaders#clearingLang" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clearingLang(implicitapp:play.api.Application):A"></a>
-      <a id="clearingLang(Application):PlainResult"></a>
+      <a id="clearingLang(Application):SimpleResult"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">clearingLang</span><span class="params">(<span class="implicit">implicit </span><span name="app">app: <a href="../Application.html" class="extype" name="play.api.Application">Application</a></span>)</span><span class="result">: <a href="PlainResult.html" class="extype" name="play.api.mvc.PlainResult">PlainResult</a></span>
+        <span class="name">clearingLang</span><span class="params">(<span class="implicit">implicit </span><span name="app">app: <a href="../Application.html" class="extype" name="play.api.Application">Application</a></span>)</span><span class="result">: <a href="" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Clears the user's language by discarding the language cookie set by withLang</p><div class="fullcomment"><div class="comment cmt"><p>Clears the user's language by discarding the language cookie set by withLang</p><p>For example:</p><pre>Ok(Messages(<span class="lit">"hello.world"</span>)).clearingLang</pre></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the new result
@@ -524,14 +524,14 @@
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a> → <a href="WithHeaders.html" class="extype" name="play.api.mvc.WithHeaders">WithHeaders</a></dd></dl></div>
     </li><li name="play.api.mvc.WithHeaders#withLang" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="withLang(lang:play.api.i18n.Lang)(implicitapp:play.api.Application):A"></a>
-      <a id="withLang(Lang)(Application):PlainResult"></a>
+      <a id="withLang(Lang)(Application):SimpleResult"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">withLang</span><span class="params">(<span name="lang">lang: <a href="../i18n/Lang.html" class="extype" name="play.api.i18n.Lang">Lang</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="app">app: <a href="../Application.html" class="extype" name="play.api.Application">Application</a></span>)</span><span class="result">: <a href="PlainResult.html" class="extype" name="play.api.mvc.PlainResult">PlainResult</a></span>
+        <span class="name">withLang</span><span class="params">(<span name="lang">lang: <a href="../i18n/Lang.html" class="extype" name="play.api.i18n.Lang">Lang</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="app">app: <a href="../Application.html" class="extype" name="play.api.Application">Application</a></span>)</span><span class="result">: <a href="" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Sets the user's language permanently for future requests by storing it in a cookie.</p><div class="fullcomment"><div class="comment cmt"><p>Sets the user's language permanently for future requests by storing it in a cookie.</p><p>For example:</p><pre><span class="kw">implicit</span> <span class="kw">val</span> lang = Lang(<span class="lit">"fr-FR"</span>)
@@ -588,14 +588,14 @@ Ok(Messages(<span class="lit">"hello.world"</span>)).withLang(lang)</pre></div><
               <h3>Deprecated Value Members</h3>
               <ol><li name="play.api.mvc.WithHeaders#discardingCookies" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="discardingCookies(name:String,names:String*):A"></a>
-      <a id="discardingCookies(String,String*):PlainResult"></a>
+      <a id="discardingCookies(String,String*):SimpleResult"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 2.1) This method can only discard cookies on the / path with no domain and without secure set.  Use discardingCookies(DiscardingCookie*) instead.">discardingCookies</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="names">names: <span class="extype" name="scala.Predef.String">String</span>*</span>)</span><span class="result">: <a href="PlainResult.html" class="extype" name="play.api.mvc.PlainResult">PlainResult</a></span>
+        <span class="name deprecated" title="Deprecated: (Since version 2.1) This method can only discard cookies on the / path with no domain and without secure set.  Use discardingCookies(DiscardingCookie*) instead.">discardingCookies</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="names">names: <span class="extype" name="scala.Predef.String">String</span>*</span>)</span><span class="result">: <a href="" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Discards cookies along this result.</p><div class="fullcomment"><div class="comment cmt"><p>Discards cookies along this result.</p><p>For example:</p><pre>Ok(<span class="lit">"Hello world"</span>).discardingCookies(<span class="lit">"theme"</span>)</pre></div><dl class="paramcmts block"><dt class="param">names</dt><dd class="cmt"><p>the names of the cookies to discard along to this result</p></dd><dt>returns</dt><dd class="cmt"><p>the new result
@@ -621,7 +621,7 @@ Ok(Messages(<span class="lit">"hello.world"</span>)).withLang(lang)</pre></div><
             </div><div class="parent" name="play.api.mvc.Result">
               <h3>Inherited from <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a></h3>
             </div><div class="parent" name="play.api.mvc.WithHeaders">
-              <h3>Inherited from <a href="WithHeaders.html" class="extype" name="play.api.mvc.WithHeaders">WithHeaders</a>[<a href="PlainResult.html" class="extype" name="play.api.mvc.PlainResult">PlainResult</a>]</h3>
+              <h3>Inherited from <a href="WithHeaders.html" class="extype" name="play.api.mvc.WithHeaders">WithHeaders</a>[<a href="" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>]</h3>
             </div><div class="parent" name="scala.NotNull">
               <h3>Inherited from <span class="extype" name="scala.NotNull">NotNull</span></h3>
             </div><div class="parent" name="scala.AnyRef">
