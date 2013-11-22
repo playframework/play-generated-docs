@@ -163,12 +163,16 @@
         <span class="name">apply</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="mapping">mapping: (<span class="extype" name="scala.Predef.String">String</span>, <a href="Mapping.html" class="extype" name="play.api.data.Mapping">Mapping</a>[<span class="extype" name="play.api.data.Form.apply.T">T</span>])</span>)</span><span class="result">: <a href="Form.html" class="extype" name="play.api.data.Form">Form</a>[<span class="extype" name="play.api.data.Form.apply.T">T</span>]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Creates a new form from a mapping, with a root key.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a new form from a mapping, with a root key.</p><p>For example:</p><pre><span class="kw">val</span> userForm = Form(
-<span class="lit">"user"</span> -&gt; tuple(
-  <span class="lit">"name"</span> -&gt; of[<span class="std">String</span>],
-  <span class="lit">"age"</span> -&gt; of[<span class="std">Int</span>],
-  <span class="lit">"email"</span> -&gt; of[<span class="std">String</span>]
-)
+      <p class="shortcomment cmt">Creates a new form from a mapping, with a root key.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a new form from a mapping, with a root key.</p><p>For example:</p><pre><span class="kw">import</span> play.api.data._
+<span class="kw">import</span> play.api.data.Forms._
+<span class="kw">import</span> play.api.data.format.Formats._
+
+<span class="kw">val</span> userForm = Form(
+  <span class="lit">"user"</span> -&gt; tuple(
+    <span class="lit">"name"</span> -&gt; of[<span class="std">String</span>],
+    <span class="lit">"age"</span> -&gt; of[<span class="std">Int</span>],
+    <span class="lit">"email"</span> -&gt; of[<span class="std">String</span>]
+  )
 )</pre></div><dl class="paramcmts block"><dt class="param">mapping</dt><dd class="cmt"><p>the root key, form mapping association</p></dd><dt>returns</dt><dd class="cmt"><p>a form definition
 </p></dd></dl></div>
     </li><li name="play.api.data.Form#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -184,7 +188,8 @@
       </span>
       </h4>
       <p class="shortcomment cmt">Creates a new form from a mapping.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a new form from a mapping.</p><p>For example:</p><pre><span class="kw">import</span> play.api.data._
-<span class="kw">import</span> format.Formats._
+<span class="kw">import</span> play.api.data.Forms._
+<span class="kw">import</span> play.api.data.format.Formats._
 
 <span class="kw">val</span> userForm = Form(
   tuple(
