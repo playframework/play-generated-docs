@@ -107,12 +107,12 @@ extends <a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Pr
 <div class="block">RedeemablePromise is an object which can be completed with a value or failed with an exception.
 
  <pre>
- <code>RedeemablePromise&lt;Int&gt; someFutureInt = RedeemablePromise.empty();
+ <code>RedeemablePromise&lt;Integer&gt; someFutureInt = RedeemablePromise.empty();
 
- someFutureInt.map(new Function&lt;Int, Result&gt;{
-     public apply(Int i) {
+ someFutureInt.map(new Function&lt;Integer, Result&gt;() {
+     public Result apply(Integer i) {
          // This would apply once the redeemable promise succeed
-         return new Result("" + i);
+         return Results.ok("" + i);
      }
  });
 
