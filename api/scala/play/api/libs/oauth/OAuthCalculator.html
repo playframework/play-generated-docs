@@ -35,13 +35,13 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">OAuthCalculator</span><span class="params">(<span name="consumerKey">consumerKey: <a href="ConsumerKey.html" class="extype" name="play.api.libs.oauth.ConsumerKey">ConsumerKey</a></span>, <span name="token">token: <a href="RequestToken.html" class="extype" name="play.api.libs.oauth.RequestToken">RequestToken</a></span>)</span><span class="result"> extends <span class="extype" name="oauth.signpost.AbstractOAuthConsumer">AbstractOAuthConsumer</span> with <a href="../ws/SignatureCalculator.html" class="extype" name="play.api.libs.ws.SignatureCalculator">SignatureCalculator</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name">OAuthCalculator</span><span class="params">(<span name="consumerKey">consumerKey: <a href="ConsumerKey.html" class="extype" name="play.api.libs.oauth.ConsumerKey">ConsumerKey</a></span>, <span name="token">token: <a href="RequestToken.html" class="extype" name="play.api.libs.oauth.RequestToken">RequestToken</a></span>)</span><span class="result"> extends <span class="extype" name="oauth.signpost.AbstractOAuthConsumer">AbstractOAuthConsumer</span> with <a href="../ws/WSSignatureCalculator.html" class="extype" name="play.api.libs.ws.WSSignatureCalculator">WSSignatureCalculator</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A signature calculator for the Play WS API.</p><p>Example:</p><pre>WS.url(<span class="lit">"http://example.com/protected"</span>).sign(OAuthCalculator(service, tokens)).get()</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play-ws/src/main/scala/play/api/libs/oauth/OAuth.scala" target="_blank">OAuth.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <a href="../ws/SignatureCalculator.html" class="extype" name="play.api.libs.ws.SignatureCalculator">SignatureCalculator</a>, <span class="extype" name="oauth.signpost.AbstractOAuthConsumer">AbstractOAuthConsumer</span>, <span class="extype" name="oauth.signpost.OAuthConsumer">OAuthConsumer</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <a href="../ws/WSSignatureCalculator.html" class="extype" name="play.api.libs.ws.WSSignatureCalculator">WSSignatureCalculator</a>, <span class="extype" name="oauth.signpost.AbstractOAuthConsumer">AbstractOAuthConsumer</span>, <span class="extype" name="oauth.signpost.OAuthConsumer">OAuthConsumer</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -59,7 +59,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="play.api.libs.oauth.OAuthCalculator"><span>OAuthCalculator</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="play.api.libs.ws.SignatureCalculator"><span>SignatureCalculator</span></li><li class="in" name="oauth.signpost.AbstractOAuthConsumer"><span>AbstractOAuthConsumer</span></li><li class="in" name="oauth.signpost.OAuthConsumer"><span>OAuthConsumer</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="play.api.libs.oauth.OAuthCalculator"><span>OAuthCalculator</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="play.api.libs.ws.WSSignatureCalculator"><span>WSSignatureCalculator</span></li><li class="in" name="oauth.signpost.AbstractOAuthConsumer"><span>AbstractOAuthConsumer</span></li><li class="in" name="oauth.signpost.OAuthConsumer"><span>OAuthConsumer</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -539,7 +539,7 @@
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AbstractOAuthConsumer → OAuthConsumer</dd></dl></div>
     </li><li name="play.api.libs.oauth.OAuthCalculator#sign" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="sign(request:play.api.libs.ws.WS.WSRequest):Unit"></a>
+      <a id="sign(request:play.api.libs.ws.WSRequest):Unit"></a>
       <a id="sign(WSRequest):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -547,11 +547,11 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">sign</span><span class="params">(<span name="request">request: <a href="../ws/WS$$WSRequest.html" class="extype" name="play.api.libs.ws.WS.WSRequest">WSRequest</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">sign</span><span class="params">(<span name="request">request: <a href="../ws/WSRequest.html" class="extype" name="play.api.libs.ws.WSRequest">WSRequest</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Sign it.</p><div class="fullcomment"><div class="comment cmt"><p>Sign it.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.libs.oauth.OAuthCalculator">OAuthCalculator</a> → <a href="../ws/SignatureCalculator.html" class="extype" name="play.api.libs.ws.SignatureCalculator">SignatureCalculator</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.libs.oauth.OAuthCalculator">OAuthCalculator</a> → <a href="../ws/WSSignatureCalculator.html" class="extype" name="play.api.libs.ws.WSSignatureCalculator">WSSignatureCalculator</a></dd></dl></div>
     </li><li name="oauth.signpost.AbstractOAuthConsumer#sign" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="sign(x$1:String):String"></a>
       <a id="sign(String):String"></a>
@@ -750,8 +750,8 @@
               <h3>Inherited from <span class="extype" name="scala.Product">Product</span></h3>
             </div><div class="parent" name="scala.Equals">
               <h3>Inherited from <span class="extype" name="scala.Equals">Equals</span></h3>
-            </div><div class="parent" name="play.api.libs.ws.SignatureCalculator">
-              <h3>Inherited from <a href="../ws/SignatureCalculator.html" class="extype" name="play.api.libs.ws.SignatureCalculator">SignatureCalculator</a></h3>
+            </div><div class="parent" name="play.api.libs.ws.WSSignatureCalculator">
+              <h3>Inherited from <a href="../ws/WSSignatureCalculator.html" class="extype" name="play.api.libs.ws.WSSignatureCalculator">WSSignatureCalculator</a></h3>
             </div><div class="parent" name="oauth.signpost.AbstractOAuthConsumer">
               <h3>Inherited from <span class="extype" name="oauth.signpost.AbstractOAuthConsumer">AbstractOAuthConsumer</span></h3>
             </div><div class="parent" name="oauth.signpost.OAuthConsumer">
