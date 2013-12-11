@@ -233,7 +233,8 @@
         <span title="gt4s: $qmark" class="name">?</span><span class="result">: <a href="" class="extype" name="anorm.RowParser">RowParser</a>[<span class="extype" name="scala.Option">Option</span>[<span class="extype" name="anorm.RowParser.A">A</span>]]</span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt">Returns a row parser for optional column,
+that will turn missing or null column as None.</p>
     </li><li name="scala.Function1#andThen" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="andThen[A](g:R=&gt;A):T1=&gt;A"></a>
       <a id="andThen[A]((SqlResult[A])⇒A):(Row)⇒A"></a>
@@ -460,7 +461,7 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="anorm.RowParser#single" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="anorm.RowParser#single" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="single:anorm.ResultSetParser[A]"></a>
       <a id="single:ResultSetParser[A]"></a>
       <h4 class="signature">
@@ -472,8 +473,9 @@
         <span class="name">single</span><span class="result">: <a href="ResultSetParser.html" class="extype" name="anorm.ResultSetParser">ResultSetParser</a>[<span class="extype" name="anorm.RowParser.A">A</span>]</span>
       </span>
       </h4>
-      
-    </li><li name="anorm.RowParser#singleOpt" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">Returns a result set parser expecting exactly one row to parse.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a result set parser expecting exactly one row to parse.</p><pre><span class="kw">val</span> b: <span class="std">Boolean</span> = SQL(<span class="lit">"SELECT flag FROM Test WHERE id = :id"</span>).
+on(<span class="lit">"id"</span> -&gt; <span class="num">1</span>).as(scalar[<span class="std">Boolean</span>].single)</pre></div></div>
+    </li><li name="anorm.RowParser#singleOpt" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="singleOpt:anorm.ResultSetParser[Option[A]]"></a>
       <a id="singleOpt:ResultSetParser[Option[A]]"></a>
       <h4 class="signature">
@@ -485,7 +487,9 @@
         <span class="name">singleOpt</span><span class="result">: <a href="ResultSetParser.html" class="extype" name="anorm.ResultSetParser">ResultSetParser</a>[<span class="extype" name="scala.Option">Option</span>[<span class="extype" name="anorm.RowParser.A">A</span>]]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Returns a result set parser for none or one parsed row.</p>
+      <p class="shortcomment cmt">Returns a result set parser for none or one parsed row.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a result set parser for none or one parsed row.</p><pre><span class="kw">val</span> name: <span class="std">Option</span>[<span class="std">String</span>] =
+SQL(<span class="lit">"SELECT name FROM Country WHERE lang = :lang"</span>)
+.on(<span class="lit">"lang"</span> -&gt; <span class="lit">"notFound"</span>).as(scalar[<span class="std">String</span>].singleOpt)</pre></div></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
