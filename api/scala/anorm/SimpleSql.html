@@ -35,7 +35,7 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">SimpleSql</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="sql">sql: <a href="SqlQuery.html" class="extype" name="anorm.SqlQuery">SqlQuery</a></span>, <span name="params">params: <span class="extype" name="scala.Seq">Seq</span>[(<span class="extype" name="scala.Predef.String">String</span>, <a href="ParameterValue.html" class="extype" name="anorm.ParameterValue">ParameterValue</a>)]</span>, <span name="defaultParser">defaultParser: <a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a>[<span class="extype" name="anorm.SimpleSql.T">T</span>]</span>)</span><span class="result"> extends <a href="Sql.html" class="extype" name="anorm.Sql">Sql</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name">SimpleSql</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="sql">sql: <a href="SqlQuery.html" class="extype" name="anorm.SqlQuery">SqlQuery</a></span>, <span name="params">params: <span class="extype" name="scala.Seq">Seq</span>[<a href="NamedParameter.html" class="extype" name="anorm.NamedParameter">NamedParameter</a>]</span>, <span name="defaultParser">defaultParser: <a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a>[<span class="extype" name="anorm.SimpleSql.T">T</span>]</span>)</span><span class="result"> extends <a href="Sql.html" class="extype" name="anorm.Sql">Sql</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
@@ -80,7 +80,7 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="anorm.SimpleSql#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(sql:anorm.SqlQuery,params:Seq[(String,anorm.ParameterValue)],defaultParser:anorm.RowParser[T]):anorm.SimpleSql[T]"></a>
+      <a id="&lt;init&gt;(sql:anorm.SqlQuery,params:Seq[anorm.NamedParameter],defaultParser:anorm.RowParser[T]):anorm.SimpleSql[T]"></a>
       <a id="&lt;init&gt;:SimpleSql[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -88,7 +88,7 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">SimpleSql</span><span class="params">(<span name="sql">sql: <a href="SqlQuery.html" class="extype" name="anorm.SqlQuery">SqlQuery</a></span>, <span name="params">params: <span class="extype" name="scala.Seq">Seq</span>[(<span class="extype" name="scala.Predef.String">String</span>, <a href="ParameterValue.html" class="extype" name="anorm.ParameterValue">ParameterValue</a>)]</span>, <span name="defaultParser">defaultParser: <a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a>[<span class="extype" name="anorm.SimpleSql.T">T</span>]</span>)</span>
+        <span class="name">SimpleSql</span><span class="params">(<span name="sql">sql: <a href="SqlQuery.html" class="extype" name="anorm.SqlQuery">SqlQuery</a></span>, <span name="params">params: <span class="extype" name="scala.Seq">Seq</span>[<a href="NamedParameter.html" class="extype" name="anorm.NamedParameter">NamedParameter</a>]</span>, <span name="defaultParser">defaultParser: <a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a>[<span class="extype" name="anorm.SimpleSql.T">T</span>]</span>)</span>
       </span>
       </h4>
       
@@ -301,10 +301,10 @@
         <span class="name">executeQuery</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="connection">connection: <span class="extype" name="java.sql.Connection">Connection</span></span>)</span><span class="result">: <a href="SqlQueryResult.html" class="extype" name="anorm.SqlQueryResult">SqlQueryResult</a></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Executes this SQL query, and returns its result.</p><div class="fullcomment"><div class="comment cmt"><p>Executes this SQL query, and returns its result.</p><pre><span class="kw">implicit</span> <span class="kw">val</span> conn: java.sql.Connection = openConnection
+      <p class="shortcomment cmt">Executes this SQL query, and returns its result.</p><div class="fullcomment"><div class="comment cmt"><p>Executes this SQL query, and returns its result.</p><pre><span class="kw">implicit</span> <span class="kw">val</span> conn: Connection = openConnection
 <span class="kw">val</span> res: SqlQueryResult =
   SQL(<span class="lit">"SELECT text_col FROM table WHERE id = {code}"</span>).
-  on('code -&gt; code).executeQuery()
+  on(<span class="lit">"code"</span> -&gt; code).executeQuery()
 <span class="cmt">// Check execution context; e.g. res.statementWarning</span>
 <span class="kw">val</span> str = res as scalar[<span class="std">String</span>].single <span class="cmt">// going with row parsing</span></pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Sql.html" class="extype" name="anorm.Sql">Sql</a></dd></dl></div>
     </li><li name="anorm.Sql#executeUpdate" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -456,20 +456,23 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="anorm.SimpleSql#on" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="on(args:(Any,anorm.ParameterValue)*):anorm.SimpleSql[T]"></a>
-      <a id="on((Any,ParameterValue)*):SimpleSql[T]"></a>
+    </li><li name="anorm.SimpleSql#on" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="on(args:anorm.NamedParameter*):anorm.SimpleSql[T]"></a>
+      <a id="on(NamedParameter*):SimpleSql[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">on</span><span class="params">(<span name="args">args: (<span class="extype" name="scala.Any">Any</span>, <a href="ParameterValue.html" class="extype" name="anorm.ParameterValue">ParameterValue</a>)*</span>)</span><span class="result">: <a href="" class="extype" name="anorm.SimpleSql">SimpleSql</a>[<span class="extype" name="anorm.SimpleSql.T">T</span>]</span>
+        <span class="name">on</span><span class="params">(<span name="args">args: <a href="NamedParameter.html" class="extype" name="anorm.NamedParameter">NamedParameter</a>*</span>)</span><span class="result">: <a href="" class="extype" name="anorm.SimpleSql">SimpleSql</a>[<span class="extype" name="anorm.SimpleSql.T">T</span>]</span>
       </span>
       </h4>
-      
-    </li><li name="anorm.SimpleSql#onParams" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">Returns query prepared with named parameters.</p><div class="fullcomment"><div class="comment cmt"><p>Returns query prepared with named parameters.</p><pre><span class="kw">import</span> anorm.toParameterValue
+
+<span class="kw">val</span> baseSql = SQL(<span class="lit">"SELECT * FROM table WHERE id = {id}"</span>) <span class="cmt">// one named param</span>
+<span class="kw">val</span> preparedSql = baseSql.withParams(<span class="lit">"id"</span> -&gt; <span class="lit">"value"</span>)</pre></div></div>
+    </li><li name="anorm.SimpleSql#onParams" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="onParams(args:anorm.ParameterValue*):anorm.SimpleSql[T]"></a>
       <a id="onParams(ParameterValue*):SimpleSql[T]"></a>
       <h4 class="signature">
@@ -481,17 +484,20 @@
         <span class="name">onParams</span><span class="params">(<span name="args">args: <a href="ParameterValue.html" class="extype" name="anorm.ParameterValue">ParameterValue</a>*</span>)</span><span class="result">: <a href="" class="extype" name="anorm.SimpleSql">SimpleSql</a>[<span class="extype" name="anorm.SimpleSql.T">T</span>]</span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt">Returns query prepared with indexed parameters.</p><div class="fullcomment"><div class="comment cmt"><p>Returns query prepared with indexed parameters.</p><pre><span class="kw">import</span> anorm.toParameterValue
+
+<span class="kw">val</span> baseSql = SQL(<span class="lit">"SELECT * FROM table WHERE id = ?"</span>) <span class="cmt">// one indexed param</span>
+<span class="kw">val</span> preparedSql = baseSql.onParams(<span class="lit">"val_for_id"</span>)</pre></div></div>
     </li><li name="anorm.SimpleSql#params" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="params:Seq[(String,anorm.ParameterValue)]"></a>
-      <a id="params:Seq[(String,ParameterValue)]"></a>
+      <a id="params:Seq[anorm.NamedParameter]"></a>
+      <a id="params:Seq[NamedParameter]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">params</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[(<span class="extype" name="scala.Predef.String">String</span>, <a href="ParameterValue.html" class="extype" name="anorm.ParameterValue">ParameterValue</a>)]</span>
+        <span class="name">params</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<a href="NamedParameter.html" class="extype" name="anorm.NamedParameter">NamedParameter</a>]</span>
       </span>
       </h4>
       
@@ -599,7 +605,7 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="anorm.SimpleSql#using" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="anorm.SimpleSql#using" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="using[U](p:anorm.RowParser[U]):anorm.SimpleSql[U]"></a>
       <a id="using[U](RowParser[U]):SimpleSql[U]"></a>
       <h4 class="signature">
@@ -611,7 +617,10 @@
         <span class="name">using</span><span class="tparams">[<span name="U">U</span>]</span><span class="params">(<span name="p">p: <a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a>[<span class="extype" name="anorm.SimpleSql.using.U">U</span>]</span>)</span><span class="result">: <a href="" class="extype" name="anorm.SimpleSql">SimpleSql</a>[<span class="extype" name="anorm.SimpleSql.using.U">U</span>]</span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt">Prepares query with given row parser.</p><div class="fullcomment"><div class="comment cmt"><p>Prepares query with given row parser.</p><pre><span class="kw">import</span> anorm.{ SQL, SqlParser }
+
+<span class="kw">val</span> res: <span class="std">Int</span> = SQL(<span class="lit">"SELECT 1"</span>).using(SqlParser.scalar[<span class="std">Int</span>]).single
+<span class="cmt">// Equivalent to: SQL("SELECT 1").as(SqlParser.scalar[Int].single)</span></pre></div></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
@@ -698,7 +707,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 2.3.0) Use scala.tools.nsc.doc.base.MemberLookupBase$$anon$1@2068941e or scala.tools.nsc.doc.base.MemberLookupBase$$anon$1@31d44e31">filledStatement</span><span class="params">(<span class="implicit">implicit </span><span name="connection">connection: <span class="extype" name="java.sql.Connection">Connection</span></span>)</span><span class="result">: <span class="extype" name="java.sql.PreparedStatement">PreparedStatement</span></span>
+        <span class="name deprecated" title="Deprecated: (Since version 2.3.0) Use scala.tools.nsc.doc.base.MemberLookupBase$$anon$1@20cf593c or scala.tools.nsc.doc.base.MemberLookupBase$$anon$1@ceb82f8">filledStatement</span><span class="params">(<span class="implicit">implicit </span><span name="connection">connection: <span class="extype" name="java.sql.Connection">Connection</span></span>)</span><span class="result">: <span class="extype" name="java.sql.PreparedStatement">PreparedStatement</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Sql.html" class="extype" name="anorm.Sql">Sql</a></dd><dt>Annotations</dt><dd>

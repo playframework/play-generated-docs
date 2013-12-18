@@ -231,7 +231,7 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="anorm.SqlQuery#asSimple" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="anorm.SqlQuery#asSimple" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asSimple[T](parser:anorm.RowParser[T]):anorm.SimpleSql[T]"></a>
       <a id="asSimple[T](RowParser[T]):SimpleSql[T]"></a>
       <h4 class="signature">
@@ -243,7 +243,9 @@
         <span class="name">asSimple</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="parser">parser: <a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a>[<span class="extype" name="anorm.SqlQuery.asSimple.T">T</span>] = <span class="symbol">defaultParser</span></span>)</span><span class="result">: <a href="SimpleSql.html" class="extype" name="anorm.SimpleSql">SimpleSql</a>[<span class="extype" name="anorm.SqlQuery.asSimple.T">T</span>]</span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt">Prepares query as a simple one.</p><div class="fullcomment"><div class="comment cmt"><p>Prepares query as a simple one.</p></div><dl class="paramcmts block"><dt class="param">parser</dt><dd class="cmt"><p>Row parser</p><pre><span class="kw">import</span> anorm.{ SQL, SqlParser }
+
+SQL(<span class="lit">"SELECT 1"</span>).asSimple(SqlParser.scalar[<span class="std">Int</span>])</pre></dd></dl></div>
     </li><li name="anorm.SqlQuery#asSimple" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="asSimple:anorm.SimpleSql[anorm.Row]"></a>
       <a id="asSimple:SimpleSql[Row]"></a>
@@ -340,10 +342,10 @@
         <span class="name">executeQuery</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="connection">connection: <span class="extype" name="java.sql.Connection">Connection</span></span>)</span><span class="result">: <a href="SqlQueryResult.html" class="extype" name="anorm.SqlQueryResult">SqlQueryResult</a></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Executes this SQL query, and returns its result.</p><div class="fullcomment"><div class="comment cmt"><p>Executes this SQL query, and returns its result.</p><pre><span class="kw">implicit</span> <span class="kw">val</span> conn: java.sql.Connection = openConnection
+      <p class="shortcomment cmt">Executes this SQL query, and returns its result.</p><div class="fullcomment"><div class="comment cmt"><p>Executes this SQL query, and returns its result.</p><pre><span class="kw">implicit</span> <span class="kw">val</span> conn: Connection = openConnection
 <span class="kw">val</span> res: SqlQueryResult =
   SQL(<span class="lit">"SELECT text_col FROM table WHERE id = {code}"</span>).
-  on('code -&gt; code).executeQuery()
+  on(<span class="lit">"code"</span> -&gt; code).executeQuery()
 <span class="cmt">// Check execution context; e.g. res.statementWarning</span>
 <span class="kw">val</span> str = res as scalar[<span class="std">String</span>].single <span class="cmt">// going with row parsing</span></pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Sql.html" class="extype" name="anorm.Sql">Sql</a></dd></dl></div>
     </li><li name="anorm.Sql#executeUpdate" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -646,7 +648,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 2.3.0) Use scala.tools.nsc.doc.base.MemberLookupBase$$anon$1@14b17b72 or scala.tools.nsc.doc.base.MemberLookupBase$$anon$1@101f83fb">filledStatement</span><span class="params">(<span class="implicit">implicit </span><span name="connection">connection: <span class="extype" name="java.sql.Connection">Connection</span></span>)</span><span class="result">: <span class="extype" name="java.sql.PreparedStatement">PreparedStatement</span></span>
+        <span class="name deprecated" title="Deprecated: (Since version 2.3.0) Use scala.tools.nsc.doc.base.MemberLookupBase$$anon$1@5b241802 or scala.tools.nsc.doc.base.MemberLookupBase$$anon$1@1ea45a0d">filledStatement</span><span class="params">(<span class="implicit">implicit </span><span name="connection">connection: <span class="extype" name="java.sql.Connection">Connection</span></span>)</span><span class="result">: <span class="extype" name="java.sql.PreparedStatement">PreparedStatement</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Sql.html" class="extype" name="anorm.Sql">Sql</a></dd><dt>Annotations</dt><dd>

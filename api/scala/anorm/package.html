@@ -200,6 +200,19 @@ SQL(<span class="lit">"Select 1"</span>)</pre></div><dl class="attributes block"
       </span>
       </h4>
       
+    </li><li name="anorm.NamedParameter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="NamedParameterextendsProductwithSerializable"></a>
+      <a id="NamedParameter:NamedParameter"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="NamedParameter.html"><span class="name">NamedParameter</span></a><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="value">value: <a href="ParameterValue.html" class="extype" name="anorm.ParameterValue">ParameterValue</a></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Applied named parameter.</p>
     </li><li name="anorm.ParameterValue" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="ParameterValueextendsAnyRef"></a>
       <a id="ParameterValue:ParameterValue"></a>
@@ -404,7 +417,7 @@ SQL(<span class="lit">"Select 1"</span>)</pre></div><dl class="attributes block"
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="SimpleSql.html"><span class="name">SimpleSql</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="sql">sql: <a href="SqlQuery.html" class="extype" name="anorm.SqlQuery">SqlQuery</a></span>, <span name="params">params: <span class="extype" name="scala.Seq">Seq</span>[(<span class="extype" name="scala.Predef.String">String</span>, <a href="ParameterValue.html" class="extype" name="anorm.ParameterValue">ParameterValue</a>)]</span>, <span name="defaultParser">defaultParser: <a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a>[<span class="extype" name="anorm.SimpleSql.T">T</span>]</span>)</span><span class="result"> extends <a href="Sql.html" class="extype" name="anorm.Sql">Sql</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="SimpleSql.html"><span class="name">SimpleSql</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="sql">sql: <a href="SqlQuery.html" class="extype" name="anorm.SqlQuery">SqlQuery</a></span>, <span name="params">params: <span class="extype" name="scala.Seq">Seq</span>[<a href="NamedParameter.html" class="extype" name="anorm.NamedParameter">NamedParameter</a>]</span>, <span name="defaultParser">defaultParser: <a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a>[<span class="extype" name="anorm.SimpleSql.T">T</span>]</span>)</span><span class="result"> extends <a href="Sql.html" class="extype" name="anorm.Sql">Sql</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
@@ -611,6 +624,19 @@ SQL(<span class="lit">"Select 1"</span>)</pre></div><dl class="attributes block"
       </span>
       </h4>
       
+    </li><li name="anorm.NamedParameter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="NamedParameter"></a>
+      <a id="NamedParameter:NamedParameter"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="NamedParameter$.html"><span class="name">NamedParameter</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Companion object for applied named parameter.</p>
     </li><li name="anorm.NoColumnsInReturnedResult" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="NoColumnsInReturnedResult"></a>
       <a id="NoColumnsInReturnedResult:NoColumnsInReturnedResult"></a>
@@ -689,7 +715,7 @@ SQL(<span class="lit">"Select 1"</span>)</pre></div><dl class="attributes block"
       </span>
       </h4>
       
-    </li><li name="anorm.package#SQL" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="anorm.package#SQL" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="SQL(stmt:String):anorm.SqlQuery"></a>
       <a id="SQL(String):SqlQuery"></a>
       <h4 class="signature">
@@ -701,7 +727,7 @@ SQL(<span class="lit">"Select 1"</span>)</pre></div><dl class="attributes block"
         <span class="name">SQL</span><span class="params">(<span name="stmt">stmt: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="SqlQuery.html" class="extype" name="anorm.SqlQuery">SqlQuery</a></span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt">Creates an SQL query with given statement.</p><div class="fullcomment"><div class="comment cmt"><p>Creates an SQL query with given statement.</p></div><dl class="paramcmts block"><dt class="param">stmt</dt><dd class="cmt"><p>SQL statement</p><pre><span class="kw">val</span> query = SQL(<span class="lit">"SELECT * FROM Country"</span>)</pre></dd></dl></div>
     </li><li name="anorm.Sql" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Sql"></a>
       <a id="Sql:Sql"></a>
@@ -780,6 +806,19 @@ SQL(<span class="lit">"Select 1"</span>)</pre></div><dl class="attributes block"
       </span>
       </h4>
       
+    </li><li name="anorm.features" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="features"></a>
+      <a id="features:features"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="package$$features$.html"><span class="name">features</span></a>
+      </span>
+      </h4>
+      <p class="comment cmt">Activable features</p>
     </li><li name="anorm.package#implicitID" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="implicitID[ID](id:anorm.Id[ID]withNotNull):ID"></a>
       <a id="implicitID[ID](Id[ID]withNotNull):ID"></a>
