@@ -324,7 +324,7 @@
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="anorm.SqlParser#flatten" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="anorm.SqlParser#flatten" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="flatten[T1,T2,R](implicitf:anorm.TupleFlattener[anorm.~[T1,T2]=&gt;R]):anorm.~[T1,T2]=&gt;R"></a>
       <a id="flatten[T1,T2,R](TupleFlattener[(~[T1,T2])⇒R]):(~[T1,T2])⇒R"></a>
       <h4 class="signature">
@@ -336,7 +336,11 @@
         <span class="name">flatten</span><span class="tparams">[<span name="T1">T1</span>, <span name="T2">T2</span>, <span name="R">R</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="f">f: <a href="TupleFlattener.html" class="extype" name="anorm.TupleFlattener">TupleFlattener</a>[(<a href="$tilde.html" class="extype" name="anorm.~">~</a>[<span class="extype" name="anorm.SqlParser.flatten.T1">T1</span>, <span class="extype" name="anorm.SqlParser.flatten.T2">T2</span>]) ⇒ <span class="extype" name="anorm.SqlParser.flatten.R">R</span>]</span>)</span><span class="result">: (<a href="$tilde.html" class="extype" name="anorm.~">~</a>[<span class="extype" name="anorm.SqlParser.flatten.T1">T1</span>, <span class="extype" name="anorm.SqlParser.flatten.T2">T2</span>]) ⇒ <span class="extype" name="anorm.SqlParser.flatten.R">R</span></span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt">Flatten columns tuple-like.</p><div class="fullcomment"><div class="comment cmt"><p>Flatten columns tuple-like.</p><pre><span class="kw">import</span> anorm.SQL
+<span class="kw">import</span> anorm.SqlParser.{ long, str, int }
+
+<span class="kw">val</span> tuple: (<span class="std">Long</span>, <span class="std">String</span>, <span class="std">Int</span>) = SQL(<span class="lit">"SELECT a, b, c FROM Test"</span>).
+  as(long(<span class="lit">"a"</span>) ~ str(<span class="lit">"b"</span>) ~ int(<span class="lit">"c"</span>) map (SqlParser.flatten) single)</pre></div></div>
     </li><li name="anorm.SqlParser#float" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="float(columnName:String):anorm.RowParser[Float]"></a>
       <a id="float(String):RowParser[Float]"></a>
