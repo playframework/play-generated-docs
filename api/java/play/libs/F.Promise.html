@@ -729,7 +729,7 @@ public static&nbsp;&lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title
  given function. The function will be called after the delay.
 
  The function will be run in the default ExecutionContext.</div>
-<dl><dt><span class="strong">Parameters:</span></dt><dd><code>function</code> - The function to call to fulfill the Promise.</dd><dd><code>delay</code> - The time to wait.</dd><dd><code>units</code> - The units to use for the delay.</dd></dl>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>function</code> - The function to call to fulfill the Promise.</dd><dd><code>delay</code> - The time to wait.</dd><dd><code>unit</code> - The units to use for the delay.</dd></dl>
 </li>
 </ul>
 <a name="delayed(play.libs.F.Function0, long, java.util.concurrent.TimeUnit, scala.concurrent.ExecutionContext)">
@@ -744,7 +744,7 @@ public static&nbsp;&lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title
                        scala.concurrent.ExecutionContext&nbsp;ec)</pre>
 <div class="block">Create a Promise which, after a delay, will be redeemed with the result of a
  given function. The function will be called after the delay.</div>
-<dl><dt><span class="strong">Parameters:</span></dt><dd><code>function</code> - The function to call to fulfill the Promise.</dd><dd><code>delay</code> - The time to wait.</dd><dd><code>units</code> - The units to use for the delay.</dd><dd><code>ec</code> - The ExecutionContext to run the Function0 in.</dd></dl>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>function</code> - The function to call to fulfill the Promise.</dd><dd><code>delay</code> - The time to wait.</dd><dd><code>unit</code> - The units to use for the delay.</dd><dd><code>ec</code> - The ExecutionContext to run the Function0 in.</dd></dl>
 </li>
 </ul>
 <a name="get()">
@@ -757,10 +757,9 @@ public static&nbsp;&lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title
 public&nbsp;<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>&nbsp;get()</pre>
 <div class="block"><span class="strong">Deprecated.</span>&nbsp;<i>Since 2.2. Use <a href="../../play/libs/F.Promise.html#get(long, java.util.concurrent.TimeUnit)"><code>get(long, TimeUnit)</code></a> or <a href="../../play/libs/F.Promise.html#get(long)"><code>get(long)</code></a> instead.</i></div>
 <div class="block">Awaits for the promise to get the result using a default timeout
- (currently 10000 milliseconds).</div>
-<dl><dt><span class="strong">Returns:</span></dt><dd>The promised object</dd>
-<dt><span class="strong">Throws:</span></dt>
-<dd><code>java.lang.Throwable</code> - if the calculation providing the promise threw an exception</dd></dl>
+ (currently 10000 milliseconds).<br>
+ Throws a Throwable if the calculation providing the promise threw an exception</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>The promised object</dd></dl>
 </li>
 </ul>
 <a name="get(java.lang.Long, java.util.concurrent.TimeUnit)">
@@ -773,11 +772,10 @@ public&nbsp;<a href="../../play/libs/F.Promise.html" title="type parameter in F.
 public&nbsp;<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>&nbsp;get(java.lang.Long&nbsp;timeout,
                java.util.concurrent.TimeUnit&nbsp;unit)</pre>
 <div class="block"><span class="strong">Deprecated.</span>&nbsp;<i>Since 2.2. Use <a href="../../play/libs/F.Promise.html#get(long, java.util.concurrent.TimeUnit)"><code>get(long, TimeUnit)</code></a> instead.</i></div>
-<div class="block">Awaits for the promise to get the result.</div>
+<div class="block">Awaits for the promise to get the result.<br>
+ Throws a Throwable if the calculation providing the promise threw an exception</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>timeout</code> - A user defined timeout</dd><dd><code>unit</code> - timeout for timeout</dd>
-<dt><span class="strong">Returns:</span></dt><dd>The promised result</dd>
-<dt><span class="strong">Throws:</span></dt>
-<dd><code>java.lang.Throwable</code> - if the calculation providing the promise threw an exception</dd></dl>
+<dt><span class="strong">Returns:</span></dt><dd>The promised result</dd></dl>
 </li>
 </ul>
 <a name="get(long, java.util.concurrent.TimeUnit)">
@@ -788,11 +786,10 @@ public&nbsp;<a href="../../play/libs/F.Promise.html" title="type parameter in F.
 <h4>get</h4>
 <pre>public&nbsp;<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>&nbsp;get(long&nbsp;timeout,
     java.util.concurrent.TimeUnit&nbsp;unit)</pre>
-<div class="block">Awaits for the promise to get the result.</div>
+<div class="block">Awaits for the promise to get the result.
+ Throws a Throwable if the calculation providing the promise threw an exception</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>timeout</code> - A user defined timeout</dd><dd><code>unit</code> - timeout for timeout</dd>
-<dt><span class="strong">Returns:</span></dt><dd>The promised result</dd>
-<dt><span class="strong">Throws:</span></dt>
-<dd><code>java.lang.Throwable</code> - if the calculation providing the promise threw an exception</dd></dl>
+<dt><span class="strong">Returns:</span></dt><dd>The promised result</dd></dl>
 </li>
 </ul>
 <a name="get(java.lang.Long)">
@@ -804,11 +801,10 @@ public&nbsp;<a href="../../play/libs/F.Promise.html" title="type parameter in F.
 <pre>@Deprecated
 public&nbsp;<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>&nbsp;get(java.lang.Long&nbsp;timeout)</pre>
 <div class="block"><span class="strong">Deprecated.</span>&nbsp;<i>Since 2.2. Use {<a href="../../play/libs/F.Promise.html#get(long)"><code>get(long)</code></a> instead.</i></div>
-<div class="block">Awaits for the promise to get the result.</div>
+<div class="block">Awaits for the promise to get the result.<br>
+ Throws a Throwable if the calculation providing the promise threw an exception</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>timeout</code> - A user defined timeout in milliseconds</dd>
-<dt><span class="strong">Returns:</span></dt><dd>The promised result</dd>
-<dt><span class="strong">Throws:</span></dt>
-<dd><code>java.lang.Throwable</code> - if the calculation providing the promise threw an exception</dd></dl>
+<dt><span class="strong">Returns:</span></dt><dd>The promised result</dd></dl>
 </li>
 </ul>
 <a name="get(long)">
@@ -820,9 +816,7 @@ public&nbsp;<a href="../../play/libs/F.Promise.html" title="type parameter in F.
 <pre>public&nbsp;<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>&nbsp;get(long&nbsp;timeout)</pre>
 <div class="block">Awaits for the promise to get the result.</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>timeout</code> - A user defined timeout in milliseconds</dd>
-<dt><span class="strong">Returns:</span></dt><dd>The promised result</dd>
-<dt><span class="strong">Throws:</span></dt>
-<dd><code>java.lang.Throwable</code> - if the calculation providing the promise threw an exception</dd></dl>
+<dt><span class="strong">Returns:</span></dt><dd>The promised result</dd></dl>
 </li>
 </ul>
 <a name="or(play.libs.F.Promise)">
