@@ -180,6 +180,23 @@
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="anorm.SqlParser#bool" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="bool(columnPosition:Int):anorm.RowParser[Boolean]"></a>
+      <a id="bool(Int):RowParser[Boolean]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">bool</span><span class="params">(<span name="columnPosition">columnPosition: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a>[<span class="extype" name="scala.Boolean">Boolean</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Parses specified column as boolean.</p><div class="fullcomment"><div class="comment cmt"><p>Parses specified column as boolean.</p></div><dl class="paramcmts block"><dt class="param">columnPosition</dt><dd class="cmt"><p>from 1 to n</p><pre><span class="kw">import</span> anorm.{ SQL, SqlParser }
+
+<span class="kw">val</span> t: (<span class="std">Boolean</span>, <span class="std">String</span>) = SQL(<span class="lit">"SELECT a, b FROM test"</span>)
+  .as(SqlParser.bool(<span class="num">1</span>) ~ SqlParser.str(<span class="lit">"b"</span>) map (
+    SqlParser.flatten) single)</pre></dd></dl></div>
+    </li><li name="anorm.SqlParser#bool" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="bool(columnName:String):anorm.RowParser[Boolean]"></a>
       <a id="bool(String):RowParser[Boolean]"></a>
       <h4 class="signature">
@@ -196,6 +213,23 @@
 <span class="kw">val</span> t: (<span class="std">Boolean</span>, <span class="std">String</span>) = SQL(<span class="lit">"SELECT a, b FROM test"</span>)
   .as(SqlParser.bool(<span class="lit">"a"</span>) ~ SqlParser.str(<span class="lit">"b"</span>) map (
     SqlParser.flatten) single)</pre></div></div>
+    </li><li name="anorm.SqlParser#byte" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="byte(columnPosition:Int):anorm.RowParser[Byte]"></a>
+      <a id="byte(Int):RowParser[Byte]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">byte</span><span class="params">(<span name="columnPosition">columnPosition: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a>[<span class="extype" name="scala.Byte">Byte</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Parses specified column as byte.</p><div class="fullcomment"><div class="comment cmt"><p>Parses specified column as byte.</p></div><dl class="paramcmts block"><dt class="param">columnPosition</dt><dd class="cmt"><p>from 1 to n</p><pre><span class="kw">import</span> anorm.{ SQL, SqlParser }
+
+<span class="kw">val</span> t: (<span class="std">Byte</span>, <span class="std">String</span>) = SQL(<span class="lit">"SELECT a, b FROM test"</span>)
+  .as(SqlParser.byte(<span class="num">1</span>) ~ SqlParser.str(<span class="lit">"b"</span>) map (
+    SqlParser.flatten) single)</pre></dd></dl></div>
     </li><li name="anorm.SqlParser#byte" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="byte(columnName:String):anorm.RowParser[Byte]"></a>
       <a id="byte(String):RowParser[Byte]"></a>
@@ -246,6 +280,23 @@
       </h4>
       
     </li><li name="anorm.SqlParser#date" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="date(columnPosition:Int):anorm.RowParser[java.util.Date]"></a>
+      <a id="date(Int):RowParser[Date]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">date</span><span class="params">(<span name="columnPosition">columnPosition: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a>[<span class="extype" name="java.util.Date">Date</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Parses specified column as date.</p><div class="fullcomment"><div class="comment cmt"><p>Parses specified column as date.</p></div><dl class="paramcmts block"><dt class="param">columnPosition</dt><dd class="cmt"><p>from 1 to n</p><pre><span class="kw">import</span> anorm.{ SQL, SqlParser }
+
+<span class="kw">val</span> t: (Date, <span class="std">String</span>) = SQL(<span class="lit">"SELECT a, b FROM test"</span>)
+  .as(SqlParser.date(<span class="num">1</span>) ~ SqlParser.str(<span class="lit">"b"</span>) map (
+    SqlParser.flatten) single)</pre></dd></dl></div>
+    </li><li name="anorm.SqlParser#date" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="date(columnName:String):anorm.RowParser[java.util.Date]"></a>
       <a id="date(String):RowParser[Date]"></a>
       <h4 class="signature">
@@ -262,6 +313,23 @@
 <span class="kw">val</span> t: (Date, <span class="std">String</span>) = SQL(<span class="lit">"SELECT a, b FROM test"</span>)
   .as(SqlParser.date(<span class="lit">"a"</span>) ~ SqlParser.str(<span class="lit">"b"</span>) map (
     SqlParser.flatten) single)</pre></div></div>
+    </li><li name="anorm.SqlParser#double" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="double(columnPosition:Int):anorm.RowParser[Double]"></a>
+      <a id="double(Int):RowParser[Double]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">double</span><span class="params">(<span name="columnPosition">columnPosition: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a>[<span class="extype" name="scala.Double">Double</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Parses specified column as double.</p><div class="fullcomment"><div class="comment cmt"><p>Parses specified column as double.</p></div><dl class="paramcmts block"><dt class="param">columnPosition</dt><dd class="cmt"><p>from 1 to n</p><pre><span class="kw">import</span> anorm.{ SQL, SqlParser }
+
+<span class="kw">val</span> t: (<span class="std">Double</span>, <span class="std">String</span>) = SQL(<span class="lit">"SELECT a, b FROM test"</span>)
+  .as(SqlParser.double(<span class="num">1</span>) ~ SqlParser.str(<span class="lit">"b"</span>) map (
+    SqlParser.flatten) single)</pre></dd></dl></div>
     </li><li name="anorm.SqlParser#double" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="double(columnName:String):anorm.RowParser[Double]"></a>
       <a id="double(String):RowParser[Double]"></a>
@@ -342,6 +410,23 @@
 <span class="kw">val</span> tuple: (<span class="std">Long</span>, <span class="std">String</span>, <span class="std">Int</span>) = SQL(<span class="lit">"SELECT a, b, c FROM Test"</span>).
   as(long(<span class="lit">"a"</span>) ~ str(<span class="lit">"b"</span>) ~ int(<span class="lit">"c"</span>) map (SqlParser.flatten) single)</pre></div></div>
     </li><li name="anorm.SqlParser#float" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="float(columnPosition:Int):anorm.RowParser[Float]"></a>
+      <a id="float(Int):RowParser[Float]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">float</span><span class="params">(<span name="columnPosition">columnPosition: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a>[<span class="extype" name="scala.Float">Float</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Parses specified column as float.</p><div class="fullcomment"><div class="comment cmt"><p>Parses specified column as float.</p></div><dl class="paramcmts block"><dt class="param">columnPosition</dt><dd class="cmt"><p>from 1 to n</p><pre><span class="kw">import</span> anorm.{ SQL, SqlParser }
+
+<span class="kw">val</span> t: (<span class="std">Float</span>, <span class="std">String</span>) = SQL(<span class="lit">"SELECT a, b FROM test"</span>)
+  .as(SqlParser.float(<span class="num">1</span>) ~ SqlParser.str(<span class="lit">"b"</span>) map (
+    SqlParser.flatten) single)</pre></dd></dl></div>
+    </li><li name="anorm.SqlParser#float" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="float(columnName:String):anorm.RowParser[Float]"></a>
       <a id="float(String):RowParser[Float]"></a>
       <h4 class="signature">
@@ -358,6 +443,22 @@
 <span class="kw">val</span> t: (<span class="std">Float</span>, <span class="std">String</span>) = SQL(<span class="lit">"SELECT a, b FROM test"</span>)
   .as(SqlParser.float(<span class="lit">"a"</span>) ~ SqlParser.str(<span class="lit">"b"</span>) map (
     SqlParser.flatten) single)</pre></div></div>
+    </li><li name="anorm.SqlParser#get" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="get[T](position:Int)(implicitextractor:anorm.Column[T]):anorm.RowParser[T]"></a>
+      <a id="get[T](Int)(Column[T]):RowParser[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">get</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="position">position: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="extractor">extractor: <a href="Column.html" class="extype" name="anorm.Column">Column</a>[<span class="extype" name="anorm.SqlParser.get.T">T</span>]</span>)</span><span class="result">: <a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a>[<span class="extype" name="anorm.SqlParser.get.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns row parser for column at given position.</p><div class="fullcomment"><div class="comment cmt"><p>Returns row parser for column at given position.</p></div><dl class="paramcmts block"><dt class="param">position</dt><dd class="cmt"><p>Column position, from 1 to n</p><pre><span class="kw">val</span> res: (<span class="std">Float</span>, <span class="std">String</span>) = <span class="cmt">// parsing columns #1 & #3</span>
+SQL(<span class="lit">"SELECT * FROM Test"</span>).as(get[<span class="std">String</span>](<span class="num">1</span>) ~ get[<span class="std">Float</span>](<span class="num">3</span>) map {
+  <span class="kw">case</span> str ~ f <span class="kw">=&gt;</span> (f -&gt; str)
+}</pre></dd></dl></div>
     </li><li name="anorm.SqlParser#get" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="get[T](columnName:String)(implicitextractor:anorm.Column[T]):anorm.RowParser[T]"></a>
       <a id="get[T](String)(Column[T]):RowParser[T]"></a>
@@ -411,6 +512,23 @@
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="anorm.SqlParser#int" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="int(columnPosition:Int):anorm.RowParser[Int]"></a>
+      <a id="int(Int):RowParser[Int]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">int</span><span class="params">(<span name="columnPosition">columnPosition: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a>[<span class="extype" name="scala.Int">Int</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Parses specified column as integer.</p><div class="fullcomment"><div class="comment cmt"><p>Parses specified column as integer.</p></div><dl class="paramcmts block"><dt class="param">columnPosition</dt><dd class="cmt"><p>from 1 to n</p><pre><span class="kw">import</span> anorm.{ SQL, SqlParser }
+
+<span class="kw">val</span> t: (<span class="std">Int</span>, <span class="std">String</span>) = SQL(<span class="lit">"SELECT a, b FROM test"</span>)
+  .as(SqlParser.int(<span class="num">1</span>) ~ SqlParser.str(<span class="lit">"b"</span>) map (
+    SqlParser.flatten) single)</pre></dd></dl></div>
+    </li><li name="anorm.SqlParser#int" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="int(columnName:String):anorm.RowParser[Int]"></a>
       <a id="int(String):RowParser[Int]"></a>
       <h4 class="signature">
@@ -440,6 +558,23 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="anorm.SqlParser#long" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="long(columnPosition:Int):anorm.RowParser[Long]"></a>
+      <a id="long(Int):RowParser[Long]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">long</span><span class="params">(<span name="columnPosition">columnPosition: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a>[<span class="extype" name="scala.Long">Long</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Parses specified column as long.</p><div class="fullcomment"><div class="comment cmt"><p>Parses specified column as long.</p></div><dl class="paramcmts block"><dt class="param">columnPosition</dt><dd class="cmt"><p>from 1 to n</p><pre><span class="kw">import</span> anorm.{ SQL, SqlParser }
+
+<span class="kw">val</span> t: (<span class="std">Long</span>, <span class="std">String</span>) = SQL(<span class="lit">"SELECT a, b FROM test"</span>)
+  .as(SqlParser.long(<span class="num">1</span>) ~ SqlParser.str(<span class="lit">"b"</span>) map (
+    SqlParser.flatten) single)</pre></dd></dl></div>
     </li><li name="anorm.SqlParser#long" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="long(columnName:String):anorm.RowParser[Long]"></a>
       <a id="long(String):RowParser[Long]"></a>
@@ -510,6 +645,23 @@
       </h4>
       <p class="shortcomment cmt">Returns parser for a scalar not-null value.</p><div class="fullcomment"><div class="comment cmt"><p>Returns parser for a scalar not-null value.</p><pre><span class="kw">val</span> count = SQL(<span class="lit">"select count(*) from Country"</span>).as(scalar[<span class="std">Long</span>].single)</pre></div></div>
     </li><li name="anorm.SqlParser#short" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="short(columnPosition:Int):anorm.RowParser[Short]"></a>
+      <a id="short(Int):RowParser[Short]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">short</span><span class="params">(<span name="columnPosition">columnPosition: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a>[<span class="extype" name="scala.Short">Short</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Parses specified column as short.</p><div class="fullcomment"><div class="comment cmt"><p>Parses specified column as short.</p></div><dl class="paramcmts block"><dt class="param">columnPosition</dt><dd class="cmt"><p>from 1 to n</p><pre><span class="kw">import</span> anorm.{ SQL, SqlParser }
+
+<span class="kw">val</span> t: (<span class="std">Short</span>, <span class="std">String</span>) = SQL(<span class="lit">"SELECT a, b FROM test"</span>)
+  .as(SqlParser.short(<span class="num">1</span>) ~ SqlParser.str(<span class="lit">"b"</span>) map (
+    SqlParser.flatten) single)</pre></dd></dl></div>
+    </li><li name="anorm.SqlParser#short" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="short(columnName:String):anorm.RowParser[Short]"></a>
       <a id="short(String):RowParser[Short]"></a>
       <h4 class="signature">
@@ -526,6 +678,23 @@
 <span class="kw">val</span> t: (<span class="std">Short</span>, <span class="std">String</span>) = SQL(<span class="lit">"SELECT a, b FROM test"</span>)
   .as(SqlParser.short(<span class="lit">"a"</span>) ~ SqlParser.str(<span class="lit">"b"</span>) map (
     SqlParser.flatten) single)</pre></div></div>
+    </li><li name="anorm.SqlParser#str" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="str(columnPosition:Int):anorm.RowParser[String]"></a>
+      <a id="str(Int):RowParser[String]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">str</span><span class="params">(<span name="columnPosition">columnPosition: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Parses specified column as string.</p><div class="fullcomment"><div class="comment cmt"><p>Parses specified column as string.</p></div><dl class="paramcmts block"><dt class="param">columnPosition</dt><dd class="cmt"><p>from 1 to n</p><pre><span class="kw">import</span> anorm.{ SQL, SqlParser }
+
+<span class="kw">val</span> t: (<span class="std">Float</span>, <span class="std">String</span>) = SQL(<span class="lit">"SELECT a, b FROM test"</span>)
+  .as(SqlParser.float(<span class="lit">"a"</span>) ~ SqlParser.str(<span class="num">1</span>) map (
+    SqlParser.flatten) single)</pre></dd></dl></div>
     </li><li name="anorm.SqlParser#str" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="str(columnName:String):anorm.RowParser[String]"></a>
       <a id="str(String):RowParser[String]"></a>
