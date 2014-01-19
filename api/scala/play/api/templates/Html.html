@@ -81,7 +81,7 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="play.api.templates.Html#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(buffer:StringBuilder):play.api.templates.Html"></a>
+      <a id="&lt;init&gt;(elements:TraversableOnce[play.api.templates.Html]):play.api.templates.Html"></a>
       <a id="&lt;init&gt;:Html"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -89,7 +89,20 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">Html</span><span class="params">(<span name="buffer">buffer: <span class="extype" name="scala.StringBuilder">StringBuilder</span></span>)</span>
+        <span class="name">Html</span><span class="params">(<span name="elements">elements: <span class="extype" name="scala.TraversableOnce">TraversableOnce</span>[<a href="" class="extype" name="play.api.templates.Html">Html</a>]</span>)</span>
+      </span>
+      </h4>
+      
+    </li><li name="play.api.templates.Html#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="&lt;init&gt;(text:String):play.api.templates.Html"></a>
+      <a id="&lt;init&gt;:Html"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">new</span>
+      </span>
+      <span class="symbol">
+        <span class="name">Html</span><span class="params">(<span name="text">text: <span class="extype" name="scala.Predef.String">String</span></span>)</span>
       </span>
       </h4>
       
@@ -141,19 +154,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="play.api.templates.BufferedContent#+=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="+=(other:A):A"></a>
-      <a id="+=(Html):Html"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span title="gt4s: $plus$eq" class="name">+=</span><span class="params">(<span name="other">other: <a href="" class="extype" name="play.api.templates.Html">Html</a></span>)</span><span class="result">: <a href="" class="extype" name="play.api.templates.Html">Html</a></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BufferedContent.html" class="extype" name="play.api.templates.BufferedContent">BufferedContent</a> → <a href="../../templates/Appendable.html" class="extype" name="play.templates.Appendable">Appendable</a></dd></dl></div>
     </li><li name="scala.AnyRef#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="==(x$1:AnyRef):Boolean"></a>
       <a id="==(AnyRef):Boolean"></a>
@@ -207,6 +207,19 @@
       </h4>
       <p class="shortcomment cmt">The content String.</p><div class="fullcomment"><div class="comment cmt"><p>The content String.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BufferedContent.html" class="extype" name="play.api.templates.BufferedContent">BufferedContent</a> → <a href="../mvc/Content.html" class="extype" name="play.api.mvc.Content">Content</a></dd></dl></div>
+    </li><li name="play.api.templates.BufferedContent#buildString" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="buildString(builder:StringBuilder):Unit"></a>
+      <a id="buildString(StringBuilder):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">buildString</span><span class="params">(<span name="builder">builder: <span class="extype" name="scala.StringBuilder">StringBuilder</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="BufferedContent.html" class="extype" name="play.api.templates.BufferedContent">BufferedContent</a></dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
@@ -253,8 +266,8 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="play.templates.Appendable#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="equals(x:Any):Boolean"></a>
+    </li><li name="scala.AnyRef#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="equals(x$1:Any):Boolean"></a>
       <a id="equals(Any):Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -262,10 +275,10 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">equals</span><span class="params">(<span name="x">x: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+        <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../templates/Appendable.html" class="extype" name="play.templates.Appendable">Appendable</a> → AnyRef → Any</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
@@ -298,7 +311,7 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="play.templates.Appendable#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <a id="hashCode():Int"></a>
       <h4 class="signature">
@@ -310,7 +323,7 @@
         <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../templates/Appendable.html" class="extype" name="play.templates.Appendable">Appendable</a> → AnyRef → Any</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>

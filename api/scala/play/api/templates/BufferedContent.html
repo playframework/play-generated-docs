@@ -39,7 +39,9 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Appendable content using a StringBuilder.</p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>self-type
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Appendable content using a StringBuilder. Either specify elements or text, not both.</p><p>Using an Either[TraversableOnce[A], String] impacts performance in an already
+contentious part of code, so it has been done with both parameters instead.
+</p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>self-type
 </p></dd></dl><dl class="attributes block"> <dt>Self Type</dt><dd><span class="extype" name="play.api.templates.BufferedContent.A">A</span></dd><dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play/src/main/scala/play/api/templates/Templates.scala" target="_blank">Templates.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="play.mvc.Content">Content</span>, <a href="../mvc/Content.html" class="extype" name="play.api.mvc.Content">Content</a>, <a href="../../templates/Appendable.html" class="extype" name="play.templates.Appendable">Appendable</a>[<span class="extype" name="play.api.templates.BufferedContent.A">A</span>], <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
@@ -84,7 +86,7 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="play.api.templates.BufferedContent#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(buffer:StringBuilder):play.api.templates.BufferedContent[A]"></a>
+      <a id="&lt;init&gt;(elements:TraversableOnce[A],text:String):play.api.templates.BufferedContent[A]"></a>
       <a id="&lt;init&gt;:BufferedContent[A]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -92,10 +94,10 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">BufferedContent</span><span class="params">(<span name="buffer">buffer: <span class="extype" name="scala.StringBuilder">StringBuilder</span></span>)</span>
+        <span class="name">BufferedContent</span><span class="params">(<span name="elements">elements: <span class="extype" name="scala.TraversableOnce">TraversableOnce</span>[<span class="extype" name="play.api.templates.BufferedContent.A">A</span>]</span>, <span name="text">text: <span class="extype" name="scala.Predef.String">String</span></span>)</span>
       </span>
       </h4>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">buffer</dt><dd class="cmt"><p>StringBuilder to use</p></dd></dl></div>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">elements</dt><dd class="cmt"><p>Sub elements to traverse when creating the resultant string</p></dd><dt class="param">text</dt><dd class="cmt"><p>Formatted content</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -161,19 +163,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="play.api.templates.BufferedContent#+=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="+=(other:A):A"></a>
-      <a id="+=(A):A"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span title="gt4s: $plus$eq" class="name">+=</span><span class="params">(<span name="other">other: <span class="extype" name="play.api.templates.BufferedContent.A">A</span></span>)</span><span class="result">: <span class="extype" name="play.api.templates.BufferedContent.A">A</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.templates.BufferedContent">BufferedContent</a> → <a href="../../templates/Appendable.html" class="extype" name="play.templates.Appendable">Appendable</a></dd></dl></div>
     </li><li name="scala.AnyRef#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="==(x$1:AnyRef):Boolean"></a>
       <a id="==(AnyRef):Boolean"></a>
@@ -227,6 +216,19 @@
       </h4>
       <p class="shortcomment cmt">The content String.</p><div class="fullcomment"><div class="comment cmt"><p>The content String.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.templates.BufferedContent">BufferedContent</a> → <a href="../mvc/Content.html" class="extype" name="play.api.mvc.Content">Content</a></dd></dl></div>
+    </li><li name="play.api.templates.BufferedContent#buildString" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="buildString(builder:StringBuilder):Unit"></a>
+      <a id="buildString(StringBuilder):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">buildString</span><span class="params">(<span name="builder">builder: <span class="extype" name="scala.StringBuilder">StringBuilder</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
@@ -246,6 +248,19 @@
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="play.api.templates.BufferedContent#elements" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="elements:TraversableOnce[A]"></a>
+      <a id="elements:TraversableOnce[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">elements</span><span class="result">: <span class="extype" name="scala.TraversableOnce">TraversableOnce</span>[<span class="extype" name="play.api.templates.BufferedContent.A">A</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Sub elements to traverse when creating the resultant string</p><div class="fullcomment"><div class="comment cmt"><p>Sub elements to traverse when creating the resultant string</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -259,8 +274,8 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="play.templates.Appendable#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="equals(x:Any):Boolean"></a>
+    </li><li name="scala.AnyRef#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="equals(x$1:Any):Boolean"></a>
       <a id="equals(Any):Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -268,10 +283,10 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">equals</span><span class="params">(<span name="x">x: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+        <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../templates/Appendable.html" class="extype" name="play.templates.Appendable">Appendable</a> → AnyRef → Any</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
@@ -304,7 +319,7 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="play.templates.Appendable#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <a id="hashCode():Int"></a>
       <h4 class="signature">
@@ -316,7 +331,7 @@
         <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../templates/Appendable.html" class="extype" name="play.templates.Appendable">Appendable</a> → AnyRef → Any</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -382,6 +397,19 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="play.api.templates.BufferedContent#text" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="text:String"></a>
+      <a id="text:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">text</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Formatted content</p><div class="fullcomment"><div class="comment cmt"><p>Formatted content</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="play.api.templates.BufferedContent#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
       <a id="toString():String"></a>
