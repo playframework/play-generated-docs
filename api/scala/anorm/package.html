@@ -92,7 +92,7 @@ SQL(<span class="lit">"Select 1"</span>)</pre></div><dl class="attributes block"
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="BatchSql.html"><span class="name">BatchSql</span></a><span class="params">(<span name="sql">sql: <a href="SqlQuery.html" class="extype" name="anorm.SqlQuery">SqlQuery</a></span>, <span name="params">params: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Seq">Seq</span>[(<span class="extype" name="scala.Predef.String">String</span>, <a href="ParameterValue.html" class="extype" name="anorm.ParameterValue">ParameterValue</a>)]]</span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="BatchSql.html"><span class="name">BatchSql</span></a><span class="params">(<span name="sql">sql: <a href="SqlQuery.html" class="extype" name="anorm.SqlQuery">SqlQuery</a></span>, <span name="params">params: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <a href="ParameterValue.html" class="extype" name="anorm.ParameterValue">ParameterValue</a>]]</span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
@@ -278,6 +278,19 @@ SQL(<span class="lit">"Select 1"</span>)</pre></div><dl class="attributes block"
       </span>
       </h4>
       
+    </li><li name="anorm.SeqParameter" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="SeqParameter[A]extendsAnyRef"></a>
+      <a id="SeqParameter[A]:SeqParameter[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="SeqParameter.html"><span class="name">SeqParameter</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Wrapper to use <span class="extype" name="Seq">Seq</span> as SQL parameter, with custom formatting.</p>
     </li><li name="anorm.SimpleSql" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="SimpleSql[T]extendsSqlwithProductwithSerializable"></a>
       <a id="SimpleSql[T]:SimpleSql[T]"></a>
@@ -287,10 +300,10 @@ SQL(<span class="lit">"Select 1"</span>)</pre></div><dl class="attributes block"
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="SimpleSql.html"><span class="name">SimpleSql</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="sql">sql: <a href="SqlQuery.html" class="extype" name="anorm.SqlQuery">SqlQuery</a></span>, <span name="params">params: <span class="extype" name="scala.Seq">Seq</span>[<a href="NamedParameter.html" class="extype" name="anorm.NamedParameter">NamedParameter</a>]</span>, <span name="defaultParser">defaultParser: <a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a>[<span class="extype" name="anorm.SimpleSql.T">T</span>]</span>)</span><span class="result"> extends <a href="Sql.html" class="extype" name="anorm.Sql">Sql</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="SimpleSql.html"><span class="name">SimpleSql</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="sql">sql: <a href="SqlQuery.html" class="extype" name="anorm.SqlQuery">SqlQuery</a></span>, <span name="params">params: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <a href="ParameterValue.html" class="extype" name="anorm.ParameterValue">ParameterValue</a>]</span>, <span name="defaultParser">defaultParser: <a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a>[<span class="extype" name="anorm.SimpleSql.T">T</span>]</span>)</span><span class="result"> extends <a href="Sql.html" class="extype" name="anorm.Sql">Sql</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
-      
+      <p class="comment cmt">Simple/plain SQL.</p>
     </li><li name="anorm.Sql" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="SqlextendsAnyRef"></a>
       <a id="Sql:Sql"></a>
@@ -329,13 +342,13 @@ SQL(<span class="lit">"Select 1"</span>)</pre></div><dl class="attributes block"
         <a href="SqlQuery.html"><span class="name">SqlQuery</span></a><span class="params">(<span name="query">query: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="argsInitialOrder">argsInitialOrder: <span class="extype" name="scala.List">List</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">immutable.this.List.empty[Nothing]</span></span>, <span name="queryTimeout">queryTimeout: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Int">Int</span>] = <span class="symbol">scala.None</span></span>)</span><span class="result"> extends <a href="Sql.html" class="extype" name="anorm.Sql">Sql</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
-      
+      <p class="comment cmt">Initial SQL query, without parameter values.</p>
     </li><li name="anorm.SqlQueryResult" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="SqlQueryResultextendsProductwithSerializable"></a>
       <a id="SqlQueryResult:SqlQueryResult"></a>
       <h4 class="signature">
       <span class="modifier_kind">
-        <span class="modifier"></span>
+        <span class="modifier">final </span>
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
@@ -383,6 +396,19 @@ SQL(<span class="lit">"Select 1"</span>)</pre></div><dl class="attributes block"
       </span>
       </h4>
       <p class="comment cmt">Successfully parsed result.</p>
+    </li><li name="anorm.ToSql" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ToSql[A]extendsAnyRef"></a>
+      <a id="ToSql[A]:ToSql[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="ToSql.html"><span class="name">ToSql</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">Set value as prepared SQL statement fragment.</p>
     </li><li name="anorm.ToStatement" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="ToStatement[A]extendsAnyRef"></a>
       <a id="ToStatement[A]:ToStatement[A]"></a>
@@ -853,6 +879,19 @@ with resolution priority 9.</p>
       </span>
       </h4>
       <p class="shortcomment cmt">Creates an SQL query with given statement.</p><div class="fullcomment"><div class="comment cmt"><p>Creates an SQL query with given statement.</p></div><dl class="paramcmts block"><dt class="param">stmt</dt><dd class="cmt"><p>SQL statement</p><pre><span class="kw">val</span> query = SQL(<span class="lit">"SELECT * FROM Country"</span>)</pre></dd></dl></div>
+    </li><li name="anorm.SeqParameter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SeqParameter"></a>
+      <a id="SeqParameter:SeqParameter"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="SeqParameter$.html"><span class="name">SeqParameter</span></a>
+      </span>
+      </h4>
+      <p class="comment cmt">SeqParameter factory</p>
     </li><li name="anorm.Sql" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Sql"></a>
       <a id="Sql:Sql"></a>
@@ -891,7 +930,20 @@ with resolution priority 9.</p>
         <a href="SqlStatementParser$.html"><span class="name">SqlStatementParser</span></a><span class="result"> extends <span class="extype" name="scala.util.parsing.combinator.JavaTokenParsers">JavaTokenParsers</span></span>
       </span>
       </h4>
-      
+      <p class="comment cmt">Parser for SQL statement.</p>
+    </li><li name="anorm.ToSql" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ToSql"></a>
+      <a id="ToSql:ToSql"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ToSql$.html"><span class="name">ToSql</span></a>
+      </span>
+      </h4>
+      <p class="comment cmt">Provided ToSql implementations.</p>
     </li><li name="anorm.ToStatement" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="ToStatement"></a>
       <a id="ToStatement:ToStatement"></a>
@@ -984,15 +1036,15 @@ with resolution priority 9.</p>
       </h4>
       
     </li><li name="anorm.package#toParameterValue" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="toParameterValue[A](a:A)(implicitp:anorm.ToStatement[A]):anorm.ParameterValue"></a>
-      <a id="toParameterValue[A](A)(ToStatement[A]):ParameterValue"></a>
+      <a id="toParameterValue[A](a:A)(implicits:anorm.ToSql[A],implicitp:anorm.ToStatement[A]):anorm.ParameterValue"></a>
+      <a id="toParameterValue[A](A)(ToSql[A],ToStatement[A]):ParameterValue"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">implicit </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">toParameterValue</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="a">a: <span class="extype" name="anorm.toParameterValue.A">A</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="p">p: <a href="ToStatement.html" class="extype" name="anorm.ToStatement">ToStatement</a>[<span class="extype" name="anorm.toParameterValue.A">A</span>]</span>)</span><span class="result">: <a href="ParameterValue.html" class="extype" name="anorm.ParameterValue">ParameterValue</a></span>
+        <span class="name">toParameterValue</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="a">a: <span class="extype" name="anorm.toParameterValue.A">A</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="s">s: <a href="ToSql.html" class="extype" name="anorm.ToSql">ToSql</a>[<span class="extype" name="anorm.toParameterValue.A">A</span>] = <span class="symbol">null</span></span>, <span name="p">p: <a href="ToStatement.html" class="extype" name="anorm.ToStatement">ToStatement</a>[<span class="extype" name="anorm.toParameterValue.A">A</span>]</span>)</span><span class="result">: <a href="ParameterValue.html" class="extype" name="anorm.ParameterValue">ParameterValue</a></span>
       </span>
       </h4>
       
