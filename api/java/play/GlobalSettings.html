@@ -181,25 +181,34 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr class="rowColor">
+<td class="colFirst"><code><a href="../play/Configuration.html" title="class in play">Configuration</a></code></td>
+<td class="colLast"><code><strong><a href="../play/GlobalSettings.html#onLoadConfig(play.Configuration, java.io.File, java.lang.ClassLoader, play.Mode)">onLoadConfig</a></strong>(<a href="../play/Configuration.html" title="class in play">Configuration</a>&nbsp;config,
+            java.io.File&nbsp;path,
+            java.lang.ClassLoader&nbsp;classloader,
+            <a href="../play/Mode.html" title="enum in play">Mode</a>&nbsp;mode)</code>
+<div class="block">Called just after configuration has been loaded, to give the application an opportunity to modify it.</div>
+</td>
+</tr>
+<tr class="altColor">
 <td class="colFirst"><code><a href="../play/mvc/Action.html" title="class in play.mvc">Action</a></code></td>
 <td class="colLast"><code><strong><a href="../play/GlobalSettings.html#onRequest(play.mvc.Http.Request, java.lang.reflect.Method)">onRequest</a></strong>(<a href="../play/mvc/Http.Request.html" title="class in play.mvc">Http.Request</a>&nbsp;request,
          java.lang.reflect.Method&nbsp;actionMethod)</code>
 <div class="block">Call to create the root Action of a request for a Java application.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>play.api.mvc.Handler</code></td>
 <td class="colLast"><code><strong><a href="../play/GlobalSettings.html#onRouteRequest(play.mvc.Http.RequestHeader)">onRouteRequest</a></strong>(<a href="../play/mvc/Http.RequestHeader.html" title="class in play.mvc">Http.RequestHeader</a>&nbsp;request)</code>
 <div class="block">Called when an HTTP request has been received.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../play/GlobalSettings.html#onStart(play.Application)">onStart</a></strong>(<a href="../play/Application.html" title="class in play">Application</a>&nbsp;app)</code>
 <div class="block">Executed after all plugins, including the database set-up with Evolutions and the EBean wrapper.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../play/GlobalSettings.html#onStop(play.Application)">onStop</a></strong>(<a href="../play/Application.html" title="class in play">Application</a>&nbsp;app)</code>
 <div class="block">Executed when the application stops.</div>
@@ -284,8 +293,8 @@ extends java.lang.Object</pre>
 <pre>public&nbsp;<a href="../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;<a href="../play/mvc/SimpleResult.html" title="class in play.mvc">SimpleResult</a>&gt;&nbsp;onError(<a href="../play/mvc/Http.RequestHeader.html" title="class in play.mvc">Http.RequestHeader</a>&nbsp;request,
                               java.lang.Throwable&nbsp;t)</pre>
 <div class="block">Called when an exception occurred.
- 
- The default is to send the framework's default error page. This is achieved by returning <code>null</code>, 
+
+ The default is to send the framework's default error page. This is achieved by returning <code>null</code>,
  so that the Scala engine handles the excepetion and shows an error page.
 
  By overriding this method one can provide an alternative error page.</div>
@@ -315,9 +324,9 @@ extends java.lang.Object</pre>
 <h4>onRouteRequest</h4>
 <pre>public&nbsp;play.api.mvc.Handler&nbsp;onRouteRequest(<a href="../play/mvc/Http.RequestHeader.html" title="class in play.mvc">Http.RequestHeader</a>&nbsp;request)</pre>
 <div class="block">Called when an HTTP request has been received.
- The default implementation (return null) means to use the application router to find the appropriate action 
- 
- By overriding this method one can provide an alternative routing mechanism. 
+ The default implementation (return null) means to use the application router to find the appropriate action
+
+ By overriding this method one can provide an alternative routing mechanism.
  Please note, though, this API is very low level, useful for plugin/module authors only.</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>request</code> - the HTTP request header as seen by the core framework (the body has not been parsed yet)</dd>
 <dt><span class="strong">Returns:</span></dt><dd>an action to handle this request - if no action is returned, a 404 not found result will be sent to client</dd></dl>
@@ -332,8 +341,8 @@ extends java.lang.Object</pre>
 <pre>public&nbsp;<a href="../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;<a href="../play/mvc/SimpleResult.html" title="class in play.mvc">SimpleResult</a>&gt;&nbsp;onHandlerNotFound(<a href="../play/mvc/Http.RequestHeader.html" title="class in play.mvc">Http.RequestHeader</a>&nbsp;request)</pre>
 <div class="block">Called when no action was found to serve a request.
 
- The default behavior is to render the framework's default 404 page. This is achieved by returning <code>null</code>, 
- so that the Scala engine handles <code>onHandlerNotFound</code>. 
+ The default behavior is to render the framework's default 404 page. This is achieved by returning <code>null</code>,
+ so that the Scala engine handles <code>onHandlerNotFound</code>.
 
  By overriding this method one can provide an alternative 404 page.</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>request</code> - the HTTP request</dd>
@@ -350,7 +359,7 @@ extends java.lang.Object</pre>
                                    java.lang.String&nbsp;error)</pre>
 <div class="block">Called when an action has been found, but the request parsing has failed.
 
- The default behavior is to render the framework's default 400 page. This is achieved by returning <code>null</code>, 
+ The default behavior is to render the framework's default 400 page. This is achieved by returning <code>null</code>,
  so that the Scala engine handles <code>onBadRequest</code>.
 
  By overriding this method one can provide an alternative 400 page.</div>
@@ -384,6 +393,21 @@ extends java.lang.Object</pre>
                          java.lang.ClassLoader&nbsp;classloader)</pre>
 <div class="block">Called just after configuration has been loaded, to give the application an opportunity to modify it.</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>config</code> - the loaded configuration</dd><dd><code>path</code> - the application path</dd><dd><code>classloader</code> - The applications classloader</dd>
+<dt><span class="strong">Returns:</span></dt><dd>The configuration that the application should use</dd></dl>
+</li>
+</ul>
+<a name="onLoadConfig(play.Configuration, java.io.File, java.lang.ClassLoader, play.Mode)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>onLoadConfig</h4>
+<pre>public&nbsp;<a href="../play/Configuration.html" title="class in play">Configuration</a>&nbsp;onLoadConfig(<a href="../play/Configuration.html" title="class in play">Configuration</a>&nbsp;config,
+                         java.io.File&nbsp;path,
+                         java.lang.ClassLoader&nbsp;classloader,
+                         <a href="../play/Mode.html" title="enum in play">Mode</a>&nbsp;mode)</pre>
+<div class="block">Called just after configuration has been loaded, to give the application an opportunity to modify it.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>config</code> - the loaded configuration</dd><dd><code>path</code> - the application path</dd><dd><code>classloader</code> - The applications classloader</dd><dd><code>mode</code> - The mode of the application</dd>
 <dt><span class="strong">Returns:</span></dt><dd>The configuration that the application should use</dd></dl>
 </li>
 </ul>
