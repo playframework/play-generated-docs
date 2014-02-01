@@ -193,6 +193,26 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="play.api.libs.json.Json#asciiStringify" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="asciiStringify(json:play.api.libs.json.JsValue):String"></a>
+      <a id="asciiStringify(JsValue):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">asciiStringify</span><span class="params">(<span name="json">json: <a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Convert a JsValue to its string representation, escaping all non-ascii characters using \uXXXX syntax.</p><div class="fullcomment"><div class="comment cmt"><p>Convert a JsValue to its string representation, escaping all non-ascii characters using \uXXXX syntax.</p><p>This is particularly useful when the output JSON will be executed as javascript, since JSON is not a strict
+subset of javascript
+(see <a href="http://timelessrepo.com/json-isnt-a-javascript-subset">JSON: The JavaScript subset that isn't</a>).</p><pre>scala&gt; Json.asciiStringify(JsString(<span class="lit">"some\u2028text\u2029"</span>))
+res0: <span class="std">String</span> = <span class="lit">"some\u2028text\u2029"</span>
+
+scala&gt; Json.stringify(JsString(<span class="lit">"some\u2028text\u2029"</span>))
+res1: <span class="std">String</span> = <span class="lit">"sometext"</span></pre></div><dl class="paramcmts block"><dt class="param">json</dt><dd class="cmt"><p>the JsValue to convert</p></dd><dt>returns</dt><dd class="cmt"><p>a String with the json representation with all non-ascii characters escaped.
+</p></dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
