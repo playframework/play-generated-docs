@@ -395,7 +395,34 @@
 
         <div id="values" class="values members">
               <h3>Deprecated Value Members</h3>
-              <ol><li name="anorm.features#parameterWithUntypedName" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+              <ol><li name="anorm.features#anyToStatement" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="anyToStatement[T]:anorm.ToStatement[T]"></a>
+      <a id="anyToStatement[T]:ToStatement[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 2.3.0) Do not passed parameter as untyped/Any value">anyToStatement</span><span class="tparams">[<span name="T">T</span>]</span><span class="result">: <a href="ToStatement.html" class="extype" name="anorm.ToStatement">ToStatement</a>[<span class="extype" name="anorm.features.anyToStatement.T">T</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Unsafe conversion from untyped value to statement parameter.</p><div class="fullcomment"><div class="comment cmt"><p>Unsafe conversion from untyped value to statement parameter.
+Value will be passed using setObject.</p><p>It's not recommanded to use it as it can hide conversion issue.</p><pre><span class="cmt">// For backward compatibility</span>
+<span class="kw">import</span> anorm.features.anyToStatement
+
+<span class="kw">val</span> d = <span class="kw">new</span> java.util.Date()
+<span class="kw">val</span> params: <span class="std">Seq</span>[NamedParameter] = <span class="std">Seq</span>(<span class="lit">"mod"</span> -&gt; d, <span class="lit">"id"</span> -&gt; <span class="lit">"idv"</span>)
+<span class="cmt">// Values as Any as heterogenous</span>
+
+SQL(<span class="lit">"UPDATE item SET last_modified = {mod} WHERE id = {id}"</span>).
+  on(params:_*)
+<span class="cmt">// date and string passed with setObject, rather than</span>
+<span class="cmt">// setDate and setString.</span></pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.3.0)</i> Do not passed parameter as untyped/Any value</p></dd></dl></div>
+    </li><li name="anorm.features#parameterWithUntypedName" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="parameterWithUntypedName[V](t:(Any,V))(implicitc:V=&gt;anorm.ParameterValue):anorm.NamedParameter"></a>
       <a id="parameterWithUntypedName[V]((Any,V))((V)⇒ParameterValue):NamedParameter"></a>
       <h4 class="signature">
