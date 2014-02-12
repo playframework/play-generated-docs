@@ -60,7 +60,7 @@ For example:</p><pre><span class="kw">case</span> <span class="kw">class</span> 
       Ok(toJson( User(id.toLong, <span class="lit">"myName"</span>, friends: <span class="std">List</span>())))
    }
    <span class="kw">def</span> saveUser(jsonString: <span class="std">String</span>)= Action {
-     <span class="kw">val</span> user = play.api.libs.json.parse(jsonString).as[User]
+     <span class="kw">val</span> user = play.api.libs.json.Json.parse(jsonString).as[User]
      myDataStore.save(user)
      Ok
    }
