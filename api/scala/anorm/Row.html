@@ -83,20 +83,7 @@
 
         <div id="values" class="values members">
               <h3>Abstract Value Members</h3>
-              <ol><li name="anorm.Row#data" visbl="prt" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="data:List[Any]"></a>
-      <a id="data:List[Any]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">abstract </span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">data</span><span class="result">: <span class="extype" name="scala.List">List</span>[<span class="extype" name="scala.Any">Any</span>]</span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Raw data</p><div class="fullcomment"><div class="comment cmt"><p>Raw data</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="package.html" class="extype" name="anorm">anorm</a>] </dd></dl></div>
-    </li><li name="anorm.Row#metaData" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+              <ol><li name="anorm.Row#metaData" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="metaData:anorm.MetaData"></a>
       <a id="metaData:MetaData"></a>
       <h4 class="signature">
@@ -179,8 +166,8 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="anorm.Row#apply" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="apply[B](a:String)(implicitc:anorm.Column[B]):B"></a>
+    </li><li name="anorm.Row#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="apply[B](name:String)(implicitc:anorm.Column[B]):B"></a>
       <a id="apply[B](String)(Column[B]):B"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -188,10 +175,15 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">apply</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="a">a: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="c">c: <a href="Column.html" class="extype" name="anorm.Column">Column</a>[<span class="extype" name="anorm.Row.apply.B">B</span>]</span>)</span><span class="result">: <span class="extype" name="anorm.Row.apply.B">B</span></span>
+        <span class="name">apply</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="c">c: <a href="Column.html" class="extype" name="anorm.Column">Column</a>[<span class="extype" name="anorm.Row.apply.B">B</span>]</span>)</span><span class="result">: <span class="extype" name="anorm.Row.apply.B">B</span></span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt">Returns parsed column.</p><div class="fullcomment"><div class="comment cmt"><p>Returns parsed column.
+</p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>Column name</p></dd><dt class="param">c</dt><dd class="cmt"><p>Column mapping</p><pre><span class="kw">import</span> anorm.Column.columnToString <span class="cmt">// mapping column to string</span>
+
+<span class="kw">val</span> res: (<span class="std">String</span>, <span class="std">String</span>) = SQL(<span class="lit">"SELECT * FROM Test"</span>).map(row <span class="kw">=&gt;</span>
+  row(<span class="lit">"code"</span>) -&gt; row(<span class="lit">"label"</span>) <span class="cmt">// string columns 'code' and 'label'</span>
+)</pre></dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
