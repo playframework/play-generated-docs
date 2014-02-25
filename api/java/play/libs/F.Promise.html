@@ -33,7 +33,7 @@
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../play/libs/F.Option.html" title="class in play.libs"><span class="strong">Prev Class</span></a></li>
+<li><a href="../../play/libs/F.Predicate.html" title="interface in play.libs"><span class="strong">Prev Class</span></a></li>
 <li><a href="../../play/libs/F.RedeemablePromise.html" title="class in play.libs"><span class="strong">Next Class</span></a></li>
 </ul>
 <ul class="navList">
@@ -163,6 +163,19 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr class="altColor">
+<td class="colFirst"><code><a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#filter(play.libs.F.Predicate)">filter</a></strong>(<a href="../../play/libs/F.Predicate.html" title="interface in play.libs">F.Predicate</a>&lt;? super <a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>&gt;&nbsp;predicate)</code>
+<div class="block">Creates a new promise by filtering the value of the current promise with a predicate.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#filter(play.libs.F.Predicate, scala.concurrent.ExecutionContext)">filter</a></strong>(<a href="../../play/libs/F.Predicate.html" title="interface in play.libs">F.Predicate</a>&lt;? super <a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>&gt;&nbsp;predicate,
+      scala.concurrent.ExecutionContext&nbsp;ec)</code>
+<div class="block">Creates a new promise by filtering the value of the current promise with a predicate.</div>
+</td>
+</tr>
+<tr class="altColor">
 <td class="colFirst"><code>&lt;B&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;B&gt;</code></td>
 <td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#flatMap(play.libs.F.Function)">flatMap</a></strong>(<a href="../../play/libs/F.Function.html" title="interface in play.libs">F.Function</a>&lt;? super <a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>,<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;B&gt;&gt;&nbsp;function)</code>
 <div class="block">Maps the result of this promise to a promise for a result of type <code>B</code>, and flattens that to be
@@ -272,25 +285,25 @@ extends java.lang.Object</pre>
 <tr class="altColor">
 <td class="colFirst"><code>static &lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;java.util.List&lt;A&gt;&gt;</code></td>
 <td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#sequence(scala.concurrent.ExecutionContext, play.libs.F.Promise...)">sequence</a></strong>(scala.concurrent.ExecutionContext&nbsp;ec,
-        <a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;? extends A&gt;...&nbsp;promises)</code>
+        <a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;A&gt;...&nbsp;promises)</code>
 <div class="block">Combine the given promises into a single promise for the list of results.</div>
 </td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>static &lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;java.util.List&lt;A&gt;&gt;</code></td>
-<td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#sequence(play.libs.F.Promise...)">sequence</a></strong>(<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;? extends A&gt;...&nbsp;promises)</code>
+<td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#sequence(play.libs.F.Promise...)">sequence</a></strong>(<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;A&gt;...&nbsp;promises)</code>
 <div class="block">Combine the given promises into a single promise for the list of results.</div>
 </td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>static &lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;java.util.List&lt;A&gt;&gt;</code></td>
-<td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#sequence(java.lang.Iterable)">sequence</a></strong>(java.lang.Iterable&lt;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;? extends A&gt;&gt;&nbsp;promises)</code>
+<td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#sequence(java.lang.Iterable)">sequence</a></strong>(java.lang.Iterable&lt;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;A&gt;&gt;&nbsp;promises)</code>
 <div class="block">Combine the given promises into a single promise for the list of results.</div>
 </td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>static &lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;java.util.List&lt;A&gt;&gt;</code></td>
-<td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#sequence(java.lang.Iterable, scala.concurrent.ExecutionContext)">sequence</a></strong>(java.lang.Iterable&lt;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;? extends A&gt;&gt;&nbsp;promises,
+<td class="colLast"><code><strong><a href="../../play/libs/F.Promise.html#sequence(java.lang.Iterable, scala.concurrent.ExecutionContext)">sequence</a></strong>(java.lang.Iterable&lt;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;A&gt;&gt;&nbsp;promises,
         scala.concurrent.ExecutionContext&nbsp;ec)</code>
 <div class="block">Combine the given promises into a single promise for the list of results.</div>
 </td>
@@ -409,7 +422,7 @@ public&nbsp;F.Promise(scala.concurrent.Future&lt;<a href="../../play/libs/F.Prom
 <ul class="blockList">
 <li class="blockList">
 <h4>sequence</h4>
-<pre>public static&nbsp;&lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;java.util.List&lt;A&gt;&gt;&nbsp;sequence(<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;? extends A&gt;...&nbsp;promises)</pre>
+<pre>public static&nbsp;&lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;java.util.List&lt;A&gt;&gt;&nbsp;sequence(<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;A&gt;...&nbsp;promises)</pre>
 <div class="block">Combine the given promises into a single promise for the list of results.
 
  The sequencing operations are performed in the default ExecutionContext.</div>
@@ -424,7 +437,7 @@ public&nbsp;F.Promise(scala.concurrent.Future&lt;<a href="../../play/libs/F.Prom
 <li class="blockList">
 <h4>sequence</h4>
 <pre>public static&nbsp;&lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;java.util.List&lt;A&gt;&gt;&nbsp;sequence(scala.concurrent.ExecutionContext&nbsp;ec,
-                                        <a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;? extends A&gt;...&nbsp;promises)</pre>
+                                        <a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;A&gt;...&nbsp;promises)</pre>
 <div class="block">Combine the given promises into a single promise for the list of results.</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>ec</code> - Used to execute the sequencing operations.</dd><dd><code>promises</code> - The promises to combine</dd>
 <dt><span class="strong">Returns:</span></dt><dd>A single promise whose methods act on the list of redeemed promises</dd></dl>
@@ -496,7 +509,7 @@ public&nbsp;F.Promise(scala.concurrent.Future&lt;<a href="../../play/libs/F.Prom
 <ul class="blockList">
 <li class="blockList">
 <h4>sequence</h4>
-<pre>public static&nbsp;&lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;java.util.List&lt;A&gt;&gt;&nbsp;sequence(java.lang.Iterable&lt;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;? extends A&gt;&gt;&nbsp;promises)</pre>
+<pre>public static&nbsp;&lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;java.util.List&lt;A&gt;&gt;&nbsp;sequence(java.lang.Iterable&lt;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;A&gt;&gt;&nbsp;promises)</pre>
 <div class="block">Combine the given promises into a single promise for the list of results.
 
  The sequencing operations are performed in the default ExecutionContext.</div>
@@ -510,7 +523,7 @@ public&nbsp;F.Promise(scala.concurrent.Future&lt;<a href="../../play/libs/F.Prom
 <ul class="blockList">
 <li class="blockList">
 <h4>sequence</h4>
-<pre>public static&nbsp;&lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;java.util.List&lt;A&gt;&gt;&nbsp;sequence(java.lang.Iterable&lt;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;? extends A&gt;&gt;&nbsp;promises,
+<pre>public static&nbsp;&lt;A&gt;&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;java.util.List&lt;A&gt;&gt;&nbsp;sequence(java.lang.Iterable&lt;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;A&gt;&gt;&nbsp;promises,
                                         scala.concurrent.ExecutionContext&nbsp;ec)</pre>
 <div class="block">Combine the given promises into a single promise for the list of results.</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>promises</code> - The promises to combine</dd><dd><code>ec</code> - Used to execute the sequencing operations.</dd>
@@ -774,6 +787,33 @@ public&nbsp;F.Promise(scala.concurrent.Future&lt;<a href="../../play/libs/F.Prom
 <dt><span class="strong">Returns:</span></dt><dd>A wrapped promise for a result of type <code>B</code></dd></dl>
 </li>
 </ul>
+<a name="filter(play.libs.F.Predicate)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>filter</h4>
+<pre>public&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>&gt;&nbsp;filter(<a href="../../play/libs/F.Predicate.html" title="interface in play.libs">F.Predicate</a>&lt;? super <a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>&gt;&nbsp;predicate)</pre>
+<div class="block">Creates a new promise by filtering the value of the current promise with a predicate.
+ If the predicate fails, the resulting promise will fail with a `NoSuchElementException`.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>predicate</code> - The predicate to test the current value.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>A new promise with the current value, if the predicate is satisfied.</dd></dl>
+</li>
+</ul>
+<a name="filter(play.libs.F.Predicate, scala.concurrent.ExecutionContext)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>filter</h4>
+<pre>public&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>&gt;&nbsp;filter(<a href="../../play/libs/F.Predicate.html" title="interface in play.libs">F.Predicate</a>&lt;? super <a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>&gt;&nbsp;predicate,
+                  scala.concurrent.ExecutionContext&nbsp;ec)</pre>
+<div class="block">Creates a new promise by filtering the value of the current promise with a predicate.
+ If the predicate fails, the resulting promise will fail with a `NoSuchElementException`.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>predicate</code> - The predicate to test the current value.</dd><dd><code>ec</code> - The ExecutionContext to execute the filtering in.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>A new promise with the current value, if the predicate is satisfied.</dd></dl>
+</li>
+</ul>
 <a name="zip(play.libs.F.Promise)">
 <!--   -->
 </a>
@@ -821,7 +861,7 @@ public&nbsp;F.Promise(scala.concurrent.Future&lt;<a href="../../play/libs/F.Prom
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../play/libs/F.Option.html" title="class in play.libs"><span class="strong">Prev Class</span></a></li>
+<li><a href="../../play/libs/F.Predicate.html" title="interface in play.libs"><span class="strong">Prev Class</span></a></li>
 <li><a href="../../play/libs/F.RedeemablePromise.html" title="class in play.libs"><span class="strong">Next Class</span></a></li>
 </ul>
 <ul class="navList">
