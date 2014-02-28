@@ -98,7 +98,10 @@
       </h4>
       <p class="shortcomment cmt">End the input for this channel.</p><div class="fullcomment"><div class="comment cmt"><p>End the input for this channel.  This results in any promises that the enumerator associated with this channel
 produced being redeemed.</p><p>Note that an EOF won't be sent, so any iteratees consuming this channel will still be able to consume input
-(if they are in the cont state).
+(if they are in the cont state).</p><p>Calling this multiple times is ok.  In the case of a broadcast enumerator, any iteratees that are attached
+after one of the end methods on this channel are invoked will be redeemed according to the most recent
+invocation, that is, subsequent calls to end will change the behaviour of attaching new iteratees to the
+broadcast enumerator.
 </p></div></div>
     </li><li name="play.api.libs.iteratee.Concurrent.Channel#end" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="end(e:Throwable):Unit"></a>
@@ -113,7 +116,10 @@ produced being redeemed.</p><p>Note that an EOF won't be sent, so any iteratees 
       </span>
       </h4>
       <p class="shortcomment cmt">Send a failure to this channel.</p><div class="fullcomment"><div class="comment cmt"><p>Send a failure to this channel.  This results in any promises that the enumerator associated with this channel
-produced being redeemed with a failure.
+produced being redeemed with a failure.</p><p>Calling this multiple times is ok.  In the case of a broadcast enumerator, any iteratees that are attached
+after one of the end methods on this channel are invoked will be redeemed according to the most recent
+invocation, that is, subsequent calls to end will change the behaviour of attaching new iteratees to the
+broadcast enumerator.
 </p></div><dl class="paramcmts block"><dt class="param">e</dt><dd class="cmt"><p>The failure.
 </p></dd></dl></div>
     </li><li name="play.api.libs.iteratee.Concurrent.Channel#push" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
