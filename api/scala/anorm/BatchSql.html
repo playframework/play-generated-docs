@@ -24,24 +24,24 @@
         </head>
         <body class="type">
       <div id="definition">
-        <img src="../lib/class_big.png" />
+        <a href="BatchSql$.html" title="Go to companion"><img src="../lib/trait_to_object_big.png" /></a>
         <p id="owner"><a href="package.html" class="extype" name="anorm">anorm</a></p>
-        <h1>BatchSql</h1>
+        <h1><a href="BatchSql$.html" title="Go to companion">BatchSql</a></h1>
       </div>
 
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">case class</span>
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <span class="name">BatchSql</span><span class="params">(<span name="sql">sql: <a href="SqlQuery.html" class="extype" name="anorm.SqlQuery">SqlQuery</a></span>, <span name="params">params: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <a href="ParameterValue.html" class="extype" name="anorm.ParameterValue">ParameterValue</a>]]</span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name">BatchSql</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/anorm/src/main/scala/anorm/Anorm.scala" target="_blank">Anorm.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>SQL batch</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/anorm/src/main/scala/anorm/BatchSql.scala" target="_blank">BatchSql.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -59,7 +59,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="anorm.BatchSql"><span>BatchSql</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="anorm.BatchSql"><span>BatchSql</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -77,30 +77,56 @@
 
       <div id="template">
         <div id="allMembers">
-        <div id="constructors" class="members">
-              <h3>Instance Constructors</h3>
-              <ol><li name="anorm.BatchSql#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(sql:anorm.SqlQuery,params:Seq[Map[String,anorm.ParameterValue]]):anorm.BatchSql"></a>
-      <a id="&lt;init&gt;:BatchSql"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">new</span>
-      </span>
-      <span class="symbol">
-        <span class="name">BatchSql</span><span class="params">(<span name="sql">sql: <a href="SqlQuery.html" class="extype" name="anorm.SqlQuery">SqlQuery</a></span>, <span name="params">params: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <a href="ParameterValue.html" class="extype" name="anorm.ParameterValue">ParameterValue</a>]]</span>)</span>
-      </span>
-      </h4>
-      
-    </li></ol>
-            </div>
-
         
 
         
 
         <div id="values" class="values members">
-              <h3>Value Members</h3>
+              <h3>Abstract Value Members</h3>
+              <ol><li name="anorm.BatchSql#names" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="names:Set[String]"></a>
+      <a id="names:Set[String]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">names</span><span class="result">: <span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Names of parameter expected for each parameter map</p>
+    </li><li name="anorm.BatchSql#params" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="params:Seq[Map[String,anorm.ParameterValue]]"></a>
+      <a id="params:Seq[Map[String,ParameterValue]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">params</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <a href="ParameterValue.html" class="extype" name="anorm.ParameterValue">ParameterValue</a>]]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Named parameters</p>
+    </li><li name="anorm.BatchSql#sql" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="sql:anorm.SqlQuery"></a>
+      <a id="sql:SqlQuery"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sql</span><span class="result">: <a href="SqlQuery.html" class="extype" name="anorm.SqlQuery">SqlQuery</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">SQL query</p>
+    </li></ol>
+            </div>
+
+        <div id="values" class="values members">
+              <h3>Concrete Value Members</h3>
               <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:AnyRef):Boolean"></a>
       <a id="!=(AnyRef):Boolean"></a>
@@ -166,7 +192,7 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="anorm.BatchSql#addBatch" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="anorm.BatchSql#addBatch" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="addBatch(args:anorm.NamedParameter*):anorm.BatchSql"></a>
       <a id="addBatch(NamedParameter*):BatchSql"></a>
       <h4 class="signature">
@@ -178,46 +204,57 @@
         <span class="name">addBatch</span><span class="params">(<span name="args">args: <a href="NamedParameter.html" class="extype" name="anorm.NamedParameter">NamedParameter</a>*</span>)</span><span class="result">: <a href="" class="extype" name="anorm.BatchSql">BatchSql</a></span>
       </span>
       </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
       
-    </li><li name="anorm.BatchSql#addBatchList" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="addBatchList(paramsMap:scala.collection.TraversableOnce[Seq[anorm.NamedParameter]]):anorm.BatchSql"></a>
-      <a id="addBatchList(TraversableOnce[Seq[NamedParameter]]):BatchSql"></a>
+      <span class="defval" name="BatchSqlErrors.UnexpectedParameterName">...</span>
+    </span>)</span>
+              
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">BatchSqlErrors.MissingParameter</span>
+    </span>)</span>
+              
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="BatchSqlErrors.ParameterNamesNotMatchingPlaceholders">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="anorm.BatchSql#addBatchList" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="addBatchList(args:Traversable[Seq[anorm.NamedParameter]]):anorm.BatchSql"></a>
+      <a id="addBatchList(Traversable[Seq[NamedParameter]]):BatchSql"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">addBatchList</span><span class="params">(<span name="paramsMap">paramsMap: <span class="extype" name="scala.collection.TraversableOnce">TraversableOnce</span>[<span class="extype" name="scala.Seq">Seq</span>[<a href="NamedParameter.html" class="extype" name="anorm.NamedParameter">NamedParameter</a>]]</span>)</span><span class="result">: <a href="" class="extype" name="anorm.BatchSql">BatchSql</a></span>
+        <span class="name">addBatchList</span><span class="params">(<span name="args">args: <span class="extype" name="scala.Traversable">Traversable</span>[<span class="extype" name="scala.Seq">Seq</span>[<a href="NamedParameter.html" class="extype" name="anorm.NamedParameter">NamedParameter</a>]]</span>)</span><span class="result">: <a href="" class="extype" name="anorm.BatchSql">BatchSql</a></span>
       </span>
       </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
       
-    </li><li name="anorm.BatchSql#addBatchParams" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="addBatchParams(args:anorm.ParameterValue*):anorm.BatchSql"></a>
-      <a id="addBatchParams(ParameterValue*):BatchSql"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">addBatchParams</span><span class="params">(<span name="args">args: <a href="ParameterValue.html" class="extype" name="anorm.ParameterValue">ParameterValue</a>*</span>)</span><span class="result">: <a href="" class="extype" name="anorm.BatchSql">BatchSql</a></span>
-      </span>
-      </h4>
+      <span class="defval" name="BatchSqlErrors.UnexpectedParameterName">...</span>
+    </span>)</span>
+              
+                <span class="name">@throws</span><span class="args">(<span>
       
-    </li><li name="anorm.BatchSql#addBatchParamsList" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="addBatchParamsList(paramsSeqList:scala.collection.TraversableOnce[Seq[anorm.ParameterValue]]):anorm.BatchSql"></a>
-      <a id="addBatchParamsList(TraversableOnce[Seq[ParameterValue]]):BatchSql"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">addBatchParamsList</span><span class="params">(<span name="paramsSeqList">paramsSeqList: <span class="extype" name="scala.collection.TraversableOnce">TraversableOnce</span>[<span class="extype" name="scala.Seq">Seq</span>[<a href="ParameterValue.html" class="extype" name="anorm.ParameterValue">ParameterValue</a>]]</span>)</span><span class="result">: <a href="" class="extype" name="anorm.BatchSql">BatchSql</a></span>
-      </span>
-      </h4>
+      <span class="symbol">BatchSqlErrors.MissingParameter</span>
+    </span>)</span>
+              
+                <span class="name">@throws</span><span class="args">(<span>
       
+      <span class="defval" name="BatchSqlErrors.HeterogeneousParameterMaps">...</span>
+    </span>)</span>
+              
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="BatchSqlErrors.ParameterNamesNotMatchingPlaceholders">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -263,6 +300,19 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="equals(x$1:Any):Boolean"></a>
+      <a id="equals(Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="anorm.BatchSql#execute" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="execute()(implicitconnection:java.sql.Connection):Array[Int]"></a>
       <a id="execute()(Connection):Array[Int]"></a>
@@ -321,6 +371,19 @@
       </span>
       </h4>
       
+    </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="hashCode():Int"></a>
+      <a id="hashCode():Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -373,32 +436,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="anorm.BatchSql#params" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="params:Seq[Map[String,anorm.ParameterValue]]"></a>
-      <a id="params:Seq[Map[String,ParameterValue]]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">params</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <a href="ParameterValue.html" class="extype" name="anorm.ParameterValue">ParameterValue</a>]]</span>
-      </span>
-      </h4>
-      
-    </li><li name="anorm.BatchSql#sql" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="sql:anorm.SqlQuery"></a>
-      <a id="sql:SqlQuery"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">sql</span><span class="result">: <a href="SqlQuery.html" class="extype" name="anorm.SqlQuery">SqlQuery</a></span>
-      </span>
-      </h4>
-      
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -412,6 +449,19 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="toString():String"></a>
+      <a id="toString():String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
@@ -489,7 +539,69 @@
 
         <div id="values" class="values members">
               <h3>Deprecated Value Members</h3>
-              <ol><li name="anorm.BatchSql#filledStatement" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+              <ol><li name="anorm.BatchSql#addBatchParams" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="addBatchParams(args:anorm.ParameterValue*):anorm.BatchSql"></a>
+      <a id="addBatchParams(ParameterValue*):BatchSql"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 2.3.0) Use scala.tools.nsc.doc.base.MemberLookupBase$$anon$1@13d9315c">addBatchParams</span><span class="params">(<span name="args">args: <a href="ParameterValue.html" class="extype" name="anorm.ParameterValue">ParameterValue</a>*</span>)</span><span class="result">: <a href="" class="extype" name="anorm.BatchSql">BatchSql</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Adds a parameter map, created by zipping values with query placeholders
+(<a href="SqlQuery.html#argsInitialOrder:List[String]" class="extmbr" name="anorm.SqlQuery#argsInitialOrder">SqlQuery.argsInitialOrder</a>).</p><div class="fullcomment"><div class="comment cmt"><p>Adds a parameter map, created by zipping values with query placeholders
+(<a href="SqlQuery.html#argsInitialOrder:List[String]" class="extmbr" name="anorm.SqlQuery#argsInitialOrder">SqlQuery.argsInitialOrder</a>). If parameter is used for more than one
+placeholder, it will result in a parameter map with smaller size than
+given arguments (as duplicate entry are removed from map).
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">BatchSqlErrors.MissingParameter</span>
+    </span>)</span>
+              
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="BatchSqlErrors.ParameterNamesNotMatchingPlaceholders">...</span>
+    </span>)</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.3.0)</i> Use <a href="#addBatch(args:anorm.NamedParameter*):anorm.BatchSql" class="extmbr" name="anorm.BatchSql#addBatch">addBatch</a></p></dd></dl></div>
+    </li><li name="anorm.BatchSql#addBatchParamsList" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="addBatchParamsList(args:Traversable[Seq[anorm.ParameterValue]]):anorm.BatchSql"></a>
+      <a id="addBatchParamsList(Traversable[Seq[ParameterValue]]):BatchSql"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 2.3.0) Use scala.tools.nsc.doc.base.MemberLookupBase$$anon$1@18379932">addBatchParamsList</span><span class="params">(<span name="args">args: <span class="extype" name="scala.Traversable">Traversable</span>[<span class="extype" name="scala.Seq">Seq</span>[<a href="ParameterValue.html" class="extype" name="anorm.ParameterValue">ParameterValue</a>]]</span>)</span><span class="result">: <a href="" class="extype" name="anorm.BatchSql">BatchSql</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Adds a parameter maps, created by zipping values with query placeholders
+(<a href="SqlQuery.html#argsInitialOrder:List[String]" class="extmbr" name="anorm.SqlQuery#argsInitialOrder">SqlQuery.argsInitialOrder</a>).</p><div class="fullcomment"><div class="comment cmt"><p>Adds a parameter maps, created by zipping values with query placeholders
+(<a href="SqlQuery.html#argsInitialOrder:List[String]" class="extmbr" name="anorm.SqlQuery#argsInitialOrder">SqlQuery.argsInitialOrder</a>). If parameter is used for more than one
+placeholder, it will result in parameter maps with smaller size than
+given arguments (as duplicate entry are removed from map).
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">BatchSqlErrors.MissingParameter</span>
+    </span>)</span>
+              
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="BatchSqlErrors.ParameterNamesNotMatchingPlaceholders">...</span>
+    </span>)</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.3.0)</i> Use <a href="#addBatchList(args:Traversable[Seq[anorm.NamedParameter]]):anorm.BatchSql" class="extmbr" name="anorm.BatchSql#addBatchList">addBatchList</a></p></dd></dl></div>
+    </li><li name="anorm.BatchSql#filledStatement" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="filledStatement(implicitconnection:java.sql.Connection):java.sql.PreparedStatement"></a>
       <a id="filledStatement(Connection):PreparedStatement"></a>
       <h4 class="signature">
@@ -498,7 +610,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 2.3.0) Use scala.tools.nsc.doc.base.MemberLookupBase$$anon$1@7fb6391f">filledStatement</span><span class="params">(<span class="implicit">implicit </span><span name="connection">connection: <span class="extype" name="java.sql.Connection">Connection</span></span>)</span><span class="result">: <span class="extype" name="java.sql.PreparedStatement">PreparedStatement</span></span>
+        <span class="name deprecated" title="Deprecated: (Since version 2.3.0) Use scala.tools.nsc.doc.base.MemberLookupBase$$anon$1@6a2aae09">filledStatement</span><span class="params">(<span class="implicit">implicit </span><span name="connection">connection: <span class="extype" name="java.sql.Connection">Connection</span></span>)</span><span class="result">: <span class="extype" name="java.sql.PreparedStatement">PreparedStatement</span></span>
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
@@ -510,15 +622,7 @@
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="scala.Serializable">
-              <h3>Inherited from <span class="extype" name="scala.Serializable">Serializable</span></h3>
-            </div><div class="parent" name="java.io.Serializable">
-              <h3>Inherited from <span class="extype" name="java.io.Serializable">Serializable</span></h3>
-            </div><div class="parent" name="scala.Product">
-              <h3>Inherited from <span class="extype" name="scala.Product">Product</span></h3>
-            </div><div class="parent" name="scala.Equals">
-              <h3>Inherited from <span class="extype" name="scala.Equals">Equals</span></h3>
-            </div><div class="parent" name="scala.AnyRef">
+        <div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
