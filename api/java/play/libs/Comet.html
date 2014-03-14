@@ -195,6 +195,13 @@ extends <a href="../../play/mvc/Results.Chunks.html" title="class in play.mvc">R
 <div class="block">Send a message on this socket (will be received as String in the Javascript callback method).</div>
 </td>
 </tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../play/libs/Comet.html" title="class in play.libs">Comet</a></code></td>
+<td class="colLast"><code><strong><a href="../../play/libs/Comet.html#whenConnected(java.lang.String, play.libs.F.Callback)">whenConnected</a></strong>(java.lang.String&nbsp;jsMethod,
+             <a href="../../play/libs/F.Callback.html" title="interface in play.libs">F.Callback</a>&lt;<a href="../../play/libs/Comet.html" title="class in play.libs">Comet</a>&gt;&nbsp;callback)</code>
+<div class="block">Creates a Comet.</div>
+</td>
+</tr>
 </table>
 <ul class="blockList">
 <li class="blockList"><a name="methods_inherited_from_class_java.lang.Object">
@@ -304,11 +311,28 @@ extends <a href="../../play/mvc/Results.Chunks.html" title="class in play.mvc">R
 <a name="close()">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>close</h4>
 <pre>public&nbsp;void&nbsp;close()</pre>
 <div class="block">Close the channel</div>
+</li>
+</ul>
+<a name="whenConnected(java.lang.String, play.libs.F.Callback)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>whenConnected</h4>
+<pre>public static&nbsp;<a href="../../play/libs/Comet.html" title="class in play.libs">Comet</a>&nbsp;whenConnected(java.lang.String&nbsp;jsMethod,
+                  <a href="../../play/libs/F.Callback.html" title="interface in play.libs">F.Callback</a>&lt;<a href="../../play/libs/Comet.html" title="class in play.libs">Comet</a>&gt;&nbsp;callback)</pre>
+<div class="block">Creates a Comet. The abstract <code>onConnected</code> method is
+ implemented using the specified <code>Callback&lt;Comet&gt;</code> and
+ is invoked with <code>Comet.this</code>.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>jsMethod</code> - the Javascript method to call on each message</dd><dd><code>callback</code> - the callback used to implement onConnected</dd>
+<dt><span class="strong">Returns:</span></dt><dd>a new Comet</dd>
+<dt><span class="strong">Throws:</span></dt>
+<dd><code>java.lang.NullPointerException</code> - if the specified callback is null</dd></dl>
 </li>
 </ul>
 </li>

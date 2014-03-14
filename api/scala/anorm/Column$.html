@@ -196,7 +196,7 @@
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="anorm.Column#columnToBigInt" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="anorm.Column#columnToBigInt" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="columnToBigInt:anorm.Column[BigInt]"></a>
       <a id="columnToBigInt:Column[BigInt]"></a>
       <h4 class="signature">
@@ -208,8 +208,12 @@
         <span class="name">columnToBigInt</span><span class="result">: <a href="Column.html" class="extype" name="anorm.Column">Column</a>[<span class="extype" name="scala.BigInt">BigInt</span>]</span>
       </span>
       </h4>
-      
-    </li><li name="anorm.Column#columnToBigInteger" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">Column conversion to big integer.</p><div class="fullcomment"><div class="comment cmt"><p>Column conversion to big integer.</p><pre><span class="kw">import</span> anorm.SqlParser.scalar
+<span class="kw">import</span> anorm.Column.columnToBigInt
+
+<span class="kw">val</span> c: BigInt =
+  SQL(<span class="lit">"SELECT COUNT(*) FROM tbl"</span>).as(scalar[BigInt].single)</pre></div></div>
+    </li><li name="anorm.Column#columnToBigInteger" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="columnToBigInteger:anorm.Column[java.math.BigInteger]"></a>
       <a id="columnToBigInteger:Column[BigInteger]"></a>
       <h4 class="signature">
@@ -221,7 +225,11 @@
         <span class="name">columnToBigInteger</span><span class="result">: <a href="Column.html" class="extype" name="anorm.Column">Column</a>[<span class="extype" name="java.math.BigInteger">BigInteger</span>]</span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt">Column conversion to Java big integer.</p><div class="fullcomment"><div class="comment cmt"><p>Column conversion to Java big integer.</p><pre><span class="kw">import</span> anorm.SqlParser.scalar
+<span class="kw">import</span> anorm.Column.columnToScalaBigInteger
+
+<span class="kw">val</span> c: BigInteger =
+  SQL(<span class="lit">"SELECT COUNT(*) FROM tbl"</span>).as(scalar[BigInteger].single)</pre></div></div>
     </li><li name="anorm.Column#columnToBoolean" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="columnToBoolean:anorm.Column[Boolean]"></a>
       <a id="columnToBoolean:Column[Boolean]"></a>
@@ -248,7 +256,7 @@
       </span>
       </h4>
       
-    </li><li name="anorm.Column#columnToChar" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="anorm.Column#columnToChar" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="columnToChar:anorm.Column[Char]"></a>
       <a id="columnToChar:Column[Char]"></a>
       <h4 class="signature">
@@ -260,7 +268,10 @@
         <span class="name">columnToChar</span><span class="result">: <a href="Column.html" class="extype" name="anorm.Column">Column</a>[<span class="extype" name="scala.Char">Char</span>]</span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt">Column conversion to character.</p><div class="fullcomment"><div class="comment cmt"><p>Column conversion to character.</p><pre><span class="kw">import</span> anorm.SqlParser.scalar
+<span class="kw">import</span> anorm.Column.columnToChar
+
+<span class="kw">val</span> c: <span class="std">Char</span> = SQL(<span class="lit">"SELECT char FROM tbl"</span>).as(scalar[<span class="std">Char</span>].single)</pre></div></div>
     </li><li name="anorm.Column#columnToDate" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="columnToDate:anorm.Column[java.util.Date]"></a>
       <a id="columnToDate:Column[Date]"></a>
@@ -317,7 +328,7 @@ Time zone offset is the one of default JVM time zone
       </span>
       </h4>
       
-    </li><li name="anorm.Column#columnToJavaBigDecimal" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="anorm.Column#columnToJavaBigDecimal" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="columnToJavaBigDecimal:anorm.Column[java.math.BigDecimal]"></a>
       <a id="columnToJavaBigDecimal:Column[BigDecimal]"></a>
       <h4 class="signature">
@@ -329,7 +340,12 @@ Time zone offset is the one of default JVM time zone
         <span class="name">columnToJavaBigDecimal</span><span class="result">: <a href="Column.html" class="extype" name="anorm.Column">Column</a>[<span class="extype" name="java.math.BigDecimal">BigDecimal</span>]</span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt">Column conversion to Java big decimal.</p><div class="fullcomment"><div class="comment cmt"><p>Column conversion to Java big decimal.</p><pre><span class="kw">import</span> java.math.{ BigDecimal <span class="kw">=&gt;</span> JBigDecimal }
+<span class="kw">import</span> anorm.SqlParser.scalar
+<span class="kw">import</span> anorm.Column.columnToJavaBigDecimal
+
+<span class="kw">val</span> c: JBigDecimal =
+  SQL(<span class="lit">"SELECT COUNT(*) FROM tbl"</span>).as(scalar[JBigDecimal].single)</pre></div></div>
     </li><li name="anorm.Column#columnToLong" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="columnToLong:anorm.Column[Long]"></a>
       <a id="columnToLong:Column[Long]"></a>
@@ -369,7 +385,7 @@ Time zone offset is the one of default JVM time zone
       </span>
       </h4>
       
-    </li><li name="anorm.Column#columnToScalaBigDecimal" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="anorm.Column#columnToScalaBigDecimal" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="columnToScalaBigDecimal:anorm.Column[BigDecimal]"></a>
       <a id="columnToScalaBigDecimal:Column[BigDecimal]"></a>
       <h4 class="signature">
@@ -381,7 +397,11 @@ Time zone offset is the one of default JVM time zone
         <span class="name">columnToScalaBigDecimal</span><span class="result">: <a href="Column.html" class="extype" name="anorm.Column">Column</a>[<span class="extype" name="scala.BigDecimal">BigDecimal</span>]</span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt">Column conversion to big decimal.</p><div class="fullcomment"><div class="comment cmt"><p>Column conversion to big decimal.</p><pre><span class="kw">import</span> anorm.SqlParser.scalar
+<span class="kw">import</span> anorm.Column.columnToScalaBigDecimal
+
+<span class="kw">val</span> c: BigDecimal =
+  SQL(<span class="lit">"SELECT COUNT(*) FROM tbl"</span>).as(scalar[BigDecimal].single)</pre></div></div>
     </li><li name="anorm.Column#columnToShort" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="columnToShort:anorm.Column[Short]"></a>
       <a id="columnToShort:Column[Short]"></a>
