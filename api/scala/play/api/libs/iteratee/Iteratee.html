@@ -612,6 +612,57 @@ supplied ExecutionContext, called in several places where we are sure the stack
 cannot overflow. This method is designed to be overridden by <code>ImmediateIteratee</code>,
 which can execute the <code>folder</code> function immediately.
 </p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../package.html" class="extype" name="play">play</a>] </dd></dl></div>
+    </li><li name="play.api.libs.iteratee.Iteratee#recover" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="recover[B&gt;:A](pf:PartialFunction[Throwable,B])(implicitec:scala.concurrent.ExecutionContext):play.api.libs.iteratee.Iteratee[E,B]"></a>
+      <a id="recover[B&gt;:A](PartialFunction[Throwable,B])(ExecutionContext):Iteratee[E,B]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">recover</span><span class="tparams">[<span name="B">B &gt;: <span class="extype" name="play.api.libs.iteratee.Iteratee.A">A</span></span>]</span><span class="params">(<span name="pf">pf: <span class="extype" name="scala.PartialFunction">PartialFunction</span>[<span class="extype" name="scala.Throwable">Throwable</span>, <span class="extype" name="play.api.libs.iteratee.Iteratee.recover.B">B</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: <a href="" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="play.api.libs.iteratee.Iteratee.E">E</span>, <span class="extype" name="play.api.libs.iteratee.Iteratee.recover.B">B</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Creates a new Iteratee that will handle any matching exception the original Iteratee may contain.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a new Iteratee that will handle any matching exception the original Iteratee may contain. This lets you
+provide a fallback value in case your Iteratee ends up in an error state.</p><p>Example:</p><pre><span class="kw">def</span> it = Iteratee.map(i <span class="kw">=&gt;</span> <span class="num">10</span> / i).recover { <span class="kw">case</span> t: Throwable <span class="kw">=&gt;</span>
+  Logger.error(<span class="lit">"Must have divided by zero!"</span>, t)
+  Integer.MAX_VALUE
+}
+
+Enumerator(<span class="num">5</span>).run(it) <span class="cmt">// => 2</span>
+Enumerator(<span class="num">0</span>).run(it) <span class="cmt">// => returns Integer.MAX_VALUE and logs "Must have divied by zero!"</span></pre></div><dl class="paramcmts block"><dt class="tparam">B</dt><dd class="cmt"></dd><dt class="param">pf</dt><dd class="cmt"></dd><dt class="param">ec</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="play.api.libs.iteratee.Iteratee#recoverM" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="recoverM[B&gt;:A](pf:PartialFunction[Throwable,scala.concurrent.Future[B]])(implicitec:scala.concurrent.ExecutionContext):play.api.libs.iteratee.Iteratee[E,B]"></a>
+      <a id="recoverM[B&gt;:A](PartialFunction[Throwable,Future[B]])(ExecutionContext):Iteratee[E,B]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">recoverM</span><span class="tparams">[<span name="B">B &gt;: <span class="extype" name="play.api.libs.iteratee.Iteratee.A">A</span></span>]</span><span class="params">(<span name="pf">pf: <span class="extype" name="scala.PartialFunction">PartialFunction</span>[<span class="extype" name="scala.Throwable">Throwable</span>, <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="play.api.libs.iteratee.Iteratee.recoverM.B">B</span>]]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: <a href="" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="play.api.libs.iteratee.Iteratee.E">E</span>, <span class="extype" name="play.api.libs.iteratee.Iteratee.recoverM.B">B</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">A version of <code>recover</code> that allows the partial function to return a Future[B] instead of B.</p><div class="fullcomment"><div class="comment cmt"><p>A version of <code>recover</code> that allows the partial function to return a Future[B] instead of B.
+</p></div><dl class="paramcmts block"><dt class="tparam">B</dt><dd class="cmt"></dd><dt class="param">pf</dt><dd class="cmt"></dd><dt class="param">ec</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="play.api.libs.iteratee.Iteratee#recoverWith" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="recoverWith[B&gt;:A](pf:PartialFunction[Throwable,play.api.libs.iteratee.Iteratee[E,B]])(implicitec:scala.concurrent.ExecutionContext):play.api.libs.iteratee.Iteratee[E,B]"></a>
+      <a id="recoverWith[B&gt;:A](PartialFunction[Throwable,Iteratee[E,B]])(ExecutionContext):Iteratee[E,B]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">recoverWith</span><span class="tparams">[<span name="B">B &gt;: <span class="extype" name="play.api.libs.iteratee.Iteratee.A">A</span></span>]</span><span class="params">(<span name="pf">pf: <span class="extype" name="scala.PartialFunction">PartialFunction</span>[<span class="extype" name="scala.Throwable">Throwable</span>, <a href="" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="play.api.libs.iteratee.Iteratee.E">E</span>, <span class="extype" name="play.api.libs.iteratee.Iteratee.recoverWith.B">B</span>]]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: <a href="" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="play.api.libs.iteratee.Iteratee.E">E</span>, <span class="extype" name="play.api.libs.iteratee.Iteratee.recoverWith.B">B</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">A version of <code>recover</code> that allows the partial function to return an Iteratee[E, B] instead of B.</p><div class="fullcomment"><div class="comment cmt"><p>A version of <code>recover</code> that allows the partial function to return an Iteratee[E, B] instead of B.
+</p></div><dl class="paramcmts block"><dt class="tparam">B</dt><dd class="cmt"></dd><dt class="param">pf</dt><dd class="cmt"></dd><dt class="param">ec</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
     </li><li name="play.api.libs.iteratee.Iteratee#run" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="run:scala.concurrent.Future[A]"></a>
       <a id="run:Future[A]"></a>
