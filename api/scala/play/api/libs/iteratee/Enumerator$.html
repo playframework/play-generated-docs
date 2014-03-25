@@ -411,10 +411,10 @@ value that is <code>true</code> on its first call only.
         <span class="name">fromStream</span><span class="params">(<span name="input">input: <span class="extype" name="java.io.InputStream">InputStream</span></span>, <span name="chunkSize">chunkSize: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">1024 * 8</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: <a href="Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Create an enumerator from the given input stream.</p><div class="fullcomment"><div class="comment cmt"><p>Create an enumerator from the given input stream.</p><p>This enumerator will block on reading the input stream, in the default iteratee thread pool.  Care must therefore
-be taken to ensure that this isn't a slow stream.  If using this with slow input streams, consider setting the
-value of iteratee-threadpool-size to a value appropriate for handling the blocking.
-</p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"><p>The input stream</p></dd><dt class="param">chunkSize</dt><dd class="cmt"><p>The size of chunks to read from the stream.
+      <p class="shortcomment cmt">Create an enumerator from the given input stream.</p><div class="fullcomment"><div class="comment cmt"><p>Create an enumerator from the given input stream.</p><p>This enumerator will block on reading the input stream, in the supplied ExecutionContext.  Care must therefore
+be taken to ensure that this isn't a slow stream.  If using this with slow input streams, make sure the
+ExecutionContext is appropriately configured to handle the blocking.
+</p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"><p>The input stream</p></dd><dt class="param">chunkSize</dt><dd class="cmt"><p>The size of chunks to read from the stream.</p></dd><dt class="param">ec</dt><dd class="cmt"><p>The ExecutionContext to execute blocking code.
 </p></dd></dl></div>
     </li><li name="play.api.libs.iteratee.Enumerator#generateM" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="generateM[E](e:=&gt;scala.concurrent.Future[Option[E]])(implicitec:scala.concurrent.ExecutionContext):play.api.libs.iteratee.Enumerator[E]"></a>
