@@ -50,7 +50,7 @@
                                 request: Request[A]) <span class="kw">extends</span> WrappedRequest[A](request)
 
 <span class="kw">object</span> Authenticated <span class="kw">extends</span> ActionBuilder[AuthenticatedDbRequest] {
-  <span class="kw">def</span> invokeBlock[A](request: Request[A], block: (AuthenticatedDbRequest[A]) <span class="kw">=&gt;</span> Future[SimpleResult]) = {
+  <span class="kw">def</span> invokeBlock[A](request: Request[A], block: (AuthenticatedDbRequest[A]) <span class="kw">=&gt;</span> Future[Result]) = {
     AuthenticatedBuilder(req <span class="kw">=&gt;</span> getUserFromRequest(req)).authenticate(request, { authRequest: AuthenticatedRequest[A, User] <span class="kw">=&gt;</span>
       DB.withConnection { conn <span class="kw">=&gt;</span>
         block(<span class="kw">new</span> AuthenticatedDbRequest[A](authRequest.user, conn, request))
@@ -183,15 +183,15 @@
       <p class="shortcomment cmt">Simple authenticated action builder that looks up the username from the session
 </p>
     </li><li name="play.api.mvc.Security.AuthenticatedBuilder#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="apply[U](userinfo:play.api.mvc.RequestHeader=&gt;Option[U],onUnauthorized:play.api.mvc.RequestHeader=&gt;play.api.mvc.SimpleResult):play.api.mvc.Security.AuthenticatedBuilder[U]"></a>
-      <a id="apply[U]((RequestHeader)⇒Option[U],(RequestHeader)⇒SimpleResult):AuthenticatedBuilder[U]"></a>
+      <a id="apply[U](userinfo:play.api.mvc.RequestHeader=&gt;Option[U],onUnauthorized:play.api.mvc.RequestHeader=&gt;play.api.mvc.Result):play.api.mvc.Security.AuthenticatedBuilder[U]"></a>
+      <a id="apply[U]((RequestHeader)⇒Option[U],(RequestHeader)⇒Result):AuthenticatedBuilder[U]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">apply</span><span class="tparams">[<span name="U">U</span>]</span><span class="params">(<span name="userinfo">userinfo: (<a href="RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="play.api.mvc.Security.AuthenticatedBuilder.apply.U">U</span>]</span>, <span name="onUnauthorized">onUnauthorized: (<a href="RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a> = <span class="defval" name='<span class="name"><a href="Codec$.html">_ =&gt; Unauthorized(views.html.defaultpages.unauthorized())</a></span>'>...</span></span>)</span><span class="result">: <a href="Security$$AuthenticatedBuilder.html" class="extype" name="play.api.mvc.Security.AuthenticatedBuilder">AuthenticatedBuilder</a>[<span class="extype" name="play.api.mvc.Security.AuthenticatedBuilder.apply.U">U</span>]</span>
+        <span class="name">apply</span><span class="tparams">[<span name="U">U</span>]</span><span class="params">(<span name="userinfo">userinfo: (<a href="RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="play.api.mvc.Security.AuthenticatedBuilder.apply.U">U</span>]</span>, <span name="onUnauthorized">onUnauthorized: (<a href="RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a> = <span class="defval" name='<span class="name"><a href="Codec$.html">_ =&gt; Unauthorized(views.html.defaultpages.unauthorized())</a></span>'>...</span></span>)</span><span class="result">: <a href="Security$$AuthenticatedBuilder.html" class="extype" name="play.api.mvc.Security.AuthenticatedBuilder">AuthenticatedBuilder</a>[<span class="extype" name="play.api.mvc.Security.AuthenticatedBuilder.apply.U">U</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Create an authenticated builder
