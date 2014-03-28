@@ -60,13 +60,13 @@
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
-<li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
 <li><a href="#method_summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
-<li><a href="#constructor_detail">Constr</a>&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
 <li><a href="#method_detail">Method</a></li>
 </ul>
 </div>
@@ -77,59 +77,34 @@
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
 <div class="subTitle">play.mvc</div>
-<h2 title="Class SimpleResult" class="title">Class SimpleResult</h2>
+<h2 title="Interface SimpleResult" class="title">Interface SimpleResult</h2>
 </div>
 <div class="contentContainer">
-<ul class="inheritance">
-<li>java.lang.Object</li>
-<li>
-<ul class="inheritance">
-<li>play.mvc.SimpleResult</li>
-</ul>
-</li>
-</ul>
 <div class="description">
 <ul class="blockList">
 <li class="blockList">
 <dl>
-<dt>All Implemented Interfaces:</dt>
+<dt>All Known Subinterfaces:</dt>
 <dd><a href="../../play/mvc/Result.html" title="interface in play.mvc">Result</a></dd>
 </dl>
 <dl>
-<dt>Direct Known Subclasses:</dt>
+<dt>All Known Implementing Classes:</dt>
 <dd><a href="../../play/mvc/Results.Redirect.html" title="class in play.mvc">Results.Redirect</a>, <a href="../../play/mvc/Results.Status.html" title="class in play.mvc">Results.Status</a>, <a href="../../play/mvc/Results.Todo.html" title="class in play.mvc">Results.Todo</a></dd>
 </dl>
 <hr>
+<div class="block"><strong>Deprecated.</strong>&nbsp;
+<div class="block"><i>Use play.api.mvc.Result instead</i></div>
+</div>
 <br>
-<pre>public abstract class <span class="strong">SimpleResult</span>
-extends java.lang.Object
-implements <a href="../../play/mvc/Result.html" title="interface in play.mvc">Result</a></pre>
-<div class="block">A simple result.
-
- This exists temporarily to distinguish simple results from AsyncResults.</div>
+<pre>@Deprecated
+public interface <span class="strong">SimpleResult</span></pre>
+<div class="block">This exists only for backwards compatibility.</div>
 </li>
 </ul>
 </div>
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
-<!-- ======== CONSTRUCTOR SUMMARY ======== -->
-<ul class="blockList">
-<li class="blockList"><a name="constructor_summary">
-<!--   -->
-</a>
-<h3>Constructor Summary</h3>
-<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing constructors, and an explanation">
-<caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colOne" scope="col">Constructor and Description</th>
-</tr>
-<tr class="altColor">
-<td class="colOne"><code><strong><a href="../../play/mvc/SimpleResult.html#SimpleResult()">SimpleResult</a></strong>()</code>&nbsp;</td>
-</tr>
-</table>
-</li>
-</ul>
 <!-- ========== METHOD SUMMARY =========== -->
 <ul class="blockList">
 <li class="blockList"><a name="method_summary">
@@ -143,25 +118,12 @@ implements <a href="../../play/mvc/Result.html" title="interface in play.mvc">Re
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>scala.concurrent.Future&lt;play.api.mvc.Result&gt;</code></td>
-<td class="colLast"><code><strong><a href="../../play/mvc/SimpleResult.html#getWrappedResult()">getWrappedResult</a></strong>()</code>
-<div class="block">Retrieves the real (Scala-based) result.</div>
-</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>abstract play.api.mvc.Result</code></td>
-<td class="colLast"><code><strong><a href="../../play/mvc/SimpleResult.html#getWrappedSimpleResult()">getWrappedSimpleResult</a></strong>()</code>
-<div class="block">Get the wrapped simple result</div>
-</td>
+<td class="colFirst"><code>play.api.mvc.Result</code></td>
+<td class="colLast"><code><strong><a href="../../play/mvc/SimpleResult.html#toScala()">toScala</a></strong>()</code>
+<div class="block"><strong>Deprecated.</strong>&nbsp;</div>
+&nbsp;</td>
 </tr>
 </table>
-<ul class="blockList">
-<li class="blockList"><a name="methods_inherited_from_class_java.lang.Object">
-<!--   -->
-</a>
-<h3>Methods inherited from class&nbsp;java.lang.Object</h3>
-<code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</code></li>
-</ul>
 </li>
 </ul>
 </li>
@@ -170,52 +132,20 @@ implements <a href="../../play/mvc/Result.html" title="interface in play.mvc">Re
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
-<!-- ========= CONSTRUCTOR DETAIL ======== -->
-<ul class="blockList">
-<li class="blockList"><a name="constructor_detail">
-<!--   -->
-</a>
-<h3>Constructor Detail</h3>
-<a name="SimpleResult()">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>SimpleResult</h4>
-<pre>public&nbsp;SimpleResult()</pre>
-</li>
-</ul>
-</li>
-</ul>
 <!-- ============ METHOD DETAIL ========== -->
 <ul class="blockList">
 <li class="blockList"><a name="method_detail">
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="getWrappedResult()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getWrappedResult</h4>
-<pre>public&nbsp;scala.concurrent.Future&lt;play.api.mvc.Result&gt;&nbsp;getWrappedResult()</pre>
-<div class="block"><strong>Description copied from interface:&nbsp;<code><a href="../../play/mvc/Result.html#getWrappedResult()">Result</a></code></strong></div>
-<div class="block">Retrieves the real (Scala-based) result.</div>
-<dl>
-<dt><strong>Specified by:</strong></dt>
-<dd><code><a href="../../play/mvc/Result.html#getWrappedResult()">getWrappedResult</a></code>&nbsp;in interface&nbsp;<code><a href="../../play/mvc/Result.html" title="interface in play.mvc">Result</a></code></dd>
-</dl>
-</li>
-</ul>
-<a name="getWrappedSimpleResult()">
+<a name="toScala()">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>getWrappedSimpleResult</h4>
-<pre>public abstract&nbsp;play.api.mvc.Result&nbsp;getWrappedSimpleResult()</pre>
-<div class="block">Get the wrapped simple result</div>
+<h4>toScala</h4>
+<pre>play.api.mvc.Result&nbsp;toScala()</pre>
+<div class="block"><span class="strong">Deprecated.</span>&nbsp;</div>
 </li>
 </ul>
 </li>
@@ -270,13 +200,13 @@ implements <a href="../../play/mvc/Result.html" title="interface in play.mvc">Re
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
-<li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
 <li><a href="#method_summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
-<li><a href="#constructor_detail">Constr</a>&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
 <li><a href="#method_detail">Method</a></li>
 </ul>
 </div>
