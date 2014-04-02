@@ -266,19 +266,6 @@
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="anorm.SqlParser#contains" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="contains[TT,T&lt;:TT](columnName:String,t:T)(implicitevidence$1:anorm.Column[TT]):anorm.RowParser[Unit]"></a>
-      <a id="contains[TT,T&lt;:TT](String,T)(Column[TT]):RowParser[Unit]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">contains</span><span class="tparams">[<span name="TT">TT</span>, <span name="T">T &lt;: <span class="extype" name="anorm.SqlParser.contains.TT">TT</span></span>]</span><span class="params">(<span name="columnName">columnName: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="t">t: <span class="extype" name="anorm.SqlParser.contains.T">T</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="Column.html" class="extype" name="anorm.Column">Column</a>[<span class="extype" name="anorm.SqlParser.contains.TT">TT</span>]</span>)</span><span class="result">: <a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a>[<span class="extype" name="scala.Unit">Unit</span>]</span>
-      </span>
-      </h4>
-      
     </li><li name="anorm.SqlParser#date" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="date(columnPosition:Int):anorm.RowParser[java.util.Date]"></a>
       <a id="date(Int):RowParser[Date]"></a>
@@ -458,7 +445,7 @@
       <p class="shortcomment cmt">Returns row parser for column at given position.</p><div class="fullcomment"><div class="comment cmt"><p>Returns row parser for column at given position.</p></div><dl class="paramcmts block"><dt class="param">position</dt><dd class="cmt"><p>Column position, from 1 to n</p><pre><span class="kw">val</span> res: (<span class="std">Float</span>, <span class="std">String</span>) = <span class="cmt">// parsing columns #1 & #3</span>
 SQL(<span class="lit">"SELECT * FROM Test"</span>).as(get[<span class="std">String</span>](<span class="num">1</span>) ~ get[<span class="std">Float</span>](<span class="num">3</span>) map {
   <span class="kw">case</span> str ~ f <span class="kw">=&gt;</span> (f -&gt; str)
-}</pre></dd></dl></div>
+} *)</pre></dd></dl></div>
     </li><li name="anorm.SqlParser#get" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="get[T](columnName:String)(implicitextractor:anorm.Column[T]):anorm.RowParser[T]"></a>
       <a id="get[T](String)(Column[T]):RowParser[T]"></a>
@@ -592,6 +579,26 @@ SQL(<span class="lit">"SELECT * FROM Test"</span>).as(get[<span class="std">Stri
 <span class="kw">val</span> t: (<span class="std">Long</span>, <span class="std">String</span>) = SQL(<span class="lit">"SELECT a, b FROM test"</span>)
   .as(SqlParser.long(<span class="lit">"a"</span>) ~ SqlParser.str(<span class="lit">"b"</span>) map (
     SqlParser.flatten) single)</pre></div></div>
+    </li><li name="anorm.SqlParser#matches" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="matches[TT,T&lt;:TT](column:String,value:T)(implicitevidence$2:anorm.Column[TT],implicitc:anorm.Column[TT]):anorm.RowParser[Boolean]"></a>
+      <a id="matches[TT,T&lt;:TT](String,T)(Column[TT],Column[TT]):RowParser[Boolean]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">matches</span><span class="tparams">[<span name="TT">TT</span>, <span name="T">T &lt;: <span class="extype" name="anorm.SqlParser.matches.TT">TT</span></span>]</span><span class="params">(<span name="column">column: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="value">value: <span class="extype" name="anorm.SqlParser.matches.T">T</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="Column.html" class="extype" name="anorm.Column">Column</a>[<span class="extype" name="anorm.SqlParser.matches.TT">TT</span>]</span>, <span name="c">c: <a href="Column.html" class="extype" name="anorm.Column">Column</a>[<span class="extype" name="anorm.SqlParser.matches.TT">TT</span>]</span>)</span><span class="result">: <a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a>[<span class="extype" name="scala.Boolean">Boolean</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns row parser which true if specified <code>column</code> is found
+and matching expected <code>value</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Returns row parser which true if specified <code>column</code> is found
+and matching expected <code>value</code>.</p><pre><span class="kw">import</span> anorm.SQL
+<span class="kw">import</span> anorm.SqlParser.matches
+
+<span class="kw">val</span> m: <span class="std">Boolean</span> = SQL(<span class="lit">"SELECT * FROM table"</span>).as(matches(<span class="lit">"a"</span>, <span class="num">1.2</span>f).single)
+<span class="cmt">// true if column |a| is found and matching 1.2f, otherwise false</span></pre></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>true if matches, or false if not
+</p></dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>
@@ -800,7 +807,43 @@ SQL(<span class="lit">"SELECT * FROM Test"</span>).as(get[<span class="std">Stri
 
         
 
-        
+        <div id="values" class="values members">
+              <h3>Deprecated Value Members</h3>
+              <ol><li name="anorm.SqlParser#contains" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="contains[TT,T&lt;:TT](column:String,value:T)(implicitevidence$1:anorm.Column[TT]):anorm.RowParser[Unit]"></a>
+      <a id="contains[TT,T&lt;:TT](String,T)(Column[TT]):RowParser[Unit]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 2.3.0) Use scala.tools.nsc.doc.base.MemberLookupBase$$anon$1@216e4f52">contains</span><span class="tparams">[<span name="TT">TT</span>, <span name="T">T &lt;: <span class="extype" name="anorm.SqlParser.contains.TT">TT</span></span>]</span><span class="params">(<span name="column">column: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="value">value: <span class="extype" name="anorm.SqlParser.contains.T">T</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="Column.html" class="extype" name="anorm.Column">Column</a>[<span class="extype" name="anorm.SqlParser.contains.TT">TT</span>]</span>)</span><span class="result">: <a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a>[<span class="extype" name="scala.Unit">Unit</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Returns row parser which throws exception if specified <code>column</code> is either
+missing or not matching expected <code>value</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Returns row parser which throws exception if specified <code>column</code> is either
+missing or not matching expected <code>value</code>.
+If row contains described column, do nothing (Unit).</p><pre><span class="kw">import</span> anorm.SQL
+<span class="kw">import</span> anorm.SqlParser.{ contains, str }
+
+<span class="kw">val</span> parser = contains(<span class="lit">"a"</span>, <span class="kw">true</span>) ~ str(<span class="lit">"b"</span>) map {
+  <span class="kw">case</span> () ~ str <span class="kw">=&gt;</span> str
+}
+
+SQL(<span class="lit">"SELECT * FROM table"</span>).as(parser.+)
+<span class="cmt">// Throws exception if there no |a| column or if |a| is not true,</span>
+<span class="cmt">// otherwise parses as non-empty list of |b| strings.</span></pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="&quot;SqlMappingError(Row doesn't contain a column: f with value 2.34)&quot;">...</span>
+    </span>)</span>
+              
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.3.0)</i> Use <a href="#matches[TT,T&lt;:TT](column:String,value:T)(implicitevidence$2:anorm.Column[TT],implicitc:anorm.Column[TT]):anorm.RowParser[Boolean]" class="extmbr" name="anorm.SqlParser#matches">matches</a></p></dd></dl></div>
+    </li></ol>
+            </div>
         </div>
 
         <div id="inheritedMembers">
