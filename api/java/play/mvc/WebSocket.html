@@ -159,6 +159,18 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr class="altColor">
+<td class="colFirst"><code>akka.actor.Props</code></td>
+<td class="colLast"><code><strong><a href="../../play/mvc/WebSocket.html#actorProps(akka.actor.ActorRef)">actorProps</a></strong>(akka.actor.ActorRef&nbsp;out)</code>
+<div class="block">The props to create the actor to handle this WebSocket.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><strong><a href="../../play/mvc/WebSocket.html#isActor()">isActor</a></strong>()</code>
+<div class="block">If this method returns true, then the WebSocket should be handled by an actor.</div>
+</td>
+</tr>
+<tr class="altColor">
 <td class="colFirst"><code>abstract void</code></td>
 <td class="colLast"><code><strong><a href="../../play/mvc/WebSocket.html#onReady(play.mvc.WebSocket.In, play.mvc.WebSocket.Out)">onReady</a></strong>(<a href="../../play/mvc/WebSocket.In.html" title="class in play.mvc">WebSocket.In</a>&lt;<a href="../../play/mvc/WebSocket.html" title="type parameter in WebSocket">A</a>&gt;&nbsp;in,
        <a href="../../play/mvc/WebSocket.Out.html" title="interface in play.mvc">WebSocket.Out</a>&lt;<a href="../../play/mvc/WebSocket.html" title="type parameter in WebSocket">A</a>&gt;&nbsp;out)</code>
@@ -167,8 +179,26 @@ extends java.lang.Object</pre>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>static &lt;A&gt;&nbsp;<a href="../../play/mvc/WebSocket.html" title="class in play.mvc">WebSocket</a>&lt;A&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../play/mvc/WebSocket.html#reject(play.mvc.Result)">reject</a></strong>(<a href="../../play/mvc/Result.html" title="interface in play.mvc">Result</a>&nbsp;result)</code>
+<div class="block">Rejects a WebSocket.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="interface in play.mvc">Result</a></code></td>
+<td class="colLast"><code><strong><a href="../../play/mvc/WebSocket.html#rejectWith()">rejectWith</a></strong>()</code>
+<div class="block">If this method returns a result, the WebSocket will be rejected with that result.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static &lt;A&gt;&nbsp;<a href="../../play/mvc/WebSocket.html" title="class in play.mvc">WebSocket</a>&lt;A&gt;</code></td>
 <td class="colLast"><code><strong><a href="../../play/mvc/WebSocket.html#whenReady(play.libs.F.Callback2)">whenReady</a></strong>(<a href="../../play/libs/F.Callback2.html" title="interface in play.libs">F.Callback2</a>&lt;<a href="../../play/mvc/WebSocket.In.html" title="class in play.mvc">WebSocket.In</a>&lt;A&gt;,<a href="../../play/mvc/WebSocket.Out.html" title="interface in play.mvc">WebSocket.Out</a>&lt;A&gt;&gt;&nbsp;callback)</code>
 <div class="block">Creates a WebSocket.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static &lt;A&gt;&nbsp;<a href="../../play/mvc/WebSocket.html" title="class in play.mvc">WebSocket</a>&lt;A&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../play/mvc/WebSocket.html#withActor(play.libs.F.Function)">withActor</a></strong>(<a href="../../play/libs/F.Function.html" title="interface in play.libs">F.Function</a>&lt;akka.actor.ActorRef,akka.actor.Props&gt;&nbsp;props)</code>
+<div class="block">Handles a WebSocket with an actor.</div>
 </td>
 </tr>
 </table>
@@ -222,10 +252,46 @@ extends java.lang.Object</pre>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>in</code> - The Socket in.</dd><dd><code>out</code> - The Socket out.</dd></dl>
 </li>
 </ul>
+<a name="rejectWith()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>rejectWith</h4>
+<pre>public&nbsp;<a href="../../play/mvc/Result.html" title="interface in play.mvc">Result</a>&nbsp;rejectWith()</pre>
+<div class="block">If this method returns a result, the WebSocket will be rejected with that result.
+
+ This method will be invoked before onReady.</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>The result to reject the WebSocket with, or null if the WebSocket shouldn't be rejected.</dd></dl>
+</li>
+</ul>
+<a name="isActor()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>isActor</h4>
+<pre>public&nbsp;boolean&nbsp;isActor()</pre>
+<div class="block">If this method returns true, then the WebSocket should be handled by an actor.  The actor will be obtained by
+ passing an ActorRef representing to the actor method, which should return the props for creating the actor.</div>
+</li>
+</ul>
+<a name="actorProps(akka.actor.ActorRef)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>actorProps</h4>
+<pre>public&nbsp;akka.actor.Props&nbsp;actorProps(akka.actor.ActorRef&nbsp;out)</pre>
+<div class="block">The props to create the actor to handle this WebSocket.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>out</code> - The actor to send upstream messages to.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>The props of the actor to handle the WebSocket.  If isActor returns true, must not return null.</dd></dl>
+</li>
+</ul>
 <a name="whenReady(play.libs.F.Callback2)">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>whenReady</h4>
 <pre>public static&nbsp;&lt;A&gt;&nbsp;<a href="../../play/mvc/WebSocket.html" title="class in play.mvc">WebSocket</a>&lt;A&gt;&nbsp;whenReady(<a href="../../play/libs/F.Callback2.html" title="interface in play.libs">F.Callback2</a>&lt;<a href="../../play/mvc/WebSocket.In.html" title="class in play.mvc">WebSocket.In</a>&lt;A&gt;,<a href="../../play/mvc/WebSocket.Out.html" title="interface in play.mvc">WebSocket.Out</a>&lt;A&gt;&gt;&nbsp;callback)</pre>
@@ -235,6 +301,30 @@ extends java.lang.Object</pre>
 <dt><span class="strong">Returns:</span></dt><dd>a new WebSocket</dd>
 <dt><span class="strong">Throws:</span></dt>
 <dd><code>java.lang.NullPointerException</code> - if the specified callback is null</dd></dl>
+</li>
+</ul>
+<a name="reject(play.mvc.Result)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>reject</h4>
+<pre>public static&nbsp;&lt;A&gt;&nbsp;<a href="../../play/mvc/WebSocket.html" title="class in play.mvc">WebSocket</a>&lt;A&gt;&nbsp;reject(<a href="../../play/mvc/Result.html" title="interface in play.mvc">Result</a>&nbsp;result)</pre>
+<div class="block">Rejects a WebSocket.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>result</code> - The result that will be returned.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>A rejected WebSocket.</dd></dl>
+</li>
+</ul>
+<a name="withActor(play.libs.F.Function)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>withActor</h4>
+<pre>public static&nbsp;&lt;A&gt;&nbsp;<a href="../../play/mvc/WebSocket.html" title="class in play.mvc">WebSocket</a>&lt;A&gt;&nbsp;withActor(<a href="../../play/libs/F.Function.html" title="interface in play.libs">F.Function</a>&lt;akka.actor.ActorRef,akka.actor.Props&gt;&nbsp;props)</pre>
+<div class="block">Handles a WebSocket with an actor.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>props</code> - The function used to create the props for the actor.  The passed in argument is the upstream actor.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>An actor WebSocket.</dd></dl>
 </li>
 </ul>
 </li>

@@ -35,12 +35,12 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">WebSocket</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="f">f: (<a href="RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ (<a href="../libs/iteratee/Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.mvc.WebSocket.A">A</span>], <a href="../libs/iteratee/Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="play.api.mvc.WebSocket.A">A</span>, <span class="extype" name="scala.Unit">Unit</span>]) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="frameFormatter">frameFormatter: <a href="WebSocket$$FrameFormatter.html" class="extype" name="play.api.mvc.WebSocket.FrameFormatter">FrameFormatter</a>[<span class="extype" name="play.api.mvc.WebSocket.A">A</span>]</span>)</span><span class="result"> extends <a href="Handler.html" class="extype" name="play.api.mvc.Handler">Handler</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name">WebSocket</span><span class="tparams">[<span name="In">In</span>, <span name="Out">Out</span>]</span><span class="params">(<span name="f">f: (<a href="RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="scala.Either">Either</span>[<a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a>, (<a href="../libs/iteratee/Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.mvc.WebSocket.In">In</span>], <a href="../libs/iteratee/Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="play.api.mvc.WebSocket.Out">Out</span>, <span class="extype" name="scala.Unit">Unit</span>]) ⇒ <span class="extype" name="scala.Unit">Unit</span>]]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="inFormatter">inFormatter: <a href="WebSocket$$FrameFormatter.html" class="extype" name="play.api.mvc.WebSocket.FrameFormatter">FrameFormatter</a>[<span class="extype" name="play.api.mvc.WebSocket.In">In</span>]</span>, <span name="outFormatter">outFormatter: <a href="WebSocket$$FrameFormatter.html" class="extype" name="play.api.mvc.WebSocket.FrameFormatter">FrameFormatter</a>[<span class="extype" name="play.api.mvc.WebSocket.Out">Out</span>]</span>)</span><span class="result"> extends <a href="Handler.html" class="extype" name="play.api.mvc.Handler">Handler</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A WebSocket handler.
-</p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>the socket messages type</p></dd><dt class="param">f</dt><dd class="cmt"><p>the socket messages generator
+</p></div><dl class="paramcmts block"><dt class="tparam">In</dt><dd class="cmt"><p>the type of messages coming in</p></dd><dt class="tparam">Out</dt><dd class="cmt"><p>the type of messages going out</p></dd><dt class="param">f</dt><dd class="cmt"><p>the socket messages generator
 </p></dd></dl><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play/src/main/scala/play/api/mvc/WebSocket.scala" target="_blank">WebSocket.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <a href="Handler.html" class="extype" name="play.api.mvc.Handler">Handler</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
@@ -82,15 +82,15 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="play.api.mvc.WebSocket#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(f:play.api.mvc.RequestHeader=&gt;((play.api.libs.iteratee.Enumerator[A],play.api.libs.iteratee.Iteratee[A,Unit])=&gt;Unit))(implicitframeFormatter:play.api.mvc.WebSocket.FrameFormatter[A]):play.api.mvc.WebSocket[A]"></a>
-      <a id="&lt;init&gt;:WebSocket[A]"></a>
+      <a id="&lt;init&gt;(f:play.api.mvc.RequestHeader=&gt;scala.concurrent.Future[Either[play.api.mvc.Result,(play.api.libs.iteratee.Enumerator[In],play.api.libs.iteratee.Iteratee[Out,Unit])=&gt;Unit]])(implicitinFormatter:play.api.mvc.WebSocket.FrameFormatter[In],implicitoutFormatter:play.api.mvc.WebSocket.FrameFormatter[Out]):play.api.mvc.WebSocket[In,Out]"></a>
+      <a id="&lt;init&gt;:WebSocket[In,Out]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">WebSocket</span><span class="params">(<span name="f">f: (<a href="RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ (<a href="../libs/iteratee/Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.mvc.WebSocket.A">A</span>], <a href="../libs/iteratee/Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="play.api.mvc.WebSocket.A">A</span>, <span class="extype" name="scala.Unit">Unit</span>]) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="frameFormatter">frameFormatter: <a href="WebSocket$$FrameFormatter.html" class="extype" name="play.api.mvc.WebSocket.FrameFormatter">FrameFormatter</a>[<span class="extype" name="play.api.mvc.WebSocket.A">A</span>]</span>)</span>
+        <span class="name">WebSocket</span><span class="params">(<span name="f">f: (<a href="RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="scala.Either">Either</span>[<a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a>, (<a href="../libs/iteratee/Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.mvc.WebSocket.In">In</span>], <a href="../libs/iteratee/Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="play.api.mvc.WebSocket.Out">Out</span>, <span class="extype" name="scala.Unit">Unit</span>]) ⇒ <span class="extype" name="scala.Unit">Unit</span>]]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="inFormatter">inFormatter: <a href="WebSocket$$FrameFormatter.html" class="extype" name="play.api.mvc.WebSocket.FrameFormatter">FrameFormatter</a>[<span class="extype" name="play.api.mvc.WebSocket.In">In</span>]</span>, <span name="outFormatter">outFormatter: <a href="WebSocket$$FrameFormatter.html" class="extype" name="play.api.mvc.WebSocket.FrameFormatter">FrameFormatter</a>[<span class="extype" name="play.api.mvc.WebSocket.Out">Out</span>]</span>)</span>
       </span>
       </h4>
       <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">f</dt><dd class="cmt"><p>the socket messages generator
@@ -100,16 +100,29 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="play.api.mvc.WebSocket.FRAMES_TYPE" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="FRAMES_TYPE=A"></a>
-      <a id="FRAMES_TYPE:FRAMES_TYPE"></a>
+              <ol><li name="play.api.mvc.WebSocket.FramesIn" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="FramesIn=In"></a>
+      <a id="FramesIn:FramesIn"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">type</span>
       </span>
       <span class="symbol">
-        <span class="name">FRAMES_TYPE</span><span class="result"> = <span class="extype" name="play.api.mvc.WebSocket.A">A</span></span>
+        <span class="name">FramesIn</span><span class="result"> = <span class="extype" name="play.api.mvc.WebSocket.In">In</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="play.api.mvc.WebSocket.FramesOut" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="FramesOut=Out"></a>
+      <a id="FramesOut:FramesOut"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">type</span>
+      </span>
+      <span class="symbol">
+        <span class="name">FramesOut</span><span class="result"> = <span class="extype" name="play.api.mvc.WebSocket.Out">Out</span></span>
       </span>
       </h4>
       
@@ -186,15 +199,15 @@
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="play.api.mvc.WebSocket#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="apply():play.api.mvc.WebSocket[A]"></a>
-      <a id="apply():WebSocket[A]"></a>
+      <a id="apply():play.api.mvc.WebSocket[In,Out]"></a>
+      <a id="apply():WebSocket[In,Out]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">apply</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="play.api.mvc.WebSocket">WebSocket</a>[<span class="extype" name="play.api.mvc.WebSocket.A">A</span>]</span>
+        <span class="name">apply</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="play.api.mvc.WebSocket">WebSocket</a>[<span class="extype" name="play.api.mvc.WebSocket.In">In</span>, <span class="extype" name="play.api.mvc.WebSocket.Out">Out</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Returns itself, for better support in the routes file.</p><div class="fullcomment"><div class="comment cmt"><p>Returns itself, for better support in the routes file.
@@ -246,15 +259,15 @@
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="play.api.mvc.WebSocket#f" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="f:play.api.mvc.RequestHeader=&gt;((play.api.libs.iteratee.Enumerator[A],play.api.libs.iteratee.Iteratee[A,Unit])=&gt;Unit)"></a>
-      <a id="f:(RequestHeader)⇒(Enumerator[A],Iteratee[A,Unit])⇒Unit"></a>
+      <a id="f:play.api.mvc.RequestHeader=&gt;scala.concurrent.Future[Either[play.api.mvc.Result,(play.api.libs.iteratee.Enumerator[In],play.api.libs.iteratee.Iteratee[Out,Unit])=&gt;Unit]]"></a>
+      <a id="f:(RequestHeader)⇒Future[Either[Result,(Enumerator[In],Iteratee[Out,Unit])⇒Unit]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">f</span><span class="result">: (<a href="RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ (<a href="../libs/iteratee/Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.mvc.WebSocket.A">A</span>], <a href="../libs/iteratee/Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="play.api.mvc.WebSocket.A">A</span>, <span class="extype" name="scala.Unit">Unit</span>]) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">f</span><span class="result">: (<a href="RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="scala.Either">Either</span>[<a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a>, (<a href="../libs/iteratee/Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.mvc.WebSocket.In">In</span>], <a href="../libs/iteratee/Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="play.api.mvc.WebSocket.Out">Out</span>, <span class="extype" name="scala.Unit">Unit</span>]) ⇒ <span class="extype" name="scala.Unit">Unit</span>]]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">the socket messages generator
@@ -278,19 +291,6 @@
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="play.api.mvc.WebSocket#frameFormatter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="frameFormatter:play.api.mvc.WebSocket.FrameFormatter[A]"></a>
-      <a id="frameFormatter:FrameFormatter[A]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">implicit </span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">frameFormatter</span><span class="result">: <a href="WebSocket$$FrameFormatter.html" class="extype" name="play.api.mvc.WebSocket.FrameFormatter">FrameFormatter</a>[<span class="extype" name="play.api.mvc.WebSocket.A">A</span>]</span>
-      </span>
-      </h4>
-      
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>
@@ -304,6 +304,19 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="play.api.mvc.WebSocket#inFormatter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="inFormatter:play.api.mvc.WebSocket.FrameFormatter[In]"></a>
+      <a id="inFormatter:FrameFormatter[In]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">inFormatter</span><span class="result">: <a href="WebSocket$$FrameFormatter.html" class="extype" name="play.api.mvc.WebSocket.FrameFormatter">FrameFormatter</a>[<span class="extype" name="play.api.mvc.WebSocket.In">In</span>]</span>
+      </span>
+      </h4>
+      
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -356,6 +369,19 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="play.api.mvc.WebSocket#outFormatter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="outFormatter:play.api.mvc.WebSocket.FrameFormatter[Out]"></a>
+      <a id="outFormatter:FrameFormatter[Out]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">outFormatter</span><span class="result">: <a href="WebSocket$$FrameFormatter.html" class="extype" name="play.api.mvc.WebSocket.FrameFormatter">FrameFormatter</a>[<span class="extype" name="play.api.mvc.WebSocket.Out">Out</span>]</span>
+      </span>
+      </h4>
+      
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
