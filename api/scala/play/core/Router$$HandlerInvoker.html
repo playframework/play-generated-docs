@@ -24,9 +24,9 @@
         </head>
         <body class="type">
       <div id="definition">
-        <a href="Router$$HandlerInvoker$.html" title="Go to companion"><img src="../../lib/trait_to_object_big.png" /></a>
+        <img src="../../lib/trait_big.png" />
         <p id="owner"><a href="../package.html" class="extype" name="play">play</a>.<a href="package.html" class="extype" name="play.core">core</a>.<a href="Router$.html" class="extype" name="play.core.Router">Router</a></p>
-        <h1><a href="Router$$HandlerInvoker$.html" title="Go to companion">HandlerInvoker</a></h1>
+        <h1>HandlerInvoker</h1>
       </div>
 
       <h4 id="signature" class="signature">
@@ -39,13 +39,9 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@implicitNotFound</span><span class="args">(<span>
-      
-      <span class="defval" name="&quot;Cannot use a method returning ${T} as an Handler&quot;">...</span>
-    </span>)</span>
-              
-        </dd><dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play/src/main/scala/play/core/router/Router.scala" target="_blank">Router.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>An object that, when invoked with a thunk, produces a <code>Handler</code> that wraps
+that thunk. Constructed by a <code>HandlerInvokerFactory</code>.
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play/src/main/scala/play/core/router/Router.scala" target="_blank">Router.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -89,19 +85,22 @@
 
         <div id="values" class="values members">
               <h3>Abstract Value Members</h3>
-              <ol><li name="play.core.Router.HandlerInvoker#call" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="call(call:=&gt;T,handler:play.core.Router.HandlerDef):play.api.mvc.Handler"></a>
-      <a id="call(⇒T,HandlerDef):Handler"></a>
+              <ol><li name="play.core.Router.HandlerInvoker#call" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="call(call:=&gt;T):play.api.mvc.Handler"></a>
+      <a id="call(⇒T):Handler"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">abstract </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">call</span><span class="params">(<span name="call">call: ⇒ <span class="extype" name="play.core.Router.HandlerInvoker.T">T</span></span>, <span name="handler">handler: <a href="Router$$HandlerDef.html" class="extype" name="play.core.Router.HandlerDef">HandlerDef</a></span>)</span><span class="result">: <a href="../api/mvc/Handler.html" class="extype" name="play.api.mvc.Handler">Handler</a></span>
+        <span class="name">call</span><span class="params">(<span name="call">call: ⇒ <span class="extype" name="play.core.Router.HandlerInvoker.T">T</span></span>)</span><span class="result">: <a href="../api/mvc/Handler.html" class="extype" name="play.api.mvc.Handler">Handler</a></span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt">Create a <code>Handler</code> that wraps the given thunk.</p><div class="fullcomment"><div class="comment cmt"><p>Create a <code>Handler</code> that wraps the given thunk. The thunk won't be called
+until the <code>Handler</code> is applied. The returned Handler will be used by
+Play to service the request.
+</p></div></div>
     </li></ol>
             </div>
 
