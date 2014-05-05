@@ -2526,22 +2526,6 @@ GET   /xxx             controllers.Default.error</pre></div><dl class="attribute
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="play.api.mvc.Controller#flash" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="flash(implicitrequest:play.api.mvc.RequestHeader):play.api.mvc.Flash"></a>
-      <a id="flash(RequestHeader):Flash"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">implicit </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">flash</span><span class="params">(<span class="implicit">implicit </span><span name="request">request: <a href="../play/api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>)</span><span class="result">: <a href="../play/api/mvc/Flash.html" class="extype" name="play.api.mvc.Flash">Flash</a></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Retrieve the flash scope implicitly from the request.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieve the flash scope implicitly from the request.</p><p>For example:</p><pre><span class="kw">def</span> index(name:<span class="std">String</span>) = Action { <span class="kw">implicit</span> request <span class="kw">=&gt;</span>
-<span class="kw">val</span> message = flash(<span class="lit">"message"</span>)
-Ok(<span class="lit">"Got "</span> + message)
-}</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Controller.html" class="extype" name="play.api.mvc.Controller">Controller</a></dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>
@@ -2581,19 +2565,6 @@ Ok(<span class="lit">"Got "</span> + message)
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="play.api.mvc.Controller#lang" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="lang(implicitrequest:play.api.mvc.RequestHeader):play.api.i18n.Lang"></a>
-      <a id="lang(RequestHeader):Lang"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">implicit </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">lang</span><span class="params">(<span class="implicit">implicit </span><span name="request">request: <a href="../play/api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>)</span><span class="result">: <a href="../play/api/i18n/Lang.html" class="extype" name="play.api.i18n.Lang">Lang</a></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Controller.html" class="extype" name="play.api.mvc.Controller">Controller</a></dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>
@@ -2685,16 +2656,45 @@ Ok(<span class="lit">"Got "</span> + message)
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Rendering.html" class="extype" name="play.api.mvc.Rendering">Rendering</a></dd></dl></div>
-    </li><li name="play.api.mvc.Controller#session" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="session(implicitrequest:play.api.mvc.RequestHeader):play.api.mvc.Session"></a>
-      <a id="session(RequestHeader):Session"></a>
+    </li><li name="play.api.mvc.Controller#request2flash" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="request2flash(implicitrequest:play.api.mvc.RequestHeader):play.api.mvc.Flash"></a>
+      <a id="request2flash(RequestHeader):Flash"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">implicit </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">session</span><span class="params">(<span class="implicit">implicit </span><span name="request">request: <a href="../play/api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>)</span><span class="result">: <a href="../play/api/mvc/Session.html" class="extype" name="play.api.mvc.Session">Session</a></span>
+        <span class="name">request2flash</span><span class="params">(<span class="implicit">implicit </span><span name="request">request: <a href="../play/api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>)</span><span class="result">: <a href="../play/api/mvc/Flash.html" class="extype" name="play.api.mvc.Flash">Flash</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Retrieve the flash scope implicitly from the request.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieve the flash scope implicitly from the request.</p><p>For example:</p><pre><span class="kw">def</span> index(name:<span class="std">String</span>) = Action { <span class="kw">implicit</span> request <span class="kw">=&gt;</span>
+<span class="kw">val</span> message = flash(<span class="lit">"message"</span>)
+Ok(<span class="lit">"Got "</span> + message)
+}</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Controller.html" class="extype" name="play.api.mvc.Controller">Controller</a></dd></dl></div>
+    </li><li name="play.api.mvc.Controller#request2lang" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="request2lang(implicitrequest:play.api.mvc.RequestHeader):play.api.i18n.Lang"></a>
+      <a id="request2lang(RequestHeader):Lang"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">request2lang</span><span class="params">(<span class="implicit">implicit </span><span name="request">request: <a href="../play/api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>)</span><span class="result">: <a href="../play/api/i18n/Lang.html" class="extype" name="play.api.i18n.Lang">Lang</a></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Controller.html" class="extype" name="play.api.mvc.Controller">Controller</a></dd></dl></div>
+    </li><li name="play.api.mvc.Controller#request2session" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="request2session(implicitrequest:play.api.mvc.RequestHeader):play.api.mvc.Session"></a>
+      <a id="request2session(RequestHeader):Session"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">request2session</span><span class="params">(<span class="implicit">implicit </span><span name="request">request: <a href="../play/api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>)</span><span class="result">: <a href="../play/api/mvc/Session.html" class="extype" name="play.api.mvc.Session">Session</a></span>
       </span>
       </h4>
       <p class="shortcomment cmt">Retrieves the session implicitly from the request.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves the session implicitly from the request.</p><p>For example:</p><pre><span class="kw">def</span> index(name:<span class="std">String</span>) = Action { <span class="kw">implicit</span> request <span class="kw">=&gt;</span>

@@ -39,7 +39,23 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play-ws/src/main/scala/play/api/libs/ws/ssl/Algorithms.scala" target="_blank">Algorithms.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>This singleton object provides the code needed to check for minimum standards of an X.509 certificate.  Over 95% of trusted leaf certificates and 95% of trusted signing certificates use <a href="http://csrc.nist.gov/publications/nistpubs/800-131A/sp800-131A.pdf">NIST recommended key sizes</a>.  Play supports Java 1.6, which does not have built in <a href="http://sim.ivi.co/2013/11/harness-ssl-and-jsse-key-size-control.html">certificate strength checking</a>, so we roll our own here.</p><p>The default settings here are based off <a href="">NIST SP 800-57</a>, using <a href="https://wiki.mozilla.org/CA:MD5and1024">Dates for Phasing out MD5-based signatures and 1024-bit moduli</a> as a practical guide.</p><p>Note that the key sizes are checked on root CA certificates in the trust store.  As the Mozilla document says:</p><p><blockquote>The other concern that needs to be addressed is that of RSA1024 being too small a modulus to be robust against faster computers. Unlike a signature algorithm, where only intermediate and end-entity certificates are impacted, fast math means we have to disable or remove all instances of 1024-bit moduli, including the root certificates.</blockquote></p><p>Relevant key sizes:</p><p><blockquote>
+According to NIST SP 800-57 the recommended algorithms and minimum key sizes are as follows:
+
+Through 2010 (minimum of 80 bits of strength)
+FFC (e.g., DSA, D-H) Minimum: L=1024; N=160
+IFC (e.g., RSA) Minimum: k=1024
+ECC (e.g. ECDSA) Minimum: f=160
+Through 2030 (minimum of 112 bits of strength)
+FFC (e.g., DSA, D-H) Minimum: L=2048; N=224
+IFC (e.g., RSA) Minimum: k=2048
+ECC (e.g. ECDSA) Minimum: f=224
+Beyond 2030 (minimum of 128 bits of strength)
+FFC (e.g., DSA, D-H) Minimum: L=3072; N=256
+IFC (e.g., RSA) Minimum: k=3072
+ECC (e.g. ECDSA) Minimum: f=256
+</blockquote></p><p>Relevant signature algorithms:</p><p>The known weak signature algorithms are &quot;MD2, MD4, MD5&quot;.</p><p>SHA-1 is considered too weak for new certificates, but is <a href="http://csrc.nist.gov/groups/ST/hash/policy.html">still allowed</a> for verifying old certificates in the chain.  The <a href="https://blogs.oracle.com/xuelei/entry/tls_and_nist_s_policy">TLS and NIST'S Policy on Hash Functions</a> blog post by one of the JSSE authors has more details, in particular the &quot;Put it into practice&quot; section.
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play-ws/src/main/scala/play/api/libs/ws/ssl/Algorithms.scala" target="_blank">Algorithms.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -198,7 +214,7 @@
 so that we can check the &quot;SHA1&quot; and &quot;RSA&quot; algorithm constraints
 separately.</p><p>Please override the method if need to support more name pattern.
 </p></div></div>
-    </li><li name="play.api.libs.ws.ssl.Algorithms#disabledKeyAlgorithms" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="play.api.libs.ws.ssl.Algorithms#disabledKeyAlgorithms" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="disabledKeyAlgorithms:String"></a>
       <a id="disabledKeyAlgorithms:String"></a>
       <h4 class="signature">
@@ -210,8 +226,10 @@ separately.</p><p>Please override the method if need to support more name patter
         <span class="name">disabledKeyAlgorithms</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
-      
-    </li><li name="play.api.libs.ws.ssl.Algorithms#disabledSignatureAlgorithms" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">Disabled key algorithms are applied to all certificates, including the root CAs.</p><div class="fullcomment"><div class="comment cmt"><p>Disabled key algorithms are applied to all certificates, including the root CAs.
+</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>&quot;RSA keySize &lt; 2048, DSA keySize &lt; 2048, EC keySize &lt; 224&quot;
+</p></dd></dl></div>
+    </li><li name="play.api.libs.ws.ssl.Algorithms#disabledSignatureAlgorithms" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="disabledSignatureAlgorithms:String"></a>
       <a id="disabledSignatureAlgorithms:String"></a>
       <h4 class="signature">
@@ -223,7 +241,9 @@ separately.</p><p>Please override the method if need to support more name patter
         <span class="name">disabledSignatureAlgorithms</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt">Disabled signature algorithms are applied to signed certificates in a certificate chain, not including CA certs.</p><div class="fullcomment"><div class="comment cmt"><p>Disabled signature algorithms are applied to signed certificates in a certificate chain, not including CA certs.
+</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>&quot;MD2, MD4, MD5&quot;
+</p></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -282,6 +302,19 @@ separately.</p><p>Please override the method if need to support more name patter
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="play.api.libs.ws.ssl.Algorithms#getKeyAlgorithmName" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="getKeyAlgorithmName(pubk:java.security.Key):String"></a>
+      <a id="getKeyAlgorithmName(Key):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getKeyAlgorithmName</span><span class="params">(<span name="pubk">pubk: <span class="extype" name="java.security.Key">Key</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      
     </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <a id="hashCode():Int"></a>
@@ -309,18 +342,18 @@ separately.</p><p>Please override the method if need to support more name patter
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="play.api.libs.ws.ssl.Algorithms#keySize" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="keySize(key:java.security.Key):Int"></a>
-      <a id="keySize(Key):Int"></a>
+      <a id="keySize(key:java.security.Key):Option[Int]"></a>
+      <a id="keySize(Key):Option[Int]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">keySize</span><span class="params">(<span name="key">key: <span class="extype" name="java.security.Key">Key</span></span>)</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+        <span class="name">keySize</span><span class="params">(<span name="key">key: <span class="extype" name="java.security.Key">Key</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Int">Int</span>]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Returns the keySize of the given key.</p>
+      <p class="shortcomment cmt">Returns the keySize of the given key, or None if no key exists.</p>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>
@@ -386,6 +419,32 @@ separately.</p><p>Please override the method if need to support more name patter
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="play.api.libs.ws.ssl.Algorithms#translateECKey" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="translateECKey(pubk:java.security.Key):java.security.Key"></a>
+      <a id="translateECKey(Key):Key"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">translateECKey</span><span class="params">(<span name="pubk">pubk: <span class="extype" name="java.security.Key">Key</span></span>)</span><span class="result">: <span class="extype" name="java.security.Key">Key</span></span>
+      </span>
+      </h4>
+      
+    </li><li name="play.api.libs.ws.ssl.Algorithms#translateKey" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="translateKey(pubk:java.security.Key):java.security.Key"></a>
+      <a id="translateKey(Key):Key"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">translateKey</span><span class="params">(<span name="pubk">pubk: <span class="extype" name="java.security.Key">Key</span></span>)</span><span class="result">: <span class="extype" name="java.security.Key">Key</span></span>
+      </span>
+      </h4>
+      
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>

@@ -41,7 +41,9 @@
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Looks for disabled algorithms in the certificate.  This is because some certificates are signed with
 forgable hashes such as MD2 or MD5, so we can't be certain of their authenticity.</p><p>This class is needed because the JDK 1.6 Algorithm checker doesn't give us any way to customize the list of
-disabled algorithms, and we need to be able to support that.
+disabled algorithms, and we need to be able to support that.</p><p>Also note that we need to check the trust anchor for disabled key sizes, and the CertPath explicitly removes
+the trust anchor from the chain of certificates.  This means we need to check the trust anchor explicitly in the
+through the CompositeTrustManager.
 </p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play-ws/src/main/scala/play/api/libs/ws/ssl/AlgorithmChecker.scala" target="_blank">AlgorithmChecker.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="java.security.cert.PKIXCertPathChecker">PKIXCertPathChecker</span>, <span class="extype" name="java.lang.Cloneable">Cloneable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>

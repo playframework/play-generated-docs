@@ -129,18 +129,76 @@
       <p class="comment cmt">An action is essentially a (Request[A] =&gt; Result) function that
 handles a request and generates a result to be sent to the client.</p>
     </li><li name="play.api.mvc.ActionBuilder" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="ActionBuilder[R[_]]extendsAnyRef"></a>
-      <a id="ActionBuilder[R[_]]:ActionBuilder[R]"></a>
+      <a id="ActionBuilder[+R[_]]extendsActionFunction[play.api.mvc.Request,R]"></a>
+      <a id="ActionBuilder[+R[_]]:ActionBuilder[R]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="ActionBuilder.html"><span class="name">ActionBuilder</span></a><span class="tparams">[<span name="R">R<span class="tparams">[<span name="_">_</span>]</span></span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a href="ActionBuilder.html"><span class="name">ActionBuilder</span></a><span class="tparams">[<span name="R">+R<span class="tparams">[<span name="_">_</span>]</span></span>]</span><span class="result"> extends <a href="ActionFunction.html" class="extype" name="play.api.mvc.ActionFunction">ActionFunction</a>[<a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>, <span class="extype" name="play.api.mvc.ActionBuilder.R">R</span>]</span>
       </span>
       </h4>
       <p class="comment cmt">Provides helpers for creating <code>Action</code> values.</p>
+    </li><li name="play.api.mvc.ActionFilter" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ActionFilter[R[_]]extendsActionRefiner[R,R]"></a>
+      <a id="ActionFilter[R[_]]:ActionFilter[R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="ActionFilter.html"><span class="name">ActionFilter</span></a><span class="tparams">[<span name="R">R<span class="tparams">[<span name="_">_</span>]</span></span>]</span><span class="result"> extends <a href="ActionRefiner.html" class="extype" name="play.api.mvc.ActionRefiner">ActionRefiner</a>[<span class="extype" name="play.api.mvc.ActionFilter.R">R</span>, <span class="extype" name="play.api.mvc.ActionFilter.R">R</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">A simple kind of ActionRefiner which, given a request (of type R), may
+either immediately produce a Result (for example, an error), or
+continue its Action block with the same request.</p>
+    </li><li name="play.api.mvc.ActionFunction" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ActionFunction[-R[_],+P[_]]extendsAnyRef"></a>
+      <a id="ActionFunction[-R[_],+P[_]]:ActionFunction[R,P]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="ActionFunction.html"><span class="name">ActionFunction</span></a><span class="tparams">[<span name="R">-R<span class="tparams">[<span name="_">_</span>]</span></span>, <span name="P">+P<span class="tparams">[<span name="_">_</span>]</span></span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4>
+      <p class="comment cmt">A builder for generic Actions that generalizes over the type of requests.</p>
+    </li><li name="play.api.mvc.ActionRefiner" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ActionRefiner[-R[_],+P[_]]extendsActionFunction[R,P]"></a>
+      <a id="ActionRefiner[-R[_],+P[_]]:ActionRefiner[R,P]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="ActionRefiner.html"><span class="name">ActionRefiner</span></a><span class="tparams">[<span name="R">-R<span class="tparams">[<span name="_">_</span>]</span></span>, <span name="P">+P<span class="tparams">[<span name="_">_</span>]</span></span>]</span><span class="result"> extends <a href="ActionFunction.html" class="extype" name="play.api.mvc.ActionFunction">ActionFunction</a>[<span class="extype" name="play.api.mvc.ActionRefiner.R">R</span>, <span class="extype" name="play.api.mvc.ActionRefiner.P">P</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">A simple kind of ActionFunction which, given a request (of type R), may
+either immediately produce a Result (for example, an error), or call
+its Action block with a parameter (of type P).</p>
+    </li><li name="play.api.mvc.ActionTransformer" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ActionTransformer[-R[_],+P[_]]extendsActionRefiner[R,P]"></a>
+      <a id="ActionTransformer[-R[_],+P[_]]:ActionTransformer[R,P]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="ActionTransformer.html"><span class="name">ActionTransformer</span></a><span class="tparams">[<span name="R">-R<span class="tparams">[<span name="_">_</span>]</span></span>, <span name="P">+P<span class="tparams">[<span name="_">_</span>]</span></span>]</span><span class="result"> extends <a href="ActionRefiner.html" class="extype" name="play.api.mvc.ActionRefiner">ActionRefiner</a>[<span class="extype" name="play.api.mvc.ActionTransformer.R">R</span>, <span class="extype" name="play.api.mvc.ActionTransformer.P">P</span>]</span>
+      </span>
+      </h4>
+      <p class="comment cmt">A simple kind of ActionRefiner which, given a request (of type R),
+unconditionally transforms it to a new parameter type (P) to be passed to
+its Action block.</p>
     </li><li name="play.api.mvc.AnyContent" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="AnyContentextendsAnyRef"></a>
       <a id="AnyContent:AnyContent"></a>

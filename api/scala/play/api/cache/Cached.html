@@ -35,15 +35,15 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">Cached</span><span class="params">(<span name="key">key: (<a href="../mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="duration">duration: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="params">(<span name="action">action: <a href="../mvc/EssentialAction.html" class="extype" name="play.api.mvc.EssentialAction">EssentialAction</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="app">app: <a href="../Application.html" class="extype" name="play.api.Application">Application</a></span>)</span><span class="result"> extends <a href="../mvc/EssentialAction.html" class="extype" name="play.api.mvc.EssentialAction">EssentialAction</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name">Cached</span><span class="params">(<span name="key">key: (<a href="../mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="caching">caching: <span class="extype" name="scala.PartialFunction">PartialFunction</span>[<a href="../mvc/ResponseHeader.html" class="extype" name="play.api.mvc.ResponseHeader">ResponseHeader</a>, <span class="extype" name="scala.concurrent.duration.Duration">Duration</span>]</span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Cache an action.</p><p>Uses both server and client caches:</p><ul><li>Adds an <code>Expires</code> header to the response, so clients can cache response content ;</li><li>Adds an <code>Etag</code> header to the response, so clients can cache response content and ask the server for freshness ;</li><li>Cache the result on the server, so the underlying action is not computed at each call.
-</li></ul></div><dl class="paramcmts block"><dt class="param">key</dt><dd class="cmt"><p>Compute a key from the request header</p></dd><dt class="param">duration</dt><dd class="cmt"><p>Cache duration (in seconds, 0 means eternity)</p></dd><dt class="param">action</dt><dd class="cmt"><p>Action to cache
+</li></ul></div><dl class="paramcmts block"><dt class="param">key</dt><dd class="cmt"><p>Compute a key from the request header</p></dd><dt class="param">caching</dt><dd class="cmt"><p>A callback to get the number of seconds to cache results for
 </p></dd></dl><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play-cache/src/main/scala/play/api/cache/Cached.scala" target="_blank">Cached.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <a href="../mvc/EssentialAction.html" class="extype" name="play.api.mvc.EssentialAction">EssentialAction</a>, <a href="../mvc/Handler.html" class="extype" name="play.api.mvc.Handler">Handler</a>, (<a href="../mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <a href="../libs/iteratee/Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>], <a href="../mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>], <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -61,7 +61,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="play.api.cache.Cached"><span>Cached</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="play.api.mvc.EssentialAction"><span>EssentialAction</span></li><li class="in" name="play.api.mvc.Handler"><span>Handler</span></li><li class="in" name="scala.Function1"><span>Function1</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="play.api.cache.Cached"><span>Cached</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -82,7 +82,7 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="play.api.cache.Cached#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(key:play.api.mvc.RequestHeader=&gt;String,duration:Int)(action:play.api.mvc.EssentialAction)(implicitapp:play.api.Application):play.api.cache.Cached"></a>
+      <a id="&lt;init&gt;(key:play.api.mvc.RequestHeader=&gt;String,caching:PartialFunction[play.api.mvc.ResponseHeader,scala.concurrent.duration.Duration]):play.api.cache.Cached"></a>
       <a id="&lt;init&gt;:Cached"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -90,10 +90,10 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">Cached</span><span class="params">(<span name="key">key: (<a href="../mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="duration">duration: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="params">(<span name="action">action: <a href="../mvc/EssentialAction.html" class="extype" name="play.api.mvc.EssentialAction">EssentialAction</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="app">app: <a href="../Application.html" class="extype" name="play.api.Application">Application</a></span>)</span>
+        <span class="name">Cached</span><span class="params">(<span name="key">key: (<a href="../mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="caching">caching: <span class="extype" name="scala.PartialFunction">PartialFunction</span>[<a href="../mvc/ResponseHeader.html" class="extype" name="play.api.mvc.ResponseHeader">ResponseHeader</a>, <span class="extype" name="scala.concurrent.duration.Duration">Duration</span>]</span>)</span>
       </span>
       </h4>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">key</dt><dd class="cmt"><p>Compute a key from the request header</p></dd><dt class="param">duration</dt><dd class="cmt"><p>Cache duration (in seconds, 0 means eternity)</p></dd><dt class="param">action</dt><dd class="cmt"><p>Action to cache
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">key</dt><dd class="cmt"><p>Compute a key from the request header</p></dd><dt class="param">caching</dt><dd class="cmt"><p>A callback to get the number of seconds to cache results for
 </p></dd></dl></div>
     </li></ol>
             </div>
@@ -169,50 +169,19 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="scala.Function1#andThen" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="andThen[A](g:R=&gt;A):T1=&gt;A"></a>
-      <a id="andThen[A]((Iteratee[Array[Byte],Result])⇒A):(RequestHeader)⇒A"></a>
+    </li><li name="play.api.cache.Cached#apply" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="apply(action:play.api.mvc.EssentialAction)(implicitapp:play.api.Application):play.api.mvc.EssentialAction"></a>
+      <a id="apply(EssentialAction)(Application):EssentialAction"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">andThen</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="g">g: (<a href="../libs/iteratee/Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>], <a href="../mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>]) ⇒ <span class="extype" name="scala.Function1.andThen.A">A</span></span>)</span><span class="result">: (<a href="../mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <span class="extype" name="scala.Function1.andThen.A">A</span></span>
+        <span class="name">apply</span><span class="params">(<span name="action">action: <a href="../mvc/EssentialAction.html" class="extype" name="play.api.mvc.EssentialAction">EssentialAction</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="app">app: <a href="../Application.html" class="extype" name="play.api.Application">Application</a></span>)</span><span class="result">: <a href="../mvc/EssentialAction.html" class="extype" name="play.api.mvc.EssentialAction">EssentialAction</a></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Function1</dd><dt>Annotations</dt><dd>
-                <span class="name">@unspecialized</span><span class="args">()</span>
-              
-        </dd></dl></div>
-    </li><li name="play.api.cache.Cached#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="apply(request:play.api.mvc.RequestHeader):play.api.libs.iteratee.Iteratee[Array[Byte],play.api.mvc.Result]"></a>
-      <a id="apply(RequestHeader):Iteratee[Array[Byte],Result]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">apply</span><span class="params">(<span name="request">request: <a href="../mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>)</span><span class="result">: <a href="../libs/iteratee/Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>], <a href="../mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.cache.Cached">Cached</a> → Function1</dd></dl></div>
-    </li><li name="play.api.mvc.EssentialAction#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="apply():play.api.mvc.EssentialAction"></a>
-      <a id="apply():EssentialAction"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">apply</span><span class="params">()</span><span class="result">: <a href="../mvc/EssentialAction.html" class="extype" name="play.api.mvc.EssentialAction">EssentialAction</a></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">Returns itself, for better support in the routes file.</p><div class="fullcomment"><div class="comment cmt"><p>Returns itself, for better support in the routes file.
-</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>itself
-</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../mvc/EssentialAction.html" class="extype" name="play.api.mvc.EssentialAction">EssentialAction</a></dd></dl></div>
+      
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -226,6 +195,34 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="play.api.cache.Cached#build" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="build(action:play.api.mvc.EssentialAction)(implicitapp:play.api.Application):play.api.mvc.EssentialAction"></a>
+      <a id="build(EssentialAction)(Application):EssentialAction"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">build</span><span class="params">(<span name="action">action: <a href="../mvc/EssentialAction.html" class="extype" name="play.api.mvc.EssentialAction">EssentialAction</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="app">app: <a href="../Application.html" class="extype" name="play.api.Application">Application</a></span>)</span><span class="result">: <a href="../mvc/EssentialAction.html" class="extype" name="play.api.mvc.EssentialAction">EssentialAction</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Compose the cache with an action
+</p>
+    </li><li name="play.api.cache.Cached#caching" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="caching:PartialFunction[play.api.mvc.ResponseHeader,scala.concurrent.duration.Duration]"></a>
+      <a id="caching:PartialFunction[ResponseHeader,Duration]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">caching</span><span class="result">: <span class="extype" name="scala.PartialFunction">PartialFunction</span>[<a href="../mvc/ResponseHeader.html" class="extype" name="play.api.mvc.ResponseHeader">ResponseHeader</a>, <span class="extype" name="scala.concurrent.duration.Duration">Duration</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">A callback to get the number of seconds to cache results for
+</p>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
@@ -245,35 +242,49 @@
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="scala.Function1#compose" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="compose[A](g:A=&gt;T1):A=&gt;R"></a>
-      <a id="compose[A]((A)⇒RequestHeader):(A)⇒Iteratee[Array[Byte],Result]"></a>
+    </li><li name="play.api.cache.Cached#compose" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="compose(alternative:PartialFunction[play.api.mvc.ResponseHeader,scala.concurrent.duration.Duration]):play.api.cache.Cached"></a>
+      <a id="compose(PartialFunction[ResponseHeader,Duration]):Cached"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">compose</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="g">g: (<span class="extype" name="scala.Function1.compose.A">A</span>) ⇒ <a href="../mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>)</span><span class="result">: (<span class="extype" name="scala.Function1.compose.A">A</span>) ⇒ <a href="../libs/iteratee/Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>], <a href="../mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>
+        <span class="name">compose</span><span class="params">(<span name="alternative">alternative: <span class="extype" name="scala.PartialFunction">PartialFunction</span>[<a href="../mvc/ResponseHeader.html" class="extype" name="play.api.mvc.ResponseHeader">ResponseHeader</a>, <span class="extype" name="scala.concurrent.duration.Duration">Duration</span>]</span>)</span><span class="result">: <a href="" class="extype" name="play.api.cache.Cached">Cached</a></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Function1</dd><dt>Annotations</dt><dd>
-                <span class="name">@unspecialized</span><span class="args">()</span>
-              
-        </dd></dl></div>
-    </li><li name="play.api.cache.Cached#duration" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="duration:Int"></a>
-      <a id="duration:Int"></a>
+      <p class="shortcomment cmt">Compose the cache with new caching function</p><div class="fullcomment"><div class="comment cmt"><p>Compose the cache with new caching function</p></div><dl class="paramcmts block"><dt class="param">alternative</dt><dd class="cmt"><p>a closure getting the reponseheader and returning the duration
+       we should cache for
+</p></dd></dl></div>
+    </li><li name="play.api.cache.Cached#default" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="default(duration:Int):play.api.cache.Cached"></a>
+      <a id="default(Int):Cached"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">val</span>
+        <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">duration</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+        <span class="name">default</span><span class="params">(<span name="duration">duration: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="" class="extype" name="play.api.cache.Cached">Cached</a></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Cache duration (in seconds, 0 means eternity)</p>
+      <p class="shortcomment cmt">The returned cache will store all responses whatever they may contain</p><div class="fullcomment"><div class="comment cmt"><p>The returned cache will store all responses whatever they may contain</p></div><dl class="paramcmts block"><dt class="param">duration</dt><dd class="cmt"><p>the number of seconds we should store responses
+</p></dd></dl></div>
+    </li><li name="play.api.cache.Cached#default" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="default(duration:scala.concurrent.duration.Duration):play.api.cache.Cached"></a>
+      <a id="default(Duration):Cached"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">default</span><span class="params">(<span name="duration">duration: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>)</span><span class="result">: <a href="" class="extype" name="play.api.cache.Cached">Cached</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">The returned cache will store all responses whatever they may contain</p><div class="fullcomment"><div class="comment cmt"><p>The returned cache will store all responses whatever they may contain</p></div><dl class="paramcmts block"><dt class="param">duration</dt><dd class="cmt"><p>how long we should store responses
+</p></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -319,6 +330,57 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="play.api.cache.Cached#includeStatus" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="includeStatus(status:Int,duration:scala.concurrent.duration.Duration):play.api.cache.Cached"></a>
+      <a id="includeStatus(Int,Duration):Cached"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">includeStatus</span><span class="params">(<span name="status">status: <span class="extype" name="scala.Int">Int</span></span>, <span name="duration">duration: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>)</span><span class="result">: <a href="" class="extype" name="play.api.cache.Cached">Cached</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Whether this cache should cache the specified response if the status code match
+This method will cache the result for duration seconds
+</p><div class="fullcomment"><div class="comment cmt"><p>Whether this cache should cache the specified response if the status code match
+This method will cache the result for duration seconds
+</p></div><dl class="paramcmts block"><dt class="param">status</dt><dd class="cmt"><p>the status code to check</p></dd><dt class="param">duration</dt><dd class="cmt"><p>how long should we cache the result for
+</p></dd></dl></div>
+    </li><li name="play.api.cache.Cached#includeStatus" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="includeStatus(status:Int,duration:Int):play.api.cache.Cached"></a>
+      <a id="includeStatus(Int,Int):Cached"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">includeStatus</span><span class="params">(<span name="status">status: <span class="extype" name="scala.Int">Int</span></span>, <span name="duration">duration: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="" class="extype" name="play.api.cache.Cached">Cached</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Whether this cache should cache the specified response if the status code match
+This method will cache the result for duration seconds
+</p><div class="fullcomment"><div class="comment cmt"><p>Whether this cache should cache the specified response if the status code match
+This method will cache the result for duration seconds
+</p></div><dl class="paramcmts block"><dt class="param">status</dt><dd class="cmt"><p>the status code to check</p></dd><dt class="param">duration</dt><dd class="cmt"><p>the number of seconds to cache the result for
+</p></dd></dl></div>
+    </li><li name="play.api.cache.Cached#includeStatus" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="includeStatus(status:Int):play.api.cache.Cached"></a>
+      <a id="includeStatus(Int):Cached"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">includeStatus</span><span class="params">(<span name="status">status: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="" class="extype" name="play.api.cache.Cached">Cached</a></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Whether this cache should cache the specified response if the status code match
+This method will cache the result forever
+</p>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -397,19 +459,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.Function1#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="toString():String"></a>
-      <a id="toString():String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Function1 → AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
@@ -484,12 +533,6 @@
               <h3>Inherited from <span class="extype" name="scala.Product">Product</span></h3>
             </div><div class="parent" name="scala.Equals">
               <h3>Inherited from <span class="extype" name="scala.Equals">Equals</span></h3>
-            </div><div class="parent" name="play.api.mvc.EssentialAction">
-              <h3>Inherited from <a href="../mvc/EssentialAction.html" class="extype" name="play.api.mvc.EssentialAction">EssentialAction</a></h3>
-            </div><div class="parent" name="play.api.mvc.Handler">
-              <h3>Inherited from <a href="../mvc/Handler.html" class="extype" name="play.api.mvc.Handler">Handler</a></h3>
-            </div><div class="parent" name="scala.Function1">
-              <h3>Inherited from (<a href="../mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <a href="../libs/iteratee/Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>], <a href="../mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</h3>
             </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">
