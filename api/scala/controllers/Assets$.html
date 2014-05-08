@@ -40,7 +40,15 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Controller that serves static resources.</p><p>Resources are searched in the classpath.</p><p>It handles Last-Modified and ETag header automatically.
-If a gzipped version of a resource is found (Same resource name with the .gz suffix), it is served instead.</p><p>You can set a custom Cache directive for a particular resource if needed. For example in your application.conf file:</p><pre><span class="lit">"assets.cache./public/images/logo.png"</span> = <span class="lit">"max-age=3600"</span></pre><p>You can use this controller in any application, just by declaring the appropriate route. For example:</p><pre>GET     /assets/￯ﾻ﾿*file               controllers.Assets.at(path=<span class="lit">"/public"</span>, file)</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play/src/main/scala/play/api/controllers/Assets.scala" target="_blank">Assets.scala</a></dd></dl><div class="toggleContainer block">
+If a gzipped version of a resource is found (Same resource name with the .gz suffix), it is served instead. If a
+digest file is available for a given asset then its contents are read and used to supply a digest value. This value will be used for
+serving up ETag values and for the purposes of reverse routing. For example given &quot;a.js&quot;, if there is an &quot;a.js.md5&quot;
+file available then the latter contents will be used to determine the Etag value.
+The reverse router also uses the digest in order to translate any file to the form &lt;digest&gt;-&lt;asset&gt; for
+example &quot;a.js&quot; may be also found at &quot;d41d8cd98f00b204e9800998ecf8427e-a.js&quot;.
+If there is no digest file found then digest values for ETags are formed by forming a sha1 digest of the last-modified
+time.</p><p>The default digest algorithm to search for is &quot;md5&quot;. You can override this quite easily. For example if the SHA-1
+algorithm is preferred:</p><pre><span class="lit">"assets.digest.algorithm"</span> = <span class="lit">"sha1"</span></pre><p>You can set a custom Cache directive for a particular resource if needed. For example in your application.conf file:</p><pre><span class="lit">"assets.cache./public/images/logo.png"</span> = <span class="lit">"max-age=3600"</span></pre><p>You can use this controller in any application, just by declaring the appropriate route. For example:</p><pre>GET     /assets/￯ﾻ﾿*file               controllers.Assets.at(path=<span class="lit">"/public"</span>, file)</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.3.0-RC1/framework/src/play/src/main/scala/play/api/controllers/Assets.scala" target="_blank">Assets.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="AssetsBuilder.html" class="extype" name="controllers.AssetsBuilder">AssetsBuilder</a>, <a href="../play/api/mvc/Controller.html" class="extype" name="play.api.mvc.Controller">Controller</a>, <a href="../play/api/mvc/Rendering.html" class="extype" name="play.api.mvc.Rendering">Rendering</a>, <a href="../play/api/mvc/RequestExtractors.html" class="extype" name="play.api.mvc.RequestExtractors">RequestExtractors</a>, <a href="../play/api/mvc/AcceptExtractors.html" class="extype" name="play.api.mvc.AcceptExtractors">AcceptExtractors</a>, <a href="../play/api/http/ContentTypes.html" class="extype" name="play.api.http.ContentTypes">ContentTypes</a>, <a href="../play/api/http/HeaderNames.html" class="extype" name="play.api.http.HeaderNames">HeaderNames</a>, <a href="../play/api/http/Status.html" class="extype" name="play.api.http.Status">play.api.http.Status</a>, <a href="../play/api/http/HttpProtocol.html" class="extype" name="play.api.http.HttpProtocol">HttpProtocol</a>, <a href="../play/api/mvc/BodyParsers.html" class="extype" name="play.api.mvc.BodyParsers">BodyParsers</a>, <a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -2430,19 +2438,19 @@ If a gzipped version of a resource is found (Same resource name with the .gz suf
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="controllers.AssetsBuilder#at" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="at(path:String,file:String):play.api.mvc.Action[play.api.mvc.AnyContent]"></a>
-      <a id="at(String,String):Action[AnyContent]"></a>
+      <a id="at(path:String,file:String,aggressiveCaching:Boolean):play.api.mvc.Action[play.api.mvc.AnyContent]"></a>
+      <a id="at(String,String,Boolean):Action[AnyContent]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">at</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="file">file: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="../play/api/mvc/Action.html" class="extype" name="play.api.mvc.Action">Action</a>[<a href="../play/api/mvc/AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a>]</span>
+        <span class="name">at</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="file">file: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="aggressiveCaching">aggressiveCaching: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <a href="../play/api/mvc/Action.html" class="extype" name="play.api.mvc.Action">Action</a>[<a href="../play/api/mvc/AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Generates an <code>Action</code> that serves a static resource.</p><div class="fullcomment"><div class="comment cmt"><p>Generates an <code>Action</code> that serves a static resource.
-</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>the root folder for searching the static resource files, such as <code>&quot;/public&quot;</code>. Not URL encoded.</p></dd><dt class="param">file</dt><dd class="cmt"><p>the file part extracted from the URL. May be URL encoded (note that %2F decodes to literal /).
+</p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>the root folder for searching the static resource files, such as <code>&quot;/public&quot;</code>. Not URL encoded.</p></dd><dt class="param">file</dt><dd class="cmt"><p>the file part extracted from the URL. May be URL encoded (note that %2F decodes to literal /).</p></dd><dt class="param">aggressiveCaching</dt><dd class="cmt"><p>if true then an aggressive set of caching directives will be used. Defaults to false.
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="AssetsBuilder.html" class="extype" name="controllers.AssetsBuilder">AssetsBuilder</a></dd></dl></div>
     </li><li name="play.api.mvc.Results#chunk" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="chunk(trailers:Option[play.api.libs.iteratee.Iteratee[Array[Byte],Seq[(String,String)]]]):play.api.libs.iteratee.Enumeratee[Array[Byte],Array[Byte]]"></a>
@@ -2507,6 +2515,19 @@ If a gzipped version of a resource is found (Same resource name with the .gz suf
       </h4>
       <p class="shortcomment cmt">Dechunks a chunked transfer encoding stream.</p><div class="fullcomment"><div class="comment cmt"><p>Dechunks a chunked transfer encoding stream.</p><p>Chunks may span multiple elements in the stream.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a></dd></dl></div>
+    </li><li name="controllers.Assets#digestCache" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="digestCache:scala.collection.concurrent.TrieMap[String,Option[String]]"></a>
+      <a id="digestCache:TrieMap[String,Option[String]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">digestCache</span><span class="result">: <span class="extype" name="scala.collection.concurrent.TrieMap">TrieMap</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>
+      </span>
+      </h4>
+      
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
