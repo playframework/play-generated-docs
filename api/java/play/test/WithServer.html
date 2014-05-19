@@ -99,7 +99,9 @@
 <br>
 <pre>public class <span class="strong">WithServer</span>
 extends java.lang.Object</pre>
-<div class="block">Provides a server to JUnit tests</div>
+<div class="block">Provides a server to JUnit tests. Make your test class extend this class and an HTTP server will be started before each test is invoked.
+ You can setup the fake application and port to use by overriding the provideFakeApplication and providePort methods.
+ Within a test, the running application and the TCP port are available through the app and port fields, respectively.</div>
 </li>
 </ul>
 </div>
@@ -163,19 +165,47 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr class="altColor">
+<td class="colFirst"><code>protected <a href="../../play/test/FakeApplication.html" title="class in play.test">FakeApplication</a></code></td>
+<td class="colLast"><code><strong><a href="../../play/test/WithServer.html#provideFakeApplication()">provideFakeApplication</a></strong>()</code>
+<div class="block">Override this method to setup the fake application to use.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected int</code></td>
+<td class="colLast"><code><strong><a href="../../play/test/WithServer.html#providePort()">providePort</a></strong>()</code>
+<div class="block">Override this method to setup the port to use.</div>
+</td>
+</tr>
+<tr class="altColor">
 <td class="colFirst"><code>protected void</code></td>
-<td class="colLast"><code><strong><a href="../../play/test/WithServer.html#start()">start</a></strong>()</code>&nbsp;</td>
+<td class="colLast"><code><strong><a href="../../play/test/WithServer.html#start()">start</a></strong>()</code>
+<div class="block"><strong>Deprecated.</strong>&nbsp;
+<div class="block"><i>The server is automatically started before each test, you don’t need to call this method explicitly</i></div>
+</div>
+</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
-<td class="colLast"><code><strong><a href="../../play/test/WithServer.html#start(play.test.FakeApplication)">start</a></strong>(<a href="../../play/test/FakeApplication.html" title="class in play.test">FakeApplication</a>&nbsp;fakeApplication)</code>&nbsp;</td>
+<td class="colLast"><code><strong><a href="../../play/test/WithServer.html#start(play.test.FakeApplication)">start</a></strong>(<a href="../../play/test/FakeApplication.html" title="class in play.test">FakeApplication</a>&nbsp;fakeApplication)</code>
+<div class="block"><strong>Deprecated.</strong>&nbsp;
+<div class="block"><i>The server is automatically started before each test. You can setup the fake application to use by overriding the provideFakeApplication method.</i></div>
+</div>
+</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><strong><a href="../../play/test/WithServer.html#start(play.test.FakeApplication, int)">start</a></strong>(<a href="../../play/test/FakeApplication.html" title="class in play.test">FakeApplication</a>&nbsp;fakeApplication,
-     int&nbsp;port)</code>&nbsp;</td>
+     int&nbsp;port)</code>
+<div class="block"><strong>Deprecated.</strong>&nbsp;
+<div class="block"><i>The server is automatically started before each test. You can setup the fake application and port to use by overriding the provideFakeApplication and providePort methods, respectively.</i></div>
+</div>
+</td>
 </tr>
 <tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../play/test/WithServer.html#startServer()">startServer</a></strong>()</code>&nbsp;</td>
+</tr>
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../play/test/WithServer.html#stopServer()">stopServer</a></strong>()</code>&nbsp;</td>
 </tr>
@@ -253,13 +283,37 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a name="provideFakeApplication()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>provideFakeApplication</h4>
+<pre>protected&nbsp;<a href="../../play/test/FakeApplication.html" title="class in play.test">FakeApplication</a>&nbsp;provideFakeApplication()</pre>
+<div class="block">Override this method to setup the fake application to use.</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>The fake application used by the server</dd></dl>
+</li>
+</ul>
+<a name="providePort()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>providePort</h4>
+<pre>protected&nbsp;int&nbsp;providePort()</pre>
+<div class="block">Override this method to setup the port to use.</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>The TCP port used by the server</dd></dl>
+</li>
+</ul>
 <a name="start()">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>start</h4>
-<pre>protected&nbsp;void&nbsp;start()</pre>
+<pre>@Deprecated
+protected&nbsp;void&nbsp;start()</pre>
+<div class="block"><span class="strong">Deprecated.</span>&nbsp;<i>The server is automatically started before each test, you don’t need to call this method explicitly</i></div>
 </li>
 </ul>
 <a name="start(play.test.FakeApplication)">
@@ -268,7 +322,9 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>start</h4>
-<pre>protected&nbsp;void&nbsp;start(<a href="../../play/test/FakeApplication.html" title="class in play.test">FakeApplication</a>&nbsp;fakeApplication)</pre>
+<pre>@Deprecated
+protected&nbsp;void&nbsp;start(<a href="../../play/test/FakeApplication.html" title="class in play.test">FakeApplication</a>&nbsp;fakeApplication)</pre>
+<div class="block"><span class="strong">Deprecated.</span>&nbsp;<i>The server is automatically started before each test. You can setup the fake application to use by overriding the provideFakeApplication method.</i></div>
 </li>
 </ul>
 <a name="start(play.test.FakeApplication, int)">
@@ -277,8 +333,19 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>start</h4>
-<pre>protected&nbsp;void&nbsp;start(<a href="../../play/test/FakeApplication.html" title="class in play.test">FakeApplication</a>&nbsp;fakeApplication,
-         int&nbsp;port)</pre>
+<pre>@Deprecated
+protected&nbsp;void&nbsp;start(<a href="../../play/test/FakeApplication.html" title="class in play.test">FakeApplication</a>&nbsp;fakeApplication,
+                    int&nbsp;port)</pre>
+<div class="block"><span class="strong">Deprecated.</span>&nbsp;<i>The server is automatically started before each test. You can setup the fake application and port to use by overriding the provideFakeApplication and providePort methods, respectively.</i></div>
+</li>
+</ul>
+<a name="startServer()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>startServer</h4>
+<pre>public&nbsp;void&nbsp;startServer()</pre>
 </li>
 </ul>
 <a name="stopServer()">

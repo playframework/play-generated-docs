@@ -95,7 +95,9 @@
 <br>
 <pre>public class <span class="strong">WithApplication</span>
 extends java.lang.Object</pre>
-<div class="block">Provides an application for JUnit tests.</div>
+<div class="block">Provides an application for JUnit tests. Make your test class extend this class and an application will be started before each test is invoked.
+ You can setup the fake application to use by overriding the provideFakeApplication method.
+ Within a test, the running application is available through the app field.</div>
 </li>
 </ul>
 </div>
@@ -151,12 +153,28 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>protected void</code></td>
-<td class="colLast"><code><strong><a href="../../play/test/WithApplication.html#start()">start</a></strong>()</code>&nbsp;</td>
+<td class="colFirst"><code>protected <a href="../../play/test/FakeApplication.html" title="class in play.test">FakeApplication</a></code></td>
+<td class="colLast"><code><strong><a href="../../play/test/WithApplication.html#provideFakeApplication()">provideFakeApplication</a></strong>()</code>
+<div class="block">Override this method to setup the fake application to use.</div>
+</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
-<td class="colLast"><code><strong><a href="../../play/test/WithApplication.html#start(play.test.FakeApplication)">start</a></strong>(<a href="../../play/test/FakeApplication.html" title="class in play.test">FakeApplication</a>&nbsp;app)</code>&nbsp;</td>
+<td class="colLast"><code><strong><a href="../../play/test/WithApplication.html#start()">start</a></strong>()</code>
+<div class="block"><strong>Deprecated.</strong>&nbsp;
+<div class="block"><i>The application is automatically started before each test, you don’t need to call this method explicitly</i></div>
+</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><strong><a href="../../play/test/WithApplication.html#start(play.test.FakeApplication)">start</a></strong>(<a href="../../play/test/FakeApplication.html" title="class in play.test">FakeApplication</a>&nbsp;app)</code>
+<div class="block"><strong>Deprecated.</strong>&nbsp;</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../play/test/WithApplication.html#startPlay()">startPlay</a></strong>()</code>&nbsp;</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>void</code></td>
@@ -218,13 +236,26 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a name="provideFakeApplication()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>provideFakeApplication</h4>
+<pre>protected&nbsp;<a href="../../play/test/FakeApplication.html" title="class in play.test">FakeApplication</a>&nbsp;provideFakeApplication()</pre>
+<div class="block">Override this method to setup the fake application to use.</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>The fake application to use</dd></dl>
+</li>
+</ul>
 <a name="start()">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>start</h4>
-<pre>protected&nbsp;void&nbsp;start()</pre>
+<pre>@Deprecated
+protected&nbsp;void&nbsp;start()</pre>
+<div class="block"><span class="strong">Deprecated.</span>&nbsp;<i>The application is automatically started before each test, you don’t need to call this method explicitly</i></div>
 </li>
 </ul>
 <a name="start(play.test.FakeApplication)">
@@ -233,7 +264,18 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>start</h4>
-<pre>protected&nbsp;void&nbsp;start(<a href="../../play/test/FakeApplication.html" title="class in play.test">FakeApplication</a>&nbsp;app)</pre>
+<pre>@Deprecated
+protected&nbsp;void&nbsp;start(<a href="../../play/test/FakeApplication.html" title="class in play.test">FakeApplication</a>&nbsp;app)</pre>
+<div class="block"><span class="strong">Deprecated.</span>&nbsp;</div>
+</li>
+</ul>
+<a name="startPlay()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>startPlay</h4>
+<pre>public&nbsp;void&nbsp;startPlay()</pre>
 </li>
 </ul>
 <a name="stopPlay()">
