@@ -39,7 +39,7 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>WSRequest is used internally.  Please use WSRequestBuilder.
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>WSRequest is used internally.  Please use WSRequestHolder.
 </p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.3.x/framework/src/play-ws/src/main/scala/play/api/libs/ws/WS.scala" target="_blank">WS.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
@@ -101,19 +101,20 @@
       </h4>
       <p class="shortcomment cmt">Return the current headers of the request being constructed
 </p>
-    </li><li name="play.api.libs.ws.WSRequest#getStringData" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="getStringData:String"></a>
-      <a id="getStringData:String"></a>
+    </li><li name="play.api.libs.ws.WSRequest#getBody" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="getBody:Option[Array[Byte]]"></a>
+      <a id="getBody:Option[Array[Byte]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">abstract </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">getStringData</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">getBody</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">The body of the request as a string.</p>
+      <p class="shortcomment cmt">Get the body.</p><div class="fullcomment"><div class="comment cmt"><p>Get the body.</p><p>Will only return the body if the body exists in memory, will not return it if it's a stream.
+</p></div></div>
     </li><li name="play.api.libs.ws.WSRequest#header" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="header(name:String):Option[String]"></a>
       <a id="header(String):Option[String]"></a>
@@ -168,19 +169,6 @@
       </h4>
       <p class="shortcomment cmt">The URL
 </p>
-    </li><li name="play.api.libs.ws.WSRequest#urlWithQueryString" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="urlWithQueryString:String"></a>
-      <a id="urlWithQueryString:String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">abstract </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">urlWithQueryString</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
-      </span>
-      </h4>
-      <p class="shortcomment cmt">The URL including query string parameters.</p>
     </li><li name="play.api.libs.ws.WSRequest#addHeader" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="addHeader(name:String,value:String):play.api.libs.ws.WSRequest"></a>
       <a id="addHeader(String,String):WSRequest"></a>
