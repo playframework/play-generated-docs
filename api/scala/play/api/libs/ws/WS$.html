@@ -49,7 +49,7 @@ WS.url(<span class="lit">"http://example.com/feed"</span>).get()</pre><p>Or call
 <span class="lit">""</span><span class="lit">"
   |ws.ssl.trustManager = ...
 "</span><span class="lit">""</span>.stripMargin))
-<span class="kw">val</span> parser = <span class="kw">new</span> DefaultWSConfigParser(configuration)
+<span class="kw">val</span> parser = <span class="kw">new</span> DefaultWSConfigParser(configuration, Play.current.classloader)
 <span class="kw">val</span> builder = <span class="kw">new</span> NingAsyncHttpClientConfigBuilder(parser.parse())
 <span class="kw">val</span> secureClient : WSClient = <span class="kw">new</span> NingWSClient(builder.build())
 <span class="kw">val</span> response = secureClient.url(<span class="lit">"https://secure.com"</span>).get()</pre><p>Note that the resolution of URL is done through the magnet pattern defined in
