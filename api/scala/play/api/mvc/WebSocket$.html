@@ -434,9 +434,9 @@ inbound and outbound channels, asynchronously
       </h4>
       <p class="shortcomment cmt">Create a WebSocket that will pass messages to/from the actor created by the given props asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Create a WebSocket that will pass messages to/from the actor created by the given props asynchronously.</p><p>Given a request, this method should return a future of either:</p><p>- A result to reject the WebSocket with, or
 - A function that will take the sending actor, and create the props that describe the actor to handle this
-WebSocket</p><p>For example:</p><pre><span class="kw">def</span> subscribe = WebSocket.acceptWithActor[JsValue, JsValue] { req <span class="kw">=&gt;</span>
+WebSocket</p><p>For example:</p><pre><span class="kw">def</span> subscribe = WebSocket.tryAcceptWithActor[JsValue, JsValue] { req <span class="kw">=&gt;</span>
 <span class="kw">val</span> isAuthenticated: Future[<span class="std">Boolean</span>] = authenticate(req)
-<span class="kw">val</span> isAuthenticated.map {
+isAuthenticated.map {
   <span class="kw">case</span> <span class="kw">false</span> <span class="kw">=&gt;</span> Left(Forbidden)
   <span class="kw">case</span> <span class="kw">true</span> <span class="kw">=&gt;</span> Right(MyWebSocketActor.props)
 }
