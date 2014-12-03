@@ -1,0 +1,292 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- NewPage -->
+<html lang="en">
+<head>
+<title>QueryStringBindable (playframework)</title>
+<link rel="stylesheet" type="text/css" href="../../stylesheet.css" title="Style">
+</head>
+<body>
+<script type="text/javascript"><!--
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="QueryStringBindable (playframework)";
+    }
+//-->
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+<!-- ========= START OF TOP NAVBAR ======= -->
+<div class="topNav"><a name="navbar_top">
+<!--   -->
+</a><a href="#skip-navbar_top" title="Skip navigation links"></a><a name="navbar_top_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../index-all.html">Index</a></li>
+<li><a href="../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../play/mvc/PathBindable.html" title="interface in play.mvc"><span class="strong">Prev Class</span></a></li>
+<li><a href="../../play/mvc/Result.html" title="interface in play.mvc"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../index.html?play/mvc/QueryStringBindable.html" target="_top">Frames</a></li>
+<li><a href="QueryStringBindable.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_top">
+<li><a href="../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_top">
+<!--   -->
+</a></div>
+<!-- ========= END OF TOP NAVBAR ========= -->
+<!-- ======== START OF CLASS DATA ======== -->
+<div class="header">
+<div class="subTitle">play.mvc</div>
+<h2 title="Interface QueryStringBindable" class="title">Interface QueryStringBindable&lt;T extends QueryStringBindable&lt;T&gt;&gt;</h2>
+</div>
+<div class="contentContainer">
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<hr>
+<br>
+<pre>public interface <span class="strong">QueryStringBindable&lt;T extends QueryStringBindable&lt;T&gt;&gt;</span></pre>
+<div class="block">Binder for query string parameters.
+
+ Any type <code>T</code> that implements this class can be bound to/from query one or more query string parameters.
+ The only requirement is that the class provides a noarg constructor.
+
+ For example, the following type could be used to encode pagination:
+
+ <pre>
+ class Pager implements QueryStringBindable&lt;Pager&gt; {
+     public int index;
+     public int size;
+
+     public Option&lt;Pager&gt; bind(String key, Map&lt;String, String[]&gt; data) {
+         if (data.contains(key + ".index" &amp;&amp; data.contains(key + ".size") {
+             try {
+                 index = Integer.parseInt(data.get(key + ".index")[0]);
+                 size = Integer.parseInt(data.get(key + ".size")[0]);
+                 return Some(this);
+             } catch (NumberFormatException e) {
+                 return None();
+             }
+         } else {
+             return None();
+         }
+     }
+
+     public String unbind(String key) {
+         return key + ".index=" + index + "&amp;" + key + ".size=" + size;
+     }
+
+     public String javascriptUnbind() {
+         return "function(k,v) {\n" +
+             "    return encodeURIComponent(k+'.index')+'='+v.index+'&amp;'+encodeURIComponent(k+'.size')+'='+v.size;\n" +
+             "}";
+     }
+ }
+ </pre>
+
+ Then, to match the URL <code>/foo?p.index=5&amp;p.size=42</code>, you could define the following route:
+
+ <pre>
+ GET  /foo     controllers.Application.foo(p: Pager)
+ </pre>
+
+ Of course, you could ignore the <code>p</code> key specified in the routes file and just use hard coded index and
+ size parameters if you pleased.</div>
+</li>
+</ul>
+</div>
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_summary">
+<!--   -->
+</a>
+<h3>Method Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+<caption><span>Methods</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../play/libs/F.Option.html" title="class in play.libs">F.Option</a>&lt;<a href="../../play/mvc/QueryStringBindable.html" title="type parameter in QueryStringBindable">T</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../play/mvc/QueryStringBindable.html#bind(java.lang.String, java.util.Map)">bind</a></strong>(java.lang.String&nbsp;key,
+    java.util.Map&lt;java.lang.String,java.lang.String[]&gt;&nbsp;data)</code>
+<div class="block">Bind a query string parameter.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<td class="colLast"><code><strong><a href="../../play/mvc/QueryStringBindable.html#javascriptUnbind()">javascriptUnbind</a></strong>()</code>
+<div class="block">Javascript function to unbind in the Javascript router.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<td class="colLast"><code><strong><a href="../../play/mvc/QueryStringBindable.html#unbind(java.lang.String)">unbind</a></strong>(java.lang.String&nbsp;key)</code>
+<div class="block">Unbind a query string parameter.</div>
+</td>
+</tr>
+</table>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="details">
+<ul class="blockList">
+<li class="blockList">
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+<a name="bind(java.lang.String, java.util.Map)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>bind</h4>
+<pre><a href="../../play/libs/F.Option.html" title="class in play.libs">F.Option</a>&lt;<a href="../../play/mvc/QueryStringBindable.html" title="type parameter in QueryStringBindable">T</a>&gt;&nbsp;bind(java.lang.String&nbsp;key,
+               java.util.Map&lt;java.lang.String,java.lang.String[]&gt;&nbsp;data)</pre>
+<div class="block">Bind a query string parameter.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>key</code> - Parameter key</dd><dd><code>data</code> - The query string data</dd>
+<dt><span class="strong">Returns:</span></dt><dd>An instance of this class (it could be this class) if the query string data can be bound to this type,
+      or None if it couldn't.</dd></dl>
+</li>
+</ul>
+<a name="unbind(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>unbind</h4>
+<pre>java.lang.String&nbsp;unbind(java.lang.String&nbsp;key)</pre>
+<div class="block">Unbind a query string parameter.  This should return a query string fragment, in the form
+ <code>key=value[&amp;key2=value2...]</code>.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>key</code> - Parameter key</dd></dl>
+</li>
+</ul>
+<a name="javascriptUnbind()">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>javascriptUnbind</h4>
+<pre>java.lang.String&nbsp;javascriptUnbind()</pre>
+<div class="block">Javascript function to unbind in the Javascript router.
+
+ If this bindable just represents a single value, you may return null to let the default implementation handle it.</div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<div class="bottomNav"><a name="navbar_bottom">
+<!--   -->
+</a><a href="#skip-navbar_bottom" title="Skip navigation links"></a><a name="navbar_bottom_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../index-all.html">Index</a></li>
+<li><a href="../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li><a href="../../play/mvc/PathBindable.html" title="interface in play.mvc"><span class="strong">Prev Class</span></a></li>
+<li><a href="../../play/mvc/Result.html" title="interface in play.mvc"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../index.html?play/mvc/QueryStringBindable.html" target="_top">Frames</a></li>
+<li><a href="QueryStringBindable.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_bottom">
+<li><a href="../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_bottom");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_bottom">
+<!--   -->
+</a></div>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+</body>
+</html>
