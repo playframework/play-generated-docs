@@ -145,6 +145,20 @@ extends java.lang.Object</pre>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code><a href="../../play/test/FakeRequest.html" title="class in play.test">FakeRequest</a></code></td>
+<td class="colLast"><code><strong><a href="../../play/test/FakeRequest.html#withAnyContent(AnyContent, java.lang.String, java.lang.String)">withAnyContent</a></strong>(AnyContent&nbsp;content,
+              java.lang.String&nbsp;contentType,
+              java.lang.String&nbsp;method)</code>
+<div class="block">Set a AnyContent to this request.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>&lt;T&gt;&nbsp;<a href="../../play/test/FakeRequest.html" title="class in play.test">FakeRequest</a></code></td>
+<td class="colLast"><code><strong><a href="../../play/test/FakeRequest.html#withBody(T)">withBody</a></strong>(T&nbsp;body)</code>
+<div class="block">Set a any body to this request.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../play/test/FakeRequest.html" title="class in play.test">FakeRequest</a></code></td>
 <td class="colLast"><code><strong><a href="../../play/test/FakeRequest.html#withCookies(play.mvc.Http.Cookie...)">withCookies</a></strong>(<a href="../../play/mvc/Http.Cookie.html" title="class in play.mvc">Http.Cookie</a>...&nbsp;cookies)</code>
 <div class="block">Add cookies to this request</div>
 </td>
@@ -184,9 +198,40 @@ extends java.lang.Object</pre>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code><a href="../../play/test/FakeRequest.html" title="class in play.test">FakeRequest</a></code></td>
+<td class="colLast"><code><strong><a href="../../play/test/FakeRequest.html#withJsonBody(JsValue)">withJsonBody</a></strong>(JsValue&nbsp;json)</code>
+<div class="block">Set a Json Body to this request.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../play/test/FakeRequest.html" title="class in play.test">FakeRequest</a></code></td>
+<td class="colLast"><code><strong><a href="../../play/test/FakeRequest.html#withJsonBody(JsValue, java.lang.String)">withJsonBody</a></strong>(JsValue&nbsp;json,
+            java.lang.String&nbsp;method)</code>
+<div class="block">Set a Json Body to this request.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../play/test/FakeRequest.html" title="class in play.test">FakeRequest</a></code></td>
+<td class="colLast"><code><strong><a href="../../play/test/FakeRequest.html#withRawBody(byte[])">withRawBody</a></strong>(byte[]&nbsp;data)</code>
+<div class="block">Set a Binary Data to this request.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../play/test/FakeRequest.html" title="class in play.test">FakeRequest</a></code></td>
 <td class="colLast"><code><strong><a href="../../play/test/FakeRequest.html#withSession(java.lang.String, java.lang.String)">withSession</a></strong>(java.lang.String&nbsp;name,
            java.lang.String&nbsp;value)</code>
 <div class="block">Add addtional session to this request.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../play/test/FakeRequest.html" title="class in play.test">FakeRequest</a></code></td>
+<td class="colLast"><code><strong><a href="../../play/test/FakeRequest.html#withTextBody(java.lang.String)">withTextBody</a></strong>(java.lang.String&nbsp;text)</code>
+<div class="block">Set a Text to this request.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../play/test/FakeRequest.html" title="class in play.test">FakeRequest</a></code></td>
+<td class="colLast"><code><strong><a href="../../play/test/FakeRequest.html#withXmlBody(org.xml.sax.InputSource)">withXmlBody</a></strong>(org.xml.sax.InputSource&nbsp;xml)</code>
+<div class="block">Set a XML to this request.</div>
 </td>
 </tr>
 </table>
@@ -251,6 +296,20 @@ extends java.lang.Object</pre>
 <div class="block">Add additional headers to this request.</div>
 </li>
 </ul>
+<a name="withAnyContent(AnyContent, java.lang.String, java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>withAnyContent</h4>
+<pre>public&nbsp;<a href="../../play/test/FakeRequest.html" title="class in play.test">FakeRequest</a>&nbsp;withAnyContent(AnyContent&nbsp;content,
+                         java.lang.String&nbsp;contentType,
+                         java.lang.String&nbsp;method)</pre>
+<div class="block">Set a AnyContent to this request.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>content</code> - the AnyContent</dd><dd><code>contentType</code> - Content-Type header value</dd><dd><code>method</code> - The method to be set</dd>
+<dt><span class="strong">Returns:</span></dt><dd>the Fake Request</dd></dl>
+</li>
+</ul>
 <a name="withJsonBody(org.codehaus.jackson.JsonNode)">
 <!--   -->
 </a>
@@ -265,6 +324,20 @@ extends java.lang.Object</pre>
 <dt><span class="strong">Returns:</span></dt><dd>the Fake Request</dd></dl>
 </li>
 </ul>
+<a name="withJsonBody(JsValue)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>withJsonBody</h4>
+<pre>public&nbsp;<a href="../../play/test/FakeRequest.html" title="class in play.test">FakeRequest</a>&nbsp;withJsonBody(JsValue&nbsp;json)</pre>
+<div class="block">Set a Json Body to this request.
+ The <tt>Content-Type</tt> header of the request is set to <tt>application/json</tt>.
+ The method is set to <tt>POST</tt>.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>json</code> - the JsValue</dd>
+<dt><span class="strong">Returns:</span></dt><dd>the Fake Request</dd></dl>
+</li>
+</ul>
 <a name="withJsonBody(org.codehaus.jackson.JsonNode, java.lang.String)">
 <!--   -->
 </a>
@@ -276,6 +349,20 @@ extends java.lang.Object</pre>
 <div class="block">Set a Json Body to this request.
  The <tt>Content-Type</tt> header of the request is set to <tt>application/json</tt>.</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>node</code> - the Json Node</dd><dd><code>method</code> - the HTTP method. <tt>POST</tt> if set to <code>null</code></dd>
+<dt><span class="strong">Returns:</span></dt><dd>the Fake Request</dd></dl>
+</li>
+</ul>
+<a name="withJsonBody(JsValue, java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>withJsonBody</h4>
+<pre>public&nbsp;<a href="../../play/test/FakeRequest.html" title="class in play.test">FakeRequest</a>&nbsp;withJsonBody(JsValue&nbsp;json,
+                       java.lang.String&nbsp;method)</pre>
+<div class="block">Set a Json Body to this request.
+ The <tt>Content-Type</tt> header of the request is set to <tt>application/json</tt>.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>node</code> - the JsValue</dd><dd><code>method</code> - the HTTP method. <tt>POST</tt> if set to <code>null</code></dd>
 <dt><span class="strong">Returns:</span></dt><dd>the Fake Request</dd></dl>
 </li>
 </ul>
@@ -324,10 +411,66 @@ extends java.lang.Object</pre>
 <a name="getWrappedRequest()">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>getWrappedRequest</h4>
 <pre>public&nbsp;<any>&nbsp;getWrappedRequest()</pre>
+</li>
+</ul>
+<a name="withRawBody(byte[])">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>withRawBody</h4>
+<pre>public&nbsp;<a href="../../play/test/FakeRequest.html" title="class in play.test">FakeRequest</a>&nbsp;withRawBody(byte[]&nbsp;data)</pre>
+<div class="block">Set a Binary Data to this request.
+ The <tt>Content-Type</tt> header of the request is set to <tt>application/octet-stream</tt>.
+ The method is set to <tt>POST</tt>.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>data</code> - the Binary Data</dd>
+<dt><span class="strong">Returns:</span></dt><dd>the Fake Request</dd></dl>
+</li>
+</ul>
+<a name="withXmlBody(org.xml.sax.InputSource)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>withXmlBody</h4>
+<pre>public&nbsp;<a href="../../play/test/FakeRequest.html" title="class in play.test">FakeRequest</a>&nbsp;withXmlBody(org.xml.sax.InputSource&nbsp;xml)</pre>
+<div class="block">Set a XML to this request.
+ The <tt>Content-Type</tt> header of the request is set to <tt>application/xml</tt>.
+ The method is set to <tt>POST</tt>.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>xml</code> - the XML</dd>
+<dt><span class="strong">Returns:</span></dt><dd>the Fake Request</dd></dl>
+</li>
+</ul>
+<a name="withTextBody(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>withTextBody</h4>
+<pre>public&nbsp;<a href="../../play/test/FakeRequest.html" title="class in play.test">FakeRequest</a>&nbsp;withTextBody(java.lang.String&nbsp;text)</pre>
+<div class="block">Set a Text to this request.
+ The <tt>Content-Type</tt> header of the request is set to <tt>text/plain</tt>.
+ The method is set to <tt>POST</tt>.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>xml</code> - the XML</dd>
+<dt><span class="strong">Returns:</span></dt><dd>the Fake Request</dd></dl>
+</li>
+</ul>
+<a name="withBody(java.lang.Object)">
+<!--   -->
+</a><a name="withBody(T)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>withBody</h4>
+<pre>public&nbsp;&lt;T&gt;&nbsp;<a href="../../play/test/FakeRequest.html" title="class in play.test">FakeRequest</a>&nbsp;withBody(T&nbsp;body)</pre>
+<div class="block">Set a any body to this request.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>body</code> - the Body</dd>
+<dt><span class="strong">Returns:</span></dt><dd>the Fake Request</dd></dl>
 </li>
 </ul>
 </li>

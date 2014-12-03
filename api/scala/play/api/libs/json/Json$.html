@@ -45,7 +45,7 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Helper functions to handle JsValues.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/Play20/tree/2.1.0/framework/src/play/src/main/scala/play/api/libs/json/Json.scala" target="_blank">Json.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/Play20/tree/2.1.1/framework/src/play/src/main/scala/play/api/libs/json/Json.scala" target="_blank">Json.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -433,6 +433,37 @@ RFC-4627.
       <p class="shortcomment cmt">Parse a String representing a json, and return it as a JsValue.</p><div class="fullcomment"><div class="comment cmt"><p>Parse a String representing a json, and return it as a JsValue.
 </p></div><dl class="paramcmts block"><dt class="param">input</dt><dd class="cmt"><p>a String to parse</p></dd><dt>returns</dt><dd class="cmt"><p>the JsValue representing the string
 </p></dd></dl></div>
+    </li><li name="play.api.libs.json.Json#prettyPrint" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="prettyPrint(json:play.api.libs.json.JsValue):String"></a>
+      <a id="prettyPrint(JsValue):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">prettyPrint</span><span class="params">(<span name="json">json: <a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Convert a JsValue to its pretty string representation using default Jackson
+pretty printer (line feeds after each fields and 2-spaces indentation).</p><div class="fullcomment"><div class="comment cmt"><p>Convert a JsValue to its pretty string representation using default Jackson
+pretty printer (line feeds after each fields and 2-spaces indentation).</p><pre>scala&gt; Json.stringify(Json.obj(
+  <span class="lit">"field1"</span> -&gt; Json.obj(
+    <span class="lit">"field11"</span> -&gt; <span class="lit">"value11"</span>,
+    <span class="lit">"field12"</span> -&gt; Json.arr(<span class="lit">"alpha"</span>, <span class="num">123</span>L)
+  )
+))
+res0: <span class="std">String</span> = {<span class="lit">"field1"</span>:{<span class="lit">"field11"</span>:<span class="lit">"value11"</span>,<span class="lit">"field12"</span>:[<span class="lit">"alpha"</span>,<span class="num">123</span>]}}
+
+scala&gt; Json.prettyPrint(res0)
+res1: <span class="std">String</span> =
+{
+  <span class="lit">"field1"</span> : {
+    <span class="lit">"field11"</span> : <span class="lit">"value11"</span>,
+    <span class="lit">"field12"</span> : [ <span class="lit">"alpha"</span>, <span class="num">123</span> ]
+  }
+}</pre></div><dl class="paramcmts block"><dt class="param">json</dt><dd class="cmt"><p>the JsValue to convert</p></dd><dt>returns</dt><dd class="cmt"><p>a String with the json representation
+</p></dd></dl></div>
     </li><li name="play.api.libs.json.Json#reads" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="reads[A]:play.api.libs.json.Reads[A]"></a>
       <a id="reads[A]:Reads[A]"></a>
@@ -471,8 +502,16 @@ RFC-4627.
         <span class="name">stringify</span><span class="params">(<span name="json">json: <a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Convert a JsValue to its string representation.</p><div class="fullcomment"><div class="comment cmt"><p>Convert a JsValue to its string representation.
-</p></div><dl class="paramcmts block"><dt class="param">json</dt><dd class="cmt"><p>the JsValue to convert</p></dd><dt>returns</dt><dd class="cmt"><p>a String with the json representation
+      <p class="shortcomment cmt">Convert a JsValue to its string representation.</p><div class="fullcomment"><div class="comment cmt"><p>Convert a JsValue to its string representation.</p><pre>scala&gt; Json.stringify(Json.obj(
+  <span class="lit">"field1"</span> -&gt; Json.obj(
+    <span class="lit">"field11"</span> -&gt; <span class="lit">"value11"</span>,
+    <span class="lit">"field12"</span> -&gt; Json.arr(<span class="lit">"alpha"</span>, <span class="num">123</span>L)
+  )
+))
+res0: <span class="std">String</span> = {<span class="lit">"field1"</span>:{<span class="lit">"field11"</span>:<span class="lit">"value11"</span>,<span class="lit">"field12"</span>:[<span class="lit">"alpha"</span>,<span class="num">123</span>]}}
+
+scala&gt; Json.stringify(res0)
+res1: <span class="std">String</span> = {<span class="lit">"field1"</span>:{<span class="lit">"field11"</span>:<span class="lit">"value11"</span>,<span class="lit">"field12"</span>:[<span class="lit">"alpha"</span>,<span class="num">123</span>]}}</pre></div><dl class="paramcmts block"><dt class="param">json</dt><dd class="cmt"><p>the JsValue to convert</p></dd><dt>returns</dt><dd class="cmt"><p>a String with the json representation
 </p></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
