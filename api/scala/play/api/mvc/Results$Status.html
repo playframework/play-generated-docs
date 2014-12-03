@@ -45,7 +45,7 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Generates default <code>SimpleResult</code> from a content type, headers and content.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/Play20/tree/2.1.1/framework/src/play/src/main/scala/play/api/mvc/Results.scala" target="_blank">Results.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/Play20/tree/2.1.2/framework/src/play/src/main/scala/play/api/mvc/Results.scala" target="_blank">Results.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>[<a href="Results$$EmptyContent.html" class="extype" name="play.api.mvc.Results.EmptyContent">EmptyContent</a>], <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <a href="PlainResult.html" class="extype" name="play.api.mvc.PlainResult">PlainResult</a>, <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a>, <a href="WithHeaders.html" class="extype" name="play.api.mvc.WithHeaders">WithHeaders</a>[<a href="PlainResult.html" class="extype" name="play.api.mvc.PlainResult">PlainResult</a>], <span class="extype" name="scala.NotNull">NotNull</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -286,7 +286,7 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="play.api.mvc.Results.Status#feed" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="play.api.mvc.Results.Status#feed" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="feed[C](content:play.api.libs.iteratee.Enumerator[C])(implicitwriteable:play.api.http.Writeable[C]):play.api.mvc.SimpleResult[C]"></a>
       <a id="feed[C](Enumerator[C])(Writeable[C]):SimpleResult[C]"></a>
       <h4 class="signature">
@@ -298,7 +298,11 @@
         <span class="name">feed</span><span class="tparams">[<span name="C">C</span>]</span><span class="params">(<span name="content">content: <a href="../libs/iteratee/Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.mvc.Results.Status.feed.C">C</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="writeable">writeable: <a href="../http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<span class="extype" name="play.api.mvc.Results.Status.feed.C">C</span>]</span>)</span><span class="result">: <a href="SimpleResult.html" class="extype" name="play.api.mvc.SimpleResult">SimpleResult</a>[<span class="extype" name="play.api.mvc.Results.Status.feed.C">C</span>]</span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt">Feed the given enumerator as a plain response.</p><div class="fullcomment"><div class="comment cmt"><p>Feed the given enumerator as a plain response.</p><p>Note that this method will result in no Content-Length header being set, and consequently when the enumerator
+has finished, the connection will be closed, as this is the only way to terminate a response that isn't
+chunked and doesn't set a content length header.
+</p></div><dl class="paramcmts block"><dt class="param">content</dt><dd class="cmt"><p>The content to stream</p></dd><dt>returns</dt><dd class="cmt"><p>a simple result
+</p></dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
@@ -450,8 +454,9 @@
         <span class="name">stream</span><span class="tparams">[<span name="C">C</span>]</span><span class="params">(<span name="content">content: (<a href="../libs/iteratee/Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="play.api.mvc.Results.Status.stream.C">C</span>, <span class="extype" name="scala.Unit">Unit</span>]) ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="writeable">writeable: <a href="../http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<span class="extype" name="play.api.mvc.Results.Status.stream.C">C</span>]</span>)</span><span class="result">: <a href="ChunkedResult.html" class="extype" name="play.api.mvc.ChunkedResult">ChunkedResult</a>[<span class="extype" name="play.api.mvc.Results.Status.stream.C">C</span>]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Set the result's content as chunked.</p><div class="fullcomment"><div class="comment cmt"><p>Set the result's content as chunked.
-</p></div><dl class="paramcmts block"><dt class="tparam">C</dt><dd class="cmt"><p>the chunk type</p></dd><dt class="param">content</dt><dd class="cmt"><p>A function that will give you the Iteratee to write in once ready.</p></dd></dl></div>
+      <p class="shortcomment cmt">Invoke the given function to allow a response to be streamed to the response iteratee.</p><div class="fullcomment"><div class="comment cmt"><p>Invoke the given function to allow a response to be streamed to the response iteratee.
+</p></div><dl class="paramcmts block"><dt class="param">content</dt><dd class="cmt"><p>A function that will give you the Iteratee to write in once ready.</p></dd><dt>returns</dt><dd class="cmt"><p>a <code>ChunkedResult</code>
+</p></dd></dl></div>
     </li><li name="play.api.mvc.Results.Status#stream" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="stream[C](content:play.api.libs.iteratee.Enumerator[C])(implicitwriteable:play.api.http.Writeable[C]):play.api.mvc.ChunkedResult[C]"></a>
       <a id="stream[C](Enumerator[C])(Writeable[C]):ChunkedResult[C]"></a>
@@ -464,8 +469,9 @@
         <span class="name">stream</span><span class="tparams">[<span name="C">C</span>]</span><span class="params">(<span name="content">content: <a href="../libs/iteratee/Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.mvc.Results.Status.stream.C">C</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="writeable">writeable: <a href="../http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<span class="extype" name="play.api.mvc.Results.Status.stream.C">C</span>]</span>)</span><span class="result">: <a href="ChunkedResult.html" class="extype" name="play.api.mvc.ChunkedResult">ChunkedResult</a>[<span class="extype" name="play.api.mvc.Results.Status.stream.C">C</span>]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Set the result's content as chunked.</p><div class="fullcomment"><div class="comment cmt"><p>Set the result's content as chunked.
-</p></div><dl class="paramcmts block"><dt class="tparam">C</dt><dd class="cmt"><p>the chunk type</p></dd><dt class="param">content</dt><dd class="cmt"><p>Enumerator providing the chunked content.</p></dd></dl></div>
+      <p class="shortcomment cmt">Stream the given enumerator as a chunked response.</p><div class="fullcomment"><div class="comment cmt"><p>Stream the given enumerator as a chunked response.
+</p></div><dl class="paramcmts block"><dt class="param">content</dt><dd class="cmt"><p>Enumerator providing the chunked content.</p></dd><dt>returns</dt><dd class="cmt"><p>a <code>ChunkedResult</code>
+</p></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
