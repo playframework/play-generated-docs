@@ -35,7 +35,7 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">MayErr</span><span class="tparams">[<span name="E">+E</span>, <span name="A">+A</span>]</span><span class="params">(<span name="e">e: <span class="extype" name="scala.Either">Either</span>[<span class="extype" name="anorm.MayErr.E">E</span>, <span class="extype" name="anorm.MayErr.A">A</span>]</span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name">MayErr</span><span class="tparams">[<span name="E">+E</span>, <span name="A">+A</span>]</span><span class="params">(<span name="toEither">toEither: <span class="extype" name="scala.Either">Either</span>[<span class="extype" name="anorm.MayErr.E">E</span>, <span class="extype" name="anorm.MayErr.A">A</span>]</span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
@@ -80,7 +80,7 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="anorm.MayErr#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(e:Either[E,A]):anorm.MayErr[E,A]"></a>
+      <a id="&lt;init&gt;(toEither:Either[E,A]):anorm.MayErr[E,A]"></a>
       <a id="&lt;init&gt;:MayErr[E,A]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -88,7 +88,7 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">MayErr</span><span class="params">(<span name="e">e: <span class="extype" name="scala.Either">Either</span>[<span class="extype" name="anorm.MayErr.E">E</span>, <span class="extype" name="anorm.MayErr.A">A</span>]</span>)</span>
+        <span class="name">MayErr</span><span class="params">(<span name="toEither">toEither: <span class="extype" name="scala.Either">Either</span>[<span class="extype" name="anorm.MayErr.E">E</span>, <span class="extype" name="anorm.MayErr.A">A</span>]</span>)</span>
       </span>
       </h4>
       
@@ -210,7 +210,7 @@
         <span class="name">e</span><span class="result">: <span class="extype" name="scala.Either">Either</span>[<span class="extype" name="anorm.MayErr.E">E</span>, <span class="extype" name="anorm.MayErr.A">A</span>]</span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt">Deprecated in upper versions</p>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -224,19 +224,6 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="anorm.MayErr#filter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="filter[EE&gt;:E](p:A=&gt;Boolean,error:EE):anorm.MayErr[EE,A]"></a>
-      <a id="filter[EE&gt;:E]((A)⇒Boolean,EE):MayErr[EE,A]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">filter</span><span class="tparams">[<span name="EE">EE &gt;: <span class="extype" name="anorm.MayErr.E">E</span></span>]</span><span class="params">(<span name="p">p: (<span class="extype" name="anorm.MayErr.A">A</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="error">error: <span class="extype" name="anorm.MayErr.filter.EE">EE</span></span>)</span><span class="result">: <a href="" class="extype" name="anorm.MayErr">MayErr</a>[<span class="extype" name="anorm.MayErr.filter.EE">EE</span>, <span class="extype" name="anorm.MayErr.A">A</span>]</span>
-      </span>
-      </h4>
-      
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
@@ -269,6 +256,21 @@
       </span>
       </h4>
       
+    </li><li name="anorm.MayErr#fold" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="fold[B](f:E=&gt;B,s:A=&gt;B):B"></a>
+      <a id="fold[B]((E)⇒B,(A)⇒B):B"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">fold</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="f">f: (<span class="extype" name="anorm.MayErr.E">E</span>) ⇒ <span class="extype" name="anorm.MayErr.fold.B">B</span></span>, <span name="s">s: (<span class="extype" name="anorm.MayErr.A">A</span>) ⇒ <span class="extype" name="anorm.MayErr.fold.B">B</span></span>)</span><span class="result">: <span class="extype" name="anorm.MayErr.fold.B">B</span></span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Applies <code>f</code> if this is a failure or <code>s</code> if this is a successful value.</p><div class="fullcomment"><div class="comment cmt"><p>Applies <code>f</code> if this is a failure or <code>s</code> if this is a successful value.
+</p></div><dl class="paramcmts block"><dt class="param">f</dt><dd class="cmt"><p>the function to apply on failure</p></dd><dt class="param">s</dt><dd class="cmt"><p>the function to apply on successful <code>A</code> value</p></dd><dt>returns</dt><dd class="cmt"><p>the results of applying appropriate function
+</p></dd></dl></div>
     </li><li name="anorm.MayErr#get" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="get:A"></a>
       <a id="get:A"></a>
@@ -373,16 +375,16 @@
       </span>
       </h4>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="anorm.MayErr#toOptionLoggingError" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="toOptionLoggingError():Option[A]"></a>
-      <a id="toOptionLoggingError():Option[A]"></a>
+    </li><li name="anorm.MayErr#toEither" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="toEither:Either[E,A]"></a>
+      <a id="toEither:Either[E,A]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">def</span>
+        <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">toOptionLoggingError</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="anorm.MayErr.A">A</span>]</span>
+        <span class="name">toEither</span><span class="result">: <span class="extype" name="scala.Either">Either</span>[<span class="extype" name="anorm.MayErr.E">E</span>, <span class="extype" name="anorm.MayErr.A">A</span>]</span>
       </span>
       </h4>
       
@@ -448,7 +450,42 @@
 
         
 
-        
+        <div id="values" class="values members">
+              <h3>Deprecated Value Members</h3>
+              <ol><li name="anorm.MayErr#filter" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="filter[EE&gt;:E](p:A=&gt;Boolean,error:EE):anorm.MayErr[EE,A]"></a>
+      <a id="filter[EE&gt;:E]((A)⇒Boolean,EE):MayErr[EE,A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 2.3.0) Use filter on toEither.right.">filter</span><span class="tparams">[<span name="EE">EE &gt;: <span class="extype" name="anorm.MayErr.E">E</span></span>]</span><span class="params">(<span name="p">p: (<span class="extype" name="anorm.MayErr.A">A</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="error">error: <span class="extype" name="anorm.MayErr.filter.EE">EE</span></span>)</span><span class="result">: <a href="" class="extype" name="anorm.MayErr">MayErr</a>[<span class="extype" name="anorm.MayErr.filter.EE">EE</span>, <span class="extype" name="anorm.MayErr.A">A</span>]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.3.0)</i> Use <code>filter</code> on <code>toEither.right</code>.</p></dd></dl></div>
+    </li><li name="anorm.MayErr#toOptionLoggingError" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="toOptionLoggingError():Option[A]"></a>
+      <a id="toOptionLoggingError():Option[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: ">toOptionLoggingError</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="anorm.MayErr.A">A</span>]</span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"></dd></dl></div>
+    </li></ol>
+            </div>
         </div>
 
         <div id="inheritedMembers">
