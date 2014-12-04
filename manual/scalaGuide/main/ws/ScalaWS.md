@@ -35,7 +35,7 @@ This returns a `Future[WSResponse]` where the [Response](api/scala/index.html#pl
 
 ### Request with authentication
 
-If you need to use HTTP authentication, you can specify it in the builder, using a username, password, and an [AuthScheme](http://sonatype.github.io/async-http-client/apidocs/reference/com/ning/http/client/Realm.AuthScheme.html).  Options for the AuthScheme are `BASIC`, `DIGEST`, `KERBEROS`, `NONE`, `NTLM`, and `SPNEGO`.
+If you need to use HTTP authentication, you can specify it in the builder, using a username, password, and an [AuthScheme](api/scala/index.html#play.api.libs.ws.WSAuthScheme).  Valid case objects for the AuthScheme are `BASIC`, `DIGEST`, `KERBEROS`, `NONE`, `NTLM`, and `SPNEGO`.
 
 @[auth-request](code/ScalaWSSpec.scala)
 
@@ -214,9 +214,5 @@ There are 3 different timeouts in WS. Reaching a timeout causes the WS request t
 * `ws.timeout.request`: The total time you accept a request to take (it will be interrupted even if the remote host is still sending data) *(default is **none**, to allow stream consuming)*.
 
 The request timeout can be overridden for a specific connection with `withRequestTimeout()` (see "Making a Request" section).
-
-## Configuring WS with SSL
-
-To configure WS for use with HTTP over SSL/TLS (HTTPS), please see [[Configuring WS SSL|WsSSL]].
 
 > **Next:** [[OpenID Support in Play|ScalaOpenID]]

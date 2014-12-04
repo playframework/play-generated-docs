@@ -124,13 +124,6 @@ import play.Play.autoImport._
 import PlayKeys._
 ```
 
-or
-
-```scala
-import play.Play.autoImport._
-import PlayKeys._
-```
-
 ### Explicit scalaVersion
 
 Play 2.3 supports both Scala 2.11 and Scala 2.10. The Play plugin previously set the `scalaVersion` sbt setting for you. Now you should indicate which version of Scala you wish to use.
@@ -267,6 +260,8 @@ includeFilter in (Assets, LessKeys.less) := "*.less"
 
 excludeFilter in (Assets, LessKeys.less) := "_*.less"
 ```
+
+Unlike Play 2.2, the sbt-less plugin allows any user to download the original LESS source file and generated source maps. It allows easier debugging in modern web browsers. This feature is enabled even in production mode.
 
 The plugin's options are:
 
@@ -557,3 +552,9 @@ protected FakeApplication provideFakeApplication() {
     return Helpers.fakeApplication(Helpers.inMemoryDatabase());
 }
 ```
+
+## Session and Flash implicits
+
+The Scala Controller provides implicit `Session`, `Flash` and `Lang` parameters, that take an implicit `RequestHeader`.  These exist for convenience, so a template for example can take an implicit argument and they will be automatically provided in the controller.  The name of these was changed to avoid conflicts where these parameter names might be shadowed by application local variables with the same name. `session` because `request2Session`, `flash` became `flash2Session`, `lang` became `lang2Session`.  Any code that invoked these explicitly consequently will break.
+
+It is not recommended that you invoke these implicit methods explicitly, the `session`, `flash` and `lang` parameters are all available on the `RequestHeader`, and using the `RequestHeader` properties makes it much clearer where they come from when reading the code.  It is recommended that if you have code that uses the old methods, that you modify it to access the corresponding properties on `RequestHeader` directly.
