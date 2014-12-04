@@ -2,13 +2,13 @@
 <!-- NewPage -->
 <html lang="en">
 <head>
-<title>F.Promise.PromiseActor (playframework)</title>
+<title>HttpExecution (playframework)</title>
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css" title="Style">
 </head>
 <body>
 <script type="text/javascript"><!--
     if (location.href.indexOf('is-external=true') == -1) {
-        parent.document.title="F.Promise.PromiseActor (playframework)";
+        parent.document.title="HttpExecution (playframework)";
     }
 //-->
 </script>
@@ -33,12 +33,12 @@
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../play/libs/F.Promise.html" title="class in play.libs"><span class="strong">Prev Class</span></a></li>
-<li><a href="../../play/libs/F.Some.html" title="class in play.libs"><span class="strong">Next Class</span></a></li>
+<li><a href="../../play/libs/F.Tuple5.html" title="class in play.libs"><span class="strong">Prev Class</span></a></li>
+<li><a href="../../play/libs/Json.html" title="class in play.libs"><span class="strong">Next Class</span></a></li>
 </ul>
 <ul class="navList">
-<li><a href="../../index.html?play/libs/F.Promise.PromiseActor.html" target="_top">Frames</a></li>
-<li><a href="F.Promise.PromiseActor.html" target="_top">No Frames</a></li>
+<li><a href="../../index.html?play/libs/HttpExecution.html" target="_top">Frames</a></li>
+<li><a href="HttpExecution.html" target="_top">No Frames</a></li>
 </ul>
 <ul class="navList" id="allclasses_navbar_top">
 <li><a href="../../allclasses-noframe.html">All Classes</a></li>
@@ -77,58 +77,32 @@
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
 <div class="subTitle">play.libs</div>
-<h2 title="Class F.Promise.PromiseActor" class="title">Class F.Promise.PromiseActor</h2>
+<h2 title="Class HttpExecution" class="title">Class HttpExecution</h2>
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
 <li>java.lang.Object</li>
 <li>
 <ul class="inheritance">
-<li>akka.actor.UntypedActor</li>
-<li>
-<ul class="inheritance">
-<li>play.libs.F.Promise.PromiseActor</li>
-</ul>
-</li>
+<li>play.libs.HttpExecution</li>
 </ul>
 </li>
 </ul>
 <div class="description">
 <ul class="blockList">
 <li class="blockList">
-<dl>
-<dt>All Implemented Interfaces:</dt>
-<dd>akka.actor.Actor</dd>
-</dl>
-<dl>
-<dt>Enclosing class:</dt>
-<dd><a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;<a href="../../play/libs/F.Promise.html" title="type parameter in F.Promise">A</a>&gt;</dd>
-</dl>
 <hr>
 <br>
-<pre>public static class <span class="strong">F.Promise.PromiseActor</span>
-extends akka.actor.UntypedActor</pre>
+<pre>public class <span class="strong">HttpExecution</span>
+extends java.lang.Object</pre>
+<div class="block">ExecutionContexts that preserve the current thread's context ClassLoader and
+ Http.Context.</div>
 </li>
 </ul>
 </div>
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
-<!-- ======== NESTED CLASS SUMMARY ======== -->
-<ul class="blockList">
-<li class="blockList"><a name="nested_class_summary">
-<!--   -->
-</a>
-<h3>Nested Class Summary</h3>
-<ul class="blockList">
-<li class="blockList"><a name="nested_classes_inherited_from_class_akka.actor.Actor">
-<!--   -->
-</a>
-<h3>Nested classes/interfaces inherited from interface&nbsp;akka.actor.Actor</h3>
-<code>akka.actor.Actor.emptyBehavior$</code></li>
-</ul>
-</li>
-</ul>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor_summary">
@@ -141,7 +115,7 @@ extends akka.actor.UntypedActor</pre>
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><strong><a href="../../play/libs/F.Promise.PromiseActor.html#F.Promise.PromiseActor()">F.Promise.PromiseActor</a></strong>()</code>&nbsp;</td>
+<td class="colOne"><code><strong><a href="../../play/libs/HttpExecution.html#HttpExecution()">HttpExecution</a></strong>()</code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -159,17 +133,26 @@ extends akka.actor.UntypedActor</pre>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><strong><a href="../../play/libs/F.Promise.PromiseActor.html#onReceive(java.lang.Object)">onReceive</a></strong>(java.lang.Object&nbsp;msg)</code>&nbsp;</td>
+<td class="colFirst"><code>static scala.concurrent.ExecutionContextExecutor</code></td>
+<td class="colLast"><code><strong><a href="../../play/libs/HttpExecution.html#defaultContext()">defaultContext</a></strong>()</code>
+<div class="block">An ExecutionContext that executes work on the application's internal
+ ActorSystem dispatcher.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static scala.concurrent.ExecutionContextExecutor</code></td>
+<td class="colLast"><code><strong><a href="../../play/libs/HttpExecution.html#fromThread(scala.concurrent.ExecutionContext)">fromThread</a></strong>(scala.concurrent.ExecutionContext&nbsp;delegate)</code>
+<div class="block">An ExecutionContext that executes work on the given ExecutionContext.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static scala.concurrent.ExecutionContextExecutor</code></td>
+<td class="colLast"><code><strong><a href="../../play/libs/HttpExecution.html#orderedContext()">orderedContext</a></strong>()</code>
+<div class="block">An ExecutionContext that executes work for a given Http.Context in the
+ same actor each time, ensuring ordered execution of that work.</div>
+</td>
 </tr>
 </table>
-<ul class="blockList">
-<li class="blockList"><a name="methods_inherited_from_class_akka.actor.UntypedActor">
-<!--   -->
-</a>
-<h3>Methods inherited from class&nbsp;akka.actor.UntypedActor</h3>
-<code>akka$actor$Actor$_setter_$context_$eq, akka$actor$Actor$_setter_$self_$eq, context, getContext, getSelf, getSender, postRestart, postStop, preRestart, preStart, receive, self, sender, supervisorStrategy, unhandled</code></li>
-</ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods_inherited_from_class_java.lang.Object">
 <!--   -->
@@ -191,13 +174,13 @@ extends akka.actor.UntypedActor</pre>
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="F.Promise.PromiseActor()">
+<a name="HttpExecution()">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>F.Promise.PromiseActor</h4>
-<pre>public&nbsp;F.Promise.PromiseActor()</pre>
+<h4>HttpExecution</h4>
+<pre>public&nbsp;HttpExecution()</pre>
 </li>
 </ul>
 </li>
@@ -208,17 +191,45 @@ extends akka.actor.UntypedActor</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="onReceive(java.lang.Object)">
+<a name="fromThread(scala.concurrent.ExecutionContext)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>fromThread</h4>
+<pre>public static&nbsp;scala.concurrent.ExecutionContextExecutor&nbsp;fromThread(scala.concurrent.ExecutionContext&nbsp;delegate)</pre>
+<div class="block">An ExecutionContext that executes work on the given ExecutionContext. The
+ current thread's context ClassLoader and Http.Context are captured when
+ this method is called and preserved for all executed tasks.</div>
+</li>
+</ul>
+<a name="defaultContext()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>defaultContext</h4>
+<pre>public static&nbsp;scala.concurrent.ExecutionContextExecutor&nbsp;defaultContext()</pre>
+<div class="block">An ExecutionContext that executes work on the application's internal
+ ActorSystem dispatcher. The current thread's context ClassLoader and
+ Http.Context are captured when this method is called and preserved
+ for all executed tasks.</div>
+</li>
+</ul>
+<a name="orderedContext()">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>onReceive</h4>
-<pre>public&nbsp;void&nbsp;onReceive(java.lang.Object&nbsp;msg)</pre>
-<dl>
-<dt><strong>Specified by:</strong></dt>
-<dd><code>onReceive</code>&nbsp;in class&nbsp;<code>akka.actor.UntypedActor</code></dd>
-</dl>
+<h4>orderedContext</h4>
+<pre>public static&nbsp;scala.concurrent.ExecutionContextExecutor&nbsp;orderedContext()</pre>
+<div class="block">An ExecutionContext that executes work for a given Http.Context in the
+ same actor each time, ensuring ordered execution of that work. The
+ current thread's context ClassLoader and Http.Context are captured when
+ this method is called and preserved for all executed tasks.
+
+ This ExecutionContext gives the legacy behaviour of Play's F.Promise
+ class.</div>
 </li>
 </ul>
 </li>
@@ -246,12 +257,12 @@ extends akka.actor.UntypedActor</pre>
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../play/libs/F.Promise.html" title="class in play.libs"><span class="strong">Prev Class</span></a></li>
-<li><a href="../../play/libs/F.Some.html" title="class in play.libs"><span class="strong">Next Class</span></a></li>
+<li><a href="../../play/libs/F.Tuple5.html" title="class in play.libs"><span class="strong">Prev Class</span></a></li>
+<li><a href="../../play/libs/Json.html" title="class in play.libs"><span class="strong">Next Class</span></a></li>
 </ul>
 <ul class="navList">
-<li><a href="../../index.html?play/libs/F.Promise.PromiseActor.html" target="_top">Frames</a></li>
-<li><a href="F.Promise.PromiseActor.html" target="_top">No Frames</a></li>
+<li><a href="../../index.html?play/libs/HttpExecution.html" target="_top">Frames</a></li>
+<li><a href="HttpExecution.html" target="_top">No Frames</a></li>
 </ul>
 <ul class="navList" id="allclasses_navbar_bottom">
 <li><a href="../../allclasses-noframe.html">All Classes</a></li>
