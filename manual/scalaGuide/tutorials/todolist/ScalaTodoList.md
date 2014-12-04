@@ -263,7 +263,7 @@ We changed the template signature to take two parameters:
 
 We also imported `helper._` that gives us the form creation helpers, typically the `form` function, which creates an HTML `<form>` with filled `action` and `method` attributes, and the `inputText` function that creates an HTML input for a form field.
     
-> **Note:** Read more about the [[Templating system|ScalaTemplates]] and [[Forms helper|ScalaFormHelpers]].
+> **Note:** Read more about the [[Templating system|ScalaTemplates]] and [[form helpers|ScalaForms]].
     
 ## The task form
 
@@ -435,10 +435,13 @@ web: target/start -Dhttp.port=${PORT} -DapplyEvolutions.default=true -Ddb.defaul
 
 We use system properties to override the application configuration, when running on Heroku. Since Heroku provides a PostgreSQL database, we need to add the required driver to our application dependencies. 
 
-Specify it into the `project/Build.scala` file:
+Specify it into the `build.sbt` file:
 
-```
-val appDependencies = Seq(
+```scala
+libraryDependencies ++= Seq(
+  jdbc,
+  anorm,
+  cache,
   "postgresql" % "postgresql" % "8.4-702.jdbc4"
 )
 ```
