@@ -40,7 +40,7 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Column companion, providing default conversions.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.3.6/framework/src/anorm/src/main/scala/anorm/Column.scala" target="_blank">Column.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.3.7/framework/src/anorm/src/main/scala/anorm/Column.scala" target="_blank">Column.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -362,6 +362,36 @@ Time zone offset is the one of default JVM time zone
 
 <span class="kw">val</span> c: JBigDecimal =
   SQL(<span class="lit">"SELECT COUNT(*) FROM tbl"</span>).as(scalar[JBigDecimal].single)</pre></div></div>
+    </li><li name="anorm.Column#columnToJodaDateTime" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="columnToJodaDateTime:anorm.Column[org.joda.time.DateTime]"></a>
+      <a id="columnToJodaDateTime:Column[DateTime]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">columnToJodaDateTime</span><span class="result">: <a href="Column.html" class="extype" name="anorm.Column">Column</a>[<span class="extype" name="org.joda.time.DateTime">DateTime</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Parses column as joda DateTime</p><div class="fullcomment"><div class="comment cmt"><p>Parses column as joda DateTime</p><pre><span class="kw">import</span> org.joda.time.DateTime
+
+<span class="kw">val</span> d: Date = SQL(<span class="lit">"SELECT last_mod FROM tbl"</span>).as(scalar[DateTime].single)</pre></div></div>
+    </li><li name="anorm.Column#columnToJodaInstant" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="columnToJodaInstant:anorm.Column[org.joda.time.Instant]"></a>
+      <a id="columnToJodaInstant:Column[Instant]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">columnToJodaInstant</span><span class="result">: <a href="Column.html" class="extype" name="anorm.Column">Column</a>[<span class="extype" name="org.joda.time.Instant">Instant</span>]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Parses column as joda Instant</p><div class="fullcomment"><div class="comment cmt"><p>Parses column as joda Instant</p><pre><span class="kw">import</span> org.joda.time.Instant
+
+<span class="kw">val</span> d: Date = SQL(<span class="lit">"SELECT last_mod FROM tbl"</span>).as(scalar[Instant].single)</pre></div></div>
     </li><li name="anorm.Column#columnToList" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="columnToList[T](implicittransformer:anorm.Column[T],implicitt:scala.reflect.ClassTag[T]):anorm.Column[List[T]]"></a>
       <a id="columnToList[T](Column[T],ClassTag[T]):Column[List[T]]"></a>
