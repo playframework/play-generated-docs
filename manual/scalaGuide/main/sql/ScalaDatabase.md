@@ -8,9 +8,7 @@ Play provides a plug-in for managing JDBC connection pools. You can configure as
 To enable the database plug-in, add jdbc in your build dependencies :
 
 ```scala
-val appDependencies = Seq(
-  jdbc
-)
+libraryDependencies += jdbc
 ```
 
 Then you must configure a connection pool in the `conf/application.conf` file. By convention, the default JDBC data source must be called `default` and the corresponding configuration properties are `db.default.driver` and `db.default.url`.
@@ -90,9 +88,7 @@ Play is bundled only with an [H2](http://www.h2database.com) database driver. Co
 For example, if you use MySQL5, you need to add a [[dependency | SBTDependencies]] for the connector:
 
 ```scala
-val appDependencies = Seq(
-  "mysql" % "mysql-connector-java" % "5.1.21"
-)
+libraryDependencies += "mysql" % "mysql-connector-java" % "5.1.27"
 ```
 
 Or if the driver can't be found from repositories you can drop the driver into your project's [[unmanaged dependencies|Anatomy]] `lib` directory.
@@ -114,6 +110,35 @@ There are several ways to retrieve a JDBC connection. The simplest way is:
 ```scala
 val connection = DB.getConnection()
 ```
+
+Following code show you a JDBC example very simple, working with MySQL 5.*:
+
+```scala
+package controllers
+import play.api.Play.current
+import play.api.mvc._
+import play.api.db._
+
+object Application extends Controller {
+
+  def index = Action {
+    var outString = "Number is "
+    val conn = DB.getConnection()
+    try {
+      val stmt = conn.createStatement
+      val rs = stmt.executeQuery("SELECT 9 as testkey ")
+      while (rs.next()) {
+        outString += rs.getString("testkey")
+      }
+    } finally {
+      conn.close()
+    }
+    Ok(outString)
+  }
+
+}
+```
+
 
 But of course you need to call `close()` at some point on the opened connection to return it to the connection pool. Another way is to let Play manage closing the connection for you:
 

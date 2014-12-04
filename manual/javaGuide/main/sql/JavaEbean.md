@@ -6,9 +6,7 @@ Play comes with the [Ebean](http://www.avaje.org/) ORM. To enable it, add javaEb
 dependencies : 
 
 ```scala
-val appDependencies = Seq(
-  javaEbean
-)
+libraryDependencies += javaEbean
 ```
 
 then add the following line to `conf/application.conf`:
@@ -111,12 +109,13 @@ List<Task> tasks = find.where()
     .orderBy("dueDate asc")
     .findPagingList(25)
     .setFetchAhead(false)
-    .getPage(1);
+    .getPage(1)
+    .getList();
 ```
 
 ## Transactional actions
 
-By default Ebean will use transactions. However this transactions will be created before and commited or rollbacked after every single query, update, create or delete, as you can see here:
+By default Ebean will use transactions. However these transactions will be created before and commited or rollbacked after every single query, update, create or delete, as you can see here:
 
 ```
 //Created implicit transaction

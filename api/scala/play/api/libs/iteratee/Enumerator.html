@@ -39,7 +39,7 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A producer which pushes input to an <a href="Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">play.api.libs.iteratee.Iteratee</a>.</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.libs.iteratee.Enumerator.E">E</span>]</dd><dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.2.1/framework/src/iteratees/src/main/scala/play/api/libs/iteratee/Enumerator.scala" target="_blank">Enumerator.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A producer which pushes input to an <a href="Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">play.api.libs.iteratee.Iteratee</a>.</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.libs.iteratee.Enumerator.E">E</span>]</dd><dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.2.2/framework/src/iteratees/src/main/scala/play/api/libs/iteratee/Enumerator.scala" target="_blank">Enumerator.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -455,7 +455,11 @@ produces an Input.EOF.
         <span class="name">onDoneEnumerating</span><span class="params">(<span name="callback">callback: ⇒ <span class="extype" name="scala.Unit">Unit</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: <a href="" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.libs.iteratee.Enumerator.E">E</span>] { val pec: scala.concurrent.ExecutionContext }</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Creates an Enumerator which calls the given callback when its final input has been consumed.</p><div class="fullcomment"><div class="comment cmt"><p>Creates an Enumerator which calls the given callback when its final input has been consumed.
+      <p class="shortcomment cmt">Creates an Enumerator which calls the given callback when a passed in iteratee has either entered the done state,
+or if an error is returned.</p><div class="fullcomment"><div class="comment cmt"><p>Creates an Enumerator which calls the given callback when a passed in iteratee has either entered the done state,
+or if an error is returned.</p><p>This is equivalent to a finally call, and can be used to clean up any resources used by this enumerator.  Note that
+if the callback throws an exception, then the future returned by the enumerator will be completed with that
+exception.
 </p></div><dl class="paramcmts block"><dt class="param">callback</dt><dd class="cmt"><p>The callback to call</p></dd><dt class="param">ec</dt><dd class="cmt"><p>The context to execute the supplied function with. The context is prepared on the calling thread before being used.
 </p></dd></dl></div>
     </li><li name="play.api.libs.iteratee.Enumerator#run" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">

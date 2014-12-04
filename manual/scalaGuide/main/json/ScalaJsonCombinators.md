@@ -945,8 +945,11 @@ For example:
 scala> case class Person(name: String)
 defined class Person
 
-scala> __.write[String].contramap( (p: Person) => p.name )
-res5: play.api.libs.json.OWrites[Person] = play.api.libs.json.OWrites$$anon$2@61df9fa8
+scala> val pwrite: Writes[Person] = (__ \ "name").write[String].contramap( (p: Person) => p.name )
+pwrite: play.api.libs.json.Writes[Person] = play.api.libs.json.OWrites$$anon$2@7466b0df
+
+scala>  pwrite.writes(Person("aaa"))
+res15: play.api.libs.json.JsValue = {"name":"aaa"}
 ```
 
 ### `(Writes[A] and Writes[B]).tupled: Writes[(A, B)]` 
@@ -1147,8 +1150,8 @@ val creatureReads: Reads[Creature] = (
   	tupled
   ) and
   (__ \ "friends").lazyRead( list[Creature](creatureReads) ) and
-  (__ \ "social").read(optional[String])
-)(Creature)  
+  (__ \ "social").readNullable[String]
+)(Creature)
 
 import play.api.libs.json.Writes._
 

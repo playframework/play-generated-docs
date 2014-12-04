@@ -60,11 +60,11 @@ For example:</p><pre><span class="kw">case</span> <span class="kw">class</span> 
       Ok(toJson( User(id.toLong, <span class="lit">"myName"</span>, friends: <span class="std">List</span>())))
    }
    <span class="kw">def</span> saveUser(jsonString: <span class="std">String</span>)= Action {
-     <span class="kw">val</span> user = play.api.libs.json.parse(jsonString).as[User]
+     <span class="kw">val</span> user = play.api.libs.json.Json.parse(jsonString).as[User]
      myDataStore.save(user)
      Ok
    }
-}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.2.1/framework/src/play-json/src/main/scala/play/api/libs/json/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
+}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.2.2/framework/src/play-json/src/main/scala/play/api/libs/json/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -408,7 +408,7 @@ For example:</p><pre><span class="kw">case</span> <span class="kw">class</span> 
       <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@implicitNotFound</span><span class="args">(<span>
       
-      <span class="defval" name="&quot;No Json deserializer as JsObject found for type ${A}. Try to implement an implicit OWrites or Format for this type.&quot;">...</span>
+      <span class="defval" name="&quot;No Json serializer as JsObject found for type ${A}. Try to implement an implicit OWrites or Format for this type.&quot;">...</span>
     </span>)</span>
               
         </dd></dl></div>

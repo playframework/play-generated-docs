@@ -32,7 +32,7 @@ override def rootProject = Some(myProject)
 
 ### Update Scala version
 
-If you have set the scalaVersion (e.g. because you have a multi-project build that uses Project in addition to play.Project), you should update it to 2.10.2.
+If you have set the scalaVersion (e.g. because you have a multi-project build that uses Project in addition to play.Project), you should update it to 2.10.3.
 
 ### Play cache module
 
@@ -117,9 +117,9 @@ Previously, futures in async actions had to be wrapped in the `async` call.  Now
 
 ```java
 public static Promise<Result> myAsyncAction() {
-    Promise<Integer> promiseOfInt = play.libs.Akka.future(
-    new Callable<Integer>() {
-      public Integer call() {
+  Promise<Integer> promiseOfInt = Promise.promise(
+    new Function0<Integer>() {
+      public Integer apply() {
         return intensiveComputation();
       }
     }
@@ -128,7 +128,7 @@ public static Promise<Result> myAsyncAction() {
     new Function<Integer, Result>() {
       public Result apply(Integer i) {
         return ok("Got result: " + i);
-      } 
+      }
     }
   );
 }

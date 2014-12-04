@@ -10,28 +10,22 @@
 * **Documentation:** <https://github.com/teamon/play-airbrake/blob/master/README.md>
 * **Short description:** Send exception notifications to airbrake.io
 
-## Amazon STS module (Scala)
-
-* **Website:** <https://github.com/Rhinofly/play-libraries/tree/master/apis/sts>
-* **Documentation:** <https://github.com/Rhinofly/play-libraries/tree/master/apis/sts/README.md>
-* **Short description:** STS (Security Token Service) API wrapper for Play
-
 ## Amazon SES module (Scala)
 
-* **Website:** <https://github.com/Rhinofly/play-libraries/tree/master/apis/ses>
-* **Documentation:** <https://github.com/Rhinofly/play-libraries/tree/master/apis/ses/README.md>
+* **Website:** <https://github.com/Rhinofly/play-mailer>
+* **Documentation:** <https://github.com/Rhinofly/play-mailer/blob/master/README.md>
 * **Short description:** SES (Simple Email Service) API wrapper for Play
 
 ## Amazon S3 module (Scala)
 
-* **Website:** <https://github.com/Rhinofly/play-libraries/tree/master/apis/s3>
-* **Documentation:** <https://github.com/Rhinofly/play-libraries/tree/master/apis/s3/README.md>
+* **Website:** <https://github.com/Rhinofly/play-s3>
+* **Documentation:** <https://github.com/Rhinofly/play-s3/blob/master/README.md>
 * **Short description:** S3 (Simple Storage Service) API wrapper for Play
 
 ## Amf module (Scala)
 
-* **Website:** <https://github.com/Rhinofly/play-libraries/tree/master/amf>
-* **Documentation:** <https://github.com/Rhinofly/play-libraries/blob/master/amf/README.md>
+* **Website:** <https://github.com/Rhinofly/play-amf>
+* **Documentation:** <https://github.com/Rhinofly/play-amf/blob/master/README.md>
 * **Short description:** AMF (ActionScript Message Format) support for Play
 
 ## Authentication and Authorization module (Scala)
@@ -103,6 +97,11 @@
 * **Website:** <https://github.com/blabluble/play-geolocation-module>
 * **Documentation:** <https://github.com/blabluble/play-geolocation-module/blob/master/README.md>
 * **Short description:** Module for retrieve Geolocation data based on IP.
+
+## Google's HTML Compressor (Scala)
+* **Website:** <https://github.com/mohiva/play-html-compressor>
+* **Documentation:** <https://github.com/mohiva/play-html-compressor/blob/master/README.md>
+* **Short description:** Google's HTML Compressor for Play 2.
 
 ## Groovy Templates plugin
 
@@ -284,12 +283,12 @@ your Play application.
 
 * **Website:** <http://www.securesocial.ws/>
 * **Short description:** An authentication module supporting OAuth, OAuth2, OpenID, Username/Password and custom authentication schemes.
- 
-## Session cache (Scala)
 
-* **Website:** <https://github.com/Rhinofly/play-libraries/tree/master/session-cache>
-* **Documentation:** <https://github.com/Rhinofly/play-libraries/tree/master/session-cache/README.md>
-* **Short description:** Session cache for Play 
+## Silhouette (Scala)
+
+* **Website:** <http://silhouette.mohiva.com/>
+* **Documentation:** <https://github.com/mohiva/play-silhouette/wiki>
+* **Short description:** An authentication library that supports several authentication methods, including OAuth1, OAuth2, OpenID, Credentials or custom authentication schemes.
 
 ## Sitemap Generator (Java)
 
