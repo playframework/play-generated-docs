@@ -70,20 +70,57 @@ The sbt-native-packager plugins provides and `java_server` archetype which enabl
 
 A full documentation can be found in the [documentation](http://www.scala-sbt.org/sbt-native-packager/GettingStartedServers/index.html).
 
-To enable the `java_server` archetype you have to add `packageArchetype.java_server`, so it looks like this
+The `java_server` archetype is enabled by default, but depending on which package you want to build you have to add a few settings. 
+
+#### Minimal Debian settings
 
 ```scala
 import com.typesafe.sbt.SbtNativePackager._
 import NativePackagerKeys._
 
-name := "yourapp"
+maintainer in Linux := "First Lastname <first.last@example.com>"
 
-packageArchetype.java_server
+packageSummary in Linux := "My custom package summary"
+
+packageDescription := "My longer package description"
 ```
 
-Play manages its own PID, which is describe in the [[Production configuration|ProductionConfiguration]].
-In order to tell the startup script where to place the PID file put a file `etc-default` inside `src/main/`
-folder and add the following content
+Build your package with
+
+```bash
+play debian:packageBin
+```
+
+#### Minimal RPM settings
+
+```scala
+import com.typesafe.sbt.SbtNativePackager._
+import NativePackagerKeys._
+
+maintainer in Linux := "First Lastname <first.last@example.com>"
+
+packageSummary in Linux := "My custom package summary"
+
+packageDescription := "My longer package description"
+
+rpmRelease := "1"
+
+rpmVendor := "example.com"
+
+rpmUrl := Some("http://github.com/example/server")
+
+rpmLicense := Some("Apache v2")
+```
+
+```bash
+play rpm:packageBin
+```
+
+> There will be some error logging. This is rpm logging on stderr instead of stdout !
+
+#### Play PID Configuration 
+
+Play manages its own PID, which is described in the [[Production configuration|ProductionConfiguration]].  In order to tell the startup script where to place the PID file put a file `etc-default` inside `src/templates/` folder and add the following content
 
 ```bash
 -Dpidfile.path=/var/run/${{app_name}}/play.pid
@@ -91,7 +128,6 @@ folder and add the following content
 ```
 
 For a full list of replacements take a closer look at the [documentation](http://www.scala-sbt.org/sbt-native-packager/GettingStartedServers/AddingConfiguration.html).
-Don't forget to add the necessary settings for your specific package type, like `maintainer` and `packageDescription`.
 
 
 ## Publishing to a Maven (or Ivy) repository
@@ -117,5 +153,35 @@ Then in the Play console, use the `publish` task:
 ```
 
 > Check the [sbt documentation](http://www.scala-sbt.org/release/docs/index.html) to get more information about the resolvers and credentials definition.
+
+## Using the SBT assembly plugin
+
+Though not officially supported, the SBT assembly plugin may be used to package and run Play applications.  This will produce one jar as an output artifact, and allow you to execute it directly using the `java` command.
+
+To use this, add a dependency on the plugin to your `project/plugins.sbt` file:
+
+```scala
+addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.11.2")
+```
+
+Now add the following configuration to your `build.sbt`:
+
+```scala
+import AssemblyKeys._
+
+assemblySettings
+
+mainClass in assembly := Some("play.core.server.NettyServer")
+
+fullClasspath in assembly += Attributed.blank(PlayKeys.playPackageAssets.value)
+```
+
+Now you can build the artifact by running `activator assembly`, and run your application by running:
+
+```
+$ java -jar target/scala-2.XX/<yourprojectname>-assembly-<version>.jar
+```
+
+You'll need to substitute in the right project name, version and scala version, of course.
 
 > **Next:** [[Production configuration|ProductionConfiguration]]

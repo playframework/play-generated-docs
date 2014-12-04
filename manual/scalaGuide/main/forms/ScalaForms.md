@@ -80,7 +80,8 @@ The out of the box constraints are defined on the [Forms object](api/scala/index
 * [`number`](api/scala/index.html#play.api.data.Forms$@number%3AMapping%5BInt%5D): maps to `scala.Int`, optionally takes `min`, `max`, and `strict`.
 * [`longNumber`](api/scala/index.html#play.api.data.Forms$@longNumber%3AMapping%5BLong%5D): maps to `scala.Long`, optionally takes `min`, `max`, and `strict`.
 * [`bigDecimal`](api/scala/index.html#play.api.data.Forms$@bigDecimal%3AMapping%5BBigDecimal%5D): takes `precision` and `scale`.
-* [`date`](api/scala/index.html#play.api.data.Forms$@date%3AMapping%5BDate%5D): maps to `java.util.Date`, optionally takes `pattern` and `timeZone`.
+* [`date`](api/scala/index.html#play.api.data.Forms$@date%3AMapping%5BDate%5D), [`sqlDate`](api/scala/index.html#play.api.data.Forms$@sqlDate%3AMapping%5BDate%5D), [`jodaDate`](api/scala/index.html#play.api.data.Forms$@jodaDate%3AMapping%5BDateTime%5D): maps to `java.util.Date`, `java.sql.Date` and `org.joda.time.DateTime`, optionally takes `pattern` and `timeZone`.
+* [`jodaLocalDate`](api/scala/index.html#play.api.data.Forms$@jodaLocalDate%3AMapping%5BLocalDate%5D): maps to `org.joda.time.LocalDate`, optionally takes `pattern`.
 * [`email`](api/scala/index.html#play.api.data.Forms$@email%3AMapping%5BString%5D): maps to `scala.String`, using an email regular expression.
 * [`boolean`](api/scala/index.html#play.api.data.Forms$@boolean%3AMapping%5BBoolean%5D): maps to `scala.Boolean`.
 * [`checked`](api/scala/index.html#play.api.data.Forms$@checked%3AMapping%5BBoolean%5D): maps to `scala.Boolean`.
@@ -283,7 +284,7 @@ If you want a form to have a static value for a field, use [`Forms.ignored`](api
 
 ## Putting it all together
 
-Play comes with a sample forms application in `/samples/scala/forms`.  which has useful examples of how to generate complex forms.  As example, here's the [Contacts](https://raw.github.com/playframework/playframework/master/samples/scala/forms/app/controllers/Contacts.scala) controller.
+Here's an example of what a model and controller would look like for managing an entity.
 
 Given the case class `Contact`:
 
@@ -295,6 +296,10 @@ Note that `Contact` contains a `Seq` with `ContactInformation` elements and a `L
 
 And this code shows how an existing contact is displayed in the form using filled data:
 
-@[contact-edit-form](code/ScalaForms.scala)
+@[contact-edit](code/ScalaForms.scala)
+
+Finally, this is what a form submission handler would look like:
+
+@[contact-save](code/ScalaForms.scala)
 
 > **Next:** [[Protecting against Cross Site Request Forgery | ScalaCsrf]]

@@ -40,7 +40,7 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Helper utilities to generate WebSocket results.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.3.1/framework/src/play/src/main/scala/play/api/mvc/WebSocket.scala" target="_blank">WebSocket.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.3.2/framework/src/play/src/main/scala/play/api/mvc/WebSocket.scala" target="_blank">WebSocket.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -434,9 +434,9 @@ inbound and outbound channels, asynchronously
       </h4>
       <p class="shortcomment cmt">Create a WebSocket that will pass messages to/from the actor created by the given props asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Create a WebSocket that will pass messages to/from the actor created by the given props asynchronously.</p><p>Given a request, this method should return a future of either:</p><p>- A result to reject the WebSocket with, or
 - A function that will take the sending actor, and create the props that describe the actor to handle this
-WebSocket</p><p>For example:</p><pre><span class="kw">def</span> subscribe = WebSocket.acceptWithActor[JsValue, JsValue] { req <span class="kw">=&gt;</span>
+WebSocket</p><p>For example:</p><pre><span class="kw">def</span> subscribe = WebSocket.tryAcceptWithActor[JsValue, JsValue] { req <span class="kw">=&gt;</span>
 <span class="kw">val</span> isAuthenticated: Future[<span class="std">Boolean</span>] = authenticate(req)
-<span class="kw">val</span> isAuthenticated.map {
+isAuthenticated.map {
   <span class="kw">case</span> <span class="kw">false</span> <span class="kw">=&gt;</span> Left(Forbidden)
   <span class="kw">case</span> <span class="kw">true</span> <span class="kw">=&gt;</span> Right(MyWebSocketActor.props)
 }
