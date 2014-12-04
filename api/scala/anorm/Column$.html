@@ -40,7 +40,7 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Column companion, providing default conversions.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.3.5/framework/src/anorm/src/main/scala/anorm/Column.scala" target="_blank">Column.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.3.6/framework/src/anorm/src/main/scala/anorm/Column.scala" target="_blank">Column.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -196,6 +196,22 @@
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="anorm.Column#columnToArray" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="columnToArray[T](implicittransformer:anorm.Column[T],implicitt:scala.reflect.ClassTag[T]):anorm.Column[Array[T]]"></a>
+      <a id="columnToArray[T](Column[T],ClassTag[T]):Column[Array[T]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">columnToArray</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="transformer">transformer: <a href="Column.html" class="extype" name="anorm.Column">Column</a>[<span class="extype" name="anorm.Column.columnToArray.T">T</span>]</span>, <span name="t">t: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="anorm.Column.columnToArray.T">T</span>]</span>)</span><span class="result">: <a href="Column.html" class="extype" name="anorm.Column">Column</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="anorm.Column.columnToArray.T">T</span>]]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Parses column as array.</p><div class="fullcomment"><div class="comment cmt"><p>Parses column as array.</p><p>val a: Array[String] =
+  SQL&quot;SELECT str_arr FROM tbl&quot;.as(scalar[Array[String]])
+}}}
+</p></div></div>
     </li><li name="anorm.Column#columnToBigInt" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="columnToBigInt:anorm.Column[BigInt]"></a>
       <a id="columnToBigInt:Column[BigInt]"></a>
@@ -346,6 +362,22 @@ Time zone offset is the one of default JVM time zone
 
 <span class="kw">val</span> c: JBigDecimal =
   SQL(<span class="lit">"SELECT COUNT(*) FROM tbl"</span>).as(scalar[JBigDecimal].single)</pre></div></div>
+    </li><li name="anorm.Column#columnToList" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="columnToList[T](implicittransformer:anorm.Column[T],implicitt:scala.reflect.ClassTag[T]):anorm.Column[List[T]]"></a>
+      <a id="columnToList[T](Column[T],ClassTag[T]):Column[List[T]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">columnToList</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="transformer">transformer: <a href="Column.html" class="extype" name="anorm.Column">Column</a>[<span class="extype" name="anorm.Column.columnToList.T">T</span>]</span>, <span name="t">t: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="anorm.Column.columnToList.T">T</span>]</span>)</span><span class="result">: <a href="Column.html" class="extype" name="anorm.Column">Column</a>[<span class="extype" name="scala.List">List</span>[<span class="extype" name="anorm.Column.columnToList.T">T</span>]]</span>
+      </span>
+      </h4>
+      <p class="shortcomment cmt">Parses column as list.</p><div class="fullcomment"><div class="comment cmt"><p>Parses column as list.</p><p>val a: List[String] =
+  SQL&quot;SELECT str_arr FROM tbl&quot;.as(scalar[List[String]])
+}}}
+</p></div></div>
     </li><li name="anorm.Column#columnToLong" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="columnToLong:anorm.Column[Long]"></a>
       <a id="columnToLong:Column[Long]"></a>

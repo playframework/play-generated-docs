@@ -39,7 +39,7 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.3.5/framework/src/anorm/src/main/scala/anorm/SqlParser.scala" target="_blank">SqlParser.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.3.6/framework/src/anorm/src/main/scala/anorm/SqlParser.scala" target="_blank">SqlParser.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -442,12 +442,15 @@
         <span class="name">get</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="position">position: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="extractor">extractor: <a href="Column.html" class="extype" name="anorm.Column">Column</a>[<span class="extype" name="anorm.SqlParser.get.T">T</span>]</span>)</span><span class="result">: <a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a>[<span class="extype" name="anorm.SqlParser.get.T">T</span>]</span>
       </span>
       </h4>
-      <p class="shortcomment cmt">Returns row parser for column at given position.</p><div class="fullcomment"><div class="comment cmt"><p>Returns row parser for column at given position.</p></div><dl class="paramcmts block"><dt class="param">position</dt><dd class="cmt"><p>Column position, from 1 to n</p><pre><span class="kw">val</span> res: (<span class="std">Float</span>, <span class="std">String</span>) = <span class="cmt">// parsing columns #1 & #3</span>
-SQL(<span class="lit">"SELECT * FROM Test"</span>).as(get[<span class="std">String</span>](<span class="num">1</span>) ~ get[<span class="std">Float</span>](<span class="num">3</span>) map {
-  <span class="kw">case</span> str ~ f <span class="kw">=&gt;</span> (f -&gt; str)
-} *)</pre></dd></dl></div>
-    </li><li name="anorm.SqlParser#get" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="get[T](columnName:String)(implicitextractor:anorm.Column[T]):anorm.RowParser[T]"></a>
+      <p class="shortcomment cmt">Returns row parser for column at given <code>position</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Returns row parser for column at given <code>position</code>.</p></div><dl class="paramcmts block"><dt class="param">position</dt><dd class="cmt"><p>Column position, from 1 to n</p><pre><span class="kw">import</span> anorm.SQL
+<span class="kw">import</span> anorm.SqlParser.get
+
+<span class="kw">val</span> res: (<span class="std">Float</span>, <span class="std">String</span>) = <span class="cmt">// parsing columns #1 & #3</span>
+  SQL(<span class="lit">"SELECT * FROM Test"</span>).as(get[<span class="std">String</span>](<span class="num">1</span>) ~ get[<span class="std">Float</span>](<span class="num">3</span>) map {
+    <span class="kw">case</span> str ~ f <span class="kw">=&gt;</span> (f -&gt; str)
+  } *)</pre></dd></dl></div>
+    </li><li name="anorm.SqlParser#get" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="get[T](name:String)(implicitextractor:anorm.Column[T]):anorm.RowParser[T]"></a>
       <a id="get[T](String)(Column[T]):RowParser[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -455,10 +458,14 @@ SQL(<span class="lit">"SELECT * FROM Test"</span>).as(get[<span class="std">Stri
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">get</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="columnName">columnName: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="extractor">extractor: <a href="Column.html" class="extype" name="anorm.Column">Column</a>[<span class="extype" name="anorm.SqlParser.get.T">T</span>]</span>)</span><span class="result">: <a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a>[<span class="extype" name="anorm.SqlParser.get.T">T</span>]</span>
+        <span class="name">get</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="extractor">extractor: <a href="Column.html" class="extype" name="anorm.Column">Column</a>[<span class="extype" name="anorm.SqlParser.get.T">T</span>]</span>)</span><span class="result">: <a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a>[<span class="extype" name="anorm.SqlParser.get.T">T</span>]</span>
       </span>
       </h4>
-      
+      <p class="shortcomment cmt">Returns row parser for column with given <code>name</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Returns row parser for column with given <code>name</code>.</p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>Column name</p><pre><span class="kw">import</span> anorm.SQL
+<span class="kw">import</span> anorm.SqlParser.get
+
+<span class="kw">val</span> title: <span class="std">String</span> = SQL(<span class="lit">"SELECT title FROM Books"</span>).
+  as(get[<span class="std">String</span>](<span class="lit">"title"</span>).single)</pre></dd></dl></div>
     </li><li name="anorm.SqlParser#getAliased" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="getAliased[T](aliasName:String)(implicitextractor:anorm.Column[T]):anorm.RowParser[T]"></a>
       <a id="getAliased[T](String)(Column[T]):RowParser[T]"></a>
@@ -818,7 +825,7 @@ and matching expected <code>value</code>.</p><pre><span class="kw">import</span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 2.3.0) Use scala.tools.nsc.doc.base.MemberLookupBase$$anon$1@64aa7891">contains</span><span class="tparams">[<span name="TT">TT</span>, <span name="T">T &lt;: <span class="extype" name="anorm.SqlParser.contains.TT">TT</span></span>]</span><span class="params">(<span name="column">column: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="value">value: <span class="extype" name="anorm.SqlParser.contains.T">T</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="Column.html" class="extype" name="anorm.Column">Column</a>[<span class="extype" name="anorm.SqlParser.contains.TT">TT</span>]</span>)</span><span class="result">: <a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a>[<span class="extype" name="scala.Unit">Unit</span>]</span>
+        <span class="name deprecated" title="Deprecated: (Since version 2.3.0) Use scala.tools.nsc.doc.base.MemberLookupBase$$anon$1@6d658901">contains</span><span class="tparams">[<span name="TT">TT</span>, <span name="T">T &lt;: <span class="extype" name="anorm.SqlParser.contains.TT">TT</span></span>]</span><span class="params">(<span name="column">column: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="value">value: <span class="extype" name="anorm.SqlParser.contains.T">T</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="Column.html" class="extype" name="anorm.Column">Column</a>[<span class="extype" name="anorm.SqlParser.contains.TT">TT</span>]</span>)</span><span class="result">: <a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a>[<span class="extype" name="scala.Unit">Unit</span>]</span>
       </span>
       </h4>
       <p class="shortcomment cmt">Returns row parser which throws exception if specified <code>column</code> is either
