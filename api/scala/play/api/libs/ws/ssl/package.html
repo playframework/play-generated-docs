@@ -1,5 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html >
 <html>
         <head>
           <title>ssl - play.api.libs.ws.ssl</title>
@@ -9,6 +8,11 @@
           
       <link href="../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../../../lib/tools.tooltip.js"></script>
+      
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../../../index.html';
@@ -26,7 +30,11 @@
       <div id="definition">
         <img src="../../../../../lib/package_big.png" />
         <p id="owner"><a href="../../../../package.html" class="extype" name="play">play</a>.<a href="../../../package.html" class="extype" name="play.api">api</a>.<a href="../../package.html" class="extype" name="play.api.libs">libs</a>.<a href="../package.html" class="extype" name="play.api.libs.ws">ws</a></p>
-        <h1>ssl</h1>
+        <h1>ssl</h1> <span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       </div>
 
       <h4 id="signature" class="signature">
@@ -39,9 +47,9 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.4.0-M1/framework/src/play-ws/src/main/scala/play/api/libs/ws/ssl/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.4.0-M2/framework/src/play-ws/src/main/scala/play/api/libs/ws/ssl/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="../../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -81,7 +89,7 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="play.api.libs.ws.ssl.AlgorithmChecker" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="play.api.libs.ws.ssl.AlgorithmChecker" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="AlgorithmCheckerextendsPKIXCertPathChecker"></a>
       <a id="AlgorithmChecker:AlgorithmChecker"></a>
       <h4 class="signature">
@@ -92,8 +100,17 @@
       <span class="symbol">
         <a href="AlgorithmChecker.html"><span class="name">AlgorithmChecker</span></a><span class="result"> extends <span class="extype" name="java.security.cert.PKIXCertPathChecker">PKIXCertPathChecker</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">Looks for disabled algorithms in the certificate.</p>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@AlgorithmCheckerextendsPKIXCertPathChecker" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Looks for disabled algorithms in the certificate.</p><div class="fullcomment"><div class="comment cmt"><p>Looks for disabled algorithms in the certificate.  This is because some certificates are signed with
+forgable hashes such as MD2 or MD5, so we can't be certain of their authenticity.</p><p>This class is needed because the JDK 1.6 Algorithm checker doesn't give us any way to customize the list of
+disabled algorithms, and we need to be able to support that.</p><p>Also note that we need to check the trust anchor for disabled key sizes, and the CertPath explicitly removes
+the trust anchor from the chain of certificates.  This means we need to check the trust anchor explicitly in the
+through the CompositeTrustManager.
+</p></div></div>
     </li><li name="play.api.libs.ws.ssl.AlgorithmConstraint" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="AlgorithmConstraintextendsProductwithSerializable"></a>
       <a id="AlgorithmConstraint:AlgorithmConstraint"></a>
@@ -103,9 +120,13 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="AlgorithmConstraint.html"><span class="name">AlgorithmConstraint</span></a><span class="params">(<span name="algorithm">algorithm: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="constraint">constraint: <span class="extype" name="scala.Option">Option</span>[<a href="ExpressionSymbol.html" class="extype" name="play.api.libs.ws.ssl.ExpressionSymbol">ExpressionSymbol</a>] = <span class="symbol">scala.None</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="AlgorithmConstraint.html"><span class="name">AlgorithmConstraint</span></a><span class="params">(<span name="algorithm">algorithm: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="constraint">constraint: <span class="extype" name="scala.Option">Option</span>[<a href="ExpressionSymbol.html" class="extype" name="play.api.libs.ws.ssl.ExpressionSymbol">ExpressionSymbol</a>] = <span class="symbol"><span class="name"><a href="../../../../../scala/package.html">None</a></span></span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@AlgorithmConstraintextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li><li name="play.api.libs.ws.ssl.CompositeCertificateException" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="CompositeCertificateExceptionextendsCertificateException"></a>
@@ -118,8 +139,12 @@
       <span class="symbol">
         <a href="CompositeCertificateException.html"><span class="name">CompositeCertificateException</span></a><span class="result"> extends <span class="extype" name="java.security.cert.CertificateException">CertificateException</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">A certificate exception that contains underlying exceptions.</p>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@CompositeCertificateExceptionextendsCertificateException" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A certificate exception that contains underlying exceptions.</p>
     </li><li name="play.api.libs.ws.ssl.CompositeX509KeyManager" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="CompositeX509KeyManagerextendsX509ExtendedKeyManager"></a>
       <a id="CompositeX509KeyManager:CompositeX509KeyManager"></a>
@@ -131,9 +156,13 @@
       <span class="symbol">
         <a href="CompositeX509KeyManager.html"><span class="name">CompositeX509KeyManager</span></a><span class="result"> extends <span class="extype" name="javax.net.ssl.X509ExtendedKeyManager">X509ExtendedKeyManager</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">A keymanager that wraps other X509 key managers.</p>
-    </li><li name="play.api.libs.ws.ssl.CompositeX509TrustManager" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@CompositeX509KeyManagerextendsX509ExtendedKeyManager" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A keymanager that wraps other X509 key managers.</p>
+    </li><li name="play.api.libs.ws.ssl.CompositeX509TrustManager" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="CompositeX509TrustManagerextendsX509TrustManager"></a>
       <a id="CompositeX509TrustManager:CompositeX509TrustManager"></a>
       <h4 class="signature">
@@ -144,8 +173,14 @@
       <span class="symbol">
         <a href="CompositeX509TrustManager.html"><span class="name">CompositeX509TrustManager</span></a><span class="result"> extends <span class="extype" name="javax.net.ssl.X509TrustManager">X509TrustManager</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">A trust manager that is a composite of several smaller trust managers.</p>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@CompositeX509TrustManagerextendsX509TrustManager" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A trust manager that is a composite of several smaller trust managers.</p><div class="fullcomment"><div class="comment cmt"><p>A trust manager that is a composite of several smaller trust managers.   It is responsible for verifying the
+credentials received from a peer.
+</p></div></div>
     </li><li name="play.api.libs.ws.ssl.ConfigSSLContextBuilder" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="ConfigSSLContextBuilderextendsSSLContextBuilder"></a>
       <a id="ConfigSSLContextBuilder:ConfigSSLContextBuilder"></a>
@@ -157,9 +192,13 @@
       <span class="symbol">
         <a href="ConfigSSLContextBuilder.html"><span class="name">ConfigSSLContextBuilder</span></a><span class="result"> extends <a href="SSLContextBuilder.html" class="extype" name="play.api.libs.ws.ssl.SSLContextBuilder">SSLContextBuilder</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">Creates an SSL context builder from info objects.</p>
-    </li><li name="play.api.libs.ws.ssl.DefaultHostnameVerifier" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@ConfigSSLContextBuilderextendsSSLContextBuilder" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Creates an SSL context builder from info objects.</p>
+    </li><li name="play.api.libs.ws.ssl.DefaultHostnameVerifier" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="DefaultHostnameVerifierextendsHostnameVerifier"></a>
       <a id="DefaultHostnameVerifier:DefaultHostnameVerifier"></a>
       <h4 class="signature">
@@ -170,8 +209,14 @@
       <span class="symbol">
         <a href="DefaultHostnameVerifier.html"><span class="name">DefaultHostnameVerifier</span></a><span class="result"> extends <span class="extype" name="javax.net.ssl.HostnameVerifier">HostnameVerifier</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">Use the internal sun hostname checker as the hostname verifier.</p>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@DefaultHostnameVerifierextendsHostnameVerifier" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Use the internal sun hostname checker as the hostname verifier.</p><div class="fullcomment"><div class="comment cmt"><p>Use the internal sun hostname checker as the hostname verifier.  Thanks to Kevin Locke.
+</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p>http://kevinlocke.name/bits/2012/10/03/ssl-certificate-verification-in-dispatch-and-asynchttpclient/
+</p></span><span class="cmt"><p>sun.security.util.HostnameChecker</p></span></dd></dl></div>
     </li><li name="play.api.libs.ws.ssl.DefaultKeyManagerConfig" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="DefaultKeyManagerConfigextendsKeyManagerConfigwithProductwithSerializable"></a>
       <a id="DefaultKeyManagerConfig:DefaultKeyManagerConfig"></a>
@@ -181,9 +226,13 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="DefaultKeyManagerConfig.html"><span class="name">DefaultKeyManagerConfig</span></a><span class="params">(<span name="algorithm">algorithm: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">scala.None</span></span>, <span name="keyStoreConfigs">keyStoreConfigs: <span class="extype" name="scala.Seq">Seq</span>[<a href="KeyStoreConfig.html" class="extype" name="play.api.libs.ws.ssl.KeyStoreConfig">KeyStoreConfig</a>] = <span class="symbol">immutable.this.Nil</span></span>, <span name="password">password: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">scala.None</span></span>)</span><span class="result"> extends <a href="KeyManagerConfig.html" class="extype" name="play.api.libs.ws.ssl.KeyManagerConfig">KeyManagerConfig</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="DefaultKeyManagerConfig.html"><span class="name">DefaultKeyManagerConfig</span></a><span class="params">(<span name="algorithm">algorithm: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol"><span class="name"><a href="../../../../../scala/package.html">None</a></span></span></span>, <span name="keyStoreConfigs">keyStoreConfigs: <a href="../../../../../scala/package.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<a href="KeyStoreConfig.html" class="extype" name="play.api.libs.ws.ssl.KeyStoreConfig">KeyStoreConfig</a>] = <span class="symbol">Nil</span></span>, <span name="password">password: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol"><span class="name"><a href="../../../../../scala/package.html">None</a></span></span></span>)</span><span class="result"> extends <a href="KeyManagerConfig.html" class="extype" name="play.api.libs.ws.ssl.KeyManagerConfig">KeyManagerConfig</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@DefaultKeyManagerConfigextendsKeyManagerConfigwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li><li name="play.api.libs.ws.ssl.DefaultKeyManagerFactoryWrapper" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="DefaultKeyManagerFactoryWrapperextendsKeyManagerFactoryWrapper"></a>
@@ -196,7 +245,11 @@
       <span class="symbol">
         <a href="DefaultKeyManagerFactoryWrapper.html"><span class="name">DefaultKeyManagerFactoryWrapper</span></a><span class="result"> extends <a href="KeyManagerFactoryWrapper.html" class="extype" name="play.api.libs.ws.ssl.KeyManagerFactoryWrapper">KeyManagerFactoryWrapper</a></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@DefaultKeyManagerFactoryWrapperextendsKeyManagerFactoryWrapper" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li><li name="play.api.libs.ws.ssl.DefaultKeyStoreConfig" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="DefaultKeyStoreConfigextendsKeyStoreConfigwithProductwithSerializable"></a>
@@ -209,7 +262,11 @@
       <span class="symbol">
         <a href="DefaultKeyStoreConfig.html"><span class="name">DefaultKeyStoreConfig</span></a><span class="params">(<span name="storeType">storeType: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="filePath">filePath: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="data">data: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="password">password: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result"> extends <a href="KeyStoreConfig.html" class="extype" name="play.api.libs.ws.ssl.KeyStoreConfig">KeyStoreConfig</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@DefaultKeyStoreConfigextendsKeyStoreConfigwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li><li name="play.api.libs.ws.ssl.DefaultSSLConfig" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="DefaultSSLConfigextendsSSLConfigwithProductwithSerializable"></a>
@@ -220,9 +277,13 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="DefaultSSLConfig.html"><span class="name">DefaultSSLConfig</span></a><span class="params">(<span name="default">default: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>] = <span class="symbol">scala.None</span></span>, <span name="protocol">protocol: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">scala.None</span></span>, <span name="checkRevocation">checkRevocation: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>] = <span class="symbol">scala.None</span></span>, <span name="revocationLists">revocationLists: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="java.net.URL">URL</span>]] = <span class="symbol">scala.None</span></span>, <span name="enabledCipherSuites">enabledCipherSuites: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]] = <span class="symbol">scala.None</span></span>, <span name="enabledProtocols">enabledProtocols: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]] = <span class="symbol">scala.None</span></span>, <span name="disabledSignatureAlgorithms">disabledSignatureAlgorithms: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">scala.None</span></span>, <span name="disabledKeyAlgorithms">disabledKeyAlgorithms: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">scala.None</span></span>, <span name="keyManagerConfig">keyManagerConfig: <span class="extype" name="scala.Option">Option</span>[<a href="KeyManagerConfig.html" class="extype" name="play.api.libs.ws.ssl.KeyManagerConfig">KeyManagerConfig</a>] = <span class="symbol">scala.None</span></span>, <span name="trustManagerConfig">trustManagerConfig: <span class="extype" name="scala.Option">Option</span>[<a href="TrustManagerConfig.html" class="extype" name="play.api.libs.ws.ssl.TrustManagerConfig">TrustManagerConfig</a>] = <span class="symbol">scala.None</span></span>, <span name="hostnameVerifierClass">hostnameVerifierClass: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.Class">Class</span>[<span class="extype" name="javax.net.ssl.HostnameVerifier">HostnameVerifier</span>]] = <span class="symbol">scala.None</span></span>, <span name="secureRandom">secureRandom: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="java.security.SecureRandom">SecureRandom</span>] = <span class="symbol">scala.None</span></span>, <span name="debug">debug: <span class="extype" name="scala.Option">Option</span>[<a href="SSLDebugConfig.html" class="extype" name="play.api.libs.ws.ssl.SSLDebugConfig">SSLDebugConfig</a>] = <span class="symbol">scala.None</span></span>, <span name="loose">loose: <span class="extype" name="scala.Option">Option</span>[<a href="SSLLooseConfig.html" class="extype" name="play.api.libs.ws.ssl.SSLLooseConfig">SSLLooseConfig</a>] = <span class="symbol">scala.None</span></span>)</span><span class="result"> extends <a href="SSLConfig.html" class="extype" name="play.api.libs.ws.ssl.SSLConfig">SSLConfig</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="DefaultSSLConfig.html"><span class="name">DefaultSSLConfig</span></a><span class="params">(<span name="default">default: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>] = <span class="symbol"><span class="name"><a href="../../../../../scala/package.html">None</a></span></span></span>, <span name="protocol">protocol: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol"><span class="name"><a href="../../../../../scala/package.html">None</a></span></span></span>, <span name="checkRevocation">checkRevocation: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>] = <span class="symbol"><span class="name"><a href="../../../../../scala/package.html">None</a></span></span></span>, <span name="revocationLists">revocationLists: <span class="extype" name="scala.Option">Option</span>[<a href="../../../../../scala/package.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="java.net.URL">URL</span>]] = <span class="symbol"><span class="name"><a href="../../../../../scala/package.html">None</a></span></span></span>, <span name="enabledCipherSuites">enabledCipherSuites: <span class="extype" name="scala.Option">Option</span>[<a href="../../../../../scala/package.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="scala.Predef.String">String</span>]] = <span class="symbol"><span class="name"><a href="../../../../../scala/package.html">None</a></span></span></span>, <span name="enabledProtocols">enabledProtocols: <span class="extype" name="scala.Option">Option</span>[<a href="../../../../../scala/package.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="scala.Predef.String">String</span>]] = <span class="symbol"><span class="name"><a href="../../../../../scala/package.html">None</a></span></span></span>, <span name="disabledSignatureAlgorithms">disabledSignatureAlgorithms: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol"><span class="name"><a href="../../../../../scala/package.html">None</a></span></span></span>, <span name="disabledKeyAlgorithms">disabledKeyAlgorithms: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol"><span class="name"><a href="../../../../../scala/package.html">None</a></span></span></span>, <span name="keyManagerConfig">keyManagerConfig: <span class="extype" name="scala.Option">Option</span>[<a href="KeyManagerConfig.html" class="extype" name="play.api.libs.ws.ssl.KeyManagerConfig">KeyManagerConfig</a>] = <span class="symbol"><span class="name"><a href="../../../../../scala/package.html">None</a></span></span></span>, <span name="trustManagerConfig">trustManagerConfig: <span class="extype" name="scala.Option">Option</span>[<a href="TrustManagerConfig.html" class="extype" name="play.api.libs.ws.ssl.TrustManagerConfig">TrustManagerConfig</a>] = <span class="symbol"><span class="name"><a href="../../../../../scala/package.html">None</a></span></span></span>, <span name="hostnameVerifierClass">hostnameVerifierClass: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.Class">Class</span>[<span class="extype" name="javax.net.ssl.HostnameVerifier">HostnameVerifier</span>]] = <span class="symbol"><span class="name"><a href="../../../../../scala/package.html">None</a></span></span></span>, <span name="secureRandom">secureRandom: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="java.security.SecureRandom">SecureRandom</span>] = <span class="symbol"><span class="name"><a href="../../../../../scala/package.html">None</a></span></span></span>, <span name="debug">debug: <span class="extype" name="scala.Option">Option</span>[<a href="SSLDebugConfig.html" class="extype" name="play.api.libs.ws.ssl.SSLDebugConfig">SSLDebugConfig</a>] = <span class="symbol"><span class="name"><a href="../../../../../scala/package.html">None</a></span></span></span>, <span name="loose">loose: <span class="extype" name="scala.Option">Option</span>[<a href="SSLLooseConfig.html" class="extype" name="play.api.libs.ws.ssl.SSLLooseConfig">SSLLooseConfig</a>] = <span class="symbol"><span class="name"><a href="../../../../../scala/package.html">None</a></span></span></span>)</span><span class="result"> extends <a href="SSLConfig.html" class="extype" name="play.api.libs.ws.ssl.SSLConfig">SSLConfig</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@DefaultSSLConfigextendsSSLConfigwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li><li name="play.api.libs.ws.ssl.DefaultSSLConfigParser" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="DefaultSSLConfigParserextendsAnyRef"></a>
@@ -233,9 +294,13 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="DefaultSSLConfigParser.html"><span class="name">DefaultSSLConfigParser</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a href="DefaultSSLConfigParser.html"><span class="name">DefaultSSLConfigParser</span></a><span class="result"> extends <a href="../../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@DefaultSSLConfigParserextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li><li name="play.api.libs.ws.ssl.DefaultSSLLooseConfig" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="DefaultSSLLooseConfigextendsSSLLooseConfigwithProductwithSerializable"></a>
@@ -246,9 +311,13 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="DefaultSSLLooseConfig.html"><span class="name">DefaultSSLLooseConfig</span></a><span class="params">(<span name="allowWeakCiphers">allowWeakCiphers: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>] = <span class="symbol">scala.None</span></span>, <span name="allowWeakProtocols">allowWeakProtocols: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>] = <span class="symbol">scala.None</span></span>, <span name="allowLegacyHelloMessages">allowLegacyHelloMessages: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>] = <span class="symbol">scala.None</span></span>, <span name="allowUnsafeRenegotiation">allowUnsafeRenegotiation: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>] = <span class="symbol">scala.None</span></span>, <span name="disableHostnameVerification">disableHostnameVerification: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>] = <span class="symbol">scala.None</span></span>)</span><span class="result"> extends <a href="SSLLooseConfig.html" class="extype" name="play.api.libs.ws.ssl.SSLLooseConfig">SSLLooseConfig</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="DefaultSSLLooseConfig.html"><span class="name">DefaultSSLLooseConfig</span></a><span class="params">(<span name="allowWeakCiphers">allowWeakCiphers: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>] = <span class="symbol"><span class="name"><a href="../../../../../scala/package.html">None</a></span></span></span>, <span name="allowWeakProtocols">allowWeakProtocols: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>] = <span class="symbol"><span class="name"><a href="../../../../../scala/package.html">None</a></span></span></span>, <span name="allowLegacyHelloMessages">allowLegacyHelloMessages: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>] = <span class="symbol"><span class="name"><a href="../../../../../scala/package.html">None</a></span></span></span>, <span name="allowUnsafeRenegotiation">allowUnsafeRenegotiation: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>] = <span class="symbol"><span class="name"><a href="../../../../../scala/package.html">None</a></span></span></span>, <span name="disableHostnameVerification">disableHostnameVerification: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>] = <span class="symbol"><span class="name"><a href="../../../../../scala/package.html">None</a></span></span></span>)</span><span class="result"> extends <a href="SSLLooseConfig.html" class="extype" name="play.api.libs.ws.ssl.SSLLooseConfig">SSLLooseConfig</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@DefaultSSLLooseConfigextendsSSLLooseConfigwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li><li name="play.api.libs.ws.ssl.DefaultTrustManagerConfig" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="DefaultTrustManagerConfigextendsTrustManagerConfigwithProductwithSerializable"></a>
@@ -259,9 +328,13 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="DefaultTrustManagerConfig.html"><span class="name">DefaultTrustManagerConfig</span></a><span class="params">(<span name="algorithm">algorithm: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">scala.None</span></span>, <span name="trustStoreConfigs">trustStoreConfigs: <span class="extype" name="scala.Seq">Seq</span>[<a href="TrustStoreConfig.html" class="extype" name="play.api.libs.ws.ssl.TrustStoreConfig">TrustStoreConfig</a>] = <span class="symbol">immutable.this.Nil</span></span>)</span><span class="result"> extends <a href="TrustManagerConfig.html" class="extype" name="play.api.libs.ws.ssl.TrustManagerConfig">TrustManagerConfig</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="DefaultTrustManagerConfig.html"><span class="name">DefaultTrustManagerConfig</span></a><span class="params">(<span name="algorithm">algorithm: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol"><span class="name"><a href="../../../../../scala/package.html">None</a></span></span></span>, <span name="trustStoreConfigs">trustStoreConfigs: <a href="../../../../../scala/package.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<a href="TrustStoreConfig.html" class="extype" name="play.api.libs.ws.ssl.TrustStoreConfig">TrustStoreConfig</a>] = <span class="symbol">Nil</span></span>)</span><span class="result"> extends <a href="TrustManagerConfig.html" class="extype" name="play.api.libs.ws.ssl.TrustManagerConfig">TrustManagerConfig</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@DefaultTrustManagerConfigextendsTrustManagerConfigwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li><li name="play.api.libs.ws.ssl.DefaultTrustManagerFactoryWrapper" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="DefaultTrustManagerFactoryWrapperextendsTrustManagerFactoryWrapper"></a>
@@ -274,7 +347,11 @@
       <span class="symbol">
         <a href="DefaultTrustManagerFactoryWrapper.html"><span class="name">DefaultTrustManagerFactoryWrapper</span></a><span class="result"> extends <a href="TrustManagerFactoryWrapper.html" class="extype" name="play.api.libs.ws.ssl.TrustManagerFactoryWrapper">TrustManagerFactoryWrapper</a></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@DefaultTrustManagerFactoryWrapperextendsTrustManagerFactoryWrapper" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li><li name="play.api.libs.ws.ssl.DefaultTrustStoreConfig" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="DefaultTrustStoreConfigextendsTrustStoreConfigwithProductwithSerializable"></a>
@@ -287,7 +364,11 @@
       <span class="symbol">
         <a href="DefaultTrustStoreConfig.html"><span class="name">DefaultTrustStoreConfig</span></a><span class="params">(<span name="storeType">storeType: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="filePath">filePath: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="data">data: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result"> extends <a href="TrustStoreConfig.html" class="extype" name="play.api.libs.ws.ssl.TrustStoreConfig">TrustStoreConfig</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@DefaultTrustStoreConfigextendsTrustStoreConfigwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li><li name="play.api.libs.ws.ssl.Equal" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="EqualextendsExpressionSymbolwithProductwithSerializable"></a>
@@ -300,7 +381,11 @@
       <span class="symbol">
         <a href="Equal.html"><span class="name">Equal</span></a><span class="params">(<span name="x">x: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result"> extends <a href="ExpressionSymbol.html" class="extype" name="play.api.libs.ws.ssl.ExpressionSymbol">ExpressionSymbol</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@EqualextendsExpressionSymbolwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li><li name="play.api.libs.ws.ssl.ExpressionSymbol" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="ExpressionSymbolextendsAnyRef"></a>
@@ -311,11 +396,15 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="ExpressionSymbol.html"><span class="name">ExpressionSymbol</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a href="ExpressionSymbol.html"><span class="name">ExpressionSymbol</span></a><span class="result"> extends <a href="../../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@ExpressionSymbolextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       
-    </li><li name="play.api.libs.ws.ssl.FileBasedKeyStoreBuilder" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="play.api.libs.ws.ssl.FileBasedKeyStoreBuilder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="FileBasedKeyStoreBuilderextendsKeyStoreBuilder"></a>
       <a id="FileBasedKeyStoreBuilder:FileBasedKeyStoreBuilder"></a>
       <h4 class="signature">
@@ -326,9 +415,15 @@
       <span class="symbol">
         <a href="FileBasedKeyStoreBuilder.html"><span class="name">FileBasedKeyStoreBuilder</span></a><span class="result"> extends <a href="KeyStoreBuilder.html" class="extype" name="play.api.libs.ws.ssl.KeyStoreBuilder">KeyStoreBuilder</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">Builds a keystore from a file containing PEM encoded certificates, using CertificateFactory internally.</p>
-    </li><li name="play.api.libs.ws.ssl.JavaSecurityDebugBuilder" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@FileBasedKeyStoreBuilderextendsKeyStoreBuilder" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Builds a keystore from a file containing PEM encoded certificates, using CertificateFactory internally.</p><div class="fullcomment"><div class="comment cmt"><p>Builds a keystore from a file containing PEM encoded certificates, using CertificateFactory internally.
+</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p>java.security.cert.CertificateFactory
+</p></span></dd></dl></div>
+    </li><li name="play.api.libs.ws.ssl.JavaSecurityDebugBuilder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="JavaSecurityDebugBuilderextendsAnyRef"></a>
       <a id="JavaSecurityDebugBuilder:JavaSecurityDebugBuilder"></a>
       <h4 class="signature">
@@ -337,11 +432,16 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="JavaSecurityDebugBuilder.html"><span class="name">JavaSecurityDebugBuilder</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a href="JavaSecurityDebugBuilder.html"><span class="name">JavaSecurityDebugBuilder</span></a><span class="result"> extends <a href="../../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
       </span>
-      </h4>
-      <p class="comment cmt"></p>
-    </li><li name="play.api.libs.ws.ssl.JavaxNetDebugBuilder" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@JavaSecurityDebugBuilderextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p>http://docs.oracle.com/javase/6/docs/technotes/guides/security/certpath/CertPathProgGuide.html
+</p></span></dd></dl></div>
+    </li><li name="play.api.libs.ws.ssl.JavaxNetDebugBuilder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="JavaxNetDebugBuilderextendsAnyRef"></a>
       <a id="JavaxNetDebugBuilder:JavaxNetDebugBuilder"></a>
       <h4 class="signature">
@@ -350,10 +450,18 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="JavaxNetDebugBuilder.html"><span class="name">JavaxNetDebugBuilder</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a href="JavaxNetDebugBuilder.html"><span class="name">JavaxNetDebugBuilder</span></a><span class="result"> extends <a href="../../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">A builder for setting the system property options in &quot;javax.</p>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@JavaxNetDebugBuilderextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A builder for setting the system property options in &quot;javax.net.debug&quot; and in &quot;java.security.debug' (in
+the case of &quot;certpath&quot;).</p><div class="fullcomment"><div class="comment cmt"><p>A builder for setting the system property options in &quot;javax.net.debug&quot; and in &quot;java.security.debug' (in
+the case of &quot;certpath&quot;).
+</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p>http://docs.oracle.com/javase/6/docs/technotes/guides/security/jsse/ReadDebug.html
+</p></span><span class="cmt"><p>http://docs.oracle.com/javase/6/docs/technotes/guides/security/jsse/JSSERefGuide.html#Debug</p></span></dd></dl></div>
     </li><li name="play.api.libs.ws.ssl.KeyManagerConfig" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="KeyManagerConfigextendsAnyRef"></a>
       <a id="KeyManagerConfig:KeyManagerConfig"></a>
@@ -363,10 +471,14 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="KeyManagerConfig.html"><span class="name">KeyManagerConfig</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a href="KeyManagerConfig.html"><span class="name">KeyManagerConfig</span></a><span class="result"> extends <a href="../../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">Contains configuration information for a key manager.</p>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@KeyManagerConfigextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Contains configuration information for a key manager.</p>
     </li><li name="play.api.libs.ws.ssl.KeyManagerFactoryWrapper" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="KeyManagerFactoryWrapperextendsAnyRef"></a>
       <a id="KeyManagerFactoryWrapper:KeyManagerFactoryWrapper"></a>
@@ -376,9 +488,13 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="KeyManagerFactoryWrapper.html"><span class="name">KeyManagerFactoryWrapper</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a href="KeyManagerFactoryWrapper.html"><span class="name">KeyManagerFactoryWrapper</span></a><span class="result"> extends <a href="../../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@KeyManagerFactoryWrapperextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li><li name="play.api.libs.ws.ssl.KeyStoreBuilder" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="KeyStoreBuilderextendsAnyRef"></a>
@@ -389,9 +505,13 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="KeyStoreBuilder.html"><span class="name">KeyStoreBuilder</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a href="KeyStoreBuilder.html"><span class="name">KeyStoreBuilder</span></a><span class="result"> extends <a href="../../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@KeyStoreBuilderextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li><li name="play.api.libs.ws.ssl.KeyStoreConfig" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="KeyStoreConfigextendsAnyRef"></a>
@@ -402,10 +522,14 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="KeyStoreConfig.html"><span class="name">KeyStoreConfig</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a href="KeyStoreConfig.html"><span class="name">KeyStoreConfig</span></a><span class="result"> extends <a href="../../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">Contains configuration information for a key store.</p>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@KeyStoreConfigextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Contains configuration information for a key store.</p>
     </li><li name="play.api.libs.ws.ssl.LessThan" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="LessThanextendsExpressionSymbolwithProductwithSerializable"></a>
       <a id="LessThan:LessThan"></a>
@@ -417,7 +541,11 @@
       <span class="symbol">
         <a href="LessThan.html"><span class="name">LessThan</span></a><span class="params">(<span name="x">x: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result"> extends <a href="ExpressionSymbol.html" class="extype" name="play.api.libs.ws.ssl.ExpressionSymbol">ExpressionSymbol</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@LessThanextendsExpressionSymbolwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li><li name="play.api.libs.ws.ssl.LessThanOrEqual" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="LessThanOrEqualextendsExpressionSymbolwithProductwithSerializable"></a>
@@ -430,7 +558,11 @@
       <span class="symbol">
         <a href="LessThanOrEqual.html"><span class="name">LessThanOrEqual</span></a><span class="params">(<span name="x">x: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result"> extends <a href="ExpressionSymbol.html" class="extype" name="play.api.libs.ws.ssl.ExpressionSymbol">ExpressionSymbol</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@LessThanOrEqualextendsExpressionSymbolwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li><li name="play.api.libs.ws.ssl.MonkeyPatcher" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="MonkeyPatcherextendsAnyRef"></a>
@@ -441,10 +573,14 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="MonkeyPatcher.html"><span class="name">MonkeyPatcher</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a href="MonkeyPatcher.html"><span class="name">MonkeyPatcher</span></a><span class="result"> extends <a href="../../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
       </span>
-      </h4>
-      <p class="comment cmt"></p>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@MonkeyPatcherextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt"></p>
     </li><li name="play.api.libs.ws.ssl.MoreThan" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="MoreThanextendsExpressionSymbolwithProductwithSerializable"></a>
       <a id="MoreThan:MoreThan"></a>
@@ -456,7 +592,11 @@
       <span class="symbol">
         <a href="MoreThan.html"><span class="name">MoreThan</span></a><span class="params">(<span name="x">x: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result"> extends <a href="ExpressionSymbol.html" class="extype" name="play.api.libs.ws.ssl.ExpressionSymbol">ExpressionSymbol</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@MoreThanextendsExpressionSymbolwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li><li name="play.api.libs.ws.ssl.MoreThanOrEqual" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="MoreThanOrEqualextendsExpressionSymbolwithProductwithSerializable"></a>
@@ -469,7 +609,11 @@
       <span class="symbol">
         <a href="MoreThanOrEqual.html"><span class="name">MoreThanOrEqual</span></a><span class="params">(<span name="x">x: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result"> extends <a href="ExpressionSymbol.html" class="extype" name="play.api.libs.ws.ssl.ExpressionSymbol">ExpressionSymbol</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@MoreThanOrEqualextendsExpressionSymbolwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li><li name="play.api.libs.ws.ssl.NotEqual" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="NotEqualextendsExpressionSymbolwithProductwithSerializable"></a>
@@ -482,7 +626,11 @@
       <span class="symbol">
         <a href="NotEqual.html"><span class="name">NotEqual</span></a><span class="params">(<span name="x">x: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result"> extends <a href="ExpressionSymbol.html" class="extype" name="play.api.libs.ws.ssl.ExpressionSymbol">ExpressionSymbol</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@NotEqualextendsExpressionSymbolwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li><li name="play.api.libs.ws.ssl.SSLConfig" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="SSLConfigextendsAnyRef"></a>
@@ -493,10 +641,14 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="SSLConfig.html"><span class="name">SSLConfig</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a href="SSLConfig.html"><span class="name">SSLConfig</span></a><span class="result"> extends <a href="../../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">Contains information for configuring a JSSE SSL context.</p>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@SSLConfigextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Contains information for configuring a JSSE SSL context.</p>
     </li><li name="play.api.libs.ws.ssl.SSLConfigParser" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="SSLConfigParserextendsAnyRef"></a>
       <a id="SSLConfigParser:SSLConfigParser"></a>
@@ -506,9 +658,13 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="SSLConfigParser.html"><span class="name">SSLConfigParser</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a href="SSLConfigParser.html"><span class="name">SSLConfigParser</span></a><span class="result"> extends <a href="../../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@SSLConfigParserextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li><li name="play.api.libs.ws.ssl.SSLContextBuilder" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="SSLContextBuilderextendsAnyRef"></a>
@@ -519,9 +675,13 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="SSLContextBuilder.html"><span class="name">SSLContextBuilder</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a href="SSLContextBuilder.html"><span class="name">SSLContextBuilder</span></a><span class="result"> extends <a href="../../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@SSLContextBuilderextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li><li name="play.api.libs.ws.ssl.SSLDebugConfig" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="SSLDebugConfigextendsProductwithSerializable"></a>
@@ -532,9 +692,13 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="SSLDebugConfig.html"><span class="name">SSLDebugConfig</span></a><span class="params">(<span name="all">all: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="ssl">ssl: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="certpath">certpath: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="ocsp">ocsp: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="record">record: <span class="extype" name="scala.Option">Option</span>[<a href="SSLDebugRecordOptions.html" class="extype" name="play.api.libs.ws.ssl.SSLDebugRecordOptions">SSLDebugRecordOptions</a>] = <span class="symbol">scala.None</span></span>, <span name="handshake">handshake: <span class="extype" name="scala.Option">Option</span>[<a href="SSLDebugHandshakeOptions.html" class="extype" name="play.api.libs.ws.ssl.SSLDebugHandshakeOptions">SSLDebugHandshakeOptions</a>] = <span class="symbol">scala.None</span></span>, <span name="keygen">keygen: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="session">session: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="defaultctx">defaultctx: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="sslctx">sslctx: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="sessioncache">sessioncache: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="keymanager">keymanager: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="trustmanager">trustmanager: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="pluggability">pluggability: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="SSLDebugConfig.html"><span class="name">SSLDebugConfig</span></a><span class="params">(<span name="all">all: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="ssl">ssl: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="certpath">certpath: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="ocsp">ocsp: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="record">record: <span class="extype" name="scala.Option">Option</span>[<a href="SSLDebugRecordOptions.html" class="extype" name="play.api.libs.ws.ssl.SSLDebugRecordOptions">SSLDebugRecordOptions</a>] = <span class="symbol"><span class="name"><a href="../../../../../scala/package.html">None</a></span></span></span>, <span name="handshake">handshake: <span class="extype" name="scala.Option">Option</span>[<a href="SSLDebugHandshakeOptions.html" class="extype" name="play.api.libs.ws.ssl.SSLDebugHandshakeOptions">SSLDebugHandshakeOptions</a>] = <span class="symbol"><span class="name"><a href="../../../../../scala/package.html">None</a></span></span></span>, <span name="keygen">keygen: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="session">session: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="defaultctx">defaultctx: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="sslctx">sslctx: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="sessioncache">sessioncache: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="keymanager">keymanager: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="trustmanager">trustmanager: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="pluggability">pluggability: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@SSLDebugConfigextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li><li name="play.api.libs.ws.ssl.SSLDebugHandshakeOptions" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="SSLDebugHandshakeOptionsextendsProductwithSerializable"></a>
@@ -547,7 +711,11 @@
       <span class="symbol">
         <a href="SSLDebugHandshakeOptions.html"><span class="name">SSLDebugHandshakeOptions</span></a><span class="params">(<span name="data">data: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="verbose">verbose: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@SSLDebugHandshakeOptionsextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li><li name="play.api.libs.ws.ssl.SSLDebugRecordOptions" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="SSLDebugRecordOptionsextendsProductwithSerializable"></a>
@@ -560,7 +728,11 @@
       <span class="symbol">
         <a href="SSLDebugRecordOptions.html"><span class="name">SSLDebugRecordOptions</span></a><span class="params">(<span name="plaintext">plaintext: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="packet">packet: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@SSLDebugRecordOptionsextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li><li name="play.api.libs.ws.ssl.SSLLooseConfig" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="SSLLooseConfigextendsAnyRef"></a>
@@ -571,11 +743,15 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="SSLLooseConfig.html"><span class="name">SSLLooseConfig</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a href="SSLLooseConfig.html"><span class="name">SSLLooseConfig</span></a><span class="result"> extends <a href="../../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@SSLLooseConfigextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       
-    </li><li name="play.api.libs.ws.ssl.SimpleSSLContextBuilder" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="play.api.libs.ws.ssl.SimpleSSLContextBuilder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="SimpleSSLContextBuilderextendsSSLContextBuilder"></a>
       <a id="SimpleSSLContextBuilder:SimpleSSLContextBuilder"></a>
       <h4 class="signature">
@@ -586,9 +762,15 @@
       <span class="symbol">
         <a href="SimpleSSLContextBuilder.html"><span class="name">SimpleSSLContextBuilder</span></a><span class="result"> extends <a href="SSLContextBuilder.html" class="extype" name="play.api.libs.ws.ssl.SSLContextBuilder">SSLContextBuilder</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">A simple SSL context builder.</p>
-    </li><li name="play.api.libs.ws.ssl.StringBasedKeyStoreBuilder" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@SimpleSSLContextBuilderextendsSSLContextBuilder" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A simple SSL context builder.</p><div class="fullcomment"><div class="comment cmt"><p>A simple SSL context builder.  If the keyManagers or trustManagers are empty, then null is used in the init method.
+Likewise, if secureRandom is None then null is used.
+</p></div></div>
+    </li><li name="play.api.libs.ws.ssl.StringBasedKeyStoreBuilder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="StringBasedKeyStoreBuilderextendsKeyStoreBuilder"></a>
       <a id="StringBasedKeyStoreBuilder:StringBasedKeyStoreBuilder"></a>
       <h4 class="signature">
@@ -599,9 +781,15 @@
       <span class="symbol">
         <a href="StringBasedKeyStoreBuilder.html"><span class="name">StringBasedKeyStoreBuilder</span></a><span class="result"> extends <a href="KeyStoreBuilder.html" class="extype" name="play.api.libs.ws.ssl.KeyStoreBuilder">KeyStoreBuilder</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">Builds a keystore from a string containing PEM encoded certificates, using CertificateFactory internally.</p>
-    </li><li name="play.api.libs.ws.ssl.SystemConfiguration" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@StringBasedKeyStoreBuilderextendsKeyStoreBuilder" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Builds a keystore from a string containing PEM encoded certificates, using CertificateFactory internally.</p><div class="fullcomment"><div class="comment cmt"><p>Builds a keystore from a string containing PEM encoded certificates, using CertificateFactory internally.
+</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p>java.security.cert.CertificateFactory
+</p></span></dd></dl></div>
+    </li><li name="play.api.libs.ws.ssl.SystemConfiguration" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="SystemConfigurationextendsAnyRef"></a>
       <a id="SystemConfiguration:SystemConfiguration"></a>
       <h4 class="signature">
@@ -610,10 +798,18 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="SystemConfiguration.html"><span class="name">SystemConfiguration</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a href="SystemConfiguration.html"><span class="name">SystemConfiguration</span></a><span class="result"> extends <a href="../../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">Configures global system properties on the JSSE implementation, if defined.</p>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@SystemConfigurationextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Configures global system properties on the JSSE implementation, if defined.</p><div class="fullcomment"><div class="comment cmt"><p>Configures global system properties on the JSSE implementation, if defined.</p><p>WARNING: This class sets system properties to configure JSSE code which typically uses static initialization on
+load.  Because of this, if classes are loaded in BEFORE this code has a chance to operate, you may find that this
+code works inconsistently.  The solution is to set the system properties on the command line explicitly (or in the
+case of &quot;ocsp.enable&quot;, in the security property file).
+</p></div></div>
     </li><li name="play.api.libs.ws.ssl.TrustManagerConfig" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="TrustManagerConfigextendsAnyRef"></a>
       <a id="TrustManagerConfig:TrustManagerConfig"></a>
@@ -623,10 +819,14 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="TrustManagerConfig.html"><span class="name">TrustManagerConfig</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a href="TrustManagerConfig.html"><span class="name">TrustManagerConfig</span></a><span class="result"> extends <a href="../../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">Contains configuration information for a trust manager.</p>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@TrustManagerConfigextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Contains configuration information for a trust manager.</p>
     </li><li name="play.api.libs.ws.ssl.TrustManagerFactoryWrapper" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="TrustManagerFactoryWrapperextendsAnyRef"></a>
       <a id="TrustManagerFactoryWrapper:TrustManagerFactoryWrapper"></a>
@@ -636,9 +836,13 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="TrustManagerFactoryWrapper.html"><span class="name">TrustManagerFactoryWrapper</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a href="TrustManagerFactoryWrapper.html"><span class="name">TrustManagerFactoryWrapper</span></a><span class="result"> extends <a href="../../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@TrustManagerFactoryWrapperextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li><li name="play.api.libs.ws.ssl.TrustStoreConfig" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="TrustStoreConfigextendsAnyRef"></a>
@@ -649,10 +853,14 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="TrustStoreConfig.html"><span class="name">TrustStoreConfig</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a href="TrustStoreConfig.html"><span class="name">TrustStoreConfig</span></a><span class="result"> extends <a href="../../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">Contains configuration information for a trust store.</p>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@TrustStoreConfigextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Contains configuration information for a trust store.</p>
     </li></ol>
             </div>
 
@@ -660,7 +868,7 @@
 
         <div id="values" class="values members">
               <h3>Value Members</h3>
-              <ol><li name="play.api.libs.ws.ssl.AlgorithmConstraintsParser" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="play.api.libs.ws.ssl.AlgorithmConstraintsParser" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="AlgorithmConstraintsParser"></a>
       <a id="AlgorithmConstraintsParser:AlgorithmConstraintsParser"></a>
       <h4 class="signature">
@@ -671,9 +879,15 @@
       <span class="symbol">
         <a href="AlgorithmConstraintsParser$.html"><span class="name">AlgorithmConstraintsParser</span></a><span class="result"> extends <span class="extype" name="scala.util.parsing.combinator.RegexParsers">RegexParsers</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">Parser based on the jdk.</p>
-    </li><li name="play.api.libs.ws.ssl.Algorithms" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@AlgorithmConstraintsParser" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Parser based on the jdk.certpath.disabledAlgorithm BNF.</p><div class="fullcomment"><div class="comment cmt"><p>Parser based on the jdk.certpath.disabledAlgorithm BNF.
+</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p>http://sim.ivi.co/2011/07/java-se-7-release-security-enhancements.html
+</p></span></dd></dl></div>
+    </li><li name="play.api.libs.ws.ssl.Algorithms" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="Algorithms"></a>
       <a id="Algorithms:Algorithms"></a>
       <h4 class="signature">
@@ -684,9 +898,29 @@
       <span class="symbol">
         <a href="Algorithms$.html"><span class="name">Algorithms</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">This singleton object provides the code needed to check for minimum standards of an X.</p>
-    </li><li name="play.api.libs.ws.ssl.CertificateGenerator" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@Algorithms" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">This singleton object provides the code needed to check for minimum standards of an X.509 certificate.</p><div class="fullcomment"><div class="comment cmt"><p>This singleton object provides the code needed to check for minimum standards of an X.509 certificate.  Over 95% of trusted leaf certificates and 95% of trusted signing certificates use <a href="http://csrc.nist.gov/publications/nistpubs/800-131A/sp800-131A.pdf">NIST recommended key sizes</a>.  Play supports Java 1.6, which does not have built in <a href="http://sim.ivi.co/2013/11/harness-ssl-and-jsse-key-size-control.html">certificate strength checking</a>, so we roll our own here.</p><p>The default settings here are based off <a href="">NIST SP 800-57</a>, using <a href="https://wiki.mozilla.org/CA:MD5and1024">Dates for Phasing out MD5-based signatures and 1024-bit moduli</a> as a practical guide.</p><p>Note that the key sizes are checked on root CA certificates in the trust store.  As the Mozilla document says:</p><p><blockquote>The other concern that needs to be addressed is that of RSA1024 being too small a modulus to be robust against faster computers. Unlike a signature algorithm, where only intermediate and end-entity certificates are impacted, fast math means we have to disable or remove all instances of 1024-bit moduli, including the root certificates.</blockquote></p><p>Relevant key sizes:</p><p><blockquote>
+According to NIST SP 800-57 the recommended algorithms and minimum key sizes are as follows:
+
+Through 2010 (minimum of 80 bits of strength)
+FFC (e.g., DSA, D-H) Minimum: L=1024; N=160
+IFC (e.g., RSA) Minimum: k=1024
+ECC (e.g. ECDSA) Minimum: f=160
+Through 2030 (minimum of 112 bits of strength)
+FFC (e.g., DSA, D-H) Minimum: L=2048; N=224
+IFC (e.g., RSA) Minimum: k=2048
+ECC (e.g. ECDSA) Minimum: f=224
+Beyond 2030 (minimum of 128 bits of strength)
+FFC (e.g., DSA, D-H) Minimum: L=3072; N=256
+IFC (e.g., RSA) Minimum: k=3072
+ECC (e.g. ECDSA) Minimum: f=256
+</blockquote></p><p>Relevant signature algorithms:</p><p>The known weak signature algorithms are &quot;MD2, MD4, MD5&quot;.</p><p>SHA-1 is considered too weak for new certificates, but is <a href="http://csrc.nist.gov/groups/ST/hash/policy.html">still allowed</a> for verifying old certificates in the chain.  The <a href="https://blogs.oracle.com/xuelei/entry/tls_and_nist_s_policy">TLS and NIST'S Policy on Hash Functions</a> blog post by one of the JSSE authors has more details, in particular the &quot;Put it into practice&quot; section.
+</p></div></div>
+    </li><li name="play.api.libs.ws.ssl.CertificateGenerator" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="CertificateGenerator"></a>
       <a id="CertificateGenerator:CertificateGenerator"></a>
       <h4 class="signature">
@@ -697,8 +931,13 @@
       <span class="symbol">
         <a href="CertificateGenerator$.html"><span class="name">CertificateGenerator</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">Used for testing only.</p>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@CertificateGenerator" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Used for testing only.</p><div class="fullcomment"><div class="comment cmt"><p>Used for testing only.  This relies on internal sun.security packages, so cannot be used in OpenJDK.
+</p></div></div>
     </li><li name="play.api.libs.ws.ssl.Ciphers" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Ciphers"></a>
       <a id="Ciphers:Ciphers"></a>
@@ -710,7 +949,11 @@
       <span class="symbol">
         <a href="Ciphers$.html"><span class="name">Ciphers</span></a>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@Ciphers" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li><li name="play.api.libs.ws.ssl.CompositeCertificateException" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="CompositeCertificateException"></a>
@@ -723,7 +966,11 @@
       <span class="symbol">
         <a href="CompositeCertificateException$.html"><span class="name">CompositeCertificateException</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@CompositeCertificateException" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li><li name="play.api.libs.ws.ssl.KeystoreFormats" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="KeystoreFormats"></a>
@@ -736,7 +983,11 @@
       <span class="symbol">
         <a href="KeystoreFormats$.html"><span class="name">KeystoreFormats</span></a>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@KeystoreFormats" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li><li name="play.api.libs.ws.ssl.Protocols" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Protocols"></a>
@@ -749,9 +1000,13 @@
       <span class="symbol">
         <a href="Protocols$.html"><span class="name">Protocols</span></a>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@Protocols" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       
-    </li><li name="play.api.libs.ws.ssl.package#arrayCertsToListCerts" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="play.api.libs.ws.ssl#arrayCertsToListCerts" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="arrayCertsToListCerts(chain:Array[java.security.cert.Certificate]):java.util.List[java.security.cert.Certificate]"></a>
       <a id="arrayCertsToListCerts(Array[Certificate]):List[Certificate]"></a>
       <h4 class="signature">
@@ -762,9 +1017,13 @@
       <span class="symbol">
         <span class="name">arrayCertsToListCerts</span><span class="params">(<span name="chain">chain: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="java.security.cert.Certificate">Certificate</span>]</span>)</span><span class="result">: <span class="extype" name="java.util.List">List</span>[<span class="extype" name="java.security.cert.Certificate">Certificate</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@arrayCertsToListCerts(chain:Array[java.security.cert.Certificate]):java.util.List[java.security.cert.Certificate]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       
-    </li><li name="play.api.libs.ws.ssl.package#certResult2PKIXResult" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="play.api.libs.ws.ssl#certResult2PKIXResult" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="certResult2PKIXResult(result:java.security.cert.CertPathValidatorResult):java.security.cert.PKIXCertPathValidatorResult"></a>
       <a id="certResult2PKIXResult(CertPathValidatorResult):PKIXCertPathValidatorResult"></a>
       <h4 class="signature">
@@ -775,9 +1034,13 @@
       <span class="symbol">
         <span class="name">certResult2PKIXResult</span><span class="params">(<span name="result">result: <span class="extype" name="java.security.cert.CertPathValidatorResult">CertPathValidatorResult</span></span>)</span><span class="result">: <span class="extype" name="java.security.cert.PKIXCertPathValidatorResult">PKIXCertPathValidatorResult</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@certResult2PKIXResult(result:java.security.cert.CertPathValidatorResult):java.security.cert.PKIXCertPathValidatorResult" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       
-    </li><li name="play.api.libs.ws.ssl.package#certificate2X509Certificate" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="play.api.libs.ws.ssl#certificate2X509Certificate" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="certificate2X509Certificate(cert:java.security.cert.Certificate):java.security.cert.X509Certificate"></a>
       <a id="certificate2X509Certificate(Certificate):X509Certificate"></a>
       <h4 class="signature">
@@ -788,7 +1051,11 @@
       <span class="symbol">
         <span class="name">certificate2X509Certificate</span><span class="params">(<span name="cert">cert: <span class="extype" name="java.security.cert.Certificate">Certificate</span></span>)</span><span class="result">: <span class="extype" name="java.security.cert.X509Certificate">X509Certificate</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@certificate2X509Certificate(cert:java.security.cert.Certificate):java.security.cert.X509Certificate" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li><li name="play.api.libs.ws.ssl.debug" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="debug"></a>
@@ -801,9 +1068,13 @@
       <span class="symbol">
         <a href="debug/package.html"><span class="name">debug</span></a>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@debug" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       
-    </li><li name="play.api.libs.ws.ssl.package#debugChain" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="play.api.libs.ws.ssl#debugChain" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="debugChain(chain:Array[java.security.cert.X509Certificate]):Seq[String]"></a>
       <a id="debugChain(Array[X509Certificate]):Seq[String]"></a>
       <h4 class="signature">
@@ -812,11 +1083,32 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">debugChain</span><span class="params">(<span name="chain">chain: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="java.security.cert.X509Certificate">X509Certificate</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+        <span class="name">debugChain</span><span class="params">(<span name="chain">chain: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="java.security.cert.X509Certificate">X509Certificate</span>]</span>)</span><span class="result">: <a href="../../../../../scala/package.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@debugChain(chain:Array[java.security.cert.X509Certificate]):Seq[String]" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       
-    </li><li name="play.api.libs.ws.ssl.package#foldVersion" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="play.api.libs.ws.ssl#foldRuntime" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="foldRuntime[T](older:=&gt;T,newer:=&gt;T):T"></a>
+      <a id="foldRuntime[T](⇒T,⇒T):T"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">foldRuntime</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="older">older: ⇒ <span class="extype" name="play.api.libs.ws.ssl.foldRuntime.T">T</span></span>, <span name="newer">newer: ⇒ <span class="extype" name="play.api.libs.ws.ssl.foldRuntime.T">T</span></span>)</span><span class="result">: <span class="extype" name="play.api.libs.ws.ssl.foldRuntime.T">T</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@foldRuntime[T](older:=&gt;T,newer:=&gt;T):T" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      
+    </li><li name="play.api.libs.ws.ssl#foldVersion" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="foldVersion[T](run16:=&gt;T,runHigher:=&gt;T):T"></a>
       <a id="foldVersion[T](⇒T,⇒T):T"></a>
       <h4 class="signature">
@@ -827,7 +1119,28 @@
       <span class="symbol">
         <span class="name">foldVersion</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="run16">run16: ⇒ <span class="extype" name="play.api.libs.ws.ssl.foldVersion.T">T</span></span>, <span name="runHigher">runHigher: ⇒ <span class="extype" name="play.api.libs.ws.ssl.foldVersion.T">T</span></span>)</span><span class="result">: <span class="extype" name="play.api.libs.ws.ssl.foldVersion.T">T</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@foldVersion[T](run16:=&gt;T,runHigher:=&gt;T):T" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      
+    </li><li name="play.api.libs.ws.ssl#isOpenJdk" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="isOpenJdk:Boolean"></a>
+      <a id="isOpenJdk:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isOpenJdk</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ssl.package@isOpenJdk:Boolean" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li></ol>
             </div>
@@ -839,7 +1152,7 @@
 
         <div id="inheritedMembers">
         <div class="parent" name="scala.AnyRef">
-              <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
+              <h3>Inherited from <a href="../../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
             </div>
@@ -858,6 +1171,7 @@
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../../../lib/template.js"></script>
+
+
     </body>
       </html>

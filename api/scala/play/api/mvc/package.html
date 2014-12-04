@@ -1,5 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html >
 <html>
         <head>
           <title>mvc - play.api.mvc</title>
@@ -9,6 +8,11 @@
           
       <link href="../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../lib/tools.tooltip.js"></script>
+      
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../index.html';
@@ -26,7 +30,11 @@
       <div id="definition">
         <img src="../../../lib/package_big.png" />
         <p id="owner"><a href="../../package.html" class="extype" name="play">play</a>.<a href="../package.html" class="extype" name="play.api">api</a></p>
-        <h1>mvc</h1>
+        <h1>mvc</h1> <span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       </div>
 
       <h4 id="signature" class="signature">
@@ -39,15 +47,15 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Contains the Controller/Action/Result API to handle HTTP requests.</p><p>For example, a typical controller:</p><pre><span class="kw">object</span> <span class="std">Application</span> <span class="kw">extends</span> Controller {
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Contains the Controller/Action/Result API to handle HTTP requests.</p><p>For example, a typical controller:</p><pre><span class="kw">object</span> Application <span class="kw">extends</span> Controller {
 
 <span class="kw">def</span> index = Action {
   Ok(<span class="lit">"It works!"</span>)
 }
 
-}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.4.0-M1/framework/src/play/src/main/scala/play/api/mvc/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
+}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.4.0-M2/framework/src/play/src/main/scala/play/api/mvc/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -96,12 +104,16 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="AcceptExtractors.html"><span class="name">AcceptExtractors</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a href="AcceptExtractors.html"><span class="name">AcceptExtractors</span></a><span class="result"> extends <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">Define a set of extractors allowing to pattern match on the Accept HTTP header of a request
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@AcceptExtractorsextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Define a set of extractors allowing to pattern match on the Accept HTTP header of a request
 </p>
-    </li><li name="play.api.mvc.Accepting" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="play.api.mvc.Accepting" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="AcceptingextendsProductwithSerializable"></a>
       <a id="Accepting:Accepting"></a>
       <h4 class="signature">
@@ -112,9 +124,16 @@
       <span class="symbol">
         <a href="Accepting.html"><span class="name">Accepting</span></a><span class="params">(<span name="mimeType">mimeType: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">Convenient class to generate extractors checking if a given mime type matches the Accept header of a request.</p>
-    </li><li name="play.api.mvc.Action" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@AcceptingextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Convenient class to generate extractors checking if a given mime type matches the Accept header of a request.</p><div class="fullcomment"><div class="comment cmt"><p>Convenient class to generate extractors checking if a given mime type matches the Accept header of a request.
+Example of use:</p><pre><span class="kw">val</span> AcceptsMp3 = Accepting(<span class="lit">"audio/mp3"</span>)</pre><p>Then:</p><pre>request <span class="kw">match</span> {
+<span class="kw">case</span> AcceptsMp3() <span class="kw">=&gt;</span> ...
+}</pre></div></div>
+    </li><li name="play.api.mvc.Action" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="Action[A]extendsEssentialAction"></a>
       <a id="Action[A]:Action[A]"></a>
       <h4 class="signature">
@@ -125,9 +144,17 @@
       <span class="symbol">
         <a href="Action.html"><span class="name">Action</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <a href="EssentialAction.html" class="extype" name="play.api.mvc.EssentialAction">EssentialAction</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">An action is essentially a (Request[A] =&gt; Result) function that
-handles a request and generates a result to be sent to the client.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@Action[A]extendsEssentialAction" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">An action is essentially a (Request[A] =&gt; Result) function that
+handles a request and generates a result to be sent to the client.</p><div class="fullcomment"><div class="comment cmt"><p>An action is essentially a (Request[A] =&gt; Result) function that
+handles a request and generates a result to be sent to the client.</p><p>For example,</p><pre><span class="kw">val</span> echo = Action { request <span class="kw">=&gt;</span>
+Ok(<span class="lit">"Got request ["</span> + request + <span class="lit">"]"</span>)
+}</pre></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>the type of the request body
+</p></dd></dl></div>
     </li><li name="play.api.mvc.ActionBuilder" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="ActionBuilder[+R[_]]extendsActionFunction[play.api.mvc.Request,R]"></a>
       <a id="ActionBuilder[+R[_]]:ActionBuilder[R]"></a>
@@ -139,9 +166,13 @@ handles a request and generates a result to be sent to the client.</p>
       <span class="symbol">
         <a href="ActionBuilder.html"><span class="name">ActionBuilder</span></a><span class="tparams">[<span name="R">+R<span class="tparams">[<span name="_">_</span>]</span></span>]</span><span class="result"> extends <a href="ActionFunction.html" class="extype" name="play.api.mvc.ActionFunction">ActionFunction</a>[<a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>, <span class="extype" name="play.api.mvc.ActionBuilder.R">R</span>]</span>
       </span>
-      </h4>
-      <p class="comment cmt">Provides helpers for creating <code>Action</code> values.</p>
-    </li><li name="play.api.mvc.ActionFilter" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@ActionBuilder[+R[_]]extendsActionFunction[play.api.mvc.Request,R]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Provides helpers for creating <code>Action</code> values.</p>
+    </li><li name="play.api.mvc.ActionFilter" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="ActionFilter[R[_]]extendsActionRefiner[R,R]"></a>
       <a id="ActionFilter[R[_]]:ActionFilter[R]"></a>
       <h4 class="signature">
@@ -152,11 +183,19 @@ handles a request and generates a result to be sent to the client.</p>
       <span class="symbol">
         <a href="ActionFilter.html"><span class="name">ActionFilter</span></a><span class="tparams">[<span name="R">R<span class="tparams">[<span name="_">_</span>]</span></span>]</span><span class="result"> extends <a href="ActionRefiner.html" class="extype" name="play.api.mvc.ActionRefiner">ActionRefiner</a>[<span class="extype" name="play.api.mvc.ActionFilter.R">R</span>, <span class="extype" name="play.api.mvc.ActionFilter.R">R</span>]</span>
       </span>
-      </h4>
-      <p class="comment cmt">A simple kind of ActionRefiner which, given a request (of type R), may
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@ActionFilter[R[_]]extendsActionRefiner[R,R]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A simple kind of ActionRefiner which, given a request (of type R), may
 either immediately produce a Result (for example, an error), or
-continue its Action block with the same request.</p>
-    </li><li name="play.api.mvc.ActionFunction" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+continue its Action block with the same request.</p><div class="fullcomment"><div class="comment cmt"><p>A simple kind of ActionRefiner which, given a request (of type R), may
+either immediately produce a Result (for example, an error), or
+continue its Action block with the same request.
+The critical (abstract) function is filter.
+</p></div></div>
+    </li><li name="play.api.mvc.ActionFunction" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="ActionFunction[-R[_],+P[_]]extendsAnyRef"></a>
       <a id="ActionFunction[-R[_],+P[_]]:ActionFunction[R,P]"></a>
       <h4 class="signature">
@@ -165,11 +204,20 @@ continue its Action block with the same request.</p>
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="ActionFunction.html"><span class="name">ActionFunction</span></a><span class="tparams">[<span name="R">-R<span class="tparams">[<span name="_">_</span>]</span></span>, <span name="P">+P<span class="tparams">[<span name="_">_</span>]</span></span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a href="ActionFunction.html"><span class="name">ActionFunction</span></a><span class="tparams">[<span name="R">-R<span class="tparams">[<span name="_">_</span>]</span></span>, <span name="P">+P<span class="tparams">[<span name="_">_</span>]</span></span>]</span><span class="result"> extends <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">A builder for generic Actions that generalizes over the type of requests.</p>
-    </li><li name="play.api.mvc.ActionRefiner" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@ActionFunction[-R[_],+P[_]]extendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A builder for generic Actions that generalizes over the type of requests.</p><div class="fullcomment"><div class="comment cmt"><p>A builder for generic Actions that generalizes over the type of requests.
+An ActionFunction[R,P] may be chained onto an existing ActionBuilder[R] to produce a new ActionBuilder[P] using andThen.
+The critical (abstract) function is invokeBlock.
+Most users will want to use ActionBuilder instead.
+</p></div><dl class="paramcmts block"><dt class="tparam">R</dt><dd class="cmt"><p>the type of the request on which this is invoked (input)</p></dd><dt class="tparam">P</dt><dd class="cmt"><p>the parameter type which blocks executed by this builder take (output)
+</p></dd></dl></div>
+    </li><li name="play.api.mvc.ActionRefiner" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="ActionRefiner[-R[_],+P[_]]extendsActionFunction[R,P]"></a>
       <a id="ActionRefiner[-R[_],+P[_]]:ActionRefiner[R,P]"></a>
       <h4 class="signature">
@@ -180,11 +228,19 @@ continue its Action block with the same request.</p>
       <span class="symbol">
         <a href="ActionRefiner.html"><span class="name">ActionRefiner</span></a><span class="tparams">[<span name="R">-R<span class="tparams">[<span name="_">_</span>]</span></span>, <span name="P">+P<span class="tparams">[<span name="_">_</span>]</span></span>]</span><span class="result"> extends <a href="ActionFunction.html" class="extype" name="play.api.mvc.ActionFunction">ActionFunction</a>[<span class="extype" name="play.api.mvc.ActionRefiner.R">R</span>, <span class="extype" name="play.api.mvc.ActionRefiner.P">P</span>]</span>
       </span>
-      </h4>
-      <p class="comment cmt">A simple kind of ActionFunction which, given a request (of type R), may
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@ActionRefiner[-R[_],+P[_]]extendsActionFunction[R,P]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A simple kind of ActionFunction which, given a request (of type R), may
 either immediately produce a Result (for example, an error), or call
-its Action block with a parameter (of type P).</p>
-    </li><li name="play.api.mvc.ActionTransformer" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+its Action block with a parameter (of type P).</p><div class="fullcomment"><div class="comment cmt"><p>A simple kind of ActionFunction which, given a request (of type R), may
+either immediately produce a Result (for example, an error), or call
+its Action block with a parameter (of type P).
+The critical (abstract) function is refine.
+</p></div></div>
+    </li><li name="play.api.mvc.ActionTransformer" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="ActionTransformer[-R[_],+P[_]]extendsActionRefiner[R,P]"></a>
       <a id="ActionTransformer[-R[_],+P[_]]:ActionTransformer[R,P]"></a>
       <h4 class="signature">
@@ -195,10 +251,17 @@ its Action block with a parameter (of type P).</p>
       <span class="symbol">
         <a href="ActionTransformer.html"><span class="name">ActionTransformer</span></a><span class="tparams">[<span name="R">-R<span class="tparams">[<span name="_">_</span>]</span></span>, <span name="P">+P<span class="tparams">[<span name="_">_</span>]</span></span>]</span><span class="result"> extends <a href="ActionRefiner.html" class="extype" name="play.api.mvc.ActionRefiner">ActionRefiner</a>[<span class="extype" name="play.api.mvc.ActionTransformer.R">R</span>, <span class="extype" name="play.api.mvc.ActionTransformer.P">P</span>]</span>
       </span>
-      </h4>
-      <p class="comment cmt">A simple kind of ActionRefiner which, given a request (of type R),
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@ActionTransformer[-R[_],+P[_]]extendsActionRefiner[R,P]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A simple kind of ActionRefiner which, given a request (of type R),
 unconditionally transforms it to a new parameter type (P) to be passed to
-its Action block.</p>
+its Action block.</p><div class="fullcomment"><div class="comment cmt"><p>A simple kind of ActionRefiner which, given a request (of type R),
+unconditionally transforms it to a new parameter type (P) to be passed to
+its Action block.  The critical (abstract) function is transform.
+</p></div></div>
     </li><li name="play.api.mvc.AnyContent" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="AnyContentextendsAnyRef"></a>
       <a id="AnyContent:AnyContent"></a>
@@ -208,10 +271,14 @@ its Action block.</p>
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="AnyContent.html"><span class="name">AnyContent</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a href="AnyContent.html"><span class="name">AnyContent</span></a><span class="result"> extends <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">A request body that adapts automatically according the request Content-Type.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@AnyContentextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A request body that adapts automatically according the request Content-Type.</p>
     </li><li name="play.api.mvc.AnyContentAsFormUrlEncoded" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="AnyContentAsFormUrlEncodedextendsAnyContentwithProductwithSerializable"></a>
       <a id="AnyContentAsFormUrlEncoded:AnyContentAsFormUrlEncoded"></a>
@@ -221,10 +288,14 @@ its Action block.</p>
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="AnyContentAsFormUrlEncoded.html"><span class="name">AnyContentAsFormUrlEncoded</span></a><span class="params">(<span name="data">data: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>)</span><span class="result"> extends <a href="AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="AnyContentAsFormUrlEncoded.html"><span class="name">AnyContentAsFormUrlEncoded</span></a><span class="params">(<span name="data">data: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <a href="../../../scala/package.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="scala.Predef.String">String</span>]]</span>)</span><span class="result"> extends <a href="AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">AnyContent - Form url encoded body
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@AnyContentAsFormUrlEncodedextendsAnyContentwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">AnyContent - Form url encoded body
 </p>
     </li><li name="play.api.mvc.AnyContentAsJson" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="AnyContentAsJsonextendsAnyContentwithProductwithSerializable"></a>
@@ -237,8 +308,12 @@ its Action block.</p>
       <span class="symbol">
         <a href="AnyContentAsJson.html"><span class="name">AnyContentAsJson</span></a><span class="params">(<span name="json">json: <a href="../libs/json/JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a></span>)</span><span class="result"> extends <a href="AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">AnyContent - Json body
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@AnyContentAsJsonextendsAnyContentwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">AnyContent - Json body
 </p>
     </li><li name="play.api.mvc.AnyContentAsMultipartFormData" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="AnyContentAsMultipartFormDataextendsAnyContentwithProductwithSerializable"></a>
@@ -251,8 +326,12 @@ its Action block.</p>
       <span class="symbol">
         <a href="AnyContentAsMultipartFormData.html"><span class="name">AnyContentAsMultipartFormData</span></a><span class="params">(<span name="mdf">mdf: <a href="MultipartFormData.html" class="extype" name="play.api.mvc.MultipartFormData">MultipartFormData</a>[<a href="../libs/Files$$TemporaryFile.html" class="extype" name="play.api.libs.Files.TemporaryFile">TemporaryFile</a>]</span>)</span><span class="result"> extends <a href="AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">AnyContent - Multipart form data body
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@AnyContentAsMultipartFormDataextendsAnyContentwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">AnyContent - Multipart form data body
 </p>
     </li><li name="play.api.mvc.AnyContentAsRaw" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="AnyContentAsRawextendsAnyContentwithProductwithSerializable"></a>
@@ -265,8 +344,12 @@ its Action block.</p>
       <span class="symbol">
         <a href="AnyContentAsRaw.html"><span class="name">AnyContentAsRaw</span></a><span class="params">(<span name="raw">raw: <a href="RawBuffer.html" class="extype" name="play.api.mvc.RawBuffer">RawBuffer</a></span>)</span><span class="result"> extends <a href="AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">AnyContent - Raw body (give access to the raw data as bytes).</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@AnyContentAsRawextendsAnyContentwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">AnyContent - Raw body (give access to the raw data as bytes).</p>
     </li><li name="play.api.mvc.AnyContentAsText" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="AnyContentAsTextextendsAnyContentwithProductwithSerializable"></a>
       <a id="AnyContentAsText:AnyContentAsText"></a>
@@ -278,8 +361,12 @@ its Action block.</p>
       <span class="symbol">
         <a href="AnyContentAsText.html"><span class="name">AnyContentAsText</span></a><span class="params">(<span name="txt">txt: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result"> extends <a href="AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">AnyContent - Text body
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@AnyContentAsTextextendsAnyContentwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">AnyContent - Text body
 </p>
     </li><li name="play.api.mvc.AnyContentAsXml" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="AnyContentAsXmlextendsAnyContentwithProductwithSerializable"></a>
@@ -292,10 +379,14 @@ its Action block.</p>
       <span class="symbol">
         <a href="AnyContentAsXml.html"><span class="name">AnyContentAsXml</span></a><span class="params">(<span name="xml">xml: <span class="extype" name="scala.xml.NodeSeq">NodeSeq</span></span>)</span><span class="result"> extends <a href="AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">AnyContent - XML body
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@AnyContentAsXmlextendsAnyContentwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">AnyContent - XML body
 </p>
-    </li><li name="play.api.mvc.BodyParser" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+    </li><li name="play.api.mvc.BodyParser" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="BodyParser[+A]extendsplay.api.mvc.RequestHeader=&gt;play.api.libs.iteratee.Iteratee[Array[Byte],Either[play.api.mvc.Result,A]]"></a>
       <a id="BodyParser[+A]:BodyParser[A]"></a>
       <h4 class="signature">
@@ -304,10 +395,16 @@ its Action block.</p>
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="BodyParser.html"><span class="name">BodyParser</span></a><span class="tparams">[<span name="A">+A</span>]</span><span class="result"> extends (<a href="RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <a href="../libs/iteratee/Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>], <span class="extype" name="scala.Either">Either</span>[<a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a>, <span class="extype" name="play.api.mvc.BodyParser.A">A</span>]]</span>
+        <a href="BodyParser.html"><span class="name">BodyParser</span></a><span class="tparams">[<span name="A">+A</span>]</span><span class="result"> extends (<a href="RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <a href="../libs/iteratee/Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>], <a href="../../../scala/package.html#Either[+A,+B]=scala.util.Either[A,B]" class="extmbr" name="scala.Either">Either</a>[<a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a>, <span class="extype" name="play.api.mvc.BodyParser.A">A</span>]]</span>
       </span>
-      </h4>
-      <p class="comment cmt">A body parser parses the HTTP request body content.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@BodyParser[+A]extendsplay.api.mvc.RequestHeader=&gt;play.api.libs.iteratee.Iteratee[Array[Byte],Either[play.api.mvc.Result,A]]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A body parser parses the HTTP request body content.</p><div class="fullcomment"><div class="comment cmt"><p>A body parser parses the HTTP request body content.
+</p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>the body content type
+</p></dd></dl></div>
     </li><li name="play.api.mvc.BodyParsers" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="BodyParsersextendsAnyRef"></a>
       <a id="BodyParsers:BodyParsers"></a>
@@ -317,11 +414,15 @@ its Action block.</p>
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="BodyParsers.html"><span class="name">BodyParsers</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a href="BodyParsers.html"><span class="name">BodyParsers</span></a><span class="result"> extends <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">Default body parsers.</p>
-    </li><li name="play.api.mvc.Call" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@BodyParsersextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Default body parsers.</p>
+    </li><li name="play.api.mvc.Call" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="CallextendsCallwithProductwithSerializable"></a>
       <a id="Call:Call"></a>
       <h4 class="signature">
@@ -332,9 +433,15 @@ its Action block.</p>
       <span class="symbol">
         <a href="Call.html"><span class="name">Call</span></a><span class="params">(<span name="method">method: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="url">url: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result"> extends <span class="extype" name="play.mvc.Call">mvc.Call</span> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">Defines a <code>Call</code>, which describes an HTTP request and can be used to create links or fill redirect data.</p>
-    </li><li name="play.api.mvc.Codec" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@CallextendsCallwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Defines a <code>Call</code>, which describes an HTTP request and can be used to create links or fill redirect data.</p><div class="fullcomment"><div class="comment cmt"><p>Defines a <code>Call</code>, which describes an HTTP request and can be used to create links or fill redirect data.</p><p>These values are usually generated by the reverse router.
+</p></div><dl class="paramcmts block"><dt class="param">method</dt><dd class="cmt"><p>the request HTTP method</p></dd><dt class="param">url</dt><dd class="cmt"><p>the request URL
+</p></dd></dl></div>
+    </li><li name="play.api.mvc.Codec" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="CodecextendsProductwithSerializable"></a>
       <a id="Codec:Codec"></a>
       <h4 class="signature">
@@ -345,9 +452,15 @@ its Action block.</p>
       <span class="symbol">
         <a href="Codec.html"><span class="name">Codec</span></a><span class="params">(<span name="charset">charset: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span name="encode">encode: (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]</span>, <span name="decode">decode: (<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]) ⇒ <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">A Codec handle the conversion of String to Byte arrays.</p>
-    </li><li name="play.api.mvc.Controller" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@CodecextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A Codec handle the conversion of String to Byte arrays.</p><div class="fullcomment"><div class="comment cmt"><p>A Codec handle the conversion of String to Byte arrays.
+</p></div><dl class="paramcmts block"><dt class="param">charset</dt><dd class="cmt"><p>The charset to be sent to the client.</p></dd><dt class="param">encode</dt><dd class="cmt"><p>The transformation function.
+</p></dd></dl></div>
+    </li><li name="play.api.mvc.Controller" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="ControllerextendsResultswithBodyParserswithHttpProtocolwithStatuswithHeaderNameswithContentTypeswithRequestExtractorswithRendering"></a>
       <a id="Controller:Controller"></a>
       <h4 class="signature">
@@ -358,9 +471,19 @@ its Action block.</p>
       <span class="symbol">
         <a href="Controller.html"><span class="name">Controller</span></a><span class="result"> extends <a href="Results.html" class="extype" name="play.api.mvc.Results">Results</a> with <a href="BodyParsers.html" class="extype" name="play.api.mvc.BodyParsers">BodyParsers</a> with <a href="../http/HttpProtocol.html" class="extype" name="play.api.http.HttpProtocol">HttpProtocol</a> with <a href="../http/Status.html" class="extype" name="play.api.http.Status">Status</a> with <a href="../http/HeaderNames.html" class="extype" name="play.api.http.HeaderNames">HeaderNames</a> with <a href="../http/ContentTypes.html" class="extype" name="play.api.http.ContentTypes">ContentTypes</a> with <a href="RequestExtractors.html" class="extype" name="play.api.mvc.RequestExtractors">RequestExtractors</a> with <a href="Rendering.html" class="extype" name="play.api.mvc.Rendering">Rendering</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">Defines utility methods to generate <code>Action</code> and <code>Results</code> types.</p>
-    </li><li name="play.api.mvc.Cookie" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@ControllerextendsResultswithBodyParserswithHttpProtocolwithStatuswithHeaderNameswithContentTypeswithRequestExtractorswithRendering" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Defines utility methods to generate <code>Action</code> and <code>Results</code> types.</p><div class="fullcomment"><div class="comment cmt"><p>Defines utility methods to generate <code>Action</code> and <code>Results</code> types.</p><p>For example:</p><pre><span class="kw">object</span> Application <span class="kw">extends</span> Controller {
+
+<span class="kw">def</span> hello(name:<span class="std">String</span>) = Action { request <span class="kw">=&gt;</span>
+  Ok(<span class="lit">"Hello "</span> + name)
+}
+
+}</pre></div></div>
+    </li><li name="play.api.mvc.Cookie" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="CookieextendsProductwithSerializable"></a>
       <a id="Cookie:Cookie"></a>
       <h4 class="signature">
@@ -369,10 +492,16 @@ its Action block.</p>
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="Cookie.html"><span class="name">Cookie</span></a><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="value">value: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="maxAge">maxAge: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Int">Int</span>] = <span class="symbol">scala.None</span></span>, <span name="path">path: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;/&quot;</span></span>, <span name="domain">domain: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">scala.None</span></span>, <span name="secure">secure: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="httpOnly">httpOnly: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="Cookie.html"><span class="name">Cookie</span></a><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="value">value: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="maxAge">maxAge: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Int">Int</span>] = <span class="symbol"><span class="name"><a href="../../../scala/package.html">None</a></span></span></span>, <span name="path">path: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;/&quot;</span></span>, <span name="domain">domain: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol"><span class="name"><a href="../../../scala/package.html">None</a></span></span></span>, <span name="secure">secure: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="httpOnly">httpOnly: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">An HTTP cookie.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@CookieextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">An HTTP cookie.</p><div class="fullcomment"><div class="comment cmt"><p>An HTTP cookie.
+</p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>the cookie name</p></dd><dt class="param">value</dt><dd class="cmt"><p>the cookie value</p></dd><dt class="param">maxAge</dt><dd class="cmt"><p>the cookie expiration date in seconds, <code>None</code> for a transient cookie, or a value less than 0 to expire a cookie now</p></dd><dt class="param">path</dt><dd class="cmt"><p>the cookie path, defaulting to the root path <code>/</code></p></dd><dt class="param">domain</dt><dd class="cmt"><p>the cookie domain</p></dd><dt class="param">secure</dt><dd class="cmt"><p>whether this cookie is secured, sent only for HTTPS requests</p></dd><dt class="param">httpOnly</dt><dd class="cmt"><p>whether this cookie is HTTP only, i.e. not accessible from client-side JavaScipt code
+</p></dd></dl></div>
     </li><li name="play.api.mvc.CookieBaker" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="CookieBaker[T&lt;:AnyRef]extendsAnyRef"></a>
       <a id="CookieBaker[T&lt;:AnyRef]:CookieBaker[T]"></a>
@@ -382,10 +511,14 @@ its Action block.</p>
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="CookieBaker.html"><span class="name">CookieBaker</span></a><span class="tparams">[<span name="T">T &lt;: <span class="extype" name="scala.AnyRef">AnyRef</span></span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a href="CookieBaker.html"><span class="name">CookieBaker</span></a><span class="tparams">[<span name="T">T &lt;: <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>]</span><span class="result"> extends <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">Trait that should be extended by the Cookie helpers.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@CookieBaker[T&lt;:AnyRef]extendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Trait that should be extended by the Cookie helpers.</p>
     </li><li name="play.api.mvc.Cookies" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="CookiesextendsTraversable[play.api.mvc.Cookie]"></a>
       <a id="Cookies:Cookies"></a>
@@ -395,11 +528,15 @@ its Action block.</p>
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="Cookies.html"><span class="name">Cookies</span></a><span class="result"> extends <span class="extype" name="scala.Traversable">Traversable</span>[<a href="Cookie.html" class="extype" name="play.api.mvc.Cookie">Cookie</a>]</span>
+        <a href="Cookies.html"><span class="name">Cookies</span></a><span class="result"> extends <a href="../../../scala/package.html#Traversable[+A]=Traversable[A]" class="extmbr" name="scala.Traversable">Traversable</a>[<a href="Cookie.html" class="extype" name="play.api.mvc.Cookie">Cookie</a>]</span>
       </span>
-      </h4>
-      <p class="comment cmt">The HTTP cookies set.</p>
-    </li><li name="play.api.mvc.DiscardingCookie" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@CookiesextendsTraversable[play.api.mvc.Cookie]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">The HTTP cookies set.</p>
+    </li><li name="play.api.mvc.DiscardingCookie" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="DiscardingCookieextendsProductwithSerializable"></a>
       <a id="DiscardingCookie:DiscardingCookie"></a>
       <h4 class="signature">
@@ -408,11 +545,17 @@ its Action block.</p>
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="DiscardingCookie.html"><span class="name">DiscardingCookie</span></a><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="path">path: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;/&quot;</span></span>, <span name="domain">domain: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">scala.None</span></span>, <span name="secure">secure: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="DiscardingCookie.html"><span class="name">DiscardingCookie</span></a><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="path">path: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;/&quot;</span></span>, <span name="domain">domain: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol"><span class="name"><a href="../../../scala/package.html">None</a></span></span></span>, <span name="secure">secure: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">A cookie to be discarded.</p>
-    </li><li name="play.api.mvc.EssentialAction" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@DiscardingCookieextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A cookie to be discarded.</p><div class="fullcomment"><div class="comment cmt"><p>A cookie to be discarded.  This contains only the data necessary for discarding a cookie.
+</p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>the name of the cookie to discard</p></dd><dt class="param">path</dt><dd class="cmt"><p>the path of the cookie, defaults to the root path</p></dd><dt class="param">domain</dt><dd class="cmt"><p>the cookie domain</p></dd><dt class="param">secure</dt><dd class="cmt"><p>whether this cookie is secured
+</p></dd></dl></div>
+    </li><li name="play.api.mvc.EssentialAction" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="EssentialActionextendsplay.api.mvc.RequestHeader=&gt;play.api.libs.iteratee.Iteratee[Array[Byte],play.api.mvc.Result]withHandler"></a>
       <a id="EssentialAction:EssentialAction"></a>
       <h4 class="signature">
@@ -423,9 +566,17 @@ its Action block.</p>
       <span class="symbol">
         <a href="EssentialAction.html"><span class="name">EssentialAction</span></a><span class="result"> extends (<a href="RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <a href="../libs/iteratee/Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>], <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a>] with <a href="Handler.html" class="extype" name="play.api.mvc.Handler">Handler</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">An <code>EssentialAction</code> underlies every <code>Action</code>.</p>
-    </li><li name="play.api.mvc.EssentialFilter" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@EssentialActionextendsplay.api.mvc.RequestHeader=&gt;play.api.libs.iteratee.Iteratee[Array[Byte],play.api.mvc.Result]withHandler" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">An <code>EssentialAction</code> underlies every <code>Action</code>.</p><div class="fullcomment"><div class="comment cmt"><p>An <code>EssentialAction</code> underlies every <code>Action</code>. Given a <code>RequestHeader</code>, an
+<code>EssentialAction</code> consumes the request body (an <code>Array[Byte]</code>) and returns
+a <code>Result</code>.</p><p>An <code>EssentialAction</code> is a <code>Handler</code>, which means it is one of the objects
+that Play uses to handle requests.
+</p></div></div>
+    </li><li name="play.api.mvc.EssentialFilter" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="EssentialFilterextendsAnyRef"></a>
       <a id="EssentialFilter:EssentialFilter"></a>
       <h4 class="signature">
@@ -434,10 +585,19 @@ its Action block.</p>
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="EssentialFilter.html"><span class="name">EssentialFilter</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a href="EssentialFilter.html"><span class="name">EssentialFilter</span></a><span class="result"> extends <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">Implement this interface if you want to add a Filter to your application</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@EssentialFilterextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Implement this interface if you want to add a Filter to your application</p><div class="fullcomment"><div class="comment cmt"><p>Implement this interface if you want to add a Filter to your application</p><pre><span class="kw">object</span> AccessLog <span class="kw">extends</span> Filter {
+  <span class="kw">override</span> <span class="kw">def</span> apply(next: RequestHeader <span class="kw">=&gt;</span> Future[Result])(request: RequestHeader): Future[Result] = {
+		 <span class="kw">val</span> result = next(request)
+		 result.map { r <span class="kw">=&gt;</span> play.Logger.info(request + <span class="lit">"\n\t => "</span> + r; r }
+	 }
+}</pre></div></div>
     </li><li name="play.api.mvc.Filter" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="FilterextendsEssentialFilter"></a>
       <a id="Filter:Filter"></a>
@@ -449,9 +609,13 @@ its Action block.</p>
       <span class="symbol">
         <a href="Filter.html"><span class="name">Filter</span></a><span class="result"> extends <a href="EssentialFilter.html" class="extype" name="play.api.mvc.EssentialFilter">EssentialFilter</a></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@FilterextendsEssentialFilter" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       
-    </li><li name="play.api.mvc.Flash" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="play.api.mvc.Flash" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="FlashextendsProductwithSerializable"></a>
       <a id="Flash:Flash"></a>
       <h4 class="signature">
@@ -460,11 +624,16 @@ its Action block.</p>
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="Flash.html"><span class="name">Flash</span></a><span class="params">(<span name="data">data: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>] = <span class="defval" name="scala.this.Predef.Map.empty[String, String]">...</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="Flash.html"><span class="name">Flash</span></a><span class="params">(<span name="data">data: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">Map.empty[String, String]</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">HTTP Flash scope.</p>
-    </li><li name="play.api.mvc.Handler" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@FlashextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">HTTP Flash scope.</p><div class="fullcomment"><div class="comment cmt"><p>HTTP Flash scope.</p><p>Flash data are encoded into an HTTP cookie, and can only contain simple <code>String</code> values.
+</p></div></div>
+    </li><li name="play.api.mvc.Handler" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="HandlerextendsAnyRef"></a>
       <a id="Handler:Handler"></a>
       <h4 class="signature">
@@ -473,10 +642,19 @@ its Action block.</p>
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="Handler.html"><span class="name">Handler</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a href="Handler.html"><span class="name">Handler</span></a><span class="result"> extends <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">An Handler handles a request.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@HandlerextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">An Handler handles a request.</p><div class="fullcomment"><div class="comment cmt"><p>An Handler handles a request. Play understands several types of handlers,
+for example <code>EssentialAction</code>s and <code>WebSocket</code>s.</p><p>The <code>Handler</code> used to handle the request is controlled by <code>GlobalSetting</code>s's
+<code>onRequestReceived</code> method. The default implementation of
+<code>onRequestReceived</code> delegates to <code>onRouteRequest</code> which calls the default
+<code>Router</code>.
+</p></div></div>
     </li><li name="play.api.mvc.HandlerRef" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="HandlerRef[T]extendsHandlerRef"></a>
       <a id="HandlerRef[T]:HandlerRef[T]"></a>
@@ -488,8 +666,12 @@ its Action block.</p>
       <span class="symbol">
         <a href="HandlerRef.html"><span class="name">HandlerRef</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <span class="extype" name="play.mvc.HandlerRef">mvc.HandlerRef</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">Reference to a Handler, useful for contructing handlers from Java code.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@HandlerRef[T]extendsHandlerRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Reference to a Handler, useful for contructing handlers from Java code.</p>
     </li><li name="play.api.mvc.Headers" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="HeadersextendsAnyRef"></a>
       <a id="Headers:Headers"></a>
@@ -499,11 +681,15 @@ its Action block.</p>
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="Headers.html"><span class="name">Headers</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a href="Headers.html"><span class="name">Headers</span></a><span class="result"> extends <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">The HTTP headers set.</p>
-    </li><li name="play.api.mvc.JavascriptLiteral" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@HeadersextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">The HTTP headers set.</p>
+    </li><li name="play.api.mvc.JavascriptLiteral" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="JavascriptLiteral[A]extendsAnyRef"></a>
       <a id="JavascriptLiteral[A]:JavascriptLiteral[A]"></a>
       <h4 class="signature">
@@ -512,10 +698,21 @@ its Action block.</p>
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="JavascriptLiteral.html"><span class="name">JavascriptLiteral</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a href="JavascriptLiteral.html"><span class="name">JavascriptLiteral</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">Transform a value to a Javascript literal.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@JavascriptLiteral[A]extendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Transform a value to a Javascript literal.</p><div class="fullcomment"><div class="comment cmt"><p>Transform a value to a Javascript literal.
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@implicitNotFound</span><span class="args">(<span>
+      
+      <span class="defval" name="&quot;No JavaScript literal binder found for type ${A}. Try to implement an implicit JavascriptLiteral for this type.&quot;">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
     </li><li name="play.api.mvc.MaxSizeExceeded" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="MaxSizeExceededextendsProductwithSerializable"></a>
       <a id="MaxSizeExceeded:MaxSizeExceeded"></a>
@@ -525,10 +722,14 @@ its Action block.</p>
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="MaxSizeExceeded.html"><span class="name">MaxSizeExceeded</span></a><span class="params">(<span name="length">length: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="MaxSizeExceeded.html"><span class="name">MaxSizeExceeded</span></a><span class="params">(<span name="length">length: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">Signal a max content size exceeded
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@MaxSizeExceededextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Signal a max content size exceeded
 </p>
     </li><li name="play.api.mvc.MultipartFormData" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="MultipartFormData[A]extendsProductwithSerializable"></a>
@@ -539,11 +740,15 @@ its Action block.</p>
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="MultipartFormData.html"><span class="name">MultipartFormData</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="dataParts">dataParts: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>, <span name="files">files: <span class="extype" name="scala.Seq">Seq</span>[<a href="MultipartFormData$$FilePart.html" class="extype" name="play.api.mvc.MultipartFormData.FilePart">FilePart</a>[<span class="extype" name="play.api.mvc.MultipartFormData.A">A</span>]]</span>, <span name="badParts">badParts: <span class="extype" name="scala.Seq">Seq</span>[<a href="MultipartFormData$$BadPart.html" class="extype" name="play.api.mvc.MultipartFormData.BadPart">BadPart</a>]</span>, <span name="missingFileParts">missingFileParts: <span class="extype" name="scala.Seq">Seq</span>[<a href="MultipartFormData$$MissingFilePart.html" class="extype" name="play.api.mvc.MultipartFormData.MissingFilePart">MissingFilePart</a>]</span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="MultipartFormData.html"><span class="name">MultipartFormData</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="dataParts">dataParts: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <a href="../../../scala/package.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="scala.Predef.String">String</span>]]</span>, <span name="files">files: <a href="../../../scala/package.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<a href="MultipartFormData$$FilePart.html" class="extype" name="play.api.mvc.MultipartFormData.FilePart">FilePart</a>[<span class="extype" name="play.api.mvc.MultipartFormData.A">A</span>]]</span>, <span name="badParts">badParts: <a href="../../../scala/package.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<a href="MultipartFormData$$BadPart.html" class="extype" name="play.api.mvc.MultipartFormData.BadPart">BadPart</a>]</span>, <span name="missingFileParts">missingFileParts: <a href="../../../scala/package.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<a href="MultipartFormData$$MissingFilePart.html" class="extype" name="play.api.mvc.MultipartFormData.MissingFilePart">MissingFilePart</a>]</span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">Multipart form data body.</p>
-    </li><li name="play.api.mvc.PathBindable" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@MultipartFormData[A]extendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Multipart form data body.</p>
+    </li><li name="play.api.mvc.PathBindable" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="PathBindable[A]extendsAnyRef"></a>
       <a id="PathBindable[A]:PathBindable[A]"></a>
       <h4 class="signature">
@@ -552,11 +757,42 @@ its Action block.</p>
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="PathBindable.html"><span class="name">PathBindable</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a href="PathBindable.html"><span class="name">PathBindable</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">Binder for URL path parameters.</p>
-    </li><li name="play.api.mvc.QueryStringBindable" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@PathBindable[A]extendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Binder for URL path parameters.</p><div class="fullcomment"><div class="comment cmt"><p>Binder for URL path parameters.</p><p>You can provide an implementation of <code>PathBindable[A]</code> for any type <code>A</code> you want to be able to
+bind directly from the request path.</p><p>For example, given this class definition:</p><pre><span class="kw">case</span> <span class="kw">class</span> User(id: <span class="std">Int</span>, name: <span class="std">String</span>, age: <span class="std">Int</span>)</pre><p>You can define a binder retrieving a <code>User</code> instance from its id, useable like the following:</p><pre><span class="cmt">// In your routes:</span>
+<span class="cmt">// GET  /show/:user      controllers.Application.show(user)</span>
+<span class="cmt">// For example: /show/42</span>
+
+<span class="kw">object</span> Application <span class="kw">extends</span> Controller {
+  <span class="kw">def</span> show(user: User) = Action {
+    ￢ﾀﾦ
+  }
+}</pre><p>The definition the binder can look like the following:</p><pre><span class="kw">object</span> User {
+<span class="kw">implicit</span> <span class="kw">def</span> pathBinder(<span class="kw">implicit</span> intBinder: PathBindable[<span class="std">Int</span>]) = <span class="kw">new</span> PathBindable[User] {
+  <span class="kw">override</span> <span class="kw">def</span> bind(key: <span class="std">String</span>, value: <span class="std">String</span>): Either[<span class="std">String</span>, User] = {
+    <span class="kw">for</span> {
+      id <span class="kw">&lt;-</span> intBinder.bind(key, value).right
+      user <span class="kw">&lt;-</span> User.findById(id).toRight(<span class="lit">"User not found"</span>).right
+    } <span class="kw">yield</span> user
+  }
+  <span class="kw">override</span> <span class="kw">def</span> unbind(key: <span class="std">String</span>, user: User): <span class="std">String</span> = {
+    intBinder.unbind(user.id)
+  }
+}
+}</pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@implicitNotFound</span><span class="args">(<span>
+      
+      <span class="defval" name="&quot;No URL path binder found for type ${A}. Try to implement an implicit PathBindable for this type.&quot;">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="play.api.mvc.QueryStringBindable" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="QueryStringBindable[A]extendsAnyRef"></a>
       <a id="QueryStringBindable[A]:QueryStringBindable[A]"></a>
       <h4 class="signature">
@@ -565,11 +801,44 @@ its Action block.</p>
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="QueryStringBindable.html"><span class="name">QueryStringBindable</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a href="QueryStringBindable.html"><span class="name">QueryStringBindable</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">Binder for query string parameters.</p>
-    </li><li name="play.api.mvc.RawBuffer" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@QueryStringBindable[A]extendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Binder for query string parameters.</p><div class="fullcomment"><div class="comment cmt"><p>Binder for query string parameters.</p><p>You can provide an implementation of <code>QueryStringBindable[A]</code> for any type <code>A</code> you want to be able to
+bind directly from the request query string.</p><p>For example, if you have the following type to encode pagination:</p><pre><span class="cmt">/**
+ * @param index Current page index
+ * @param size Number of items in a page
+ */</span>
+<span class="kw">case</span> <span class="kw">class</span> Pager(index: <span class="std">Int</span>, size: <span class="std">Int</span>)</pre><p>Play will create a <code>Pager(5, 42)</code> value from a query string looking like <code>/foo?p.index=5&amp;p.size=42</code> if you define
+an instance of <code>QueryStringBindable[Pager]</code> available in the implicit scope.</p><p>For example:</p><pre><span class="kw">object</span> Pager {
+<span class="kw">implicit</span> <span class="kw">def</span> queryStringBinder(<span class="kw">implicit</span> intBinder: QueryStringBindable[<span class="std">Int</span>]) = <span class="kw">new</span> QueryStringBindable[Pager] {
+  <span class="kw">override</span> <span class="kw">def</span> bind(key: <span class="std">String</span>, params: <span class="std">Map</span>[<span class="std">String</span>, <span class="std">Seq</span>[<span class="std">String</span>]]): <span class="std">Option</span>[Either[<span class="std">String</span>, Pager]] = {
+    <span class="kw">for</span> {
+      index <span class="kw">&lt;-</span> intBinder.bind(key + <span class="lit">".index"</span>, params)
+      size <span class="kw">&lt;-</span> intBinder.bind(key + <span class="lit">".size"</span>, params)
+    } <span class="kw">yield</span> {
+      (index, size) <span class="kw">match</span> {
+        <span class="kw">case</span> (Right(index), Right(size)) <span class="kw">=&gt;</span> Right(Pager(index, size))
+        <span class="kw">case</span> _ <span class="kw">=&gt;</span> Left(<span class="lit">"Unable to bind a Pager"</span>)
+      }
+    }
+  }
+  <span class="kw">override</span> <span class="kw">def</span> unbind(key: <span class="std">String</span>, pager: Pager): <span class="std">String</span> = {
+    intBinder.unbind(key + <span class="lit">".index"</span>, pager.index) + <span class="lit">"&"</span> + intBinder.unbind(key + <span class="lit">".size"</span>, pager.size)
+  }
+}
+}</pre><p>To use it in a route, just write a type annotation aside the parameter you want to bind:</p><pre>GET  /foo        controllers.foo(p: Pager)</pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@implicitNotFound</span><span class="args">(<span>
+      
+      <span class="defval" name="&quot;No QueryString binder found for type ${A}. Try to implement an implicit QueryStringBindable for this type.&quot;">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="play.api.mvc.RawBuffer" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="RawBufferextendsProductwithSerializable"></a>
       <a id="RawBuffer:RawBuffer"></a>
       <h4 class="signature">
@@ -578,10 +847,16 @@ its Action block.</p>
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="RawBuffer.html"><span class="name">RawBuffer</span></a><span class="params">(<span name="memoryThreshold">memoryThreshold: <span class="extype" name="scala.Int">Int</span></span>, <span name="initialData">initialData: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>] = <span class="defval" name="scala.Array.empty[Byte](ClassTag.Byte)">...</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="RawBuffer.html"><span class="name">RawBuffer</span></a><span class="params">(<span name="memoryThreshold">memoryThreshold: <span class="extype" name="scala.Int">Int</span></span>, <span name="initialData">initialData: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>] = <span class="symbol"><span class="name"><a href="../../../scala/package.html">Array.empty[Byte]</a></span></span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">Handle the request body a raw bytes data.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@RawBufferextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Handle the request body a raw bytes data.</p><div class="fullcomment"><div class="comment cmt"><p>Handle the request body a raw bytes data.
+</p></div><dl class="paramcmts block"><dt class="param">memoryThreshold</dt><dd class="cmt"><p>If the content size is bigger than this limit, the content is stored as file.
+</p></dd></dl></div>
     </li><li name="play.api.mvc.Rendering" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="RenderingextendsAnyRef"></a>
       <a id="Rendering:Rendering"></a>
@@ -591,11 +866,15 @@ its Action block.</p>
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="Rendering.html"><span class="name">Rendering</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a href="Rendering.html"><span class="name">Rendering</span></a><span class="result"> extends <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@RenderingextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       
-    </li><li name="play.api.mvc.Request" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+    </li><li name="play.api.mvc.Request" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="Request[+A]extendsRequestHeader"></a>
       <a id="Request[+A]:Request[A]"></a>
       <h4 class="signature">
@@ -606,8 +885,20 @@ its Action block.</p>
       <span class="symbol">
         <a href="Request.html"><span class="name">Request</span></a><span class="tparams">[<span name="A">+A</span>]</span><span class="result"> extends <a href="RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">The complete HTTP request.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@Request[+A]extendsRequestHeader" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">The complete HTTP request.</p><div class="fullcomment"><div class="comment cmt"><p>The complete HTTP request.
+</p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>the body content type.
+</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@implicitNotFound</span><span class="args">(<span>
+      
+      <span class="symbol">&quot;Cannot find any HTTP Request here&quot;</span>
+    </span>)</span>
+              
+        </dd></dl></div>
     </li><li name="play.api.mvc.RequestExtractors" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="RequestExtractorsextendsAcceptExtractors"></a>
       <a id="RequestExtractors:RequestExtractors"></a>
@@ -619,9 +910,13 @@ its Action block.</p>
       <span class="symbol">
         <a href="RequestExtractors.html"><span class="name">RequestExtractors</span></a><span class="result"> extends <a href="AcceptExtractors.html" class="extype" name="play.api.mvc.AcceptExtractors">AcceptExtractors</a></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@RequestExtractorsextendsAcceptExtractors" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       
-    </li><li name="play.api.mvc.RequestHeader" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+    </li><li name="play.api.mvc.RequestHeader" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="RequestHeaderextendsAnyRef"></a>
       <a id="RequestHeader:RequestHeader"></a>
       <h4 class="signature">
@@ -630,11 +925,22 @@ its Action block.</p>
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="RequestHeader.html"><span class="name">RequestHeader</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a href="RequestHeader.html"><span class="name">RequestHeader</span></a><span class="result"> extends <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">The HTTP request header.</p>
-    </li><li name="play.api.mvc.RequestTaggingHandler" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@RequestHeaderextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">The HTTP request header.</p><div class="fullcomment"><div class="comment cmt"><p>The HTTP request header. Note that it doesn’t contain the request body yet.
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@implicitNotFound</span><span class="args">(<span>
+      
+      <span class="defval" name="&quot;Cannot find any HTTP Request Header here&quot;">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="play.api.mvc.RequestTaggingHandler" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="RequestTaggingHandlerextendsHandler"></a>
       <a id="RequestTaggingHandler:RequestTaggingHandler"></a>
       <h4 class="signature">
@@ -645,8 +951,13 @@ its Action block.</p>
       <span class="symbol">
         <a href="RequestTaggingHandler.html"><span class="name">RequestTaggingHandler</span></a><span class="result"> extends <a href="Handler.html" class="extype" name="play.api.mvc.Handler">Handler</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">A handler that is able to tag requests.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@RequestTaggingHandlerextendsHandler" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A handler that is able to tag requests.</p><div class="fullcomment"><div class="comment cmt"><p>A handler that is able to tag requests. Usually mixed in to other handlers.
+</p></div></div>
     </li><li name="play.api.mvc.ResponseHeader" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="ResponseHeaderextendsAnyRef"></a>
       <a id="ResponseHeader:ResponseHeader"></a>
@@ -656,11 +967,15 @@ its Action block.</p>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="ResponseHeader.html"><span class="name">ResponseHeader</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a href="ResponseHeader.html"><span class="name">ResponseHeader</span></a><span class="result"> extends <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">A simple HTTP response header, used for standard responses.</p>
-    </li><li name="play.api.mvc.Result" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@ResponseHeaderextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A simple HTTP response header, used for standard responses.</p>
+    </li><li name="play.api.mvc.Result" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ResultextendsProductwithSerializable"></a>
       <a id="Result:Result"></a>
       <h4 class="signature">
@@ -669,10 +984,16 @@ its Action block.</p>
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="Result.html"><span class="name">Result</span></a><span class="params">(<span name="header">header: <a href="ResponseHeader.html" class="extype" name="play.api.mvc.ResponseHeader">ResponseHeader</a></span>, <span name="body">body: <a href="../libs/iteratee/Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]]</span>, <span name="connection">connection: <a href="HttpConnection$.html#Connection=play.api.mvc.HttpConnection.Value" class="extmbr" name="play.api.mvc.HttpConnection.Connection">Connection</a> = <span class="symbol">HttpConnection.KeepAlive</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="Result.html"><span class="name">Result</span></a><span class="params">(<span name="header">header: <a href="ResponseHeader.html" class="extype" name="play.api.mvc.ResponseHeader">ResponseHeader</a></span>, <span name="body">body: <a href="../libs/iteratee/Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]]</span>, <span name="connection">connection: <a href="HttpConnection$.html#Connection=play.api.mvc.HttpConnection.Value" class="extmbr" name="play.api.mvc.HttpConnection.Connection">Connection</a> = <span class="symbol"><span class="name"><a href="HttpConnection$.html">HttpConnection.KeepAlive</a></span></span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">A simple result, which defines the response header and a body ready to send to the client.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@ResultextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A simple result, which defines the response header and a body ready to send to the client.</p><div class="fullcomment"><div class="comment cmt"><p>A simple result, which defines the response header and a body ready to send to the client.
+</p></div><dl class="paramcmts block"><dt class="param">header</dt><dd class="cmt"><p>the response header, which contains status code and HTTP headers</p></dd><dt class="param">body</dt><dd class="cmt"><p>the response body</p></dd><dt class="param">connection</dt><dd class="cmt"><p>the connection semantics to use
+</p></dd></dl></div>
     </li><li name="play.api.mvc.Results" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="ResultsextendsAnyRef"></a>
       <a id="Results:Results"></a>
@@ -682,11 +1003,15 @@ its Action block.</p>
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="Results.html"><span class="name">Results</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a href="Results.html"><span class="name">Results</span></a><span class="result"> extends <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">Helper utilities to generate results.</p>
-    </li><li name="play.api.mvc.Session" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@ResultsextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Helper utilities to generate results.</p>
+    </li><li name="play.api.mvc.Session" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="SessionextendsProductwithSerializable"></a>
       <a id="Session:Session"></a>
       <h4 class="signature">
@@ -695,11 +1020,16 @@ its Action block.</p>
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="Session.html"><span class="name">Session</span></a><span class="params">(<span name="data">data: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>] = <span class="defval" name="scala.this.Predef.Map.empty[String, String]">...</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="Session.html"><span class="name">Session</span></a><span class="params">(<span name="data">data: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">Map.empty[String, String]</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">HTTP Session.</p>
-    </li><li name="play.api.mvc.WebSocket" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@SessionextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">HTTP Session.</p><div class="fullcomment"><div class="comment cmt"><p>HTTP Session.</p><p>Session data are encoded into an HTTP cookie, and can only contain simple <code>String</code> values.
+</p></div></div>
+    </li><li name="play.api.mvc.WebSocket" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="WebSocket[In,Out]extendsHandlerwithProductwithSerializable"></a>
       <a id="WebSocket[In,Out]:WebSocket[In,Out]"></a>
       <h4 class="signature">
@@ -708,10 +1038,16 @@ its Action block.</p>
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="WebSocket.html"><span class="name">WebSocket</span></a><span class="tparams">[<span name="In">In</span>, <span name="Out">Out</span>]</span><span class="params">(<span name="f">f: (<a href="RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="scala.Either">Either</span>[<a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a>, (<a href="../libs/iteratee/Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.mvc.WebSocket.In">In</span>], <a href="../libs/iteratee/Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="play.api.mvc.WebSocket.Out">Out</span>, <span class="extype" name="scala.Unit">Unit</span>]) ⇒ <span class="extype" name="scala.Unit">Unit</span>]]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="inFormatter">inFormatter: <a href="WebSocket$$FrameFormatter.html" class="extype" name="play.api.mvc.WebSocket.FrameFormatter">FrameFormatter</a>[<span class="extype" name="play.api.mvc.WebSocket.In">In</span>]</span>, <span name="outFormatter">outFormatter: <a href="WebSocket$$FrameFormatter.html" class="extype" name="play.api.mvc.WebSocket.FrameFormatter">FrameFormatter</a>[<span class="extype" name="play.api.mvc.WebSocket.Out">Out</span>]</span>)</span><span class="result"> extends <a href="Handler.html" class="extype" name="play.api.mvc.Handler">Handler</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="WebSocket.html"><span class="name">WebSocket</span></a><span class="tparams">[<span name="In">In</span>, <span name="Out">Out</span>]</span><span class="params">(<span name="f">f: (<a href="RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../../../scala/package.html#Either[+A,+B]=scala.util.Either[A,B]" class="extmbr" name="scala.Either">Either</a>[<a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a>, (<a href="../libs/iteratee/Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.mvc.WebSocket.In">In</span>], <a href="../libs/iteratee/Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="play.api.mvc.WebSocket.Out">Out</span>, <span class="extype" name="scala.Unit">Unit</span>]) ⇒ <span class="extype" name="scala.Unit">Unit</span>]]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="inFormatter">inFormatter: <a href="WebSocket$$FrameFormatter.html" class="extype" name="play.api.mvc.WebSocket.FrameFormatter">FrameFormatter</a>[<span class="extype" name="play.api.mvc.WebSocket.In">In</span>]</span>, <span name="outFormatter">outFormatter: <a href="WebSocket$$FrameFormatter.html" class="extype" name="play.api.mvc.WebSocket.FrameFormatter">FrameFormatter</a>[<span class="extype" name="play.api.mvc.WebSocket.Out">Out</span>]</span>)</span><span class="result"> extends <a href="Handler.html" class="extype" name="play.api.mvc.Handler">Handler</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">A WebSocket handler.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@WebSocket[In,Out]extendsHandlerwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A WebSocket handler.</p><div class="fullcomment"><div class="comment cmt"><p>A WebSocket handler.
+</p></div><dl class="paramcmts block"><dt class="tparam">In</dt><dd class="cmt"><p>the type of messages coming in</p></dd><dt class="tparam">Out</dt><dd class="cmt"><p>the type of messages going out</p></dd><dt class="param">f</dt><dd class="cmt"><p>the socket messages generator
+</p></dd></dl></div>
     </li><li name="play.api.mvc.WithFilters" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="WithFiltersextendsGlobalSettings"></a>
       <a id="WithFilters:WithFilters"></a>
@@ -723,9 +1059,13 @@ its Action block.</p>
       <span class="symbol">
         <a href="WithFilters.html"><span class="name">WithFilters</span></a><span class="result"> extends <a href="../GlobalSettings.html" class="extype" name="play.api.GlobalSettings">GlobalSettings</a></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@WithFiltersextendsGlobalSettings" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       
-    </li><li name="play.api.mvc.WrappedRequest" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="play.api.mvc.WrappedRequest" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="WrappedRequest[+A]extendsRequest[A]"></a>
       <a id="WrappedRequest[+A]:WrappedRequest[A]"></a>
       <h4 class="signature">
@@ -736,8 +1076,13 @@ its Action block.</p>
       <span class="symbol">
         <a href="WrappedRequest.html"><span class="name">WrappedRequest</span></a><span class="tparams">[<span name="A">+A</span>]</span><span class="result"> extends <a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>[<span class="extype" name="play.api.mvc.WrappedRequest.A">A</span>]</span>
       </span>
-      </h4>
-      <p class="comment cmt">Wrap an existing request.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@WrappedRequest[+A]extendsRequest[A]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Wrap an existing request.</p><div class="fullcomment"><div class="comment cmt"><p>Wrap an existing request. Useful to extend a request.
+</p></div></div>
     </li></ol>
             </div>
 
@@ -756,8 +1101,12 @@ its Action block.</p>
       <span class="symbol">
         <a href="Action$.html"><span class="name">Action</span></a><span class="result"> extends <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>[<a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>]</span>
       </span>
-      </h4>
-      <p class="comment cmt">Helper object to create <code>Action</code> values.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@Action" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Helper object to create <code>Action</code> values.</p>
     </li><li name="play.api.mvc.AnyContentAsEmpty" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="AnyContentAsEmpty"></a>
       <a id="AnyContentAsEmpty:AnyContentAsEmpty"></a>
@@ -769,8 +1118,12 @@ its Action block.</p>
       <span class="symbol">
         <a href="AnyContentAsEmpty$.html"><span class="name">AnyContentAsEmpty</span></a><span class="result"> extends <a href="AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">AnyContent - Empty request body
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@AnyContentAsEmpty" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">AnyContent - Empty request body
 </p>
     </li><li name="play.api.mvc.BodyParser" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="BodyParser"></a>
@@ -783,8 +1136,12 @@ its Action block.</p>
       <span class="symbol">
         <a href="BodyParser$.html"><span class="name">BodyParser</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">Helper object to construct <code>BodyParser</code> values.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@BodyParser" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Helper object to construct <code>BodyParser</code> values.</p>
     </li><li name="play.api.mvc.BodyParsers" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="BodyParsers"></a>
       <a id="BodyParsers:BodyParsers"></a>
@@ -796,8 +1153,12 @@ its Action block.</p>
       <span class="symbol">
         <a href="BodyParsers$.html"><span class="name">BodyParsers</span></a><span class="result"> extends <a href="BodyParsers.html" class="extype" name="play.api.mvc.BodyParsers">BodyParsers</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">Defaults BodyParsers.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@BodyParsers" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Defaults BodyParsers.</p>
     </li><li name="play.api.mvc.Codec" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Codec"></a>
       <a id="Codec:Codec"></a>
@@ -809,8 +1170,12 @@ its Action block.</p>
       <span class="symbol">
         <a href="Codec$.html"><span class="name">Codec</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">Default Codec support.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@Codec" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Default Codec support.</p>
     </li><li name="play.api.mvc.Cookies" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Cookies"></a>
       <a id="Cookies:Cookies"></a>
@@ -822,8 +1187,12 @@ its Action block.</p>
       <span class="symbol">
         <a href="Cookies$.html"><span class="name">Cookies</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">Helper utilities to encode Cookies.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@Cookies" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Helper utilities to encode Cookies.</p>
     </li><li name="play.api.mvc.EssentialAction" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="EssentialAction"></a>
       <a id="EssentialAction:EssentialAction"></a>
@@ -835,8 +1204,12 @@ its Action block.</p>
       <span class="symbol">
         <a href="EssentialAction$.html"><span class="name">EssentialAction</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">Helper for creating <code>EssentialAction</code>s.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@EssentialAction" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Helper for creating <code>EssentialAction</code>s.</p>
     </li><li name="play.api.mvc.Filter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Filter"></a>
       <a id="Filter:Filter"></a>
@@ -848,7 +1221,11 @@ its Action block.</p>
       <span class="symbol">
         <a href="Filter$.html"><span class="name">Filter</span></a>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@Filter" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li><li name="play.api.mvc.FilterChain" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="FilterChain"></a>
@@ -861,8 +1238,12 @@ its Action block.</p>
       <span class="symbol">
         <a href="FilterChain$.html"><span class="name">FilterChain</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">Compose the action and the Filters to create a new Action
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@FilterChain" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Compose the action and the Filters to create a new Action
 </p>
     </li><li name="play.api.mvc.Filters" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Filters"></a>
@@ -875,8 +1256,12 @@ its Action block.</p>
       <span class="symbol">
         <a href="Filters$.html"><span class="name">Filters</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">Compose the action and the Filters to create a new Action
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@Filters" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Compose the action and the Filters to create a new Action
 </p>
     </li><li name="play.api.mvc.Flash" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Flash"></a>
@@ -889,8 +1274,12 @@ its Action block.</p>
       <span class="symbol">
         <a href="Flash$.html"><span class="name">Flash</span></a><span class="result"> extends <a href="CookieBaker.html" class="extype" name="play.api.mvc.CookieBaker">CookieBaker</a>[<a href="Flash.html" class="extype" name="play.api.mvc.Flash">Flash</a>] with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">Helper utilities to manage the Flash cookie.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@Flash" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Helper utilities to manage the Flash cookie.</p>
     </li><li name="play.api.mvc.HttpConnection" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="HttpConnection"></a>
       <a id="HttpConnection:HttpConnection"></a>
@@ -902,8 +1291,12 @@ its Action block.</p>
       <span class="symbol">
         <a href="HttpConnection$.html"><span class="name">HttpConnection</span></a><span class="result"> extends <span class="extype" name="scala.Enumeration">Enumeration</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">The connection semantics for the result.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@HttpConnection" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">The connection semantics for the result.</p>
     </li><li name="play.api.mvc.JavascriptLiteral" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="JavascriptLiteral"></a>
       <a id="JavascriptLiteral:JavascriptLiteral"></a>
@@ -915,8 +1308,12 @@ its Action block.</p>
       <span class="symbol">
         <a href="JavascriptLiteral$.html"><span class="name">JavascriptLiteral</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">Default JavaScript literals converters.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@JavascriptLiteral" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Default JavaScript literals converters.</p>
     </li><li name="play.api.mvc.MultipartFormData" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="MultipartFormData"></a>
       <a id="MultipartFormData:MultipartFormData"></a>
@@ -928,8 +1325,12 @@ its Action block.</p>
       <span class="symbol">
         <a href="MultipartFormData$.html"><span class="name">MultipartFormData</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">Defines parts handled by Multipart form data.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@MultipartFormData" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Defines parts handled by Multipart form data.</p>
     </li><li name="play.api.mvc.PathBindable" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="PathBindable"></a>
       <a id="PathBindable:PathBindable"></a>
@@ -941,8 +1342,12 @@ its Action block.</p>
       <span class="symbol">
         <a href="PathBindable$.html"><span class="name">PathBindable</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">Default binders for URL path part.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@PathBindable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Default binders for URL path part.</p>
     </li><li name="play.api.mvc.QueryStringBindable" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="QueryStringBindable"></a>
       <a id="QueryStringBindable:QueryStringBindable"></a>
@@ -954,8 +1359,12 @@ its Action block.</p>
       <span class="symbol">
         <a href="QueryStringBindable$.html"><span class="name">QueryStringBindable</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">Default binders for Query String
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@QueryStringBindable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Default binders for Query String
 </p>
     </li><li name="play.api.mvc.Request" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Request"></a>
@@ -968,7 +1377,11 @@ its Action block.</p>
       <span class="symbol">
         <a href="Request$.html"><span class="name">Request</span></a>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@Request" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li><li name="play.api.mvc.RequestHeader" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="RequestHeader"></a>
@@ -981,7 +1394,11 @@ its Action block.</p>
       <span class="symbol">
         <a href="RequestHeader$.html"><span class="name">RequestHeader</span></a>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@RequestHeader" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li><li name="play.api.mvc.ResponseHeader" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="ResponseHeader"></a>
@@ -994,7 +1411,11 @@ its Action block.</p>
       <span class="symbol">
         <a href="ResponseHeader$.html"><span class="name">ResponseHeader</span></a>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@ResponseHeader" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li><li name="play.api.mvc.Results" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Results"></a>
@@ -1007,8 +1428,12 @@ its Action block.</p>
       <span class="symbol">
         <a href="Results$.html"><span class="name">Results</span></a><span class="result"> extends <a href="Results.html" class="extype" name="play.api.mvc.Results">Results</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">Helper utilities to generate results.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@Results" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Helper utilities to generate results.</p>
     </li><li name="play.api.mvc.Security" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Security"></a>
       <a id="Security:Security"></a>
@@ -1020,8 +1445,12 @@ its Action block.</p>
       <span class="symbol">
         <a href="Security$.html"><span class="name">Security</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">Helpers to create secure actions.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@Security" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Helpers to create secure actions.</p>
     </li><li name="play.api.mvc.Session" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Session"></a>
       <a id="Session:Session"></a>
@@ -1033,8 +1462,12 @@ its Action block.</p>
       <span class="symbol">
         <a href="Session$.html"><span class="name">Session</span></a><span class="result"> extends <a href="CookieBaker.html" class="extype" name="play.api.mvc.CookieBaker">CookieBaker</a>[<a href="Session.html" class="extype" name="play.api.mvc.Session">Session</a>] with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">Helper utilities to manage the Session cookie.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@Session" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Helper utilities to manage the Session cookie.</p>
     </li><li name="play.api.mvc.Socket" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Socket"></a>
       <a id="Socket:Socket"></a>
@@ -1046,8 +1479,12 @@ its Action block.</p>
       <span class="symbol">
         <a href="package$$Socket$.html"><span class="name">Socket</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">Alias types for Sockets
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@Socket" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Alias types for Sockets
 </p>
     </li><li name="play.api.mvc.WebSocket" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="WebSocket"></a>
@@ -1060,8 +1497,12 @@ its Action block.</p>
       <span class="symbol">
         <a href="WebSocket$.html"><span class="name">WebSocket</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">Helper utilities to generate WebSocket results.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@WebSocket" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Helper utilities to generate WebSocket results.</p>
     </li></ol>
             </div>
 
@@ -1072,7 +1513,7 @@ its Action block.</p>
 
         <div id="inheritedMembers">
         <div class="parent" name="scala.AnyRef">
-              <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
+              <h3>Inherited from <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
             </div>
@@ -1091,6 +1532,7 @@ its Action block.</p>
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../lib/template.js"></script>
+
+
     </body>
       </html>

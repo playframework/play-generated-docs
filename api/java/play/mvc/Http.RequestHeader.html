@@ -2,13 +2,13 @@
 <!-- NewPage -->
 <html lang="en">
 <head>
-<title>Http.RequestHeader (Play 2.4.0-M1)</title>
+<title>Http.RequestHeader (Play 2.4.0-M2)</title>
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css" title="Style">
 </head>
 <body>
 <script type="text/javascript"><!--
     if (location.href.indexOf('is-external=true') == -1) {
-        parent.document.title="Http.RequestHeader (Play 2.4.0-M1)";
+        parent.document.title="Http.RequestHeader (Play 2.4.0-M2)";
     }
 //-->
 </script>
@@ -219,11 +219,7 @@ extends java.lang.Object</pre>
 <tr class="altColor">
 <td class="colFirst"><code>abstract boolean</code></td>
 <td class="colLast"><code><strong><a href="../../play/mvc/Http.RequestHeader.html#secure()">secure</a></strong>()</code>
-<div class="block">Is the client using SSL?
-
- If the <code>X-Forwarded-Proto</code> header is present, then this method will return true
- if the value in that header is "https", if either the local address is 127.0.0.1, or if
- <code>trustxforwarded</code> is configured to be true in the application configuration file.</div>
+<div class="block">Is the client using SSL?</div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -316,9 +312,8 @@ extends java.lang.Object</pre>
 <pre>public abstract&nbsp;java.lang.String&nbsp;remoteAddress()</pre>
 <div class="block">The client IP address.
 
- If the <code>X-Forwarded-For</code> header is present, then this method will return the value in that header
- if either the local address is 127.0.0.1, or if <code>trustxforwarded</code> is configured to be true in the
- application configuration file.</div>
+ retrieves the last untrusted proxy
+ from the Forwarded-Headers or the X-Forwarded-*-Headers.</div>
 </li>
 </ul>
 <a name="secure()">
@@ -328,11 +323,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>secure</h4>
 <pre>public abstract&nbsp;boolean&nbsp;secure()</pre>
-<div class="block">Is the client using SSL?
-
- If the <code>X-Forwarded-Proto</code> header is present, then this method will return true
- if the value in that header is "https", if either the local address is 127.0.0.1, or if
- <code>trustxforwarded</code> is configured to be true in the application configuration file.</div>
+<div class="block">Is the client using SSL?</div>
 </li>
 </ul>
 <a name="host()">

@@ -1,5 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html >
 <html>
         <head>
           <title>libs - play.api.libs</title>
@@ -9,6 +8,11 @@
           
       <link href="../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../lib/tools.tooltip.js"></script>
+      
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../index.html';
@@ -26,7 +30,11 @@
       <div id="definition">
         <img src="../../../lib/package_big.png" />
         <p id="owner"><a href="../../package.html" class="extype" name="play">play</a>.<a href="../package.html" class="extype" name="play.api">api</a></p>
-        <h1>libs</h1>
+        <h1>libs</h1> <span class="permalink">
+      <a href="../../../index.html#play.api.libs.package" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       </div>
 
       <h4 id="signature" class="signature">
@@ -40,9 +48,9 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Contains various APIs that are useful while developing web applications.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.4.0-M1/framework/src/play/src/main/scala/play/api/libs/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.4.0-M2/framework/src/play/src/main/scala/play/api/libs/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -82,7 +90,71 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="play.api.libs.Jsonp" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="play.api.libs.Crypto" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="CryptoextendsAnyRef"></a>
+      <a id="Crypto:Crypto"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Crypto.html"><span class="name">Crypto</span></a><span class="result"> extends <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.libs.package@CryptoextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Cryptographic utilities.</p><div class="fullcomment"><div class="comment cmt"><p>Cryptographic utilities.</p><p>These utilities are intended as a convenience, however it is important to read each methods documentation and
+understand the concepts behind encryption to use this class properly.  Safe encryption is hard, and there is no
+substitute for an adequate understanding of cryptography.  These methods will not be suitable for all encryption
+needs.</p><p>For more information about cryptography, we recommend reading the OWASP Cryptographic Storage Cheatsheet:</p><p>https://www.owasp.org/index.php/Cryptographic_Storage_Cheat_Sheet
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@Singleton</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="play.api.libs.CryptoConfig" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="CryptoConfigextendsProductwithSerializable"></a>
+      <a id="CryptoConfig:CryptoConfig"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="CryptoConfig.html"><span class="name">CryptoConfig</span></a><span class="params">(<span name="secret">secret: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="provider">provider: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol"><span class="name"><a href="../../../scala/package.html">None</a></span></span></span>, <span name="aesTransformation">aesTransformation: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;AES/CTR/NoPadding&quot;</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.libs.package@CryptoConfigextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Configuration for Crypto
+</p><div class="fullcomment"><div class="comment cmt"><p>Configuration for Crypto
+</p></div><dl class="paramcmts block"><dt class="param">secret</dt><dd class="cmt"><p>The application secret</p></dd><dt class="param">provider</dt><dd class="cmt"><p>The crypto provider to use
+</p></dd><dt class="param">aesTransformation</dt><dd class="cmt"><p>The AES transformation to use</p></dd></dl></div>
+    </li><li name="play.api.libs.CryptoConfigParser" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="CryptoConfigParserextendsProvider[play.api.libs.CryptoConfig]"></a>
+      <a id="CryptoConfigParser:CryptoConfigParser"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="CryptoConfigParser.html"><span class="name">CryptoConfigParser</span></a><span class="result"> extends <span class="extype" name="javax.inject.Provider">Provider</span>[<a href="CryptoConfig.html" class="extype" name="play.api.libs.CryptoConfig">CryptoConfig</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.libs.package@CryptoConfigParserextendsProvider[play.api.libs.CryptoConfig]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@Singleton</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="play.api.libs.Jsonp" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="JsonpextendsProductwithSerializable"></a>
       <a id="Jsonp:Jsonp"></a>
       <h4 class="signature">
@@ -93,8 +165,22 @@
       <span class="symbol">
         <a href="Jsonp.html"><span class="name">Jsonp</span></a><span class="params">(<span name="padding">padding: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="json">json: <a href="json/JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
-      <p class="comment cmt">JSONP helper.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.libs.package@JsonpextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">JSONP helper.</p><div class="fullcomment"><div class="comment cmt"><p>JSONP helper.</p><p>Example of use, provided the following route definition:</p><pre>GET  /my-service       Application.myService(callback: <span class="std">String</span>)</pre><p>The following action definition:</p><pre><span class="kw">def</span> myService(callback: <span class="std">String</span>) = Action {
+<span class="kw">val</span> json = ...
+Ok(Jsonp(callback, json))
+}</pre><p>And the following request:</p><pre>GET /my-service?callback=foo</pre><p>The response will have content type “text/javascript” and will look like the following:</p><pre>foo({...});</pre><p>Another example, showing how to serve either JSON or JSONP from the same action, according to the presence of
+a “callback” parameter in the query string:</p><pre><span class="kw">def</span> myService = Action { <span class="kw">implicit</span> request <span class="kw">=&gt;</span>
+<span class="kw">val</span> json = ...
+request.queryString.get(<span class="lit">"callback"</span>).flatMap(_.headOption) <span class="kw">match</span> {
+  <span class="kw">case</span> <span class="std">Some</span>(callback) <span class="kw">=&gt;</span> Ok(Jsonp(callback, json))
+  <span class="kw">case</span> <span class="std">None</span> <span class="kw">=&gt;</span> Ok(json)
+}
+}</pre></div></div>
     </li></ol>
             </div>
 
@@ -113,8 +199,12 @@
       <span class="symbol">
         <a href="Codecs$.html"><span class="name">Codecs</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">Utilities for Codecs operations.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.libs.package@Codecs" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Utilities for Codecs operations.</p>
     </li><li name="play.api.libs.Collections" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Collections"></a>
       <a id="Collections:Collections"></a>
@@ -126,10 +216,14 @@
       <span class="symbol">
         <a href="Collections$.html"><span class="name">Collections</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">Utilities functions for Collections
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.libs.package@Collections" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Utilities functions for Collections
 </p>
-    </li><li name="play.api.libs.Comet" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="play.api.libs.Comet" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="Comet"></a>
       <a id="Comet:Comet"></a>
       <h4 class="signature">
@@ -140,9 +234,13 @@
       <span class="symbol">
         <a href="Comet$.html"><span class="name">Comet</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">Helper function to produce a Comet Enumeratee.</p>
-    </li><li name="play.api.libs.Crypto" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.libs.package@Comet" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Helper function to produce a Comet Enumeratee.</p><div class="fullcomment"><div class="comment cmt"><p>Helper function to produce a Comet Enumeratee.</p><p>Example:</p><pre><span class="kw">val</span> cometStream = Enumerator(<span class="lit">"A"</span>, <span class="lit">"B"</span>, <span class="lit">"C"</span>) &amp;&gt; Comet(callback = <span class="lit">"console.log"</span>)</pre></div></div>
+    </li><li name="play.api.libs.Crypto" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="Crypto"></a>
       <a id="Crypto:Crypto"></a>
       <h4 class="signature">
@@ -153,9 +251,17 @@
       <span class="symbol">
         <a href="Crypto$.html"><span class="name">Crypto</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">Cryptographic utilities.</p>
-    </li><li name="play.api.libs.EventSource" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.libs.package@Crypto" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Cryptographic utilities.</p><div class="fullcomment"><div class="comment cmt"><p>Cryptographic utilities.</p><p>These utilities are intended as a convenience, however it is important to read each methods documentation and
+understand the concepts behind encryption to use this class properly.  Safe encryption is hard, and there is no
+substitute for an adequate understanding of cryptography.  These methods will not be suitable for all encryption
+needs.</p><p>For more information about cryptography, we recommend reading the OWASP Cryptographic Storage Cheatsheet:</p><p>https://www.owasp.org/index.php/Cryptographic_Storage_Cheat_Sheet
+</p></div></div>
+    </li><li name="play.api.libs.EventSource" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="EventSource"></a>
       <a id="EventSource:EventSource"></a>
       <h4 class="signature">
@@ -166,8 +272,13 @@
       <span class="symbol">
         <a href="EventSource$.html"><span class="name">EventSource</span></a>
       </span>
-      </h4>
-      
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.libs.package@EventSource" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Helps you format Server-Sent Events</p><div class="fullcomment"><div class="comment cmt"><p>Helps you format Server-Sent Events</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="http://www.w3.org/TR/eventsource/" target="_blank">http://www.w3.org/TR/eventsource/</a>
+</p></span></dd></dl></div>
     </li><li name="play.api.libs.Files" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Files"></a>
       <a id="Files:Files"></a>
@@ -179,8 +290,12 @@
       <span class="symbol">
         <a href="Files$.html"><span class="name">Files</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">FileSystem utilities.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.libs.package@Files" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">FileSystem utilities.</p>
     </li><li name="play.api.libs.JNDI" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="JNDI"></a>
       <a id="JNDI:JNDI"></a>
@@ -192,8 +307,12 @@
       <span class="symbol">
         <a href="JNDI$.html"><span class="name">JNDI</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">JNDI Helpers.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.libs.package@JNDI" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">JNDI Helpers.</p>
     </li><li name="play.api.libs.Jsonp" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Jsonp"></a>
       <a id="Jsonp:Jsonp"></a>
@@ -205,7 +324,11 @@
       <span class="symbol">
         <a href="Jsonp$.html"><span class="name">Jsonp</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.libs.package@Jsonp" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li><li name="play.api.libs.MimeTypes" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="MimeTypes"></a>
@@ -218,8 +341,12 @@
       <span class="symbol">
         <a href="MimeTypes$.html"><span class="name">MimeTypes</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">MIME type utilities.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.libs.package@MimeTypes" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">MIME type utilities.</p>
     </li><li name="play.api.libs.concurrent" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="concurrent"></a>
       <a id="concurrent:concurrent"></a>
@@ -231,7 +358,11 @@
       <span class="symbol">
         <a href="concurrent/package.html"><span class="name">concurrent</span></a>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.libs.package@concurrent" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li><li name="play.api.libs.functional" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="functional"></a>
@@ -244,7 +375,11 @@
       <span class="symbol">
         <a href="functional/package.html"><span class="name">functional</span></a>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.libs.package@functional" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li><li name="play.api.libs.iteratee" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="iteratee"></a>
@@ -257,9 +392,13 @@
       <span class="symbol">
         <a href="iteratee/package.html"><span class="name">iteratee</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">The Iteratee monad provides strict, safe, and functional I/O.</p>
-    </li><li name="play.api.libs.json" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.libs.package@iteratee" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">The Iteratee monad provides strict, safe, and functional I/O.</p>
+    </li><li name="play.api.libs.json" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="json"></a>
       <a id="json:json"></a>
       <h4 class="signature">
@@ -270,9 +409,38 @@
       <span class="symbol">
         <a href="json/package.html"><span class="name">json</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">Json API
-For example:</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.libs.package@json" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Json API
+For example:</p><div class="fullcomment"><div class="comment cmt"><p>Json API
+For example:</p><pre><span class="kw">case</span> <span class="kw">class</span> User(id: <span class="std">Long</span>, name: <span class="std">String</span>, friends: <span class="std">List</span>[User])
+
+ <span class="kw">implicit</span> <span class="kw">object</span> UserFormat <span class="kw">extends</span> Format[User] {
+  <span class="kw">def</span> reads(json: JsValue): User = User(
+    (json \ <span class="lit">"id"</span>).as[<span class="std">Long</span>],
+    (json \ <span class="lit">"name"</span>).as[<span class="std">String</span>],
+    (json \ <span class="lit">"friends"</span>).asOpt[<span class="std">List</span>[User]].getOrElse(<span class="std">List</span>()))
+  <span class="kw">def</span> writes(u: User): JsValue = JsObject(<span class="std">List</span>(
+    <span class="lit">"id"</span> -&gt; JsNumber(u.id),
+    <span class="lit">"name"</span> -&gt; JsString(u.name),
+    <span class="lit">"friends"</span> -&gt; JsArray(u.friends.map(fr <span class="kw">=&gt;</span> JsObject(<span class="std">List</span>(<span class="lit">"id"</span> -&gt; JsNumber(fr.id),
+    <span class="lit">"name"</span> -&gt; JsString(fr.name)))))))
+}
+
+<span class="cmt">//then in a controller:</span>
+<span class="kw">object</span> MyController <span class="kw">extends</span> Controller {
+   <span class="kw">def</span> displayUserAsJson(id: <span class="std">String</span>) = Action {
+      Ok(toJson( User(id.toLong, <span class="lit">"myName"</span>, friends: <span class="std">List</span>())))
+   }
+   <span class="kw">def</span> saveUser(jsonString: <span class="std">String</span>)= Action {
+     <span class="kw">val</span> user = play.api.libs.json.Json.parse(jsonString).as[User]
+     myDataStore.save(user)
+     Ok
+   }
+}</pre></div></div>
     </li><li name="play.api.libs.oauth" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="oauth"></a>
       <a id="oauth:oauth"></a>
@@ -284,8 +452,12 @@ For example:</p>
       <span class="symbol">
         <a href="oauth/package.html"><span class="name">oauth</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">OAuth integration helpers.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.libs.package@oauth" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">OAuth integration helpers.</p>
     </li><li name="play.api.libs.openid" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="openid"></a>
       <a id="openid:openid"></a>
@@ -297,7 +469,11 @@ For example:</p>
       <span class="symbol">
         <a href="openid/package.html"><span class="name">openid</span></a>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.libs.package@openid" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       
     </li><li name="play.api.libs.ws" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="ws"></a>
@@ -310,8 +486,12 @@ For example:</p>
       <span class="symbol">
         <a href="ws/package.html"><span class="name">ws</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">Asynchronous API to to query web services, as an http client.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.libs.package@ws" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Asynchronous API to to query web services, as an http client.</p>
     </li></ol>
             </div>
 
@@ -322,7 +502,7 @@ For example:</p>
 
         <div id="inheritedMembers">
         <div class="parent" name="scala.AnyRef">
-              <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
+              <h3>Inherited from <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
             </div>
@@ -341,6 +521,7 @@ For example:</p>
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../lib/template.js"></script>
+
+
     </body>
       </html>

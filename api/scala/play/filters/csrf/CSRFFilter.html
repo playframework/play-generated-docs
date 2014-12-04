@@ -1,5 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html >
 <html>
         <head>
           <title>CSRFFilter - play.filters.csrf.CSRFFilter</title>
@@ -9,6 +8,11 @@
           
       <link href="../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../lib/tools.tooltip.js"></script>
+      
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../index.html';
@@ -26,7 +30,11 @@
       <div id="definition">
         <a href="CSRFFilter$.html" title="Go to companion"><img src="../../../lib/class_to_object_big.png" /></a>
         <p id="owner"><a href="../../package.html" class="extype" name="play">play</a>.<a href="../package.html" class="extype" name="play.filters">filters</a>.<a href="package.html" class="extype" name="play.filters.csrf">csrf</a></p>
-        <h1><a href="CSRFFilter$.html" title="Go to companion">CSRFFilter</a></h1>
+        <h1><a href="CSRFFilter$.html" title="Go to companion">CSRFFilter</a></h1> <span class="permalink">
+      <a href="../../../index.html#play.filters.csrf.CSRFFilter" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       </div>
 
       <h4 id="signature" class="signature">
@@ -42,9 +50,9 @@
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A filter that provides CSRF protection.</p><p>These must be by name parameters because the typical use case for instantiating the filter is in Global, which
 happens before the application is started.  Since the default values for the parameters are loaded from config
 and hence depend on a started application, they must be by name.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.4.0-M1/framework/src/play-filters-helpers/src/main/scala/play/filters/csrf/CSRFFilter.scala" target="_blank">CSRFFilter.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.4.0-M2/framework/src/play-filters-helpers/src/main/scala/play/filters/csrf/CSRFFilter.scala" target="_blank">CSRFFilter.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="../../api/mvc/EssentialFilter.html" class="extype" name="play.api.mvc.EssentialFilter">EssentialFilter</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="../../api/mvc/EssentialFilter.html" class="extype" name="play.api.mvc.EssentialFilter">EssentialFilter</a>, <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -93,11 +101,15 @@ and hence depend on a started application, they must be by name.
       <span class="symbol">
         <span class="name">CSRFFilter</span><span class="params">()</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csrf.CSRFFilter@&lt;init&gt;():play.filters.csrf.CSRFFilter" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Default constructor, useful from Java
 </p>
     </li><li name="play.filters.csrf.CSRFFilter#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(tokenName:=&gt;String,cookieName:=&gt;Option[String],secureCookie:=&gt;Boolean,createIfNotFound:play.api.mvc.RequestHeader=&gt;Boolean,tokenProvider:=&gt;play.filters.csrf.CSRF.TokenProvider,errorHandler:=&gt;play.filters.csrf.CSRF.ErrorHandler):play.filters.csrf.CSRFFilter"></a>
+      <a id="&lt;init&gt;(configProvider:javax.inject.Provider[play.filters.csrf.CSRF.Config],tokenProvider:play.filters.csrf.CSRF.TokenProvider,errorHandler:play.filters.csrf.CSRF.ErrorHandler):play.filters.csrf.CSRFFilter"></a>
       <a id="&lt;init&gt;:CSRFFilter"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -105,12 +117,34 @@ and hence depend on a started application, they must be by name.
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">CSRFFilter</span><span class="params">(<span name="tokenName">tokenName: ⇒ <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">CSRFConf.TokenName</span></span>, <span name="cookieName">cookieName: ⇒ <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">CSRFConf.CookieName</span></span>, <span name="secureCookie">secureCookie: ⇒ <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">CSRFConf.SecureCookie</span></span>, <span name="createIfNotFound">createIfNotFound: (<a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span> = <span class="defval" name="{<br/>&amp;nbsp;&amp;nbsp;  ((request: play.api.mvc.RequestHeader) =&gt; CSRFConf.defaultCreateIfNotFound(request))<br/>&amp;nbsp;&amp;nbsp;}">...</span></span>, <span name="tokenProvider">tokenProvider: ⇒ <a href="CSRF$$TokenProvider.html" class="extype" name="play.filters.csrf.CSRF.TokenProvider">TokenProvider</a> = <span class="symbol">CSRFConf.defaultTokenProvider</span></span>, <span name="errorHandler">errorHandler: ⇒ <a href="CSRF$$ErrorHandler.html" class="extype" name="play.filters.csrf.CSRF.ErrorHandler">ErrorHandler</a> = <span class="symbol">CSRFConf.defaultErrorHandler</span></span>)</span>
+        <span class="name">CSRFFilter</span><span class="params">(<span name="configProvider">configProvider: <span class="extype" name="javax.inject.Provider">Provider</span>[<a href="CSRF$$Config.html" class="extype" name="play.filters.csrf.CSRF.Config">Config</a>]</span>, <span name="tokenProvider">tokenProvider: <a href="CSRF$$TokenProvider.html" class="extype" name="play.filters.csrf.CSRF.TokenProvider">TokenProvider</a></span>, <span name="errorHandler">errorHandler: <a href="CSRF$$ErrorHandler.html" class="extype" name="play.filters.csrf.CSRF.ErrorHandler">ErrorHandler</a></span>)</span>
       </span>
-      </h4>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">tokenName</dt><dd class="cmt"><p>The key used to store the token in the Play session.  Defaults to csrfToken.</p></dd><dt class="param">cookieName</dt><dd class="cmt"><p>If defined, causes the filter to store the token in a Cookie with this name instead of the session.</p></dd><dt class="param">secureCookie</dt><dd class="cmt"><p>If storing the token in a cookie, whether this Cookie should set the secure flag.  Defaults to
-                    whether the session cookie is configured to be secure.</p></dd><dt class="param">createIfNotFound</dt><dd class="cmt"><p>Whether a new CSRF token should be created if it's not found.  Default creates one if it's
-                        a GET request that accepts HTML.</p></dd><dt class="param">tokenProvider</dt><dd class="cmt"><p>A token provider to use.</p></dd><dt class="param">errorHandler</dt><dd class="cmt"><p>handling failed token error.
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csrf.CSRFFilter@&lt;init&gt;(configProvider:javax.inject.Provider[play.filters.csrf.CSRF.Config],tokenProvider:play.filters.csrf.CSRF.TokenProvider,errorHandler:play.filters.csrf.CSRF.ErrorHandler):play.filters.csrf.CSRFFilter" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@Inject</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="play.filters.csrf.CSRFFilter#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="&lt;init&gt;(conf:=&gt;play.filters.csrf.CSRF.Config,tokenProvider:play.filters.csrf.CSRF.TokenProvider,errorHandler:play.filters.csrf.CSRF.ErrorHandler):play.filters.csrf.CSRFFilter"></a>
+      <a id="&lt;init&gt;:CSRFFilter"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">new</span>
+      </span>
+      <span class="symbol">
+        <span class="name">CSRFFilter</span><span class="params">(<span name="conf">conf: ⇒ <a href="CSRF$$Config.html" class="extype" name="play.filters.csrf.CSRF.Config">Config</a> = <span class="symbol">CSRFConf.defaultConfig</span></span>, <span name="tokenProvider">tokenProvider: <a href="CSRF$$TokenProvider.html" class="extype" name="play.filters.csrf.CSRF.TokenProvider">TokenProvider</a> = <span class="symbol">CSRFConf.defaultTokenProvider</span></span>, <span name="errorHandler">errorHandler: <a href="CSRF$$ErrorHandler.html" class="extype" name="play.filters.csrf.CSRF.ErrorHandler">ErrorHandler</a> = <span class="symbol"><span class="name"><a href="CSRF$.html">CSRF.DefaultErrorHandler</a></span></span></span>)</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csrf.CSRFFilter@&lt;init&gt;(conf:=&gt;play.filters.csrf.CSRF.Config,tokenProvider:play.filters.csrf.CSRF.TokenProvider,errorHandler:play.filters.csrf.CSRF.ErrorHandler):play.filters.csrf.CSRFFilter" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">conf</dt><dd class="cmt"><p>A csrf configuration object</p></dd><dt class="param">tokenProvider</dt><dd class="cmt"><p>A token provider to use.</p></dd><dt class="param">errorHandler</dt><dd class="cmt"><p>handling failed token error.
 </p></dd></dl></div>
     </li></ol>
             </div>
@@ -122,19 +156,6 @@ and hence depend on a started application, they must be by name.
         <div id="values" class="values members">
               <h3>Value Members</h3>
               <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="!=(x$1:AnyRef):Boolean"></a>
-      <a id="!=(AnyRef):Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.Any#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:Any):Boolean"></a>
       <a id="!=(Any):Boolean"></a>
       <h4 class="signature">
@@ -145,8 +166,12 @@ and hence depend on a started application, they must be by name.
       <span class="symbol">
         <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csrf.CSRFFilter@!=(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef###" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="##():Int"></a>
       <a id="##():Int"></a>
@@ -158,22 +183,13 @@ and hence depend on a started application, they must be by name.
       <span class="symbol">
         <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csrf.CSRFFilter@##():Int" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="==(x$1:AnyRef):Boolean"></a>
-      <a id="==(AnyRef):Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.Any#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="==(x$1:Any):Boolean"></a>
       <a id="==(Any):Boolean"></a>
       <h4 class="signature">
@@ -184,8 +200,12 @@ and hence depend on a started application, they must be by name.
       <span class="symbol">
         <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csrf.CSRFFilter@==(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="play.filters.csrf.CSRFFilter#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="apply(next:play.api.mvc.EssentialAction):play.api.mvc.EssentialAction"></a>
       <a id="apply(EssentialAction):EssentialAction"></a>
@@ -197,7 +217,11 @@ and hence depend on a started application, they must be by name.
       <span class="symbol">
         <span class="name">apply</span><span class="params">(<span name="next">next: <a href="../../api/mvc/EssentialAction.html" class="extype" name="play.api.mvc.EssentialAction">EssentialAction</a></span>)</span><span class="result">: <a href="../../api/mvc/EssentialAction.html" class="extype" name="play.api.mvc.EssentialAction">EssentialAction</a></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csrf.CSRFFilter@apply(next:play.api.mvc.EssentialAction):play.api.mvc.EssentialAction" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.filters.csrf.CSRFFilter">CSRFFilter</a> → <a href="../../api/mvc/EssentialFilter.html" class="extype" name="play.api.mvc.EssentialFilter">EssentialFilter</a></dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
@@ -210,7 +234,11 @@ and hence depend on a started application, they must be by name.
       <span class="symbol">
         <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csrf.CSRFFilter@asInstanceOf[T0]:T0" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
@@ -221,9 +249,13 @@ and hence depend on a started application, they must be by name.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <span class="name">clone</span><span class="params">()</span><span class="result">: <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csrf.CSRFFilter@clone():Object" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -231,6 +263,23 @@ and hence depend on a started application, they must be by name.
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="play.filters.csrf.CSRFFilter#config" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="config:play.filters.csrf.CSRF.Config"></a>
+      <a id="config:Config"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">config</span><span class="result">: <a href="CSRF$$Config.html" class="extype" name="play.filters.csrf.CSRF.Config">Config</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csrf.CSRFFilter@config:play.filters.csrf.CSRF.Config" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -240,9 +289,13 @@ and hence depend on a started application, they must be by name.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csrf.CSRFFilter@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.AnyRef#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="equals(x$1:Any):Boolean"></a>
@@ -255,8 +308,29 @@ and hence depend on a started application, they must be by name.
       <span class="symbol">
         <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csrf.CSRFFilter@equals(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="play.filters.csrf.CSRFFilter#errorHandler" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="errorHandler:play.filters.csrf.CSRF.ErrorHandler"></a>
+      <a id="errorHandler:ErrorHandler"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">errorHandler</span><span class="result">: <a href="CSRF$$ErrorHandler.html" class="extype" name="play.filters.csrf.CSRF.ErrorHandler">ErrorHandler</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csrf.CSRFFilter@errorHandler:play.filters.csrf.CSRF.ErrorHandler" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">handling failed token error.</p>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
@@ -268,7 +342,11 @@ and hence depend on a started application, they must be by name.
       <span class="symbol">
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csrf.CSRFFilter@finalize():Unit" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -287,7 +365,11 @@ and hence depend on a started application, they must be by name.
       <span class="symbol">
         <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csrf.CSRFFilter@getClass():Class[_]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
@@ -300,7 +382,11 @@ and hence depend on a started application, they must be by name.
       <span class="symbol">
         <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csrf.CSRFFilter@hashCode():Int" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -313,7 +399,11 @@ and hence depend on a started application, they must be by name.
       <span class="symbol">
         <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csrf.CSRFFilter@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
@@ -324,9 +414,13 @@ and hence depend on a started application, they must be by name.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csrf.CSRFFilter@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.AnyRef#notify" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
@@ -339,7 +433,11 @@ and hence depend on a started application, they must be by name.
       <span class="symbol">
         <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csrf.CSRFFilter@notify():Unit" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.AnyRef#notifyAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notifyAll():Unit"></a>
@@ -352,7 +450,11 @@ and hence depend on a started application, they must be by name.
       <span class="symbol">
         <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csrf.CSRFFilter@notifyAll():Unit" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
@@ -365,7 +467,11 @@ and hence depend on a started application, they must be by name.
       <span class="symbol">
         <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csrf.CSRFFilter@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.AnyRef#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
@@ -378,8 +484,29 @@ and hence depend on a started application, they must be by name.
       <span class="symbol">
         <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csrf.CSRFFilter@toString():String" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="play.filters.csrf.CSRFFilter#tokenProvider" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="tokenProvider:play.filters.csrf.CSRF.TokenProvider"></a>
+      <a id="tokenProvider:TokenProvider"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">tokenProvider</span><span class="result">: <a href="CSRF$$TokenProvider.html" class="extype" name="play.filters.csrf.CSRF.TokenProvider">TokenProvider</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csrf.CSRFFilter@tokenProvider:play.filters.csrf.CSRF.TokenProvider" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A token provider to use.</p>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
@@ -391,7 +518,11 @@ and hence depend on a started application, they must be by name.
       <span class="symbol">
         <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csrf.CSRFFilter@wait():Unit" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -410,7 +541,11 @@ and hence depend on a started application, they must be by name.
       <span class="symbol">
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csrf.CSRFFilter@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -429,7 +564,11 @@ and hence depend on a started application, they must be by name.
       <span class="symbol">
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csrf.CSRFFilter@wait(x$1:Long):Unit" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -449,7 +588,7 @@ and hence depend on a started application, they must be by name.
         <div class="parent" name="play.api.mvc.EssentialFilter">
               <h3>Inherited from <a href="../../api/mvc/EssentialFilter.html" class="extype" name="play.api.mvc.EssentialFilter">EssentialFilter</a></h3>
             </div><div class="parent" name="scala.AnyRef">
-              <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
+              <h3>Inherited from <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
             </div>
@@ -468,6 +607,7 @@ and hence depend on a started application, they must be by name.
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../lib/template.js"></script>
+
+
     </body>
       </html>

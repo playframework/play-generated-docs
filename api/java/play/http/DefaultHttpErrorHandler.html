@@ -1,0 +1,402 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- NewPage -->
+<html lang="en">
+<head>
+<title>DefaultHttpErrorHandler (Play 2.4.0-M2)</title>
+<link rel="stylesheet" type="text/css" href="../../stylesheet.css" title="Style">
+</head>
+<body>
+<script type="text/javascript"><!--
+    if (location.href.indexOf('is-external=true') == -1) {
+        parent.document.title="DefaultHttpErrorHandler (Play 2.4.0-M2)";
+    }
+//-->
+</script>
+<noscript>
+<div>JavaScript is disabled on your browser.</div>
+</noscript>
+<!-- ========= START OF TOP NAVBAR ======= -->
+<div class="topNav"><a name="navbar_top">
+<!--   -->
+</a><a href="#skip-navbar_top" title="Skip navigation links"></a><a name="navbar_top_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../index-all.html">Index</a></li>
+<li><a href="../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li>Prev Class</li>
+<li><a href="../../play/http/DefaultHttpRequestHandler.html" title="class in play.http"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../index.html?play/http/DefaultHttpErrorHandler.html" target="_top">Frames</a></li>
+<li><a href="DefaultHttpErrorHandler.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_top">
+<li><a href="../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_top");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#constructor_detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_top">
+<!--   -->
+</a></div>
+<!-- ========= END OF TOP NAVBAR ========= -->
+<!-- ======== START OF CLASS DATA ======== -->
+<div class="header">
+<div class="subTitle">play.http</div>
+<h2 title="Class DefaultHttpErrorHandler" class="title">Class DefaultHttpErrorHandler</h2>
+</div>
+<div class="contentContainer">
+<ul class="inheritance">
+<li>java.lang.Object</li>
+<li>
+<ul class="inheritance">
+<li>play.http.DefaultHttpErrorHandler</li>
+</ul>
+</li>
+</ul>
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<dl>
+<dt>All Implemented Interfaces:</dt>
+<dd><a href="../../play/http/HttpErrorHandler.html" title="interface in play.http">HttpErrorHandler</a></dd>
+</dl>
+<hr>
+<br>
+<pre>public class <span class="strong">DefaultHttpErrorHandler</span>
+extends java.lang.Object
+implements <a href="../../play/http/HttpErrorHandler.html" title="interface in play.http">HttpErrorHandler</a></pre>
+<div class="block">Default implementation of the http error handler.
+
+ This class is intended to be extended to allow reusing Play's default error handling functionality.</div>
+</li>
+</ul>
+</div>
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_summary">
+<!--   -->
+</a>
+<h3>Constructor Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing constructors, and an explanation">
+<caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colOne"><code><strong><a href="../../play/http/DefaultHttpErrorHandler.html#DefaultHttpErrorHandler(play.Configuration,%20play.Environment,%20play.api.OptionalSourceMapper,%20javax.inject.Provider)">DefaultHttpErrorHandler</a></strong>(<a href="../../play/Configuration.html" title="class in play">Configuration</a>&nbsp;configuration,
+                       <a href="../../play/Environment.html" title="class in play">Environment</a>&nbsp;environment,
+                       play.api.OptionalSourceMapper&nbsp;sourceMapper,
+                       javax.inject.Provider&lt;play.core.Router.Routes&gt;&nbsp;routes)</code>&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_summary">
+<!--   -->
+</a>
+<h3>Method Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+<caption><span>Methods</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;<a href="../../play/mvc/Result.html" title="interface in play.mvc">Result</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../play/http/DefaultHttpErrorHandler.html#onBadRequest(play.mvc.Http.RequestHeader,%20java.lang.String)">onBadRequest</a></strong>(<a href="../../play/mvc/Http.RequestHeader.html" title="class in play.mvc">Http.RequestHeader</a>&nbsp;request,
+            java.lang.String&nbsp;message)</code>
+<div class="block">Invoked when a client makes a bad request.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;<a href="../../play/mvc/Result.html" title="interface in play.mvc">Result</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../play/http/DefaultHttpErrorHandler.html#onClientError(play.mvc.Http.RequestHeader,%20int,%20java.lang.String)">onClientError</a></strong>(<a href="../../play/mvc/Http.RequestHeader.html" title="class in play.mvc">Http.RequestHeader</a>&nbsp;request,
+             int&nbsp;statusCode,
+             java.lang.String&nbsp;message)</code>
+<div class="block">Invoked when a client error occurs, that is, an error in the 4xx series.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;<a href="../../play/mvc/Result.html" title="interface in play.mvc">Result</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../play/http/DefaultHttpErrorHandler.html#onDevServerError(play.mvc.Http.RequestHeader,%20play.api.UsefulException)">onDevServerError</a></strong>(<a href="../../play/mvc/Http.RequestHeader.html" title="class in play.mvc">Http.RequestHeader</a>&nbsp;request,
+                play.api.UsefulException&nbsp;exception)</code>
+<div class="block">Invoked in dev mode when a server error occurs.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected <a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;<a href="../../play/mvc/Result.html" title="interface in play.mvc">Result</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../play/http/DefaultHttpErrorHandler.html#onForbidden(play.mvc.Http.RequestHeader,%20java.lang.String)">onForbidden</a></strong>(<a href="../../play/mvc/Http.RequestHeader.html" title="class in play.mvc">Http.RequestHeader</a>&nbsp;request,
+           java.lang.String&nbsp;message)</code>
+<div class="block">Invoked when a client makes a request that was forbidden.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected <a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;<a href="../../play/mvc/Result.html" title="interface in play.mvc">Result</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../play/http/DefaultHttpErrorHandler.html#onNotFound(play.mvc.Http.RequestHeader,%20java.lang.String)">onNotFound</a></strong>(<a href="../../play/mvc/Http.RequestHeader.html" title="class in play.mvc">Http.RequestHeader</a>&nbsp;request,
+          java.lang.String&nbsp;message)</code>
+<div class="block">Invoked when a handler or resource is not found.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected <a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;<a href="../../play/mvc/Result.html" title="interface in play.mvc">Result</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../play/http/DefaultHttpErrorHandler.html#onProdServerError(play.mvc.Http.RequestHeader,%20play.api.UsefulException)">onProdServerError</a></strong>(<a href="../../play/mvc/Http.RequestHeader.html" title="class in play.mvc">Http.RequestHeader</a>&nbsp;request,
+                 play.api.UsefulException&nbsp;exception)</code>
+<div class="block">Invoked in prod mode when a server error occurs.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;<a href="../../play/mvc/Result.html" title="interface in play.mvc">Result</a>&gt;</code></td>
+<td class="colLast"><code><strong><a href="../../play/http/DefaultHttpErrorHandler.html#onServerError(play.mvc.Http.RequestHeader,%20java.lang.Throwable)">onServerError</a></strong>(<a href="../../play/mvc/Http.RequestHeader.html" title="class in play.mvc">Http.RequestHeader</a>&nbsp;request,
+             java.lang.Throwable&nbsp;exception)</code>
+<div class="block">Invoked when a server error occurs.</div>
+</td>
+</tr>
+</table>
+<ul class="blockList">
+<li class="blockList"><a name="methods_inherited_from_class_java.lang.Object">
+<!--   -->
+</a>
+<h3>Methods inherited from class&nbsp;java.lang.Object</h3>
+<code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="details">
+<ul class="blockList">
+<li class="blockList">
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_detail">
+<!--   -->
+</a>
+<h3>Constructor Detail</h3>
+<a name="DefaultHttpErrorHandler(play.Configuration, play.Environment, play.api.OptionalSourceMapper, javax.inject.Provider)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>DefaultHttpErrorHandler</h4>
+<pre>@Inject
+public&nbsp;DefaultHttpErrorHandler(<a href="../../play/Configuration.html" title="class in play">Configuration</a>&nbsp;configuration,
+                              <a href="../../play/Environment.html" title="class in play">Environment</a>&nbsp;environment,
+                              play.api.OptionalSourceMapper&nbsp;sourceMapper,
+                              javax.inject.Provider&lt;play.core.Router.Routes&gt;&nbsp;routes)</pre>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+<a name="onClientError(play.mvc.Http.RequestHeader, int, java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>onClientError</h4>
+<pre>public&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;<a href="../../play/mvc/Result.html" title="interface in play.mvc">Result</a>&gt;&nbsp;onClientError(<a href="../../play/mvc/Http.RequestHeader.html" title="class in play.mvc">Http.RequestHeader</a>&nbsp;request,
+                              int&nbsp;statusCode,
+                              java.lang.String&nbsp;message)</pre>
+<div class="block">Invoked when a client error occurs, that is, an error in the 4xx series.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../play/http/HttpErrorHandler.html#onClientError(play.mvc.Http.RequestHeader,%20int,%20java.lang.String)">onClientError</a></code>&nbsp;in interface&nbsp;<code><a href="../../play/http/HttpErrorHandler.html" title="interface in play.http">HttpErrorHandler</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>request</code> - The request that caused the client error.</dd><dd><code>statusCode</code> - The error status code.  Must be greater or equal to 400, and less than 500.</dd><dd><code>message</code> - The error message.</dd></dl>
+</li>
+</ul>
+<a name="onBadRequest(play.mvc.Http.RequestHeader, java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>onBadRequest</h4>
+<pre>protected&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;<a href="../../play/mvc/Result.html" title="interface in play.mvc">Result</a>&gt;&nbsp;onBadRequest(<a href="../../play/mvc/Http.RequestHeader.html" title="class in play.mvc">Http.RequestHeader</a>&nbsp;request,
+                             java.lang.String&nbsp;message)</pre>
+<div class="block">Invoked when a client makes a bad request.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>request</code> - The request that was bad.</dd><dd><code>message</code> - The error message.</dd></dl>
+</li>
+</ul>
+<a name="onForbidden(play.mvc.Http.RequestHeader, java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>onForbidden</h4>
+<pre>protected&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;<a href="../../play/mvc/Result.html" title="interface in play.mvc">Result</a>&gt;&nbsp;onForbidden(<a href="../../play/mvc/Http.RequestHeader.html" title="class in play.mvc">Http.RequestHeader</a>&nbsp;request,
+                            java.lang.String&nbsp;message)</pre>
+<div class="block">Invoked when a client makes a request that was forbidden.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>request</code> - The forbidden request.</dd><dd><code>message</code> - The error message.</dd></dl>
+</li>
+</ul>
+<a name="onNotFound(play.mvc.Http.RequestHeader, java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>onNotFound</h4>
+<pre>protected&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;<a href="../../play/mvc/Result.html" title="interface in play.mvc">Result</a>&gt;&nbsp;onNotFound(<a href="../../play/mvc/Http.RequestHeader.html" title="class in play.mvc">Http.RequestHeader</a>&nbsp;request,
+                           java.lang.String&nbsp;message)</pre>
+<div class="block">Invoked when a handler or resource is not found.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>request</code> - The request that no handler was found to handle.</dd><dd><code>message</code> - A message.</dd></dl>
+</li>
+</ul>
+<a name="onServerError(play.mvc.Http.RequestHeader, java.lang.Throwable)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>onServerError</h4>
+<pre>public&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;<a href="../../play/mvc/Result.html" title="interface in play.mvc">Result</a>&gt;&nbsp;onServerError(<a href="../../play/mvc/Http.RequestHeader.html" title="class in play.mvc">Http.RequestHeader</a>&nbsp;request,
+                              java.lang.Throwable&nbsp;exception)</pre>
+<div class="block">Invoked when a server error occurs.
+
+ By default, the implementation of this method delegates to [[onProdServerError()]] when in prod mode, and
+ [[onDevServerError()]] in dev mode.  It is recommended, if you want Play's debug info on the error page in dev
+ mode, that you override [[onProdServerError()]] instead of this method.</div>
+<dl>
+<dt><strong>Specified by:</strong></dt>
+<dd><code><a href="../../play/http/HttpErrorHandler.html#onServerError(play.mvc.Http.RequestHeader,%20java.lang.Throwable)">onServerError</a></code>&nbsp;in interface&nbsp;<code><a href="../../play/http/HttpErrorHandler.html" title="interface in play.http">HttpErrorHandler</a></code></dd>
+<dt><span class="strong">Parameters:</span></dt><dd><code>request</code> - The request that triggered the server error.</dd><dd><code>exception</code> - The server error.</dd></dl>
+</li>
+</ul>
+<a name="onDevServerError(play.mvc.Http.RequestHeader, play.api.UsefulException)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>onDevServerError</h4>
+<pre>protected&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;<a href="../../play/mvc/Result.html" title="interface in play.mvc">Result</a>&gt;&nbsp;onDevServerError(<a href="../../play/mvc/Http.RequestHeader.html" title="class in play.mvc">Http.RequestHeader</a>&nbsp;request,
+                                 play.api.UsefulException&nbsp;exception)</pre>
+<div class="block">Invoked in dev mode when a server error occurs.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>request</code> - The request that triggered the error.</dd><dd><code>exception</code> - The exception.</dd></dl>
+</li>
+</ul>
+<a name="onProdServerError(play.mvc.Http.RequestHeader, play.api.UsefulException)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>onProdServerError</h4>
+<pre>protected&nbsp;<a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;<a href="../../play/mvc/Result.html" title="interface in play.mvc">Result</a>&gt;&nbsp;onProdServerError(<a href="../../play/mvc/Http.RequestHeader.html" title="class in play.mvc">Http.RequestHeader</a>&nbsp;request,
+                                  play.api.UsefulException&nbsp;exception)</pre>
+<div class="block">Invoked in prod mode when a server error occurs.
+
+ Override this rather than [[onServerError()]] if you don't want to change Play's debug output when logging errors
+ in dev mode.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>request</code> - The request that triggered the error.</dd><dd><code>exception</code> - The exception.</dd></dl>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+<!-- ======= START OF BOTTOM NAVBAR ====== -->
+<div class="bottomNav"><a name="navbar_bottom">
+<!--   -->
+</a><a href="#skip-navbar_bottom" title="Skip navigation links"></a><a name="navbar_bottom_firstrow">
+<!--   -->
+</a>
+<ul class="navList" title="Navigation">
+<li><a href="../../overview-summary.html">Overview</a></li>
+<li><a href="package-summary.html">Package</a></li>
+<li class="navBarCell1Rev">Class</li>
+<li><a href="package-tree.html">Tree</a></li>
+<li><a href="../../deprecated-list.html">Deprecated</a></li>
+<li><a href="../../index-all.html">Index</a></li>
+<li><a href="../../help-doc.html">Help</a></li>
+</ul>
+</div>
+<div class="subNav">
+<ul class="navList">
+<li>Prev Class</li>
+<li><a href="../../play/http/DefaultHttpRequestHandler.html" title="class in play.http"><span class="strong">Next Class</span></a></li>
+</ul>
+<ul class="navList">
+<li><a href="../../index.html?play/http/DefaultHttpErrorHandler.html" target="_top">Frames</a></li>
+<li><a href="DefaultHttpErrorHandler.html" target="_top">No Frames</a></li>
+</ul>
+<ul class="navList" id="allclasses_navbar_bottom">
+<li><a href="../../allclasses-noframe.html">All Classes</a></li>
+</ul>
+<div>
+<script type="text/javascript"><!--
+  allClassesLink = document.getElementById("allclasses_navbar_bottom");
+  if(window==top) {
+    allClassesLink.style.display = "block";
+  }
+  else {
+    allClassesLink.style.display = "none";
+  }
+  //-->
+</script>
+</div>
+<div>
+<ul class="subNavList">
+<li>Summary:&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#constructor_summary">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_summary">Method</a></li>
+</ul>
+<ul class="subNavList">
+<li>Detail:&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#constructor_detail">Constr</a>&nbsp;|&nbsp;</li>
+<li><a href="#method_detail">Method</a></li>
+</ul>
+</div>
+<a name="skip-navbar_bottom">
+<!--   -->
+</a></div>
+<!-- ======== END OF BOTTOM NAVBAR ======= -->
+</body>
+</html>

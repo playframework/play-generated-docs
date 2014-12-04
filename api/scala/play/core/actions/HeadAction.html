@@ -1,5 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html >
 <html>
         <head>
           <title>HeadAction - play.core.actions.HeadAction</title>
@@ -9,6 +8,11 @@
           
       <link href="../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../lib/tools.tooltip.js"></script>
+      
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../index.html';
@@ -26,7 +30,11 @@
       <div id="definition">
         <img src="../../../lib/class_big.png" />
         <p id="owner"><a href="../../package.html" class="extype" name="play">play</a>.<a href="../package.html" class="extype" name="play.core">core</a>.<a href="package.html" class="extype" name="play.core.actions">actions</a></p>
-        <h1>HeadAction</h1>
+        <h1>HeadAction</h1> <span class="permalink">
+      <a href="../../../index.html#play.core.actions.HeadAction" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       </div>
 
       <h4 id="signature" class="signature">
@@ -40,9 +48,9 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>RFC2616-compatible HEAD implementation: provides a full header set and empty body for a given GET resource
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.4.0-M1/framework/src/play/src/main/scala/play/core/actions/HeadAction.scala" target="_blank">HeadAction.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.4.0-M2/framework/src/play/src/main/scala/play/core/actions/HeadAction.scala" target="_blank">HeadAction.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="../../api/http/HttpProtocol.html" class="extype" name="play.api.http.HttpProtocol">HttpProtocol</a>, <a href="../../api/http/DefaultWriteables.html" class="extype" name="play.api.http.DefaultWriteables">DefaultWriteables</a>, <a href="../../api/http/LowPriorityWriteables.html" class="extype" name="play.api.http.LowPriorityWriteables">LowPriorityWriteables</a>, <a href="../../api/mvc/EssentialAction.html" class="extype" name="play.api.mvc.EssentialAction">EssentialAction</a>, <a href="../../api/mvc/Handler.html" class="extype" name="play.api.mvc.Handler">Handler</a>, (<a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <a href="../../api/libs/iteratee/Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>], <a href="../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>], <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="../../api/http/HttpProtocol.html" class="extype" name="play.api.http.HttpProtocol">HttpProtocol</a>, <a href="../../api/http/DefaultWriteables.html" class="extype" name="play.api.http.DefaultWriteables">DefaultWriteables</a>, <a href="../../api/http/LowPriorityWriteables.html" class="extype" name="play.api.http.LowPriorityWriteables">LowPriorityWriteables</a>, <a href="../../api/mvc/EssentialAction.html" class="extype" name="play.api.mvc.EssentialAction">EssentialAction</a>, <a href="../../api/mvc/Handler.html" class="extype" name="play.api.mvc.Handler">Handler</a>, (<a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <a href="../../api/libs/iteratee/Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>], <a href="../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>], <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -81,7 +89,7 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="play.core.actions.HeadAction#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(handler:play.api.mvc.Handler):play.core.actions.HeadAction"></a>
+      <a id="&lt;init&gt;(action:play.api.mvc.EssentialAction):play.core.actions.HeadAction"></a>
       <a id="&lt;init&gt;:HeadAction"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -89,10 +97,14 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">HeadAction</span><span class="params">(<span name="handler">handler: <a href="../../api/mvc/Handler.html" class="extype" name="play.api.mvc.Handler">Handler</a></span>)</span>
+        <span class="name">HeadAction</span><span class="params">(<span name="action">action: <a href="../../api/mvc/EssentialAction.html" class="extype" name="play.api.mvc.EssentialAction">EssentialAction</a></span>)</span>
       </span>
-      </h4>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">handler</dt><dd class="cmt"><p>Action for the relevant GET path.
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.actions.HeadAction@&lt;init&gt;(action:play.api.mvc.EssentialAction):play.core.actions.HeadAction" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">action</dt><dd class="cmt"><p>Action for the relevant GET path.
 </p></dd></dl></div>
     </li></ol>
             </div>
@@ -104,19 +116,6 @@
         <div id="values" class="values members">
               <h3>Value Members</h3>
               <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="!=(x$1:AnyRef):Boolean"></a>
-      <a id="!=(AnyRef):Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.Any#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:Any):Boolean"></a>
       <a id="!=(Any):Boolean"></a>
       <h4 class="signature">
@@ -127,8 +126,12 @@
       <span class="symbol">
         <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.actions.HeadAction@!=(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef###" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="##():Int"></a>
       <a id="##():Int"></a>
@@ -140,22 +143,13 @@
       <span class="symbol">
         <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.actions.HeadAction@##():Int" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="==(x$1:AnyRef):Boolean"></a>
-      <a id="==(AnyRef):Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.Any#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="==(x$1:Any):Boolean"></a>
       <a id="==(Any):Boolean"></a>
       <h4 class="signature">
@@ -166,8 +160,12 @@
       <span class="symbol">
         <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.actions.HeadAction@==(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="play.api.http.HttpProtocol#CHUNKED" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="CHUNKED:String"></a>
       <a id="CHUNKED:String"></a>
@@ -179,7 +177,11 @@
       <span class="symbol">
         <span class="name">CHUNKED</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.actions.HeadAction@CHUNKED:String" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../api/http/HttpProtocol.html" class="extype" name="play.api.http.HttpProtocol">HttpProtocol</a></dd></dl></div>
     </li><li name="play.api.http.HttpProtocol#HTTP_1_0" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="HTTP_1_0:String"></a>
@@ -192,7 +194,11 @@
       <span class="symbol">
         <span class="name">HTTP_1_0</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.actions.HeadAction@HTTP_1_0:String" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../api/http/HttpProtocol.html" class="extype" name="play.api.http.HttpProtocol">HttpProtocol</a></dd></dl></div>
     </li><li name="play.api.http.HttpProtocol#HTTP_1_1" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="HTTP_1_1:String"></a>
@@ -205,7 +211,11 @@
       <span class="symbol">
         <span class="name">HTTP_1_1</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.actions.HeadAction@HTTP_1_1:String" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../api/http/HttpProtocol.html" class="extype" name="play.api.http.HttpProtocol">HttpProtocol</a></dd></dl></div>
     </li><li name="scala.Function1#andThen" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="andThen[A](g:R=&gt;A):T1=&gt;A"></a>
@@ -218,7 +228,11 @@
       <span class="symbol">
         <span class="name">andThen</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="g">g: (<a href="../../api/libs/iteratee/Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>], <a href="../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>]) ⇒ <span class="extype" name="scala.Function1.andThen.A">A</span></span>)</span><span class="result">: (<a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <span class="extype" name="scala.Function1.andThen.A">A</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.actions.HeadAction@andThen[A](g:R=&gt;A):T1=&gt;A" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Function1</dd><dt>Annotations</dt><dd>
                 <span class="name">@unspecialized</span><span class="args">()</span>
               
@@ -234,7 +248,11 @@
       <span class="symbol">
         <span class="name">apply</span><span class="params">(<span name="requestHeader">requestHeader: <a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>)</span><span class="result">: <a href="../../api/libs/iteratee/Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>], <a href="../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.actions.HeadAction@apply(requestHeader:play.api.mvc.RequestHeader):play.api.libs.iteratee.Iteratee[Array[Byte],play.api.mvc.Result]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.core.actions.HeadAction">HeadAction</a> → Function1</dd></dl></div>
     </li><li name="play.api.mvc.EssentialAction#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="apply():play.api.mvc.EssentialAction"></a>
@@ -247,7 +265,11 @@
       <span class="symbol">
         <span class="name">apply</span><span class="params">()</span><span class="result">: <a href="../../api/mvc/EssentialAction.html" class="extype" name="play.api.mvc.EssentialAction">EssentialAction</a></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.actions.HeadAction@apply():play.api.mvc.EssentialAction" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Returns itself, for better support in the routes file.</p><div class="fullcomment"><div class="comment cmt"><p>Returns itself, for better support in the routes file.
 </p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>itself
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../api/mvc/EssentialAction.html" class="extype" name="play.api.mvc.EssentialAction">EssentialAction</a></dd></dl></div>
@@ -262,7 +284,11 @@
       <span class="symbol">
         <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.actions.HeadAction@asInstanceOf[T0]:T0" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
@@ -273,9 +299,13 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <span class="name">clone</span><span class="params">()</span><span class="result">: <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.actions.HeadAction@clone():Object" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -294,7 +324,11 @@
       <span class="symbol">
         <span class="name">compose</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="g">g: (<span class="extype" name="scala.Function1.compose.A">A</span>) ⇒ <a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>)</span><span class="result">: (<span class="extype" name="scala.Function1.compose.A">A</span>) ⇒ <a href="../../api/libs/iteratee/Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>], <a href="../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.actions.HeadAction@compose[A](g:A=&gt;T1):A=&gt;R" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Function1</dd><dt>Annotations</dt><dd>
                 <span class="name">@unspecialized</span><span class="args">()</span>
               
@@ -308,9 +342,13 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.actions.HeadAction@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.AnyRef#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="equals(x$1:Any):Boolean"></a>
@@ -323,7 +361,11 @@
       <span class="symbol">
         <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.actions.HeadAction@equals(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
@@ -336,7 +378,11 @@
       <span class="symbol">
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.actions.HeadAction@finalize():Unit" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -355,7 +401,11 @@
       <span class="symbol">
         <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.actions.HeadAction@getClass():Class[_]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
@@ -368,7 +418,11 @@
       <span class="symbol">
         <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.actions.HeadAction@hashCode():Int" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -381,7 +435,11 @@
       <span class="symbol">
         <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.actions.HeadAction@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
@@ -392,9 +450,13 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.actions.HeadAction@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.AnyRef#notify" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
@@ -407,7 +469,11 @@
       <span class="symbol">
         <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.actions.HeadAction@notify():Unit" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.AnyRef#notifyAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notifyAll():Unit"></a>
@@ -420,7 +486,11 @@
       <span class="symbol">
         <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.actions.HeadAction@notifyAll():Unit" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="play.core.actions.HeadAction#singleChunkIteratee" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="singleChunkIteratee(result:play.api.mvc.Result,httpVersion:String):play.api.libs.iteratee.Iteratee[Array[Byte],play.api.mvc.Result]"></a>
@@ -433,7 +503,11 @@
       <span class="symbol">
         <span class="name">singleChunkIteratee</span><span class="params">(<span name="result">result: <a href="../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>, <span name="httpVersion">httpVersion: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="../../api/libs/iteratee/Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>], <a href="../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.actions.HeadAction@singleChunkIteratee(result:play.api.mvc.Result,httpVersion:String):play.api.libs.iteratee.Iteratee[Array[Byte],play.api.mvc.Result]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Creates an Iteratee that will evaluate at most one chunk of a given resource</p><div class="fullcomment"><div class="comment cmt"><p>Creates an Iteratee that will evaluate at most one chunk of a given resource</p></div><dl class="paramcmts block"><dt class="param">result</dt><dd class="cmt"><p>Contains initial result information</p></dd><dt class="param">httpVersion</dt><dd class="cmt"><p>HTTP Version from the RequestHeader to ensure proper response headers</p></dd><dt>returns</dt><dd class="cmt"><p>
 </p></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -447,7 +521,11 @@
       <span class="symbol">
         <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.actions.HeadAction@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.Function1#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
@@ -460,7 +538,11 @@
       <span class="symbol">
         <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.actions.HeadAction@toString():String" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Function1 → AnyRef → Any</dd></dl></div>
     </li><li name="play.api.http.DefaultWriteables#wBytes" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wBytes:play.api.http.Writeable[Array[Byte]]"></a>
@@ -473,7 +555,11 @@
       <span class="symbol">
         <span class="name">wBytes</span><span class="result">: <a href="../../api/http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.actions.HeadAction@wBytes:play.api.http.Writeable[Array[Byte]]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Straightforward <code>Writeable</code> for Array[Byte] values.</p><div class="fullcomment"><div class="comment cmt"><p>Straightforward <code>Writeable</code> for Array[Byte] values.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../api/http/DefaultWriteables.html" class="extype" name="play.api.http.DefaultWriteables">DefaultWriteables</a></dd></dl></div>
     </li><li name="play.api.http.DefaultWriteables#wString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -487,7 +573,11 @@
       <span class="symbol">
         <span class="name">wString</span><span class="params">(<span class="implicit">implicit </span><span name="codec">codec: <a href="../../api/mvc/Codec.html" class="extype" name="play.api.mvc.Codec">Codec</a></span>)</span><span class="result">: <a href="../../api/http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.actions.HeadAction@wString(implicitcodec:play.api.mvc.Codec):play.api.http.Writeable[String]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Straightforward <code>Writeable</code> for String values.</p><div class="fullcomment"><div class="comment cmt"><p>Straightforward <code>Writeable</code> for String values.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../api/http/DefaultWriteables.html" class="extype" name="play.api.http.DefaultWriteables">DefaultWriteables</a></dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -501,7 +591,11 @@
       <span class="symbol">
         <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.actions.HeadAction@wait():Unit" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -520,7 +614,11 @@
       <span class="symbol">
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.actions.HeadAction@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -539,7 +637,11 @@
       <span class="symbol">
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.actions.HeadAction@wait(x$1:Long):Unit" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -556,9 +658,13 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">writeableOf_Content</span><span class="tparams">[<span name="C">C &lt;: <span class="extype" name="play.twirl.api.Content">Content</span></span>]</span><span class="params">(<span class="implicit">implicit </span><span name="codec">codec: <a href="../../api/mvc/Codec.html" class="extype" name="play.api.mvc.Codec">Codec</a></span>, <span name="ct">ct: <a href="../../api/http/ContentTypeOf.html" class="extype" name="play.api.http.ContentTypeOf">ContentTypeOf</a>[<span class="extype" name="play.api.http.LowPriorityWriteables.writeableOf_Content.C">C</span>]</span>)</span><span class="result">: <a href="../../api/http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<span class="extype" name="play.api.http.LowPriorityWriteables.writeableOf_Content.C">C</span>]</span>
+        <span class="name">writeableOf_Content</span><span class="tparams">[<span name="C">C &lt;: <a href="../../twirl/api/Content.html" class="extype" name="play.twirl.api.Content">Content</a></span>]</span><span class="params">(<span class="implicit">implicit </span><span name="codec">codec: <a href="../../api/mvc/Codec.html" class="extype" name="play.api.mvc.Codec">Codec</a></span>, <span name="ct">ct: <a href="../../api/http/ContentTypeOf.html" class="extype" name="play.api.http.ContentTypeOf">ContentTypeOf</a>[<span class="extype" name="play.api.http.LowPriorityWriteables.writeableOf_Content.C">C</span>]</span>)</span><span class="result">: <a href="../../api/http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<span class="extype" name="play.api.http.LowPriorityWriteables.writeableOf_Content.C">C</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.actions.HeadAction@writeableOf_Content[C&lt;:play.twirl.api.Content](implicitcodec:play.api.mvc.Codec,implicitct:play.api.http.ContentTypeOf[C]):play.api.http.Writeable[C]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt"><code>Writeable</code> for <code>play.twirl.api.Content</code> values.</p><div class="fullcomment"><div class="comment cmt"><p><code>Writeable</code> for <code>play.twirl.api.Content</code> values.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../api/http/LowPriorityWriteables.html" class="extype" name="play.api.http.LowPriorityWriteables">LowPriorityWriteables</a></dd></dl></div>
     </li><li name="play.api.http.DefaultWriteables#writeableOf_EmptyContent" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -572,7 +678,11 @@
       <span class="symbol">
         <span class="name">writeableOf_EmptyContent</span><span class="result">: <a href="../../api/http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<a href="../../api/mvc/Results$$EmptyContent.html" class="extype" name="play.api.mvc.Results.EmptyContent">EmptyContent</a>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.actions.HeadAction@writeableOf_EmptyContent:play.api.http.Writeable[play.api.mvc.Results.EmptyContent]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt"><code>Writeable</code> for empty responses.</p><div class="fullcomment"><div class="comment cmt"><p><code>Writeable</code> for empty responses.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../api/http/DefaultWriteables.html" class="extype" name="play.api.http.DefaultWriteables">DefaultWriteables</a></dd></dl></div>
     </li><li name="play.api.http.DefaultWriteables#writeableOf_JsValue" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -586,7 +696,11 @@
       <span class="symbol">
         <span class="name">writeableOf_JsValue</span><span class="params">(<span class="implicit">implicit </span><span name="codec">codec: <a href="../../api/mvc/Codec.html" class="extype" name="play.api.mvc.Codec">Codec</a></span>)</span><span class="result">: <a href="../../api/http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<a href="../../api/libs/json/JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.actions.HeadAction@writeableOf_JsValue(implicitcodec:play.api.mvc.Codec):play.api.http.Writeable[play.api.libs.json.JsValue]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt"><code>Writeable</code> for <code>JsValue</code> values - Json
 </p><div class="fullcomment"><div class="comment cmt"><p><code>Writeable</code> for <code>JsValue</code> values - Json
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../api/http/DefaultWriteables.html" class="extype" name="play.api.http.DefaultWriteables">DefaultWriteables</a></dd></dl></div>
@@ -601,7 +715,11 @@
       <span class="symbol">
         <span class="name">writeableOf_NodeBuffer</span><span class="params">(<span class="implicit">implicit </span><span name="codec">codec: <a href="../../api/mvc/Codec.html" class="extype" name="play.api.mvc.Codec">Codec</a></span>)</span><span class="result">: <a href="../../api/http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<span class="extype" name="scala.xml.NodeBuffer">NodeBuffer</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.actions.HeadAction@writeableOf_NodeBuffer(implicitcodec:play.api.mvc.Codec):play.api.http.Writeable[scala.xml.NodeBuffer]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt"><code>Writeable</code> for <code>NodeBuffer</code> values - literal Scala XML.</p><div class="fullcomment"><div class="comment cmt"><p><code>Writeable</code> for <code>NodeBuffer</code> values - literal Scala XML.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../api/http/DefaultWriteables.html" class="extype" name="play.api.http.DefaultWriteables">DefaultWriteables</a></dd></dl></div>
     </li><li name="play.api.http.DefaultWriteables#writeableOf_NodeSeq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -615,7 +733,11 @@
       <span class="symbol">
         <span class="name">writeableOf_NodeSeq</span><span class="tparams">[<span name="C">C &lt;: <span class="extype" name="scala.xml.NodeSeq">NodeSeq</span></span>]</span><span class="params">(<span class="implicit">implicit </span><span name="codec">codec: <a href="../../api/mvc/Codec.html" class="extype" name="play.api.mvc.Codec">Codec</a></span>)</span><span class="result">: <a href="../../api/http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<span class="extype" name="play.api.http.DefaultWriteables.writeableOf_NodeSeq.C">C</span>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.actions.HeadAction@writeableOf_NodeSeq[C&lt;:scala.xml.NodeSeq](implicitcodec:play.api.mvc.Codec):play.api.http.Writeable[C]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt"><code>Writeable</code> for <code>NodeSeq</code> values - literal Scala XML.</p><div class="fullcomment"><div class="comment cmt"><p><code>Writeable</code> for <code>NodeSeq</code> values - literal Scala XML.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../api/http/DefaultWriteables.html" class="extype" name="play.api.http.DefaultWriteables">DefaultWriteables</a></dd></dl></div>
     </li><li name="play.api.http.DefaultWriteables#writeableOf_XmlContent" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -627,9 +749,13 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">writeableOf_XmlContent</span><span class="params">(<span class="implicit">implicit </span><span name="codec">codec: <a href="../../api/mvc/Codec.html" class="extype" name="play.api.mvc.Codec">Codec</a></span>, <span name="ct">ct: <a href="../../api/http/ContentTypeOf.html" class="extype" name="play.api.http.ContentTypeOf">ContentTypeOf</a>[<span class="extype" name="play.twirl.api.Xml">Xml</span>]</span>)</span><span class="result">: <a href="../../api/http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<span class="extype" name="play.twirl.api.Xml">Xml</span>]</span>
+        <span class="name">writeableOf_XmlContent</span><span class="params">(<span class="implicit">implicit </span><span name="codec">codec: <a href="../../api/mvc/Codec.html" class="extype" name="play.api.mvc.Codec">Codec</a></span>, <span name="ct">ct: <a href="../../api/http/ContentTypeOf.html" class="extype" name="play.api.http.ContentTypeOf">ContentTypeOf</a>[<a href="../../twirl/api/Xml.html" class="extype" name="play.twirl.api.Xml">Xml</a>]</span>)</span><span class="result">: <a href="../../api/http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<a href="../../twirl/api/Xml.html" class="extype" name="play.twirl.api.Xml">Xml</a>]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.actions.HeadAction@writeableOf_XmlContent(implicitcodec:play.api.mvc.Codec,implicitct:play.api.http.ContentTypeOf[play.twirl.api.Xml]):play.api.http.Writeable[play.twirl.api.Xml]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt"><code>Writeable</code> for <code>play.twirl.api.Xml</code> values.</p><div class="fullcomment"><div class="comment cmt"><p><code>Writeable</code> for <code>play.twirl.api.Xml</code> values. Trims surrounding whitespace.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../api/http/DefaultWriteables.html" class="extype" name="play.api.http.DefaultWriteables">DefaultWriteables</a></dd></dl></div>
     </li><li name="play.api.http.DefaultWriteables#writeableOf_urlEncodedForm" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -641,9 +767,13 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">writeableOf_urlEncodedForm</span><span class="params">(<span class="implicit">implicit </span><span name="codec">codec: <a href="../../api/mvc/Codec.html" class="extype" name="play.api.mvc.Codec">Codec</a></span>)</span><span class="result">: <a href="../../api/http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]]]</span>
+        <span class="name">writeableOf_urlEncodedForm</span><span class="params">(<span class="implicit">implicit </span><span name="codec">codec: <a href="../../api/mvc/Codec.html" class="extype" name="play.api.mvc.Codec">Codec</a></span>)</span><span class="result">: <a href="../../api/http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <a href="../../../scala/package.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="scala.Predef.String">String</span>]]]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.actions.HeadAction@writeableOf_urlEncodedForm(implicitcodec:play.api.mvc.Codec):play.api.http.Writeable[Map[String,Seq[String]]]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt"><code>Writeable</code> for <code>urlEncodedForm</code> values
 </p><div class="fullcomment"><div class="comment cmt"><p><code>Writeable</code> for <code>urlEncodedForm</code> values
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../api/http/DefaultWriteables.html" class="extype" name="play.api.http.DefaultWriteables">DefaultWriteables</a></dd></dl></div>
@@ -669,7 +799,7 @@
             </div><div class="parent" name="scala.Function1">
               <h3>Inherited from (<a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <a href="../../api/libs/iteratee/Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>], <a href="../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</h3>
             </div><div class="parent" name="scala.AnyRef">
-              <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
+              <h3>Inherited from <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
             </div>
@@ -688,6 +818,7 @@
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../lib/template.js"></script>
+
+
     </body>
       </html>

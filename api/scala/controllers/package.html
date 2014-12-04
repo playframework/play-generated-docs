@@ -1,5 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html >
 <html>
         <head>
           <title>controllers - controllers</title>
@@ -9,6 +8,11 @@
           
       <link href="../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../lib/template.js"></script>
+      <script type="text/javascript" src="../lib/tools.tooltip.js"></script>
+      
       <script type="text/javascript">
          if(top === self) {
             var url = '../index.html';
@@ -26,7 +30,11 @@
       <div id="definition">
         <img src="../lib/package_big.png" />
         
-        <h1>controllers</h1>
+        <h1>controllers</h1> <span class="permalink">
+      <a href="../index.html#controllers.package" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" />
+      </a>
+    </span>
       </div>
 
       <h4 id="signature" class="signature">
@@ -58,7 +66,27 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="controllers.AssetsBuilder" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="controllers.Assets" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="AssetsextendsAssetsBuilder"></a>
+      <a id="Assets:Assets"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Assets.html"><span class="name">Assets</span></a><span class="result"> extends <a href="AssetsBuilder.html" class="extype" name="controllers.AssetsBuilder">AssetsBuilder</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#controllers.package@AssetsextendsAssetsBuilder" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@Singleton</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="controllers.AssetsBuilder" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="AssetsBuilderextendsController"></a>
       <a id="AssetsBuilder:AssetsBuilder"></a>
       <h4 class="signature">
@@ -69,7 +97,11 @@
       <span class="symbol">
         <a href="AssetsBuilder.html"><span class="name">AssetsBuilder</span></a><span class="result"> extends <a href="../play/api/mvc/Controller.html" class="extype" name="play.api.mvc.Controller">Controller</a></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../index.html#controllers.package@AssetsBuilderextendsController" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" />
+      </a>
+    </span>
       
     </li></ol>
             </div>
@@ -78,7 +110,7 @@
 
         <div id="values" class="values members">
               <h3>Value Members</h3>
-              <ol><li name="controllers.Assets" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="controllers.Assets" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="Assets"></a>
       <a id="Assets:Assets"></a>
       <h4 class="signature">
@@ -89,9 +121,22 @@
       <span class="symbol">
         <a href="Assets$.html"><span class="name">Assets</span></a><span class="result"> extends <a href="AssetsBuilder.html" class="extype" name="controllers.AssetsBuilder">AssetsBuilder</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">Controller that serves static resources.</p>
-    </li><li name="controllers.Default" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../index.html#controllers.package@Assets" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Controller that serves static resources.</p><div class="fullcomment"><div class="comment cmt"><p>Controller that serves static resources.</p><p>Resources are searched in the classpath.</p><p>It handles Last-Modified and ETag header automatically.
+If a gzipped version of a resource is found (Same resource name with the .gz suffix), it is served instead. If a
+digest file is available for a given asset then its contents are read and used to supply a digest value. This value will be used for
+serving up ETag values and for the purposes of reverse routing. For example given &quot;a.js&quot;, if there is an &quot;a.js.md5&quot;
+file available then the latter contents will be used to determine the Etag value.
+The reverse router also uses the digest in order to translate any file to the form &lt;digest&gt;-&lt;asset&gt; for
+example &quot;a.js&quot; may be also found at &quot;d41d8cd98f00b204e9800998ecf8427e-a.js&quot;.
+If there is no digest file found then digest values for ETags are formed by forming a sha1 digest of the last-modified
+time.</p><p>The default digest algorithm to search for is &quot;md5&quot;. You can override this quite easily. For example if the SHA-1
+algorithm is preferred:</p><pre><span class="lit">"assets.digest.algorithm"</span> = <span class="lit">"sha1"</span></pre><p>You can set a custom Cache directive for a particular resource if needed. For example in your application.conf file:</p><pre><span class="lit">"assets.cache./public/images/logo.png"</span> = <span class="lit">"max-age=3600"</span></pre><p>You can use this controller in any application, just by declaring the appropriate route. For example:</p><pre>GET     /assets/￯ﾻ﾿*file               controllers.Assets.at(path=<span class="lit">"/public"</span>, file)</pre></div></div>
+    </li><li name="controllers.Default" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="Default"></a>
       <a id="Default:Default"></a>
       <h4 class="signature">
@@ -102,9 +147,16 @@
       <span class="symbol">
         <a href="Default$.html"><span class="name">Default</span></a><span class="result"> extends <a href="../play/api/mvc/Controller.html" class="extype" name="play.api.mvc.Controller">Controller</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">Default actions ready to use as is from your routes file.</p>
-    </li><li name="controllers.ExternalAssets" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      </h4><span class="permalink">
+      <a href="../index.html#controllers.package@Default" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Default actions ready to use as is from your routes file.</p><div class="fullcomment"><div class="comment cmt"><p>Default actions ready to use as is from your routes file.</p><p>Example:</p><pre>GET   /google          controllers.Default.redirect(to = <span class="lit">"http://www.google.com"</span>)
+GET   /favicon.ico     controllers.Default.notFound
+GET   /admin           controllers.Default.todo
+GET   /xxx             controllers.Default.error</pre></div></div>
+    </li><li name="controllers.ExternalAssets" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ExternalAssets"></a>
       <a id="ExternalAssets:ExternalAssets"></a>
       <h4 class="signature">
@@ -115,8 +167,16 @@
       <span class="symbol">
         <a href="ExternalAssets$.html"><span class="name">ExternalAssets</span></a><span class="result"> extends <a href="../play/api/mvc/Controller.html" class="extype" name="play.api.mvc.Controller">Controller</a></span>
       </span>
-      </h4>
-      <p class="comment cmt">Controller that serves static resources from an external folder.</p>
+      </h4><span class="permalink">
+      <a href="../index.html#controllers.package@ExternalAssets" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Controller that serves static resources from an external folder.</p><div class="fullcomment"><div class="comment cmt"><p>Controller that serves static resources from an external folder.
+It useful in development mode if you want to serve static assets that shouldn't be part of the build process.</p><p>Not that this controller is not intented to be used in production mode and can lead to security issues.
+Therefore it is automatically disabled in production mode.</p><p>All assets are served with max-age=3600 cache directive.</p><p>You can use this controller in any application, just by declaring the appropriate route. For example:</p><pre>GET     /assets/￯ﾻ﾿*file               controllers.ExternalAssets.at(path=<span class="lit">"/home/peter/myplayapp/external"</span>, file)
+GET     /assets/￯ﾻ﾿*file               controllers.ExternalAssets.at(path=<span class="lit">"C:\external"</span>, file)
+GET     /assets/￯ﾻ﾿*file               controllers.ExternalAssets.at(path=<span class="lit">"relativeToYourApp"</span>, file)</pre></div></div>
     </li></ol>
             </div>
 
@@ -142,6 +202,7 @@
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-      <script defer="defer" type="text/javascript" id="jquery-js" src="../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../lib/template.js"></script>
+
+
     </body>
       </html>

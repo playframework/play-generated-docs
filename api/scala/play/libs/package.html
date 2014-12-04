@@ -1,5 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html >
 <html>
         <head>
           <title>libs - play.libs</title>
@@ -9,6 +8,11 @@
           
       <link href="../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../lib/template.js"></script>
+      <script type="text/javascript" src="../../lib/tools.tooltip.js"></script>
+      
       <script type="text/javascript">
          if(top === self) {
             var url = '../../index.html';
@@ -26,7 +30,11 @@
       <div id="definition">
         <img src="../../lib/package_big.png" />
         <p id="owner"><a href="../package.html" class="extype" name="play">play</a></p>
-        <h1>libs</h1>
+        <h1>libs</h1> <span class="permalink">
+      <a href="../../index.html#play.libs.package" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" />
+      </a>
+    </span>
       </div>
 
       <h4 id="signature" class="signature">
@@ -62,7 +70,7 @@
 
         <div id="values" class="values members">
               <h3>Value Members</h3>
-              <ol><li name="play.libs.ReflectionsCache" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="play.libs.ReflectionsCache" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ReflectionsCache"></a>
       <a id="ReflectionsCache:ReflectionsCache"></a>
       <h4 class="signature">
@@ -73,9 +81,17 @@
       <span class="symbol">
         <a href="ReflectionsCache$.html"><span class="name">ReflectionsCache</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">Provides a cache for reflections, so that classloader scanning over the same classloader for the same package
-multiple times doesn't need to be done.</p>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.libs.package@ReflectionsCache" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Provides a cache for reflections, so that classloader scanning over the same classloader for the same package
+multiple times doesn't need to be done.</p><div class="fullcomment"><div class="comment cmt"><p>Provides a cache for reflections, so that classloader scanning over the same classloader for the same package
+multiple times doesn't need to be done.</p><p>This is most useful in tests, when each test starts a new FakeApplication, and so things like Ebean scan the
+classloader for @Entity annotated classes in a given package.  Profiling shows that without this cache, over 90%
+of a tests time might be spent in classpath scanning.
+</p></div></div>
     </li></ol>
             </div>
 
@@ -101,6 +117,7 @@ multiple times doesn't need to be done.</p>
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-      <script defer="defer" type="text/javascript" id="jquery-js" src="../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../lib/template.js"></script>
+
+
     </body>
       </html>

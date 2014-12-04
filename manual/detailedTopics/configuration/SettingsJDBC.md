@@ -15,6 +15,17 @@ db.default.url="mysql://user:password@localhost/database"
 db.default.url="postgres://user:password@localhost/database"
 ```
 
+A non-standard port of the database service can be specified:
+
+```
+# To configure MySQL running in Docker
+db.default.url="mysql://user:password@localhost:port/database"
+
+# To configure PostgreSQL running in Docker
+db.default.url="postgres://user:password@localhost:port/database"
+```
+
+
 ## Reference
 
 In addition to the classical `driver`, `url`, `user`, `password` configuration properties, it also supports additional tuning parameters if you need them:
@@ -97,7 +108,5 @@ db.default.logStatements=false
 db.default.maxConnectionAge=1 hour
 
 # The maximum query execution time. Queries slower than this will be logged as a warning.
-db.queryExecuteTimeLimit=1 second
+db.default.queryExecuteTimeLimit=1 second
 ```
-
-> **Next:** [[Configuring Play's thread pools|ThreadPools]]

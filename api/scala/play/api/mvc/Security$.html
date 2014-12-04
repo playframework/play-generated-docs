@@ -1,5 +1,4 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html >
 <html>
         <head>
           <title>Security - play.api.mvc.Security</title>
@@ -9,6 +8,11 @@
           
       <link href="../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../lib/tools.tooltip.js"></script>
+      
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../index.html';
@@ -26,7 +30,11 @@
       <div id="definition">
         <img src="../../../lib/object_big.png" />
         <p id="owner"><a href="../../package.html" class="extype" name="play">play</a>.<a href="../package.html" class="extype" name="play.api">api</a>.<a href="package.html" class="extype" name="play.api.mvc">mvc</a></p>
-        <h1>Security</h1>
+        <h1>Security</h1> <span class="permalink">
+      <a href="../../../index.html#play.api.mvc.Security$" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       </div>
 
       <h4 id="signature" class="signature">
@@ -40,9 +48,9 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Helpers to create secure actions.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.4.0-M1/framework/src/play/src/main/scala/play/api/mvc/Security.scala" target="_blank">Security.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.4.0-M2/framework/src/play/src/main/scala/play/api/mvc/Security.scala" target="_blank">Security.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -82,7 +90,7 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="play.api.mvc.Security.AuthenticatedBuilder" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="play.api.mvc.Security.AuthenticatedBuilder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="AuthenticatedBuilder[U]extendsActionBuilder[[A]play.api.mvc.Security.AuthenticatedRequest[A,U]]"></a>
       <a id="AuthenticatedBuilder[U]:AuthenticatedBuilder[U]"></a>
       <h4 class="signature">
@@ -93,8 +101,30 @@
       <span class="symbol">
         <a href="Security$$AuthenticatedBuilder.html"><span class="name">AuthenticatedBuilder</span></a><span class="tparams">[<span name="U">U</span>]</span><span class="result"> extends <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>[[A]<a href="Security$$AuthenticatedRequest.html" class="extype" name="play.api.mvc.Security.AuthenticatedRequest">AuthenticatedRequest</a>[<span class="extype" name="play.api.mvc.Security.&lt;refinement&gt;.R.A">A</span>, <span class="extype" name="play.api.mvc.Security.AuthenticatedBuilder.U">U</span>]]</span>
       </span>
-      </h4>
-      <p class="comment cmt">An authenticated action builder.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.Security$@AuthenticatedBuilder[U]extendsActionBuilder[[A]play.api.mvc.Security.AuthenticatedRequest[A,U]]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">An authenticated action builder.</p><div class="fullcomment"><div class="comment cmt"><p>An authenticated action builder.</p><p>This can be used to create an action builder, like so:</p><pre><span class="cmt">// in a Security trait</span>
+<span class="kw">object</span> Authenticated <span class="kw">extends</span> AuthenticatedBuilder(req <span class="kw">=&gt;</span> getUserFromRequest(req))
+
+<span class="cmt">// then in a controller</span>
+<span class="kw">def</span> index = Authenticated { <span class="kw">implicit</span> request <span class="kw">=&gt;</span>
+  Ok(<span class="lit">"Hello "</span> + request.user)
+}</pre><p>It can also be used from an action builder, for example:</p><pre><span class="kw">class</span> AuthenticatedDbRequest[A](<span class="kw">val</span> user: User,
+                                <span class="kw">val</span> conn: Connection,
+                                request: Request[A]) <span class="kw">extends</span> WrappedRequest[A](request)
+
+<span class="kw">object</span> Authenticated <span class="kw">extends</span> ActionBuilder[AuthenticatedDbRequest] {
+  <span class="kw">def</span> invokeBlock[A](request: Request[A], block: (AuthenticatedDbRequest[A]) <span class="kw">=&gt;</span> Future[Result]) = {
+    AuthenticatedBuilder(req <span class="kw">=&gt;</span> getUserFromRequest(req)).authenticate(request, { authRequest: AuthenticatedRequest[A, User] <span class="kw">=&gt;</span>
+      DB.withConnection { conn <span class="kw">=&gt;</span>
+        block(<span class="kw">new</span> AuthenticatedDbRequest[A](authRequest.user, conn, request))
+      }
+    })
+  }
+}</pre></div></div>
     </li><li name="play.api.mvc.Security.AuthenticatedRequest" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="AuthenticatedRequest[A,U]extendsWrappedRequest[A]"></a>
       <a id="AuthenticatedRequest[A,U]:AuthenticatedRequest[A,U]"></a>
@@ -106,8 +136,12 @@
       <span class="symbol">
         <a href="Security$$AuthenticatedRequest.html"><span class="name">AuthenticatedRequest</span></a><span class="tparams">[<span name="A">A</span>, <span name="U">U</span>]</span><span class="result"> extends <a href="WrappedRequest.html" class="extype" name="play.api.mvc.WrappedRequest">WrappedRequest</a>[<span class="extype" name="play.api.mvc.Security.AuthenticatedRequest.A">A</span>]</span>
       </span>
-      </h4>
-      <p class="comment cmt">An authenticated request
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.Security$@AuthenticatedRequest[A,U]extendsWrappedRequest[A]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">An authenticated request
 </p>
     </li></ol>
             </div>
@@ -117,19 +151,6 @@
         <div id="values" class="values members">
               <h3>Value Members</h3>
               <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="!=(x$1:AnyRef):Boolean"></a>
-      <a id="!=(AnyRef):Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.Any#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:Any):Boolean"></a>
       <a id="!=(Any):Boolean"></a>
       <h4 class="signature">
@@ -140,8 +161,12 @@
       <span class="symbol">
         <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.Security$@!=(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef###" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="##():Int"></a>
       <a id="##():Int"></a>
@@ -153,22 +178,13 @@
       <span class="symbol">
         <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.Security$@##():Int" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="==(x$1:AnyRef):Boolean"></a>
-      <a id="==(AnyRef):Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.Any#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="==(x$1:Any):Boolean"></a>
       <a id="==(Any):Boolean"></a>
       <h4 class="signature">
@@ -179,8 +195,12 @@
       <span class="symbol">
         <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.Security$@==(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="play.api.mvc.Security#Authenticated" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="Authenticated(action:String=&gt;play.api.mvc.EssentialAction):play.api.mvc.EssentialAction"></a>
       <a id="Authenticated((String)⇒EssentialAction):EssentialAction"></a>
@@ -192,7 +212,11 @@
       <span class="symbol">
         <span class="name">Authenticated</span><span class="params">(<span name="action">action: (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <a href="EssentialAction.html" class="extype" name="play.api.mvc.EssentialAction">EssentialAction</a></span>)</span><span class="result">: <a href="EssentialAction.html" class="extype" name="play.api.mvc.EssentialAction">EssentialAction</a></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.Security$@Authenticated(action:String=&gt;play.api.mvc.EssentialAction):play.api.mvc.EssentialAction" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Wraps another action, allowing only authenticated HTTP requests.</p><div class="fullcomment"><div class="comment cmt"><p>Wraps another action, allowing only authenticated HTTP requests.</p><p>The user name is retrieved from the (configurable) session cookie, and added to the HTTP request’s
 <code>username</code> attribute. In case of failure it returns an Unauthorized response (401)</p><p>For example:</p><pre><span class="cmt">//in a Security trait</span>
  <span class="kw">def</span> isAuthenticated(f: <span class="kw">=&gt;</span> <span class="std">String</span> <span class="kw">=&gt;</span> Request[AnyContent] <span class="kw">=&gt;</span> Result) = {
@@ -216,12 +240,16 @@
       <span class="symbol">
         <span class="name">Authenticated</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="userinfo">userinfo: (<a href="RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="play.api.mvc.Security.Authenticated.A">A</span>]</span>, <span name="onUnauthorized">onUnauthorized: (<a href="RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>)</span><span class="params">(<span name="action">action: (<span class="extype" name="play.api.mvc.Security.Authenticated.A">A</span>) ⇒ <a href="EssentialAction.html" class="extype" name="play.api.mvc.EssentialAction">EssentialAction</a></span>)</span><span class="result">: <a href="EssentialAction.html" class="extype" name="play.api.mvc.EssentialAction">EssentialAction</a></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.Security$@Authenticated[A](userinfo:play.api.mvc.RequestHeader=&gt;Option[A],onUnauthorized:play.api.mvc.RequestHeader=&gt;play.api.mvc.Result)(action:A=&gt;play.api.mvc.EssentialAction):play.api.mvc.EssentialAction" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Wraps another action, allowing only authenticated HTTP requests.</p><div class="fullcomment"><div class="comment cmt"><p>Wraps another action, allowing only authenticated HTTP requests.
 Furthermore, it lets users to configure where to retrieve the user info from
 and what to do in case unsuccessful authentication</p><p>For example:</p><pre><span class="cmt">//in a Security trait</span>
  <span class="kw">def</span> username(request: RequestHeader) = request.session.get(<span class="lit">"email"</span>)
- <span class="kw">def</span> onUnauthorized(request: RequestHeader) = Results.Redirect(routes.<span class="std">Application</span>.login)
+ <span class="kw">def</span> onUnauthorized(request: RequestHeader) = Results.Redirect(routes.Application.login)
  <span class="kw">def</span> isAuthenticated(f: <span class="kw">=&gt;</span> <span class="std">String</span> <span class="kw">=&gt;</span> Request[AnyContent] <span class="kw">=&gt;</span> Result) = {
    Authenticated(username, onUnauthorized) { user <span class="kw">=&gt;</span>
      Action(request <span class="kw">=&gt;</span> f(user)(request))
@@ -232,7 +260,7 @@ and what to do in case unsuccessful authentication</p><p>For example:</p><pre><s
     Ok(<span class="lit">"Hello "</span> + username)
 }</pre></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>the type of the user info value (e.g. <code>String</code> if user info consists only in a user name)</p></dd><dt class="param">userinfo</dt><dd class="cmt"><p>function used to retrieve the user info from the request header</p></dd><dt class="param">onUnauthorized</dt><dd class="cmt"><p>function used to generate alternative result if the user is not authenticated</p></dd><dt class="param">action</dt><dd class="cmt"><p>the action to wrap
 </p></dd></dl></div>
-    </li><li name="play.api.mvc.Security.AuthenticatedBuilder" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="play.api.mvc.Security.AuthenticatedBuilder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="AuthenticatedBuilder"></a>
       <a id="AuthenticatedBuilder:AuthenticatedBuilder"></a>
       <h4 class="signature">
@@ -243,8 +271,30 @@ and what to do in case unsuccessful authentication</p><p>For example:</p><pre><s
       <span class="symbol">
         <a href="Security$$AuthenticatedBuilder$.html"><span class="name">AuthenticatedBuilder</span></a>
       </span>
-      </h4>
-      <p class="comment cmt">An authenticated action builder.</p>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.Security$@AuthenticatedBuilder" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">An authenticated action builder.</p><div class="fullcomment"><div class="comment cmt"><p>An authenticated action builder.</p><p>This can be used to create an action builder, like so:</p><pre><span class="cmt">// in a Security trait</span>
+<span class="kw">object</span> Authenticated <span class="kw">extends</span> AuthenticatedBuilder(req <span class="kw">=&gt;</span> getUserFromRequest(req))
+
+<span class="cmt">// then in a controller</span>
+<span class="kw">def</span> index = Authenticated { <span class="kw">implicit</span> request <span class="kw">=&gt;</span>
+  Ok(<span class="lit">"Hello "</span> + request.user)
+}</pre><p>It can also be used from an action builder, for example:</p><pre><span class="kw">class</span> AuthenticatedDbRequest[A](<span class="kw">val</span> user: User,
+                                <span class="kw">val</span> conn: Connection,
+                                request: Request[A]) <span class="kw">extends</span> WrappedRequest[A](request)
+
+<span class="kw">object</span> Authenticated <span class="kw">extends</span> ActionBuilder[AuthenticatedDbRequest] {
+  <span class="kw">def</span> invokeBlock[A](request: Request[A], block: (AuthenticatedDbRequest[A]) <span class="kw">=&gt;</span> Future[Result]) = {
+    AuthenticatedBuilder(req <span class="kw">=&gt;</span> getUserFromRequest(req)).authenticate(request, { authRequest: AuthenticatedRequest[A, User] <span class="kw">=&gt;</span>
+      DB.withConnection { conn <span class="kw">=&gt;</span>
+        block(<span class="kw">new</span> AuthenticatedDbRequest[A](authRequest.user, conn, request))
+      }
+    })
+  }
+}</pre></div></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -256,7 +306,11 @@ and what to do in case unsuccessful authentication</p><p>For example:</p><pre><s
       <span class="symbol">
         <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.Security$@asInstanceOf[T0]:T0" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
@@ -267,9 +321,13 @@ and what to do in case unsuccessful authentication</p><p>For example:</p><pre><s
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <span class="name">clone</span><span class="params">()</span><span class="result">: <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.Security$@clone():Object" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -286,9 +344,13 @@ and what to do in case unsuccessful authentication</p><p>For example:</p><pre><s
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.Security$@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.AnyRef#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="equals(x$1:Any):Boolean"></a>
@@ -301,7 +363,11 @@ and what to do in case unsuccessful authentication</p><p>For example:</p><pre><s
       <span class="symbol">
         <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.Security$@equals(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
@@ -314,7 +380,11 @@ and what to do in case unsuccessful authentication</p><p>For example:</p><pre><s
       <span class="symbol">
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.Security$@finalize():Unit" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -333,7 +403,11 @@ and what to do in case unsuccessful authentication</p><p>For example:</p><pre><s
       <span class="symbol">
         <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.Security$@getClass():Class[_]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
@@ -346,7 +420,11 @@ and what to do in case unsuccessful authentication</p><p>For example:</p><pre><s
       <span class="symbol">
         <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.Security$@hashCode():Int" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -359,7 +437,11 @@ and what to do in case unsuccessful authentication</p><p>For example:</p><pre><s
       <span class="symbol">
         <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.Security$@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
@@ -370,9 +452,13 @@ and what to do in case unsuccessful authentication</p><p>For example:</p><pre><s
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.Security$@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.AnyRef#notify" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
@@ -385,7 +471,11 @@ and what to do in case unsuccessful authentication</p><p>For example:</p><pre><s
       <span class="symbol">
         <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.Security$@notify():Unit" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.AnyRef#notifyAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notifyAll():Unit"></a>
@@ -398,7 +488,11 @@ and what to do in case unsuccessful authentication</p><p>For example:</p><pre><s
       <span class="symbol">
         <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.Security$@notifyAll():Unit" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
@@ -411,7 +505,11 @@ and what to do in case unsuccessful authentication</p><p>For example:</p><pre><s
       <span class="symbol">
         <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.Security$@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.AnyRef#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
@@ -424,7 +522,11 @@ and what to do in case unsuccessful authentication</p><p>For example:</p><pre><s
       <span class="symbol">
         <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.Security$@toString():String" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="play.api.mvc.Security#username" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="username:String"></a>
@@ -437,7 +539,11 @@ and what to do in case unsuccessful authentication</p><p>For example:</p><pre><s
       <span class="symbol">
         <span class="name">username</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.Security$@username:String" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Key of the username attribute stored in session.</p>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
@@ -450,7 +556,11 @@ and what to do in case unsuccessful authentication</p><p>For example:</p><pre><s
       <span class="symbol">
         <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.Security$@wait():Unit" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -469,7 +579,11 @@ and what to do in case unsuccessful authentication</p><p>For example:</p><pre><s
       <span class="symbol">
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.Security$@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -488,7 +602,11 @@ and what to do in case unsuccessful authentication</p><p>For example:</p><pre><s
       <span class="symbol">
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      </h4>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.Security$@wait(x$1:Long):Unit" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -506,7 +624,7 @@ and what to do in case unsuccessful authentication</p><p>For example:</p><pre><s
 
         <div id="inheritedMembers">
         <div class="parent" name="scala.AnyRef">
-              <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
+              <h3>Inherited from <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
             </div>
@@ -525,6 +643,7 @@ and what to do in case unsuccessful authentication</p><p>For example:</p><pre><s
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-      <script defer="defer" type="text/javascript" id="jquery-js" src="../../../lib/jquery.js"></script><script defer="defer" type="text/javascript" id="jquery-ui-js" src="../../../lib/jquery-ui.js"></script><script defer="defer" type="text/javascript" id="tools-tooltip-js" src="../../../lib/tools.tooltip.js"></script><script defer="defer" type="text/javascript" id="template-js" src="../../../lib/template.js"></script>
+
+
     </body>
       </html>
