@@ -48,7 +48,7 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Provides helpers for creating <code>Action</code> values.
-</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>[<span class="extype" name="play.api.mvc.ActionBuilder.R">R</span>]</dd><dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.4.0-M2/framework/src/play/src/main/scala/play/api/mvc/Action.scala" target="_blank">Action.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>[<span class="extype" name="play.api.mvc.ActionBuilder.R">R</span>]</dd><dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play/src/main/scala/play/api/mvc/Action.scala" target="_blank">Action.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="ActionFunction.html" class="extype" name="play.api.mvc.ActionFunction">ActionFunction</a>[<a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>, <span class="extype" name="play.api.mvc.ActionBuilder.R">R</span>], <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
@@ -207,7 +207,7 @@ any other actions, modify the request object or potentially use a different clas
       </a>
     </span>
       <p class="shortcomment cmt">Constructs an <code>Action</code> with default content, and no request parameter.</p><div class="fullcomment"><div class="comment cmt"><p>Constructs an <code>Action</code> with default content, and no request parameter.</p><p>For example:</p><pre><span class="kw">val</span> hello = Action {
-Ok(<span class="lit">"Hello!"</span>)
+  Ok(<span class="lit">"Hello!"</span>)
 }</pre></div><dl class="paramcmts block"><dt class="param">block</dt><dd class="cmt"><p>the action code</p></dd><dt>returns</dt><dd class="cmt"><p>an action
 </p></dd></dl></div>
     </li><li name="play.api.mvc.ActionBuilder#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -227,7 +227,7 @@ Ok(<span class="lit">"Hello!"</span>)
       </a>
     </span>
       <p class="shortcomment cmt">Constructs an <code>Action</code> with default content.</p><div class="fullcomment"><div class="comment cmt"><p>Constructs an <code>Action</code> with default content.</p><p>For example:</p><pre><span class="kw">val</span> echo = Action { request <span class="kw">=&gt;</span>
-Ok(<span class="lit">"Got request ["</span> + request + <span class="lit">"]"</span>)
+  Ok(<span class="lit">"Got request ["</span> + request + <span class="lit">"]"</span>)
 }</pre></div><dl class="paramcmts block"><dt class="param">block</dt><dd class="cmt"><p>the action code</p></dd><dt>returns</dt><dd class="cmt"><p>an action
 </p></dd></dl></div>
     </li><li name="play.api.mvc.ActionBuilder#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -247,7 +247,7 @@ Ok(<span class="lit">"Got request ["</span> + request + <span class="lit">"]"</s
       </a>
     </span>
       <p class="shortcomment cmt">Constructs an <code>Action</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Constructs an <code>Action</code>.</p><p>For example:</p><pre><span class="kw">val</span> echo = Action(parse.anyContent) { request <span class="kw">=&gt;</span>
-Ok(<span class="lit">"Got request ["</span> + request + <span class="lit">"]"</span>)
+  Ok(<span class="lit">"Got request ["</span> + request + <span class="lit">"]"</span>)
 }</pre></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>the type of the request body</p></dd><dt class="param">bodyParser</dt><dd class="cmt"><p>the <code>BodyParser</code> to use to parse the request body</p></dd><dt class="param">block</dt><dd class="cmt"><p>the action code</p></dd><dt>returns</dt><dd class="cmt"><p>an action
 </p></dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -284,9 +284,9 @@ Ok(<span class="lit">"Got request ["</span> + request + <span class="lit">"]"</s
       </a>
     </span>
       <p class="shortcomment cmt">Constructs an <code>Action</code> that returns a future of a result, with default content.</p><div class="fullcomment"><div class="comment cmt"><p>Constructs an <code>Action</code> that returns a future of a result, with default content.</p><p>For example:</p><pre><span class="kw">val</span> hello = Action.async { request <span class="kw">=&gt;</span>
-WS.url(request.getQueryString(<span class="lit">"url"</span>).get).get().map { r <span class="kw">=&gt;</span>
-  <span class="kw">if</span> (r.status == <span class="num">200</span>) Ok(<span class="lit">"The website is up"</span>) <span class="kw">else</span> NotFound(<span class="lit">"The website is down"</span>)
-}
+  WS.url(request.getQueryString(<span class="lit">"url"</span>).get).get().map { r <span class="kw">=&gt;</span>
+    <span class="kw">if</span> (r.status == <span class="num">200</span>) Ok(<span class="lit">"The website is up"</span>) <span class="kw">else</span> NotFound(<span class="lit">"The website is down"</span>)
+  }
 }</pre></div><dl class="paramcmts block"><dt class="param">block</dt><dd class="cmt"><p>the action code</p></dd><dt>returns</dt><dd class="cmt"><p>an action
 </p></dd></dl></div>
     </li><li name="play.api.mvc.ActionBuilder#async" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -306,9 +306,9 @@ WS.url(request.getQueryString(<span class="lit">"url"</span>).get).get().map { r
       </a>
     </span>
       <p class="shortcomment cmt">Constructs an <code>Action</code> that returns a future of a result, with default content.</p><div class="fullcomment"><div class="comment cmt"><p>Constructs an <code>Action</code> that returns a future of a result, with default content.</p><p>For example:</p><pre><span class="kw">val</span> hello = Action.async { request <span class="kw">=&gt;</span>
-WS.url(request.getQueryString(<span class="lit">"url"</span>).get).get().map { r <span class="kw">=&gt;</span>
-  <span class="kw">if</span> (r.status == <span class="num">200</span>) Ok(<span class="lit">"The website is up"</span>) <span class="kw">else</span> NotFound(<span class="lit">"The website is down"</span>)
-}
+  WS.url(request.getQueryString(<span class="lit">"url"</span>).get).get().map { r <span class="kw">=&gt;</span>
+    <span class="kw">if</span> (r.status == <span class="num">200</span>) Ok(<span class="lit">"The website is up"</span>) <span class="kw">else</span> NotFound(<span class="lit">"The website is down"</span>)
+  }
 }</pre></div><dl class="paramcmts block"><dt class="param">block</dt><dd class="cmt"><p>the action code</p></dd><dt>returns</dt><dd class="cmt"><p>an action
 </p></dd></dl></div>
     </li><li name="play.api.mvc.ActionBuilder#async" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -328,9 +328,9 @@ WS.url(request.getQueryString(<span class="lit">"url"</span>).get).get().map { r
       </a>
     </span>
       <p class="shortcomment cmt">Constructs an <code>Action</code> that returns a future of a result, with default content, and no request parameter.</p><div class="fullcomment"><div class="comment cmt"><p>Constructs an <code>Action</code> that returns a future of a result, with default content, and no request parameter.</p><p>For example:</p><pre><span class="kw">val</span> hello = Action.async {
-WS.url(<span class="lit">"http://www.playframework.com"</span>).get().map { r <span class="kw">=&gt;</span>
-  <span class="kw">if</span> (r.status == <span class="num">200</span>) Ok(<span class="lit">"The website is up"</span>) <span class="kw">else</span> NotFound(<span class="lit">"The website is down"</span>)
-}
+  WS.url(<span class="lit">"http://www.playframework.com"</span>).get().map { r <span class="kw">=&gt;</span>
+    <span class="kw">if</span> (r.status == <span class="num">200</span>) Ok(<span class="lit">"The website is up"</span>) <span class="kw">else</span> NotFound(<span class="lit">"The website is down"</span>)
+  }
 }</pre></div><dl class="paramcmts block"><dt class="param">block</dt><dd class="cmt"><p>the action code</p></dd><dt>returns</dt><dd class="cmt"><p>an action
 </p></dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">

@@ -48,7 +48,7 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Helper utilities to generate WebSocket results.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.4.0-M2/framework/src/play/src/main/scala/play/api/mvc/WebSocket.scala" target="_blank">WebSocket.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play/src/main/scala/play/api/mvc/WebSocket.scala" target="_blank">WebSocket.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -219,7 +219,7 @@ the WebSocket
     </span>
       <p class="shortcomment cmt">Create a WebSocket that will pass messages to/from the actor created by the given props.</p><div class="fullcomment"><div class="comment cmt"><p>Create a WebSocket that will pass messages to/from the actor created by the given props.</p><p>Given a request and an actor ref to send messages to, the function passed should return the props for an actor
 to create to handle this WebSocket.</p><p>For example:</p><pre><span class="kw">def</span> webSocket = WebSocket.acceptWithActor[JsValue, JsValue] { req <span class="kw">=&gt;</span> out <span class="kw">=&gt;</span>
-MyWebSocketActor.props(out)
+  MyWebSocketActor.props(out)
 }</pre></div></div>
     </li><li name="play.api.mvc.WebSocket#adapter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="adapter[A](f:play.api.mvc.RequestHeader=&gt;play.api.libs.iteratee.Enumeratee[A,A])(implicitframeFormatter:play.api.mvc.WebSocket.FrameFormatter[A]):play.api.mvc.WebSocket[A,A]"></a>
@@ -509,11 +509,11 @@ inbound and outbound channels, asynchronously
       <p class="shortcomment cmt">Create a WebSocket that will pass messages to/from the actor created by the given props asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Create a WebSocket that will pass messages to/from the actor created by the given props asynchronously.</p><p>Given a request, this method should return a future of either:</p><p>- A result to reject the WebSocket with, or
 - A function that will take the sending actor, and create the props that describe the actor to handle this
 WebSocket</p><p>For example:</p><pre><span class="kw">def</span> subscribe = WebSocket.tryAcceptWithActor[JsValue, JsValue] { req <span class="kw">=&gt;</span>
-<span class="kw">val</span> isAuthenticated: Future[<span class="std">Boolean</span>] = authenticate(req)
-isAuthenticated.map {
-  <span class="kw">case</span> <span class="kw">false</span> <span class="kw">=&gt;</span> Left(Forbidden)
-  <span class="kw">case</span> <span class="kw">true</span> <span class="kw">=&gt;</span> Right(MyWebSocketActor.props)
-}
+  <span class="kw">val</span> isAuthenticated: Future[<span class="std">Boolean</span>] = authenticate(req)
+  isAuthenticated.map {
+    <span class="kw">case</span> <span class="kw">false</span> <span class="kw">=&gt;</span> Left(Forbidden)
+    <span class="kw">case</span> <span class="kw">true</span> <span class="kw">=&gt;</span> Right(MyWebSocketActor.props)
+  }
 }</pre></div></div>
     </li><li name="play.api.mvc.WebSocket#using" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="using[A](f:play.api.mvc.RequestHeader=&gt;(play.api.libs.iteratee.Iteratee[A,_],play.api.libs.iteratee.Enumerator[A]))(implicitframeFormatter:play.api.mvc.WebSocket.FrameFormatter[A]):play.api.mvc.WebSocket[A,A]"></a>

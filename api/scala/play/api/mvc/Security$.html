@@ -48,7 +48,7 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Helpers to create secure actions.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.4.0-M2/framework/src/play/src/main/scala/play/api/mvc/Security.scala" target="_blank">Security.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play/src/main/scala/play/api/mvc/Security.scala" target="_blank">Security.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -218,7 +218,7 @@
       </a>
     </span>
       <p class="shortcomment cmt">Wraps another action, allowing only authenticated HTTP requests.</p><div class="fullcomment"><div class="comment cmt"><p>Wraps another action, allowing only authenticated HTTP requests.</p><p>The user name is retrieved from the (configurable) session cookie, and added to the HTTP request’s
-<code>username</code> attribute. In case of failure it returns an Unauthorized response (401)</p><p>For example:</p><pre><span class="cmt">//in a Security trait</span>
+<code>username</code> attribute. In case of failure it returns an Unauthorized response (401)</p><p>For example:</p><pre> <span class="cmt">//in a Security trait</span>
  <span class="kw">def</span> isAuthenticated(f: <span class="kw">=&gt;</span> <span class="std">String</span> <span class="kw">=&gt;</span> Request[AnyContent] <span class="kw">=&gt;</span> Result) = {
    Authenticated { user <span class="kw">=&gt;</span>
      Action(request <span class="kw">=&gt;</span> f(user)(request))
@@ -247,7 +247,7 @@
     </span>
       <p class="shortcomment cmt">Wraps another action, allowing only authenticated HTTP requests.</p><div class="fullcomment"><div class="comment cmt"><p>Wraps another action, allowing only authenticated HTTP requests.
 Furthermore, it lets users to configure where to retrieve the user info from
-and what to do in case unsuccessful authentication</p><p>For example:</p><pre><span class="cmt">//in a Security trait</span>
+and what to do in case unsuccessful authentication</p><p>For example:</p><pre> <span class="cmt">//in a Security trait</span>
  <span class="kw">def</span> username(request: RequestHeader) = request.session.get(<span class="lit">"email"</span>)
  <span class="kw">def</span> onUnauthorized(request: RequestHeader) = Results.Redirect(routes.Application.login)
  <span class="kw">def</span> isAuthenticated(f: <span class="kw">=&gt;</span> <span class="std">String</span> <span class="kw">=&gt;</span> Request[AnyContent] <span class="kw">=&gt;</span> Result) = {

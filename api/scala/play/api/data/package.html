@@ -56,7 +56,7 @@
     <span class="lit">"dueDate"</span> -&gt; date(<span class="lit">"yyyy-MM-dd"</span>),
     <span class="lit">"done"</span> -&gt; boolean
   )
-)</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.4.0-M2/framework/src/play/src/main/scala/play/api/data/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
+)</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play/src/main/scala/play/api/data/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -751,17 +751,17 @@
     </span>
       <p class="shortcomment cmt">Contains the Format API used by <code>Form</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the Format API used by <code>Form</code>.</p><p>For example, to define a custom formatter:</p><pre><span class="kw">val</span> signedIntFormat = <span class="kw">new</span> Formatter[<span class="std">Int</span>] {
 
-<span class="kw">def</span> bind(key: <span class="std">String</span>, data: <span class="std">Map</span>[<span class="std">String</span>, <span class="std">String</span>]) = {
-  stringFormat.bind(key, data).right.flatMap { value <span class="kw">=&gt;</span>
-    scala.util.control.Exception.allCatch[<span class="std">Int</span>]
-      .either(java.lang.Integer.parseInt(value))
-      .left.map(e <span class="kw">=&gt;</span> <span class="std">Seq</span>(FormError(key, <span class="lit">"error.signedNumber"</span>, Nil)))
+  <span class="kw">def</span> bind(key: <span class="std">String</span>, data: <span class="std">Map</span>[<span class="std">String</span>, <span class="std">String</span>]) = {
+    stringFormat.bind(key, data).right.flatMap { value <span class="kw">=&gt;</span>
+      scala.util.control.Exception.allCatch[<span class="std">Int</span>]
+        .either(java.lang.Integer.parseInt(value))
+        .left.map(e <span class="kw">=&gt;</span> <span class="std">Seq</span>(FormError(key, <span class="lit">"error.signedNumber"</span>, Nil)))
+    }
   }
-}
 
-<span class="kw">def</span> unbind(key: <span class="std">String</span>, value: <span class="std">Long</span>) = <span class="std">Map</span>(
-  key -&gt; ((<span class="kw">if</span> (value&lt;<span class="num">0</span>) <span class="lit">"-"</span> <span class="kw">else</span> <span class="lit">"+"</span>) + value)
-)
+  <span class="kw">def</span> unbind(key: <span class="std">String</span>, value: <span class="std">Long</span>) = <span class="std">Map</span>(
+    key -&gt; ((<span class="kw">if</span> (value&lt;<span class="num">0</span>) <span class="lit">"-"</span> <span class="kw">else</span> <span class="lit">"+"</span>) + value)
+  )
 }</pre></div></div>
     </li><li name="play.api.data.validation" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="validation"></a>
@@ -780,8 +780,8 @@
       </a>
     </span>
       <p class="shortcomment cmt">Contains the validation API used by <code>Form</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the validation API used by <code>Form</code>.</p><p>For example, to define a custom constraint:</p><pre><span class="kw">val</span> negative = Constraint[<span class="std">Int</span>] {
-<span class="kw">case</span> i <span class="kw">if</span> i &lt; <span class="num">0</span> <span class="kw">=&gt;</span> Valid
-<span class="kw">case</span> _ <span class="kw">=&gt;</span> Invalid(<span class="lit">"Must be a negative number."</span>)
+  <span class="kw">case</span> i <span class="kw">if</span> i &lt; <span class="num">0</span> <span class="kw">=&gt;</span> Valid
+  <span class="kw">case</span> _ <span class="kw">=&gt;</span> Invalid(<span class="lit">"Must be a negative number."</span>)
 }</pre></div></div>
     </li></ol>
             </div>

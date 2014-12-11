@@ -47,7 +47,7 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Contains the public API for Scala developers.</p><h6> Access the current Play application </h6><pre><span class="kw">import</span> play.api.Play.current</pre><h6> Read configuration </h6><pre><span class="kw">val</span> poolSize = configuration.getInt(<span class="lit">"engine.pool.size"</span>)</pre><h6> Use the logger </h6><pre>Logger.info(<span class="lit">"Hello!"</span>)</pre><h6> Define a Plugin </h6><pre><span class="kw">class</span> MyPlugin(app: Application) <span class="kw">extends</span> Plugin</pre><h6> Create adhoc applications (for testing) </h6><pre><span class="kw">val</span> application = Application(<span class="kw">new</span> File(<span class="lit">"."</span>), <span class="kw">this</span>.getClass.getClassloader, <span class="std">None</span>, Play.Mode.DEV)</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.4.0-M2/framework/src/play/src/main/scala/play/api/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Contains the public API for Scala developers.</p><h6> Access the current Play application </h6><pre><span class="kw">import</span> play.api.Play.current</pre><h6> Read configuration </h6><pre><span class="kw">val</span> poolSize = configuration.getInt(<span class="lit">"engine.pool.size"</span>)</pre><h6> Use the logger </h6><pre>Logger.info(<span class="lit">"Hello!"</span>)</pre><h6> Define a Plugin </h6><pre><span class="kw">class</span> MyPlugin(app: Application) <span class="kw">extends</span> Plugin</pre><h6> Create adhoc applications (for testing) </h6><pre><span class="kw">val</span> application = Application(<span class="kw">new</span> File(<span class="lit">"."</span>), <span class="kw">this</span>.getClass.getClassloader, <span class="std">None</span>, Play.Mode.DEV)</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play/src/main/scala/play/api/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -267,9 +267,9 @@ Implementations must define a noarg constructor.
     </span>
       <p class="shortcomment cmt">Defines an application’s global settings.</p><div class="fullcomment"><div class="comment cmt"><p>Defines an application’s global settings.</p><p>To define your own global settings, just create a <code>Global</code> object in the <code>_root_</code> package.</p><pre><span class="kw">object</span> Global <span class="kw">extends</span> GlobalSettings {
 
-<span class="kw">override</span> <span class="kw">def</span> onStart(app: Application) {
-  Logger.info(<span class="lit">"Application is started!!!"</span>)
-}
+  <span class="kw">override</span> <span class="kw">def</span> onStart(app: Application) {
+    Logger.info(<span class="lit">"Application is started!!!"</span>)
+  }
 
 }</pre></div></div>
     </li><li name="play.api.Logger" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
@@ -374,9 +374,9 @@ Implementations must define a noarg constructor.
       </a>
     </span>
       <p class="shortcomment cmt">A Play plugin.</p><div class="fullcomment"><div class="comment cmt"><p>A Play plugin.</p><p>A plugin must define a single argument constructor that accepts an <a href="Application.html" class="extype" name="play.api.Application">play.api.Application</a>.  For example:</p><pre><span class="kw">class</span> MyPlugin(app: Application) <span class="kw">extends</span> Plugin {
-<span class="kw">override</span> <span class="kw">def</span> onStart() = {
-  Logger.info(<span class="lit">"Plugin started!"</span>)
-}
+  <span class="kw">override</span> <span class="kw">def</span> onStart() = {
+    Logger.info(<span class="lit">"Plugin started!"</span>)
+  }
 }</pre><p>The plugin class must be declared in a play.plugins file available in the classpath root:</p><pre><span class="num">1000</span>:myapp.MyPlugin</pre><p>The associated int defines the plugin priority.
 </p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@deprecated</span>
@@ -711,9 +711,9 @@ For example:</p><pre><span class="kw">val</span> text = ContentTypes.TEXT
     </span>
       <p class="shortcomment cmt">Contains the Controller/Action/Result API to handle HTTP requests.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the Controller/Action/Result API to handle HTTP requests.</p><p>For example, a typical controller:</p><pre><span class="kw">object</span> Application <span class="kw">extends</span> Controller {
 
-<span class="kw">def</span> index = Action {
-  Ok(<span class="lit">"It works!"</span>)
-}
+  <span class="kw">def</span> index = Action {
+    Ok(<span class="lit">"It works!"</span>)
+  }
 
 }</pre></div></div>
     </li><li name="play.api.templates" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">

@@ -48,16 +48,16 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>JSONP helper.</p><p>Example of use, provided the following route definition:</p><pre>GET  /my-service       Application.myService(callback: <span class="std">String</span>)</pre><p>The following action definition:</p><pre><span class="kw">def</span> myService(callback: <span class="std">String</span>) = Action {
-<span class="kw">val</span> json = ...
-Ok(Jsonp(callback, json))
+  <span class="kw">val</span> json = ...
+  Ok(Jsonp(callback, json))
 }</pre><p>And the following request:</p><pre>GET /my-service?callback=foo</pre><p>The response will have content type “text/javascript” and will look like the following:</p><pre>foo({...});</pre><p>Another example, showing how to serve either JSON or JSONP from the same action, according to the presence of
 a “callback” parameter in the query string:</p><pre><span class="kw">def</span> myService = Action { <span class="kw">implicit</span> request <span class="kw">=&gt;</span>
-<span class="kw">val</span> json = ...
-request.queryString.get(<span class="lit">"callback"</span>).flatMap(_.headOption) <span class="kw">match</span> {
-  <span class="kw">case</span> <span class="std">Some</span>(callback) <span class="kw">=&gt;</span> Ok(Jsonp(callback, json))
-  <span class="kw">case</span> <span class="std">None</span> <span class="kw">=&gt;</span> Ok(json)
-}
-}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.4.0-M2/framework/src/play/src/main/scala/play/api/libs/Jsonp.scala" target="_blank">Jsonp.scala</a></dd></dl><div class="toggleContainer block">
+  <span class="kw">val</span> json = ...
+  request.queryString.get(<span class="lit">"callback"</span>).flatMap(_.headOption) <span class="kw">match</span> {
+    <span class="kw">case</span> <span class="std">Some</span>(callback) <span class="kw">=&gt;</span> Ok(Jsonp(callback, json))
+    <span class="kw">case</span> <span class="std">None</span> <span class="kw">=&gt;</span> Ok(json)
+  }
+}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play/src/main/scala/play/api/libs/Jsonp.scala" target="_blank">Jsonp.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>

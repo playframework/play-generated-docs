@@ -57,24 +57,24 @@ bind directly from the request path.</p><p>For example, given this class definit
     ￢ﾀﾦ
   }
 }</pre><p>The definition the binder can look like the following:</p><pre><span class="kw">object</span> User {
-<span class="kw">implicit</span> <span class="kw">def</span> pathBinder(<span class="kw">implicit</span> intBinder: PathBindable[<span class="std">Int</span>]) = <span class="kw">new</span> PathBindable[User] {
-  <span class="kw">override</span> <span class="kw">def</span> bind(key: <span class="std">String</span>, value: <span class="std">String</span>): Either[<span class="std">String</span>, User] = {
-    <span class="kw">for</span> {
-      id <span class="kw">&lt;-</span> intBinder.bind(key, value).right
-      user <span class="kw">&lt;-</span> User.findById(id).toRight(<span class="lit">"User not found"</span>).right
-    } <span class="kw">yield</span> user
+  <span class="kw">implicit</span> <span class="kw">def</span> pathBinder(<span class="kw">implicit</span> intBinder: PathBindable[<span class="std">Int</span>]) = <span class="kw">new</span> PathBindable[User] {
+    <span class="kw">override</span> <span class="kw">def</span> bind(key: <span class="std">String</span>, value: <span class="std">String</span>): Either[<span class="std">String</span>, User] = {
+      <span class="kw">for</span> {
+        id <span class="kw">&lt;-</span> intBinder.bind(key, value).right
+        user <span class="kw">&lt;-</span> User.findById(id).toRight(<span class="lit">"User not found"</span>).right
+      } <span class="kw">yield</span> user
+    }
+    <span class="kw">override</span> <span class="kw">def</span> unbind(key: <span class="std">String</span>, user: User): <span class="std">String</span> = {
+      intBinder.unbind(user.id)
+    }
   }
-  <span class="kw">override</span> <span class="kw">def</span> unbind(key: <span class="std">String</span>, user: User): <span class="std">String</span> = {
-    intBinder.unbind(user.id)
-  }
-}
 }</pre></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="play.api.mvc.PathBindable">PathBindable</a>[<span class="extype" name="play.api.mvc.PathBindable.A">A</span>]</dd><dt>Annotations</dt><dd>
                 <span class="name">@implicitNotFound</span><span class="args">(<span>
       
       <span class="defval" name="&quot;No URL path binder found for type ${A}. Try to implement an implicit PathBindable for this type.&quot;">...</span>
     </span>)</span>
               
-        </dd><dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.4.0-M2/framework/src/play/src/main/scala/play/api/mvc/Binders.scala" target="_blank">Binders.scala</a></dd></dl><div class="toggleContainer block">
+        </dd><dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play/src/main/scala/play/api/mvc/Binders.scala" target="_blank">Binders.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">

@@ -48,7 +48,7 @@ You will need to add Anorm and jdbc plugin to your dependencies :
 ```scala
 libraryDependencies ++= Seq(
   jdbc,
-  anorm
+  "com.typesafe.play" %% "anorm" % "2.4.0"
 )
 ```
 
@@ -58,14 +58,7 @@ To start you need to learn how to execute SQL queries.
 
 First, import `anorm._`, and then simply use the `SQL` object to create queries. You need a `Connection` to run a query, and you can retrieve one from the `play.api.db.DB` helper:
 
-```scala
-import anorm._ 
-import play.api.db.DB
-
-DB.withConnection { implicit c =>
-  val result: Boolean = SQL("Select 1").execute()    
-} 
-```
+@[playdb](code/ScalaAnorm.scala)
 
 The `execute()` method returns a Boolean value indicating whether the execution was successful.
 

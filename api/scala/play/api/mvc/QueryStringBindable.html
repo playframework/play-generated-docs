@@ -54,29 +54,29 @@ bind directly from the request query string.</p><p>For example, if you have the 
  */</span>
 <span class="kw">case</span> <span class="kw">class</span> Pager(index: <span class="std">Int</span>, size: <span class="std">Int</span>)</pre><p>Play will create a <code>Pager(5, 42)</code> value from a query string looking like <code>/foo?p.index=5&amp;p.size=42</code> if you define
 an instance of <code>QueryStringBindable[Pager]</code> available in the implicit scope.</p><p>For example:</p><pre><span class="kw">object</span> Pager {
-<span class="kw">implicit</span> <span class="kw">def</span> queryStringBinder(<span class="kw">implicit</span> intBinder: QueryStringBindable[<span class="std">Int</span>]) = <span class="kw">new</span> QueryStringBindable[Pager] {
-  <span class="kw">override</span> <span class="kw">def</span> bind(key: <span class="std">String</span>, params: <span class="std">Map</span>[<span class="std">String</span>, <span class="std">Seq</span>[<span class="std">String</span>]]): <span class="std">Option</span>[Either[<span class="std">String</span>, Pager]] = {
-    <span class="kw">for</span> {
-      index <span class="kw">&lt;-</span> intBinder.bind(key + <span class="lit">".index"</span>, params)
-      size <span class="kw">&lt;-</span> intBinder.bind(key + <span class="lit">".size"</span>, params)
-    } <span class="kw">yield</span> {
-      (index, size) <span class="kw">match</span> {
-        <span class="kw">case</span> (Right(index), Right(size)) <span class="kw">=&gt;</span> Right(Pager(index, size))
-        <span class="kw">case</span> _ <span class="kw">=&gt;</span> Left(<span class="lit">"Unable to bind a Pager"</span>)
+  <span class="kw">implicit</span> <span class="kw">def</span> queryStringBinder(<span class="kw">implicit</span> intBinder: QueryStringBindable[<span class="std">Int</span>]) = <span class="kw">new</span> QueryStringBindable[Pager] {
+    <span class="kw">override</span> <span class="kw">def</span> bind(key: <span class="std">String</span>, params: <span class="std">Map</span>[<span class="std">String</span>, <span class="std">Seq</span>[<span class="std">String</span>]]): <span class="std">Option</span>[Either[<span class="std">String</span>, Pager]] = {
+      <span class="kw">for</span> {
+        index <span class="kw">&lt;-</span> intBinder.bind(key + <span class="lit">".index"</span>, params)
+        size <span class="kw">&lt;-</span> intBinder.bind(key + <span class="lit">".size"</span>, params)
+      } <span class="kw">yield</span> {
+        (index, size) <span class="kw">match</span> {
+          <span class="kw">case</span> (Right(index), Right(size)) <span class="kw">=&gt;</span> Right(Pager(index, size))
+          <span class="kw">case</span> _ <span class="kw">=&gt;</span> Left(<span class="lit">"Unable to bind a Pager"</span>)
+        }
       }
     }
+    <span class="kw">override</span> <span class="kw">def</span> unbind(key: <span class="std">String</span>, pager: Pager): <span class="std">String</span> = {
+      intBinder.unbind(key + <span class="lit">".index"</span>, pager.index) + <span class="lit">"&"</span> + intBinder.unbind(key + <span class="lit">".size"</span>, pager.size)
+    }
   }
-  <span class="kw">override</span> <span class="kw">def</span> unbind(key: <span class="std">String</span>, pager: Pager): <span class="std">String</span> = {
-    intBinder.unbind(key + <span class="lit">".index"</span>, pager.index) + <span class="lit">"&"</span> + intBinder.unbind(key + <span class="lit">".size"</span>, pager.size)
-  }
-}
 }</pre><p>To use it in a route, just write a type annotation aside the parameter you want to bind:</p><pre>GET  /foo        controllers.foo(p: Pager)</pre></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="play.api.mvc.QueryStringBindable">QueryStringBindable</a>[<span class="extype" name="play.api.mvc.QueryStringBindable.A">A</span>]</dd><dt>Annotations</dt><dd>
                 <span class="name">@implicitNotFound</span><span class="args">(<span>
       
       <span class="defval" name="&quot;No QueryString binder found for type ${A}. Try to implement an implicit QueryStringBindable for this type.&quot;">...</span>
     </span>)</span>
               
-        </dd><dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.4.0-M2/framework/src/play/src/main/scala/play/api/mvc/Binders.scala" target="_blank">Binders.scala</a></dd></dl><div class="toggleContainer block">
+        </dd><dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play/src/main/scala/play/api/mvc/Binders.scala" target="_blank">Binders.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">

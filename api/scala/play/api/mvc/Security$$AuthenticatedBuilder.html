@@ -65,7 +65,7 @@
       }
     })
   }
-}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.4.0-M2/framework/src/play/src/main/scala/play/api/mvc/Security.scala" target="_blank">Security.scala</a></dd></dl><div class="toggleContainer block">
+}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play/src/main/scala/play/api/mvc/Security.scala" target="_blank">Security.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>[[A]<a href="Security$$AuthenticatedRequest.html" class="extype" name="play.api.mvc.Security.AuthenticatedRequest">AuthenticatedRequest</a>[<span class="extype" name="play.api.mvc.Security.&lt;refinement&gt;.R.A">A</span>, <span class="extype" name="play.api.mvc.Security.AuthenticatedBuilder.U">U</span>]], <a href="ActionFunction.html" class="extype" name="play.api.mvc.ActionFunction">ActionFunction</a>[<a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>, [A]<a href="Security$$AuthenticatedRequest.html" class="extype" name="play.api.mvc.Security.AuthenticatedRequest">AuthenticatedRequest</a>[<span class="extype" name="play.api.mvc.Security.&lt;refinement&gt;.R.A">A</span>, <span class="extype" name="play.api.mvc.Security.AuthenticatedBuilder.U">U</span>]], <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -219,7 +219,7 @@
       </a>
     </span>
       <p class="shortcomment cmt">Constructs an <code>Action</code> with default content, and no request parameter.</p><div class="fullcomment"><div class="comment cmt"><p>Constructs an <code>Action</code> with default content, and no request parameter.</p><p>For example:</p><pre><span class="kw">val</span> hello = Action {
-Ok(<span class="lit">"Hello!"</span>)
+  Ok(<span class="lit">"Hello!"</span>)
 }</pre></div><dl class="paramcmts block"><dt class="param">block</dt><dd class="cmt"><p>the action code</p></dd><dt>returns</dt><dd class="cmt"><p>an action
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a></dd></dl></div>
     </li><li name="play.api.mvc.ActionBuilder#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -239,7 +239,7 @@ Ok(<span class="lit">"Hello!"</span>)
       </a>
     </span>
       <p class="shortcomment cmt">Constructs an <code>Action</code> with default content.</p><div class="fullcomment"><div class="comment cmt"><p>Constructs an <code>Action</code> with default content.</p><p>For example:</p><pre><span class="kw">val</span> echo = Action { request <span class="kw">=&gt;</span>
-Ok(<span class="lit">"Got request ["</span> + request + <span class="lit">"]"</span>)
+  Ok(<span class="lit">"Got request ["</span> + request + <span class="lit">"]"</span>)
 }</pre></div><dl class="paramcmts block"><dt class="param">block</dt><dd class="cmt"><p>the action code</p></dd><dt>returns</dt><dd class="cmt"><p>an action
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a></dd></dl></div>
     </li><li name="play.api.mvc.ActionBuilder#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -259,7 +259,7 @@ Ok(<span class="lit">"Got request ["</span> + request + <span class="lit">"]"</s
       </a>
     </span>
       <p class="shortcomment cmt">Constructs an <code>Action</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Constructs an <code>Action</code>.</p><p>For example:</p><pre><span class="kw">val</span> echo = Action(parse.anyContent) { request <span class="kw">=&gt;</span>
-Ok(<span class="lit">"Got request ["</span> + request + <span class="lit">"]"</span>)
+  Ok(<span class="lit">"Got request ["</span> + request + <span class="lit">"]"</span>)
 }</pre></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>the type of the request body</p></dd><dt class="param">bodyParser</dt><dd class="cmt"><p>the <code>BodyParser</code> to use to parse the request body</p></dd><dt class="param">block</dt><dd class="cmt"><p>the action code</p></dd><dt>returns</dt><dd class="cmt"><p>an action
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a></dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -296,9 +296,9 @@ Ok(<span class="lit">"Got request ["</span> + request + <span class="lit">"]"</s
       </a>
     </span>
       <p class="shortcomment cmt">Constructs an <code>Action</code> that returns a future of a result, with default content.</p><div class="fullcomment"><div class="comment cmt"><p>Constructs an <code>Action</code> that returns a future of a result, with default content.</p><p>For example:</p><pre><span class="kw">val</span> hello = Action.async { request <span class="kw">=&gt;</span>
-WS.url(request.getQueryString(<span class="lit">"url"</span>).get).get().map { r <span class="kw">=&gt;</span>
-  <span class="kw">if</span> (r.status == <span class="num">200</span>) Ok(<span class="lit">"The website is up"</span>) <span class="kw">else</span> NotFound(<span class="lit">"The website is down"</span>)
-}
+  WS.url(request.getQueryString(<span class="lit">"url"</span>).get).get().map { r <span class="kw">=&gt;</span>
+    <span class="kw">if</span> (r.status == <span class="num">200</span>) Ok(<span class="lit">"The website is up"</span>) <span class="kw">else</span> NotFound(<span class="lit">"The website is down"</span>)
+  }
 }</pre></div><dl class="paramcmts block"><dt class="param">block</dt><dd class="cmt"><p>the action code</p></dd><dt>returns</dt><dd class="cmt"><p>an action
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a></dd></dl></div>
     </li><li name="play.api.mvc.ActionBuilder#async" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -318,9 +318,9 @@ WS.url(request.getQueryString(<span class="lit">"url"</span>).get).get().map { r
       </a>
     </span>
       <p class="shortcomment cmt">Constructs an <code>Action</code> that returns a future of a result, with default content.</p><div class="fullcomment"><div class="comment cmt"><p>Constructs an <code>Action</code> that returns a future of a result, with default content.</p><p>For example:</p><pre><span class="kw">val</span> hello = Action.async { request <span class="kw">=&gt;</span>
-WS.url(request.getQueryString(<span class="lit">"url"</span>).get).get().map { r <span class="kw">=&gt;</span>
-  <span class="kw">if</span> (r.status == <span class="num">200</span>) Ok(<span class="lit">"The website is up"</span>) <span class="kw">else</span> NotFound(<span class="lit">"The website is down"</span>)
-}
+  WS.url(request.getQueryString(<span class="lit">"url"</span>).get).get().map { r <span class="kw">=&gt;</span>
+    <span class="kw">if</span> (r.status == <span class="num">200</span>) Ok(<span class="lit">"The website is up"</span>) <span class="kw">else</span> NotFound(<span class="lit">"The website is down"</span>)
+  }
 }</pre></div><dl class="paramcmts block"><dt class="param">block</dt><dd class="cmt"><p>the action code</p></dd><dt>returns</dt><dd class="cmt"><p>an action
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a></dd></dl></div>
     </li><li name="play.api.mvc.ActionBuilder#async" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -340,9 +340,9 @@ WS.url(request.getQueryString(<span class="lit">"url"</span>).get).get().map { r
       </a>
     </span>
       <p class="shortcomment cmt">Constructs an <code>Action</code> that returns a future of a result, with default content, and no request parameter.</p><div class="fullcomment"><div class="comment cmt"><p>Constructs an <code>Action</code> that returns a future of a result, with default content, and no request parameter.</p><p>For example:</p><pre><span class="kw">val</span> hello = Action.async {
-WS.url(<span class="lit">"http://www.playframework.com"</span>).get().map { r <span class="kw">=&gt;</span>
-  <span class="kw">if</span> (r.status == <span class="num">200</span>) Ok(<span class="lit">"The website is up"</span>) <span class="kw">else</span> NotFound(<span class="lit">"The website is down"</span>)
-}
+  WS.url(<span class="lit">"http://www.playframework.com"</span>).get().map { r <span class="kw">=&gt;</span>
+    <span class="kw">if</span> (r.status == <span class="num">200</span>) Ok(<span class="lit">"The website is up"</span>) <span class="kw">else</span> NotFound(<span class="lit">"The website is down"</span>)
+  }
 }</pre></div><dl class="paramcmts block"><dt class="param">block</dt><dd class="cmt"><p>the action code</p></dd><dt>returns</dt><dd class="cmt"><p>an action
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a></dd></dl></div>
     </li><li name="play.api.mvc.Security.AuthenticatedBuilder#authenticate" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">

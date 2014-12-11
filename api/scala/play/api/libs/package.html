@@ -48,7 +48,7 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Contains various APIs that are useful while developing web applications.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.4.0-M2/framework/src/play/src/main/scala/play/api/libs/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play/src/main/scala/play/api/libs/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -171,15 +171,15 @@ needs.</p><p>For more information about cryptography, we recommend reading the O
       </a>
     </span>
       <p class="shortcomment cmt">JSONP helper.</p><div class="fullcomment"><div class="comment cmt"><p>JSONP helper.</p><p>Example of use, provided the following route definition:</p><pre>GET  /my-service       Application.myService(callback: <span class="std">String</span>)</pre><p>The following action definition:</p><pre><span class="kw">def</span> myService(callback: <span class="std">String</span>) = Action {
-<span class="kw">val</span> json = ...
-Ok(Jsonp(callback, json))
+  <span class="kw">val</span> json = ...
+  Ok(Jsonp(callback, json))
 }</pre><p>And the following request:</p><pre>GET /my-service?callback=foo</pre><p>The response will have content type “text/javascript” and will look like the following:</p><pre>foo({...});</pre><p>Another example, showing how to serve either JSON or JSONP from the same action, according to the presence of
 a “callback” parameter in the query string:</p><pre><span class="kw">def</span> myService = Action { <span class="kw">implicit</span> request <span class="kw">=&gt;</span>
-<span class="kw">val</span> json = ...
-request.queryString.get(<span class="lit">"callback"</span>).flatMap(_.headOption) <span class="kw">match</span> {
-  <span class="kw">case</span> <span class="std">Some</span>(callback) <span class="kw">=&gt;</span> Ok(Jsonp(callback, json))
-  <span class="kw">case</span> <span class="std">None</span> <span class="kw">=&gt;</span> Ok(json)
-}
+  <span class="kw">val</span> json = ...
+  request.queryString.get(<span class="lit">"callback"</span>).flatMap(_.headOption) <span class="kw">match</span> {
+    <span class="kw">case</span> <span class="std">Some</span>(callback) <span class="kw">=&gt;</span> Ok(Jsonp(callback, json))
+    <span class="kw">case</span> <span class="std">None</span> <span class="kw">=&gt;</span> Ok(json)
+  }
 }</pre></div></div>
     </li></ol>
             </div>
@@ -416,7 +416,7 @@ needs.</p><p>For more information about cryptography, we recommend reading the O
     </span>
       <p class="shortcomment cmt">Json API
 For example:</p><div class="fullcomment"><div class="comment cmt"><p>Json API
-For example:</p><pre><span class="kw">case</span> <span class="kw">class</span> User(id: <span class="std">Long</span>, name: <span class="std">String</span>, friends: <span class="std">List</span>[User])
+For example:</p><pre> <span class="kw">case</span> <span class="kw">class</span> User(id: <span class="std">Long</span>, name: <span class="std">String</span>, friends: <span class="std">List</span>[User])
 
  <span class="kw">implicit</span> <span class="kw">object</span> UserFormat <span class="kw">extends</span> Format[User] {
   <span class="kw">def</span> reads(json: JsValue): User = User(

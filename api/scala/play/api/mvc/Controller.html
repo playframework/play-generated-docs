@@ -49,11 +49,11 @@
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Defines utility methods to generate <code>Action</code> and <code>Results</code> types.</p><p>For example:</p><pre><span class="kw">object</span> Application <span class="kw">extends</span> Controller {
 
-<span class="kw">def</span> hello(name:<span class="std">String</span>) = Action { request <span class="kw">=&gt;</span>
-  Ok(<span class="lit">"Hello "</span> + name)
-}
+  <span class="kw">def</span> hello(name:<span class="std">String</span>) = Action { request <span class="kw">=&gt;</span>
+    Ok(<span class="lit">"Hello "</span> + name)
+  }
 
-}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.4.0-M2/framework/src/play/src/main/scala/play/api/mvc/Controller.scala" target="_blank">Controller.scala</a></dd></dl><div class="toggleContainer block">
+}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play/src/main/scala/play/api/mvc/Controller.scala" target="_blank">Controller.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="Rendering.html" class="extype" name="play.api.mvc.Rendering">Rendering</a>, <a href="RequestExtractors.html" class="extype" name="play.api.mvc.RequestExtractors">RequestExtractors</a>, <a href="AcceptExtractors.html" class="extype" name="play.api.mvc.AcceptExtractors">AcceptExtractors</a>, <a href="../http/ContentTypes.html" class="extype" name="play.api.http.ContentTypes">ContentTypes</a>, <a href="../http/HeaderNames.html" class="extype" name="play.api.http.HeaderNames">HeaderNames</a>, <a href="../http/Status.html" class="extype" name="play.api.http.Status">http.Status</a>, <a href="../http/HttpProtocol.html" class="extype" name="play.api.http.HttpProtocol">HttpProtocol</a>, <a href="BodyParsers.html" class="extype" name="play.api.mvc.BodyParsers">BodyParsers</a>, <a href="Results.html" class="extype" name="play.api.mvc.Results">Results</a>, <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
@@ -175,7 +175,7 @@
     </span>
       <p class="shortcomment cmt">Convenient extractor allowing to apply two extractors.</p><div class="fullcomment"><div class="comment cmt"><p>Convenient extractor allowing to apply two extractors.
 Example of use:</p><pre>request <span class="kw">match</span> {
-<span class="kw">case</span> Accepts.Json() &amp; Accepts.Html() <span class="kw">=&gt;</span> <span class="lit">"This request accepts both JSON and HTML"</span>
+  <span class="kw">case</span> Accepts.Json() &amp; Accepts.Html() <span class="kw">=&gt;</span> <span class="lit">"This request accepts both JSON and HTML"</span>
 }</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RequestExtractors.html" class="extype" name="play.api.mvc.RequestExtractors">RequestExtractors</a></dd></dl></div>
     </li><li name="scala.AnyRef#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="==(x$1:Any):Boolean"></a>
@@ -518,8 +518,8 @@ Example of use:</p><pre>request <span class="kw">match</span> {
     </span>
       <p class="shortcomment cmt">Common extractors to check if a request accepts JSON, Html, etc.</p><div class="fullcomment"><div class="comment cmt"><p>Common extractors to check if a request accepts JSON, Html, etc.
 Example of use:</p><pre>request <span class="kw">match</span> {
-<span class="kw">case</span> Accepts.Json() <span class="kw">=&gt;</span> Ok(toJson(value))
-<span class="kw">case</span> _ <span class="kw">=&gt;</span> Ok(views.html.show(value))
+  <span class="kw">case</span> Accepts.Json() <span class="kw">=&gt;</span> Ok(toJson(value))
+  <span class="kw">case</span> _ <span class="kw">=&gt;</span> Ok(views.html.show(value))
 }</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="AcceptExtractors.html" class="extype" name="play.api.mvc.AcceptExtractors">AcceptExtractors</a></dd></dl></div>
     </li><li name="play.api.http.Status#BAD_GATEWAY" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="BAD_GATEWAY:Int"></a>
@@ -3440,8 +3440,8 @@ Example of use:</p><pre>request <span class="kw">match</span> {
       </a>
     </span>
       <p class="shortcomment cmt">Retrieve the flash scope implicitly from the request.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieve the flash scope implicitly from the request.</p><p>For example:</p><pre><span class="kw">def</span> index(name:<span class="std">String</span>) = Action { <span class="kw">implicit</span> request <span class="kw">=&gt;</span>
-<span class="kw">val</span> message = flash(<span class="lit">"message"</span>)
-Ok(<span class="lit">"Got "</span> + message)
+  <span class="kw">val</span> message = flash(<span class="lit">"message"</span>)
+  Ok(<span class="lit">"Got "</span> + message)
 }</pre></div></div>
     </li><li name="play.api.mvc.Controller#request2lang" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="request2lang(implicitrequest:play.api.mvc.RequestHeader):play.api.i18n.Lang"></a>
@@ -3477,8 +3477,8 @@ Ok(<span class="lit">"Got "</span> + message)
       </a>
     </span>
       <p class="shortcomment cmt">Retrieves the session implicitly from the request.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves the session implicitly from the request.</p><p>For example:</p><pre><span class="kw">def</span> index(name:<span class="std">String</span>) = Action { <span class="kw">implicit</span> request <span class="kw">=&gt;</span>
-<span class="kw">val</span> username = session(<span class="lit">"username"</span>)
-Ok(<span class="lit">"Hello "</span> + username)
+  <span class="kw">val</span> username = session(<span class="lit">"username"</span>)
+  Ok(<span class="lit">"Hello "</span> + username)
 }</pre></div></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>

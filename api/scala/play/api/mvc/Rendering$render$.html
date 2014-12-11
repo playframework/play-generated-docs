@@ -47,7 +47,7 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.4.0-M2/framework/src/play/src/main/scala/play/api/mvc/Render.scala" target="_blank">Render.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play/src/main/scala/play/api/mvc/Render.scala" target="_blank">Render.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -161,11 +161,11 @@
       </a>
     </span>
       <p class="shortcomment cmt">Tries to render the most acceptable result according to the request’s Accept header value.</p><div class="fullcomment"><div class="comment cmt"><p>Tries to render the most acceptable result according to the request’s Accept header value.</p><pre><span class="kw">def</span> myAction = Action { <span class="kw">implicit</span> req <span class="kw">=&gt;</span>
-<span class="kw">val</span> value = ...
-render {
-  <span class="kw">case</span> Accepts.Html() <span class="kw">=&gt;</span> Ok(views.html.show(value))
-  <span class="kw">case</span> Accepts.Json() <span class="kw">=&gt;</span> Ok(Json.toJson(value))
-}
+  <span class="kw">val</span> value = ...
+  render {
+    <span class="kw">case</span> Accepts.Html() <span class="kw">=&gt;</span> Ok(views.html.show(value))
+    <span class="kw">case</span> Accepts.Json() <span class="kw">=&gt;</span> Ok(Json.toJson(value))
+  }
 }</pre></div><dl class="paramcmts block"><dt class="param">f</dt><dd class="cmt"><p>A partial function returning a <code>Result</code> for a given request media range</p></dd><dt>returns</dt><dd class="cmt"><p>A result provided by <code>f</code>, if it is defined for the current request media ranges, otherwise NotAcceptable
 </p></dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -202,11 +202,11 @@ render {
       </a>
     </span>
       <p class="shortcomment cmt">Tries to render the most acceptable result according to the request’s Accept header value.</p><div class="fullcomment"><div class="comment cmt"><p>Tries to render the most acceptable result according to the request’s Accept header value.</p><p>This function can be used if you want to do asynchronous processing in your render function.</p><pre><span class="kw">def</span> myAction = Action.async { <span class="kw">implicit</span> req <span class="kw">=&gt;</span>
-<span class="kw">val</span> value = ...
-render.async {
-  <span class="kw">case</span> Accepts.Html() <span class="kw">=&gt;</span> loadData.map(data <span class="kw">=&gt;</span> Ok(views.html.show(value, data))))
-  <span class="kw">case</span> Accepts.Json() <span class="kw">=&gt;</span> Future.successful(Ok(Json.toJson(value)))
-}
+  <span class="kw">val</span> value = ...
+  render.async {
+    <span class="kw">case</span> Accepts.Html() <span class="kw">=&gt;</span> loadData.map(data <span class="kw">=&gt;</span> Ok(views.html.show(value, data))))
+    <span class="kw">case</span> Accepts.Json() <span class="kw">=&gt;</span> Future.successful(Ok(Json.toJson(value)))
+  }
 }</pre></div><dl class="paramcmts block"><dt class="param">f</dt><dd class="cmt"><p>A partial function returning a <code>Future[Result]</code> for a given request media range</p></dd><dt>returns</dt><dd class="cmt"><p>A result provided by <code>f</code>, if it is defined for the current request media ranges, otherwise NotAcceptable
 </p></dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">

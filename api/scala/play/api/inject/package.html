@@ -260,9 +260,9 @@ expected to contain a list of module classes, one class per line.  For example:<
 com.example.BarModule</pre><p>It is strongly advised that in addition to providing a module for JSR-330 DI, that plugins also provide a Scala
 trait that constructs the modules manually.  This allows for use of the module without needing a runtime dependency
 injection provider.</p><p>The <code>bind</code> methods are provided only as a DSL for specifying bindings. For example:</p><pre><span class="kw">def</span> bindings(env: Environment, conf: Configuration) = <span class="std">Seq</span>(
-bind[Foo].to[FooImpl],
-bind[Bar].to(<span class="kw">new</span> Bar()),
-bind[Foo].qualifiedWith[SomeQualifier].to[OtherFoo]
+  bind[Foo].to[FooImpl],
+  bind[Bar].to(<span class="kw">new</span> Bar()),
+  bind[Foo].qualifiedWith[SomeQualifier].to[OtherFoo]
 )</pre></div></div>
     </li><li name="play.api.inject.PluginsProvider" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="PluginsProviderextendsProvider[play.api.Plugins]"></a>

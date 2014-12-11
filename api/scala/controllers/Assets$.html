@@ -56,7 +56,7 @@ The reverse router also uses the digest in order to translate any file to the fo
 example &quot;a.js&quot; may be also found at &quot;d41d8cd98f00b204e9800998ecf8427e-a.js&quot;.
 If there is no digest file found then digest values for ETags are formed by forming a sha1 digest of the last-modified
 time.</p><p>The default digest algorithm to search for is &quot;md5&quot;. You can override this quite easily. For example if the SHA-1
-algorithm is preferred:</p><pre><span class="lit">"assets.digest.algorithm"</span> = <span class="lit">"sha1"</span></pre><p>You can set a custom Cache directive for a particular resource if needed. For example in your application.conf file:</p><pre><span class="lit">"assets.cache./public/images/logo.png"</span> = <span class="lit">"max-age=3600"</span></pre><p>You can use this controller in any application, just by declaring the appropriate route. For example:</p><pre>GET     /assets/￯ﾻ﾿*file               controllers.Assets.at(path=<span class="lit">"/public"</span>, file)</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.4.0-M2/framework/src/play/src/main/scala/play/api/controllers/Assets.scala" target="_blank">Assets.scala</a></dd></dl><div class="toggleContainer block">
+algorithm is preferred:</p><pre><span class="lit">"assets.digest.algorithm"</span> = <span class="lit">"sha1"</span></pre><p>You can set a custom Cache directive for a particular resource if needed. For example in your application.conf file:</p><pre><span class="lit">"assets.cache./public/images/logo.png"</span> = <span class="lit">"max-age=3600"</span></pre><p>You can use this controller in any application, just by declaring the appropriate route. For example:</p><pre>GET     /assets/￯ﾻ﾿*file               controllers.Assets.at(path=<span class="lit">"/public"</span>, file)</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play/src/main/scala/play/api/controllers/Assets.scala" target="_blank">Assets.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="AssetsBuilder.html" class="extype" name="controllers.AssetsBuilder">AssetsBuilder</a>, <a href="../play/api/mvc/Controller.html" class="extype" name="play.api.mvc.Controller">Controller</a>, <a href="../play/api/mvc/Rendering.html" class="extype" name="play.api.mvc.Rendering">Rendering</a>, <a href="../play/api/mvc/RequestExtractors.html" class="extype" name="play.api.mvc.RequestExtractors">RequestExtractors</a>, <a href="../play/api/mvc/AcceptExtractors.html" class="extype" name="play.api.mvc.AcceptExtractors">AcceptExtractors</a>, <a href="../play/api/http/ContentTypes.html" class="extype" name="play.api.http.ContentTypes">ContentTypes</a>, <a href="../play/api/http/HeaderNames.html" class="extype" name="play.api.http.HeaderNames">HeaderNames</a>, <a href="../play/api/http/Status.html" class="extype" name="play.api.http.Status">play.api.http.Status</a>, <a href="../play/api/http/HttpProtocol.html" class="extype" name="play.api.http.HttpProtocol">HttpProtocol</a>, <a href="../play/api/mvc/BodyParsers.html" class="extype" name="play.api.mvc.BodyParsers">BodyParsers</a>, <a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a>, <a href="../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -194,7 +194,7 @@ algorithm is preferred:</p><pre><span class="lit">"assets.digest.algorithm"</spa
     </span>
       <p class="shortcomment cmt">Convenient extractor allowing to apply two extractors.</p><div class="fullcomment"><div class="comment cmt"><p>Convenient extractor allowing to apply two extractors.
 Example of use:</p><pre>request <span class="kw">match</span> {
-<span class="kw">case</span> Accepts.Json() &amp; Accepts.Html() <span class="kw">=&gt;</span> <span class="lit">"This request accepts both JSON and HTML"</span>
+  <span class="kw">case</span> Accepts.Json() &amp; Accepts.Html() <span class="kw">=&gt;</span> <span class="lit">"This request accepts both JSON and HTML"</span>
 }</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/RequestExtractors.html" class="extype" name="play.api.mvc.RequestExtractors">RequestExtractors</a></dd></dl></div>
     </li><li name="scala.AnyRef#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="==(x$1:Any):Boolean"></a>
@@ -537,8 +537,8 @@ Example of use:</p><pre>request <span class="kw">match</span> {
     </span>
       <p class="shortcomment cmt">Common extractors to check if a request accepts JSON, Html, etc.</p><div class="fullcomment"><div class="comment cmt"><p>Common extractors to check if a request accepts JSON, Html, etc.
 Example of use:</p><pre>request <span class="kw">match</span> {
-<span class="kw">case</span> Accepts.Json() <span class="kw">=&gt;</span> Ok(toJson(value))
-<span class="kw">case</span> _ <span class="kw">=&gt;</span> Ok(views.html.show(value))
+  <span class="kw">case</span> Accepts.Json() <span class="kw">=&gt;</span> Ok(toJson(value))
+  <span class="kw">case</span> _ <span class="kw">=&gt;</span> Ok(views.html.show(value))
 }</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/AcceptExtractors.html" class="extype" name="play.api.mvc.AcceptExtractors">AcceptExtractors</a></dd></dl></div>
     </li><li name="controllers.Assets.Asset" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Asset"></a>
@@ -3546,8 +3546,8 @@ Example of use:</p><pre>request <span class="kw">match</span> {
       </a>
     </span>
       <p class="shortcomment cmt">Retrieve the flash scope implicitly from the request.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieve the flash scope implicitly from the request.</p><p>For example:</p><pre><span class="kw">def</span> index(name:<span class="std">String</span>) = Action { <span class="kw">implicit</span> request <span class="kw">=&gt;</span>
-<span class="kw">val</span> message = flash(<span class="lit">"message"</span>)
-Ok(<span class="lit">"Got "</span> + message)
+  <span class="kw">val</span> message = flash(<span class="lit">"message"</span>)
+  Ok(<span class="lit">"Got "</span> + message)
 }</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Controller.html" class="extype" name="play.api.mvc.Controller">Controller</a></dd></dl></div>
     </li><li name="play.api.mvc.Controller#request2lang" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="request2lang(implicitrequest:play.api.mvc.RequestHeader):play.api.i18n.Lang"></a>
@@ -3583,8 +3583,8 @@ Ok(<span class="lit">"Got "</span> + message)
       </a>
     </span>
       <p class="shortcomment cmt">Retrieves the session implicitly from the request.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves the session implicitly from the request.</p><p>For example:</p><pre><span class="kw">def</span> index(name:<span class="std">String</span>) = Action { <span class="kw">implicit</span> request <span class="kw">=&gt;</span>
-<span class="kw">val</span> username = session(<span class="lit">"username"</span>)
-Ok(<span class="lit">"Hello "</span> + username)
+  <span class="kw">val</span> username = session(<span class="lit">"username"</span>)
+  Ok(<span class="lit">"Hello "</span> + username)
 }</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Controller.html" class="extype" name="play.api.mvc.Controller">Controller</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>

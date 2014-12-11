@@ -58,7 +58,7 @@
     <span class="lit">"email"</span> -&gt; of[<span class="std">String</span>]
   )(User.apply)(User.unapply)
 )</pre></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>the type managed by this form</p></dd><dt class="param">mapping</dt><dd class="cmt"><p>the form mapping, which describes all form fields</p></dd><dt class="param">data</dt><dd class="cmt"><p>the current form data, used to display the form</p></dd><dt class="param">errors</dt><dd class="cmt"><p>the collection of errors associated with this form</p></dd><dt class="param">value</dt><dd class="cmt"><p>a concrete value of type <code>T</code> if the form submission was successful
-</p></dd></dl><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.4.0-M2/framework/src/play/src/main/scala/play/api/data/Form.scala" target="_blank">Form.scala</a></dd></dl><div class="toggleContainer block">
+</p></dd></dl><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play/src/main/scala/play/api/data/Form.scala" target="_blank">Form.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -528,8 +528,8 @@
     </span>
       <p class="shortcomment cmt">Handles form results.</p><div class="fullcomment"><div class="comment cmt"><p>Handles form results. Either the form has errors, or the submission was a success and a
 concrete value is available.</p><p>For example:</p><pre>anyForm.bindFromRequest().fold(
-f <span class="kw">=&gt;</span> redisplayForm(f),
-t <span class="kw">=&gt;</span> handleValidFormSubmission(t)
+   f <span class="kw">=&gt;</span> redisplayForm(f),
+   t <span class="kw">=&gt;</span> handleValidFormSubmission(t)
 )</pre></div><dl class="paramcmts block"><dt class="tparam">R</dt><dd class="cmt"><p>common result type</p></dd><dt class="param">hasErrors</dt><dd class="cmt"><p>a function to handle forms with errors</p></dd><dt class="param">success</dt><dd class="cmt"><p>a function to handle form submission success</p></dd><dt>returns</dt><dd class="cmt"><p>a result <code>R</code>.
 </p></dd></dl></div>
     </li><li name="play.api.data.Form#forField" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -549,7 +549,7 @@ t <span class="kw">=&gt;</span> handleValidFormSubmission(t)
       </a>
     </span>
       <p class="shortcomment cmt">Applies a function for a field.</p><div class="fullcomment"><div class="comment cmt"><p>Applies a function for a field.</p><p>For example:</p><pre>userForm.forField(<span class="lit">"username"</span>) { field <span class="kw">=&gt;</span>
-&lt;input <span class="kw">type</span>=<span class="lit">"text"</span> name={field.name} value={field.value.getOrElse(<span class="lit">""</span>)} /&gt;
+  &lt;input <span class="kw">type</span>=<span class="lit">"text"</span> name={field.name} value={field.value.getOrElse(<span class="lit">""</span>)} /&gt;
 }</pre></div><dl class="paramcmts block"><dt class="tparam">R</dt><dd class="cmt"><p>result type</p></dd><dt class="param">key</dt><dd class="cmt"><p>field name</p></dd><dt class="param">handler</dt><dd class="cmt"><p>field handler (transform the field to <code>R</code>)
 </p></dd></dl></div>
     </li><li name="play.api.data.Form#formats" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
