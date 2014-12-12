@@ -54,9 +54,9 @@ bind directly from the request path.</p><p>For example, given this class definit
 
 <span class="kw">object</span> Application <span class="kw">extends</span> Controller {
   <span class="kw">def</span> show(user: User) = Action {
-    ￢ﾀﾦ
+    ...
   }
-}</pre><p>The definition the binder can look like the following:</p><pre><span class="kw">object</span> User {
+}</pre><p>The definition of binder can look like the following:</p><pre><span class="kw">object</span> User {
   <span class="kw">implicit</span> <span class="kw">def</span> pathBinder(<span class="kw">implicit</span> intBinder: PathBindable[<span class="std">Int</span>]) = <span class="kw">new</span> PathBindable[User] {
     <span class="kw">override</span> <span class="kw">def</span> bind(key: <span class="std">String</span>, value: <span class="std">String</span>): Either[<span class="std">String</span>, User] = {
       <span class="kw">for</span> {
