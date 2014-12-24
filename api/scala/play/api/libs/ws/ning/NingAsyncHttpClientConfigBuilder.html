@@ -48,7 +48,7 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Builds a valid AsyncHttpClientConfig object from config.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play-ws/src/main/scala/play/api/libs/ws/ning/NingAsyncHttpClientConfigBuilder.scala" target="_blank">NingAsyncHttpClientConfigBuilder.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play-ws/src/main/scala/play/api/libs/ws/ning/NingConfig.scala" target="_blank">NingConfig.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="../../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -89,6 +89,24 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="play.api.libs.ws.ning.NingAsyncHttpClientConfigBuilder#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="&lt;init&gt;(ningConfig:play.api.libs.ws.ning.NingWSClientConfig):play.api.libs.ws.ning.NingAsyncHttpClientConfigBuilder"></a>
+      <a id="&lt;init&gt;:NingAsyncHttpClientConfigBuilder"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">new</span>
+      </span>
+      <span class="symbol">
+        <span class="name">NingAsyncHttpClientConfigBuilder</span><span class="params">(<span name="ningConfig">ningConfig: <a href="NingWSClientConfig.html" class="extype" name="play.api.libs.ws.ning.NingWSClientConfig">NingWSClientConfig</a> = <span class="symbol">DefaultNingWSClientConfig()</span></span>)</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ning.NingAsyncHttpClientConfigBuilder@&lt;init&gt;(ningConfig:play.api.libs.ws.ning.NingWSClientConfig):play.api.libs.ws.ning.NingAsyncHttpClientConfigBuilder" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">ningConfig</dt><dd class="cmt"><p>the ning client configuration.
+</p></dd></dl></div>
+    </li><li name="play.api.libs.ws.ning.NingAsyncHttpClientConfigBuilder#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="&lt;init&gt;(config:play.api.libs.ws.WSClientConfig):play.api.libs.ws.ning.NingAsyncHttpClientConfigBuilder"></a>
       <a id="&lt;init&gt;:NingAsyncHttpClientConfigBuilder"></a>
       <h4 class="signature">
@@ -97,15 +115,19 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">NingAsyncHttpClientConfigBuilder</span><span class="params">(<span name="config">config: <a href="../WSClientConfig.html" class="extype" name="play.api.libs.ws.WSClientConfig">WSClientConfig</a> = <span class="symbol"><span class="name"><a href="../../../../package.html">DefaultWSClientConfig()</a></span></span></span>)</span>
+        <span class="name deprecated" title="Deprecated: (Since version 2.4) Use NingAsyncHttpClientConfigBuilder(NingWSClientConfig)">NingAsyncHttpClientConfigBuilder</span><span class="params">(<span name="config">config: <a href="../WSClientConfig.html" class="extype" name="play.api.libs.ws.WSClientConfig">WSClientConfig</a></span>)</span>
       </span>
       </h4><span class="permalink">
       <a href="../../../../../index.html#play.api.libs.ws.ning.NingAsyncHttpClientConfigBuilder@&lt;init&gt;(config:play.api.libs.ws.WSClientConfig):play.api.libs.ws.ning.NingAsyncHttpClientConfigBuilder" title="Permalink" target="_top">
         <img src="../../../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">config</dt><dd class="cmt"><p>the client configuration.
-</p></dd></dl></div>
+      <p class="shortcomment cmt">Constructor for backwards compatibility with &lt;= 2.3.X
+</p><div class="fullcomment"><div class="comment cmt"><p>Constructor for backwards compatibility with &lt;= 2.3.X
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.4)</i> Use NingAsyncHttpClientConfigBuilder(NingWSClientConfig)</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -403,18 +425,18 @@
       <p class="shortcomment cmt">Configures the SSL.</p><div class="fullcomment"><div class="comment cmt"><p>Configures the SSL.  Can use the system SSLContext.getDefault() if &quot;ws.ssl.default&quot; is set.
 </p></div></div>
     </li><li name="play.api.libs.ws.ning.NingAsyncHttpClientConfigBuilder#configureWS" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="configureWS(config:play.api.libs.ws.WSClientConfig):Unit"></a>
-      <a id="configureWS(WSClientConfig):Unit"></a>
+      <a id="configureWS(ningConfig:play.api.libs.ws.ning.NingWSClientConfig):Unit"></a>
+      <a id="configureWS(NingWSClientConfig):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">configureWS</span><span class="params">(<span name="config">config: <a href="../WSClientConfig.html" class="extype" name="play.api.libs.ws.WSClientConfig">WSClientConfig</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">configureWS</span><span class="params">(<span name="ningConfig">ningConfig: <a href="NingWSClientConfig.html" class="extype" name="play.api.libs.ws.ning.NingWSClientConfig">NingWSClientConfig</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../index.html#play.api.libs.ws.ning.NingAsyncHttpClientConfigBuilder@configureWS(config:play.api.libs.ws.WSClientConfig):Unit" title="Permalink" target="_top">
+      <a href="../../../../../index.html#play.api.libs.ws.ning.NingAsyncHttpClientConfigBuilder@configureWS(ningConfig:play.api.libs.ws.ning.NingWSClientConfig):Unit" title="Permalink" target="_top">
         <img src="../../../../../lib/permalink.png" />
       </a>
     </span>
@@ -721,7 +743,32 @@
 
         
 
-        
+        <div id="values" class="values members">
+              <h3>Deprecated Value Members</h3>
+              <ol><li name="play.api.libs.ws.ning.NingAsyncHttpClientConfigBuilder#configureWS" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="configureWS(config:play.api.libs.ws.WSClientConfig):Unit"></a>
+      <a id="configureWS(WSClientConfig):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 2.4) Use configureWS(NingWSClientConfig)">configureWS</span><span class="params">(<span name="config">config: <a href="../WSClientConfig.html" class="extype" name="play.api.libs.ws.WSClientConfig">WSClientConfig</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../../index.html#play.api.libs.ws.ning.NingAsyncHttpClientConfigBuilder@configureWS(config:play.api.libs.ws.WSClientConfig):Unit" title="Permalink" target="_top">
+        <img src="../../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Configures the global settings.</p><div class="fullcomment"><div class="comment cmt"><p>Configures the global settings.
+For backwards compatibility with &lt;= 2.3.X
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.4)</i> Use configureWS(NingWSClientConfig)</p></dd></dl></div>
+    </li></ol>
+            </div>
         </div>
 
         <div id="inheritedMembers">
