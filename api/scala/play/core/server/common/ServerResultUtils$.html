@@ -531,6 +531,29 @@ elements long.
   enumerator is an Enumerator that contains *all* the input. Any
   already-read elements will still be included in this Enumerator.
 </p></div></div>
+    </li><li name="play.core.server.common.ServerResultUtils#splitHeadersIntoSeq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="splitHeadersIntoSeq(headers:Map[String,String]):Seq[(String,String)]"></a>
+      <a id="splitHeadersIntoSeq(Map[String,String]):Seq[(String,String)]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">splitHeadersIntoSeq</span><span class="params">(<span name="headers">headers: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <a href="../../../../scala/package.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[(<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>)]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.core.server.common.ServerResultUtils$@splitHeadersIntoSeq(headers:Map[String,String]):Seq[(String,String)]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Given a map of headers, split it into a sequence of individual headers.</p><div class="fullcomment"><div class="comment cmt"><p>Given a map of headers, split it into a sequence of individual headers.
+Most headers map into a single pair in the new sequence. The exception is
+the <code>Set-Cookie</code> header which we split into a pair for each cookie it
+contains. This allows us to work around issues with clients that can't
+handle combined headers. (Also RFC6265 says multiple headers shouldn't
+be folded together, which Play's API unfortunately  does.)
+</p></div></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
