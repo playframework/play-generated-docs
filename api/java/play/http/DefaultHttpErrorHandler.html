@@ -142,13 +142,20 @@ implements <a href="../../play/http/HttpErrorHandler.html" title="interface in p
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr class="altColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><strong><a href="../../play/http/DefaultHttpErrorHandler.html#logServerError(play.mvc.Http.RequestHeader,%20play.api.UsefulException)">logServerError</a></strong>(<a href="../../play/mvc/Http.RequestHeader.html" title="class in play.mvc">Http.RequestHeader</a>&nbsp;request,
+              play.api.UsefulException&nbsp;usefulException)</code>
+<div class="block">Responsible for logging server errors.</div>
+</td>
+</tr>
+<tr class="rowColor">
 <td class="colFirst"><code>protected <a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;<a href="../../play/mvc/Result.html" title="interface in play.mvc">Result</a>&gt;</code></td>
 <td class="colLast"><code><strong><a href="../../play/http/DefaultHttpErrorHandler.html#onBadRequest(play.mvc.Http.RequestHeader,%20java.lang.String)">onBadRequest</a></strong>(<a href="../../play/mvc/Http.RequestHeader.html" title="class in play.mvc">Http.RequestHeader</a>&nbsp;request,
             java.lang.String&nbsp;message)</code>
 <div class="block">Invoked when a client makes a bad request.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code><a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;<a href="../../play/mvc/Result.html" title="interface in play.mvc">Result</a>&gt;</code></td>
 <td class="colLast"><code><strong><a href="../../play/http/DefaultHttpErrorHandler.html#onClientError(play.mvc.Http.RequestHeader,%20int,%20java.lang.String)">onClientError</a></strong>(<a href="../../play/mvc/Http.RequestHeader.html" title="class in play.mvc">Http.RequestHeader</a>&nbsp;request,
              int&nbsp;statusCode,
@@ -156,35 +163,35 @@ implements <a href="../../play/http/HttpErrorHandler.html" title="interface in p
 <div class="block">Invoked when a client error occurs, that is, an error in the 4xx series.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>protected <a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;<a href="../../play/mvc/Result.html" title="interface in play.mvc">Result</a>&gt;</code></td>
 <td class="colLast"><code><strong><a href="../../play/http/DefaultHttpErrorHandler.html#onDevServerError(play.mvc.Http.RequestHeader,%20play.api.UsefulException)">onDevServerError</a></strong>(<a href="../../play/mvc/Http.RequestHeader.html" title="class in play.mvc">Http.RequestHeader</a>&nbsp;request,
                 play.api.UsefulException&nbsp;exception)</code>
 <div class="block">Invoked in dev mode when a server error occurs.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>protected <a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;<a href="../../play/mvc/Result.html" title="interface in play.mvc">Result</a>&gt;</code></td>
 <td class="colLast"><code><strong><a href="../../play/http/DefaultHttpErrorHandler.html#onForbidden(play.mvc.Http.RequestHeader,%20java.lang.String)">onForbidden</a></strong>(<a href="../../play/mvc/Http.RequestHeader.html" title="class in play.mvc">Http.RequestHeader</a>&nbsp;request,
            java.lang.String&nbsp;message)</code>
 <div class="block">Invoked when a client makes a request that was forbidden.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>protected <a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;<a href="../../play/mvc/Result.html" title="interface in play.mvc">Result</a>&gt;</code></td>
 <td class="colLast"><code><strong><a href="../../play/http/DefaultHttpErrorHandler.html#onNotFound(play.mvc.Http.RequestHeader,%20java.lang.String)">onNotFound</a></strong>(<a href="../../play/mvc/Http.RequestHeader.html" title="class in play.mvc">Http.RequestHeader</a>&nbsp;request,
           java.lang.String&nbsp;message)</code>
 <div class="block">Invoked when a handler or resource is not found.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>protected <a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;<a href="../../play/mvc/Result.html" title="interface in play.mvc">Result</a>&gt;</code></td>
 <td class="colLast"><code><strong><a href="../../play/http/DefaultHttpErrorHandler.html#onProdServerError(play.mvc.Http.RequestHeader,%20play.api.UsefulException)">onProdServerError</a></strong>(<a href="../../play/mvc/Http.RequestHeader.html" title="class in play.mvc">Http.RequestHeader</a>&nbsp;request,
                  play.api.UsefulException&nbsp;exception)</code>
 <div class="block">Invoked in prod mode when a server error occurs.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code><a href="../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;<a href="../../play/mvc/Result.html" title="interface in play.mvc">Result</a>&gt;</code></td>
 <td class="colLast"><code><strong><a href="../../play/http/DefaultHttpErrorHandler.html#onServerError(play.mvc.Http.RequestHeader,%20java.lang.Throwable)">onServerError</a></strong>(<a href="../../play/mvc/Http.RequestHeader.html" title="class in play.mvc">Http.RequestHeader</a>&nbsp;request,
              java.lang.Throwable&nbsp;exception)</code>
@@ -303,6 +310,20 @@ public&nbsp;DefaultHttpErrorHandler(<a href="../../play/Configuration.html" titl
 <dt><strong>Specified by:</strong></dt>
 <dd><code><a href="../../play/http/HttpErrorHandler.html#onServerError(play.mvc.Http.RequestHeader,%20java.lang.Throwable)">onServerError</a></code>&nbsp;in interface&nbsp;<code><a href="../../play/http/HttpErrorHandler.html" title="interface in play.http">HttpErrorHandler</a></code></dd>
 <dt><span class="strong">Parameters:</span></dt><dd><code>request</code> - The request that triggered the server error.</dd><dd><code>exception</code> - The server error.</dd></dl>
+</li>
+</ul>
+<a name="logServerError(play.mvc.Http.RequestHeader, play.api.UsefulException)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>logServerError</h4>
+<pre>protected&nbsp;void&nbsp;logServerError(<a href="../../play/mvc/Http.RequestHeader.html" title="class in play.mvc">Http.RequestHeader</a>&nbsp;request,
+                  play.api.UsefulException&nbsp;usefulException)</pre>
+<div class="block">Responsible for logging server errors.
+
+ This can be overridden to add additional logging information, eg. the id of the authenticated user.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>request</code> - The request that triggered the server error.</dd><dd><code>usefulException</code> - The server error.</dd></dl>
 </li>
 </ul>
 <a name="onDevServerError(play.mvc.Http.RequestHeader, play.api.UsefulException)">
