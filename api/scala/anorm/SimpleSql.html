@@ -43,7 +43,7 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">SimpleSql</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="sql">sql: <a href="SqlQuery.html" class="extype" name="anorm.SqlQuery">SqlQuery</a></span>, <span name="params">params: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <a href="ParameterValue.html" class="extype" name="anorm.ParameterValue">ParameterValue</a>]</span>, <span name="defaultParser">defaultParser: <a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a>[<span class="extype" name="anorm.SimpleSql.T">T</span>]</span>)</span><span class="result"> extends <span class="extype" name="anorm.Sql">Sql</span> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name">SimpleSql</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="sql">sql: <a href="SqlQuery.html" class="extype" name="anorm.SqlQuery">SqlQuery</a></span>, <span name="params">params: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <a href="ParameterValue.html" class="extype" name="anorm.ParameterValue">ParameterValue</a>]</span>, <span name="defaultParser">defaultParser: <a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a>[<span class="extype" name="anorm.SimpleSql.T">T</span>]</span>, <span name="resultSetOnFirstRow">resultSetOnFirstRow: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result"> extends <span class="extype" name="anorm.Sql">Sql</span> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
@@ -88,7 +88,7 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="anorm.SimpleSql#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(sql:anorm.SqlQuery,params:Map[String,anorm.ParameterValue],defaultParser:anorm.RowParser[T]):anorm.SimpleSql[T]"></a>
+      <a id="&lt;init&gt;(sql:anorm.SqlQuery,params:Map[String,anorm.ParameterValue],defaultParser:anorm.RowParser[T],resultSetOnFirstRow:Boolean):anorm.SimpleSql[T]"></a>
       <a id="&lt;init&gt;:SimpleSql[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -96,10 +96,10 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">SimpleSql</span><span class="params">(<span name="sql">sql: <a href="SqlQuery.html" class="extype" name="anorm.SqlQuery">SqlQuery</a></span>, <span name="params">params: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <a href="ParameterValue.html" class="extype" name="anorm.ParameterValue">ParameterValue</a>]</span>, <span name="defaultParser">defaultParser: <a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a>[<span class="extype" name="anorm.SimpleSql.T">T</span>]</span>)</span>
+        <span class="name">SimpleSql</span><span class="params">(<span name="sql">sql: <a href="SqlQuery.html" class="extype" name="anorm.SqlQuery">SqlQuery</a></span>, <span name="params">params: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <a href="ParameterValue.html" class="extype" name="anorm.ParameterValue">ParameterValue</a>]</span>, <span name="defaultParser">defaultParser: <a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a>[<span class="extype" name="anorm.SimpleSql.T">T</span>]</span>, <span name="resultSetOnFirstRow">resultSetOnFirstRow: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#anorm.SimpleSql@&lt;init&gt;(sql:anorm.SqlQuery,params:Map[String,anorm.ParameterValue],defaultParser:anorm.RowParser[T]):anorm.SimpleSql[T]" title="Permalink" target="_top">
+      <a href="../index.html#anorm.SimpleSql@&lt;init&gt;(sql:anorm.SqlQuery,params:Map[String,anorm.ParameterValue],defaultParser:anorm.RowParser[T],resultSetOnFirstRow:Boolean):anorm.SimpleSql[T]" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
@@ -608,6 +608,23 @@ of placeholder in statement.</p><pre><span class="kw">import</span> anorm.toPara
     </span>
       <p class="shortcomment cmt">Executes this statement as query (see <a href="#executeQuery()(implicitconnection:java.sql.Connection):anorm.SqlQueryResult" class="extmbr" name="anorm.SimpleSql#executeQuery">executeQuery</a>) and returns result.</p><div class="fullcomment"><div class="comment cmt"><p>Executes this statement as query (see <a href="#executeQuery()(implicitconnection:java.sql.Connection):anorm.SqlQueryResult" class="extmbr" name="anorm.SimpleSql#executeQuery">executeQuery</a>) and returns result.
 </p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Sql → WithResult</dd></dl></div>
+    </li><li name="anorm.SimpleSql#resultSetOnFirstRow" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="resultSetOnFirstRow:Boolean"></a>
+      <a id="resultSetOnFirstRow:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">resultSetOnFirstRow</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#anorm.SimpleSql@resultSetOnFirstRow:Boolean" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">ResultSet is initialized on first row (JDBC degraded)</p><div class="fullcomment"><div class="comment cmt"><p>ResultSet is initialized on first row (JDBC degraded)</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="anorm.SimpleSql">SimpleSql</a> → WithResult</dd></dl></div>
     </li><li name="anorm.SimpleSql#sql" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="sql:anorm.SqlQuery"></a>
       <a id="sql:SqlQuery"></a>
@@ -747,7 +764,7 @@ of placeholder in statement.</p><pre><span class="kw">import</span> anorm.toPara
         <img src="../lib/permalink.png" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Returns a copy with updated timeout.</p>
     </li><li name="anorm.WithResult#withResult" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="withResult[T](op:Option[anorm.Cursor]=&gt;T)(implicitconnection:java.sql.Connection):Either[List[Throwable],T]"></a>
       <a id="withResult[T]((Option[Cursor])⇒T)(Connection):Either[List[Throwable],T]"></a>
@@ -773,6 +790,23 @@ of placeholder in statement.</p><pre><span class="kw">import</span> anorm.toPara
 
 <span class="kw">val</span> l: Either[<span class="std">List</span>[Throwable], <span class="std">List</span>[Row]] =
   SQL<span class="lit">"SELECT * FROM Test"</span>.withResult(go)</pre></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd>WithResult</dd></dl></div>
+    </li><li name="anorm.SimpleSql#withResultSetOnFirstRow" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="withResultSetOnFirstRow(onFirst:Boolean):anorm.SimpleSql[T]"></a>
+      <a id="withResultSetOnFirstRow(Boolean):SimpleSql[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">withResultSetOnFirstRow</span><span class="params">(<span name="onFirst">onFirst: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="anorm.SimpleSql">SimpleSql</a>[<span class="extype" name="anorm.SimpleSql.T">T</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#anorm.SimpleSql@withResultSetOnFirstRow(onFirst:Boolean):anorm.SimpleSql[T]" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Returns a copy with updated flag.</p>
     </li></ol>
             </div>
 
@@ -789,7 +823,7 @@ of placeholder in statement.</p><pre><span class="kw">import</span> anorm.toPara
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 2.4) Use scala.tools.nsc.doc.base.MemberLookupBase$$anon$1@589428c8, scala.tools.nsc.doc.base.MemberLookupBase$$anon$1@67018fe6 or scala.tools.nsc.doc.base.MemberLookupBase$$anon$1@178e79df instead, which manages resources and memory">apply</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="connection">connection: <span class="extype" name="java.sql.Connection">Connection</span></span>)</span><span class="result">: <a href="../scala/package.html#Stream[+A]=scala.collection.immutable.Stream[A]" class="extmbr" name="scala.Stream">Stream</a>[<a href="Row.html" class="extype" name="anorm.Row">Row</a>]</span>
+        <span class="name deprecated" title="Deprecated: (Since version 2.4) Use scala.tools.nsc.doc.base.MemberLookupBase$$anon$1@3eaaa892, scala.tools.nsc.doc.base.MemberLookupBase$$anon$1@36212962 or scala.tools.nsc.doc.base.MemberLookupBase$$anon$1@3b23fcb1 instead, which manages resources and memory">apply</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="connection">connection: <span class="extype" name="java.sql.Connection">Connection</span></span>)</span><span class="result">: <a href="../scala/package.html#Stream[+A]=scala.collection.immutable.Stream[A]" class="extmbr" name="scala.Stream">Stream</a>[<a href="Row.html" class="extype" name="anorm.Row">Row</a>]</span>
       </span>
       </h4><span class="permalink">
       <a href="../index.html#anorm.SimpleSql@apply()(implicitconnection:java.sql.Connection):Stream[anorm.Row]" title="Permalink" target="_top">
@@ -810,7 +844,7 @@ of placeholder in statement.</p><pre><span class="kw">import</span> anorm.toPara
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 2.3.2) Will be made private, use scala.tools.nsc.doc.base.MemberLookupBase$$anon$1@ae32b8e or scala.tools.nsc.doc.base.MemberLookupBase$$anon$1@48407d37">execute1</span><span class="params">(<span name="getGeneratedKeys">getGeneratedKeys: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="connection">connection: <span class="extype" name="java.sql.Connection">Connection</span></span>)</span><span class="result">: (<span class="extype" name="java.sql.PreparedStatement">PreparedStatement</span>, <span class="extype" name="scala.Int">Int</span>)</span>
+        <span class="name deprecated" title="Deprecated: (Since version 2.3.2) Will be made private, use scala.tools.nsc.doc.base.MemberLookupBase$$anon$1@37a2e6cc or scala.tools.nsc.doc.base.MemberLookupBase$$anon$1@27de779d">execute1</span><span class="params">(<span name="getGeneratedKeys">getGeneratedKeys: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="connection">connection: <span class="extype" name="java.sql.Connection">Connection</span></span>)</span><span class="result">: (<span class="extype" name="java.sql.PreparedStatement">PreparedStatement</span>, <span class="extype" name="scala.Int">Int</span>)</span>
       </span>
       </h4><span class="permalink">
       <a href="../index.html#anorm.SimpleSql@execute1(getGeneratedKeys:Boolean)(implicitconnection:java.sql.Connection):(java.sql.PreparedStatement,Int)" title="Permalink" target="_top">
@@ -830,7 +864,7 @@ of placeholder in statement.</p><pre><span class="kw">import</span> anorm.toPara
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 2.3.6) Use scala.tools.nsc.doc.base.MemberLookupBase$$anon$1@1dccaf0">getFilledStatement</span><span class="params">(<span name="connection">connection: <span class="extype" name="java.sql.Connection">Connection</span></span>, <span name="getGeneratedKeys">getGeneratedKeys: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <span class="extype" name="java.sql.PreparedStatement">PreparedStatement</span></span>
+        <span class="name deprecated" title="Deprecated: (Since version 2.3.6) Use scala.tools.nsc.doc.base.MemberLookupBase$$anon$1@7e7ef8dd">getFilledStatement</span><span class="params">(<span name="connection">connection: <span class="extype" name="java.sql.Connection">Connection</span></span>, <span name="getGeneratedKeys">getGeneratedKeys: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <span class="extype" name="java.sql.PreparedStatement">PreparedStatement</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../index.html#anorm.SimpleSql@getFilledStatement(connection:java.sql.Connection,getGeneratedKeys:Boolean):java.sql.PreparedStatement" title="Permalink" target="_top">
