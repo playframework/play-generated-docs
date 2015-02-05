@@ -90,7 +90,24 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="play.core.parsers.Multipart.PartHandler" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="play.core.parsers.Multipart.FileInfo" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="FileInfoextendsProductwithSerializable"></a>
+      <a id="FileInfo:FileInfo"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="Multipart$$FileInfo.html"><span class="name">FileInfo</span></a><span class="params">(<span name="partName">partName: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="fileName">fileName: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="contentType">contentType: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.parsers.Multipart$@FileInfoextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      
+    </li><li name="play.core.parsers.Multipart.PartHandler" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="PartHandler[A]=PartialFunction[Map[String,String],play.api.libs.iteratee.Iteratee[Array[Byte],A]]"></a>
       <a id="PartHandler[A]:PartHandler[A]"></a>
       <h4 class="signature">
@@ -279,6 +296,31 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="play.core.parsers.Multipart#handleFilePart" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="handleFilePart[A](handler:play.core.parsers.Multipart.FileInfo=&gt;play.api.libs.iteratee.Iteratee[Array[Byte],A]):play.core.parsers.Multipart.PartHandler[play.api.mvc.MultipartFormData.FilePart[A]]"></a>
+      <a id="handleFilePart[A]((FileInfo)⇒Iteratee[Array[Byte],A]):PartHandler[FilePart[A]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">handleFilePart</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="handler">handler: (<a href="Multipart$$FileInfo.html" class="extype" name="play.core.parsers.Multipart.FileInfo">FileInfo</a>) ⇒ <a href="../../api/libs/iteratee/Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>], <span class="extype" name="play.core.parsers.Multipart.handleFilePart.A">A</span>]</span>)</span><span class="result">: <a href="#PartHandler[A]=PartialFunction[Map[String,String],play.api.libs.iteratee.Iteratee[Array[Byte],A]]" class="extmbr" name="play.core.parsers.Multipart.PartHandler">PartHandler</a>[<a href="../../api/mvc/MultipartFormData$$FilePart.html" class="extype" name="play.api.mvc.MultipartFormData.FilePart">FilePart</a>[<span class="extype" name="play.core.parsers.Multipart.handleFilePart.A">A</span>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.parsers.Multipart$@handleFilePart[A](handler:play.core.parsers.Multipart.FileInfo=&gt;play.api.libs.iteratee.Iteratee[Array[Byte],A]):play.core.parsers.Multipart.PartHandler[play.api.mvc.MultipartFormData.FilePart[A]]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Creates an handler that can work with files in HTTP request parts.</p><div class="fullcomment"><div class="comment cmt"><p>Creates an handler that can work with files in HTTP request parts.</p><pre><span class="kw">import</span> play.core.parsers.Multipart, Multipart.FileInfo
+<span class="kw">import</span> play.api.libs.iteratee.Iteratee
+
+<span class="kw">val</span> handler = Multipart.handleFilePart[<span class="std">List</span>[<span class="std">Int</span>]] { fileInfo <span class="kw">=&gt;</span>
+  ??? <span class="cmt">// return corresponding Iteratee[Array[Byte], List[Int]]</span>
+}
+
+<span class="cmt">// then use it</span>
+Multipart.multipartParser[<span class="std">List</span>[<span class="std">Int</span>]](<span class="num">1024</span>, handler)</pre></div></div>
     </li><li name="play.core.parsers.Multipart#handleFilePartAsTemporaryFile" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="handleFilePartAsTemporaryFile:play.core.parsers.Multipart.PartHandler[play.api.mvc.MultipartFormData.FilePart[play.api.libs.Files.TemporaryFile]]"></a>
       <a id="handleFilePartAsTemporaryFile:PartHandler[FilePart[TemporaryFile]]"></a>

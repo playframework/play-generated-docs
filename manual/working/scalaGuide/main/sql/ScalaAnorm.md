@@ -43,7 +43,7 @@ Writing SQL queries yourself can be tedious for a simple ‘Hello World’ appli
 
 ## Add Anorm to your project
 
-You will need to add Anorm and jdbc plugin to your dependencies : 
+You will need to add Anorm and JDBC plugin to your dependencies : 
 
 ```scala
 libraryDependencies ++= Seq(
@@ -507,9 +507,9 @@ val str: Option[String] =
   }
 ```
 
-## Working with optional/nullable columns
+## Working with optional/nullable values
 
-If a column in database can contain `Null` values, you need to manipulate it as an `Option` type.
+If a column in database can contain `Null` values, you need to parse it as an `Option` type.
 
 For example, the `indepYear` of the `Country` table is nullable, so you need to match it as `Option[Int]`:
 
@@ -533,7 +533,28 @@ SQL("Select name,indepYear from Country")().map { row =>
 
 This will produce an `UnexpectedNullableFound(COUNTRY.INDEPYEAR)` exception if it encounters a null value, so you need to map it properly to an `Option[Int]`.
 
-> Nullable parameters are also passed `Option[T]`, `T` being parameter base type (see *Parameters* section thereafter).
+A nullable parameter is also passed as `Option[T]`, `T` being parameter base type (see *Parameters* section thereafter).
+
+> Passing directly `None` for a NULL value is not supported, as inferred as `Option[Nothing]` (`Nothing` being unsafe for a parameter value). In this case, `Option.empty[T]` must be used.
+
+```scala
+// OK: 
+
+SQL("INSERT INTO Test(title) VALUES({title})").on("title" -> Some("Title"))
+
+val title1 = Some("Title1")
+SQL("INSERT INTO Test(title) VALUES({title})").on("title" -> title1)
+
+val title2: Option[String] = None
+// None inferred as Option[String] on assignment
+SQL("INSERT INTO Test(title) VALUES({title})").on("title" -> title2)
+
+// Not OK:
+SQL("INSERT INTO Test(title) VALUES({title})").on("title" -> None)
+
+// OK:
+SQL"INSERT INTO Test(title) VALUES(${Option.empty[String]})"
+```
 
 ## Using the Parser API
 
@@ -839,7 +860,7 @@ Long         | Yes                  | Yes
 Timestamp    | Yes                  | Yes
 
 - 1. Type `org.joda.time.DateTime`.
-- 2. Type `org.joda.time.Instant`.
+- 2. Type `org.joda.time.Instant` and `java.time.Instant` (see [Java 8](#Java_8)).
 
 It's possible to add custom mapping, for example if underlying DB doesn't support boolean datatype and returns integer instead. To do so, you have to provide a new implicit conversion for `Column[T]`, where `T` is the target Scala type:
 
@@ -906,15 +927,19 @@ Vector                    | Multi-value, with `T` mapping for each element      
 
 > Passing `None` for a nullable parameter is deprecated, and typesafe `Option.empty[T]` must be use instead.
 
-[Joda](http://www.joda.org) temporal types are supported as parameters:
+[Joda](http://www.joda.org) and [Java 8](#Java_8) temporal types are supported as parameters:
 
-JVM                  | JDBC
----------------------|-----------
-DateTime<sup>1</sup> | Timestamp
-Instant<sup>2</sup>  | Timstamp
+JVM                       | JDBC
+--------------------------|-----------
+DateTime<sup>1</sup>      | Timestamp
+Instant<sup>2</sup>       | Timestamp
+LocalDateTime<sup>3</sup> | Timestamp
+ZonedDateTime<sup>4</sup> | Timestamp
 
 - 1. Type `org.joda.time.DateTime`.
-- 2. Type `org.joda.time.Instant`.
+- 2. Type `org.joda.time.Instant` and `java.time.Instant`.
+- 3. Type `org.joda.time.LocalDateTime`.
+- 4. Type `org.joda.time.ZonedDateTime`
 
 Custom or specific DB conversion for parameter can also be provided:
 
@@ -937,4 +962,12 @@ In this case at your own risk, `setObject` will be used on statement.
 ```scala
 val anyVal: Any = myVal
 SQL("UPDATE t SET v = {opaque}").on('opaque -> anorm.Object(anyVal))
+```
+
+### More mappings
+
+Types which are specific to Java 8 are supported, as parameters or in column parsing, by importing `anorm.Java8._` and after adding following project dependency.
+
+```scala
+libraryDependencies += "com.typesafe.play" %% "anorm-java8" % "2.4.0"
 ```
