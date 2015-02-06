@@ -52,7 +52,7 @@
           <div class="superTypes hiddenContent"><a href="../play/api/mvc/Controller.html" class="extype" name="play.api.mvc.Controller">Controller</a>, <a href="../play/api/mvc/Rendering.html" class="extype" name="play.api.mvc.Rendering">Rendering</a>, <a href="../play/api/mvc/RequestExtractors.html" class="extype" name="play.api.mvc.RequestExtractors">RequestExtractors</a>, <a href="../play/api/mvc/AcceptExtractors.html" class="extype" name="play.api.mvc.AcceptExtractors">AcceptExtractors</a>, <a href="../play/api/http/ContentTypes.html" class="extype" name="play.api.http.ContentTypes">ContentTypes</a>, <a href="../play/api/http/HeaderNames.html" class="extype" name="play.api.http.HeaderNames">HeaderNames</a>, <a href="../play/api/http/Status.html" class="extype" name="play.api.http.Status">play.api.http.Status</a>, <a href="../play/api/http/HttpProtocol.html" class="extype" name="play.api.http.HttpProtocol">HttpProtocol</a>, <a href="../play/api/mvc/BodyParsers.html" class="extype" name="play.api.mvc.BodyParsers">BodyParsers</a>, <a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a>, <a href="../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
             <span class="toggle">Known Subclasses</span>
-            <div class="subClasses hiddenContent"><a href="Assets$.html" class="extype" name="controllers.Assets">Assets</a>, <a href="Assets.html" class="extype" name="controllers.Assets">Assets</a></div>
+            <div class="subClasses hiddenContent"><a href="Assets.html" class="extype" name="controllers.Assets">Assets</a>, <a href="Assets$.html" class="extype" name="controllers.Assets">Assets</a></div>
           </div></div>
         
 
@@ -3260,7 +3260,27 @@ Example of use:</p><pre>request <span class="kw">match</span> {
         <img src="../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">Dechunks a chunked transfer encoding stream.</p><div class="fullcomment"><div class="comment cmt"><p>Dechunks a chunked transfer encoding stream.</p><p>Chunks may span multiple elements in the stream.
+      <p class="shortcomment cmt">Dechunks a chunked transfer encoding stream.</p><div class="fullcomment"><div class="comment cmt"><p>Dechunks a chunked transfer encoding stream.</p><p>Chunk content may span multiple elements in the stream.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a></dd></dl></div>
+    </li><li name="play.api.mvc.Results#dechunkWithTrailers" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="dechunkWithTrailers:play.api.libs.iteratee.Enumeratee[Array[Byte],Either[Array[Byte],Seq[(String,String)]]]"></a>
+      <a id="dechunkWithTrailers:Enumeratee[Array[Byte],Either[Array[Byte],Seq[(String,String)]]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">dechunkWithTrailers</span><span class="result">: <a href="../play/api/libs/iteratee/Enumeratee.html" class="extype" name="play.api.libs.iteratee.Enumeratee">Enumeratee</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>], <a href="../scala/package.html#Either[+A,+B]=scala.util.Either[A,B]" class="extmbr" name="scala.Either">Either</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>], <a href="../scala/package.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[(<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>)]]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#controllers.AssetsBuilder@dechunkWithTrailers:play.api.libs.iteratee.Enumeratee[Array[Byte],Either[Array[Byte],Seq[(String,String)]]]" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Dechunks a chunked transfer encoding stream, returning any trailers in the
+last element.</p><div class="fullcomment"><div class="comment cmt"><p>Dechunks a chunked transfer encoding stream, returning any trailers in the
+last element. Chunks are <code>Left(bytes)</code> and the trailer is <code>Right(trailers)</code>.</p><p>Chunk and trailer content may span multiple elements in the stream.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../play/api/mvc/Results.html" class="extype" name="play.api.mvc.Results">Results</a></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
