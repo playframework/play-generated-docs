@@ -28,7 +28,7 @@
         </head>
         <body class="type">
       <div id="definition">
-        <img src="../../../../lib/class_big.png" />
+        <img src="../../../../lib/trait_big.png" />
         <p id="owner"><a href="../../../package.html" class="extype" name="play">play</a>.<a href="../../package.html" class="extype" name="play.api">api</a>.<a href="../package.html" class="extype" name="play.api.db">db</a>.<a href="package.html" class="extype" name="play.api.db.evolutions">evolutions</a></p>
         <h1>EvolutionsReader</h1> <span class="permalink">
       <a href="../../../../index.html#play.api.db.evolutions.EvolutionsReader" title="Permalink" target="_top">
@@ -40,21 +40,21 @@
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">class</span>
+        <span class="kind">trait</span>
       </span>
       <span class="symbol">
         <span class="name">EvolutionsReader</span><span class="result"> extends <a href="../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Read evolution files from the application environment.
-</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@Singleton</span><span class="args">()</span>
-              
-        </dd><dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play-jdbc/src/main/scala/play/api/db/evolutions/EvolutionsApi.scala" target="_blank">EvolutionsApi.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Reader for evolutions
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play-jdbc/src/main/scala/play/api/db/evolutions/EvolutionsApi.scala" target="_blank">EvolutionsApi.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
-        </div></div>
+        </div><div class="toggleContainer block">
+            <span class="toggle">Known Subclasses</span>
+            <div class="subClasses hiddenContent"><a href="ClassLoaderEvolutionsReader.html" class="extype" name="play.api.db.evolutions.ClassLoaderEvolutionsReader">ClassLoaderEvolutionsReader</a>, <a href="EnvironmentEvolutionsReader.html" class="extype" name="play.api.db.evolutions.EnvironmentEvolutionsReader">EnvironmentEvolutionsReader</a>, <a href="ResourceEvolutionsReader.html" class="extype" name="play.api.db.evolutions.ResourceEvolutionsReader">ResourceEvolutionsReader</a>, <a href="SimpleEvolutionsReader.html" class="extype" name="play.api.db.evolutions.SimpleEvolutionsReader">SimpleEvolutionsReader</a>, <a href="ThisClassLoaderEvolutionsReader$.html" class="extype" name="play.api.db.evolutions.ThisClassLoaderEvolutionsReader">ThisClassLoaderEvolutionsReader</a></div>
+          </div></div>
         
 
       <div id="mbrsel">
@@ -89,37 +89,35 @@
 
       <div id="template">
         <div id="allMembers">
-        <div id="constructors" class="members">
-              <h3>Instance Constructors</h3>
-              <ol><li name="play.api.db.evolutions.EvolutionsReader#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(environment:play.api.Environment):play.api.db.evolutions.EvolutionsReader"></a>
-      <a id="&lt;init&gt;:EvolutionsReader"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">new</span>
-      </span>
-      <span class="symbol">
-        <span class="name">EvolutionsReader</span><span class="params">(<span name="environment">environment: <a href="../../Environment.html" class="extype" name="play.api.Environment">Environment</a></span>)</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.db.evolutions.EvolutionsReader@&lt;init&gt;(environment:play.api.Environment):play.api.db.evolutions.EvolutionsReader" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@Inject</span><span class="args">()</span>
-              
-        </dd></dl></div>
-    </li></ol>
-            </div>
-
         
 
         
 
         <div id="values" class="values members">
-              <h3>Value Members</h3>
+              <h3>Abstract Value Members</h3>
+              <ol><li name="play.api.db.evolutions.EvolutionsReader#evolutions" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="evolutions(db:String):Seq[play.api.db.evolutions.Evolution]"></a>
+      <a id="evolutions(String):Seq[Evolution]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">evolutions</span><span class="params">(<span name="db">db: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="../../../../scala/package.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<a href="Evolution.html" class="extype" name="play.api.db.evolutions.Evolution">Evolution</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.db.evolutions.EvolutionsReader@evolutions(db:String):Seq[play.api.db.evolutions.Evolution]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Read the evolutions for the given db
+</p>
+    </li></ol>
+            </div>
+
+        <div id="values" class="values members">
+              <h3>Concrete Value Members</h3>
               <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:Any):Boolean"></a>
       <a id="!=(Any):Boolean"></a>
@@ -245,25 +243,6 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="play.api.db.evolutions.EvolutionsReader#evolutions" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="evolutions(db:String):Seq[play.api.db.evolutions.Evolution]"></a>
-      <a id="evolutions(String):Seq[Evolution]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">evolutions</span><span class="params">(<span name="db">db: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="../../../../scala/package.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<a href="Evolution.html" class="extype" name="play.api.db.evolutions.Evolution">Evolution</a>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.db.evolutions.EvolutionsReader@evolutions(db:String):Seq[play.api.db.evolutions.Evolution]" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Read the application evolutions.</p><div class="fullcomment"><div class="comment cmt"><p>Read the application evolutions.
-</p></div><dl class="paramcmts block"><dt class="param">db</dt><dd class="cmt"><p>the database name
-</p></dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
