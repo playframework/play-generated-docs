@@ -46,7 +46,7 @@ the trust anchor from the chain of certificates.  This means we need to check th
 through the CompositeTrustManager.
 </p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.3.x/framework/src/play-ws/src/main/scala/play/api/libs/ws/ssl/AlgorithmChecker.scala" target="_blank">AlgorithmChecker.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="java.security.cert.PKIXCertPathChecker">PKIXCertPathChecker</span>, <span class="extype" name="java.lang.Cloneable">Cloneable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="java.security.cert.PKIXCertPathChecker">PKIXCertPathChecker</span>, <span class="extype" name="java.lang.Cloneable">Cloneable</span>, <span class="extype" name="java.security.cert.CertPathChecker">CertPathChecker</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -64,7 +64,7 @@ through the CompositeTrustManager.
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="play.api.libs.ws.ssl.AlgorithmChecker"><span>AlgorithmChecker</span></li><li class="in" name="java.security.cert.PKIXCertPathChecker"><span>PKIXCertPathChecker</span></li><li class="in" name="java.lang.Cloneable"><span>Cloneable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="play.api.libs.ws.ssl.AlgorithmChecker"><span>AlgorithmChecker</span></li><li class="in" name="java.security.cert.PKIXCertPathChecker"><span>PKIXCertPathChecker</span></li><li class="in" name="java.lang.Cloneable"><span>Cloneable</span></li><li class="in" name="java.security.cert.CertPathChecker"><span>CertPathChecker</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -199,6 +199,25 @@ through the CompositeTrustManager.
       <p class="shortcomment cmt">Checks the algorithms in the given certificate.</p><div class="fullcomment"><div class="comment cmt"><p>Checks the algorithms in the given certificate.  Note that this implementation skips signature checking in a
 root certificate, as a trusted root cert by definition is in the trust store and doesn't need to be signed.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.libs.ws.ssl.AlgorithmChecker">AlgorithmChecker</a> → PKIXCertPathChecker</dd></dl></div>
+    </li><li name="java.security.cert.PKIXCertPathChecker#check" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="check(x$1:java.security.cert.Certificate):Unit"></a>
+      <a id="check(Certificate):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">check</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="java.security.cert.Certificate">Certificate</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>PKIXCertPathChecker → CertPathChecker</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.security.cert.CertPathValidatorException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
     </li><li name="play.api.libs.ws.ssl.AlgorithmChecker#checkKeyAlgorithms" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="checkKeyAlgorithms(x509Cert:java.security.cert.X509Certificate):Unit"></a>
       <a id="checkKeyAlgorithms(X509Certificate):Unit"></a>
@@ -375,7 +394,7 @@ root certificate, as a trusted root cert by definition is in the trust store and
         <span class="name">init</span><span class="params">(<span name="forward">forward: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.libs.ws.ssl.AlgorithmChecker">AlgorithmChecker</a> → PKIXCertPathChecker</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.libs.ws.ssl.AlgorithmChecker">AlgorithmChecker</a> → PKIXCertPathChecker → CertPathChecker</dd></dl></div>
     </li><li name="play.api.libs.ws.ssl.AlgorithmChecker#isForwardCheckingSupported" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isForwardCheckingSupported():Boolean"></a>
       <a id="isForwardCheckingSupported():Boolean"></a>
@@ -388,7 +407,7 @@ root certificate, as a trusted root cert by definition is in the trust store and
         <span class="name">isForwardCheckingSupported</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.libs.ws.ssl.AlgorithmChecker">AlgorithmChecker</a> → PKIXCertPathChecker</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.libs.ws.ssl.AlgorithmChecker">AlgorithmChecker</a> → PKIXCertPathChecker → CertPathChecker</dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -563,6 +582,8 @@ root certificate, as a trusted root cert by definition is in the trust store and
               <h3>Inherited from <span class="extype" name="java.security.cert.PKIXCertPathChecker">PKIXCertPathChecker</span></h3>
             </div><div class="parent" name="java.lang.Cloneable">
               <h3>Inherited from <span class="extype" name="java.lang.Cloneable">Cloneable</span></h3>
+            </div><div class="parent" name="java.security.cert.CertPathChecker">
+              <h3>Inherited from <span class="extype" name="java.security.cert.CertPathChecker">CertPathChecker</span></h3>
             </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">
