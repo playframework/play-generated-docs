@@ -348,9 +348,9 @@ SqlParser.array[<span class="std">String</span>](<span class="lit">"sqlArrayOfSt
         <img src="../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">Parses specified column as binary stream.</p><div class="fullcomment"><div class="comment cmt"><p>Parses specified column as binary stream.</p><pre><span class="kw">import</span> anorm.{ SQL, SqlParser }
+      <p class="shortcomment cmt">Parses specified column as binary stream.</p><div class="fullcomment"><div class="comment cmt"><p>Parses specified column as binary stream.</p><pre><span class="kw">import</span> anorm.{ SQL, SqlParser }, SqlParser.{ str, byteArray }
 
-<span class="kw">val</span> parser = SqlParser.str(<span class="num">1</span>) ~ SqlParser.byteArray(<span class="num">2</span>)
+<span class="kw">val</span> parser = (SqlParser.str(<span class="num">1</span>) ~ SqlParser.byteArray(<span class="num">2</span>)).flatten
 <span class="kw">val</span> file: (<span class="std">String</span>, <span class="std">Array</span>[<span class="std">Byte</span>]) = SQL(<span class="lit">"SELECT name, data FROM files"</span>).
   as(parser.single)</pre></div></div>
     </li><li name="anorm.SqlParser#byteArray" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -369,9 +369,9 @@ SqlParser.array[<span class="std">String</span>](<span class="lit">"sqlArrayOfSt
         <img src="../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">Parses specified column as binary stream.</p><div class="fullcomment"><div class="comment cmt"><p>Parses specified column as binary stream.</p><pre><span class="kw">import</span> anorm.{ SQL, SqlParser }
+      <p class="shortcomment cmt">Parses specified column as binary stream.</p><div class="fullcomment"><div class="comment cmt"><p>Parses specified column as binary stream.</p><pre><span class="kw">import</span> anorm.{ SQL, SqlParser }, SqlParser.{ str, byteArray }
 
-<span class="kw">val</span> parser = SqlParser.str(<span class="lit">"name"</span>) ~ SqlParser.byteArray(<span class="lit">"data"</span>)
+<span class="kw">val</span> parser = (str(<span class="lit">"name"</span>) ~ byteArray(<span class="lit">"data"</span>)).flatten
 <span class="kw">val</span> file: (<span class="std">String</span>, <span class="std">Array</span>[<span class="std">Byte</span>]) = SQL(<span class="lit">"SELECT name, data FROM files"</span>).
   as(parser.single)</pre></div></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -1117,7 +1117,7 @@ and matching expected <code>value</code>.</p><pre><span class="kw">import</span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 2.3.0) Use scala.tools.nsc.doc.base.MemberLookupBase$$anon$1@3b7fc80b">contains</span><span class="tparams">[<span name="TT">TT</span>, <span name="T">T &lt;: <span class="extype" name="anorm.SqlParser.contains.TT">TT</span></span>]</span><span class="params">(<span name="column">column: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="value">value: <span class="extype" name="anorm.SqlParser.contains.T">T</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="Column.html" class="extype" name="anorm.Column">Column</a>[<span class="extype" name="anorm.SqlParser.contains.TT">TT</span>]</span>)</span><span class="result">: <a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a>[<span class="extype" name="scala.Unit">Unit</span>]</span>
+        <span class="name deprecated" title="Deprecated: (Since version 2.3.0) Use scala.tools.nsc.doc.base.MemberLookupBase$$anon$1@299ce7">contains</span><span class="tparams">[<span name="TT">TT</span>, <span name="T">T &lt;: <span class="extype" name="anorm.SqlParser.contains.TT">TT</span></span>]</span><span class="params">(<span name="column">column: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="value">value: <span class="extype" name="anorm.SqlParser.contains.T">T</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="Column.html" class="extype" name="anorm.Column">Column</a>[<span class="extype" name="anorm.SqlParser.contains.TT">TT</span>]</span>)</span><span class="result">: <a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a>[<span class="extype" name="scala.Unit">Unit</span>]</span>
       </span>
       </h4><span class="permalink">
       <a href="../index.html#anorm.SqlParser$@contains[TT,T&lt;:TT](column:String,value:T)(implicitevidence$1:anorm.Column[TT]):anorm.RowParser[Unit]" title="Permalink" target="_top">
@@ -1154,7 +1154,7 @@ SQL(<span class="lit">"SELECT * FROM table"</span>).as(parser.+)
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 2.3.3) Use scala.tools.nsc.doc.base.MemberLookupBase$$anon$1@450744d6 with alias">getAliased</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="aliasName">aliasName: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="extractor">extractor: <a href="Column.html" class="extype" name="anorm.Column">Column</a>[<span class="extype" name="anorm.SqlParser.getAliased.T">T</span>]</span>)</span><span class="result">: <a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a>[<span class="extype" name="anorm.SqlParser.getAliased.T">T</span>]</span>
+        <span class="name deprecated" title="Deprecated: (Since version 2.3.3) Use scala.tools.nsc.doc.base.MemberLookupBase$$anon$1@709f6884 with alias">getAliased</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="aliasName">aliasName: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="extractor">extractor: <a href="Column.html" class="extype" name="anorm.Column">Column</a>[<span class="extype" name="anorm.SqlParser.getAliased.T">T</span>]</span>)</span><span class="result">: <a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a>[<span class="extype" name="anorm.SqlParser.getAliased.T">T</span>]</span>
       </span>
       </h4><span class="permalink">
       <a href="../index.html#anorm.SqlParser$@getAliased[T](aliasName:String)(implicitextractor:anorm.Column[T]):anorm.RowParser[T]" title="Permalink" target="_top">

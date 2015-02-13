@@ -204,7 +204,16 @@ SQL(<span class="lit">"SELECT title, descr FROM pages"</span>).as(parser.+) <spa
         <img src="../lib/permalink.png" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a></dd></dl></div>
+      <p class="shortcomment cmt">Combines this current parser with the one given as argument <code>p</code>,
+if and only if the current parser can first successfully
+parse a row, without keeping the values of the parser <code>p</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Combines this current parser with the one given as argument <code>p</code>,
+if and only if the current parser can first successfully
+parse a row, without keeping the values of the parser <code>p</code>.</p><pre><span class="kw">import</span> anorm.{ SQL, SqlParser }, SqlParser.{ int, str }
+
+<span class="kw">val</span> <span class="std">Int</span> = SQL(<span class="lit">"SELECT * FROM test"</span>).
+  as((int(<span class="lit">"id"</span>) &lt;~ str(<span class="lit">"val"</span>)).single)
+<span class="cmt">// row has to have an int column 'id' and a string 'val' one,</span>
+<span class="cmt">// keeping only 'id' in result</span></pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a></dd></dl></div>
     </li><li name="scala.AnyRef#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="==(x$1:Any):Boolean"></a>
       <a id="==(Any):Boolean"></a>
@@ -238,7 +247,7 @@ SQL(<span class="lit">"SELECT title, descr FROM pages"</span>).as(parser.+) <spa
         <img src="../lib/permalink.png" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a></dd></dl></div>
+      <p class="shortcomment cmt">Alias for <a href="RowParser.html#flatMap[B](k:A=&gt;anorm.RowParser[B]):anorm.RowParser[B]" class="extmbr" name="anorm.RowParser#flatMap">flatMap</a></p><div class="fullcomment"><div class="comment cmt"><p>Alias for <a href="RowParser.html#flatMap[B](k:A=&gt;anorm.RowParser[B]):anorm.RowParser[B]" class="extmbr" name="anorm.RowParser#flatMap">flatMap</a></p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a></dd></dl></div>
     </li><li name="anorm.RowParser#?" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="?:anorm.RowParser[Option[A]]"></a>
       <a id="?:RowParser[Option[A]]"></a>
@@ -501,7 +510,15 @@ from already parsed row data using <code>f</code>.
         <img src="../lib/permalink.png" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a></dd></dl></div>
+      <p class="shortcomment cmt">Returns a parser that will apply given function <code>f</code>
+to the result of this first parser.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a parser that will apply given function <code>f</code>
+to the result of this first parser. If the current parser is not
+successful, the new one will return encountered <a href="Error.html" class="extype" name="anorm.Error">Error</a>.
+</p></div><dl class="paramcmts block"><dt class="param">f</dt><dd class="cmt"><p>Function applied on the successful parser result</p><pre><span class="kw">import</span> anorm.{ RowParser, SQL, SqlParser }
+
+<span class="kw">val</span> parser: RowParser[<span class="std">Int</span>] = SqlParser.str(<span class="lit">"col"</span>).map(_.length)
+<span class="cmt">// Prepares a parser that first get 'col' string value,</span>
+<span class="cmt">// an then returns the length of that</span></pre></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a></dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>
@@ -727,7 +744,9 @@ from already parsed row data using <code>f</code>.
         <img src="../lib/permalink.png" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a></dd></dl></div>
+      <p class="shortcomment cmt">Combines this parser on the left of the parser <code>p</code> given as argument.</p><div class="fullcomment"><div class="comment cmt"><p>Combines this parser on the left of the parser <code>p</code> given as argument.
+</p></div><dl class="paramcmts block"><dt class="param">p</dt><dd class="cmt"><p>Parser on the right</p><pre><span class="kw">val</span> populations: <span class="std">List</span>[<span class="std">String</span> ~ <span class="std">Int</span>] =
+  SQL(<span class="lit">"SELECT * FROM Country"</span>).as((str(<span class="lit">"name"</span>) ~ int(<span class="lit">"population"</span>)).*)</pre></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a></dd></dl></div>
     </li><li name="anorm.RowParser#~&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="~&gt;[B](p:anorm.RowParser[B]):anorm.RowParser[B]"></a>
       <a id="~&gt;[B](RowParser[B]):RowParser[B]"></a>
@@ -744,7 +763,16 @@ from already parsed row data using <code>f</code>.
         <img src="../lib/permalink.png" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a></dd></dl></div>
+      <p class="shortcomment cmt">Combines this current parser with the one given as argument <code>p</code>,
+if and only if the current parser can first/on left side successfully
+parse a row, without keeping these values in parsed result.</p><div class="fullcomment"><div class="comment cmt"><p>Combines this current parser with the one given as argument <code>p</code>,
+if and only if the current parser can first/on left side successfully
+parse a row, without keeping these values in parsed result.</p><pre><span class="kw">import</span> anorm.{ SQL, SqlParser }, SqlParser.{ int, str }
+
+<span class="kw">val</span> <span class="std">String</span> = SQL(<span class="lit">"SELECT * FROM test"</span>).
+  as((int(<span class="lit">"id"</span>) ~&gt; str(<span class="lit">"val"</span>)).single)
+<span class="cmt">// row has to have an int column 'id' and a string 'val' one,</span>
+<span class="cmt">// keeping only 'val' in result</span></pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a></dd></dl></div>
     </li></ol>
             </div>
 
