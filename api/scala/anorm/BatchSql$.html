@@ -145,22 +145,34 @@
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="anorm.BatchSql#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="apply(sql:String,ps:Seq[Seq[anorm.NamedParameter]]):anorm.BatchSql"></a>
-      <a id="apply(String,Seq[Seq[NamedParameter]]):BatchSql"></a>
+      <a id="apply(sql:String,first:Seq[anorm.NamedParameter],other:Seq[anorm.NamedParameter]*):anorm.BatchSql"></a>
+      <a id="apply(String,Seq[NamedParameter],Seq[NamedParameter]*):BatchSql"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">apply</span><span class="params">(<span name="sql">sql: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="ps">ps: <a href="../scala/package.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<a href="../scala/package.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<a href="NamedParameter.html" class="extype" name="anorm.NamedParameter">NamedParameter</a>]] = <span class="symbol">Nil</span></span>)</span><span class="result">: <a href="BatchSql.html" class="extype" name="anorm.BatchSql">BatchSql</a></span>
+        <span class="name">apply</span><span class="params">(<span name="sql">sql: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="first">first: <a href="../scala/package.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<a href="NamedParameter.html" class="extype" name="anorm.NamedParameter">NamedParameter</a>]</span>, <span name="other">other: <a href="../scala/package.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<a href="NamedParameter.html" class="extype" name="anorm.NamedParameter">NamedParameter</a>]*</span>)</span><span class="result">: <a href="BatchSql.html" class="extype" name="anorm.BatchSql">BatchSql</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#anorm.BatchSql$@apply(sql:String,ps:Seq[Seq[anorm.NamedParameter]]):anorm.BatchSql" title="Permalink" target="_top">
+      <a href="../index.html#anorm.BatchSql$@apply(sql:String,first:Seq[anorm.NamedParameter],other:Seq[anorm.NamedParameter]*):anorm.BatchSql" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+      <p class="shortcomment cmt">Creates a batch from given <code>sql</code> statement,
+with a <code>first</code> parameter list for for SQL execution, and zero or many
+<code>other</code> parameter lists for other SQL executions, after in the same batch.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a batch from given <code>sql</code> statement,
+with a <code>first</code> parameter list for for SQL execution, and zero or many
+<code>other</code> parameter lists for other SQL executions, after in the same batch.
+</p></div><dl class="paramcmts block"><dt class="param">sql</dt><dd class="cmt"><p>SQL statement</p></dd><dt class="param">first</dt><dd class="cmt"><p>Parameter list for the first SQL execution</p></dd><dt class="param">other</dt><dd class="cmt"><p>Parameter lists for other SQL executions in the same batch</p><pre><span class="kw">import</span> anorm.{ BatchSql, NamedParameter }
+
+BatchSql(<span class="lit">"EXEC proc ?, ?"</span>, <span class="cmt">// Batch with 1 execution</span>
+  <span class="std">Seq</span>[NamedParameter](<span class="lit">"a"</span> -&gt; <span class="lit">"Foo"</span>, <span class="lit">"b"</span> -&gt; <span class="lit">"Bar"</span>))
+
+BatchSql(<span class="lit">"EXEC proc ?, ?"</span>, <span class="cmt">// Batch with 2 executions</span>
+  <span class="std">Seq</span>[NamedParameter](<span class="lit">"a"</span> -&gt; <span class="lit">"Foo"</span>, <span class="lit">"b"</span> -&gt; <span class="lit">"Bar"</span>),
+  <span class="std">Seq</span>[NamedParameter](<span class="lit">"a"</span> -&gt; <span class="lit">"Lorem"</span>, <span class="lit">"b"</span> -&gt; <span class="lit">"Ipsum"</span>))</pre></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
       <span class="defval" name="BatchSqlErrors.HeterogeneousParameterMaps">...</span>
@@ -479,7 +491,40 @@
 
         
 
-        
+        <div id="values" class="values members">
+              <h3>Deprecated Value Members</h3>
+              <ol><li name="anorm.BatchSql#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="apply(sql:String,ps:Seq[Seq[anorm.NamedParameter]]):anorm.BatchSql"></a>
+      <a id="apply(String,Seq[Seq[NamedParameter]]):BatchSql"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 2.3.8) Use BatchSql(sql, first, other)">apply</span><span class="params">(<span name="sql">sql: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="ps">ps: <a href="../scala/package.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<a href="../scala/package.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<a href="NamedParameter.html" class="extype" name="anorm.NamedParameter">NamedParameter</a>]] = <span class="symbol">Nil</span></span>)</span><span class="result">: <a href="BatchSql.html" class="extype" name="anorm.BatchSql">BatchSql</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#anorm.BatchSql$@apply(sql:String,ps:Seq[Seq[anorm.NamedParameter]]):anorm.BatchSql" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="BatchSqlErrors.HeterogeneousParameterMaps">...</span>
+    </span>)</span>
+              
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="BatchSqlErrors.ParameterNamesNotMatchingPlaceholders">...</span>
+    </span>)</span>
+              
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.3.8)</i> Use <code>BatchSql(sql, first, other)</code></p></dd></dl></div>
+    </li></ol>
+            </div>
         </div>
 
         <div id="inheritedMembers">
