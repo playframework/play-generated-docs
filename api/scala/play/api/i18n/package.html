@@ -130,6 +130,23 @@
                 <span class="name">@Singleton</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="play.api.i18n.I18NSupportLowPriorityImplicits" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="I18NSupportLowPriorityImplicitsextendsAnyRef"></a>
+      <a id="I18NSupportLowPriorityImplicits:I18NSupportLowPriorityImplicits"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="I18NSupportLowPriorityImplicits.html"><span class="name">I18NSupportLowPriorityImplicits</span></a><span class="result"> extends <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.i18n.package@I18NSupportLowPriorityImplicitsextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      
     </li><li name="play.api.i18n.I18nComponents" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="I18nComponentsextendsAnyRef"></a>
       <a id="I18nComponents:I18nComponents"></a>
@@ -165,6 +182,28 @@
       </a>
     </span>
       
+    </li><li name="play.api.i18n.I18nSupport" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="I18nSupportextendsI18NSupportLowPriorityImplicits"></a>
+      <a id="I18nSupport:I18nSupport"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="I18nSupport.html"><span class="name">I18nSupport</span></a><span class="result"> extends <a href="I18NSupportLowPriorityImplicits.html" class="extype" name="play.api.i18n.I18NSupportLowPriorityImplicits">I18NSupportLowPriorityImplicits</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.i18n.package@I18nSupportextendsI18NSupportLowPriorityImplicits" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Brings a convenient implicit conversion from <span class="extype" name="RequestHeader">RequestHeader</span> to <a href="Messages.html" class="extype" name="play.api.i18n.Messages">Messages</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Brings a convenient implicit conversion from <span class="extype" name="RequestHeader">RequestHeader</span> to <a href="Messages.html" class="extype" name="play.api.i18n.Messages">Messages</a>.</p><p>Example:</p><pre><span class="kw">import</span> play.api.i18n.Messages
+<span class="kw">class</span> MyController(<span class="kw">val</span> messagesApi: MessagesApi) <span class="kw">extends</span> ControllerLike <span class="kw">with</span> I18nSupport {
+  <span class="kw">val</span> action = Action { <span class="kw">implicit</span> request <span class="kw">=&gt;</span>
+    Ok(Messages(<span class="lit">"some.key"</span>)) <span class="cmt">// Uses the client￢ﾀﾙs preferred language</span>
+  }
+}</pre></div></div>
     </li><li name="play.api.i18n.Lang" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="LangextendsProductwithSerializable"></a>
       <a id="Lang:Lang"></a>
