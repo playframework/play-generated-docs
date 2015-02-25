@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -110,7 +110,7 @@ var activeTableTab = "activeTableTab";
 <pre>public class <span class="typeNameLabel">WithApplication</span>
 extends java.lang.Object</pre>
 <div class="block">Provides an application for JUnit tests. Make your test class extend this class and an application will be started before each test is invoked.
- You can setup the fake application to use by overriding the provideFakeApplication method.
+ You can setup the application to use by overriding the provideApplication method.
  Within a test, the running application is available through the app field.</div>
 </li>
 </ul>
@@ -131,7 +131,7 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Field and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>protected <a href="../../play/test/FakeApplication.html" title="class in play.test">FakeApplication</a></code></td>
+<td class="colFirst"><code>protected <a href="../../play/Application.html" title="interface in play">Application</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/test/WithApplication.html#app">app</a></span></code>&nbsp;</td>
 </tr>
 </table>
@@ -167,16 +167,22 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>protected <a href="../../play/test/FakeApplication.html" title="class in play.test">FakeApplication</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/test/WithApplication.html#provideFakeApplication--">provideFakeApplication</a></span>()</code>
-<div class="block">Override this method to setup the fake application to use.</div>
+<td class="colFirst"><code>protected <a href="../../play/Application.html" title="interface in play">Application</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/test/WithApplication.html#provideApplication--">provideApplication</a></span>()</code>
+<div class="block">Override this method to setup the application to use.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
+<td class="colFirst"><code>protected <a href="../../play/test/FakeApplication.html" title="class in play.test">FakeApplication</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/test/WithApplication.html#provideFakeApplication--">provideFakeApplication</a></span>()</code>
+<div class="block">Old method - use the new <a href="../../play/test/WithApplication.html#provideApplication--"><code>provideApplication</code></a> method instead.</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/test/WithApplication.html#startPlay--">startPlay</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/test/WithApplication.html#stopPlay--">stopPlay</a></span>()</code>&nbsp;</td>
 </tr>
@@ -208,7 +214,7 @@ extends java.lang.Object</pre>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>app</h4>
-<pre>protected&nbsp;<a href="../../play/test/FakeApplication.html" title="class in play.test">FakeApplication</a> app</pre>
+<pre>protected&nbsp;<a href="../../play/Application.html" title="interface in play">Application</a> app</pre>
 </li>
 </ul>
 </li>
@@ -236,6 +242,22 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a name="provideApplication--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>provideApplication</h4>
+<pre>protected&nbsp;<a href="../../play/Application.html" title="interface in play">Application</a>&nbsp;provideApplication()</pre>
+<div class="block">Override this method to setup the application to use.
+
+ By default this will call the old <a href="../../play/test/WithApplication.html#provideFakeApplication--"><code>provideFakeApplication</code></a> method.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The application to use</dd>
+</dl>
+</li>
+</ul>
 <a name="provideFakeApplication--">
 <!--   -->
 </a>
@@ -243,7 +265,9 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>provideFakeApplication</h4>
 <pre>protected&nbsp;<a href="../../play/test/FakeApplication.html" title="class in play.test">FakeApplication</a>&nbsp;provideFakeApplication()</pre>
-<div class="block">Override this method to setup the fake application to use.</div>
+<div class="block">Old method - use the new <a href="../../play/test/WithApplication.html#provideApplication--"><code>provideApplication</code></a> method instead.
+
+ Override this method to setup the fake application to use.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>The fake application to use</dd>
