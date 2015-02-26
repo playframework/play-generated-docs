@@ -28,9 +28,9 @@
         </head>
         <body class="type">
       <div id="definition">
-        <img src="../../../lib/trait_big.png" />
+        <a href="WsTestClient$.html" title="Go to companion"><img src="../../../lib/trait_to_object_big.png" /></a>
         <p id="owner"><a href="../../package.html" class="extype" name="play">play</a>.<a href="../package.html" class="extype" name="play.api">api</a>.<a href="package.html" class="extype" name="play.api.test">test</a></p>
-        <h1>WsTestClient</h1> <span class="permalink">
+        <h1><a href="WsTestClient$.html" title="Go to companion">WsTestClient</a></h1> <span class="permalink">
       <a href="../../../index.html#play.api.test.WsTestClient" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" />
       </a>
@@ -50,7 +50,10 @@
           <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play-ws/src/main/scala/play/api/test/WSTestClient.scala" target="_blank">WSTestClient.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
-        </div></div>
+        </div><div class="toggleContainer block">
+            <span class="toggle">Known Subclasses</span>
+            <div class="subClasses hiddenContent"><a href="WsTestClient$.html" class="extype" name="play.api.test.WsTestClient">WsTestClient</a></div>
+          </div></div>
         
 
       <div id="mbrsel">
@@ -466,6 +469,33 @@
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="play.api.test.WsTestClient#withClient" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="withClient[T](block:play.api.libs.ws.WSClient=&gt;T)(implicitport:play.api.http.Port):T"></a>
+      <a id="withClient[T]((WSClient)⇒T)(http.Port):T"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">withClient</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="block">block: (<a href="../libs/ws/WSClient.html" class="extype" name="play.api.libs.ws.WSClient">WSClient</a>) ⇒ <span class="extype" name="play.api.test.WsTestClient.withClient.T">T</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="port">port: <a href="../http/Port.html" class="extype" name="play.api.http.Port">http.Port</a> = <span class="symbol"><span class="name"><a href="../../package.html">new play.api.http.Port(-1)</a></span></span></span>)</span><span class="result">: <span class="extype" name="play.api.test.WsTestClient.withClient.T">T</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.test.WsTestClient@withClient[T](block:play.api.libs.ws.WSClient=&gt;T)(implicitport:play.api.http.Port):T" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Run the given block of code with a client.</p><div class="fullcomment"><div class="comment cmt"><p>Run the given block of code with a client.</p><p>The client passed to the block of code supports absolute path relative URLs passed to the url method.  If an
+absolute path relative URL is used, the protocol is assumed to be http, the host localhost, and the port is the
+implicit port parameter passed to this method.  This is designed to work smoothly with the Server.with* methods,
+for example:</p><pre>Server.withRouter() {
+  <span class="kw">case</span> GET(p<span class="lit">"/hello/$who"</span>) <span class="kw">=&gt;</span> Action(Ok(<span class="lit">"Hello "</span> + who))
+} { <span class="kw">implicit</span> port <span class="kw">=&gt;</span>
+  withClient { ws <span class="kw">=&gt;</span>
+    await(ws.url(<span class="lit">"/hello/world"</span>).get()).body must_== <span class="lit">"Hello world"</span>
+  }
+}</pre></div><dl class="paramcmts block"><dt class="param">block</dt><dd class="cmt"><p>The block of code to run</p></dd><dt class="param">port</dt><dd class="cmt"><p>The port</p></dd><dt>returns</dt><dd class="cmt"><p>The result of the block of code
+</p></dd></dl></div>
     </li><li name="play.api.test.WsTestClient#wsCall" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wsCall(call:play.api.mvc.Call)(implicitport:WsTestClient.this.Port,implicitclient:play.api.libs.ws.WSClient):play.api.libs.ws.WSRequestHolder"></a>
       <a id="wsCall(Call)(Port,WSClient):WSRequestHolder"></a>
