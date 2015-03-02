@@ -635,19 +635,19 @@ For <code>null</code> value, <code>setNull</code> with <code>BIGINT</code> is ca
       <p class="shortcomment cmt">Sets Java Short object on statement.</p><div class="fullcomment"><div class="comment cmt"><p>Sets Java Short object on statement.
 For <code>null</code> value, <code>setNull</code> with <code>SMALLINT</code> is called on statement.</p><pre>SQL(<span class="lit">"SELECT * FROM Test WHERE flag = {b}"</span>).
   on('b -&gt; <span class="kw">new</span> java.lang.<span class="std">Short</span>(<span class="num">1.</span>toShort))</pre></div></div>
-    </li><li name="anorm.JodaToStatement.jodaDateTimeToStatement" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="jodaDateTimeToStatement"></a>
-      <a id="jodaDateTimeToStatement:jodaDateTimeToStatement"></a>
+    </li><li name="anorm.JodaToStatement#jodaDateTimeToStatement" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="jodaDateTimeToStatement(implicitmeta:anorm.ParameterMetaData[org.joda.time.DateTime]):anorm.ToStatement[org.joda.time.DateTime]"></a>
+      <a id="jodaDateTimeToStatement(ParameterMetaData[DateTime]):ToStatement[DateTime]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">implicit </span>
-        <span class="kind">object</span>
+        <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <a href="JodaToStatement$jodaDateTimeToStatement$.html"><span class="name">jodaDateTimeToStatement</span></a><span class="result"> extends <a href="ToStatement.html" class="extype" name="anorm.ToStatement">ToStatement</a>[<span class="extype" name="org.joda.time.DateTime">DateTime</span>]</span>
+        <span class="name">jodaDateTimeToStatement</span><span class="params">(<span class="implicit">implicit </span><span name="meta">meta: <a href="ParameterMetaData.html" class="extype" name="anorm.ParameterMetaData">ParameterMetaData</a>[<span class="extype" name="org.joda.time.DateTime">DateTime</span>]</span>)</span><span class="result">: <a href="ToStatement.html" class="extype" name="anorm.ToStatement">ToStatement</a>[<span class="extype" name="org.joda.time.DateTime">DateTime</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#anorm.JodaToStatement@jodaDateTimeToStatement" title="Permalink" target="_top">
+      <a href="../index.html#anorm.ToStatement$@jodaDateTimeToStatement(implicitmeta:anorm.ParameterMetaData[org.joda.time.DateTime]):anorm.ToStatement[org.joda.time.DateTime]" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
@@ -655,19 +655,19 @@ For <code>null</code> value, <code>setNull</code> with <code>SMALLINT</code> is 
 For <code>null</code> value, <code>setNull</code> with <code>TIMESTAMP</code> is called on statement.</p><pre><span class="kw">import</span> org.joda.time.DateTime
 
 SQL(<span class="lit">"UPDATE tbl SET modified = {d}"</span>).on('d -&gt; <span class="kw">new</span> DateTime())</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="JodaToStatement.html" class="extype" name="anorm.JodaToStatement">JodaToStatement</a></dd></dl></div>
-    </li><li name="anorm.JodaToStatement.jodaInstantToStatement" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="jodaInstantToStatement"></a>
-      <a id="jodaInstantToStatement:jodaInstantToStatement"></a>
+    </li><li name="anorm.JodaToStatement#jodaInstantToStatement" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="jodaInstantToStatement(implicitmeta:anorm.ParameterMetaData[org.joda.time.Instant]):anorm.ToStatement[org.joda.time.Instant]"></a>
+      <a id="jodaInstantToStatement(ParameterMetaData[Instant]):ToStatement[Instant]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">implicit </span>
-        <span class="kind">object</span>
+        <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <a href="JodaToStatement$jodaInstantToStatement$.html"><span class="name">jodaInstantToStatement</span></a><span class="result"> extends <a href="ToStatement.html" class="extype" name="anorm.ToStatement">ToStatement</a>[<span class="extype" name="org.joda.time.Instant">Instant</span>]</span>
+        <span class="name">jodaInstantToStatement</span><span class="params">(<span class="implicit">implicit </span><span name="meta">meta: <a href="ParameterMetaData.html" class="extype" name="anorm.ParameterMetaData">ParameterMetaData</a>[<span class="extype" name="org.joda.time.Instant">Instant</span>]</span>)</span><span class="result">: <a href="ToStatement.html" class="extype" name="anorm.ToStatement">ToStatement</a>[<span class="extype" name="org.joda.time.Instant">Instant</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#anorm.JodaToStatement@jodaInstantToStatement" title="Permalink" target="_top">
+      <a href="../index.html#anorm.ToStatement$@jodaInstantToStatement(implicitmeta:anorm.ParameterMetaData[org.joda.time.Instant]):anorm.ToStatement[org.joda.time.Instant]" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
     </span>
@@ -1034,6 +1034,29 @@ Value <code>null</code> is accepted.</p><pre>SQL(<span class="lit">"SELECT * FRO
       <p class="shortcomment cmt">Sets timestamp as statement parameter.</p><div class="fullcomment"><div class="comment cmt"><p>Sets timestamp as statement parameter.
 Value <code>null</code> is accepted.</p><pre>SQL(<span class="lit">"UPDATE tbl SET modified = {ts}"</span>).
   on('ts -&gt; <span class="kw">new</span> Timestamp(date.getTime))</pre></div></div>
+    </li><li name="anorm.ToStatement#timestampWrapper1ToStatement" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="timestampWrapper1ToStatement[T&lt;:anorm.TimestampWrapper1]:anorm.ToStatement[T]"></a>
+      <a id="timestampWrapper1ToStatement[T&lt;:TimestampWrapper1]:ToStatement[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">timestampWrapper1ToStatement</span><span class="tparams">[<span name="T">T &lt;: <a href="package.html#TimestampWrapper1=AnyRef{defgetTimestamp:java.sql.Timestamp}" class="extmbr" name="anorm.TimestampWrapper1">TimestampWrapper1</a></span>]</span><span class="result">: <a href="ToStatement.html" class="extype" name="anorm.ToStatement">ToStatement</a>[<span class="extype" name="anorm.ToStatement.timestampWrapper1ToStatement.T">T</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#anorm.ToStatement$@timestampWrapper1ToStatement[T&lt;:anorm.TimestampWrapper1]:anorm.ToStatement[T]" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Sets a wrapped timestamp as statement parameter.</p><div class="fullcomment"><div class="comment cmt"><p>Sets a wrapped timestamp as statement parameter.
+For <code>null</code> value, <code>setNull</code> with <code>TIMESTAMP</code> is called on statement.</p><pre><span class="kw">val</span> wrapper = <span class="kw">new</span> {
+  <span class="cmt">// Any value with a `.getTimestamp`</span>
+  <span class="kw">val</span> getTimestamp = <span class="kw">new</span> java.sql.Timestamp(<span class="num">123</span>L)
+}
+
+SQL(<span class="lit">"UPDATE tbl SET modified = {ts}"</span>).on('ts -&gt; wrapper)</pre></div></div>
     </li><li name="scala.AnyRef#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
       <a id="toString():String"></a>
