@@ -58,7 +58,7 @@ Type `console` to enter the interactive Scala console, which allows you to test 
 [my-first-app] $ console
 ```
 
-To start application inside scala console (e.g to access database):
+To start application inside scala console (e.g. to access database):
 ```bash
 scala> new play.core.StaticApplication(new java.io.File("."))
 ```
@@ -123,4 +123,4 @@ $ activator run
 
 The application starts directly. When you quit the server using `Ctrl+D`, you will come back to your OS prompt.
 
-> **Next:** [[Setting-up your preferred IDE | IDE]]
+> **Next:** [[Setting up your preferred IDE | IDE]]
