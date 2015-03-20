@@ -48,7 +48,10 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>BoneCP implementation of connection pool interface.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play-jdbc/src/main/scala/play/api/db/BoneCPModule.scala" target="_blank">BoneCPModule.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@Singleton</span><span class="args">()</span>
+              
+        </dd><dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play-jdbc/src/main/scala/play/api/db/BoneCPModule.scala" target="_blank">BoneCPModule.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="ConnectionPool.html" class="extype" name="play.api.db.ConnectionPool">ConnectionPool</a>, <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -88,8 +91,8 @@
         <div id="allMembers">
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
-              <ol><li name="play.api.db.BoneConnectionPool#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;():play.api.db.BoneConnectionPool"></a>
+              <ol><li name="play.api.db.BoneConnectionPool#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="&lt;init&gt;(environment:play.api.Environment):play.api.db.BoneConnectionPool"></a>
       <a id="&lt;init&gt;:BoneConnectionPool"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -97,14 +100,17 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">BoneConnectionPool</span><span class="params">()</span>
+        <span class="name">BoneConnectionPool</span><span class="params">(<span name="environment">environment: <a href="../Environment.html" class="extype" name="play.api.Environment">Environment</a></span>)</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.db.BoneConnectionPool@&lt;init&gt;():play.api.db.BoneConnectionPool" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.db.BoneConnectionPool@&lt;init&gt;(environment:play.api.Environment):play.api.db.BoneConnectionPool" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" />
       </a>
     </span>
-      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@Inject</span><span class="args">()</span>
+              
+        </dd></dl></div>
     </li></ol>
             </div>
 
@@ -224,23 +230,22 @@
       <p class="shortcomment cmt">Close the given data source.</p><div class="fullcomment"><div class="comment cmt"><p>Close the given data source.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.db.BoneConnectionPool">BoneConnectionPool</a> → <a href="ConnectionPool.html" class="extype" name="play.api.db.ConnectionPool">ConnectionPool</a></dd></dl></div>
     </li><li name="play.api.db.BoneConnectionPool#create" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="create(name:String,conf:play.api.Configuration,classLoader:ClassLoader):javax.sql.DataSource"></a>
-      <a id="create(String,Configuration,ClassLoader):DataSource"></a>
+      <a id="create(name:String,dbConfig:play.api.db.DatabaseConfig,conf:com.typesafe.config.Config):javax.sql.DataSource"></a>
+      <a id="create(String,DatabaseConfig,Config):DataSource"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">create</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="conf">conf: <a href="../Configuration.html" class="extype" name="play.api.Configuration">Configuration</a></span>, <span name="classLoader">classLoader: <span class="extype" name="java.lang.ClassLoader">ClassLoader</span></span>)</span><span class="result">: <span class="extype" name="javax.sql.DataSource">DataSource</span></span>
+        <span class="name">create</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="dbConfig">dbConfig: <a href="DatabaseConfig.html" class="extype" name="play.api.db.DatabaseConfig">DatabaseConfig</a></span>, <span name="conf">conf: <span class="extype" name="com.typesafe.config.Config">Config</span></span>)</span><span class="result">: <span class="extype" name="javax.sql.DataSource">DataSource</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.db.BoneConnectionPool@create(name:String,conf:play.api.Configuration,classLoader:ClassLoader):javax.sql.DataSource" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.db.BoneConnectionPool@create(name:String,dbConfig:play.api.db.DatabaseConfig,conf:com.typesafe.config.Config):javax.sql.DataSource" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <p class="shortcomment cmt">Create a data source with the given configuration.</p><div class="fullcomment"><div class="comment cmt"><p>Create a data source with the given configuration.</p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>the database name
-</p></dd><dt class="param">classLoader</dt><dd class="cmt"><p>the database class loader
 </p></dd><dt>returns</dt><dd class="cmt"><p>a data source backed by a connection pool</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.db.BoneConnectionPool">BoneConnectionPool</a> → <a href="ConnectionPool.html" class="extype" name="play.api.db.ConnectionPool">ConnectionPool</a></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>

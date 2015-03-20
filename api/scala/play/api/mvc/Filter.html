@@ -47,7 +47,12 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="play.api.mvc.Filter">Filter</a></dd><dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play/src/main/scala/play/api/mvc/Filters.scala" target="_blank">Filters.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Implement this interface if you want to add a Filter to your application</p><pre><span class="kw">object</span> AccessLog <span class="kw">extends</span> Filter {
+  <span class="kw">override</span> <span class="kw">def</span> apply(next: RequestHeader <span class="kw">=&gt;</span> Future[Result])(request: RequestHeader): Future[Result] = {
+		 <span class="kw">val</span> result = next(request)
+		 result.map { r <span class="kw">=&gt;</span> play.Logger.info(request + <span class="lit">"\n\t => "</span> + r; r }
+	 }
+}</pre></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="play.api.mvc.Filter">Filter</a></dd><dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play/src/main/scala/play/api/mvc/Filters.scala" target="_blank">Filters.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="EssentialFilter.html" class="extype" name="play.api.mvc.EssentialFilter">EssentialFilter</a>, <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">

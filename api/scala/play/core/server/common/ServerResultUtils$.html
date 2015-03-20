@@ -89,24 +89,43 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="play.core.server.common.ServerResultUtils.CannotStream" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="CannotStreamextendsServerResultUtils.ResultStreamingwithProductwithSerializable"></a>
-      <a id="CannotStream:CannotStream"></a>
+              <ol><li name="play.core.server.common.ServerResultUtils.ConnectionHeader" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ConnectionHeaderextendsAnyRef"></a>
+      <a id="ConnectionHeader:ConnectionHeader"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="ServerResultUtils$$ConnectionHeader.html"><span class="name">ConnectionHeader</span></a><span class="result"> extends <a href="../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.core.server.common.ServerResultUtils$@ConnectionHeaderextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">The connection header logic to use for the result.</p>
+    </li><li name="play.core.server.common.ServerResultUtils.InvalidResult" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="InvalidResultextendsProductwithSerializable"></a>
+      <a id="InvalidResult:InvalidResult"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="ServerResultUtils$$CannotStream.html"><span class="name">CannotStream</span></a><span class="params">(<span name="reason">reason: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="alternativeResult">alternativeResult: <a href="../../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>)</span><span class="result"> extends <a href="ServerResultUtils$$ResultStreaming.html" class="extype" name="play.core.server.common.ServerResultUtils.ResultStreaming">ResultStreaming</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="ServerResultUtils$$InvalidResult.html"><span class="name">InvalidResult</span></a><span class="params">(<span name="reason">reason: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="alternativeResult">alternativeResult: <a href="../../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#play.core.server.common.ServerResultUtils$@CannotStreamextendsServerResultUtils.ResultStreamingwithProductwithSerializable" title="Permalink" target="_top">
+      <a href="../../../../index.html#play.core.server.common.ServerResultUtils$@InvalidResultextendsProductwithSerializable" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      
-    </li><li name="play.core.server.common.ServerResultUtils.PerformChunkedTransferEncoding" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">Used to indicate that a result can't be streamed.</p><div class="fullcomment"><div class="comment cmt"><p>Used to indicate that a result can't be streamed. Offers an
+alternative result that can be sent instead.
+</p></div></div>
+    </li><li name="play.core.server.common.ServerResultUtils.PerformChunkedTransferEncoding" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="PerformChunkedTransferEncodingextendsServerResultUtils.ResultStreamingwithProductwithSerializable"></a>
       <a id="PerformChunkedTransferEncoding:PerformChunkedTransferEncoding"></a>
       <h4 class="signature">
@@ -122,7 +141,9 @@
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">A stream where the response should be chunk encoded.</p><div class="fullcomment"><div class="comment cmt"><p>A stream where the response should be chunk encoded. This is usually used for
+an HTTP 1.1 connection where the response has unknown size.
+</p></div></div>
     </li><li name="play.core.server.common.ServerResultUtils.ResultStreaming" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="ResultStreamingextendsAnyRef"></a>
       <a id="ResultStreaming:ResultStreaming"></a>
@@ -139,8 +160,8 @@
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      
-    </li><li name="play.core.server.common.ServerResultUtils.StreamWithClose" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">Indicates the streaming strategy to use for returning the response.</p>
+    </li><li name="play.core.server.common.ServerResultUtils.StreamWithClose" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="StreamWithCloseextendsServerResultUtils.ResultStreamingwithProductwithSerializable"></a>
       <a id="StreamWithClose:StreamWithClose"></a>
       <h4 class="signature">
@@ -156,7 +177,13 @@
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Used for responses that have unknown length and should be delimited by
+the connection closing.</p><div class="fullcomment"><div class="comment cmt"><p>Used for responses that have unknown length and should be delimited by
+the connection closing. This is used for all HTTP 1.0 responses with
+unknown length, since HTTP 1.0 doesn't support chunked encoding. It can
+also be used for some HTTP 1.1 responses, if chunked encoding isn't
+desired for some reason, e.g. see the <code>Results.feed</code> method.
+</p></div></div>
     </li><li name="play.core.server.common.ServerResultUtils.StreamWithKnownLength" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="StreamWithKnownLengthextendsServerResultUtils.ResultStreamingwithProductwithSerializable"></a>
       <a id="StreamWithKnownLength:StreamWithKnownLength"></a>
@@ -173,8 +200,9 @@
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      
-    </li><li name="play.core.server.common.ServerResultUtils.StreamWithStrictBody" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">A stream with a known length where the Content-Length header can be
+set.</p>
+    </li><li name="play.core.server.common.ServerResultUtils.StreamWithStrictBody" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="StreamWithStrictBodyextendsServerResultUtils.ResultStreamingwithProductwithSerializable"></a>
       <a id="StreamWithStrictBody:StreamWithStrictBody"></a>
       <h4 class="signature">
@@ -190,8 +218,10 @@
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      
-    </li><li name="play.core.server.common.ServerResultUtils.UseExistingTransferEncoding" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <p class="shortcomment cmt">A stream with bytes that are already entirely known.</p><div class="fullcomment"><div class="comment cmt"><p>A stream with bytes that are already entirely known. The Content-Length
+can be sent and an efficient streaming strategy can be used by the server.
+</p></div></div>
+    </li><li name="play.core.server.common.ServerResultUtils.UseExistingTransferEncoding" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="UseExistingTransferEncodingextendsServerResultUtils.ResultStreamingwithProductwithSerializable"></a>
       <a id="UseExistingTransferEncoding:UseExistingTransferEncoding"></a>
       <h4 class="signature">
@@ -207,7 +237,10 @@
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">A stream where the response has already been encoded by the user, e.g.</p><div class="fullcomment"><div class="comment cmt"><p>A stream where the response has already been encoded by the user, e.g. using
+<code>Results.chunked</code>. The server may be able to feed this encoded data directly -
+or it may need to reverse the encoding before resending it. :(
+</p></div></div>
     </li></ol>
             </div>
 
@@ -266,7 +299,84 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="play.core.server.common.ServerResultUtils.StreamWithNoBody" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="play.core.server.common.ServerResultUtils.DefaultClose" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="DefaultClose"></a>
+      <a id="DefaultClose:DefaultClose"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ServerResultUtils$$DefaultClose$.html"><span class="name">DefaultClose</span></a><span class="result"> extends <a href="ServerResultUtils$$ConnectionHeader.html" class="extype" name="play.core.server.common.ServerResultUtils.ConnectionHeader">ConnectionHeader</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.core.server.common.ServerResultUtils$@DefaultClose" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">No <code>Connection</code> header should be sent.</p><div class="fullcomment"><div class="comment cmt"><p>No <code>Connection</code> header should be sent. Used on an HTTP 1.0
+connection where the default behavior is to close the connection.
+</p></div></div>
+    </li><li name="play.core.server.common.ServerResultUtils.DefaultKeepAlive" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="DefaultKeepAlive"></a>
+      <a id="DefaultKeepAlive:DefaultKeepAlive"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ServerResultUtils$$DefaultKeepAlive$.html"><span class="name">DefaultKeepAlive</span></a><span class="result"> extends <a href="ServerResultUtils$$ConnectionHeader.html" class="extype" name="play.core.server.common.ServerResultUtils.ConnectionHeader">ConnectionHeader</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.core.server.common.ServerResultUtils$@DefaultKeepAlive" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">No <code>Connection</code> header should be sent.</p><div class="fullcomment"><div class="comment cmt"><p>No <code>Connection</code> header should be sent. Used on an HTTP 1.1
+connection where the default behavior is to keep the connection
+open.
+</p></div></div>
+    </li><li name="play.core.server.common.ServerResultUtils.SendClose" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="SendClose"></a>
+      <a id="SendClose:SendClose"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ServerResultUtils$$SendClose$.html"><span class="name">SendClose</span></a><span class="result"> extends <a href="ServerResultUtils$$ConnectionHeader.html" class="extype" name="play.core.server.common.ServerResultUtils.ConnectionHeader">ConnectionHeader</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.core.server.common.ServerResultUtils$@SendClose" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A <code>Connection: close</code> header should be sent.</p><div class="fullcomment"><div class="comment cmt"><p>A <code>Connection: close</code> header should be sent. Used to
+force an HTTP 1.1 connection to close.
+</p></div></div>
+    </li><li name="play.core.server.common.ServerResultUtils.SendKeepAlive" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="SendKeepAlive"></a>
+      <a id="SendKeepAlive:SendKeepAlive"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ServerResultUtils$$SendKeepAlive$.html"><span class="name">SendKeepAlive</span></a><span class="result"> extends <a href="ServerResultUtils$$ConnectionHeader.html" class="extype" name="play.core.server.common.ServerResultUtils.ConnectionHeader">ConnectionHeader</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.core.server.common.ServerResultUtils$@SendKeepAlive" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A <code>Connection: keep-alive</code> header should be sent.</p><div class="fullcomment"><div class="comment cmt"><p>A <code>Connection: keep-alive</code> header should be sent. Used to
+force an HTTP 1.0 connection to remain open.
+</p></div></div>
+    </li><li name="play.core.server.common.ServerResultUtils.StreamWithNoBody" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="StreamWithNoBody"></a>
       <a id="StreamWithNoBody:StreamWithNoBody"></a>
       <h4 class="signature">
@@ -282,7 +392,10 @@
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Used for responses that may not contain a body, e.g.</p><div class="fullcomment"><div class="comment cmt"><p>Used for responses that may not contain a body, e.g. 204 or 304 responses.
+The server shouldn't send a body and, since the response cannot have a
+body, the Content-Length header shouldn't be sent either.
+</p></div></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -341,28 +454,29 @@
               
         </dd></dl></div>
     </li><li name="play.core.server.common.ServerResultUtils#determineResultStreaming" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="determineResultStreaming(result:play.api.mvc.Result,isHttp10:Boolean):scala.concurrent.Future[play.core.server.common.ServerResultUtils.ResultStreaming]"></a>
-      <a id="determineResultStreaming(Result,Boolean):Future[ResultStreaming]"></a>
+      <a id="determineResultStreaming(requestHeader:play.api.mvc.RequestHeader,result:play.api.mvc.Result):scala.concurrent.Future[Either[play.core.server.common.ServerResultUtils.InvalidResult,(play.core.server.common.ServerResultUtils.ResultStreaming,play.core.server.common.ServerResultUtils.ConnectionHeader)]]"></a>
+      <a id="determineResultStreaming(RequestHeader,Result):Future[Either[InvalidResult,(ResultStreaming,ConnectionHeader)]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">determineResultStreaming</span><span class="params">(<span name="result">result: <a href="../../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>, <span name="isHttp10">isHttp10: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="ServerResultUtils$$ResultStreaming.html" class="extype" name="play.core.server.common.ServerResultUtils.ResultStreaming">ResultStreaming</a>]</span>
+        <span class="name">determineResultStreaming</span><span class="params">(<span name="requestHeader">requestHeader: <a href="../../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>, <span name="result">result: <a href="../../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../../../../scala/package.html#Either[+A,+B]=scala.util.Either[A,B]" class="extmbr" name="scala.Either">Either</a>[<a href="ServerResultUtils$$InvalidResult.html" class="extype" name="play.core.server.common.ServerResultUtils.InvalidResult">InvalidResult</a>, (<a href="ServerResultUtils$$ResultStreaming.html" class="extype" name="play.core.server.common.ServerResultUtils.ResultStreaming">ResultStreaming</a>, <a href="ServerResultUtils$$ConnectionHeader.html" class="extype" name="play.core.server.common.ServerResultUtils.ConnectionHeader">ConnectionHeader</a>)]]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#play.core.server.common.ServerResultUtils$@determineResultStreaming(result:play.api.mvc.Result,isHttp10:Boolean):scala.concurrent.Future[play.core.server.common.ServerResultUtils.ResultStreaming]" title="Permalink" target="_top">
+      <a href="../../../../index.html#play.core.server.common.ServerResultUtils$@determineResultStreaming(requestHeader:play.api.mvc.RequestHeader,result:play.api.mvc.Result):scala.concurrent.Future[Either[play.core.server.common.ServerResultUtils.InvalidResult,(play.core.server.common.ServerResultUtils.ResultStreaming,play.core.server.common.ServerResultUtils.ConnectionHeader)]]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       <p class="shortcomment cmt">Analyze the Result and determine how best to send it.</p><div class="fullcomment"><div class="comment cmt"><p>Analyze the Result and determine how best to send it. This may involve looking at
 headers, buffering the enumerator, etc. The returned value will indicate how to
 stream the result and will provide an Enumerator or Array with the result body
-that should be streamed. CannotStream will be returned if the Result cannot be
+that should be streamed.</p><p>CannotStream will be returned if the Result cannot be
 streamed to the given client. This can happen if a result requires Transfer-Encoding
 but the client uses HTTP 1.0. It can also happen if there is an error in the
-Result headers.
+Result headers.</p><p>The ConnectionHeader returned for a successful result will indicate how the
+header should be set in the response header.
 </p></div></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>

@@ -576,7 +576,7 @@ its Action block.  The critical (abstract) function is transform.
 a <code>Result</code>.</p><p>An <code>EssentialAction</code> is a <code>Handler</code>, which means it is one of the objects
 that Play uses to handle requests.
 </p></div></div>
-    </li><li name="play.api.mvc.EssentialFilter" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+    </li><li name="play.api.mvc.EssentialFilter" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="EssentialFilterextendsAnyRef"></a>
       <a id="EssentialFilter:EssentialFilter"></a>
       <h4 class="signature">
@@ -592,13 +592,8 @@ that Play uses to handle requests.
         <img src="../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">Implement this interface if you want to add a Filter to your application</p><div class="fullcomment"><div class="comment cmt"><p>Implement this interface if you want to add a Filter to your application</p><pre><span class="kw">object</span> AccessLog <span class="kw">extends</span> Filter {
-  <span class="kw">override</span> <span class="kw">def</span> apply(next: RequestHeader <span class="kw">=&gt;</span> Future[Result])(request: RequestHeader): Future[Result] = {
-		 <span class="kw">val</span> result = next(request)
-		 result.map { r <span class="kw">=&gt;</span> play.Logger.info(request + <span class="lit">"\n\t => "</span> + r; r }
-	 }
-}</pre></div></div>
-    </li><li name="play.api.mvc.Filter" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      
+    </li><li name="play.api.mvc.Filter" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="FilterextendsEssentialFilter"></a>
       <a id="Filter:Filter"></a>
       <h4 class="signature">
@@ -614,7 +609,12 @@ that Play uses to handle requests.
         <img src="../../../lib/permalink.png" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Implement this interface if you want to add a Filter to your application</p><div class="fullcomment"><div class="comment cmt"><p>Implement this interface if you want to add a Filter to your application</p><pre><span class="kw">object</span> AccessLog <span class="kw">extends</span> Filter {
+  <span class="kw">override</span> <span class="kw">def</span> apply(next: RequestHeader <span class="kw">=&gt;</span> Future[Result])(request: RequestHeader): Future[Result] = {
+		 <span class="kw">val</span> result = next(request)
+		 result.map { r <span class="kw">=&gt;</span> play.Logger.info(request + <span class="lit">"\n\t => "</span> + r; r }
+	 }
+}</pre></div></div>
     </li><li name="play.api.mvc.Flash" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="FlashextendsProductwithSerializable"></a>
       <a id="Flash:Flash"></a>
