@@ -47,7 +47,7 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>WSRequest is used internally.  Please use WSRequestHolder.
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A WS Request builder.
 </p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play-ws/src/main/scala/play/api/libs/ws/WS.scala" target="_blank">WS.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
@@ -95,66 +95,121 @@
 
         <div id="values" class="values members">
               <h3>Abstract Value Members</h3>
-              <ol><li name="play.api.libs.ws.WSRequest#allHeaders" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="allHeaders:Map[String,Seq[String]]"></a>
-      <a id="allHeaders:Map[String,Seq[String]]"></a>
+              <ol><li name="play.api.libs.ws.WSRequest#auth" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="auth:Option[(String,String,play.api.libs.ws.WSAuthScheme)]"></a>
+      <a id="auth:Option[(String,String,WSAuthScheme)]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">abstract </span>
-        <span class="kind">def</span>
+        <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">allHeaders</span><span class="result">: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <a href="../../../../scala/package.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="scala.Predef.String">String</span>]]</span>
+        <span class="name">auth</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[(<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>, <a href="WSAuthScheme.html" class="extype" name="play.api.libs.ws.WSAuthScheme">WSAuthScheme</a>)]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.ws.WSRequest@allHeaders:Map[String,Seq[String]]" title="Permalink" target="_top">
+      <a href="../../../../index.html#play.api.libs.ws.WSRequest@auth:Option[(String,String,play.api.libs.ws.WSAuthScheme)]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">Return the current headers of the request being constructed
+      <p class="shortcomment cmt">The authentication this request should use
 </p>
-    </li><li name="play.api.libs.ws.WSRequest#getBody" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="getBody:Option[Array[Byte]]"></a>
-      <a id="getBody:Option[Array[Byte]]"></a>
+    </li><li name="play.api.libs.ws.WSRequest#body" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="body:play.api.libs.ws.WSBody"></a>
+      <a id="body:WSBody"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">body</span><span class="result">: <a href="WSBody.html" class="extype" name="play.api.libs.ws.WSBody">WSBody</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.WSRequest@body:play.api.libs.ws.WSBody" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">The body of this request
+</p>
+    </li><li name="play.api.libs.ws.WSRequest#calc" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="calc:Option[play.api.libs.ws.WSSignatureCalculator]"></a>
+      <a id="calc:Option[WSSignatureCalculator]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">calc</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="WSSignatureCalculator.html" class="extype" name="play.api.libs.ws.WSSignatureCalculator">WSSignatureCalculator</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.WSRequest@calc:Option[play.api.libs.ws.WSSignatureCalculator]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A calculator of the signature for this request
+</p>
+    </li><li name="play.api.libs.ws.WSRequest#execute" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="execute():scala.concurrent.Future[play.api.libs.ws.WSResponse]"></a>
+      <a id="execute():Future[WSResponse]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">abstract </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">getBody</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]]</span>
+        <span class="name">execute</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="WSResponse.html" class="extype" name="play.api.libs.ws.WSResponse">WSResponse</a>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.ws.WSRequest@getBody:Option[Array[Byte]]" title="Permalink" target="_top">
+      <a href="../../../../index.html#play.api.libs.ws.WSRequest@execute():scala.concurrent.Future[play.api.libs.ws.WSResponse]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">Get the body.</p><div class="fullcomment"><div class="comment cmt"><p>Get the body.</p><p>Will only return the body if the body exists in memory, will not return it if it's a stream.
-</p></div></div>
-    </li><li name="play.api.libs.ws.WSRequest#header" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="header(name:String):Option[String]"></a>
-      <a id="header(String):Option[String]"></a>
+      <p class="shortcomment cmt">Execute this request
+</p>
+    </li><li name="play.api.libs.ws.WSRequest#followRedirects" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="followRedirects:Option[Boolean]"></a>
+      <a id="followRedirects:Option[Boolean]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">abstract </span>
-        <span class="kind">def</span>
+        <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">header</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+        <span class="name">followRedirects</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.ws.WSRequest@header(name:String):Option[String]" title="Permalink" target="_top">
+      <a href="../../../../index.html#play.api.libs.ws.WSRequest@followRedirects:Option[Boolean]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">Retrieve an HTTP header.</p>
+      <p class="shortcomment cmt">Whether this request should follow redirects
+</p>
+    </li><li name="play.api.libs.ws.WSRequest#headers" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="headers:Map[String,Seq[String]]"></a>
+      <a id="headers:Map[String,Seq[String]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">headers</span><span class="result">: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <a href="../../../../scala/package.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="scala.Predef.String">String</span>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.WSRequest@headers:Map[String,Seq[String]]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">The headers for this request
+</p>
     </li><li name="play.api.libs.ws.WSRequest#method" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="method:String"></a>
       <a id="method:String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">abstract </span>
-        <span class="kind">def</span>
+        <span class="kind">val</span>
       </span>
       <span class="symbol">
         <span class="name">method</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
@@ -164,14 +219,33 @@
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">The HTTP method.</p>
+      <p class="shortcomment cmt">The method for this request
+</p>
+    </li><li name="play.api.libs.ws.WSRequest#proxyServer" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="proxyServer:Option[play.api.libs.ws.WSProxyServer]"></a>
+      <a id="proxyServer:Option[WSProxyServer]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">proxyServer</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="WSProxyServer.html" class="extype" name="play.api.libs.ws.WSProxyServer">WSProxyServer</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.WSRequest@proxyServer:Option[play.api.libs.ws.WSProxyServer]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">The proxy server this request will use
+</p>
     </li><li name="play.api.libs.ws.WSRequest#queryString" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="queryString:Map[String,Seq[String]]"></a>
       <a id="queryString:Map[String,Seq[String]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">abstract </span>
-        <span class="kind">def</span>
+        <span class="kind">val</span>
       </span>
       <span class="symbol">
         <span class="name">queryString</span><span class="result">: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <a href="../../../../scala/package.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="scala.Predef.String">String</span>]]</span>
@@ -181,7 +255,61 @@
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">Return the current query string parameters
+      <p class="shortcomment cmt">The query string for this request
+</p>
+    </li><li name="play.api.libs.ws.WSRequest#requestTimeout" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="requestTimeout:Option[Int]"></a>
+      <a id="requestTimeout:Option[Int]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">requestTimeout</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Int">Int</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.WSRequest@requestTimeout:Option[Int]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">The timeout for the request
+</p>
+    </li><li name="play.api.libs.ws.WSRequest#sign" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="sign(calc:play.api.libs.ws.WSSignatureCalculator):play.api.libs.ws.WSRequest"></a>
+      <a id="sign(WSSignatureCalculator):WSRequest"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sign</span><span class="params">(<span name="calc">calc: <a href="WSSignatureCalculator.html" class="extype" name="play.api.libs.ws.WSSignatureCalculator">WSSignatureCalculator</a></span>)</span><span class="result">: <a href="" class="extype" name="play.api.libs.ws.WSRequest">WSRequest</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.WSRequest@sign(calc:play.api.libs.ws.WSSignatureCalculator):play.api.libs.ws.WSRequest" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">sets the signature calculator for the request</p><div class="fullcomment"><div class="comment cmt"><p>sets the signature calculator for the request</p></div><dl class="paramcmts block"><dt class="param">calc</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="play.api.libs.ws.WSRequest#stream" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="stream():scala.concurrent.Future[(play.api.libs.ws.WSResponseHeaders,play.api.libs.iteratee.Enumerator[Array[Byte]])]"></a>
+      <a id="stream():Future[(WSResponseHeaders,Enumerator[Array[Byte]])]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">stream</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[(<a href="WSResponseHeaders.html" class="extype" name="play.api.libs.ws.WSResponseHeaders">WSResponseHeaders</a>, <a href="../iteratee/Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]])]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.WSRequest@stream():scala.concurrent.Future[(play.api.libs.ws.WSResponseHeaders,play.api.libs.iteratee.Enumerator[Array[Byte]])]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Execute this request and stream the response body in an enumerator
 </p>
     </li><li name="play.api.libs.ws.WSRequest#url" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="url:String"></a>
@@ -189,7 +317,7 @@
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">abstract </span>
-        <span class="kind">def</span>
+        <span class="kind">val</span>
       </span>
       <span class="symbol">
         <span class="name">url</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
@@ -199,133 +327,189 @@
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">The URL
+      <p class="shortcomment cmt">The base URL for this request
 </p>
-    </li><li name="play.api.libs.ws.WSRequest#addHeader" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="addHeader(name:String,value:String):play.api.libs.ws.WSRequest"></a>
-      <a id="addHeader(String,String):WSRequest"></a>
+    </li><li name="play.api.libs.ws.WSRequest#virtualHost" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="virtualHost:Option[String]"></a>
+      <a id="virtualHost:Option[String]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">virtualHost</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.WSRequest@virtualHost:Option[String]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">The virtual host this request will use
+</p>
+    </li><li name="play.api.libs.ws.WSRequest#withAuth" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="withAuth(username:String,password:String,scheme:play.api.libs.ws.WSAuthScheme):play.api.libs.ws.WSRequest"></a>
+      <a id="withAuth(String,String,WSAuthScheme):WSRequest"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">abstract </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 2.3.0) Use WSRequestHolder">addHeader</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="value">value: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="play.api.libs.ws.WSRequest">WSRequest</a></span>
+        <span class="name">withAuth</span><span class="params">(<span name="username">username: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="password">password: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="scheme">scheme: <a href="WSAuthScheme.html" class="extype" name="play.api.libs.ws.WSAuthScheme">WSAuthScheme</a></span>)</span><span class="result">: <a href="" class="extype" name="play.api.libs.ws.WSRequest">WSRequest</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.ws.WSRequest@addHeader(name:String,value:String):play.api.libs.ws.WSRequest" title="Permalink" target="_top">
+      <a href="../../../../index.html#play.api.libs.ws.WSRequest@withAuth(username:String,password:String,scheme:play.api.libs.ws.WSAuthScheme):play.api.libs.ws.WSRequest" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">Add an HTTP header (used for headers with multiple values).</p><div class="fullcomment"><div class="comment cmt"><p>Add an HTTP header (used for headers with multiple values).
-</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.3.0)</i> Use WSRequestHolder</p></dd></dl></div>
-    </li><li name="play.api.libs.ws.WSRequest#setHeader" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="setHeader(name:String,value:String):play.api.libs.ws.WSRequest"></a>
-      <a id="setHeader(String,String):WSRequest"></a>
+      <p class="shortcomment cmt">sets the authentication realm
+</p>
+    </li><li name="play.api.libs.ws.WSRequest#withBody" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="withBody(body:play.api.libs.ws.WSBody):play.api.libs.ws.WSRequest"></a>
+      <a id="withBody(WSBody):WSRequest"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">abstract </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 2.3.0) Use WSRequestHolder">setHeader</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="value">value: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="play.api.libs.ws.WSRequest">WSRequest</a></span>
+        <span class="name">withBody</span><span class="params">(<span name="body">body: <a href="WSBody.html" class="extype" name="play.api.libs.ws.WSBody">WSBody</a></span>)</span><span class="result">: <a href="" class="extype" name="play.api.libs.ws.WSRequest">WSRequest</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.ws.WSRequest@setHeader(name:String,value:String):play.api.libs.ws.WSRequest" title="Permalink" target="_top">
+      <a href="../../../../index.html#play.api.libs.ws.WSRequest@withBody(body:play.api.libs.ws.WSBody):play.api.libs.ws.WSRequest" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">Set an HTTP header.</p><div class="fullcomment"><div class="comment cmt"><p>Set an HTTP header.
-</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.3.0)</i> Use WSRequestHolder</p></dd></dl></div>
-    </li><li name="play.api.libs.ws.WSRequest#setHeaders" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="setHeaders(hdrs:Map[String,Seq[String]]):play.api.libs.ws.WSRequest"></a>
-      <a id="setHeaders(Map[String,Seq[String]]):WSRequest"></a>
+      <p class="shortcomment cmt">Sets the body for this request
+</p>
+    </li><li name="play.api.libs.ws.WSRequest#withFollowRedirects" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="withFollowRedirects(follow:Boolean):play.api.libs.ws.WSRequest"></a>
+      <a id="withFollowRedirects(Boolean):WSRequest"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">abstract </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 2.3.0) Use WSRequestHolder">setHeaders</span><span class="params">(<span name="hdrs">hdrs: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <a href="../../../../scala/package.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="scala.Predef.String">String</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="play.api.libs.ws.WSRequest">WSRequest</a></span>
+        <span class="name">withFollowRedirects</span><span class="params">(<span name="follow">follow: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="play.api.libs.ws.WSRequest">WSRequest</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.ws.WSRequest@setHeaders(hdrs:Map[String,Seq[String]]):play.api.libs.ws.WSRequest" title="Permalink" target="_top">
+      <a href="../../../../index.html#play.api.libs.ws.WSRequest@withFollowRedirects(follow:Boolean):play.api.libs.ws.WSRequest" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">Defines the request headers.</p><div class="fullcomment"><div class="comment cmt"><p>Defines the request headers.
-</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.3.0)</i> Use WSRequestHolder</p></dd></dl></div>
-    </li><li name="play.api.libs.ws.WSRequest#setHeaders" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="setHeaders(hdrs:java.util.Map[String,java.util.Collection[String]]):play.api.libs.ws.WSRequest"></a>
-      <a id="setHeaders(Map[String,Collection[String]]):WSRequest"></a>
+      <p class="shortcomment cmt">Sets whether redirects (301, 302) should be followed automatically
+</p>
+    </li><li name="play.api.libs.ws.WSRequest#withHeaders" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="withHeaders(hdrs:(String,String)*):play.api.libs.ws.WSRequest"></a>
+      <a id="withHeaders((String,String)*):WSRequest"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">abstract </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 2.3.0) Use WSRequestHolder">setHeaders</span><span class="params">(<span name="hdrs">hdrs: <span class="extype" name="java.util.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="java.util.Collection">Collection</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="play.api.libs.ws.WSRequest">WSRequest</a></span>
+        <span class="name">withHeaders</span><span class="params">(<span name="hdrs">hdrs: (<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>)*</span>)</span><span class="result">: <a href="" class="extype" name="play.api.libs.ws.WSRequest">WSRequest</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.ws.WSRequest@setHeaders(hdrs:java.util.Map[String,java.util.Collection[String]]):play.api.libs.ws.WSRequest" title="Permalink" target="_top">
+      <a href="../../../../index.html#play.api.libs.ws.WSRequest@withHeaders(hdrs:(String,String)*):play.api.libs.ws.WSRequest" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">Defines the request headers.</p><div class="fullcomment"><div class="comment cmt"><p>Defines the request headers.
-</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.3.0)</i> Use WSRequestHolder</p></dd></dl></div>
-    </li><li name="play.api.libs.ws.WSRequest#setQueryString" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="setQueryString(queryString:Map[String,Seq[String]]):play.api.libs.ws.WSRequest"></a>
-      <a id="setQueryString(Map[String,Seq[String]]):WSRequest"></a>
+      <p class="shortcomment cmt">adds any number of HTTP headers</p><div class="fullcomment"><div class="comment cmt"><p>adds any number of HTTP headers</p></div><dl class="paramcmts block"><dt class="param">hdrs</dt><dd class="cmt"><p>
+</p></dd></dl></div>
+    </li><li name="play.api.libs.ws.WSRequest#withMethod" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="withMethod(method:String):play.api.libs.ws.WSRequest"></a>
+      <a id="withMethod(String):WSRequest"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">abstract </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 2.3.0) Use WSRequestHolder">setQueryString</span><span class="params">(<span name="queryString">queryString: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <a href="../../../../scala/package.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="scala.Predef.String">String</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="play.api.libs.ws.WSRequest">WSRequest</a></span>
+        <span class="name">withMethod</span><span class="params">(<span name="method">method: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="play.api.libs.ws.WSRequest">WSRequest</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.ws.WSRequest@setQueryString(queryString:Map[String,Seq[String]]):play.api.libs.ws.WSRequest" title="Permalink" target="_top">
+      <a href="../../../../index.html#play.api.libs.ws.WSRequest@withMethod(method:String):play.api.libs.ws.WSRequest" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">Defines the query string.</p><div class="fullcomment"><div class="comment cmt"><p>Defines the query string.
-</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.3.0)</i> Use WSRequestHolder</p></dd></dl></div>
-    </li><li name="play.api.libs.ws.WSRequest#setUrl" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="setUrl(url:String):play.api.libs.ws.WSRequest"></a>
-      <a id="setUrl(String):WSRequest"></a>
+      <p class="shortcomment cmt">Sets the method for this request
+</p>
+    </li><li name="play.api.libs.ws.WSRequest#withProxyServer" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="withProxyServer(proxyServer:play.api.libs.ws.WSProxyServer):play.api.libs.ws.WSRequest"></a>
+      <a id="withProxyServer(WSProxyServer):WSRequest"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">abstract </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 2.3.0) Use WSRequestHolder">setUrl</span><span class="params">(<span name="url">url: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="play.api.libs.ws.WSRequest">WSRequest</a></span>
+        <span class="name">withProxyServer</span><span class="params">(<span name="proxyServer">proxyServer: <a href="WSProxyServer.html" class="extype" name="play.api.libs.ws.WSProxyServer">WSProxyServer</a></span>)</span><span class="result">: <a href="" class="extype" name="play.api.libs.ws.WSRequest">WSRequest</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.ws.WSRequest@setUrl(url:String):play.api.libs.ws.WSRequest" title="Permalink" target="_top">
+      <a href="../../../../index.html#play.api.libs.ws.WSRequest@withProxyServer(proxyServer:play.api.libs.ws.WSProxyServer):play.api.libs.ws.WSRequest" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.3.0)</i> Use WSRequestHolder</p></dd></dl></div>
+      <p class="shortcomment cmt">Sets the proxy server to use in this request
+</p>
+    </li><li name="play.api.libs.ws.WSRequest#withQueryString" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="withQueryString(parameters:(String,String)*):play.api.libs.ws.WSRequest"></a>
+      <a id="withQueryString((String,String)*):WSRequest"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">withQueryString</span><span class="params">(<span name="parameters">parameters: (<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>)*</span>)</span><span class="result">: <a href="" class="extype" name="play.api.libs.ws.WSRequest">WSRequest</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.WSRequest@withQueryString(parameters:(String,String)*):play.api.libs.ws.WSRequest" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">adds any number of query string parameters to the
+</p>
+    </li><li name="play.api.libs.ws.WSRequest#withRequestTimeout" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="withRequestTimeout(timeout:Long):play.api.libs.ws.WSRequest"></a>
+      <a id="withRequestTimeout(Long):WSRequest"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">withRequestTimeout</span><span class="params">(<span name="timeout">timeout: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <a href="" class="extype" name="play.api.libs.ws.WSRequest">WSRequest</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.WSRequest@withRequestTimeout(timeout:Long):play.api.libs.ws.WSRequest" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Sets the maximum time in milliseconds you expect the request to take.</p><div class="fullcomment"><div class="comment cmt"><p>Sets the maximum time in milliseconds you expect the request to take.
+Warning: a stream consumption will be interrupted when this time is reached.
+</p></div></div>
+    </li><li name="play.api.libs.ws.WSRequest#withVirtualHost" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="withVirtualHost(vh:String):play.api.libs.ws.WSRequest"></a>
+      <a id="withVirtualHost(String):WSRequest"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">withVirtualHost</span><span class="params">(<span name="vh">vh: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="play.api.libs.ws.WSRequest">WSRequest</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.WSRequest@withVirtualHost(vh:String):play.api.libs.ws.WSRequest" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Sets the virtual host to use in this request
+</p>
     </li></ol>
             </div>
 
@@ -422,6 +606,23 @@
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="play.api.libs.ws.WSRequest#delete" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="delete():scala.concurrent.Future[play.api.libs.ws.WSResponse]"></a>
+      <a id="delete():Future[WSResponse]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">delete</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="WSResponse.html" class="extype" name="play.api.libs.ws.WSResponse">WSResponse</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.WSRequest@delete():scala.concurrent.Future[play.api.libs.ws.WSResponse]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Perform a DELETE on the request asynchronously.</p>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -456,6 +657,23 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="play.api.libs.ws.WSRequest#execute" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="execute(method:String):scala.concurrent.Future[play.api.libs.ws.WSResponse]"></a>
+      <a id="execute(String):Future[WSResponse]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">execute</span><span class="params">(<span name="method">method: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="WSResponse.html" class="extype" name="play.api.libs.ws.WSResponse">WSResponse</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.WSRequest@execute(method:String):scala.concurrent.Future[play.api.libs.ws.WSResponse]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
@@ -479,6 +697,42 @@
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="play.api.libs.ws.WSRequest#get" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="get[A](consumer:play.api.libs.ws.WSResponseHeaders=&gt;play.api.libs.iteratee.Iteratee[Array[Byte],A])(implicitec:scala.concurrent.ExecutionContext):scala.concurrent.Future[play.api.libs.iteratee.Iteratee[Array[Byte],A]]"></a>
+      <a id="get[A]((WSResponseHeaders)⇒Iteratee[Array[Byte],A])(ExecutionContext):Future[Iteratee[Array[Byte],A]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">get</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="consumer">consumer: (<a href="WSResponseHeaders.html" class="extype" name="play.api.libs.ws.WSResponseHeaders">WSResponseHeaders</a>) ⇒ <a href="../iteratee/Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>], <span class="extype" name="play.api.libs.ws.WSRequest.get.A">A</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../iteratee/Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>], <span class="extype" name="play.api.libs.ws.WSRequest.get.A">A</span>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.WSRequest@get[A](consumer:play.api.libs.ws.WSResponseHeaders=&gt;play.api.libs.iteratee.Iteratee[Array[Byte],A])(implicitec:scala.concurrent.ExecutionContext):scala.concurrent.Future[play.api.libs.iteratee.Iteratee[Array[Byte],A]]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">performs a get</p><div class="fullcomment"><div class="comment cmt"><p>performs a get</p></div><dl class="paramcmts block"><dt class="param">consumer</dt><dd class="cmt"><p>that's handling the response
+</p></dd></dl></div>
+    </li><li name="play.api.libs.ws.WSRequest#get" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="get():scala.concurrent.Future[play.api.libs.ws.WSResponse]"></a>
+      <a id="get():Future[WSResponse]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">get</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="WSResponse.html" class="extype" name="play.api.libs.ws.WSResponse">WSResponse</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.WSRequest@get():scala.concurrent.Future[play.api.libs.ws.WSResponse]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">performs a get
+</p>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>
@@ -496,6 +750,24 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="play.api.libs.ws.WSRequest#getStream" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="getStream():scala.concurrent.Future[(play.api.libs.ws.WSResponseHeaders,play.api.libs.iteratee.Enumerator[Array[Byte]])]"></a>
+      <a id="getStream():Future[(WSResponseHeaders,Enumerator[Array[Byte]])]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getStream</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[(<a href="WSResponseHeaders.html" class="extype" name="play.api.libs.ws.WSResponseHeaders">WSResponseHeaders</a>, <a href="../iteratee/Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]])]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.WSRequest@getStream():scala.concurrent.Future[(play.api.libs.ws.WSResponseHeaders,play.api.libs.iteratee.Enumerator[Array[Byte]])]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">performs a get
+</p>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <a id="hashCode():Int"></a>
@@ -513,6 +785,23 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="play.api.libs.ws.WSRequest#head" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="head():scala.concurrent.Future[play.api.libs.ws.WSResponse]"></a>
+      <a id="head():Future[WSResponse]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">head</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="WSResponse.html" class="extype" name="play.api.libs.ws.WSResponse">WSResponse</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.WSRequest@head():scala.concurrent.Future[play.api.libs.ws.WSResponse]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Perform a HEAD on the request asynchronously.</p>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -581,6 +870,185 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="play.api.libs.ws.WSRequest#options" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="options():scala.concurrent.Future[play.api.libs.ws.WSResponse]"></a>
+      <a id="options():Future[WSResponse]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">options</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="WSResponse.html" class="extype" name="play.api.libs.ws.WSResponse">WSResponse</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.WSRequest@options():scala.concurrent.Future[play.api.libs.ws.WSResponse]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Perform a OPTIONS on the request asynchronously.</p>
+    </li><li name="play.api.libs.ws.WSRequest#patch" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="patch(body:java.io.File):scala.concurrent.Future[play.api.libs.ws.WSResponse]"></a>
+      <a id="patch(File):Future[WSResponse]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">patch</span><span class="params">(<span name="body">body: <span class="extype" name="java.io.File">File</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="WSResponse.html" class="extype" name="play.api.libs.ws.WSResponse">WSResponse</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.WSRequest@patch(body:java.io.File):scala.concurrent.Future[play.api.libs.ws.WSResponse]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Perform a PATCH on the request asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Perform a PATCH on the request asynchronously.
+Request body won't be chunked
+</p></div></div>
+    </li><li name="play.api.libs.ws.WSRequest#patch" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="patch[T](body:T)(implicitwrt:play.api.http.Writeable[T]):scala.concurrent.Future[play.api.libs.ws.WSResponse]"></a>
+      <a id="patch[T](T)(Writeable[T]):Future[WSResponse]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">patch</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="body">body: <span class="extype" name="play.api.libs.ws.WSRequest.patch.T">T</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="wrt">wrt: <a href="../../http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<span class="extype" name="play.api.libs.ws.WSRequest.patch.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="WSResponse.html" class="extype" name="play.api.libs.ws.WSResponse">WSResponse</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.WSRequest@patch[T](body:T)(implicitwrt:play.api.http.Writeable[T]):scala.concurrent.Future[play.api.libs.ws.WSResponse]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Perform a PATCH on the request asynchronously.</p>
+    </li><li name="play.api.libs.ws.WSRequest#patchAndRetrieveStream" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="patchAndRetrieveStream[A,T](body:T)(consumer:play.api.libs.ws.WSResponseHeaders=&gt;play.api.libs.iteratee.Iteratee[Array[Byte],A])(implicitwrt:play.api.http.Writeable[T],implicitec:scala.concurrent.ExecutionContext):scala.concurrent.Future[play.api.libs.iteratee.Iteratee[Array[Byte],A]]"></a>
+      <a id="patchAndRetrieveStream[A,T](T)((WSResponseHeaders)⇒Iteratee[Array[Byte],A])(Writeable[T],ExecutionContext):Future[Iteratee[Array[Byte],A]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">patchAndRetrieveStream</span><span class="tparams">[<span name="A">A</span>, <span name="T">T</span>]</span><span class="params">(<span name="body">body: <span class="extype" name="play.api.libs.ws.WSRequest.patchAndRetrieveStream.T">T</span></span>)</span><span class="params">(<span name="consumer">consumer: (<a href="WSResponseHeaders.html" class="extype" name="play.api.libs.ws.WSResponseHeaders">WSResponseHeaders</a>) ⇒ <a href="../iteratee/Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>], <span class="extype" name="play.api.libs.ws.WSRequest.patchAndRetrieveStream.A">A</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="wrt">wrt: <a href="../../http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<span class="extype" name="play.api.libs.ws.WSRequest.patchAndRetrieveStream.T">T</span>]</span>, <span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../iteratee/Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>], <span class="extype" name="play.api.libs.ws.WSRequest.patchAndRetrieveStream.A">A</span>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.WSRequest@patchAndRetrieveStream[A,T](body:T)(consumer:play.api.libs.ws.WSResponseHeaders=&gt;play.api.libs.iteratee.Iteratee[Array[Byte],A])(implicitwrt:play.api.http.Writeable[T],implicitec:scala.concurrent.ExecutionContext):scala.concurrent.Future[play.api.libs.iteratee.Iteratee[Array[Byte],A]]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">performs a POST with supplied body</p><div class="fullcomment"><div class="comment cmt"><p>performs a POST with supplied body</p></div><dl class="paramcmts block"><dt class="param">consumer</dt><dd class="cmt"><p>that's handling the response
+</p></dd></dl></div>
+    </li><li name="play.api.libs.ws.WSRequest#post" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="post(body:java.io.File):scala.concurrent.Future[play.api.libs.ws.WSResponse]"></a>
+      <a id="post(File):Future[WSResponse]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">post</span><span class="params">(<span name="body">body: <span class="extype" name="java.io.File">File</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="WSResponse.html" class="extype" name="play.api.libs.ws.WSResponse">WSResponse</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.WSRequest@post(body:java.io.File):scala.concurrent.Future[play.api.libs.ws.WSResponse]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Perform a POST on the request asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Perform a POST on the request asynchronously.
+Request body won't be chunked
+</p></div></div>
+    </li><li name="play.api.libs.ws.WSRequest#post" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="post[T](body:T)(implicitwrt:play.api.http.Writeable[T]):scala.concurrent.Future[play.api.libs.ws.WSResponse]"></a>
+      <a id="post[T](T)(Writeable[T]):Future[WSResponse]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">post</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="body">body: <span class="extype" name="play.api.libs.ws.WSRequest.post.T">T</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="wrt">wrt: <a href="../../http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<span class="extype" name="play.api.libs.ws.WSRequest.post.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="WSResponse.html" class="extype" name="play.api.libs.ws.WSResponse">WSResponse</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.WSRequest@post[T](body:T)(implicitwrt:play.api.http.Writeable[T]):scala.concurrent.Future[play.api.libs.ws.WSResponse]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Perform a POST on the request asynchronously.</p>
+    </li><li name="play.api.libs.ws.WSRequest#postAndRetrieveStream" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="postAndRetrieveStream[A,T](body:T)(consumer:play.api.libs.ws.WSResponseHeaders=&gt;play.api.libs.iteratee.Iteratee[Array[Byte],A])(implicitwrt:play.api.http.Writeable[T],implicitec:scala.concurrent.ExecutionContext):scala.concurrent.Future[play.api.libs.iteratee.Iteratee[Array[Byte],A]]"></a>
+      <a id="postAndRetrieveStream[A,T](T)((WSResponseHeaders)⇒Iteratee[Array[Byte],A])(Writeable[T],ExecutionContext):Future[Iteratee[Array[Byte],A]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">postAndRetrieveStream</span><span class="tparams">[<span name="A">A</span>, <span name="T">T</span>]</span><span class="params">(<span name="body">body: <span class="extype" name="play.api.libs.ws.WSRequest.postAndRetrieveStream.T">T</span></span>)</span><span class="params">(<span name="consumer">consumer: (<a href="WSResponseHeaders.html" class="extype" name="play.api.libs.ws.WSResponseHeaders">WSResponseHeaders</a>) ⇒ <a href="../iteratee/Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>], <span class="extype" name="play.api.libs.ws.WSRequest.postAndRetrieveStream.A">A</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="wrt">wrt: <a href="../../http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<span class="extype" name="play.api.libs.ws.WSRequest.postAndRetrieveStream.T">T</span>]</span>, <span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../iteratee/Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>], <span class="extype" name="play.api.libs.ws.WSRequest.postAndRetrieveStream.A">A</span>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.WSRequest@postAndRetrieveStream[A,T](body:T)(consumer:play.api.libs.ws.WSResponseHeaders=&gt;play.api.libs.iteratee.Iteratee[Array[Byte],A])(implicitwrt:play.api.http.Writeable[T],implicitec:scala.concurrent.ExecutionContext):scala.concurrent.Future[play.api.libs.iteratee.Iteratee[Array[Byte],A]]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">performs a POST with supplied body</p><div class="fullcomment"><div class="comment cmt"><p>performs a POST with supplied body</p></div><dl class="paramcmts block"><dt class="param">consumer</dt><dd class="cmt"><p>that's handling the response
+</p></dd></dl></div>
+    </li><li name="play.api.libs.ws.WSRequest#put" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="put(body:java.io.File):scala.concurrent.Future[play.api.libs.ws.WSResponse]"></a>
+      <a id="put(File):Future[WSResponse]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">put</span><span class="params">(<span name="body">body: <span class="extype" name="java.io.File">File</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="WSResponse.html" class="extype" name="play.api.libs.ws.WSResponse">WSResponse</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.WSRequest@put(body:java.io.File):scala.concurrent.Future[play.api.libs.ws.WSResponse]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Perform a PUT on the request asynchronously.</p><div class="fullcomment"><div class="comment cmt"><p>Perform a PUT on the request asynchronously.
+Request body won't be chunked
+</p></div></div>
+    </li><li name="play.api.libs.ws.WSRequest#put" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="put[T](body:T)(implicitwrt:play.api.http.Writeable[T]):scala.concurrent.Future[play.api.libs.ws.WSResponse]"></a>
+      <a id="put[T](T)(Writeable[T]):Future[WSResponse]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">put</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="body">body: <span class="extype" name="play.api.libs.ws.WSRequest.put.T">T</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="wrt">wrt: <a href="../../http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<span class="extype" name="play.api.libs.ws.WSRequest.put.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="WSResponse.html" class="extype" name="play.api.libs.ws.WSResponse">WSResponse</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.WSRequest@put[T](body:T)(implicitwrt:play.api.http.Writeable[T]):scala.concurrent.Future[play.api.libs.ws.WSResponse]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Perform a PUT on the request asynchronously.</p>
+    </li><li name="play.api.libs.ws.WSRequest#putAndRetrieveStream" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="putAndRetrieveStream[A,T](body:T)(consumer:play.api.libs.ws.WSResponseHeaders=&gt;play.api.libs.iteratee.Iteratee[Array[Byte],A])(implicitwrt:play.api.http.Writeable[T],implicitec:scala.concurrent.ExecutionContext):scala.concurrent.Future[play.api.libs.iteratee.Iteratee[Array[Byte],A]]"></a>
+      <a id="putAndRetrieveStream[A,T](T)((WSResponseHeaders)⇒Iteratee[Array[Byte],A])(Writeable[T],ExecutionContext):Future[Iteratee[Array[Byte],A]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">putAndRetrieveStream</span><span class="tparams">[<span name="A">A</span>, <span name="T">T</span>]</span><span class="params">(<span name="body">body: <span class="extype" name="play.api.libs.ws.WSRequest.putAndRetrieveStream.T">T</span></span>)</span><span class="params">(<span name="consumer">consumer: (<a href="WSResponseHeaders.html" class="extype" name="play.api.libs.ws.WSResponseHeaders">WSResponseHeaders</a>) ⇒ <a href="../iteratee/Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>], <span class="extype" name="play.api.libs.ws.WSRequest.putAndRetrieveStream.A">A</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="wrt">wrt: <a href="../../http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<span class="extype" name="play.api.libs.ws.WSRequest.putAndRetrieveStream.T">T</span>]</span>, <span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../iteratee/Iteratee.html" class="extype" name="play.api.libs.iteratee.Iteratee">Iteratee</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>], <span class="extype" name="play.api.libs.ws.WSRequest.putAndRetrieveStream.A">A</span>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.WSRequest@putAndRetrieveStream[A,T](body:T)(consumer:play.api.libs.ws.WSResponseHeaders=&gt;play.api.libs.iteratee.Iteratee[Array[Byte],A])(implicitwrt:play.api.http.Writeable[T],implicitec:scala.concurrent.ExecutionContext):scala.concurrent.Future[play.api.libs.iteratee.Iteratee[Array[Byte],A]]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">performs a PUT with supplied body</p><div class="fullcomment"><div class="comment cmt"><p>performs a PUT with supplied body</p></div><dl class="paramcmts block"><dt class="param">consumer</dt><dd class="cmt"><p>that's handling the response
+</p></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -615,6 +1083,24 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="play.api.libs.ws.WSRequest#uri" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="uri:java.net.URI"></a>
+      <a id="uri:URI"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">uri</span><span class="result">: <span class="extype" name="java.net.URI">URI</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.WSRequest@uri:java.net.URI" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">The URI for this request
+</p>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
@@ -684,6 +1170,24 @@
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="play.api.libs.ws.WSRequest#withBody" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="withBody[T](body:T)(implicitwrt:play.api.http.Writeable[T]):play.api.libs.ws.WSRequest"></a>
+      <a id="withBody[T](T)(Writeable[T]):WSRequest"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">withBody</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="body">body: <span class="extype" name="play.api.libs.ws.WSRequest.withBody.T">T</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="wrt">wrt: <a href="../../http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<span class="extype" name="play.api.libs.ws.WSRequest.withBody.T">T</span>]</span>)</span><span class="result">: <a href="" class="extype" name="play.api.libs.ws.WSRequest">WSRequest</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.WSRequest@withBody[T](body:T)(implicitwrt:play.api.http.Writeable[T]):play.api.libs.ws.WSRequest" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Sets the body for this request
+</p>
     </li></ol>
             </div>
 

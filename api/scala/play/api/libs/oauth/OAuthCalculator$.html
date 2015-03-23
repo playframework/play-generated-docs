@@ -1,22 +1,22 @@
 <!DOCTYPE html >
 <html>
         <head>
-          <title>DefaultSSLEngineFactory - play.api.libs.ws.ning.NingAsyncHttpClientConfigBuilder.DefaultSSLEngineFactory</title>
-          <meta name="description" content="DefaultSSLEngineFactory - play.api.libs.ws.ning.NingAsyncHttpClientConfigBuilder.DefaultSSLEngineFactory" />
-          <meta name="keywords" content="DefaultSSLEngineFactory play.api.libs.ws.ning.NingAsyncHttpClientConfigBuilder.DefaultSSLEngineFactory" />
+          <title>OAuthCalculator - play.api.libs.oauth.OAuthCalculator</title>
+          <meta name="description" content="OAuthCalculator - play.api.libs.oauth.OAuthCalculator" />
+          <meta name="keywords" content="OAuthCalculator play.api.libs.oauth.OAuthCalculator" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
-      <link href="../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
-      <link href="../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
-      <script type="text/javascript" src="../../../../../lib/jquery.js" id="jquery-js"></script>
-      <script type="text/javascript" src="../../../../../lib/jquery-ui.js"></script>
-      <script type="text/javascript" src="../../../../../lib/template.js"></script>
-      <script type="text/javascript" src="../../../../../lib/tools.tooltip.js"></script>
+      <link href="../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../../lib/tools.tooltip.js"></script>
       
       <script type="text/javascript">
          if(top === self) {
-            var url = '../../../../../index.html';
-            var hash = 'play.api.libs.ws.ning.NingAsyncHttpClientConfigBuilder$DefaultSSLEngineFactory';
+            var url = '../../../../index.html';
+            var hash = 'play.api.libs.oauth.OAuthCalculator$';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -26,13 +26,13 @@
    	  </script>
     
         </head>
-        <body class="type">
+        <body class="value">
       <div id="definition">
-        <img src="../../../../../lib/class_big.png" />
-        <p id="owner"><a href="../../../../package.html" class="extype" name="play">play</a>.<a href="../../../package.html" class="extype" name="play.api">api</a>.<a href="../../package.html" class="extype" name="play.api.libs">libs</a>.<a href="../package.html" class="extype" name="play.api.libs.ws">ws</a>.<a href="package.html" class="extype" name="play.api.libs.ws.ning">ning</a>.<a href="NingAsyncHttpClientConfigBuilder.html" class="extype" name="play.api.libs.ws.ning.NingAsyncHttpClientConfigBuilder">NingAsyncHttpClientConfigBuilder</a></p>
-        <h1>DefaultSSLEngineFactory</h1> <span class="permalink">
-      <a href="../../../../../index.html#play.api.libs.ws.ning.NingAsyncHttpClientConfigBuilder$DefaultSSLEngineFactory" title="Permalink" target="_top">
-        <img src="../../../../../lib/permalink.png" />
+        <a href="OAuthCalculator.html" title="Go to companion"><img src="../../../../lib/object_to_class_big.png" /></a>
+        <p id="owner"><a href="../../../package.html" class="extype" name="play">play</a>.<a href="../../package.html" class="extype" name="play.api">api</a>.<a href="../package.html" class="extype" name="play.api.libs">libs</a>.<a href="package.html" class="extype" name="play.api.libs.oauth">oauth</a></p>
+        <h1><a href="OAuthCalculator.html" title="Go to companion">OAuthCalculator</a></h1> <span class="permalink">
+      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator$" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       </div>
@@ -40,17 +40,19 @@
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">class</span>
+        <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <span class="name">DefaultSSLEngineFactory</span><span class="result"> extends <span class="extype" name="com.ning.http.client.SSLEngineFactory">SSLEngineFactory</span></span>
+        <span class="name">OAuthCalculator</span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Factory that creates an SSLEngine.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play-ws/src/main/scala/play/api/libs/ws/ning/NingConfig.scala" target="_blank">NingConfig.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Object for creating signature calculator for the Play WS API.</p><p>Example:</p><pre><span class="kw">import</span> play.api.libs.oauth._
+<span class="kw">val</span> consumerKey: ConsumerKey = ConsumerKey(twitterConsumerKey, twitterConsumerSecret)
+<span class="kw">val</span> requestToken: RequestToken = RequestToken(accessTokenKey, accessTokenSecret)
+WS.url(<span class="lit">"http://example.com/protected"</span>).sign(OAuthCalculator(consumerKey, requestToken)).get()</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play-ws/src/main/scala/play/api/libs/oauth/OAuth.scala" target="_blank">OAuth.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="com.ning.http.client.SSLEngineFactory">SSLEngineFactory</span>, <a href="../../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -68,7 +70,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="play.api.libs.ws.ning.NingAsyncHttpClientConfigBuilder.DefaultSSLEngineFactory"><span>DefaultSSLEngineFactory</span></li><li class="in" name="com.ning.http.client.SSLEngineFactory"><span>SSLEngineFactory</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="play.api.libs.oauth.OAuthCalculator"><span>OAuthCalculator</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -86,27 +88,7 @@
 
       <div id="template">
         <div id="allMembers">
-        <div id="constructors" class="members">
-              <h3>Instance Constructors</h3>
-              <ol><li name="play.api.libs.ws.ning.NingAsyncHttpClientConfigBuilder.DefaultSSLEngineFactory#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(config:play.api.libs.ws.ssl.SSLConfig,sslContext:javax.net.ssl.SSLContext,enabledProtocols:Array[String],enabledCipherSuites:Array[String]):NingAsyncHttpClientConfigBuilder.this.DefaultSSLEngineFactory"></a>
-      <a id="&lt;init&gt;:DefaultSSLEngineFactory"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">new</span>
-      </span>
-      <span class="symbol">
-        <span class="name">DefaultSSLEngineFactory</span><span class="params">(<span name="config">config: <a href="../ssl/SSLConfig.html" class="extype" name="play.api.libs.ws.ssl.SSLConfig">SSLConfig</a></span>, <span name="sslContext">sslContext: <span class="extype" name="javax.net.ssl.SSLContext">SSLContext</span></span>, <span name="enabledProtocols">enabledProtocols: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="enabledCipherSuites">enabledCipherSuites: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../../index.html#play.api.libs.ws.ning.NingAsyncHttpClientConfigBuilder$DefaultSSLEngineFactory@&lt;init&gt;(config:play.api.libs.ws.ssl.SSLConfig,sslContext:javax.net.ssl.SSLContext,enabledProtocols:Array[String],enabledCipherSuites:Array[String]):NingAsyncHttpClientConfigBuilder.this.DefaultSSLEngineFactory" title="Permalink" target="_top">
-        <img src="../../../../../lib/permalink.png" />
-      </a>
-    </span>
-      
-    </li></ol>
-            </div>
+        
 
         
 
@@ -126,8 +108,8 @@
         <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../index.html#play.api.libs.ws.ning.NingAsyncHttpClientConfigBuilder$DefaultSSLEngineFactory@!=(x$1:Any):Boolean" title="Permalink" target="_top">
-        <img src="../../../../../lib/permalink.png" />
+      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator$@!=(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -143,8 +125,8 @@
         <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../index.html#play.api.libs.ws.ning.NingAsyncHttpClientConfigBuilder$DefaultSSLEngineFactory@##():Int" title="Permalink" target="_top">
-        <img src="../../../../../lib/permalink.png" />
+      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator$@##():Int" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -160,11 +142,28 @@
         <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../index.html#play.api.libs.ws.ning.NingAsyncHttpClientConfigBuilder$DefaultSSLEngineFactory@==(x$1:Any):Boolean" title="Permalink" target="_top">
-        <img src="../../../../../lib/permalink.png" />
+      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator$@==(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="play.api.libs.oauth.OAuthCalculator#apply" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="apply(consumerKey:play.api.libs.oauth.ConsumerKey,token:play.api.libs.oauth.RequestToken):play.api.libs.ws.WSSignatureCalculator"></a>
+      <a id="apply(ConsumerKey,RequestToken):WSSignatureCalculator"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">apply</span><span class="params">(<span name="consumerKey">consumerKey: <a href="ConsumerKey.html" class="extype" name="play.api.libs.oauth.ConsumerKey">ConsumerKey</a></span>, <span name="token">token: <a href="RequestToken.html" class="extype" name="play.api.libs.oauth.RequestToken">RequestToken</a></span>)</span><span class="result">: <a href="../ws/WSSignatureCalculator.html" class="extype" name="play.api.libs.ws.WSSignatureCalculator">WSSignatureCalculator</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator$@apply(consumerKey:play.api.libs.oauth.ConsumerKey,token:play.api.libs.oauth.RequestToken):play.api.libs.ws.WSSignatureCalculator" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -177,8 +176,8 @@
         <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../index.html#play.api.libs.ws.ning.NingAsyncHttpClientConfigBuilder$DefaultSSLEngineFactory@asInstanceOf[T0]:T0" title="Permalink" target="_top">
-        <img src="../../../../../lib/permalink.png" />
+      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator$@asInstanceOf[T0]:T0" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
@@ -191,14 +190,14 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">clone</span><span class="params">()</span><span class="result">: <a href="../../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
+        <span class="name">clone</span><span class="params">()</span><span class="result">: <a href="../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../index.html#play.api.libs.ws.ning.NingAsyncHttpClientConfigBuilder$DefaultSSLEngineFactory@clone():Object" title="Permalink" target="_top">
-        <img src="../../../../../lib/permalink.png" />
+      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator$@clone():Object" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
       <span class="defval" name="classOf[java.lang.CloneNotSupportedException]">...</span>
@@ -214,11 +213,11 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <a href="../../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <a href="../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../index.html#play.api.libs.ws.ning.NingAsyncHttpClientConfigBuilder$DefaultSSLEngineFactory@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
-        <img src="../../../../../lib/permalink.png" />
+      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator$@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
@@ -234,8 +233,8 @@
         <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../index.html#play.api.libs.ws.ning.NingAsyncHttpClientConfigBuilder$DefaultSSLEngineFactory@equals(x$1:Any):Boolean" title="Permalink" target="_top">
-        <img src="../../../../../lib/permalink.png" />
+      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator$@equals(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -251,11 +250,11 @@
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../index.html#play.api.libs.ws.ning.NingAsyncHttpClientConfigBuilder$DefaultSSLEngineFactory@finalize():Unit" title="Permalink" target="_top">
-        <img src="../../../../../lib/permalink.png" />
+      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator$@finalize():Unit" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
       <span class="symbol">classOf[java.lang.Throwable]</span>
@@ -274,8 +273,8 @@
         <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../index.html#play.api.libs.ws.ning.NingAsyncHttpClientConfigBuilder$DefaultSSLEngineFactory@getClass():Class[_]" title="Permalink" target="_top">
-        <img src="../../../../../lib/permalink.png" />
+      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator$@getClass():Class[_]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -291,8 +290,8 @@
         <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../index.html#play.api.libs.ws.ning.NingAsyncHttpClientConfigBuilder$DefaultSSLEngineFactory@hashCode():Int" title="Permalink" target="_top">
-        <img src="../../../../../lib/permalink.png" />
+      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator$@hashCode():Int" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -308,8 +307,8 @@
         <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../index.html#play.api.libs.ws.ning.NingAsyncHttpClientConfigBuilder$DefaultSSLEngineFactory@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
-        <img src="../../../../../lib/permalink.png" />
+      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator$@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
@@ -322,31 +321,14 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <a href="../../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <a href="../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../index.html#play.api.libs.ws.ning.NingAsyncHttpClientConfigBuilder$DefaultSSLEngineFactory@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
-        <img src="../../../../../lib/permalink.png" />
+      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator$@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="play.api.libs.ws.ning.NingAsyncHttpClientConfigBuilder.DefaultSSLEngineFactory#newSSLEngine" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="newSSLEngine():javax.net.ssl.SSLEngine"></a>
-      <a id="newSSLEngine():SSLEngine"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">newSSLEngine</span><span class="params">()</span><span class="result">: <span class="extype" name="javax.net.ssl.SSLEngine">SSLEngine</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../../index.html#play.api.libs.ws.ning.NingAsyncHttpClientConfigBuilder$DefaultSSLEngineFactory@newSSLEngine():javax.net.ssl.SSLEngine" title="Permalink" target="_top">
-        <img src="../../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.libs.ws.ning.NingAsyncHttpClientConfigBuilder.DefaultSSLEngineFactory">DefaultSSLEngineFactory</a> → SSLEngineFactory</dd></dl></div>
     </li><li name="scala.AnyRef#notify" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
       <a id="notify():Unit"></a>
@@ -359,8 +341,8 @@
         <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../index.html#play.api.libs.ws.ning.NingAsyncHttpClientConfigBuilder$DefaultSSLEngineFactory@notify():Unit" title="Permalink" target="_top">
-        <img src="../../../../../lib/permalink.png" />
+      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator$@notify():Unit" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
@@ -376,8 +358,8 @@
         <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../index.html#play.api.libs.ws.ning.NingAsyncHttpClientConfigBuilder$DefaultSSLEngineFactory@notifyAll():Unit" title="Permalink" target="_top">
-        <img src="../../../../../lib/permalink.png" />
+      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator$@notifyAll():Unit" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
@@ -393,8 +375,8 @@
         <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../index.html#play.api.libs.ws.ning.NingAsyncHttpClientConfigBuilder$DefaultSSLEngineFactory@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
-        <img src="../../../../../lib/permalink.png" />
+      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator$@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
@@ -410,8 +392,8 @@
         <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../index.html#play.api.libs.ws.ning.NingAsyncHttpClientConfigBuilder$DefaultSSLEngineFactory@toString():String" title="Permalink" target="_top">
-        <img src="../../../../../lib/permalink.png" />
+      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator$@toString():String" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -427,8 +409,8 @@
         <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../index.html#play.api.libs.ws.ning.NingAsyncHttpClientConfigBuilder$DefaultSSLEngineFactory@wait():Unit" title="Permalink" target="_top">
-        <img src="../../../../../lib/permalink.png" />
+      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator$@wait():Unit" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -450,8 +432,8 @@
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../index.html#play.api.libs.ws.ning.NingAsyncHttpClientConfigBuilder$DefaultSSLEngineFactory@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
-        <img src="../../../../../lib/permalink.png" />
+      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator$@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -473,8 +455,8 @@
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../../index.html#play.api.libs.ws.ning.NingAsyncHttpClientConfigBuilder$DefaultSSLEngineFactory@wait(x$1:Long):Unit" title="Permalink" target="_top">
-        <img src="../../../../../lib/permalink.png" />
+      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator$@wait(x$1:Long):Unit" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -493,10 +475,8 @@
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="com.ning.http.client.SSLEngineFactory">
-              <h3>Inherited from <span class="extype" name="com.ning.http.client.SSLEngineFactory">SSLEngineFactory</span></h3>
-            </div><div class="parent" name="scala.AnyRef">
-              <h3>Inherited from <a href="../../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></h3>
+        <div class="parent" name="scala.AnyRef">
+              <h3>Inherited from <a href="../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
             </div>

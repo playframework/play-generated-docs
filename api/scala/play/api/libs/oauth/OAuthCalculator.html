@@ -28,9 +28,9 @@
         </head>
         <body class="type">
       <div id="definition">
-        <img src="../../../../lib/class_big.png" />
+        <a href="OAuthCalculator$.html" title="Go to companion"><img src="../../../../lib/class_to_object_big.png" /></a>
         <p id="owner"><a href="../../../package.html" class="extype" name="play">play</a>.<a href="../../package.html" class="extype" name="play.api">api</a>.<a href="../package.html" class="extype" name="play.api.libs">libs</a>.<a href="package.html" class="extype" name="play.api.libs.oauth">oauth</a></p>
-        <h1>OAuthCalculator</h1> <span class="permalink">
+        <h1><a href="OAuthCalculator$.html" title="Go to companion">OAuthCalculator</a></h1> <span class="permalink">
       <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
@@ -40,16 +40,17 @@
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">case class</span>
+        <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">OAuthCalculator</span><span class="params">(<span name="consumerKey">consumerKey: <a href="ConsumerKey.html" class="extype" name="play.api.libs.oauth.ConsumerKey">ConsumerKey</a></span>, <span name="token">token: <a href="RequestToken.html" class="extype" name="play.api.libs.oauth.RequestToken">RequestToken</a></span>)</span><span class="result"> extends <span class="extype" name="oauth.signpost.AbstractOAuthConsumer">AbstractOAuthConsumer</span> with <a href="../ws/WSSignatureCalculator.html" class="extype" name="play.api.libs.ws.WSSignatureCalculator">WSSignatureCalculator</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name">OAuthCalculator</span><span class="result"> extends <a href="../ws/WSSignatureCalculator.html" class="extype" name="play.api.libs.ws.WSSignatureCalculator">WSSignatureCalculator</a> with <span class="extype" name="com.ning.http.client.SignatureCalculator">SignatureCalculator</span></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A signature calculator for the Play WS API.</p><p>Example:</p><pre>WS.url(<span class="lit">"http://example.com/protected"</span>).sign(OAuthCalculator(service, tokens)).get()</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play-ws/src/main/scala/play/api/libs/oauth/OAuth.scala" target="_blank">OAuth.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>The public AsyncHttpClient implementation of WSSignatureCalculator.
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play-ws/src/main/scala/play/api/libs/oauth/OAuth.scala" target="_blank">OAuth.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <a href="../ws/WSSignatureCalculator.html" class="extype" name="play.api.libs.ws.WSSignatureCalculator">WSSignatureCalculator</a>, <span class="extype" name="oauth.signpost.AbstractOAuthConsumer">AbstractOAuthConsumer</span>, <span class="extype" name="oauth.signpost.OAuthConsumer">OAuthConsumer</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <a href="../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="com.ning.http.client.SignatureCalculator">SignatureCalculator</span>, <a href="../ws/WSSignatureCalculator.html" class="extype" name="play.api.libs.ws.WSSignatureCalculator">WSSignatureCalculator</a>, <a href="../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -67,7 +68,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="play.api.libs.oauth.OAuthCalculator"><span>OAuthCalculator</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="play.api.libs.ws.WSSignatureCalculator"><span>WSSignatureCalculator</span></li><li class="in" name="oauth.signpost.AbstractOAuthConsumer"><span>AbstractOAuthConsumer</span></li><li class="in" name="oauth.signpost.OAuthConsumer"><span>OAuthConsumer</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="play.api.libs.oauth.OAuthCalculator"><span>OAuthCalculator</span></li><li class="in" name="com.ning.http.client.SignatureCalculator"><span>SignatureCalculator</span></li><li class="in" name="play.api.libs.ws.WSSignatureCalculator"><span>WSSignatureCalculator</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -88,7 +89,7 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="play.api.libs.oauth.OAuthCalculator#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(consumerKey:play.api.libs.oauth.ConsumerKey,token:play.api.libs.oauth.RequestToken):play.api.libs.oauth.OAuthCalculator"></a>
+      <a id="&lt;init&gt;(consumerKey:play.api.libs.oauth.ConsumerKey,requestToken:play.api.libs.oauth.RequestToken):play.api.libs.oauth.OAuthCalculator"></a>
       <a id="&lt;init&gt;:OAuthCalculator"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -96,10 +97,10 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">OAuthCalculator</span><span class="params">(<span name="consumerKey">consumerKey: <a href="ConsumerKey.html" class="extype" name="play.api.libs.oauth.ConsumerKey">ConsumerKey</a></span>, <span name="token">token: <a href="RequestToken.html" class="extype" name="play.api.libs.oauth.RequestToken">RequestToken</a></span>)</span>
+        <span class="name">OAuthCalculator</span><span class="params">(<span name="consumerKey">consumerKey: <a href="ConsumerKey.html" class="extype" name="play.api.libs.oauth.ConsumerKey">ConsumerKey</a></span>, <span name="requestToken">requestToken: <a href="RequestToken.html" class="extype" name="play.api.libs.oauth.RequestToken">RequestToken</a></span>)</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator@&lt;init&gt;(consumerKey:play.api.libs.oauth.ConsumerKey,token:play.api.libs.oauth.RequestToken):play.api.libs.oauth.OAuthCalculator" title="Permalink" target="_top">
+      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator@&lt;init&gt;(consumerKey:play.api.libs.oauth.ConsumerKey,requestToken:play.api.libs.oauth.RequestToken):play.api.libs.oauth.OAuthCalculator" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
@@ -107,27 +108,7 @@
     </li></ol>
             </div>
 
-        <div id="types" class="types members">
-              <h3>Type Members</h3>
-              <ol><li name="play.api.libs.oauth.OAuthCalculator.WSRequestAdapter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="WSRequestAdapterextendsHttpRequest"></a>
-      <a id="WSRequestAdapter:WSRequestAdapter"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">class</span>
-      </span>
-      <span class="symbol">
-        <a href="OAuthCalculator$WSRequestAdapter.html"><span class="name">WSRequestAdapter</span></a><span class="result"> extends <span class="extype" name="oauth.signpost.http.HttpRequest">HttpRequest</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator@WSRequestAdapterextendsHttpRequest" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      
-    </li></ol>
-            </div>
+        
 
         
 
@@ -201,6 +182,23 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="play.api.libs.oauth.OAuthCalculator#calculateAndAddSignature" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="calculateAndAddSignature(request:com.ning.http.client.Request,requestBuilder:com.ning.http.client.RequestBuilderBase[_]):Unit"></a>
+      <a id="calculateAndAddSignature(Request,RequestBuilderBase[_]):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">calculateAndAddSignature</span><span class="params">(<span name="request">request: <span class="extype" name="com.ning.http.client.Request">Request</span></span>, <span name="requestBuilder">requestBuilder: <span class="extype" name="com.ning.http.client.RequestBuilderBase">RequestBuilderBase</span>[_]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator@calculateAndAddSignature(request:com.ning.http.client.Request,requestBuilder:com.ning.http.client.RequestBuilderBase[_]):Unit" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.libs.oauth.OAuthCalculator">OAuthCalculator</a> → SignatureCalculator</dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
@@ -224,97 +222,6 @@
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="oauth.signpost.AbstractOAuthConsumer#collectBodyParameters" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="collectBodyParameters(x$1:oauth.signpost.http.HttpRequest,x$2:oauth.signpost.http.HttpParameters):Unit"></a>
-      <a id="collectBodyParameters(HttpRequest,HttpParameters):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">collectBodyParameters</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="oauth.signpost.http.HttpRequest">HttpRequest</span></span>, <span name="arg1">arg1: <span class="extype" name="oauth.signpost.http.HttpParameters">HttpParameters</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator@collectBodyParameters(x$1:oauth.signpost.http.HttpRequest,x$2:oauth.signpost.http.HttpParameters):Unit" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../oauth$signpost.html" class="extype" name="oauth.signpost">oauth.signpost</a>] </dd><dt>Definition Classes</dt><dd>AbstractOAuthConsumer</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="symbol">classOf[java.io.IOException]</span>
-    </span>)</span>
-              
-        </dd></dl></div>
-    </li><li name="oauth.signpost.AbstractOAuthConsumer#collectHeaderParameters" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="collectHeaderParameters(x$1:oauth.signpost.http.HttpRequest,x$2:oauth.signpost.http.HttpParameters):Unit"></a>
-      <a id="collectHeaderParameters(HttpRequest,HttpParameters):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">collectHeaderParameters</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="oauth.signpost.http.HttpRequest">HttpRequest</span></span>, <span name="arg1">arg1: <span class="extype" name="oauth.signpost.http.HttpParameters">HttpParameters</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator@collectHeaderParameters(x$1:oauth.signpost.http.HttpRequest,x$2:oauth.signpost.http.HttpParameters):Unit" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../oauth$signpost.html" class="extype" name="oauth.signpost">oauth.signpost</a>] </dd><dt>Definition Classes</dt><dd>AbstractOAuthConsumer</dd></dl></div>
-    </li><li name="oauth.signpost.AbstractOAuthConsumer#collectQueryParameters" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="collectQueryParameters(x$1:oauth.signpost.http.HttpRequest,x$2:oauth.signpost.http.HttpParameters):Unit"></a>
-      <a id="collectQueryParameters(HttpRequest,HttpParameters):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">collectQueryParameters</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="oauth.signpost.http.HttpRequest">HttpRequest</span></span>, <span name="arg1">arg1: <span class="extype" name="oauth.signpost.http.HttpParameters">HttpParameters</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator@collectQueryParameters(x$1:oauth.signpost.http.HttpRequest,x$2:oauth.signpost.http.HttpParameters):Unit" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../oauth$signpost.html" class="extype" name="oauth.signpost">oauth.signpost</a>] </dd><dt>Definition Classes</dt><dd>AbstractOAuthConsumer</dd></dl></div>
-    </li><li name="oauth.signpost.AbstractOAuthConsumer#completeOAuthParameters" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="completeOAuthParameters(x$1:oauth.signpost.http.HttpParameters):Unit"></a>
-      <a id="completeOAuthParameters(HttpParameters):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">completeOAuthParameters</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="oauth.signpost.http.HttpParameters">HttpParameters</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator@completeOAuthParameters(x$1:oauth.signpost.http.HttpParameters):Unit" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../oauth$signpost.html" class="extype" name="oauth.signpost">oauth.signpost</a>] </dd><dt>Definition Classes</dt><dd>AbstractOAuthConsumer</dd></dl></div>
-    </li><li name="play.api.libs.oauth.OAuthCalculator#consumerKey" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="consumerKey:play.api.libs.oauth.ConsumerKey"></a>
-      <a id="consumerKey:ConsumerKey"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">consumerKey</span><span class="result">: <a href="ConsumerKey.html" class="extype" name="play.api.libs.oauth.ConsumerKey">ConsumerKey</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator@consumerKey:play.api.libs.oauth.ConsumerKey" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -332,6 +239,23 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="equals(x$1:Any):Boolean"></a>
+      <a id="equals(Any):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator@equals(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
@@ -355,40 +279,6 @@
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="oauth.signpost.AbstractOAuthConsumer#generateNonce" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="generateNonce():String"></a>
-      <a id="generateNonce():String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">generateNonce</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator@generateNonce():String" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../oauth$signpost.html" class="extype" name="oauth.signpost">oauth.signpost</a>] </dd><dt>Definition Classes</dt><dd>AbstractOAuthConsumer</dd></dl></div>
-    </li><li name="oauth.signpost.AbstractOAuthConsumer#generateTimestamp" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="generateTimestamp():String"></a>
-      <a id="generateTimestamp():String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">generateTimestamp</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator@generateTimestamp():String" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../oauth$signpost.html" class="extype" name="oauth.signpost">oauth.signpost</a>] </dd><dt>Definition Classes</dt><dd>AbstractOAuthConsumer</dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>
@@ -406,91 +296,23 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="oauth.signpost.AbstractOAuthConsumer#getConsumerKey" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getConsumerKey():String"></a>
-      <a id="getConsumerKey():String"></a>
+    </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="hashCode():Int"></a>
+      <a id="hashCode():Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">getConsumerKey</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+        <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator@getConsumerKey():String" title="Permalink" target="_top">
+      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator@hashCode():Int" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AbstractOAuthConsumer → OAuthConsumer</dd></dl></div>
-    </li><li name="oauth.signpost.AbstractOAuthConsumer#getConsumerSecret" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getConsumerSecret():String"></a>
-      <a id="getConsumerSecret():String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">getConsumerSecret</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator@getConsumerSecret():String" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AbstractOAuthConsumer → OAuthConsumer</dd></dl></div>
-    </li><li name="oauth.signpost.AbstractOAuthConsumer#getRequestParameters" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getRequestParameters():oauth.signpost.http.HttpParameters"></a>
-      <a id="getRequestParameters():HttpParameters"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">getRequestParameters</span><span class="params">()</span><span class="result">: <span class="extype" name="oauth.signpost.http.HttpParameters">HttpParameters</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator@getRequestParameters():oauth.signpost.http.HttpParameters" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AbstractOAuthConsumer → OAuthConsumer</dd></dl></div>
-    </li><li name="oauth.signpost.AbstractOAuthConsumer#getToken" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getToken():String"></a>
-      <a id="getToken():String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">getToken</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator@getToken():String" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AbstractOAuthConsumer → OAuthConsumer</dd></dl></div>
-    </li><li name="oauth.signpost.AbstractOAuthConsumer#getTokenSecret" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getTokenSecret():String"></a>
-      <a id="getTokenSecret():String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">getTokenSecret</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator@getTokenSecret():String" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AbstractOAuthConsumer → OAuthConsumer</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -559,208 +381,6 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="oauth.signpost.AbstractOAuthConsumer#setAdditionalParameters" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="setAdditionalParameters(x$1:oauth.signpost.http.HttpParameters):Unit"></a>
-      <a id="setAdditionalParameters(HttpParameters):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">setAdditionalParameters</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="oauth.signpost.http.HttpParameters">HttpParameters</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator@setAdditionalParameters(x$1:oauth.signpost.http.HttpParameters):Unit" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AbstractOAuthConsumer → OAuthConsumer</dd></dl></div>
-    </li><li name="oauth.signpost.AbstractOAuthConsumer#setMessageSigner" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="setMessageSigner(x$1:oauth.signpost.signature.OAuthMessageSigner):Unit"></a>
-      <a id="setMessageSigner(OAuthMessageSigner):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">setMessageSigner</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="oauth.signpost.signature.OAuthMessageSigner">OAuthMessageSigner</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator@setMessageSigner(x$1:oauth.signpost.signature.OAuthMessageSigner):Unit" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AbstractOAuthConsumer → OAuthConsumer</dd></dl></div>
-    </li><li name="oauth.signpost.AbstractOAuthConsumer#setSendEmptyTokens" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="setSendEmptyTokens(x$1:Boolean):Unit"></a>
-      <a id="setSendEmptyTokens(Boolean):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">setSendEmptyTokens</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator@setSendEmptyTokens(x$1:Boolean):Unit" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AbstractOAuthConsumer → OAuthConsumer</dd></dl></div>
-    </li><li name="oauth.signpost.AbstractOAuthConsumer#setSigningStrategy" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="setSigningStrategy(x$1:oauth.signpost.signature.SigningStrategy):Unit"></a>
-      <a id="setSigningStrategy(SigningStrategy):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">setSigningStrategy</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="oauth.signpost.signature.SigningStrategy">SigningStrategy</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator@setSigningStrategy(x$1:oauth.signpost.signature.SigningStrategy):Unit" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AbstractOAuthConsumer → OAuthConsumer</dd></dl></div>
-    </li><li name="oauth.signpost.AbstractOAuthConsumer#setTokenWithSecret" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="setTokenWithSecret(x$1:String,x$2:String):Unit"></a>
-      <a id="setTokenWithSecret(String,String):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">setTokenWithSecret</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="java.lang.String">String</span></span>, <span name="arg1">arg1: <span class="extype" name="java.lang.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator@setTokenWithSecret(x$1:String,x$2:String):Unit" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AbstractOAuthConsumer → OAuthConsumer</dd></dl></div>
-    </li><li name="play.api.libs.oauth.OAuthCalculator#sign" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="sign(request:play.api.libs.ws.WSRequest):Unit"></a>
-      <a id="sign(WSRequest):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">sign</span><span class="params">(<span name="request">request: <a href="../ws/WSRequest.html" class="extype" name="play.api.libs.ws.WSRequest">WSRequest</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator@sign(request:play.api.libs.ws.WSRequest):Unit" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Sign it.</p><div class="fullcomment"><div class="comment cmt"><p>Sign it.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.libs.oauth.OAuthCalculator">OAuthCalculator</a> → <a href="../ws/WSSignatureCalculator.html" class="extype" name="play.api.libs.ws.WSSignatureCalculator">WSSignatureCalculator</a></dd></dl></div>
-    </li><li name="oauth.signpost.AbstractOAuthConsumer#sign" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="sign(x$1:String):String"></a>
-      <a id="sign(String):String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">sign</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="java.lang.String">String</span></span>)</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator@sign(x$1:String):String" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AbstractOAuthConsumer → OAuthConsumer</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="defval" name="classOf[oauth.signpost.exception.OAuthCommunicationException]">...</span>
-    </span>)</span>
-              
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="defval" name="classOf[oauth.signpost.exception.OAuthExpectationFailedException]">...</span>
-    </span>)</span>
-              
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="defval" name="classOf[oauth.signpost.exception.OAuthMessageSignerException]">...</span>
-    </span>)</span>
-              
-        </dd></dl></div>
-    </li><li name="oauth.signpost.AbstractOAuthConsumer#sign" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="sign(x$1:Any):oauth.signpost.http.HttpRequest"></a>
-      <a id="sign(Any):HttpRequest"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">sign</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="oauth.signpost.http.HttpRequest">HttpRequest</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator@sign(x$1:Any):oauth.signpost.http.HttpRequest" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AbstractOAuthConsumer → OAuthConsumer</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="defval" name="classOf[oauth.signpost.exception.OAuthCommunicationException]">...</span>
-    </span>)</span>
-              
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="defval" name="classOf[oauth.signpost.exception.OAuthExpectationFailedException]">...</span>
-    </span>)</span>
-              
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="defval" name="classOf[oauth.signpost.exception.OAuthMessageSignerException]">...</span>
-    </span>)</span>
-              
-        </dd></dl></div>
-    </li><li name="oauth.signpost.AbstractOAuthConsumer#sign" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="sign(x$1:oauth.signpost.http.HttpRequest):oauth.signpost.http.HttpRequest"></a>
-      <a id="sign(HttpRequest):HttpRequest"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">sign</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="oauth.signpost.http.HttpRequest">HttpRequest</span></span>)</span><span class="result">: <span class="extype" name="oauth.signpost.http.HttpRequest">HttpRequest</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator@sign(x$1:oauth.signpost.http.HttpRequest):oauth.signpost.http.HttpRequest" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AbstractOAuthConsumer → OAuthConsumer</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="defval" name="classOf[oauth.signpost.exception.OAuthCommunicationException]">...</span>
-    </span>)</span>
-              
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="defval" name="classOf[oauth.signpost.exception.OAuthExpectationFailedException]">...</span>
-    </span>)</span>
-              
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="defval" name="classOf[oauth.signpost.exception.OAuthMessageSignerException]">...</span>
-    </span>)</span>
-              
-        </dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -778,23 +398,23 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="play.api.libs.oauth.OAuthCalculator#token" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="token:play.api.libs.oauth.RequestToken"></a>
-      <a id="token:RequestToken"></a>
+    </li><li name="scala.AnyRef#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="toString():String"></a>
+      <a id="toString():String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">val</span>
+        <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">token</span><span class="result">: <a href="RequestToken.html" class="extype" name="play.api.libs.oauth.RequestToken">RequestToken</a></span>
+        <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator@token:play.api.libs.oauth.RequestToken" title="Permalink" target="_top">
+      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator@toString():String" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
@@ -864,23 +484,6 @@
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="play.api.libs.oauth.OAuthCalculator#wrap" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="wrap(request:Any):oauth.signpost.http.HttpRequest"></a>
-      <a id="wrap(Any):HttpRequest"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">wrap</span><span class="params">(<span name="request">request: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="oauth.signpost.http.HttpRequest">HttpRequest</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.oauth.OAuthCalculator@wrap(request:Any):oauth.signpost.http.HttpRequest" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.libs.oauth.OAuthCalculator">OAuthCalculator</a> → AbstractOAuthConsumer</dd></dl></div>
     </li></ol>
             </div>
 
@@ -890,20 +493,10 @@
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="scala.Serializable">
-              <h3>Inherited from <span class="extype" name="scala.Serializable">Serializable</span></h3>
-            </div><div class="parent" name="scala.Product">
-              <h3>Inherited from <span class="extype" name="scala.Product">Product</span></h3>
-            </div><div class="parent" name="scala.Equals">
-              <h3>Inherited from <span class="extype" name="scala.Equals">Equals</span></h3>
+        <div class="parent" name="com.ning.http.client.SignatureCalculator">
+              <h3>Inherited from <span class="extype" name="com.ning.http.client.SignatureCalculator">SignatureCalculator</span></h3>
             </div><div class="parent" name="play.api.libs.ws.WSSignatureCalculator">
               <h3>Inherited from <a href="../ws/WSSignatureCalculator.html" class="extype" name="play.api.libs.ws.WSSignatureCalculator">WSSignatureCalculator</a></h3>
-            </div><div class="parent" name="oauth.signpost.AbstractOAuthConsumer">
-              <h3>Inherited from <span class="extype" name="oauth.signpost.AbstractOAuthConsumer">AbstractOAuthConsumer</span></h3>
-            </div><div class="parent" name="oauth.signpost.OAuthConsumer">
-              <h3>Inherited from <span class="extype" name="oauth.signpost.OAuthConsumer">OAuthConsumer</span></h3>
-            </div><div class="parent" name="java.io.Serializable">
-              <h3>Inherited from <span class="extype" name="java.io.Serializable">Serializable</span></h3>
             </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <a href="../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></h3>
             </div><div class="parent" name="scala.Any">

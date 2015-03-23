@@ -160,8 +160,10 @@ implements <a href="../../../../play/libs/ws/WSClient.html" title="interface in 
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../play/libs/ws/ning/NingWSClient.html#getUnderlying--">getUnderlying</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code><a href="../../../../play/libs/ws/WSRequestHolder.html" title="interface in play.libs.ws">WSRequestHolder</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../play/libs/ws/ning/NingWSClient.html#url-java.lang.String-">url</a></span>(java.lang.String&nbsp;url)</code>&nbsp;</td>
+<td class="colFirst"><code><a href="../../../../play/libs/ws/WSRequest.html" title="interface in play.libs.ws">WSRequest</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../play/libs/ws/ning/NingWSClient.html#url-java.lang.String-">url</a></span>(java.lang.String&nbsp;url)</code>
+<div class="block">Returns a WSRequest object representing the URL.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -221,10 +223,16 @@ implements <a href="../../../../play/libs/ws/WSClient.html" title="interface in 
 <ul class="blockList">
 <li class="blockList">
 <h4>url</h4>
-<pre>public&nbsp;<a href="../../../../play/libs/ws/WSRequestHolder.html" title="interface in play.libs.ws">WSRequestHolder</a>&nbsp;url(java.lang.String&nbsp;url)</pre>
+<pre>public&nbsp;<a href="../../../../play/libs/ws/WSRequest.html" title="interface in play.libs.ws">WSRequest</a>&nbsp;url(java.lang.String&nbsp;url)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../play/libs/ws/WSClient.html#url-java.lang.String-">WSClient</a></code></span></div>
+<div class="block">Returns a WSRequest object representing the URL.  You can append additional
+ properties on the WSRequest by chaining calls, and execute the request to
+ return an asynchronous <code>Promise&lt;WSResponse&gt;</code>.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../play/libs/ws/WSClient.html#url-java.lang.String-">url</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../play/libs/ws/WSClient.html" title="interface in play.libs.ws">WSClient</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>url</code> - the URL to request</dd>
 </dl>
 </li>
 </ul>
@@ -236,7 +244,9 @@ implements <a href="../../../../play/libs/ws/WSClient.html" title="interface in 
 <h4>close</h4>
 <pre>public&nbsp;void&nbsp;close()</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../play/libs/ws/WSClient.html#close--">WSClient</a></code></span></div>
-<div class="block">Closes this client, and releases underlying resources.</div>
+<div class="block">Closes this client, and releases underlying resources.
+
+ Use this for manually instantiated clients.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code>close</code>&nbsp;in interface&nbsp;<code>java.io.Closeable</code></dd>

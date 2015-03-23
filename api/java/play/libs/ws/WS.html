@@ -109,9 +109,7 @@ var activeTableTab = "activeTableTab";
 <br>
 <pre>public class <span class="typeNameLabel">WS</span>
 extends java.lang.Object</pre>
-<div class="block">Asynchronous API to to query web services, as an http client.
-
- The value returned is a <code>Promise&lt;Response&gt;</code>, and you should use Play's asynchronous mechanisms to use this response.</div>
+<div class="block">Asynchronous API to to query web services, as an http client.</div>
 </li>
 </ul>
 </div>
@@ -149,7 +147,9 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>static <a href="../../../play/libs/ws/WSClient.html" title="interface in play.libs.ws">WSClient</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/ws/WS.html#client--">client</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/ws/WS.html#client--">client</a></span>()</code>
+<div class="block">Returns the default WSClient object managed by the Play application.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>static <a href="../../../play/libs/ws/WSClient.html" title="interface in play.libs.ws">WSClient</a></code></td>
@@ -158,9 +158,9 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code>static <a href="../../../play/libs/ws/WSRequestHolder.html" title="interface in play.libs.ws">WSRequestHolder</a></code></td>
+<td class="colFirst"><code>static <a href="../../../play/libs/ws/WSRequest.html" title="interface in play.libs.ws">WSRequest</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/ws/WS.html#url-java.lang.String-">url</a></span>(java.lang.String&nbsp;url)</code>
-<div class="block">Prepare a new request.</div>
+<div class="block">Returns a WSRequest object representing the URL.</div>
 </td>
 </tr>
 </table>
@@ -209,6 +209,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>client</h4>
 <pre>public static&nbsp;<a href="../../../play/libs/ws/WSClient.html" title="interface in play.libs.ws">WSClient</a>&nbsp;client()</pre>
+<div class="block">Returns the default WSClient object managed by the Play application.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a configured WSClient</dd>
+</dl>
 </li>
 </ul>
 <a name="url-java.lang.String-">
@@ -217,8 +222,10 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>url</h4>
-<pre>public static&nbsp;<a href="../../../play/libs/ws/WSRequestHolder.html" title="interface in play.libs.ws">WSRequestHolder</a>&nbsp;url(java.lang.String&nbsp;url)</pre>
-<div class="block">Prepare a new request. You can then construct it by chaining calls.</div>
+<pre>public static&nbsp;<a href="../../../play/libs/ws/WSRequest.html" title="interface in play.libs.ws">WSRequest</a>&nbsp;url(java.lang.String&nbsp;url)</pre>
+<div class="block">Returns a WSRequest object representing the URL.  You can append additional
+ properties on the WSRequest by chaining calls, and execute the request to
+ return an asynchronous <code>Promise&lt;WSResponse&gt;</code>.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>url</code> - the URL to request</dd>

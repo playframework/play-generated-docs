@@ -126,23 +126,23 @@
       <p class="shortcomment cmt">Library to access resources protected by OAuth 1.0a.</p><div class="fullcomment"><div class="comment cmt"><p>Library to access resources protected by OAuth 1.0a.</p></div><dl class="paramcmts block"><dt class="param">info</dt><dd class="cmt"><p>the service information, including the required URLs and the application id and secret</p></dd><dt class="param">use10a</dt><dd class="cmt"><p>whether the service should use the 1.0 version of the spec, or the 1.0a version fixing a security issue.
  You must use the version corresponding to the
 </p></dd></dl></div>
-    </li><li name="play.api.libs.oauth.OAuthCalculator" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="OAuthCalculatorextendsAbstractOAuthConsumerwithWSSignatureCalculatorwithProductwithSerializable"></a>
+    </li><li name="play.api.libs.oauth.OAuthCalculator" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="OAuthCalculatorextendsWSSignatureCalculatorwithSignatureCalculator"></a>
       <a id="OAuthCalculator:OAuthCalculator"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">case class</span>
+        <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="OAuthCalculator.html"><span class="name">OAuthCalculator</span></a><span class="params">(<span name="consumerKey">consumerKey: <a href="ConsumerKey.html" class="extype" name="play.api.libs.oauth.ConsumerKey">ConsumerKey</a></span>, <span name="token">token: <a href="RequestToken.html" class="extype" name="play.api.libs.oauth.RequestToken">RequestToken</a></span>)</span><span class="result"> extends <span class="extype" name="oauth.signpost.AbstractOAuthConsumer">AbstractOAuthConsumer</span> with <a href="../ws/WSSignatureCalculator.html" class="extype" name="play.api.libs.ws.WSSignatureCalculator">WSSignatureCalculator</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="OAuthCalculator.html"><span class="name">OAuthCalculator</span></a><span class="result"> extends <a href="../ws/WSSignatureCalculator.html" class="extype" name="play.api.libs.ws.WSSignatureCalculator">WSSignatureCalculator</a> with <span class="extype" name="com.ning.http.client.SignatureCalculator">SignatureCalculator</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.oauth.package@OAuthCalculatorextendsAbstractOAuthConsumerwithWSSignatureCalculatorwithProductwithSerializable" title="Permalink" target="_top">
+      <a href="../../../../index.html#play.api.libs.oauth.package@OAuthCalculatorextendsWSSignatureCalculatorwithSignatureCalculator" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">A signature calculator for the Play WS API.</p><div class="fullcomment"><div class="comment cmt"><p>A signature calculator for the Play WS API.</p><p>Example:</p><pre>WS.url(<span class="lit">"http://example.com/protected"</span>).sign(OAuthCalculator(service, tokens)).get()</pre></div></div>
+      <p class="shortcomment cmt">The public AsyncHttpClient implementation of WSSignatureCalculator.</p>
     </li><li name="play.api.libs.oauth.RequestToken" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="RequestTokenextendsProductwithSerializable"></a>
       <a id="RequestToken:RequestToken"></a>
@@ -182,7 +182,30 @@
 
         
 
-        
+        <div id="values" class="values members">
+              <h3>Value Members</h3>
+              <ol><li name="play.api.libs.oauth.OAuthCalculator" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="OAuthCalculator"></a>
+      <a id="OAuthCalculator:OAuthCalculator"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="OAuthCalculator$.html"><span class="name">OAuthCalculator</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.oauth.package@OAuthCalculator" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Object for creating signature calculator for the Play WS API.</p><div class="fullcomment"><div class="comment cmt"><p>Object for creating signature calculator for the Play WS API.</p><p>Example:</p><pre><span class="kw">import</span> play.api.libs.oauth._
+<span class="kw">val</span> consumerKey: ConsumerKey = ConsumerKey(twitterConsumerKey, twitterConsumerSecret)
+<span class="kw">val</span> requestToken: RequestToken = RequestToken(accessTokenKey, accessTokenSecret)
+WS.url(<span class="lit">"http://example.com/protected"</span>).sign(OAuthCalculator(consumerKey, requestToken)).get()</pre></div></div>
+    </li></ol>
+            </div>
 
         
 

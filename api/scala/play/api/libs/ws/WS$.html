@@ -61,7 +61,7 @@ WS.url(<span class="lit">"http://example.com/feed"</span>).get()</pre><p>Or call
 <span class="kw">val</span> builder = <span class="kw">new</span> NingAsyncHttpClientConfigBuilder(parser.parse())
 <span class="kw">val</span> secureClient: WSClient = <span class="kw">new</span> NingWSClient(builder.build())
 <span class="kw">val</span> response = secureClient.url(<span class="lit">"https://secure.com"</span>).get()</pre><p>Note that the resolution of URL is done through the magnet pattern defined in
-<code>WSRequestHolderMagnet</code>.</p><p>The value returned is a <code>Future[WSResponse]</code>, and you should use Play's asynchronous mechanisms to
+<code>WSRequestMagnet</code>.</p><p>The value returned is a <code>Future[WSResponse]</code>, and you should use Play's asynchronous mechanisms to
 use this response.
 </p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play-ws/src/main/scala/play/api/libs/ws/WS.scala" target="_blank">WS.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
@@ -103,70 +103,7 @@ use this response.
         <div id="allMembers">
         
 
-        <div id="types" class="types members">
-              <h3>Type Members</h3>
-              <ol><li name="play.api.libs.ws.WS.Response" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="Response=play.api.libs.ws.WSResponse"></a>
-      <a id="Response:Response"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">type</span>
-      </span>
-      <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 2.3.0) Please use play.api.libs.ws.WSResponse">Response</span><span class="result"> = <a href="WSResponse.html" class="extype" name="play.api.libs.ws.WSResponse">WSResponse</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.ws.WS$@Response=play.api.libs.ws.WSResponse" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.3.0)</i> Please use play.api.libs.ws.WSResponse</p></dd></dl></div>
-    </li><li name="play.api.libs.ws.WS.WSRequest" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="WSRequest=play.api.libs.ws.WSRequest"></a>
-      <a id="WSRequest:WSRequest"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">type</span>
-      </span>
-      <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 2.3.0) Please use play.api.libs.ws.WSRequest">WSRequest</span><span class="result"> = <a href="WSRequest.html" class="extype" name="play.api.libs.ws.WSRequest">ws.WSRequest</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.ws.WS$@WSRequest=play.api.libs.ws.WSRequest" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.3.0)</i> Please use play.api.libs.ws.WSRequest</p></dd></dl></div>
-    </li><li name="play.api.libs.ws.WS.WSRequestHolder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="WSRequestHolder=play.api.libs.ws.WSRequestHolder"></a>
-      <a id="WSRequestHolder:WSRequestHolder"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">type</span>
-      </span>
-      <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 2.3.0) Please use play.api.libs.ws.WSRequestHolder">WSRequestHolder</span><span class="result"> = <a href="WSRequestHolder.html" class="extype" name="play.api.libs.ws.WSRequestHolder">ws.WSRequestHolder</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.ws.WS$@WSRequestHolder=play.api.libs.ws.WSRequestHolder" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.3.0)</i> Please use play.api.libs.ws.WSRequestHolder</p></dd></dl></div>
-    </li></ol>
-            </div>
+        
 
         
 
@@ -260,18 +197,18 @@ use this response.
 implicit application must be in scope.  Most of the time you will want the current app:</p><pre><span class="kw">import</span> play.api.Play.current
 <span class="kw">val</span> client = WS.client</pre></div></div>
     </li><li name="play.api.libs.ws.WS#clientUrl" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="clientUrl(url:String)(implicitclient:play.api.libs.ws.WSClient):play.api.libs.ws.WSRequestHolder"></a>
-      <a id="clientUrl(String)(WSClient):ws.WSRequestHolder"></a>
+      <a id="clientUrl(url:String)(implicitclient:play.api.libs.ws.WSClient):play.api.libs.ws.WSRequest"></a>
+      <a id="clientUrl(String)(WSClient):WSRequest"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">clientUrl</span><span class="params">(<span name="url">url: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="client">client: <a href="WSClient.html" class="extype" name="play.api.libs.ws.WSClient">WSClient</a></span>)</span><span class="result">: <a href="WSRequestHolder.html" class="extype" name="play.api.libs.ws.WSRequestHolder">ws.WSRequestHolder</a></span>
+        <span class="name">clientUrl</span><span class="params">(<span name="url">url: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="client">client: <a href="WSClient.html" class="extype" name="play.api.libs.ws.WSClient">WSClient</a></span>)</span><span class="result">: <a href="WSRequest.html" class="extype" name="play.api.libs.ws.WSRequest">WSRequest</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.ws.WS$@clientUrl(url:String)(implicitclient:play.api.libs.ws.WSClient):play.api.libs.ws.WSRequestHolder" title="Permalink" target="_top">
+      <a href="../../../../index.html#play.api.libs.ws.WS$@clientUrl(url:String)(implicitclient:play.api.libs.ws.WSClient):play.api.libs.ws.WSRequest" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
@@ -495,18 +432,18 @@ WS.clientUrl(<span class="lit">"http://example.com/feed"</span>)</pre></div><dl 
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="play.api.libs.ws.WS#url" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="url(magnet:play.api.libs.ws.WSRequestHolderMagnet):play.api.libs.ws.WSRequestHolder"></a>
-      <a id="url(WSRequestHolderMagnet):ws.WSRequestHolder"></a>
+      <a id="url(magnet:play.api.libs.ws.WSRequestMagnet):play.api.libs.ws.WSRequest"></a>
+      <a id="url(WSRequestMagnet):WSRequest"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">url</span><span class="params">(<span name="magnet">magnet: <a href="WSRequestHolderMagnet.html" class="extype" name="play.api.libs.ws.WSRequestHolderMagnet">WSRequestHolderMagnet</a></span>)</span><span class="result">: <a href="WSRequestHolder.html" class="extype" name="play.api.libs.ws.WSRequestHolder">ws.WSRequestHolder</a></span>
+        <span class="name">url</span><span class="params">(<span name="magnet">magnet: <a href="WSRequestMagnet.html" class="extype" name="play.api.libs.ws.WSRequestMagnet">WSRequestMagnet</a></span>)</span><span class="result">: <a href="WSRequest.html" class="extype" name="play.api.libs.ws.WSRequest">WSRequest</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.ws.WS$@url(magnet:play.api.libs.ws.WSRequestHolderMagnet):play.api.libs.ws.WSRequestHolder" title="Permalink" target="_top">
+      <a href="../../../../index.html#play.api.libs.ws.WS$@url(magnet:play.api.libs.ws.WSRequestMagnet):play.api.libs.ws.WSRequest" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
@@ -526,18 +463,18 @@ URL implementations at the cost of some complexity.</p><pre><span class="kw">obj
 WS.url(client -&gt; exampleURL).get()</pre></div><dl class="paramcmts block"><dt class="param">magnet</dt><dd class="cmt"><p>a magnet pattern.</p></dd></dl><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="http://spray.io/blog/2012-12-13-the-magnet-pattern/">The magnet pattern</a>
 </p></span></dd></dl></div>
     </li><li name="play.api.libs.ws.WS#url" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="url(url:String)(implicitapp:play.api.Application):play.api.libs.ws.WSRequestHolder"></a>
-      <a id="url(String)(Application):ws.WSRequestHolder"></a>
+      <a id="url(url:String)(implicitapp:play.api.Application):play.api.libs.ws.WSRequest"></a>
+      <a id="url(String)(Application):WSRequest"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">url</span><span class="params">(<span name="url">url: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="app">app: <a href="../../Application.html" class="extype" name="play.api.Application">Application</a></span>)</span><span class="result">: <a href="WSRequestHolder.html" class="extype" name="play.api.libs.ws.WSRequestHolder">ws.WSRequestHolder</a></span>
+        <span class="name">url</span><span class="params">(<span name="url">url: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="app">app: <a href="../../Application.html" class="extype" name="play.api.Application">Application</a></span>)</span><span class="result">: <a href="WSRequest.html" class="extype" name="play.api.libs.ws.WSRequest">WSRequest</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.ws.WS$@url(url:String)(implicitapp:play.api.Application):play.api.libs.ws.WSRequestHolder" title="Permalink" target="_top">
+      <a href="../../../../index.html#play.api.libs.ws.WS$@url(url:String)(implicitapp:play.api.Application):play.api.libs.ws.WSRequest" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
