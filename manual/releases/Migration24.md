@@ -57,6 +57,8 @@ By default Play will automatically handle the wiring of this router for you usin
 
 The injected routes generator also supports the `@` operator on routes, but it has a slightly different meaning (since everything is injected), if you prefix a controller with `@`, instead of that controller being directly injected, a JSR 330 `Provider` for that controller will be injected.  This can be used, for example, to eliminate circular dependency issues, or if you want a new action instantiated per request.
 
+In addition, Play now, by default, generates the router in the `router` package, instead of at the root package.  This is to aid with dependency injection, so if needed it can be manually created or bound, since classes in the root package can't usually be referenced.
+
 ### Dependency Injected Components
 
 While Play 2.4 won't force you to use the dependency injected versions of components, we do encourage you to start switching to them.  The following tables show old static APIs that use global state and new injected APIs that you should be switching to:
@@ -102,9 +104,11 @@ Additionally, Play has now better namespaced a large number of its configuration
 | `application.lang.cookie` | `play.i18n.langCookieName`         |
 | `parsers.text.maxLength`  | `play.http.parser.maxMemoryBuffer` |
 
-## SBT settings
+## SBT plugin
 
 The SBT setting key `playWatchService` has been renamed to `fileWatchService`.
+
+All classes in the SBT plugin are now in the package `play.sbt`.
 
 ## Ebean
 
@@ -384,3 +388,14 @@ This import brings you an implicit `Messages` value as long as there are a `Lang
 ### Java
 
 The API should be backward compatible with your code using Play 2.3 so there is no migration step. Nevertheless, note that you have to start your Play application before using the Java i18n API. That should always be the case when you run your project, however your test code may not always start your application. Please refer to the corresponding [[documentation page|JavaTest]] to know how to start your application before running your tests.
+
+## IntelliJ IDEA
+
+Play no longer includes the sbt idea plugin.  IntelliJ is now able to import sbt projects natively, so we recommend using that instead.  Alternatively, the sbt idea plugin can be manually installed and used, instructions can be found [here](https://github.com/mpeltonen/sbt-idea).
+
+## Distribution
+
+Previously, Play added all the resources to the the `conf` directory in the distribution, but didn't add the `conf` directory to the classpath.  Now Play adds the `conf` directory to the classpath by default.
+
+This can be turned off by setting `PlayKeys.externalizeResources := false`, which will cause no `conf` directory to be created in the distribution, and it will not be on the classpath.  The contents of the applications `conf` directory will still be on the classpath by virtue of the fact that it's included in the applications jar file.
+
