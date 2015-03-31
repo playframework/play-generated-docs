@@ -106,28 +106,23 @@
       </a>
     </span>
       
-    </li><li name="play.filters.csrf.CSRF.Config" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="ConfigextendsProductwithSerializable"></a>
-      <a id="Config:Config"></a>
+    </li><li name="play.filters.csrf.CSRF.ConfigTokenProvider" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ConfigTokenProviderextendsCSRF.TokenProvider"></a>
+      <a id="ConfigTokenProvider:ConfigTokenProvider"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">case class</span>
+        <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="CSRF$$Config.html"><span class="name">Config</span></a><span class="params">(<span name="tokenName">tokenName: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">CSRFConf.TokenName</span></span>, <span name="cookieName">cookieName: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">CSRFConf.CookieName</span></span>, <span name="secureCookie">secureCookie: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">CSRFConf.SecureCookie</span></span>, <span name="createIfNotFound">createIfNotFound: (<a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">CSRFConf.defaultCreateIfNotFound</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="CSRF$$ConfigTokenProvider.html"><span class="name">ConfigTokenProvider</span></a><span class="result"> extends <a href="CSRF$$TokenProvider.html" class="extype" name="play.filters.csrf.CSRF.TokenProvider">TokenProvider</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.filters.csrf.CSRF$@ConfigextendsProductwithSerializable" title="Permalink" target="_top">
+      <a href="../../../index.html#play.filters.csrf.CSRF$@ConfigTokenProviderextendsCSRF.TokenProvider" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">Configuration options for the CSRF filter
-</p><div class="fullcomment"><div class="comment cmt"><p>Configuration options for the CSRF filter
-</p></div><dl class="paramcmts block"><dt class="param">tokenName</dt><dd class="cmt"><p>The key used to store the token in the Play session.  Defaults to csrfToken.</p></dd><dt class="param">cookieName</dt><dd class="cmt"><p>If defined, causes the filter to store the token in a Cookie with this name instead of the session.</p></dd><dt class="param">secureCookie</dt><dd class="cmt"><p>If storing the token in a cookie, whether this Cookie should set the secure flag.  Defaults to
-                    whether the session cookie is configured to be secure.</p></dd><dt class="param">createIfNotFound</dt><dd class="cmt"><p>Whether a new CSRF token should be created if it's not found.  Default creates one if it's
-                        a GET request that accepts HTML.
-</p></dd></dl></div>
+      
     </li><li name="play.filters.csrf.CSRF.ErrorHandler" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="ErrorHandlerextendsAnyRef"></a>
       <a id="ErrorHandler:ErrorHandler"></a>
@@ -145,6 +140,23 @@
       </a>
     </span>
       <p class="shortcomment cmt">This trait handles the CSRF error.</p>
+    </li><li name="play.filters.csrf.CSRF.JavaCSRFErrorHandlerAdapter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="JavaCSRFErrorHandlerAdapterextendsCSRF.ErrorHandler"></a>
+      <a id="JavaCSRFErrorHandlerAdapter:JavaCSRFErrorHandlerAdapter"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="CSRF$$JavaCSRFErrorHandlerAdapter.html"><span class="name">JavaCSRFErrorHandlerAdapter</span></a><span class="result"> extends <a href="CSRF$$ErrorHandler.html" class="extype" name="play.filters.csrf.CSRF.ErrorHandler">ErrorHandler</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csrf.CSRF$@JavaCSRFErrorHandlerAdapterextendsCSRF.ErrorHandler" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      
     </li><li name="play.filters.csrf.CSRF.Token" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="TokenextendsProductwithSerializable"></a>
       <a id="Token:Token"></a>
@@ -181,6 +193,23 @@
     </span>
       <p class="shortcomment cmt">A token provider, for generating and comparing tokens.</p><div class="fullcomment"><div class="comment cmt"><p>A token provider, for generating and comparing tokens.</p><p>This abstraction allows the use of randomised tokens.
 </p></div></div>
+    </li><li name="play.filters.csrf.CSRF.TokenProviderProvider" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="TokenProviderProviderextendsProvider[play.filters.csrf.CSRF.TokenProvider]"></a>
+      <a id="TokenProviderProvider:TokenProviderProvider"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="CSRF$$TokenProviderProvider.html"><span class="name">TokenProviderProvider</span></a><span class="result"> extends <span class="extype" name="javax.inject.Provider">Provider</span>[<a href="CSRF$$TokenProvider.html" class="extype" name="play.filters.csrf.CSRF.TokenProvider">TokenProvider</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csrf.CSRF$@TokenProviderProviderextendsProvider[play.filters.csrf.CSRF.TokenProvider]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      
     </li></ol>
             </div>
 
@@ -256,6 +285,23 @@
       </a>
     </span>
       
+    </li><li name="play.filters.csrf.CSRF.ErrorHandler" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ErrorHandler"></a>
+      <a id="ErrorHandler:ErrorHandler"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="CSRF$$ErrorHandler$.html"><span class="name">ErrorHandler</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csrf.CSRF$@ErrorHandler" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      
     </li><li name="play.filters.csrf.CSRF.SignedTokenProvider" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="SignedTokenProvider"></a>
       <a id="SignedTokenProvider:SignedTokenProvider"></a>
@@ -286,23 +332,6 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.filters.csrf.CSRF$@Token" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
-      </a>
-    </span>
-      
-    </li><li name="play.filters.csrf.CSRF#TokenName" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="TokenName:String"></a>
-      <a id="TokenName:String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">TokenName</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.filters.csrf.CSRF$@TokenName:String" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" />
       </a>
     </span>
@@ -438,6 +467,26 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="play.filters.csrf.CSRF#getToken" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getToken(request:play.mvc.Http.Request):java.util.Optional[play.filters.csrf.CSRF.Token]"></a>
+      <a id="getToken(Request):Optional[Token]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getToken</span><span class="params">(<span name="request">request: <span class="extype" name="play.mvc.Http.Request">Request</span></span>)</span><span class="result">: <span class="extype" name="java.util.Optional">Optional</span>[<a href="CSRF$$Token.html" class="extype" name="play.filters.csrf.CSRF.Token">Token</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csrf.CSRF$@getToken(request:play.mvc.Http.Request):java.util.Optional[play.filters.csrf.CSRF.Token]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Extract token from current Java request
+</p><div class="fullcomment"><div class="comment cmt"><p>Extract token from current Java request
+</p></div><dl class="paramcmts block"><dt class="param">request</dt><dd class="cmt"><p>The request to extract the token from</p></dd><dt>returns</dt><dd class="cmt"><p>The token, if found.
+</p></dd></dl></div>
     </li><li name="play.filters.csrf.CSRF#getToken" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="getToken(request:play.api.mvc.RequestHeader):Option[play.filters.csrf.CSRF.Token]"></a>
       <a id="getToken(RequestHeader):Option[Token]"></a>

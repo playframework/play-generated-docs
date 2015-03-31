@@ -178,7 +178,7 @@ implements <a href="../../../play/filters/csrf/CSRFErrorHandler.html" title="int
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../play/filters/csrf/CSRFErrorHandler.DefaultCSRFErrorHandler.html#DefaultCSRFErrorHandler--">DefaultCSRFErrorHandler</a></span>()</code>&nbsp;</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../play/filters/csrf/CSRFErrorHandler.DefaultCSRFErrorHandler.html#DefaultCSRFErrorHandler-play.filters.csrf.CSRF.CSRFHttpErrorHandler-">DefaultCSRFErrorHandler</a></span>(play.filters.csrf.CSRF.CSRFHttpErrorHandler&nbsp;errorHandler)</code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -196,8 +196,9 @@ implements <a href="../../../play/filters/csrf/CSRFErrorHandler.html" title="int
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code><a href="../../../play/mvc/Result.html" title="interface in play.mvc">Result</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../play/filters/csrf/CSRFErrorHandler.DefaultCSRFErrorHandler.html#handle-java.lang.String-">handle</a></span>(java.lang.String&nbsp;msg)</code>
+<td class="colFirst"><code><a href="../../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;<a href="../../../play/mvc/Result.html" title="interface in play.mvc">Result</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../play/filters/csrf/CSRFErrorHandler.DefaultCSRFErrorHandler.html#handle-play.mvc.Http.RequestHeader-java.lang.String-">handle</a></span>(<a href="../../../play/mvc/Http.RequestHeader.html" title="interface in play.mvc">Http.RequestHeader</a>&nbsp;req,
+      java.lang.String&nbsp;msg)</code>
 <div class="block">Handle the CSRF error.</div>
 </td>
 </tr>
@@ -230,13 +231,14 @@ implements <a href="../../../play/filters/csrf/CSRFErrorHandler.html" title="int
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="DefaultCSRFErrorHandler--">
+<a name="DefaultCSRFErrorHandler-play.filters.csrf.CSRF.CSRFHttpErrorHandler-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>DefaultCSRFErrorHandler</h4>
-<pre>public&nbsp;DefaultCSRFErrorHandler()</pre>
+<pre>@Inject
+public&nbsp;DefaultCSRFErrorHandler(play.filters.csrf.CSRF.CSRFHttpErrorHandler&nbsp;errorHandler)</pre>
 </li>
 </ul>
 </li>
@@ -247,19 +249,21 @@ implements <a href="../../../play/filters/csrf/CSRFErrorHandler.html" title="int
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="handle-java.lang.String-">
+<a name="handle-play.mvc.Http.RequestHeader-java.lang.String-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>handle</h4>
-<pre>public&nbsp;<a href="../../../play/mvc/Result.html" title="interface in play.mvc">Result</a>&nbsp;handle(java.lang.String&nbsp;msg)</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../play/filters/csrf/CSRFErrorHandler.html#handle-java.lang.String-">CSRFErrorHandler</a></code></span></div>
+<pre>public&nbsp;<a href="../../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;<a href="../../../play/mvc/Result.html" title="interface in play.mvc">Result</a>&gt;&nbsp;handle(<a href="../../../play/mvc/Http.RequestHeader.html" title="interface in play.mvc">Http.RequestHeader</a>&nbsp;req,
+                                java.lang.String&nbsp;msg)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../play/filters/csrf/CSRFErrorHandler.html#handle-play.mvc.Http.RequestHeader-java.lang.String-">CSRFErrorHandler</a></code></span></div>
 <div class="block">Handle the CSRF error.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../play/filters/csrf/CSRFErrorHandler.html#handle-java.lang.String-">handle</a></code>&nbsp;in interface&nbsp;<code><a href="../../../play/filters/csrf/CSRFErrorHandler.html" title="interface in play.filters.csrf">CSRFErrorHandler</a></code></dd>
+<dd><code><a href="../../../play/filters/csrf/CSRFErrorHandler.html#handle-play.mvc.Http.RequestHeader-java.lang.String-">handle</a></code>&nbsp;in interface&nbsp;<code><a href="../../../play/filters/csrf/CSRFErrorHandler.html" title="interface in play.filters.csrf">CSRFErrorHandler</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>req</code> - The request</dd>
 <dd><code>msg</code> - message is passed by framework.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>Client gets this result.</dd>

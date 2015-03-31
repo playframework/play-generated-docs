@@ -57,9 +57,11 @@ is sent by the action, that content length is filtered out and ignored.  If the 
 Close, the filter will not attempt to buffer, and will simply rely on the closing the response to signify the end
 of the response.  Otherwise, it will buffer up to the configured chunkedThreshold, which defaults to 100kb.  If the
 response fits in that buffer, the filter will send the content length, otherwise it falls back to sending a chunked
-response, or if the protocol is HTTP/1.0, it closes the connection at the end of the response.</p><p>You can use this filter in your project simply by including it in the Global filters, like this:</p><pre><span class="kw">object</span> Global <span class="kw">extends</span> WithFilters(<span class="kw">new</span> GzipFilter()) {
-  ...
-}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play-filters-helpers/src/main/scala/play/filters/gzip/GzipFilter.scala" target="_blank">GzipFilter.scala</a></dd></dl><div class="toggleContainer block">
+response, or if the protocol is HTTP/1.0, it closes the connection at the end of the response.
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@Singleton</span><span class="args">()</span>
+              
+        </dd><dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play-filters-helpers/src/main/scala/play/filters/gzip/GzipFilter.scala" target="_blank">GzipFilter.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="../../api/mvc/EssentialFilter.html" class="extype" name="play.api.mvc.EssentialFilter">EssentialFilter</a>, <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -100,7 +102,7 @@ response, or if the protocol is HTTP/1.0, it closes the connection at the end of
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="play.filters.gzip.GzipFilter#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;():play.filters.gzip.GzipFilter"></a>
+      <a id="&lt;init&gt;(gzip:play.api.libs.iteratee.Enumeratee[Array[Byte],Array[Byte]],chunkedThreshold:Int,shouldGzip:(play.api.mvc.RequestHeader,play.api.mvc.ResponseHeader)=&gt;Boolean):play.filters.gzip.GzipFilter"></a>
       <a id="&lt;init&gt;:GzipFilter"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -108,15 +110,14 @@ response, or if the protocol is HTTP/1.0, it closes the connection at the end of
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">GzipFilter</span><span class="params">()</span>
+        <span class="name">GzipFilter</span><span class="params">(<span name="gzip">gzip: <a href="../../api/libs/iteratee/Enumeratee.html" class="extype" name="play.api.libs.iteratee.Enumeratee">Enumeratee</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>], <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]] = <span class="symbol"><span class="name"><a href="Gzip$.html">Gzip.gzip(8192)</a></span></span></span>, <span name="chunkedThreshold">chunkedThreshold: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">102400</span></span>, <span name="shouldGzip">shouldGzip: (<a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>, <a href="../../api/mvc/ResponseHeader.html" class="extype" name="play.api.mvc.ResponseHeader">ResponseHeader</a>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">(_, _) =&gt; true</span></span>)</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.filters.gzip.GzipFilter@&lt;init&gt;():play.filters.gzip.GzipFilter" title="Permalink" target="_top">
+      <a href="../../../index.html#play.filters.gzip.GzipFilter@&lt;init&gt;(gzip:play.api.libs.iteratee.Enumeratee[Array[Byte],Array[Byte]],chunkedThreshold:Int,shouldGzip:(play.api.mvc.RequestHeader,play.api.mvc.ResponseHeader)=&gt;Boolean):play.filters.gzip.GzipFilter" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">This allows it to be used from Java
-</p>
+      
     </li><li name="play.filters.gzip.GzipFilter#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="&lt;init&gt;(config:play.filters.gzip.GzipFilterConfig):play.filters.gzip.GzipFilter"></a>
       <a id="&lt;init&gt;:GzipFilter"></a>
@@ -137,43 +138,6 @@ response, or if the protocol is HTTP/1.0, it closes the connection at the end of
                 <span class="name">@Inject</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="play.filters.gzip.GzipFilter#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(chunkedThreshold:Int):play.filters.gzip.GzipFilter"></a>
-      <a id="&lt;init&gt;:GzipFilter"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">new</span>
-      </span>
-      <span class="symbol">
-        <span class="name">GzipFilter</span><span class="params">(<span name="chunkedThreshold">chunkedThreshold: <span class="extype" name="scala.Int">Int</span></span>)</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.filters.gzip.GzipFilter@&lt;init&gt;(chunkedThreshold:Int):play.filters.gzip.GzipFilter" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Allows use with a custom chunked threshold from Java
-</p>
-    </li><li name="play.filters.gzip.GzipFilter#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(gzip:play.api.libs.iteratee.Enumeratee[Array[Byte],Array[Byte]],chunkedThreshold:Int,shouldGzip:(play.api.mvc.RequestHeader,play.api.mvc.ResponseHeader)=&gt;Boolean):play.filters.gzip.GzipFilter"></a>
-      <a id="&lt;init&gt;:GzipFilter"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">new</span>
-      </span>
-      <span class="symbol">
-        <span class="name">GzipFilter</span><span class="params">(<span name="gzip">gzip: <a href="../../api/libs/iteratee/Enumeratee.html" class="extype" name="play.api.libs.iteratee.Enumeratee">Enumeratee</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>], <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]] = <span class="defval" name='<span class="name"><a href="GzipFilter$.html">Gzip.gzip(GzipFilter.DefaultChunkSize)</a></span>'>...</span></span>, <span name="chunkedThreshold">chunkedThreshold: <span class="extype" name="scala.Int">Int</span> = <span class="symbol"><span class="name"><a href="GzipFilter$.html">GzipFilter.DefaultChunkedThreshold</a></span></span></span>, <span name="shouldGzip">shouldGzip: (<a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>, <a href="../../api/mvc/ResponseHeader.html" class="extype" name="play.api.mvc.ResponseHeader">ResponseHeader</a>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">(_, _) =&gt; true</span></span>)</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.filters.gzip.GzipFilter@&lt;init&gt;(gzip:play.api.libs.iteratee.Enumeratee[Array[Byte],Array[Byte]],chunkedThreshold:Int,shouldGzip:(play.api.mvc.RequestHeader,play.api.mvc.ResponseHeader)=&gt;Boolean):play.filters.gzip.GzipFilter" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
-      </a>
-    </span>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">gzip</dt><dd class="cmt"><p>The gzip enumeratee to use.</p></dd><dt class="param">chunkedThreshold</dt><dd class="cmt"><p>The content length threshold, after which the filter will switch to chunking the result.</p></dd><dt class="param">shouldGzip</dt><dd class="cmt"><p>Whether the given request/result should be gzipped.  This can be used, for example, to implement
-                  black/white lists for gzipping by content type.
-</p></dd></dl></div>
     </li></ol>
             </div>
 

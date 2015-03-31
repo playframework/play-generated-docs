@@ -92,9 +92,28 @@ is sent by the action, that content length is filtered out and ignored.  If the 
 Close, the filter will not attempt to buffer, and will simply rely on the closing the response to signify the end
 of the response.  Otherwise, it will buffer up to the configured chunkedThreshold, which defaults to 100kb.  If the
 response fits in that buffer, the filter will send the content length, otherwise it falls back to sending a chunked
-response, or if the protocol is HTTP/1.0, it closes the connection at the end of the response.</p><p>You can use this filter in your project simply by including it in the Global filters, like this:</p><pre><span class="kw">object</span> Global <span class="kw">extends</span> WithFilters(<span class="kw">new</span> GzipFilter()) {
-  ...
-}</pre></div></div>
+response, or if the protocol is HTTP/1.0, it closes the connection at the end of the response.
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@Singleton</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="play.filters.gzip.GzipFilterComponents" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="GzipFilterComponentsextendsAnyRef"></a>
+      <a id="GzipFilterComponents:GzipFilterComponents"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="GzipFilterComponents.html"><span class="name">GzipFilterComponents</span></a><span class="result"> extends <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.gzip.package@GzipFilterComponentsextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">The gzip filter components.</p>
     </li><li name="play.filters.gzip.GzipFilterConfig" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="GzipFilterConfigextendsProductwithSerializable"></a>
       <a id="GzipFilterConfig:GzipFilterConfig"></a>
@@ -104,7 +123,7 @@ response, or if the protocol is HTTP/1.0, it closes the connection at the end of
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="GzipFilterConfig.html"><span class="name">GzipFilterConfig</span></a><span class="params">(<span name="gzip">gzip: <a href="../../api/libs/iteratee/Enumeratee.html" class="extype" name="play.api.libs.iteratee.Enumeratee">Enumeratee</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>], <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]] = <span class="defval" name='<span class="name"><a href="GzipFilter$.html">Gzip.gzip(GzipFilter.DefaultChunkSize)</a></span>'>...</span></span>, <span name="chunkedThreshold">chunkedThreshold: <span class="extype" name="scala.Int">Int</span> = <span class="symbol"><span class="name"><a href="GzipFilter$.html">GzipFilter.DefaultChunkedThreshold</a></span></span></span>, <span name="shouldGzip">shouldGzip: (<a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>, <a href="../../api/mvc/ResponseHeader.html" class="extype" name="play.api.mvc.ResponseHeader">ResponseHeader</a>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">(_, _) =&gt; true</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="GzipFilterConfig.html"><span class="name">GzipFilterConfig</span></a><span class="params">(<span name="gzip">gzip: <a href="../../api/libs/iteratee/Enumeratee.html" class="extype" name="play.api.libs.iteratee.Enumeratee">Enumeratee</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>], <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]] = <span class="symbol"><span class="name"><a href="Gzip$.html">Gzip.gzip(8192)</a></span></span></span>, <span name="chunkedThreshold">chunkedThreshold: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">102400</span></span>, <span name="shouldGzip">shouldGzip: (<a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>, <a href="../../api/mvc/ResponseHeader.html" class="extype" name="play.api.mvc.ResponseHeader">ResponseHeader</a>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">(_, _) =&gt; true</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.filters.gzip.package@GzipFilterConfigextendsProductwithSerializable" title="Permalink" target="_top">
@@ -116,6 +135,44 @@ response, or if the protocol is HTTP/1.0, it closes the connection at the end of
 </p></div><dl class="paramcmts block"><dt class="param">gzip</dt><dd class="cmt"><p>The gzip enumeratee to use.</p></dd><dt class="param">chunkedThreshold</dt><dd class="cmt"><p>The content length threshold, after which the filter will switch to chunking the result.</p></dd><dt class="param">shouldGzip</dt><dd class="cmt"><p>Whether the given request/result should be gzipped.  This can be used, for example, to implement
                   black/white lists for gzipping by content type.
 </p></dd></dl></div>
+    </li><li name="play.filters.gzip.GzipFilterConfigProvider" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="GzipFilterConfigProviderextendsProvider[play.filters.gzip.GzipFilterConfig]"></a>
+      <a id="GzipFilterConfigProvider:GzipFilterConfigProvider"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="GzipFilterConfigProvider.html"><span class="name">GzipFilterConfigProvider</span></a><span class="result"> extends <span class="extype" name="javax.inject.Provider">Provider</span>[<a href="GzipFilterConfig.html" class="extype" name="play.filters.gzip.GzipFilterConfig">GzipFilterConfig</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.gzip.package@GzipFilterConfigProviderextendsProvider[play.filters.gzip.GzipFilterConfig]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">The gzip filter configuration provider.</p><div class="fullcomment"><div class="comment cmt"><p>The gzip filter configuration provider.
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@Singleton</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="play.filters.gzip.GzipFilterModule" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="GzipFilterModuleextendsModule"></a>
+      <a id="GzipFilterModule:GzipFilterModule"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="GzipFilterModule.html"><span class="name">GzipFilterModule</span></a><span class="result"> extends <a href="../../api/inject/Module.html" class="extype" name="play.api.inject.Module">Module</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.gzip.package@GzipFilterModuleextendsModule" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">The gzip filter module.</p>
     </li></ol>
             </div>
 
@@ -154,6 +211,23 @@ response, or if the protocol is HTTP/1.0, it closes the connection at the end of
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.filters.gzip.package@GzipFilter" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      
+    </li><li name="play.filters.gzip.GzipFilterConfig" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="GzipFilterConfig"></a>
+      <a id="GzipFilterConfig:GzipFilterConfig"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="GzipFilterConfig$.html"><span class="name">GzipFilterConfig</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.gzip.package@GzipFilterConfig" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" />
       </a>
     </span>

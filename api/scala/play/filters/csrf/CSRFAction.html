@@ -89,7 +89,7 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="play.filters.csrf.CSRFAction#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(next:play.api.mvc.EssentialAction,conf:play.filters.csrf.CSRF.Config,tokenProvider:play.filters.csrf.CSRF.TokenProvider,errorHandler:=&gt;play.filters.csrf.CSRF.ErrorHandler):play.filters.csrf.CSRFAction"></a>
+      <a id="&lt;init&gt;(next:play.api.mvc.EssentialAction,config:play.filters.csrf.CSRFConfig,tokenProvider:play.filters.csrf.CSRF.TokenProvider,errorHandler:=&gt;play.filters.csrf.CSRF.ErrorHandler):play.filters.csrf.CSRFAction"></a>
       <a id="&lt;init&gt;:CSRFAction"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -97,14 +97,14 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">CSRFAction</span><span class="params">(<span name="next">next: <a href="../../api/mvc/EssentialAction.html" class="extype" name="play.api.mvc.EssentialAction">EssentialAction</a></span>, <span name="conf">conf: <a href="CSRF$$Config.html" class="extype" name="play.filters.csrf.CSRF.Config">Config</a></span>, <span name="tokenProvider">tokenProvider: <a href="CSRF$$TokenProvider.html" class="extype" name="play.filters.csrf.CSRF.TokenProvider">TokenProvider</a> = <span class="symbol">CSRFConf.defaultTokenProvider</span></span>, <span name="errorHandler">errorHandler: ⇒ <a href="CSRF$$ErrorHandler.html" class="extype" name="play.filters.csrf.CSRF.ErrorHandler">ErrorHandler</a> = <span class="symbol"><span class="name"><a href="CSRF$.html">CSRF.DefaultErrorHandler</a></span></span></span>)</span>
+        <span class="name">CSRFAction</span><span class="params">(<span name="next">next: <a href="../../api/mvc/EssentialAction.html" class="extype" name="play.api.mvc.EssentialAction">EssentialAction</a></span>, <span name="config">config: <a href="CSRFConfig.html" class="extype" name="play.filters.csrf.CSRFConfig">CSRFConfig</a> = <span class="symbol"><span class="name"><a href="CSRFConfig$.html">CSRFConfig()</a></span></span></span>, <span name="tokenProvider">tokenProvider: <a href="CSRF$$TokenProvider.html" class="extype" name="play.filters.csrf.CSRF.TokenProvider">TokenProvider</a> = <span class="symbol"><span class="name"><a href="../../package.html">SignedTokenProvider</a></span></span></span>, <span name="errorHandler">errorHandler: ⇒ <a href="CSRF$$ErrorHandler.html" class="extype" name="play.filters.csrf.CSRF.ErrorHandler">ErrorHandler</a> = <span class="symbol"><span class="name"><a href="CSRF$.html">CSRF.DefaultErrorHandler</a></span></span></span>)</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.filters.csrf.CSRFAction@&lt;init&gt;(next:play.api.mvc.EssentialAction,conf:play.filters.csrf.CSRF.Config,tokenProvider:play.filters.csrf.CSRF.TokenProvider,errorHandler:=&gt;play.filters.csrf.CSRF.ErrorHandler):play.filters.csrf.CSRFAction" title="Permalink" target="_top">
+      <a href="../../../index.html#play.filters.csrf.CSRFAction@&lt;init&gt;(next:play.api.mvc.EssentialAction,config:play.filters.csrf.CSRFConfig,tokenProvider:play.filters.csrf.CSRF.TokenProvider,errorHandler:=&gt;play.filters.csrf.CSRF.ErrorHandler):play.filters.csrf.CSRFAction" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">next</dt><dd class="cmt"><p>The composed action that is being protected.</p></dd><dt class="param">conf</dt><dd class="cmt"><p>A CSRF configuration object</p></dd><dt class="param">tokenProvider</dt><dd class="cmt"><p>A token provider to use.</p></dd><dt class="param">errorHandler</dt><dd class="cmt"><p>handling failed token error.
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">next</dt><dd class="cmt"><p>The composed action that is being protected.</p></dd><dt class="param">config</dt><dd class="cmt"><p>The CSRF configuration.</p></dd><dt class="param">tokenProvider</dt><dd class="cmt"><p>A token provider to use.</p></dd><dt class="param">errorHandler</dt><dd class="cmt"><p>handling failed token error.
 </p></dd></dl></div>
     </li></ol>
             </div>
@@ -282,40 +282,6 @@
                 <span class="name">@unspecialized</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="play.filters.csrf.CSRFAction#cookieName" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="cookieName:Option[String]"></a>
-      <a id="cookieName:Option[String]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">cookieName</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.filters.csrf.CSRFAction@cookieName:Option[String]" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
-      </a>
-    </span>
-      
-    </li><li name="play.filters.csrf.CSRFAction#createIfNotFound" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="createIfNotFound:play.api.mvc.RequestHeader=&gt;Boolean"></a>
-      <a id="createIfNotFound:(RequestHeader)⇒Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">createIfNotFound</span><span class="result">: (<a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.filters.csrf.CSRFAction@createIfNotFound:play.api.mvc.RequestHeader=&gt;Boolean" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
-      </a>
-    </span>
-      
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -475,23 +441,6 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="play.filters.csrf.CSRFAction#secureCookie" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="secureCookie:Boolean"></a>
-      <a id="secureCookie:Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">secureCookie</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.filters.csrf.CSRFAction@secureCookie:Boolean" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
-      </a>
-    </span>
-      
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -526,23 +475,6 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Function1 → AnyRef → Any</dd></dl></div>
-    </li><li name="play.filters.csrf.CSRFAction#tokenName" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="tokenName:String"></a>
-      <a id="tokenName:String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">tokenName</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.filters.csrf.CSRFAction@tokenName:String" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
-      </a>
-    </span>
-      
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
