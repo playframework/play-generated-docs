@@ -89,7 +89,7 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="play.api.mvc.ResponseHeader#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(status:Int,_headers:Map[String,String]):play.api.mvc.ResponseHeader"></a>
+      <a id="&lt;init&gt;(status:Int,_headers:Map[String,String],reasonPhrase:Option[String]):play.api.mvc.ResponseHeader"></a>
       <a id="&lt;init&gt;:ResponseHeader"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -97,14 +97,15 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">ResponseHeader</span><span class="params">(<span name="status">status: <span class="extype" name="scala.Int">Int</span></span>, <span name="_headers">_headers: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">Map.empty</span></span>)</span>
+        <span class="name">ResponseHeader</span><span class="params">(<span name="status">status: <span class="extype" name="scala.Int">Int</span></span>, <span name="_headers">_headers: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">Map.empty</span></span>, <span name="reasonPhrase">reasonPhrase: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol"><span class="name"><a href="../../../scala/package.html">None</a></span></span></span>)</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.ResponseHeader@&lt;init&gt;(status:Int,_headers:Map[String,String]):play.api.mvc.ResponseHeader" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.ResponseHeader@&lt;init&gt;(status:Int,_headers:Map[String,String],reasonPhrase:Option[String]):play.api.mvc.ResponseHeader" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">status</dt><dd class="cmt"><p>the response status, e.g. ‘200 OK’</p></dd><dt class="param">_headers</dt><dd class="cmt"><p>the HTTP headers
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">status</dt><dd class="cmt"><p>the response status, e.g. 200</p></dd><dt class="param">_headers</dt><dd class="cmt"><p>the HTTP headers</p></dd><dt class="param">reasonPhrase</dt><dd class="cmt"><p>the human-readable description of status, e.g. &quot;Ok&quot;;
+  if None, the default phrase for the status will be used
 </p></dd></dl></div>
     </li></ol>
             </div>
@@ -207,18 +208,18 @@
               
         </dd></dl></div>
     </li><li name="play.api.mvc.ResponseHeader#copy" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="copy(status:Int,headers:Map[String,String]):play.api.mvc.ResponseHeader"></a>
-      <a id="copy(Int,Map[String,String]):ResponseHeader"></a>
+      <a id="copy(status:Int,headers:Map[String,String],reasonPhrase:Option[String]):play.api.mvc.ResponseHeader"></a>
+      <a id="copy(Int,Map[String,String],Option[String]):ResponseHeader"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">copy</span><span class="params">(<span name="status">status: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">status</span></span>, <span name="headers">headers: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">headers</span></span>)</span><span class="result">: <a href="" class="extype" name="play.api.mvc.ResponseHeader">ResponseHeader</a></span>
+        <span class="name">copy</span><span class="params">(<span name="status">status: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">status</span></span>, <span name="headers">headers: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">headers</span></span>, <span name="reasonPhrase">reasonPhrase: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">reasonPhrase</span></span>)</span><span class="result">: <a href="" class="extype" name="play.api.mvc.ResponseHeader">ResponseHeader</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.ResponseHeader@copy(status:Int,headers:Map[String,String]):play.api.mvc.ResponseHeader" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.ResponseHeader@copy(status:Int,headers:Map[String,String],reasonPhrase:Option[String]):play.api.mvc.ResponseHeader" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" />
       </a>
     </span>
@@ -399,6 +400,25 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="play.api.mvc.ResponseHeader#reasonPhrase" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="reasonPhrase:Option[String]"></a>
+      <a id="reasonPhrase:Option[String]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">reasonPhrase</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.ResponseHeader@reasonPhrase:Option[String]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">the human-readable description of status, e.g.</p><div class="fullcomment"><div class="comment cmt"><p>the human-readable description of status, e.g. &quot;Ok&quot;;
+  if None, the default phrase for the status will be used
+</p></div></div>
     </li><li name="play.api.mvc.ResponseHeader#status" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="status:Int"></a>
       <a id="status:Int"></a>
@@ -415,7 +435,7 @@
         <img src="../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">the response status, e.g.</p><div class="fullcomment"><div class="comment cmt"><p>the response status, e.g. ‘200 OK’</p></div></div>
+      <p class="shortcomment cmt">the response status, e.g.</p><div class="fullcomment"><div class="comment cmt"><p>the response status, e.g. 200</p></div></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
