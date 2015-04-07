@@ -142,10 +142,14 @@ implements <a href="../../play/mvc/Http.Request.html" title="interface in play.m
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../play/mvc/Http.RequestImpl.html#RequestImpl-play.api.mvc.Request-">RequestImpl</a></span>(play.api.mvc.Request&lt;<a href="../../play/mvc/Http.RequestBody.html" title="class in play.mvc">Http.RequestBody</a>&gt;&nbsp;request)</code>&nbsp;</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../play/mvc/Http.RequestImpl.html#RequestImpl-play.api.mvc.Request-">RequestImpl</a></span>(play.api.mvc.Request&lt;<a href="../../play/mvc/Http.RequestBody.html" title="class in play.mvc">Http.RequestBody</a>&gt;&nbsp;request)</code>
+<div class="block">Constructor with a requestbody.</div>
+</td>
 </tr>
 <tr class="rowColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../play/mvc/Http.RequestImpl.html#RequestImpl-play.api.mvc.RequestHeader-">RequestImpl</a></span>(play.api.mvc.RequestHeader&nbsp;header)</code>&nbsp;</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../play/mvc/Http.RequestImpl.html#RequestImpl-play.api.mvc.RequestHeader-">RequestImpl</a></span>(play.api.mvc.RequestHeader&nbsp;header)</code>
+<div class="block">Constructor only based on a header.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -177,7 +181,7 @@ implements <a href="../../play/mvc/Http.Request.html" title="interface in play.m
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/Http.RequestImpl.html#setUsername-java.lang.String-">setUsername</a></span>(java.lang.String&nbsp;username)</code>
-<div class="block">Defines the user name for this request.</div>
+<div class="block">Sets the username.</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
@@ -189,7 +193,7 @@ implements <a href="../../play/mvc/Http.Request.html" title="interface in play.m
 <tr id="i4" class="altColor">
 <td class="colFirst"><code><a href="../../play/mvc/Http.Request.html" title="interface in play.mvc">Http.Request</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/Http.RequestImpl.html#withUsername-java.lang.String-">withUsername</a></span>(java.lang.String&nbsp;username)</code>
-<div class="block">Returns a request updated with specified user name</div>
+<div class="block">This method returns a new request, based on the current underlying with a giving username.</div>
 </td>
 </tr>
 </table>
@@ -235,6 +239,11 @@ implements <a href="../../play/mvc/Http.Request.html" title="interface in play.m
 <li class="blockList">
 <h4>RequestImpl</h4>
 <pre>public&nbsp;RequestImpl(play.api.mvc.RequestHeader&nbsp;header)</pre>
+<div class="block">Constructor only based on a header.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>header</code> - the header from a request</dd>
+</dl>
 </li>
 </ul>
 <a name="RequestImpl-play.api.mvc.Request-">
@@ -244,6 +253,11 @@ implements <a href="../../play/mvc/Http.Request.html" title="interface in play.m
 <li class="blockList">
 <h4>RequestImpl</h4>
 <pre>public&nbsp;RequestImpl(play.api.mvc.Request&lt;<a href="../../play/mvc/Http.RequestBody.html" title="class in play.mvc">Http.RequestBody</a>&gt;&nbsp;request)</pre>
+<div class="block">Constructor with a requestbody.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>request</code> - the body of the request</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -266,6 +280,8 @@ implements <a href="../../play/mvc/Http.Request.html" title="interface in play.m
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../play/mvc/Http.Request.html#body--">body</a></code>&nbsp;in interface&nbsp;<code><a href="../../play/mvc/Http.Request.html" title="interface in play.mvc">Http.Request</a></code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the underlying body, if present otherwise null</dd>
 </dl>
 </li>
 </ul>
@@ -282,6 +298,8 @@ implements <a href="../../play/mvc/Http.Request.html" title="interface in play.m
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../play/mvc/Http.Request.html#username--">username</a></code>&nbsp;in interface&nbsp;<code><a href="../../play/mvc/Http.Request.html" title="interface in play.mvc">Http.Request</a></code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the username</dd>
 </dl>
 </li>
 </ul>
@@ -292,11 +310,12 @@ implements <a href="../../play/mvc/Http.Request.html" title="interface in play.m
 <li class="blockList">
 <h4>setUsername</h4>
 <pre>public&nbsp;void&nbsp;setUsername(java.lang.String&nbsp;username)</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../play/mvc/Http.Request.html#setUsername-java.lang.String-">Http.Request</a></code></span></div>
-<div class="block">Defines the user name for this request.</div>
+<div class="block">Sets the username.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../play/mvc/Http.Request.html#setUsername-java.lang.String-">setUsername</a></code>&nbsp;in interface&nbsp;<code><a href="../../play/mvc/Http.Request.html" title="interface in play.mvc">Http.Request</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>username</code> - the username of the requester</dd>
 </dl>
 </li>
 </ul>
@@ -307,13 +326,14 @@ implements <a href="../../play/mvc/Http.Request.html" title="interface in play.m
 <li class="blockList">
 <h4>withUsername</h4>
 <pre>public&nbsp;<a href="../../play/mvc/Http.Request.html" title="interface in play.mvc">Http.Request</a>&nbsp;withUsername(java.lang.String&nbsp;username)</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../play/mvc/Http.Request.html#withUsername-java.lang.String-">Http.Request</a></code></span></div>
-<div class="block">Returns a request updated with specified user name</div>
+<div class="block">This method returns a new request, based on the current underlying with a giving username.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../play/mvc/Http.Request.html#withUsername-java.lang.String-">withUsername</a></code>&nbsp;in interface&nbsp;<code><a href="../../play/mvc/Http.Request.html" title="interface in play.mvc">Http.Request</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>username</code> - the new user name</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a new request with a request body based on the current request</dd>
 </dl>
 </li>
 </ul>
@@ -329,6 +349,8 @@ implements <a href="../../play/mvc/Http.Request.html" title="interface in play.m
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../play/mvc/Http.Request.html#Z:Z_underlyingRequest--">_underlyingRequest</a></code>&nbsp;in interface&nbsp;<code><a href="../../play/mvc/Http.Request.html" title="interface in play.mvc">Http.Request</a></code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the underlying body of the request</dd>
 </dl>
 </li>
 </ul>
