@@ -87,7 +87,30 @@
         <div id="allMembers">
         
 
-        
+        <div id="types" class="types members">
+              <h3>Type Members</h3>
+              <ol><li name="play.core.server.ServerProvider.Context" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ContextextendsProductwithSerializable"></a>
+      <a id="Context:Context"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="ServerProvider$$Context.html"><span class="name">Context</span></a><span class="params">(<span name="config">config: <a href="ServerConfig.html" class="extype" name="play.core.server.ServerConfig">ServerConfig</a></span>, <span name="appProvider">appProvider: <a href="../ApplicationProvider.html" class="extype" name="play.core.ApplicationProvider">ApplicationProvider</a></span>, <span name="actorSystem">actorSystem: <span class="extype" name="akka.actor.ActorSystem">ActorSystem</span></span>, <span name="stopHook">stopHook: () ⇒ <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="scala.Unit">Unit</span>]</span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.server.ServerProvider$@ContextextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">The context for creating a server.</p><div class="fullcomment"><div class="comment cmt"><p>The context for creating a server. Passed to the <code>createServer</code> method.
+</p></div><dl class="paramcmts block"><dt class="param">config</dt><dd class="cmt"><p>Basic server configuration values.</p></dd><dt class="param">appProvider</dt><dd class="cmt"><p>An object which can be queried to get an Application.</p></dd><dt class="param">actorSystem</dt><dd class="cmt"><p>An ActorSystem that the server can use.</p></dd><dt class="param">stopHook</dt><dd class="cmt"><p>A function that should be called by the server when it stops.
+This function can be used to close resources that are provided to the server.
+</p></dd></dl></div>
+    </li></ol>
+            </div>
 
         
 
@@ -258,6 +281,25 @@
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="play.core.server.ServerProvider#fromConfiguration" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="fromConfiguration(classLoader:ClassLoader,configuration:play.api.Configuration):play.core.server.ServerProvider"></a>
+      <a id="fromConfiguration(ClassLoader,api.Configuration):ServerProvider"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">fromConfiguration</span><span class="params">(<span name="classLoader">classLoader: <span class="extype" name="java.lang.ClassLoader">ClassLoader</span></span>, <span name="configuration">configuration: <a href="../../api/Configuration.html" class="extype" name="play.api.Configuration">api.Configuration</a></span>)</span><span class="result">: <a href="ServerProvider.html" class="extype" name="play.core.server.ServerProvider">ServerProvider</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.server.ServerProvider$@fromConfiguration(classLoader:ClassLoader,configuration:play.api.Configuration):play.core.server.ServerProvider" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Load a server provider from the configuration and classloader.</p><div class="fullcomment"><div class="comment cmt"><p>Load a server provider from the configuration and classloader.
+</p></div><dl class="paramcmts block"><dt class="param">classLoader</dt><dd class="cmt"><p>The ClassLoader to load the class from.</p></dd><dt class="param">configuration</dt><dd class="cmt"><p>The configuration to look the server provider up from.</p></dd><dt>returns</dt><dd class="cmt"><p>The server provider, if one was configured.</p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt">ServerStartException<p>If the ServerProvider couldn't be created.
+</p></span></dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>
@@ -309,25 +351,6 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="play.core.server.ServerProvider#maybeServerProvider" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="maybeServerProvider(classLoader:ClassLoader,configuration:play.api.Configuration):Option[play.core.server.ServerProvider]"></a>
-      <a id="maybeServerProvider(ClassLoader,api.Configuration):Option[ServerProvider]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">maybeServerProvider</span><span class="params">(<span name="classLoader">classLoader: <span class="extype" name="java.lang.ClassLoader">ClassLoader</span></span>, <span name="configuration">configuration: <a href="../../api/Configuration.html" class="extype" name="play.api.Configuration">api.Configuration</a></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="ServerProvider.html" class="extype" name="play.core.server.ServerProvider">ServerProvider</a>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.core.server.ServerProvider$@maybeServerProvider(classLoader:ClassLoader,configuration:play.api.Configuration):Option[play.core.server.ServerProvider]" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Load a server provider from the configuration and classloader.</p><div class="fullcomment"><div class="comment cmt"><p>Load a server provider from the configuration and classloader.
-</p></div><dl class="paramcmts block"><dt class="param">classLoader</dt><dd class="cmt"><p>The ClassLoader to load the class from.</p></dd><dt class="param">configuration</dt><dd class="cmt"><p>The configuration to look the server provider up from.</p></dd><dt>returns</dt><dd class="cmt"><p>The server provider, if one was configured.
-</p></dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>
