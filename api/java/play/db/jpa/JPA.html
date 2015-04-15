@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":9,"i1":9,"i2":9,"i3":9,"i4":9,"i5":9,"i6":9,"i7":9,"i8":9,"i9":41,"i10":41};
+var methods = {"i0":9,"i1":9,"i2":9,"i3":9,"i4":9,"i5":9,"i6":9,"i7":9,"i8":9,"i9":9,"i10":41,"i11":41};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],8:["t4","Concrete Methods"],32:["t6","Deprecated Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -147,54 +147,60 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>static void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../play/db/jpa/JPA.html#bindForCurrentThread-javax.persistence.EntityManager-">bindForCurrentThread</a></span>(javax.persistence.EntityManager&nbsp;em)</code>
-<div class="block">Bind an EntityManager to the current thread.</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../play/db/jpa/JPA.html#bindForAsync-javax.persistence.EntityManager-">bindForAsync</a></span>(javax.persistence.EntityManager&nbsp;em)</code>
+<div class="block">Bind an EntityManager to the current HTTP context.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
+<td class="colFirst"><code>static void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../play/db/jpa/JPA.html#bindForSync-javax.persistence.EntityManager-">bindForSync</a></span>(javax.persistence.EntityManager&nbsp;em)</code>
+<div class="block">Bind an EntityManager to the current HTTP context.</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>static <a href="../../../play/db/jpa/JPAApi.html" title="interface in play.db.jpa">JPAApi</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../play/db/jpa/JPA.html#createFor-java.lang.String-">createFor</a></span>(java.lang.String&nbsp;unitName)</code>
 <div class="block">Create a default JPAApi with name "default" and the given unit name.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>static <a href="../../../play/db/jpa/JPAApi.html" title="interface in play.db.jpa">JPAApi</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../play/db/jpa/JPA.html#createFor-java.lang.String-java.lang.String-">createFor</a></span>(java.lang.String&nbsp;name,
          java.lang.String&nbsp;unitName)</code>
 <div class="block">Create a default JPAApi with the given persistence unit configuration.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>static javax.persistence.EntityManager</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../play/db/jpa/JPA.html#em--">em</a></span>()</code>
 <div class="block">Get the default EntityManager for this thread.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>static javax.persistence.EntityManager</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../play/db/jpa/JPA.html#em-java.lang.String-">em</a></span>(java.lang.String&nbsp;key)</code>
 <div class="block">Get the EntityManager for specified persistence unit for this thread.</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>static <a href="../../../play/db/jpa/JPAApi.html" title="interface in play.db.jpa">JPAApi</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../play/db/jpa/JPA.html#jpaApi--">jpaApi</a></span>()</code>
 <div class="block">Get the JPA api for the current play application.</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../play/db/jpa/JPA.html#withTransaction-play.libs.F.Callback0-">withTransaction</a></span>(<a href="../../../play/libs/F.Callback0.html" title="interface in play.libs">F.Callback0</a>&nbsp;block)</code>
 <div class="block">Run a block of code in a JPA transaction.</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>static &lt;T&gt;&nbsp;T</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../play/db/jpa/JPA.html#withTransaction-play.libs.F.Function0-">withTransaction</a></span>(<a href="../../../play/libs/F.Function0.html" title="interface in play.libs">F.Function0</a>&lt;T&gt;&nbsp;block)</code>
 <div class="block">Run a block of code in a JPA transaction.</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>static &lt;T&gt;&nbsp;T</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../play/db/jpa/JPA.html#withTransaction-java.lang.String-boolean-play.libs.F.Function0-">withTransaction</a></span>(java.lang.String&nbsp;name,
                boolean&nbsp;readOnly,
@@ -202,7 +208,7 @@ extends java.lang.Object</pre>
 <div class="block">Run a block of code in a JPA transaction.</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>static &lt;T&gt;&nbsp;<a href="../../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;T&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../play/db/jpa/JPA.html#withTransactionAsync-play.libs.F.Function0-">withTransactionAsync</a></span>(<a href="../../../play/libs/F.Function0.html" title="interface in play.libs">F.Function0</a>&lt;<a href="../../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;T&gt;&gt;&nbsp;block)</code>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
@@ -210,7 +216,7 @@ extends java.lang.Object</pre>
 </div>
 </td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>static &lt;T&gt;&nbsp;<a href="../../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;T&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../play/db/jpa/JPA.html#withTransactionAsync-java.lang.String-boolean-play.libs.F.Function0-">withTransactionAsync</a></span>(java.lang.String&nbsp;name,
                     boolean&nbsp;readOnly,
@@ -312,14 +318,29 @@ extends java.lang.Object</pre>
 <div class="block">Get the default EntityManager for this thread.</div>
 </li>
 </ul>
-<a name="bindForCurrentThread-javax.persistence.EntityManager-">
+<a name="bindForSync-javax.persistence.EntityManager-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>bindForCurrentThread</h4>
-<pre>public static&nbsp;void&nbsp;bindForCurrentThread(javax.persistence.EntityManager&nbsp;em)</pre>
-<div class="block">Bind an EntityManager to the current thread.</div>
+<h4>bindForSync</h4>
+<pre>public static&nbsp;void&nbsp;bindForSync(javax.persistence.EntityManager&nbsp;em)</pre>
+<div class="block">Bind an EntityManager to the current HTTP context.
+ If no HTTP context is available the EntityManager gets bound to the current thread instead.</div>
+</li>
+</ul>
+<a name="bindForAsync-javax.persistence.EntityManager-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>bindForAsync</h4>
+<pre>public static&nbsp;void&nbsp;bindForAsync(javax.persistence.EntityManager&nbsp;em)</pre>
+<div class="block">Bind an EntityManager to the current HTTP context.</div>
+<dl>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>java.lang.RuntimeException</code> - if no HTTP context is present.</dd>
+</dl>
 </li>
 </ul>
 <a name="withTransaction-play.libs.F.Function0-">
