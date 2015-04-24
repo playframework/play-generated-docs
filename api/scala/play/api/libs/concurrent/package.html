@@ -66,7 +66,25 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="play.api.libs.concurrent.ActorSystemProvider" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+              <ol><li name="play.api.libs.concurrent.ActorRefProvider" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ActorRefProvider[T&lt;:akka.actor.Actor]extendsProvider[akka.actor.ActorRef]"></a>
+      <a id="ActorRefProvider[T&lt;:Actor]:ActorRefProvider[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ActorRefProvider.html"><span class="name">ActorRefProvider</span></a><span class="tparams">[<span name="T">T &lt;: <span class="extype" name="akka.actor.Actor">Actor</span></span>]</span><span class="result"> extends <span class="extype" name="javax.inject.Provider">Provider</span>[<span class="extype" name="akka.actor.ActorRef">ActorRef</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.concurrent.package@ActorRefProvider[T&lt;:akka.actor.Actor]extendsProvider[akka.actor.ActorRef]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Provider for creating actor refs
+</p>
+    </li><li name="play.api.libs.concurrent.ActorSystemProvider" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ActorSystemProviderextendsProvider[akka.actor.ActorSystem]"></a>
       <a id="ActorSystemProvider:ActorSystemProvider"></a>
       <h4 class="signature">
@@ -105,6 +123,68 @@
       </a>
     </span>
       <p class="shortcomment cmt">Components for configuring Akka.</p>
+    </li><li name="play.api.libs.concurrent.AkkaGuiceSupport" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="AkkaGuiceSupportextendsAnyRef"></a>
+      <a id="AkkaGuiceSupport:AkkaGuiceSupport"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="AkkaGuiceSupport.html"><span class="name">AkkaGuiceSupport</span></a><span class="result"> extends <a href="../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.concurrent.package@AkkaGuiceSupportextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Support for binding actors with Guice.</p><div class="fullcomment"><div class="comment cmt"><p>Support for binding actors with Guice.</p><p>Mix this trait in with a Guice AbstractModule to get convenient support for binding actors.  For example:</p><pre><span class="kw">class</span> MyModule <span class="kw">extends</span> AbstractModule <span class="kw">with</span> AkkaGuiceSupport {
+  <span class="kw">def</span> configure = {
+    bindActor[MyActor](<span class="lit">"myActor"</span>)
+  }
+}</pre><p>Then to use the above actor in your application, add a qualified injected dependency, like so:</p><pre><span class="kw">class</span> MyController @Inject() (@Named(<span class="lit">"myActor"</span>) myActor: ActorRef) <span class="kw">extends</span> Controller {
+  ...
+}</pre></div></div>
+    </li><li name="play.api.libs.concurrent.ExecutionContextProvider" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ExecutionContextProviderextendsProvider[scala.concurrent.ExecutionContext]"></a>
+      <a id="ExecutionContextProvider:ExecutionContextProvider"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="ExecutionContextProvider.html"><span class="name">ExecutionContextProvider</span></a><span class="result"> extends <span class="extype" name="javax.inject.Provider">Provider</span>[<span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.concurrent.package@ExecutionContextProviderextendsProvider[scala.concurrent.ExecutionContext]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Provider for the default execution context
+</p><div class="fullcomment"><div class="comment cmt"><p>Provider for the default execution context
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@Singleton</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="play.api.libs.concurrent.InjectedActorSupport" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="InjectedActorSupportextendsAnyRef"></a>
+      <a id="InjectedActorSupport:InjectedActorSupport"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="InjectedActorSupport.html"><span class="name">InjectedActorSupport</span></a><span class="result"> extends <a href="../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.concurrent.package@InjectedActorSupportextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Support for creating injected child actors.</p>
     </li></ol>
             </div>
 

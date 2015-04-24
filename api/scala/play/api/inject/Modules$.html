@@ -47,7 +47,7 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play/src/main/scala/play/api/inject/Module.scala" target="_blank">Module.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.4.0-RC1/framework/src/play/src/main/scala/play/api/inject/Module.scala" target="_blank">Module.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -309,7 +309,8 @@
       </a>
     </span>
       <p class="shortcomment cmt">Locate the modules from the environment.</p><div class="fullcomment"><div class="comment cmt"><p>Locate the modules from the environment.</p><p>Loads all modules specified by the play.modules.enabled property, minus the modules specified by the
-play.modules.disabled property.
+play.modules.disabled property. If the modules have constructors that take an <code>Environment</code> and a
+<code>Configuration</code>, then these constructors are called first; otherwise default constructors are called.
 </p></div><dl class="paramcmts block"><dt class="param">environment</dt><dd class="cmt"><p>The environment.</p></dd><dt class="param">configuration</dt><dd class="cmt"><p>The configuration.</p></dd><dt>returns</dt><dd class="cmt"><p>A sequence of objects. This method makes no attempt to cast or check the types of the modules being loaded,
         allowing ApplicationLoader implementations to reuse the same mechanism to load modules specific to them.
 </p></dd></dl></div>
