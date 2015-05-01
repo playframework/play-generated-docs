@@ -49,9 +49,9 @@
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A simple result, which defines the response header and a body ready to send to the client.
 </p></div><dl class="paramcmts block"><dt class="param">header</dt><dd class="cmt"><p>the response header, which contains status code and HTTP headers</p></dd><dt class="param">body</dt><dd class="cmt"><p>the response body</p></dd><dt class="param">connection</dt><dd class="cmt"><p>the connection semantics to use
-</p></dd></dl><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.4.0-RC1/framework/src/play/src/main/scala/play/api/mvc/Results.scala" target="_blank">Results.scala</a></dd></dl><div class="toggleContainer block">
+</p></dd></dl><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play/src/main/scala/play/api/mvc/Results.scala" target="_blank">Results.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
             <span class="toggle">Known Subclasses</span>
             <div class="subClasses hiddenContent"><a href="Results$Status.html" class="extype" name="play.api.mvc.Results.Status">Status</a></div>
@@ -249,7 +249,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">clone</span><span class="params">()</span><span class="result">: <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
+        <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.Result@clone():Object" title="Permalink" target="_top">
@@ -308,7 +308,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.Result@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
@@ -435,7 +435,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.Result@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
@@ -635,6 +635,24 @@
       <p class="shortcomment cmt">Adds cookies to this result.</p><div class="fullcomment"><div class="comment cmt"><p>Adds cookies to this result. If the result already contains
 cookies then the new cookies will be merged with the old cookies.</p><p>For example:</p><pre>Redirect(routes.Application.index()).withCookies(Cookie(<span class="lit">"theme"</span>, <span class="lit">"blue"</span>))</pre></div><dl class="paramcmts block"><dt class="param">cookies</dt><dd class="cmt"><p>the cookies to add to this result</p></dd><dt>returns</dt><dd class="cmt"><p>the new result
 </p></dd></dl></div>
+    </li><li name="play.api.mvc.Result#withDateHeaders" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="withDateHeaders(headers:(String,org.joda.time.DateTime)*):play.api.mvc.Result"></a>
+      <a id="withDateHeaders((String,DateTime)*):Result"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">withDateHeaders</span><span class="params">(<span name="headers">headers: (<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="org.joda.time.DateTime">DateTime</span>)*</span>)</span><span class="result">: <a href="" class="extype" name="play.api.mvc.Result">Result</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.Result@withDateHeaders(headers:(String,org.joda.time.DateTime)*):play.api.mvc.Result" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Add a header with a DateTime formatted using the default http date format</p><div class="fullcomment"><div class="comment cmt"><p>Add a header with a DateTime formatted using the default http date format</p></div><dl class="paramcmts block"><dt class="param">headers</dt><dd class="cmt"></dd><dt>returns</dt><dd class="cmt"><p>
+</p></dd></dl></div>
     </li><li name="play.api.mvc.Result#withHeaders" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="withHeaders(headers:(String,String)*):play.api.mvc.Result"></a>
       <a id="withHeaders((String,String)*):Result"></a>
@@ -725,7 +743,7 @@ cookies then the new cookies will be merged with the old cookies.</p><p>For exam
             </div><div class="parent" name="scala.Equals">
               <h3>Inherited from <span class="extype" name="scala.Equals">Equals</span></h3>
             </div><div class="parent" name="scala.AnyRef">
-              <h3>Inherited from <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></h3>
+              <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
             </div>

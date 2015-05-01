@@ -47,10 +47,11 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Content type used in default HTML templates.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="javascript:;" target="_blank">Formats.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Content type used in default HTML templates.</p><p>This has 3 states, either it's a tree of elements, or a leaf, if it's a leaf, it's either safe text, or unsafe text
+that needs to be escaped when written out.
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/twirl/tree/master/api/src/main/scala/play/twirl/api/Formats.scala" target="_blank">Formats.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="BufferedContent.html" class="extype" name="play.twirl.api.BufferedContent">BufferedContent</a>[<a href="" class="extype" name="play.twirl.api.Html">Html</a>], <a href="Content.html" class="extype" name="play.twirl.api.Content">Content</a>, <a href="Appendable.html" class="extype" name="play.twirl.api.Appendable">Appendable</a>[<a href="" class="extype" name="play.twirl.api.Html">Html</a>], <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="BufferedContent.html" class="extype" name="play.twirl.api.BufferedContent">BufferedContent</a>[<a href="" class="extype" name="play.twirl.api.Html">Html</a>], <a href="Content.html" class="extype" name="play.twirl.api.Content">Content</a>, <a href="Appendable.html" class="extype" name="play.twirl.api.Appendable">Appendable</a>[<a href="" class="extype" name="play.twirl.api.Html">Html</a>], <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -217,7 +218,7 @@
     </span>
       <p class="shortcomment cmt">The content String.</p><div class="fullcomment"><div class="comment cmt"><p>The content String.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BufferedContent.html" class="extype" name="play.twirl.api.BufferedContent">BufferedContent</a> → <a href="Content.html" class="extype" name="play.twirl.api.Content">Content</a></dd></dl></div>
-    </li><li name="play.twirl.api.BufferedContent#buildString" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="play.twirl.api.Html#buildString" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="buildString(builder:StringBuilder):Unit"></a>
       <a id="buildString(StringBuilder):Unit"></a>
       <h4 class="signature">
@@ -226,14 +227,20 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">buildString</span><span class="params">(<span name="builder">builder: <a href="../../../scala/package.html#StringBuilder=StringBuilder" class="extmbr" name="scala.StringBuilder">StringBuilder</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">buildString</span><span class="params">(<span name="builder">builder: <span class="extype" name="scala.StringBuilder">StringBuilder</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.twirl.api.Html@buildString(builder:StringBuilder):Unit" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="BufferedContent.html" class="extype" name="play.twirl.api.BufferedContent">BufferedContent</a></dd></dl></div>
+      <p class="shortcomment cmt">We override buildString for performance - allowing text to not be escaped until passed in the final StringBuilder
+to encode it into.</p><div class="fullcomment"><div class="comment cmt"><p>We override buildString for performance - allowing text to not be escaped until passed in the final StringBuilder
+to encode it into.</p><p>An alternative way of implementing this would be to make HtmlFormat.escape return a subclass of Html with a custom
+buildString implementation.  While this does significantly improve performance if a template needs to escape a lot
+of Strings, if it doesn't, performance actually goes down (measured 10%), due to the fact that the JVM can't
+optimise the invocation of buildString as well because there are two different possible implementations.
+</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="" class="extype" name="play.twirl.api.Html">Html</a> → <a href="BufferedContent.html" class="extype" name="play.twirl.api.BufferedContent">BufferedContent</a></dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
@@ -243,7 +250,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">clone</span><span class="params">()</span><span class="result">: <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
+        <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.twirl.api.Html@clone():Object" title="Permalink" target="_top">
@@ -301,7 +308,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.twirl.api.Html@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
@@ -309,8 +316,8 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.AnyRef#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="equals(x$1:Any):Boolean"></a>
+    </li><li name="play.twirl.api.BufferedContent#equals" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="equals(obj:Any):Boolean"></a>
       <a id="equals(Any):Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -318,14 +325,14 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+        <span class="name">equals</span><span class="params">(<span name="obj">obj: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.twirl.api.Html@equals(x$1:Any):Boolean" title="Permalink" target="_top">
+      <a href="../../../index.html#play.twirl.api.Html@equals(obj:Any):Boolean" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BufferedContent.html" class="extype" name="play.twirl.api.BufferedContent">BufferedContent</a> → AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
@@ -366,7 +373,7 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="play.twirl.api.BufferedContent#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <a id="hashCode():Int"></a>
       <h4 class="signature">
@@ -382,7 +389,7 @@
         <img src="../../../lib/permalink.png" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BufferedContent.html" class="extype" name="play.twirl.api.BufferedContent">BufferedContent</a> → AnyRef → Any</dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -409,7 +416,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.twirl.api.Html@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
@@ -587,7 +594,7 @@
             </div><div class="parent" name="play.twirl.api.Appendable">
               <h3>Inherited from <a href="Appendable.html" class="extype" name="play.twirl.api.Appendable">Appendable</a>[<a href="" class="extype" name="play.twirl.api.Html">Html</a>]</h3>
             </div><div class="parent" name="scala.AnyRef">
-              <h3>Inherited from <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></h3>
+              <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
             </div>

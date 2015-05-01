@@ -30,7 +30,7 @@ If you were previously using Play's specs2 support, you now need to explicitly a
 ```scala
 libraryDependencies += specs2 % Test
 
-resolvers += "scalaz-bintray" at "http://dl.bintray.com/scalaz/releases"
+resolvers += "scalaz-bintray" at "https://dl.bintray.com/scalaz/releases"
 ```
 
 ### IDEs: Eclipse and IntelliJ IDEA
@@ -45,19 +45,38 @@ IntelliJ is now able to import sbt projects natively, so we recommend using that
 
 The SBT setting key `playWatchService` has been renamed to `fileWatchService`.
 
+Also the corresponding class has changed. To set the FileWatchService to poll every two seconds, use it like this:
+```scala
+PlayKeys.fileWatchService := play.runsupport.FileWatchService.sbt(2000)
+```
+
 All classes in the SBT plugin are now in the package `play.sbt`, this is particularly pertinent if using `.scala` files to configure your build..
 
 ### Ebean dependency
 
-Ebean has been pulled out into an external project, to allow it to have a lifecycle independent of Play's own lifecycle.  The ebean bytecode enhancement functionality has also been extracted out of the Play sbt plugin into its own plugin.
+Ebean has been pulled out into an external project, to allow it to have a lifecycle independent of Play's own lifecycle.  The Ebean bytecode enhancement functionality has also been extracted out of the Play sbt plugin into its own plugin.
 
-To migrate an existing Play project that uses ebean to use the new external ebean plugin, remove `javaEbean` from your `libraryDependencies` in `build.sbt`, and add the following to `project/plugins.sbt`:
+To migrate an existing Play project that uses Ebean to use the new external Ebean plugin, remove `javaEbean` from your `libraryDependencies` in `build.sbt`, and add the following to `project/plugins.sbt`:
 
 ```scala
 addSbtPlugin("com.typesafe.sbt" % "sbt-play-ebean" % "1.0.0")
 ```
 
-Additionally, Ebean has been upgraded to 4.2.0, which pulls in a few of the features that Play previously added itself, including the `Model` class.  Consequently, the Play `Model` class has been deprecated, in favour of using `org.avaje.ebean.Model`.
+After that, enable Ebean plugin for your project:
+
+```scala
+lazy val myProject = (project in file("."))
+  .enablePlugins(PlayJava, SbtEbean)
+```
+
+And finally, configure Ebean mapped classes as a list instead of a comma separated string (which is still supported but was deprecated):
+
+```
+ebean.default = ["models.*"]
+ebean.orders = ["models.Order", "models.OrderItem"]
+```
+
+Additionally, Ebean has been upgraded to 4.5.x, which pulls in a few of the features that Play previously added itself, including the `Model` class.  Consequently, the Play `Model` class has been deprecated, in favour of using `org.avaje.ebean.Model`.
 
 ### Anorm dependency
 
@@ -68,6 +87,14 @@ libraryDependencies += "com.typesafe.play" %% "anorm" % "2.4.0"
 ```
 
 For more details about what's changed in Anorm, see [[here|Migration24#Anorm].
+
+### Bytecode enhancement
+
+[Play's bytecode enhancement](https://github.com/playframework/play-enhancer), which generates getters and setters for Java properties, has been pulled out of the core of Play into a separately managed project that can have its own lifecycle. To enable it:
+
+```scala
+enablePlugins(PlayJava, PlayEnhancer)
+```
 
 ## Dependency Injection
 
@@ -111,7 +138,7 @@ class Routes(application: controllers.Application, assets: controllers.Assets) e
 }
 ```
 
-The default is to use the static routes generator.  You must use this if you are not ready to migrate all of your Java actions to be non static methods, or your Scala actions to be classes.  In most cases, this is quite straight forward to do, in Java it requires deleting the `static` keyword, in Scala it requires changing the word `object` to `class`.  The static router still supports the `@` operator, which will tell it to look up the action from a runtime `Injector`, you may find this useful if you are in a transitional period where some of your actions are static and some are injected.
+The default is to use the static routes generator.  You must use this if you are not ready to migrate all of your Java actions to be non static methods, or your Scala actions to be classes.  In most cases, this is quite straightforward to do, in Java it requires deleting the `static` keyword, in Scala it requires changing the word `object` to `class`.  The static router still supports the `@` operator, which will tell it to look up the action from a runtime `Injector`, you may find this useful if you are in a transitional period where some of your actions are static and some are injected.
 
 If you wish to switch to the injected generator, add the following to your build settings in `build.sbt`:
 
@@ -183,7 +210,7 @@ See the [[Java|JavaAkka]] or [[Scala|ScalaAkka]] Akka page for more information.
 
 ### Logging
 
-Logging is now configure solely via [logback configuration files](http://logback.qos.ch/manual/configuration.html).
+Logging is now configured solely via [logback configuration files](http://logback.qos.ch/manual/configuration.html).
 
 ## JDBC connection pool
 
@@ -219,6 +246,41 @@ In all cases, when one of the max length parsing properties is exceeded, a 413 r
 
 Additionally, Java actions may now declare a `BodyParser.Of.maxLength` value that is greater than the configured max length.
 
+## JSON API changes
+
+The semantics of JSON lookups have changed slightly. `JsUndefined` has been removed from the `JsValue` type hierarchy and all lookups of the form `jsv \ foo` or `jsv(bar)` have been moved to [`JsLookup`](api/java/play/api/libs/json/JsLookup.html). They now return a [`JsLookupResult`](api/java/play/api/libs/json/JsLookupResult.html) instead of a `JsValue`.
+
+If you have code of the form
+
+```scala
+val v: JsValue = json \ "foo" \ "bar"
+```
+
+the following code is equivalent, if you know the property exists:
+
+```scala
+val v: JsValue = (json \ "foo" \ "bar").get
+```
+
+If you don't know the property exists, we recommend using pattern matching or the methods on [`JsLookupResult`](api/java/play/api/libs/json/JsLookupResult.html) to safely handle the `JsUndefined` case, e.g.
+
+```scala
+val vOpt = Option[JsValue] = (json \ "foo" \ "bar").toOption
+```
+
+### JsLookup
+
+All JSON traversal methods have been moved to the [`JsLookup`](api/java/play/api/libs/json/JsLookup.html) class, which is implicitly applied to all values of type `JsValue` or `JsLookupResult`. In addition to the `apply`, `\`, and `\\` methods, the `head`, `tail`, and `last` methods have been added for JSON arrays. All methods except `\\` return a [`JsLookupResult`](api/java/play/api/libs/json/JsLookupResult.html), a wrapper for `JsValue` that helps with handling undefined values.
+
+The methods `as[A]`, `asOpt[A]`, `validate[A]` also exist on `JsLookup`, so code like the below should require no source changes:
+
+```scala
+val foo: Option[FooBar] = (json \ "foo" \ "bar").asOpt[FooBar]
+val bar: JsResult[Baz] = (json \ "baz").validate[Baz]
+```
+
+As a result of these changes, your code can now assume that all values of type `JsValue` are serializable to JSON.
+
 ## Testing changes
 
 [`FakeRequest`](api/java/play/test/FakeRequest.html) has been replaced by [`RequestBuilder`](api/java/play/mvc/Http.RequestBuilder.html).
@@ -227,11 +289,11 @@ The reverse ref router used in Java tests has been removed. Any call to `Helpers
 
 ## Java TimeoutExceptions
 
-If you use the Java API, the [`F.Promise`](api/java/play/libs/F.Promise.html) class now throws unchecked [`F.PromiseTimeoutException`s](api/java/play/libs/F.PromiseTimeoutException.html) instead of Java's checked [`TimeoutException`s](http://docs.oracle.com/javase/6/docs/api/java/util/concurrent/TimeoutException.html). The `TimeoutExceptions`s which were previously used were not properly declared with the `throws` keyword. Rather than changing the API to use the `throws` keyword, which would mean users would have to declare `throws` on their methods, the exception was changed to a new unchecked type instead. See [#1227](https://github.com/playframework/playframework/pull/1227) for more information.
+If you use the Java API, the [`F.Promise`](api/java/play/libs/F.Promise.html) class now throws unchecked [`F.PromiseTimeoutException`s](api/java/play/libs/F.PromiseTimeoutException.html) instead of Java's checked [`TimeoutException`s](http://docs.oracle.com/javase/8/docs/api/java/util/concurrent/TimeoutException.html). The `TimeoutExceptions`s which were previously used were not properly declared with the `throws` keyword. Rather than changing the API to use the `throws` keyword, which would mean users would have to declare `throws` on their methods, the exception was changed to a new unchecked type instead. See [#1227](https://github.com/playframework/playframework/pull/1227) for more information.
 
 | Old API | New API | Comments |
 | ------- | --------| -------- |
-| [`TimeoutException`](http://docs.oracle.com/javase/6/docs/api/java/util/concurrent/TimeoutException.html) | [`F.PromiseTimeoutException`](api/java/play/libs/F.PromiseTimeoutException.html) | |
+| [`TimeoutException`](http://docs.oracle.com/javase/8/docs/api/java/util/concurrent/TimeoutException.html) | [`F.PromiseTimeoutException`](api/java/play/libs/F.PromiseTimeoutException.html) | |
 
 ## Crypto APIs
 
@@ -249,7 +311,7 @@ If you wish to continue using the older format of encryption decryption, here is
 
 The new Anorm version includes various fixes and improvements.
 
-Following [BatchSQL #3016](https://github.com/playframework/playframework/commit/722cd55a3a5369f911f5d11f7c93ba4bf100ca23), `SqlQuery` case class is refactored as a trait with companion object. 
+Following [BatchSQL #3016](https://github.com/playframework/playframework/commit/722cd55a3a5369f911f5d11f7c93ba4bf100ca23), `SqlQuery` case class is refactored as a trait with companion object.
 Consequently, `BatchSql` is now created by passing a raw statement which is validated internally.
 
 ```scala
@@ -265,7 +327,7 @@ BatchSql("SQL")
 
 ### Parsing
 
-It's now possible to get value from `Row` using column index.
+It's now possible to get values from `Row` using the column index.
 
 ```scala
 val res: (String, String) = SQL("SELECT * FROM Test").map(row =>
@@ -284,11 +346,11 @@ val res: (String, Int) = SQL"SELECT text, count AS i".map(row =>
 New `fold` and `foldWhile` functions to work with result stream.
 
 ```scala
-val countryCount: Either[List[Throwable], Long] = 
+val countryCount: Either[List[Throwable], Long] =
   SQL"Select count(*) as c from Country".fold(0l) { (c, _) => c + 1 }
 
 val books: Either[List[Throwable], List[String]] =
- SQL("Select name from Books").foldWhile(List[String]()) { (list, row) => 
+ SQL("Select name from Books").foldWhile(List[String]()) { (list, row) =>
   foldWhile(List[String]()) { (list, row) =>
     if (list.size == 100) (list -> false) // stop with `list`
     else (list := row[String]("name")) -> true // continue with one more name
@@ -348,20 +410,20 @@ SQL"UPDATE Test SET langs = $arr".execute()
 New conversions are available to pass `List[T]`, `Set[T]`, `SortedSet[T]`, `Stream[T]` and `Vector[T]` as multi-value parameter.
 
 ```scala
-SQL("SELECT * FROM Test WHERE cat IN ({categories})").
- on('categories -> List(1, 3, 4)
+SQL("SELECT * FROM Test WHERE cat IN ({categories})")
+ .on('categories -> List(1, 3, 4))
 
-SQL("SELECT * FROM Test WHERE cat IN ({categories})").
- on('categories -> Set(1, 3, 4)
+SQL("SELECT * FROM Test WHERE cat IN ({categories})")
+ .on('categories -> Set(1, 3, 4))
 
-SQL("SELECT * FROM Test WHERE cat IN ({categories})").
- on('categories -> SortedSet("a", "b", "c")
+SQL("SELECT * FROM Test WHERE cat IN ({categories})")
+ .on('categories -> SortedSet("a", "b", "c"))
 
-SQL("SELECT * FROM Test WHERE cat IN ({categories})").
- on('categories -> Stream(1, 3, 4)
+SQL("SELECT * FROM Test WHERE cat IN ({categories})")
+ .on('categories -> Stream(1, 3, 4))
 
-SQL("SELECT * FROM Test WHERE cat IN ({categories})").
- on('categories -> Vector("a", "b", "c")
+SQL("SELECT * FROM Test WHERE cat IN ({categories})")
+ .on('categories -> Vector("a", "b", "c"))
 ```
 
 **Numeric and boolean types**
@@ -422,12 +484,17 @@ This means that you should change your templates to take an implicit `Messages` 
 From you controllers you can get such an implicit `Messages` value by mixing the [`play.api.i18n.I18nSupport`](api/scala/index.html#play.api.i18n.I18nSupport) trait in your controller that gives you an implicit `Messages` value as long as there is a `RequestHeader` value in the implicit scope. The `I18nSupport` trait has an abstract member `def messagesApi: MessagesApi` so your code will typically look like the following:
 
 ```scala
-class MyController(val messagesApi: MessagesApi) extends I18nSupport {
-  // ...
+import javax.inject.Inject
+import play.api.i18n.{MessagesApi, I18nSupport}
+import play.api.mvc.Controller
+
+class MyController @Inject() (val messagesApi: MessagesApi)
+  extends Controller with I18nSupport {
+
 }
 ```
 
-A simpler migration path is also supported if you want your controller to be still an `object` instead of a `class` or don’t want to use the `I18nSupport` trait. Just add the following import:
+A simpler migration path is also supported if you want your controller to be still use static controller objects rather than injected classes with the `I18nSupport` trait. After modifying your templates to take an implicit `Messages` parameter, as described above, add the following import to your controllers:
 
 ```scala
 import play.api.i18n.Messages.Implicits._

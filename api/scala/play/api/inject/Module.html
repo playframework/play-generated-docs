@@ -43,23 +43,23 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">Module</span><span class="result"> extends <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
+        <span class="name">Module</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A Play dependency injection module.</p><p>Dependency injection modules can be used by Play plugins to provide bindings for JSR-330 compliant
 ApplicationLoaders.  Any plugin that wants to provide components that a Play application can use may implement
-one of these.</p><p>Providing custom modules can be done by creating a resource on the classpath called <code>play.modules</code>. This file is
-expected to contain a list of module classes, one class per line.  For example:</p><pre>com.example.FooModule
-com.example.BarModule</pre><p>It is strongly advised that in addition to providing a module for JSR-330 DI, that plugins also provide a Scala
+one of these.</p><p>Providing custom modules can be done by appending their fully qualified class names to <code>play.modules.enabled</code> in
+<code>application.conf</code>, for example</p><pre>play.modules.enabled += <span class="lit">"com.example.FooModule"</span>
+play.modules.enabled += <span class="lit">"com.example.BarModule"</span></pre><p>It is strongly advised that in addition to providing a module for JSR-330 DI, that plugins also provide a Scala
 trait that constructs the modules manually.  This allows for use of the module without needing a runtime dependency
 injection provider.</p><p>The <code>bind</code> methods are provided only as a DSL for specifying bindings. For example:</p><pre><span class="kw">def</span> bindings(env: Environment, conf: Configuration) = <span class="std">Seq</span>(
   bind[Foo].to[FooImpl],
   bind[Bar].to(<span class="kw">new</span> Bar()),
   bind[Foo].qualifiedWith[SomeQualifier].to[OtherFoo]
-)</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.4.0-RC1/framework/src/play/src/main/scala/play/api/inject/Module.scala" target="_blank">Module.scala</a></dd></dl><div class="toggleContainer block">
+)</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play/src/main/scala/play/api/inject/Module.scala" target="_blank">Module.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
             <span class="toggle">Known Subclasses</span>
             <div class="subClasses hiddenContent"><a href="../db/BoneCPModule.html" class="extype" name="play.api.db.BoneCPModule">BoneCPModule</a>, <a href="BuiltinModule.html" class="extype" name="play.api.inject.BuiltinModule">BuiltinModule</a>, <a href="../../filters/cors/CORSModule.html" class="extype" name="play.filters.cors.CORSModule">CORSModule</a>, <a href="../../filters/csrf/CSRFModule.html" class="extype" name="play.filters.csrf.CSRFModule">CSRFModule</a>, <a href="../db/DBModule.html" class="extype" name="play.api.db.DBModule">DBModule</a>, <a href="../cache/EhCacheModule.html" class="extype" name="play.api.cache.EhCacheModule">EhCacheModule</a>, <a href="../db/evolutions/EvolutionsModule.html" class="extype" name="play.api.db.evolutions.EvolutionsModule">EvolutionsModule</a>, <a href="../../filters/gzip/GzipFilterModule.html" class="extype" name="play.filters.gzip.GzipFilterModule">GzipFilterModule</a>, <a href="../db/HikariCPModule.html" class="extype" name="play.api.db.HikariCPModule">HikariCPModule</a>, <a href="../i18n/I18nModule.html" class="extype" name="play.api.i18n.I18nModule">I18nModule</a>, <a href="../libs/ws/ning/NingWSModule.html" class="extype" name="play.api.libs.ws.ning.NingWSModule">NingWSModule</a>, <a href="../../core/ObjectMapperModule.html" class="extype" name="play.core.ObjectMapperModule">ObjectMapperModule</a>, <a href="../libs/openid/OpenIDModule.html" class="extype" name="play.api.libs.openid.OpenIDModule">OpenIDModule</a>, <a href="../../filters/headers/SecurityHeadersModule.html" class="extype" name="play.filters.headers.SecurityHeadersModule">SecurityHeadersModule</a>, <a href="../db/slick/SlickModule.html" class="extype" name="play.api.db.slick.SlickModule">SlickModule</a></div>
@@ -133,7 +133,7 @@ injection provider.</p><p>The <code>bind</code> methods are provided only as a D
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">bindings</span><span class="params">(<span name="environment">environment: <a href="../Environment.html" class="extype" name="play.api.Environment">Environment</a></span>, <span name="configuration">configuration: <a href="../Configuration.html" class="extype" name="play.api.Configuration">Configuration</a></span>)</span><span class="result">: <a href="../../../scala/package.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<a href="Binding.html" class="extype" name="play.api.inject.Binding">Binding</a>[_]]</span>
+        <span class="name">bindings</span><span class="params">(<span name="environment">environment: <a href="../Environment.html" class="extype" name="play.api.Environment">Environment</a></span>, <span name="configuration">configuration: <a href="../Configuration.html" class="extype" name="play.api.Configuration">Configuration</a></span>)</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<a href="Binding.html" class="extype" name="play.api.inject.Binding">Binding</a>[_]]</span>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.Module@bindings(environment:play.api.Environment,configuration:play.api.Configuration):Seq[play.api.inject.Binding[_]]" title="Permalink" target="_top">
@@ -262,7 +262,7 @@ gets bound depends on some configuration, this may be read to control that.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">clone</span><span class="params">()</span><span class="result">: <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
+        <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.Module@clone():Object" title="Permalink" target="_top">
@@ -285,7 +285,7 @@ gets bound depends on some configuration, this may be read to control that.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.Module@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
@@ -393,7 +393,7 @@ gets bound depends on some configuration, this may be read to control that.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.Module@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
@@ -444,7 +444,7 @@ gets bound depends on some configuration, this may be read to control that.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">seq</span><span class="params">(<span name="bindings">bindings: <a href="Binding.html" class="extype" name="play.api.inject.Binding">Binding</a>[_]*</span>)</span><span class="result">: <a href="../../../scala/package.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<a href="Binding.html" class="extype" name="play.api.inject.Binding">Binding</a>[_]]</span>
+        <span class="name">seq</span><span class="params">(<span name="bindings">bindings: <a href="Binding.html" class="extype" name="play.api.inject.Binding">Binding</a>[_]*</span>)</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<a href="Binding.html" class="extype" name="play.api.inject.Binding">Binding</a>[_]]</span>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.Module@seq(bindings:play.api.inject.Binding[_]*):Seq[play.api.inject.Binding[_]]" title="Permalink" target="_top">
@@ -569,7 +569,7 @@ gets bound depends on some configuration, this may be read to control that.
 
         <div id="inheritedMembers">
         <div class="parent" name="scala.AnyRef">
-              <h3>Inherited from <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></h3>
+              <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
             </div>

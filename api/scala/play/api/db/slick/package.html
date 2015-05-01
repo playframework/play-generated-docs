@@ -49,7 +49,7 @@
       
           <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/play-slick/tree/master/src/main/scala/play/api/db/slick/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -89,192 +89,173 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="play.api.db.slick.CurrentDBAction" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="CurrentDBActionextendsPredicatedDBAction"></a>
-      <a id="CurrentDBAction:CurrentDBAction"></a>
+              <ol><li name="play.api.db.slick.DatabaseConfigProvider" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="DatabaseConfigProviderextendsAnyRef"></a>
+      <a id="DatabaseConfigProvider:DatabaseConfigProvider"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="CurrentDBAction.html"><span class="name">CurrentDBAction</span></a><span class="result"> extends <a href="PredicatedDBAction.html" class="extype" name="play.api.db.slick.PredicatedDBAction">PredicatedDBAction</a></span>
+        <a href="DatabaseConfigProvider.html"><span class="name">DatabaseConfigProvider</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.db.slick.package@CurrentDBActionextendsPredicatedDBAction" title="Permalink" target="_top">
+      <a href="../../../../index.html#play.api.db.slick.package@DatabaseConfigProviderextendsAnyRef" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">Defines the DBAction default behaviour</p>
-    </li><li name="play.api.db.slick.DBAction" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="DBActionextendsPredicatedDBAction"></a>
-      <a id="DBAction:DBAction"></a>
+      <p class="shortcomment cmt">Generic interface for a provider of a <code>DatabaseConfig</code> instance.</p><div class="fullcomment"><div class="comment cmt"><p>Generic interface for a provider of a <code>DatabaseConfig</code> instance. A <code>DatabaseConfig</code> is Slick type
+that bundles a database and driver.</p><p>Usually, you shouldn't need to create instances of <code>DatabaseConfigProvider</code> explicitly. Rather, you
+should rely on dependency injection. If you don't want to use dependency injection, then use the
+companion object and call <code>DatabaseConfigProvider.get</code>.</p><h4>Example</h4><p>Here is an example of how you can use dependency injection to obtain an instance of <code>DatabaseConfigProvider</code>,
+for the database named <code>default</code> in your **application.conf**.</p><pre><span class="kw">class</span> Application @Inject()(<span class="kw">protected</span> <span class="kw">val</span> dbConfigProvider: DatabaseConfigProvider) {
+ <span class="cmt">// ...</span>
+}</pre><p>While here is an example for injecting a <code>DatabaseConfigProvider</code> for a database named <code>orders</code> in your
+**application.conf**.</p><pre><span class="kw">import</span> play.db.NamedDatabase
+<span class="kw">class</span> Application @Inject()(@NamedDatabase(<span class="lit">"orders"</span>) <span class="kw">protected</span> <span class="kw">val</span> dbConfigProvider: DatabaseConfigProvider) {
+ <span class="cmt">// ...</span>
+}</pre></div></div>
+    </li><li name="play.api.db.slick.DbName" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DbNameextendsAnyValwithProductwithSerializable"></a>
+      <a id="DbName:DbName"></a>
       <h4 class="signature">
       <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">class</span>
-      </span>
-      <span class="symbol">
-        <a href="DBAction.html"><span class="name">DBAction</span></a><span class="result"> extends <a href="PredicatedDBAction.html" class="extype" name="play.api.db.slick.PredicatedDBAction">PredicatedDBAction</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.db.slick.package@DBActionextendsPredicatedDBAction" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">DB Action, decoupled from Application</p><div class="fullcomment"><div class="comment cmt"><p>DB Action, decoupled from Application</p><p> Useful for tests, see TestableDBActionTest.scala
-</p></div></div>
-    </li><li name="play.api.db.slick.DBAttributes" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="DBAttributesextendsProductwithSerializable"></a>
-      <a id="DBAttributes:DBAttributes"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
+        <span class="modifier">final </span>
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="DBAttributes.html"><span class="name">DBAttributes</span></a><span class="params">(<span name="executionContext">executionContext: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>, <span name="maybeThreadPool">maybeThreadPool: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="java.util.concurrent.ThreadPoolExecutor">ThreadPoolExecutor</span>]</span>, <span name="minConnections">minConnections: <span class="extype" name="scala.Int">Int</span></span>, <span name="maxConnections">maxConnections: <span class="extype" name="scala.Int">Int</span></span>, <span name="partions">partions: <span class="extype" name="scala.Int">Int</span></span>, <span name="maxQueriesPerRequest">maxQueriesPerRequest: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="DbName.html"><span class="name">DbName</span></a><span class="params">(<span name="value">value: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result"> extends <span class="extype" name="scala.AnyVal">AnyVal</span> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.db.slick.package@DBAttributesextendsProductwithSerializable" title="Permalink" target="_top">
+      <a href="../../../../index.html#play.api.db.slick.package@DbNameextendsAnyValwithProductwithSerializable" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      
-    </li><li name="play.api.db.slick.DBSessionRequest" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="DBSessionRequest[A]extendsWrappedRequest[A]withProductwithSerializable"></a>
-      <a id="DBSessionRequest[A]:DBSessionRequest[A]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">case class</span>
-      </span>
-      <span class="symbol">
-        <a href="DBSessionRequest.html"><span class="name">DBSessionRequest</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="dbSession">dbSession: <a href="#Session=scala.slick.jdbc.JdbcBackend#SessionDef" class="extmbr" name="play.api.db.slick.Session">Session</a></span>, <span name="dbExecutionContext">dbExecutionContext: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>, <span name="request">request: <a href="../../mvc/Request.html" class="extype" name="play.api.mvc.Request">Request</a>[<span class="extype" name="play.api.db.slick.DBSessionRequest.A">A</span>]</span>)</span><span class="result"> extends <a href="../../mvc/WrappedRequest.html" class="extype" name="play.api.mvc.WrappedRequest">WrappedRequest</a>[<span class="extype" name="play.api.db.slick.DBSessionRequest.A">A</span>] with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.db.slick.package@DBSessionRequest[A]extendsWrappedRequest[A]withProductwithSerializable" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Wrapped request with added db-specific information.</p><div class="fullcomment"><div class="comment cmt"><p>Wrapped request with added db-specific information.</p><p>See the slick package object for implicit functions to extract this information.
-</p></div></div>
-    </li><li name="play.api.db.slick.Database" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="DatabaseextendsPlayDatabase"></a>
-      <a id="Database:Database"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">class</span>
-      </span>
-      <span class="symbol">
-        <a href="Database.html"><span class="name">Database</span></a><span class="result"> extends <a href="../../../../scala/slick/jdbc/PlayDatabase.html" class="extype" name="scala.slick.jdbc.PlayDatabase">PlayDatabase</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.db.slick.package@DatabaseextendsPlayDatabase" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      
-    </li><li name="play.api.db.slick.DefaultSlickConfig" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="DefaultSlickConfigextendsSlickConfig"></a>
-      <a id="DefaultSlickConfig:DefaultSlickConfig"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">class</span>
-      </span>
-      <span class="symbol">
-        <a href="DefaultSlickConfig.html"><span class="name">DefaultSlickConfig</span></a><span class="result"> extends <a href="SlickConfig.html" class="extype" name="play.api.db.slick.SlickConfig">SlickConfig</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.db.slick.package@DefaultSlickConfigextendsSlickConfig" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@Singleton</span><span class="args">()</span>
-              
-        </dd></dl></div>
-    </li><li name="play.api.db.slick.MaybeApplication" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="MaybeApplicationextendsAnyVal"></a>
-      <a id="MaybeApplication:MaybeApplication"></a>
+      <p class="shortcomment cmt">The name of a slick database
+</p>
+    </li><li name="play.api.db.slick.DefaultSlickApi" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DefaultSlickApiextendsSlickApi"></a>
+      <a id="DefaultSlickApi:DefaultSlickApi"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="MaybeApplication.html"><span class="name">MaybeApplication</span></a><span class="result"> extends <span class="extype" name="scala.AnyVal">AnyVal</span></span>
+        <a href="DefaultSlickApi.html"><span class="name">DefaultSlickApi</span></a><span class="result"> extends <a href="SlickApi.html" class="extype" name="play.api.db.slick.SlickApi">SlickApi</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.db.slick.package@MaybeApplicationextendsAnyVal" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Value class wrapper for optionally supplied implicit Applications.</p>
-    </li><li name="play.api.db.slick.PredicatedDBAction" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="PredicatedDBActionextendsAnyRef"></a>
-      <a id="PredicatedDBAction:PredicatedDBAction"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">trait</span>
-      </span>
-      <span class="symbol">
-        <a href="PredicatedDBAction.html"><span class="name">PredicatedDBAction</span></a><span class="result"> extends <a href="../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.db.slick.package@PredicatedDBActionextendsAnyRef" title="Permalink" target="_top">
+      <a href="../../../../index.html#play.api.db.slick.package@DefaultSlickApiextendsSlickApi" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
       
-    </li><li name="play.api.db.slick.Profile" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="ProfileextendsAnyRef"></a>
-      <a id="Profile:Profile"></a>
+    </li><li name="play.api.db.slick.HasDatabaseConfig" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="HasDatabaseConfig[P&lt;:slick.profile.BasicProfile]extendsAnyRef"></a>
+      <a id="HasDatabaseConfig[P&lt;:BasicProfile]:HasDatabaseConfig[P]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="Profile.html"><span class="name">Profile</span></a><span class="result"> extends <a href="../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
+        <a href="HasDatabaseConfig.html"><span class="name">HasDatabaseConfig</span></a><span class="tparams">[<span name="P">P &lt;: <span class="extype" name="slick.profile.BasicProfile">BasicProfile</span></span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.db.slick.package@ProfileextendsAnyRef" title="Permalink" target="_top">
+      <a href="../../../../index.html#play.api.db.slick.package@HasDatabaseConfig[P&lt;:slick.profile.BasicProfile]extendsAnyRef" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">This profile makes it easier to use
-the cake pattern with Slick</p><div class="fullcomment"><div class="comment cmt"><p>This profile makes it easier to use
-the cake pattern with Slick</p><h4>Example</h4><pre><span class="kw">class</span> DAO(<span class="kw">override</span> <span class="kw">val</span> profile: ExtendedProfile) <span class="kw">extends</span> CatComponent <span class="kw">with</span> Profile
+      <p class="shortcomment cmt">Mix-in this trait if you need a Slick database and driver.</p><div class="fullcomment"><div class="comment cmt"><p>Mix-in this trait if you need a Slick database and driver. This is useful if you need to define a Slick
+table or need to execute some operation in the database.</p><p>There is only one abstract field, <code>dbConfig</code>, which you can implement by calling <code>DatabaseConfigProvider.get</code>.
+If you are injecting <code>DatabaseConfigProvider</code> instances using dependency injection, prefer using the trait
+<code>HasDatabaseConfigProvider</code> instead of this one.</p><h4>Example</h4><pre><span class="cmt">// model definition</span>
+<span class="kw">class</span> Cat(name: <span class="std">String</span>, color: <span class="std">String</span>)
+<span class="cmt">// DAO definition</span>
+<span class="kw">class</span> CatDAO <span class="kw">extends</span> HasDatabaseConfig[RelationalProfile] {
+<span class="kw">protected</span> <span class="kw">val</span> dbConfig = DatabaseConfigProvider.get[RelationalProfile](Play.current)
+<span class="kw">import</span> driver.api._
 
-<span class="kw">trait</span> CatComponent { <span class="kw">this</span>: Profile <span class="kw">=&gt;</span> <span class="cmt">//<- step 1: you must add this "self-type"</span>
-  <span class="kw">import</span> profile.simple._ <span class="cmt">//<- step 2: then import the correct Table, ... from the profile</span>
+<span class="kw">private</span> <span class="kw">val</span> Cats = TableQuery[CatsTable]
+<span class="kw">def</span> all() = db.run(Cats.result)
+<span class="kw">def</span> insert(cat: Cat) = db.run(Cats += cat)
 
-  <span class="kw">object</span> Cats <span class="kw">extends</span> Table[Cat](<span class="lit">"CAT"</span>) {
-    ...
-  }
+<span class="cmt">// Slick table definition</span>
+<span class="kw">private</span> <span class="kw">class</span> CatsTable(tag: Tag) <span class="kw">extends</span> Table[Cat](tag, <span class="lit">"CAT"</span>) {
+<span class="kw">def</span> name = column[<span class="std">String</span>](<span class="lit">"NAME"</span>, O.PrimaryKey)
+<span class="kw">def</span> color = column[<span class="std">String</span>](<span class="lit">"COLOR"</span>)
+<span class="kw">def</span> * = (name, color) &lt;&gt; (Cat.tupled, Cat.unapply _)
 }
-
-<span class="kw">object</span> current {
-  <span class="kw">val</span> dao = <span class="kw">new</span> DAO(DB.driver(play.api.Play.current))
-}</pre><p>See the sample application for another example
+}</pre><p>Of course, you do not need to define a DAO to use this trait (the above it is really just an example of usage).
 </p></div></div>
-    </li><li name="play.api.db.slick.Session" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="Session=scala.slick.jdbc.JdbcBackend#SessionDef"></a>
-      <a id="Session:Session"></a>
+    </li><li name="play.api.db.slick.HasDatabaseConfigProvider" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="HasDatabaseConfigProvider[P&lt;:slick.profile.BasicProfile]extendsHasDatabaseConfig[P]"></a>
+      <a id="HasDatabaseConfigProvider[P&lt;:BasicProfile]:HasDatabaseConfigProvider[P]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">type</span>
+        <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <span class="name">Session</span><span class="result"> = <span class="extype" name="scala.slick.jdbc.JdbcBackend.SessionDef">SessionDef</span></span>
+        <a href="HasDatabaseConfigProvider.html"><span class="name">HasDatabaseConfigProvider</span></a><span class="tparams">[<span name="P">P &lt;: <span class="extype" name="slick.profile.BasicProfile">BasicProfile</span></span>]</span><span class="result"> extends <a href="HasDatabaseConfig.html" class="extype" name="play.api.db.slick.HasDatabaseConfig">HasDatabaseConfig</a>[<span class="extype" name="play.api.db.slick.HasDatabaseConfigProvider.P">P</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.db.slick.package@Session=scala.slick.jdbc.JdbcBackend#SessionDef" title="Permalink" target="_top">
+      <a href="../../../../index.html#play.api.db.slick.package@HasDatabaseConfigProvider[P&lt;:slick.profile.BasicProfile]extendsHasDatabaseConfig[P]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Mix-in this trait if you need a Slick database and driver, and you are using dependency injection for obtaining
+an instance of <code>DatabaseConfigProvider</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Mix-in this trait if you need a Slick database and driver, and you are using dependency injection for obtaining
+an instance of <code>DatabaseConfigProvider</code>. If you are not using dependency injection, then prefer mixing
+<code>HasDatabaseConfig</code> instead.</p><p>This trait is useful if you need to define a Slick table or need to execute some operation in the database.</p><h4>Example</h4><pre><span class="cmt">// model definition</span>
+<span class="kw">class</span> Cat(name: <span class="std">String</span>, color: <span class="std">String</span>)
+<span class="cmt">// DAO definition</span>
+<span class="kw">class</span> CatDAO @Inject()(<span class="kw">protected</span> <span class="kw">val</span> dbConfigProvider: DatabaseConfigProvider) <span class="kw">extends</span> HasDatabaseConfigProvider[RelationalProfile] {
+<span class="kw">import</span> driver.api._
+
+<span class="kw">private</span> <span class="kw">val</span> Cats = TableQuery[CatsTable]
+<span class="kw">def</span> all() = db.run(Cats.result)
+<span class="kw">def</span> insert(cat: Cat) = db.run(Cats += cat)
+
+<span class="cmt">// Slick table definition</span>
+<span class="kw">private</span> <span class="kw">class</span> CatsTable(tag: Tag) <span class="kw">extends</span> Table[Cat](tag, <span class="lit">"CAT"</span>) {
+<span class="kw">def</span> name = column[<span class="std">String</span>](<span class="lit">"NAME"</span>, O.PrimaryKey)
+<span class="kw">def</span> color = column[<span class="std">String</span>](<span class="lit">"COLOR"</span>)
+<span class="kw">def</span> * = (name, color) &lt;&gt; (Cat.tupled, Cat.unapply _)
+}
+}</pre><p>Of course, you do not need to define a DAO to use this trait (the above it is really just an example of usage).
+</p></div></div>
+    </li><li name="play.api.db.slick.NamedDatabaseConfigProvider" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="NamedDatabaseConfigProviderextendsProvider[play.api.db.slick.DatabaseConfigProvider]"></a>
+      <a id="NamedDatabaseConfigProvider:NamedDatabaseConfigProvider"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="NamedDatabaseConfigProvider.html"><span class="name">NamedDatabaseConfigProvider</span></a><span class="result"> extends <span class="extype" name="javax.inject.Provider">Provider</span>[<a href="DatabaseConfigProvider.html" class="extype" name="play.api.db.slick.DatabaseConfigProvider">DatabaseConfigProvider</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.db.slick.package@NamedDatabaseConfigProviderextendsProvider[play.api.db.slick.DatabaseConfigProvider]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Inject provider for named databases.</p>
+    </li><li name="play.api.db.slick.SlickApi" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="SlickApiextendsAnyRef"></a>
+      <a id="SlickApi:SlickApi"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="SlickApi.html"><span class="name">SlickApi</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.db.slick.package@SlickApiextendsAnyRef" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
@@ -288,7 +269,7 @@ the cake pattern with Slick</p><h4>Example</h4><pre><span class="kw">class</span
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="SlickComponents.html"><span class="name">SlickComponents</span></a><span class="result"> extends <a href="../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
+        <a href="SlickComponents.html"><span class="name">SlickComponents</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../../index.html#play.api.db.slick.package@SlickComponentsextendsAnyRef" title="Permalink" target="_top">
@@ -296,49 +277,12 @@ the cake pattern with Slick</p><h4>Example</h4><pre><span class="kw">class</span
       </a>
     </span>
       
-    </li><li name="play.api.db.slick.SlickConfig" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="SlickConfigextendsAnyRef"></a>
-      <a id="SlickConfig:SlickConfig"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">trait</span>
-      </span>
-      <span class="symbol">
-        <a href="SlickConfig.html"><span class="name">SlickConfig</span></a><span class="result"> extends <a href="../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.db.slick.package@SlickConfigextendsAnyRef" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      
-    </li><li name="play.api.db.slick.SlickDynamicEvolutions" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="SlickDynamicEvolutionsextendsDynamicEvolutions"></a>
-      <a id="SlickDynamicEvolutions:SlickDynamicEvolutions"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">class</span>
-      </span>
-      <span class="symbol">
-        <a href="SlickDynamicEvolutions.html"><span class="name">SlickDynamicEvolutions</span></a><span class="result"> extends <a href="../evolutions/DynamicEvolutions.html" class="extype" name="play.api.db.evolutions.DynamicEvolutions">DynamicEvolutions</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.db.slick.package@SlickDynamicEvolutionsextendsDynamicEvolutions" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@Singleton</span><span class="args">()</span>
-              
-        </dd></dl></div>
     </li><li name="play.api.db.slick.SlickModule" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="SlickModuleextendsModule"></a>
       <a id="SlickModule:SlickModule"></a>
       <h4 class="signature">
       <span class="modifier_kind">
-        <span class="modifier"></span>
+        <span class="modifier">final </span>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
@@ -360,198 +304,82 @@ the cake pattern with Slick</p><h4>Example</h4><pre><span class="kw">class</span
 
         <div id="values" class="values members">
               <h3>Value Members</h3>
-              <ol><li name="play.api.db.slick.Config" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="Config"></a>
-      <a id="Config:Config"></a>
+              <ol><li name="play.api.db.slick.DatabaseConfigProvider" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="DatabaseConfigProvider"></a>
+      <a id="DatabaseConfigProvider:DatabaseConfigProvider"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="Config$.html"><span class="name">Config</span></a>
+        <a href="DatabaseConfigProvider$.html"><span class="name">DatabaseConfigProvider</span></a>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.db.slick.package@Config" title="Permalink" target="_top">
+      <a href="../../../../index.html#play.api.db.slick.package@DatabaseConfigProvider" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      
-    </li><li name="play.api.db.slick#DB" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="DB(name:String)(implicitapp:play.api.Application):play.api.db.slick.Database"></a>
-      <a id="DB(String)(Application):Database"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">DB</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="app">app: <a href="../../Application.html" class="extype" name="play.api.Application">Application</a></span>)</span><span class="result">: <a href="Database.html" class="extype" name="play.api.db.slick.Database">Database</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.db.slick.package@DB(name:String)(implicitapp:play.api.Application):play.api.db.slick.Database" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      
-    </li><li name="play.api.db.slick#DB" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="DB(implicitapp:play.api.Application):play.api.db.slick.Database"></a>
-      <a id="DB(Application):Database"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">DB</span><span class="params">(<span class="implicit">implicit </span><span name="app">app: <a href="../../Application.html" class="extype" name="play.api.Application">Application</a></span>)</span><span class="result">: <a href="Database.html" class="extype" name="play.api.db.slick.Database">Database</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.db.slick.package@DB(implicitapp:play.api.Application):play.api.db.slick.Database" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      
-    </li><li name="play.api.db.slick.DBAction" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="DBAction"></a>
-      <a id="DBAction:DBAction"></a>
+      <p class="shortcomment cmt">Look up a <code>DatabaseConfig</code> (which is Slick type that bundles a database and driver) for the passed
+database name.</p><div class="fullcomment"><div class="comment cmt"><p>Look up a <code>DatabaseConfig</code> (which is Slick type that bundles a database and driver) for the passed
+database name. The <code>DatabaseConfig</code> instance is created using the database's configuration you have
+provided in your **application.conf**, for the passed database name.</p><p>Note that if no database name is passed, <code>default</code> is used, and hence the configuration
+<code>slick.dbs.default</code> is used to create the <code>DatabaseConfig</code> instance.</p><h4>Example</h4><p>Here is an example for obtaining a <code>DatabaseConfig</code> instance for the database named <code>default</code> in
+your **application.conf**.</p><pre><span class="kw">import</span> play.api.Play
+<span class="kw">import</span> play.api.db.slick.DatabaseConfigProvider
+<span class="kw">import</span> slick.profile.RelationalProfile
+<span class="kw">val</span> dbConfig = DatabaseConfigProvider.get[RelationalProfile](Play.current)</pre><p>While here is an example for obtaining a <code>DatabaseConfig</code> instance for the database named <code>orders</code>
+in your **application.conf**.</p><pre><span class="kw">import</span> play.api.Play
+<span class="kw">import</span> play.api.db.slick.DatabaseConfigProvider
+<span class="kw">import</span> slick.profile.RelationalProfile
+<span class="kw">val</span> dbConfig = DatabaseConfigProvider.get[RelationalProfile](<span class="lit">"orders"</span>)(Play.current)</pre></div></div>
+    </li><li name="play.api.db.slick.DefaultSlickApi" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DefaultSlickApi"></a>
+      <a id="DefaultSlickApi:DefaultSlickApi"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="DBAction$.html"><span class="name">DBAction</span></a><span class="result"> extends <a href="CurrentDBAction.html" class="extype" name="play.api.db.slick.CurrentDBAction">CurrentDBAction</a></span>
+        <a href="DefaultSlickApi$.html"><span class="name">DefaultSlickApi</span></a>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.db.slick.package@DBAction" title="Permalink" target="_top">
+      <a href="../../../../index.html#play.api.db.slick.package@DefaultSlickApi" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">Use the DBAction when you want to use the default settings in your controller.</p><div class="fullcomment"><div class="comment cmt"><p>Use the DBAction when you want to use the default settings in your controller.</p><pre><span class="kw">def</span> index = DBAction{ <span class="kw">implicit</span> rs <span class="kw">=&gt;</span>
-  Ok(MyStuff.list())
-}</pre><p>By default it uses the database named by default in the configuration in all modes (Prod, Dev)
-except in test, where it uses test.</p><p>It is possible to define a maximum amount queries per request that can be handled at a given point
-to avoid overloading the application (user gets the error page instead of seeing a slow app).</p><p>The maximum amount of per requests  is read from:
-db.&lt;db-name&gt;.maxQueriesPerRequest</p><p>If you need to override the default behavior, create a new object
-with the DefaultDBAction trait.</p><pre><span class="kw">class</span> AnotherDBAction(myApp: Application, myErrorPage: Result) <span class="kw">extends</span> DefaultDBAction {
-  <span class="kw">override</span> <span class="kw">lazy</span> <span class="kw">val</span> app = myApp
-  <span class="kw">override</span> <span class="kw">val</span> errorPage = myErrorPage
-}</pre></div></div>
-    </li><li name="play.api.db.slick.Database" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="Database"></a>
-      <a id="Database:Database"></a>
+      
+    </li><li name="play.api.db.slick#IssueTracker" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="IssueTracker:String"></a>
+      <a id="IssueTracker:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">IssueTracker</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.db.slick.package@IssueTracker:String" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      
+    </li><li name="play.api.db.slick.SlickModule" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SlickModule"></a>
+      <a id="SlickModule:SlickModule"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="Database$.html"><span class="name">Database</span></a>
+        <a href="SlickModule$.html"><span class="name">SlickModule</span></a>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.db.slick.package@Database" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      
-    </li><li name="play.api.db.slick.MaybeApplication" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="MaybeApplication"></a>
-      <a id="MaybeApplication:MaybeApplication"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a href="MaybeApplication$.html"><span class="name">MaybeApplication</span></a>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.db.slick.package@MaybeApplication" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Use the MaybeApplication wrapper to avoid multiple overloaded methods with defaults.</p>
-    </li><li name="play.api.db.slick.SlickExecutionContext" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="SlickExecutionContext"></a>
-      <a id="SlickExecutionContext:SlickExecutionContext"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a href="SlickExecutionContext$.html"><span class="name">SlickExecutionContext</span></a>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.db.slick.package@SlickExecutionContext" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      
-    </li><li name="play.api.db.slick#dbSessionRequestAsExecutionContext" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="dbSessionRequestAsExecutionContext[_](implicitr:play.api.db.slick.DBSessionRequest[_]):scala.concurrent.ExecutionContext"></a>
-      <a id="dbSessionRequestAsExecutionContext[_](DBSessionRequest[_]):ExecutionContext"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">implicit </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">dbSessionRequestAsExecutionContext</span><span class="tparams">[<span name="_">_</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="r">r: <a href="DBSessionRequest.html" class="extype" name="play.api.db.slick.DBSessionRequest">DBSessionRequest</a>[_]</span>)</span><span class="result">: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.db.slick.package@dbSessionRequestAsExecutionContext[_](implicitr:play.api.db.slick.DBSessionRequest[_]):scala.concurrent.ExecutionContext" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      
-    </li><li name="play.api.db.slick#dbSessionRequestAsSession" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="dbSessionRequestAsSession[_](implicitr:play.api.db.slick.DBSessionRequest[_]):play.api.db.slick.package.Session"></a>
-      <a id="dbSessionRequestAsSession[_](DBSessionRequest[_]):Session"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">implicit </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">dbSessionRequestAsSession</span><span class="tparams">[<span name="_">_</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="r">r: <a href="DBSessionRequest.html" class="extype" name="play.api.db.slick.DBSessionRequest">DBSessionRequest</a>[_]</span>)</span><span class="result">: <a href="#Session=scala.slick.jdbc.JdbcBackend#SessionDef" class="extmbr" name="play.api.db.slick.Session">Session</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.db.slick.package@dbSessionRequestAsSession[_](implicitr:play.api.db.slick.DBSessionRequest[_]):play.api.db.slick.package.Session" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      
-    </li><li name="play.api.db.slick.ddl" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="ddl"></a>
-      <a id="ddl:ddl"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">package</span>
-      </span>
-      <span class="symbol">
-        <a href="ddl/package.html"><span class="name">ddl</span></a>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.db.slick.package@ddl" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      
-    </li><li name="play.api.db.slick.iteratees" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="iteratees"></a>
-      <a id="iteratees:iteratees"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">package</span>
-      </span>
-      <span class="symbol">
-        <a href="iteratees/package.html"><span class="name">iteratees</span></a>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.db.slick.package@iteratees" title="Permalink" target="_top">
+      <a href="../../../../index.html#play.api.db.slick.package@SlickModule" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
@@ -566,7 +394,7 @@ with the DefaultDBAction trait.</p><pre><span class="kw">class</span> AnotherDBA
 
         <div id="inheritedMembers">
         <div class="parent" name="scala.AnyRef">
-              <h3>Inherited from <a href="../../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></h3>
+              <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
             </div>

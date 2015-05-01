@@ -3,30 +3,30 @@
 
 ## Configuring Ebean
 
-Play comes with the [Ebean](http://www.avaje.org/) ORM. To enable it, add the Play Ebean plugin to your SBT plugins in `project/plugins.sbt`:
+Play comes with the [Ebean](https://ebean-orm.github.io/) ORM. To enable it, add the Play Ebean plugin to your SBT plugins in `project/plugins.sbt`:
 
 ```scala
 addSbtPlugin("com.typesafe.sbt" % "sbt-play-ebean" % "1.0.0")
 ```
 
-And then modify your `build.sbt` to enable the Play ebean plugin:
+And then modify your `build.sbt` to enable the Play Ebean plugin:
 
 ```scala
 lazy val myProject = (project in file("."))
   .enablePlugins(PlayJava, SbtEbean)
 ```
 
-then add the following line to `conf/application.conf`:
+Then add the following line to `conf/application.conf`:
 
 ```properties
 ebean.default = ["models.*"]
 ```
 
-This defines a `default` Ebean server, using the `default` data source, which must be properly configured. You can also override the name of the default Ebean server by configuring `ebeanconfig.datasource.default` property. This might be useful if you want to use separate databases for testing and development. You can actually create as many Ebean servers you need, and explicitly define the mapped class for each server.
+This defines a `default` Ebean server, using the `default` data source, which must be properly configured. You can also override the name of the default Ebean server by configuring `ebeanconfig.datasource.default` property. This might be useful if you want to use separate databases for testing and development. You can actually create as many Ebean servers you need, and explicitly define the mapped class for each server:
 
 ```properties
 ebean.orders = ["models.Order", "models.OrderItem"]
-ebean.customers =  ["models.Customer", ["models.Address"]
+ebean.customers =  ["models.Customer", "models.Address"]
 ```
 
 In this example, we have access to two Ebean servers - each using its own database.
@@ -41,7 +41,7 @@ As an example, the fairly common problem of reducing the sequence batch size in 
 
 Note that Ebean will also make use of a `conf/orm.xml` file (if present), to configure `<entity-mappings>`.
 
-> For more information about Ebean, see the [Ebean documentation](http://www.avaje.org/ebean/documentation.html).
+> For more information about Ebean, see the [Ebean documentation](https://ebean-orm.github.io/docs).
 
 ## Using Model superclass
 

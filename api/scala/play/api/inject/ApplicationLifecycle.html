@@ -43,15 +43,33 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <span class="name">ApplicationLifecycle</span><span class="result"> extends <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
+        <span class="name">ApplicationLifecycle</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Application lifecycle register.</p><p>This is used to hook into Play lifecycle events, specifically, when Play is stopped.</p><p>Stop hooks are executed when the application is shutdown, in reverse from when they were registered.</p><p>To use this, declare a dependency on ApplicationLifecycle, and then register the stop hook when the component is
-started.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.4.0-RC1/framework/src/play/src/main/scala/play/api/inject/ApplicationLifecycle.scala" target="_blank">ApplicationLifecycle.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Application lifecycle register.</p><p>This is used to hook into Play lifecycle events, specifically, when Play is stopped. The reason Play only provides
+lifecycle callbacks for stopping is that constructors are considered the application start callback.  This has
+several advantages:</p><p>- It simplifies implementation, if you want to start something, just do it in the constructor.
+- It simplifies state, there's no transitional state where an object has been created but not started yet. Hence,
+  as long as you have a reference to something, it's safe to use it.
+- It solves startup dependencies in a type safe manner - the order that components must be started is enforced by the
+  order that they must be instantiated due to the component graph.</p><p>Stop hooks are executed when the application is shutdown, in reverse from when they were registered. Due to this
+reverse ordering, a component can know that it is safe to use the components it depends on as long as it hasn't
+received a shutdown event.</p><p>To use this, declare a dependency on ApplicationLifecycle, and then register the stop hook when the component is
+started. For example:</p><pre><span class="kw">import</span> play.api.inject.ApplicationLifecycle
+<span class="kw">import</span> javax.inject.Inject
+
+<span class="kw">class</span> SomeDatabase @Inject() (applicationLifecycle: ApplicationLifecycle) {
+
+  <span class="kw">private</span> <span class="kw">val</span> connectionPool = <span class="kw">new</span> SomeConnectionPool()
+  applicationLifecycle.addStopHook { () <span class="kw">=&gt;</span>
+    connectionPool.shutdown()
+  }
+
+  ...
+}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play/src/main/scala/play/api/inject/ApplicationLifecycle.scala" target="_blank">ApplicationLifecycle.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
             <span class="toggle">Known Subclasses</span>
             <div class="subClasses hiddenContent"><a href="DefaultApplicationLifecycle.html" class="extype" name="play.api.inject.DefaultApplicationLifecycle">DefaultApplicationLifecycle</a></div>
@@ -216,7 +234,7 @@ immediately and return a successful future.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">clone</span><span class="params">()</span><span class="result">: <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
+        <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.ApplicationLifecycle@clone():Object" title="Permalink" target="_top">
@@ -239,7 +257,7 @@ immediately and return a successful future.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.ApplicationLifecycle@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
@@ -347,7 +365,7 @@ immediately and return a successful future.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.ApplicationLifecycle@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
@@ -502,7 +520,7 @@ immediately and return a successful future.
 
         <div id="inheritedMembers">
         <div class="parent" name="scala.AnyRef">
-              <h3>Inherited from <a href="../../../scala/package.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></h3>
+              <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
             </div>
