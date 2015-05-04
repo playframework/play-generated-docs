@@ -1,3 +1,4 @@
+<!--- Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com> -->
 # The Play WS API
 
 Sometimes we would like to call other HTTP services from within a Play application. Play supports this via its [WS library](api/java/play/libs/ws/package-summary.html), which provides a way to make asynchronous HTTP calls.
@@ -143,7 +144,7 @@ You can also get access to the underlying `AsyncHttpClient`.
 
 This is important in a couple of cases.  WS has a couple of limitations that require access to the client:
 
-* `WS` does not support multi part form upload directly.  You can use the underlying client with [RequestBuilder.addBodyPart](http://asynchttpclient.github.io/async-http-client/apidocs/com/ning/http/client/RequestBuilder.html).
+* `WS` does not support multi part form upload directly.  You can use the underlying client with [RequestBuilder.addBodyPart](https://asynchttpclient.github.io/async-http-client/apidocs/com/ning/http/client/RequestBuilder.html).
 * `WS` does not support streaming body upload.  In this case, you should use the `FeedableBodyGenerator` provided by AsyncHttpClient.
 
 ## Configuring WS
@@ -172,7 +173,7 @@ To configure WS for use with HTTP over SSL/TLS (HTTPS), please see [[Configuring
 ### Configuring AsyncClientConfig
 
 The following advanced settings can be configured on the underlying AsyncHttpClientConfig.
-Please refer to the [AsyncHttpClientConfig Documentation](http://asynchttpclient.github.io/async-http-client/apidocs/com/ning/http/client/AsyncHttpClientConfig.Builder.html) for more information.
+Please refer to the [AsyncHttpClientConfig Documentation](https://asynchttpclient.github.io/async-http-client/apidocs/com/ning/http/client/AsyncHttpClientConfig.Builder.html) for more information.
 
 * `play.ws.ning.allowPoolingConnection`
 * `play.ws.ning.allowSslConnectionPool`

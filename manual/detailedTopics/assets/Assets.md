@@ -23,10 +23,10 @@ If you follow this structure it will be simpler to get started, but nothing stop
 [WebJars](http://www.webjars.org/) provide a convenient and conventional packaging mechanism that is a part of Activator and sbt. For example you can declare that you will be using the popular [Bootstrap library](http://getbootstrap.com/) simply by adding the following dependency in your build file:
 
 ```scala
-libraryDependencies += "org.webjars" % "bootstrap" % "3.2.0"
+libraryDependencies += "org.webjars" % "bootstrap" % "3.3.4"
 ```
 
-WebJars are automatically extracted into a `lib` folder relative to your public assets for convenience. For example if you declared a dependency on [RequireJs](http://requirejs.org/) then you can reference it from a view using a line like:
+WebJars are automatically extracted into a `lib` folder relative to your public assets for convenience. For example, if you declared a dependency on [RequireJs](http://requirejs.org/) then you can reference it from a view using a line like:
 
 ```html
 <script data-main="@routes.Assets.at("javascripts/main.js")" type="text/javascript" src="@routes.Assets.at("lib/requirejs/require.js")"></script>
@@ -72,7 +72,6 @@ controllers.Assets.at("/public", "javascripts/jquery.js")
 
 This action will look-up and serve the file and if it exists.
 
-
 ## Reverse routing for public assets
 
 As for any controller mapped in the routes file, a reverse controller is created in `controllers.routes.Assets`. You use this to reverse the URL needed to fetch a public resource. For example, from a template:
@@ -105,7 +104,7 @@ You will then need to specify both parameters when using the reverse router:
 
 ## Reverse routing and fingerprinting for public assets
 
-sbt-web brings the notion of a highly configurable asset pipeline to Play e.g. in your build file:
+[sbt-web](https://github.com/sbt/sbt-web) brings the notion of a highly configurable asset pipeline to Play e.g. in your build file:
 
 ```scala
 pipelineStages := Seq(rjs, digest, gzip)
@@ -161,7 +160,7 @@ Using Etag is usually enough for the purposes of caching. However if you want to
 
 Starting with Play 2.3 managed assets are processed by [sbt-web](https://github.com/sbt/sbt-web#sbt-web) based plugins. Prior to 2.3 Play bundled managed asset processing in the form of CoffeeScript, LESS, JavaScript linting (ClosureCompiler) and RequireJS optimization. The following sections describe sbt-web and how the equivalent 2.2 functionality can be achieved. Note though that Play is not limited to this asset processing technology as many plugins should become available to sbt-web over time. Please check-in with the [sbt-web](https://github.com/sbt/sbt-web#sbt-web) project to learn more about what plugins are available.
 
-Many plugins use sbt-web's [js-engine plugin](https://github.com/sbt/sbt-js-engine). js-engine is able to execute plugins written to the Node API either within the JVM via the excellent [Trireme](https://github.com/apigee/trireme#trireme) project, or directly on [Node.js](http://nodejs.org/) for superior performance. Note that these tools are used during the development cycle only and have no involvement during the runtime execution of your Play application. If you have Node.js installed then you are encouraged to declare the following environment variable. For Unix, if `SBT_OPTS` has been defined elsewhere then you can:
+Many plugins use sbt-web's [js-engine plugin](https://github.com/sbt/sbt-js-engine). js-engine is able to execute plugins written to the Node API either within the JVM via the excellent [Trireme](https://github.com/apigee/trireme#trireme) project, or directly on [Node.js](https://nodejs.org/) for superior performance. Note that these tools are used during the development cycle only and have no involvement during the runtime execution of your Play application. If you have Node.js installed then you are encouraged to declare the following environment variable. For Unix, if `SBT_OPTS` has been defined elsewhere then you can:
 
 ```bash
 export SBT_OPTS="$SBT_OPTS -Dsbt.jse.engineType=Node"
