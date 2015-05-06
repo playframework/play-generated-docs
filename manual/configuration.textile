@@ -348,6 +348,13 @@ Database connection user name, used with "db.url":#db.url.
 
 Default: none, or @sa@ when "db":#db is set to @mem@ or @fs@. 
 
+h3(#db.testquery). db.testquery
+
+Override query to use when keepalive connection polling is being performed. The default value will cause keepalive to fetch metadata. This means it does a getTables() which can be a heavy operation on a busy databse. 
+
+Default: null  
+Default on MySQL: /* ping */ SELECT 1
+
 
 h2(#evolutions). Database evolutions
 
@@ -853,6 +860,22 @@ The standard name of a Java Secure Socket Extension (JSSE) trust management algo
 bc. ssl.KeyManagerFactory.algorithm=SunX509
 
 Default: @SunX509@
+
+h2(#keystores). Custom key stores
+
+Allows for custom SSL certificates to be used with connection initiated through WebServices
+
+h3(#ssl.keyStore). ssl.Keystore
+
+The custom keystore that should be added to Play! WebServices connections
+
+h3(#ssl.keyStorePassword). ssl.keyStorePassword
+
+The password neede to access the keys inside the keystore. This is required.
+
+h3(#ssl.cavalidation). ssl.cavalidation
+
+If set to true, the CA chain is validated upon connection.
 
 
 h2(#trustmanager). trustmanager
