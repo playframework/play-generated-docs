@@ -100,10 +100,10 @@ For more details about what's changed in Anorm, see [[here|Migration24#Anorm]].
 
 ### Bytecode enhancement
 
-[Play's bytecode enhancement](https://github.com/playframework/play-enhancer), which generates getters and setters for Java properties, has been pulled out of the core of Play into a separately managed project that can have its own lifecycle. To enable it:
+[[Play's bytecode enhancement|PlayEnhancer]], which generates getters and setters for Java properties, has been pulled out of the core of Play into a separately managed project that can have its own lifecycle. To enable it, add the following to your `project/plugins.sbt` file:
 
 ```scala
-enablePlugins(PlayJava, PlayEnhancer)
+addSbtPlugin("com.typesafe.sbt" % "sbt-play-enhancer" % "1.1.0")
 ```
 
 ## Dependency Injection
@@ -488,6 +488,12 @@ There are new conversions extending column support.
 Advanced Netty configuration options, that is, options prefixed with `http.netty.option`, must now use the prefix `play.server.netty.option` instead.
 
 ## I18n
+
+The configuration key to specify the languages that your application supports changed from `application.langs` to `play.i18n.langs`. Also, it is now a list instead of a comma separated string. Per instance:
+
+```
+play.i18n.langs = [ "en", "en-US", "fr" ]
+```
 
 ### Scala
 

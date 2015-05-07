@@ -619,7 +619,8 @@ Java request, and converting the resulting Java result to a Scala result, before
 it.</p><div class="fullcomment"><div class="comment cmt"><p>Invoke the given function with the right context set, converting the scala request to a
 Java request, and converting the resulting Java result to a Scala result, before returning
 it.</p><p>This is intended for use by methods in the JavaGlobalSettingsAdapter, which need to be handled
-like Java actions, but are not Java actions.
+like Java actions, but are not Java actions. In this case, f may return null, so we wrap its
+result in an Option. E.g. see the default behavior of GlobalSettings.onError.
 </p></div><dl class="paramcmts block"><dt class="param">request</dt><dd class="cmt"><p>The request</p></dd><dt class="param">f</dt><dd class="cmt"><p>The function to invoke</p></dd><dt>returns</dt><dd class="cmt"><p>The result
 </p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="JavaHelpers.html" class="extype" name="play.core.j.JavaHelpers">JavaHelpers</a></dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
