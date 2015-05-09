@@ -237,6 +237,18 @@ play.db.pool = bonecp
 
 The full range of configuration options available to the Play connection pools can be found in the Play JDBC [`reference.conf`](resources/confs/play-jdbc/reference.conf).
 
+You may run into the following exception:
+
+```
+Caused by: java.sql.SQLException: JDBC4 Connection.isValid() method not supported, connection test query must be configured
+```
+This occurs if your JDBC-Drivers do not support Connection.isValid(). The fastest and recommended fix is to make sure you use the latest version of your JDBC-Driver. If upgrading to the latest version does not help, you may specify the `connectionTestQuery` in your application.conf like this
+```
+#specify a connectionTestQuery. Only do this if upgrading the JDBC-Driver does not help
+db.default.hikaricp.connectionTestQuery="SELECT TRUE"
+```
+More information on this can be found on the [HikariCP Github Page](https://github.com/brettwooldridge/HikariCP/)
+
 ## Body Parsers
 
 The default body parser is now `play.api.mvc.BodyParsers.parse.default`. It is similar to `anyContent` parser, except that it only parses the bodies of PATCH, POST, and PUT requests. To parse bodies for requests of other methods, explicitly pass the `anyContent` parser to `Action`.
@@ -475,9 +487,38 @@ There are new conversions extending column support.
 | `Long`             | `Int`                |
 | `Short`            | `BigDecimal`         |
 
+**Binary and large data**
+
+New column conversions are provided for binary columns (bytes, stream, blob), to be parsed as `Array[Byte]` or `InputStream`.
+
+| ↓JDBC / JVM➞            | Array[Byte] | InputStream<sup>1</sup> |
+| ----------------------- | ----------- | ----------------------- |
+| Array[Byte]             | Yes         | Yes                     |
+| Blob<sup>2</sup>        | Yes         | Yes                     |
+| Clob<sup>3</sup>        | No          | No                      |
+| InputStream<sup>4</sup> | Yes         | Yes                     |
+| Reader<sup>5</sup>      | No          | No                      |
+
+- 1. Type `java.io.InputStream`.
+- 2. Type `java.sql.Blob`.
+- 3. Type `java.sql.Clob`.
+- 4. Type `java.io.Reader`.
+
+Binary and large data can also be used as parameters:
+
+| JVM                     | JDBC           |
+| ------------------------|--------------- |
+| Array[Byte]             | Long varbinary |
+| Blob<sup>1</sup>        | Blob           |
+| InputStream<sup>2</sup> | Long varbinary |
+| Reader<sup>3</sup>      | Long varchar   |
+
+- 1. Type `java.sql.Blob`
+- 2. Type `java.io.InputStream`
+- 3. Type `java.io.Reader`
+
 **Misc**
 
-- **Binary data**: New column conversions for binary columns (bytes, stream, blob), to be parsed as `Array[Byte]` or `InputStream`.
 - **Joda Time**: New conversions for Joda `Instant` or `DateTime`, from `Long`, `Date` or `Timestamp` column.
 - Parses text column as `UUID` value: `SQL("SELECT uuid_as_text").as(scalar[UUID].single)`.
 - Passing `None` for a nullable parameter is deprecated, and typesafe `Option.empty[T]` must be use instead.
