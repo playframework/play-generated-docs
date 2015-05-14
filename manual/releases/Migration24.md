@@ -86,7 +86,7 @@ After that, enable Ebean plugin for your project:
 
 ```scala
 lazy val myProject = (project in file("."))
-  .enablePlugins(PlayJava, SbtEbean)
+  .enablePlugins(PlayJava, PlayEbean)
 ```
 
 And finally, configure Ebean mapped classes as a list instead of a comma separated string (which is still supported but was deprecated):
@@ -231,6 +231,44 @@ If you want to change how the actor system is configured, you can set `play.akka
 
 See the [[Java|JavaAkka]] or [[Scala|ScalaAkka]] Akka page for more information.
 
+#### Thread pool configuration
+
+Previously the two actor systems had slightly different thread pool configuration. Now that there is only one actor system, the configuration has been merged. We've also added a LIFO (stack-based) scheduling rule which should improve performance in most Play applications.
+
+The following settings are the new defaults in Play 2.4. They've been shown to have good performance in our testing, but every application is different so you may need to tweak them or rever them to the Play 2.3 settings. You can do that by overriding any of these values in your `application.conf`. Here are the new settings:
+
+```
+akka {
+  actor {
+    default-dispatcher {
+      fork-join-executor {
+        parallelism-factor = 1.0
+        parallelism-max = 24
+        task-peeking-mode = LIFO
+      }
+    }
+  }
+}
+```
+
+In particular, you might want to try the [default Akka settings](http://doc.akka.io/docs/akka/2.3.11/general/configuration.html#listing-of-the-reference-configuration):
+
+```
+akka {
+  actor {
+    default-dispatcher {
+      fork-join-executor {
+        parallelism-factor = 3.0
+        parallelism-max = 64
+        task-peeking-mode = FIFO
+      }
+    }
+  }
+}
+```
+
+See the [[thread pool configuration section|ThreadPools#Configuring-the-Play-default-thread-pool]] for more information.
+
 ### Logging
 
 Logging is now configured solely via [logback configuration files](http://logback.qos.ch/manual/configuration.html).
@@ -332,9 +370,34 @@ If you use the Java API, the [`F.Promise`](api/java/play/libs/F.Promise.html) cl
 
 ## WS client
 
-`WSRequestHolder` has been renamed to `WSRequest` in [Scala](api/scala/index.html#play.api.libs.ws.WSRequest) and [Java](api/java/play/libs/ws/WSRequest.html).
+`WSRequestHolder` has been renamed to `WSRequest` in [Scala](api/scala/index.html#play.api.libs.ws.WSRequest) and [Java](api/java/play/libs/ws/WSRequest.html).  The previous `WSRequest` class has been removed out as it was only used internally to WS for OAuth functionality.
 
-Play has upgraded from AsyncHttpClient 1.8 to 1.9, which includes a number of breaking changes if using or configuring that library directly.  Please see the [AsyncHttpClient Migration Guide](https://github.com/AsyncHttpClient/async-http-client/blob/master/MIGRATION.md) for more details.
+WS has upgraded from AsyncHttpClient 1.8.x to 1.9.x, which includes a number of breaking changes if using or configuring that library directly.  Please see the [AsyncHttpClient Migration Guide](https://github.com/AsyncHttpClient/async-http-client/blob/master/MIGRATION.md) for more details.  The upgrade to AsyncHttpClient 1.9.x enables Server Name Indication (SNI) in HTTPS -- this solves a number of problems with HTTPS based CDNs such as Cloudflare which depend heavily on SNI.
+
+Configuration settings for WS have changed:
+
+* `ws.acceptAnyCertificate` has been moved under the loose settings as `play.ws.loose.acceptAnyCertificate` to better indicate the insecure nature of blindly accepting any X.509 certificate without validation.
+* `ws.ssl.debug` settings have been redefined as booleans, e.g. `play.ws.ssl.debug.all=true`.  Please see [Debugging SSL](https://www.playframework.com/documentation/2.4.x/DebuggingSSL) for details.
+* `ws.ssl.disabledSignatureAlgorithms` and `ws.ssl.disabledKeyAlgorithms` have been redefined as arrays of strings, e.g `play.ws.ssl.disabledSignatureAlgorithms = ["MD2", "MD4", "MD5"]`.
+
+Because of the AsyncHttpClient 1.9.x upgrade, several settings no longer have the same names that they did previously in the 1.8.x version AsyncHttpClientConfig.Builder.  To reduce confusion, here is the map from WS settings to 1.9.x AsyncHttpClientConfig.Builder:
+
+* `play.ws.ning.connectionTimeout` -> <a href="http://static.javadoc.io/com.ning/async-http-client/1.9.22/com/ning/http/client/AsyncHttpClientConfig.Builder.html#setConnectTimeout(int)">setConnectTimeout</a>
+* `play.ws.ning.idleTimeout` -> <a href="http://static.javadoc.io/com.ning/async-http-client/1.9.22/com/ning/http/client/AsyncHttpClientConfig.Builder.html#setReadTimeout(int)">setReadTimeout</a>
+* `play.ws.ning.followRedirects` -> <a href="http://static.javadoc.io/com.ning/async-http-client/1.9.22/com/ning/http/client/AsyncHttpClientConfig.Builder.html#setFollowRedirect(boolean)">setFollowRedirect</a>
+* `play.ws.ning.compressionEnabled` -> <a href="http://static.javadoc.io/com.ning/async-http-client/1.9.22/com/ning/http/client/AsyncHttpClientConfig.Builder.html#setCompressionEnforced(boolean)">setCompressionEnforced</a>
+* `play.ws.ning.allowPoolingConnection` -> <a href="http://static.javadoc.io/com.ning/async-http-client/1.9.22/com/ning/http/client/AsyncHttpClientConfig.Builder.html#setAllowPoolingConnections(boolean)">setAllowPoolingConnections</a>
+* `play.ws.ning.allowSslConnectionPool` ->  <a href="http://static.javadoc.io/com.ning/async-http-client/1.9.22/com/ning/http/client/AsyncHttpClientConfig.Builder.html#setAllowPoolingSslConnections(boolean)">setAllowPoolingSslConnections</a>
+* `play.ws.ning.maxConnectionsTotal` -> <a href="http://static.javadoc.io/com.ning/async-http-client/1.9.22/com/ning/http/client/AsyncHttpClientConfig.Builder.html#setMaxConnections(int)">setMaxConnections</a>
+* `play.ws.ning.maxConnectionLifetime` -> <a href="http://static.javadoc.io/com.ning/async-http-client/1.9.22/com/ning/http/client/AsyncHttpClientConfig.Builder.html#setConnectionTTL(int)">setConnectionTTL</a>
+* `play.ws.ning.idleConnectionInPoolTimeout` -> <a href="http://static.javadoc.io/com.ning/async-http-client/1.9.22/com/ning/http/client/AsyncHttpClientConfig.Builder.html#setPooledConnectionIdleTimeout(int)">setPooledConnectionIdleTimeout</a>
+* `play.ws.ning.webSocketIdleTimeout` -> <a href="http://static.javadoc.io/com.ning/async-http-client/1.9.22/com/ning/http/client/AsyncHttpClientConfig.Builder.html#setWebSocketTimeout(int)">setWebSocketTimeout</a>
+* `play.ws.ning.maxNumberOfRedirects` -> <a href="http://static.javadoc.io/com.ning/async-http-client/1.9.22/com/ning/http/client/AsyncHttpClientConfig.Builder.html#setMaxRedirects(int)">setMaxRedirects</a>
+* `play.ws.ning.disableUrlEncoding` -> <a href="http://static.javadoc.io/com.ning/async-http-client/1.9.22/com/ning/http/client/AsyncHttpClientConfig.Builder.html#setDisableUrlEncodingForBoundedRequests(boolean)">setDisableUrlEncodingForBoundedRequests</a>
+
+WS has changed the OAuth signature calculator from [Signpost](https://github.com/mttkay/signpost) to AsyncHttpClient's [OAuthCalculator](http://static.javadoc.io/com.ning/async-http-client/1.9.22/com/ning/http/client/oauth/OAuthSignatureCalculator.html).  Signpost is still used to retrieve the request token and access tokens.  This should not require any application level changes, but is worth noting in case of unexpected OAuth failures.
+
+Due to the recent spate of TLS vulnerabilities, there has been more activity to deprecate insecure HTTPS configurations.  Per [RFC 7465](https://tools.ietf.org/html/rfc7465), RC4 cipher suites have added to the list of deprecated ciphers, and are not available by default.  They may be explicitly enabled as cipher suites using the `play.ws.ssl.enabledCiphers` and `play.ws.ssl.loose.allowWeakCiphers` settings.  Please also consider reviewing [RFC 7525](https://tools.ietf.org/html/rfc7525) for the IETF recommended configuration of TLS.
 
 ## Crypto APIs
 
@@ -609,6 +672,19 @@ The API should be backward compatible with your code using Play 2.3 so there is 
 Previously, Play added all the resources to the the `conf` directory in the distribution, but didn't add the `conf` directory to the classpath.  Now Play adds the `conf` directory to the classpath by default.
 
 This can be turned off by setting `PlayKeys.externalizeResources := false`, which will cause no `conf` directory to be created in the distribution, and it will not be on the classpath.  The contents of the applications `conf` directory will still be on the classpath by virtue of the fact that it's included in the applications jar file.
+
+### Changes in Debian Package creation
+
+The [sbt-native-packager](https://github.com/sbt/sbt-native-packager) has been upgraded. Due to this, the following adjustments might be necessary:
+ * The syntax of the `/etc/default/$appname` file has changed from being a simple list of command line parameters to being a shell script that gets sourced by the start/stop scripts, allowing you to set environment variables.
+ * The equivalent to the old syntax of the default file is an `application.ini` file in your archive's `conf` folder.
+ * The default-file gets sourced by `SystemV` Init scripts only - Upstart ignores this file right now. To change your build to create `SystemV` compatible packages, add this to your build.sbt: 
+```
+import com.typesafe.sbt.packager.archetypes.ServerLoader.{SystemV, Upstart}
+
+serverLoading in Debian := SystemV
+```
+ * Other changes that might be necessary can be found in the [sbt-native-packager release notes](https://github.com/sbt/sbt-native-packager/releases). 
 
 
 ## Miscellaneous

@@ -28,9 +28,13 @@
         </head>
         <body class="value">
       <div id="definition">
-        <a href="Column.html" title="Go to companion"><img src="../lib/object_to_trait_big.png" /></a>
+        <a href="Column.html" title="See companion trait"><img src="../lib/object_to_trait_big.png" /></a>
         <p id="owner"><a href="package.html" class="extype" name="anorm">anorm</a></p>
-        <h1><a href="Column.html" title="Go to companion">Column</a></h1> <span class="permalink">
+        <h1><a href="Column.html" title="See companion trait">Column</a></h1><h3><span class="morelinks"><div>
+            Related Docs:
+            <a href="Column.html" title="See companion trait">trait Column</a>
+            | <a href="package.html" class="extype" name="anorm">package anorm</a>
+          </div></span></h3><span class="permalink">
       <a href="../index.html#anorm.Column$" title="Permalink" target="_top">
         <img src="../lib/permalink.png" />
       </a>
@@ -43,13 +47,13 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <span class="name">Column</span><span class="result"> extends <a href="JodaColumn.html" class="extype" name="anorm.JodaColumn">JodaColumn</a></span>
+        <span class="name">Column</span><span class="result"> extends <a href="JodaColumn.html" class="extype" name="anorm.JodaColumn">JodaColumn</a> with <a href="JavaTimeColumn.html" class="extype" name="anorm.JavaTimeColumn">JavaTimeColumn</a></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Column companion, providing default conversions.</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/anorm/tree/master/core/src/main/scala/anorm/Column.scala" target="_blank">Column.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Column companion, providing default conversions.</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/anorm/tree/2.4.0-RC3/core/src/main/scala/anorm/Column.scala" target="_blank">Column.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="JodaColumn.html" class="extype" name="anorm.JodaColumn">JodaColumn</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="JavaTimeColumn.html" class="extype" name="anorm.JavaTimeColumn">JavaTimeColumn</a>, <a href="JodaColumn.html" class="extype" name="anorm.JodaColumn">JodaColumn</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -67,7 +71,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="anorm.Column"><span>Column</span></li><li class="in" name="anorm.JodaColumn"><span>JodaColumn</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="anorm.Column"><span>Column</span></li><li class="in" name="anorm.JavaTimeColumn"><span>JavaTimeColumn</span></li><li class="in" name="anorm.JodaColumn"><span>JodaColumn</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -414,6 +418,28 @@ Time zone offset is the one of default JVM time zone
 
 <span class="kw">val</span> bytes: InputStream = SQL(<span class="lit">"SELECT bin FROM tbl"</span>).
   as(scalar[InputStream].single)</pre></div></div>
+    </li><li name="anorm.JavaTimeColumn#columnToInstant" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="columnToInstant:anorm.Column[java.time.Instant]"></a>
+      <a id="columnToInstant:Column[Instant]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">columnToInstant</span><span class="result">: <a href="Column.html" class="extype" name="anorm.Column">Column</a>[<span class="extype" name="java.time.Instant">Instant</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#anorm.Column$@columnToInstant:anorm.Column[java.time.Instant]" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Parses column as Java8 instant.</p><div class="fullcomment"><div class="comment cmt"><p>Parses column as Java8 instant.
+Time zone offset is the one of default JVM time zone
+(see <span class="extype" name="java.time.ZoneId#systemDefault">ZoneId.systemDefault</span>).</p><pre><span class="kw">import</span> java.time.Instant
+<span class="kw">import</span> anorm.Java8._
+
+<span class="kw">val</span> i: Instant = SQL(<span class="lit">"SELECT last_mod FROM tbl"</span>).as(scalar[Instant].single)</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="JavaTimeColumn.html" class="extype" name="anorm.JavaTimeColumn">JavaTimeColumn</a></dd></dl></div>
     </li><li name="anorm.Column#columnToInt" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="columnToInt:anorm.Column[Int]"></a>
       <a id="columnToInt:Column[Int]"></a>
@@ -511,6 +537,29 @@ Time zone offset is the one of default JVM time zone
   SQL&quot;SELECT str_arr FROM tbl&quot;.as(scalar[List[String]])
 }}}
 </p></div></div>
+    </li><li name="anorm.JavaTimeColumn#columnToLocalDateTime" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="columnToLocalDateTime:anorm.Column[java.time.LocalDateTime]"></a>
+      <a id="columnToLocalDateTime:Column[LocalDateTime]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">columnToLocalDateTime</span><span class="result">: <a href="Column.html" class="extype" name="anorm.Column">Column</a>[<span class="extype" name="java.time.LocalDateTime">LocalDateTime</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#anorm.Column$@columnToLocalDateTime:anorm.Column[java.time.LocalDateTime]" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Parses column as Java8 local date/time.</p><div class="fullcomment"><div class="comment cmt"><p>Parses column as Java8 local date/time.
+Time zone offset is the one of default JVM time zone
+(see <span class="extype" name="java.time.ZoneId#systemDefault">ZoneId.systemDefault</span>).</p><pre><span class="kw">import</span> java.time.LocalDateTime
+<span class="kw">import</span> anorm.Java8._
+
+<span class="kw">val</span> i: LocalDateTime = SQL(<span class="lit">"SELECT last_mod FROM tbl"</span>).
+  as(scalar[LocalDateTime].single)</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="JavaTimeColumn.html" class="extype" name="anorm.JavaTimeColumn">JavaTimeColumn</a></dd></dl></div>
     </li><li name="anorm.Column#columnToLong" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="columnToLong:anorm.Column[Long]"></a>
       <a id="columnToLong:Column[Long]"></a>
@@ -634,6 +683,29 @@ Time zone offset is the one of default JVM time zone
       </a>
     </span>
       
+    </li><li name="anorm.JavaTimeColumn#columnToZonedDateTime" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="columnToZonedDateTime:anorm.Column[java.time.ZonedDateTime]"></a>
+      <a id="columnToZonedDateTime:Column[ZonedDateTime]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">columnToZonedDateTime</span><span class="result">: <a href="Column.html" class="extype" name="anorm.Column">Column</a>[<span class="extype" name="java.time.ZonedDateTime">ZonedDateTime</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#anorm.Column$@columnToZonedDateTime:anorm.Column[java.time.ZonedDateTime]" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Parses column as Java8 zoned date/time.</p><div class="fullcomment"><div class="comment cmt"><p>Parses column as Java8 zoned date/time.
+Time zone offset is the one of default JVM time zone
+(see <span class="extype" name="java.time.ZoneId#systemDefault">ZoneId.systemDefault</span>).</p><pre><span class="kw">import</span> java.time.ZonedDateTime
+<span class="kw">import</span> anorm.Java8._
+
+<span class="kw">val</span> i: ZonedDateTime = SQL(<span class="lit">"SELECT last_mod FROM tbl"</span>).
+  as(scalar[ZonedDateTime].single)</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="JavaTimeColumn.html" class="extype" name="anorm.JavaTimeColumn">JavaTimeColumn</a></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -930,7 +1002,7 @@ Time zone offset is the one of default JVM time zone
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 2.3.6) Use scala.tools.nsc.doc.base.MemberLookupBase$$anon$1@7b969ef7">nonNull</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="transformer">transformer: (<span class="extype" name="scala.Any">Any</span>, <a href="MetaDataItem.html" class="extype" name="anorm.MetaDataItem">MetaDataItem</a>) ⇒ <a href="MayErr.html" class="extype" name="anorm.MayErr">MayErr</a>[<a href="SqlRequestError.html" class="extype" name="anorm.SqlRequestError">SqlRequestError</a>, <span class="extype" name="anorm.Column.nonNull.A">A</span>]</span>)</span><span class="result">: <a href="Column.html" class="extype" name="anorm.Column">Column</a>[<span class="extype" name="anorm.Column.nonNull.A">A</span>]</span>
+        <span class="name deprecated" title="Deprecated: (Since version 2.3.6) Use scala.tools.nsc.doc.base.MemberLookupBase$$anon$1@12776ca8">nonNull</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="transformer">transformer: (<span class="extype" name="scala.Any">Any</span>, <a href="MetaDataItem.html" class="extype" name="anorm.MetaDataItem">MetaDataItem</a>) ⇒ <a href="MayErr.html" class="extype" name="anorm.MayErr">MayErr</a>[<a href="SqlRequestError.html" class="extype" name="anorm.SqlRequestError">SqlRequestError</a>, <span class="extype" name="anorm.Column.nonNull.A">A</span>]</span>)</span><span class="result">: <a href="Column.html" class="extype" name="anorm.Column">Column</a>[<span class="extype" name="anorm.Column.nonNull.A">A</span>]</span>
       </span>
       </h4><span class="permalink">
       <a href="../index.html#anorm.Column$@nonNull[A](transformer:(Any,anorm.MetaDataItem)=&gt;anorm.MayErr[anorm.SqlRequestError,A]):anorm.Column[A]" title="Permalink" target="_top">
@@ -946,7 +1018,9 @@ Time zone offset is the one of default JVM time zone
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="anorm.JodaColumn">
+        <div class="parent" name="anorm.JavaTimeColumn">
+              <h3>Inherited from <a href="JavaTimeColumn.html" class="extype" name="anorm.JavaTimeColumn">JavaTimeColumn</a></h3>
+            </div><div class="parent" name="anorm.JodaColumn">
               <h3>Inherited from <a href="JodaColumn.html" class="extype" name="anorm.JodaColumn">JodaColumn</a></h3>
             </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
