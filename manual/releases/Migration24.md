@@ -180,14 +180,15 @@ While Play 2.4 won't force you to use the dependency injected versions of compon
 
 | Old API | New API | Comments |
 | ------- | --------| -------- |
-| [`Lang`](api/scala/index.html#play.api.i18n.Lang$) | [`Langs`](api/scala/index.html#play.api.i18n.Langs) | |
-| [`Messages`](api/scala/index.html#play.api.i18n.Messages$) | [`MessagesApi`](api/scala/index.html#play.api.i18n.MessagesApi) | Using one of the `preferred` methods, you can get a [`Messages`](api/scala/index.html#play.api.i18n.Messages) instance. |
-| [`DB`](api/scala/index.html#play.api.db.DB$) | [`DBApi`](api/scala/index.html#play.api.db.DBApi) or better, [`Database`](api/scala/index.html#play.api.db.Database) | You can get a particular database using the `@NamedDatabase` annotation. |
-| [`Cache`](api/scala/index.html#play.api.cache.Cache$) | [`CacheApi`](api/scala/index.html#play.api.cache.CacheApi) or better | You can get a particular cache using the `@NamedCache` annotation. |
-| [`Cached` object](api/scala/index.html#play.api.cache.Cached$) | [`Cached` instance](api/scala/index.html#play.api.cache.Cached) | Use an injected instance instead of the companion object. You can use the `@NamedCache` annotation. |
-| [`Akka`](api/scala/index.html#play.api.libs.concurrent.Akka$) | N/A | No longer needed, just declare a dependency on `ActorSystem` |
-| [`WS`](api/scala/index.html#play.api.libs.ws.WS$) | [`WSClient`](api/scala/index.html#play.api.libs.ws.WSClient) | |
-| [`Crypto`](api/scala/index.html#play.api.libs.Crypto$) | [`Crypto`](api/scala/index.html#play.api.libs.Crypto) | |
+| [`Lang`](api/scala/play/api/i18n/Lang$.html) | [`Langs`](api/scala/play/api/i18n/Langs.html) | |
+| [`Messages`](api/scala/play/api/i18n/Messages$.html) | [`MessagesApi`](api/scala/play/api/i18n/MessagesApi.html) | Using one of the `preferred` methods, you can get a [`Messages`](api/scala/play/api/i18n/Messages.html) instance. |
+| [`DB`](api/scala/play/api/db/DB$.html) | [`DBApi`](api/scala/play/api/db/DBApi.html) or better, [`Database`](api/scala/play/api/db/Database.html) | You can get a particular database using the `@NamedDatabase` annotation. |
+| [`Cache`](api/scala/play/api/cache/Cache$.html) | [`CacheApi`](api/scala/play/api/cache/CacheApi.html) or better | You can get a particular cache using the `@NamedCache` annotation. |
+| [`Cached` object](api/scala/play/api/cache/Cached$.html) | [`Cached` instance](api/scala/play/api/cache/Cached.html) | Use an injected instance instead of the companion object. You can use the `@NamedCache` annotation. |
+| [`Akka`](api/scala/play/api/libs/concurrent/Akka$.html) | N/A | No longer needed, just declare a dependency on `ActorSystem` |
+| [`WS`](api/scala/play/api/libs/ws/WS$.html) | [`WSClient`](api/scala/play/api/libs/ws/WSClient.html) | |
+| [`Crypto`](api/scala/play/api/libs/Crypto$.html) | [`Crypto`](api/scala/play/api/libs/Crypto.html) | |
+| [`GlobalSettings`](api/scala/play/api/GlobalSettings.html) | [`HttpErrorHandler`](api/scala/play/api/http/HttpErrorHandler.html), [`HttpRequestHandler`](api/scala/play/api/http/HttpRequestHandler.html), and [`HttpFilters`](api/scala/play/api/http/HttpFilters.html)| Read the details in the [[GlobalSettings|Migration24#GlobalSettings]] section below. |
 
 #### Java
 
@@ -201,6 +202,89 @@ While Play 2.4 won't force you to use the dependency injected versions of compon
 | [`Akka`](api/java/play/libs/Akka.html) | N/A | No longer needed, just declare a dependency on `ActorSystem` |
 | [`WS`](api/java/play/libs/ws/WS.html) | [`WSClient`](api/java/play/libs/ws/WSClient.html) | |
 | [`Crypto`](api/java/play/libs/Crypto.html) | [`Crypto`](api/java/play/libs/Crypto.html) | The old static methods have been removed, an instance can statically be accessed using `play.Play.application().injector().instanceOf(Crypto.class)` |
+| [`GlobalSettings`](api/java/play/GlobalSettings.html) | [`HttpErrorHandler`](api/java/play/http/HttpErrorHandler.html), [`HttpRequestHandler`](api/java/play/http/HttpRequestHandler.html), and [`HttpFilters`](api/java/play/http/HttpFilters.html)| Read the details in the [[GlobalSettings|Migration24#GlobalSettings]] section below. |
+
+### GlobalSettings
+
+If you are keen to use dependency injection, we are recommending that you move out of your `GlobalSettings` implementation class as much code as possible. Ideally, you should be able to refactor your code so that it is possible to eliminate your `GlobalSettings` class altogether.
+
+Next follows a method-by-method guide for refactoring your code. Because the APIs are slightly different for Java and Scala, make sure to jump to the appropriate subsection.
+
+> Note: If you haven't yet read about dependency injection in Play, make a point to do it now. Follow the appropriate link to learn about dependency injection in Play with [[Java|JavaDependencyInjection]] or [[Scala|ScalaDependencyInjection]].
+
+#### Scala
+
+* `GlobalSettings.beforeStart` and `GlobalSettings.onStart`:  Anything that needs to happen on start up should now be happening in the constructor of a dependency injected class. A class will perform its initialisation when the dependency injection framework loads it. If you need eager initialisation (because you need to execute some code *before* the application is actually started), [[define an eager binding|ScalaDependencyInjection#Eager-bindings]].
+
+* `GlobalSettings.onStop`: Add a dependency to [`ApplicationLifecycle`](api/scala/play/api/inject/ApplicationLifecycle.html) on the class that needs to register a stop hook. Then, move the implementation of your `GlobalSettings.onStop` method inside the `Future` passed to the `ApplicationLifecycle.addStopHook`. Read [[Stopping/cleaning-up|ScalaDependencyInjection#Stopping/cleaning-up]] for more information.
+
+* `GlobalSettings.onError`: Create a class that inherits from [`HttpErrorHandler`](api/scala/play/api/http/HttpErrorHandler.html), and move the implementation of your `GlobalSettings.onError` inside the `HttpErrorHandler.onServerError` method. Read [[Error Handling|ScalaErrorHandling]] for more information.
+
+* `GlobalSettings.onRequestReceived`:  Create a class that inherits from [`HttpRequestHandler`](api/scala/play/api/http/HttpRequestHandler.html), and move the implementation of your `GlobalSettings.onRequestReceived` inside the `HttpRequestHandler.handlerForRequest` method.  Read [[Request Handlers|ScalaHttpRequestHandlers]] for more information. 
+Be aware that if in your `GlobalSettings.onRequestReceived` implementation you are calling `super.onRequestReceived`, then you should inherits from [`DefaultHttpRequestHandler`](api/scala/play/api/http/DefaultHttpRequestHandler.html) instead of `HttpRequestHandler`, and replace all calls to `super.onRequestReceived` with `super.handlerForRequest`.
+
+* `GlobalSettings.onRouteRequest`: Create a class that inherits from [`DefaultHttpRequestHandler`](api/scala/play/api/http/DefaultHttpRequestHandler.html), and move the impementation of your `GlobalSettings.onRouteRequest` method inside the `DefaultHttpRequestHandler.routeRequest` method. Read [[Request Handlers|ScalaHttpRequestHandlers]] for more information.
+
+* `GlobalSettings.onRequestCompletion`: This method is deprecated, and it is *no longer invoked by Play*. Instead, create a custom filter that attaches an `onDoneEnumerating` callback onto the returned `Enumerator` result. Read [[Scala Http Filters|ScalaHttpFilters]] for details on how to create a http filter.
+
+* `GlobalSettings.onHandlerNotFound`: Create a class that inherits from [`HttpErrorHandler`](api/scala/play/api/http/HttpErrorHandler.html), and provide an implementation for `HttpErrorHandler.onClientError`. Read [[Error Handling|ScalaErrorHandling]] for more information.
+Note that `HttpErrorHandler.onClientError` takes a `statusCode` in argument, hence your implementation should boil down to:
+
+```scala
+if(statusCode == play.api.http.Status.NOT_FOUND) {
+  // move your implementation of `GlobalSettings.onHandlerNotFound` here
+}
+```
+
+* `GlobalSettings.onBadRequest`: Create a class that inherits from [`HttpErrorHandler`](api/scala/play/api/http/HttpErrorHandler.html), and provide an implementation for `HttpErrorHandler.onClientError`. Read [[Error Handling|ScalaErrorHandling]] for more information.
+Note that `HttpErrorHandler.onClientError` takes a `statusCode` in argument, hence your implementation should boil down to:
+
+```scala
+if(statusCode == play.api.http.Status.BAD_REQUEST) {
+  // move your implementation of `GlobalSettings.onBadRequest` here
+}
+```
+
+* `GlobalSettings.configure` and `GlobalSettings.onLoadConfig`: Specify all configuration in your config file or create your own ApplicationLoader (see [[GuiceApplicationBuilder.loadConfig|ScalaDependencyInjection#advanced-extending-the-guiceapplicationloader]]).
+
+* `GlobalSettings.doFilter`: Create a class that inherits from [`HttpFilters`](api/scala/play/api/http/HttpFilters.html), and provide an implementation for `HttpFilter.filters`. Read [[Http Filters|ScalaHttpFilters]] for more information.
+
+Also, mind that if your `Global` class is mixing the `WithFilters` trait, you should now create a Filter class that inherits from [`HttpFilters`](api/scala/play/api/http/HttpFilters.html), and place it in the empty package. Read [[here|ScalaHttpFilters]] for more details.
+
+
+#### Java
+
+* `GlobalSettings.beforeStart` and `GlobalSettings.onStart`:  Anything that needs to happen on start up should now be happening in the constructor of a dependency injected class. A class will perform its initialisation when the dependency injection framework loads it. If you need eager initialisation (for example, because you need to execute some code *before* the application is actually started), [[define an eager binding|JavaDependencyInjection#Eager-bindings]].
+
+* `GlobalSettings.onStop`: Add a dependency to [`ApplicationLifecycle`](api/java/play/inject/ApplicationLifecycle.html) on the class that needs to register a stop hook. Then, move the implementation of your `GlobalSettings.onStop` method inside the `Promise` passed to the `ApplicationLifecycle.addStopHook`. Read [[Stopping/cleaning-up|JavaDependencyInjection#Stopping/cleaning-up]] for more information.
+
+* `GlobalSettings.onError`: Create a class that inherits from [`HttpErrorHandler`](api/java/play/http/HttpErrorHandler.html), and move the implementation of your `GlobalSettings.onError` inside the `HttpErrorHandler.onServerError` method. Read [[Error Handling|JavaErrorHandling]] for more information.
+
+* `GlobalSettings.onRequest`: Create a class that inherits from [`DefaultHttpRequestHandler`](api/java/play/http/DefaultHttpRequestHandler.html), and move the implementation of your `GlobalSettings.onRequest` method inside the `DefaultHttpRequestHandler.createAction` method. Read [[Request Handlers|JavaHttpRequestHandlers]] for more information.
+
+* `GlobalSettings.onRouteRequest`: There is no simple migration for this method when using the Java API. If you need this, you will have to keep your Global class around for a little longer.
+
+* `GlobalSettings.onHandlerNotFound`: Create a class that inherits from [`HttpErrorHandler`](api/java/play/http/HttpErrorHandler.html), and provide an implementation for `HttpErrorHandler.onClientError`. Read [[Error Handling|JavaErrorHandling]] for more information.
+Note that `HttpErrorHandler.onClientError` takes a `statusCode` in argument, hence your implementation should boil down to:
+
+```java
+if(statusCode == play.mvc.Http.Status.NOT_FOUND) {
+  // move your implementation of `GlobalSettings.onHandlerNotFound` here
+}
+```
+
+* `GlobalSettings.onBadRequest`: Create a class that inherits from [`HttpErrorHandler`](api/java/play/http/HttpErrorHandler.html), and provide an implementation for `HttpErrorHandler.onClientError`. Read [[Error Handling|JavaErrorHandling]] for more information.
+Note that `HttpErrorHandler.onClientError` takes a `statusCode` in argument, hence your implementation should boil down to:
+
+```java
+if(statusCode == play.mvc.Http.Status.BAD_REQUEST) {
+  // move your implementation of `GlobalSettings.onBadRequest` here
+}
+```
+
+* `GlobalSettings.onLoadConfig`: Specify all configuration in your config file or create your own ApplicationLoader (see [[GuiceApplicationBuilder.loadConfig|JavaDependencyInjection#advanced-extending-the-guiceapplicationloader]]).
+
+* `GlobalSettings.filters`: Create a class that inherits from [`HttpFilters`](api/java/play/http/HttpFilters.html), and provide an implementation for `HttpFilter.filters`. Read [[Http Filters|JavaHttpFilters]] for more information.
 
 ## Configuration changes
 
@@ -321,7 +405,7 @@ Additionally, Java actions may now declare a `BodyParser.Of.maxLength` value tha
 
 ## JSON API changes
 
-The semantics of JSON lookups have changed slightly. `JsUndefined` has been removed from the `JsValue` type hierarchy and all lookups of the form `jsv \ foo` or `jsv(bar)` have been moved to [`JsLookup`](api/java/play/api/libs/json/JsLookup.html). They now return a [`JsLookupResult`](api/java/play/api/libs/json/JsLookupResult.html) instead of a `JsValue`.
+The semantics of JSON lookups have changed slightly. `JsUndefined` has been removed from the `JsValue` type hierarchy and all lookups of the form `jsv \ foo` or `jsv(bar)` have been moved to [`JsLookup`](api/scala/play/api/libs/json/JsLookup.html). They now return a [`JsLookupResult`](api/scala/play/api/libs/json/JsLookupResult.html) instead of a `JsValue`.
 
 If you have code of the form
 
@@ -335,7 +419,7 @@ the following code is equivalent, if you know the property exists:
 val v: JsValue = (json \ "foo" \ "bar").get
 ```
 
-If you don't know the property exists, we recommend using pattern matching or the methods on [`JsLookupResult`](api/java/play/api/libs/json/JsLookupResult.html) to safely handle the `JsUndefined` case, e.g.
+If you don't know the property exists, we recommend using pattern matching or the methods on [`JsLookupResult`](api/scala/play/api/libs/json/JsLookupResult.html) to safely handle the `JsUndefined` case, e.g.
 
 ```scala
 val vOpt = Option[JsValue] = (json \ "foo" \ "bar").toOption
@@ -343,7 +427,7 @@ val vOpt = Option[JsValue] = (json \ "foo" \ "bar").toOption
 
 ### JsLookup
 
-All JSON traversal methods have been moved to the [`JsLookup`](api/java/play/api/libs/json/JsLookup.html) class, which is implicitly applied to all values of type `JsValue` or `JsLookupResult`. In addition to the `apply`, `\`, and `\\` methods, the `head`, `tail`, and `last` methods have been added for JSON arrays. All methods except `\\` return a [`JsLookupResult`](api/java/play/api/libs/json/JsLookupResult.html), a wrapper for `JsValue` that helps with handling undefined values.
+All JSON traversal methods have been moved to the [`JsLookup`](api/scala/play/api/libs/json/JsLookup.html) class, which is implicitly applied to all values of type `JsValue` or `JsLookupResult`. In addition to the `apply`, `\`, and `\\` methods, the `head`, `tail`, and `last` methods have been added for JSON arrays. All methods except `\\` return a [`JsLookupResult`](api/scala/play/api/libs/json/JsLookupResult.html), a wrapper for `JsValue` that helps with handling undefined values.
 
 The methods `as[A]`, `asOpt[A]`, `validate[A]` also exist on `JsLookup`, so code like the below should require no source changes:
 
@@ -353,6 +437,14 @@ val bar: JsResult[Baz] = (json \ "baz").validate[Baz]
 ```
 
 As a result of these changes, your code can now assume that all values of type `JsValue` are serializable to JSON.
+
+### Reading Options
+
+`OptionReads` is no longer available by default in 2.4. If you have code of the form `jsv.validate[Option[A]]`, you'll need to either rewrite it or add an additional import:
+
+* To get the same result as in 2.3, you can use `JsSuccess(jsv.asOpt[A])`. This will map all validation errors to `None`.
+* To map `JsNull` to `None` and validate the value if it exists, use `jsv.validate(optionWithNull[A])`.
+* To map both `JsNull` and an undefined lookup result to `None`, use `jsLookupResult.getOrElse(JsNull).validate(optionWithNull[A])` or similar.
 
 ## Testing changes
 
@@ -370,7 +462,7 @@ If you use the Java API, the [`F.Promise`](api/java/play/libs/F.Promise.html) cl
 
 ## WS client
 
-`WSRequestHolder` has been renamed to `WSRequest` in [Scala](api/scala/index.html#play.api.libs.ws.WSRequest) and [Java](api/java/play/libs/ws/WSRequest.html).  The previous `WSRequest` class has been removed out as it was only used internally to WS for OAuth functionality.
+`WSRequestHolder` has been renamed to `WSRequest` in [Scala](api/scala/play/api/libs/ws/WSRequest.html) and [Java](api/java/play/libs/ws/WSRequest.html).  The previous `WSRequest` class has been removed out as it was only used internally to WS for OAuth functionality.
 
 WS has upgraded from AsyncHttpClient 1.8.x to 1.9.x, which includes a number of breaking changes if using or configuring that library directly.  Please see the [AsyncHttpClient Migration Guide](https://github.com/AsyncHttpClient/async-http-client/blob/master/MIGRATION.md) for more details.  The upgrade to AsyncHttpClient 1.9.x enables Server Name Indication (SNI) in HTTPS -- this solves a number of problems with HTTPS based CDNs such as Cloudflare which depend heavily on SNI.
 
@@ -424,7 +516,7 @@ String enc = Crypto.encryptAES(orig);
 String dec = Crypto.decryptAES(enc);
 ```
 
-Usage of the [Scala Crypto API](api/scala/index.html#play.api.libs.Crypto) is also the same:
+Usage of the [Scala Crypto API](api/scala/play/api/libs/Crypto.html) is also the same:
 
 ```scala
 import play.api.libs.Crypto
@@ -633,7 +725,7 @@ play.i18n.langs = [ "en", "en-US", "fr" ]
 
 ### Scala
 
-You now need to have an implicit [`Messages`](api/scala/index.html#play.api.i18n.Messages) value instead of just `Lang` in order to use the i18n API. The `Messages` type aggregates a `Lang` and a [`MessagesApi`](api/scala/index.html#play.api.i18n.MessagesApi).
+You now need to have an implicit [`Messages`](api/scala/play/api/i18n/Messages.html) value instead of just `Lang` in order to use the i18n API. The `Messages` type aggregates a `Lang` and a [`MessagesApi`](api/scala/play/api/i18n/MessagesApi.html).
 
 This means that you should change your templates to take an implicit `Messages` parameter instead of `Lang`:
 
@@ -642,7 +734,7 @@ This means that you should change your templates to take an implicit `Messages` 
 ...
 ```
 
-From you controllers you can get such an implicit `Messages` value by mixing the [`play.api.i18n.I18nSupport`](api/scala/index.html#play.api.i18n.I18nSupport) trait in your controller that gives you an implicit `Messages` value as long as there is a `RequestHeader` value in the implicit scope. The `I18nSupport` trait has an abstract member `def messagesApi: MessagesApi` so your code will typically look like the following:
+From you controllers you can get such an implicit `Messages` value by mixing the [`play.api.i18n.I18nSupport`](api/scala/play/api/i18n/I18nSupport.html) trait in your controller that gives you an implicit `Messages` value as long as there is a `RequestHeader` value in the implicit scope. The `I18nSupport` trait has an abstract member `def messagesApi: MessagesApi` so your code will typically look like the following:
 
 ```scala
 import javax.inject.Inject
@@ -678,13 +770,13 @@ This can be turned off by setting `PlayKeys.externalizeResources := false`, whic
 The [sbt-native-packager](https://github.com/sbt/sbt-native-packager) has been upgraded. Due to this, the following adjustments might be necessary:
  * The syntax of the `/etc/default/$appname` file has changed from being a simple list of command line parameters to being a shell script that gets sourced by the start/stop scripts, allowing you to set environment variables.
  * The equivalent to the old syntax of the default file is an `application.ini` file in your archive's `conf` folder.
- * The default-file gets sourced by `SystemV` Init scripts only - Upstart ignores this file right now. To change your build to create `SystemV` compatible packages, add this to your build.sbt: 
+ * The default-file gets sourced by `SystemV` Init scripts only - Upstart ignores this file right now. To change your build to create `SystemV` compatible packages, add this to your build.sbt:
 ```
 import com.typesafe.sbt.packager.archetypes.ServerLoader.{SystemV, Upstart}
 
 serverLoading in Debian := SystemV
 ```
- * Other changes that might be necessary can be found in the [sbt-native-packager release notes](https://github.com/sbt/sbt-native-packager/releases). 
+ * Other changes that might be necessary can be found in the [sbt-native-packager release notes](https://github.com/sbt/sbt-native-packager/releases).
 
 
 ## Miscellaneous

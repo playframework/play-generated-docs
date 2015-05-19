@@ -48,27 +48,29 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Json API
-For example:</p><pre> <span class="kw">case</span> <span class="kw">class</span> User(id: <span class="std">Long</span>, name: <span class="std">String</span>, friends: <span class="std">List</span>[User])
+For example:</p><pre><span class="kw">import</span> play.api.libs.json._
+<span class="kw">import</span> play.api.libs.functional.syntax._
 
- <span class="kw">implicit</span> <span class="kw">object</span> UserFormat <span class="kw">extends</span> Format[User] {
-  <span class="kw">def</span> reads(json: JsValue): User = User(
-    (json \ <span class="lit">"id"</span>).as[<span class="std">Long</span>],
-    (json \ <span class="lit">"name"</span>).as[<span class="std">String</span>],
-    (json \ <span class="lit">"friends"</span>).asOpt[<span class="std">List</span>[User]].getOrElse(<span class="std">List</span>()))
-  <span class="kw">def</span> writes(u: User): JsValue = JsObject(<span class="std">List</span>(
-    <span class="lit">"id"</span> -&gt; JsNumber(u.id),
-    <span class="lit">"name"</span> -&gt; JsString(u.name),
-    <span class="lit">"friends"</span> -&gt; JsArray(u.friends.map(fr <span class="kw">=&gt;</span> JsObject(<span class="std">List</span>(<span class="lit">"id"</span> -&gt; JsNumber(fr.id),
-    <span class="lit">"name"</span> -&gt; JsString(fr.name)))))))
+<span class="kw">case</span> <span class="kw">class</span> User(id: <span class="std">Long</span>, name: <span class="std">String</span>, friends: <span class="std">Seq</span>[User] = <span class="std">Seq</span>.empty)
+<span class="kw">object</span> User {
+
+  <span class="cmt">// In this format, an undefined friends property is mapped to an empty list</span>
+  <span class="kw">implicit</span> <span class="kw">val</span> format: Format[User] = (
+    (__ \ <span class="lit">"id"</span>).format[<span class="std">Long</span>] and
+    (__ \ <span class="lit">"name"</span>).format[<span class="std">String</span>] and
+    (__ \ <span class="lit">"friends"</span>).lazyFormatNullable(implicitly[Format[<span class="std">Seq</span>[User]]])
+      .inmap[<span class="std">Seq</span>[User]](_ getOrElse <span class="std">Seq</span>.empty, <span class="std">Some</span>(_))
+  )(User.apply, unlift(User.unapply))
 }
 
 <span class="cmt">//then in a controller:</span>
+
 <span class="kw">object</span> MyController <span class="kw">extends</span> Controller {
    <span class="kw">def</span> displayUserAsJson(id: <span class="std">String</span>) = Action {
-      Ok(toJson( User(id.toLong, <span class="lit">"myName"</span>, friends: <span class="std">List</span>())))
+      Ok(Json.toJson(User(id.toLong, <span class="lit">"myName"</span>)))
    }
    <span class="kw">def</span> saveUser(jsonString: <span class="std">String</span>)= Action {
-     <span class="kw">val</span> user = play.api.libs.json.Json.parse(jsonString).as[User]
+     <span class="kw">val</span> user = Json.parse(jsonString).as[User]
      myDataStore.save(user)
      Ok
    }

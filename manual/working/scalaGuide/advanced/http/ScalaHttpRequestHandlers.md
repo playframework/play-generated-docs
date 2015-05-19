@@ -1,7 +1,7 @@
 <!--- Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com> -->
 # HTTP Request Handlers
 
-Play provides a range of abstractions for routing requests to actions, providing routers and filters to allow most common needs.  Sometimes however an application will have more advanced needs that aren't met by Play's abstractions.  When this is the case, applications can provide custom implementations of Play's lowest level HTTP pipeline API, the [`HttpRequestHandler`](api/scala/index.html#play.api.http.HttpRequestHandler).
+Play provides a range of abstractions for routing requests to actions, providing routers and filters to allow most common needs.  Sometimes however an application will have more advanced needs that aren't met by Play's abstractions.  When this is the case, applications can provide custom implementations of Play's lowest level HTTP pipeline API, the [`HttpRequestHandler`](api/scala/play/api/http/HttpRequestHandler.html).
 
 Providing a custom `HttpRequestHandler` should be a last course of action.  Most custom needs can be met through implementing a custom router or a [[filter|ScalaHttpFilters]].
 
@@ -17,7 +17,7 @@ A very simple request handler that simply delegates to a router might look like 
 
 ## Extending the default request handler
 
-In most cases you probably won't want to create a new request handler from scratch, you'll want to build on the default one.  This can be done by extending [DefaultHttpRequestHandler](api/scala/index.html#play.api.http.HttpRequestHandler).  The default request handler provides a number of methods that can be overridden, this allows you to implement your custom functionality without reimplementing the code to tag requests, handle errors, etc.
+In most cases you probably won't want to create a new request handler from scratch, you'll want to build on the default one.  This can be done by extending [DefaultHttpRequestHandler](api/scala/play/api/http/HttpRequestHandler.html).  The default request handler provides a number of methods that can be overridden, this allows you to implement your custom functionality without reimplementing the code to tag requests, handle errors, etc.
 
 One use case for a custom request handler may be that you want to delegate to a different router, depending on what host the request is for.  Here is an example of how this might be done:
 
@@ -25,9 +25,11 @@ One use case for a custom request handler may be that you want to delegate to a 
 
 ## Configuring the http request handler
 
-To tell Play to use your custom http request handler, simply configure `play.http.requestHandler` in `application.conf` to point to the fully qualified class name of your handler:
+A custom http handler can be supplied by creating a class in the root package called `RequestHandler` that implements `HttpRequestHandler`.
 
-    play.http.requestHandler = "com.example.MyHttpRequestHandler"
+If you don’t want to place your request handler in the root package, or if you want to be able to configure different request handlers for different environments, you can do this by configuring the `play.http.requestHandler` configuration property in `application.conf`:
+
+    play.http.requestHandler = "com.example.RequestHandler"
     
 ### Performance notes
 
