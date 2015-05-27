@@ -3479,10 +3479,10 @@ last element. Chunks are <code>Left(bytes)</code> and the trailer is <code>Right
       </a>
     </span>
       <p class="shortcomment cmt">Retrieve the flash scope implicitly from the request.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieve the flash scope implicitly from the request.</p><p>For example:</p><pre><span class="kw">def</span> index(name:<span class="std">String</span>) = Action { <span class="kw">implicit</span> request <span class="kw">=&gt;</span>
-  <span class="kw">val</span> message = flash(<span class="lit">"message"</span>)
+  <span class="kw">val</span> message = request2flash(<span class="lit">"message"</span>)
   Ok(<span class="lit">"Got "</span> + message)
 }</pre></div></div>
-    </li><li name="play.api.mvc.Controller#request2lang" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="play.api.mvc.Controller#request2lang" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="request2lang(implicitrequest:play.api.mvc.RequestHeader):play.api.i18n.Lang"></a>
       <a id="request2lang(RequestHeader):Lang"></a>
       <h4 class="signature">
@@ -3498,7 +3498,10 @@ last element. Chunks are <code>Left(bytes)</code> and the trailer is <code>Right
         <img src="../../../lib/permalink.png" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Retrieve the language implicitly from the request.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieve the language implicitly from the request.</p><p>For example:</p><pre><span class="kw">def</span> index(name:<span class="std">String</span>) = Action { <span class="kw">implicit</span> request <span class="kw">=&gt;</span>
+  <span class="kw">val</span> lang: Lang = request2lang
+  Ok(<span class="lit">"Got "</span> + lang)
+}</pre></div></div>
     </li><li name="play.api.mvc.Controller#request2session" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="request2session(implicitrequest:play.api.mvc.RequestHeader):play.api.mvc.Session"></a>
       <a id="request2session(RequestHeader):Session"></a>
@@ -3516,7 +3519,7 @@ last element. Chunks are <code>Left(bytes)</code> and the trailer is <code>Right
       </a>
     </span>
       <p class="shortcomment cmt">Retrieves the session implicitly from the request.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves the session implicitly from the request.</p><p>For example:</p><pre><span class="kw">def</span> index(name:<span class="std">String</span>) = Action { <span class="kw">implicit</span> request <span class="kw">=&gt;</span>
-  <span class="kw">val</span> username = session(<span class="lit">"username"</span>)
+  <span class="kw">val</span> username = request2session(<span class="lit">"username"</span>)
   Ok(<span class="lit">"Hello "</span> + username)
 }</pre></div></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
