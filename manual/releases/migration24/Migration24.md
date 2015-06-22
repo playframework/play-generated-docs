@@ -44,6 +44,7 @@ libraryDependencies += specs2 % Test
 
 resolvers += "scalaz-bintray" at "https://dl.bintray.com/scalaz/releases"
 ```
+If you are using a .scala build file, you will need to add the following import `import play.sbt.PlayImport._`
 
 ### Database evolutions support in a separate module
 
@@ -67,7 +68,7 @@ IntelliJ is now able to import sbt projects natively, so we recommend using that
 
 ### Play SBT plugin API
 
-All classes in the SBT plugin are now in the package `play.sbt`, this is particularly pertinent if using `.scala` files to configure your build.
+All classes in the SBT plugin are now in the package `play.sbt`, this is particularly pertinent if using `.scala` files to configure your build. You will need to import identifiers from `play.sbt.PlayImport` to use play provided configuration elements.
 
 #### `playWatchService` renamed
 
@@ -241,7 +242,7 @@ See the [[Java|JavaAkka]] or [[Scala|ScalaAkka]] Akka page for more information.
 
 Previously the two actor systems had slightly different thread pool configuration. Now that there is only one actor system, the configuration has been merged. We've also added a LIFO (stack-based) scheduling rule which should improve performance in most Play applications.
 
-The following settings are the new defaults in Play 2.4. They've been shown to have good performance in our testing, but every application is different so you may need to tweak them or rever them to the Play 2.3 settings. You can do that by overriding any of these values in your `application.conf`. Here are the new settings:
+The following settings are the new defaults in Play 2.4. They've been shown to have good performance in our testing, but every application is different so you may need to tweak them or revert them to the Play 2.3 settings. You can do that by overriding any of these values in your `application.conf`. Here are the new settings:
 
 ```
 akka {
@@ -398,7 +399,7 @@ WS has upgraded from AsyncHttpClient 1.8.x to 1.9.x, which includes a number of 
 
 Configuration settings for WS have changed:
 
-* `ws.acceptAnyCertificate` has been moved under the loose settings as `play.ws.loose.acceptAnyCertificate` to better indicate the insecure nature of blindly accepting any X.509 certificate without validation.
+* `ws.acceptAnyCertificate` has been moved under the loose settings as `play.ws.ssl.loose.acceptAnyCertificate` to better indicate the insecure nature of blindly accepting any X.509 certificate without validation.
 * `ws.ssl.debug` settings have been redefined as booleans, e.g. `play.ws.ssl.debug.all=true`.  Please see [Debugging SSL](https://www.playframework.com/documentation/2.4.x/DebuggingSSL) for details.
 * `ws.ssl.disabledSignatureAlgorithms` and `ws.ssl.disabledKeyAlgorithms` have been redefined as arrays of strings, e.g `play.ws.ssl.disabledSignatureAlgorithms = ["MD2", "MD4", "MD5"]`.
 
