@@ -92,7 +92,29 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="play.api.libs.Files.TemporaryFile" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="play.api.libs.Files.DefaultTemporaryFileCreator" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="DefaultTemporaryFileCreatorextendsFiles.TemporaryFileCreator"></a>
+      <a id="DefaultTemporaryFileCreator:DefaultTemporaryFileCreator"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Files$$DefaultTemporaryFileCreator.html"><span class="name">DefaultTemporaryFileCreator</span></a><span class="result"> extends <a href="Files$$TemporaryFileCreator.html" class="extype" name="play.api.libs.Files.TemporaryFileCreator">TemporaryFileCreator</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.libs.Files$@DefaultTemporaryFileCreatorextendsFiles.TemporaryFileCreator" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Creates temporary folders inside a single temporary folder.</p><div class="fullcomment"><div class="comment cmt"><p>Creates temporary folders inside a single temporary folder. The folder
+is deleted when the application stops.
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@Singleton</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="play.api.libs.Files.TemporaryFile" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="TemporaryFileextendsProductwithSerializable"></a>
       <a id="TemporaryFile:TemporaryFile"></a>
       <h4 class="signature">
@@ -110,6 +132,26 @@
     </span>
       <p class="shortcomment cmt">A temporary file hold a reference to a real file, and will delete
 it when the reference is garbaged.</p>
+    </li><li name="play.api.libs.Files.TemporaryFileCreator" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="TemporaryFileCreatorextendsAnyRef"></a>
+      <a id="TemporaryFileCreator:TemporaryFileCreator"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Files$$TemporaryFileCreator.html"><span class="name">TemporaryFileCreator</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.libs.Files$@TemporaryFileCreatorextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Logic for creating a temporary file.</p><div class="fullcomment"><div class="comment cmt"><p>Logic for creating a temporary file. Users should try to clean up the
+file themselves, but this TemporaryFileCreator implementation may also
+try to clean up any leaked files, e.g. when the Application or JVM stops.
+</p></div></div>
     </li></ol>
             </div>
 
@@ -168,6 +210,26 @@ it when the reference is garbaged.</p>
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="play.api.libs.Files.SingletonTemporaryFileCreator" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="SingletonTemporaryFileCreator"></a>
+      <a id="SingletonTemporaryFileCreator:SingletonTemporaryFileCreator"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Files$$SingletonTemporaryFileCreator$.html"><span class="name">SingletonTemporaryFileCreator</span></a><span class="result"> extends <a href="Files$$TemporaryFileCreator.html" class="extype" name="play.api.libs.Files.TemporaryFileCreator">TemporaryFileCreator</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.libs.Files$@SingletonTemporaryFileCreator" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Creates temporary folders using the default JRE method.</p><div class="fullcomment"><div class="comment cmt"><p>Creates temporary folders using the default JRE method. Files
+created by this method will not be cleaned up with the application
+or JVM stops.
+</p></div></div>
     </li><li name="play.api.libs.Files.TemporaryFile" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="TemporaryFile"></a>
       <a id="TemporaryFile:TemporaryFile"></a>
