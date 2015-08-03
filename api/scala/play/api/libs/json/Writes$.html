@@ -433,9 +433,8 @@ using '2011-12-03T10:15:30' format, and default time zone.
     </span>
       <p class="shortcomment cmt">Serializer for <code>java.time.Instant</code> as JSON number.</p><div class="fullcomment"><div class="comment cmt"><p>Serializer for <code>java.time.Instant</code> as JSON number.</p><pre><span class="kw">import</span> java.time.Instant
 <span class="kw">import</span> play.api.libs.json.Writes
-<span class="kw">import</span> play.api.libs.json.Java8Writes
 
-<span class="kw">implicit</span> <span class="kw">val</span> Writes = InstantNumberWrites[Instant]</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DefaultWrites.html" class="extype" name="play.api.libs.json.DefaultWrites">DefaultWrites</a></dd></dl></div>
+<span class="kw">implicit</span> <span class="kw">val</span> inWrites = Writes.InstantNumberWrites</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DefaultWrites.html" class="extype" name="play.api.libs.json.DefaultWrites">DefaultWrites</a></dd></dl></div>
     </li><li name="play.api.libs.json.DefaultWrites.IntWrites" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="IntWrites"></a>
       <a id="IntWrites:IntWrites"></a>
@@ -509,9 +508,8 @@ using '2011-12-03T10:15:30' format, and default time zone.
     </span>
       <p class="shortcomment cmt">Serializer for <code>java.time.LocalDate</code> as JSON number.</p><div class="fullcomment"><div class="comment cmt"><p>Serializer for <code>java.time.LocalDate</code> as JSON number.</p><pre><span class="kw">import</span> java.time.LocalDate
 <span class="kw">import</span> play.api.libs.json.Writes
-<span class="kw">import</span> play.api.libs.json.Java8Writes
 
-<span class="kw">implicit</span> <span class="kw">val</span> Writes = LocalDateNumberWrites[LocalDate]</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DefaultWrites.html" class="extype" name="play.api.libs.json.DefaultWrites">DefaultWrites</a></dd></dl></div>
+<span class="kw">implicit</span> <span class="kw">val</span> ldnWrites = Writes.LocalDateNumberWrites</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DefaultWrites.html" class="extype" name="play.api.libs.json.DefaultWrites">DefaultWrites</a></dd></dl></div>
     </li><li name="play.api.libs.json.DefaultWrites#LocalDateTimeNumberWrites" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="LocalDateTimeNumberWrites:play.api.libs.json.Writes[java.time.LocalDateTime]"></a>
       <a id="LocalDateTimeNumberWrites:Writes[LocalDateTime]"></a>
@@ -530,9 +528,8 @@ using '2011-12-03T10:15:30' format, and default time zone.
     </span>
       <p class="shortcomment cmt">Serializer for <code>java.time.LocalDateTime</code> as JSON number.</p><div class="fullcomment"><div class="comment cmt"><p>Serializer for <code>java.time.LocalDateTime</code> as JSON number.</p><pre><span class="kw">import</span> java.time.LocalDateTime
 <span class="kw">import</span> play.api.libs.json.Writes
-<span class="kw">import</span> play.api.libs.json.Java8Writes
 
-<span class="kw">implicit</span> <span class="kw">val</span> Writes = LocalDateTimeNumberWrites[LocalDateTime]</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DefaultWrites.html" class="extype" name="play.api.libs.json.DefaultWrites">DefaultWrites</a></dd></dl></div>
+<span class="kw">implicit</span> <span class="kw">val</span> ldtnWrites = Writes.LocalDateTimeNumberWrites</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DefaultWrites.html" class="extype" name="play.api.libs.json.DefaultWrites">DefaultWrites</a></dd></dl></div>
     </li><li name="play.api.libs.json.DefaultWrites.LongWrites" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="LongWrites"></a>
       <a id="LongWrites:LongWrites"></a>
@@ -659,9 +656,8 @@ using '2011-12-03T10:15:30' format, and default time zone.
     </span>
       <p class="shortcomment cmt">Serializer for <code>java.time.ZonedDateTime</code> as JSON number.</p><div class="fullcomment"><div class="comment cmt"><p>Serializer for <code>java.time.ZonedDateTime</code> as JSON number.</p><pre><span class="kw">import</span> java.time.ZonedDateTime
 <span class="kw">import</span> play.api.libs.json.Writes
-<span class="kw">import</span> play.api.libs.json.Java8Writes
 
-<span class="kw">implicit</span> <span class="kw">val</span> Writes = ZonedDateTimeNumberWrites[ZonedDateTime]</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DefaultWrites.html" class="extype" name="play.api.libs.json.DefaultWrites">DefaultWrites</a></dd></dl></div>
+<span class="kw">implicit</span> <span class="kw">val</span> zdtnWrites = Writes.ZonedDateTimeNumberWrites</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DefaultWrites.html" class="extype" name="play.api.libs.json.DefaultWrites">DefaultWrites</a></dd></dl></div>
     </li><li name="play.api.libs.json.Writes#apply" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="apply[A](f:A=&gt;play.api.libs.json.JsValue):play.api.libs.json.Writes[A]"></a>
       <a id="apply[A]((A)⇒JsValue):Writes[A]"></a>
@@ -1336,7 +1332,13 @@ from <code>JsPath.writeNullable which omits the field when None
     </span>
       <p class="shortcomment cmt">Serializer for Java8 temporal types (e.g.</p><div class="fullcomment"><div class="comment cmt"><p>Serializer for Java8 temporal types (e.g. <code>java.time.LocalDateTime</code>)
 to be written as JSON string, using the default time zone.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DefaultWrites.html" class="extype" name="play.api.libs.json.DefaultWrites">DefaultWrites</a></dd></dl></div>
+</p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>the Java8 temporal type to be considered: LocalDateTime, ZonedDateTime, Instant</p></dd><dt class="tparam">B</dt><dd class="cmt"><p>Type of formatting argument
+</p></dd><dt class="param">formatting</dt><dd class="cmt"><p>an argument to instantiate formatter</p><pre><span class="kw">import</span> java.time.LocalDateTime
+<span class="kw">import</span> play.api.libs.json.Writes
+
+<span class="kw">implicit</span> <span class="kw">val</span> temporalWrites: Writes[LocalDateTime] =
+  temporalWrites[LocalDateTime, DateTimeFormatter](
+    DateTimeFormatter.ISO_LOCAL_DATE_TIME)</pre></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DefaultWrites.html" class="extype" name="play.api.libs.json.DefaultWrites">DefaultWrites</a></dd></dl></div>
     </li><li name="scala.AnyRef#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
       <a id="toString():String"></a>
