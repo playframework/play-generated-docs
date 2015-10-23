@@ -25,7 +25,7 @@ Binding(interface play.api.db.DBApi to ProviderConstructionTarget(class play.api
 
 It is very likely that you have [[enabled the jdbc plugin|ScalaDatabase]], and that doesn't really make sense if you are using Slick for accessing your databases. To fix the issue simply remove the Play *jdbc* component from your project's build.
 
-Another possibility is that there is another Play module that is binding [[DBApi|api/scala/index.html#play.api.db.DBApi]] to some other concrete implementation. This means that you are still trying to use Play Slick together with another Play module for database access, which is likely not what you want.
+Another possibility is that there is another Play module that is binding [DBApi](api/scala/play/api/db/DBApi.html) to some other concrete implementation. This means that you are still trying to use Play Slick together with another Play module for database access, which is likely not what you want.
 
 ## Play throws `java.lang.ClassNotFoundException: org.h2.tools.Server`
 
@@ -46,4 +46,4 @@ It means you are trying to use a H2 database, but have forgot to add a dependenc
 
 [playframework-dev]: https://groups.google.com/forum/#!forum/play-framework-dev 
 [HikariCP]: http://brettwooldridge.github.io/HikariCP/
-[JdbcDataSourceFactory]: http://slick.typesafe.com/doc/3.0.0/api/index.html#slick.jdbc.JdbcDataSourceFactory
+[JdbcDataSourceFactory]: http://slick.typesafe.com/doc/3.1.0/api/index.html#slick.jdbc.JdbcDataSourceFactory

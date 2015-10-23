@@ -3,6 +3,7 @@
  */
 package detailedtopics.configuration.gzipencoding
 
+import akka.stream.ActorMaterializer
 import play.api.test._
 
 object GzipEncoding extends PlaySpecification {
@@ -21,16 +22,20 @@ object GzipEncoding extends PlaySpecification {
   "gzip filter" should {
 
     "allow custom strategies for when to gzip" in {
-      val filter =
-        //#should-gzip
-        new GzipFilter(shouldGzip = (request, response) =>
-          response.headers.get("Content-Type").exists(_.startsWith("text/html")))
-        //#should-gzip
 
       import play.api.mvc._
-      running(FakeApplication()) {
+      val app = FakeApplication()
+      running(app) {
+        implicit val mat = ActorMaterializer()(app.actorSystem)
+
+        val filter =
+        //#should-gzip
+          new GzipFilter(shouldGzip = (request, response) =>
+            response.body.contentType.exists(_.startsWith("text/html")))
+        //#should-gzip
+
         header(CONTENT_ENCODING,
-          filter(Action(Results.Ok("foo")))(gzipRequest).run
+          filter(Action(Results.Ok("foo")))(gzipRequest).run()
         ) must beNone
       }
     }

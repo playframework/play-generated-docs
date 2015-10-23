@@ -170,7 +170,31 @@ val product: (String, Float) = SQL("SELECT * FROM prod WHERE id = {id}").
   on('id -> "p").as(parser.single)
 ```
 
-`java.util.UUID` can be used as parameter, in which case its string value is passed to statement.
+If the columns are not strictly defined (e.g. with types that can vary), the `SqlParser.folder` can be used to fold each row in a custom way.
+
+```scala
+import anorm.{ RowParser, SqlParser }
+
+val parser: RowParser[Map[String, Any]] = 
+  SqlParser.folder(Map.empty[String, Any]) { (map, value, meta) => 
+    Right(map + (meta.column.qualified -> value))
+  }
+
+val result: List[Map[String, Any]] = SQL"SELECT * FROM dyn_table".as(parser.*)
+```
+
+If the columns are not strictly defined (e.g. with types that can vary), the `SqlParser.folder` can be used to fold each row in a custom way.
+
+```scala
+import anorm.{ RowParser, SqlParser }
+
+val parser: RowParser[Map[String, Any]] = 
+  SqlParser.folder(Map.empty[String, Any]) { (map, value, meta) => 
+    Right(map + (meta.column.qualified -> value))
+  }
+
+val result: List[Map[String, Any]] = SQL"SELECT * FROM dyn_table".as(parser.*)
+```
 
 ### SQL queries using String Interpolation
 
@@ -211,6 +235,61 @@ SQL"""#$cmd * FROM #$table WHERE id = ${"id1"} AND code IN (${Seq(2, 5)})"""
 // prepare the SQL statement, with 1 string and 2 integer parameters:
 // SELECT * FROM Test WHERE id = ? AND code IN (?, ?)
 ```
+
+## Generated parsers
+
+The macro `namedParser[T]` can be used to create a `RowParser[T]` at compile-time, for any case class `T`.
+
+```scala
+import anorm.{ Macro, RowParser }
+
+case class Info(name: String, year: Option[Int])
+
+val parser: RowParser[Info] = Macro.namedParser[Info]
+/* Generated as:
+get[String]("name") ~ get[Option[Int]]("year") map {
+  case name ~ year => Info(name, year)
+}
+*/
+
+val result: List[Info] = SQL"SELECT * FROM list".as(parser.*)
+```
+
+A similar macro `indexedParser[T]` is available to get column values by positions instead of names.
+
+```scala
+import anorm.{ Macro, RowParser }
+
+case class Info(name: String, year: Option[Int])
+
+val parser: RowParser[Info] = Macro.indexedParser[Info]
+/* Generated as:
+get[String](1) ~ get[Option[Int]](2) map {
+  case name ~ year => Info(name, year)
+}
+*/
+
+val result: List[Info] = SQL"SELECT * FROM list".as(parser.*)
+```
+
+To indicate custom names for the columns to be parsed, the macro `parser[T](names)` can be used.
+
+```scala
+import anorm.{ Macro, RowParser }
+
+case class Info(name: String, year: Option[Int])
+
+val parser: RowParser[Info] = Macro.parser[Info]("a_name", "creation")
+/* Generated as:
+get[String]("a_name") ~ get[Option[Int]]("creation") map {
+  case name ~ year => Info(name, year)
+}
+*/
+
+val result: List[Info] = SQL"SELECT * FROM list".as(parser.*)
+```
+
+> The `anorm.macro.debug` system property can be set to `true` (e.g. `sbt -Danorm.macro.debug=true ...`) to debug the generated parsers.
 
 ## Streaming results
 
@@ -289,7 +368,31 @@ books match {
 }
 ```
 
-### Multi-value support
+### Iteratee
+
+It's possible to use Anorm along with [Play Iteratees](https://www.playframework.com/documentation/latest/Iteratees), using the following dependencies.
+
+```
+libraryDependencies ++= Seq(
+  "com.typesafe.play" %% "anorm-iteratee" % "ANORM_VERSION",
+  "com.typesafe.play" %% "play-iteratees" % "ITERATEES_VERSION")
+```
+
+> For a Play application, as `play-iteratees` is provided there is no need to add this dependency.
+
+Then the parsed results from Anorm can be turned into [`Enumerator`](https://www.playframework.com/documentation/latest/api/scala/index.html#play.api.libs.iteratee.Enumerator).
+
+```scala
+import java.sql.Connection
+import scala.concurrent.ExecutionContext.Implicits.global
+import anorm._
+import play.api.libs.iteratee._
+
+def resultAsEnumerator(implicit con: Connection): Enumerator[String] =
+  Iteratees.from(SQL"SELECT * FROM Test", SqlParser.scalar[String])
+```
+
+## Multi-value support
 
 Anorm parameter can be multi-value, like a sequence of string.
 In such case, values will be prepared to be passed to JDBC.
@@ -363,9 +466,10 @@ When you need to execute SQL statement several times with different arguments, b
 import anorm.BatchSql
 
 val batch = BatchSql(
-  "INSERT INTO books(title, author) VALUES({title}, {author}", 
-  Seq[NamedParameter]("title" -> "Play 2 for Scala", "author" -> Peter Hilton"),
-  Seq[NamedParameter]("title" -> "Learning Play! Framework 2",
+  "INSERT INTO books(title, author) VALUES({title}, {author})", 
+  Seq[NamedParameter]("title" -> "Play 2 for Scala", 
+    "author" -> "Peter Hilton"),
+  Seq[NamedParameter]("title" -> "Learning Play! Framework 2", 
     "author" -> "Andy Petrella"))
 
 val res: Array[Int] = batch.execute() // array of update count
@@ -374,15 +478,6 @@ val res: Array[Int] = batch.execute() // array of update count
 > Batch update must be called with at least one list of parameter. If a batch is executed with the mandatory first list of parameter being empty (e.g. `Nil`), only one statement will be executed (without parameter), which is equivalent to `SQL(statement).executeUpdate()`.
 
 ### Edge cases
-
-Passing anything different from string or symbol as parameter name is now deprecated. For backward compatibility, you can activate `anorm.features.parameterWithUntypedName`.
-
-```scala
-import anorm.features.parameterWithUntypedName // activate
-
-val untyped: Any = "name" // deprecated
-SQL("SELECT * FROM Country WHERE {p}").on(untyped -> "val")
-```
 
 Type of parameter value should be visible, to be properly set on SQL statement.
 Using value as `Any`, explicitly or due to erasure, leads to compilation error `No implicit view available from Any => anorm.ParameterValue`.
@@ -427,28 +522,17 @@ SQL("SELECT * FROM test WHERE (a={a} AND b={b}) OR c={c}").
   on(nps: _*) // Fail - no conversion (String,Any) => NamedParameter
 ```
 
-For backward compatibility, you can activate such unsafe parameter conversion, 
-accepting untyped `Any` value, with `anorm.features.anyToStatement`.
-
-```scala
-import anorm.features.anyToStatement
-
-val d = new java.util.Date()
-val params: Seq[NamedParameter] = Seq("mod" -> d, "id" -> "idv")
-// Values as Any as heterogenous
-
-SQL("UPDATE item SET last_modified = {mod} WHERE id = {id}").on(params:_*)
-```
-
-It's not recommanded because moreover hiding implicit resolution issues, as untyped it could lead to runtime conversion error, with values are passed on statement using `setObject`.
-In previous example, `java.util.Date` is accepted as parameter but would with most databases raise error (as it's not valid JDBC type).
-
 In some cases, some JDBC drivers returns a result set positioned on the first row rather than [before this first row](http://docs.oracle.com/javase/7/docs/api/java/sql/ResultSet.html) (e.g. stored procedured with Oracle JDBC driver).
 To handle such edge-case, `.withResultSetOnFirstRow(true)` can be used as following.
 
 ```scala
 SQL("EXEC stored_proc {arg}").on("arg" -> "val").withResultSetOnFirstRow(true)
 SQL"""EXEC stored_proc ${"val"}""".withResultSetOnFirstRow(true)
+
+SQL"INSERT INTO dict(term, definition) VALUES ($term, $definition)".
+  withResultSetOnFirstRow(true).executeInsert()
+// Also needed on executeInsert for such driver, 
+// as a ResultSet is returned in this case for the generated keys
 ```
 
 ## Using Pattern Matching
@@ -458,16 +542,24 @@ You can also use Pattern Matching to match and extract the `Row` content. In thi
 The following example transforms each row to the correct Scala type:
 
 ```scala
-case class SmallCountry(name:String) 
-case class BigCountry(name:String) 
-case class France
- 
-val countries = SQL("SELECT name,population FROM Country WHERE id = {i}").
-  on("i" -> "id").map({
-    case Row("France", _) => France()
-    case Row(name:String, pop:Int) if(pop > 1000000) => BigCountry(name)
-    case Row(name:String, _) => SmallCountry(name)      
-  }).list
+import java.sql.Connection
+import anorm._
+
+trait Country
+case class SmallCountry(name:String) extends Country
+case class BigCountry(name:String) extends Country
+case object France extends Country
+
+val patternParser = RowParser[Country] {
+  case Row("France", _) => Success(France)
+  case Row(name:String, pop:Int) if (pop > 1000000) => Success(BigCountry(name))
+  case Row(name:String, _) => Success(SmallCountry(name))
+  case row => Error(TypeDoesNotMatch(s"unexpected: $row"))
+}
+
+def countries(implicit con: Connection): List[Country] =
+  SQL("SELECT name,population FROM Country WHERE id = {i}").
+    on("i" -> "id").as(patternParser.*)
 ```
 
 ## Using for-comprehension
@@ -791,12 +883,12 @@ Following table describes which JDBC numeric types (getters on `java.sql.ResultS
 BigDecimal<sup>1</sup> | Yes                    | Yes                    | No      | No   | Yes    | No    | Yes | Yes  | No
 BigInteger<sup>2</sup> | Yes                    | Yes                    | No      | No   | Yes    | Yes   | Yes | Yes  | No
 Boolean                | No                     | No                     | Yes     | Yes  | No     | No    | Yes | Yes  | Yes
-Byte                   | Yes                    | No                     | No      | Yes  | Yes    | Yes   | No  | No   | Yes
+Byte                   | Yes                    | Yes                    | No      | Yes  | Yes    | Yes   | Yes | Yes  | Yes
 Double                 | Yes                    | No                     | No      | No   | Yes    | No    | No  | No   | No
 Float                  | Yes                    | No                     | No      | No   | Yes    | Yes   | No  | No   | No
 Int                    | Yes                    | Yes                    | No      | No   | Yes    | Yes   | Yes | Yes  | No
 Long                   | Yes                    | Yes                    | No      | No   | No     | No    | Yes | Yes  | No
-Short                  | Yes                    | No                     | No      | Yes  | Yes    | Yes   | No  | No   | Yes
+Short                  | Yes                    | Yes                    | No      | Yes  | Yes    | Yes   | Yes | Yes  | Yes
 
 - 1. Types `java.math.BigDecimal` and `scala.math.BigDecimal`.
 - 2. Types `java.math.BigInteger` and `scala.math.BigInt`.
@@ -816,6 +908,8 @@ UUID                 | No                   | No   | No               | No     |
 - 4. Type `java.util.UUID`.
 - 5. Type `java.sql.Array`.
 - 6. Type `java.lang.Iterable[_]`.
+
+> When an instance of `java.util.UUID` is used as a parameter, its string value is passed to statement. If the underlying database offers a specific SQL datatype for ID, it's possible to cast the stringified value; e.g. Working with PostgreSQL `uuid` type: `SQL"SELECT * FROM table WHERE anPostgreSQLuuid = ${aJavaUUID}::uuid"`
 
 Optional column can be parsed as `Option[T]`, as soon as `T` is supported.
 
@@ -886,8 +980,8 @@ Long                          | Yes              | Yes                  | Yes
 Timestamp                     | Yes              | Yes                  | Yes
 Timestamp wrapper<sup>5</sup> | Yes              | Yes                  | Yes
 
-- 1. Type `java.util.Date`.
-- 2. Types `org.joda.time.DateTime`, `java.time.LocalDateTime` and `java.time.ZonedDateTime`.
+- 1. Types `java.util.Date`, `org.joda.time.LocalDate` and `java.time.LocalDate`.
+- 2. Types `org.joda.time.DateTime`, `org.joda.time.LocalDateTime`, `java.time.LocalDateTime` and `java.time.ZonedDateTime`.
 - 3. Type `org.joda.time.Instant` and `java.time.Instant` (see Java 8).
 - 5. Any type with a getter `getTimestamp` returning a `java.sql.Timestamp`.
 
@@ -976,24 +1070,36 @@ JVM                       | JDBC
 --------------------------|-----------
 DateTime<sup>1</sup>      | Timestamp
 Instant<sup>2</sup>       | Timestamp
-LocalDateTime<sup>3</sup> | Timestamp
-ZonedDateTime<sup>4</sup> | Timestamp
+LocalDate<sup>3</sup>     | Timestamp
+LocalDateTime<sup>4</sup> | Timestamp
+ZonedDateTime<sup>5</sup> | Timestamp
 
 - 1. Type `org.joda.time.DateTime`.
-- 2. Type `org.joda.time.Instant` and `java.time.Instant`.
-- 3. Type `org.joda.time.LocalDateTime`.
-- 4. Type `org.joda.time.ZonedDateTime`
+- 2. Types `org.joda.time.Instant` and `java.time.Instant`.
+- 3. Types `org.joda.time.LocalDate` and `java.time.LocalDate`.
+- 4. Types `org.joda.time.LocalDateTime`, `org.joda.time.LocalDate` and `java.time.LocalDateTime`.
+- 5. Type `java.time.ZonedDateTime`
 
-Custom or specific DB conversion for parameter can also be provided:
+To enable Joda types as parameter, the `import anorm.JodaParameterMetaData._` must be used.
+
+#### Custom parameter conversions
+
+Custom or database specific conversion for parameter can also be provided:
 
 ```
 import java.sql.PreparedStatement
-import anorm.ToStatement
+import anorm.{ ParameterMetaData, ToStatement }
 
 // Custom conversion to statement for type T
 implicit def customToStatement: ToStatement[T] = new ToStatement[T] {
   def set(statement: PreparedStatement, i: Int, value: T): Unit =
     ??? // Sets |value| on |statement|
+}
+
+// Metadata about the custom parameter type
+implicit def customParamMeta: ParameterMetaData[T] = new ParameterMetaData[T] {
+  val sqlType = "VARCHAR"
+  def jdbcType = java.sql.Types.VARCHAR
 }
 ```
 
@@ -1006,3 +1112,14 @@ In this case at your own risk, `setObject` will be used on statement.
 val anyVal: Any = myVal
 SQL("UPDATE t SET v = {opaque}").on('opaque -> anorm.Object(anyVal))
 ```
+
+## Troubleshooting
+
+This section gathers some errors/warnings you can encounter when using Anorm.
+
+`value SQL is not a member of StringContext`; This compilation error is raised when using the [Anorm interpolation](#SQL-queries-using-String-Interpolation) without the appropriate import.
+It can be fixed by adding the package import: `import anorm._`
+
+`type mismatch; found    : T; required : anorm.ParameterValue`; This compilation error occurs when a value of type `T` is passed as parameter, whereas this `T` type is not supported. You need to ensure that a `anorm.ToStatement[T]` and a `anorm.ParameterMetaData[T]` can be found in the implicit scope (see [parameter conversions](#Custom parameter conversions)).
+
+On `.executeInsert()`, you can get the error `TypeDoesNotMatch(Cannot convert <value>: class <T> to Long for column ColumnName(<C>)`. This occurs when the [key returned by the database on insertion](http://docs.oracle.com/javase/8/docs/api/java/sql/Statement.html#getGeneratedKeys--) is not compatible with `Long` (the default key parser). It can be fixed by providing the appropriate key parser; e.g. if the database returns a text key: `SQL"...".executeInsert(scalar[String].singleOpt)` (get an `Option[String]` as insertion key).

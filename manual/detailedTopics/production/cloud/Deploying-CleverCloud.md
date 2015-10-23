@@ -51,7 +51,7 @@ The file must contain the following fields:
 
 That field can contain additional configuration like:
 
-`"-Dconfig.resource=clevercloud.conf"`, `"-Dplay.version=2.0.4"` or `"-Dplay.modules.evolutions.autoApply=true"`.
+`"-Dconfig.resource=clevercloud.conf"`, `"-Dplay.version=2.0.4"` or `"-Dplay.evolutions.autoApply=true"`.
 
 ## Connecting to a database
 
@@ -64,7 +64,7 @@ As in every Play! 2 application, the only file you have to modify is your `conf/
 ```
 db.default.url="jdbc:mysql://{yourcleverdbhost}/{dbname}"
 db.default.driver=com.mysql.jdbc.Driver
-db.default.user={yourcleveruser}
+db.default.username={yourcleveruser}
 db.default.password={yourcleverpass}
 ```
 

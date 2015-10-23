@@ -68,7 +68,7 @@ val eventuallyResult: Future[String] = {
 }
 ```
 
-Since an `Enumerator` pushes some input into an iteratee and eventually return a new state of the iteratee, we can go on pushing more input into the returned iteratee using another `Enumerator`. This can be done either by using the `flatMap` function on `Future`s or more simply by combining `Enumerator` instancess using the `andThen` method, as follows:
+Since an `Enumerator` pushes some input into an iteratee and eventually return a new state of the iteratee, we can go on pushing more input into the returned iteratee using another `Enumerator`. This can be done either by using the `flatMap` function on `Future`s or more simply by combining `Enumerator` instances using the `andThen` method, as follows:
 
 ```scala
 val colors = Enumerator("Red","Blue","Green")
@@ -113,18 +113,19 @@ This method defined on the `Enumerator` object is one of the most important meth
 It can be easily used to create an `Enumerator` that represents a stream of time values every 100 millisecond using the opportunity that we can return a promise, like the following:
 
 ```scala
+import akka.pattern.after
 Enumerator.generateM {
-  Promise.timeout(Some(new Date), 100 milliseconds)
+  after(100.milliseconds, actorSystem.scheduler)(Future(Some(new Date)))
 }
 ```
 
-In the same manner we can construct an `Enumerator` that would fetch a url every some time using the `WS` api which returns, not suprisingly a `Future`
+In the same manner we can construct an `Enumerator` that would fetch a url every some time using the `WS` api which returns, not surprisingly a `Future`
 
 Combining this, callback Enumerator, with an imperative `Iteratee.foreach` we can println a stream of time values periodically:
 
 ```scala
 val timeStream = Enumerator.generateM {
-  Promise.timeout(Some(new Date), 100 milliseconds)
+  after(100.milliseconds, actorSystem.scheduler)(Future(Some(new Date)))
 }
 
 val printlnSink = Iteratee.foreach[Date](date => println(date))

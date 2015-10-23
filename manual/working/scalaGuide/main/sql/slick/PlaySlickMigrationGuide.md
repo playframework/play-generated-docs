@@ -1,17 +1,17 @@
 # Play Slick Migration Guide
 
-This is a guide for migrating from Play Slick v0.8 to v1.0.
+This is a guide for migrating from Play Slick v0.8 to v1.0 or v1.1.
 
-It assumes you have already migrated your project to use Play 2.4 (see [Play 2.4 Migration Guide]), that you have read the [Slick 3.0 documentation], and are ready to migrate your Play application to use the new Slick Database I/O Actions API.
+It assumes you have already migrated your project to use Play 2.4 (see [Play 2.4 Migration Guide]), that you have read the [Slick 3.1 documentation], and are ready to migrate your Play application to use the new Slick Database I/O Actions API.
 
-[Play 2.4 Migration Guide]: https://www.playframework.com/documentation/2.4.x/Migration24)
-[Slick 3.0 documentation]: http://slick.typesafe.com/docs/
+[Play 2.4 Migration Guide]: https://www.playframework.com/documentation/2.4.x/Migration24
+[Slick 3.1 documentation]: http://slick.typesafe.com/docs/
 
 ## Build changes
 
 Update the Play Slick dependency in your sbt build to match the version provided in the [[Setup|PlaySlick#Setup]] section.
 
-## Removed H2 database dependency
+### Removed H2 database dependency
 
 Previous releases of Play Slick used to bundle the H2 database library. That's no longer the case. Hence, if you want to use H2 you will need to explicitly add it to your project's dependencies:
 
@@ -41,14 +41,14 @@ There are several reasons for this change. First, the above is not a valid Slick
 Here is how you would need to migrate the above configuration:
 
 ```conf
-slick.dbs.default.driver=slick.driver.H2Driver$ # You must provide the required Slick driver! 
+slick.dbs.default.driver="slick.driver.H2Driver$" # You must provide the required Slick driver! 
 slick.dbs.default.db.driver=org.h2.Driver
 slick.dbs.default.db.url="jdbc:h2:mem:play"
 slick.dbs.default.db.user=sa
 slick.dbs.default.db.password=""
 ```
 
-> Note: If your database configuration contains settings for the connection pool, be aware that you will need to migrate those settings as well. However, this may be a bit trickier, because Play 2.3 default connection pool used to be BoneCP, while the default Slick 3 connection pool is HikariCP. Read [[here|PlaySlickAdvancedTopics#Connection-Pool]] for more details.
+> Note: If your database configuration contains settings for the connection pool, be aware that you will need to migrate those settings as well. However, this may be a bit trickier, because Play 2.3 default connection pool used to be BoneCP, while the default Slick 3 connection pool is HikariCP. Read [[here|PlaySlickAdvancedTopics#Connection-Pool]] for how to configure the connection pool.
 
 ## Automatic Slick driver detection
 
@@ -83,11 +83,11 @@ db.$dbName.maxQueriesPerRequest
 slick.db.execution.context
 ```
 
-The parameter `db.$dbName.maxQueriesPerRequest` was used to limit the number of tasks queued in the thread pool. In Slick 3 you can reach similar results by tuning the configuration parameters `numThreads` and `queueSize`. Read the Slick ScalaDoc for [Database.forConfig].
+The parameter `db.$dbName.maxQueriesPerRequest` was used to limit the number of tasks queued in the thread pool. In Slick 3 you can reach similar results by tuning the configuration parameters `numThreads` and `queueSize`. Read the Slick ScalaDoc for [Database.forConfig](make sure to expand the `forConfig` row in the doc).
 
 While the parameter `slick.db.execution.context` was used to name the thread pools created by Play Slick. In Slick 3, each thread pool is named using the Slick database configuration path, i.e., if in your **application.conf** you have provided a Slick configuration for the database named `default`, then Slick will create a thread pool named `default` for executing the database action on the default database. Note that the name used for the thread pool is not configurable.
 
-[Database.forConfig]: http://slick.typesafe.com/doc/3.0.0/api/index.html#slick.jdbc.JdbcBackend$DatabaseFactoryDef@forConfig(String,Config,Driver):Database
+[Database.forConfig]: http://slick.typesafe.com/doc/3.1.0/api/index.html#slick.jdbc.JdbcBackend$DatabaseFactoryDef@forConfig(String,Config,Driver,ClassLoader):Database
 
 ## `Profile` was removed
 
@@ -107,13 +107,14 @@ The `Config` object, together with `SlickConfig` and `DefaultSlickConfig`, were 
 
 ## `SlickPlayIteratees` was removed
 
-If you were using `SlickPlayIteratees.enumerateSlickQuery` to stream data from the database, you will be happy to know that doing so became a lot easier. Slick 3 implements the [reactive-streams] SPI, and Play 2.4 provides a utility class to handily convert a reactive stream into a Play enumerator.
+If you were using `SlickPlayIteratees.enumerateSlickQuery` to stream data from the database, you will be happy to know that doing so became a lot easier. Slick 3 implements the [reactive-streams] [SPI] (Service Provider Interface), and Play 2.4 provides a utility class to handily convert a reactive stream into a Play enumerator.
 
 In Slick, you can obtain a reactive stream by calling the method `stream` on a Slick database instance (instead of the eager `run`). To convert the stream into an enumerator simply call `play.api.libs.streams.Streams.publisherToEnumerator`, passing the stream in argument.
 
-For a full example, have a look at [this sample projet](https://github.com/playframework/play-slick/tree/master/samples/iteratee).
+For a full example, have a look at [this sample project](https://github.com/playframework/play-slick/tree/master/samples/iteratee).
 
 [reactive-streams]: http://www.reactive-streams.org/
+[SPI]: http://en.wikipedia.org/wiki/Service_provider_interface
 
 ## DDL support was removed
 
