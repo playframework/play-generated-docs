@@ -208,7 +208,7 @@ leading, trailing and duplicated slashes, if present are left as they are and
 if absent remain absent; dot-segments (&quot;..&quot; and &quot;.&quot;) are ignored.</p><p>Encoded slash characters are will appear as slashes in the output, thus &quot;a/b&quot;
 will be indistinguishable from &quot;a%2Fb&quot;.
 </p></div><dl class="paramcmts block"><dt class="param">s</dt><dd class="cmt"><p>The string to decode. Must use the US-ASCII character set.</p></dd><dt class="param">outputCharset</dt><dd class="cmt"><p>The name of the encoding that the output should be encoded with.
-    The output string will be converted from octets (bytes) using this character encoding.</p></dd><dt>returns</dt><dd class="cmt"><p>A decoded string in the <code>outputCharset</code> character set.</p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="InvalidEncodingException"><code>InvalidEncodingException</code></span> If the input is not a valid encoded path.</p></span></dd></dl></div>
+    The output string will be converted from octets (bytes) using this character encoding.</p></dd><dt>returns</dt><dd class="cmt"><p>A decoded string in the <code>outputCharset</code> character set.</p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt"><p><a href="InvalidUriEncodingException.html" class="extype" name="play.utils.InvalidUriEncodingException"><code>InvalidUriEncodingException</code></a> If the input is not a valid encoded path.</p></span></dd></dl></div>
     </li><li name="play.utils.UriEncoding#decodePathSegment" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="decodePathSegment(s:String,outputCharset:String):String"></a>
       <a id="decodePathSegment(String,String):String"></a>
@@ -236,14 +236,14 @@ character cannot appear in a path segment, as it is the path delimiter,
 so it must be encoded as &quot;%2F&quot;. These are just two examples of the
 differences between path segment and query string encoding; there are
 other differences too.</p><p>When decoding path segments the <code>decodePathSegment</code> method should always
-be used in preference to the <span class="extype" name="java.net.URLDecoder.decode(String,String)">java.net.URLDecoder.decode(String,String)</span>
+be used in preference to the <a href="http://docs.oracle.com/javase/8/docs/api/java/net/URLDecoder.html" target="_blank">java.net.URLDecoder.decode</a>
 method. <code>URLDecoder.decode</code>, despite its name, actually decodes
 the <code>application/x-www-form-urlencoded</code> MIME format which is the encoding
 used for form data in HTTP GET and POST requests. This format is suitable
 for inclusion in the query part of a URI. But <code>URLDecoder.decoder</code> should not
 be used for path segment encoding or decoding.
 </p></div><dl class="paramcmts block"><dt class="param">s</dt><dd class="cmt"><p>The string to decode. Must use the US-ASCII character set.</p></dd><dt class="param">outputCharset</dt><dd class="cmt"><p>The name of the encoding that the output should be encoded with.
-    The output string will be converted from octets (bytes) using this character encoding.</p></dd><dt>returns</dt><dd class="cmt"><p>A decoded string in the <code>outputCharset</code> character set.</p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="InvalidEncodingException"><code>InvalidEncodingException</code></span> If the input is not a valid encoded path segment.</p></span></dd></dl></div>
+    The output string will be converted from octets (bytes) using this character encoding.</p></dd><dt>returns</dt><dd class="cmt"><p>A decoded string in the <code>outputCharset</code> character set.</p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt"><p><a href="InvalidUriEncodingException.html" class="extype" name="play.utils.InvalidUriEncodingException"><code>InvalidUriEncodingException</code></a> If the input is not a valid encoded path segment.</p></span></dd></dl></div>
     </li><li name="play.utils.UriEncoding#encodePathSegment" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="encodePathSegment(s:String,inputCharset:String):String"></a>
       <a id="encodePathSegment(String,String):String"></a>
@@ -271,7 +271,7 @@ character cannot appear in a path segment, as it is the path delimiter,
 so it must be encoded as &quot;%2F&quot;. These are just two examples of the
 differences between path segment and query string encoding; there are
 other differences too.</p><p>When encoding path segments the <code>encodePathSegment</code> method should always
-be used in preference to the <span class="extype" name="java.net.URLEncoder.encode(String,String)">java.net.URLEncoder.encode(String,String)</span>
+be used in preference to the <a href="http://docs.oracle.com/javase/8/docs/api/java/net/URLEncoder.html#encode-java.lang.String-java.lang.String-" target="_blank">java.net.URLEncoder.encode</a>
 method. <code>URLEncoder.encode</code>, despite its name, actually provides encoding
 in the <code>application/x-www-form-urlencoded</code> MIME format which is the encoding
 used for form data in HTTP GET and POST requests. This encoding is suitable

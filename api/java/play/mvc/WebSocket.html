@@ -357,6 +357,9 @@ extends java.lang.Object</pre>
 <pre>public static&nbsp;&lt;In,Out&gt;&nbsp;<a href="../../play/mvc/WebSocket.MappedWebSocketAcceptor.html" title="class in play.mvc">WebSocket.MappedWebSocketAcceptor</a>&lt;In,Out&gt;&nbsp;json(java.lang.Class&lt;In&gt;&nbsp;in)</pre>
 <div class="block">Acceptor for JSON WebSockets.</div>
 <dl>
+<dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>In</code> - The websocket's input type (what it receives from clients)</dd>
+<dd><code>Out</code> - The websocket's output type (what it writes to clients)</dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>in</code> - The class of the incoming messages, used to decode them from the JSON.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -376,6 +379,8 @@ public static&nbsp;&lt;A&gt;&nbsp;<a href="../../play/mvc/LegacyWebSocket.html" 
 <div class="block">Creates a WebSocket. The abstract <code>onReady</code> method is
  implemented using the specified <code>Callback2&lt;In&lt;A&gt;, Out&lt;A&gt;&gt;</code></div>
 <dl>
+<dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>A</code> - the in/out type of the legacy websocket</dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>callback</code> - the callback used to implement onReady</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -396,6 +401,8 @@ public static&nbsp;&lt;A&gt;&nbsp;<a href="../../play/mvc/LegacyWebSocket.html" 
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Use the WebSocket.accept*OrResult methods instead.</span></div>
 <div class="block">Rejects a WebSocket.</div>
 <dl>
+<dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>A</code> - the socket's in/out type</dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>result</code> - The result that will be returned.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -415,6 +422,8 @@ public static&nbsp;&lt;A&gt;&nbsp;<a href="../../play/mvc/LegacyWebSocket.html" 
              Source.actorRef.</span></div>
 <div class="block">Handles a WebSocket with an actor.</div>
 <dl>
+<dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>A</code> - the socket's in/out type</dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>props</code> - The function used to create the props for the actor.  The passed in argument is the upstream actor.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>

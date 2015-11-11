@@ -179,13 +179,13 @@ extends java.lang.Object</pre>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>static javax.persistence.EntityManager</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../play/db/jpa/JPA.html#em-java.lang.String-">em</a></span>(java.lang.String&nbsp;key)</code>
-<div class="block">Get the EntityManager for specified persistence unit for this thread.</div>
+<div class="block">Get the EntityManager for a particular persistence unit for this thread.</div>
 </td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>static <a href="../../../play/db/jpa/JPAApi.html" title="interface in play.db.jpa">JPAApi</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../play/db/jpa/JPA.html#jpaApi--">jpaApi</a></span>()</code>
-<div class="block">Get the JPA api for the current play application.</div>
+<div class="block">Get JPA api for the current play application.</div>
 </td>
 </tr>
 <tr id="i7" class="rowColor">
@@ -275,6 +275,13 @@ extends java.lang.Object</pre>
                                java.lang.String&nbsp;unitName)</pre>
 <div class="block">Create a default JPAApi with the given persistence unit configuration.
  Automatically initialise the JPA entity manager factories.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>name</code> - the EntityManagerFactory's name</dd>
+<dd><code>unitName</code> - the persistence unit's name</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the configured JPAApi</dd>
+</dl>
 </li>
 </ul>
 <a name="createFor-java.lang.String-">
@@ -286,6 +293,12 @@ extends java.lang.Object</pre>
 <pre>public static&nbsp;<a href="../../../play/db/jpa/JPAApi.html" title="interface in play.db.jpa">JPAApi</a>&nbsp;createFor(java.lang.String&nbsp;unitName)</pre>
 <div class="block">Create a default JPAApi with name "default" and the given unit name.
  Automatically initialise the JPA entity manager factories.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>unitName</code> - the persistence unit's name</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the configured JPAApi</dd>
+</dl>
 </li>
 </ul>
 <a name="jpaApi--">
@@ -295,7 +308,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>jpaApi</h4>
 <pre>public static&nbsp;<a href="../../../play/db/jpa/JPAApi.html" title="interface in play.db.jpa">JPAApi</a>&nbsp;jpaApi()</pre>
-<div class="block">Get the JPA api for the current play application.</div>
+<div class="block">Get JPA api for the current play application.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the JPAApi</dd>
+</dl>
 </li>
 </ul>
 <a name="em-java.lang.String-">
@@ -305,7 +322,13 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>em</h4>
 <pre>public static&nbsp;javax.persistence.EntityManager&nbsp;em(java.lang.String&nbsp;key)</pre>
-<div class="block">Get the EntityManager for specified persistence unit for this thread.</div>
+<div class="block">Get the EntityManager for a particular persistence unit for this thread.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>key</code> - name of the EntityManager to return</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the EntityManager</dd>
+</dl>
 </li>
 </ul>
 <a name="em--">
@@ -316,6 +339,10 @@ extends java.lang.Object</pre>
 <h4>em</h4>
 <pre>public static&nbsp;javax.persistence.EntityManager&nbsp;em()</pre>
 <div class="block">Get the default EntityManager for this thread.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the EntityManager</dd>
+</dl>
 </li>
 </ul>
 <a name="bindForSync-javax.persistence.EntityManager-">
@@ -327,6 +354,10 @@ extends java.lang.Object</pre>
 <pre>public static&nbsp;void&nbsp;bindForSync(javax.persistence.EntityManager&nbsp;em)</pre>
 <div class="block">Bind an EntityManager to the current HTTP context.
  If no HTTP context is available the EntityManager gets bound to the current thread instead.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>em</code> - the EntityManager to bind to this HTTP context.</dd>
+</dl>
 </li>
 </ul>
 <a name="bindForAsync-javax.persistence.EntityManager-">
@@ -338,6 +369,8 @@ extends java.lang.Object</pre>
 <pre>public static&nbsp;void&nbsp;bindForAsync(javax.persistence.EntityManager&nbsp;em)</pre>
 <div class="block">Bind an EntityManager to the current HTTP context.</div>
 <dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>em</code> - the EntityManager to bind</dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code>java.lang.RuntimeException</code> - if no HTTP context is present.</dd>
 </dl>
@@ -352,8 +385,12 @@ extends java.lang.Object</pre>
 <pre>public static&nbsp;&lt;T&gt;&nbsp;T&nbsp;withTransaction(java.util.function.Supplier&lt;T&gt;&nbsp;block)</pre>
 <div class="block">Run a block of code in a JPA transaction.</div>
 <dl>
+<dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>T</code> - return type of the block</dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>block</code> - Block of code to execute.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the result of the block, having already committed the transaction (or rolled it back in case of exception)</dd>
 </dl>
 </li>
 </ul>
@@ -368,8 +405,13 @@ public static&nbsp;&lt;T&gt;&nbsp;<a href="../../../play/libs/F.Promise.html" ti
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">This may cause deadlocks</span></div>
 <div class="block">Run a block of asynchronous code in a JPA transaction.</div>
 <dl>
+<dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>T</code> - return type of the block</dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>block</code> - Block of code to execute.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a future to the result of the block, having already committed the transaction
+         (or rolled it back in case of exception)</dd>
 </dl>
 </li>
 </ul>
@@ -398,10 +440,15 @@ public static&nbsp;&lt;T&gt;&nbsp;<a href="../../../play/libs/F.Promise.html" ti
                                     java.util.function.Supplier&lt;T&gt;&nbsp;block)</pre>
 <div class="block">Run a block of code in a JPA transaction.</div>
 <dl>
+<dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>T</code> - return type of the provided block</dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>name</code> - The persistence unit name</dd>
 <dd><code>readOnly</code> - Is the transaction read-only?</dd>
 <dd><code>block</code> - Block of code to execute.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a future to the result of the block, having already committed the transaction
+         (or rolled it back in case of exception)</dd>
 </dl>
 </li>
 </ul>
@@ -418,10 +465,15 @@ public static&nbsp;&lt;T&gt;&nbsp;<a href="../../../play/libs/F.Promise.html" ti
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">This may cause deadlocks</span></div>
 <div class="block">Run a block of asynchronous code in a JPA transaction.</div>
 <dl>
+<dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>T</code> - return type of the block</dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>name</code> - The persistence unit name</dd>
 <dd><code>readOnly</code> - Is the transaction read-only?</dd>
 <dd><code>block</code> - Block of code to execute.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a future to the result of the block, having already committed the transaction
+         (or rolled it back in case of exception)</dd>
 </dl>
 </li>
 </ul>

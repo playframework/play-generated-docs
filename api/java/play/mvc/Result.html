@@ -187,7 +187,7 @@ extends java.lang.Object</pre>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/Result.html#as-java.lang.String-">as</a></span>(java.lang.String&nbsp;contentType)</code>
-<div class="block">Change the Content-Type header for this result.</div>
+<div class="block">Return a copy of the result with a different Content-Type header.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
@@ -253,7 +253,7 @@ extends java.lang.Object</pre>
 <tr id="i11" class="rowColor">
 <td class="colFirst"><code>java.util.Optional&lt;java.lang.String&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/Result.html#reasonPhrase--">reasonPhrase</a></span>()</code>
-<div class="block">Get the reason phrase.</div>
+<div class="block">Get the reason phrase, if it was set.</div>
 </td>
 </tr>
 <tr id="i12" class="altColor">
@@ -420,6 +420,10 @@ extends java.lang.Object</pre>
 <h4>status</h4>
 <pre>public&nbsp;int&nbsp;status()</pre>
 <div class="block">Get the status.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the status</dd>
+</dl>
 </li>
 </ul>
 <a name="reasonPhrase--">
@@ -429,7 +433,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>reasonPhrase</h4>
 <pre>public&nbsp;java.util.Optional&lt;java.lang.String&gt;&nbsp;reasonPhrase()</pre>
-<div class="block">Get the reason phrase.</div>
+<div class="block">Get the reason phrase, if it was set.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the reason phrase (e.g. "NOT FOUND")</dd>
+</dl>
 </li>
 </ul>
 <a name="header--">
@@ -440,6 +448,10 @@ extends java.lang.Object</pre>
 <h4>header</h4>
 <pre>protected&nbsp;play.api.mvc.ResponseHeader&nbsp;header()</pre>
 <div class="block">Get the response header</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the header</dd>
+</dl>
 </li>
 </ul>
 <a name="body--">
@@ -450,6 +462,10 @@ extends java.lang.Object</pre>
 <h4>body</h4>
 <pre>public&nbsp;<a href="../../play/http/HttpEntity.html" title="class in play.http">HttpEntity</a>&nbsp;body()</pre>
 <div class="block">Get the body of this result.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the body</dd>
+</dl>
 </li>
 </ul>
 <a name="redirectLocation--">
@@ -460,6 +476,10 @@ extends java.lang.Object</pre>
 <h4>redirectLocation</h4>
 <pre>public&nbsp;java.util.Optional&lt;java.lang.String&gt;&nbsp;redirectLocation()</pre>
 <div class="block">Extracts the Location header of this Result value if this Result is a Redirect.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the location (if it was set)</dd>
+</dl>
 </li>
 </ul>
 <a name="header-java.lang.String-">
@@ -470,6 +490,10 @@ extends java.lang.Object</pre>
 <h4>header</h4>
 <pre>public&nbsp;java.util.Optional&lt;java.lang.String&gt;&nbsp;header(java.lang.String&nbsp;header)</pre>
 <div class="block">Extracts an Header value of this Result value.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the header (if it was set)</dd>
+</dl>
 </li>
 </ul>
 <a name="headers--">
@@ -482,6 +506,10 @@ extends java.lang.Object</pre>
 <div class="block">Extracts all Headers of this Result value.
 
  The returned map is not modifiable.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the immutable map of headers</dd>
+</dl>
 </li>
 </ul>
 <a name="contentType--">
@@ -492,6 +520,10 @@ extends java.lang.Object</pre>
 <h4>contentType</h4>
 <pre>public&nbsp;java.util.Optional&lt;java.lang.String&gt;&nbsp;contentType()</pre>
 <div class="block">Extracts the Content-Type of this Result value.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the content type (if it was set)</dd>
+</dl>
 </li>
 </ul>
 <a name="charset--">
@@ -502,6 +534,10 @@ extends java.lang.Object</pre>
 <h4>charset</h4>
 <pre>public&nbsp;java.util.Optional&lt;java.lang.String&gt;&nbsp;charset()</pre>
 <div class="block">Extracts the Charset of this Result value.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the charset (if it was set)</dd>
+</dl>
 </li>
 </ul>
 <a name="flash--">
@@ -512,6 +548,10 @@ extends java.lang.Object</pre>
 <h4>flash</h4>
 <pre>public&nbsp;<a href="../../play/mvc/Http.Flash.html" title="class in play.mvc">Http.Flash</a>&nbsp;flash()</pre>
 <div class="block">Extracts the Flash values of this Result value.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the flash (if it was set)</dd>
+</dl>
 </li>
 </ul>
 <a name="session--">
@@ -522,6 +562,10 @@ extends java.lang.Object</pre>
 <h4>session</h4>
 <pre>public&nbsp;<a href="../../play/mvc/Http.Session.html" title="class in play.mvc">Http.Session</a>&nbsp;session()</pre>
 <div class="block">Extracts the Session of this Result value.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the session (if it was set)</dd>
+</dl>
 </li>
 </ul>
 <a name="cookie-java.lang.String-">
@@ -532,6 +576,10 @@ extends java.lang.Object</pre>
 <h4>cookie</h4>
 <pre>public&nbsp;<a href="../../play/mvc/Http.Cookie.html" title="class in play.mvc">Http.Cookie</a>&nbsp;cookie(java.lang.String&nbsp;name)</pre>
 <div class="block">Extracts a Cookie value from this Result value</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the cookie (if it was set)</dd>
+</dl>
 </li>
 </ul>
 <a name="cookies--">
@@ -542,6 +590,10 @@ extends java.lang.Object</pre>
 <h4>cookies</h4>
 <pre>public&nbsp;<a href="../../play/mvc/Http.Cookies.html" title="interface in play.mvc">Http.Cookies</a>&nbsp;cookies()</pre>
 <div class="block">Extracts the Cookies (an iterator) from this result value.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the cookies (if they were set)</dd>
+</dl>
 </li>
 </ul>
 <a name="withHeader-java.lang.String-java.lang.String-">
@@ -553,6 +605,10 @@ extends java.lang.Object</pre>
 <pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;withHeader(java.lang.String&nbsp;name,
                          java.lang.String&nbsp;value)</pre>
 <div class="block">Return a copy of this result with the given header.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the transformed copy</dd>
+</dl>
 </li>
 </ul>
 <a name="withHeaders-java.lang.String...-">
@@ -563,6 +619,10 @@ extends java.lang.Object</pre>
 <h4>withHeaders</h4>
 <pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;withHeaders(java.lang.String...&nbsp;nameValues)</pre>
 <div class="block">Return a copy of this result with the given headers.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the transformed copy</dd>
+</dl>
 </li>
 </ul>
 <a name="as-java.lang.String-">
@@ -572,7 +632,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>as</h4>
 <pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;as(java.lang.String&nbsp;contentType)</pre>
-<div class="block">Change the Content-Type header for this result.</div>
+<div class="block">Return a copy of the result with a different Content-Type header.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the transformed copy</dd>
+</dl>
 </li>
 </ul>
 <a name="asScala--">
@@ -583,6 +647,10 @@ extends java.lang.Object</pre>
 <h4>asScala</h4>
 <pre>public&nbsp;play.api.mvc.Result&nbsp;asScala()</pre>
 <div class="block">Convert this result to a Scala result.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the Scala result.</dd>
+</dl>
 </li>
 </ul>
 </li>

@@ -277,6 +277,10 @@ extends java.lang.Object</pre>
 <h4>beforeStart</h4>
 <pre>public&nbsp;void&nbsp;beforeStart(<a href="../play/Application.html" title="interface in play">Application</a>&nbsp;app)</pre>
 <div class="block">Executed before any plugin - you can set-up your database schema here, for instance.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>app</code> - the bootstrapping application</dd>
+</dl>
 </li>
 </ul>
 <a name="onStart-play.Application-">
@@ -288,6 +292,10 @@ extends java.lang.Object</pre>
 <pre>public&nbsp;void&nbsp;onStart(<a href="../play/Application.html" title="interface in play">Application</a>&nbsp;app)</pre>
 <div class="block">Executed after all plugins, including the database set-up with Evolutions and the EBean wrapper.
  This is a good place to execute some of your application code to create entries, for instance.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>app</code> - the bootstrapped application</dd>
+</dl>
 </li>
 </ul>
 <a name="onStop-play.Application-">
@@ -298,6 +306,10 @@ extends java.lang.Object</pre>
 <h4>onStop</h4>
 <pre>public&nbsp;void&nbsp;onStop(<a href="../play/Application.html" title="interface in play">Application</a>&nbsp;app)</pre>
 <div class="block">Executed when the application stops.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>app</code> - the application that is shutting down</dd>
+</dl>
 </li>
 </ul>
 <a name="onError-play.mvc.Http.RequestHeader-java.lang.Throwable-">
@@ -316,6 +328,7 @@ extends java.lang.Object</pre>
  By overriding this method one can provide an alternative error page.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>request</code> - header of the HTTP request being processed</dd>
 <dd><code>t</code> - is any throwable</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>null as the default implementation</dd>
@@ -399,6 +412,7 @@ extends java.lang.Object</pre>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>request</code> - the HTTP request</dd>
+<dd><code>error</code> - an arbitrary string describing the error</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>null in the default implementation, you can return your own custom Result in your Global class.</dd>
 </dl>
@@ -417,6 +431,14 @@ public final&nbsp;<a href="../play/Configuration.html" title="class in play">Con
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">This method does not do anything.
  Instead, specify configuration in your config file
  or make your own ApplicationLoader (see GuiceApplicationBuilder.loadConfig).</span></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>config</code> - deprecated</dd>
+<dd><code>path</code> - deprecated</dd>
+<dd><code>classloader</code> - deprecated</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>deprecated</dd>
+</dl>
 </li>
 </ul>
 <a name="onLoadConfig-play.Configuration-java.io.File-java.lang.ClassLoader-play.Mode-">
@@ -433,6 +455,15 @@ public final&nbsp;<a href="../play/Configuration.html" title="class in play">Con
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">This method does not do anything.
  Instead, specify configuration in your config file
  or make your own ApplicationLoader (see GuiceApplicationBuilder.loadConfig).</span></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>config</code> - deprecated</dd>
+<dd><code>path</code> - deprecated</dd>
+<dd><code>classloader</code> - deprecated</dd>
+<dd><code>mode</code> - deprecated</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>deprecated</dd>
+</dl>
 </li>
 </ul>
 <a name="filters--">
@@ -443,6 +474,12 @@ public final&nbsp;<a href="../play/Configuration.html" title="class in play">Con
 <h4>filters</h4>
 <pre>public&nbsp;&lt;T extends play.api.mvc.EssentialFilter&gt;&nbsp;java.lang.Class&lt;T&gt;[]&nbsp;filters()</pre>
 <div class="block">Get the filters that should be used to handle each request.</div>
+<dl>
+<dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>T</code> - the filter type</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>an instance of the filter type</dd>
+</dl>
 </li>
 </ul>
 </li>

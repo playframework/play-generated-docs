@@ -282,6 +282,10 @@ extends java.lang.Object</pre>
 <h4>url</h4>
 <pre>public abstract&nbsp;java.lang.String&nbsp;url()</pre>
 <div class="block">The request URL.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the url</dd>
+</dl>
 </li>
 </ul>
 <a name="method--">
@@ -292,6 +296,10 @@ extends java.lang.Object</pre>
 <h4>method</h4>
 <pre>public abstract&nbsp;java.lang.String&nbsp;method()</pre>
 <div class="block">The request HTTP method.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the http method (e.g. "GET")</dd>
+</dl>
 </li>
 </ul>
 <a name="fragment--">
@@ -302,6 +310,10 @@ extends java.lang.Object</pre>
 <h4>fragment</h4>
 <pre>public abstract&nbsp;java.lang.String&nbsp;fragment()</pre>
 <div class="block">The fragment of the URL.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the fragment (without leading '#' character)</dd>
+</dl>
 </li>
 </ul>
 <a name="unique--">
@@ -312,6 +324,10 @@ extends java.lang.Object</pre>
 <h4>unique</h4>
 <pre>public&nbsp;<a href="../../play/mvc/Call.html" title="class in play.mvc">Call</a>&nbsp;unique()</pre>
 <div class="block">Append a unique identifier to the URL.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a copy if this call with a unique identifier to this url</dd>
+</dl>
 </li>
 </ul>
 <a name="uniquify-java.lang.String-">
@@ -331,6 +347,12 @@ extends java.lang.Object</pre>
 <h4>withFragment</h4>
 <pre>public&nbsp;<a href="../../play/mvc/Call.html" title="class in play.mvc">Call</a>&nbsp;withFragment(java.lang.String&nbsp;fragment)</pre>
 <div class="block">Returns a new Call with the given fragment.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>fragment</code> - the URL fragment</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a copy of this call that contains the fragment</dd>
+</dl>
 </li>
 </ul>
 <a name="appendFragment--">
@@ -341,6 +363,10 @@ extends java.lang.Object</pre>
 <h4>appendFragment</h4>
 <pre>protected&nbsp;java.lang.String&nbsp;appendFragment()</pre>
 <div class="block">Returns the fragment (including the leading "#") if this call has one.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the fragment, with leading "#"</dd>
+</dl>
 </li>
 </ul>
 <a name="absoluteURL-play.mvc.Http.Request-">
@@ -351,6 +377,12 @@ extends java.lang.Object</pre>
 <h4>absoluteURL</h4>
 <pre>public&nbsp;java.lang.String&nbsp;absoluteURL(<a href="../../play/mvc/Http.Request.html" title="interface in play.mvc">Http.Request</a>&nbsp;request)</pre>
 <div class="block">Transform this call to an absolute URL.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>request</code> - used to identify the host and protocol that should base this absolute URL</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the absolute URL string</dd>
+</dl>
 </li>
 </ul>
 <a name="absoluteURL-play.mvc.Http.Request-boolean-">
@@ -362,6 +394,13 @@ extends java.lang.Object</pre>
 <pre>public&nbsp;java.lang.String&nbsp;absoluteURL(<a href="../../play/mvc/Http.Request.html" title="interface in play.mvc">Http.Request</a>&nbsp;request,
                                     boolean&nbsp;secure)</pre>
 <div class="block">Transform this call to an absolute URL.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>request</code> - used to identify the host that should base this absolute URL</dd>
+<dd><code>secure</code> - true if the absolute URL should use HTTPS protocol</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the absolute URL string</dd>
+</dl>
 </li>
 </ul>
 <a name="absoluteURL-boolean-java.lang.String-">
@@ -373,6 +412,13 @@ extends java.lang.Object</pre>
 <pre>public&nbsp;java.lang.String&nbsp;absoluteURL(boolean&nbsp;secure,
                                     java.lang.String&nbsp;host)</pre>
 <div class="block">Transform this call to an absolute URL.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>secure</code> - true if the absolute URL should use HTTPS protocol instead of HTTP</dd>
+<dd><code>host</code> - the absolute URL's domain</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the absolute URL string</dd>
+</dl>
 </li>
 </ul>
 <a name="webSocketURL-play.mvc.Http.Request-">
@@ -383,6 +429,12 @@ extends java.lang.Object</pre>
 <h4>webSocketURL</h4>
 <pre>public&nbsp;java.lang.String&nbsp;webSocketURL(<a href="../../play/mvc/Http.Request.html" title="interface in play.mvc">Http.Request</a>&nbsp;request)</pre>
 <div class="block">Transform this call to an WebSocket URL.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>request</code> - used as the base for forming the WS url</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the websocket url string</dd>
+</dl>
 </li>
 </ul>
 <a name="webSocketURL-play.mvc.Http.Request-boolean-">
@@ -394,6 +446,13 @@ extends java.lang.Object</pre>
 <pre>public&nbsp;java.lang.String&nbsp;webSocketURL(<a href="../../play/mvc/Http.Request.html" title="interface in play.mvc">Http.Request</a>&nbsp;request,
                                      boolean&nbsp;secure)</pre>
 <div class="block">Transform this call to an WebSocket URL.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>request</code> - used to identify the host for the absolute URL</dd>
+<dd><code>secure</code> - true if it should be a wss rather than ws URL</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the websocket URL string</dd>
+</dl>
 </li>
 </ul>
 <a name="webSocketURL-boolean-java.lang.String-">
@@ -405,6 +464,13 @@ extends java.lang.Object</pre>
 <pre>public&nbsp;java.lang.String&nbsp;webSocketURL(boolean&nbsp;secure,
                                      java.lang.String&nbsp;host)</pre>
 <div class="block">Transform this call to an WebSocket URL.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>host</code> - the host for the absolute URL.</dd>
+<dd><code>secure</code> - true if it should be a wss rather than ws URL</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the url string</dd>
+</dl>
 </li>
 </ul>
 <a name="path--">

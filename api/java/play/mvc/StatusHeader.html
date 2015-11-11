@@ -211,14 +211,14 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <tr id="i9" class="rowColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendPath-java.nio.file.Path-">sendPath</a></span>(java.nio.file.Path&nbsp;path)</code>
-<div class="block">Sends the given path.</div>
+<div class="block">Sends the given path if it is a valid file.</div>
 </td>
 </tr>
 <tr id="i10" class="altColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendPath-java.nio.file.Path-boolean-">sendPath</a></span>(java.nio.file.Path&nbsp;path,
         boolean&nbsp;inline)</code>
-<div class="block">Sends the given path.</div>
+<div class="block">Sends the given path if it is a valid file.</div>
 </td>
 </tr>
 <tr id="i11" class="rowColor">
@@ -226,7 +226,7 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendPath-java.nio.file.Path-boolean-java.lang.String-">sendPath</a></span>(java.nio.file.Path&nbsp;path,
         boolean&nbsp;inline,
         java.lang.String&nbsp;filename)</code>
-<div class="block">Sends the given path.</div>
+<div class="block">Sends the given path if it is a valid file.</div>
 </td>
 </tr>
 <tr id="i12" class="altColor">
@@ -352,6 +352,8 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>resourceName</code> - The path of the resource to load.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>an inlined '200 OK' result containing the resource in the body with in-line content disposition.</dd>
 </dl>
 </li>
 </ul>
@@ -368,6 +370,8 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>resourceName</code> - The path of the resource to load.</dd>
 <dd><code>classLoader</code> - The classloader to load it from.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a '200 OK' result containing the resource in the body with in-line content disposition.</dd>
 </dl>
 </li>
 </ul>
@@ -386,6 +390,8 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>resourceName</code> - The path of the resource to load.</dd>
 <dd><code>inline</code> - Whether it should be served as an inline file, or as an attachment.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a '200 OK' result containing the resource in the body with in-line content disposition.</dd>
 </dl>
 </li>
 </ul>
@@ -404,6 +410,8 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <dd><code>resourceName</code> - The path of the resource to load.</dd>
 <dd><code>classLoader</code> - The classloader to load it from.</dd>
 <dd><code>inline</code> - Whether it should be served as an inline file, or as an attachment.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a '200 OK' result containing the resource in the body.</dd>
 </dl>
 </li>
 </ul>
@@ -414,10 +422,12 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <li class="blockList">
 <h4>sendPath</h4>
 <pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendPath(java.nio.file.Path&nbsp;path)</pre>
-<div class="block">Sends the given path.</div>
+<div class="block">Sends the given path if it is a valid file. Otherwise throws RuntimeExceptions.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>path</code> - The path to send.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a '200 OK' result containing the file at the provided path with inline content disposition.</dd>
 </dl>
 </li>
 </ul>
@@ -429,11 +439,13 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <h4>sendPath</h4>
 <pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendPath(java.nio.file.Path&nbsp;path,
                        boolean&nbsp;inline)</pre>
-<div class="block">Sends the given path.</div>
+<div class="block">Sends the given path if it is a valid file. Otherwise throws RuntimeExceptions.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>path</code> - The path to send.</dd>
 <dd><code>inline</code> - Whether it should be served as an inline file, or as an attachment.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a '200 OK' result containing the file at the provided path</dd>
 </dl>
 </li>
 </ul>
@@ -446,12 +458,14 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendPath(java.nio.file.Path&nbsp;path,
                        boolean&nbsp;inline,
                        java.lang.String&nbsp;filename)</pre>
-<div class="block">Sends the given path.</div>
+<div class="block">Sends the given path if it is a valid file. Otherwise throws RuntimeExceptions</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>path</code> - The path to send.</dd>
 <dd><code>inline</code> - Whether it should be served as an inline file, or as an attachment.</dd>
 <dd><code>filename</code> - The file name of the path.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a '200 OK' result containing the file at the provided path</dd>
 </dl>
 </li>
 </ul>
@@ -468,6 +482,8 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>file</code> - The file to send.</dd>
 <dd><code>inline</code> - True if the file should be sent inline, false if it should be sent as an attachment.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a '200 OK' result containing the file</dd>
 </dl>
 </li>
 </ul>
@@ -484,6 +500,8 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>file</code> - The file to send.</dd>
 <dd><code>fileName</code> - The name of the attachment</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a '200 OK' result containing the file</dd>
 </dl>
 </li>
 </ul>
@@ -495,6 +513,12 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <h4>chunked</h4>
 <pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;chunked(akka.stream.javadsl.Source&lt;akka.util.ByteString,?&gt;&nbsp;chunks)</pre>
 <div class="block">Send a chunked response with the given chunks.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>chunks</code> - the chunks to send</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a '200 OK' response with the given chunks.</dd>
+</dl>
 </li>
 </ul>
 <a name="chunked-play.mvc.Results.Chunks-">
@@ -506,6 +530,14 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <pre>public&nbsp;&lt;T&gt;&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;chunked(<a href="../../play/mvc/Results.Chunks.html" title="class in play.mvc">Results.Chunks</a>&lt;T&gt;&nbsp;chunks)</pre>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Use <a href="../../play/mvc/StatusHeader.html#chunked-akka.stream.javadsl.Source-"><code>chunked(Source)</code></a> instead.</span></div>
 <div class="block">Send a chunked response with the given chunks.</div>
+<dl>
+<dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>T</code> - Deprecated</dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>chunks</code> - Deprecated</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Deprecated</dd>
+</dl>
 </li>
 </ul>
 <a name="sendJson-com.fasterxml.jackson.databind.JsonNode-">
@@ -516,6 +548,12 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <h4>sendJson</h4>
 <pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendJson(com.fasterxml.jackson.databind.JsonNode&nbsp;json)</pre>
 <div class="block">Send a json result.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>json</code> - the json node to send</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a '200 OK' result containing the json encoded as UTF-8.</dd>
+</dl>
 </li>
 </ul>
 <a name="sendJson-com.fasterxml.jackson.databind.JsonNode-java.lang.String-">
@@ -527,6 +565,13 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendJson(com.fasterxml.jackson.databind.JsonNode&nbsp;json,
                        java.lang.String&nbsp;charset)</pre>
 <div class="block">Send a json result.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>json</code> - the json to send</dd>
+<dd><code>charset</code> - the charset in which to encode the json (e.g. "UTF-8")</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a '200 OK' result containing the json encoded with the given charset</dd>
+</dl>
 </li>
 </ul>
 <a name="sendEntity-play.http.HttpEntity-">
