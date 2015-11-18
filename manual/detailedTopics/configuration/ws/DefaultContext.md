@@ -9,7 +9,7 @@ play.ws.ssl.default = true
 
 ## Debugging
 
-If you want to debug the default context,
+If you want to debug the default context, 
 
 ```
 play.ws.ssl.debug {
@@ -20,3 +20,5 @@ play.ws.ssl.debug {
 ```
 
 If you are using the default SSLContext, then the only way to change JSSE behavior is through manipulating the [JSSE system properties](https://docs.oracle.com/javase/8/docs/technotes/guides/security/jsse/JSSERefGuide.html#Customization).
+
+> **Next**:  [[Debugging SSL|DebuggingSSL]]
