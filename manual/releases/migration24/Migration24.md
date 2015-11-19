@@ -211,6 +211,10 @@ While Play 2.4 won't force you to use the dependency injected versions of compon
 
 If you are keen to use dependency injection, we are recommending that you move out of your `GlobalSettings` implementation class as much code as possible. Read the [[`GlobalSettings` migration documentation|GlobalSettings]] for the glory details.
 
+## `Plugin` deprecated
+
+Both Java [`play.Plugin`](api/java/play/Plugin.html) and Scala [`play.api.Plugin`](api/scala/play/api/Plugin.html) types have been deprecated. Read [[migrating Plugin to Module|PluginsToModules]] to update your code to use [`play.api.inject.Module`](api/scala/play/api/inject/Module.html).
+
 ## Configuration changes
 
 Play 2.4 now uses `reference.conf` to document and specify defaults for all properties.  You can easily find these by going [here](https://github.com/playframework/playframework/find/master) and searching for files called `reference.conf`.
@@ -373,11 +377,31 @@ As a result of these changes, your code can now assume that all values of type `
 
 ### Reading Options
 
-`OptionReads` is no longer available by default in 2.4. If you have code of the form `jsv.validate[Option[A]]`, you'll need to rewrite it:
+`OptionReads` is no longer available by default in 2.4. If you have code of the form `jsv.validate[Option[A]]`, you'll need to rewrite it in one of the following ways:
 
-* To get the same result as in 2.3, you can use `JsSuccess(jsv.asOpt[A])`. This will map all validation errors to `None`.
-* To map both `JsNull` and an undefined lookup result to `None`, use `jsv.validateOpt[A]`.
-* To map `JsNull` to `None` and validate the value if it exists, use `jsv.validate(Reads.optionWithNull[A])`. If the value does not exist the result will be a `JsError`.
+ 1. To map both `JsNull` and an undefined lookup result to `None`, use `jsv.validateOpt[A]`. This is typically what you want.
+ 2. To map all validation errors to `None`, use `JsSuccess(jsv.asOpt[A])`. This was what reading an `Option` did in 2.3.
+ 3. To map `JsNull` to `None` and validate the value if it exists, use `jsv.validate(Reads.optionWithNull[A])`. If the value does not exist the result will be a `JsError`.
+
+When using the functional combinators to construct your `Reads`, you will most likely want to replace
+
+```scala
+(JsPath \ "property").read[Option[String]]
+```
+
+with
+
+```scala
+(JsPath \ "property").readNullable[String]
+```
+
+This does the same as (1) above. The same goes for `Writes` with `JsPath.writeNullable` and `Format` with `JsPath.formatNullable`. Note that `readNullable` will return a `JsError` if a node could not be found before the last node, instead of `JsSuccess(None)`.
+
+Finally, you may run into problems creating a serializer for a type that requires a `Reads` for `Option` such as `Seq[Option[String]]`. In this case, you just need to create a reads for `Option[String]` and make sure it is in scope:
+
+```scala
+implicit val optionStringReads: Reads[Option[String]] = Reads.optionWithNull[String]
+```
 
 ## Testing changes
 
