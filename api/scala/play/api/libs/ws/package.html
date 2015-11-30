@@ -489,18 +489,18 @@
       </a>
     </span>
       <p class="shortcomment cmt">Asynchronous API to to query web services, as an http client.</p><div class="fullcomment"><div class="comment cmt"><p>Asynchronous API to to query web services, as an http client.</p><p>Usage example:</p><pre>WS.url(<span class="lit">"http://example.com/feed"</span>).get()
-WS.url(<span class="lit">"http://example.com/item"</span>).post(<span class="lit">"content"</span>)</pre><p>When greater flexibility is needed, you can also create clients explicitly and pass them into WS:</p><pre><span class="kw">implicit</span> <span class="kw">val</span> client = <span class="kw">new</span> NingWSClient(builder.build())
+WS.url(<span class="lit">"http://example.com/item"</span>).post(<span class="lit">"content"</span>)</pre><p>When greater flexibility is needed, you can also create clients explicitly and pass them into WS:</p><pre><span class="kw">implicit</span> <span class="kw">val</span> client = <span class="kw">new</span> AhcWSClient(builder.build())
 WS.url(<span class="lit">"http://example.com/feed"</span>).get()</pre><p>Or call the client directly:</p><pre><span class="kw">import</span> com.typesafe.config.ConfigFactory
 <span class="kw">import</span> play.api.libs.ws._
-<span class="kw">import</span> play.api.libs.ws.ning._
+<span class="kw">import</span> play.api.libs.ws.ahc._
 
 <span class="kw">val</span> configuration = play.api.Configuration(ConfigFactory.parseString(
 <span class="lit">""</span><span class="lit">"
   |ws.ssl.trustManager = ...
 "</span><span class="lit">""</span>.stripMargin))
 <span class="kw">val</span> parser = <span class="kw">new</span> DefaultWSConfigParser(configuration, Play.current.classloader)
-<span class="kw">val</span> builder = <span class="kw">new</span> NingAsyncHttpClientConfigBuilder(parser.parse())
-<span class="kw">val</span> secureClient: WSClient = <span class="kw">new</span> NingWSClient(builder.build())
+<span class="kw">val</span> builder = <span class="kw">new</span> AhcConfigBuilder(parser.parse())
+<span class="kw">val</span> secureClient: WSClient = <span class="kw">new</span> AhcWSClient(builder.build())
 <span class="kw">val</span> response = secureClient.url(<span class="lit">"https://secure.com"</span>).get()</pre><p>Note that the resolution of URL is done through the magnet pattern defined in
 <code>WSRequestMagnet</code>.</p><p>The value returned is a <code>Future[WSResponse]</code>, and you should use Play's asynchronous mechanisms to
 use this response.
@@ -518,6 +518,23 @@ use this response.
       </span>
       </h4><span class="permalink">
       <a href="../../../../index.html#play.api.libs.ws.package@WSAuthScheme" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.api.libs.ws.ahc" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ahc"></a>
+      <a id="ahc:ahc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="ahc/package.html"><span class="name">ahc</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.package@ahc" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
