@@ -227,23 +227,6 @@ for example in case of unit testing, you can easily achieve this using:</p><pre>
     </span>
       <p class="shortcomment cmt">The absolute path hosting this application, mainly used by the <code>getFile(path)</code> helper method
 </p>
-    </li><li name="play.api.Application#plugins" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="plugins:Seq[play.api.Plugin.Deprecated]"></a>
-      <a id="plugins:Seq[Deprecated]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">abstract </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">plugins</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="play.api.Plugin.Deprecated">Deprecated</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#play.api.Application@plugins:Seq[play.api.Plugin.Deprecated]" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
     </li><li name="play.api.Application#requestHandler" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="requestHandler:play.api.http.HttpRequestHandler"></a>
       <a id="requestHandler:HttpRequestHandler"></a>
@@ -487,23 +470,6 @@ be nothing available in the application root path.</p><p>For example, to retriev
     </span>
       <p class="shortcomment cmt">Retrieves a file relative to the application root path.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a file relative to the application root path.</p><p>Note that it is up to you to manage the files in the application root path in production.  By default, there will
 be nothing available in the application root path.</p><p>For example, to retrieve some deployment specific data file:</p><pre><span class="kw">val</span> myDataFile = application.getFile(<span class="lit">"data/data.xml"</span>)</pre></div><dl class="paramcmts block"><dt class="param">relativePath</dt><dd class="cmt"><p>relative path of the file to fetch</p></dd><dt>returns</dt><dd class="cmt"><p>a file instance; it is not guaranteed that the file exists</p></dd></dl></div>
-    </li><li name="play.api.Application#global" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="global:play.api.GlobalSettings"></a>
-      <a id="global:GlobalSettings"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">global</span><span class="result">: <a href="GlobalSettings.html" class="extype" name="play.api.GlobalSettings">GlobalSettings</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#play.api.Application@global:play.api.GlobalSettings" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
     </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <a id="hashCode():Int"></a>
@@ -607,40 +573,6 @@ be nothing available in the application root path.</p><p>For example, to retriev
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="play.api.Application#plugin" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="plugin[T](implicitct:scala.reflect.ClassTag[T]):Option[T]"></a>
-      <a id="plugin[T](ClassTag[T]):Option[T]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">plugin</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="ct">ct: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="play.api.Application.plugin.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="play.api.Application.plugin.T">T</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#play.api.Application@plugin[T](implicitct:scala.reflect.ClassTag[T]):Option[T]" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Retrieves a plugin of type <code>T</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a plugin of type <code>T</code>.</p><p>For example, to retrieve the DBPlugin instance:</p><pre><span class="kw">val</span> dbPlugin = application.plugin[DBPlugin].map(_.api).getOrElse(sys.error(<span class="lit">"problem with the plugin"</span>))</pre></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>the plugin type</p></dd><dt>returns</dt><dd class="cmt"><p>The plugin instance used by this application.</p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="scala.Error"><code>scala.Error</code></span> if no plugins of type <code>T</code> are loaded by this application.</p></span></dd></dl></div>
-    </li><li name="play.api.Application#plugin" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="plugin[T](pluginClass:Class[T]):Option[T]"></a>
-      <a id="plugin[T](Class[T]):Option[T]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">plugin</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="pluginClass">pluginClass: <span class="extype" name="scala.Predef.Class">Class</span>[<span class="extype" name="play.api.Application.plugin.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="play.api.Application.plugin.T">T</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#play.api.Application@plugin[T](pluginClass:Class[T]):Option[T]" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Retrieves a plugin of type <code>T</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a plugin of type <code>T</code>.</p><p>For example, retrieving the DBPlugin instance:</p><pre><span class="kw">val</span> dbPlugin = application.plugin(classOf[DBPlugin])</pre></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>the plugin type</p></dd><dt class="param">pluginClass</dt><dd class="cmt"><p>the plugin’s class</p></dd><dt>returns</dt><dd class="cmt"><p>the plugin instance, wrapped in an option, used by this application</p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="scala.Error"><code>scala.Error</code></span> if no plugins of type <code>T</code> are loaded by this application</p></span></dd></dl></div>
     </li><li name="play.api.Application#resource" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="resource(name:String):Option[java.net.URL]"></a>
       <a id="resource(String):Option[URL]"></a>
@@ -787,7 +719,27 @@ directory.</p><p>For example, to retrieve the conf/logger.xml configuration file
 
         <div id="values" class="values members">
               <h3>Deprecated Value Members</h3>
-              <ol><li name="play.api.Application#routes" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+              <ol><li name="play.api.Application#global" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="global:play.api.GlobalSettings.Deprecated"></a>
+      <a id="global:Deprecated"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 2.5.0) Use dependency injection">global</span><span class="result">: <a href="GlobalSettings$.html#Deprecated=play.api.GlobalSettings" class="extmbr" name="play.api.GlobalSettings.Deprecated">Deprecated</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Application@global:play.api.GlobalSettings.Deprecated" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.5.0)</i> Use dependency injection</p></dd></dl></div>
+    </li><li name="play.api.Application#routes" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="routes:play.api.routing.Router"></a>
       <a id="routes:Router"></a>
       <h4 class="signature">
