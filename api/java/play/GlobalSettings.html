@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":42,"i6":42,"i7":10,"i8":10,"i9":10,"i10":10};
+var methods = {"i0":42,"i1":42,"i2":42,"i3":42,"i4":42,"i5":42,"i6":42,"i7":42,"i8":42};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"],32:["t6","Deprecated Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -106,8 +106,12 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <hr>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">This class is deprecated in 2.5.0.  Please use dependency injection in preference to GlobalSettings.</span></div>
+</div>
 <br>
-<pre>public class <span class="typeNameLabel">GlobalSettings</span>
+<pre>@Deprecated
+public class <span class="typeNameLabel">GlobalSettings</span>
 extends java.lang.Object</pre>
 <div class="block">GlobalSettings is instantiated by the framework when an application starts, to let you perform specific tasks
  at start-up or shut-down.
@@ -131,7 +135,9 @@ extends java.lang.Object</pre>
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../play/GlobalSettings.html#GlobalSettings--">GlobalSettings</a></span>()</code>&nbsp;</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../play/GlobalSettings.html#GlobalSettings--">GlobalSettings</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -151,12 +157,14 @@ extends java.lang.Object</pre>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../play/GlobalSettings.html#beforeStart-play.Application-">beforeStart</a></span>(<a href="../play/Application.html" title="interface in play">Application</a>&nbsp;app)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Executed before any plugin - you can set-up your database schema here, for instance.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>&lt;T extends play.api.mvc.EssentialFilter&gt;<br>java.lang.Class&lt;T&gt;[]</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../play/GlobalSettings.html#filters--">filters</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Get the filters that should be used to handle each request.</div>
 </td>
 </tr>
@@ -164,6 +172,7 @@ extends java.lang.Object</pre>
 <td class="colFirst"><code>java.util.concurrent.CompletionStage&lt;<a href="../play/mvc/Result.html" title="class in play.mvc">Result</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../play/GlobalSettings.html#onBadRequest-play.mvc.Http.RequestHeader-java.lang.String-">onBadRequest</a></span>(<a href="../play/mvc/Http.RequestHeader.html" title="interface in play.mvc">Http.RequestHeader</a>&nbsp;request,
             java.lang.String&nbsp;error)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Called when an action has been found, but the request parsing has failed.</div>
 </td>
 </tr>
@@ -171,62 +180,43 @@ extends java.lang.Object</pre>
 <td class="colFirst"><code>java.util.concurrent.CompletionStage&lt;<a href="../play/mvc/Result.html" title="class in play.mvc">Result</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../play/GlobalSettings.html#onError-play.mvc.Http.RequestHeader-java.lang.Throwable-">onError</a></span>(<a href="../play/mvc/Http.RequestHeader.html" title="interface in play.mvc">Http.RequestHeader</a>&nbsp;request,
        java.lang.Throwable&nbsp;t)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Called when an exception occurred.</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>java.util.concurrent.CompletionStage&lt;<a href="../play/mvc/Result.html" title="class in play.mvc">Result</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../play/GlobalSettings.html#onHandlerNotFound-play.mvc.Http.RequestHeader-">onHandlerNotFound</a></span>(<a href="../play/mvc/Http.RequestHeader.html" title="interface in play.mvc">Http.RequestHeader</a>&nbsp;request)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Called when no action was found to serve a request.</div>
 </td>
 </tr>
 <tr id="i5" class="rowColor">
-<td class="colFirst"><code><a href="../play/Configuration.html" title="class in play">Configuration</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../play/GlobalSettings.html#onLoadConfig-play.Configuration-java.io.File-java.lang.ClassLoader-">onLoadConfig</a></span>(<a href="../play/Configuration.html" title="class in play">Configuration</a>&nbsp;config,
-            java.io.File&nbsp;path,
-            java.lang.ClassLoader&nbsp;classloader)</code>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
-<div class="block"><span class="deprecationComment">This method does not do anything.
- Instead, specify configuration in your config file
- or make your own ApplicationLoader (see GuiceApplicationBuilder.loadConfig).</span></div>
-</div>
-</td>
-</tr>
-<tr id="i6" class="altColor">
-<td class="colFirst"><code><a href="../play/Configuration.html" title="class in play">Configuration</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../play/GlobalSettings.html#onLoadConfig-play.Configuration-java.io.File-java.lang.ClassLoader-play.Mode-">onLoadConfig</a></span>(<a href="../play/Configuration.html" title="class in play">Configuration</a>&nbsp;config,
-            java.io.File&nbsp;path,
-            java.lang.ClassLoader&nbsp;classloader,
-            <a href="../play/Mode.html" title="enum in play">Mode</a>&nbsp;mode)</code>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
-<div class="block"><span class="deprecationComment">This method does not do anything.
- Instead, specify configuration in your config file
- or make your own ApplicationLoader (see GuiceApplicationBuilder.loadConfig).</span></div>
-</div>
-</td>
-</tr>
-<tr id="i7" class="rowColor">
 <td class="colFirst"><code><a href="../play/mvc/Action.html" title="class in play.mvc">Action</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../play/GlobalSettings.html#onRequest-play.mvc.Http.Request-java.lang.reflect.Method-">onRequest</a></span>(<a href="../play/mvc/Http.Request.html" title="interface in play.mvc">Http.Request</a>&nbsp;request,
          java.lang.reflect.Method&nbsp;actionMethod)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Call to create the root Action of a request for a Java application.</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>play.api.mvc.Handler</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../play/GlobalSettings.html#onRouteRequest-play.mvc.Http.RequestHeader-">onRouteRequest</a></span>(<a href="../play/mvc/Http.RequestHeader.html" title="interface in play.mvc">Http.RequestHeader</a>&nbsp;request)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Called when an HTTP request has been received.</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../play/GlobalSettings.html#onStart-play.Application-">onStart</a></span>(<a href="../play/Application.html" title="interface in play">Application</a>&nbsp;app)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Executed after all plugins, including the database set-up with Evolutions and the EBean wrapper.</div>
 </td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../play/GlobalSettings.html#onStop-play.Application-">onStop</a></span>(<a href="../play/Application.html" title="interface in play">Application</a>&nbsp;app)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Executed when the application stops.</div>
 </td>
 </tr>
@@ -259,6 +249,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>GlobalSettings</h4>
 <pre>public&nbsp;GlobalSettings()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 </li>
 </ul>
 </li>
@@ -276,6 +267,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>beforeStart</h4>
 <pre>public&nbsp;void&nbsp;beforeStart(<a href="../play/Application.html" title="interface in play">Application</a>&nbsp;app)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Executed before any plugin - you can set-up your database schema here, for instance.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -290,6 +282,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>onStart</h4>
 <pre>public&nbsp;void&nbsp;onStart(<a href="../play/Application.html" title="interface in play">Application</a>&nbsp;app)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Executed after all plugins, including the database set-up with Evolutions and the EBean wrapper.
  This is a good place to execute some of your application code to create entries, for instance.</div>
 <dl>
@@ -305,6 +298,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>onStop</h4>
 <pre>public&nbsp;void&nbsp;onStop(<a href="../play/Application.html" title="interface in play">Application</a>&nbsp;app)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Executed when the application stops.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -320,6 +314,7 @@ extends java.lang.Object</pre>
 <h4>onError</h4>
 <pre>public&nbsp;java.util.concurrent.CompletionStage&lt;<a href="../play/mvc/Result.html" title="class in play.mvc">Result</a>&gt;&nbsp;onError(<a href="../play/mvc/Http.RequestHeader.html" title="interface in play.mvc">Http.RequestHeader</a>&nbsp;request,
                                                             java.lang.Throwable&nbsp;t)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Called when an exception occurred.
 
  The default is to send the framework's default error page. This is achieved by returning <code>null</code>,
@@ -343,6 +338,7 @@ extends java.lang.Object</pre>
 <h4>onRequest</h4>
 <pre>public&nbsp;<a href="../play/mvc/Action.html" title="class in play.mvc">Action</a>&nbsp;onRequest(<a href="../play/mvc/Http.Request.html" title="interface in play.mvc">Http.Request</a>&nbsp;request,
                         java.lang.reflect.Method&nbsp;actionMethod)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Call to create the root Action of a request for a Java application.
  The request and actionMethod values are passed for information.</div>
 <dl>
@@ -361,6 +357,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>onRouteRequest</h4>
 <pre>public&nbsp;play.api.mvc.Handler&nbsp;onRouteRequest(<a href="../play/mvc/Http.RequestHeader.html" title="interface in play.mvc">Http.RequestHeader</a>&nbsp;request)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Called when an HTTP request has been received.
  The default implementation (return null) means to use the application router to find the appropriate action
 
@@ -381,6 +378,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>onHandlerNotFound</h4>
 <pre>public&nbsp;java.util.concurrent.CompletionStage&lt;<a href="../play/mvc/Result.html" title="class in play.mvc">Result</a>&gt;&nbsp;onHandlerNotFound(<a href="../play/mvc/Http.RequestHeader.html" title="interface in play.mvc">Http.RequestHeader</a>&nbsp;request)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Called when no action was found to serve a request.
 
  The default behavior is to render the framework's default 404 page. This is achieved by returning <code>null</code>,
@@ -403,6 +401,7 @@ extends java.lang.Object</pre>
 <h4>onBadRequest</h4>
 <pre>public&nbsp;java.util.concurrent.CompletionStage&lt;<a href="../play/mvc/Result.html" title="class in play.mvc">Result</a>&gt;&nbsp;onBadRequest(<a href="../play/mvc/Http.RequestHeader.html" title="interface in play.mvc">Http.RequestHeader</a>&nbsp;request,
                                                                  java.lang.String&nbsp;error)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Called when an action has been found, but the request parsing has failed.
 
  The default behavior is to render the framework's default 400 page. This is achieved by returning <code>null</code>,
@@ -418,54 +417,6 @@ extends java.lang.Object</pre>
 </dl>
 </li>
 </ul>
-<a name="onLoadConfig-play.Configuration-java.io.File-java.lang.ClassLoader-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>onLoadConfig</h4>
-<pre>@Deprecated
-public final&nbsp;<a href="../play/Configuration.html" title="class in play">Configuration</a>&nbsp;onLoadConfig(<a href="../play/Configuration.html" title="class in play">Configuration</a>&nbsp;config,
-                                                    java.io.File&nbsp;path,
-                                                    java.lang.ClassLoader&nbsp;classloader)</pre>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">This method does not do anything.
- Instead, specify configuration in your config file
- or make your own ApplicationLoader (see GuiceApplicationBuilder.loadConfig).</span></div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>config</code> - deprecated</dd>
-<dd><code>path</code> - deprecated</dd>
-<dd><code>classloader</code> - deprecated</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>deprecated</dd>
-</dl>
-</li>
-</ul>
-<a name="onLoadConfig-play.Configuration-java.io.File-java.lang.ClassLoader-play.Mode-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>onLoadConfig</h4>
-<pre>@Deprecated
-public final&nbsp;<a href="../play/Configuration.html" title="class in play">Configuration</a>&nbsp;onLoadConfig(<a href="../play/Configuration.html" title="class in play">Configuration</a>&nbsp;config,
-                                                    java.io.File&nbsp;path,
-                                                    java.lang.ClassLoader&nbsp;classloader,
-                                                    <a href="../play/Mode.html" title="enum in play">Mode</a>&nbsp;mode)</pre>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">This method does not do anything.
- Instead, specify configuration in your config file
- or make your own ApplicationLoader (see GuiceApplicationBuilder.loadConfig).</span></div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>config</code> - deprecated</dd>
-<dd><code>path</code> - deprecated</dd>
-<dd><code>classloader</code> - deprecated</dd>
-<dd><code>mode</code> - deprecated</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>deprecated</dd>
-</dl>
-</li>
-</ul>
 <a name="filters--">
 <!--   -->
 </a>
@@ -473,6 +424,7 @@ public final&nbsp;<a href="../play/Configuration.html" title="class in play">Con
 <li class="blockList">
 <h4>filters</h4>
 <pre>public&nbsp;&lt;T extends play.api.mvc.EssentialFilter&gt;&nbsp;java.lang.Class&lt;T&gt;[]&nbsp;filters()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Get the filters that should be used to handle each request.</div>
 <dl>
 <dt><span class="paramLabel">Type Parameters:</span></dt>
