@@ -51,7 +51,7 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>provides generic server behaviour for Play applications
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Provides generic server behaviour for Play applications.
 </p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play-server/src/main/scala/play/core/server/Server.scala" target="_blank">Server.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="play.core.server.ServerWithStop">ServerWithStop</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
@@ -355,7 +355,7 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="play.core.server.Server#getHandlerFor" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="play.core.server.Server#getHandlerFor" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getHandlerFor(request:play.api.mvc.RequestHeader):Either[scala.concurrent.Future[play.api.mvc.Result],(play.api.mvc.RequestHeader,play.api.mvc.Handler,play.api.Application)]"></a>
       <a id="getHandlerFor(RequestHeader):Either[Future[Result],(RequestHeader,Handler,api.Application)]"></a>
       <h4 class="signature">
@@ -371,7 +371,13 @@
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Try to get the handler for a request and return it as a <code>Right</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Try to get the handler for a request and return it as a <code>Right</code>. If we
+can't get the handler for some reason then return a result immediately
+as a <code>Left</code>. Reasons to return a <code>Left</code> value:</p><p>- If there's a &quot;web command&quot; installed that intercepts the request.
+- If we fail to get the <code>Application</code> from the <code>applicationProvider</code>,
+  i.e. if there's an error loading the application.
+- If an exception is thrown.
+</p></div></div>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <a id="hashCode():Int"></a>

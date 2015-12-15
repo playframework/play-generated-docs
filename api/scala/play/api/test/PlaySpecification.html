@@ -352,7 +352,7 @@ methods.  It also mixes in the Play test helpers and types for convenience.
       <a id="ExceptionMatcherResult[T]:(ExceptionBeHaveMatchers.this)#ExceptionMatcherResult[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
-        <span class="modifier"></span>
+        <span class="modifier">implicit </span>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
@@ -8069,18 +8069,18 @@ check for the event immediately rather than using using NegativeTimeout.
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>EventuallyMatchers</dd></dl></div>
     </li><li name="org.specs2.matcher.EventuallyMatchers#eventually" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="eventually[T](retries:Int,sleep:scala.concurrent.duration.Duration)(nested:=&gt;org.specs2.matcher.Matcher[T]):org.specs2.matcher.Matcher[T]"></a>
-      <a id="eventually[T](Int,Duration)(⇒Matcher[T]):Matcher[T]"></a>
+      <a id="eventually[T](nested:=&gt;org.specs2.matcher.Matcher[T],retries:Int,sleep:scala.concurrent.duration.Duration):org.specs2.matcher.Matcher[T]"></a>
+      <a id="eventually[T](⇒Matcher[T],Int,Duration):Matcher[T]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">eventually</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="retries">retries: <span class="extype" name="scala.Int">Int</span></span>, <span name="sleep">sleep: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>)</span><span class="params">(<span name="nested">nested: ⇒ <span class="extype" name="org.specs2.matcher.Matcher">Matcher</span>[<span class="extype" name="org.specs2.matcher.EventuallyMatchers.eventually.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="org.specs2.matcher.Matcher">Matcher</span>[<span class="extype" name="org.specs2.matcher.EventuallyMatchers.eventually.T">T</span>]</span>
+        <span class="name">eventually</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="nested">nested: ⇒ <span class="extype" name="org.specs2.matcher.Matcher">Matcher</span>[<span class="extype" name="org.specs2.matcher.EventuallyMatchers.eventually.T">T</span>]</span>, <span name="retries">retries: <span class="extype" name="scala.Int">Int</span></span>, <span name="sleep">sleep: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>)</span><span class="result">: <span class="extype" name="org.specs2.matcher.Matcher">Matcher</span>[<span class="extype" name="org.specs2.matcher.EventuallyMatchers.eventually.T">T</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.test.PlaySpecification@eventually[T](retries:Int,sleep:scala.concurrent.duration.Duration)(nested:=&gt;org.specs2.matcher.Matcher[T]):org.specs2.matcher.Matcher[T]" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.test.PlaySpecification@eventually[T](nested:=&gt;org.specs2.matcher.Matcher[T],retries:Int,sleep:scala.concurrent.duration.Duration):org.specs2.matcher.Matcher[T]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -10671,8 +10671,8 @@ check for the event immediately rather than using using NegativeTimeout.
     </span>
       <p class="shortcomment cmt">Executes a block of code in a running application.</p><div class="fullcomment"><div class="comment cmt"><p>Executes a block of code in a running application.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="PlayRunners.html" class="extype" name="play.api.test.PlayRunners">PlayRunners</a></dd></dl></div>
-    </li><li name="org.specs2.specification.create.S2StringContextCreation#s2" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="s2(content:&lt;?&gt;,Yrangepos:&lt;?&gt;,texts:&lt;?&gt;,textsStartPositions:&lt;?&gt;,textsEndPositions:&lt;?&gt;,variables:&lt;?&gt;,rangeExpressions:&lt;?&gt;):org.specs2.specification.core.Fragments"></a>
+    </li><li name="org.specs2.specification.dsl.mutable.SpecificationCreation#s2" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="s2(content:String,Yrangepos:Boolean,texts:Seq[String],textsStartPositions:Seq[String],textsEndPositions:Seq[String],variables:Seq[org.specs2.specification.create.InterpolatedFragment],rangeExpressions:Seq[String]):org.specs2.specification.core.Fragments"></a>
       <a id="s2(String,Boolean,Seq[String],Seq[String],Seq[String],Seq[InterpolatedFragment],Seq[String]):Fragments"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -10687,7 +10687,7 @@ check for the event immediately rather than using using NegativeTimeout.
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>S2StringContextCreation</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>SpecificationCreation → S2StringContextCreation</dd></dl></div>
     </li><li name="org.specs2.matcher.ThrownExpectationsCreation#sandboxMatchResult" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="sandboxMatchResult[T](mr:=&gt;org.specs2.matcher.MatchResult[T]):org.specs2.matcher.MatchResult[T]"></a>
       <a id="sandboxMatchResult[T](⇒MatchResult[T]):MatchResult[T]"></a>
@@ -11592,23 +11592,6 @@ Extracts the Session from this Result value.
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>MatchersCreation</dd></dl></div>
-    </li><li name="org.specs2.matcher.TraversableBaseMatchersLowImplicits#stringMatcherIsTraversableMatcher" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="stringMatcherIsTraversableMatcher(m:&lt;?&gt;):org.specs2.matcher.Matcher[scala.collection.GenTraversableOnce[String]]"></a>
-      <a id="stringMatcherIsTraversableMatcher(Matcher[String]):Matcher[GenTraversableOnce[String]]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">implicit </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">stringMatcherIsTraversableMatcher</span><span class="params">(<span name="m">m: <span class="extype" name="org.specs2.matcher.Matcher">Matcher</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <span class="extype" name="org.specs2.matcher.Matcher">Matcher</span>[<span class="extype" name="scala.collection.GenTraversableOnce">GenTraversableOnce</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.api.test.PlaySpecification@stringMatcherIsTraversableMatcher(m:org.specs2.matcher.Matcher[String]):org.specs2.matcher.Matcher[scala.collection.GenTraversableOnce[String]]" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>TraversableBaseMatchersLowImplicits</dd></dl></div>
     </li><li name="org.specs2.specification.core.SpecificationStructure#structure" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="structure:org.specs2.specification.core.Env=&gt;org.specs2.specification.core.SpecStructure"></a>
       <a id="structure:(Env)⇒SpecStructure"></a>
@@ -12104,23 +12087,6 @@ testserver.port
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyBeHaveMatchers</dd></dl></div>
-    </li><li name="org.specs2.matcher.ExceptionBeHaveMatchers#toExceptionMatcher" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="toExceptionMatcher[T&lt;:&lt;?&gt;](result:&lt;?&gt;):ExceptionBeHaveMatchers.this.ExceptionMatcherResult[T]"></a>
-      <a id="toExceptionMatcher[T](MatchResult[T]):ExceptionMatcherResult[T]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">implicit </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">toExceptionMatcher</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="result">result: <span class="extype" name="org.specs2.matcher.MatchResult">MatchResult</span>[<span class="extype" name="org.specs2.matcher.ExceptionBeHaveMatchers.toExceptionMatcher.T">T</span>]</span>)</span><span class="result">: <a href="#ExceptionMatcherResult[T]extendsAnyRef" class="extmbr" name="play.api.test.PlaySpecification.ExceptionMatcherResult">ExceptionMatcherResult</a>[<span class="extype" name="org.specs2.matcher.ExceptionBeHaveMatchers.toExceptionMatcher.T">T</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.api.test.PlaySpecification@toExceptionMatcher[T](result:org.specs2.matcher.MatchResult[T]):ExceptionBeHaveMatchers.this.ExceptionMatcherResult[T]" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ExceptionBeHaveMatchers</dd></dl></div>
     </li><li name="org.specs2.matcher.MapBeHaveMatchers#toMapKeyResultMatcher" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toMapKeyResultMatcher[K&lt;:&lt;?&gt;](result:&lt;?&gt;):MapBeHaveMatchers.this.MapKeyResultMatcher[K]"></a>
       <a id="toMapKeyResultMatcher[K](MatchResult[Iterable[(K,Any)]]):MapKeyResultMatcher[K]"></a>
