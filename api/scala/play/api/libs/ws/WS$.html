@@ -49,21 +49,27 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Asynchronous API to to query web services, as an http client.</p><p>Usage example:</p><pre>WS.url(<span class="lit">"http://example.com/feed"</span>).get()
-WS.url(<span class="lit">"http://example.com/item"</span>).post(<span class="lit">"content"</span>)</pre><p>When greater flexibility is needed, you can also create clients explicitly and pass them into WS:</p><pre><span class="kw">implicit</span> <span class="kw">val</span> client = <span class="kw">new</span> AhcWSClient(builder.build())
-WS.url(<span class="lit">"http://example.com/feed"</span>).get()</pre><p>Or call the client directly:</p><pre><span class="kw">import</span> com.typesafe.config.ConfigFactory
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Asynchronous API to to query web services, as an http client.</p><p>Usage example:</p><pre><span class="kw">class</span> MyService @Inject() (ws: WSClient) {
+  ws.url(<span class="lit">"http://example.com/feed"</span>).get()
+  ws.url(<span class="lit">"http://example.com/item"</span>).post(<span class="lit">"content"</span>)
+}</pre><p>When greater flexibility is needed, you can also create clients explicitly and pass them into WS:</p><pre><span class="kw">import</span> play.api.libs.ws._
+<span class="kw">import</span> play.api.libs.ws.ahc._
+
+<span class="kw">val</span> client = <span class="kw">new</span> AhcWSClient(<span class="kw">new</span> AhcConfigBuilder())
+client.url(<span class="lit">"http://example.com/feed"</span>).get()
+client.close() <span class="cmt">// must explicitly manage lifecycle</span></pre><p>Or call the client directly:</p><pre><span class="kw">import</span> com.typesafe.config.ConfigFactory
 <span class="kw">import</span> play.api.libs.ws._
 <span class="kw">import</span> play.api.libs.ws.ahc._
 
 <span class="kw">val</span> configuration = play.api.Configuration(ConfigFactory.parseString(
 <span class="lit">""</span><span class="lit">"
-  |ws.ssl.trustManager = ...
+  |play.ws.ssl.trustManager = ...
 "</span><span class="lit">""</span>.stripMargin))
 <span class="kw">val</span> parser = <span class="kw">new</span> DefaultWSConfigParser(configuration, Play.current.classloader)
 <span class="kw">val</span> builder = <span class="kw">new</span> AhcConfigBuilder(parser.parse())
 <span class="kw">val</span> secureClient: WSClient = <span class="kw">new</span> AhcWSClient(builder.build())
-<span class="kw">val</span> response = secureClient.url(<span class="lit">"https://secure.com"</span>).get()</pre><p>Note that the resolution of URL is done through the magnet pattern defined in
-<code>WSRequestMagnet</code>.</p><p>The value returned is a <code>Future[WSResponse]</code>, and you should use Play's asynchronous mechanisms to
+<span class="kw">val</span> response = secureClient.url(<span class="lit">"https://secure.com"</span>).get()
+secureClient.close() <span class="cmt">// must explicitly manage lifecycle</span></pre><p>The value returned is a <code>Future[WSResponse]</code>, and you should use Play's asynchronous mechanisms to
 use this response.
 </p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play-ws/src/main/scala/play/api/libs/ws/WS.scala" target="_blank">WS.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
