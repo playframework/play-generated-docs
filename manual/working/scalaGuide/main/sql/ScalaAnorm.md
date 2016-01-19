@@ -48,7 +48,7 @@ You will need to add Anorm and JDBC plugin to your dependencies :
 ```scala
 libraryDependencies ++= Seq(
   jdbc,
-  "com.typesafe.play" %% "anorm" % "2.5.0"
+  "com.typesafe.play" %% "anorm" % "2.4.0"
 )
 ```
 
@@ -255,31 +255,21 @@ get[String]("name") ~ get[Option[Int]]("year") map {
 val result: List[Info] = SQL"SELECT * FROM list".as(parser.*)
 ```
 
-The similar macros `indexedParser[T]` and `offsetParser[T]` are available to get column values by positions instead of names.
+A similar macro `indexedParser[T]` is available to get column values by positions instead of names.
 
 ```scala
 import anorm.{ Macro, RowParser }
 
 case class Info(name: String, year: Option[Int])
 
-val parser1: RowParser[Info] = Macro.indexedParser[Info]
+val parser: RowParser[Info] = Macro.indexedParser[Info]
 /* Generated as:
 get[String](1) ~ get[Option[Int]](2) map {
   case name ~ year => Info(name, year)
 }
 */
 
-val result1: List[Info] = SQL"SELECT * FROM list".as(parser1.*)
-
-// With offset
-val parser2: RowParser[Info] = Macro.offsetParser[Info](2)
-/* Generated as:
-get[String](2 + 1) ~ get[Option[Int]](2 + 2) map {
-  case name ~ year => Info(name, year)
-}
-*/
-
-val result2: List[Info] = SQL"SELECT * FROM list".as(parser2.*)
+val result: List[Info] = SQL"SELECT * FROM list".as(parser.*)
 ```
 
 To indicate custom names for the columns to be parsed, the macro `parser[T](names)` can be used.
@@ -382,7 +372,7 @@ books match {
 
 It's possible to use Anorm along with [Play Iteratees](https://www.playframework.com/documentation/latest/Iteratees), using the following dependencies.
 
-```scala
+```
 libraryDependencies ++= Seq(
   "com.typesafe.play" %% "anorm-iteratee" % "ANORM_VERSION",
   "com.typesafe.play" %% "play-iteratees" % "ITERATEES_VERSION")
@@ -775,7 +765,7 @@ val Int = SQL("SELECT * FROM test").as((int("id") <~ str("val")).single)
 
 Now let’s try with a more complicated example. How to parse the result of the following query to retrieve the country name and all spoken languages for a country code?
 
-```sql
+```
 select c.name, l.language from Country c 
     join CountryLanguage l on l.CountryCode = c.Code 
     where c.code = 'FRA'
@@ -871,7 +861,7 @@ def spokenLanguages(countryCode: String): Option[SpokenLanguages] = {
 
 If you try this on the MySQL world sample database, you will get:
 
-```scala
+```
 $ spokenLanguages("FRA")
 > Some(
     SpokenLanguages(France,Some(French),List(
@@ -983,12 +973,12 @@ String                  | str
 
 The [Joda](http://www.joda.org) and [Java 8](#Java_8) temporal types are also supported.
 
-↓JDBC / JVM➞                  | Date<sup>1</sup> | DateTime<sup>2</sup> | Instant<sup>3</sup> | Long
+↓JDBC / JVM➞                  | Date<sup>1</sup> | DateTime<sup>2</sup> | Instant<sup>3</sup>
 ----------------------------- | ---------------- | -------------------- | -------------------
-Date                          | Yes              | Yes                  | Yes                 | Yes
-Long                          | Yes              | Yes                  | Yes                 | Yes
-Timestamp                     | Yes              | Yes                  | Yes                 | Yes
-Timestamp wrapper<sup>5</sup> | Yes              | Yes                  | Yes                 | Yes
+Date                          | Yes              | Yes                  | Yes
+Long                          | Yes              | Yes                  | Yes
+Timestamp                     | Yes              | Yes                  | Yes
+Timestamp wrapper<sup>5</sup> | Yes              | Yes                  | Yes
 
 - 1. Types `java.util.Date`, `org.joda.time.LocalDate` and `java.time.LocalDate`.
 - 2. Types `org.joda.time.DateTime`, `org.joda.time.LocalDateTime`, `java.time.LocalDateTime` and `java.time.ZonedDateTime`.
@@ -1096,7 +1086,7 @@ To enable Joda types as parameter, the `import anorm.JodaParameterMetaData._` mu
 
 Custom or database specific conversion for parameter can also be provided:
 
-```scala
+```
 import java.sql.PreparedStatement
 import anorm.{ ParameterMetaData, ToStatement }
 
@@ -1130,6 +1120,6 @@ This section gathers some errors/warnings you can encounter when using Anorm.
 `value SQL is not a member of StringContext`; This compilation error is raised when using the [Anorm interpolation](#SQL-queries-using-String-Interpolation) without the appropriate import.
 It can be fixed by adding the package import: `import anorm._`
 
-`type mismatch; found    : T; required : anorm.ParameterValue`; This compilation error occurs when a value of type `T` is passed as parameter, whereas this `T` type is not supported. You need to ensure that a `anorm.ToStatement[T]` and a `anorm.ParameterMetaData[T]` can be found in the implicit scope (see [parameter conversions](#Custom-parameter-conversions)).
+`type mismatch; found    : T; required : anorm.ParameterValue`; This compilation error occurs when a value of type `T` is passed as parameter, whereas this `T` type is not supported. You need to ensure that a `anorm.ToStatement[T]` and a `anorm.ParameterMetaData[T]` can be found in the implicit scope (see [parameter conversions](#Custom parameter conversions)).
 
 On `.executeInsert()`, you can get the error `TypeDoesNotMatch(Cannot convert <value>: class <T> to Long for column ColumnName(<C>)`. This occurs when the [key returned by the database on insertion](http://docs.oracle.com/javase/8/docs/api/java/sql/Statement.html#getGeneratedKeys--) is not compatible with `Long` (the default key parser). It can be fixed by providing the appropriate key parser; e.g. if the database returns a text key: `SQL"...".executeInsert(scalar[String].singleOpt)` (get an `Option[String]` as insertion key).
