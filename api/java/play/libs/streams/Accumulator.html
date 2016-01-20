@@ -17,8 +17,8 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":9,"i2":9,"i3":9,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":9,"i11":10,"i12":10};
-var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
+var methods = {"i0":6,"i1":9,"i2":9,"i3":9,"i4":6,"i5":6,"i6":6,"i7":6,"i8":6,"i9":6,"i10":9,"i11":6,"i12":6};
+var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -74,13 +74,13 @@ var activeTableTab = "activeTableTab";
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
-<li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
-<li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
 </div>
@@ -107,7 +107,7 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <hr>
 <br>
-<pre>public final class <span class="typeNameLabel">Accumulator&lt;E,A&gt;</span>
+<pre>public abstract class <span class="typeNameLabel">Accumulator&lt;E,A&gt;</span>
 extends java.lang.Object</pre>
 <div class="block">Accumulates inputs asynchronously into an output value.
 
@@ -126,25 +126,6 @@ extends java.lang.Object</pre>
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
-<!-- ======== CONSTRUCTOR SUMMARY ======== -->
-<ul class="blockList">
-<li class="blockList"><a name="constructor.summary">
-<!--   -->
-</a>
-<h3>Constructor Summary</h3>
-<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing constructors, and an explanation">
-<caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colOne" scope="col">Constructor and Description</th>
-</tr>
-<tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../play/libs/streams/Accumulator.html#Accumulator-akka.stream.javadsl.Sink-">Accumulator</a></span>(akka.stream.javadsl.Sink&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">E</a>,java.util.concurrent.CompletionStage&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">A</a>&gt;&gt;&nbsp;sink)</code>
-<div class="block">Create an accumulator for the given sink.</div>
-</td>
-</tr>
-</table>
-</li>
-</ul>
 <!-- ========== METHOD SUMMARY =========== -->
 <ul class="blockList">
 <li class="blockList"><a name="method.summary">
@@ -152,13 +133,13 @@ extends java.lang.Object</pre>
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t1" class="tableTab"><span><a href="javascript:show(1);">Static Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t1" class="tableTab"><span><a href="javascript:show(1);">Static Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>play.api.libs.streams.Accumulator&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">E</a>,<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">A</a>&gt;</code></td>
+<td class="colFirst"><code>abstract play.api.libs.streams.Accumulator&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">E</a>,<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">A</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/streams/Accumulator.html#asScala--">asScala</a></span>()</code>
 <div class="block">Convert this accumulator to a Scala accumulator.</div>
 </td>
@@ -182,41 +163,41 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr id="i4" class="altColor">
-<td class="colFirst"><code>&lt;B&gt;&nbsp;<a href="../../../play/libs/streams/Accumulator.html" title="class in play.libs.streams">Accumulator</a>&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">E</a>,B&gt;</code></td>
+<td class="colFirst"><code>abstract &lt;B&gt;&nbsp;<a href="../../../play/libs/streams/Accumulator.html" title="class in play.libs.streams">Accumulator</a>&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">E</a>,B&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/streams/Accumulator.html#map-java.util.function.Function-java.util.concurrent.Executor-">map</a></span>(java.util.function.Function&lt;? super <a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">A</a>,? extends B&gt;&nbsp;f,
    java.util.concurrent.Executor&nbsp;executor)</code>
 <div class="block">Map the accumulated value.</div>
 </td>
 </tr>
 <tr id="i5" class="rowColor">
-<td class="colFirst"><code>&lt;B&gt;&nbsp;<a href="../../../play/libs/streams/Accumulator.html" title="class in play.libs.streams">Accumulator</a>&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">E</a>,B&gt;</code></td>
+<td class="colFirst"><code>abstract &lt;B&gt;&nbsp;<a href="../../../play/libs/streams/Accumulator.html" title="class in play.libs.streams">Accumulator</a>&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">E</a>,B&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/streams/Accumulator.html#mapFuture-java.util.function.Function-java.util.concurrent.Executor-">mapFuture</a></span>(java.util.function.Function&lt;? super <a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">A</a>,? extends java.util.concurrent.CompletionStage&lt;B&gt;&gt;&nbsp;f,
          java.util.concurrent.Executor&nbsp;executor)</code>
 <div class="block">Map the accumulated value with a function that returns a future.</div>
 </td>
 </tr>
 <tr id="i6" class="altColor">
-<td class="colFirst"><code><a href="../../../play/libs/streams/Accumulator.html" title="class in play.libs.streams">Accumulator</a>&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">E</a>,<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">A</a>&gt;</code></td>
+<td class="colFirst"><code>abstract <a href="../../../play/libs/streams/Accumulator.html" title="class in play.libs.streams">Accumulator</a>&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">E</a>,<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">A</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/streams/Accumulator.html#recover-java.util.function.Function-java.util.concurrent.Executor-">recover</a></span>(java.util.function.Function&lt;? super java.lang.Throwable,? extends <a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">A</a>&gt;&nbsp;f,
        java.util.concurrent.Executor&nbsp;executor)</code>
 <div class="block">Recover from any errors encountered by the accumulator.</div>
 </td>
 </tr>
 <tr id="i7" class="rowColor">
-<td class="colFirst"><code><a href="../../../play/libs/streams/Accumulator.html" title="class in play.libs.streams">Accumulator</a>&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">E</a>,<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">A</a>&gt;</code></td>
+<td class="colFirst"><code>abstract <a href="../../../play/libs/streams/Accumulator.html" title="class in play.libs.streams">Accumulator</a>&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">E</a>,<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">A</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/streams/Accumulator.html#recoverWith-java.util.function.Function-java.util.concurrent.Executor-">recoverWith</a></span>(java.util.function.Function&lt;? super java.lang.Throwable,? extends java.util.concurrent.CompletionStage&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">A</a>&gt;&gt;&nbsp;f,
            java.util.concurrent.Executor&nbsp;executor)</code>
 <div class="block">Recover from any errors encountered by the accumulator.</div>
 </td>
 </tr>
 <tr id="i8" class="altColor">
-<td class="colFirst"><code>java.util.concurrent.CompletionStage&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">A</a>&gt;</code></td>
+<td class="colFirst"><code>abstract java.util.concurrent.CompletionStage&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">A</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/streams/Accumulator.html#run-akka.stream.Materializer-">run</a></span>(akka.stream.Materializer&nbsp;mat)</code>
 <div class="block">Run the accumulator with an empty source.</div>
 </td>
 </tr>
 <tr id="i9" class="rowColor">
-<td class="colFirst"><code>java.util.concurrent.CompletionStage&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">A</a>&gt;</code></td>
+<td class="colFirst"><code>abstract java.util.concurrent.CompletionStage&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">A</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/streams/Accumulator.html#run-akka.stream.javadsl.Source-akka.stream.Materializer-">run</a></span>(akka.stream.javadsl.Source&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">E</a>,?&gt;&nbsp;source,
    akka.stream.Materializer&nbsp;mat)</code>
 <div class="block">Run the accumulator with the given source.</div>
@@ -229,13 +210,13 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr id="i11" class="rowColor">
-<td class="colFirst"><code>&lt;D&gt;&nbsp;<a href="../../../play/libs/streams/Accumulator.html" title="class in play.libs.streams">Accumulator</a>&lt;D,<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">A</a>&gt;</code></td>
+<td class="colFirst"><code>abstract &lt;D&gt;&nbsp;<a href="../../../play/libs/streams/Accumulator.html" title="class in play.libs.streams">Accumulator</a>&lt;D,<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">A</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/streams/Accumulator.html#through-akka.stream.javadsl.Flow-">through</a></span>(akka.stream.javadsl.Flow&lt;D,<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">E</a>,?&gt;&nbsp;flow)</code>
 <div class="block">Pass the stream through the given flow before forwarding it to the accumulator.</div>
 </td>
 </tr>
 <tr id="i12" class="altColor">
-<td class="colFirst"><code>akka.stream.javadsl.Sink&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">E</a>,java.util.concurrent.CompletionStage&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">A</a>&gt;&gt;</code></td>
+<td class="colFirst"><code>abstract akka.stream.javadsl.Sink&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">E</a>,java.util.concurrent.CompletionStage&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">A</a>&gt;&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/streams/Accumulator.html#toSink--">toSink</a></span>()</code>
 <div class="block">Convert this accumulator to a sink.</div>
 </td>
@@ -256,28 +237,6 @@ extends java.lang.Object</pre>
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
-<!-- ========= CONSTRUCTOR DETAIL ======== -->
-<ul class="blockList">
-<li class="blockList"><a name="constructor.detail">
-<!--   -->
-</a>
-<h3>Constructor Detail</h3>
-<a name="Accumulator-akka.stream.javadsl.Sink-">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>Accumulator</h4>
-<pre>public&nbsp;Accumulator(akka.stream.javadsl.Sink&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">E</a>,java.util.concurrent.CompletionStage&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">A</a>&gt;&gt;&nbsp;sink)</pre>
-<div class="block">Create an accumulator for the given sink.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>sink</code> - The sink to wrap.</dd>
-</dl>
-</li>
-</ul>
-</li>
-</ul>
 <!-- ============ METHOD DETAIL ========== -->
 <ul class="blockList">
 <li class="blockList"><a name="method.detail">
@@ -290,8 +249,8 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>map</h4>
-<pre>public&nbsp;&lt;B&gt;&nbsp;<a href="../../../play/libs/streams/Accumulator.html" title="class in play.libs.streams">Accumulator</a>&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">E</a>,B&gt;&nbsp;map(java.util.function.Function&lt;? super <a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">A</a>,? extends B&gt;&nbsp;f,
-                                java.util.concurrent.Executor&nbsp;executor)</pre>
+<pre>public abstract&nbsp;&lt;B&gt;&nbsp;<a href="../../../play/libs/streams/Accumulator.html" title="class in play.libs.streams">Accumulator</a>&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">E</a>,B&gt;&nbsp;map(java.util.function.Function&lt;? super <a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">A</a>,? extends B&gt;&nbsp;f,
+                                         java.util.concurrent.Executor&nbsp;executor)</pre>
 <div class="block">Map the accumulated value.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -308,8 +267,8 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>mapFuture</h4>
-<pre>public&nbsp;&lt;B&gt;&nbsp;<a href="../../../play/libs/streams/Accumulator.html" title="class in play.libs.streams">Accumulator</a>&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">E</a>,B&gt;&nbsp;mapFuture(java.util.function.Function&lt;? super <a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">A</a>,? extends java.util.concurrent.CompletionStage&lt;B&gt;&gt;&nbsp;f,
-                                      java.util.concurrent.Executor&nbsp;executor)</pre>
+<pre>public abstract&nbsp;&lt;B&gt;&nbsp;<a href="../../../play/libs/streams/Accumulator.html" title="class in play.libs.streams">Accumulator</a>&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">E</a>,B&gt;&nbsp;mapFuture(java.util.function.Function&lt;? super <a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">A</a>,? extends java.util.concurrent.CompletionStage&lt;B&gt;&gt;&nbsp;f,
+                                               java.util.concurrent.Executor&nbsp;executor)</pre>
 <div class="block">Map the accumulated value with a function that returns a future.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -326,8 +285,8 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>recover</h4>
-<pre>public&nbsp;<a href="../../../play/libs/streams/Accumulator.html" title="class in play.libs.streams">Accumulator</a>&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">E</a>,<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">A</a>&gt;&nbsp;recover(java.util.function.Function&lt;? super java.lang.Throwable,? extends <a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">A</a>&gt;&nbsp;f,
-                                java.util.concurrent.Executor&nbsp;executor)</pre>
+<pre>public abstract&nbsp;<a href="../../../play/libs/streams/Accumulator.html" title="class in play.libs.streams">Accumulator</a>&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">E</a>,<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">A</a>&gt;&nbsp;recover(java.util.function.Function&lt;? super java.lang.Throwable,? extends <a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">A</a>&gt;&nbsp;f,
+                                         java.util.concurrent.Executor&nbsp;executor)</pre>
 <div class="block">Recover from any errors encountered by the accumulator.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -344,8 +303,8 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>recoverWith</h4>
-<pre>public&nbsp;<a href="../../../play/libs/streams/Accumulator.html" title="class in play.libs.streams">Accumulator</a>&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">E</a>,<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">A</a>&gt;&nbsp;recoverWith(java.util.function.Function&lt;? super java.lang.Throwable,? extends java.util.concurrent.CompletionStage&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">A</a>&gt;&gt;&nbsp;f,
-                                    java.util.concurrent.Executor&nbsp;executor)</pre>
+<pre>public abstract&nbsp;<a href="../../../play/libs/streams/Accumulator.html" title="class in play.libs.streams">Accumulator</a>&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">E</a>,<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">A</a>&gt;&nbsp;recoverWith(java.util.function.Function&lt;? super java.lang.Throwable,? extends java.util.concurrent.CompletionStage&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">A</a>&gt;&gt;&nbsp;f,
+                                             java.util.concurrent.Executor&nbsp;executor)</pre>
 <div class="block">Recover from any errors encountered by the accumulator.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -362,7 +321,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>through</h4>
-<pre>public&nbsp;&lt;D&gt;&nbsp;<a href="../../../play/libs/streams/Accumulator.html" title="class in play.libs.streams">Accumulator</a>&lt;D,<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">A</a>&gt;&nbsp;through(akka.stream.javadsl.Flow&lt;D,<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">E</a>,?&gt;&nbsp;flow)</pre>
+<pre>public abstract&nbsp;&lt;D&gt;&nbsp;<a href="../../../play/libs/streams/Accumulator.html" title="class in play.libs.streams">Accumulator</a>&lt;D,<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">A</a>&gt;&nbsp;through(akka.stream.javadsl.Flow&lt;D,<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">E</a>,?&gt;&nbsp;flow)</pre>
 <div class="block">Pass the stream through the given flow before forwarding it to the accumulator.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -378,7 +337,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>run</h4>
-<pre>public&nbsp;java.util.concurrent.CompletionStage&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">A</a>&gt;&nbsp;run(akka.stream.Materializer&nbsp;mat)</pre>
+<pre>public abstract&nbsp;java.util.concurrent.CompletionStage&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">A</a>&gt;&nbsp;run(akka.stream.Materializer&nbsp;mat)</pre>
 <div class="block">Run the accumulator with an empty source.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -394,15 +353,15 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>run</h4>
-<pre>public&nbsp;java.util.concurrent.CompletionStage&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">A</a>&gt;&nbsp;run(akka.stream.javadsl.Source&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">E</a>,?&gt;&nbsp;source,
-                                                   akka.stream.Materializer&nbsp;mat)</pre>
+<pre>public abstract&nbsp;java.util.concurrent.CompletionStage&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">A</a>&gt;&nbsp;run(akka.stream.javadsl.Source&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">E</a>,?&gt;&nbsp;source,
+                                                            akka.stream.Materializer&nbsp;mat)</pre>
 <div class="block">Run the accumulator with the given source.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>source</code> - The source to feed into the accumulator.</dd>
 <dd><code>mat</code> - The flow materializer.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>A fuwure that will be redeemed when the accumulator is done.</dd>
+<dd>A future that will be redeemed when the accumulator is done.</dd>
 </dl>
 </li>
 </ul>
@@ -412,7 +371,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>toSink</h4>
-<pre>public&nbsp;akka.stream.javadsl.Sink&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">E</a>,java.util.concurrent.CompletionStage&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">A</a>&gt;&gt;&nbsp;toSink()</pre>
+<pre>public abstract&nbsp;akka.stream.javadsl.Sink&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">E</a>,java.util.concurrent.CompletionStage&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">A</a>&gt;&gt;&nbsp;toSink()</pre>
 <div class="block">Convert this accumulator to a sink.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -426,7 +385,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>asScala</h4>
-<pre>public&nbsp;play.api.libs.streams.Accumulator&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">E</a>,<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">A</a>&gt;&nbsp;asScala()</pre>
+<pre>public abstract&nbsp;play.api.libs.streams.Accumulator&lt;<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">E</a>,<a href="../../../play/libs/streams/Accumulator.html" title="type parameter in Accumulator">A</a>&gt;&nbsp;asScala()</pre>
 <div class="block">Convert this accumulator to a Scala accumulator.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -560,13 +519,13 @@ extends java.lang.Object</pre>
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
-<li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
-<li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
 </div>

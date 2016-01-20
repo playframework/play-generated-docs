@@ -28,7 +28,7 @@
         </head>
         <body class="type">
       <div id="definition">
-        <a href="Accumulator$.html" title="See companion object"><img alt="Class/Object" src="../../../../lib/class_to_object_big.png" /></a>
+        <a href="Accumulator$.html" title="See companion object"><img alt="Trait/Object" src="../../../../lib/trait_to_object_big.png" /></a>
         <p id="owner"><a href="../../../package.html" class="extype" name="play">play</a>.<a href="../../package.html" class="extype" name="play.api">api</a>.<a href="../package.html" class="extype" name="play.api.libs">libs</a>.<a href="package.html" class="extype" name="play.api.libs.streams">streams</a></p>
         <h1><a href="Accumulator$.html" title="See companion object">Accumulator</a></h1><h3><span class="morelinks"><div>
             Related Docs:
@@ -43,8 +43,8 @@
 
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">class</span>
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
       </span>
       <span class="symbol">
         <span class="name">Accumulator</span><span class="tparams">[<span name="E">-E</span>, <span name="A">+A</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
@@ -90,34 +90,171 @@ methods for working directly with that future as well as transforming the input.
 
       <div id="template">
         <div id="allMembers">
-        <div id="constructors" class="members">
-              <h3>Instance Constructors</h3>
-              <ol><li name="play.api.libs.streams.Accumulator#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(sink:akka.stream.scaladsl.Sink[E,scala.concurrent.Future[A]]):play.api.libs.streams.Accumulator[E,A]"></a>
-      <a id="&lt;init&gt;:Accumulator[E,A]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">new</span>
-      </span>
-      <span class="symbol">
-        <span class="name">Accumulator</span><span class="params">(<span name="sink">sink: <span class="extype" name="akka.stream.scaladsl.Sink">Sink</span>[<span class="extype" name="play.api.libs.streams.Accumulator.E">E</span>, <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="play.api.libs.streams.Accumulator.A">A</span>]]</span>)</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.streams.Accumulator@&lt;init&gt;(sink:akka.stream.scaladsl.Sink[E,scala.concurrent.Future[A]]):play.api.libs.streams.Accumulator[E,A]" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
-    </li></ol>
-            </div>
-
         
 
         
 
         <div id="values" class="values members">
-              <h3>Value Members</h3>
+              <h3>Abstract Value Members</h3>
+              <ol><li name="play.api.libs.streams.Accumulator#asJava" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="asJava:play.libs.streams.Accumulator[E@scala.annotation.unchecked.uncheckedVariance,A@scala.annotation.unchecked.uncheckedVariance]"></a>
+      <a id="asJava:libs.streams.Accumulator[E,A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">asJava</span><span class="result">: <span class="extype" name="play.libs.streams.Accumulator">libs.streams.Accumulator</span>[<span class="extype" name="play.api.libs.streams.Accumulator.E">E</span>, <span class="extype" name="play.api.libs.streams.Accumulator.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.streams.Accumulator@asJava:play.libs.streams.Accumulator[E@scala.annotation.unchecked.uncheckedVariance,A@scala.annotation.unchecked.uncheckedVariance]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Convert this accumulator to a Java Accumulator.</p><div class="fullcomment"><div class="comment cmt"><p>Convert this accumulator to a Java Accumulator.
+</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>The Java accumulator.</p></dd></dl></div>
+    </li><li name="play.api.libs.streams.Accumulator#map" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="map[B](f:A=&gt;B)(implicitexecutor:scala.concurrent.ExecutionContext):play.api.libs.streams.Accumulator[E,B]"></a>
+      <a id="map[B]((A)⇒B)(ExecutionContext):Accumulator[E,B]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">map</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="f">f: (<span class="extype" name="play.api.libs.streams.Accumulator.A">A</span>) ⇒ <span class="extype" name="play.api.libs.streams.Accumulator.map.B">B</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="executor">executor: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: <a href="" class="extype" name="play.api.libs.streams.Accumulator">Accumulator</a>[<span class="extype" name="play.api.libs.streams.Accumulator.E">E</span>, <span class="extype" name="play.api.libs.streams.Accumulator.map.B">B</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.streams.Accumulator@map[B](f:A=&gt;B)(implicitexecutor:scala.concurrent.ExecutionContext):play.api.libs.streams.Accumulator[E,B]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Map the result of this accumulator to something else.</p>
+    </li><li name="play.api.libs.streams.Accumulator#mapFuture" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="mapFuture[B](f:A=&gt;scala.concurrent.Future[B])(implicitexecutor:scala.concurrent.ExecutionContext):play.api.libs.streams.Accumulator[E,B]"></a>
+      <a id="mapFuture[B]((A)⇒Future[B])(ExecutionContext):Accumulator[E,B]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">mapFuture</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="f">f: (<span class="extype" name="play.api.libs.streams.Accumulator.A">A</span>) ⇒ <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="play.api.libs.streams.Accumulator.mapFuture.B">B</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="executor">executor: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: <a href="" class="extype" name="play.api.libs.streams.Accumulator">Accumulator</a>[<span class="extype" name="play.api.libs.streams.Accumulator.E">E</span>, <span class="extype" name="play.api.libs.streams.Accumulator.mapFuture.B">B</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.streams.Accumulator@mapFuture[B](f:A=&gt;scala.concurrent.Future[B])(implicitexecutor:scala.concurrent.ExecutionContext):play.api.libs.streams.Accumulator[E,B]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Map the result of this accumulator to a future of something else.</p>
+    </li><li name="play.api.libs.streams.Accumulator#recover" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="recover[B&gt;:A](pf:PartialFunction[Throwable,B])(implicitexecutor:scala.concurrent.ExecutionContext):play.api.libs.streams.Accumulator[E,B]"></a>
+      <a id="recover[B&gt;:A](PartialFunction[Throwable,B])(ExecutionContext):Accumulator[E,B]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">recover</span><span class="tparams">[<span name="B">B &gt;: <span class="extype" name="play.api.libs.streams.Accumulator.A">A</span></span>]</span><span class="params">(<span name="pf">pf: <span class="extype" name="scala.PartialFunction">PartialFunction</span>[<span class="extype" name="scala.Throwable">Throwable</span>, <span class="extype" name="play.api.libs.streams.Accumulator.recover.B">B</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="executor">executor: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: <a href="" class="extype" name="play.api.libs.streams.Accumulator">Accumulator</a>[<span class="extype" name="play.api.libs.streams.Accumulator.E">E</span>, <span class="extype" name="play.api.libs.streams.Accumulator.recover.B">B</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.streams.Accumulator@recover[B&gt;:A](pf:PartialFunction[Throwable,B])(implicitexecutor:scala.concurrent.ExecutionContext):play.api.libs.streams.Accumulator[E,B]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Recover from errors encountered by this accumulator.</p>
+    </li><li name="play.api.libs.streams.Accumulator#recoverWith" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="recoverWith[B&gt;:A](pf:PartialFunction[Throwable,scala.concurrent.Future[B]])(implicitexecutor:scala.concurrent.ExecutionContext):play.api.libs.streams.Accumulator[E,B]"></a>
+      <a id="recoverWith[B&gt;:A](PartialFunction[Throwable,Future[B]])(ExecutionContext):Accumulator[E,B]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">recoverWith</span><span class="tparams">[<span name="B">B &gt;: <span class="extype" name="play.api.libs.streams.Accumulator.A">A</span></span>]</span><span class="params">(<span name="pf">pf: <span class="extype" name="scala.PartialFunction">PartialFunction</span>[<span class="extype" name="scala.Throwable">Throwable</span>, <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="play.api.libs.streams.Accumulator.recoverWith.B">B</span>]]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="executor">executor: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: <a href="" class="extype" name="play.api.libs.streams.Accumulator">Accumulator</a>[<span class="extype" name="play.api.libs.streams.Accumulator.E">E</span>, <span class="extype" name="play.api.libs.streams.Accumulator.recoverWith.B">B</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.streams.Accumulator@recoverWith[B&gt;:A](pf:PartialFunction[Throwable,scala.concurrent.Future[B]])(implicitexecutor:scala.concurrent.ExecutionContext):play.api.libs.streams.Accumulator[E,B]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Recover from errors encountered by this accumulator.</p>
+    </li><li name="play.api.libs.streams.Accumulator#run" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="run()(implicitmaterializer:akka.stream.Materializer):scala.concurrent.Future[A]"></a>
+      <a id="run()(Materializer):Future[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">run</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="materializer">materializer: <span class="extype" name="akka.stream.Materializer">Materializer</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="play.api.libs.streams.Accumulator.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.streams.Accumulator@run()(implicitmaterializer:akka.stream.Materializer):scala.concurrent.Future[A]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Run this accumulator by feeding nothing into it.</p>
+    </li><li name="play.api.libs.streams.Accumulator#run" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="run(source:akka.stream.scaladsl.Source[E,_])(implicitmaterializer:akka.stream.Materializer):scala.concurrent.Future[A]"></a>
+      <a id="run(Source[E,_])(Materializer):Future[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">run</span><span class="params">(<span name="source">source: <span class="extype" name="akka.stream.scaladsl.Source">Source</span>[<span class="extype" name="play.api.libs.streams.Accumulator.E">E</span>, _]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="materializer">materializer: <span class="extype" name="akka.stream.Materializer">Materializer</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="play.api.libs.streams.Accumulator.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.streams.Accumulator@run(source:akka.stream.scaladsl.Source[E,_])(implicitmaterializer:akka.stream.Materializer):scala.concurrent.Future[A]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Run this accumulator by feeding in the given source.</p>
+    </li><li name="play.api.libs.streams.Accumulator#through" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="through[F](flow:akka.stream.scaladsl.Flow[F,E,_]):play.api.libs.streams.Accumulator[F,A]"></a>
+      <a id="through[F](Flow[F,E,_]):Accumulator[F,A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">through</span><span class="tparams">[<span name="F">F</span>]</span><span class="params">(<span name="flow">flow: <span class="extype" name="akka.stream.scaladsl.Flow">Flow</span>[<span class="extype" name="play.api.libs.streams.Accumulator.through.F">F</span>, <span class="extype" name="play.api.libs.streams.Accumulator.E">E</span>, _]</span>)</span><span class="result">: <a href="" class="extype" name="play.api.libs.streams.Accumulator">Accumulator</a>[<span class="extype" name="play.api.libs.streams.Accumulator.through.F">F</span>, <span class="extype" name="play.api.libs.streams.Accumulator.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.streams.Accumulator@through[F](flow:akka.stream.scaladsl.Flow[F,E,_]):play.api.libs.streams.Accumulator[F,A]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Return a new accumulator that first feeds the input through the given flow before it goes through this accumulator.</p>
+    </li><li name="play.api.libs.streams.Accumulator#toSink" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="toSink:akka.stream.scaladsl.Sink[E,scala.concurrent.Future[A]]"></a>
+      <a id="toSink:Sink[E,Future[A]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toSink</span><span class="result">: <span class="extype" name="akka.stream.scaladsl.Sink">Sink</span>[<span class="extype" name="play.api.libs.streams.Accumulator.E">E</span>, <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="play.api.libs.streams.Accumulator.A">A</span>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.streams.Accumulator@toSink:akka.stream.scaladsl.Sink[E,scala.concurrent.Future[A]]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Convert this accumulator to a Sink that gets materialised to a Future.</p>
+    </li></ol>
+            </div>
+
+        <div id="values" class="values members">
+              <h3>Concrete Value Members</h3>
               <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:Any):Boolean"></a>
       <a id="!=(Any):Boolean"></a>
@@ -186,24 +323,6 @@ methods for working directly with that future as well as transforming the input.
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="play.api.libs.streams.Accumulator#asJava" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="asJava:play.libs.streams.Accumulator[E@scala.annotation.unchecked.uncheckedVariance,A@scala.annotation.unchecked.uncheckedVariance]"></a>
-      <a id="asJava:libs.streams.Accumulator[E,A]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">asJava</span><span class="result">: <span class="extype" name="play.libs.streams.Accumulator">libs.streams.Accumulator</span>[<span class="extype" name="play.api.libs.streams.Accumulator.E">E</span>, <span class="extype" name="play.api.libs.streams.Accumulator.A">A</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.streams.Accumulator@asJava:play.libs.streams.Accumulator[E@scala.annotation.unchecked.uncheckedVariance,A@scala.annotation.unchecked.uncheckedVariance]" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Convert this accumulator to a Java Accumulator.</p><div class="fullcomment"><div class="comment cmt"><p>Convert this accumulator to a Java Accumulator.
-</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>The Java accumulator.</p></dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
@@ -335,40 +454,6 @@ methods for working directly with that future as well as transforming the input.
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="play.api.libs.streams.Accumulator#map" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="map[B](f:A=&gt;B)(implicitexecutor:scala.concurrent.ExecutionContext):play.api.libs.streams.Accumulator[E,B]"></a>
-      <a id="map[B]((A)⇒B)(ExecutionContext):Accumulator[E,B]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">map</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="f">f: (<span class="extype" name="play.api.libs.streams.Accumulator.A">A</span>) ⇒ <span class="extype" name="play.api.libs.streams.Accumulator.map.B">B</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="executor">executor: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: <a href="" class="extype" name="play.api.libs.streams.Accumulator">Accumulator</a>[<span class="extype" name="play.api.libs.streams.Accumulator.E">E</span>, <span class="extype" name="play.api.libs.streams.Accumulator.map.B">B</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.streams.Accumulator@map[B](f:A=&gt;B)(implicitexecutor:scala.concurrent.ExecutionContext):play.api.libs.streams.Accumulator[E,B]" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Map the result of this accumulator to something else.</p>
-    </li><li name="play.api.libs.streams.Accumulator#mapFuture" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="mapFuture[B](f:A=&gt;scala.concurrent.Future[B])(implicitexecutor:scala.concurrent.ExecutionContext):play.api.libs.streams.Accumulator[E,B]"></a>
-      <a id="mapFuture[B]((A)⇒Future[B])(ExecutionContext):Accumulator[E,B]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">mapFuture</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="f">f: (<span class="extype" name="play.api.libs.streams.Accumulator.A">A</span>) ⇒ <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="play.api.libs.streams.Accumulator.mapFuture.B">B</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="executor">executor: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: <a href="" class="extype" name="play.api.libs.streams.Accumulator">Accumulator</a>[<span class="extype" name="play.api.libs.streams.Accumulator.E">E</span>, <span class="extype" name="play.api.libs.streams.Accumulator.mapFuture.B">B</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.streams.Accumulator@mapFuture[B](f:A=&gt;scala.concurrent.Future[B])(implicitexecutor:scala.concurrent.ExecutionContext):play.api.libs.streams.Accumulator[E,B]" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Map the result of this accumulator to a future of something else.</p>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>
@@ -420,74 +505,6 @@ methods for working directly with that future as well as transforming the input.
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="play.api.libs.streams.Accumulator#recover" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="recover[B&gt;:A](pf:PartialFunction[Throwable,B])(implicitexecutor:scala.concurrent.ExecutionContext):play.api.libs.streams.Accumulator[E,B]"></a>
-      <a id="recover[B&gt;:A](PartialFunction[Throwable,B])(ExecutionContext):Accumulator[E,B]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">recover</span><span class="tparams">[<span name="B">B &gt;: <span class="extype" name="play.api.libs.streams.Accumulator.A">A</span></span>]</span><span class="params">(<span name="pf">pf: <span class="extype" name="scala.PartialFunction">PartialFunction</span>[<span class="extype" name="scala.Throwable">Throwable</span>, <span class="extype" name="play.api.libs.streams.Accumulator.recover.B">B</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="executor">executor: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: <a href="" class="extype" name="play.api.libs.streams.Accumulator">Accumulator</a>[<span class="extype" name="play.api.libs.streams.Accumulator.E">E</span>, <span class="extype" name="play.api.libs.streams.Accumulator.recover.B">B</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.streams.Accumulator@recover[B&gt;:A](pf:PartialFunction[Throwable,B])(implicitexecutor:scala.concurrent.ExecutionContext):play.api.libs.streams.Accumulator[E,B]" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Recover from errors encountered by this accumulator.</p>
-    </li><li name="play.api.libs.streams.Accumulator#recoverWith" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="recoverWith[B&gt;:A](pf:PartialFunction[Throwable,scala.concurrent.Future[B]])(implicitexecutor:scala.concurrent.ExecutionContext):play.api.libs.streams.Accumulator[E,B]"></a>
-      <a id="recoverWith[B&gt;:A](PartialFunction[Throwable,Future[B]])(ExecutionContext):Accumulator[E,B]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">recoverWith</span><span class="tparams">[<span name="B">B &gt;: <span class="extype" name="play.api.libs.streams.Accumulator.A">A</span></span>]</span><span class="params">(<span name="pf">pf: <span class="extype" name="scala.PartialFunction">PartialFunction</span>[<span class="extype" name="scala.Throwable">Throwable</span>, <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="play.api.libs.streams.Accumulator.recoverWith.B">B</span>]]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="executor">executor: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: <a href="" class="extype" name="play.api.libs.streams.Accumulator">Accumulator</a>[<span class="extype" name="play.api.libs.streams.Accumulator.E">E</span>, <span class="extype" name="play.api.libs.streams.Accumulator.recoverWith.B">B</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.streams.Accumulator@recoverWith[B&gt;:A](pf:PartialFunction[Throwable,scala.concurrent.Future[B]])(implicitexecutor:scala.concurrent.ExecutionContext):play.api.libs.streams.Accumulator[E,B]" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Recover from errors encountered by this accumulator.</p>
-    </li><li name="play.api.libs.streams.Accumulator#run" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="run()(implicitmaterializer:akka.stream.Materializer):scala.concurrent.Future[A]"></a>
-      <a id="run()(Materializer):Future[A]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">run</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="materializer">materializer: <span class="extype" name="akka.stream.Materializer">Materializer</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="play.api.libs.streams.Accumulator.A">A</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.streams.Accumulator@run()(implicitmaterializer:akka.stream.Materializer):scala.concurrent.Future[A]" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Run this accumulator by feeding a completed source into it.</p>
-    </li><li name="play.api.libs.streams.Accumulator#run" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="run(source:akka.stream.scaladsl.Source[E,_])(implicitmaterializer:akka.stream.Materializer):scala.concurrent.Future[A]"></a>
-      <a id="run(Source[E,_])(Materializer):Future[A]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">run</span><span class="params">(<span name="source">source: <span class="extype" name="akka.stream.scaladsl.Source">Source</span>[<span class="extype" name="play.api.libs.streams.Accumulator.E">E</span>, _]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="materializer">materializer: <span class="extype" name="akka.stream.Materializer">Materializer</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="play.api.libs.streams.Accumulator.A">A</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.streams.Accumulator@run(source:akka.stream.scaladsl.Source[E,_])(implicitmaterializer:akka.stream.Materializer):scala.concurrent.Future[A]" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Run this accumulator by feeding in the given source.</p>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -505,40 +522,6 @@ methods for working directly with that future as well as transforming the input.
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="play.api.libs.streams.Accumulator#through" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="through[F](flow:akka.stream.scaladsl.Flow[F,E,_]):play.api.libs.streams.Accumulator[F,A]"></a>
-      <a id="through[F](Flow[F,E,_]):Accumulator[F,A]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">through</span><span class="tparams">[<span name="F">F</span>]</span><span class="params">(<span name="flow">flow: <span class="extype" name="akka.stream.scaladsl.Flow">Flow</span>[<span class="extype" name="play.api.libs.streams.Accumulator.through.F">F</span>, <span class="extype" name="play.api.libs.streams.Accumulator.E">E</span>, _]</span>)</span><span class="result">: <a href="" class="extype" name="play.api.libs.streams.Accumulator">Accumulator</a>[<span class="extype" name="play.api.libs.streams.Accumulator.through.F">F</span>, <span class="extype" name="play.api.libs.streams.Accumulator.A">A</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.streams.Accumulator@through[F](flow:akka.stream.scaladsl.Flow[F,E,_]):play.api.libs.streams.Accumulator[F,A]" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Return a new accumulator that first feeds the input through the given flow before it goes through this accumulator.</p>
-    </li><li name="play.api.libs.streams.Accumulator#toSink" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="toSink:akka.stream.scaladsl.Sink[E,scala.concurrent.Future[A]]"></a>
-      <a id="toSink:Sink[E,Future[A]]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">toSink</span><span class="result">: <span class="extype" name="akka.stream.scaladsl.Sink">Sink</span>[<span class="extype" name="play.api.libs.streams.Accumulator.E">E</span>, <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="play.api.libs.streams.Accumulator.A">A</span>]]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.streams.Accumulator@toSink:akka.stream.scaladsl.Sink[E,scala.concurrent.Future[A]]" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Convert this accumulator to a Sink that gets materialised to a Future.</p>
     </li><li name="scala.AnyRef#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
       <a id="toString():String"></a>
