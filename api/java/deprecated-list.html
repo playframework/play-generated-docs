@@ -74,6 +74,7 @@
 <li><a href="#interface">Deprecated Interfaces</a></li>
 <li><a href="#class">Deprecated Classes</a></li>
 <li><a href="#method">Deprecated Methods</a></li>
+<li><a href="#constructor">Deprecated Constructors</a></li>
 </ul>
 </div>
 <div class="contentContainer"><a name="interface">
@@ -222,48 +223,68 @@
 </td>
 </tr>
 <tr class="rowColor">
+<td class="colOne"><a href="play/test/Helpers.html#fakeApplication-play.GlobalSettings-">play.test.Helpers.fakeApplication(GlobalSettings)</a>
+<div class="block"><span class="deprecationComment">Use dependency injection (since 2.5.0)</span></div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colOne"><a href="play/test/Helpers.html#fakeApplication-java.util.Map-play.GlobalSettings-">play.test.Helpers.fakeApplication(Map&lt;String, ? extends Object&gt;, GlobalSettings)</a>
+<div class="block"><span class="deprecationComment">Use the version without GlobalSettings (since 2.5.0)</span></div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colOne"><a href="play/test/Helpers.html#fakeGlobal--">play.test.Helpers.fakeGlobal()</a>
+<div class="block"><span class="deprecationComment">Use dependency injection (since 2.5.0)</span></div>
+</td>
+</tr>
+<tr class="altColor">
 <td class="colOne"><a href="play/libs/F.Promise.html#fallbackTo-play.libs.F.Promise-">play.libs.F.Promise.fallbackTo(F.Promise&lt;A&gt;)</a>
 <div class="block"><span class="deprecationComment">Use <a href="play/libs/F.Promise.html#handleAsync-java.util.function.BiFunction-"><code>F.Promise.handleAsync(BiFunction)</code></a> followed by <a href="play/libs/F.Promise.html#thenCompose-java.util.function.Function-"><code>F.Promise.thenCompose(Function)</code></a>
              with the identity function.</span></div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colOne"><a href="play/libs/F.Promise.html#filter-java.util.function.Predicate-">play.libs.F.Promise.filter(Predicate&lt;? super A&gt;)</a>
 <div class="block"><span class="deprecationComment">Use <a href="play/libs/F.Promise.html#thenApplyAsync-java.util.function.Function-java.util.concurrent.Executor-"><code>F.Promise.thenApplyAsync(Function, Executor)</code></a> to implement the filter manually.</span></div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colOne"><a href="play/libs/F.Promise.html#filter-java.util.function.Predicate-scala.concurrent.ExecutionContext-">play.libs.F.Promise.filter(Predicate&lt;? super A&gt;, ExecutionContext)</a>
 <div class="block"><span class="deprecationComment">Use <a href="play/libs/F.Promise.html#thenApplyAsync-java.util.function.Function-java.util.concurrent.Executor-"><code>F.Promise.thenApplyAsync(Function, Executor)</code></a> to implement the filter manually.</span></div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colOne"><a href="play/libs/F.Promise.html#flatMap-java.util.function.Function-">play.libs.F.Promise.flatMap(Function&lt;? super A, ? extends CompletionStage&lt;B&gt;&gt;)</a>
 <div class="block"><span class="deprecationComment">Use <a href="play/libs/F.Promise.html#thenComposeAsync-java.util.function.Function-java.util.concurrent.Executor-"><code>F.Promise.thenComposeAsync(Function, Executor)</code></a> with <a href="play/libs/concurrent/HttpExecution.html#defaultContext--"><code>HttpExecution.defaultContext()</code></a> if
              you want to capture the current context.</span></div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colOne"><a href="play/libs/F.Promise.html#flatMap-java.util.function.Function-scala.concurrent.ExecutionContext-">play.libs.F.Promise.flatMap(Function&lt;? super A, ? extends CompletionStage&lt;B&gt;&gt;, ExecutionContext)</a>
 <div class="block"><span class="deprecationComment">Use <a href="play/libs/F.Promise.html#thenComposeAsync-java.util.function.Function-java.util.concurrent.Executor-"><code>F.Promise.thenComposeAsync(Function, Executor)</code></a>.</span></div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colOne"><a href="play/mvc/Results.html#forbidden-play.mvc.Results.Chunks-">play.mvc.Results.forbidden(Results.Chunks&lt;?&gt;)</a>
 <div class="block"><span class="deprecationComment">Use <a href="play/mvc/Results.html#forbidden--"><code>Results.forbidden()</code></a> with <a href="play/mvc/StatusHeader.html#chunked-akka.stream.javadsl.Source-"><code>StatusHeader.chunked(akka.stream.javadsl.Source)</code></a>
  instead.</span></div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colOne"><a href="play/libs/F.Promise.html#get-long-">play.libs.F.Promise.get(long)</a>
 <div class="block"><span class="deprecationComment">Calling get on a promise is a blocking operation and so introduces the risk of deadlocks
       and has serious performance implications.</span></div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colOne"><a href="play/libs/F.Promise.html#get-long-java.util.concurrent.TimeUnit-">play.libs.F.Promise.get(long, TimeUnit)</a>
 <div class="block"><span class="deprecationComment">Calling get on a promise is a blocking operation and so introduces the risk of deadlocks
       and has serious performance implications.</span></div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colOne"><a href="play/inject/guice/GuiceApplicationBuilder.html#global-play.GlobalSettings-">play.inject.guice.GuiceApplicationBuilder.global(GlobalSettings)</a>
+<div class="block"><span class="deprecationComment">use dependency injection, since 2.5.0</span></div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -553,6 +574,26 @@
 <tr class="rowColor">
 <td class="colOne"><a href="play/libs/F.Promise.html#zip-java.util.concurrent.CompletionStage-">play.libs.F.Promise.zip(CompletionStage&lt;B&gt;)</a>
 <div class="block"><span class="deprecationComment">Use <a href="play/libs/F.Promise.html#thenCombine-java.util.concurrent.CompletionStage-java.util.function.BiFunction-"><code>F.Promise.thenCombine(CompletionStage, BiFunction)</code></a> instead.</span></div>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<a name="constructor">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<table class="deprecatedSummary" border="0" cellpadding="3" cellspacing="0" summary="Deprecated Constructors table, listing deprecated constructors, and an explanation">
+<caption><span>Deprecated Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colOne"><a href="play/test/FakeApplication.html#FakeApplication-java.io.File-java.lang.ClassLoader-java.util.Map-play.GlobalSettings-">play.test.FakeApplication(File, ClassLoader, Map&lt;String, ? extends Object&gt;, GlobalSettings)</a>
+<div class="block"><span class="deprecationComment">Use the version without GlobalSettings, since 2.5.0</span></div>
 </td>
 </tr>
 </tbody>
