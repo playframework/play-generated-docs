@@ -158,7 +158,7 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>static &lt;E,A&gt;&nbsp;<a href="../../../play/libs/streams/Accumulator.html" title="class in play.libs.streams">Accumulator</a>&lt;E,A&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/streams/Accumulator.html#fromSink-akka.stream.javadsl.Sink-">fromSink</a></span>(akka.stream.javadsl.Sink&lt;E,scala.concurrent.Future&lt;A&gt;&gt;&nbsp;sink)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/streams/Accumulator.html#fromSink-akka.stream.javadsl.Sink-">fromSink</a></span>(akka.stream.javadsl.Sink&lt;E,java.util.concurrent.CompletionStage&lt;A&gt;&gt;&nbsp;sink)</code>
 <div class="block">Create an accumulator from an Akka streams sink.</div>
 </td>
 </tr>
@@ -399,11 +399,8 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>fromSink</h4>
-<pre>public static&nbsp;&lt;E,A&gt;&nbsp;<a href="../../../play/libs/streams/Accumulator.html" title="class in play.libs.streams">Accumulator</a>&lt;E,A&gt;&nbsp;fromSink(akka.stream.javadsl.Sink&lt;E,scala.concurrent.Future&lt;A&gt;&gt;&nbsp;sink)</pre>
-<div class="block">Create an accumulator from an Akka streams sink.
-
- The passed in Sink must materialize to a Scala Future. This is useful for when working with the built in Akka
- streams Sinks, such as Sink.fold, which materialize to Scala Futures.</div>
+<pre>public static&nbsp;&lt;E,A&gt;&nbsp;<a href="../../../play/libs/streams/Accumulator.html" title="class in play.libs.streams">Accumulator</a>&lt;E,A&gt;&nbsp;fromSink(akka.stream.javadsl.Sink&lt;E,java.util.concurrent.CompletionStage&lt;A&gt;&gt;&nbsp;sink)</pre>
+<div class="block">Create an accumulator from an Akka streams sink.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>sink</code> - The sink.</dd>
