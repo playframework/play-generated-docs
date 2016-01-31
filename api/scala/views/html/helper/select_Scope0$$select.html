@@ -286,7 +286,17 @@
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Generate an HTML select.</p><div class="fullcomment"><div class="comment cmt"><p>Generate an HTML select.</p><p>Example:</p><pre>@select(field = myForm(<span class="lit">"isDone"</span>), options = options(<span class="std">List</span>(<span class="lit">"Yes"</span>,<span class="lit">"No"</span>)))</pre></div><dl class="paramcmts block"><dt class="param">field</dt><dd class="cmt"><p>The form field.</p></dd><dt class="param">options</dt><dd class="cmt"><p>Sequence of options as pairs of value and HTML.</p></dd><dt class="param">args</dt><dd class="cmt"><p>Set of extra attributes (<b>_default</b> is a special argument).</p></dd><dt class="param">handler</dt><dd class="cmt"><p>The field constructor.</p></dd></dl></div>
+      <p class="shortcomment cmt">Generate an HTML select.</p><div class="fullcomment"><div class="comment cmt"><p>Generate an HTML select.</p><p>Example:</p><pre>@select(
+  field = myForm(<span class="lit">"mySelect"</span>),
+  options = <span class="std">Seq</span>(
+    <span class="lit">"Foo"</span> -&gt; <span class="lit">"foo text"</span>,
+    <span class="lit">"Bar"</span> -&gt; <span class="lit">"bar text"</span>,
+    <span class="lit">"Baz"</span> -&gt; <span class="lit">"baz text"</span>
+   ),
+  '_default -&gt; <span class="lit">"Choose One"</span>,
+  '_disabled -&gt; <span class="std">Seq</span>(<span class="lit">"FooKey"</span>, <span class="lit">"BazKey"</span>)
+  'cust_att_name -&gt; <span class="lit">"cust_att_value"</span>
+)</pre></div><dl class="paramcmts block"><dt class="param">field</dt><dd class="cmt"><p>The form field.</p></dd><dt class="param">options</dt><dd class="cmt"><p>Sequence of options as pairs of value and HTML.</p></dd><dt class="param">args</dt><dd class="cmt"><p>Set of extra attributes.</p></dd><dt class="param">handler</dt><dd class="cmt"><p>The field constructor.</p></dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>

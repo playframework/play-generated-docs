@@ -720,7 +720,17 @@ to your application's routes in Javascript code</p><p>Example:</p><pre>@javascri
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Generate an HTML select.</p><div class="fullcomment"><div class="comment cmt"><p>Generate an HTML select.</p><p>Example:</p><pre>@select(field = myForm(<span class="lit">"isDone"</span>), options = options(<span class="std">List</span>(<span class="lit">"Yes"</span>,<span class="lit">"No"</span>)))</pre></div></div>
+      <p class="shortcomment cmt">Generate an HTML select.</p><div class="fullcomment"><div class="comment cmt"><p>Generate an HTML select.</p><p>Example:</p><pre>@select(
+  field = myForm(<span class="lit">"mySelect"</span>),
+  options = <span class="std">Seq</span>(
+    <span class="lit">"Foo"</span> -&gt; <span class="lit">"foo text"</span>,
+    <span class="lit">"Bar"</span> -&gt; <span class="lit">"bar text"</span>,
+    <span class="lit">"Baz"</span> -&gt; <span class="lit">"baz text"</span>
+   ),
+  '_default -&gt; <span class="lit">"Choose One"</span>,
+  '_disabled -&gt; <span class="std">Seq</span>(<span class="lit">"FooKey"</span>, <span class="lit">"BazKey"</span>)
+  'cust_att_name -&gt; <span class="lit">"cust_att_value"</span>
+)</pre></div></div>
     </li><li name="views.html.helper.select_Scope0" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="select_Scope0"></a>
       <a id="select_Scope0:select_Scope0"></a>
