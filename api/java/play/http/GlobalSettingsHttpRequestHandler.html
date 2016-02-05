@@ -48,7 +48,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../play/http/DefaultHttpRequestHandler.html" title="class in play.http"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../play/http/HttpEntity.html" title="class in play.http"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../play/http/HandlerForRequest.html" title="class in play.http"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../index.html?play/http/GlobalSettingsHttpRequestHandler.html" target="_top">Frames</a></li>
@@ -138,7 +138,8 @@ extends <a href="../../play/http/DefaultHttpRequestHandler.html" title="class in
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../play/http/GlobalSettingsHttpRequestHandler.html#GlobalSettingsHttpRequestHandler-play.api.GlobalSettings-">GlobalSettingsHttpRequestHandler</a></span>(play.api.GlobalSettings&nbsp;global)</code>&nbsp;</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../play/http/GlobalSettingsHttpRequestHandler.html#GlobalSettingsHttpRequestHandler-play.api.GlobalSettings-play.api.http.HttpRequestHandler-">GlobalSettingsHttpRequestHandler</a></span>(play.api.GlobalSettings&nbsp;global,
+                                play.api.http.HttpRequestHandler&nbsp;underlying)</code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -168,7 +169,7 @@ extends <a href="../../play/http/DefaultHttpRequestHandler.html" title="class in
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;play.http.<a href="../../play/http/DefaultHttpRequestHandler.html" title="class in play.http">DefaultHttpRequestHandler</a></h3>
-<code><a href="../../play/http/DefaultHttpRequestHandler.html#wrapAction-play.mvc.Action-">wrapAction</a></code></li>
+<code><a href="../../play/http/DefaultHttpRequestHandler.html#handlerForRequest-play.mvc.Http.RequestHeader-">handlerForRequest</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
@@ -176,6 +177,13 @@ extends <a href="../../play/http/DefaultHttpRequestHandler.html" title="class in
 </a>
 <h3>Methods inherited from class&nbsp;java.lang.Object</h3>
 <code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a name="methods.inherited.from.class.play.http.HttpRequestHandler">
+<!--   -->
+</a>
+<h3>Methods inherited from interface&nbsp;play.http.<a href="../../play/http/HttpRequestHandler.html" title="interface in play.http">HttpRequestHandler</a></h3>
+<code><a href="../../play/http/HttpRequestHandler.html#wrapAction-play.mvc.Action-">wrapAction</a></code></li>
 </ul>
 </li>
 </ul>
@@ -191,14 +199,15 @@ extends <a href="../../play/http/DefaultHttpRequestHandler.html" title="class in
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="GlobalSettingsHttpRequestHandler-play.api.GlobalSettings-">
+<a name="GlobalSettingsHttpRequestHandler-play.api.GlobalSettings-play.api.http.HttpRequestHandler-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>GlobalSettingsHttpRequestHandler</h4>
 <pre>@Inject
-public&nbsp;GlobalSettingsHttpRequestHandler(play.api.GlobalSettings&nbsp;global)</pre>
+public&nbsp;GlobalSettingsHttpRequestHandler(play.api.GlobalSettings&nbsp;global,
+                                                play.api.http.HttpRequestHandler&nbsp;underlying)</pre>
 </li>
 </ul>
 </li>
@@ -223,10 +232,6 @@ public&nbsp;GlobalSettingsHttpRequestHandler(play.api.GlobalSettings&nbsp;global
  The request and actionMethod values are passed for information.  Implementations of this method should create
  an instance of Action that invokes the injected action delegate.</div>
 <dl>
-<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../play/http/HttpRequestHandler.html#createAction-play.mvc.Http.Request-java.lang.reflect.Method-">createAction</a></code>&nbsp;in interface&nbsp;<code><a href="../../play/http/HttpRequestHandler.html" title="interface in play.http">HttpRequestHandler</a></code></dd>
-<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
-<dd><code><a href="../../play/http/DefaultHttpRequestHandler.html#createAction-play.mvc.Http.Request-java.lang.reflect.Method-">createAction</a></code>&nbsp;in class&nbsp;<code><a href="../../play/http/DefaultHttpRequestHandler.html" title="class in play.http">DefaultHttpRequestHandler</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>request</code> - The HTTP Request</dd>
 <dd><code>actionMethod</code> - The action method containing the user code for this Action.</dd>
@@ -263,7 +268,7 @@ public&nbsp;GlobalSettingsHttpRequestHandler(play.api.GlobalSettings&nbsp;global
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../play/http/DefaultHttpRequestHandler.html" title="class in play.http"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../play/http/HttpEntity.html" title="class in play.http"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../play/http/HandlerForRequest.html" title="class in play.http"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../index.html?play/http/GlobalSettingsHttpRequestHandler.html" target="_top">Frames</a></li>

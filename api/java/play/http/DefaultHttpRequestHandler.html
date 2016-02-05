@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10};
+var methods = {"i0":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -136,7 +136,7 @@ implements <a href="../../play/http/HttpRequestHandler.html" title="interface in
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../play/http/DefaultHttpRequestHandler.html#DefaultHttpRequestHandler--">DefaultHttpRequestHandler</a></span>()</code>&nbsp;</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../play/http/DefaultHttpRequestHandler.html#DefaultHttpRequestHandler-play.api.http.HttpRequestHandler-">DefaultHttpRequestHandler</a></span>(play.api.http.HttpRequestHandler&nbsp;underlying)</code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -154,16 +154,9 @@ implements <a href="../../play/http/HttpRequestHandler.html" title="interface in
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code><a href="../../play/mvc/Action.html" title="class in play.mvc">Action</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/http/DefaultHttpRequestHandler.html#createAction-play.mvc.Http.Request-java.lang.reflect.Method-">createAction</a></span>(<a href="../../play/mvc/Http.Request.html" title="interface in play.mvc">Http.Request</a>&nbsp;request,
-            java.lang.reflect.Method&nbsp;actionMethod)</code>
-<div class="block">Call to create the root Action of a request for a Java application.</div>
-</td>
-</tr>
-<tr id="i1" class="rowColor">
-<td class="colFirst"><code><a href="../../play/mvc/Action.html" title="class in play.mvc">Action</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/http/DefaultHttpRequestHandler.html#wrapAction-play.mvc.Action-">wrapAction</a></span>(<a href="../../play/mvc/Action.html" title="class in play.mvc">Action</a>&nbsp;action)</code>
-<div class="block">Call to wrap the outer action of a Java application.</div>
+<td class="colFirst"><code><a href="../../play/http/HandlerForRequest.html" title="class in play.http">HandlerForRequest</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/http/DefaultHttpRequestHandler.html#handlerForRequest-play.mvc.Http.RequestHeader-">handlerForRequest</a></span>(<a href="../../play/mvc/Http.RequestHeader.html" title="interface in play.mvc">Http.RequestHeader</a>&nbsp;request)</code>
+<div class="block">Get a handler for the given request.</div>
 </td>
 </tr>
 </table>
@@ -173,6 +166,13 @@ implements <a href="../../play/http/HttpRequestHandler.html" title="interface in
 </a>
 <h3>Methods inherited from class&nbsp;java.lang.Object</h3>
 <code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a name="methods.inherited.from.class.play.http.HttpRequestHandler">
+<!--   -->
+</a>
+<h3>Methods inherited from interface&nbsp;play.http.<a href="../../play/http/HttpRequestHandler.html" title="interface in play.http">HttpRequestHandler</a></h3>
+<code><a href="../../play/http/HttpRequestHandler.html#createAction-play.mvc.Http.Request-java.lang.reflect.Method-">createAction</a>, <a href="../../play/http/HttpRequestHandler.html#wrapAction-play.mvc.Action-">wrapAction</a></code></li>
 </ul>
 </li>
 </ul>
@@ -188,13 +188,14 @@ implements <a href="../../play/http/HttpRequestHandler.html" title="interface in
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="DefaultHttpRequestHandler--">
+<a name="DefaultHttpRequestHandler-play.api.http.HttpRequestHandler-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>DefaultHttpRequestHandler</h4>
-<pre>public&nbsp;DefaultHttpRequestHandler()</pre>
+<pre>@Inject
+public&nbsp;DefaultHttpRequestHandler(play.api.http.HttpRequestHandler&nbsp;underlying)</pre>
 </li>
 </ul>
 </li>
@@ -205,49 +206,30 @@ implements <a href="../../play/http/HttpRequestHandler.html" title="interface in
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="createAction-play.mvc.Http.Request-java.lang.reflect.Method-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>createAction</h4>
-<pre>public&nbsp;<a href="../../play/mvc/Action.html" title="class in play.mvc">Action</a>&nbsp;createAction(<a href="../../play/mvc/Http.Request.html" title="interface in play.mvc">Http.Request</a>&nbsp;request,
-                           java.lang.reflect.Method&nbsp;actionMethod)</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../play/http/HttpRequestHandler.html#createAction-play.mvc.Http.Request-java.lang.reflect.Method-">HttpRequestHandler</a></code></span></div>
-<div class="block">Call to create the root Action of a request for a Java application.
-
- The request and actionMethod values are passed for information.  Implementations of this method should create
- an instance of Action that invokes the injected action delegate.</div>
-<dl>
-<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../play/http/HttpRequestHandler.html#createAction-play.mvc.Http.Request-java.lang.reflect.Method-">createAction</a></code>&nbsp;in interface&nbsp;<code><a href="../../play/http/HttpRequestHandler.html" title="interface in play.http">HttpRequestHandler</a></code></dd>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>request</code> - The HTTP Request</dd>
-<dd><code>actionMethod</code> - The action method containing the user code for this Action.</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>The default implementation returns a raw Action calling the method.</dd>
-</dl>
-</li>
-</ul>
-<a name="wrapAction-play.mvc.Action-">
+<a name="handlerForRequest-play.mvc.Http.RequestHeader-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>wrapAction</h4>
-<pre>public&nbsp;<a href="../../play/mvc/Action.html" title="class in play.mvc">Action</a>&nbsp;wrapAction(<a href="../../play/mvc/Action.html" title="class in play.mvc">Action</a>&nbsp;action)</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../play/http/HttpRequestHandler.html#wrapAction-play.mvc.Action-">HttpRequestHandler</a></code></span></div>
-<div class="block">Call to wrap the outer action of a Java application.
+<h4>handlerForRequest</h4>
+<pre>public&nbsp;<a href="../../play/http/HandlerForRequest.html" title="class in play.http">HandlerForRequest</a>&nbsp;handlerForRequest(<a href="../../play/mvc/Http.RequestHeader.html" title="interface in play.mvc">Http.RequestHeader</a>&nbsp;request)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../play/http/HttpRequestHandler.html#handlerForRequest-play.mvc.Http.RequestHeader-">HttpRequestHandler</a></code></span></div>
+<div class="block">Get a handler for the given request.
 
- This method is passed a fully composed action, allowing a last final global interceptor to be added to the
- action if required.</div>
+ In addition to retrieving a handler for the request, the request itself may be modified - typically it will be
+ tagged with routing information.  It is also acceptable to simply return the request as is.  Play will switch to
+ using the returned request from this point in in its request handling.
+
+ The reason why the API allows returning a modified request, rather than just wrapping the Handler in a new Handler
+ that modifies the request, is so that Play can pass this request to other handlers, such as error handlers, or
+ filters, and they will get the tagged/modified request.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../play/http/HttpRequestHandler.html#wrapAction-play.mvc.Action-">wrapAction</a></code>&nbsp;in interface&nbsp;<code><a href="../../play/http/HttpRequestHandler.html" title="interface in play.http">HttpRequestHandler</a></code></dd>
+<dd><code><a href="../../play/http/HttpRequestHandler.html#handlerForRequest-play.mvc.Http.RequestHeader-">handlerForRequest</a></code>&nbsp;in interface&nbsp;<code><a href="../../play/http/HttpRequestHandler.html" title="interface in play.http">HttpRequestHandler</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>action</code> - The action to wrap.</dd>
+<dd><code>request</code> - The request to handle</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>A wrapped action.</dd>
+<dd>The possibly modified/tagged request, and a handler to handle it</dd>
 </dl>
 </li>
 </ul>

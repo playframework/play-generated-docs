@@ -158,6 +158,10 @@
 <dd>
 <div class="block">A simple action with no configuration.</div>
 </dd>
+<dt><a href="play/http/ActionCreator.html" title="interface in play.http"><span class="typeNameLink">ActionCreator</span></a> - Interface in <a href="play/http/package-summary.html">play.http</a></dt>
+<dd>
+<div class="block">An interface for creating a Java actions from Java methods.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/LegacyWebSocket.html#actorProps-akka.actor.ActorRef-">actorProps(ActorRef)</a></span> - Method in class play.mvc.<a href="play/mvc/LegacyWebSocket.html" title="class in play.mvc">LegacyWebSocket</a></dt>
 <dd>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
@@ -268,7 +272,7 @@
 <dt><span class="memberNameLink"><a href="play/Play.html#application--">application()</a></span> - Static method in class play.<a href="play/Play.html" title="class in play">Play</a></dt>
 <dd>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>
-<div class="block"><span class="deprecationComment">inject the <a href="play/Application.html" title="interface in play"><code>Application</code></a> instead</span></div>
+<div class="block"><span class="deprecationComment">inject the <a href="play/Application.html" title="interface in play"><code>Application</code></a> instead.   Deprecated since 2.5.0.</span></div>
 </div>
 </dd>
 <dt><a href="play/inject/ApplicationLifecycle.html" title="interface in play.inject"><span class="typeNameLink">ApplicationLifecycle</span></a> - Interface in <a href="play/inject/package-summary.html">play.inject</a></dt>
@@ -524,6 +528,8 @@
 <dd>
 <div class="block">Convert this result to a Scala result.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="play/routing/Router.html#asScala--">asScala()</a></span> - Method in interface play.routing.<a href="play/routing/Router.html" title="interface in play.routing">Router</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Http.RequestBody.html#asText--">asText()</a></span> - Method in class play.mvc.<a href="play/mvc/Http.RequestBody.html" title="class in play.mvc">Http.RequestBody</a></dt>
 <dd>
 <div class="block">The request content as text.</div>
@@ -911,7 +917,7 @@
 <dd>
 <div class="block">Build the router.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="play/server/Server.Builder.html#build-play.api.routing.Router-">build(Router)</a></span> - Method in class play.server.<a href="play/server/Server.Builder.html" title="class in play.server">Server.Builder</a></dt>
+<dt><span class="memberNameLink"><a href="play/server/Server.Builder.html#build-play.routing.Router-">build(Router)</a></span> - Method in class play.server.<a href="play/server/Server.Builder.html" title="class in play.server">Server.Builder</a></dt>
 <dd>
 <div class="block">Build the server and begin serving the provided routes as configured.</div>
 </dd>
@@ -1530,14 +1536,22 @@
 <dd>
 <div class="block">Generate evolutions.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="play/http/DefaultHttpRequestHandler.html#createAction-play.mvc.Http.Request-java.lang.reflect.Method-">createAction(Http.Request, Method)</a></span> - Method in class play.http.<a href="play/http/DefaultHttpRequestHandler.html" title="class in play.http">DefaultHttpRequestHandler</a></dt>
+<dt><span class="memberNameLink"><a href="play/http/ActionCreator.html#createAction-play.mvc.Http.Request-java.lang.reflect.Method-">createAction(Http.Request, Method)</a></span> - Method in interface play.http.<a href="play/http/ActionCreator.html" title="interface in play.http">ActionCreator</a></dt>
+<dd>
+<div class="block">Call to create the root Action of a request for a Java application.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="play/http/DefaultActionCreator.html#createAction-play.mvc.Http.Request-java.lang.reflect.Method-">createAction(Http.Request, Method)</a></span> - Method in class play.http.<a href="play/http/DefaultActionCreator.html" title="class in play.http">DefaultActionCreator</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/http/GlobalSettingsHttpRequestHandler.html#createAction-play.mvc.Http.Request-java.lang.reflect.Method-">createAction(Http.Request, Method)</a></span> - Method in class play.http.<a href="play/http/GlobalSettingsHttpRequestHandler.html" title="class in play.http">GlobalSettingsHttpRequestHandler</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/http/HttpRequestHandler.html#createAction-play.mvc.Http.Request-java.lang.reflect.Method-">createAction(Http.Request, Method)</a></span> - Method in interface play.http.<a href="play/http/HttpRequestHandler.html" title="interface in play.http">HttpRequestHandler</a></dt>
 <dd>
-<div class="block">Call to create the root Action of a request for a Java application.</div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>
+<div class="block"><span class="deprecationComment">Use ActionCreator instead.</span></div>
+</div>
 </dd>
+<dt><span class="memberNameLink"><a href="play/http/HttpRequestHandlerActionCreator.html#createAction-play.mvc.Http.Request-java.lang.reflect.Method-">createAction(Http.Request, Method)</a></span> - Method in class play.http.<a href="play/http/HttpRequestHandlerActionCreator.html" title="class in play.http">HttpRequestHandlerActionCreator</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/test/WithBrowser.html#createBrowser--">createBrowser()</a></span> - Method in class play.test.<a href="play/test/WithBrowser.html" title="class in play.test">WithBrowser</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Http.Status.html#CREATED">CREATED</a></span> - Static variable in interface play.mvc.<a href="play/mvc/Http.Status.html" title="interface in play.mvc">Http.Status</a></dt>
@@ -1792,6 +1806,12 @@
 <dd>
 <div class="block">Default Timeout (milliseconds) for fake requests issued by these Helpers.</div>
 </dd>
+<dt><a href="play/http/DefaultActionCreator.html" title="class in play.http"><span class="typeNameLink">DefaultActionCreator</span></a> - Class in <a href="play/http/package-summary.html">play.http</a></dt>
+<dd>
+<div class="block">A default implementation of the action creator.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="play/http/DefaultActionCreator.html#DefaultActionCreator--">DefaultActionCreator()</a></span> - Constructor for class play.http.<a href="play/http/DefaultActionCreator.html" title="class in play.http">DefaultActionCreator</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="play/DefaultApplication.html" title="class in play"><span class="typeNameLink">DefaultApplication</span></a> - Class in <a href="play/package-summary.html">play</a></dt>
 <dd>
 <div class="block">Default implementation of a Play Application.</div>
@@ -1857,7 +1877,7 @@
 <dd>&nbsp;</dd>
 <dt><a href="play/http/DefaultHttpRequestHandler.html" title="class in play.http"><span class="typeNameLink">DefaultHttpRequestHandler</span></a> - Class in <a href="play/http/package-summary.html">play.http</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="play/http/DefaultHttpRequestHandler.html#DefaultHttpRequestHandler--">DefaultHttpRequestHandler()</a></span> - Constructor for class play.http.<a href="play/http/DefaultHttpRequestHandler.html" title="class in play.http">DefaultHttpRequestHandler</a></dt>
+<dt><span class="memberNameLink"><a href="play/http/DefaultHttpRequestHandler.html#DefaultHttpRequestHandler-play.api.http.HttpRequestHandler-">DefaultHttpRequestHandler(HttpRequestHandler)</a></span> - Constructor for class play.http.<a href="play/http/DefaultHttpRequestHandler.html" title="class in play.http">DefaultHttpRequestHandler</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="play/db/jpa/DefaultJPAApi.html" title="class in play.db.jpa"><span class="typeNameLink">DefaultJPAApi</span></a> - Class in <a href="play/db/jpa/package-summary.html">play.db.jpa</a></dt>
 <dd>
@@ -1961,6 +1981,8 @@
 <dd>
 <div class="block">Converts a set of constraints to human-readable values.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="play/routing/Router.html#documentation--">documentation()</a></span> - Method in interface play.routing.<a href="play/routing/Router.html" title="interface in play.routing">Router</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Http.Cookie.html#domain--">domain()</a></span> - Method in class play.mvc.<a href="play/mvc/Http.Cookie.html" title="class in play.mvc">Http.Cookie</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/libs/streams/Accumulator.html#done-A-">done(A)</a></span> - Static method in class play.libs.streams.<a href="play/libs/streams/Accumulator.html" title="class in play.libs.streams">Accumulator</a></dt>
@@ -2052,6 +2074,8 @@
 <div class="block">Creates a new Promise with no value</div>
 </dd>
 <dt><span class="memberNameLink"><a href="play/mvc/BodyParser.Empty.html#Empty--">Empty()</a></span> - Constructor for class play.mvc.<a href="play/mvc/BodyParser.Empty.html" title="class in play.mvc">BodyParser.Empty</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/routing/Router.html#empty--">empty()</a></span> - Static method in interface play.routing.<a href="play/routing/Router.html" title="interface in play.routing">Router</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/libs/Scala.html#emptyMap--">emptyMap()</a></span> - Static method in class play.libs.<a href="play/libs/Scala.html" title="class in play.libs">Scala</a></dt>
 <dd>
@@ -2656,19 +2680,19 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/BodyParser.FormUrlEncoded.html#FormUrlEncoded-play.api.http.HttpConfiguration-play.http.HttpErrorHandler-">FormUrlEncoded(HttpConfiguration, HttpErrorHandler)</a></span> - Constructor for class play.mvc.<a href="play/mvc/BodyParser.FormUrlEncoded.html" title="class in play.mvc">BodyParser.FormUrlEncoded</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="play/server/Server.html#forRouter-play.api.routing.Router-">forRouter(Router)</a></span> - Static method in class play.server.<a href="play/server/Server.html" title="class in play.server">Server</a></dt>
+<dt><span class="memberNameLink"><a href="play/server/Server.html#forRouter-play.routing.Router-">forRouter(Router)</a></span> - Static method in class play.server.<a href="play/server/Server.html" title="class in play.server">Server</a></dt>
 <dd>
 <div class="block">Create a server for the given router.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="play/server/Server.html#forRouter-play.api.routing.Router-play.Mode-">forRouter(Router, Mode)</a></span> - Static method in class play.server.<a href="play/server/Server.html" title="class in play.server">Server</a></dt>
+<dt><span class="memberNameLink"><a href="play/server/Server.html#forRouter-play.routing.Router-play.Mode-">forRouter(Router, Mode)</a></span> - Static method in class play.server.<a href="play/server/Server.html" title="class in play.server">Server</a></dt>
 <dd>
 <div class="block">Create a server for the given router.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="play/server/Server.html#forRouter-play.api.routing.Router-int-">forRouter(Router, int)</a></span> - Static method in class play.server.<a href="play/server/Server.html" title="class in play.server">Server</a></dt>
+<dt><span class="memberNameLink"><a href="play/server/Server.html#forRouter-play.routing.Router-int-">forRouter(Router, int)</a></span> - Static method in class play.server.<a href="play/server/Server.html" title="class in play.server">Server</a></dt>
 <dd>
 <div class="block">Create a server for the given router.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="play/server/Server.html#forRouter-play.api.routing.Router-play.Mode-int-">forRouter(Router, Mode, int)</a></span> - Static method in class play.server.<a href="play/server/Server.html" title="class in play.server">Server</a></dt>
+<dt><span class="memberNameLink"><a href="play/server/Server.html#forRouter-play.routing.Router-play.Mode-int-">forRouter(Router, Mode, int)</a></span> - Static method in class play.server.<a href="play/server/Server.html" title="class in play.server">Server</a></dt>
 <dd>
 <div class="block">Create a server for the given router.</div>
 </dd>
@@ -2981,6 +3005,8 @@
 <dd>
 <div class="block">The file Content-Type</div>
 </dd>
+<dt><span class="memberNameLink"><a href="play/routing/Router.RouteDocumentation.html#getControllerMethodInvocation--">getControllerMethodInvocation()</a></span> - Method in class play.routing.<a href="play/routing/Router.RouteDocumentation.html" title="class in play.routing">Router.RouteDocumentation</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/libs/ws/ahc/AhcWSResponse.html#getCookie-java.lang.String-">getCookie(String)</a></span> - Method in class play.libs.ws.ahc.<a href="play/libs/ws/ahc/AhcWSResponse.html" title="class in play.libs.ws.ahc">AhcWSResponse</a></dt>
 <dd>
 <div class="block">Get only one cookie, using the cookie name.</div>
@@ -3121,6 +3147,8 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/libs/ws/WSRequest.html#getFollowRedirects--">getFollowRedirects()</a></span> - Method in interface play.libs.ws.<a href="play/libs/ws/WSRequest.html" title="interface in play.libs.ws">WSRequest</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/http/HandlerForRequest.html#getHandler--">getHandler()</a></span> - Method in class play.http.<a href="play/http/HandlerForRequest.html" title="class in play.http">HandlerForRequest</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/libs/ws/ahc/AhcWSResponse.html#getHeader-java.lang.String-">getHeader(String)</a></span> - Method in class play.libs.ws.ahc.<a href="play/libs/ws/ahc/AhcWSResponse.html" title="class in play.libs.ws.ahc">AhcWSResponse</a></dt>
 <dd>
 <div class="block">Get the given HTTP header of the response</div>
@@ -3145,6 +3173,8 @@
 <dd>
 <div class="block">Gets the current response headers.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="play/routing/Router.RouteDocumentation.html#getHttpMethod--">getHttpMethod()</a></span> - Method in class play.routing.<a href="play/routing/Router.RouteDocumentation.html" title="class in play.routing">Router.RouteDocumentation</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/libs/oauth/OAuth.html#getInfo--">getInfo()</a></span> - Method in class play.libs.oauth.<a href="play/libs/oauth/OAuth.html" title="class in play.libs.oauth">OAuth</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/Configuration.html#getInt-java.lang.String-">getInt(String)</a></span> - Method in class play.<a href="play/Configuration.html" title="class in play">Configuration</a></dt>
@@ -3320,6 +3350,8 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/libs/ws/WSCookie.html#getPath--">getPath()</a></span> - Method in interface play.libs.ws.<a href="play/libs/ws/WSCookie.html" title="interface in play.libs.ws">WSCookie</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/routing/Router.RouteDocumentation.html#getPathPattern--">getPathPattern()</a></span> - Method in class play.routing.<a href="play/routing/Router.RouteDocumentation.html" title="class in play.routing">Router.RouteDocumentation</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/libs/oauth/OAuth.html#getProvider--">getProvider()</a></span> - Method in class play.libs.oauth.<a href="play/libs/oauth/OAuth.html" title="class in play.libs.oauth">OAuth</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/libs/ws/ahc/AhcWSRequest.html#getQueryParameters--">getQueryParameters()</a></span> - Method in class play.libs.ws.ahc.<a href="play/libs/ws/ahc/AhcWSRequest.html" title="class in play.libs.ws.ahc">AhcWSRequest</a></dt>
@@ -3334,6 +3366,8 @@
 <dd>
 <div class="block">Create <code>Configuration</code> object for given package name and class loader.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="play/http/HandlerForRequest.html#getRequest--">getRequest()</a></span> - Method in class play.http.<a href="play/http/HandlerForRequest.html" title="class in play.http">HandlerForRequest</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/libs/ws/ahc/AhcWSRequest.html#getRequestTimeout--">getRequestTimeout()</a></span> - Method in class play.libs.ws.ahc.<a href="play/libs/ws/ahc/AhcWSRequest.html" title="class in play.libs.ws.ahc">AhcWSRequest</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/libs/ws/WSRequest.html#getRequestTimeout--">getRequestTimeout()</a></span> - Method in interface play.libs.ws.<a href="play/libs/ws/WSRequest.html" title="interface in play.libs.ws">WSRequest</a></dt>
@@ -3523,7 +3557,7 @@
 <dd>
 <div class="block">Request handler that delegates to global</div>
 </dd>
-<dt><span class="memberNameLink"><a href="play/http/GlobalSettingsHttpRequestHandler.html#GlobalSettingsHttpRequestHandler-play.api.GlobalSettings-">GlobalSettingsHttpRequestHandler(GlobalSettings)</a></span> - Constructor for class play.http.<a href="play/http/GlobalSettingsHttpRequestHandler.html" title="class in play.http">GlobalSettingsHttpRequestHandler</a></dt>
+<dt><span class="memberNameLink"><a href="play/http/GlobalSettingsHttpRequestHandler.html#GlobalSettingsHttpRequestHandler-play.api.GlobalSettings-play.api.http.HttpRequestHandler-">GlobalSettingsHttpRequestHandler(GlobalSettings, HttpRequestHandler)</a></span> - Constructor for class play.http.<a href="play/http/GlobalSettingsHttpRequestHandler.html" title="class in play.http">GlobalSettingsHttpRequestHandler</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Http.Status.html#GONE">GONE</a></span> - Static variable in interface play.mvc.<a href="play/mvc/Http.Status.html" title="interface in play.mvc">Http.Status</a></dt>
 <dd>&nbsp;</dd>
@@ -3579,6 +3613,18 @@
 <dd>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
 &nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/http/DefaultHttpRequestHandler.html#handlerForRequest-play.mvc.Http.RequestHeader-">handlerForRequest(Http.RequestHeader)</a></span> - Method in class play.http.<a href="play/http/DefaultHttpRequestHandler.html" title="class in play.http">DefaultHttpRequestHandler</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="play/http/HandlerForRequest.html" title="class in play.http"><span class="typeNameLink">HandlerForRequest</span></a> - Class in <a href="play/http/package-summary.html">play.http</a></dt>
+<dd>
+<div class="block">A request and a handler to handle it.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="play/http/HandlerForRequest.html#HandlerForRequest-play.mvc.Http.RequestHeader-play.api.mvc.Handler-">HandlerForRequest(Http.RequestHeader, Handler)</a></span> - Constructor for class play.http.<a href="play/http/HandlerForRequest.html" title="class in play.http">HandlerForRequest</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/http/HttpRequestHandler.html#handlerForRequest-play.mvc.Http.RequestHeader-">handlerForRequest(Http.RequestHeader)</a></span> - Method in interface play.http.<a href="play/http/HttpRequestHandler.html" title="interface in play.http">HttpRequestHandler</a></dt>
+<dd>
+<div class="block">Get a handler for the given request.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="play/data/Form.html#hasErrors--">hasErrors()</a></span> - Method in class play.data.<a href="play/data/Form.html" title="class in play.data">Form</a></dt>
 <dd>
 <div class="block">Returns <code>true</code> if there are any errors related to this form.</div>
@@ -3826,6 +3872,12 @@
 <dd>
 <div class="block">An HTTP request handler</div>
 </dd>
+<dt><a href="play/http/HttpRequestHandlerActionCreator.html" title="class in play.http"><span class="typeNameLink">HttpRequestHandlerActionCreator</span></a> - Class in <a href="play/http/package-summary.html">play.http</a></dt>
+<dd>
+<div class="block">An action creator that delegates to HttpRequestHandler.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="play/http/HttpRequestHandlerActionCreator.html#HttpRequestHandlerActionCreator-play.http.HttpRequestHandler-">HttpRequestHandlerActionCreator(HttpRequestHandler)</a></span> - Constructor for class play.http.<a href="play/http/HttpRequestHandlerActionCreator.html" title="class in play.http">HttpRequestHandlerActionCreator</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/server/Server.Builder.html#https-int-">https(int)</a></span> - Method in class play.server.<a href="play/server/Server.Builder.html" title="class in play.server">Server.Builder</a></dt>
 <dd>
 <div class="block">Configure the server to serve HTTPS on a particular port.</div>
@@ -4144,7 +4196,7 @@
 <dt><span class="memberNameLink"><a href="play/Play.html#isDev--">isDev()</a></span> - Static method in class play.<a href="play/Play.html" title="class in play">Play</a></dt>
 <dd>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>
-<div class="block"><span class="deprecationComment">inject the <a href="play/Environment.html" title="class in play"><code>Environment</code></a> instead</span></div>
+<div class="block"><span class="deprecationComment">inject the <a href="play/Environment.html" title="class in play"><code>Environment</code></a> instead.   Deprecated since 2.5.0.</span></div>
 </div>
 </dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Http.Flash.html#isDirty">isDirty</a></span> - Variable in class play.mvc.<a href="play/mvc/Http.Flash.html" title="class in play.mvc">Http.Flash</a></dt>
@@ -4190,7 +4242,7 @@
 <dt><span class="memberNameLink"><a href="play/Play.html#isProd--">isProd()</a></span> - Static method in class play.<a href="play/Play.html" title="class in play">Play</a></dt>
 <dd>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>
-<div class="block"><span class="deprecationComment">inject the <a href="play/Environment.html" title="class in play"><code>Environment</code></a> instead</span></div>
+<div class="block"><span class="deprecationComment">inject the <a href="play/Environment.html" title="class in play"><code>Environment</code></a> instead.   Deprecated since 2.5.0.</span></div>
 </div>
 </dd>
 <dt><span class="memberNameLink"><a href="play/libs/Time.CronExpression.html#isSatisfiedBy-java.util.Date-">isSatisfiedBy(Date)</a></span> - Method in class play.libs.<a href="play/libs/Time.CronExpression.html" title="class in play.libs">Time.CronExpression</a></dt>
@@ -4212,7 +4264,7 @@
 <dt><span class="memberNameLink"><a href="play/Play.html#isTest--">isTest()</a></span> - Static method in class play.<a href="play/Play.html" title="class in play">Play</a></dt>
 <dd>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>
-<div class="block"><span class="deprecationComment">inject the <a href="play/Environment.html" title="class in play"><code>Environment</code></a> instead</span></div>
+<div class="block"><span class="deprecationComment">inject the <a href="play/Environment.html" title="class in play"><code>Environment</code></a> instead.   Deprecated since 2.5.0.</span></div>
 </div>
 </dd>
 <dt><span class="memberNameLink"><a href="play/Logger.ALogger.html#isTraceEnabled--">isTraceEnabled()</a></span> - Method in class play.<a href="play/Logger.ALogger.html" title="class in play">Logger.ALogger</a></dt>
@@ -4690,7 +4742,7 @@
 <dt><span class="memberNameLink"><a href="play/Play.html#mode--">mode()</a></span> - Static method in class play.<a href="play/Play.html" title="class in play">Play</a></dt>
 <dd>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>
-<div class="block"><span class="deprecationComment">inject the <a href="play/Environment.html" title="class in play"><code>Environment</code></a> instead</span></div>
+<div class="block"><span class="deprecationComment">inject the <a href="play/Environment.html" title="class in play"><code>Environment</code></a> instead.   Deprecated since 2.5.0.</span></div>
 </div>
 </dd>
 <dt><span class="memberNameLink"><a href="play/server/Server.Builder.html#mode-play.Mode-">mode(Mode)</a></span> - Method in class play.server.<a href="play/server/Server.Builder.html" title="class in play.server">Server.Builder</a></dt>
@@ -6123,6 +6175,8 @@
 <dd>
 <div class="block">The root path that the application is deployed at.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="play/routing/Router.html#route-play.mvc.Http.RequestHeader-">route(Http.RequestHeader)</a></span> - Method in interface play.routing.<a href="play/routing/Router.html" title="interface in play.routing">Router</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/test/Helpers.html#route-play.mvc.Call-">route(Call)</a></span> - Static method in class play.test.<a href="play/test/Helpers.html" title="class in play.test">Helpers</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/test/Helpers.html#route-play.mvc.Call-long-">route(Call, long)</a></span> - Static method in class play.test.<a href="play/test/Helpers.html" title="class in play.test">Helpers</a></dt>
@@ -6141,19 +6195,39 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/Routes.html#ROUTE_ACTION_METHOD">ROUTE_ACTION_METHOD</a></span> - Static variable in class play.<a href="play/Routes.html" title="class in play">Routes</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/routing/Router.Tags.html#ROUTE_ACTION_METHOD">ROUTE_ACTION_METHOD</a></span> - Static variable in class play.routing.<a href="play/routing/Router.Tags.html" title="class in play.routing">Router.Tags</a></dt>
+<dd>
+<div class="block">The method on the controller that was invoked</div>
+</dd>
+<dt><span class="memberNameLink"><a href="play/routing/Router.Tags.html#ROUTE_COMMENTS">ROUTE_COMMENTS</a></span> - Static variable in class play.routing.<a href="play/routing/Router.Tags.html" title="class in play.routing">Router.Tags</a></dt>
+<dd>
+<div class="block">The comments in the routes file that were above the route</div>
+</dd>
 <dt><span class="memberNameLink"><a href="play/Routes.html#ROUTE_CONTROLLER">ROUTE_CONTROLLER</a></span> - Static variable in class play.<a href="play/Routes.html" title="class in play">Routes</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/routing/Router.Tags.html#ROUTE_CONTROLLER">ROUTE_CONTROLLER</a></span> - Static variable in class play.routing.<a href="play/routing/Router.Tags.html" title="class in play.routing">Router.Tags</a></dt>
+<dd>
+<div class="block">The controller that was routed to</div>
+</dd>
 <dt><span class="memberNameLink"><a href="play/Routes.html#ROUTE_PATTERN">ROUTE_PATTERN</a></span> - Static variable in class play.<a href="play/Routes.html" title="class in play">Routes</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/routing/Router.Tags.html#ROUTE_PATTERN">ROUTE_PATTERN</a></span> - Static variable in class play.routing.<a href="play/routing/Router.Tags.html" title="class in play.routing">Router.Tags</a></dt>
+<dd>
+<div class="block">The pattern that the router used to match the path</div>
+</dd>
 <dt><span class="memberNameLink"><a href="play/Routes.html#ROUTE_VERB">ROUTE_VERB</a></span> - Static variable in class play.<a href="play/Routes.html" title="class in play">Routes</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/routing/Router.Tags.html#ROUTE_VERB">ROUTE_VERB</a></span> - Static variable in class play.routing.<a href="play/routing/Router.Tags.html" title="class in play.routing">Router.Tags</a></dt>
+<dd>
+<div class="block">The verb that the router matched</div>
+</dd>
 <dt><span class="memberNameLink"><a href="play/test/Helpers.html#routeAndCall-play.mvc.Http.RequestBuilder-long-">routeAndCall(Http.RequestBuilder, long)</a></span> - Static method in class play.test.<a href="play/test/Helpers.html" title="class in play.test">Helpers</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/test/Helpers.html#routeAndCall-java.lang.Class-play.mvc.Http.RequestBuilder-long-">routeAndCall(Class&lt;? extends Router&gt;, Http.RequestBuilder, long)</a></span> - Static method in class play.test.<a href="play/test/Helpers.html" title="class in play.test">Helpers</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="play/test/Helpers.html#routeAndCall-play.api.routing.Router-play.mvc.Http.RequestBuilder-">routeAndCall(Router, Http.RequestBuilder)</a></span> - Static method in class play.test.<a href="play/test/Helpers.html" title="class in play.test">Helpers</a></dt>
+<dt><span class="memberNameLink"><a href="play/test/Helpers.html#routeAndCall-play.routing.Router-play.mvc.Http.RequestBuilder-">routeAndCall(Router, Http.RequestBuilder)</a></span> - Static method in class play.test.<a href="play/test/Helpers.html" title="class in play.test">Helpers</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="play/test/Helpers.html#routeAndCall-play.api.routing.Router-play.mvc.Http.RequestBuilder-long-">routeAndCall(Router, Http.RequestBuilder, long)</a></span> - Static method in class play.test.<a href="play/test/Helpers.html" title="class in play.test">Helpers</a></dt>
+<dt><span class="memberNameLink"><a href="play/test/Helpers.html#routeAndCall-play.routing.Router-play.mvc.Http.RequestBuilder-long-">routeAndCall(Router, Http.RequestBuilder, long)</a></span> - Static method in class play.test.<a href="play/test/Helpers.html" title="class in play.test">Helpers</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/routing/RoutingDsl.PathPatternMatcher.html#routeAsync-java.util.function.Supplier-">routeAsync(Supplier&lt;? extends CompletionStage&lt;Result&gt;&gt;)</a></span> - Method in class play.routing.<a href="play/routing/RoutingDsl.PathPatternMatcher.html" title="class in play.routing">RoutingDsl.PathPatternMatcher</a></dt>
 <dd>
@@ -6171,6 +6245,16 @@
 <dd>
 <div class="block">Route with three parameters.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="play/routing/Router.RouteDocumentation.html#RouteDocumentation-java.lang.String-java.lang.String-java.lang.String-">RouteDocumentation(String, String, String)</a></span> - Constructor for class play.routing.<a href="play/routing/Router.RouteDocumentation.html" title="class in play.routing">Router.RouteDocumentation</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="play/routing/Router.html" title="interface in play.routing"><span class="typeNameLink">Router</span></a> - Interface in <a href="play/routing/package-summary.html">play.routing</a></dt>
+<dd>
+<div class="block">The Java Router API</div>
+</dd>
+<dt><a href="play/routing/Router.RouteDocumentation.html" title="class in play.routing"><span class="typeNameLink">Router.RouteDocumentation</span></a> - Class in <a href="play/routing/package-summary.html">play.routing</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="play/routing/Router.Tags.html" title="class in play.routing"><span class="typeNameLink">Router.Tags</span></a> - Class in <a href="play/routing/package-summary.html">play.routing</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="play/Routes.html" title="class in play"><span class="typeNameLink">Routes</span></a> - Class in <a href="play/package-summary.html">play</a></dt>
 <dd>
 <div class="block">Helper utilities related to `Router`.</div>
@@ -6949,6 +7033,8 @@
 <dt><span class="memberNameLink"><a href="play/mvc/Http.RequestBuilder.html#tags-java.util.Map-">tags(Map&lt;String, String&gt;)</a></span> - Method in class play.mvc.<a href="play/mvc/Http.RequestBuilder.html" title="class in play.mvc">Http.RequestBuilder</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Http.RequestHeader.html#tags--">tags()</a></span> - Method in interface play.mvc.<a href="play/mvc/Http.RequestHeader.html" title="interface in play.mvc">Http.RequestHeader</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/routing/Router.Tags.html#Tags--">Tags()</a></span> - Constructor for class play.routing.<a href="play/routing/Router.Tags.html" title="class in play.routing">Router.Tags</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Http.HeaderNames.html#TE">TE</a></span> - Static variable in interface play.mvc.<a href="play/mvc/Http.HeaderNames.html" title="interface in play.mvc">Http.HeaderNames</a></dt>
 <dd>&nbsp;</dd>
@@ -7960,6 +8046,8 @@ the order they are declared.</div>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Http.CookieBuilder.html#withPath-java.lang.String-">withPath(String)</a></span> - Method in class play.mvc.<a href="play/mvc/Http.CookieBuilder.html" title="class in play.mvc">Http.CookieBuilder</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/routing/Router.html#withPrefix-java.lang.String-">withPrefix(String)</a></span> - Method in interface play.routing.<a href="play/routing/Router.html" title="interface in play.routing">Router</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Http.Context.html#withRequest-play.mvc.Http.Request-">withRequest(Http.Request)</a></span> - Method in class play.mvc.<a href="play/mvc/Http.Context.html" title="class in play.mvc">Http.Context</a></dt>
 <dd>
 <div class="block">Create a new context with the given request.</div>
@@ -8116,12 +8204,22 @@ the order they are declared.</div>
 <div class="block"><span class="deprecationComment">Use <code>FutureConverters.toJava(Future)</code> instead.</span></div>
 </div>
 </dd>
-<dt><span class="memberNameLink"><a href="play/http/DefaultHttpRequestHandler.html#wrapAction-play.mvc.Action-">wrapAction(Action)</a></span> - Method in class play.http.<a href="play/http/DefaultHttpRequestHandler.html" title="class in play.http">DefaultHttpRequestHandler</a></dt>
+<dt><span class="memberNameLink"><a href="play/http/ActionCreator.html#wrapAction-play.mvc.Action-">wrapAction(Action)</a></span> - Method in interface play.http.<a href="play/http/ActionCreator.html" title="interface in play.http">ActionCreator</a></dt>
+<dd>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>
+<div class="block"><span class="deprecationComment">This functionality can be emulated by other means.</span></div>
+</div>
+</dd>
+<dt><span class="memberNameLink"><a href="play/http/DefaultActionCreator.html#wrapAction-play.mvc.Action-">wrapAction(Action)</a></span> - Method in class play.http.<a href="play/http/DefaultActionCreator.html" title="class in play.http">DefaultActionCreator</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/http/HttpRequestHandler.html#wrapAction-play.mvc.Action-">wrapAction(Action)</a></span> - Method in interface play.http.<a href="play/http/HttpRequestHandler.html" title="interface in play.http">HttpRequestHandler</a></dt>
 <dd>
-<div class="block">Call to wrap the outer action of a Java application.</div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>
+<div class="block"><span class="deprecationComment">Use ActionCreator instead.</span></div>
+</div>
 </dd>
+<dt><span class="memberNameLink"><a href="play/http/HttpRequestHandlerActionCreator.html#wrapAction-play.mvc.Action-">wrapAction(Action)</a></span> - Method in class play.http.<a href="play/http/HttpRequestHandlerActionCreator.html" title="class in play.http">HttpRequestHandlerActionCreator</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/libs/F.Promise.html#wrapped--">wrapped()</a></span> - Method in class play.libs.<a href="play/libs/F.Promise.html" title="class in play.libs">F.Promise</a></dt>
 <dd>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>

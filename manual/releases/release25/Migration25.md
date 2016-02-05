@@ -10,6 +10,14 @@ This is a guide for migrating from Play 2.4 to Play 2.5. If you need to migrate 
 
 **TODO: Arrange sections into priority order so that the bits that most people need to know about come first. Migration that's necessary can come first, migration that's optional (e.g. deprecation) can come later. Consider putting large sections (e.g. Java 8 migration, Akka streams migration) onto separate pages.**
 
+### sbt upgrade to 0.13.9
+
+Play 2.5 now requires a minimum of sbt 0.13.9.  Update your `project/build.properties` so that it reads:
+
+```
+sbt.version=0.13.9
+```
+
 ## Scala 2.10 support discontinued
 
 Play 2.3 and 2.4 supported both Scala 2.10 and 2.11. Play 2.5 has dropped support for Scala 2.10 and now only supports Scala 2.11. There are a couple of reasons for this:
@@ -232,3 +240,39 @@ routesGenerator := StaticRoutesGenerator
 ```
 
 to your `build.sbt` file.
+
+## Deprecated play.Play and play.api.Play methods
+
+The following methods have been deprecated in `play.Play`:
+
+* `public static Application application()`
+* `public static Mode mode()`
+* `public static boolean isDev()`
+* `public static boolean isProd()`
+* `public static boolean isTest()`
+
+Likewise, methods in `play.api.Play` that take an implicit `Application` and delegate to Application, such as `def classloader(implicit app: Application)` are now deprecated.
+
+### How to migrate
+
+These methods delegate to either `play.Application` or `play.Environment` -- code that uses them should use dependency injection to inject the relevant class.
+
+For example, the following code injects an application into a Controller in Scala:
+
+```
+class HomeController @Inject() (app: play.api.Application, configuration: play.api.Configuration) extends Controller {
+
+  def index = Action {
+    Ok(views.html.index("Your new application is ready."))
+  }
+
+  def config = Action {
+    Ok(configuration.underlying.getString("some.config"))
+  }
+
+  def count = Action {
+    val num = app.resource("application.conf").toSeq.size
+    Ok(num.toString)
+  }
+}
+```
