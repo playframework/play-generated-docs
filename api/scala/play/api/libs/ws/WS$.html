@@ -45,7 +45,7 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <span class="name">WS</span>
+        <span class="name deprecated" title="Deprecated: (Since version 2.5.0) Inject WSClient into your component">WS</span>
       </span>
       </h4>
       
@@ -54,10 +54,20 @@
   ws.url(<span class="lit">"http://example.com/item"</span>).post(<span class="lit">"content"</span>)
 }</pre><p>When greater flexibility is needed, you can also create clients explicitly and pass them into WS:</p><pre><span class="kw">import</span> play.api.libs.ws._
 <span class="kw">import</span> play.api.libs.ws.ahc._
+<span class="kw">import</span> akka.stream.Materializer
+<span class="kw">import</span> play.api.ApplicationLifecycle
+<span class="kw">import</span> javax.inject.Inject
+<span class="kw">import</span> scala.concurrent.Future
 
-<span class="kw">val</span> client = <span class="kw">new</span> AhcWSClient(<span class="kw">new</span> AhcConfigBuilder())
-client.url(<span class="lit">"http://example.com/feed"</span>).get()
-client.close() <span class="cmt">// must explicitly manage lifecycle</span></pre><p>Or call the client directly:</p><pre><span class="kw">import</span> com.typesafe.config.ConfigFactory
+<span class="kw">class</span> MyService @Inject() (lifecycle: ApplicationLifecycle)(<span class="kw">implicit</span> mat: Materializer) {
+  <span class="kw">private</span> <span class="kw">val</span> client = <span class="kw">new</span> AhcWSClient(<span class="kw">new</span> AhcConfigBuilder().build())
+  client.url(<span class="lit">"http://example.com/feed"</span>).get()
+  lifecycle.addStopHook(() <span class="kw">=&gt;</span>
+    <span class="cmt">// Make sure you close the client after use, otherwise you'll leak threads and connections</span>
+    client.close()
+    Future.successful(())
+  }
+}</pre><p>Or call the client directly:</p><pre><span class="kw">import</span> com.typesafe.config.ConfigFactory
 <span class="kw">import</span> play.api.libs.ws._
 <span class="kw">import</span> play.api.libs.ws.ahc._
 
@@ -65,13 +75,16 @@ client.close() <span class="cmt">// must explicitly manage lifecycle</span></pre
 <span class="lit">""</span><span class="lit">"
   |play.ws.ssl.trustManager = ...
 "</span><span class="lit">""</span>.stripMargin))
-<span class="kw">val</span> parser = <span class="kw">new</span> DefaultWSConfigParser(configuration, Play.current.classloader)
+<span class="kw">val</span> parser = <span class="kw">new</span> DefaultWSConfigParser(configuration, app.classloader)
 <span class="kw">val</span> builder = <span class="kw">new</span> AhcConfigBuilder(parser.parse())
 <span class="kw">val</span> secureClient: WSClient = <span class="kw">new</span> AhcWSClient(builder.build())
 <span class="kw">val</span> response = secureClient.url(<span class="lit">"https://secure.com"</span>).get()
 secureClient.close() <span class="cmt">// must explicitly manage lifecycle</span></pre><p>The value returned is a <code>Future[WSResponse]</code>, and you should use Play's asynchronous mechanisms to
 use this response.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play-ws/src/main/scala/play/api/libs/ws/WS.scala" target="_blank">WS.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.5.0)</i> Inject WSClient into your component</p></dd><dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play-ws/src/main/scala/play/api/libs/ws/WS.scala" target="_blank">WS.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -184,25 +197,6 @@ use this response.
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="play.api.libs.ws.WS#client" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="client(implicitapp:play.api.Application):play.api.libs.ws.WSClient"></a>
-      <a id="client(Application):WSClient"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">client</span><span class="params">(<span class="implicit">implicit </span><span name="app">app: <a href="../../Application.html" class="extype" name="play.api.Application">Application</a></span>)</span><span class="result">: <a href="WSClient.html" class="extype" name="play.api.libs.ws.WSClient">WSClient</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.ws.WS$@client(implicitapp:play.api.Application):play.api.libs.ws.WSClient" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Retrieves or creates underlying HTTP client.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves or creates underlying HTTP client.  Note that due to the Plugin architecture, an
-implicit application must be in scope.  Most of the time you will want the current app:</p><pre><span class="kw">import</span> play.api.Play.current
-<span class="kw">val</span> client = WS.client</pre></div></div>
     </li><li name="play.api.libs.ws.WS#clientUrl" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clientUrl(url:String)(implicitclient:play.api.libs.ws.WSClient):play.api.libs.ws.WSRequest"></a>
       <a id="clientUrl(String)(WSClient):WSRequest"></a>
@@ -467,25 +461,6 @@ URL implementations at the cost of some complexity.</p><pre><span class="kw">obj
 <span class="kw">val</span> client = WS.client
 <span class="kw">val</span> exampleURL = <span class="kw">new</span> java.net.URL(<span class="lit">"http://example.com"</span>)
 WS.url(client -&gt; exampleURL).get()</pre></div><dl class="paramcmts block"><dt class="param">magnet</dt><dd class="cmt"><p>a magnet pattern.</p></dd></dl><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="http://spray.io/blog/2012-12-13-the-magnet-pattern/">The magnet pattern</a></p></span></dd></dl></div>
-    </li><li name="play.api.libs.ws.WS#url" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="url(url:String)(implicitapp:play.api.Application):play.api.libs.ws.WSRequest"></a>
-      <a id="url(String)(Application):WSRequest"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">url</span><span class="params">(<span name="url">url: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="app">app: <a href="../../Application.html" class="extype" name="play.api.Application">Application</a></span>)</span><span class="result">: <a href="WSRequest.html" class="extype" name="play.api.libs.ws.WSRequest">WSRequest</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.ws.WS$@url(url:String)(implicitapp:play.api.Application):play.api.libs.ws.WSRequest" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Prepares a new request using an implicit application.</p><div class="fullcomment"><div class="comment cmt"><p>Prepares a new request using an implicit application.  This creates a default client, which you can then
-use to construct a request.</p><pre><span class="kw">import</span> play.api.Play.current
-WS.url(<span class="lit">"http://localhost/"</span>).get()</pre></div><dl class="paramcmts block"><dt class="param">url</dt><dd class="cmt"><p>the URL to request</p></dd><dt class="param">app</dt><dd class="cmt"><p>the implicit application to use.</p></dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
@@ -577,7 +552,52 @@ WS.url(<span class="lit">"http://localhost/"</span>).get()</pre></div><dl class=
 
         
 
-        
+        <div id="values" class="values members">
+              <h3>Deprecated Value Members</h3>
+              <ol><li name="play.api.libs.ws.WS#client" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="client(implicitapp:play.api.Application):play.api.libs.ws.WSClient"></a>
+      <a id="client(Application):WSClient"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 2.5.0) Inject WSClient into your component">client</span><span class="params">(<span class="implicit">implicit </span><span name="app">app: <a href="../../Application.html" class="extype" name="play.api.Application">Application</a></span>)</span><span class="result">: <a href="WSClient.html" class="extype" name="play.api.libs.ws.WSClient">WSClient</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.WS$@client(implicitapp:play.api.Application):play.api.libs.ws.WSClient" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Retrieves or creates underlying HTTP client.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves or creates underlying HTTP client.  Note that due to the Plugin architecture, an
+implicit application must be in scope.  Most of the time you will want the current app:</p><pre><span class="kw">val</span> client = WS.client(app)</pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.5.0)</i> Inject WSClient into your component</p></dd></dl></div>
+    </li><li name="play.api.libs.ws.WS#url" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="url(url:String)(implicitapp:play.api.Application):play.api.libs.ws.WSRequest"></a>
+      <a id="url(String)(Application):WSRequest"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 2.5.0) Inject WSClient into your component">url</span><span class="params">(<span name="url">url: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="app">app: <a href="../../Application.html" class="extype" name="play.api.Application">Application</a></span>)</span><span class="result">: <a href="WSRequest.html" class="extype" name="play.api.libs.ws.WSRequest">WSRequest</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.WS$@url(url:String)(implicitapp:play.api.Application):play.api.libs.ws.WSRequest" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Prepares a new request using an implicit application.</p><div class="fullcomment"><div class="comment cmt"><p>Prepares a new request using an implicit application.  This creates a default client, which you can then
+use to construct a request.</p><pre>WS.url(<span class="lit">"http://localhost/"</span>)(app).get()</pre></div><dl class="paramcmts block"><dt class="param">url</dt><dd class="cmt"><p>the URL to request</p></dd><dt class="param">app</dt><dd class="cmt"><p>the implicit application to use.</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.5.0)</i> Inject WSClient into your component</p></dd></dl></div>
+    </li></ol>
+            </div>
         </div>
 
         <div id="inheritedMembers">

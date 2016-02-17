@@ -225,10 +225,10 @@ For example:</p><pre><span class="kw">val</span> text = ContentTypes.TEXT
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">A default implementation of the <a href="HttpRequestHandler.html" class="extype" name="play.api.http.HttpRequestHandler">HttpRequestHandler</a>.</p><div class="fullcomment"><div class="comment cmt"><p>A default implementation of the <a href="HttpRequestHandler.html" class="extype" name="play.api.http.HttpRequestHandler">HttpRequestHandler</a>.</p><p>This can be conveniently overridden to plug in global interception or custom routing logic into Play's existing
-request handling infrastructure.</p><p>Technically, this is not the default request handler that Play uses, rather, the <a href="GlobalSettingsHttpRequestHandler.html" class="extype" name="play.api.http.GlobalSettingsHttpRequestHandler">GlobalSettingsHttpRequestHandler</a>
-is the default one, in order to ensure that existing legacy implementations of global request interception still
-work. In future, this will become the default request handler.</p><p>The default implementations of method interception methods on <a href="../GlobalSettings.html" class="extype" name="play.api.GlobalSettings">play.api.GlobalSettings</a> match the implementations
+      <p class="shortcomment cmt">A base implementation of the <a href="HttpRequestHandler.html" class="extype" name="play.api.http.HttpRequestHandler">HttpRequestHandler</a> that handles Scala actions.</p><div class="fullcomment"><div class="comment cmt"><p>A base implementation of the <a href="HttpRequestHandler.html" class="extype" name="play.api.http.HttpRequestHandler">HttpRequestHandler</a> that handles Scala actions. If you use Java actions in your
+application, you should override <a href="JavaCompatibleHttpRequestHandler.html" class="extype" name="play.api.http.JavaCompatibleHttpRequestHandler">JavaCompatibleHttpRequestHandler</a>; otherwise you can override this for your
+custom handler.</p><p>Technically, this is not the default request handler that Play uses, rather, the <a href="JavaCompatibleHttpRequestHandler.html" class="extype" name="play.api.http.JavaCompatibleHttpRequestHandler">JavaCompatibleHttpRequestHandler</a>
+is the default one, in order to provide support for Java actions.</p><p>The default implementations of method interception methods on <a href="../GlobalSettings.html" class="extype" name="play.api.GlobalSettings">play.api.GlobalSettings</a> match the implementations
 of this, so when not providing any custom logic, whether this is used or the global settings http request handler
 is used is irrelevant.
 </p></div></div>
@@ -676,18 +676,18 @@ the base class for your custom <a href="HttpRequestHandler.html" class="extype" 
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="GlobalSettingsHttpRequestHandler.html"><span class="name deprecated" title="Deprecated: (Since version 2.5.0) Use dependency injection">GlobalSettingsHttpRequestHandler</span></a><span class="result"> extends <a href="HttpRequestHandler.html" class="extype" name="play.api.http.HttpRequestHandler">HttpRequestHandler</a></span>
+        <a href="GlobalSettingsHttpRequestHandler.html"><span class="name deprecated" title="Deprecated: (Since version 2.5.0) GlobalSettings is deprecated. Use DefaultHttpRequestHandler or JavaCompatibleHttpRequestHandler.">GlobalSettingsHttpRequestHandler</span></a><span class="result"> extends <a href="HttpRequestHandler.html" class="extype" name="play.api.http.HttpRequestHandler">HttpRequestHandler</a></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.http.package@GlobalSettingsHttpRequestHandlerextendsHttpRequestHandler" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">An <a href="HttpRequestHandler.html" class="extype" name="play.api.http.HttpRequestHandler">HttpRequestHandler</a> that delegates to <a href="../GlobalSettings.html" class="extype" name="play.api.GlobalSettings">play.api.GlobalSettings</a>.</p><div class="fullcomment"><div class="comment cmt"><p>An <a href="HttpRequestHandler.html" class="extype" name="play.api.http.HttpRequestHandler">HttpRequestHandler</a> that delegates to <a href="../GlobalSettings.html" class="extype" name="play.api.GlobalSettings">play.api.GlobalSettings</a>.</p><p>This is the default request handler used by Play, in order to support legacy global settings request interception.</p><p>Custom handlers need not extend this.
+      <p class="shortcomment cmt">An <a href="HttpRequestHandler.html" class="extype" name="play.api.http.HttpRequestHandler">HttpRequestHandler</a> that delegates to <a href="../GlobalSettings.html" class="extype" name="play.api.GlobalSettings">play.api.GlobalSettings</a>.</p><div class="fullcomment"><div class="comment cmt"><p>An <a href="HttpRequestHandler.html" class="extype" name="play.api.http.HttpRequestHandler">HttpRequestHandler</a> that delegates to <a href="../GlobalSettings.html" class="extype" name="play.api.GlobalSettings">play.api.GlobalSettings</a>.</p><p>This handler should be used in order to support legacy global settings request interception.</p><p>Custom handlers need not extend this.
 </p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@deprecated</span>
               
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.5.0)</i> Use dependency injection</p></dd></dl></div>
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.5.0)</i> GlobalSettings is deprecated. Use DefaultHttpRequestHandler or JavaCompatibleHttpRequestHandler.</p></dd></dl></div>
     </li></ol>
             </div>
 

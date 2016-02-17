@@ -49,10 +49,10 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A default implementation of the <a href="HttpRequestHandler.html" class="extype" name="play.api.http.HttpRequestHandler">HttpRequestHandler</a>.</p><p>This can be conveniently overridden to plug in global interception or custom routing logic into Play's existing
-request handling infrastructure.</p><p>Technically, this is not the default request handler that Play uses, rather, the <a href="GlobalSettingsHttpRequestHandler.html" class="extype" name="play.api.http.GlobalSettingsHttpRequestHandler">GlobalSettingsHttpRequestHandler</a>
-is the default one, in order to ensure that existing legacy implementations of global request interception still
-work. In future, this will become the default request handler.</p><p>The default implementations of method interception methods on <a href="../GlobalSettings.html" class="extype" name="play.api.GlobalSettings">play.api.GlobalSettings</a> match the implementations
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A base implementation of the <a href="HttpRequestHandler.html" class="extype" name="play.api.http.HttpRequestHandler">HttpRequestHandler</a> that handles Scala actions. If you use Java actions in your
+application, you should override <a href="JavaCompatibleHttpRequestHandler.html" class="extype" name="play.api.http.JavaCompatibleHttpRequestHandler">JavaCompatibleHttpRequestHandler</a>; otherwise you can override this for your
+custom handler.</p><p>Technically, this is not the default request handler that Play uses, rather, the <a href="JavaCompatibleHttpRequestHandler.html" class="extype" name="play.api.http.JavaCompatibleHttpRequestHandler">JavaCompatibleHttpRequestHandler</a>
+is the default one, in order to provide support for Java actions.</p><p>The default implementations of method interception methods on <a href="../GlobalSettings.html" class="extype" name="play.api.GlobalSettings">play.api.GlobalSettings</a> match the implementations
 of this, so when not providing any custom logic, whether this is used or the global settings http request handler
 is used is irrelevant.
 </p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play/src/main/scala/play/api/http/HttpRequestHandler.scala" target="_blank">HttpRequestHandler.scala</a></dd></dl><div class="toggleContainer block">
@@ -211,6 +211,25 @@ is used is irrelevant.
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="play.api.http.HttpRequestHandler#asJava" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="asJava:play.core.j.JavaHttpRequestHandlerDelegate"></a>
+      <a id="asJava:JavaHttpRequestHandlerDelegate"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">asJava</span><span class="result">: <a href="../../core/j/JavaHttpRequestHandlerDelegate.html" class="extype" name="play.core.j.JavaHttpRequestHandlerDelegate">JavaHttpRequestHandlerDelegate</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.http.DefaultHttpRequestHandler@asJava:play.core.j.JavaHttpRequestHandlerDelegate" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Adapt this to a Java HttpRequestHandler
+</p><div class="fullcomment"><div class="comment cmt"><p>Adapt this to a Java HttpRequestHandler
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="HttpRequestHandler.html" class="extype" name="play.api.http.HttpRequestHandler">HttpRequestHandler</a></dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>

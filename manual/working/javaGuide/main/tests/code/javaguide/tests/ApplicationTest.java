@@ -1,3 +1,6 @@
+/*
+ * Copyright (C) 2009-2016 Typesafe Inc. <http://www.typesafe.com>
+ */
 package javaguide.tests;
 
 //#test-controller-test
@@ -6,15 +9,16 @@ import static org.junit.Assert.assertTrue;
 import static play.mvc.Http.Status.OK;
 import static play.test.Helpers.*;
 
-import javaguide.tests.controllers.Application;
+import javaguide.tests.controllers.HomeController;
 
 import java.util.ArrayList;
 
 import com.google.common.collect.ImmutableMap;
 import org.junit.Test;
 
+import play.Application;
+import play.inject.guice.GuiceApplicationBuilder;
 import play.mvc.Result;
-import play.test.FakeApplication;
 import play.test.Helpers;
 import play.test.WithApplication;
 import play.twirl.api.Content;
@@ -22,16 +26,15 @@ import play.twirl.api.Content;
 public class ApplicationTest extends WithApplication {
   
   @Override
-  protected FakeApplication provideFakeApplication() {
-    return new FakeApplication(new java.io.File("."),
-                               Helpers.class.getClassLoader(),
-                               ImmutableMap.of("play.http.router", "javaguide.tests.Routes"),
-                               fakeGlobal());
+  protected Application provideApplication() {
+    return new GuiceApplicationBuilder()
+      .configure("play.http.router", "javaguide.tests.Routes")
+      .build();
   }
 
   @Test
   public void testIndex() {
-    Result result = new Application().index();
+    Result result = new HomeController().index();
     assertEquals(OK, result.status());
     assertEquals("text/html", result.contentType().get());
     assertEquals("utf-8", result.charset().get());
@@ -45,8 +48,8 @@ public class ApplicationTest extends WithApplication {
   @Test
   public void testCallIndex() {
     Result result = route(
-      //###replace:     controllers.routes.Application.index(),
-      javaguide.tests.controllers.routes.Application.index()
+      //###replace:     controllers.routes.HomeController.index(),
+      javaguide.tests.controllers.routes.HomeController.index()
     );
     assertEquals(OK, result.status());
   }

@@ -1,3 +1,6 @@
+/*
+ * Copyright (C) 2009-2016 Typesafe Inc. <http://www.typesafe.com>
+ */
 package javaguide.tests;
 
 import static play.test.Helpers.*;
@@ -7,7 +10,6 @@ import org.junit.Test;
 
 import play.Application;
 import play.GlobalSettings;
-import play.test.FakeApplication;
 import play.test.Helpers;
 
 public class FakeApplicationTest {

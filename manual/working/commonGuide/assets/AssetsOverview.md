@@ -21,7 +21,7 @@ If you follow this structure it will be simpler to get started, but nothing stop
 [WebJars](http://www.webjars.org/) provide a convenient and conventional packaging mechanism that is a part of Activator and sbt. For example you can declare that you will be using the popular [Bootstrap library](http://getbootstrap.com/) simply by adding the following dependency in your build file:
 
 ```scala
-libraryDependencies += "org.webjars" % "bootstrap" % "3.3.4"
+libraryDependencies += "org.webjars" % "bootstrap" % "3.3.6"
 ```
 
 WebJars are automatically extracted into a `lib` folder relative to your public assets for convenience. For example, if you declared a dependency on [RequireJs](http://requirejs.org/) then you can reference it from a view using a line like:
@@ -52,9 +52,7 @@ The `path` parameter must be fixed and defines the directory managed by the acti
 
 Here is the typical mapping of the `Assets` controller in your `conf/routes` file:
 
-```
-GET  /assets/*file        controllers.Assets.at(path="/public", file)
-```
+@[assets-wildcard](code/common.assets.routes)
 
 Note that we define the `*file` dynamic part that will match the `.*` regular expression. So for example, if you send this request to the server:
 
@@ -68,7 +66,9 @@ The router will invoke the `Assets.at` action with the following parameters:
 controllers.Assets.at("/public", "javascripts/jquery.js")
 ```
 
-This action will look-up and serve the file and if it exists.
+To route to a single static file, both the path and file has to be specified:
+
+@[assets-single-static-file](code/common.assets.routes)
 
 ## Reverse routing for public assets
 
@@ -88,10 +88,7 @@ Note that we don’t specify the first `folder` parameter when we reverse the ro
 
 However, if you define two mappings for the `Assets.at` action, like this:
 
-```
-GET  /javascripts/*file        controllers.Assets.at(path="/public/javascripts", file)
-GET  /images/*file             controllers.Assets.at(path="/public/images", file)
-```
+@[assets-two-mappings](code/common.assets.routes)
 
 You will then need to specify both parameters when using the reverse router:
 

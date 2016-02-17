@@ -428,45 +428,6 @@
     </span>
       <p class="shortcomment cmt">An empty body
 </p>
-    </li><li name="play.api.libs.ws.WS" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="WS"></a>
-      <a id="WS:WS"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a href="WS$.html"><span class="name">WS</span></a>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.ws.package@WS" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Asynchronous API to to query web services, as an http client.</p><div class="fullcomment"><div class="comment cmt"><p>Asynchronous API to to query web services, as an http client.</p><p>Usage example:</p><pre><span class="kw">class</span> MyService @Inject() (ws: WSClient) {
-  ws.url(<span class="lit">"http://example.com/feed"</span>).get()
-  ws.url(<span class="lit">"http://example.com/item"</span>).post(<span class="lit">"content"</span>)
-}</pre><p>When greater flexibility is needed, you can also create clients explicitly and pass them into WS:</p><pre><span class="kw">import</span> play.api.libs.ws._
-<span class="kw">import</span> play.api.libs.ws.ahc._
-
-<span class="kw">val</span> client = <span class="kw">new</span> AhcWSClient(<span class="kw">new</span> AhcConfigBuilder())
-client.url(<span class="lit">"http://example.com/feed"</span>).get()
-client.close() <span class="cmt">// must explicitly manage lifecycle</span></pre><p>Or call the client directly:</p><pre><span class="kw">import</span> com.typesafe.config.ConfigFactory
-<span class="kw">import</span> play.api.libs.ws._
-<span class="kw">import</span> play.api.libs.ws.ahc._
-
-<span class="kw">val</span> configuration = play.api.Configuration(ConfigFactory.parseString(
-<span class="lit">""</span><span class="lit">"
-  |play.ws.ssl.trustManager = ...
-"</span><span class="lit">""</span>.stripMargin))
-<span class="kw">val</span> parser = <span class="kw">new</span> DefaultWSConfigParser(configuration, Play.current.classloader)
-<span class="kw">val</span> builder = <span class="kw">new</span> AhcConfigBuilder(parser.parse())
-<span class="kw">val</span> secureClient: WSClient = <span class="kw">new</span> AhcWSClient(builder.build())
-<span class="kw">val</span> response = secureClient.url(<span class="lit">"https://secure.com"</span>).get()
-secureClient.close() <span class="cmt">// must explicitly manage lifecycle</span></pre><p>The value returned is a <code>Future[WSResponse]</code>, and you should use Play's asynchronous mechanisms to
-use this response.
-</p></div></div>
     </li><li name="play.api.libs.ws.WSAuthScheme" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="WSAuthScheme"></a>
       <a id="WSAuthScheme:WSAuthScheme"></a>
@@ -540,7 +501,62 @@ use this response.
 
         
 
-        
+        <div id="values" class="values members">
+              <h3>Deprecated Value Members</h3>
+              <ol><li name="play.api.libs.ws.WS" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="WS"></a>
+      <a id="WS:WS"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="WS$.html"><span class="name deprecated" title="Deprecated: (Since version 2.5.0) Inject WSClient into your component">WS</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.package@WS" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Asynchronous API to to query web services, as an http client.</p><div class="fullcomment"><div class="comment cmt"><p>Asynchronous API to to query web services, as an http client.</p><p>Usage example:</p><pre><span class="kw">class</span> MyService @Inject() (ws: WSClient) {
+  ws.url(<span class="lit">"http://example.com/feed"</span>).get()
+  ws.url(<span class="lit">"http://example.com/item"</span>).post(<span class="lit">"content"</span>)
+}</pre><p>When greater flexibility is needed, you can also create clients explicitly and pass them into WS:</p><pre><span class="kw">import</span> play.api.libs.ws._
+<span class="kw">import</span> play.api.libs.ws.ahc._
+<span class="kw">import</span> akka.stream.Materializer
+<span class="kw">import</span> play.api.ApplicationLifecycle
+<span class="kw">import</span> javax.inject.Inject
+<span class="kw">import</span> scala.concurrent.Future
+
+<span class="kw">class</span> MyService @Inject() (lifecycle: ApplicationLifecycle)(<span class="kw">implicit</span> mat: Materializer) {
+  <span class="kw">private</span> <span class="kw">val</span> client = <span class="kw">new</span> AhcWSClient(<span class="kw">new</span> AhcConfigBuilder().build())
+  client.url(<span class="lit">"http://example.com/feed"</span>).get()
+  lifecycle.addStopHook(() <span class="kw">=&gt;</span>
+    <span class="cmt">// Make sure you close the client after use, otherwise you'll leak threads and connections</span>
+    client.close()
+    Future.successful(())
+  }
+}</pre><p>Or call the client directly:</p><pre><span class="kw">import</span> com.typesafe.config.ConfigFactory
+<span class="kw">import</span> play.api.libs.ws._
+<span class="kw">import</span> play.api.libs.ws.ahc._
+
+<span class="kw">val</span> configuration = play.api.Configuration(ConfigFactory.parseString(
+<span class="lit">""</span><span class="lit">"
+  |play.ws.ssl.trustManager = ...
+"</span><span class="lit">""</span>.stripMargin))
+<span class="kw">val</span> parser = <span class="kw">new</span> DefaultWSConfigParser(configuration, app.classloader)
+<span class="kw">val</span> builder = <span class="kw">new</span> AhcConfigBuilder(parser.parse())
+<span class="kw">val</span> secureClient: WSClient = <span class="kw">new</span> AhcWSClient(builder.build())
+<span class="kw">val</span> response = secureClient.url(<span class="lit">"https://secure.com"</span>).get()
+secureClient.close() <span class="cmt">// must explicitly manage lifecycle</span></pre><p>The value returned is a <code>Future[WSResponse]</code>, and you should use Play's asynchronous mechanisms to
+use this response.
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.5.0)</i> Inject WSClient into your component</p></dd></dl></div>
+    </li></ol>
+            </div>
         </div>
 
         <div id="inheritedMembers">
