@@ -49,7 +49,7 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Simple/plain SQL.</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/anorm/tree/master/core/src/main/scala/anorm/SimpleSql.scala" target="_blank">SimpleSql.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Simple/plain SQL.</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/anorm/tree/2.5.0/core/src/main/scala/anorm/SimpleSql.scala" target="_blank">SimpleSql.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <span class="extype" name="anorm.Sql">Sql</span>, <span class="extype" name="anorm.WithResult">WithResult</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -344,23 +344,6 @@
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="anorm.SimpleSql#fetchSize" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="fetchSize:Option[Int]"></a>
-      <a id="fetchSize:Option[Int]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">fetchSize</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Int">Int</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../index.html#anorm.SimpleSql@fetchSize:Option[Int]" title="Permalink" target="_top">
-        <img src="../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Fetch size</p>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
@@ -672,6 +655,26 @@ of placeholder in statement.</p><pre><span class="kw">import</span> anorm.toPara
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="anorm.SimpleSql#using" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="using[U](p:anorm.RowParser[U]):anorm.SimpleSql[U]"></a>
+      <a id="using[U](RowParser[U]):SimpleSql[U]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">using</span><span class="tparams">[<span name="U">U</span>]</span><span class="params">(<span name="p">p: <a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a>[<span class="extype" name="anorm.SimpleSql.using.U">U</span>]</span>)</span><span class="result">: <a href="" class="extype" name="anorm.SimpleSql">SimpleSql</a>[<span class="extype" name="anorm.SimpleSql.using.U">U</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#anorm.SimpleSql@using[U](p:anorm.RowParser[U]):anorm.SimpleSql[U]" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Prepares query with given row parser.</p><div class="fullcomment"><div class="comment cmt"><p>Prepares query with given row parser.</p><pre><span class="kw">import</span> anorm.{ SQL, SqlParser }
+
+<span class="kw">val</span> res: <span class="std">Int</span> = SQL(<span class="lit">"SELECT 1"</span>).using(SqlParser.scalar[<span class="std">Int</span>]).single
+<span class="cmt">// Equivalent to: SQL("SELECT 1").as(SqlParser.scalar[Int].single)</span></pre></div></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
@@ -741,23 +744,6 @@ of placeholder in statement.</p><pre><span class="kw">import</span> anorm.toPara
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="anorm.SimpleSql#withFetchSize" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="withFetchSize(count:Option[Int]):anorm.SimpleSql[T]"></a>
-      <a id="withFetchSize(Option[Int]):SimpleSql[T]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">withFetchSize</span><span class="params">(<span name="count">count: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Int">Int</span>]</span>)</span><span class="result">: <a href="" class="extype" name="anorm.SimpleSql">SimpleSql</a>[<span class="extype" name="anorm.SimpleSql.T">T</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../index.html#anorm.SimpleSql@withFetchSize(count:Option[Int]):anorm.SimpleSql[T]" title="Permalink" target="_top">
-        <img src="../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Returns this query with the fetch suze updated to the row <code>count</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Returns this query with the fetch suze updated to the row <code>count</code>.</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="SqlQuery.html#fetchSize:Option[Int]" class="extmbr" name="anorm.SqlQuery#fetchSize">SqlQuery.fetchSize</a></p></span></dd></dl></div>
     </li><li name="anorm.SimpleSql#withQueryTimeout" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="withQueryTimeout(seconds:Option[Int]):anorm.SimpleSql[T]"></a>
       <a id="withQueryTimeout(Option[Int]):SimpleSql[T]"></a>
@@ -823,29 +809,107 @@ of placeholder in statement.</p><pre><span class="kw">import</span> anorm.toPara
 
         <div id="values" class="values members">
               <h3>Deprecated Value Members</h3>
-              <ol><li name="anorm.SimpleSql#using" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="using[U](p:anorm.RowParser[U]):anorm.SimpleSql[U]"></a>
-      <a id="using[U](RowParser[U]):SimpleSql[U]"></a>
+              <ol><li name="anorm.WithResult#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="apply()(implicitconnection:java.sql.Connection):Stream[anorm.Row]"></a>
+      <a id="apply()(Connection):Stream[Row]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 2.5.1) Use scala.tools.nsc.doc.base.MemberLookupBase$$anon$1@2b1742e1">using</span><span class="tparams">[<span name="U">U</span>]</span><span class="params">(<span name="p">p: <a href="RowParser.html" class="extype" name="anorm.RowParser">RowParser</a>[<span class="extype" name="anorm.SimpleSql.using.U">U</span>]</span>)</span><span class="result">: <a href="" class="extype" name="anorm.SimpleSql">SimpleSql</a>[<span class="extype" name="anorm.SimpleSql.using.U">U</span>]</span>
+        <span class="name deprecated" title="Deprecated: (Since version 2.4) Use scala.tools.nsc.doc.base.MemberLookupBase$$anon$1@417e3655, scala.tools.nsc.doc.base.MemberLookupBase$$anon$1@34c94de7 or scala.tools.nsc.doc.base.MemberLookupBase$$anon$1@6e410791 instead, which manages resources and memory">apply</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="connection">connection: <span class="extype" name="java.sql.Connection">Connection</span></span>)</span><span class="result">: <span class="extype" name="scala.Stream">Stream</span>[<a href="Row.html" class="extype" name="anorm.Row">Row</a>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#anorm.SimpleSql@using[U](p:anorm.RowParser[U]):anorm.SimpleSql[U]" title="Permalink" target="_top">
+      <a href="../index.html#anorm.SimpleSql@apply()(implicitconnection:java.sql.Connection):Stream[anorm.Row]" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Prepares query with given row parser.</p><div class="fullcomment"><div class="comment cmt"><p>Prepares query with given row parser.</p><pre><span class="kw">import</span> anorm.{ SQL, SqlParser }
-
-<span class="kw">val</span> res: <span class="std">Int</span> = SQL(<span class="lit">"SELECT 1"</span>).using(SqlParser.scalar[<span class="std">Int</span>]).single
-<span class="cmt">// Equivalent to: SQL("SELECT 1").as(SqlParser.scalar[Int].single)</span></pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+      <p class="shortcomment cmt">Executes this SQL statement as query, returns result as Row stream.</p><div class="fullcomment"><div class="comment cmt"><p>Executes this SQL statement as query, returns result as Row stream.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd>WithResult</dd><dt>Annotations</dt><dd>
                 <span class="name">@deprecated</span>
               
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.5.1)</i> Use <a href="#as[T](parser:anorm.ResultSetParser[T])(implicitconnection:java.sql.Connection):T" class="extmbr" name="anorm.SimpleSql#as">as</a></p></dd></dl></div>
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.4)</i> Use <a href="#fold[T](z:=&gt;T)(op:(T,anorm.Row)=&gt;T)(implicitconnection:java.sql.Connection):Either[List[Throwable],T]" class="extmbr" name="anorm.SimpleSql#fold">fold</a>, <a href="#foldWhile[T](z:=&gt;T)(op:(T,anorm.Row)=&gt;(T,Boolean))(implicitconnection:java.sql.Connection):Either[List[Throwable],T]" class="extmbr" name="anorm.SimpleSql#foldWhile">foldWhile</a> or <a href="#withResult[T](op:Option[anorm.Cursor]=&gt;T)(implicitconnection:java.sql.Connection):Either[List[Throwable],T]" class="extmbr" name="anorm.SimpleSql#withResult">withResult</a> instead, which manages resources and memory</p></dd></dl></div>
+    </li><li name="anorm.SimpleSql#getFilledStatement" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getFilledStatement(connection:java.sql.Connection,getGeneratedKeys:Boolean):java.sql.PreparedStatement"></a>
+      <a id="getFilledStatement(Connection,Boolean):PreparedStatement"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 2.3.6) Use scala.tools.nsc.doc.base.MemberLookupBase$$anon$1@1489f948">getFilledStatement</span><span class="params">(<span name="connection">connection: <span class="extype" name="java.sql.Connection">Connection</span></span>, <span name="getGeneratedKeys">getGeneratedKeys: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <span class="extype" name="java.sql.PreparedStatement">PreparedStatement</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#anorm.SimpleSql@getFilledStatement(connection:java.sql.Connection,getGeneratedKeys:Boolean):java.sql.PreparedStatement" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="anorm.SimpleSql">SimpleSql</a> → Sql</dd><dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.3.6)</i> Use <a href="#preparedStatement(connection:java.sql.Connection,getGeneratedKeys:Boolean):resource.ManagedResource[java.sql.PreparedStatement]" class="extmbr" name="anorm.SimpleSql#preparedStatement">preparedStatement</a></p></dd></dl></div>
+    </li><li name="anorm.SimpleSql#list" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="list()(implicitconnection:java.sql.Connection):List[T]"></a>
+      <a id="list()(Connection):List[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 2.3.5) Use SQL(&quot;...&quot;).as(parser.*)">list</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="connection">connection: <span class="extype" name="java.sql.Connection">Connection</span></span>)</span><span class="result">: <span class="extype" name="scala.List">List</span>[<span class="extype" name="anorm.SimpleSql.T">T</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#anorm.SimpleSql@list()(implicitconnection:java.sql.Connection):List[T]" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Applies current parser with optionnal list of rows (0..n).</p><div class="fullcomment"><div class="comment cmt"><p>Applies current parser with optionnal list of rows (0..n).</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.3.5)</i> Use <code>SQL(&quot;...&quot;).as(parser.*)</code></p></dd></dl></div>
+    </li><li name="anorm.SimpleSql#single" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="single()(implicitconnection:java.sql.Connection):T"></a>
+      <a id="single()(Connection):T"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 2.3.5) Use SQL(&quot;...&quot;).as(parser.single)">single</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="connection">connection: <span class="extype" name="java.sql.Connection">Connection</span></span>)</span><span class="result">: <span class="extype" name="anorm.SimpleSql.T">T</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#anorm.SimpleSql@single()(implicitconnection:java.sql.Connection):T" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Applies current parser to exactly on row.</p><div class="fullcomment"><div class="comment cmt"><p>Applies current parser to exactly on row.</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.3.5)</i> Use <code>SQL(&quot;...&quot;).as(parser.single)</code></p></dd></dl></div>
+    </li><li name="anorm.SimpleSql#singleOpt" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="singleOpt()(implicitconnection:java.sql.Connection):Option[T]"></a>
+      <a id="singleOpt()(Connection):Option[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 2.3.5) Use SQL(&quot;...&quot;).as(parser.singleOpt)">singleOpt</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="connection">connection: <span class="extype" name="java.sql.Connection">Connection</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="anorm.SimpleSql.T">T</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#anorm.SimpleSql@singleOpt()(implicitconnection:java.sql.Connection):Option[T]" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Applies current parser to one optional row.</p><div class="fullcomment"><div class="comment cmt"><p>Applies current parser to one optional row.</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.3.5)</i> Use <code>SQL(&quot;...&quot;).as(parser.singleOpt)</code></p></dd></dl></div>
     </li></ol>
             </div>
         </div>
