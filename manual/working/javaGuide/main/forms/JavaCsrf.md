@@ -1,4 +1,4 @@
-<!--- Copyright (C) 2009-2016 Typesafe Inc. <http://www.typesafe.com> -->
+<!--- Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com> -->
 # Protecting against Cross Site Request Forgery
 
 Cross Site Request Forgery (CSRF) is a security exploit where an attacker tricks a victim's browser into making a request using the victim's session.  Since the session token is sent with every request, if an attacker can coerce the victim's browser to make a request on their behalf, the attacker can make requests on the user's behalf.
@@ -11,7 +11,7 @@ There is no simple answer to what requests are safe and what are vulnerable to C
 * The request has one or more `Cookie` or `Authorization` headers.
 * The CORS filter is not configured to trust the request's origin.
 
-> **Note:** If you use browser-based authentication other than using cookies or HTTP authenticaton, such as NTLM or client certificate based authentication, then you **must** set `play.filters.csrf.header.protectHeaders = null`, or include the headers used in authentication in `protectHeaders`.
+> **Note:** If you use browser-based authentication other than using cookies or HTTP authentication, such as NTLM or client certificate based authentication, then you **must** set `play.filters.csrf.header.protectHeaders = null`, or include the headers used in authentication in `protectHeaders`.
 
 ### Play's CSRF protection
 
@@ -35,7 +35,7 @@ play.filters.csrf.headers.bypassHeaders {
 
 Caution should be taken when using this configuration option, as historically browser plugins have undermined this type of CSRF defence.
 
-### Trusting CORS requsets
+### Trusting CORS requests
 
 By default, if you have a CORS filter before your CSRF filter, the CSRF filter will let through CORS requests from trusted origins. To disable this check, set the config option `play.filters.csrf.bypassCorsTrustedOrigins = false`.
 

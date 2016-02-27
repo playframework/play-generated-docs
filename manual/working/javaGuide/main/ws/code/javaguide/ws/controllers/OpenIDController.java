@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009-2016 Typesafe Inc. <http://www.typesafe.com>
+ * Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com>
  */
 package javaguide.ws.controllers;
 
@@ -20,6 +20,9 @@ public class OpenIDController extends Controller {
     @Inject
     OpenIdClient openIdClient;
 
+    @Inject
+    FormFactory formFactory;
+
     public Result login() {
         return ok(views.html.login.render(""));
     }
@@ -27,7 +30,7 @@ public class OpenIDController extends Controller {
     public CompletionStage<Result> loginPost() {
 
         // Form data
-        DynamicForm requestData = Form.form().bindFromRequest();
+        DynamicForm requestData = formFactory.form().bindFromRequest();
         String openID = requestData.get("openID");
 
         CompletionStage<String> redirectUrlPromise =

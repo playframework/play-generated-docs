@@ -1,13 +1,13 @@
-<!--- Copyright (C) 2009-2016 Typesafe Inc. <http://www.typesafe.com> -->
+<!--- Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com> -->
 # Dependency Injection with Guice
 
 Dependency injection is a way that you can separate your components so that they are not directly dependent on each other, rather, they get injected into each other.
 
-Out of the box, Play provides dependency injection support based on [JSR 330](https://jcp.org/en/jsr/detail?id=330).  The default JSR 330 implementation that comes with Play is [Guice](https://github.com/google/guice), but other JSR 330 implementations can be plugged in.
+Out of the box, Play provides dependency injection support based on [JSR 330](https://jcp.org/en/jsr/detail?id=330).  The default JSR 330 implementation that comes with Play is [Guice](https://github.com/google/guice), but other JSR 330 implementations can be plugged in. The [Guice wiki](https://github.com/google/guice/wiki/) is a great resource for learning more about the features of Guice and DI design patterns in general.
 
 ## Declaring dependencies
 
-If you have a component, such as a controller, and it requires some other components as dependencies, then this can be declared using the [@Inject](https://docs.oracle.com/javaee/7/api/javax/inject/Inject.html) annotation.  The `@Inject` annotation can be used on fields or on constructors, which you decide to use is up to you.  For example, to use field injection:
+If you have a component, such as a controller, and it requires some other components as dependencies, then this can be declared using the [@Inject](https://docs.oracle.com/javaee/7/api/javax/inject/Inject.html) annotation.  The `@Inject` annotation can be used on fields or on constructors.  For example, to use field injection:
 
 @[field](code/javaguide/di/field/MyComponent.java)
 
@@ -15,7 +15,9 @@ To use constructor injection:
 
 @[constructor](code/javaguide/di/constructor/MyComponent.java)
 
-Each of these have their own benefits, and which is best is a matter of hot debate.  For brevity, in the Play documentation, we use field injection, but in Play itself, we use constructor injection.
+For brevity, in the Play documentation, we use field injection, but in Play itself, we use constructor injection.
+
+Constructor injection is the most testable, since all the dependencies are required up front to construct an instance of the class, but it is also more verbose. Guice also has several other [types of injections](https://github.com/google/guice/wiki/Injections) which may be useful in some cases.
 
 ## Dependency injecting controllers
 
@@ -142,6 +144,20 @@ In order to maximise cross framework compatibility, keep in mind the following t
 If there is a module that you don't want to be loaded, you can exclude it by appending it to the `play.modules.disabled` property in `application.conf`:
 
     play.modules.disabled += "play.api.db.evolutions.EvolutionsModule"
+
+## Managing circular dependencies
+
+Circular dependencies happen when one of your components depends on another component that depends on the original component (either directly or indirectly). For example:
+
+@[circular](code/javaguide/di/guice/CircularDependencies.java)
+
+In this case, `Foo` depends on `Bar`, which depends on `Baz`, which depends on `Foo`. So you won't be able to instantate any of these classes. You can work around this problem by using a `Provider`:
+
+@[circular-provider](code/javaguide/di/guice/CircularDependencies.java)
+
+Note that if you're using constructor injection it will be much more clear when you have a circular dependency, since it will be impossible to instantiate the component manually.
+
+Generally, circular dependencies can be resolved by breaking up your components in a more atomic way, or finding a more specific component to depend on. A common problem is a dependency on `Application`. When your component depends on `Application` it's saying that it needs a complete application to do its job; typically that's not the case. Your dependencies should be on more specific components (e.g. `Environment`) that have the specific functionality you need. As a last resort you can work around the problem by injecting a `Provider<Application>`.
 
 ## Advanced: Extending the GuiceApplicationLoader
 

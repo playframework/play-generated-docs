@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009-2016 Typesafe Inc. <http://www.typesafe.com>
+ * Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com>
  */
 package scalaguide.ws.scalaws
 
@@ -535,6 +535,17 @@ class ScalaWSSpec extends PlaySpecification with Results with AfterAll {
 
       val client: AsyncHttpClient = ws.underlying
       //#underlying
+
+      ok
+    }
+
+    "use logging" in withSimpleServer { ws =>
+      // #curl-logger-filter
+      ws.url(s"http://localhost:$testServerPort")
+        .withRequestFilter(AhcCurlRequestLogger())
+        .withBody(Map("param1" -> Seq("value1")))
+        .put(Map("key" -> Seq("value")))
+      // #curl-logger-filter
 
       ok
     }

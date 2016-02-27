@@ -1,12 +1,13 @@
+<!--- Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com> -->
 # Streams Migration Guide
 
 Play 2.5 has made several major changes to how it streams data and response bodies.
 
 1. Play 2.5 uses **Akka Streams for streaming**. Previous versions of Play used iteratees for streaming as well as several other ad-hoc types of streaming, such as `WebSocket`, `Chunks`, etc.
 
-    There are two main benefits of the change to use Akka Streams. First, Java users can now access the full features of Play, e.g. writing body parsers and filters. Second, the streaming library is now more consistent across Play.
+    There are two main benefits of the change to use Akka Streams. First, Java users can now access the full feature set of Play, e.g. writing body parsers and filters. Second, the streaming library is now more consistent across Play.
 
-2. Play 2.5 uses **`ByteString` to hold packets of bytes**. Previously, Play usied byte arrays (`byte[]`/`ArrayByte`) to hold bytes.
+2. Play 2.5 uses **`ByteString` to hold packets of bytes**. Previously, Play used byte arrays (`byte[]`/`ArrayByte`) to hold bytes.
 
     The `ByteString` class is immutable like Java's `String`, so it's safer and easier to use. Like `String` it does have a small performance cost, because it copies its data when it is constructed, but this is balanced by its cheap concatenation and substring operations.
 
@@ -57,7 +58,7 @@ In Play 2.5, the `stream` method has been removed and the `feed` method has been
 
 The new API is to create a `Result` object directly and choose an `HttpEntity` to represent its body. For streamed results, you can use the `HttpEntity.Streamed` class. The `Streamed` class takes a `Source` as a body and an optional `Content-Length` header value. The `Source`'s content will be sent to the client. If the entity has a `Content-Length` header then the connection will be left open, otherwise it will be closed to signal the end of the stream.
 
-* To learn how to migrate an Enumerator to a Source, see  [Migrating Enumerators to Sources](#Migrating-Enumerators-to-Sources).
+* To learn how to migrate an Enumerator to a Source, see [Migrating Enumerators to Sources](#Migrating-Enumerators-to-Sources).
 
 #### Migrating WebSockets (`WebSocket`)
 
@@ -83,7 +84,7 @@ trait FrameFormatter[A] {
 }
 ```
 
-The Play 2.5's Scala WebSocket API is built around a `Flow` of `Message`s. A [`Message`](api/scala/play/api/http/websocket/Message.html) represents an [WebSocket frame](https://tools.ietf.org/html/rfc6455#section-5). The `MessageFlowTransformer` type handles transforming high-level objects, like JSON, XML and bytes into `Message` frames. A set of built-in implicit `MessageFlowTransformer`s are provided, and you can also write your own.
+The Play 2.5 Scala WebSocket API is built around a `Flow` of `Message`s. A [`Message`](api/scala/play/api/http/websocket/Message.html) represents a [WebSocket frame](https://tools.ietf.org/html/rfc6455#section-5). The `MessageFlowTransformer` type handles transforming high-level objects, like JSON, XML and bytes into `Message` frames. A set of built-in implicit `MessageFlowTransformer`s are provided, and you can also write your own.
 
 ```scala
 trait WebSocket extends Handler {
@@ -143,6 +144,20 @@ You can also create your own `MappedWebSocketAcceptor` by defining how to conver
 * To learn how to migrate a `WebSocket.In` to a Sink, see XXXX.
 * To learn how to migrate a `WebSocket.Out` to a Source, see XXXX.
 
+#### Migrating Comet
+
+To use [Comet](https://en.wikipedia.org/wiki/Comet_(programming)) in Play you need to produce a chunked HTTP response with specially formatted chunks. Play has a `Comet` class to help produce events on the server that can be sent to the browser.  In Play 2.4.x, a new Comet instance had to be created and used callbacks for Java, and an Enumeratee was used for Scala.  In Play 2.5, there are new APIs added based on Akka Streams.
+
+##### Migrating Java Comet
+
+Create an Akka Streams source for your objects, and convert them into either `String` or `JsonNode` objects.  From there, you can use `play.libs.Comet.string` or `play.libs.Comet.json` to convert your objects into a format suitable for `Results.ok().chunked()`.  There is additional documentation in [[JavaComet]].
+
+Because the Java Comet helper is based around callbacks, it may be easier to turn the callback based class into a `org.reactivestreams.Publisher` directly and use `Source.fromPublisher` to create a source.
+
+##### Migrating Scala Comet
+
+Create an Akka Streams source for your objects, and convert them into either `String` or `JsValue` objects.  From there, you can use `play.api.libs.Comet.string` or `play.api.libs.Comet.json` to convert your objects into a format suitable for `Ok.chunked()`.  There is additional documentation in [[ScalaComet]].
+
 #### Migrating Server-Sent events (`EventSource`)
 
 To use [Server-Sent Events](http://www.html5rocks.com/en/tutorials/eventsource/basics/) in Play you need to produce a chunked HTTP response with specially formatted chunks. Play has an `EventSource` interface to help produce events on the server that can be sent to the browser. In Play 2.4 Java and Scala each had quite different APIs, but in Play 2.5 they have been changed so they're both based on Akka Streams.
@@ -171,9 +186,9 @@ Source<EventSource.Event, ?> eventSource = myStrings.map(Event::event);
 return ok().chunked(EventSource.chunked(eventSource)).as("text/event-stream");
 ```
 
-* To learn how to migrate `EventSource.onConnected`, `EventSource.send`, etc to a `Source`, see XXXX.
+* To migrate `EventSource.onConnected`, `EventSource.send`, etc to a `Source`, implement `org.reactivestreams.Publisher` on the class and use `Source.fromPublisher` to create a source from the callbacks.
 
-If you still want to use the same API as in Play 2.4 you can use the `LegacyEventSource` class. This class is the same as the Play 2.4 API, but it has been renamed and deprecated. If you want to use the new API, but retain the same feel as the old imperative API, you can try [`GraphStage`](http://doc.akka.io/docs/akka/2.4.2/java/stream-customize.html#custom-processing-with-graphstage).
+If you still want to use the same API as in Play 2.4 you can use the `LegacyEventSource` class. This class is the same as the Play 2.4 API, but it has been renamed and deprecated. If you want to use the new API, but retain the same feel as the old imperative API, you can try [`GraphStage`](http://doc.akka.io/docs/akka/2.4.2/java/stream/stream-customize.html#custom-processing-with-graphstage).
 
 ##### Migrating Scala Server-Sent events
 
@@ -276,7 +291,7 @@ When you're first getting started with Akka Streams, the *Basics and working wit
 * [Basics for Java](http://doc.akka.io/docs/akka/2.4.2/java/stream/stream-flows-and-basics.html)
 * [Basics for Scala](http://doc.akka.io/docs/akka/2.4.2/scala/stream/stream-flows-and-basics.html)
 
-You don't need to convert your whole application in one go. Parts of your application can keep using iteratees while other parts use Akka streams.  Akka streams provides a [reactive streams](http://reactivestreams.org) implementation, and Play's iteratees library also provides a reactive streams implementation, consequently, Play's iteratees can easily be wrapped in Akka streams and vice versa.
+You don't need to convert your whole application in one go. Parts of your application can keep using iteratees while other parts use Akka streams.  Akka streams provides a [reactive streams](http://reactive-streams.org) implementation, and Play's iteratees library also provides a reactive streams implementation, consequently, Play's iteratees can easily be wrapped in Akka streams and vice versa.
 
 #### Migrating byte arrays (`byte[]`/`Array[Byte]`) to `ByteString`s
 
@@ -317,16 +332,19 @@ You can replace your `*.Out` class with any `Source` that produces a stream. The
 If you want to replace your `*.Out` with a simple object that you can write messages to and then close, without worrying about back pressure, then you can use the `Source.actorRef` method:
 
 Java:
+
 ```java
-Source<ByteString, ?> source = Source.<ByteString>actorRef(256, OverflowStrategy.dropNew)
-  .mapMaterializerValue(sourceActor -> {
+Source<ByteString, ?> source = Source.<ByteString>actorRef(256, OverflowStrategy.dropNew())
+  .mapMaterializedValue(sourceActor -> {
     sourceActor.tell(ByteString.fromString("hello"), null);
     sourceActor.tell(ByteString.fromString("world"), null);
     sourceActor.tell(new Status.Success(NotUsed.getInstance()), null);
+    return null;
   });
 ```
 
 Scala:
+
 ```scala
 val source = Source.actorRef[ByteString](256, OverflowStrategy.dropNew).mapMaterializedValue { sourceActor =>
   sourceActor ! ByteString("hello")

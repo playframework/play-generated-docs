@@ -1,4 +1,4 @@
-<!--- Copyright (C) 2009-2016 Typesafe Inc. <http://www.typesafe.com> -->
+<!--- Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com> -->
 # The Play WS API
 
 Sometimes we would like to call other HTTP services from within a Play application. Play supports this via its [WS library](api/scala/play/api/libs/ws/package.html), which provides a way to make asynchronous HTTP calls.
@@ -103,6 +103,25 @@ For example, imagine you have executed a database query that is returning a larg
 
 The `largeImageFromDB` in the code snippet above is an Akka Streams `Source[ByteString, _]`.
 
+### Request Filters
+
+You can do additional processing on a WSRequest by adding a request filter.  A request filter is added by extending the [`play.api.libs.ws.WSRequestFilter`](api/scala/play/api/libs/ws/WSRequestFilter.html) trait, and then adding it to the request with `request.withRequestFilter(filter)`.  
+
+A sample request filter that logs the request in cURL format to SLF4J has been added in [`play.api.libs.ws.ahc.AhcCurlRequestLogger`](api/scala/play/api/libs/ws/ahc/AhcCurlRequestLogger.html).
+
+@[curl-logger-filter](code/ScalaWSSpec.scala)
+
+will output:
+
+```
+curl \
+  --verbose \
+  --request PUT \
+ --header 'Content-Type: application/x-www-form-urlencoded; charset=utf-8' \
+ --data 'key=value' \
+ 'http://localhost:19001/
+```
+
 ## Processing the Response
 
 Working with the [Response](api/scala/play/api/libs/ws/WSResponse.html) is easily done by mapping inside the [Future](http://www.scala-lang.org/api/current/index.html#scala.concurrent.Future).
@@ -117,7 +136,7 @@ If you are not using DI, you can still access the default Play execution context
 
 @[scalaws-context](code/ScalaWSSpec.scala)
 
-The examples also use the folowing case class for serialization / deserialization:
+The examples also use the following case class for serialization/deserialization:
 
 @[scalaws-person](code/ScalaWSSpec.scala)
 
@@ -229,7 +248,7 @@ The following advanced settings can be configured on the underlying AsyncHttpCli
 
 Please refer to the [AsyncHttpClientConfig Documentation](http://static.javadoc.io/org.asynchttpclient/async-http-client/2.0.0-RC7/org/asynchttpclient/DefaultAsyncHttpClientConfig.Builder.html) for more information.
 
-> *NOTE*: `allowPoolingConnection` and `allowSslConnectionPool` are combined in AsyncHttpClient 2.0 into a single `keepAlive` variable.  As such, `play.ws.ning.allowPoolingConnection` and `play.ws.ning.allowSslConnectionPool` are not valid and will throw an exception if configured.
+> **Note:** `allowPoolingConnection` and `allowSslConnectionPool` are combined in AsyncHttpClient 2.0 into a single `keepAlive` variable.  As such, `play.ws.ning.allowPoolingConnection` and `play.ws.ning.allowSslConnectionPool` are not valid and will throw an exception if configured.
 
 * `play.ws.ahc.keepAlive`
 * `play.ws.ahc.maxConnectionsPerHost`

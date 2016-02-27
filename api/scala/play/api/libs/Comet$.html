@@ -49,7 +49,13 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Helper function to produce a Comet Enumeratee.</p><p>Example:</p><pre><span class="kw">val</span> cometStream = Enumerator(<span class="lit">"A"</span>, <span class="lit">"B"</span>, <span class="lit">"C"</span>) &amp;&gt; Comet(callback = <span class="lit">"console.log"</span>)</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.5.0-RC1/framework/src/play/src/main/scala/play/api/libs/Comet.scala" target="_blank">Comet.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Helper function to produce a Comet using <a href="http://doc.akka.io/docs/akka/current/scala/stream/index.html">Akka Streams</a>.</p><p>Please see <a href="https://en.wikipedia.org/wiki/Comet_(programming)">https://en.wikipedia.org/wiki/Comet_(programming)</a>
+for details of Comet.</p><p>Example:</p><pre><span class="kw">def</span> streamClock() = Action {
+  <span class="kw">val</span> df: DateTimeFormatter = DateTimeFormatter.ofPattern(<span class="lit">"HH mm ss"</span>)
+  <span class="kw">val</span> tickSource = Source.tick(<span class="num">0</span> millis, <span class="num">100</span> millis, <span class="lit">"TICK"</span>)
+  <span class="kw">val</span> source = tickSource.map((tick) <span class="kw">=&gt;</span> df.format(ZonedDateTime.now()))
+  Ok.chunked(source via Comet.flow(<span class="lit">"parent.clockChanged"</span>))
+}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.5.0-RC2/framework/src/play/src/main/scala/play/api/libs/Comet.scala" target="_blank">Comet.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -88,28 +94,7 @@
         <div id="allMembers">
         
 
-        <div id="types" class="types members">
-              <h3>Type Members</h3>
-              <ol><li name="play.api.libs.Comet.CometMessage" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="CometMessage[A]extendsProductwithSerializable"></a>
-      <a id="CometMessage[A]:CometMessage[A]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">case class</span>
-      </span>
-      <span class="symbol">
-        <a href="Comet$$CometMessage.html"><span class="name">CometMessage</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="toJavascriptMessage">toJavascriptMessage: (<span class="extype" name="play.api.libs.Comet.CometMessage.A">A</span>) ⇒ <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.api.libs.Comet$@CometMessage[A]extendsProductwithSerializable" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Typeclass for Comet message.</p><div class="fullcomment"><div class="comment cmt"><p>Typeclass for Comet message. Transform each value to a JavaScript message.
-</p></div></div>
-    </li></ol>
-            </div>
+        
 
         
 
@@ -166,41 +151,6 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="play.api.libs.Comet.CometMessage" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="CometMessage"></a>
-      <a id="CometMessage:CometMessage"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a href="Comet$$CometMessage$.html"><span class="name">CometMessage</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.api.libs.Comet$@CometMessage" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Default typeclasses for CometMessage.</p>
-    </li><li name="play.api.libs.Comet#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="apply[E](callback:String,initialChunk:play.twirl.api.Html)(implicitencoder:play.api.libs.Comet.CometMessage[E]):play.api.libs.iteratee.Enumeratee[E,play.twirl.api.Html]"></a>
-      <a id="apply[E](String,Html)(CometMessage[E]):Enumeratee[E,Html]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">apply</span><span class="tparams">[<span name="E">E</span>]</span><span class="params">(<span name="callback">callback: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="initialChunk">initialChunk: <a href="../../twirl/api/Html.html" class="extype" name="play.twirl.api.Html">Html</a> = <span class="defval" name='<span class="name"><a href="../../package.html">Html(Array.fill[Char](5 * 1024)(' ').mkString + &quot;&lt;html&gt;&lt;body&gt;&quot;)</a></span>'>...</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="encoder">encoder: <a href="Comet$$CometMessage.html" class="extype" name="play.api.libs.Comet.CometMessage">CometMessage</a>[<span class="extype" name="play.api.libs.Comet.apply.E">E</span>]</span>)</span><span class="result">: <a href="iteratee/Enumeratee.html" class="extype" name="play.api.libs.iteratee.Enumeratee">Enumeratee</a>[<span class="extype" name="play.api.libs.Comet.apply.E">E</span>, <a href="../../twirl/api/Html.html" class="extype" name="play.twirl.api.Html">Html</a>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.api.libs.Comet$@apply[E](callback:String,initialChunk:play.twirl.api.Html)(implicitencoder:play.api.libs.Comet.CometMessage[E]):play.api.libs.iteratee.Enumeratee[E,play.twirl.api.Html]" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Create a Comet Enumeratee.</p><div class="fullcomment"><div class="comment cmt"><p>Create a Comet Enumeratee.
-</p></div><dl class="paramcmts block"><dt class="tparam">E</dt><dd class="cmt"><p>Type of messages handled by this comet stream.</p></dd><dt class="param">callback</dt><dd class="cmt"><p>Javascript function to call on the browser for each message.</p></dd><dt class="param">initialChunk</dt><dd class="cmt"><p>Initial chunk of data to send for browser compatibility (default to send 5Kb of blank data)</p></dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -298,6 +248,28 @@
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="play.api.libs.Comet#flow" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="flow(callbackName:String,initialChunk:akka.util.ByteString):akka.stream.scaladsl.Flow[akka.util.ByteString,akka.util.ByteString,akka.NotUsed]"></a>
+      <a id="flow(String,ByteString):Flow[ByteString,ByteString,NotUsed]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">flow</span><span class="params">(<span name="callbackName">callbackName: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="initialChunk">initialChunk: <span class="extype" name="akka.util.ByteString">ByteString</span> = <span class="symbol"><span class="name"><a href="#initialByteString:akka.util.ByteString">initialByteString</a></span></span></span>)</span><span class="result">: <span class="extype" name="akka.stream.scaladsl.Flow">Flow</span>[<span class="extype" name="akka.util.ByteString">ByteString</span>, <span class="extype" name="akka.util.ByteString">ByteString</span>, <span class="extype" name="akka.NotUsed">NotUsed</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.libs.Comet$@flow(callbackName:String,initialChunk:akka.util.ByteString):akka.stream.scaladsl.Flow[akka.util.ByteString,akka.util.ByteString,akka.NotUsed]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Creates a flow of ByteString.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a flow of ByteString.  Useful when you have objects that are not JSON or String where
+you may have to do your own conversion.</p><p>Usage example:</p><pre><span class="kw">val</span> htmlStream: Source[ByteString, ByteString, NotUsed] = Flow[Html].map { html <span class="kw">=&gt;</span>
+  ByteString.fromString(html.toString())
+}
+...
+Ok.chunked(htmlStream via Comet.flow(<span class="lit">"parent.clockChanged"</span>))</pre></div></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>
@@ -332,6 +304,40 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="play.api.libs.Comet#initialByteString" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="initialByteString:akka.util.ByteString"></a>
+      <a id="initialByteString:ByteString"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">initialByteString</span><span class="result">: <span class="extype" name="akka.util.ByteString">ByteString</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.libs.Comet$@initialByteString:akka.util.ByteString" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.api.libs.Comet#initialHtmlChunk" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="initialHtmlChunk:play.twirl.api.Html"></a>
+      <a id="initialHtmlChunk:Html"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">initialHtmlChunk</span><span class="result">: <a href="../../twirl/api/Html.html" class="extype" name="play.twirl.api.Html">Html</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.libs.Comet$@initialHtmlChunk:play.twirl.api.Html" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -349,6 +355,25 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="play.api.libs.Comet#json" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="json(callbackName:String):akka.stream.scaladsl.Flow[play.api.libs.json.JsValue,akka.util.ByteString,akka.NotUsed]"></a>
+      <a id="json(String):Flow[JsValue,ByteString,NotUsed]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">json</span><span class="params">(<span name="callbackName">callbackName: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="akka.stream.scaladsl.Flow">Flow</span>[<a href="json/JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a>, <span class="extype" name="akka.util.ByteString">ByteString</span>, <span class="extype" name="akka.NotUsed">NotUsed</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.libs.Comet$@json(callbackName:String):akka.stream.scaladsl.Flow[play.api.libs.json.JsValue,akka.util.ByteString,akka.NotUsed]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Produces a flow of ByteString using <code>Json.fromJson(_).get</code> from a Flow of JsValue.</p><div class="fullcomment"><div class="comment cmt"><p>Produces a flow of ByteString using <code>Json.fromJson(_).get</code> from a Flow of JsValue.  Calls
+out to Comet.flow internally.
+</p></div><dl class="paramcmts block"><dt class="param">callbackName</dt><dd class="cmt"><p>the javascript callback method.</p></dd><dt>returns</dt><dd class="cmt"><p>a flow of ByteString elements.</p></dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>
@@ -400,6 +425,25 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="play.api.libs.Comet#string" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="string(callbackName:String):akka.stream.scaladsl.Flow[String,akka.util.ByteString,akka.NotUsed]"></a>
+      <a id="string(String):Flow[String,ByteString,NotUsed]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">string</span><span class="params">(<span name="callbackName">callbackName: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="akka.stream.scaladsl.Flow">Flow</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="akka.util.ByteString">ByteString</span>, <span class="extype" name="akka.NotUsed">NotUsed</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.libs.Comet$@string(callbackName:String):akka.stream.scaladsl.Flow[String,akka.util.ByteString,akka.NotUsed]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Produces a Flow of escaped ByteString from a series of String elements.</p><div class="fullcomment"><div class="comment cmt"><p>Produces a Flow of escaped ByteString from a series of String elements.  Calls
+out to Comet.flow internally.
+</p></div><dl class="paramcmts block"><dt class="param">callbackName</dt><dd class="cmt"><p>the javascript callback method.</p></dd><dt>returns</dt><dd class="cmt"><p>a flow of ByteString elements.</p></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -508,7 +552,31 @@
 
         
 
-        
+        <div id="values" class="values members">
+              <h3>Deprecated Value Members</h3>
+              <ol><li name="play.api.libs.Comet#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="apply[E](callback:String,initialChunk:play.twirl.api.Html):play.api.libs.iteratee.Enumeratee[E,play.twirl.api.Html]"></a>
+      <a id="apply[E](String,Html):Enumeratee[E,Html]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 2.5.0) Please use Comet.flow">apply</span><span class="tparams">[<span name="E">E</span>]</span><span class="params">(<span name="callback">callback: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="initialChunk">initialChunk: <a href="../../twirl/api/Html.html" class="extype" name="play.twirl.api.Html">Html</a> = <span class="symbol"><span class="name"><a href="#initialHtmlChunk:play.twirl.api.Html">initialHtmlChunk</a></span></span></span>)</span><span class="result">: <a href="iteratee/Enumeratee.html" class="extype" name="play.api.libs.iteratee.Enumeratee">Enumeratee</a>[<span class="extype" name="play.api.libs.Comet.apply.E">E</span>, <a href="../../twirl/api/Html.html" class="extype" name="play.twirl.api.Html">Html</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.libs.Comet$@apply[E](callback:String,initialChunk:play.twirl.api.Html):play.api.libs.iteratee.Enumeratee[E,play.twirl.api.Html]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Create a Comet Enumeratee.</p><div class="fullcomment"><div class="comment cmt"><p>Create a Comet Enumeratee.
+</p></div><dl class="paramcmts block"><dt class="tparam">E</dt><dd class="cmt"><p>Type of messages handled by this comet stream.</p></dd><dt class="param">callback</dt><dd class="cmt"><p>Javascript function to call on the browser for each message.</p></dd><dt class="param">initialChunk</dt><dd class="cmt"><p>Initial chunk of data to send for browser compatibility (default to send 5Kb of blank data)</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.5.0)</i> Please use Comet.flow</p></dd></dl></div>
+    </li></ol>
+            </div>
         </div>
 
         <div id="inheritedMembers">

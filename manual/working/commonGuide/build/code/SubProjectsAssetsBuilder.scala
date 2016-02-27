@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009-2016 Typesafe Inc. <http://www.typesafe.com>
+ * Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com>
  */
 package common.build
 
@@ -14,6 +14,6 @@ class Assets @Inject() (errorHandler: HttpErrorHandler) extends controllers.Asse
 
 import play.api.mvc._
 
-class Application extends Controller {
+class HomeController extends Controller {
   def index = Action(Ok)
 }

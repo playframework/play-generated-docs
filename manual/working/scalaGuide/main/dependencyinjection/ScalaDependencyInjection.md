@@ -1,11 +1,11 @@
-<!--- Copyright (C) 2009-2016 Typesafe Inc. <http://www.typesafe.com> -->
+<!--- Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com> -->
 # Runtime Dependency Injection
 
 Dependency injection is a way that you can separate your components so that they are not directly dependent on each other, rather, they get injected into each other.
 
 Out of the box, Play provides runtime dependency injection based on [JSR 330](https://jcp.org/en/jsr/detail?id=330).  Runtime dependency injection is so called because the dependency graph is created, wired and validated at runtime.  If a dependency cannot be found for a particular component, you won't get an error until you run your application.  In contrast, Play also supports [[compile time dependency injection|ScalaCompileTimeDependencyInjection]], where errors in the dependency graph are detected and thrown at compile time.
 
-The default JSR 330 implementation that comes with Play is [Guice](https://github.com/google/guice), but other JSR 330 implementations can be plugged in.
+The default JSR 330 implementation that comes with Play is [Guice](https://github.com/google/guice), but other JSR 330 implementations can be plugged in. The [Guice wiki](https://github.com/google/guice/wiki/) is a great resource for learning more about the features of Guice and DI design patterns in general.
 
 ## Declaring dependencies
 
@@ -13,7 +13,9 @@ If you have a component, such as a controller, and it requires some other compon
 
 @[constructor](code/RuntimeDependencyInjection.scala)
 
-Note that the `@Inject` annotation must come after the class name but before the constructor parameters, and must have parenthesis.
+Note that the `@Inject` annotation must come after the class name but before the constructor parameters, and must have parentheses.
+
+Also, Guice does come with several other [types of injections](https://github.com/google/guice/wiki/Injections), but constructor injection is generally the most clear, concise, and testable in Scala, so we recommend using it.
 
 ## Dependency injecting controllers
 
@@ -141,6 +143,18 @@ In order to maximise cross framework compatibility, keep in mind the following t
 If there is a module that you don't want to be loaded, you can exclude it by appending it to the `play.modules.disabled` property in `application.conf`:
 
     play.modules.disabled += "play.api.db.evolutions.EvolutionsModule"
+
+## Managing circular dependencies
+
+Circular dependencies happen when one of your components depends on another component that depends on the original component (either directly or indirectly). For example:
+
+@[circular](code/RuntimeDependencyInjection.scala)
+
+In this case, `Foo` depends on `Bar`, which depends on `Baz`, which depends on `Foo`. So you won't be able to instantate any of these classes. You can work around this problem by using a `Provider`:
+
+@[circular-provider](code/RuntimeDependencyInjection.scala)
+
+Generally, circular dependencies can be resolved by breaking up your components in a more atomic way, or finding a more specific component to depend on. A common problem is a dependency on `Application`. When your component depends on `Application` it's saying that it needs a complete application to do its job; typically that's not the case. Your dependencies should be on more specific components (e.g. `Environment`) that have the specific functionality you need. As a last resort you can work around the problem by injecting a `Provider[Application]`.
 
 ## Advanced: Extending the GuiceApplicationLoader
 

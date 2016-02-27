@@ -1,4 +1,4 @@
-<!--- Copyright (C) 2009-2016 Typesafe Inc. <http://www.typesafe.com> -->
+<!--- Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com> -->
 # Configuring Cipher Suites
 
 A [cipher suite](https://en.wikipedia.org/wiki/Cipher_suite) is really four different ciphers in one, describing the key exchange, bulk encryption, message authentication and random number function.  There is [no official naming convention](https://utcc.utoronto.ca/~cks/space/blog/tech/SSLCipherNames) of cipher suites, but most cipher suites are described in order -- for example, "TLS_DHE_RSA_WITH_AES_256_CBC_SHA" uses DHE for key exchange, RSA for server certificate authentication, 256-bit key AES in CBC mode for the stream cipher, and SHA for the message authentication.
@@ -7,7 +7,7 @@ A [cipher suite](https://en.wikipedia.org/wiki/Cipher_suite) is really four diff
 
 The list of cipher suites has changed considerably between 1.6, 1.7 and 1.8.
 
-In 1.7 and 1.8, the default [out of the box](http://sim.ivi.co/2011/07/jsse-oracle-provider-preference-of-tls.html) cipher suite list is used.
+In 1.7 and 1.8, the default [out of the box](http://simsmi.blogspot.com/2011/07/jsse-oracle-provider-preference-of-tls.html) cipher suite list is used.
 
 In 1.6, the out of the box list is [out of order](http://op-co.de/blog/posts/android_ssl_downgrade/), with some weaker cipher suites configured in front of stronger ones, and contains a number of ciphers that are now considered weak.  As such, the default list of enabled cipher suites is as follows:
 
@@ -55,7 +55,7 @@ Some of these ciphers are only available in JDK 1.8.
 
 ## Disabling Weak Ciphers and Weak Key Sizes Globally
 
-The `jdk.tls.disabledAlgorithms` can be used to prevent weak ciphers, and can also be used to prevent [small key sizes](http://sim.ivi.co/2011/07/java-se-7-release-security-enhancements.html) from being used in a handshake.  This is a [useful feature](http://sim.ivi.co/2013/11/harness-ssl-and-jsse-key-size-control.html) that is only available in Oracle JDK 1.7 and later.
+The `jdk.tls.disabledAlgorithms` can be used to prevent weak ciphers, and can also be used to prevent [small key sizes](http://simsmi.blogspot.com/2011/07/java-se-7-release-security-enhancements.html) from being used in a handshake.  This is a [useful feature](http://simsmi.blogspot.com/2013/11/harness-ssl-and-jsse-key-size-control.html) that is only available in Oracle JDK 1.7 and later.
 
 The official documentation for disabled algorithms is in the [JSSE Reference Guide](https://docs.oracle.com/javase/8/docs/technotes/guides/security/jsse/JSSERefGuide.html#DisabledAlgorithms).
 

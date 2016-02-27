@@ -49,7 +49,24 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Helps you format Server-Sent Events</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.5.0-RC1/framework/src/play/src/main/scala/play/api/libs/EventSource.scala" target="_blank">EventSource.scala</a></dd><dt>See also</dt><dd><span class="cmt"><p><a href="http://www.w3.org/TR/eventsource/" target="_blank">http://www.w3.org/TR/eventsource/</a></p></span></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>This class provides an easy way to use Server Sent Events (SSE) as a chunked encoding, using an Akka Source.</p><p>Please see the <a href="http://dev.w3.org/html5/eventsource/">Server-Sent Events specification</a> for details.</p><p>An example of how to display an event stream:</p><pre><span class="kw">import</span> java.time.ZonedDateTime
+<span class="kw">import</span> java.time.format.DateTimeFormatter
+<span class="kw">import</span> javax.inject.Singleton
+<span class="kw">import</span> akka.stream.scaladsl.Source
+<span class="kw">import</span> play.api.http.ContentTypes
+<span class="kw">import</span> play.api.libs.EventSource
+<span class="kw">import</span> play.api.mvc._
+
+<span class="kw">import</span> scala.concurrent.duration._
+
+<span class="kw">def</span> liveClock() = Action {
+  <span class="kw">val</span> df: DateTimeFormatter = DateTimeFormatter.ofPattern(<span class="lit">"HH mm ss"</span>)
+  <span class="kw">val</span> tickSource = Source.tick(<span class="num">0</span> millis, <span class="num">100</span> millis, <span class="lit">"TICK"</span>)
+  <span class="kw">val</span> source = tickSource.map { (tick) =&amp;gt;
+    df.format(ZonedDateTime.now())
+  }
+  Ok.chunked(source via EventSource.flow).as(ContentTypes.EVENT_STREAM)
+}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.5.0-RC2/framework/src/play/src/main/scala/play/api/libs/EventSource.scala" target="_blank">EventSource.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -449,7 +466,7 @@
       </a>
     </span>
       <p class="shortcomment cmt">Makes a <code>Flow[E, Event, _]</code>, given an input source.</p><div class="fullcomment"><div class="comment cmt"><p>Makes a <code>Flow[E, Event, _]</code>, given an input source.</p><p>Usage example:</p><pre><span class="kw">val</span> jsonStream: Source[JsValue, <span class="std">Unit</span>] = createJsonSource()
-Ok.chunked(jsonStream via EventSource.flow).as(<span class="lit">"text/event-stream"</span>)</pre></div></div>
+Ok.chunked(jsonStream via EventSource.flow).as(ContentTypes.EVENT_STREAM)</pre></div></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>

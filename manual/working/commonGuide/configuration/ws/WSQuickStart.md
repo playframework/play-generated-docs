@@ -1,4 +1,4 @@
-<!--- Copyright (C) 2009-2016 Typesafe Inc. <http://www.typesafe.com> -->
+<!--- Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com> -->
 # Quick Start to WS SSL
 
 This section is for people who need to connect to a remote web service over HTTPS, and don't want to read through the entire manual.  If you need to set up a web service or configure client authentication, please proceed to the [[next section|CertificateGeneration]].
@@ -68,7 +68,7 @@ which will return a series of certificates in PEM format:
 
 which can be copied and pasted into a file.  The very last certificate in the chain will be the root CA certificate.
 
-> **NOTE**: Not all websites will include the root CA certificate.  You should decode the certificate with keytool or with [certificate decoder](https://www.sslshopper.com/certificate-decoder.html) to ensure you have the right certificate.
+> **Note:** Not all websites will include the root CA certificate.  You should decode the certificate with keytool or with [certificate decoder](https://www.sslshopper.com/certificate-decoder.html) to ensure you have the right certificate.
 
 ## Point the trust manager at the PEM file
 

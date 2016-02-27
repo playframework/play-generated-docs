@@ -1,4 +1,4 @@
-<!--- Copyright (C) 2009-2016 Typesafe Inc. <http://www.typesafe.com> -->
+<!--- Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com> -->
 # The Play WS API
 
 Sometimes we would like to call other HTTP services from within a Play application. Play supports this via its [WS library](api/java/play/libs/ws/package-summary.html), which provides a way to make asynchronous HTTP calls.
@@ -89,6 +89,12 @@ Here is an example showing how you could stream a large image to a different end
 
 The `largeImage` in the code snippet above is an Akka Streams `Source<ByteString, ?>`.
 
+### Request Filters
+
+You can do additional processing on a WSRequest by adding a request filter.  A request filter is added by extending the [`play.libs.ws.WSRequestFilter`](api/java/play/libs/ws/WSRequestFilter.html) trait, and then adding it to the request with `request.withRequestFilter(filter)`.  
+
+@[ws-request-filter](code/javaguide/ws/JavaWS.java)
+
 ## Processing the Response
 
 Working with the [`WSResponse`](api/java/play/libs/ws/WSResponse.html) is done by applying transformations such as `thenApply` and `thenCompose` to the `CompletionStage`.
@@ -111,7 +117,7 @@ Calling `get()`, `post()` or `execute()` will cause the body of the response to 
 
 `WS` lets you consume the response's body incrementally by using an Akka Streams `Sink`.  The `stream()` method on `WSRequest` returns a `CompletionStage<StreamedResponse>`. A `StreamedResponse` is a simple container holding together the response's headers and body.
 
-Any controller or component that wants to levearge the WS streaming functionality will have to add the following imports and dependencies:
+Any controller or component that wants to leverage the WS streaming functionality will have to add the following imports and dependencies:
 
 @[ws-streams-controller](code/javaguide/ws/MyController.java)
 
@@ -210,7 +216,7 @@ The following advanced settings can be configured on the underlying AsyncHttpCli
 
 Please refer to the [AsyncHttpClientConfig Documentation](http://static.javadoc.io/org.asynchttpclient/async-http-client/2.0.0-RC7/org/asynchttpclient/DefaultAsyncHttpClientConfig.Builder.html) for more information.
 
-> *NOTE*: `allowPoolingConnection` and `allowSslConnectionPool` are combined in AsyncHttpClient 2.0 into a single `keepAlive` variable.  As such, `play.ws.ning.allowPoolingConnection` and `play.ws.ning.allowSslConnectionPool` are not valid and will throw an exception if configured.
+> **Note:** `allowPoolingConnection` and `allowSslConnectionPool` are combined in AsyncHttpClient 2.0 into a single `keepAlive` variable.  As such, `play.ws.ning.allowPoolingConnection` and `play.ws.ning.allowSslConnectionPool` are not valid and will throw an exception if configured.
 
 * `play.ws.ahc.keepAlive`
 * `play.ws.ahc.maxConnectionsPerHost`

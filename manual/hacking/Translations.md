@@ -1,4 +1,4 @@
-<!--- Copyright (C) 2009-2016 Typesafe Inc. <http://www.typesafe.com> -->
+<!--- Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com> -->
 # Translating the Play Documentation
 
 Play 2.3+ provides infrastructure to aid documentation translators in translating the Play documentation and keeping it up to date.
@@ -39,7 +39,7 @@ translation-project
 `build.properties` should contain the SBT version, ie:
 
 ```
-sbt.version=0.13.9
+sbt.version=0.13.11
 ```
 
 `plugins.sbt` should include the Play docs sbt plugin, ie:

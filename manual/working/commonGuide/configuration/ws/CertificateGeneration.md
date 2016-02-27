@@ -1,4 +1,4 @@
-<!--- Copyright (C) 2009-2016 Typesafe Inc. <http://www.typesafe.com> -->
+<!--- Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com> -->
 # Generating X.509 Certificates
 
 ## X.509 Certificates
@@ -49,7 +49,7 @@ Owner: CN=example.com, OU=Example Org, O=Example Company, L=San Francisco, ST=Ca
 Issuer: CN=exampleCA, OU=Example Org, O=Example Company, L=San Francisco, ST=California, C=US
 ```
 
-> **NOTE**: Also see the [[Configuring HTTPS|ConfiguringHttps]] section for more information.
+> **Note:** Also see the [[Configuring HTTPS|ConfiguringHttps]] section for more information.
 
 ### Configuring example.com certificates in Nginx
 
@@ -81,7 +81,7 @@ You can check the certificate is what you expect by checking the server:
 keytool -printcert -sslserver example.com
 ```
 
-> **NOTE**: Also see the [[Setting up a front end HTTP server|HTTPServer]] section for more information.
+> **Note:** Also see the [[Setting up a front end HTTP server|HTTPServer]] section for more information.
 
 ## Client Configuration
 
@@ -116,7 +116,7 @@ play.ws.ssl {
 }
 ```
 
-> **NOTE**: Also see the [[Configuring Key Stores and Trust Stores|KeyStores]] section for more information.
+> **Note:** Also see the [[Configuring Key Stores and Trust Stores|KeyStores]] section for more information.
 
 ### Configure Client Authentication
 
@@ -157,13 +157,13 @@ play.ws.ssl {
 }
 ```
 
-> **NOTE**: Also see the [[Configuring Key Stores and Trust Stores|KeyStores]] section for more information.
+> **Note:** Also see the [[Configuring Key Stores and Trust Stores|KeyStores]] section for more information.
 
 ## Certificate Management Tools
 
-If you want to examine certificates in a graphical tool rather than a command line tool, you can use [Keystore Explorer](http://keystore-explorer.sourceforge.net/) or [xca](http://sourceforge.net/projects/xca/).  [Keystore Explorer](http://keystore-explorer.sourceforge.net/) is especially convenient as it recognizes JKS format.  It works better as a manual installation, and requires some tweaking to the export policy.
+If you want to examine certificates in a graphical tool rather than a command line tool, you can use [Keystore Explorer](http://keystore-explorer.sourceforge.net/) or [xca](https://sourceforge.net/projects/xca/).  [Keystore Explorer](http://keystore-explorer.sourceforge.net/) is especially convenient as it recognizes JKS format.  It works better as a manual installation, and requires some tweaking to the export policy.
 
-If you want to use a command line tool with more flexibility than keytool, try [java-keyutil](https://code.google.com/p/java-keyutil/), which understands multi-part PEM formatted certificates and JKS.
+If you want to use a command line tool with more flexibility than keytool, try [java-keyutil](https://github.com/use-sparingly/keyutil), which understands multi-part PEM formatted certificates and JKS.
 
 ## Certificate Settings
 

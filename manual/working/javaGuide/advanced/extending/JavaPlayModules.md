@@ -1,7 +1,7 @@
-<!--- Copyright (C) 2009-2016 Typesafe Inc. <http://www.typesafe.com> -->
+<!--- Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com> -->
 # Writing Play Modules
 
-> **NOTE**: This page covers the new [[module system|JavaDependencyInjection#Play-libraries]] to add new functionality to Play.   
+> **Note:** This page covers the new [[module system|JavaDependencyInjection#Play-libraries]] to add new functionality to Play.
 >
 > The deprecated `play.Plugin` system is removed as of 2.5.x.  
 

@@ -1,4 +1,4 @@
-<!--- Copyright (C) 2009-2016 Typesafe Inc. <http://www.typesafe.com> -->
+<!--- Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com> -->
 # Handling form submission
 
 Before you start with Play forms, read the documentation on the [[Play enhancer|PlayEnhancer]]. The Play enhancer generates accessors for fields in Java classes for you, so that you don't have to generate them yourself. You may decide to use this as a convenience. All the examples below show manually writing accessors for your classes.
@@ -8,6 +8,8 @@ Before you start with Play forms, read the documentation on the [[Play enhancer|
 The `play.data` package contains several helpers to handle HTTP form data submission and validation. The easiest way to handle a form submission is to define a `play.data.Form` that wraps an existing class:
 
 @[user](code/javaguide/forms/u1/User.java)
+
+To wrap a class you have to inject a `play.data.FormFactory` into your Controller which then allows you to create the form:
 
 @[create](code/javaguide/forms/JavaForms.java)
 
@@ -77,9 +79,19 @@ You can use a `DynamicForm` if you need to retrieve data from an html form that 
 ## Register a custom DataBinder
 
 In case you want to define a mapping from a custom object to a form field string and vice versa you need to register a new Formatter for this object.
+You can achieve this by registering a provider for `Formatters` which will do the proper initialization.
 For an object like JodaTime's `LocalTime` it could look like this:
 
-@[register-formatter](code/javaguide/forms/JavaForms.java)
+@[register-formatter](code/javaguide/forms/FormattersProvider.java)
+
+After defining the provider you have to bind it:
+
+@[register-formatter](code/javaguide/forms/FormattersModule.java)
+
+Finally you have to disable Play's default `FormattersModule` and instead enable your module in `application.conf`:
+
+    play.modules.enabled += "com.example.FormattersModule"
+    play.modules.disabled += "play.data.format.FormattersModule"
 
 When the binding fails an array of errors keys is created, the first one defined in the messages file will be used. This array will generally contain:
 

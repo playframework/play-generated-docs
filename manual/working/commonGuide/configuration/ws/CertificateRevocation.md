@@ -1,4 +1,4 @@
-<!--- Copyright (C) 2009-2016 Typesafe Inc. <http://www.typesafe.com> -->
+<!--- Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com> -->
 # Configuring Certificate Revocation
 
 Certificate Revocation in JSSE can be done through two means: certificate revocation lists (CRLs) and OCSP.
@@ -30,7 +30,7 @@ java.security.Security.setProperty("ocsp.enable", "true")
 
 And this will set OCSP checking when making HTTPS requests.
 
-> NOTE: Enabling OCSP requires a round trip to the OCSP responder.  This adds a notable overhead on HTTPS calls, and can make calls up to [33% slower](https://blog.cloudflare.com/ocsp-stapling-how-cloudflare-just-made-ssl-30).  The mitigation technique, OCSP stapling, is not supported in JSSE.
+> **Note:** Enabling OCSP requires a round trip to the OCSP responder.  This adds a notable overhead on HTTPS calls, and can make calls up to [33% slower](https://blog.cloudflare.com/ocsp-stapling-how-cloudflare-just-made-ssl-30).  The mitigation technique, OCSP stapling, is not supported in JSSE.
 
 Or, if you wish to use a static CRL list, you can define a list of URLs:
 

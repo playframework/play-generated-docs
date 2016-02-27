@@ -58,7 +58,7 @@
       <span class="defval" name="&quot;Cannot find any HTTP Request Header here&quot;">...</span>
     </span>)</span>
               
-        </dd><dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.5.0-RC1/framework/src/play/src/main/scala/play/api/mvc/Http.scala" target="_blank">Http.scala</a></dd></dl><div class="toggleContainer block">
+        </dd><dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.5.0-RC2/framework/src/play/src/main/scala/play/api/mvc/Http.scala" target="_blank">Http.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
@@ -104,7 +104,24 @@
 
         <div id="values" class="values members">
               <h3>Abstract Value Members</h3>
-              <ol><li name="play.api.mvc.RequestHeader#headers" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+              <ol><li name="play.api.mvc.RequestHeader#clientCertificateChain" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="clientCertificateChain:Option[Seq[java.security.cert.X509Certificate]]"></a>
+      <a id="clientCertificateChain:Option[Seq[X509Certificate]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">clientCertificateChain</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="java.security.cert.X509Certificate">X509Certificate</span>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.RequestHeader@clientCertificateChain:Option[Seq[java.security.cert.X509Certificate]]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">The X509 certificate chain presented by a client during SSL requests.</p>
+    </li><li name="play.api.mvc.RequestHeader#headers" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="headers:play.api.mvc.Headers"></a>
       <a id="headers:Headers"></a>
       <h4 class="signature">
@@ -482,18 +499,18 @@ It could be absolute, some clients send absolute URLs, especially proxies.
     </span>
       <p class="shortcomment cmt">The HTTP cookies.</p>
     </li><li name="play.api.mvc.RequestHeader#copy" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="copy(id:Long,tags:Map[String,String],uri:String,path:String,method:String,version:String,queryString:Map[String,Seq[String]],headers:play.api.mvc.Headers,remoteAddress:=&gt;String,secure:=&gt;Boolean):play.api.mvc.RequestHeader"></a>
-      <a id="copy(Long,Map[String,String],String,String,String,String,Map[String,Seq[String]],Headers,⇒String,⇒Boolean):RequestHeader"></a>
+      <a id="copy(id:Long,tags:Map[String,String],uri:String,path:String,method:String,version:String,queryString:Map[String,Seq[String]],headers:play.api.mvc.Headers,remoteAddress:=&gt;String,secure:=&gt;Boolean,clientCertificateChain:Option[Seq[java.security.cert.X509Certificate]]):play.api.mvc.RequestHeader"></a>
+      <a id="copy(Long,Map[String,String],String,String,String,String,Map[String,Seq[String]],Headers,⇒String,⇒Boolean,Option[Seq[X509Certificate]]):RequestHeader"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">copy</span><span class="params">(<span name="id">id: <span class="extype" name="scala.Long">Long</span> = <span class="symbol"><span class="name"><a href="#id:Long">this.id</a></span></span></span>, <span name="tags">tags: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol"><span class="name"><a href="#tags:Map[String,String]">this.tags</a></span></span></span>, <span name="uri">uri: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol"><span class="name"><a href="#uri:String">this.uri</a></span></span></span>, <span name="path">path: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol"><span class="name"><a href="#path:String">this.path</a></span></span></span>, <span name="method">method: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol"><span class="name"><a href="#method:String">this.method</a></span></span></span>, <span name="version">version: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol"><span class="name"><a href="#version:String">this.version</a></span></span></span>, <span name="queryString">queryString: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]] = <span class="symbol"><span class="name"><a href="#queryString:Map[String,Seq[String]]">this.queryString</a></span></span></span>, <span name="headers">headers: <a href="Headers.html" class="extype" name="play.api.mvc.Headers">Headers</a> = <span class="symbol"><span class="name"><a href="#headers:play.api.mvc.Headers">this.headers</a></span></span></span>, <span name="remoteAddress">remoteAddress: ⇒ <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol"><span class="name"><a href="#remoteAddress:String">this.remoteAddress</a></span></span></span>, <span name="secure">secure: ⇒ <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol"><span class="name"><a href="#secure:Boolean">this.secure</a></span></span></span>)</span><span class="result">: <a href="" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>
+        <span class="name">copy</span><span class="params">(<span name="id">id: <span class="extype" name="scala.Long">Long</span> = <span class="symbol"><span class="name"><a href="#id:Long">this.id</a></span></span></span>, <span name="tags">tags: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol"><span class="name"><a href="#tags:Map[String,String]">this.tags</a></span></span></span>, <span name="uri">uri: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol"><span class="name"><a href="#uri:String">this.uri</a></span></span></span>, <span name="path">path: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol"><span class="name"><a href="#path:String">this.path</a></span></span></span>, <span name="method">method: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol"><span class="name"><a href="#method:String">this.method</a></span></span></span>, <span name="version">version: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol"><span class="name"><a href="#version:String">this.version</a></span></span></span>, <span name="queryString">queryString: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]] = <span class="symbol"><span class="name"><a href="#queryString:Map[String,Seq[String]]">this.queryString</a></span></span></span>, <span name="headers">headers: <a href="Headers.html" class="extype" name="play.api.mvc.Headers">Headers</a> = <span class="symbol"><span class="name"><a href="#headers:play.api.mvc.Headers">this.headers</a></span></span></span>, <span name="remoteAddress">remoteAddress: ⇒ <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol"><span class="name"><a href="#remoteAddress:String">this.remoteAddress</a></span></span></span>, <span name="secure">secure: ⇒ <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol"><span class="name"><a href="#secure:Boolean">this.secure</a></span></span></span>, <span name="clientCertificateChain">clientCertificateChain: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="java.security.cert.X509Certificate">X509Certificate</span>]] = <span class="symbol"><span class="name"><a href="#clientCertificateChain:Option[Seq[java.security.cert.X509Certificate]]">this.clientCertificateChain</a></span></span></span>)</span><span class="result">: <a href="" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.RequestHeader@copy(id:Long,tags:Map[String,String],uri:String,path:String,method:String,version:String,queryString:Map[String,Seq[String]],headers:play.api.mvc.Headers,remoteAddress:=&gt;String,secure:=&gt;Boolean):play.api.mvc.RequestHeader" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.RequestHeader@copy(id:Long,tags:Map[String,String],uri:String,path:String,method:String,version:String,queryString:Map[String,Seq[String]],headers:play.api.mvc.Headers,remoteAddress:=&gt;String,secure:=&gt;Boolean,clientCertificateChain:Option[Seq[java.security.cert.X509Certificate]]):play.api.mvc.RequestHeader" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -898,7 +915,9 @@ It could be absolute, some clients send absolute URLs, especially proxies.
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Convenience method for adding a single tag to this request</p><div class="fullcomment"><div class="comment cmt"><p>Convenience method for adding a single tag to this request</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the tagged request</p></dd></dl></div>
+      <p class="shortcomment cmt">Convenience method for adding a single tag to this request
+</p><div class="fullcomment"><div class="comment cmt"><p>Convenience method for adding a single tag to this request
+</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the tagged request</p></dd></dl></div>
     </li></ol>
             </div>
 
