@@ -51,7 +51,7 @@
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p><code>NoArg</code> subclass that provides a fixture composed of a <code>Application</code>, running <code>TestServer</code>, and
 Selenium <code>FirefoxDriver</code>.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/scalatestplus-play/tree/1.5.0-RC1/module/src/main/scala/org/scalatestplus/play/MixedFixtures.scala" target="_blank">MixedFixtures.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/scalatestplus-play/tree/1.5.0/module/src/main/scala/org/scalatestplus/play/MixedFixtures.scala" target="_blank">MixedFixtures.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="FirefoxFactory.html" class="extype" name="org.scalatestplus.play.FirefoxFactory">FirefoxFactory</a>, <a href="BrowserFactory.html" class="extype" name="org.scalatestplus.play.BrowserFactory">BrowserFactory</a>, <span class="extype" name="org.scalatest.fixture.NoArg">NoArg</span>, () ⇒ <span class="extype" name="scala.Unit">Unit</span>, <span class="extype" name="scala.DelayedInit">DelayedInit</span>, <span class="extype" name="org.scalatest.selenium.WebBrowser">WebBrowser</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -91,7 +91,7 @@ Selenium <code>FirefoxDriver</code>.
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="org.scalatestplus.play.MixedFixtures.Firefox#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(app:play.api.Application,port:Int):MixedFixtures.this.Firefox"></a>
+      <a id="&lt;init&gt;(appFun:=&gt;play.api.Application,port:Int):MixedFixtures.this.Firefox"></a>
       <a id="&lt;init&gt;:(MixedFixtures.this)#Firefox"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -99,10 +99,10 @@ Selenium <code>FirefoxDriver</code>.
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">Firefox</span><span class="params">(<span name="app">app: <a href="../../../play/api/Application.html" class="extype" name="play.api.Application">Application</a> = <span class="symbol"><span class="name"><a href="../../../play/package.html">FakeApplication()</a></span></span></span>, <span name="port">port: <span class="extype" name="scala.Int">Int</span> = <span class="symbol"><span class="name"><a href="../../../play/package.html">Helpers.testServerPort</a></span></span></span>)</span>
+        <span class="name">Firefox</span><span class="params">(<span name="appFun">appFun: ⇒ <a href="../../../play/api/Application.html" class="extype" name="play.api.Application">Application</a> = <span class="defval" name='<span class="name"><a href="../../../play/package.html">new GuiceApplicationBuilder()).build()</a></span>'>...</span></span>, <span name="port">port: <span class="extype" name="scala.Int">Int</span> = <span class="symbol"><span class="name"><a href="../../../play/package.html">Helpers.testServerPort</a></span></span></span>)</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.MixedFixtures$Firefox@&lt;init&gt;(app:play.api.Application,port:Int):MixedFixtures.this.Firefox" title="Permalink" target="_top">
+      <a href="../../../index.html#org.scalatestplus.play.MixedFixtures$Firefox@&lt;init&gt;(appFun:=&gt;play.api.Application,port:Int):MixedFixtures.this.Firefox" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -1023,13 +1023,13 @@ Selenium <code>FirefoxDriver</code>.
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>WebBrowser</dd></dl></div>
-    </li><li name="org.scalatestplus.play.MixedFixtures.Firefox#app" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="org.scalatestplus.play.MixedFixtures.Firefox#app" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="app:play.api.Application"></a>
       <a id="app:Application"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">val</span>
+        <span class="kind">lazy val</span>
       </span>
       <span class="symbol">
         <span class="name">app</span><span class="result">: <a href="../../../play/api/Application.html" class="extype" name="play.api.Application">Application</a></span>
@@ -1039,7 +1039,9 @@ Selenium <code>FirefoxDriver</code>.
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">The lazy instance created from passed <code>appFun</code>
+</code></p><div class="fullcomment"><div class="comment cmt"><p>The lazy instance created from passed <code>appFun</code>
+</p></div></div>
     </li><li name="org.scalatestplus.play.MixedFixtures.Firefox#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="apply():Unit"></a>
       <a id="apply():Unit"></a>

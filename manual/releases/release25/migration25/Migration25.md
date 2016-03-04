@@ -70,10 +70,9 @@ The new configuration after the change will look something like this:
 
 You can find more details on how to set up Play with different logging frameworks are in [[Configuring logging|SettingsLogger#Using-a-Custom-Logging-Framework]] section of the documentation.
 
+## Play WS upgrades to AsyncHttpClient 2
 
-## Upgrade to AsyncHttpClient 2
-
-Play WS has been upgraded to use [AsyncHttpClient](https://github.com/AsyncHttpClient/async-http-client) 2.  This is a major upgrade that uses Netty 4.0. Most of the changes in AHC 2.0 are under the hood, but AHC has some significant refactorings which require breaking changes to the WS API:
+Play WS has been upgraded to use [AsyncHttpClient 2](https://github.com/AsyncHttpClient/async-http-client).  This is a major upgrade that uses Netty 4.0. Most of the changes in AHC 2.0 are under the hood, but AHC has some significant refactorings which require breaking changes to the WS API:
 
 * `AsyncHttpClientConfig` replaced by [`DefaultAsyncHttpClientConfig`](https://static.javadoc.io/org.asynchttpclient/async-http-client/2.0.0-RC7/org/asynchttpclient/DefaultAsyncHttpClientConfig.html).
 * [`allowPoolingConnection`](https://static.javadoc.io/com.ning/async-http-client/1.9.32/com/ning/http/client/AsyncHttpClientConfig.html#allowPoolingConnections) and `allowSslConnectionPool` are combined in AsyncHttpClient into a single `keepAlive` variable.  As such, `play.ws.ning.allowPoolingConnection` and `play.ws.ning.allowSslConnectionPool` are not valid and will throw an exception if configured.
@@ -88,6 +87,7 @@ In addition, there are number of small changes:
 * The deprecated interface `play.libs.ws.WSRequestHolder` has been removed.
 * The `play.libs.ws.play.WSRequest` interface now returns `java.util.concurrent.CompletionStage` instead of `F.Promise`.
 * Static methods that rely on `Play.current` or `Play.application` have been deprecated.
+* Play WS would infer a charset from the content type and append a charset to the `Content-Type` header of the request if one was not already set.  This caused some confusion and bugs, and so in 2.5.x the `Content-Type` header does not automatically include an inferred charset.  If you explicitly set a `Content-Type` header, the setting is honored as is. 
 
 ## Deprecated `GlobalSettings`
 
@@ -190,6 +190,10 @@ class FooApi @Inject() (appProvider: Provider[Application]) {
 
 This allows you to benefit from the testability you get with DI and still use your library that uses global state.
 
+## Content-Type charset changes
+
+Prior to Play 2.5, Play would add a `charset` parameter to certain content types that do not define a charset parameter, specifically [`application/json`](https://www.iana.org/assignments/media-types/application/json) and [`application/x-www-form-urlencoded`](https://www.iana.org/assignments/media-types/application/x-www-form-urlencoded). Now the `Content-Type` is sent without a charset by default. This applies both to sending requests with `WS` and returning responses from Play actions. If you have a non-spec-compliant client or server that requires you to send a charset parameter, you can explicitly set the `Content-Type` header.
+
 ## Guice injector and Guice builder changes
 
 By default, Guice can resolve your circular dependency by proxying an interface in the cycle. Since circular dependencies are generally a code smell, and you can also inject Providers to break the cycle, we have chosen to disable this feature on the default Guice injector. Other DI frameworks also are not likely to have this feature, so it can lead to problems when writing Play modules.
@@ -244,12 +248,26 @@ For more details, please read the CSRF documentation for [[Java|JavaCsrf]] and [
 
 ## Crypto Deprecated
 
-From Play 1.x, Play has come with a Crypto object that provides some cryptographic operations.  This used internally by Play.  The Crypto object is not mentioned in the documentation, but is mentioned as “cryptographic utilities” in the scaladoc.  
+From Play 1.x, Play has come with a `Crypto` object that provides some cryptographic operations.  This used internally by Play.  The `Crypto` object is not mentioned in the documentation, but is mentioned as “cryptographic utilities” in the scaladoc.
 
-For a variety of reasons, providing cryptographic utilities as a convenience has turned out not to be workable.   In 2.5.x, Crypto will be defined as an internal library, part of Play’s private API, with an explicit note that user level cryptographic operations should not call out to Crypto methods.   Please see [[Crypto Migration|CryptoMigration25]] for more details.
+For a variety of reasons, providing cryptographic utilities as a convenience has turned out not to be workable.   In 2.5.x, the Play-specific functionality has been broken into `CookieSigner`, `CSRFTokenSigner` and `AESSigner` traits, and the `Crypto` singleton object deprecated.
 
 ### How to Migrate
 
 Cryptographic migration will depend on your use case, especially if there is unsafe construction of the cryptographic primitives.  The short version is to use [Kalium](https://abstractj.github.io/kalium/) if possible, otherwise use [KeyCzar](https://github.com/google/keyczar) or straight [JCA](https://docs.oracle.com/javase/8/docs/technotes/guides/security/crypto/CryptoSpec.html).
 
 Please see [[Crypto Migration|CryptoMigration25]] for more details.
+
+## Netty 4 upgrade
+
+Netty has been upgraded from 3.10 to 4.0.  One consequence of this is the configuration options for configuring Netty channel options have changed.  The full list options can be seen [here](http://netty.io/4.0/api/io/netty/channel/ChannelOption.html).
+
+### How to Migrate
+
+Modify any `play.server.netty.option` keys to use the new keys defined in [ChannelOption](http://netty.io/4.0/api/io/netty/channel/ChannelOption.html).  A mapping of some of the more popularly used ones is:
+
+| **Old** | **New** |
+| ------------------
+| `play.server.netty.option.backlog` | `play.server.netty.option.SO_BACKLOG` |
+| `play.server.netty.option.child.keepAlive` | `play.server.netty.option.child.SO_KEEPALIVE` |
+| `play.server.netty.option.child.tcpNoDelay` | `play.server.netty.option.child.TCP_NODELAY` |
