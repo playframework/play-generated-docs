@@ -133,7 +133,7 @@ Injecting a `DatabaseConfig` instance for a different database is also easy. Sim
 
 Of course, you should replace the string `"<db-name>"` with the name of the database's configuration you want to use.
 
-For a full example, have a look at [this sample projet](https://github.com/playframework/play-slick/tree/master/samples/di).
+For a full example, have a look at [this sample project](https://github.com/playframework/play-slick/tree/master/samples/di).
 
 ### DatabaseConfig via Global Lookup
 
@@ -147,7 +147,7 @@ Looking up a `DatabaseConfig` instance for a different database is also easy. Si
 
 Of course, you should replace the string `"<db-name>"` with the name of the database's configuration you want to use.
 
-For a full example, have a look at [this sample projet](https://github.com/playframework/play-slick/tree/master/samples/basic).
+For a full example, have a look at [this sample project](https://github.com/playframework/play-slick/tree/master/samples/basic).
 
 ### Running a database query in a Controller
 
