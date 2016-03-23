@@ -136,8 +136,11 @@ class ExampleSpec extends PlaySpec with OneServerPerSuite with AllBrowsersPerSui
 
   // Override app if you need an Application with other than
   // default parameters.
-  implicit override lazy val app =
-    new GuiceApplicationBuilder().disable[EhCacheModule].configure("foo" -> "bar").additionalRouter(Router.from(TestRoute)).build()
+  implicit override lazy val app = new GuiceApplicationBuilder()
+    .disable[EhCacheModule]
+    .configure("foo" -> "bar")
+    .router(Router.from(TestRoute))
+    .build()
 
   // Place tests you want run in different browsers in the `sharedTests` method:
   def sharedTests(browser: BrowserInfo) = {
@@ -284,8 +287,11 @@ import play.api.cache.EhCacheModule
 class ExampleSpec extends PlaySpec with OneServerPerTest with AllBrowsersPerTest {
 
   // Override newAppForTest if you need a Application with other than non-default parameters.
-  override def newAppForTest(testData: TestData): Application =
-     new GuiceApplicationBuilder().disable[EhCacheModule].configure("foo" -> "bar").additionalRouter(Router.from(TestRoute)).build()
+  override def newAppForTest(testData: TestData): Application = new GuiceApplicationBuilder()
+    .disable[EhCacheModule]
+    .configure("foo" -> "bar")
+    .router(Router.from(TestRoute))
+    .build()
 
   // Place tests you want run in different browsers in the `sharedTests` method:
   def sharedTests(browser: BrowserInfo) = {
@@ -525,8 +531,10 @@ import play.api.routing._
 class ExampleSpec extends PlaySpec with OneServerPerSuite with OneBrowserPerSuite with FirefoxFactory {
 
   // Override app if you need a Application with other than non-default parameters.
-  implicit override lazy val app: Application =
-    new GuiceApplicationBuilder().configure("foo" -> "bar", "ehcacheplugin" -> "disabled").additionalRouter(Router.from(TestRoute)).build()
+  implicit override lazy val app: Application = new GuiceApplicationBuilder()
+      .configure("foo" -> "bar", "ehcacheplugin" -> "disabled")
+      .router(Router.from(TestRoute))
+      .build()
 
   "The OneBrowserPerSuite trait" must {
     "provide an Application" in {
@@ -799,8 +807,11 @@ import play.api.routing._
 class ExampleSpec extends MixedPlaySpec {
 
   // Some helper methods
-  def buildApp[A](elems: (String, String)*) =
-    new GuiceApplicationBuilder().configure(Map(elems:_*)).additionalRouter(Router.from(TestRoute)).build()
+  def buildApp[A](elems: (String, String)*) = new GuiceApplicationBuilder()
+    .configure(Map(elems:_*))
+    .router(Router.from(TestRoute))
+    .build()
+
   def getConfig(key: String)(implicit app: Application) = app.configuration.getString(key)
 
   "The App function" must {
@@ -1179,8 +1190,10 @@ import play.api.routing._
 class ExampleSpec extends PlaySpec with OneServerPerSuite with OneBrowserPerSuite with FirefoxFactory {
 
   // Override app if you need a Application with other than non-default parameters.
-  implicit override lazy val app: Application =
-    new GuiceApplicationBuilder().configure("foo" -> "bar", "ehcacheplugin" -> "disabled").additionalRouter(Router.from(TestRoute)).build()
+  implicit override lazy val app: Application = new GuiceApplicationBuilder()
+    .configure("foo" -> "bar", "ehcacheplugin" -> "disabled")
+    .router(Router.from(TestRoute))
+    .build()
 
   "The OneBrowserPerSuite trait" must {
     "provide an Application" in {
@@ -1449,8 +1462,10 @@ import play.api.routing._
 class ExampleSpec extends PlaySpec with OneServerPerTest with OneBrowserPerTest with FirefoxFactory {
 
   // Override newAppForTest if you need an Application with other than non-default parameters.
-  override def newAppForTest(testData: TestData): Application =
-    new GuiceApplicationBuilder().configure(Map("ehcacheplugin" -> "disabled")).additionalRouter(Router.from(TestRoute)).build()
+  override def newAppForTest(testData: TestData): Application = new GuiceApplicationBuilder()
+    .configure(Map("ehcacheplugin" -> "disabled"))
+    .router(Router.from(TestRoute))
+    .build()
 
   "The OneBrowserPerTest trait" must {
     "provide an Application" in {
@@ -1576,10 +1591,10 @@ class NestedExampleSpec extends Suites(
 }
 
 // These are the nested suites
+
 @DoNotDiscover class OneSpec extends PlaySpec with ConfiguredServer
 @DoNotDiscover class TwoSpec extends PlaySpec with ConfiguredServer
 @DoNotDiscover class RedSpec extends PlaySpec with ConfiguredServer
-
 @DoNotDiscover
 class BlueSpec extends PlaySpec with ConfiguredServer {
 
@@ -1643,8 +1658,10 @@ import play.api.routing._
 class ExampleSpec extends PlaySpec with OneServerPerTest {
 
   // Override newAppForTest if you need a FakeApplication with other than non-default parameters.
-  implicit override def newAppForTest(testData: TestData): Application =
-    new GuiceApplicationBuilder().configure(Map("ehcacheplugin" -> "disabled")).additionalRouter(Router.from(TestRoute)).build()
+  implicit override def newAppForTest(testData: TestData): Application = new GuiceApplicationBuilder()
+    .configure(Map("ehcacheplugin" -> "disabled"))
+    .router(Router.from(TestRoute))
+    .build()
 
   "The OneServerPerTest trait" must {
     "provide a FakeApplication" in {
@@ -1804,8 +1821,8 @@ the <code>WebDriver</code> strategy (i.e., the extent to which <code>WebDriver</
       </a>
     </span>
       <p class="shortcomment cmt">Companion object to trait <code>BrowserFactory</code> that holds a <code>UnavailableDriver</code> object that implements
-the Selenium <code>WebDriver</code> interface by throwing <code>UnuspportedOperationException</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Companion object to trait <code>BrowserFactory</code> that holds a <code>UnavailableDriver</code> object that implements
-the Selenium <code>WebDriver</code> interface by throwing <code>UnuspportedOperationException</code>. This is
+the Selenium <code>WebDriver</code> interface by throwing <code>UnsupportedOperationException</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Companion object to trait <code>BrowserFactory</code> that holds a <code>UnavailableDriver</code> object that implements
+the Selenium <code>WebDriver</code> interface by throwing <code>UnsupportedOperationException</code>. This is
 used as a placeholder when a driver is not available on the host platform.
 </p></div></div>
     </li><li name="org.scalatestplus.play.ChromeFactory" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">

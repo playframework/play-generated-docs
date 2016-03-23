@@ -78,8 +78,10 @@ import play.api.routing._
 class ExampleSpec extends PlaySpec with OneServerPerSuite with OneBrowserPerSuite with FirefoxFactory {
 
   // Override app if you need a Application with other than non-default parameters.
-  implicit override lazy val app: Application =
-    new GuiceApplicationBuilder().configure("foo" -> "bar", "ehcacheplugin" -> "disabled").additionalRouter(Router.from(TestRoute)).build()
+  implicit override lazy val app: Application = new GuiceApplicationBuilder()
+    .configure("foo" -> "bar", "ehcacheplugin" -> "disabled")
+    .router(Router.from(TestRoute))
+    .build()
 
   "The OneBrowserPerSuite trait" must {
     "provide an Application" in {
@@ -308,7 +310,7 @@ using sbt:</p><p><pre class="stREPL">
 [info] <span class="stGreen">HtmlUnitExampleSpec:</span>
 [info] <span class="stGreen">The OneBrowserPerSuite trait</span>
 </pre>
-</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="org.scalatestplus.play.OneBrowserPerSuite">OneBrowserPerSuite</a> with <span class="extype" name="org.scalatest.Suite">Suite</span> with <a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a></dd><dt>Source</dt><dd><a href="https://github.com/playframework/scalatestplus-play/tree/1.5.0/module/src/main/scala/org/scalatestplus/play/OneBrowserPerSuite.scala" target="_blank">OneBrowserPerSuite.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="org.scalatestplus.play.OneBrowserPerSuite">OneBrowserPerSuite</a> with <span class="extype" name="org.scalatest.Suite">Suite</span> with <a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a></dd><dt>Source</dt><dd><a href="https://github.com/playframework/scalatestplus-play/tree/master/module/src/main/scala/org/scalatestplus/play/OneBrowserPerSuite.scala" target="_blank">OneBrowserPerSuite.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="BrowserFactory.html" class="extype" name="org.scalatestplus.play.BrowserFactory">BrowserFactory</a>, <span class="extype" name="org.scalatest.concurrent.IntegrationPatience">IntegrationPatience</span>, <span class="extype" name="org.scalatest.concurrent.Eventually">Eventually</span>, <span class="extype" name="org.scalatest.concurrent.PatienceConfiguration">PatienceConfiguration</span>, <span class="extype" name="org.scalatest.concurrent.AbstractPatienceConfiguration">AbstractPatienceConfiguration</span>, <span class="extype" name="org.scalatest.concurrent.ScaledTimeSpans">ScaledTimeSpans</span>, <span class="extype" name="org.scalatest.selenium.WebBrowser">WebBrowser</span>, <span class="extype" name="org.scalatest.SuiteMixin">SuiteMixin</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>

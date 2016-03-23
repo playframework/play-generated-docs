@@ -50,6 +50,14 @@ Hello @(customer.firstName + customer.lastName)!
                     Dynamic Code
 ```
 
+> **Note:** Make sure not to include whitespaces between keywords of dynamic statements and parentheses.
+>
+> For example, the following code doesn't work:
+> ```
+> @for (menu <- menuList) { ... }  // Compilation error: '(' expected but ')' found.
+>     ^
+> ```
+
 You can also use curly brackets, to write a multi-statement block:
 
 ```
@@ -147,3 +155,9 @@ By default, dynamic content parts are escaped according to the template type’s
 For example to output raw HTML:
 
 @[raw-html](code/scalaguide/templates/snippets.scala.html)
+
+## String interpolation
+
+The template engine can be used as a [string interpolator](http://docs.scala-lang.org/overviews/core/string-interpolation.html). You basically trade the “@” for a “$”:
+
+@[string-interpolation](code/ScalaTemplates.scala)

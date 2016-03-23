@@ -37,7 +37,7 @@ This returns a `Future[WSResponse]` where the [Response](api/scala/play/api/libs
 
 ### Request with authentication
 
-If you need to use HTTP authentication, you can specify it in the builder, using a username, password, and an [AuthScheme](api/scala/play/api/libs/ws/WSAuthScheme.html).  Valid case objects for the AuthScheme are `BASIC`, `DIGEST`, `KERBEROS`, `NONE`, `NTLM`, and `SPNEGO`.
+If you need to use HTTP authentication, you can specify it in the builder, using a username, password, and an [AuthScheme](api/scala/play/api/libs/ws/WSAuthScheme.html).  Valid case objects for the AuthScheme are `BASIC`, `DIGEST`, `KERBEROS`, `NTLM`, and `SPNEGO`.
 
 @[auth-request](code/ScalaWSSpec.scala)
 
@@ -81,6 +81,12 @@ To post url-form-encoded data a `Map[String, Seq[String]]` needs to be passed in
 
 @[url-encoded](code/ScalaWSSpec.scala)
 
+### Submitting multipart/form data
+
+To post multipart-form-encoded data a `Seq[org.asynchttpclient.request.body.multipart.Part]` needs to be passed into `post`.
+
+@[multipart-encoded](code/ScalaWSSpec.scala)
+
 ### Submitting JSON data
 
 The easiest way to post JSON data is to use the [[JSON|ScalaJson]] library.
@@ -119,7 +125,7 @@ curl \
   --request PUT \
  --header 'Content-Type: application/x-www-form-urlencoded; charset=utf-8' \
  --data 'key=value' \
- 'http://localhost:19001/
+ http://localhost:19001/
 ```
 
 ## Processing the Response
@@ -210,13 +216,12 @@ Ideally, you should close a client after you know all requests have been complet
 
 ## Accessing AsyncHttpClient
 
-You can get access to the underlying [AsyncHttpClient](http://static.javadoc.io/org.asynchttpclient/async-http-client/2.0.0-RC7/org/asynchttpclient/AsyncHttpClient.html) from a `WSClient`.
+You can get access to the underlying [AsyncHttpClient](http://static.javadoc.io/org.asynchttpclient/async-http-client/2.0.0-RC12/org/asynchttpclient/AsyncHttpClient.html) from a `WSClient`.
 
 @[underlying](code/ScalaWSSpec.scala)
 
 This is important in a couple of cases.  WS has a couple of limitations that require access to the underlying client:
 
-* `WS` does not support multi part form upload directly.  You can use the underlying client with [RequestBuilder.addBodyPart](http://static.javadoc.io/org.asynchttpclient/async-http-client/2.0.0-RC7/org/asynchttpclient/RequestBuilderBase.html#addBodyPart-org.asynchttpclient.request.body.multipart.Part-).
 * `WS` does not support streaming body upload.  In this case, you should use the `FeedableBodyGenerator` provided by AsyncHttpClient.
 
 ## Configuring WS
@@ -246,7 +251,7 @@ The request timeout can be overridden for a specific connection with `withReques
 
 The following advanced settings can be configured on the underlying AsyncHttpClientConfig.
 
-Please refer to the [AsyncHttpClientConfig Documentation](http://static.javadoc.io/org.asynchttpclient/async-http-client/2.0.0-RC7/org/asynchttpclient/DefaultAsyncHttpClientConfig.Builder.html) for more information.
+Please refer to the [AsyncHttpClientConfig Documentation](http://static.javadoc.io/org.asynchttpclient/async-http-client/2.0.0-RC12/org/asynchttpclient/DefaultAsyncHttpClientConfig.Builder.html) for more information.
 
 > **Note:** `allowPoolingConnection` and `allowSslConnectionPool` are combined in AsyncHttpClient 2.0 into a single `keepAlive` variable.  As such, `play.ws.ning.allowPoolingConnection` and `play.ws.ning.allowSslConnectionPool` are not valid and will throw an exception if configured.
 

@@ -190,6 +190,18 @@ class ScalaWSSpec extends PlaySpecification with Results with AfterAll {
         await(response).body must_== "value"
       }
 
+      "post with multipart/form encoded body" in withServer{
+          case("POST", "/") => Action(BodyParsers.parse.multipartFormData)(r => Ok(r.body.asFormUrlEncoded("key").head))
+        } { ws =>
+        import play.api.mvc.MultipartFormData._
+        val response =
+        //#multipart-encoded
+        ws.url(url).post(Source.single(DataPart("key", "value")))
+        //#multipart-encoded
+
+        await(response).body must_== "value"
+      }
+
       "post with JSON body" in  withServer {
         case ("POST", "/") => Action(BodyParsers.parse.json)(r => Ok(r.body))
       } { ws =>
@@ -543,7 +555,6 @@ class ScalaWSSpec extends PlaySpecification with Results with AfterAll {
       // #curl-logger-filter
       ws.url(s"http://localhost:$testServerPort")
         .withRequestFilter(AhcCurlRequestLogger())
-        .withBody(Map("param1" -> Seq("value1")))
         .put(Map("key" -> Seq("value")))
       // #curl-logger-filter
 
