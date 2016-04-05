@@ -68,13 +68,19 @@ The new configuration after the change will look something like this:
 <conversionRule conversionWord="coloredLevel" converterClass="play.api.libs.logback.ColoredLevel" />
 ```
 
+If you use compile time dependency injection, you will need to change your application loader from using `Logger.configure(...)` to the following:
+
+```scala
+LoggerConfigurator(context.environment.classLoader).foreach { _.configure(context.environment) }
+```
+
 You can find more details on how to set up Play with different logging frameworks are in [[Configuring logging|SettingsLogger#Using-a-Custom-Logging-Framework]] section of the documentation.
 
 ## Play WS upgrades to AsyncHttpClient 2
 
 Play WS has been upgraded to use [AsyncHttpClient 2](https://github.com/AsyncHttpClient/async-http-client).  This is a major upgrade that uses Netty 4.0. Most of the changes in AHC 2.0 are under the hood, but AHC has some significant refactorings which require breaking changes to the WS API:
 
-* `AsyncHttpClientConfig` replaced by [`DefaultAsyncHttpClientConfig`](https://static.javadoc.io/org.asynchttpclient/async-http-client/2.0.0-RC7/org/asynchttpclient/DefaultAsyncHttpClientConfig.html).
+* `AsyncHttpClientConfig` replaced by [`DefaultAsyncHttpClientConfig`](https://static.javadoc.io/org.asynchttpclient/async-http-client/2.0.0-RC12/org/asynchttpclient/DefaultAsyncHttpClientConfig.html).
 * [`allowPoolingConnection`](https://static.javadoc.io/com.ning/async-http-client/1.9.32/com/ning/http/client/AsyncHttpClientConfig.html#allowPoolingConnections) and `allowSslConnectionPool` are combined in AsyncHttpClient into a single `keepAlive` variable.  As such, `play.ws.ning.allowPoolingConnection` and `play.ws.ning.allowSslConnectionPool` are not valid and will throw an exception if configured.
 * [`webSocketIdleTimeout`](https://static.javadoc.io/com.ning/async-http-client/1.9.32/com/ning/http/client/AsyncHttpClientConfig.html#webSocketTimeout) has been removed, so is no longer available in `AhcWSClientConfig`.
 * [`ioThreadMultiplier`](https://static.javadoc.io/com.ning/async-http-client/1.9.32/com/ning/http/client/AsyncHttpClientConfig.html#ioThreadMultiplier) has been removed, so is no longer available in `AhcWSClientConfig`.
@@ -101,13 +107,11 @@ The Plugins API was deprecated in Play 2.4 and has been removed in Play 2.5. The
 
 Routes are now generated using the dependency injection aware `InjectedRoutesGenerator`, rather than the previous `StaticRoutesGenerator` which assumed controllers were singleton objects.
 
-To revert back to the earlier behavior (if you have "object MyController" in your code, for example), please add:
+To revert back to the earlier behavior (if you have "object MyController" in your code, for example), please add the following line to your `build.sbt` file:
 
-```
+```scala
 routesGenerator := StaticRoutesGenerator
 ```
-
-to your `build.sbt` file.
 
 Using static controllers with the static routes generator is not deprecated, but it is recommended that you migrate to using classes with dependency injection.
 
@@ -145,7 +149,7 @@ You should refer to the list of dependency injected components in the [[Play 2.4
 
 For example, the following code injects an environment and configuration into a Controller in Scala:
 
-```
+```scala
 class HomeController @Inject() (environment: play.api.Environment, configuration: play.api.Configuration) extends Controller {
 
   def index = Action {
@@ -167,7 +171,7 @@ class HomeController @Inject() (environment: play.api.Environment, configuration
 
 Generally the components you use should not need to depend on the entire application, but sometimes you have to deal with legacy components that require one. You can handle this by injecting the application into one of your components:
 
-```
+```scala
 class FooController @Inject() (appProvider: Provider[Application]) extends Controller {
   implicit lazy val app = appProvider.get()
   def bar = Action {
@@ -180,7 +184,7 @@ Note that you usually want to use a `Provider[Application]` in this case to avoi
 
 Even better, you can make your own `*Api` class that turns the static methods into instance methods:
 
-```
+```scala
 class FooApi @Inject() (appProvider: Provider[Application]) {
   implicit lazy val app = appProvider.get()
   def bar = Foo.bar(app)
@@ -210,7 +214,7 @@ In order to make Play's CSRF filter more resilient to browser plugin vulnerabili
 
 * Instead of blacklisting `POST` requests, now only `GET`, `HEAD` and `OPTIONS` requests are whitelisted, and all other requests require a CSRF check.  This means `DELETE` and `PUT` requests are now checked.
 * Instead of blacklisting `application/x-www-form-urlencoded`, `multipart/form-data` and `text/plain` requests, requests of all content types, including no content type, require a CSRF check.  One consequence of this is that AJAX requests that use `application/json` now need to include a valid CSRF token in the `Csrf-Token` header.
-* Stateless header-based bypasses, such as the `X-Request-With`, are disabled by default.
+* Stateless header-based bypasses, such as the `X-Requested-With`, are disabled by default.
 
 There's a new config option to bypass the new CSRF protection for requests with certain headers. This config option is turned on by default for the Cookie and Authorization headers, so that REST clients, which typically don't use session authentication, will still work without having to send a CSRF token.
 

@@ -125,10 +125,10 @@ class NestedExampleSpec extends Suites(
 }
 
 // These are the nested suites
+
 @DoNotDiscover class OneSpec extends PlaySpec with ConfiguredServer
 @DoNotDiscover class TwoSpec extends PlaySpec with ConfiguredServer
 @DoNotDiscover class RedSpec extends PlaySpec with ConfiguredServer
-
 @DoNotDiscover
 class BlueSpec extends PlaySpec with ConfiguredServer {
 
@@ -157,7 +157,7 @@ class BlueSpec extends PlaySpec with ConfiguredServer {
   }
 }
 </pre>
-</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="org.scalatestplus.play.OneServerPerSuite">OneServerPerSuite</a> with <span class="extype" name="org.scalatest.Suite">Suite</span></dd><dt>Source</dt><dd><a href="https://github.com/playframework/scalatestplus-play/tree/1.5.0/module/src/main/scala/org/scalatestplus/play/OneServerPerSuite.scala" target="_blank">OneServerPerSuite.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="org.scalatestplus.play.OneServerPerSuite">OneServerPerSuite</a> with <span class="extype" name="org.scalatest.Suite">Suite</span></dd><dt>Source</dt><dd><a href="https://github.com/playframework/scalatestplus-play/tree/1.5.1/module/src/main/scala/org/scalatestplus/play/OneServerPerSuite.scala" target="_blank">OneServerPerSuite.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a>, <span class="extype" name="org.scalatest.SuiteMixin">SuiteMixin</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -751,13 +751,9 @@ will be same as the value of <code>port</code>.
     </span>
       <p class="shortcomment cmt">Invokes <code>start</code> on a new <code>TestServer</code> created with the <code>Application</code> provided by <code>app</code> and the
 port number defined by <code>port</code>, places the <code>Application</code> and port number into the <code>ConfigMap</code> under the keys
-<code>org.scalatestplus.play.app</code> and <code>org.scalatestplus.play.port</code>, respectively, to make
-them available to nested suites; calls <code>super.run</code>; and lastly ensures the <code>Application and test server are stopped after
-all tests and nested suites have completed.
-</code></p><div class="fullcomment"><div class="comment cmt"><p>Invokes <code>start</code> on a new <code>TestServer</code> created with the <code>Application</code> provided by <code>app</code> and the
+<code>org.scalatestplus.play.app</code> and <code>org.scalatestplus.play.port</code>, respectively, to make</p><div class="fullcomment"><div class="comment cmt"><p>Invokes <code>start</code> on a new <code>TestServer</code> created with the <code>Application</code> provided by <code>app</code> and the
 port number defined by <code>port</code>, places the <code>Application</code> and port number into the <code>ConfigMap</code> under the keys
-<code>org.scalatestplus.play.app</code> and <code>org.scalatestplus.play.port</code>, respectively, to make
-them available to nested suites; calls <code>super.run</code>; and lastly ensures the <code>Application and test server are stopped after
+<code>org.scalatestplus.play.app</code> and <code>org.scalatestplus.play.port</code>, respectively, to make</p><p>them available to nested suites; calls <code>super.run</code>; and lastly ensures the <code>Application and test server are stopped after
 all tests and nested suites have completed.
 </code></p></div><dl class="paramcmts block"><dt class="param">testName</dt><dd class="cmt"><p>an optional name of one test to run. If <code>None</code>, all relevant tests should be run.
                 I.e., <code>None</code> acts like a wildcard that means run all relevant tests in this <code>Suite</code>.</p></dd><dt class="param">args</dt><dd class="cmt"><p>the <code>Args</code> for this run</p></dd><dt>returns</dt><dd class="cmt"><p>a <code>Status</code> object that indicates when all tests and nested suites started by this method have completed, and whether or not a failure occurred.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.scalatestplus.play.OneServerPerSuite">OneServerPerSuite</a> → SuiteMixin</dd></dl></div>
