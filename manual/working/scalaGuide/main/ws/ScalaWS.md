@@ -83,9 +83,13 @@ To post url-form-encoded data a `Map[String, Seq[String]]` needs to be passed in
 
 ### Submitting multipart/form data
 
-To post multipart-form-encoded data a `Seq[org.asynchttpclient.request.body.multipart.Part]` needs to be passed into `post`.
+To post multipart-form-encoded data a `Source[play.api.mvc.MultipartFormData.Part[Source[ByteString, Any]], Any]` needs to be passed into `post`.
 
 @[multipart-encoded](code/ScalaWSSpec.scala)
+
+To upload a file you need to pass a `play.api.mvc.MultipartFormData.FilePart[Source[ByteString, Any]]` to the `Source`:
+
+@[multipart-encoded2](code/ScalaWSSpec.scala)
 
 ### Submitting JSON data
 
@@ -216,7 +220,7 @@ Ideally, you should close a client after you know all requests have been complet
 
 ## Accessing AsyncHttpClient
 
-You can get access to the underlying [AsyncHttpClient](http://static.javadoc.io/org.asynchttpclient/async-http-client/2.0.0-RC12/org/asynchttpclient/AsyncHttpClient.html) from a `WSClient`.
+You can get access to the underlying [AsyncHttpClient](http://static.javadoc.io/org.asynchttpclient/async-http-client/2.0.0/org/asynchttpclient/AsyncHttpClient.html) from a `WSClient`.
 
 @[underlying](code/ScalaWSSpec.scala)
 
@@ -251,7 +255,7 @@ The request timeout can be overridden for a specific connection with `withReques
 
 The following advanced settings can be configured on the underlying AsyncHttpClientConfig.
 
-Please refer to the [AsyncHttpClientConfig Documentation](http://static.javadoc.io/org.asynchttpclient/async-http-client/2.0.0-RC12/org/asynchttpclient/DefaultAsyncHttpClientConfig.Builder.html) for more information.
+Please refer to the [AsyncHttpClientConfig Documentation](http://static.javadoc.io/org.asynchttpclient/async-http-client/2.0.0/org/asynchttpclient/DefaultAsyncHttpClientConfig.Builder.html) for more information.
 
 > **Note:** `allowPoolingConnection` and `allowSslConnectionPool` are combined in AsyncHttpClient 2.0 into a single `keepAlive` variable.  As such, `play.ws.ning.allowPoolingConnection` and `play.ws.ning.allowSslConnectionPool` are not valid and will throw an exception if configured.
 

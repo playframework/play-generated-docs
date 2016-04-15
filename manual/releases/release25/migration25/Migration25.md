@@ -5,19 +5,66 @@ This is a guide for migrating from Play 2.4 to Play 2.5. If you need to migrate 
 
 As well as the information contained on this page, there is more detailed migration information for some topics:
 
-- [[Streams Migration Guide|StreamsMigration25]] – Migrating to Akka streams, now used in place of iteratees in many Play APIs
+- [[Streams Migration Guide|StreamsMigration25]] – Migrating to Akka Streams, now used in place of iteratees in many Play APIs
 - [[Java Migration Guide|JavaMigration25]] - Migrating Java applications. Play now uses native Java types for functional types and offers several new customizable components in Java.
 
-## sbt upgrade to 0.13.11
+## How to migrate
+
+The following steps need to be taken to update your sbt build before you can load/run a Play project in sbt.
+
+### Play upgrade
+
+Update the Play version number in project/plugins.sbt to upgrade Play:
+
+```scala
+addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.5.x")
+```
+
+Where the "x" in `2.5.x` is the minor version of Play you want to use, per instance `2.5.0`.
+
+### sbt upgrade to 0.13.11
 
 Although Play 2.5 will still work with sbt 0.13.8, we recommend upgrading to the latest sbt version, 0.13.11.  The 0.13.11 release of sbt has a number of [improvements and bug fixes](https://github.com/sbt/sbt/releases/tag/v0.13.11).
-
-### How to migrate
 
 Update your `project/build.properties` so that it reads:
 
 ```
 sbt.version=0.13.11
+```
+
+### Play Slick upgrade
+
+If your project is using Play Slick, you need to upgrade it:
+
+```scala
+libraryDependencies += "com.typesafe.play" %% "play-slick" % "2.0.0"
+```
+
+Or:
+
+```scala
+libraryDependencies ++= Seq(
+  "com.typesafe.play" %% "play-slick" % "2.0.0"
+  "com.typesafe.play" %% "play-slick-evolutions" % "2.0.0"
+)
+```
+
+### Play Ebean upgrade
+
+If your project is using Play Ebean, you need to upgrade it:
+
+```scala
+addSbtPlugin("com.typesafe.sbt" % "sbt-play-ebean" % "3.0.0")
+```
+
+### ScalaTest + Plus upgrade
+
+If your project is using [[ScalaTest + Play|ScalaTestingWithScalaTest]], you need to upgrade it:
+
+```scala
+libraryDependencies ++= Seq(
+  "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.0" % "test"
+)
 ```
 
 ## Scala 2.10 support discontinued
@@ -80,7 +127,7 @@ You can find more details on how to set up Play with different logging framework
 
 Play WS has been upgraded to use [AsyncHttpClient 2](https://github.com/AsyncHttpClient/async-http-client).  This is a major upgrade that uses Netty 4.0. Most of the changes in AHC 2.0 are under the hood, but AHC has some significant refactorings which require breaking changes to the WS API:
 
-* `AsyncHttpClientConfig` replaced by [`DefaultAsyncHttpClientConfig`](https://static.javadoc.io/org.asynchttpclient/async-http-client/2.0.0-RC12/org/asynchttpclient/DefaultAsyncHttpClientConfig.html).
+* `AsyncHttpClientConfig` replaced by [`DefaultAsyncHttpClientConfig`](https://static.javadoc.io/org.asynchttpclient/async-http-client/2.0.0/org/asynchttpclient/DefaultAsyncHttpClientConfig.html).
 * [`allowPoolingConnection`](https://static.javadoc.io/com.ning/async-http-client/1.9.32/com/ning/http/client/AsyncHttpClientConfig.html#allowPoolingConnections) and `allowSslConnectionPool` are combined in AsyncHttpClient into a single `keepAlive` variable.  As such, `play.ws.ning.allowPoolingConnection` and `play.ws.ning.allowSslConnectionPool` are not valid and will throw an exception if configured.
 * [`webSocketIdleTimeout`](https://static.javadoc.io/com.ning/async-http-client/1.9.32/com/ning/http/client/AsyncHttpClientConfig.html#webSocketTimeout) has been removed, so is no longer available in `AhcWSClientConfig`.
 * [`ioThreadMultiplier`](https://static.javadoc.io/com.ning/async-http-client/1.9.32/com/ning/http/client/AsyncHttpClientConfig.html#ioThreadMultiplier) has been removed, so is no longer available in `AhcWSClientConfig`.
