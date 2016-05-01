@@ -95,7 +95,7 @@
 
         <div id="values" class="values members">
               <h3>Abstract Value Members</h3>
-              <ol><li name="play.api.LoggerConfigurator#configure" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+              <ol><li name="play.api.LoggerConfigurator#configure" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="configure(properties:Map[String,String],config:Option[java.net.URL]):Unit"></a>
       <a id="configure(Map[String,String],Option[URL]):Unit"></a>
       <h4 class="signature">
@@ -111,7 +111,28 @@
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Reconfigures the underlying  logger infrastructure.</p>
+      <p class="shortcomment cmt">Configures the logger with a list of properties and an optional URL.</p><div class="fullcomment"><div class="comment cmt"><p>Configures the logger with a list of properties and an optional URL.</p><p>This is the engine's entrypoint method that has all the properties pre-assembled.
+</p></div></div>
+    </li><li name="play.api.LoggerConfigurator#configure" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="configure(env:play.api.Environment,configuration:play.api.Configuration,optionalProperties:Map[String,String]):Unit"></a>
+      <a id="configure(Environment,Configuration,Map[String,String]):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">configure</span><span class="params">(<span name="env">env: <a href="Environment.html" class="extype" name="play.api.Environment">Environment</a></span>, <span name="configuration">configuration: <a href="Configuration.html" class="extype" name="play.api.Configuration">Configuration</a></span>, <span name="optionalProperties">optionalProperties: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.LoggerConfigurator@configure(env:play.api.Environment,configuration:play.api.Configuration,optionalProperties:Map[String,String]):Unit" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Configures the logger with the environment and the application configuration.</p><div class="fullcomment"><div class="comment cmt"><p>Configures the logger with the environment and the application configuration.</p><p>This is what full applications will run, and the place to put extra properties,
+either through optionalProperties or by setting configuration properties and
+having &quot;play.logger.includeConfigProperties=true&quot; in the config.
+</p></div><dl class="paramcmts block"><dt class="param">env</dt><dd class="cmt"><p>the application environment</p></dd><dt class="param">configuration</dt><dd class="cmt"><p>the application's configuration</p></dd><dt class="param">optionalProperties</dt><dd class="cmt"><p>any optional properties (you can use Map.empty otherwise)</p></dd></dl></div>
     </li><li name="play.api.LoggerConfigurator#configure" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="configure(env:play.api.Environment):Unit"></a>
       <a id="configure(Environment):Unit"></a>
@@ -128,7 +149,7 @@
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Reconfigures the underlying logger infrastructure.</p>
+      <p class="shortcomment cmt">This is a convenience method that adds no extra properties.</p>
     </li><li name="play.api.LoggerConfigurator#init" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="init(rootPath:java.io.File,mode:play.api.Mode.Mode):Unit"></a>
       <a id="init(File,Mode.Mode):Unit"></a>
@@ -146,6 +167,23 @@
       </a>
     </span>
       <p class="shortcomment cmt">Initialize the Logger when there's no application ClassLoader available.</p>
+    </li><li name="play.api.LoggerConfigurator#loggerFactory" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="loggerFactory:org.slf4j.ILoggerFactory"></a>
+      <a id="loggerFactory:ILoggerFactory"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">loggerFactory</span><span class="result">: <span class="extype" name="org.slf4j.ILoggerFactory">ILoggerFactory</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.LoggerConfigurator@loggerFactory:org.slf4j.ILoggerFactory" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Returns the logger factory for the configurator.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the logger factory for the configurator.  Only safe to call after configuration.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>an instance of ILoggerFactory</p></dd></dl></div>
     </li><li name="play.api.LoggerConfigurator#shutdown" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="shutdown():Unit"></a>
       <a id="shutdown():Unit"></a>

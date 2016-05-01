@@ -209,6 +209,26 @@ For example:</p><pre><span class="kw">val</span> text = ContentTypes.TEXT
                 <span class="name">@Singleton</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="play.api.http.DefaultHttpFilters" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="DefaultHttpFiltersextendsHttpFilters"></a>
+      <a id="DefaultHttpFilters:DefaultHttpFilters"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="DefaultHttpFilters.html"><span class="name">DefaultHttpFilters</span></a><span class="result"> extends <a href="HttpFilters.html" class="extype" name="play.api.http.HttpFilters">HttpFilters</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.http.package@DefaultHttpFiltersextendsHttpFilters" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A default implementation of HttpFilters that accepts filters as a varargs constructor and exposes them as a
+filters sequence.</p><div class="fullcomment"><div class="comment cmt"><p>A default implementation of HttpFilters that accepts filters as a varargs constructor and exposes them as a
+filters sequence. For example:</p><pre><span class="kw">class</span> Filters @Inject()(csrfFilter: CSRFFilter, corsFilter: CORSFilter)
+  <span class="kw">extends</span> DefaultHttpFilters(csrfFilter, corsFilter)</pre></div></div>
     </li><li name="play.api.http.DefaultHttpRequestHandler" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="DefaultHttpRequestHandlerextendsHttpRequestHandler"></a>
       <a id="DefaultHttpRequestHandler:DefaultHttpRequestHandler"></a>
@@ -228,9 +248,7 @@ For example:</p><pre><span class="kw">val</span> text = ContentTypes.TEXT
       <p class="shortcomment cmt">A base implementation of the <a href="HttpRequestHandler.html" class="extype" name="play.api.http.HttpRequestHandler">HttpRequestHandler</a> that handles Scala actions.</p><div class="fullcomment"><div class="comment cmt"><p>A base implementation of the <a href="HttpRequestHandler.html" class="extype" name="play.api.http.HttpRequestHandler">HttpRequestHandler</a> that handles Scala actions. If you use Java actions in your
 application, you should override <a href="JavaCompatibleHttpRequestHandler.html" class="extype" name="play.api.http.JavaCompatibleHttpRequestHandler">JavaCompatibleHttpRequestHandler</a>; otherwise you can override this for your
 custom handler.</p><p>Technically, this is not the default request handler that Play uses, rather, the <a href="JavaCompatibleHttpRequestHandler.html" class="extype" name="play.api.http.JavaCompatibleHttpRequestHandler">JavaCompatibleHttpRequestHandler</a>
-is the default one, in order to provide support for Java actions.</p><p>The default implementations of method interception methods on <a href="../GlobalSettings.html" class="extype" name="play.api.GlobalSettings">play.api.GlobalSettings</a> match the implementations
-of this, so when not providing any custom logic, whether this is used or the global settings http request handler
-is used is irrelevant.
+is the default one, in order to provide support for Java actions.
 </p></div></div>
     </li><li name="play.api.http.DefaultWriteables" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="DefaultWriteablesextendsLowPriorityWriteables"></a>
@@ -451,7 +469,7 @@ a new <a href="../mvc/Handler.html" class="extype" name="play.api.mvc.Handler">p
 the base class for your custom <a href="HttpRequestHandler.html" class="extype" name="play.api.http.HttpRequestHandler">HttpRequestHandler</a>.
 </p></div></div>
     </li><li name="play.api.http.JavaHttpFiltersAdapter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="JavaHttpFiltersAdapterextendsHttpFilters"></a>
+      <a id="JavaHttpFiltersAdapterextendsDefaultHttpFilters"></a>
       <a id="JavaHttpFiltersAdapter:JavaHttpFiltersAdapter"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -459,16 +477,16 @@ the base class for your custom <a href="HttpRequestHandler.html" class="extype" 
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="JavaHttpFiltersAdapter.html"><span class="name">JavaHttpFiltersAdapter</span></a><span class="result"> extends <a href="HttpFilters.html" class="extype" name="play.api.http.HttpFilters">HttpFilters</a></span>
+        <a href="JavaHttpFiltersAdapter.html"><span class="name">JavaHttpFiltersAdapter</span></a><span class="result"> extends <a href="DefaultHttpFilters.html" class="extype" name="play.api.http.DefaultHttpFilters">DefaultHttpFilters</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.http.package@JavaHttpFiltersAdapterextendsHttpFilters" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.http.package@JavaHttpFiltersAdapterextendsDefaultHttpFilters" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Adapter from the Java HttpFliters to the Scala HttpFilters interface.</p>
+      <p class="shortcomment cmt">Adapter from the Java HttpFilters to the Scala HttpFilters interface.</p>
     </li><li name="play.api.http.JavaHttpFiltersDelegate" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="JavaHttpFiltersDelegateextendsHttpFilters"></a>
+      <a id="JavaHttpFiltersDelegateextendsDefaultHttpFilters"></a>
       <a id="JavaHttpFiltersDelegate:JavaHttpFiltersDelegate"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -476,10 +494,10 @@ the base class for your custom <a href="HttpRequestHandler.html" class="extype" 
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="JavaHttpFiltersDelegate.html"><span class="name">JavaHttpFiltersDelegate</span></a><span class="result"> extends <span class="extype" name="play.http.HttpFilters">http.HttpFilters</span></span>
+        <a href="JavaHttpFiltersDelegate.html"><span class="name">JavaHttpFiltersDelegate</span></a><span class="result"> extends <span class="extype" name="play.http.DefaultHttpFilters">http.DefaultHttpFilters</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.http.package@JavaHttpFiltersDelegateextendsHttpFilters" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.http.package@JavaHttpFiltersDelegateextendsDefaultHttpFilters" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -555,7 +573,7 @@ the base class for your custom <a href="HttpRequestHandler.html" class="extype" 
     </span>
       <p class="shortcomment cmt">Common HTTP MIME types</p>
     </li><li name="play.api.http.NoHttpFilters" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="NoHttpFiltersextendsHttpFilters"></a>
+      <a id="NoHttpFiltersextendsDefaultHttpFilters"></a>
       <a id="NoHttpFilters:NoHttpFilters"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -563,10 +581,10 @@ the base class for your custom <a href="HttpRequestHandler.html" class="extype" 
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="NoHttpFilters.html"><span class="name">NoHttpFilters</span></a><span class="result"> extends <a href="HttpFilters.html" class="extype" name="play.api.http.HttpFilters">HttpFilters</a></span>
+        <a href="NoHttpFilters.html"><span class="name">NoHttpFilters</span></a><span class="result"> extends <a href="DefaultHttpFilters.html" class="extype" name="play.api.http.DefaultHttpFilters">DefaultHttpFilters</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.http.package@NoHttpFiltersextendsHttpFilters" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.http.package@NoHttpFiltersextendsDefaultHttpFilters" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -667,27 +685,6 @@ the base class for your custom <a href="HttpRequestHandler.html" class="extype" 
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="play.api.http.GlobalSettingsHttpRequestHandler" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="GlobalSettingsHttpRequestHandlerextendsHttpRequestHandler"></a>
-      <a id="GlobalSettingsHttpRequestHandler:GlobalSettingsHttpRequestHandler"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">class</span>
-      </span>
-      <span class="symbol">
-        <a href="GlobalSettingsHttpRequestHandler.html"><span class="name deprecated" title="Deprecated: (Since version 2.5.0) GlobalSettings is deprecated. Use DefaultHttpRequestHandler or JavaCompatibleHttpRequestHandler.">GlobalSettingsHttpRequestHandler</span></a><span class="result"> extends <a href="HttpRequestHandler.html" class="extype" name="play.api.http.HttpRequestHandler">HttpRequestHandler</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.api.http.package@GlobalSettingsHttpRequestHandlerextendsHttpRequestHandler" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">An <a href="HttpRequestHandler.html" class="extype" name="play.api.http.HttpRequestHandler">HttpRequestHandler</a> that delegates to <a href="../GlobalSettings.html" class="extype" name="play.api.GlobalSettings">play.api.GlobalSettings</a>.</p><div class="fullcomment"><div class="comment cmt"><p>An <a href="HttpRequestHandler.html" class="extype" name="play.api.http.HttpRequestHandler">HttpRequestHandler</a> that delegates to <a href="../GlobalSettings.html" class="extype" name="play.api.GlobalSettings">play.api.GlobalSettings</a>.</p><p>This handler should be used in order to support legacy global settings request interception.</p><p>Custom handlers need not extend this.
-</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.5.0)</i> GlobalSettings is deprecated. Use DefaultHttpRequestHandler or JavaCompatibleHttpRequestHandler.</p></dd></dl></div>
     </li></ol>
             </div>
 

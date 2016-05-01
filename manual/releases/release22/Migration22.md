@@ -153,7 +153,7 @@ Iteratee.foreach[String] { msg =>
 
 ## Concurrent F.Promise execution
 
-The way that the [`F.Promise`](api/java/play/libs/F.Promise.html) class executes user-supplied code has changed in Play 2.2.
+The way that the `F.Promise` class executes user-supplied code has changed in Play 2.2.
 
 In Play 2.1, the `F.Promise` class restricted how user code was executed. Promise operations for a given HTTP request would execute in the order that they were submitted, essentially running sequentially.
 
@@ -199,4 +199,4 @@ Please consult the [["Starting your application in production mode"|Production]]
 
 ## Upgrade from Akka 2.1 to 2.2
 
-The migration guide for upgrading from Akka 2.1 to 2.2 can be found [here](http://doc.akka.io/docs/akka/2.2.0/project/migration-guide-2.1.x-2.2.x.html).
+The migration guide for upgrading from Akka 2.1 to 2.2 can be found [here](http://doc.akka.io/docs/akka/2.4.3/project/migration-guide-2.1.x-2.2.x.html).

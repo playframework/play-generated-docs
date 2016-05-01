@@ -342,23 +342,26 @@ method on the companion singleton for convenience.
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="play.filters.headers.SecurityHeadersFilter#headers" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="headers(request:play.api.mvc.RequestHeader):Seq[(String,String)]"></a>
-      <a id="headers(RequestHeader):Seq[(String,String)]"></a>
+      <a id="headers(request:play.api.mvc.RequestHeader,result:play.api.mvc.Result):Seq[(String,String)]"></a>
+      <a id="headers(RequestHeader,Result):Seq[(String,String)]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">headers</span><span class="params">(<span name="request">request: <a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>)</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[(<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>)]</span>
+        <span class="name">headers</span><span class="params">(<span name="request">request: <a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>, <span name="result">result: <a href="../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>)</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[(<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>)]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.filters.headers.SecurityHeadersFilter@headers(request:play.api.mvc.RequestHeader):Seq[(String,String)]" title="Permalink" target="_top">
+      <a href="../../../index.html#play.filters.headers.SecurityHeadersFilter@headers(request:play.api.mvc.RequestHeader,result:play.api.mvc.Result):Seq[(String,String)]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <p class="shortcomment cmt">Returns the security headers for a request.</p><div class="fullcomment"><div class="comment cmt"><p>Returns the security headers for a request.
-All security headers applied to all requests by default. Override to alter that behavior.
+All security headers applied to all requests by default.
+Omit any headers explicitly provided in the result object, provided
+play.filters.headers.allowActionSpecificHeaders is true.
+Override this method to alter that behavior.
 </p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>

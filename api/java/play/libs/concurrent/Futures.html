@@ -146,7 +146,7 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>static &lt;A&gt;&nbsp;<a href="../../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;A&gt;</code></td>
+<td class="colFirst"><code>static &lt;A&gt;&nbsp;java.util.concurrent.CompletionStage&lt;A&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/concurrent/Futures.html#delayed-java.util.function.Supplier-long-java.util.concurrent.TimeUnit-java.util.concurrent.Executor-">delayed</a></span>(java.util.function.Supplier&lt;A&gt;&nbsp;supplier,
        long&nbsp;delay,
        java.util.concurrent.TimeUnit&nbsp;unit,
@@ -156,19 +156,19 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>static &lt;A&gt;&nbsp;<a href="../../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;java.util.List&lt;A&gt;&gt;</code></td>
+<td class="colFirst"><code>static &lt;A&gt;&nbsp;java.util.concurrent.CompletionStage&lt;java.util.List&lt;A&gt;&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/concurrent/Futures.html#sequence-java.util.concurrent.CompletionStage...-">sequence</a></span>(java.util.concurrent.CompletionStage&lt;A&gt;...&nbsp;promises)</code>
 <div class="block">Combine the given promises into a single promise for the list of results.</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code>static &lt;A&gt;&nbsp;<a href="../../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;java.util.List&lt;A&gt;&gt;</code></td>
+<td class="colFirst"><code>static &lt;A&gt;&nbsp;java.util.concurrent.CompletionStage&lt;java.util.List&lt;A&gt;&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/concurrent/Futures.html#sequence-java.lang.Iterable-">sequence</a></span>(java.lang.Iterable&lt;? extends java.util.concurrent.CompletionStage&lt;A&gt;&gt;&nbsp;promises)</code>
 <div class="block">Combine the given promises into a single promise for the list of results.</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
-<td class="colFirst"><code>static &lt;A&gt;&nbsp;<a href="../../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;A&gt;</code></td>
+<td class="colFirst"><code>static &lt;A&gt;&nbsp;java.util.concurrent.CompletionStage&lt;A&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/concurrent/Futures.html#timeout-A-long-java.util.concurrent.TimeUnit-">timeout</a></span>(A&nbsp;message,
        long&nbsp;delay,
        java.util.concurrent.TimeUnit&nbsp;unit)</code>
@@ -176,7 +176,7 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr id="i4" class="altColor">
-<td class="colFirst"><code>static <a href="../../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;java.lang.Void&gt;</code></td>
+<td class="colFirst"><code>static java.util.concurrent.CompletionStage&lt;java.lang.Void&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/concurrent/Futures.html#timeout-long-java.util.concurrent.TimeUnit-">timeout</a></span>(long&nbsp;delay,
        java.util.concurrent.TimeUnit&nbsp;unit)</code>
 <div class="block">Create a Promise timer that throws a PromiseTimeoutException after
@@ -228,7 +228,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>sequence</h4>
-<pre>public static&nbsp;&lt;A&gt;&nbsp;<a href="../../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;java.util.List&lt;A&gt;&gt;&nbsp;sequence(java.lang.Iterable&lt;? extends java.util.concurrent.CompletionStage&lt;A&gt;&gt;&nbsp;promises)</pre>
+<pre>public static&nbsp;&lt;A&gt;&nbsp;java.util.concurrent.CompletionStage&lt;java.util.List&lt;A&gt;&gt;&nbsp;sequence(java.lang.Iterable&lt;? extends java.util.concurrent.CompletionStage&lt;A&gt;&gt;&nbsp;promises)</pre>
 <div class="block">Combine the given promises into a single promise for the list of results.
 
  The sequencing operations are performed in the default ExecutionContext.</div>
@@ -246,7 +246,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>sequence</h4>
-<pre>public static&nbsp;&lt;A&gt;&nbsp;<a href="../../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;java.util.List&lt;A&gt;&gt;&nbsp;sequence(java.util.concurrent.CompletionStage&lt;A&gt;...&nbsp;promises)</pre>
+<pre>public static&nbsp;&lt;A&gt;&nbsp;java.util.concurrent.CompletionStage&lt;java.util.List&lt;A&gt;&gt;&nbsp;sequence(java.util.concurrent.CompletionStage&lt;A&gt;...&nbsp;promises)</pre>
 <div class="block">Combine the given promises into a single promise for the list of results.
 
  The sequencing operations are performed in the default ExecutionContext.</div>
@@ -266,9 +266,9 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>timeout</h4>
-<pre>public static&nbsp;&lt;A&gt;&nbsp;<a href="../../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;A&gt;&nbsp;timeout(A&nbsp;message,
-                                       long&nbsp;delay,
-                                       java.util.concurrent.TimeUnit&nbsp;unit)</pre>
+<pre>public static&nbsp;&lt;A&gt;&nbsp;java.util.concurrent.CompletionStage&lt;A&gt;&nbsp;timeout(A&nbsp;message,
+                                                                  long&nbsp;delay,
+                                                                  java.util.concurrent.TimeUnit&nbsp;unit)</pre>
 <div class="block">Create a Promise that is redeemed after a timeout.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -284,8 +284,8 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>timeout</h4>
-<pre>public static&nbsp;<a href="../../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;java.lang.Void&gt;&nbsp;timeout(long&nbsp;delay,
-                                                java.util.concurrent.TimeUnit&nbsp;unit)</pre>
+<pre>public static&nbsp;java.util.concurrent.CompletionStage&lt;java.lang.Void&gt;&nbsp;timeout(long&nbsp;delay,
+                                                                           java.util.concurrent.TimeUnit&nbsp;unit)</pre>
 <div class="block">Create a Promise timer that throws a PromiseTimeoutException after
  a given timeout.
 
@@ -305,10 +305,10 @@ extends java.lang.Object</pre>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>delayed</h4>
-<pre>public static&nbsp;&lt;A&gt;&nbsp;<a href="../../../play/libs/F.Promise.html" title="class in play.libs">F.Promise</a>&lt;A&gt;&nbsp;delayed(java.util.function.Supplier&lt;A&gt;&nbsp;supplier,
-                                       long&nbsp;delay,
-                                       java.util.concurrent.TimeUnit&nbsp;unit,
-                                       java.util.concurrent.Executor&nbsp;executor)</pre>
+<pre>public static&nbsp;&lt;A&gt;&nbsp;java.util.concurrent.CompletionStage&lt;A&gt;&nbsp;delayed(java.util.function.Supplier&lt;A&gt;&nbsp;supplier,
+                                                                  long&nbsp;delay,
+                                                                  java.util.concurrent.TimeUnit&nbsp;unit,
+                                                                  java.util.concurrent.Executor&nbsp;executor)</pre>
 <div class="block">Create a Promise which, after a delay, will be redeemed with the result of a
  given supplier. The supplier will be called after the delay.</div>
 <dl>

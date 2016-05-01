@@ -44,7 +44,7 @@ Or:
 
 ```scala
 libraryDependencies ++= Seq(
-  "com.typesafe.play" %% "play-slick" % "2.0.0"
+  "com.typesafe.play" %% "play-slick" % "2.0.0",
   "com.typesafe.play" %% "play-slick-evolutions" % "2.0.0"
 )
 ```
@@ -63,7 +63,7 @@ If your project is using [[ScalaTest + Play|ScalaTestingWithScalaTest]], you nee
 
 ```scala
 libraryDependencies ++= Seq(
-  "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.0" % "test"
+  "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.1" % "test"
 )
 ```
 
@@ -127,7 +127,7 @@ You can find more details on how to set up Play with different logging framework
 
 Play WS has been upgraded to use [AsyncHttpClient 2](https://github.com/AsyncHttpClient/async-http-client).  This is a major upgrade that uses Netty 4.0. Most of the changes in AHC 2.0 are under the hood, but AHC has some significant refactorings which require breaking changes to the WS API:
 
-* `AsyncHttpClientConfig` replaced by [`DefaultAsyncHttpClientConfig`](https://static.javadoc.io/org.asynchttpclient/async-http-client/2.0.0-RC12/org/asynchttpclient/DefaultAsyncHttpClientConfig.html).
+* `AsyncHttpClientConfig` replaced by [`DefaultAsyncHttpClientConfig`](https://static.javadoc.io/org.asynchttpclient/async-http-client/2.0.0/org/asynchttpclient/DefaultAsyncHttpClientConfig.html).
 * [`allowPoolingConnection`](https://static.javadoc.io/com.ning/async-http-client/1.9.32/com/ning/http/client/AsyncHttpClientConfig.html#allowPoolingConnections) and `allowSslConnectionPool` are combined in AsyncHttpClient into a single `keepAlive` variable.  As such, `play.ws.ning.allowPoolingConnection` and `play.ws.ning.allowSslConnectionPool` are not valid and will throw an exception if configured.
 * [`webSocketIdleTimeout`](https://static.javadoc.io/com.ning/async-http-client/1.9.32/com/ning/http/client/AsyncHttpClientConfig.html#webSocketTimeout) has been removed, so is no longer available in `AhcWSClientConfig`.
 * [`ioThreadMultiplier`](https://static.javadoc.io/com.ning/async-http-client/1.9.32/com/ning/http/client/AsyncHttpClientConfig.html#ioThreadMultiplier) has been removed, so is no longer available in `AhcWSClientConfig`.
@@ -322,3 +322,19 @@ Modify any `play.server.netty.option` keys to use the new keys defined in [Chann
 | `play.server.netty.option.backlog` | `play.server.netty.option.SO_BACKLOG` |
 | `play.server.netty.option.child.keepAlive` | `play.server.netty.option.child.SO_KEEPALIVE` |
 | `play.server.netty.option.child.tcpNoDelay` | `play.server.netty.option.child.TCP_NODELAY` |
+
+## Changes to `sendFile`, `sendPath` and `sendResource` methods
+
+Java (`play.mvc.StatusHeader`) and Scala (`play.api.mvc.Results.Status`) APIs had the following behavior before:
+
+| API   | Method                                    | Default      |
+|:------|:------------------------------------------|:-------------|
+| Scala | `play.api.mvc.Results.StatussendResource` | `inline`     |
+| Scala | `play.api.mvc.Results.StatussendPath`     | `attachment` |
+| Scala | `play.api.mvc.Results.StatussendFile`     | `attachment` |
+| Java  | `play.mvc.StatusHeader.sendInputStream`   | `none`       |
+| Java  | `play.mvc.StatusHeader.sendResource`      | `inline`     |
+| Java  | `play.mvc.StatusHeader.sendPath`          | `attachment` |
+| Java  | `play.mvc.StatusHeader.sendFile`          | `inline`     |
+
+In other words, they were mixing `inline` and `attachment` modes when delivering files. Now, when delivering files, paths and resources uses `inline` as the default behavior. Of course, you can alternate between these two modes using the parameters present in these methods.

@@ -549,7 +549,7 @@ infinite streams, while still allowing the connection to be kept alive and reuse
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">sendFile</span><span class="params">(<span name="content">content: <span class="extype" name="java.io.File">File</span></span>, <span name="inline">inline: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="fileName">fileName: (<span class="extype" name="java.io.File">File</span>) ⇒ <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">_.getName</span></span>, <span name="onClose">onClose: () ⇒ <span class="extype" name="scala.Unit">Unit</span> = <span class="symbol">() =&gt; ()</span></span>)</span><span class="result">: <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>
+        <span class="name">sendFile</span><span class="params">(<span name="content">content: <span class="extype" name="java.io.File">File</span></span>, <span name="inline">inline: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="fileName">fileName: (<span class="extype" name="java.io.File">File</span>) ⇒ <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">_.getName</span></span>, <span name="onClose">onClose: () ⇒ <span class="extype" name="scala.Unit">Unit</span> = <span class="symbol">() =&gt; ()</span></span>)</span><span class="result">: <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.Results$Status@sendFile(content:java.io.File,inline:Boolean,fileName:java.io.File=&gt;String,onClose:()=&gt;Unit):play.api.mvc.Result" title="Permalink" target="_top">
@@ -567,7 +567,7 @@ infinite streams, while still allowing the connection to be kept alive and reuse
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">sendPath</span><span class="params">(<span name="content">content: <span class="extype" name="java.nio.file.Path">Path</span></span>, <span name="inline">inline: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="fileName">fileName: (<span class="extype" name="java.nio.file.Path">Path</span>) ⇒ <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">_.getFileName.toString</span></span>, <span name="onClose">onClose: () ⇒ <span class="extype" name="scala.Unit">Unit</span> = <span class="symbol">() =&gt; ()</span></span>)</span><span class="result">: <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>
+        <span class="name">sendPath</span><span class="params">(<span name="content">content: <span class="extype" name="java.nio.file.Path">Path</span></span>, <span name="inline">inline: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="fileName">fileName: (<span class="extype" name="java.nio.file.Path">Path</span>) ⇒ <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">_.getFileName.toString</span></span>, <span name="onClose">onClose: () ⇒ <span class="extype" name="scala.Unit">Unit</span> = <span class="symbol">() =&gt; ()</span></span>)</span><span class="result">: <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.Results$Status@sendPath(content:java.nio.file.Path,inline:Boolean,fileName:java.nio.file.Path=&gt;String,onClose:()=&gt;Unit):play.api.mvc.Result" title="Permalink" target="_top">
@@ -822,54 +822,7 @@ cookies then the new cookies will be merged with the old cookies.</p><p>For exam
 
         
 
-        <div id="values" class="values members">
-              <h3>Deprecated Value Members</h3>
-              <ol><li name="play.api.mvc.Results.Status#chunked" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="chunked[C](content:play.api.libs.iteratee.Enumerator[C])(implicitwriteable:play.api.http.Writeable[C]):play.api.mvc.Result"></a>
-      <a id="chunked[C](Enumerator[C])(Writeable[C]):Result"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 2.5.0) Use chunked with an Akka streams Source instead">chunked</span><span class="tparams">[<span name="C">C</span>]</span><span class="params">(<span name="content">content: <a href="../libs/iteratee/Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.mvc.Results.Status.chunked.C">C</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="writeable">writeable: <a href="../http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<span class="extype" name="play.api.mvc.Results.Status.chunked.C">C</span>]</span>)</span><span class="result">: <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.Results$Status@chunked[C](content:play.api.libs.iteratee.Enumerator[C])(implicitwriteable:play.api.http.Writeable[C]):play.api.mvc.Result" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Feed the content as the response, using chunked transfer encoding.</p><div class="fullcomment"><div class="comment cmt"><p>Feed the content as the response, using chunked transfer encoding.</p><p>Chunked transfer encoding is only supported for HTTP 1.1 clients.  If the client is an HTTP 1.0 client, Play will
-instead return a 505 error code.</p><p>Chunked encoding allows the server to send a response where the content length is not known, or for potentially
-infinite streams, while still allowing the connection to be kept alive and reused for the next request.
-</p></div><dl class="paramcmts block"><dt class="param">content</dt><dd class="cmt"><p>Enumerator providing the content to stream.</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.5.0)</i> Use chunked with an Akka streams Source instead</p></dd></dl></div>
-    </li><li name="play.api.mvc.Results.Status#feed" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="feed[C](content:play.api.libs.iteratee.Enumerator[C])(implicitwriteable:play.api.http.Writeable[C]):play.api.mvc.Result"></a>
-      <a id="feed[C](Enumerator[C])(Writeable[C]):Result"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 2.5.0) Use sendEntity with a Streamed entity instead">feed</span><span class="tparams">[<span name="C">C</span>]</span><span class="params">(<span name="content">content: <a href="../libs/iteratee/Enumerator.html" class="extype" name="play.api.libs.iteratee.Enumerator">Enumerator</a>[<span class="extype" name="play.api.mvc.Results.Status.feed.C">C</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="writeable">writeable: <a href="../http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<span class="extype" name="play.api.mvc.Results.Status.feed.C">C</span>]</span>)</span><span class="result">: <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.Results$Status@feed[C](content:play.api.libs.iteratee.Enumerator[C])(implicitwriteable:play.api.http.Writeable[C]):play.api.mvc.Result" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Feed the content as the response, closing the connection when done.</p><div class="fullcomment"><div class="comment cmt"><p>Feed the content as the response, closing the connection when done.
-</p></div><dl class="paramcmts block"><dt class="param">content</dt><dd class="cmt"><p>Enumerator providing the content to stream.</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.5.0)</i> Use sendEntity with a Streamed entity instead</p></dd></dl></div>
-    </li></ol>
-            </div>
+        
         </div>
 
         <div id="inheritedMembers">

@@ -132,7 +132,7 @@ for example in case of unit testing, you can easily achieve this using:</p><pre>
 be manually implemented, if compile time wiring is preferred, or core/third party implementations may be used, for
 example that provide a runtime dependency injection framework.</p><p>During dev mode, an ApplicationLoader will be instantiated once, and called once, each time the application is
 reloaded. In prod mode, the ApplicationLoader will be instantiated and called once when the application is started.</p><p>Out of the box Play provides a Java and Scala default implementation based on Guice. The Scala implementation is the
-<a href="inject/guice/GuiceApplicationLoader.html" class="extype" name="play.api.inject.guice.GuiceApplicationLoader">play.api.inject.guice.GuiceApplicationLoader</a>.</p><p>A custom application loader can be configured using the <code>application.loader</code> configuration property.
+<a href="inject/guice/GuiceApplicationLoader.html" class="extype" name="play.api.inject.guice.GuiceApplicationLoader">play.api.inject.guice.GuiceApplicationLoader</a>.</p><p>A custom application loader can be configured using the <code>play.application.loader</code> configuration property.
 Implementations must define a no-arg constructor.
 </p></div></div>
     </li><li name="play.api.BuiltInComponents" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
@@ -311,32 +311,6 @@ Implementations must define a no-arg constructor.
       </a>
     </span>
       <p class="shortcomment cmt">Generic exception for unexpected error cases.</p>
-    </li><li name="play.api.GlobalSettings" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="GlobalSettingsextendsAnyRef"></a>
-      <a id="GlobalSettings:GlobalSettings"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">trait</span>
-      </span>
-      <span class="symbol">
-        <a href="GlobalSettings.html"><span class="name deprecated" title="Deprecated: (Since version 2.5.0) Use dependency injection">GlobalSettings</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#play.api.package@GlobalSettingsextendsAnyRef" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Defines an application’s global settings.</p><div class="fullcomment"><div class="comment cmt"><p>Defines an application’s global settings.</p><p>To define your own global settings, just create a <code>Global</code> object in the <code>_root_</code> package.</p><pre><span class="kw">object</span> Global <span class="kw">extends</span> GlobalSettings {
-
-  <span class="kw">override</span> <span class="kw">def</span> onStart(app: Application) {
-    Logger.info(<span class="lit">"Application is started!!!"</span>)
-  }
-
-}</pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.5.0)</i> Use dependency injection</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -397,23 +371,6 @@ Implementations must define a no-arg constructor.
       <p class="shortcomment cmt">This object provides a set of operations to create <code>Configuration</code> values.</p><div class="fullcomment"><div class="comment cmt"><p>This object provides a set of operations to create <code>Configuration</code> values.</p><p>For example, to load a <code>Configuration</code> in a running application:</p><pre><span class="kw">val</span> config = Configuration.load()
 <span class="kw">val</span> foo = config.getString(<span class="lit">"foo"</span>).getOrElse(<span class="lit">"boo"</span>)</pre><p>The underlying implementation is provided by https://github.com/typesafehub/config.
 </p></div></div>
-    </li><li name="play.api.DefaultGlobal" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="DefaultGlobal"></a>
-      <a id="DefaultGlobal:DefaultGlobal"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a href="DefaultGlobal$.html"><span class="name">DefaultGlobal</span></a><span class="result"> extends <a href="GlobalSettings$.html#Deprecated=play.api.GlobalSettings" class="extmbr" name="play.api.GlobalSettings.Deprecated">Deprecated</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#play.api.package@DefaultGlobal" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">The default global settings if not defined in the application.</p>
     </li><li name="play.api.Environment" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Environment"></a>
       <a id="Environment:Environment"></a>
@@ -427,23 +384,6 @@ Implementations must define a no-arg constructor.
       </span>
       </h4><span class="permalink">
       <a href="../../index.html#play.api.package@Environment" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
-    </li><li name="play.api.GlobalSettings" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="GlobalSettings"></a>
-      <a id="GlobalSettings:GlobalSettings"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a href="GlobalSettings$.html"><span class="name">GlobalSettings</span></a>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#play.api.package@GlobalSettings" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -534,6 +474,23 @@ You can import the currently running application in a scope using:</p><pre><span
       </a>
     </span>
       <p class="shortcomment cmt">Contains the Cache access API.</p>
+    </li><li name="play.api.controllers" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="controllers"></a>
+      <a id="controllers:controllers"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="controllers/package.html"><span class="name">controllers</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@controllers" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="play.api.data" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="data"></a>
       <a id="data:data"></a>

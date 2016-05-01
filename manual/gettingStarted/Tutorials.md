@@ -52,6 +52,10 @@ Because some of the blog posts have been written a while ago, this section is or
 
 ### 2.5.x
 
+#### Dependency Injection
+
+* [Dependency Injection in Play Framework using Scala](http://www.schibsted.pl/2016/04/dependency-injection-play-framework-scala/) by Krzysztof Pado. 
+
 #### Akka Streams
 
 * [Akka Streams integration in Play Framework 2.5](https://loicdescotte.github.io/posts/play25-akka-streams/) by Loïc Descotte.
@@ -91,6 +95,9 @@ Justin Rodenbostel of SPR Consulting also has two blog posts on building REST AP
 #### Slick
 
 * [Play framework, Slick and MySQL Tutorial](http://pedrorijo.com/blog/play-slick/) by Pedro Rijo.
+
+#### RethinkDB
+* [A classic CRUD application with Play 2.4.x, Scala and RethinkDB](https://rklicksolutions.wordpress.com/2016/02/03/play-2-4-x-rethinkdb-crud-application/) by [Rklick](https://github.com/rklick-solutions)
 
 #### Forms
 
