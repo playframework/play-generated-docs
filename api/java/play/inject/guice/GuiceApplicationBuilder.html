@@ -17,8 +17,8 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":9,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10};
-var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
+var methods = {"i0":10,"i1":9,"i2":42,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":42,"i9":42,"i10":10,"i11":10,"i12":10};
+var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"],32:["t6","Deprecated Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -159,7 +159,7 @@ extends <a href="../../../play/inject/guice/GuiceBuilder.html" title="class in p
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t1" class="tableTab"><span><a href="javascript:show(1);">Static Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t1" class="tableTab"><span><a href="javascript:show(1);">Static Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t6" class="tableTab"><span><a href="javascript:show(32);">Deprecated Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
@@ -177,7 +177,9 @@ extends <a href="../../../play/inject/guice/GuiceBuilder.html" title="class in p
 <tr id="i2" class="altColor">
 <td class="colFirst"><code><a href="../../../play/inject/guice/GuiceApplicationBuilder.html" title="class in play.inject.guice">GuiceApplicationBuilder</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../play/inject/guice/GuiceApplicationBuilder.html#load-java.util.function.BiFunction-">load</a></span>(java.util.function.BiFunction&lt;<a href="../../../play/Environment.html" title="class in play">Environment</a>,<a href="../../../play/Configuration.html" title="class in play">Configuration</a>,java.util.List&lt;play.api.inject.guice.GuiceableModule&gt;&gt;&nbsp;loader)</code>
-<div class="block">Set the module loader.</div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">Use withModuleLoader instead</span></div>
+</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
@@ -206,20 +208,42 @@ extends <a href="../../../play/inject/guice/GuiceBuilder.html" title="class in p
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code><a href="../../../play/inject/guice/GuiceApplicationBuilder.html" title="class in play.inject.guice">GuiceApplicationBuilder</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../play/inject/guice/GuiceApplicationBuilder.html#loadConfig-play.Configuration-">loadConfig</a></span>(<a href="../../../play/Configuration.html" title="class in play">Configuration</a>&nbsp;conf)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../play/inject/guice/GuiceApplicationBuilder.html#loadConfig-com.typesafe.config.Config-">loadConfig</a></span>(com.typesafe.config.Config&nbsp;conf)</code>
 <div class="block">Set the initial configuration.</div>
 </td>
 </tr>
 <tr id="i8" class="altColor">
 <td class="colFirst"><code><a href="../../../play/inject/guice/GuiceApplicationBuilder.html" title="class in play.inject.guice">GuiceApplicationBuilder</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../play/inject/guice/GuiceApplicationBuilder.html#loadConfig-java.util.function.Function-">loadConfig</a></span>(java.util.function.Function&lt;<a href="../../../play/Environment.html" title="class in play">Environment</a>,<a href="../../../play/Configuration.html" title="class in play">Configuration</a>&gt;&nbsp;load)</code>
-<div class="block">Set the initial configuration loader.</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../play/inject/guice/GuiceApplicationBuilder.html#loadConfig-play.Configuration-">loadConfig</a></span>(<a href="../../../play/Configuration.html" title="class in play">Configuration</a>&nbsp;conf)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">Use loadConfig(Config</span></div>
+</div>
 </td>
 </tr>
 <tr id="i9" class="rowColor">
+<td class="colFirst"><code><a href="../../../play/inject/guice/GuiceApplicationBuilder.html" title="class in play.inject.guice">GuiceApplicationBuilder</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../play/inject/guice/GuiceApplicationBuilder.html#loadConfig-java.util.function.Function-">loadConfig</a></span>(java.util.function.Function&lt;<a href="../../../play/Environment.html" title="class in play">Environment</a>,<a href="../../../play/Configuration.html" title="class in play">Configuration</a>&gt;&nbsp;load)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">Use withConfigLoader</span></div>
+</div>
+</td>
+</tr>
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>protected <a href="../../../play/inject/guice/GuiceApplicationBuilder.html" title="class in play.inject.guice">GuiceApplicationBuilder</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../play/inject/guice/GuiceApplicationBuilder.html#newBuilder-play.api.inject.guice.GuiceApplicationBuilder-">newBuilder</a></span>(play.api.inject.guice.GuiceApplicationBuilder&nbsp;builder)</code>
 <div class="block">Implementation of Self creation for GuiceBuilder.</div>
+</td>
+</tr>
+<tr id="i11" class="rowColor">
+<td class="colFirst"><code><a href="../../../play/inject/guice/GuiceApplicationBuilder.html" title="class in play.inject.guice">GuiceApplicationBuilder</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../play/inject/guice/GuiceApplicationBuilder.html#withConfigLoader-java.util.function.Function-">withConfigLoader</a></span>(java.util.function.Function&lt;<a href="../../../play/Environment.html" title="class in play">Environment</a>,com.typesafe.config.Config&gt;&nbsp;load)</code>
+<div class="block">Set the initial configuration loader.</div>
+</td>
+</tr>
+<tr id="i12" class="altColor">
+<td class="colFirst"><code><a href="../../../play/inject/guice/GuiceApplicationBuilder.html" title="class in play.inject.guice">GuiceApplicationBuilder</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../play/inject/guice/GuiceApplicationBuilder.html#withModuleLoader-java.util.function.BiFunction-">withModuleLoader</a></span>(java.util.function.BiFunction&lt;<a href="../../../play/Environment.html" title="class in play">Environment</a>,com.typesafe.config.Config,java.util.List&lt;play.api.inject.guice.GuiceableModule&gt;&gt;&nbsp;loader)</code>
+<div class="block">Set the module loader.</div>
 </td>
 </tr>
 </table>
@@ -228,7 +252,7 @@ extends <a href="../../../play/inject/guice/GuiceBuilder.html" title="class in p
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;play.inject.guice.<a href="../../../play/inject/guice/GuiceBuilder.html" title="class in play.inject.guice">GuiceBuilder</a></h3>
-<code><a href="../../../play/inject/guice/GuiceBuilder.html#applicationModule--">applicationModule</a>, <a href="../../../play/inject/guice/GuiceBuilder.html#bindings-play.api.inject.Binding...-">bindings</a>, <a href="../../../play/inject/guice/GuiceBuilder.html#bindings-play.api.inject.guice.GuiceableModule...-">bindings</a>, <a href="../../../play/inject/guice/GuiceBuilder.html#bindings-com.google.inject.Module...-">bindings</a>, <a href="../../../play/inject/guice/GuiceBuilder.html#bindings-play.api.inject.Module...-">bindings</a>, <a href="../../../play/inject/guice/GuiceBuilder.html#configure-play.Configuration-">configure</a>, <a href="../../../play/inject/guice/GuiceBuilder.html#configure-java.util.Map-">configure</a>, <a href="../../../play/inject/guice/GuiceBuilder.html#configure-java.lang.String-java.lang.Object-">configure</a>, <a href="../../../play/inject/guice/GuiceBuilder.html#disable-java.lang.Class...-">disable</a>, <a href="../../../play/inject/guice/GuiceBuilder.html#in-java.lang.ClassLoader-">in</a>, <a href="../../../play/inject/guice/GuiceBuilder.html#in-play.Environment-">in</a>, <a href="../../../play/inject/guice/GuiceBuilder.html#in-java.io.File-">in</a>, <a href="../../../play/inject/guice/GuiceBuilder.html#in-play.Mode-">in</a>, <a href="../../../play/inject/guice/GuiceBuilder.html#injector--">injector</a>, <a href="../../../play/inject/guice/GuiceBuilder.html#overrides-play.api.inject.Binding...-">overrides</a>, <a href="../../../play/inject/guice/GuiceBuilder.html#overrides-play.api.inject.guice.GuiceableModule...-">overrides</a>, <a href="../../../play/inject/guice/GuiceBuilder.html#overrides-com.google.inject.Module...-">overrides</a>, <a href="../../../play/inject/guice/GuiceBuilder.html#overrides-play.api.inject.Module...-">overrides</a></code></li>
+<code><a href="../../../play/inject/guice/GuiceBuilder.html#applicationModule--">applicationModule</a>, <a href="../../../play/inject/guice/GuiceBuilder.html#bindings-play.api.inject.Binding...-">bindings</a>, <a href="../../../play/inject/guice/GuiceBuilder.html#bindings-play.api.inject.guice.GuiceableModule...-">bindings</a>, <a href="../../../play/inject/guice/GuiceBuilder.html#bindings-com.google.inject.Module...-">bindings</a>, <a href="../../../play/inject/guice/GuiceBuilder.html#bindings-play.api.inject.Module...-">bindings</a>, <a href="../../../play/inject/guice/GuiceBuilder.html#configure-com.typesafe.config.Config-">configure</a>, <a href="../../../play/inject/guice/GuiceBuilder.html#configure-play.Configuration-">configure</a>, <a href="../../../play/inject/guice/GuiceBuilder.html#configure-java.util.Map-">configure</a>, <a href="../../../play/inject/guice/GuiceBuilder.html#configure-java.lang.String-java.lang.Object-">configure</a>, <a href="../../../play/inject/guice/GuiceBuilder.html#disable-java.lang.Class...-">disable</a>, <a href="../../../play/inject/guice/GuiceBuilder.html#in-java.lang.ClassLoader-">in</a>, <a href="../../../play/inject/guice/GuiceBuilder.html#in-play.Environment-">in</a>, <a href="../../../play/inject/guice/GuiceBuilder.html#in-java.io.File-">in</a>, <a href="../../../play/inject/guice/GuiceBuilder.html#in-play.Mode-">in</a>, <a href="../../../play/inject/guice/GuiceBuilder.html#injector--">injector</a>, <a href="../../../play/inject/guice/GuiceBuilder.html#overrides-play.api.inject.Binding...-">overrides</a>, <a href="../../../play/inject/guice/GuiceBuilder.html#overrides-play.api.inject.guice.GuiceableModule...-">overrides</a>, <a href="../../../play/inject/guice/GuiceBuilder.html#overrides-com.google.inject.Module...-">overrides</a>, <a href="../../../play/inject/guice/GuiceBuilder.html#overrides-play.api.inject.Module...-">overrides</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
@@ -277,18 +301,54 @@ extends <a href="../../../play/inject/guice/GuiceBuilder.html" title="class in p
 <pre>public static&nbsp;<a href="../../../play/inject/guice/GuiceApplicationBuilder.html" title="class in play.inject.guice">GuiceApplicationBuilder</a>&nbsp;fromScalaBuilder(play.api.inject.guice.GuiceApplicationBuilder&nbsp;builder)</pre>
 </li>
 </ul>
+<a name="withConfigLoader-java.util.function.Function-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>withConfigLoader</h4>
+<pre>public&nbsp;<a href="../../../play/inject/guice/GuiceApplicationBuilder.html" title="class in play.inject.guice">GuiceApplicationBuilder</a>&nbsp;withConfigLoader(java.util.function.Function&lt;<a href="../../../play/Environment.html" title="class in play">Environment</a>,com.typesafe.config.Config&gt;&nbsp;load)</pre>
+<div class="block">Set the initial configuration loader.
+ Overrides the default or any previously configured values.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>load</code> - the configuration loader</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the configured application builder</dd>
+</dl>
+</li>
+</ul>
 <a name="loadConfig-java.util.function.Function-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>loadConfig</h4>
-<pre>public&nbsp;<a href="../../../play/inject/guice/GuiceApplicationBuilder.html" title="class in play.inject.guice">GuiceApplicationBuilder</a>&nbsp;loadConfig(java.util.function.Function&lt;<a href="../../../play/Environment.html" title="class in play">Environment</a>,<a href="../../../play/Configuration.html" title="class in play">Configuration</a>&gt;&nbsp;load)</pre>
+<pre>@Deprecated
+public&nbsp;<a href="../../../play/inject/guice/GuiceApplicationBuilder.html" title="class in play.inject.guice">GuiceApplicationBuilder</a>&nbsp;loadConfig(java.util.function.Function&lt;<a href="../../../play/Environment.html" title="class in play">Environment</a>,<a href="../../../play/Configuration.html" title="class in play">Configuration</a>&gt;&nbsp;load)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Use withConfigLoader</span></div>
 <div class="block">Set the initial configuration loader.
  Overrides the default or any previously configured values.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>load</code> - the configuration loader</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the configured application builder</dd>
+</dl>
+</li>
+</ul>
+<a name="loadConfig-com.typesafe.config.Config-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>loadConfig</h4>
+<pre>public&nbsp;<a href="../../../play/inject/guice/GuiceApplicationBuilder.html" title="class in play.inject.guice">GuiceApplicationBuilder</a>&nbsp;loadConfig(com.typesafe.config.Config&nbsp;conf)</pre>
+<div class="block">Set the initial configuration.
+ Overrides the default or any previously configured values.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>conf</code> - the configuration</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the configured application builder</dd>
 </dl>
@@ -300,12 +360,31 @@ extends <a href="../../../play/inject/guice/GuiceBuilder.html" title="class in p
 <ul class="blockList">
 <li class="blockList">
 <h4>loadConfig</h4>
-<pre>public&nbsp;<a href="../../../play/inject/guice/GuiceApplicationBuilder.html" title="class in play.inject.guice">GuiceApplicationBuilder</a>&nbsp;loadConfig(<a href="../../../play/Configuration.html" title="class in play">Configuration</a>&nbsp;conf)</pre>
+<pre>@Deprecated
+public&nbsp;<a href="../../../play/inject/guice/GuiceApplicationBuilder.html" title="class in play.inject.guice">GuiceApplicationBuilder</a>&nbsp;loadConfig(<a href="../../../play/Configuration.html" title="class in play">Configuration</a>&nbsp;conf)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Use loadConfig(Config</span></div>
 <div class="block">Set the initial configuration.
  Overrides the default or any previously configured values.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>conf</code> - the configuration</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the configured application builder</dd>
+</dl>
+</li>
+</ul>
+<a name="withModuleLoader-java.util.function.BiFunction-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>withModuleLoader</h4>
+<pre>public&nbsp;<a href="../../../play/inject/guice/GuiceApplicationBuilder.html" title="class in play.inject.guice">GuiceApplicationBuilder</a>&nbsp;withModuleLoader(java.util.function.BiFunction&lt;<a href="../../../play/Environment.html" title="class in play">Environment</a>,com.typesafe.config.Config,java.util.List&lt;play.api.inject.guice.GuiceableModule&gt;&gt;&nbsp;loader)</pre>
+<div class="block">Set the module loader.
+ Overrides the default or any previously configured values.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>loader</code> - the configuration</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the configured application builder</dd>
 </dl>
@@ -317,7 +396,9 @@ extends <a href="../../../play/inject/guice/GuiceBuilder.html" title="class in p
 <ul class="blockList">
 <li class="blockList">
 <h4>load</h4>
-<pre>public&nbsp;<a href="../../../play/inject/guice/GuiceApplicationBuilder.html" title="class in play.inject.guice">GuiceApplicationBuilder</a>&nbsp;load(java.util.function.BiFunction&lt;<a href="../../../play/Environment.html" title="class in play">Environment</a>,<a href="../../../play/Configuration.html" title="class in play">Configuration</a>,java.util.List&lt;play.api.inject.guice.GuiceableModule&gt;&gt;&nbsp;loader)</pre>
+<pre>@Deprecated
+public&nbsp;<a href="../../../play/inject/guice/GuiceApplicationBuilder.html" title="class in play.inject.guice">GuiceApplicationBuilder</a>&nbsp;load(java.util.function.BiFunction&lt;<a href="../../../play/Environment.html" title="class in play">Environment</a>,<a href="../../../play/Configuration.html" title="class in play">Configuration</a>,java.util.List&lt;play.api.inject.guice.GuiceableModule&gt;&gt;&nbsp;loader)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Use withModuleLoader instead</span></div>
 <div class="block">Set the module loader.
  Overrides the default or any previously configured values.</div>
 <dl>

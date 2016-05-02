@@ -136,13 +136,22 @@ implements <a href="../play/Application.html" title="interface in play">Applicat
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../play/DefaultApplication.html#DefaultApplication-play.api.Application-play.Configuration-play.inject.Injector-">DefaultApplication</a></span>(play.api.Application&nbsp;application,
-                  <a href="../play/Configuration.html" title="class in play">Configuration</a>&nbsp;configuration,
+<td class="colOne"><code><span class="memberNameLink"><a href="../play/DefaultApplication.html#DefaultApplication-play.api.Application-com.typesafe.config.Config-play.inject.Injector-">DefaultApplication</a></span>(play.api.Application&nbsp;application,
+                  com.typesafe.config.Config&nbsp;config,
                   <a href="../play/inject/Injector.html" title="interface in play.inject">Injector</a>&nbsp;injector)</code>
 <div class="block">Create an application that wraps a Scala application.</div>
 </td>
 </tr>
 <tr class="rowColor">
+<td class="colOne"><code><span class="memberNameLink"><a href="../play/DefaultApplication.html#DefaultApplication-play.api.Application-play.Configuration-play.inject.Injector-">DefaultApplication</a></span>(play.api.Application&nbsp;application,
+                  <a href="../play/Configuration.html" title="class in play">Configuration</a>&nbsp;configuration,
+                  <a href="../play/inject/Injector.html" title="interface in play.inject">Injector</a>&nbsp;injector)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">Use the constructor that accepts Config</span></div>
+</div>
+</td>
+</tr>
+<tr class="altColor">
 <td class="colOne"><code><span class="memberNameLink"><a href="../play/DefaultApplication.html#DefaultApplication-play.api.Application-play.inject.Injector-">DefaultApplication</a></span>(play.api.Application&nbsp;application,
                   <a href="../play/inject/Injector.html" title="interface in play.inject">Injector</a>&nbsp;injector)</code>
 <div class="block">Create an application that wraps a Scala application.</div>
@@ -164,8 +173,8 @@ implements <a href="../play/Application.html" title="interface in play">Applicat
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code><a href="../play/Configuration.html" title="class in play">Configuration</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../play/DefaultApplication.html#configuration--">configuration</a></span>()</code>
+<td class="colFirst"><code>com.typesafe.config.Config</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../play/DefaultApplication.html#config--">config</a></span>()</code>
 <div class="block">Get the application configuration.</div>
 </td>
 </tr>
@@ -194,7 +203,7 @@ implements <a href="../play/Application.html" title="interface in play">Applicat
 <!--   -->
 </a>
 <h3>Methods inherited from interface&nbsp;play.<a href="../play/Application.html" title="interface in play">Application</a></h3>
-<code><a href="../play/Application.html#classloader--">classloader</a>, <a href="../play/Application.html#getFile-java.lang.String-">getFile</a>, <a href="../play/Application.html#isDev--">isDev</a>, <a href="../play/Application.html#isProd--">isProd</a>, <a href="../play/Application.html#isTest--">isTest</a>, <a href="../play/Application.html#path--">path</a>, <a href="../play/Application.html#resource-java.lang.String-">resource</a>, <a href="../play/Application.html#resourceAsStream-java.lang.String-">resourceAsStream</a></code></li>
+<code><a href="../play/Application.html#classloader--">classloader</a>, <a href="../play/Application.html#configuration--">configuration</a>, <a href="../play/Application.html#getFile-java.lang.String-">getFile</a>, <a href="../play/Application.html#isDev--">isDev</a>, <a href="../play/Application.html#isProd--">isProd</a>, <a href="../play/Application.html#isTest--">isTest</a>, <a href="../play/Application.html#path--">path</a>, <a href="../play/Application.html#resource-java.lang.String-">resource</a>, <a href="../play/Application.html#resourceAsStream-java.lang.String-">resourceAsStream</a></code></li>
 </ul>
 </li>
 </ul>
@@ -210,7 +219,7 @@ implements <a href="../play/Application.html" title="interface in play">Applicat
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="DefaultApplication-play.api.Application-play.Configuration-play.inject.Injector-">
+<a name="DefaultApplication-play.api.Application-com.typesafe.config.Config-play.inject.Injector-">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -218,8 +227,28 @@ implements <a href="../play/Application.html" title="interface in play">Applicat
 <h4>DefaultApplication</h4>
 <pre>@Inject
 public&nbsp;DefaultApplication(play.api.Application&nbsp;application,
-                                  <a href="../play/Configuration.html" title="class in play">Configuration</a>&nbsp;configuration,
+                                  com.typesafe.config.Config&nbsp;config,
                                   <a href="../play/inject/Injector.html" title="interface in play.inject">Injector</a>&nbsp;injector)</pre>
+<div class="block">Create an application that wraps a Scala application.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>application</code> - the application to wrap</dd>
+<dd><code>config</code> - the new application's configuration</dd>
+<dd><code>injector</code> - the new application's injector</dd>
+</dl>
+</li>
+</ul>
+<a name="DefaultApplication-play.api.Application-play.Configuration-play.inject.Injector-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>DefaultApplication</h4>
+<pre>@Deprecated
+public&nbsp;DefaultApplication(play.api.Application&nbsp;application,
+                                      <a href="../play/Configuration.html" title="class in play">Configuration</a>&nbsp;configuration,
+                                      <a href="../play/inject/Injector.html" title="interface in play.inject">Injector</a>&nbsp;injector)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Use the constructor that accepts Config</span></div>
 <div class="block">Create an application that wraps a Scala application.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -269,17 +298,17 @@ public&nbsp;DefaultApplication(play.api.Application&nbsp;application,
 </dl>
 </li>
 </ul>
-<a name="configuration--">
+<a name="config--">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>configuration</h4>
-<pre>public&nbsp;<a href="../play/Configuration.html" title="class in play">Configuration</a>&nbsp;configuration()</pre>
+<h4>config</h4>
+<pre>public&nbsp;com.typesafe.config.Config&nbsp;config()</pre>
 <div class="block">Get the application configuration.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../play/Application.html#configuration--">configuration</a></code>&nbsp;in interface&nbsp;<code><a href="../play/Application.html" title="interface in play">Application</a></code></dd>
+<dd><code><a href="../play/Application.html#config--">config</a></code>&nbsp;in interface&nbsp;<code><a href="../play/Application.html" title="interface in play">Application</a></code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the configuration</dd>
 </dl>

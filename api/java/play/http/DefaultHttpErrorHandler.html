@@ -135,10 +135,18 @@ implements <a href="../../play/http/HttpErrorHandler.html" title="interface in p
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../play/http/DefaultHttpErrorHandler.html#DefaultHttpErrorHandler-play.Configuration-play.Environment-play.api.OptionalSourceMapper-javax.inject.Provider-">DefaultHttpErrorHandler</a></span>(<a href="../../play/Configuration.html" title="class in play">Configuration</a>&nbsp;configuration,
+<td class="colOne"><code><span class="memberNameLink"><a href="../../play/http/DefaultHttpErrorHandler.html#DefaultHttpErrorHandler-com.typesafe.config.Config-play.Environment-play.api.OptionalSourceMapper-javax.inject.Provider-">DefaultHttpErrorHandler</a></span>(com.typesafe.config.Config&nbsp;config,
                        <a href="../../play/Environment.html" title="class in play">Environment</a>&nbsp;environment,
                        play.api.OptionalSourceMapper&nbsp;sourceMapper,
                        javax.inject.Provider&lt;play.api.routing.Router&gt;&nbsp;routes)</code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colOne"><code><span class="memberNameLink"><a href="../../play/http/DefaultHttpErrorHandler.html#DefaultHttpErrorHandler-play.Configuration-play.Environment-play.api.OptionalSourceMapper-javax.inject.Provider-">DefaultHttpErrorHandler</a></span>(<a href="../../play/Configuration.html" title="class in play">Configuration</a>&nbsp;config,
+                       <a href="../../play/Environment.html" title="class in play">Environment</a>&nbsp;environment,
+                       play.api.OptionalSourceMapper&nbsp;sourceMapper,
+                       javax.inject.Provider&lt;play.api.routing.Router&gt;&nbsp;routes)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+</td>
 </tr>
 </table>
 </li>
@@ -203,7 +211,7 @@ implements <a href="../../play/http/HttpErrorHandler.html" title="interface in p
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/http/DefaultHttpErrorHandler.html#onOtherClientError-play.mvc.Http.RequestHeader-int-java.lang.String-">onOtherClientError</a></span>(<a href="../../play/mvc/Http.RequestHeader.html" title="interface in play.mvc">Http.RequestHeader</a>&nbsp;request,
                   int&nbsp;statusCode,
                   java.lang.String&nbsp;message)</code>
-<div class="block">Invoked when a client error occurs, that is, an error in the 4xx series, which is not handled 
+<div class="block">Invoked when a client error occurs, that is, an error in the 4xx series, which is not handled
  by any of the other methods in this class already.</div>
 </td>
 </tr>
@@ -243,17 +251,31 @@ implements <a href="../../play/http/HttpErrorHandler.html" title="interface in p
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
+<a name="DefaultHttpErrorHandler-com.typesafe.config.Config-play.Environment-play.api.OptionalSourceMapper-javax.inject.Provider-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>DefaultHttpErrorHandler</h4>
+<pre>@Inject
+public&nbsp;DefaultHttpErrorHandler(com.typesafe.config.Config&nbsp;config,
+                                       <a href="../../play/Environment.html" title="class in play">Environment</a>&nbsp;environment,
+                                       play.api.OptionalSourceMapper&nbsp;sourceMapper,
+                                       javax.inject.Provider&lt;play.api.routing.Router&gt;&nbsp;routes)</pre>
+</li>
+</ul>
 <a name="DefaultHttpErrorHandler-play.Configuration-play.Environment-play.api.OptionalSourceMapper-javax.inject.Provider-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>DefaultHttpErrorHandler</h4>
-<pre>@Inject
-public&nbsp;DefaultHttpErrorHandler(<a href="../../play/Configuration.html" title="class in play">Configuration</a>&nbsp;configuration,
-                                       <a href="../../play/Environment.html" title="class in play">Environment</a>&nbsp;environment,
-                                       play.api.OptionalSourceMapper&nbsp;sourceMapper,
-                                       javax.inject.Provider&lt;play.api.routing.Router&gt;&nbsp;routes)</pre>
+<pre>@Deprecated
+public&nbsp;DefaultHttpErrorHandler(<a href="../../play/Configuration.html" title="class in play">Configuration</a>&nbsp;config,
+                                           <a href="../../play/Environment.html" title="class in play">Environment</a>&nbsp;environment,
+                                           play.api.OptionalSourceMapper&nbsp;sourceMapper,
+                                           javax.inject.Provider&lt;play.api.routing.Router&gt;&nbsp;routes)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 </li>
 </ul>
 </li>
@@ -341,7 +363,7 @@ public&nbsp;DefaultHttpErrorHandler(<a href="../../play/Configuration.html" titl
 <pre>protected&nbsp;java.util.concurrent.CompletionStage&lt;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&gt;&nbsp;onOtherClientError(<a href="../../play/mvc/Http.RequestHeader.html" title="interface in play.mvc">Http.RequestHeader</a>&nbsp;request,
                                                                           int&nbsp;statusCode,
                                                                           java.lang.String&nbsp;message)</pre>
-<div class="block">Invoked when a client error occurs, that is, an error in the 4xx series, which is not handled 
+<div class="block">Invoked when a client error occurs, that is, an error in the 4xx series, which is not handled
  by any of the other methods in this class already.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>

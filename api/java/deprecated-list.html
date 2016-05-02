@@ -74,6 +74,7 @@
 <li><a href="#interface">Deprecated Interfaces</a></li>
 <li><a href="#class">Deprecated Classes</a></li>
 <li><a href="#method">Deprecated Methods</a></li>
+<li><a href="#constructor">Deprecated Constructors</a></li>
 </ul>
 </div>
 <div class="contentContainer"><a name="interface">
@@ -113,26 +114,31 @@
 </td>
 </tr>
 <tr class="rowColor">
+<td class="colOne"><a href="play/Configuration.html" title="class in play">play.Configuration</a>
+<div class="block"><span class="deprecationComment">Use Config instead.</span></div>
+</td>
+</tr>
+<tr class="altColor">
 <td class="colOne"><a href="play/libs/Crypto.html" title="class in play.libs">play.libs.Crypto</a>
 <div class="block"><span class="deprecationComment">This class is deprecated and will be removed in future versions.</span></div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colOne"><a href="play/db/DB.html" title="class in play.db">play.db.DB</a>
 <div class="block"><span class="deprecationComment">Use play.api.Database</span></div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colOne"><a href="play/test/FakeApplication.html" title="class in play.test">play.test.FakeApplication</a>
 <div class="block"><span class="deprecationComment">as of 2.5.0. Use GuiceApplicationBuilder to build your application instance.</span></div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colOne"><a href="play/libs/ws/ning/NingWSClient.html" title="class in play.libs.ws.ning">play.libs.ws.ning.NingWSClient</a>
 <div class="block"><span class="deprecationComment">Use AhcWSClient instead</span></div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colOne"><a href="play/Play.html" title="class in play">play.Play</a>
 <div class="block"><span class="deprecationComment">Please use dependency injection.  Deprecated since 2.5.0.</span></div>
 </td>
@@ -170,6 +176,22 @@
 <tr class="rowColor">
 <td class="colOne"><a href="play/libs/ws/WS.html#client--">play.libs.ws.WS.client()</a>
 <div class="block"><span class="deprecationComment">Please use a WSClient instance using DI (since 2.5)</span></div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colOne"><a href="play/test/FakeApplication.html#configuration--">play.test.FakeApplication.configuration()</a>
+<div class="block"><span class="deprecationComment">Use config</span></div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colOne"><a href="play/Application.html#configuration--">play.Application.configuration()</a></td>
+</tr>
+<tr class="altColor">
+<td class="colOne"><a href="play/inject/guice/GuiceBuilder.html#configure-play.Configuration-">play.inject.guice.GuiceBuilder.configure(Configuration)</a></td>
+</tr>
+<tr class="rowColor">
+<td class="colOne"><a href="play/db/ConnectionPool.html#create-java.lang.String-play.Configuration-play.Environment-">play.db.ConnectionPool.create(String, Configuration, Environment)</a>
+<div class="block"><span class="deprecationComment">Use create(String, Config, Environment</span></div>
 </td>
 </tr>
 <tr class="altColor">
@@ -256,18 +278,36 @@
 </td>
 </tr>
 <tr class="rowColor">
+<td class="colOne"><a href="play/ApplicationLoader.Context.html#initialConfiguration--">play.ApplicationLoader.Context.initialConfiguration()</a></td>
+</tr>
+<tr class="altColor">
 <td class="colOne"><a href="play/i18n/Messages.html#isDefined-play.i18n.Lang-java.lang.String-">play.i18n.Messages.isDefined(Lang, String)</a>
 <div class="block"><span class="deprecationComment">Use messages.isDefinedAt(key).  Deprecated since 2.5.0</span></div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colOne"><a href="play/i18n/Messages.html#isDefined-java.lang.String-">play.i18n.Messages.isDefined(String)</a>
 <div class="block"><span class="deprecationComment">Use messages.isDefinedAt(key).  Deprecated since 2.5.0</span></div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colOne"><a href="play/db/jpa/JPA.html#jpaApi--">play.db.jpa.JPA.jpaApi()</a>
 <div class="block"><span class="deprecationComment">as of 2.5.0. Inject a JPAApi instead.</span></div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colOne"><a href="play/inject/guice/GuiceApplicationBuilder.html#load-java.util.function.BiFunction-">play.inject.guice.GuiceApplicationBuilder.load(BiFunction&lt;Environment, Configuration, List&lt;GuiceableModule&gt;&gt;)</a>
+<div class="block"><span class="deprecationComment">Use withModuleLoader instead</span></div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colOne"><a href="play/inject/guice/GuiceApplicationBuilder.html#loadConfig-play.Configuration-">play.inject.guice.GuiceApplicationBuilder.loadConfig(Configuration)</a>
+<div class="block"><span class="deprecationComment">Use loadConfig(Config</span></div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colOne"><a href="play/inject/guice/GuiceApplicationBuilder.html#loadConfig-java.util.function.Function-">play.inject.guice.GuiceApplicationBuilder.loadConfig(Function&lt;Environment, Configuration&gt;)</a>
+<div class="block"><span class="deprecationComment">Use withConfigLoader</span></div>
 </td>
 </tr>
 <tr class="altColor">
@@ -379,29 +419,60 @@
 </td>
 </tr>
 <tr class="altColor">
+<td class="colOne"><a href="play/ApplicationLoader.Context.html#withConfiguration-play.Configuration-">play.ApplicationLoader.Context.withConfiguration(Configuration)</a></td>
+</tr>
+<tr class="rowColor">
 <td class="colOne"><a href="play/db/jpa/JPA.html#withTransaction-java.lang.Runnable-">play.db.jpa.JPA.withTransaction(Runnable)</a>
 <div class="block"><span class="deprecationComment">as of 2.5.0. Inject a JPAApi instead.</span></div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colOne"><a href="play/db/jpa/JPA.html#withTransaction-java.lang.String-boolean-java.util.function.Supplier-">play.db.jpa.JPA.withTransaction(String, boolean, Supplier&lt;T&gt;)</a>
 <div class="block"><span class="deprecationComment">as of 2.5.0. Inject a JPAApi instead.</span></div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colOne"><a href="play/db/jpa/JPA.html#withTransaction-java.util.function.Supplier-">play.db.jpa.JPA.withTransaction(Supplier&lt;T&gt;)</a>
 <div class="block"><span class="deprecationComment">as of 2.5.0. Inject a JPAApi instead.</span></div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colOne"><a href="play/http/ActionCreator.html#wrapAction-play.mvc.Action-">play.http.ActionCreator.wrapAction(Action)</a>
 <div class="block"><span class="deprecationComment">Use createAction and set play.http.actionComposition.executeActionCreatorActionFirst = true</span></div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colOne"><a href="play/http/HttpRequestHandler.html#wrapAction-play.mvc.Action-">play.http.HttpRequestHandler.wrapAction(Action)</a>
 <div class="block"><span class="deprecationComment">Use ActionCreator instead.</span></div>
 </td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<a name="constructor">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<table class="deprecatedSummary" border="0" cellpadding="3" cellspacing="0" summary="Deprecated Constructors table, listing deprecated constructors, and an explanation">
+<caption><span>Deprecated Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colOne"><a href="play/DefaultApplication.html#DefaultApplication-play.api.Application-play.Configuration-play.inject.Injector-">play.DefaultApplication(Application, Configuration, Injector)</a>
+<div class="block"><span class="deprecationComment">Use the constructor that accepts Config</span></div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colOne"><a href="play/db/DefaultDatabase.html#DefaultDatabase-java.lang.String-play.Configuration-">play.db.DefaultDatabase(String, Configuration)</a>
+<div class="block"><span class="deprecationComment">use the version that accepts Config</span></div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colOne"><a href="play/http/DefaultHttpErrorHandler.html#DefaultHttpErrorHandler-play.Configuration-play.Environment-play.api.OptionalSourceMapper-javax.inject.Provider-">play.http.DefaultHttpErrorHandler(Configuration, Environment, OptionalSourceMapper, Provider&lt;Router&gt;)</a></td>
 </tr>
 </tbody>
 </table>
