@@ -497,6 +497,32 @@ in the incoming request.</p>
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="play.core.server.common.ServerResultUtils#resultConversionWithErrorHandling" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="resultConversionWithErrorHandling[R](requestHeader:play.api.mvc.RequestHeader,result:play.api.mvc.Result,errorHandler:play.api.http.HttpErrorHandler)(resultConverter:play.api.mvc.Result=&gt;scala.concurrent.Future[R])(fallbackResponse:=&gt;R):scala.concurrent.Future[R]"></a>
+      <a id="resultConversionWithErrorHandling[R](RequestHeader,Result,HttpErrorHandler)((Result)⇒Future[R])(⇒R):Future[R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">resultConversionWithErrorHandling</span><span class="tparams">[<span name="R">R</span>]</span><span class="params">(<span name="requestHeader">requestHeader: <a href="../../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>, <span name="result">result: <a href="../../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>, <span name="errorHandler">errorHandler: <a href="../../../api/http/HttpErrorHandler.html" class="extype" name="play.api.http.HttpErrorHandler">HttpErrorHandler</a></span>)</span><span class="params">(<span name="resultConverter">resultConverter: (<a href="../../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>) ⇒ <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="play.core.server.common.ServerResultUtils.resultConversionWithErrorHandling.R">R</span>]</span>)</span><span class="params">(<span name="fallbackResponse">fallbackResponse: ⇒ <span class="extype" name="play.core.server.common.ServerResultUtils.resultConversionWithErrorHandling.R">R</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="play.core.server.common.ServerResultUtils.resultConversionWithErrorHandling.R">R</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.core.server.common.ServerResultUtils$@resultConversionWithErrorHandling[R](requestHeader:play.api.mvc.RequestHeader,result:play.api.mvc.Result,errorHandler:play.api.http.HttpErrorHandler)(resultConverter:play.api.mvc.Result=&gt;scala.concurrent.Future[R])(fallbackResponse:=&gt;R):scala.concurrent.Future[R]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Handles result conversion in a safe way.</p><div class="fullcomment"><div class="comment cmt"><p>Handles result conversion in a safe way.</p><p>1. Tries to convert the <code>Result</code>.
+2. If there's an error, calls the <code>HttpErrorHandler</code> to get a new
+   <code>Result</code>, then converts that.
+3. If there's an error with *that* <code>Result</code>, uses the
+   <code>DefaultHttpErrorHandler</code> to get another <code>Result</code>, then converts
+   that.
+4. Hopefully there are no more errors. :)
+5. If calling an <code>HttpErrorHandler</code> throws an exception, then a
+   fallback response is returned, without an conversion.
+</p></div></div>
     </li><li name="play.core.server.common.ServerResultUtils#splitSetCookieHeaders" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="splitSetCookieHeaders(headers:Map[String,String]):Iterable[(String,String)]"></a>
       <a id="splitSetCookieHeaders(Map[String,String]):Iterable[(String,String)]"></a>
@@ -555,18 +581,18 @@ be folded together, which Play's API unfortunately  does.)
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="play.core.server.common.ServerResultUtils#validateResult" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="validateResult(request:play.api.mvc.RequestHeader,result:play.api.mvc.Result)(implicitmat:akka.stream.Materializer):play.api.mvc.Result"></a>
-      <a id="validateResult(RequestHeader,Result)(Materializer):Result"></a>
+      <a id="validateResult(request:play.api.mvc.RequestHeader,result:play.api.mvc.Result,httpErrorHandler:play.api.http.HttpErrorHandler)(implicitmat:akka.stream.Materializer):scala.concurrent.Future[play.api.mvc.Result]"></a>
+      <a id="validateResult(RequestHeader,Result,HttpErrorHandler)(Materializer):Future[Result]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">validateResult</span><span class="params">(<span name="request">request: <a href="../../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>, <span name="result">result: <a href="../../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="mat">mat: <span class="extype" name="akka.stream.Materializer">Materializer</span></span>)</span><span class="result">: <a href="../../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>
+        <span class="name">validateResult</span><span class="params">(<span name="request">request: <a href="../../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>, <span name="result">result: <a href="../../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>, <span name="httpErrorHandler">httpErrorHandler: <a href="../../../api/http/HttpErrorHandler.html" class="extype" name="play.api.http.HttpErrorHandler">HttpErrorHandler</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="mat">mat: <span class="extype" name="akka.stream.Materializer">Materializer</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#play.core.server.common.ServerResultUtils$@validateResult(request:play.api.mvc.RequestHeader,result:play.api.mvc.Result)(implicitmat:akka.stream.Materializer):play.api.mvc.Result" title="Permalink" target="_top">
+      <a href="../../../../index.html#play.core.server.common.ServerResultUtils$@validateResult(request:play.api.mvc.RequestHeader,result:play.api.mvc.Result,httpErrorHandler:play.api.http.HttpErrorHandler)(implicitmat:akka.stream.Materializer):scala.concurrent.Future[play.api.mvc.Result]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
