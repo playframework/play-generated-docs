@@ -50,7 +50,7 @@
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Contains standard HTTP constants.
 For example:</p><pre><span class="kw">val</span> text = ContentTypes.TEXT
 <span class="kw">val</span> ok = Status.OK
-<span class="kw">val</span> accept = HeaderNames.ACCEPT</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.5.3/framework/src/play/src/main/scala/play/api/http/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
+<span class="kw">val</span> accept = HeaderNames.ACCEPT</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.5.4/framework/src/play/src/main/scala/play/api/http/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -209,6 +209,26 @@ For example:</p><pre><span class="kw">val</span> text = ContentTypes.TEXT
                 <span class="name">@Singleton</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="play.api.http.DefaultHttpFilters" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="DefaultHttpFiltersextendsHttpFilters"></a>
+      <a id="DefaultHttpFilters:DefaultHttpFilters"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="DefaultHttpFilters.html"><span class="name">DefaultHttpFilters</span></a><span class="result"> extends <a href="HttpFilters.html" class="extype" name="play.api.http.HttpFilters">HttpFilters</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.http.package@DefaultHttpFiltersextendsHttpFilters" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A default implementation of HttpFilters that accepts filters as a varargs constructor and exposes them as a
+filters sequence.</p><div class="fullcomment"><div class="comment cmt"><p>A default implementation of HttpFilters that accepts filters as a varargs constructor and exposes them as a
+filters sequence. For example:</p><pre><span class="kw">class</span> Filters @Inject()(csrfFilter: CSRFFilter, corsFilter: CORSFilter)
+  <span class="kw">extends</span> DefaultHttpFilters(csrfFilter, corsFilter)</pre></div></div>
     </li><li name="play.api.http.DefaultHttpRequestHandler" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="DefaultHttpRequestHandlerextendsHttpRequestHandler"></a>
       <a id="DefaultHttpRequestHandler:DefaultHttpRequestHandler"></a>
@@ -466,9 +486,9 @@ the base class for your custom <a href="HttpRequestHandler.html" class="extype" 
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Adapter from the Java HttpFliters to the Scala HttpFilters interface.</p>
+      <p class="shortcomment cmt">Adapter from the Java HttpFilters to the Scala HttpFilters interface.</p>
     </li><li name="play.api.http.JavaHttpFiltersDelegate" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="JavaHttpFiltersDelegateextendsHttpFilters"></a>
+      <a id="JavaHttpFiltersDelegateextendsDefaultHttpFilters"></a>
       <a id="JavaHttpFiltersDelegate:JavaHttpFiltersDelegate"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -476,10 +496,10 @@ the base class for your custom <a href="HttpRequestHandler.html" class="extype" 
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="JavaHttpFiltersDelegate.html"><span class="name">JavaHttpFiltersDelegate</span></a><span class="result"> extends <span class="extype" name="play.http.HttpFilters">http.HttpFilters</span></span>
+        <a href="JavaHttpFiltersDelegate.html"><span class="name">JavaHttpFiltersDelegate</span></a><span class="result"> extends <span class="extype" name="play.http.DefaultHttpFilters">http.DefaultHttpFilters</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.http.package@JavaHttpFiltersDelegateextendsHttpFilters" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.http.package@JavaHttpFiltersDelegateextendsDefaultHttpFilters" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
