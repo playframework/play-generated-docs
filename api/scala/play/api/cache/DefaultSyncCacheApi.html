@@ -1,9 +1,9 @@
 <!DOCTYPE html >
 <html>
         <head>
-          <title>UnboundCachedBuilder - play.api.cache.UnboundCachedBuilder</title>
-          <meta name="description" content="UnboundCachedBuilder - play.api.cache.UnboundCachedBuilder" />
-          <meta name="keywords" content="UnboundCachedBuilder play.api.cache.UnboundCachedBuilder" />
+          <title>DefaultSyncCacheApi - play.api.cache.DefaultSyncCacheApi</title>
+          <meta name="description" content="DefaultSyncCacheApi - play.api.cache.DefaultSyncCacheApi" />
+          <meta name="keywords" content="DefaultSyncCacheApi play.api.cache.DefaultSyncCacheApi" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
@@ -16,7 +16,7 @@
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../index.html';
-            var hash = 'play.api.cache.UnboundCachedBuilder';
+            var hash = 'play.api.cache.DefaultSyncCacheApi';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -30,10 +30,10 @@
       <div id="definition">
         <img alt="Class" src="../../../lib/class_big.png" />
         <p id="owner"><a href="../../package.html" class="extype" name="play">play</a>.<a href="../package.html" class="extype" name="play.api">api</a>.<a href="package.html" class="extype" name="play.api.cache">cache</a></p>
-        <h1>UnboundCachedBuilder</h1><h3><span class="morelinks"><div>Related Doc:
+        <h1>DefaultSyncCacheApi</h1><h3><span class="morelinks"><div>Related Doc:
             <a href="package.html" class="extype" name="play.api.cache">package cache</a>
           </div></span></h3><span class="permalink">
-      <a href="../../../index.html#play.api.cache.UnboundCachedBuilder" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.cache.DefaultSyncCacheApi" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -45,20 +45,14 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 2.5.0) Use CachedBuilder instead">UnboundCachedBuilder</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <span class="name">DefaultSyncCacheApi</span><span class="result"> extends <a href="SyncCacheApi.html" class="extype" name="play.api.cache.SyncCacheApi">SyncCacheApi</a> with <a href="CacheApi.html" class="extype" name="play.api.cache.CacheApi">CacheApi</a></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Builds an action with caching behavior. Typically created with one of the methods in the <code>Cached</code>
-companion object. Uses both server and client caches:</p><ul><li>Adds an <code>Expires</code> header to the response, so clients can cache response content ;</li><li>Adds an <code>Etag</code> header to the response, so clients can cache response content and ask the server for freshness ;</li><li>Cache the result on the server, so the underlying action is not computed at each call.</li></ul><p>Unlike <code>CachedBuilder</code>, an <code>UnboundCachedBuilder</code> isn't bound to a particular
-cache when it is created. It binds the default cache of the current application
-when it builds an action.
-</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.5.0)</i> Use CachedBuilder instead</p></dd><dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play-cache/src/main/scala/play/api/cache/Cached.scala" target="_blank">Cached.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A SyncCacheApi that wraps an AsyncCacheApi
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play-cache/src/main/scala/play/api/cache/SyncCacheApi.scala" target="_blank">SyncCacheApi.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="CacheApi.html" class="extype" name="play.api.cache.CacheApi">CacheApi</a>, <a href="SyncCacheApi.html" class="extype" name="play.api.cache.SyncCacheApi">SyncCacheApi</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -76,7 +70,7 @@ when it builds an action.
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="play.api.cache.UnboundCachedBuilder"><span>UnboundCachedBuilder</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="play.api.cache.DefaultSyncCacheApi"><span>DefaultSyncCacheApi</span></li><li class="in" name="play.api.cache.CacheApi"><span>CacheApi</span></li><li class="in" name="play.api.cache.SyncCacheApi"><span>SyncCacheApi</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -95,23 +89,26 @@ when it builds an action.
         <div id="allMembers">
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
-              <ol><li name="play.api.cache.UnboundCachedBuilder#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(key:play.api.mvc.RequestHeader=&gt;String,caching:PartialFunction[play.api.mvc.ResponseHeader,scala.concurrent.duration.Duration]):play.api.cache.UnboundCachedBuilder"></a>
-      <a id="&lt;init&gt;:UnboundCachedBuilder"></a>
+              <ol><li name="play.api.cache.DefaultSyncCacheApi#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="&lt;init&gt;(cacheApi:play.api.cache.AsyncCacheApi):play.api.cache.DefaultSyncCacheApi"></a>
+      <a id="&lt;init&gt;:DefaultSyncCacheApi"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">UnboundCachedBuilder</span><span class="params">(<span name="key">key: (<a href="../mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="caching">caching: <span class="extype" name="scala.PartialFunction">PartialFunction</span>[<a href="../mvc/ResponseHeader.html" class="extype" name="play.api.mvc.ResponseHeader">ResponseHeader</a>, <span class="extype" name="scala.concurrent.duration.Duration">Duration</span>]</span>)</span>
+        <span class="name">DefaultSyncCacheApi</span><span class="params">(<span name="cacheApi">cacheApi: <a href="AsyncCacheApi.html" class="extype" name="play.api.cache.AsyncCacheApi">AsyncCacheApi</a></span>)</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.cache.UnboundCachedBuilder@&lt;init&gt;(key:play.api.mvc.RequestHeader=&gt;String,caching:PartialFunction[play.api.mvc.ResponseHeader,scala.concurrent.duration.Duration]):play.api.cache.UnboundCachedBuilder" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.cache.DefaultSyncCacheApi@&lt;init&gt;(cacheApi:play.api.cache.AsyncCacheApi):play.api.cache.DefaultSyncCacheApi" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">key</dt><dd class="cmt"><p>Compute a key from the request header</p></dd><dt class="param">caching</dt><dd class="cmt"><p>A callback to get the number of seconds to cache results for</p></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@Inject</span><span class="args">()</span>
+              
+        </dd></dl></div>
     </li></ol>
             </div>
 
@@ -133,7 +130,7 @@ when it builds an action.
         <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.cache.UnboundCachedBuilder@!=(x$1:Any):Boolean" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.cache.DefaultSyncCacheApi@!=(x$1:Any):Boolean" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -150,7 +147,7 @@ when it builds an action.
         <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.cache.UnboundCachedBuilder@##():Int" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.cache.DefaultSyncCacheApi@##():Int" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -167,29 +164,11 @@ when it builds an action.
         <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.cache.UnboundCachedBuilder@==(x$1:Any):Boolean" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.cache.DefaultSyncCacheApi@==(x$1:Any):Boolean" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="play.api.cache.UnboundCachedBuilder#apply" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="apply(action:play.api.mvc.EssentialAction)(implicitapp:play.api.Application):play.api.mvc.EssentialAction"></a>
-      <a id="apply(EssentialAction)(Application):EssentialAction"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">apply</span><span class="params">(<span name="action">action: <a href="../mvc/EssentialAction.html" class="extype" name="play.api.mvc.EssentialAction">EssentialAction</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="app">app: <a href="../Application.html" class="extype" name="play.api.Application">Application</a></span>)</span><span class="result">: <a href="../mvc/EssentialAction.html" class="extype" name="play.api.mvc.EssentialAction">EssentialAction</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.api.cache.UnboundCachedBuilder@apply(action:play.api.mvc.EssentialAction)(implicitapp:play.api.Application):play.api.mvc.EssentialAction" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Compose the cache with an action
-</p>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -202,29 +181,28 @@ when it builds an action.
         <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.cache.UnboundCachedBuilder@asInstanceOf[T0]:T0" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.cache.DefaultSyncCacheApi@asInstanceOf[T0]:T0" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="play.api.cache.UnboundCachedBuilder#build" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="build(action:play.api.mvc.EssentialAction)(implicitapp:play.api.Application):play.api.mvc.EssentialAction"></a>
-      <a id="build(EssentialAction)(Application):EssentialAction"></a>
+    </li><li name="play.api.cache.DefaultSyncCacheApi#awaitTimeout" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="awaitTimeout:scala.concurrent.duration.Duration"></a>
+      <a id="awaitTimeout:Duration"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">def</span>
+        <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">build</span><span class="params">(<span name="action">action: <a href="../mvc/EssentialAction.html" class="extype" name="play.api.mvc.EssentialAction">EssentialAction</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="app">app: <a href="../Application.html" class="extype" name="play.api.Application">Application</a></span>)</span><span class="result">: <a href="../mvc/EssentialAction.html" class="extype" name="play.api.mvc.EssentialAction">EssentialAction</a></span>
+        <span class="name">awaitTimeout</span><span class="result">: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.cache.UnboundCachedBuilder@build(action:play.api.mvc.EssentialAction)(implicitapp:play.api.Application):play.api.mvc.EssentialAction" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.cache.DefaultSyncCacheApi@awaitTimeout:scala.concurrent.duration.Duration" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Compose the cache with an action
-</p>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
@@ -237,7 +215,7 @@ when it builds an action.
         <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.cache.UnboundCachedBuilder@clone():Object" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.cache.DefaultSyncCacheApi@clone():Object" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -248,58 +226,6 @@ when it builds an action.
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="play.api.cache.UnboundCachedBuilder#compose" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="compose(alternative:PartialFunction[play.api.mvc.ResponseHeader,scala.concurrent.duration.Duration]):play.api.cache.UnboundCachedBuilder"></a>
-      <a id="compose(PartialFunction[ResponseHeader,Duration]):UnboundCachedBuilder"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">compose</span><span class="params">(<span name="alternative">alternative: <span class="extype" name="scala.PartialFunction">PartialFunction</span>[<a href="../mvc/ResponseHeader.html" class="extype" name="play.api.mvc.ResponseHeader">ResponseHeader</a>, <span class="extype" name="scala.concurrent.duration.Duration">Duration</span>]</span>)</span><span class="result">: <a href="" class="extype" name="play.api.cache.UnboundCachedBuilder">UnboundCachedBuilder</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.api.cache.UnboundCachedBuilder@compose(alternative:PartialFunction[play.api.mvc.ResponseHeader,scala.concurrent.duration.Duration]):play.api.cache.UnboundCachedBuilder" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Compose the cache with new caching function</p><div class="fullcomment"><div class="comment cmt"><p>Compose the cache with new caching function</p></div><dl class="paramcmts block"><dt class="param">alternative</dt><dd class="cmt"><p>a closure getting the reponseheader and returning the duration
-       we should cache for</p></dd></dl></div>
-    </li><li name="play.api.cache.UnboundCachedBuilder#default" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="default(duration:Int):play.api.cache.UnboundCachedBuilder"></a>
-      <a id="default(Int):UnboundCachedBuilder"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">default</span><span class="params">(<span name="duration">duration: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="" class="extype" name="play.api.cache.UnboundCachedBuilder">UnboundCachedBuilder</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.api.cache.UnboundCachedBuilder@default(duration:Int):play.api.cache.UnboundCachedBuilder" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">The returned cache will store all responses whatever they may contain</p><div class="fullcomment"><div class="comment cmt"><p>The returned cache will store all responses whatever they may contain</p></div><dl class="paramcmts block"><dt class="param">duration</dt><dd class="cmt"><p>the number of seconds we should store responses</p></dd></dl></div>
-    </li><li name="play.api.cache.UnboundCachedBuilder#default" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="default(duration:scala.concurrent.duration.Duration):play.api.cache.UnboundCachedBuilder"></a>
-      <a id="default(Duration):UnboundCachedBuilder"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">default</span><span class="params">(<span name="duration">duration: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>)</span><span class="result">: <a href="" class="extype" name="play.api.cache.UnboundCachedBuilder">UnboundCachedBuilder</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.api.cache.UnboundCachedBuilder@default(duration:scala.concurrent.duration.Duration):play.api.cache.UnboundCachedBuilder" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">The returned cache will store all responses whatever they may contain</p><div class="fullcomment"><div class="comment cmt"><p>The returned cache will store all responses whatever they may contain</p></div><dl class="paramcmts block"><dt class="param">duration</dt><dd class="cmt"><p>how long we should store responses</p></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -312,7 +238,7 @@ when it builds an action.
         <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.cache.UnboundCachedBuilder@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.cache.DefaultSyncCacheApi@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -329,7 +255,7 @@ when it builds an action.
         <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.cache.UnboundCachedBuilder@equals(x$1:Any):Boolean" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.cache.DefaultSyncCacheApi@equals(x$1:Any):Boolean" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -346,7 +272,7 @@ when it builds an action.
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.cache.UnboundCachedBuilder@finalize():Unit" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.cache.DefaultSyncCacheApi@finalize():Unit" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -357,6 +283,25 @@ when it builds an action.
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="play.api.cache.DefaultSyncCacheApi#get" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="get[T](key:String)(implicitevidence$5:scala.reflect.ClassTag[T]):Option[T]"></a>
+      <a id="get[T](String)(ClassTag[T]):Option[T]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">get</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="key">key: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="play.api.cache.DefaultSyncCacheApi.get.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="play.api.cache.DefaultSyncCacheApi.get.T">T</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.cache.DefaultSyncCacheApi@get[T](key:String)(implicitevidence$5:scala.reflect.ClassTag[T]):Option[T]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Retrieve a value from the cache for the given type
+</p><div class="fullcomment"><div class="comment cmt"><p>Retrieve a value from the cache for the given type
+</p></div><dl class="paramcmts block"><dt class="param">key</dt><dd class="cmt"><p>Item key.</p></dd><dt>returns</dt><dd class="cmt"><p>result as Option[T]</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.cache.DefaultSyncCacheApi">DefaultSyncCacheApi</a> → <a href="CacheApi.html" class="extype" name="play.api.cache.CacheApi">CacheApi</a> → <a href="SyncCacheApi.html" class="extype" name="play.api.cache.SyncCacheApi">SyncCacheApi</a></dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>
@@ -369,11 +314,29 @@ when it builds an action.
         <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.cache.UnboundCachedBuilder@getClass():Class[_]" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.cache.DefaultSyncCacheApi@getClass():Class[_]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="play.api.cache.DefaultSyncCacheApi#getOrElseUpdate" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getOrElseUpdate[A](key:String,expiration:scala.concurrent.duration.Duration)(orElse:=&gt;A)(implicitevidence$6:scala.reflect.ClassTag[A]):A"></a>
+      <a id="getOrElseUpdate[A](String,Duration)(⇒A)(ClassTag[A]):A"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getOrElseUpdate</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="key">key: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="expiration">expiration: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>)</span><span class="params">(<span name="orElse">orElse: ⇒ <span class="extype" name="play.api.cache.DefaultSyncCacheApi.getOrElseUpdate.A">A</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="play.api.cache.DefaultSyncCacheApi.getOrElseUpdate.A">A</span>]</span>)</span><span class="result">: <span class="extype" name="play.api.cache.DefaultSyncCacheApi.getOrElseUpdate.A">A</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.cache.DefaultSyncCacheApi@getOrElseUpdate[A](key:String,expiration:scala.concurrent.duration.Duration)(orElse:=&gt;A)(implicitevidence$6:scala.reflect.ClassTag[A]):A" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Retrieve a value from the cache, or set it from a default function.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieve a value from the cache, or set it from a default function.
+</p></div><dl class="paramcmts block"><dt class="param">key</dt><dd class="cmt"><p>Item key.</p></dd><dt class="param">expiration</dt><dd class="cmt"><p>expiration period in seconds.</p></dd><dt class="param">orElse</dt><dd class="cmt"><p>The default function to invoke if the value was not found in cache.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.cache.DefaultSyncCacheApi">DefaultSyncCacheApi</a> → <a href="SyncCacheApi.html" class="extype" name="play.api.cache.SyncCacheApi">SyncCacheApi</a></dd></dl></div>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <a id="hashCode():Int"></a>
@@ -386,72 +349,11 @@ when it builds an action.
         <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.cache.UnboundCachedBuilder@hashCode():Int" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.cache.DefaultSyncCacheApi@hashCode():Int" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="play.api.cache.UnboundCachedBuilder#includeStatus" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="includeStatus(status:Int,duration:scala.concurrent.duration.Duration):play.api.cache.UnboundCachedBuilder"></a>
-      <a id="includeStatus(Int,Duration):UnboundCachedBuilder"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">includeStatus</span><span class="params">(<span name="status">status: <span class="extype" name="scala.Int">Int</span></span>, <span name="duration">duration: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>)</span><span class="result">: <a href="" class="extype" name="play.api.cache.UnboundCachedBuilder">UnboundCachedBuilder</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.api.cache.UnboundCachedBuilder@includeStatus(status:Int,duration:scala.concurrent.duration.Duration):play.api.cache.UnboundCachedBuilder" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Whether this cache should cache the specified response if the status code match
-This method will cache the result for duration seconds
-</p><div class="fullcomment"><div class="comment cmt"><p>Whether this cache should cache the specified response if the status code match
-This method will cache the result for duration seconds
-</p></div><dl class="paramcmts block"><dt class="param">status</dt><dd class="cmt"><p>the status code to check</p></dd><dt class="param">duration</dt><dd class="cmt"><p>how long should we cache the result for</p></dd></dl></div>
-    </li><li name="play.api.cache.UnboundCachedBuilder#includeStatus" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="includeStatus(status:Int,duration:Int):play.api.cache.UnboundCachedBuilder"></a>
-      <a id="includeStatus(Int,Int):UnboundCachedBuilder"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">includeStatus</span><span class="params">(<span name="status">status: <span class="extype" name="scala.Int">Int</span></span>, <span name="duration">duration: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="" class="extype" name="play.api.cache.UnboundCachedBuilder">UnboundCachedBuilder</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.api.cache.UnboundCachedBuilder@includeStatus(status:Int,duration:Int):play.api.cache.UnboundCachedBuilder" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Whether this cache should cache the specified response if the status code match
-This method will cache the result for duration seconds
-</p><div class="fullcomment"><div class="comment cmt"><p>Whether this cache should cache the specified response if the status code match
-This method will cache the result for duration seconds
-</p></div><dl class="paramcmts block"><dt class="param">status</dt><dd class="cmt"><p>the status code to check</p></dd><dt class="param">duration</dt><dd class="cmt"><p>the number of seconds to cache the result for</p></dd></dl></div>
-    </li><li name="play.api.cache.UnboundCachedBuilder#includeStatus" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="includeStatus(status:Int):play.api.cache.UnboundCachedBuilder"></a>
-      <a id="includeStatus(Int):UnboundCachedBuilder"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">includeStatus</span><span class="params">(<span name="status">status: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="" class="extype" name="play.api.cache.UnboundCachedBuilder">UnboundCachedBuilder</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.api.cache.UnboundCachedBuilder@includeStatus(status:Int):play.api.cache.UnboundCachedBuilder" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Whether this cache should cache the specified response if the status code match
-This method will cache the result forever
-</p>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -464,7 +366,7 @@ This method will cache the result forever
         <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.cache.UnboundCachedBuilder@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.cache.DefaultSyncCacheApi@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -481,7 +383,7 @@ This method will cache the result forever
         <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.cache.UnboundCachedBuilder@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.cache.DefaultSyncCacheApi@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -498,7 +400,7 @@ This method will cache the result forever
         <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.cache.UnboundCachedBuilder@notify():Unit" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.cache.DefaultSyncCacheApi@notify():Unit" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -515,11 +417,48 @@ This method will cache the result forever
         <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.cache.UnboundCachedBuilder@notifyAll():Unit" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.cache.DefaultSyncCacheApi@notifyAll():Unit" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="play.api.cache.DefaultSyncCacheApi#remove" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="remove(key:String):Unit"></a>
+      <a id="remove(String):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">remove</span><span class="params">(<span name="key">key: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.cache.DefaultSyncCacheApi@remove(key:String):Unit" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Remove a value from the cache
+</p><div class="fullcomment"><div class="comment cmt"><p>Remove a value from the cache
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.cache.DefaultSyncCacheApi">DefaultSyncCacheApi</a> → <a href="CacheApi.html" class="extype" name="play.api.cache.CacheApi">CacheApi</a> → <a href="SyncCacheApi.html" class="extype" name="play.api.cache.SyncCacheApi">SyncCacheApi</a></dd></dl></div>
+    </li><li name="play.api.cache.DefaultSyncCacheApi#set" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="set(key:String,value:Any,expiration:scala.concurrent.duration.Duration):Unit"></a>
+      <a id="set(String,Any,Duration):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">set</span><span class="params">(<span name="key">key: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="value">value: <span class="extype" name="scala.Any">Any</span></span>, <span name="expiration">expiration: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.cache.DefaultSyncCacheApi@set(key:String,value:Any,expiration:scala.concurrent.duration.Duration):Unit" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Set a value into the cache.</p><div class="fullcomment"><div class="comment cmt"><p>Set a value into the cache.
+</p></div><dl class="paramcmts block"><dt class="param">key</dt><dd class="cmt"><p>Item key.</p></dd><dt class="param">value</dt><dd class="cmt"><p>Item value.</p></dd><dt class="param">expiration</dt><dd class="cmt"><p>Expiration time.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.cache.DefaultSyncCacheApi">DefaultSyncCacheApi</a> → <a href="CacheApi.html" class="extype" name="play.api.cache.CacheApi">CacheApi</a> → <a href="SyncCacheApi.html" class="extype" name="play.api.cache.SyncCacheApi">SyncCacheApi</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -532,7 +471,7 @@ This method will cache the result forever
         <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.cache.UnboundCachedBuilder@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.cache.DefaultSyncCacheApi@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -549,7 +488,7 @@ This method will cache the result forever
         <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.cache.UnboundCachedBuilder@toString():String" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.cache.DefaultSyncCacheApi@toString():String" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -566,7 +505,7 @@ This method will cache the result forever
         <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.cache.UnboundCachedBuilder@wait():Unit" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.cache.DefaultSyncCacheApi@wait():Unit" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -589,7 +528,7 @@ This method will cache the result forever
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.cache.UnboundCachedBuilder@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.cache.DefaultSyncCacheApi@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -612,7 +551,7 @@ This method will cache the result forever
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.cache.UnboundCachedBuilder@wait(x$1:Long):Unit" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.cache.DefaultSyncCacheApi@wait(x$1:Long):Unit" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -628,11 +567,39 @@ This method will cache the result forever
 
         
 
-        
+        <div id="values" class="values members">
+              <h3>Deprecated Value Members</h3>
+              <ol><li name="play.api.cache.DefaultSyncCacheApi#getOrElse" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getOrElse[A](key:String,expiration:scala.concurrent.duration.Duration)(orElse:=&gt;A)(implicitevidence$7:scala.reflect.ClassTag[A]):A"></a>
+      <a id="getOrElse[A](String,Duration)(⇒A)(ClassTag[A]):A"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use getOrElseUpdate">getOrElse</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="key">key: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="expiration">expiration: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>)</span><span class="params">(<span name="orElse">orElse: ⇒ <span class="extype" name="play.api.cache.DefaultSyncCacheApi.getOrElse.A">A</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="scala.reflect.ClassTag">ClassTag</span>[<span class="extype" name="play.api.cache.DefaultSyncCacheApi.getOrElse.A">A</span>]</span>)</span><span class="result">: <span class="extype" name="play.api.cache.DefaultSyncCacheApi.getOrElse.A">A</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.cache.DefaultSyncCacheApi@getOrElse[A](key:String,expiration:scala.concurrent.duration.Duration)(orElse:=&gt;A)(implicitevidence$7:scala.reflect.ClassTag[A]):A" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Retrieve a value from the cache, or set it from a default function.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieve a value from the cache, or set it from a default function.
+</p></div><dl class="paramcmts block"><dt class="param">key</dt><dd class="cmt"><p>Item key.</p></dd><dt class="param">expiration</dt><dd class="cmt"><p>expiration period in seconds.</p></dd><dt class="param">orElse</dt><dd class="cmt"><p>The default function to invoke if the value was not found in cache.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.cache.DefaultSyncCacheApi">DefaultSyncCacheApi</a> → <a href="CacheApi.html" class="extype" name="play.api.cache.CacheApi">CacheApi</a></dd><dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use getOrElseUpdate</p></dd></dl></div>
+    </li></ol>
+            </div>
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="scala.AnyRef">
+        <div class="parent" name="play.api.cache.CacheApi">
+              <h3>Inherited from <a href="CacheApi.html" class="extype" name="play.api.cache.CacheApi">CacheApi</a></h3>
+            </div><div class="parent" name="play.api.cache.SyncCacheApi">
+              <h3>Inherited from <a href="SyncCacheApi.html" class="extype" name="play.api.cache.SyncCacheApi">SyncCacheApi</a></h3>
+            </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>

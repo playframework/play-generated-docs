@@ -533,6 +533,10 @@
 </dd>
 <dt><span class="memberNameLink"><a href="play/routing/Router.html#asScala--">asScala()</a></span> - Method in interface play.routing.<a href="play/routing/Router.html" title="interface in play.routing">Router</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/libs/Scala.html#asScalaWithFuture-java.util.concurrent.Callable-">asScalaWithFuture(Callable&lt;CompletionStage&lt;A&gt;&gt;)</a></span> - Static method in class play.libs.<a href="play/libs/Scala.html" title="class in play.libs">Scala</a></dt>
+<dd>
+<div class="block">Converts a Java Callable to a Scala Function0.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Http.RequestBody.html#asText--">asText()</a></span> - Method in class play.mvc.<a href="play/mvc/Http.RequestBody.html" title="class in play.mvc">Http.RequestBody</a></dt>
 <dd>
 <div class="block">The request content as text.</div>
@@ -548,6 +552,10 @@
 <dt><span class="memberNameLink"><a href="play/mvc/Http.RequestBody.html#asXml--">asXml()</a></span> - Method in class play.mvc.<a href="play/mvc/Http.RequestBody.html" title="class in play.mvc">Http.RequestBody</a></dt>
 <dd>
 <div class="block">The request content as XML.</div>
+</dd>
+<dt><a href="play/cache/AsyncCacheApi.html" title="interface in play.cache"><span class="typeNameLink">AsyncCacheApi</span></a> - Interface in <a href="play/cache/package-summary.html">play.cache</a></dt>
+<dd>
+<div class="block">The Cache API.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="play/i18n/Messages.html#at-java.lang.String-java.lang.Object...-">at(String, Object...)</a></span> - Method in class play.i18n.<a href="play/i18n/Messages.html" title="class in play.i18n">Messages</a></dt>
 <dd>
@@ -581,6 +589,8 @@
 <dd>
 <div class="block">The available languages.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="play/cache/DefaultSyncCacheApi.html#awaitTimeoutMillis">awaitTimeoutMillis</a></span> - Variable in class play.cache.<a href="play/cache/DefaultSyncCacheApi.html" title="class in play.cache">DefaultSyncCacheApi</a></dt>
+<dd>&nbsp;</dd>
 </dl>
 <a name="I:B">
 <!--   -->
@@ -970,16 +980,6 @@
 </a>
 <h2 class="title">C</h2>
 <dl>
-<dt><a href="play/cache/Cache.html" title="class in play.cache"><span class="typeNameLink">Cache</span></a> - Class in <a href="play/cache/package-summary.html">play.cache</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>
-<div class="block"><span class="deprecationComment">Please use an dependency injected instance of CacheApi.</span></div>
-</div>
-</dd>
-<dt><span class="memberNameLink"><a href="play/cache/Cache.html#Cache--">Cache()</a></span> - Constructor for class play.cache.<a href="play/cache/Cache.html" title="class in play.cache">Cache</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Http.HeaderNames.html#CACHE_CONTROL">CACHE_CONTROL</a></span> - Static variable in interface play.mvc.<a href="play/mvc/Http.HeaderNames.html" title="interface in play.mvc">Http.HeaderNames</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="play/cache/CacheApi.html" title="interface in play.cache"><span class="typeNameLink">CacheApi</span></a> - Interface in <a href="play/cache/package-summary.html">play.cache</a></dt>
@@ -994,7 +994,7 @@
 <dd>
 <div class="block">Cache another action.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="play/cache/CachedAction.html#CachedAction-play.cache.CacheApi-">CachedAction(CacheApi)</a></span> - Constructor for class play.cache.<a href="play/cache/CachedAction.html" title="class in play.cache">CachedAction</a></dt>
+<dt><span class="memberNameLink"><a href="play/cache/CachedAction.html#CachedAction-play.cache.AsyncCacheApi-">CachedAction(AsyncCacheApi)</a></span> - Constructor for class play.cache.<a href="play/cache/CachedAction.html" title="class in play.cache">CachedAction</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/cache/CachedAction.html#call-play.mvc.Http.Context-">call(Http.Context)</a></span> - Method in class play.cache.<a href="play/cache/CachedAction.html" title="class in play.cache">CachedAction</a></dt>
 <dd>&nbsp;</dd>
@@ -1862,9 +1862,9 @@
 <dd>
 <div class="block">Create an application that wraps a Scala application.</div>
 </dd>
-<dt><a href="play/cache/DefaultCacheApi.html" title="class in play.cache"><span class="typeNameLink">DefaultCacheApi</span></a> - Class in <a href="play/cache/package-summary.html">play.cache</a></dt>
+<dt><a href="play/cache/DefaultAsyncCacheApi.html" title="class in play.cache"><span class="typeNameLink">DefaultAsyncCacheApi</span></a> - Class in <a href="play/cache/package-summary.html">play.cache</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="play/cache/DefaultCacheApi.html#DefaultCacheApi-play.api.cache.CacheApi-">DefaultCacheApi(CacheApi)</a></span> - Constructor for class play.cache.<a href="play/cache/DefaultCacheApi.html" title="class in play.cache">DefaultCacheApi</a></dt>
+<dt><span class="memberNameLink"><a href="play/cache/DefaultAsyncCacheApi.html#DefaultAsyncCacheApi-play.api.cache.AsyncCacheApi-">DefaultAsyncCacheApi(AsyncCacheApi)</a></span> - Constructor for class play.cache.<a href="play/cache/DefaultAsyncCacheApi.html" title="class in play.cache">DefaultAsyncCacheApi</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="play/db/DefaultConnectionPool.html" title="class in play.db"><span class="typeNameLink">DefaultConnectionPool</span></a> - Class in <a href="play/db/package-summary.html">play.db</a></dt>
 <dd>
@@ -1966,6 +1966,12 @@
 <dt><span class="memberNameLink"><a href="play/db/ebean/DefaultEbeanConfig.html#defaultServer--">defaultServer()</a></span> - Method in class play.db.ebean.<a href="play/db/ebean/DefaultEbeanConfig.html" title="class in play.db.ebean">DefaultEbeanConfig</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/db/ebean/EbeanConfig.html#defaultServer--">defaultServer()</a></span> - Method in interface play.db.ebean.<a href="play/db/ebean/EbeanConfig.html" title="interface in play.db.ebean">EbeanConfig</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="play/cache/DefaultSyncCacheApi.html" title="class in play.cache"><span class="typeNameLink">DefaultSyncCacheApi</span></a> - Class in <a href="play/cache/package-summary.html">play.cache</a></dt>
+<dd>
+<div class="block">A default implementation of SyncCacheApi that wraps AsyncCacheApi</div>
+</dd>
+<dt><span class="memberNameLink"><a href="play/cache/DefaultSyncCacheApi.html#DefaultSyncCacheApi-play.cache.AsyncCacheApi-">DefaultSyncCacheApi(AsyncCacheApi)</a></span> - Constructor for class play.cache.<a href="play/cache/DefaultSyncCacheApi.html" title="class in play.cache">DefaultSyncCacheApi</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/libs/concurrent/Futures.html#delayed-java.util.function.Supplier-long-java.util.concurrent.TimeUnit-java.util.concurrent.Executor-">delayed(Supplier&lt;A&gt;, long, TimeUnit, Executor)</a></span> - Static method in class play.libs.concurrent.<a href="play/libs/concurrent/Futures.html" title="class in play.libs.concurrent">Futures</a></dt>
 <dd>
@@ -2820,18 +2826,22 @@
 <div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
 <div class="block">Generate a cryptographically secure token</div>
 </dd>
-<dt><span class="memberNameLink"><a href="play/cache/Cache.html#get-java.lang.String-">get(String)</a></span> - Static method in class play.cache.<a href="play/cache/Cache.html" title="class in play.cache">Cache</a></dt>
+<dt><span class="memberNameLink"><a href="play/cache/AsyncCacheApi.html#get-java.lang.String-">get(String)</a></span> - Method in interface play.cache.<a href="play/cache/AsyncCacheApi.html" title="interface in play.cache">AsyncCacheApi</a></dt>
 <dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>
-<div class="block"><span class="deprecationComment">Please use non-static cacheApi.get(key), deprecated since 2.5.0</span></div>
-</div>
+<div class="block">Retrieves an object by key.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="play/cache/CacheApi.html#get-java.lang.String-">get(String)</a></span> - Method in interface play.cache.<a href="play/cache/CacheApi.html" title="interface in play.cache">CacheApi</a></dt>
 <dd>
 <div class="block">Retrieves an object by key.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="play/cache/DefaultCacheApi.html#get-java.lang.String-">get(String)</a></span> - Method in class play.cache.<a href="play/cache/DefaultCacheApi.html" title="class in play.cache">DefaultCacheApi</a></dt>
+<dt><span class="memberNameLink"><a href="play/cache/DefaultAsyncCacheApi.html#get-java.lang.String-">get(String)</a></span> - Method in class play.cache.<a href="play/cache/DefaultAsyncCacheApi.html" title="class in play.cache">DefaultAsyncCacheApi</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/cache/DefaultSyncCacheApi.html#get-java.lang.String-">get(String)</a></span> - Method in class play.cache.<a href="play/cache/DefaultSyncCacheApi.html" title="class in play.cache">DefaultSyncCacheApi</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/cache/SyncCacheApi.html#get-java.lang.String-">get(String)</a></span> - Method in interface play.cache.<a href="play/cache/SyncCacheApi.html" title="interface in play.cache">SyncCacheApi</a></dt>
+<dd>
+<div class="block">Retrieves an object by key.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="play/data/DynamicForm.html#get-java.lang.String-">get(String)</a></span> - Method in class play.data.<a href="play/data/DynamicForm.html" title="class in play.data">DynamicForm</a></dt>
 <dd>
 <div class="block">Gets the concrete value if the submission was a success.</div>
@@ -3394,12 +3404,6 @@
 <div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
 <div class="block">Retrieves a configuration value as a <code>List&lt;Map&lt;String, Object&gt;&gt;</code>.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="play/cache/Cache.html#getOrElse-java.lang.String-java.util.concurrent.Callable-int-">getOrElse(String, Callable&lt;T&gt;, int)</a></span> - Static method in class play.cache.<a href="play/cache/Cache.html" title="class in play.cache">Cache</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>
-<div class="block"><span class="deprecationComment">Please use non-static cacheApi.getOrElse, deprecated since 2.5.0</span></div>
-</div>
-</dd>
 <dt><span class="memberNameLink"><a href="play/cache/CacheApi.html#getOrElse-java.lang.String-java.util.concurrent.Callable-int-">getOrElse(String, Callable&lt;T&gt;, int)</a></span> - Method in interface play.cache.<a href="play/cache/CacheApi.html" title="interface in play.cache">CacheApi</a></dt>
 <dd>
 <div class="block">Retrieve a value from the cache, or set it from a default Callable function.</div>
@@ -3408,10 +3412,42 @@
 <dd>
 <div class="block">Retrieve a value from the cache, or set it from a default Callable function.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="play/cache/DefaultCacheApi.html#getOrElse-java.lang.String-java.util.concurrent.Callable-int-">getOrElse(String, Callable&lt;T&gt;, int)</a></span> - Method in class play.cache.<a href="play/cache/DefaultCacheApi.html" title="class in play.cache">DefaultCacheApi</a></dt>
+<dt><span class="memberNameLink"><a href="play/cache/DefaultSyncCacheApi.html#getOrElse-java.lang.String-java.util.concurrent.Callable-int-">getOrElse(String, Callable&lt;T&gt;, int)</a></span> - Method in class play.cache.<a href="play/cache/DefaultSyncCacheApi.html" title="class in play.cache">DefaultSyncCacheApi</a></dt>
+<dd>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>
+<div class="block"><span class="deprecationComment">Use getOrElseUpdate instead (2.6.0)</span></div>
+</div>
+</dd>
+<dt><span class="memberNameLink"><a href="play/cache/DefaultSyncCacheApi.html#getOrElse-java.lang.String-java.util.concurrent.Callable-">getOrElse(String, Callable&lt;T&gt;)</a></span> - Method in class play.cache.<a href="play/cache/DefaultSyncCacheApi.html" title="class in play.cache">DefaultSyncCacheApi</a></dt>
+<dd>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>
+<div class="block"><span class="deprecationComment">Use getOrElseUpdate instead (2.6.0)</span></div>
+</div>
+</dd>
+<dt><span class="memberNameLink"><a href="play/cache/AsyncCacheApi.html#getOrElseUpdate-java.lang.String-java.util.concurrent.Callable-int-">getOrElseUpdate(String, Callable&lt;CompletionStage&lt;T&gt;&gt;, int)</a></span> - Method in interface play.cache.<a href="play/cache/AsyncCacheApi.html" title="interface in play.cache">AsyncCacheApi</a></dt>
+<dd>
+<div class="block">Retrieve a value from the cache, or set it from a default Callable function.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="play/cache/AsyncCacheApi.html#getOrElseUpdate-java.lang.String-java.util.concurrent.Callable-">getOrElseUpdate(String, Callable&lt;CompletionStage&lt;T&gt;&gt;)</a></span> - Method in interface play.cache.<a href="play/cache/AsyncCacheApi.html" title="interface in play.cache">AsyncCacheApi</a></dt>
+<dd>
+<div class="block">Retrieve a value from the cache, or set it from a default Callable function.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="play/cache/DefaultAsyncCacheApi.html#getOrElseUpdate-java.lang.String-java.util.concurrent.Callable-int-">getOrElseUpdate(String, Callable&lt;CompletionStage&lt;T&gt;&gt;, int)</a></span> - Method in class play.cache.<a href="play/cache/DefaultAsyncCacheApi.html" title="class in play.cache">DefaultAsyncCacheApi</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="play/cache/DefaultCacheApi.html#getOrElse-java.lang.String-java.util.concurrent.Callable-">getOrElse(String, Callable&lt;T&gt;)</a></span> - Method in class play.cache.<a href="play/cache/DefaultCacheApi.html" title="class in play.cache">DefaultCacheApi</a></dt>
+<dt><span class="memberNameLink"><a href="play/cache/DefaultAsyncCacheApi.html#getOrElseUpdate-java.lang.String-java.util.concurrent.Callable-">getOrElseUpdate(String, Callable&lt;CompletionStage&lt;T&gt;&gt;)</a></span> - Method in class play.cache.<a href="play/cache/DefaultAsyncCacheApi.html" title="class in play.cache">DefaultAsyncCacheApi</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/cache/DefaultSyncCacheApi.html#getOrElseUpdate-java.lang.String-java.util.concurrent.Callable-int-">getOrElseUpdate(String, Callable&lt;T&gt;, int)</a></span> - Method in class play.cache.<a href="play/cache/DefaultSyncCacheApi.html" title="class in play.cache">DefaultSyncCacheApi</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/cache/DefaultSyncCacheApi.html#getOrElseUpdate-java.lang.String-java.util.concurrent.Callable-">getOrElseUpdate(String, Callable&lt;T&gt;)</a></span> - Method in class play.cache.<a href="play/cache/DefaultSyncCacheApi.html" title="class in play.cache">DefaultSyncCacheApi</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/cache/SyncCacheApi.html#getOrElseUpdate-java.lang.String-java.util.concurrent.Callable-int-">getOrElseUpdate(String, Callable&lt;T&gt;, int)</a></span> - Method in interface play.cache.<a href="play/cache/SyncCacheApi.html" title="interface in play.cache">SyncCacheApi</a></dt>
+<dd>
+<div class="block">Retrieve a value from the cache, or set it from a default Callable function.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="play/cache/SyncCacheApi.html#getOrElseUpdate-java.lang.String-java.util.concurrent.Callable-">getOrElseUpdate(String, Callable&lt;T&gt;)</a></span> - Method in interface play.cache.<a href="play/cache/SyncCacheApi.html" title="interface in play.cache">SyncCacheApi</a></dt>
+<dd>
+<div class="block">Retrieve a value from the cache, or set it from a default Callable function.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="play/libs/ws/ahc/AhcWSRequest.html#getPassword--">getPassword()</a></span> - Method in class play.libs.ws.ahc.<a href="play/libs/ws/ahc/AhcWSRequest.html" title="class in play.libs.ws.ahc">AhcWSRequest</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/libs/ws/WSRequest.html#getPassword--">getPassword()</a></span> - Method in interface play.libs.ws.<a href="play/libs/ws/WSRequest.html" title="interface in play.libs.ws">WSRequest</a></dt>
@@ -5910,18 +5946,22 @@
 <dd>
 <div class="block">The client IP address.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="play/cache/Cache.html#remove-java.lang.String-">remove(String)</a></span> - Static method in class play.cache.<a href="play/cache/Cache.html" title="class in play.cache">Cache</a></dt>
+<dt><span class="memberNameLink"><a href="play/cache/AsyncCacheApi.html#remove-java.lang.String-">remove(String)</a></span> - Method in interface play.cache.<a href="play/cache/AsyncCacheApi.html" title="interface in play.cache">AsyncCacheApi</a></dt>
 <dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>
-<div class="block"><span class="deprecationComment">Please use non-static cacheApi.set(key,value,expiration), deprecated since 2.5.0</span></div>
-</div>
+<div class="block">Removes a value from the cache.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="play/cache/CacheApi.html#remove-java.lang.String-">remove(String)</a></span> - Method in interface play.cache.<a href="play/cache/CacheApi.html" title="interface in play.cache">CacheApi</a></dt>
 <dd>
 <div class="block">Removes a value from the cache.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="play/cache/DefaultCacheApi.html#remove-java.lang.String-">remove(String)</a></span> - Method in class play.cache.<a href="play/cache/DefaultCacheApi.html" title="class in play.cache">DefaultCacheApi</a></dt>
+<dt><span class="memberNameLink"><a href="play/cache/DefaultAsyncCacheApi.html#remove-java.lang.String-">remove(String)</a></span> - Method in class play.cache.<a href="play/cache/DefaultAsyncCacheApi.html" title="class in play.cache">DefaultAsyncCacheApi</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/cache/DefaultSyncCacheApi.html#remove-java.lang.String-">remove(String)</a></span> - Method in class play.cache.<a href="play/cache/DefaultSyncCacheApi.html" title="class in play.cache">DefaultSyncCacheApi</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/cache/SyncCacheApi.html#remove-java.lang.String-">remove(String)</a></span> - Method in interface play.cache.<a href="play/cache/SyncCacheApi.html" title="interface in play.cache">SyncCacheApi</a></dt>
+<dd>
+<div class="block">Removes a value from the cache.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Http.Flash.html#remove-java.lang.Object-">remove(Object)</a></span> - Method in class play.mvc.<a href="play/mvc/Http.Flash.html" title="class in play.mvc">Http.Flash</a></dt>
 <dd>
 <div class="block">Removes the specified value from the flash scope.</div>
@@ -6440,15 +6480,13 @@
 <dd>
 <div class="block">Extracts the Session of this Result value.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="play/cache/Cache.html#set-java.lang.String-java.lang.Object-int-">set(String, Object, int)</a></span> - Static method in class play.cache.<a href="play/cache/Cache.html" title="class in play.cache">Cache</a></dt>
+<dt><span class="memberNameLink"><a href="play/cache/AsyncCacheApi.html#set-java.lang.String-java.lang.Object-int-">set(String, Object, int)</a></span> - Method in interface play.cache.<a href="play/cache/AsyncCacheApi.html" title="interface in play.cache">AsyncCacheApi</a></dt>
 <dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>
-<div class="block"><span class="deprecationComment">Please use non-static cacheApi.set(key,value,expiration), deprecated since 2.5.0</span></div>
-</div>
+<div class="block">Sets a value with expiration.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="play/cache/Cache.html#set-java.lang.String-java.lang.Object-">set(String, Object)</a></span> - Static method in class play.cache.<a href="play/cache/Cache.html" title="class in play.cache">Cache</a></dt>
+<dt><span class="memberNameLink"><a href="play/cache/AsyncCacheApi.html#set-java.lang.String-java.lang.Object-">set(String, Object)</a></span> - Method in interface play.cache.<a href="play/cache/AsyncCacheApi.html" title="interface in play.cache">AsyncCacheApi</a></dt>
 <dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
+<div class="block">Sets a value without expiration.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="play/cache/CacheApi.html#set-java.lang.String-java.lang.Object-int-">set(String, Object, int)</a></span> - Method in interface play.cache.<a href="play/cache/CacheApi.html" title="interface in play.cache">CacheApi</a></dt>
 <dd>
@@ -6458,10 +6496,22 @@
 <dd>
 <div class="block">Sets a value without expiration.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="play/cache/DefaultCacheApi.html#set-java.lang.String-java.lang.Object-int-">set(String, Object, int)</a></span> - Method in class play.cache.<a href="play/cache/DefaultCacheApi.html" title="class in play.cache">DefaultCacheApi</a></dt>
+<dt><span class="memberNameLink"><a href="play/cache/DefaultAsyncCacheApi.html#set-java.lang.String-java.lang.Object-int-">set(String, Object, int)</a></span> - Method in class play.cache.<a href="play/cache/DefaultAsyncCacheApi.html" title="class in play.cache">DefaultAsyncCacheApi</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="play/cache/DefaultCacheApi.html#set-java.lang.String-java.lang.Object-">set(String, Object)</a></span> - Method in class play.cache.<a href="play/cache/DefaultCacheApi.html" title="class in play.cache">DefaultCacheApi</a></dt>
+<dt><span class="memberNameLink"><a href="play/cache/DefaultAsyncCacheApi.html#set-java.lang.String-java.lang.Object-">set(String, Object)</a></span> - Method in class play.cache.<a href="play/cache/DefaultAsyncCacheApi.html" title="class in play.cache">DefaultAsyncCacheApi</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/cache/DefaultSyncCacheApi.html#set-java.lang.String-java.lang.Object-int-">set(String, Object, int)</a></span> - Method in class play.cache.<a href="play/cache/DefaultSyncCacheApi.html" title="class in play.cache">DefaultSyncCacheApi</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/cache/DefaultSyncCacheApi.html#set-java.lang.String-java.lang.Object-">set(String, Object)</a></span> - Method in class play.cache.<a href="play/cache/DefaultSyncCacheApi.html" title="class in play.cache">DefaultSyncCacheApi</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/cache/SyncCacheApi.html#set-java.lang.String-java.lang.Object-int-">set(String, Object, int)</a></span> - Method in interface play.cache.<a href="play/cache/SyncCacheApi.html" title="interface in play.cache">SyncCacheApi</a></dt>
+<dd>
+<div class="block">Sets a value with expiration.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="play/cache/SyncCacheApi.html#set-java.lang.String-java.lang.Object-">set(String, Object)</a></span> - Method in interface play.cache.<a href="play/cache/SyncCacheApi.html" title="interface in play.cache">SyncCacheApi</a></dt>
+<dd>
+<div class="block">Sets a value without expiration.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Http.HeaderNames.html#SET_COOKIE">SET_COOKIE</a></span> - Static variable in interface play.mvc.<a href="play/mvc/Http.HeaderNames.html" title="interface in play.mvc">Http.HeaderNames</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Http.HeaderNames.html#SET_COOKIE2">SET_COOKIE2</a></span> - Static variable in interface play.mvc.<a href="play/mvc/Http.HeaderNames.html" title="interface in play.mvc">Http.HeaderNames</a></dt>
@@ -6863,6 +6913,12 @@
 </dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Http.Status.html#SWITCHING_PROTOCOLS">SWITCHING_PROTOCOLS</a></span> - Static variable in interface play.mvc.<a href="play/mvc/Http.Status.html" title="interface in play.mvc">Http.Status</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/cache/AsyncCacheApi.html#sync--">sync()</a></span> - Method in interface play.cache.<a href="play/cache/AsyncCacheApi.html" title="interface in play.cache">AsyncCacheApi</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="play/cache/SyncCacheApi.html" title="interface in play.cache"><span class="typeNameLink">SyncCacheApi</span></a> - Interface in <a href="play/cache/package-summary.html">play.cache</a></dt>
+<dd>
+<div class="block">A CacheApi that makes synchronous calls.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="play/libs/Akka.html#system--">system()</a></span> - Static method in class play.libs.<a href="play/libs/Akka.html" title="class in play.libs">Akka</a></dt>
 <dd>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>
