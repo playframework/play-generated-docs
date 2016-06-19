@@ -457,18 +457,18 @@ in the incoming request.</p>
               
         </dd></dl></div>
     </li><li name="play.core.server.common.ServerResultUtils#determineResultStreaming" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="determineResultStreaming(requestHeader:play.api.mvc.RequestHeader,result:play.api.mvc.Result):scala.concurrent.Future[Either[play.core.server.common.ServerResultUtils.InvalidResult,(play.core.server.common.ServerResultUtils.ResultStreaming,play.core.server.common.ServerResultUtils.ConnectionHeader)]]"></a>
-      <a id="determineResultStreaming(RequestHeader,Result):Future[Either[InvalidResult,(ResultStreaming,ConnectionHeader)]]"></a>
+      <a id="determineResultStreaming(requestHeader:play.api.mvc.RequestHeader,result:play.api.mvc.Result,errorHandler:play.api.http.HttpErrorHandler):scala.concurrent.Future[Either[play.core.server.common.ServerResultUtils.InvalidResult,(play.core.server.common.ServerResultUtils.ResultStreaming,play.core.server.common.ServerResultUtils.ConnectionHeader)]]"></a>
+      <a id="determineResultStreaming(RequestHeader,Result,HttpErrorHandler):Future[Either[InvalidResult,(ResultStreaming,ConnectionHeader)]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">determineResultStreaming</span><span class="params">(<span name="requestHeader">requestHeader: <a href="../../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>, <span name="result">result: <a href="../../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="scala.Either">Either</span>[<a href="ServerResultUtils$$InvalidResult.html" class="extype" name="play.core.server.common.ServerResultUtils.InvalidResult">InvalidResult</a>, (<a href="ServerResultUtils$$ResultStreaming.html" class="extype" name="play.core.server.common.ServerResultUtils.ResultStreaming">ResultStreaming</a>, <a href="ServerResultUtils$$ConnectionHeader.html" class="extype" name="play.core.server.common.ServerResultUtils.ConnectionHeader">ConnectionHeader</a>)]]</span>
+        <span class="name">determineResultStreaming</span><span class="params">(<span name="requestHeader">requestHeader: <a href="../../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>, <span name="result">result: <a href="../../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>, <span name="errorHandler">errorHandler: <a href="../../../api/http/HttpErrorHandler.html" class="extype" name="play.api.http.HttpErrorHandler">HttpErrorHandler</a></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="scala.Either">Either</span>[<a href="ServerResultUtils$$InvalidResult.html" class="extype" name="play.core.server.common.ServerResultUtils.InvalidResult">InvalidResult</a>, (<a href="ServerResultUtils$$ResultStreaming.html" class="extype" name="play.core.server.common.ServerResultUtils.ResultStreaming">ResultStreaming</a>, <a href="ServerResultUtils$$ConnectionHeader.html" class="extype" name="play.core.server.common.ServerResultUtils.ConnectionHeader">ConnectionHeader</a>)]]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#play.core.server.common.ServerResultUtils$@determineResultStreaming(requestHeader:play.api.mvc.RequestHeader,result:play.api.mvc.Result):scala.concurrent.Future[Either[play.core.server.common.ServerResultUtils.InvalidResult,(play.core.server.common.ServerResultUtils.ResultStreaming,play.core.server.common.ServerResultUtils.ConnectionHeader)]]" title="Permalink" target="_top">
+      <a href="../../../../index.html#play.core.server.common.ServerResultUtils$@determineResultStreaming(requestHeader:play.api.mvc.RequestHeader,result:play.api.mvc.Result,errorHandler:play.api.http.HttpErrorHandler):scala.concurrent.Future[Either[play.core.server.common.ServerResultUtils.InvalidResult,(play.core.server.common.ServerResultUtils.ResultStreaming,play.core.server.common.ServerResultUtils.ConnectionHeader)]]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
@@ -664,6 +664,32 @@ elements long.
 - If more than one element long, return Right(enumerator) where
   enumerator is an Enumerator that contains *all* the input. Any
   already-read elements will still be included in this Enumerator.
+</p></div></div>
+    </li><li name="play.core.server.common.ServerResultUtils#resultConversionWithErrorHandling" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="resultConversionWithErrorHandling[R](requestHeader:play.api.mvc.RequestHeader,result:play.api.mvc.Result,errorHandler:play.api.http.HttpErrorHandler)(resultConverter:play.api.mvc.Result=&gt;scala.concurrent.Future[R])(fallbackResponse:=&gt;R):scala.concurrent.Future[R]"></a>
+      <a id="resultConversionWithErrorHandling[R](RequestHeader,Result,HttpErrorHandler)((Result)⇒Future[R])(⇒R):Future[R]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">resultConversionWithErrorHandling</span><span class="tparams">[<span name="R">R</span>]</span><span class="params">(<span name="requestHeader">requestHeader: <a href="../../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>, <span name="result">result: <a href="../../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>, <span name="errorHandler">errorHandler: <a href="../../../api/http/HttpErrorHandler.html" class="extype" name="play.api.http.HttpErrorHandler">HttpErrorHandler</a></span>)</span><span class="params">(<span name="resultConverter">resultConverter: (<a href="../../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>) ⇒ <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="play.core.server.common.ServerResultUtils.resultConversionWithErrorHandling.R">R</span>]</span>)</span><span class="params">(<span name="fallbackResponse">fallbackResponse: ⇒ <span class="extype" name="play.core.server.common.ServerResultUtils.resultConversionWithErrorHandling.R">R</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="play.core.server.common.ServerResultUtils.resultConversionWithErrorHandling.R">R</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.core.server.common.ServerResultUtils$@resultConversionWithErrorHandling[R](requestHeader:play.api.mvc.RequestHeader,result:play.api.mvc.Result,errorHandler:play.api.http.HttpErrorHandler)(resultConverter:play.api.mvc.Result=&gt;scala.concurrent.Future[R])(fallbackResponse:=&gt;R):scala.concurrent.Future[R]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Handles result conversion in a safe way.</p><div class="fullcomment"><div class="comment cmt"><p>Handles result conversion in a safe way.</p><p>1. Tries to convert the <code>Result</code>.
+2. If there's an error, calls the <code>HttpErrorHandler</code> to get a new
+   <code>Result</code>, then converts that.
+3. If there's an error with *that* <code>Result</code>, uses the
+   <code>DefaultHttpErrorHandler</code> to get another <code>Result</code>, then converts
+   that.
+4. Hopefully there are no more errors. :)
+5. If calling an <code>HttpErrorHandler</code> throws an exception, then a
+   fallback response is returned, without an conversion.
 </p></div></div>
     </li><li name="play.core.server.common.ServerResultUtils#splitSetCookieHeaders" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="splitSetCookieHeaders(headers:Map[String,String]):Iterable[(String,String)]"></a>

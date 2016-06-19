@@ -207,23 +207,26 @@
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="play.core.server.netty.NettyResultStreamer#createNettyResponse" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="createNettyResponse(header:play.api.mvc.ResponseHeader,connectionHeader:play.core.server.common.ServerResultUtils.ConnectionHeader,httpVersion:org.jboss.netty.handler.codec.http.HttpVersion):org.jboss.netty.handler.codec.http.DefaultHttpResponse"></a>
-      <a id="createNettyResponse(ResponseHeader,ConnectionHeader,HttpVersion):DefaultHttpResponse"></a>
+    </li><li name="play.core.server.netty.NettyResultStreamer#createNettyResponse" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="createNettyResponse(requestHeader:play.api.mvc.RequestHeader,result:play.api.mvc.Result,httpVersion:org.jboss.netty.handler.codec.http.HttpVersion,errorHandler:play.api.http.HttpErrorHandler):scala.concurrent.Future[(org.jboss.netty.handler.codec.http.HttpResponse,play.core.server.common.ServerResultUtils.ResultStreaming,play.core.server.common.ServerResultUtils.ConnectionHeader)]"></a>
+      <a id="createNettyResponse(RequestHeader,Result,HttpVersion,HttpErrorHandler):Future[(HttpResponse,ResultStreaming,ConnectionHeader)]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">createNettyResponse</span><span class="params">(<span name="header">header: <a href="../../../api/mvc/ResponseHeader.html" class="extype" name="play.api.mvc.ResponseHeader">ResponseHeader</a></span>, <span name="connectionHeader">connectionHeader: <a href="../common/ServerResultUtils$$ConnectionHeader.html" class="extype" name="play.core.server.common.ServerResultUtils.ConnectionHeader">ConnectionHeader</a></span>, <span name="httpVersion">httpVersion: <span class="extype" name="org.jboss.netty.handler.codec.http.HttpVersion">HttpVersion</span></span>)</span><span class="result">: <span class="extype" name="org.jboss.netty.handler.codec.http.DefaultHttpResponse">DefaultHttpResponse</span></span>
+        <span class="name">createNettyResponse</span><span class="params">(<span name="requestHeader">requestHeader: <a href="../../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>, <span name="result">result: <a href="../../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>, <span name="httpVersion">httpVersion: <span class="extype" name="org.jboss.netty.handler.codec.http.HttpVersion">HttpVersion</span></span>, <span name="errorHandler">errorHandler: <a href="../../../api/http/HttpErrorHandler.html" class="extype" name="play.api.http.HttpErrorHandler">HttpErrorHandler</a></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[(<span class="extype" name="org.jboss.netty.handler.codec.http.HttpResponse">HttpResponse</span>, <a href="../common/ServerResultUtils$$ResultStreaming.html" class="extype" name="play.core.server.common.ServerResultUtils.ResultStreaming">ResultStreaming</a>, <a href="../common/ServerResultUtils$$ConnectionHeader.html" class="extype" name="play.core.server.common.ServerResultUtils.ConnectionHeader">ConnectionHeader</a>)]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#play.core.server.netty.NettyResultStreamer$@createNettyResponse(header:play.api.mvc.ResponseHeader,connectionHeader:play.core.server.common.ServerResultUtils.ConnectionHeader,httpVersion:org.jboss.netty.handler.codec.http.HttpVersion):org.jboss.netty.handler.codec.http.DefaultHttpResponse" title="Permalink" target="_top">
+      <a href="../../../../index.html#play.core.server.netty.NettyResultStreamer$@createNettyResponse(requestHeader:play.api.mvc.RequestHeader,result:play.api.mvc.Result,httpVersion:org.jboss.netty.handler.codec.http.HttpVersion,errorHandler:play.api.http.HttpErrorHandler):scala.concurrent.Future[(org.jboss.netty.handler.codec.http.HttpResponse,play.core.server.common.ServerResultUtils.ResultStreaming,play.core.server.common.ServerResultUtils.ConnectionHeader)]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Create a Netty HttpResponse from a Play Result object.</p><div class="fullcomment"><div class="comment cmt"><p>Create a Netty HttpResponse from a Play Result object. This method may call itself
+recursively if the first attempt to create a response fails. The HttpResponse may
+be modified later, depending on the streaming strategy.
+</p></div></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -418,18 +421,18 @@
     </span>
       
     </li><li name="play.core.server.netty.NettyResultStreamer#sendResult" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="sendResult(requestHeader:play.api.mvc.RequestHeader,result:play.api.mvc.Result,httpVersion:org.jboss.netty.handler.codec.http.HttpVersion,startSequence:Int)(implicitctx:org.jboss.netty.channel.ChannelHandlerContext,implicitoue:com.typesafe.netty.http.pipelining.OrderedUpstreamMessageEvent):scala.concurrent.Future[_]"></a>
-      <a id="sendResult(RequestHeader,Result,HttpVersion,Int)(ChannelHandlerContext,OrderedUpstreamMessageEvent):Future[_]"></a>
+      <a id="sendResult(requestHeader:play.api.mvc.RequestHeader,result:play.api.mvc.Result,httpVersion:org.jboss.netty.handler.codec.http.HttpVersion,startSequence:Int,errorHandler:play.api.http.HttpErrorHandler)(implicitctx:org.jboss.netty.channel.ChannelHandlerContext,implicitoue:com.typesafe.netty.http.pipelining.OrderedUpstreamMessageEvent):scala.concurrent.Future[_]"></a>
+      <a id="sendResult(RequestHeader,Result,HttpVersion,Int,HttpErrorHandler)(ChannelHandlerContext,OrderedUpstreamMessageEvent):Future[_]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">sendResult</span><span class="params">(<span name="requestHeader">requestHeader: <a href="../../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>, <span name="result">result: <a href="../../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>, <span name="httpVersion">httpVersion: <span class="extype" name="org.jboss.netty.handler.codec.http.HttpVersion">HttpVersion</span></span>, <span name="startSequence">startSequence: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ctx">ctx: <span class="extype" name="org.jboss.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>, <span name="oue">oue: <span class="extype" name="com.typesafe.netty.http.pipelining.OrderedUpstreamMessageEvent">OrderedUpstreamMessageEvent</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[_]</span>
+        <span class="name">sendResult</span><span class="params">(<span name="requestHeader">requestHeader: <a href="../../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>, <span name="result">result: <a href="../../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>, <span name="httpVersion">httpVersion: <span class="extype" name="org.jboss.netty.handler.codec.http.HttpVersion">HttpVersion</span></span>, <span name="startSequence">startSequence: <span class="extype" name="scala.Int">Int</span></span>, <span name="errorHandler">errorHandler: <a href="../../../api/http/HttpErrorHandler.html" class="extype" name="play.api.http.HttpErrorHandler">HttpErrorHandler</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ctx">ctx: <span class="extype" name="org.jboss.netty.channel.ChannelHandlerContext">ChannelHandlerContext</span></span>, <span name="oue">oue: <span class="extype" name="com.typesafe.netty.http.pipelining.OrderedUpstreamMessageEvent">OrderedUpstreamMessageEvent</span></span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[_]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#play.core.server.netty.NettyResultStreamer$@sendResult(requestHeader:play.api.mvc.RequestHeader,result:play.api.mvc.Result,httpVersion:org.jboss.netty.handler.codec.http.HttpVersion,startSequence:Int)(implicitctx:org.jboss.netty.channel.ChannelHandlerContext,implicitoue:com.typesafe.netty.http.pipelining.OrderedUpstreamMessageEvent):scala.concurrent.Future[_]" title="Permalink" target="_top">
+      <a href="../../../../index.html#play.core.server.netty.NettyResultStreamer$@sendResult(requestHeader:play.api.mvc.RequestHeader,result:play.api.mvc.Result,httpVersion:org.jboss.netty.handler.codec.http.HttpVersion,startSequence:Int,errorHandler:play.api.http.HttpErrorHandler)(implicitctx:org.jboss.netty.channel.ChannelHandlerContext,implicitoue:com.typesafe.netty.http.pipelining.OrderedUpstreamMessageEvent):scala.concurrent.Future[_]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" />
       </a>
     </span>
