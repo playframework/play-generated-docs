@@ -501,7 +501,7 @@ when the request body has been parsed.
 when the request body has been parsed.</p><div class="fullcomment"><div class="comment cmt"><p>Uses the provided function to validate the BodyParser's computed result
 when the request body has been parsed.</p><p>The provided function can produce either a direct result, which will short
 circuit any further Action, or a value of type B.</p><p>Example:</p><pre><span class="kw">def</span> validateJson[A : Reads] = parse.json.validate(
-  _.validate[A].asEither.left.map(e <span class="kw">=&gt;</span> BadRequest(JsError.toFlatJson(e)))
+  _.validate[A].asEither.left.map(e <span class="kw">=&gt;</span> BadRequest(JsError.toJson(e)))
 )</pre></div><dl class="paramcmts block"><dt class="param">f</dt><dd class="cmt"><p>the function to validate the computed result of this body parser</p></dd><dt class="param">ec</dt><dd class="cmt"><p>The context to execute the supplied function with.
        The context is prepared on the calling thread.</p></dd><dt>returns</dt><dd class="cmt"><p>the transformed body parser</p></dd></dl></div>
     </li><li name="play.api.mvc.BodyParser#validateM" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
