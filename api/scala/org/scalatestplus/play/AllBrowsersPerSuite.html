@@ -58,7 +58,7 @@ instance the first time it is needed  by each test, and close it the first time 
 to share the same browser), and overrides the <code>tags</code> lifecycle method to tag the shared tests so you can
 filter them by browser type.  This trait's self-type, <a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a>,  will ensure
 a <code>TestServer</code> and <code>Application</code> are available to each test. The self-type will require that you mix in either
-<a href="OneServerPerSuite.html" class="extype" name="org.scalatestplus.play.OneServerPerSuite">OneServerPerSuite</a>, <a href="OneServerPerTest.html" class="extype" name="org.scalatestplus.play.OneServerPerTest">OneServerPerTest</a>,
+<a href="guice/GuiceOneServerPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerSuite">GuiceOneServerPerSuite</a>, <a href="OneServerPerTest.html" class="extype" name="org.scalatestplus.play.OneServerPerTest">OneServerPerTest</a>,
 <a href="ConfiguredServer.html" class="extype" name="org.scalatestplus.play.ConfiguredServer">ConfiguredServer</a> before you mix in this trait. Your choice among these three
 <code>ServerProvider</code>s will determine the extent to which a <code>TestServer</code> is shared by multiple tests.</p><p>You'll need to place any tests that you want executed by multiple browsers in a <code>sharedTests</code> method. Because all tests in a ScalaTest <code>Suite</code>
 must have unique names, you'll need to append the browser name (available from the <code>BrowserInfo</code> passed
@@ -99,9 +99,9 @@ import play.api.cache.EhCacheModule
 
 class ExampleSpec extends PlaySpec with OneServerPerSuite with AllBrowsersPerSuite {
 
-  // Override app if you need an Application with other than
+  // Override fakeApplication if you need an Application with other than
   // default parameters.
-  implicit override lazy val app = new GuiceApplicationBuilder()
+  def fakeApplication() = new GuiceApplicationBuilder()
     .disable[EhCacheModule]
     .configure("foo" -> "bar")
     .router(Router.from(TestRoute))

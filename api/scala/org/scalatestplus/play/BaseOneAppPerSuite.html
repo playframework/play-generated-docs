@@ -1,9 +1,9 @@
 <!DOCTYPE html >
 <html>
         <head>
-          <title>ConfiguredServer - org.scalatestplus.play.ConfiguredServer</title>
-          <meta name="description" content="ConfiguredServer - org.scalatestplus.play.ConfiguredServer" />
-          <meta name="keywords" content="ConfiguredServer org.scalatestplus.play.ConfiguredServer" />
+          <title>BaseOneAppPerSuite - org.scalatestplus.play.BaseOneAppPerSuite</title>
+          <meta name="description" content="BaseOneAppPerSuite - org.scalatestplus.play.BaseOneAppPerSuite" />
+          <meta name="keywords" content="BaseOneAppPerSuite org.scalatestplus.play.BaseOneAppPerSuite" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
@@ -16,7 +16,7 @@
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../index.html';
-            var hash = 'org.scalatestplus.play.ConfiguredServer';
+            var hash = 'org.scalatestplus.play.BaseOneAppPerSuite';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -30,10 +30,10 @@
       <div id="definition">
         <img alt="Trait" src="../../../lib/trait_big.png" />
         <p id="owner"><a href="../../package.html" class="extype" name="org">org</a>.<a href="../package.html" class="extype" name="org.scalatestplus">scalatestplus</a>.<a href="package.html" class="extype" name="org.scalatestplus.play">play</a></p>
-        <h1>ConfiguredServer</h1><h3><span class="morelinks"><div>Related Doc:
+        <h1>BaseOneAppPerSuite</h1><h3><span class="morelinks"><div>Related Doc:
             <a href="package.html" class="extype" name="org.scalatestplus.play">package play</a>
           </div></span></h3><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.ConfiguredServer" title="Permalink" target="_top">
+      <a href="../../../index.html#org.scalatestplus.play.BaseOneAppPerSuite" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -45,61 +45,18 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <span class="name">ConfiguredServer</span><span class="result"> extends <span class="extype" name="org.scalatest.SuiteMixin">SuiteMixin</span> with <a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a></span>
+        <span class="name">BaseOneAppPerSuite</span><span class="result"> extends <span class="extype" name="org.scalatest.SuiteMixin">SuiteMixin</span></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Trait that provides a configured <code>Application</code> and server port number to the suite into which it is mixed.</p><p>The purpose of this trait is to allow nested suites of an enclosing suite that extends <a href="guice/GuiceOneServerPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerSuite">GuiceOneServerPerSuite</a>
-to make use of the <code>Application</code> and port number provided by <code>OneServerPerSuite</code>. Trait <code>OneServerPerSuite</code> will ensure
-the <code>Application</code> is placed in the <code>ConfigMap</code> under the key <code>org.scalatestplus.play.app</code> and the port number
-under the key <code>org.scalatestplus.play.port</code> before nested suites are invoked. This information represents the &quot;configured server&quot; that
-is passed from the enclosing suite to the nested suites. Trait <code>ConfiguredServer</code> extracts this information from
-from the <code>ConfigMap</code> and makes the <code>Application</code> available via the <code>app</code> method, the port number available as an <code>Int</code> from
-the <code>port</code> method, and also the port number wrapped in a <a href="PortNumber.html" class="extype" name="org.scalatestplus.play.PortNumber">PortNumber</a> available as implicit method <code>portNumber</code> (for use
-with trait <a href="WsScalaTestClient.html" class="extype" name="org.scalatestplus.play.WsScalaTestClient">WsScalaTestClient</a>).</p><p>To prevent discovery of nested suites you can annotate them with <code>@DoNotDiscover</code>. Here's an example,
-taken from <code>GuiceOneAppPerSuite</code>'s documentation:</p><p><pre class="stHighlight">
-package org.scalatestplus.play.examples.oneserverpersuite
-
-import play.api.test._
-import org.scalatestplus.play._
-import play.api.{Play, Application}
-import play.api.inject.guice._
-
-class ExampleSpec extends PlaySpec with GuiceOneServerPerSuite {
-
-  // Override fakeApplication() if you need a Application with other than non-default parameters.
-  def fakeApplication(): Application =
-    new GuiceApplicationBuilder().configure("ehcacheplugin" -> "disabled").build()
-
-  "The OneServerPerSuite trait" must {
-    "provide an Application" in {
-      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
-    }
-    "make the Application available implicitly" in {
-      def getConfig(key: String)(implicit app: Application) = app.configuration.getString(key)
-      getConfig("ehcacheplugin") mustBe Some("disabled")
-    }
-    "start the Application" in {
-      Play.maybeApplication mustBe Some(app)
-    }
-    "provide the port number" in {
-      port mustBe Helpers.testServerPort
-    }
-    "provide an actual running server" in {
-      import Helpers._
-      import java.net._
-      val url = new URL("http://localhost:" + port + "/boum")
-      val con = url.openConnection().asInstanceOf[HttpURLConnection]
-      try con.getResponseCode mustBe 404
-      finally con.disconnect()
-    }
-  }
-}
-</pre>
-</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="org.scalatestplus.play.ConfiguredServer">ConfiguredServer</a> with <span class="extype" name="org.scalatest.Suite">Suite</span></dd><dt>Source</dt><dd><a href="https://github.com/playframework/scalatestplus-play/tree/master/module/src/main/scala/org/scalatestplus/play/ConfiguredServer.scala" target="_blank">ConfiguredServer.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>The base abstract trait for one app per suite.
+</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="org.scalatestplus.play.BaseOneAppPerSuite">BaseOneAppPerSuite</a> with <span class="extype" name="org.scalatest.Suite">Suite</span> with <a href="FakeApplicationFactory.html" class="extype" name="org.scalatestplus.play.FakeApplicationFactory">FakeApplicationFactory</a></dd><dt>Source</dt><dd><a href="https://github.com/playframework/scalatestplus-play/tree/master/module/src/main/scala/org/scalatestplus/play/BaseOneAppPerSuite.scala" target="_blank">BaseOneAppPerSuite.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a>, <span class="extype" name="org.scalatest.SuiteMixin">SuiteMixin</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
-        </div></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="org.scalatest.SuiteMixin">SuiteMixin</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+        </div><div class="toggleContainer block">
+            <span class="toggle">Known Subclasses</span>
+            <div class="subClasses hiddenContent"><a href="guice/GuiceOneAppPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneAppPerSuite">GuiceOneAppPerSuite</a>, <a href="OneAppPerSuite.html" class="extype" name="org.scalatestplus.play.OneAppPerSuite">OneAppPerSuite</a></div>
+          </div></div>
         
 
       <div id="mbrsel">
@@ -116,7 +73,7 @@ class ExampleSpec extends PlaySpec with GuiceOneServerPerSuite {
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="org.scalatestplus.play.ConfiguredServer"><span>ConfiguredServer</span></li><li class="in" name="org.scalatestplus.play.ServerProvider"><span>ServerProvider</span></li><li class="in" name="org.scalatest.SuiteMixin"><span>SuiteMixin</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="org.scalatestplus.play.BaseOneAppPerSuite"><span>BaseOneAppPerSuite</span></li><li class="in" name="org.scalatest.SuiteMixin"><span>SuiteMixin</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -151,7 +108,7 @@ class ExampleSpec extends PlaySpec with GuiceOneServerPerSuite {
         <span class="name">expectedTestCount</span><span class="params">(<span name="filter">filter: <span class="extype" name="org.scalatest.Filter">Filter</span></span>)</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.ConfiguredServer@expectedTestCount(filter:org.scalatest.Filter):Int" title="Permalink" target="_top">
+      <a href="../../../index.html#org.scalatestplus.play.BaseOneAppPerSuite@expectedTestCount(filter:org.scalatest.Filter):Int" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -168,7 +125,7 @@ class ExampleSpec extends PlaySpec with GuiceOneServerPerSuite {
         <span class="name">nestedSuites</span><span class="result">: <span class="extype" name="scala.collection.immutable.IndexedSeq">IndexedSeq</span>[<span class="extype" name="org.scalatest.Suite">Suite</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.ConfiguredServer@nestedSuites:scala.collection.immutable.IndexedSeq[org.scalatest.Suite]" title="Permalink" target="_top">
+      <a href="../../../index.html#org.scalatestplus.play.BaseOneAppPerSuite@nestedSuites:scala.collection.immutable.IndexedSeq[org.scalatest.Suite]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -185,7 +142,7 @@ class ExampleSpec extends PlaySpec with GuiceOneServerPerSuite {
         <span class="name">rerunner</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.ConfiguredServer@rerunner:Option[String]" title="Permalink" target="_top">
+      <a href="../../../index.html#org.scalatestplus.play.BaseOneAppPerSuite@rerunner:Option[String]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -202,7 +159,7 @@ class ExampleSpec extends PlaySpec with GuiceOneServerPerSuite {
         <span class="name">runNestedSuites</span><span class="params">(<span name="args">args: <span class="extype" name="org.scalatest.Args">Args</span></span>)</span><span class="result">: <span class="extype" name="org.scalatest.Status">Status</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.ConfiguredServer@runNestedSuites(args:org.scalatest.Args):org.scalatest.Status" title="Permalink" target="_top">
+      <a href="../../../index.html#org.scalatestplus.play.BaseOneAppPerSuite@runNestedSuites(args:org.scalatest.Args):org.scalatest.Status" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -219,7 +176,7 @@ class ExampleSpec extends PlaySpec with GuiceOneServerPerSuite {
         <span class="name">runTest</span><span class="params">(<span name="testName">testName: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="args">args: <span class="extype" name="org.scalatest.Args">Args</span></span>)</span><span class="result">: <span class="extype" name="org.scalatest.Status">Status</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.ConfiguredServer@runTest(testName:String,args:org.scalatest.Args):org.scalatest.Status" title="Permalink" target="_top">
+      <a href="../../../index.html#org.scalatestplus.play.BaseOneAppPerSuite@runTest(testName:String,args:org.scalatest.Args):org.scalatest.Status" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -236,7 +193,7 @@ class ExampleSpec extends PlaySpec with GuiceOneServerPerSuite {
         <span class="name">runTests</span><span class="params">(<span name="testName">testName: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="args">args: <span class="extype" name="org.scalatest.Args">Args</span></span>)</span><span class="result">: <span class="extype" name="org.scalatest.Status">Status</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.ConfiguredServer@runTests(testName:Option[String],args:org.scalatest.Args):org.scalatest.Status" title="Permalink" target="_top">
+      <a href="../../../index.html#org.scalatestplus.play.BaseOneAppPerSuite@runTests(testName:Option[String],args:org.scalatest.Args):org.scalatest.Status" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -253,7 +210,7 @@ class ExampleSpec extends PlaySpec with GuiceOneServerPerSuite {
         <span class="name">styleName</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.ConfiguredServer@styleName:String" title="Permalink" target="_top">
+      <a href="../../../index.html#org.scalatestplus.play.BaseOneAppPerSuite@styleName:String" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -270,7 +227,7 @@ class ExampleSpec extends PlaySpec with GuiceOneServerPerSuite {
         <span class="name">suiteId</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.ConfiguredServer@suiteId:String" title="Permalink" target="_top">
+      <a href="../../../index.html#org.scalatestplus.play.BaseOneAppPerSuite@suiteId:String" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -287,7 +244,7 @@ class ExampleSpec extends PlaySpec with GuiceOneServerPerSuite {
         <span class="name">suiteName</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.ConfiguredServer@suiteName:String" title="Permalink" target="_top">
+      <a href="../../../index.html#org.scalatestplus.play.BaseOneAppPerSuite@suiteName:String" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -304,7 +261,7 @@ class ExampleSpec extends PlaySpec with GuiceOneServerPerSuite {
         <span class="name">tags</span><span class="result">: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.ConfiguredServer@tags:Map[String,Set[String]]" title="Permalink" target="_top">
+      <a href="../../../index.html#org.scalatestplus.play.BaseOneAppPerSuite@tags:Map[String,Set[String]]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -321,7 +278,7 @@ class ExampleSpec extends PlaySpec with GuiceOneServerPerSuite {
         <span class="name">testDataFor</span><span class="params">(<span name="testName">testName: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="theConfigMap">theConfigMap: <span class="extype" name="org.scalatest.ConfigMap">ConfigMap</span></span>)</span><span class="result">: <span class="extype" name="org.scalatest.TestData">TestData</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.ConfiguredServer@testDataFor(testName:String,theConfigMap:org.scalatest.ConfigMap):org.scalatest.TestData" title="Permalink" target="_top">
+      <a href="../../../index.html#org.scalatestplus.play.BaseOneAppPerSuite@testDataFor(testName:String,theConfigMap:org.scalatest.ConfigMap):org.scalatest.TestData" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -338,24 +295,24 @@ class ExampleSpec extends PlaySpec with GuiceOneServerPerSuite {
         <span class="name">testNames</span><span class="result">: <span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.ConfiguredServer@testNames:Set[String]" title="Permalink" target="_top">
+      <a href="../../../index.html#org.scalatestplus.play.BaseOneAppPerSuite@testNames:Set[String]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>SuiteMixin</dd></dl></div>
     </li><li name="org.scalatest.SuiteMixin#withFixture" visbl="prt" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="withFixture(test:SuiteMixin.this.NoArgTest):org.scalatest.Outcome"></a>
-      <a id="withFixture((ConfiguredServer.this)#NoArgTest):Outcome"></a>
+      <a id="withFixture((BaseOneAppPerSuite.this)#NoArgTest):Outcome"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">abstract </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">withFixture</span><span class="params">(<span name="test">test: (<a href="" class="extype" name="org.scalatestplus.play.ConfiguredServer">ConfiguredServer</a>.this)#<span class="extype" name="org.scalatest.Suite.NoArgTest">NoArgTest</span></span>)</span><span class="result">: <span class="extype" name="org.scalatest.Outcome">Outcome</span></span>
+        <span class="name">withFixture</span><span class="params">(<span name="test">test: (<a href="" class="extype" name="org.scalatestplus.play.BaseOneAppPerSuite">BaseOneAppPerSuite</a>.this)#<span class="extype" name="org.scalatest.Suite.NoArgTest">NoArgTest</span></span>)</span><span class="result">: <span class="extype" name="org.scalatest.Outcome">Outcome</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.ConfiguredServer@withFixture(test:SuiteMixin.this.NoArgTest):org.scalatest.Outcome" title="Permalink" target="_top">
+      <a href="../../../index.html#org.scalatestplus.play.BaseOneAppPerSuite@withFixture(test:SuiteMixin.this.NoArgTest):org.scalatest.Outcome" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -377,7 +334,7 @@ class ExampleSpec extends PlaySpec with GuiceOneServerPerSuite {
         <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.ConfiguredServer@!=(x$1:Any):Boolean" title="Permalink" target="_top">
+      <a href="../../../index.html#org.scalatestplus.play.BaseOneAppPerSuite@!=(x$1:Any):Boolean" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -394,7 +351,7 @@ class ExampleSpec extends PlaySpec with GuiceOneServerPerSuite {
         <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.ConfiguredServer@##():Int" title="Permalink" target="_top">
+      <a href="../../../index.html#org.scalatestplus.play.BaseOneAppPerSuite@##():Int" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -411,29 +368,28 @@ class ExampleSpec extends PlaySpec with GuiceOneServerPerSuite {
         <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.ConfiguredServer@==(x$1:Any):Boolean" title="Permalink" target="_top">
+      <a href="../../../index.html#org.scalatestplus.play.BaseOneAppPerSuite@==(x$1:Any):Boolean" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="org.scalatestplus.play.ConfiguredServer#app" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="org.scalatestplus.play.BaseOneAppPerSuite#app" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="app:play.api.Application"></a>
       <a id="app:Application"></a>
       <h4 class="signature">
       <span class="modifier_kind">
-        <span class="modifier">implicit final </span>
-        <span class="kind">def</span>
+        <span class="modifier">implicit </span>
+        <span class="kind">lazy val</span>
       </span>
       <span class="symbol">
         <span class="name">app</span><span class="result">: <a href="../../../play/api/Application.html" class="extype" name="play.api.Application">Application</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.ConfiguredServer@app:play.api.Application" title="Permalink" target="_top">
+      <a href="../../../index.html#org.scalatestplus.play.BaseOneAppPerSuite@app:play.api.Application" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">The &quot;configured&quot; <code>Application</code> instance that was passed into <code>run</code> via the <code>ConfigMap</code>.</p><div class="fullcomment"><div class="comment cmt"><p>The &quot;configured&quot; <code>Application</code> instance that was passed into <code>run</code> via the <code>ConfigMap</code>.
-</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the configured <code>Application</code></p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.scalatestplus.play.ConfiguredServer">ConfiguredServer</a> → <a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a></dd></dl></div>
+      <p class="shortcomment cmt">An implicit instance of <code>Application</code>.</p>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -446,7 +402,7 @@ class ExampleSpec extends PlaySpec with GuiceOneServerPerSuite {
         <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.ConfiguredServer@asInstanceOf[T0]:T0" title="Permalink" target="_top">
+      <a href="../../../index.html#org.scalatestplus.play.BaseOneAppPerSuite@asInstanceOf[T0]:T0" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -463,7 +419,7 @@ class ExampleSpec extends PlaySpec with GuiceOneServerPerSuite {
         <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.ConfiguredServer@clone():Object" title="Permalink" target="_top">
+      <a href="../../../index.html#org.scalatestplus.play.BaseOneAppPerSuite@clone():Object" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -486,7 +442,7 @@ class ExampleSpec extends PlaySpec with GuiceOneServerPerSuite {
         <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.ConfiguredServer@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+      <a href="../../../index.html#org.scalatestplus.play.BaseOneAppPerSuite@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -503,7 +459,7 @@ class ExampleSpec extends PlaySpec with GuiceOneServerPerSuite {
         <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.ConfiguredServer@equals(x$1:Any):Boolean" title="Permalink" target="_top">
+      <a href="../../../index.html#org.scalatestplus.play.BaseOneAppPerSuite@equals(x$1:Any):Boolean" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -520,7 +476,7 @@ class ExampleSpec extends PlaySpec with GuiceOneServerPerSuite {
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.ConfiguredServer@finalize():Unit" title="Permalink" target="_top">
+      <a href="../../../index.html#org.scalatestplus.play.BaseOneAppPerSuite@finalize():Unit" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -543,7 +499,7 @@ class ExampleSpec extends PlaySpec with GuiceOneServerPerSuite {
         <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.ConfiguredServer@getClass():Class[_]" title="Permalink" target="_top">
+      <a href="../../../index.html#org.scalatestplus.play.BaseOneAppPerSuite@getClass():Class[_]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -560,7 +516,7 @@ class ExampleSpec extends PlaySpec with GuiceOneServerPerSuite {
         <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.ConfiguredServer@hashCode():Int" title="Permalink" target="_top">
+      <a href="../../../index.html#org.scalatestplus.play.BaseOneAppPerSuite@hashCode():Int" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -577,7 +533,7 @@ class ExampleSpec extends PlaySpec with GuiceOneServerPerSuite {
         <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.ConfiguredServer@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
+      <a href="../../../index.html#org.scalatestplus.play.BaseOneAppPerSuite@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -594,7 +550,7 @@ class ExampleSpec extends PlaySpec with GuiceOneServerPerSuite {
         <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.ConfiguredServer@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+      <a href="../../../index.html#org.scalatestplus.play.BaseOneAppPerSuite@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -611,7 +567,7 @@ class ExampleSpec extends PlaySpec with GuiceOneServerPerSuite {
         <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.ConfiguredServer@notify():Unit" title="Permalink" target="_top">
+      <a href="../../../index.html#org.scalatestplus.play.BaseOneAppPerSuite@notify():Unit" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -628,49 +584,12 @@ class ExampleSpec extends PlaySpec with GuiceOneServerPerSuite {
         <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.ConfiguredServer@notifyAll():Unit" title="Permalink" target="_top">
+      <a href="../../../index.html#org.scalatestplus.play.BaseOneAppPerSuite@notifyAll():Unit" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="org.scalatestplus.play.ConfiguredServer#port" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="port:Int"></a>
-      <a id="port:Int"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">port</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.ConfiguredServer@port:Int" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">The &quot;configured&quot; port number, passed into <code>run</code> via the <code>ConfigMap</code>, at which the <code>TestServer</code> is running.</p><div class="fullcomment"><div class="comment cmt"><p>The &quot;configured&quot; port number, passed into <code>run</code> via the <code>ConfigMap</code>, at which the <code>TestServer</code> is running.
-</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the configured port number</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.scalatestplus.play.ConfiguredServer">ConfiguredServer</a> → <a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a></dd></dl></div>
-    </li><li name="org.scalatestplus.play.ServerProvider#portNumber" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="portNumber:org.scalatestplus.play.PortNumber"></a>
-      <a id="portNumber:PortNumber"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">implicit final </span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">portNumber</span><span class="result">: <a href="PortNumber.html" class="extype" name="org.scalatestplus.play.PortNumber">PortNumber</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.ConfiguredServer@portNumber:org.scalatestplus.play.PortNumber" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Implicit <code>PortNumber</code> instance that wraps <code>port</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Implicit <code>PortNumber</code> instance that wraps <code>port</code>. The value returned from <code>portNumber.value</code>
-will be same as the value of <code>port</code>.
-</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the configured port number, wrapped in a <code>PortNumber</code></p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a></dd></dl></div>
-    </li><li name="org.scalatestplus.play.ConfiguredServer#run" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="org.scalatestplus.play.BaseOneAppPerSuite#run" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="run(testName:Option[String],args:org.scalatest.Args):org.scalatest.Status"></a>
       <a id="run(Option[String],Args):Status"></a>
       <h4 class="signature">
@@ -682,23 +601,17 @@ will be same as the value of <code>port</code>.
         <span class="name">run</span><span class="params">(<span name="testName">testName: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="args">args: <span class="extype" name="org.scalatest.Args">Args</span></span>)</span><span class="result">: <span class="extype" name="org.scalatest.Status">Status</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.ConfiguredServer@run(testName:Option[String],args:org.scalatest.Args):org.scalatest.Status" title="Permalink" target="_top">
+      <a href="../../../index.html#org.scalatestplus.play.BaseOneAppPerSuite@run(testName:Option[String],args:org.scalatest.Args):org.scalatest.Status" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Looks in <code>args.configMap</code> for a key named &quot;org.scalatestplus.play.app&quot; whose value is a <code>Application</code>,
-and a key named &quot;org.scalatestplus.play.port&quot; whose value is an <code>Int</code>,
-and if they exist, sets the <code>Application</code> as the value that will be returned from the <code>app</code> method and
-the <code>Int</code> as the value that will be returned from the <code>port</code> method, then calls
-<code>super.run</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Looks in <code>args.configMap</code> for a key named &quot;org.scalatestplus.play.app&quot; whose value is a <code>Application</code>,
-and a key named &quot;org.scalatestplus.play.port&quot; whose value is an <code>Int</code>,
-and if they exist, sets the <code>Application</code> as the value that will be returned from the <code>app</code> method and
-the <code>Int</code> as the value that will be returned from the <code>port</code> method, then calls
-<code>super.run</code>.</p><p>If no key matches &quot;org.scalatestplus.play.app&quot; in <code>args.configMap</code>, or the associated value is
-not a <code>Application</code>, or if no key matches &quot;org.scalatestplus.play.port&quot; in <code>args.configMap</code>,
-or the associated value is not an <code>Int</code>, throws <code>IllegalArgumentException</code>.
+      <p class="shortcomment cmt">Invokes <code>Play.start</code>, passing in the <code>Application</code> provided by <code>app</code>, and places
+that same <code>Application</code> into the <code>ConfigMap</code> under the key <code>org.scalatestplus.play.app</code> to make it available
+to nested suites; calls <code>super.run</code>; and lastly ensures <code>Play.stop</code> is invoked after all tests and nested suites have completed.</p><div class="fullcomment"><div class="comment cmt"><p>Invokes <code>Play.start</code>, passing in the <code>Application</code> provided by <code>app</code>, and places
+that same <code>Application</code> into the <code>ConfigMap</code> under the key <code>org.scalatestplus.play.app</code> to make it available
+to nested suites; calls <code>super.run</code>; and lastly ensures <code>Play.stop</code> is invoked after all tests and nested suites have completed.
 </p></div><dl class="paramcmts block"><dt class="param">testName</dt><dd class="cmt"><p>an optional name of one test to run. If <code>None</code>, all relevant tests should be run.
-                I.e., <code>None</code> acts like a wildcard that means run all relevant tests in this <code>Suite</code>.</p></dd><dt class="param">args</dt><dd class="cmt"><p>the <code>Args</code> for this run</p></dd><dt>returns</dt><dd class="cmt"><p>a <code>Status</code> object that indicates when all tests and nested suites started by this method have completed, and whether or not a failure occurred.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.scalatestplus.play.ConfiguredServer">ConfiguredServer</a> → SuiteMixin</dd><dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="IllegalArgumentException"><code>IllegalArgumentException</code></span> if the <code>Application</code> and/or port number does not appear in <code>args.configMap</code> under the expected keys</p></span></dd></dl></div>
+                I.e., <code>None</code> acts like a wildcard that means run all relevant tests in this <code>Suite</code>.</p></dd><dt class="param">args</dt><dd class="cmt"><p>the <code>Args</code> for this run</p></dd><dt>returns</dt><dd class="cmt"><p>a <code>Status</code> object that indicates when all tests and nested suites started by this method have completed, and whether or not a failure occurred.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.scalatestplus.play.BaseOneAppPerSuite">BaseOneAppPerSuite</a> → SuiteMixin</dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -711,7 +624,7 @@ or the associated value is not an <code>Int</code>, throws <code>IllegalArgument
         <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.ConfiguredServer@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
+      <a href="../../../index.html#org.scalatestplus.play.BaseOneAppPerSuite@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -728,7 +641,7 @@ or the associated value is not an <code>Int</code>, throws <code>IllegalArgument
         <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.ConfiguredServer@toString():String" title="Permalink" target="_top">
+      <a href="../../../index.html#org.scalatestplus.play.BaseOneAppPerSuite@toString():String" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -745,7 +658,7 @@ or the associated value is not an <code>Int</code>, throws <code>IllegalArgument
         <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.ConfiguredServer@wait():Unit" title="Permalink" target="_top">
+      <a href="../../../index.html#org.scalatestplus.play.BaseOneAppPerSuite@wait():Unit" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -768,7 +681,7 @@ or the associated value is not an <code>Int</code>, throws <code>IllegalArgument
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.ConfiguredServer@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
+      <a href="../../../index.html#org.scalatestplus.play.BaseOneAppPerSuite@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -791,7 +704,7 @@ or the associated value is not an <code>Int</code>, throws <code>IllegalArgument
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.ConfiguredServer@wait(x$1:Long):Unit" title="Permalink" target="_top">
+      <a href="../../../index.html#org.scalatestplus.play.BaseOneAppPerSuite@wait(x$1:Long):Unit" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -811,9 +724,7 @@ or the associated value is not an <code>Int</code>, throws <code>IllegalArgument
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="org.scalatestplus.play.ServerProvider">
-              <h3>Inherited from <a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a></h3>
-            </div><div class="parent" name="org.scalatest.SuiteMixin">
+        <div class="parent" name="org.scalatest.SuiteMixin">
               <h3>Inherited from <span class="extype" name="org.scalatest.SuiteMixin">SuiteMixin</span></h3>
             </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>

@@ -45,95 +45,17 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <span class="name">OneAppPerSuite</span><span class="result"> extends <span class="extype" name="org.scalatest.SuiteMixin">SuiteMixin</span></span>
+        <span class="name">OneAppPerSuite</span><span class="result"> extends <a href="guice/GuiceOneAppPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneAppPerSuite">GuiceOneAppPerSuite</a></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Trait that provides a new <code>Application</code> instance per ScalaTest <code>Suite</code>.</p><p>By default, this trait creates a new <code>Application</code> for the <code>Suite</code> using default parameter values, which
-is made available via the <code>app</code> field defined in this trait. If your <code>Suite</code> needs a <code>Application</code> with non-default
-parameters, override <code>app</code> to create it the way you need it.</p><p>This <code>SuiteMixin</code> trait's overridden <code>run</code> method calls <code>Play.start</code>, passing in the
-<code>Application</code> provided by <code>app</code>, before executing the <code>Suite</code> via a call to <code>super.run</code>.
-In addition, it places a reference to the <code>Application</code> provided by <code>app</code> into the <code>ConfigMap</code>
-under the key <code>org.scalatestplus.play.app</code>.  This allows any nested <code>Suite</code>s to access the <code>Suite</code>'s
-<code>Application</code> as well, most easily by having the nested <code>Suite</code>s mix in the
-<a href="ConfiguredApp.html" class="extype" name="org.scalatestplus.play.ConfiguredApp">ConfiguredApp</a> trait.  On the status returned by <code>super.run</code>, this
-trait's overridden <code>run</code> method registers a call to <code>Play.stop</code> to be executed when the <code>Status</code>
-completes, and returns the same <code>Status</code>. This ensure the <code>Application</code> will continue to execute until
-all nested suites have completed, after which the <code>Application</code> will be stopped.</p><p>Here's an example that demonstrates some of the services provided by this trait:</p><p><pre class="stHighlight">
-package org.scalatestplus.play.examples.oneapppersuite
-
-import org.scalatestplus.play._
-import play.api.{Play, Application}
-import play.api.inject.guice._
-
-class ExampleSpec extends PlaySpec with OneAppPerSuite {
-
-  // Override app if you need an Application with other than non-default parameters.
-  implicit override lazy val app: Application =
-    new GuiceApplicationBuilder().configure(Map("ehcacheplugin" -> "disabled")).build()
-
-  "The OneAppPerSuite trait" must {
-    "provide a FakeApplication" in {
-      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
-    }
-    "make the FakeApplication available implicitly" in {
-      def getConfig(key: String)(implicit app: Application) = app.configuration.getString(key)
-      getConfig("ehcacheplugin") mustBe Some("disabled")
-    }
-    "start the FakeApplication" in {
-      Play.maybeApplication mustBe Some(app)
-    }
-  }
-}
-</pre></p><p>If you have many tests that can share the same <code>Application</code>, and you don't want to put them all into one
-test class, you can place them into different <code>Suite</code> classes.
-These will be your nested suites. Create a master suite that extends <code>OneAppPerSuite</code> and declares the nested
-<code>Suite</code>s. Annotate the nested suites with <code>@DoNotDiscover</code> and have them extend <code>ConfiguredApp</code>. Here's an example:</p><p><pre class="stHighlight">
-package org.scalatestplus.play.examples.oneapppersuite
-
-import play.api.test._
-import org.scalatest._
-import org.scalatestplus.play._
-import play.api.{Play, Application}
-import play.api.inject.guice._
-
-// This is the "master" suite
-class NestedExampleSpec extends Suites(
-  new OneSpec,
-  new TwoSpec,
-  new RedSpec,
-  new BlueSpec
-) with OneAppPerSuite {
-  // Override app if you need an Application with other than non-default parameters.
-  implicit override lazy val app: Application =
-    new GuiceApplicationBuilder().configure(Map("ehcacheplugin" -> "disabled")).build()
-}
-
-// These are the nested suites
-@DoNotDiscover class OneSpec extends PlaySpec with ConfiguredApp
-@DoNotDiscover class TwoSpec extends PlaySpec with ConfiguredApp
-@DoNotDiscover class RedSpec extends PlaySpec with ConfiguredApp
-
-@DoNotDiscover
-class BlueSpec extends PlaySpec with ConfiguredApp {
-
-  "The OneAppPerSuite trait" must {
-    "provide an Application" in {
-      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
-    }
-    "make the Application available implicitly" in {
-      def getConfig(key: String)(implicit app: Application) = app.configuration.getString(key)
-      getConfig("ehcacheplugin") mustBe Some("disabled")
-    }
-    "start the Application" in {
-      Play.maybeApplication mustBe Some(app)
-    }
-  }
-}
-</pre>
-</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="org.scalatestplus.play.OneAppPerSuite">OneAppPerSuite</a> with <span class="extype" name="org.scalatest.Suite">Suite</span></dd><dt>Source</dt><dd><a href="https://github.com/playframework/scalatestplus-play/tree/master/module/src/main/scala/org/scalatestplus/play/OneAppPerSuite.scala" target="_blank">OneAppPerSuite.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Synonym for GuiceOneAppPerSuite.
+</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="org.scalatestplus.play.OneAppPerSuite">OneAppPerSuite</a> with <span class="extype" name="org.scalatest.Suite">Suite</span></dd><dt>Annotations</dt><dd>
+                <span class="name">@Deprecated</span>
+              
+        </dd><dt>Source</dt><dd><a href="https://github.com/playframework/scalatestplus-play/tree/master/module/src/main/scala/org/scalatestplus/play/OneAppPerSuite.scala" target="_blank">OneAppPerSuite.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="org.scalatest.SuiteMixin">SuiteMixin</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="guice/GuiceOneAppPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneAppPerSuite">GuiceOneAppPerSuite</a>, <a href="guice/GuiceFakeApplicationFactory.html" class="extype" name="org.scalatestplus.play.guice.GuiceFakeApplicationFactory">GuiceFakeApplicationFactory</a>, <a href="FakeApplicationFactory.html" class="extype" name="org.scalatestplus.play.FakeApplicationFactory">FakeApplicationFactory</a>, <a href="BaseOneAppPerSuite.html" class="extype" name="org.scalatestplus.play.BaseOneAppPerSuite">BaseOneAppPerSuite</a>, <span class="extype" name="org.scalatest.SuiteMixin">SuiteMixin</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -151,7 +73,7 @@ class BlueSpec extends PlaySpec with ConfiguredApp {
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="org.scalatestplus.play.OneAppPerSuite"><span>OneAppPerSuite</span></li><li class="in" name="org.scalatest.SuiteMixin"><span>SuiteMixin</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="org.scalatestplus.play.OneAppPerSuite"><span>OneAppPerSuite</span></li><li class="in" name="org.scalatestplus.play.guice.GuiceOneAppPerSuite"><span>GuiceOneAppPerSuite</span></li><li class="in" name="org.scalatestplus.play.guice.GuiceFakeApplicationFactory"><span>GuiceFakeApplicationFactory</span></li><li class="in" name="org.scalatestplus.play.FakeApplicationFactory"><span>FakeApplicationFactory</span></li><li class="in" name="org.scalatestplus.play.BaseOneAppPerSuite"><span>BaseOneAppPerSuite</span></li><li class="in" name="org.scalatest.SuiteMixin"><span>SuiteMixin</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -451,7 +373,7 @@ class BlueSpec extends PlaySpec with ConfiguredApp {
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="org.scalatestplus.play.OneAppPerSuite#app" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="org.scalatestplus.play.BaseOneAppPerSuite#app" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="app:play.api.Application"></a>
       <a id="app:Application"></a>
       <h4 class="signature">
@@ -467,9 +389,8 @@ class BlueSpec extends PlaySpec with ConfiguredApp {
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">An implicit instance of <code>Application</code>.</p><div class="fullcomment"><div class="comment cmt"><p>An implicit instance of <code>Application</code>.</p><p>This trait's implementation initializes this <code>lazy</code> <code>val</code> with a new instance of <code>Application</code> with
-parameters set to their defaults. Override this <code>lazy</code> <code>val</code> if you need a <code>Application</code> created with non-default parameter values.
-</p></div></div>
+      <p class="shortcomment cmt">An implicit instance of <code>Application</code>.</p><div class="fullcomment"><div class="comment cmt"><p>An implicit instance of <code>Application</code>.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseOneAppPerSuite.html" class="extype" name="org.scalatestplus.play.BaseOneAppPerSuite">BaseOneAppPerSuite</a></dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -544,6 +465,23 @@ parameters set to their defaults. Override this <code>lazy</code> <code>val</cod
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="org.scalatestplus.play.guice.GuiceFakeApplicationFactory#fakeApplication" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="fakeApplication():play.api.Application"></a>
+      <a id="fakeApplication():Application"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">fakeApplication</span><span class="params">()</span><span class="result">: <a href="../../../play/api/Application.html" class="extype" name="play.api.Application">Application</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.scalatestplus.play.OneAppPerSuite@fakeApplication():play.api.Application" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="guice/GuiceFakeApplicationFactory.html" class="extype" name="org.scalatestplus.play.guice.GuiceFakeApplicationFactory">GuiceFakeApplicationFactory</a> → <a href="FakeApplicationFactory.html" class="extype" name="org.scalatestplus.play.FakeApplicationFactory">FakeApplicationFactory</a></dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
@@ -669,7 +607,7 @@ parameters set to their defaults. Override this <code>lazy</code> <code>val</cod
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="org.scalatestplus.play.OneAppPerSuite#run" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="org.scalatestplus.play.BaseOneAppPerSuite#run" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="run(testName:Option[String],args:org.scalatest.Args):org.scalatest.Status"></a>
       <a id="run(Option[String],Args):Status"></a>
       <h4 class="signature">
@@ -691,7 +629,7 @@ to nested suites; calls <code>super.run</code>; and lastly ensures <code>Play.st
 that same <code>Application</code> into the <code>ConfigMap</code> under the key <code>org.scalatestplus.play.app</code> to make it available
 to nested suites; calls <code>super.run</code>; and lastly ensures <code>Play.stop</code> is invoked after all tests and nested suites have completed.
 </p></div><dl class="paramcmts block"><dt class="param">testName</dt><dd class="cmt"><p>an optional name of one test to run. If <code>None</code>, all relevant tests should be run.
-                I.e., <code>None</code> acts like a wildcard that means run all relevant tests in this <code>Suite</code>.</p></dd><dt class="param">args</dt><dd class="cmt"><p>the <code>Args</code> for this run</p></dd><dt>returns</dt><dd class="cmt"><p>a <code>Status</code> object that indicates when all tests and nested suites started by this method have completed, and whether or not a failure occurred.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.scalatestplus.play.OneAppPerSuite">OneAppPerSuite</a> → SuiteMixin</dd></dl></div>
+                I.e., <code>None</code> acts like a wildcard that means run all relevant tests in this <code>Suite</code>.</p></dd><dt class="param">args</dt><dd class="cmt"><p>the <code>Args</code> for this run</p></dd><dt>returns</dt><dd class="cmt"><p>a <code>Status</code> object that indicates when all tests and nested suites started by this method have completed, and whether or not a failure occurred.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseOneAppPerSuite.html" class="extype" name="org.scalatestplus.play.BaseOneAppPerSuite">BaseOneAppPerSuite</a> → SuiteMixin</dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -804,7 +742,15 @@ to nested suites; calls <code>super.run</code>; and lastly ensures <code>Play.st
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="org.scalatest.SuiteMixin">
+        <div class="parent" name="org.scalatestplus.play.guice.GuiceOneAppPerSuite">
+              <h3>Inherited from <a href="guice/GuiceOneAppPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneAppPerSuite">GuiceOneAppPerSuite</a></h3>
+            </div><div class="parent" name="org.scalatestplus.play.guice.GuiceFakeApplicationFactory">
+              <h3>Inherited from <a href="guice/GuiceFakeApplicationFactory.html" class="extype" name="org.scalatestplus.play.guice.GuiceFakeApplicationFactory">GuiceFakeApplicationFactory</a></h3>
+            </div><div class="parent" name="org.scalatestplus.play.FakeApplicationFactory">
+              <h3>Inherited from <a href="FakeApplicationFactory.html" class="extype" name="org.scalatestplus.play.FakeApplicationFactory">FakeApplicationFactory</a></h3>
+            </div><div class="parent" name="org.scalatestplus.play.BaseOneAppPerSuite">
+              <h3>Inherited from <a href="BaseOneAppPerSuite.html" class="extype" name="org.scalatestplus.play.BaseOneAppPerSuite">BaseOneAppPerSuite</a></h3>
+            </div><div class="parent" name="org.scalatest.SuiteMixin">
               <h3>Inherited from <span class="extype" name="org.scalatest.SuiteMixin">SuiteMixin</span></h3>
             </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>

@@ -56,7 +56,7 @@ the <code>WebDriver</code> is placed in the <code>ConfigMap</code> under the key
 information represents the &quot;configured browser&quot; that is passed from the enclosing suite to the nested suites. Trait <code>ConfiguredBrowser</code> extracts this information from
 from the <code>ConfigMap</code> and makes the <code>WebDriver</code> available implicitly from the <code>webDriver</code> method.</p><p>This trait's self-type, <a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a>,  will ensure
 a <code>TestServer</code> and <code>Application</code> are available to each test. The self-type will require that you mix in either
-<a href="OneServerPerSuite.html" class="extype" name="org.scalatestplus.play.OneServerPerSuite">OneServerPerSuite</a>, <a href="OneServerPerTest.html" class="extype" name="org.scalatestplus.play.OneServerPerTest">OneServerPerTest</a>,
+<a href="guice/GuiceOneServerPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerSuite">GuiceOneServerPerSuite</a>, <a href="OneServerPerTest.html" class="extype" name="org.scalatestplus.play.OneServerPerTest">OneServerPerTest</a>,
 <a href="ConfiguredServer.html" class="extype" name="org.scalatestplus.play.ConfiguredServer">ConfiguredServer</a> before you mix in this trait. Your choice among these three
 <code>ServerProvider</code>s will determine the extent to which one or more <code>TestServer</code>s are shared by multiple tests.</p><p>To prevent discovery of nested suites you can annotate them with <code>@DoNotDiscover</code>. Here's an example
 taken from the documentation for trait <a href="OneBrowserPerSuite.html" class="extype" name="org.scalatestplus.play.OneBrowserPerSuite">OneBrowserPerSuite</a>:</p><p><pre class="stHighlight">
@@ -72,8 +72,8 @@ import play.api.routing._
 @FirefoxBrowser
 class ExampleSpec extends PlaySpec with OneServerPerSuite with OneBrowserPerSuite with FirefoxFactory {
 
-  // Override app if you need a Application with other than non-default parameters.
-  implicit override lazy val app: Application = new GuiceApplicationBuilder()
+  // Override fakeApplication() if you need a Application with other than non-default parameters.
+  def fakeApplication(): Application = new GuiceApplicationBuilder()
       .configure("foo" -> "bar", "ehcacheplugin" -> "disabled")
       .router(Router.from(TestRoute))
       .build()

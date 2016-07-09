@@ -49,26 +49,26 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Trait that provides a configured <code>Application</code> to the suite into which it is mixed.</p><p>The purpose of this trait is to allow nested suites of an enclosing suite that extends <a href="OneAppPerSuite.html" class="extype" name="org.scalatestplus.play.OneAppPerSuite">OneAppPerSuite</a>
-to make use of the <code>Application</code> provided by <code>OneAppPerSuite</code>. Trait <code>OneAppPerSuite</code> will ensure
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Trait that provides a configured <code>Application</code> to the suite into which it is mixed.</p><p>The purpose of this trait is to allow nested suites of an enclosing suite that extends <span class="extype" name="org.scalatestplus.play.GuiceOneAppPerSuite">GuiceOneAppPerSuite</span>
+to make use of the <code>Application</code> provided by <code>GuiceOneAppPerSuite</code>. Trait <code>GuiceOneAppPerSuite</code> will ensure
 the <code>Application</code> is placed in the <code>ConfigMap</code> under the key <code>org.scalatestplus.play.app</code> before
 nested suites are invoked. This represents the &quot;configured application&quot; that is passed from the enclosing
 suite to the nested suites. Trait <code>ConfiguredApp</code> extracts the <code>Application</code> from the <code>ConfigMap</code>
 and makes it available via the <code>app</code> method it provides.</p><p>To prevent discovery of nested suites you can annotate them with <code>@DoNotDiscover</code>. Here's an example,
-taken from <code>OneAppPerSuite</code>'s documentation:</p><p><pre class="stHighlight">
+taken from <code>GuiceOneAppPerSuite</code>'s documentation:</p><p><pre class="stHighlight">
 package org.scalatestplus.play.examples.oneapppersuite
 
 import org.scalatestplus.play._
 import play.api.{Play, Application}
 import play.api.inject.guice._
 
-class ExampleSpec extends PlaySpec with OneAppPerSuite {
+class ExampleSpec extends PlaySpec with GuiceOneAppPerSuite {
 
   // Override app if you need an Application with other than non-default parameters.
-  implicit override lazy val app: Application =
+  def fakeApplication(): Application =
     new GuiceApplicationBuilder().configure(Map("ehcacheplugin" -> "disabled")).build()
 
-  "The OneAppPerSuite trait" must {
+  "The GuiceOneAppPerSuite trait" must {
     "provide a FakeApplication" in {
       app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
     }

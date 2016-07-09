@@ -93,7 +93,7 @@ instance the first time it is needed  by each test, and close it the first time 
 to share the same browser), and overrides the <code>tags</code> lifecycle method to tag the shared tests so you can
 filter them by browser type.  This trait's self-type, <a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a>,  will ensure
 a <code>TestServer</code> and <code>Application</code> are available to each test. The self-type will require that you mix in either
-<a href="OneServerPerSuite.html" class="extype" name="org.scalatestplus.play.OneServerPerSuite">OneServerPerSuite</a>, <a href="OneServerPerTest.html" class="extype" name="org.scalatestplus.play.OneServerPerTest">OneServerPerTest</a>,
+<a href="guice/GuiceOneServerPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerSuite">GuiceOneServerPerSuite</a>, <a href="OneServerPerTest.html" class="extype" name="org.scalatestplus.play.OneServerPerTest">OneServerPerTest</a>,
 <a href="ConfiguredServer.html" class="extype" name="org.scalatestplus.play.ConfiguredServer">ConfiguredServer</a> before you mix in this trait. Your choice among these three
 <code>ServerProvider</code>s will determine the extent to which a <code>TestServer</code> is shared by multiple tests.</p><p>You'll need to place any tests that you want executed by multiple browsers in a <code>sharedTests</code> method. Because all tests in a ScalaTest <code>Suite</code>
 must have unique names, you'll need to append the browser name (available from the <code>BrowserInfo</code> passed
@@ -134,9 +134,9 @@ import play.api.cache.EhCacheModule
 
 class ExampleSpec extends PlaySpec with OneServerPerSuite with AllBrowsersPerSuite {
 
-  // Override app if you need an Application with other than
+  // Override fakeApplication if you need an Application with other than
   // default parameters.
-  implicit override lazy val app = new GuiceApplicationBuilder()
+  def fakeApplication() = new GuiceApplicationBuilder()
     .disable[EhCacheModule]
     .configure("foo" -> "bar")
     .router(Router.from(TestRoute))
@@ -243,7 +243,7 @@ each need a brand new browser.</p><p>This trait overrides <code>Suite</code>'s <
 instance before executing each test that needs a browser, closing it after the test completes, and overrides the <code>tags</code> lifecycle method to tag the shared tests so you can
 filter them by browser type.  This trait's self-type, <a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a>,  will ensure
 a <code>TestServer</code> and <code>Application</code> are available to each test. The self-type will require that you mix in either
-<a href="OneServerPerSuite.html" class="extype" name="org.scalatestplus.play.OneServerPerSuite">OneServerPerSuite</a>, <a href="OneServerPerTest.html" class="extype" name="org.scalatestplus.play.OneServerPerTest">OneServerPerTest</a>,
+<a href="guice/GuiceOneServerPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerSuite">GuiceOneServerPerSuite</a>, <a href="OneServerPerTest.html" class="extype" name="org.scalatestplus.play.OneServerPerTest">OneServerPerTest</a>,
 <a href="ConfiguredServer.html" class="extype" name="org.scalatestplus.play.ConfiguredServer">ConfiguredServer</a> before you mix in this trait. Your choice among these three
 <code>ServerProvider</code>s will determine the extent to which a <code>TestServer</code> is shared by multiple tests.</p><p>You'll need to place any tests that you want executed by multiple browsers in a <code>sharedTests</code> method. Because all tests in a ScalaTest <code>Suite</code>
 must have unique names, you'll need to append the browser name (available from the <code>BrowserInfo</code> passed
@@ -367,6 +367,279 @@ with sbt and ask to include only Firefox:</p><p><pre class="stREPL">
 [info] <span class="stGreen">The AllBrowsersPerTest trait</span>
 </pre>
 </p></div></div>
+    </li><li name="org.scalatestplus.play.AppProvider" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="AppProviderextendsAnyRef"></a>
+      <a id="AppProvider:AppProvider"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="AppProvider.html"><span class="name">AppProvider</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.scalatestplus.play.package@AppProviderextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Trait that defines an application as <code>app</code>.</p>
+    </li><li name="org.scalatestplus.play.BaseOneAppPerSuite" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="BaseOneAppPerSuiteextendsSuiteMixin"></a>
+      <a id="BaseOneAppPerSuite:BaseOneAppPerSuite"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="BaseOneAppPerSuite.html"><span class="name">BaseOneAppPerSuite</span></a><span class="result"> extends <span class="extype" name="org.scalatest.SuiteMixin">SuiteMixin</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.scalatestplus.play.package@BaseOneAppPerSuiteextendsSuiteMixin" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">The base abstract trait for one app per suite.</p>
+    </li><li name="org.scalatestplus.play.BaseOneAppPerTest" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="BaseOneAppPerTestextendsSuiteMixinwithAppProvider"></a>
+      <a id="BaseOneAppPerTest:BaseOneAppPerTest"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="BaseOneAppPerTest.html"><span class="name">BaseOneAppPerTest</span></a><span class="result"> extends <span class="extype" name="org.scalatest.SuiteMixin">SuiteMixin</span> with <a href="AppProvider.html" class="extype" name="org.scalatestplus.play.AppProvider">AppProvider</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.scalatestplus.play.package@BaseOneAppPerTestextendsSuiteMixinwithAppProvider" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Trait that provides a new <code>Application</code> instance for each test.</p><div class="fullcomment"><div class="comment cmt"><p>Trait that provides a new <code>Application</code> instance for each test.</p><p>This <code>SuiteMixin</code> trait's overridden <code>withFixture</code> method creates a new <code>Application</code>
+before each test and ensures it is cleaned up after the test has completed. You can
+access the <code>Application</code> from your tests as method <code>app</code> (which is marked implicit).</p><p>By default, this trait creates a new <code>Application</code> for each test using default parameter values, which
+is returned by the <code>newAppForTest</code> method defined in this trait. If your tests need a <code>Application</code> with non-default
+parameters, override <code>newAppForTest</code> to return it.</p><p>Here's an example that demonstrates some of the services provided by this trait:</p><p><pre class="stHighlight">
+package org.scalatestplus.play.examples.oneapppertest
+
+import org.scalatest._
+import org.scalatestplus.play._
+import play.api.{Play, Application}
+import play.api.inject.guice._
+
+class ExampleSpec extends PlaySpec with OneAppPerTest {
+
+  // Override newAppForTest if you need an Application with other than non-default parameters.
+  implicit override def newAppForTest(testData: TestData): Application =
+    new GuiceApplicationBuilder().configure(Map("ehcacheplugin" -> "disabled")).build()
+
+  "The OneAppPerTest trait" must {
+    "provide an Application" in {
+      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
+    }
+    "make the Application available implicitly" in {
+      def getConfig(key: String)(implicit app: Application) = app.configuration.getString(key)
+      getConfig("ehcacheplugin") mustBe Some("disabled")
+    }
+    "start the Application" in {
+      Play.maybeApplication mustBe Some(app)
+    }
+  }
+}
+</pre>
+</p></div></div>
+    </li><li name="org.scalatestplus.play.BaseOneServerPerSuite" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="BaseOneServerPerSuiteextendsSuiteMixinwithServerProvider"></a>
+      <a id="BaseOneServerPerSuite:BaseOneServerPerSuite"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="BaseOneServerPerSuite.html"><span class="name">BaseOneServerPerSuite</span></a><span class="result"> extends <span class="extype" name="org.scalatest.SuiteMixin">SuiteMixin</span> with <a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.scalatestplus.play.package@BaseOneServerPerSuiteextendsSuiteMixinwithServerProvider" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Trait that provides a new <code>Application</code> and running <code>TestServer</code> instance per ScalaTest <code>Suite</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Trait that provides a new <code>Application</code> and running <code>TestServer</code> instance per ScalaTest <code>Suite</code>.</p><p>By default, this trait creates a new <code>Application</code> for the <code>Suite</code> using default parameter values, which
+is made available via the <code>app</code> field defined in this trait and a new <code>TestServer</code> for the <code>Suite</code> using the port number provided by
+its <code>port</code> field and the <code>Application</code> provided by its <code>app</code> field. If your <code>Suite</code> needs a
+<code>Application</code> with non-default parameters, override <code>app</code>. If it needs a different port number,
+override <code>port</code>.</p><p>This <code>SuiteMixin</code> trait's overridden <code>run</code> method calls <code>start</code> on the <code>TestServer</code>
+before executing the <code>Suite</code> via a call to <code>super.run</code>.
+In addition, it places a reference to the <code>Application</code> provided by <code>app</code> into the <code>ConfigMap</code>
+under the key <code>org.scalatestplus.play.app</code> and to the port number provided by <code>port</code> under the key
+<code>org.scalatestplus.play.port</code>.  This allows any nested <code>Suite</code>s to access the <code>Suite</code>'s
+<code>Application</code> and port number as well, most easily by having the nested <code>Suite</code>s mix in the
+<a href="ConfiguredServer.html" class="extype" name="org.scalatestplus.play.ConfiguredServer">ConfiguredServer</a> trait. On the status returned by <code>super.run</code>, this
+trait's overridden <code>run</code> method registers a call to <code>stop</code> on the <code>TestServer</code> to be executed when the <code>Status</code>
+completes, and returns the same <code>Status</code>. This ensure the <code>TestServer</code> will continue to execute until
+all nested suites have completed, after which the <code>TestServer</code> will be stopped.</p><p>Here's an example that demonstrates some of the services provided by this trait:</p><p><pre class="stHighlight">
+package org.scalatestplus.play.examples.oneserverpersuite
+
+import play.api.test._
+import org.scalatestplus.play._
+import play.api.{Play, Application}
+import play.api.inject.guice._
+
+class ExampleSpec extends PlaySpec with OneServerPerSuite {
+
+  // Override fakeApplication() if you need a Application with other than non-default parameters.
+  def fakeApplication(): Application =
+    new GuiceApplicationBuilder().configure("ehcacheplugin" -> "disabled").build()
+
+  "The OneServerPerSuite trait" must {
+    "provide an Application" in {
+      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
+    }
+    "make the Application available implicitly" in {
+      def getConfig(key: String)(implicit app: Application) = app.configuration.getString(key)
+      getConfig("ehcacheplugin") mustBe Some("disabled")
+    }
+    "start the Application" in {
+      Play.maybeApplication mustBe Some(app)
+    }
+    "provide the port number" in {
+      port mustBe Helpers.testServerPort
+    }
+    "provide an actual running server" in {
+      import Helpers._
+      import java.net._
+      val url = new URL("http://localhost:" + port + "/boum")
+      val con = url.openConnection().asInstanceOf[HttpURLConnection]
+      try con.getResponseCode mustBe 404
+      finally con.disconnect()
+    }
+  }
+}
+</pre></p><p>If you have many tests that can share the same <code>Application</code> and <code>TestServer</code>, and you don't want to put them all into one
+test class, you can place them into different <code>Suite</code> classes.
+These will be your nested suites. Create a master suite that extends <code>OneServerPerSuite</code> and declares the nested
+<code>Suite</code>s. Annotate the nested suites with <code>@DoNotDiscover</code> and have them extend <code>ConfiguredServer</code>. Here's an example:</p><p><pre class="stHighlight">
+package org.scalatestplus.play.examples.oneserverpersuite
+
+import play.api.test._
+import org.scalatest._
+import org.scalatestplus.play._
+import play.api.{Play, Application}
+import play.api.inject.guice._
+
+// This is the "master" suite
+class NestedExampleSpec extends Suites(
+  new OneSpec,
+  new TwoSpec,
+  new RedSpec,
+  new BlueSpec
+) with GuiceOneServerPerSuite {
+  // Override app if you need an Application with other than non-default parameters.
+  override def fakeApplication(): Application =
+    new GuiceApplicationBuilder().configure(Map("ehcacheplugin" -> "disabled")).build()
+}
+
+// These are the nested suites
+
+@DoNotDiscover class OneSpec extends PlaySpec with ConfiguredServer
+@DoNotDiscover class TwoSpec extends PlaySpec with ConfiguredServer
+@DoNotDiscover class RedSpec extends PlaySpec with ConfiguredServer
+@DoNotDiscover
+class BlueSpec extends PlaySpec with ConfiguredServer {
+
+  "The OneServerPerSuite trait" must {
+    "provide an Application" in {
+      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
+    }
+    "make the Application available implicitly" in {
+      def getConfig(key: String)(implicit app: Application) = app.configuration.getString(key)
+      getConfig("ehcacheplugin") mustBe Some("disabled")
+    }
+    "start the Application" in {
+      Play.maybeApplication mustBe Some(app)
+    }
+    "provide the port number" in {
+      port mustBe Helpers.testServerPort
+    }
+    "provide an actual running server" in {
+      import Helpers._
+      import java.net._
+      val url = new URL("http://localhost:" + port + "/boum")
+      val con = url.openConnection().asInstanceOf[HttpURLConnection]
+      try con.getResponseCode mustBe 404
+      finally con.disconnect()
+    }
+  }
+}
+</pre>
+</p></div></div>
+    </li><li name="org.scalatestplus.play.BaseOneServerPerTest" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="BaseOneServerPerTestextendsSuiteMixinwithServerProvider"></a>
+      <a id="BaseOneServerPerTest:BaseOneServerPerTest"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="BaseOneServerPerTest.html"><span class="name">BaseOneServerPerTest</span></a><span class="result"> extends <span class="extype" name="org.scalatest.SuiteMixin">SuiteMixin</span> with <a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.scalatestplus.play.package@BaseOneServerPerTestextendsSuiteMixinwithServerProvider" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Trait that provides a new <code>Application</code> and running <code>TestServer</code> instance for each test executed in a ScalaTest <code>Suite</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Trait that provides a new <code>Application</code> and running <code>TestServer</code> instance for each test executed in a ScalaTest <code>Suite</code>.</p><p>This <code>SuiteMixin</code> trait overrides ScalaTest's <code>withFixture</code> method to create a new <code>Application</code> and <code>TestServer</code>
+before each test, and ensure they are cleaned up after the test has completed. The <code>Application</code> is available (implicitly) from
+method <code>app</code>. The <code>TestServer</code>'s port number is available as <code>port</code> (and implicitly available as <code>portNumber</code>, wrapped
+in a <a href="PortNumber.html" class="extype" name="org.scalatestplus.play.PortNumber">PortNumber</a>).</p><p>By default, this trait creates a new <code>Application</code> for each test using default parameter values, which
+is returned by the <code>newAppForTest</code> method defined in this trait. If your tests need an <code>Application</code> with non-default
+parameters, override <code>newAppForTest</code> to return it.</p><p>Here's an example that demonstrates some of the services provided by this trait:</p><p><pre class="stHighlight">
+package org.scalatestplus.play.examples.oneserverpertest
+
+import play.api.test._
+import org.scalatest._
+import org.scalatestplus.play._
+import play.api.{Play, Application}
+import play.api.inject.guice._
+import play.api.routing._
+
+class ExampleSpec extends PlaySpec with OneServerPerTest {
+
+  // Override newAppForTest or use GuiceOneServerPerTest
+  implicit override def newAppForTest(testData: TestData): Application = new GuiceApplicationBuilder()
+    .configure(Map("ehcacheplugin" -> "disabled"))
+    .router(Router.from(TestRoute))
+    .build()
+
+  "The OneServerPerTest trait" must {
+    "provide a FakeApplication" in {
+      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
+    }
+    "make the FakeApplication available implicitly" in {
+      def getConfig(key: String)(implicit app: Application) = app.configuration.getString(key)
+      getConfig("ehcacheplugin") mustBe Some("disabled")
+    }
+    "start the FakeApplication" in {
+      Play.maybeApplication mustBe Some(app)
+    }
+    "provide the port number" in {
+      port mustBe Helpers.testServerPort
+    }
+    "provide an actual running server" in {
+      import Helpers._
+      import java.net._
+      val url = new URL("http://localhost:" + port + "/boum")
+      val con = url.openConnection().asInstanceOf[HttpURLConnection]
+      try con.getResponseCode mustBe 404
+      finally con.disconnect()
+    }
+  }
+}
+</pre>
+</p></div></div>
     </li><li name="org.scalatestplus.play.BrowserFactory" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="BrowserFactoryextendsAnyRef"></a>
       <a id="BrowserFactory:BrowserFactory"></a>
@@ -456,26 +729,26 @@ you to fill in the <code>createWebDriver</code> method, usually by mixing in one
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Trait that provides a configured <code>Application</code> to the suite into which it is mixed.</p><div class="fullcomment"><div class="comment cmt"><p>Trait that provides a configured <code>Application</code> to the suite into which it is mixed.</p><p>The purpose of this trait is to allow nested suites of an enclosing suite that extends <a href="OneAppPerSuite.html" class="extype" name="org.scalatestplus.play.OneAppPerSuite">OneAppPerSuite</a>
-to make use of the <code>Application</code> provided by <code>OneAppPerSuite</code>. Trait <code>OneAppPerSuite</code> will ensure
+      <p class="shortcomment cmt">Trait that provides a configured <code>Application</code> to the suite into which it is mixed.</p><div class="fullcomment"><div class="comment cmt"><p>Trait that provides a configured <code>Application</code> to the suite into which it is mixed.</p><p>The purpose of this trait is to allow nested suites of an enclosing suite that extends <span class="extype" name="org.scalatestplus.play.GuiceOneAppPerSuite">GuiceOneAppPerSuite</span>
+to make use of the <code>Application</code> provided by <code>GuiceOneAppPerSuite</code>. Trait <code>GuiceOneAppPerSuite</code> will ensure
 the <code>Application</code> is placed in the <code>ConfigMap</code> under the key <code>org.scalatestplus.play.app</code> before
 nested suites are invoked. This represents the &quot;configured application&quot; that is passed from the enclosing
 suite to the nested suites. Trait <code>ConfiguredApp</code> extracts the <code>Application</code> from the <code>ConfigMap</code>
 and makes it available via the <code>app</code> method it provides.</p><p>To prevent discovery of nested suites you can annotate them with <code>@DoNotDiscover</code>. Here's an example,
-taken from <code>OneAppPerSuite</code>'s documentation:</p><p><pre class="stHighlight">
+taken from <code>GuiceOneAppPerSuite</code>'s documentation:</p><p><pre class="stHighlight">
 package org.scalatestplus.play.examples.oneapppersuite
 
 import org.scalatestplus.play._
 import play.api.{Play, Application}
 import play.api.inject.guice._
 
-class ExampleSpec extends PlaySpec with OneAppPerSuite {
+class ExampleSpec extends PlaySpec with GuiceOneAppPerSuite {
 
   // Override app if you need an Application with other than non-default parameters.
-  implicit override lazy val app: Application =
+  def fakeApplication(): Application =
     new GuiceApplicationBuilder().configure(Map("ehcacheplugin" -> "disabled")).build()
 
-  "The OneAppPerSuite trait" must {
+  "The GuiceOneAppPerSuite trait" must {
     "provide a FakeApplication" in {
       app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
     }
@@ -514,7 +787,7 @@ the <code>WebDriver</code> is placed in the <code>ConfigMap</code> under the key
 information represents the &quot;configured browser&quot; that is passed from the enclosing suite to the nested suites. Trait <code>ConfiguredBrowser</code> extracts this information from
 from the <code>ConfigMap</code> and makes the <code>WebDriver</code> available implicitly from the <code>webDriver</code> method.</p><p>This trait's self-type, <a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a>,  will ensure
 a <code>TestServer</code> and <code>Application</code> are available to each test. The self-type will require that you mix in either
-<a href="OneServerPerSuite.html" class="extype" name="org.scalatestplus.play.OneServerPerSuite">OneServerPerSuite</a>, <a href="OneServerPerTest.html" class="extype" name="org.scalatestplus.play.OneServerPerTest">OneServerPerTest</a>,
+<a href="guice/GuiceOneServerPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerSuite">GuiceOneServerPerSuite</a>, <a href="OneServerPerTest.html" class="extype" name="org.scalatestplus.play.OneServerPerTest">OneServerPerTest</a>,
 <a href="ConfiguredServer.html" class="extype" name="org.scalatestplus.play.ConfiguredServer">ConfiguredServer</a> before you mix in this trait. Your choice among these three
 <code>ServerProvider</code>s will determine the extent to which one or more <code>TestServer</code>s are shared by multiple tests.</p><p>To prevent discovery of nested suites you can annotate them with <code>@DoNotDiscover</code>. Here's an example
 taken from the documentation for trait <a href="OneBrowserPerSuite.html" class="extype" name="org.scalatestplus.play.OneBrowserPerSuite">OneBrowserPerSuite</a>:</p><p><pre class="stHighlight">
@@ -530,8 +803,8 @@ import play.api.routing._
 @FirefoxBrowser
 class ExampleSpec extends PlaySpec with OneServerPerSuite with OneBrowserPerSuite with FirefoxFactory {
 
-  // Override app if you need a Application with other than non-default parameters.
-  implicit override lazy val app: Application = new GuiceApplicationBuilder()
+  // Override fakeApplication() if you need a Application with other than non-default parameters.
+  def fakeApplication(): Application = new GuiceApplicationBuilder()
       .configure("foo" -> "bar", "ehcacheplugin" -> "disabled")
       .router(Router.from(TestRoute))
       .build()
@@ -583,7 +856,7 @@ class ExampleSpec extends PlaySpec with OneServerPerSuite with OneBrowserPerSuit
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Trait that provides a configured <code>Application</code> and server port number to the suite into which it is mixed.</p><div class="fullcomment"><div class="comment cmt"><p>Trait that provides a configured <code>Application</code> and server port number to the suite into which it is mixed.</p><p>The purpose of this trait is to allow nested suites of an enclosing suite that extends <a href="OneServerPerSuite.html" class="extype" name="org.scalatestplus.play.OneServerPerSuite">OneServerPerSuite</a>
+      <p class="shortcomment cmt">Trait that provides a configured <code>Application</code> and server port number to the suite into which it is mixed.</p><div class="fullcomment"><div class="comment cmt"><p>Trait that provides a configured <code>Application</code> and server port number to the suite into which it is mixed.</p><p>The purpose of this trait is to allow nested suites of an enclosing suite that extends <a href="guice/GuiceOneServerPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerSuite">GuiceOneServerPerSuite</a>
 to make use of the <code>Application</code> and port number provided by <code>OneServerPerSuite</code>. Trait <code>OneServerPerSuite</code> will ensure
 the <code>Application</code> is placed in the <code>ConfigMap</code> under the key <code>org.scalatestplus.play.app</code> and the port number
 under the key <code>org.scalatestplus.play.port</code> before nested suites are invoked. This information represents the &quot;configured server&quot; that
@@ -591,7 +864,7 @@ is passed from the enclosing suite to the nested suites. Trait <code>ConfiguredS
 from the <code>ConfigMap</code> and makes the <code>Application</code> available via the <code>app</code> method, the port number available as an <code>Int</code> from
 the <code>port</code> method, and also the port number wrapped in a <a href="PortNumber.html" class="extype" name="org.scalatestplus.play.PortNumber">PortNumber</a> available as implicit method <code>portNumber</code> (for use
 with trait <a href="WsScalaTestClient.html" class="extype" name="org.scalatestplus.play.WsScalaTestClient">WsScalaTestClient</a>).</p><p>To prevent discovery of nested suites you can annotate them with <code>@DoNotDiscover</code>. Here's an example,
-taken from <code>OneAppPerSuite</code>'s documentation:</p><p><pre class="stHighlight">
+taken from <code>GuiceOneAppPerSuite</code>'s documentation:</p><p><pre class="stHighlight">
 package org.scalatestplus.play.examples.oneserverpersuite
 
 import play.api.test._
@@ -599,10 +872,10 @@ import org.scalatestplus.play._
 import play.api.{Play, Application}
 import play.api.inject.guice._
 
-class ExampleSpec extends PlaySpec with OneServerPerSuite {
+class ExampleSpec extends PlaySpec with GuiceOneServerPerSuite {
 
-  // Override app if you need a Application with other than non-default parameters.
-  implicit override lazy val app: Application =
+  // Override fakeApplication() if you need a Application with other than non-default parameters.
+  def fakeApplication(): Application =
     new GuiceApplicationBuilder().configure("ehcacheplugin" -> "disabled").build()
 
   "The OneServerPerSuite trait" must {
@@ -630,6 +903,25 @@ class ExampleSpec extends PlaySpec with OneServerPerSuite {
   }
 }
 </pre>
+</p></div></div>
+    </li><li name="org.scalatestplus.play.FakeApplicationFactory" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="FakeApplicationFactoryextendsAnyRef"></a>
+      <a id="FakeApplicationFactory:FakeApplicationFactory"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="FakeApplicationFactory.html"><span class="name">FakeApplicationFactory</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.scalatestplus.play.package@FakeApplicationFactoryextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Trait that provides method that creates a new instance of <code>Application</code> to the functional test suite mixins.</p><div class="fullcomment"><div class="comment cmt"><p>Trait that provides method that creates a new instance of <code>Application</code> to the functional test suite mixins.</p><p>The <code>GuiceFakeApplicationFactory</code> provides a <code>FakeApplicationFactory</code> that uses <code>GuiceApplicationBuilder</code>
+to build an Application for test suites.
 </p></div></div>
     </li><li name="org.scalatestplus.play.FirefoxFactory" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="FirefoxFactoryextendsBrowserFactory"></a>
@@ -998,7 +1290,7 @@ when different tests in the same test class need different kinds of fixtures. Wh
 need the same fixture, you're probably better of extending <a href="PlaySpec.html" class="extype" name="org.scalatestplus.play.PlaySpec">PlaySpec</a> instead.
 </p></div></div>
     </li><li name="org.scalatestplus.play.OneAppPerSuite" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="OneAppPerSuiteextendsSuiteMixin"></a>
+      <a id="OneAppPerSuiteextendsGuiceOneAppPerSuite"></a>
       <a id="OneAppPerSuite:OneAppPerSuite"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1006,98 +1298,20 @@ need the same fixture, you're probably better of extending <a href="PlaySpec.htm
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="OneAppPerSuite.html"><span class="name">OneAppPerSuite</span></a><span class="result"> extends <span class="extype" name="org.scalatest.SuiteMixin">SuiteMixin</span></span>
+        <a href="OneAppPerSuite.html"><span class="name">OneAppPerSuite</span></a><span class="result"> extends <a href="guice/GuiceOneAppPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneAppPerSuite">GuiceOneAppPerSuite</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.package@OneAppPerSuiteextendsSuiteMixin" title="Permalink" target="_top">
+      <a href="../../../index.html#org.scalatestplus.play.package@OneAppPerSuiteextendsGuiceOneAppPerSuite" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Trait that provides a new <code>Application</code> instance per ScalaTest <code>Suite</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Trait that provides a new <code>Application</code> instance per ScalaTest <code>Suite</code>.</p><p>By default, this trait creates a new <code>Application</code> for the <code>Suite</code> using default parameter values, which
-is made available via the <code>app</code> field defined in this trait. If your <code>Suite</code> needs a <code>Application</code> with non-default
-parameters, override <code>app</code> to create it the way you need it.</p><p>This <code>SuiteMixin</code> trait's overridden <code>run</code> method calls <code>Play.start</code>, passing in the
-<code>Application</code> provided by <code>app</code>, before executing the <code>Suite</code> via a call to <code>super.run</code>.
-In addition, it places a reference to the <code>Application</code> provided by <code>app</code> into the <code>ConfigMap</code>
-under the key <code>org.scalatestplus.play.app</code>.  This allows any nested <code>Suite</code>s to access the <code>Suite</code>'s
-<code>Application</code> as well, most easily by having the nested <code>Suite</code>s mix in the
-<a href="ConfiguredApp.html" class="extype" name="org.scalatestplus.play.ConfiguredApp">ConfiguredApp</a> trait.  On the status returned by <code>super.run</code>, this
-trait's overridden <code>run</code> method registers a call to <code>Play.stop</code> to be executed when the <code>Status</code>
-completes, and returns the same <code>Status</code>. This ensure the <code>Application</code> will continue to execute until
-all nested suites have completed, after which the <code>Application</code> will be stopped.</p><p>Here's an example that demonstrates some of the services provided by this trait:</p><p><pre class="stHighlight">
-package org.scalatestplus.play.examples.oneapppersuite
-
-import org.scalatestplus.play._
-import play.api.{Play, Application}
-import play.api.inject.guice._
-
-class ExampleSpec extends PlaySpec with OneAppPerSuite {
-
-  // Override app if you need an Application with other than non-default parameters.
-  implicit override lazy val app: Application =
-    new GuiceApplicationBuilder().configure(Map("ehcacheplugin" -> "disabled")).build()
-
-  "The OneAppPerSuite trait" must {
-    "provide a FakeApplication" in {
-      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
-    }
-    "make the FakeApplication available implicitly" in {
-      def getConfig(key: String)(implicit app: Application) = app.configuration.getString(key)
-      getConfig("ehcacheplugin") mustBe Some("disabled")
-    }
-    "start the FakeApplication" in {
-      Play.maybeApplication mustBe Some(app)
-    }
-  }
-}
-</pre></p><p>If you have many tests that can share the same <code>Application</code>, and you don't want to put them all into one
-test class, you can place them into different <code>Suite</code> classes.
-These will be your nested suites. Create a master suite that extends <code>OneAppPerSuite</code> and declares the nested
-<code>Suite</code>s. Annotate the nested suites with <code>@DoNotDiscover</code> and have them extend <code>ConfiguredApp</code>. Here's an example:</p><p><pre class="stHighlight">
-package org.scalatestplus.play.examples.oneapppersuite
-
-import play.api.test._
-import org.scalatest._
-import org.scalatestplus.play._
-import play.api.{Play, Application}
-import play.api.inject.guice._
-
-// This is the "master" suite
-class NestedExampleSpec extends Suites(
-  new OneSpec,
-  new TwoSpec,
-  new RedSpec,
-  new BlueSpec
-) with OneAppPerSuite {
-  // Override app if you need an Application with other than non-default parameters.
-  implicit override lazy val app: Application =
-    new GuiceApplicationBuilder().configure(Map("ehcacheplugin" -> "disabled")).build()
-}
-
-// These are the nested suites
-@DoNotDiscover class OneSpec extends PlaySpec with ConfiguredApp
-@DoNotDiscover class TwoSpec extends PlaySpec with ConfiguredApp
-@DoNotDiscover class RedSpec extends PlaySpec with ConfiguredApp
-
-@DoNotDiscover
-class BlueSpec extends PlaySpec with ConfiguredApp {
-
-  "The OneAppPerSuite trait" must {
-    "provide an Application" in {
-      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
-    }
-    "make the Application available implicitly" in {
-      def getConfig(key: String)(implicit app: Application) = app.configuration.getString(key)
-      getConfig("ehcacheplugin") mustBe Some("disabled")
-    }
-    "start the Application" in {
-      Play.maybeApplication mustBe Some(app)
-    }
-  }
-}
-</pre>
-</p></div></div>
+      <p class="shortcomment cmt">Synonym for GuiceOneAppPerSuite.</p><div class="fullcomment"><div class="comment cmt"><p>Synonym for GuiceOneAppPerSuite.
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@Deprecated</span>
+              
+        </dd></dl></div>
     </li><li name="org.scalatestplus.play.OneAppPerTest" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="OneAppPerTestextendsSuiteMixin"></a>
+      <a id="OneAppPerTestextendsGuiceOneAppPerTest"></a>
       <a id="OneAppPerTest:OneAppPerTest"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1105,46 +1319,19 @@ class BlueSpec extends PlaySpec with ConfiguredApp {
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="OneAppPerTest.html"><span class="name">OneAppPerTest</span></a><span class="result"> extends <span class="extype" name="org.scalatest.SuiteMixin">SuiteMixin</span></span>
+        <a href="OneAppPerTest.html"><span class="name">OneAppPerTest</span></a><span class="result"> extends <a href="guice/GuiceOneAppPerTest.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneAppPerTest">GuiceOneAppPerTest</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.package@OneAppPerTestextendsSuiteMixin" title="Permalink" target="_top">
+      <a href="../../../index.html#org.scalatestplus.play.package@OneAppPerTestextendsGuiceOneAppPerTest" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Trait that provides a new <code>Application</code> instance for each test.</p><div class="fullcomment"><div class="comment cmt"><p>Trait that provides a new <code>Application</code> instance for each test.</p><p>This <code>SuiteMixin</code> trait's overridden <code>withFixture</code> method creates a new <code>Application</code>
-before each test and ensures it is cleaned up after the test has completed. You can
-access the <code>Application</code> from your tests as method <code>app</code> (which is marked implicit).</p><p>By default, this trait creates a new <code>Application</code> for each test using default parameter values, which
-is returned by the <code>newAppForTest</code> method defined in this trait. If your tests need a <code>Application</code> with non-default
-parameters, override <code>newAppForTest</code> to return it.</p><p>Here's an example that demonstrates some of the services provided by this trait:</p><p><pre class="stHighlight">
-package org.scalatestplus.play.examples.oneapppertest
-
-import org.scalatest._
-import org.scalatestplus.play._
-import play.api.{Play, Application}
-import play.api.inject.guice._
-
-class ExampleSpec extends PlaySpec with OneAppPerTest {
-
-  // Override newAppForTest if you need a FakeApplication with other than non-default parameters.
-  implicit override def newAppForTest(testData: TestData): Application =
-    new GuiceApplicationBuilder().configure(Map("ehcacheplugin" -> "disabled")).build()
-
-  "The OneAppPerTest trait" must {
-    "provide an Application" in {
-      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
-    }
-    "make the Application available implicitly" in {
-      def getConfig(key: String)(implicit app: Application) = app.configuration.getString(key)
-      getConfig("ehcacheplugin") mustBe Some("disabled")
-    }
-    "start the Application" in {
-      Play.maybeApplication mustBe Some(app)
-    }
-  }
-}
-</pre>
-</p></div></div>
+      <p class="shortcomment cmt">Synonym for GuiceOneAppPerTest
+</p><div class="fullcomment"><div class="comment cmt"><p>Synonym for GuiceOneAppPerTest
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@Deprecated</span>
+              
+        </dd></dl></div>
     </li><li name="org.scalatestplus.play.OneBrowserPerSuite" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="OneBrowserPerSuiteextendsSuiteMixinwithWebBrowserwithEventuallywithIntegrationPatiencewithBrowserFactory"></a>
       <a id="OneBrowserPerSuite:OneBrowserPerSuite"></a>
@@ -1172,7 +1359,7 @@ all nested suites have completed, after which the <code>WebDriver</code> will be
 This trait also overrides <code>Suite.withFixture</code> to cancel tests automatically if the related
 <code>WebDriver</code> is not available on the host platform.</p><p>This trait's self-type, <a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a>,  will ensure
 a <code>TestServer</code> and <code>Application</code> are available to each test. The self-type will require that you mix in either
-<a href="OneServerPerSuite.html" class="extype" name="org.scalatestplus.play.OneServerPerSuite">OneServerPerSuite</a>, <a href="OneServerPerTest.html" class="extype" name="org.scalatestplus.play.OneServerPerTest">OneServerPerTest</a>,
+<a href="guice/GuiceOneServerPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerSuite">GuiceOneServerPerSuite</a>, <a href="OneServerPerTest.html" class="extype" name="org.scalatestplus.play.OneServerPerTest">OneServerPerTest</a>,
 <a href="ConfiguredServer.html" class="extype" name="org.scalatestplus.play.ConfiguredServer">ConfiguredServer</a> before you mix in this trait. Your choice among these three
 <code>ServerProvider</code>s will determine the extent to which one or more <code>TestServer</code>s are shared by multiple tests.</p><p>Here's an example that shows demonstrates of the services provided by this trait. Note that
 to use this trait, you must mix in one of the driver factories (this example
@@ -1189,8 +1376,8 @@ import play.api.routing._
 @FirefoxBrowser
 class ExampleSpec extends PlaySpec with OneServerPerSuite with OneBrowserPerSuite with FirefoxFactory {
 
-  // Override app if you need a Application with other than non-default parameters.
-  implicit override lazy val app: Application = new GuiceApplicationBuilder()
+  // Override fakeApplication() if you need a Application with other than non-default parameters.
+  def fakeApplication(): Application = new GuiceApplicationBuilder()
     .configure("foo" -> "bar", "ehcacheplugin" -> "disabled")
     .router(Router.from(TestRoute))
     .build()
@@ -1243,12 +1430,12 @@ class NestedExampleSpec extends Suites(
   new RedSpec,
   new BlueSpec
 ) with OneServerPerSuite with OneBrowserPerSuite with FirefoxFactory {
-  // Override app if you need a Application with other than non-default parameters.
-  implicit override lazy val app: Application =
-    FakeApplication(
+  // Override fakeApplication() if you need a Application with other than non-default parameters.
+  def fakeApplication(): Application =
+    new GuiceApplicationBuilder(
       additionalConfiguration = Map("ehcacheplugin" -&gt; "disabled"),
       withRoutes = TestRoute
-    )
+    ).build()
 }
 
 // These are the nested suites
@@ -1301,11 +1488,11 @@ import play.api.{Play, Application}
 abstract class MultiBrowserExampleSpec extends PlaySpec with OneServerPerSuite with OneBrowserPerSuite {
 
   // Override app if you need an Application with other than non-default parameters.
-  implicit override lazy val app: Application =
-    FakeApplication(
+  def fakeApplication(): Application =
+    new GuiceApplicationBuilder(
       additionalConfiguration = Map("ehcacheplugin" -> "disabled"),
       withRoutes = TestRoute
-    )
+    ).build
 
   "The OneBrowserPerSuite trait" must {
     "provide an Application" in {
@@ -1443,7 +1630,7 @@ using sbt:</p><p><pre class="stREPL">
 before each test, and ensure it is closed after the test has completed.
 The <code>WebDriver</code> is available (implicitly) from method <code>webDriver</code>.</p><p>This trait's self-type, <a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a>,  will ensure
 a <code>TestServer</code> and <code>Application</code> are available to each test. The self-type will require that you mix in either
-<a href="OneServerPerSuite.html" class="extype" name="org.scalatestplus.play.OneServerPerSuite">OneServerPerSuite</a>, <a href="OneServerPerTest.html" class="extype" name="org.scalatestplus.play.OneServerPerTest">OneServerPerTest</a>,
+<a href="guice/GuiceOneServerPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerSuite">GuiceOneServerPerSuite</a>, <a href="OneServerPerTest.html" class="extype" name="org.scalatestplus.play.OneServerPerTest">OneServerPerTest</a>,
 <a href="ConfiguredServer.html" class="extype" name="org.scalatestplus.play.ConfiguredServer">ConfiguredServer</a> before you mix in this trait. Your choice among these three
 <code>ServerProvider</code>s will determine the extent to which one or more <code>TestServer</code>s are shared by multiple tests.</p><p>Here's an example that shows demonstrates of the services provided by this trait. Note that
 to use this trait, you must mix in one of the driver factories (this example
@@ -1500,7 +1687,7 @@ class ExampleSpec extends PlaySpec with OneServerPerTest with OneBrowserPerTest 
 </pre>
 </p></div></div>
     </li><li name="org.scalatestplus.play.OneServerPerSuite" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="OneServerPerSuiteextendsSuiteMixinwithServerProvider"></a>
+      <a id="OneServerPerSuiteextendsGuiceOneServerPerSuite"></a>
       <a id="OneServerPerSuite:OneServerPerSuite"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1508,124 +1695,20 @@ class ExampleSpec extends PlaySpec with OneServerPerTest with OneBrowserPerTest 
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="OneServerPerSuite.html"><span class="name">OneServerPerSuite</span></a><span class="result"> extends <span class="extype" name="org.scalatest.SuiteMixin">SuiteMixin</span> with <a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a></span>
+        <a href="OneServerPerSuite.html"><span class="name">OneServerPerSuite</span></a><span class="result"> extends <a href="guice/GuiceOneServerPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerSuite">GuiceOneServerPerSuite</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.package@OneServerPerSuiteextendsSuiteMixinwithServerProvider" title="Permalink" target="_top">
+      <a href="../../../index.html#org.scalatestplus.play.package@OneServerPerSuiteextendsGuiceOneServerPerSuite" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Trait that provides a new <code>Application</code> and running <code>TestServer</code> instance per ScalaTest <code>Suite</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Trait that provides a new <code>Application</code> and running <code>TestServer</code> instance per ScalaTest <code>Suite</code>.</p><p>By default, this trait creates a new <code>FakeApplication</code> for the <code>Suite</code> using default parameter values, which
-is made available via the <code>app</code> field defined in this trait and a new <code>TestServer</code> for the <code>Suite</code> using the port number provided by
-its <code>port</code> field and the <code>Application</code> provided by its <code>app</code> field. If your <code>Suite</code> needs a
-<code>Application</code> with non-default parameters, override <code>app</code>. If it needs a different port number,
-override <code>port</code>.</p><p>This <code>SuiteMixin</code> trait's overridden <code>run</code> method calls <code>start</code> on the <code>TestServer</code>
-before executing the <code>Suite</code> via a call to <code>super.run</code>.
-In addition, it places a reference to the <code>Application</code> provided by <code>app</code> into the <code>ConfigMap</code>
-under the key <code>org.scalatestplus.play.app</code> and to the port number provided by <code>port</code> under the key
-<code>org.scalatestplus.play.port</code>.  This allows any nested <code>Suite</code>s to access the <code>Suite</code>'s
-<code>Application</code> and port number as well, most easily by having the nested <code>Suite</code>s mix in the
-<a href="ConfiguredServer.html" class="extype" name="org.scalatestplus.play.ConfiguredServer">ConfiguredServer</a> trait. On the status returned by <code>super.run</code>, this
-trait's overridden <code>run</code> method registers a call to <code>stop</code> on the <code>TestServer</code> to be executed when the <code>Status</code>
-completes, and returns the same <code>Status</code>. This ensure the <code>TestServer</code> will continue to execute until
-all nested suites have completed, after which the <code>TestServer</code> will be stopped.</p><p>Here's an example that demonstrates some of the services provided by this trait:</p><p><pre class="stHighlight">
-package org.scalatestplus.play.examples.oneserverpersuite
-
-import play.api.test._
-import org.scalatestplus.play._
-import play.api.{Play, Application}
-import play.api.inject.guice._
-
-class ExampleSpec extends PlaySpec with OneServerPerSuite {
-
-  // Override app if you need a Application with other than non-default parameters.
-  implicit override lazy val app: Application =
-    new GuiceApplicationBuilder().configure("ehcacheplugin" -> "disabled").build()
-
-  "The OneServerPerSuite trait" must {
-    "provide an Application" in {
-      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
-    }
-    "make the Application available implicitly" in {
-      def getConfig(key: String)(implicit app: Application) = app.configuration.getString(key)
-      getConfig("ehcacheplugin") mustBe Some("disabled")
-    }
-    "start the Application" in {
-      Play.maybeApplication mustBe Some(app)
-    }
-    "provide the port number" in {
-      port mustBe Helpers.testServerPort
-    }
-    "provide an actual running server" in {
-      import Helpers._
-      import java.net._
-      val url = new URL("http://localhost:" + port + "/boum")
-      val con = url.openConnection().asInstanceOf[HttpURLConnection]
-      try con.getResponseCode mustBe 404
-      finally con.disconnect()
-    }
-  }
-}
-</pre></p><p>If you have many tests that can share the same <code>Application</code> and <code>TestServer</code>, and you don't want to put them all into one
-test class, you can place them into different <code>Suite</code> classes.
-These will be your nested suites. Create a master suite that extends <code>OneServerPerSuite</code> and declares the nested
-<code>Suite</code>s. Annotate the nested suites with <code>@DoNotDiscover</code> and have them extend <code>ConfiguredServer</code>. Here's an example:</p><p><pre class="stHighlight">
-package org.scalatestplus.play.examples.oneserverpersuite
-
-import play.api.test._
-import org.scalatest._
-import org.scalatestplus.play._
-import play.api.{Play, Application}
-import play.api.inject.guice._
-
-// This is the "master" suite
-class NestedExampleSpec extends Suites(
-  new OneSpec,
-  new TwoSpec,
-  new RedSpec,
-  new BlueSpec
-) with OneServerPerSuite {
-  // Override app if you need an Application with other than non-default parameters.
-  implicit override lazy val app: Application =
-    new GuiceApplicationBuilder().configure(Map("ehcacheplugin" -> "disabled")).build()
-}
-
-// These are the nested suites
-
-@DoNotDiscover class OneSpec extends PlaySpec with ConfiguredServer
-@DoNotDiscover class TwoSpec extends PlaySpec with ConfiguredServer
-@DoNotDiscover class RedSpec extends PlaySpec with ConfiguredServer
-@DoNotDiscover
-class BlueSpec extends PlaySpec with ConfiguredServer {
-
-  "The OneServerPerSuite trait" must {
-    "provide an Application" in {
-      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
-    }
-    "make the Application available implicitly" in {
-      def getConfig(key: String)(implicit app: Application) = app.configuration.getString(key)
-      getConfig("ehcacheplugin") mustBe Some("disabled")
-    }
-    "start the Application" in {
-      Play.maybeApplication mustBe Some(app)
-    }
-    "provide the port number" in {
-      port mustBe Helpers.testServerPort
-    }
-    "provide an actual running server" in {
-      import Helpers._
-      import java.net._
-      val url = new URL("http://localhost:" + port + "/boum")
-      val con = url.openConnection().asInstanceOf[HttpURLConnection]
-      try con.getResponseCode mustBe 404
-      finally con.disconnect()
-    }
-  }
-}
-</pre>
-</p></div></div>
+      <p class="shortcomment cmt">Synonym for GuiceOneServerPerSuite.</p><div class="fullcomment"><div class="comment cmt"><p>Synonym for GuiceOneServerPerSuite.
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@Deprecated</span>
+              
+        </dd></dl></div>
     </li><li name="org.scalatestplus.play.OneServerPerTest" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="OneServerPerTestextendsSuiteMixinwithServerProvider"></a>
+      <a id="OneServerPerTestextendsGuiceOneServerPerTest"></a>
       <a id="OneServerPerTest:OneServerPerTest"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -1633,62 +1716,19 @@ class BlueSpec extends PlaySpec with ConfiguredServer {
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="OneServerPerTest.html"><span class="name">OneServerPerTest</span></a><span class="result"> extends <span class="extype" name="org.scalatest.SuiteMixin">SuiteMixin</span> with <a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a></span>
+        <a href="OneServerPerTest.html"><span class="name">OneServerPerTest</span></a><span class="result"> extends <a href="guice/GuiceOneServerPerTest.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerTest">GuiceOneServerPerTest</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.package@OneServerPerTestextendsSuiteMixinwithServerProvider" title="Permalink" target="_top">
+      <a href="../../../index.html#org.scalatestplus.play.package@OneServerPerTestextendsGuiceOneServerPerTest" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Trait that provides a new <code>Application</code> and running <code>TestServer</code> instance for each test executed in a ScalaTest <code>Suite</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Trait that provides a new <code>Application</code> and running <code>TestServer</code> instance for each test executed in a ScalaTest <code>Suite</code>.</p><p>This <code>SuiteMixin</code> trait overrides ScalaTest's <code>withFixture</code> method to create a new <code>Application</code> and <code>TestServer</code>
-before each test, and ensure they are cleaned up after the test has completed. The <code>Application</code> is available (implicitly) from
-method <code>app</code>. The <code>TestServer</code>'s port number is available as <code>port</code> (and implicitly available as <code>portNumber</code>, wrapped
-in a <a href="PortNumber.html" class="extype" name="org.scalatestplus.play.PortNumber">PortNumber</a>).</p><p>By default, this trait creates a new <code>FakeApplication</code> for each test using default parameter values, which
-is returned by the <code>newAppForTest</code> method defined in this trait. If your tests need an <code>Application</code> with non-default
-parameters, override <code>newAppForTest</code> to return it.</p><p>Here's an example that demonstrates some of the services provided by this trait:</p><p><pre class="stHighlight">
-package org.scalatestplus.play.examples.oneserverpertest
-
-import play.api.test._
-import org.scalatest._
-import org.scalatestplus.play._
-import play.api.{Play, Application}
-import play.api.inject.guice._
-import play.api.routing._
-
-class ExampleSpec extends PlaySpec with OneServerPerTest {
-
-  // Override newAppForTest if you need a FakeApplication with other than non-default parameters.
-  implicit override def newAppForTest(testData: TestData): Application = new GuiceApplicationBuilder()
-    .configure(Map("ehcacheplugin" -> "disabled"))
-    .router(Router.from(TestRoute))
-    .build()
-
-  "The OneServerPerTest trait" must {
-    "provide a FakeApplication" in {
-      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
-    }
-    "make the FakeApplication available implicitly" in {
-      def getConfig(key: String)(implicit app: Application) = app.configuration.getString(key)
-      getConfig("ehcacheplugin") mustBe Some("disabled")
-    }
-    "start the FakeApplication" in {
-      Play.maybeApplication mustBe Some(app)
-    }
-    "provide the port number" in {
-      port mustBe Helpers.testServerPort
-    }
-    "provide an actual running server" in {
-      import Helpers._
-      import java.net._
-      val url = new URL("http://localhost:" + port + "/boum")
-      val con = url.openConnection().asInstanceOf[HttpURLConnection]
-      try con.getResponseCode mustBe 404
-      finally con.disconnect()
-    }
-  }
-}
-</pre>
-</p></div></div>
+      <p class="shortcomment cmt">Synonym for GuiceOneServerPerTest
+</p><div class="fullcomment"><div class="comment cmt"><p>Synonym for GuiceOneServerPerTest
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@Deprecated</span>
+              
+        </dd></dl></div>
     </li><li name="org.scalatestplus.play.PlaySpec" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="PlaySpecextendsWordSpecwithMustMatcherswithOptionValueswithWsScalaTestClient"></a>
       <a id="PlaySpec:PlaySpec"></a>
@@ -1706,7 +1746,7 @@ class ExampleSpec extends PlaySpec with OneServerPerTest {
       </a>
     </span>
       <p class="shortcomment cmt">Convenience &quot;super Suite&quot; base class for Play tests.</p><div class="fullcomment"><div class="comment cmt"><p>Convenience &quot;super Suite&quot; base class for Play tests.</p><p>Extend this class by default for testing Play apps with the ScalaTest + Play library. You can mix other traits into it to access needed fixtures, such as
-<a href="OneAppPerSuite.html" class="extype" name="org.scalatestplus.play.OneAppPerSuite">OneAppPerSuite</a>, <a href="OneAppPerTest.html" class="extype" name="org.scalatestplus.play.OneAppPerTest">OneAppPerTest</a>, <a href="OneServerPerSuite.html" class="extype" name="org.scalatestplus.play.OneServerPerSuite">OneServerPerSuite</a>, <a href="OneServerPerTest.html" class="extype" name="org.scalatestplus.play.OneServerPerTest">OneServerPerTest</a>, <a href="OneBrowserPerSuite.html" class="extype" name="org.scalatestplus.play.OneBrowserPerSuite">OneBrowserPerSuite</a>, <a href="OneBrowserPerTest.html" class="extype" name="org.scalatestplus.play.OneBrowserPerTest">OneBrowserPerTest</a>, <a href="AllBrowsersPerSuite.html" class="extype" name="org.scalatestplus.play.AllBrowsersPerSuite">AllBrowsersPerSuite</a>, or <a href="AllBrowsersPerTest.html" class="extype" name="org.scalatestplus.play.AllBrowsersPerTest">AllBrowsersPerTest</a> mix If you want to use trait <a href="MixedFixtures.html" class="extype" name="org.scalatestplus.play.MixedFixtures">MixedFixtures</a>, extend <a href="MixedPlaySpec.html" class="extype" name="org.scalatestplus.play.MixedPlaySpec">MixedPlaySpec</a> instead.
+<a href="guice/GuiceOneAppPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneAppPerSuite">GuiceOneAppPerSuite</a>, <span class="extype" name="org.scalatestplus.play.guice..GuiceOneAppPerTest">GuiceOneAppPerTest</span>, <a href="guice/GuiceOneServerPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerSuite">GuiceOneServerPerSuite</a>, <span class="extype" name="org.scalatestplus.play.guice..GuiceOneServerPerTest">GuiceOneServerPerTest</span>, <a href="OneBrowserPerSuite.html" class="extype" name="org.scalatestplus.play.OneBrowserPerSuite">OneBrowserPerSuite</a>, <a href="OneBrowserPerTest.html" class="extype" name="org.scalatestplus.play.OneBrowserPerTest">OneBrowserPerTest</a>, <a href="AllBrowsersPerSuite.html" class="extype" name="org.scalatestplus.play.AllBrowsersPerSuite">AllBrowsersPerSuite</a>, or <a href="AllBrowsersPerTest.html" class="extype" name="org.scalatestplus.play.AllBrowsersPerTest">AllBrowsersPerTest</a> mix If you want to use trait <a href="MixedFixtures.html" class="extype" name="org.scalatestplus.play.MixedFixtures">MixedFixtures</a>, extend <a href="MixedPlaySpec.html" class="extype" name="org.scalatestplus.play.MixedPlaySpec">MixedPlaySpec</a> instead.
 </p></div></div>
     </li><li name="org.scalatestplus.play.PortNumber" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="PortNumberextendsProductwithSerializable"></a>
@@ -1726,7 +1766,7 @@ class ExampleSpec extends PlaySpec with OneServerPerTest {
     </span>
       <p class="shortcomment cmt">Wraps a port number of a provided <code>TestServer</code> so that it can be made available as an implicit without making an <code>Int</code> implicit.</p><div class="fullcomment"><div class="comment cmt"><p>Wraps a port number of a provided <code>TestServer</code> so that it can be made available as an implicit without making an <code>Int</code> implicit.</p><p>An implicit <code>PortNumber</code> is made available by traits that provide a <code>play.api.test.TestServer</code>: <a href="MixedFixtures.html" class="extype" name="org.scalatestplus.play.MixedFixtures">MixedFixtures</a>,
 <a href="OneBrowserPerSuite.html" class="extype" name="org.scalatestplus.play.OneBrowserPerSuite">OneBrowserPerSuite</a>,
-<a href="OneBrowserPerTest.html" class="extype" name="org.scalatestplus.play.OneBrowserPerTest">OneBrowserPerTest</a>,   <a href="OneServerPerSuite.html" class="extype" name="org.scalatestplus.play.OneServerPerSuite">OneServerPerSuite</a>,
+<a href="OneBrowserPerTest.html" class="extype" name="org.scalatestplus.play.OneBrowserPerTest">OneBrowserPerTest</a>,   <a href="guice/GuiceOneServerPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerSuite">GuiceOneServerPerSuite</a>,
 and <a href="OneServerPerTest.html" class="extype" name="org.scalatestplus.play.OneServerPerTest">OneServerPerTest</a>.</p><p>The implicit <code>PortNumber</code> is taken by the methods of <a href="WsScalaTestClient.html" class="extype" name="org.scalatestplus.play.WsScalaTestClient">WsScalaTestClient</a>.
 </p></div></div>
     </li><li name="org.scalatestplus.play.SafariFactory" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
@@ -1770,7 +1810,7 @@ you to fill in the <code>createWebDriver</code> method, usually by mixing in one
     </span>
       <p class="shortcomment cmt">Trait that defines abstract methods that providing a port number and implicit <code>Application</code> and a concrete
 method that provides an implicit <a href="PortNumber.html" class="extype" name="org.scalatestplus.play.PortNumber">PortNumber</a> that wraps the port number.</p><div class="fullcomment"><div class="comment cmt"><p>Trait that defines abstract methods that providing a port number and implicit <code>Application</code> and a concrete
-method that provides an implicit <a href="PortNumber.html" class="extype" name="org.scalatestplus.play.PortNumber">PortNumber</a> that wraps the port number.</p><p>This trait is implemented by <a href="OneServerPerSuite.html" class="extype" name="org.scalatestplus.play.OneServerPerSuite">OneServerPerSuite</a>,
+method that provides an implicit <a href="PortNumber.html" class="extype" name="org.scalatestplus.play.PortNumber">PortNumber</a> that wraps the port number.</p><p>This trait is implemented by <a href="BaseOneServerPerSuite.html" class="extype" name="org.scalatestplus.play.BaseOneServerPerSuite">OneServerPerSuite</a>,
 <a href="OneServerPerTest.html" class="extype" name="org.scalatestplus.play.OneServerPerTest">OneServerPerTest</a>, and
 <a href="ConfiguredServer.html" class="extype" name="org.scalatestplus.play.ConfiguredServer">ConfiguredServer</a>, each of which use a different strategy to
 provide <code>TestServer</code>s to tests. This trait is included in the self-type of
@@ -1985,6 +2025,23 @@ use the <code>BrowserInfo</code>'s factory method to create <code>WebDriver</cod
 The <code>AllBrowsersPerSuite</code> and <code>AllBrowsersPerTest</code> traits use the  tag name to automatically tag any tests that use
 a particular <code>WebDriver</code> with the appropriate tag so that tests can be dynamically filtered by the browser the use.
 </p></div></div>
+    </li><li name="org.scalatestplus.play.guice" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="guice"></a>
+      <a id="guice:guice"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="guice/package.html"><span class="name">guice</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.scalatestplus.play.package@guice" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li></ol>
             </div>
 

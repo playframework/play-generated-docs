@@ -45,121 +45,17 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <span class="name">OneServerPerSuite</span><span class="result"> extends <span class="extype" name="org.scalatest.SuiteMixin">SuiteMixin</span> with <a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a></span>
+        <span class="name">OneServerPerSuite</span><span class="result"> extends <a href="guice/GuiceOneServerPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerSuite">GuiceOneServerPerSuite</a></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Trait that provides a new <code>Application</code> and running <code>TestServer</code> instance per ScalaTest <code>Suite</code>.</p><p>By default, this trait creates a new <code>FakeApplication</code> for the <code>Suite</code> using default parameter values, which
-is made available via the <code>app</code> field defined in this trait and a new <code>TestServer</code> for the <code>Suite</code> using the port number provided by
-its <code>port</code> field and the <code>Application</code> provided by its <code>app</code> field. If your <code>Suite</code> needs a
-<code>Application</code> with non-default parameters, override <code>app</code>. If it needs a different port number,
-override <code>port</code>.</p><p>This <code>SuiteMixin</code> trait's overridden <code>run</code> method calls <code>start</code> on the <code>TestServer</code>
-before executing the <code>Suite</code> via a call to <code>super.run</code>.
-In addition, it places a reference to the <code>Application</code> provided by <code>app</code> into the <code>ConfigMap</code>
-under the key <code>org.scalatestplus.play.app</code> and to the port number provided by <code>port</code> under the key
-<code>org.scalatestplus.play.port</code>.  This allows any nested <code>Suite</code>s to access the <code>Suite</code>'s
-<code>Application</code> and port number as well, most easily by having the nested <code>Suite</code>s mix in the
-<a href="ConfiguredServer.html" class="extype" name="org.scalatestplus.play.ConfiguredServer">ConfiguredServer</a> trait. On the status returned by <code>super.run</code>, this
-trait's overridden <code>run</code> method registers a call to <code>stop</code> on the <code>TestServer</code> to be executed when the <code>Status</code>
-completes, and returns the same <code>Status</code>. This ensure the <code>TestServer</code> will continue to execute until
-all nested suites have completed, after which the <code>TestServer</code> will be stopped.</p><p>Here's an example that demonstrates some of the services provided by this trait:</p><p><pre class="stHighlight">
-package org.scalatestplus.play.examples.oneserverpersuite
-
-import play.api.test._
-import org.scalatestplus.play._
-import play.api.{Play, Application}
-import play.api.inject.guice._
-
-class ExampleSpec extends PlaySpec with OneServerPerSuite {
-
-  // Override app if you need a Application with other than non-default parameters.
-  implicit override lazy val app: Application =
-    new GuiceApplicationBuilder().configure("ehcacheplugin" -> "disabled").build()
-
-  "The OneServerPerSuite trait" must {
-    "provide an Application" in {
-      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
-    }
-    "make the Application available implicitly" in {
-      def getConfig(key: String)(implicit app: Application) = app.configuration.getString(key)
-      getConfig("ehcacheplugin") mustBe Some("disabled")
-    }
-    "start the Application" in {
-      Play.maybeApplication mustBe Some(app)
-    }
-    "provide the port number" in {
-      port mustBe Helpers.testServerPort
-    }
-    "provide an actual running server" in {
-      import Helpers._
-      import java.net._
-      val url = new URL("http://localhost:" + port + "/boum")
-      val con = url.openConnection().asInstanceOf[HttpURLConnection]
-      try con.getResponseCode mustBe 404
-      finally con.disconnect()
-    }
-  }
-}
-</pre></p><p>If you have many tests that can share the same <code>Application</code> and <code>TestServer</code>, and you don't want to put them all into one
-test class, you can place them into different <code>Suite</code> classes.
-These will be your nested suites. Create a master suite that extends <code>OneServerPerSuite</code> and declares the nested
-<code>Suite</code>s. Annotate the nested suites with <code>@DoNotDiscover</code> and have them extend <code>ConfiguredServer</code>. Here's an example:</p><p><pre class="stHighlight">
-package org.scalatestplus.play.examples.oneserverpersuite
-
-import play.api.test._
-import org.scalatest._
-import org.scalatestplus.play._
-import play.api.{Play, Application}
-import play.api.inject.guice._
-
-// This is the "master" suite
-class NestedExampleSpec extends Suites(
-  new OneSpec,
-  new TwoSpec,
-  new RedSpec,
-  new BlueSpec
-) with OneServerPerSuite {
-  // Override app if you need an Application with other than non-default parameters.
-  implicit override lazy val app: Application =
-    new GuiceApplicationBuilder().configure(Map("ehcacheplugin" -> "disabled")).build()
-}
-
-// These are the nested suites
-
-@DoNotDiscover class OneSpec extends PlaySpec with ConfiguredServer
-@DoNotDiscover class TwoSpec extends PlaySpec with ConfiguredServer
-@DoNotDiscover class RedSpec extends PlaySpec with ConfiguredServer
-@DoNotDiscover
-class BlueSpec extends PlaySpec with ConfiguredServer {
-
-  "The OneServerPerSuite trait" must {
-    "provide an Application" in {
-      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
-    }
-    "make the Application available implicitly" in {
-      def getConfig(key: String)(implicit app: Application) = app.configuration.getString(key)
-      getConfig("ehcacheplugin") mustBe Some("disabled")
-    }
-    "start the Application" in {
-      Play.maybeApplication mustBe Some(app)
-    }
-    "provide the port number" in {
-      port mustBe Helpers.testServerPort
-    }
-    "provide an actual running server" in {
-      import Helpers._
-      import java.net._
-      val url = new URL("http://localhost:" + port + "/boum")
-      val con = url.openConnection().asInstanceOf[HttpURLConnection]
-      try con.getResponseCode mustBe 404
-      finally con.disconnect()
-    }
-  }
-}
-</pre>
-</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="org.scalatestplus.play.OneServerPerSuite">OneServerPerSuite</a> with <span class="extype" name="org.scalatest.Suite">Suite</span></dd><dt>Source</dt><dd><a href="https://github.com/playframework/scalatestplus-play/tree/master/module/src/main/scala/org/scalatestplus/play/OneServerPerSuite.scala" target="_blank">OneServerPerSuite.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Synonym for GuiceOneServerPerSuite.
+</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="org.scalatestplus.play.OneServerPerSuite">OneServerPerSuite</a> with <span class="extype" name="org.scalatest.Suite">Suite</span></dd><dt>Annotations</dt><dd>
+                <span class="name">@Deprecated</span>
+              
+        </dd><dt>Source</dt><dd><a href="https://github.com/playframework/scalatestplus-play/tree/master/module/src/main/scala/org/scalatestplus/play/OneServerPerSuite.scala" target="_blank">OneServerPerSuite.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a>, <span class="extype" name="org.scalatest.SuiteMixin">SuiteMixin</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="guice/GuiceOneServerPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerSuite">GuiceOneServerPerSuite</a>, <a href="guice/GuiceFakeApplicationFactory.html" class="extype" name="org.scalatestplus.play.guice.GuiceFakeApplicationFactory">GuiceFakeApplicationFactory</a>, <a href="FakeApplicationFactory.html" class="extype" name="org.scalatestplus.play.FakeApplicationFactory">FakeApplicationFactory</a>, <a href="BaseOneServerPerSuite.html" class="extype" name="org.scalatestplus.play.BaseOneServerPerSuite">BaseOneServerPerSuite</a>, <a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a>, <span class="extype" name="org.scalatest.SuiteMixin">SuiteMixin</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -177,7 +73,7 @@ class BlueSpec extends PlaySpec with ConfiguredServer {
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="org.scalatestplus.play.OneServerPerSuite"><span>OneServerPerSuite</span></li><li class="in" name="org.scalatestplus.play.ServerProvider"><span>ServerProvider</span></li><li class="in" name="org.scalatest.SuiteMixin"><span>SuiteMixin</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="org.scalatestplus.play.OneServerPerSuite"><span>OneServerPerSuite</span></li><li class="in" name="org.scalatestplus.play.guice.GuiceOneServerPerSuite"><span>GuiceOneServerPerSuite</span></li><li class="in" name="org.scalatestplus.play.guice.GuiceFakeApplicationFactory"><span>GuiceFakeApplicationFactory</span></li><li class="in" name="org.scalatestplus.play.FakeApplicationFactory"><span>FakeApplicationFactory</span></li><li class="in" name="org.scalatestplus.play.BaseOneServerPerSuite"><span>BaseOneServerPerSuite</span></li><li class="in" name="org.scalatestplus.play.ServerProvider"><span>ServerProvider</span></li><li class="in" name="org.scalatest.SuiteMixin"><span>SuiteMixin</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -477,7 +373,7 @@ class BlueSpec extends PlaySpec with ConfiguredServer {
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="org.scalatestplus.play.OneServerPerSuite#app" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="org.scalatestplus.play.BaseOneServerPerSuite#app" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="app:play.api.Application"></a>
       <a id="app:Application"></a>
       <h4 class="signature">
@@ -493,9 +389,8 @@ class BlueSpec extends PlaySpec with ConfiguredServer {
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">An implicit instance of <code>Application</code>.</p><div class="fullcomment"><div class="comment cmt"><p>An implicit instance of <code>Application</code>.</p><p>This trait's implementation initializes this <code>lazy</code> <code>val</code> with a new instance of <code>FakeApplication</code> with
-parameters set to their defaults. Override this <code>lazy</code> <code>val</code> if you need a <code>Application</code> created with non-default parameter values.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.scalatestplus.play.OneServerPerSuite">OneServerPerSuite</a> → <a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a></dd></dl></div>
+      <p class="shortcomment cmt">An implicit instance of <code>Application</code>.</p><div class="fullcomment"><div class="comment cmt"><p>An implicit instance of <code>Application</code>.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseOneServerPerSuite.html" class="extype" name="org.scalatestplus.play.BaseOneServerPerSuite">BaseOneServerPerSuite</a> → <a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a></dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -570,6 +465,23 @@ parameters set to their defaults. Override this <code>lazy</code> <code>val</cod
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="org.scalatestplus.play.guice.GuiceFakeApplicationFactory#fakeApplication" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="fakeApplication():play.api.Application"></a>
+      <a id="fakeApplication():Application"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">fakeApplication</span><span class="params">()</span><span class="result">: <a href="../../../play/api/Application.html" class="extype" name="play.api.Application">Application</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.scalatestplus.play.OneServerPerSuite@fakeApplication():play.api.Application" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="guice/GuiceFakeApplicationFactory.html" class="extype" name="org.scalatestplus.play.guice.GuiceFakeApplicationFactory">GuiceFakeApplicationFactory</a> → <a href="FakeApplicationFactory.html" class="extype" name="org.scalatestplus.play.FakeApplicationFactory">FakeApplicationFactory</a></dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
@@ -695,7 +607,7 @@ parameters set to their defaults. Override this <code>lazy</code> <code>val</cod
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="org.scalatestplus.play.OneServerPerSuite#port" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="org.scalatestplus.play.BaseOneServerPerSuite#port" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="port:Int"></a>
       <a id="port:Int"></a>
       <h4 class="signature">
@@ -713,7 +625,7 @@ parameters set to their defaults. Override this <code>lazy</code> <code>val</cod
     </span>
       <p class="shortcomment cmt">The port used by the <code>TestServer</code>.</p><div class="fullcomment"><div class="comment cmt"><p>The port used by the <code>TestServer</code>.  By default this will be set to the result returned from
 <code>Helpers.testServerPort</code>. You can override this to provide a different port number.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.scalatestplus.play.OneServerPerSuite">OneServerPerSuite</a> → <a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseOneServerPerSuite.html" class="extype" name="org.scalatestplus.play.BaseOneServerPerSuite">BaseOneServerPerSuite</a> → <a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a></dd></dl></div>
     </li><li name="org.scalatestplus.play.ServerProvider#portNumber" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="portNumber:org.scalatestplus.play.PortNumber"></a>
       <a id="portNumber:PortNumber"></a>
@@ -733,7 +645,7 @@ parameters set to their defaults. Override this <code>lazy</code> <code>val</cod
       <p class="shortcomment cmt">Implicit <code>PortNumber</code> instance that wraps <code>port</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Implicit <code>PortNumber</code> instance that wraps <code>port</code>. The value returned from <code>portNumber.value</code>
 will be same as the value of <code>port</code>.
 </p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the configured port number, wrapped in a <code>PortNumber</code></p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a></dd></dl></div>
-    </li><li name="org.scalatestplus.play.OneServerPerSuite#run" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="org.scalatestplus.play.BaseOneServerPerSuite#run" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="run(testName:Option[String],args:org.scalatest.Args):org.scalatest.Status"></a>
       <a id="run(Option[String],Args):Status"></a>
       <h4 class="signature">
@@ -756,7 +668,7 @@ port number defined by <code>port</code>, places the <code>Application</code> an
 <code>org.scalatestplus.play.app</code> and <code>org.scalatestplus.play.port</code>, respectively, to make</p><p>them available to nested suites; calls <code>super.run</code>; and lastly ensures the <code>Application and test server are stopped after
 all tests and nested suites have completed.
 </code></p></div><dl class="paramcmts block"><dt class="param">testName</dt><dd class="cmt"><p>an optional name of one test to run. If <code>None</code>, all relevant tests should be run.
-                I.e., <code>None</code> acts like a wildcard that means run all relevant tests in this <code>Suite</code>.</p></dd><dt class="param">args</dt><dd class="cmt"><p>the <code>Args</code> for this run</p></dd><dt>returns</dt><dd class="cmt"><p>a <code>Status</code> object that indicates when all tests and nested suites started by this method have completed, and whether or not a failure occurred.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.scalatestplus.play.OneServerPerSuite">OneServerPerSuite</a> → SuiteMixin</dd></dl></div>
+                I.e., <code>None</code> acts like a wildcard that means run all relevant tests in this <code>Suite</code>.</p></dd><dt class="param">args</dt><dd class="cmt"><p>the <code>Args</code> for this run</p></dd><dt>returns</dt><dd class="cmt"><p>a <code>Status</code> object that indicates when all tests and nested suites started by this method have completed, and whether or not a failure occurred.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseOneServerPerSuite.html" class="extype" name="org.scalatestplus.play.BaseOneServerPerSuite">BaseOneServerPerSuite</a> → SuiteMixin</dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -869,7 +781,15 @@ all tests and nested suites have completed.
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="org.scalatestplus.play.ServerProvider">
+        <div class="parent" name="org.scalatestplus.play.guice.GuiceOneServerPerSuite">
+              <h3>Inherited from <a href="guice/GuiceOneServerPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerSuite">GuiceOneServerPerSuite</a></h3>
+            </div><div class="parent" name="org.scalatestplus.play.guice.GuiceFakeApplicationFactory">
+              <h3>Inherited from <a href="guice/GuiceFakeApplicationFactory.html" class="extype" name="org.scalatestplus.play.guice.GuiceFakeApplicationFactory">GuiceFakeApplicationFactory</a></h3>
+            </div><div class="parent" name="org.scalatestplus.play.FakeApplicationFactory">
+              <h3>Inherited from <a href="FakeApplicationFactory.html" class="extype" name="org.scalatestplus.play.FakeApplicationFactory">FakeApplicationFactory</a></h3>
+            </div><div class="parent" name="org.scalatestplus.play.BaseOneServerPerSuite">
+              <h3>Inherited from <a href="BaseOneServerPerSuite.html" class="extype" name="org.scalatestplus.play.BaseOneServerPerSuite">BaseOneServerPerSuite</a></h3>
+            </div><div class="parent" name="org.scalatestplus.play.ServerProvider">
               <h3>Inherited from <a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a></h3>
             </div><div class="parent" name="org.scalatest.SuiteMixin">
               <h3>Inherited from <span class="extype" name="org.scalatest.SuiteMixin">SuiteMixin</span></h3>
