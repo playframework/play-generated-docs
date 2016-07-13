@@ -333,7 +333,7 @@ extends java.lang.Object</pre>
 <tr id="i15" class="rowColor">
 <td class="colFirst"><code><a href="../../play/data/Form.html" title="type parameter in Form">T</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/data/Form.html#get--">get</a></span>()</code>
-<div class="block">Gets the concrete value if the submission was a success.</div>
+<div class="block">Gets the concrete value only if the submission was a success.</div>
 </td>
 </tr>
 <tr id="i16" class="altColor">
@@ -426,7 +426,7 @@ extends java.lang.Object</pre>
 <tr id="i31" class="rowColor">
 <td class="colFirst"><code>java.util.Optional&lt;<a href="../../play/data/Form.html" title="type parameter in Form">T</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/data/Form.html#value--">value</a></span>()</code>
-<div class="block">Retrieves the actual form value.</div>
+<div class="block">Retrieves the actual form value - even when the form contains validation errors.</div>
 </td>
 </tr>
 </table>
@@ -730,7 +730,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>value</h4>
 <pre>public&nbsp;java.util.Optional&lt;<a href="../../play/data/Form.html" title="type parameter in Form">T</a>&gt;&nbsp;value()</pre>
-<div class="block">Retrieves the actual form value.</div>
+<div class="block">Retrieves the actual form value - even when the form contains validation errors.</div>
 </li>
 </ul>
 <a name="fill-java.lang.Object-">
@@ -850,7 +850,8 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>get</h4>
 <pre>public&nbsp;<a href="../../play/data/Form.html" title="type parameter in Form">T</a>&nbsp;get()</pre>
-<div class="block">Gets the concrete value if the submission was a success.</div>
+<div class="block">Gets the concrete value only if the submission was a success. If the form is invalid because of validation errors this method will throw an exception.
+ If you want to retrieve the value even when the form is invalid use <code>value()</code> instead.</div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code>java.lang.IllegalStateException</code> - if there are errors binding the form, including the errors as JSON in the message</dd>
