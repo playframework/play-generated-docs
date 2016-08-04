@@ -266,6 +266,12 @@ extends java.lang.ThreadLocal&lt;java.util.Deque&lt;javax.persistence.EntityMana
 <h4>emStack</h4>
 <pre>public&nbsp;java.util.Deque&lt;javax.persistence.EntityManager&gt;&nbsp;emStack(boolean&nbsp;threadLocalFallback)</pre>
 <div class="block">Get the EntityManager stack.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>threadLocalFallback</code> - if true, fall back to a ThreadLocal queue of entity managers if no HTTP.Context object is found.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the queue of entity managers.</dd>
+</dl>
 </li>
 </ul>
 <a name="push-javax.persistence.EntityManager-boolean-">
@@ -300,6 +306,11 @@ public&nbsp;void&nbsp;pushOrPopEm(javax.persistence.EntityManager&nbsp;em,
 <div class="block">Pushes or pops the EntityManager stack depending on the value of the
  em argument. If em is null, then the current EntityManager is popped. If em
  is non-null, then em is pushed onto the stack and becomes the current EntityManager.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>em</code> - the entity manager to push, if null then will pop one off the stack.</dd>
+<dd><code>threadLocalFallback</code> - if true, fall back to a ThreadLocal queue of entity managers if no HTTP.Context object is found.</dd>
+</dl>
 </li>
 </ul>
 </li>

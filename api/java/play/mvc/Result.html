@@ -276,7 +276,9 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i15" class="rowColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/Result.html#withCookies-play.mvc.Http.Cookie...-">withCookies</a></span>(<a href="../../play/mvc/Http.Cookie.html" title="class in play.mvc">Http.Cookie</a>...&nbsp;cookies)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/Result.html#withCookies-play.mvc.Http.Cookie...-">withCookies</a></span>(<a href="../../play/mvc/Http.Cookie.html" title="class in play.mvc">Http.Cookie</a>...&nbsp;cookies)</code>
+<div class="block">Returns a copy of this result with the given cookies.</div>
+</td>
 </tr>
 <tr id="i16" class="altColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
@@ -322,6 +324,11 @@ extends java.lang.Object</pre>
 <pre>public&nbsp;Result(play.api.mvc.ResponseHeader&nbsp;header,
               <a href="../../play/http/HttpEntity.html" title="class in play.http">HttpEntity</a>&nbsp;body)</pre>
 <div class="block">Create a result from a Scala ResponseHeader and a body.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>header</code> - the response header</dd>
+<dd><code>body</code> - the response body.</dd>
+</dl>
 </li>
 </ul>
 <a name="Result-int-java.util.Optional-java.util.Map-play.http.HttpEntity-">
@@ -495,6 +502,8 @@ extends java.lang.Object</pre>
 <pre>public&nbsp;java.util.Optional&lt;java.lang.String&gt;&nbsp;header(java.lang.String&nbsp;header)</pre>
 <div class="block">Extracts an Header value of this Result value.</div>
 <dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>header</code> - the header name.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the header (if it was set)</dd>
 </dl>
@@ -581,6 +590,8 @@ extends java.lang.Object</pre>
 <pre>public&nbsp;<a href="../../play/mvc/Http.Cookie.html" title="class in play.mvc">Http.Cookie</a>&nbsp;cookie(java.lang.String&nbsp;name)</pre>
 <div class="block">Extracts a Cookie value from this Result value</div>
 <dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>name</code> - the cookie's name.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the cookie (if it was set)</dd>
 </dl>
@@ -607,6 +618,13 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>withCookies</h4>
 <pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;withCookies(<a href="../../play/mvc/Http.Cookie.html" title="class in play.mvc">Http.Cookie</a>...&nbsp;cookies)</pre>
+<div class="block">Returns a copy of this result with the given cookies.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>cookies</code> - the cookies to add to the result.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the transformed copy.</dd>
+</dl>
 </li>
 </ul>
 <a name="withHeader-java.lang.String-java.lang.String-">
@@ -619,6 +637,9 @@ extends java.lang.Object</pre>
                          java.lang.String&nbsp;value)</pre>
 <div class="block">Return a copy of this result with the given header.</div>
 <dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>name</code> - the header name</dd>
+<dd><code>value</code> - the header value</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the transformed copy</dd>
 </dl>
@@ -631,8 +652,14 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>withHeaders</h4>
 <pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;withHeaders(java.lang.String...&nbsp;nameValues)</pre>
-<div class="block">Return a copy of this result with the given headers.</div>
+<div class="block">Return a copy of this result with the given headers.
+
+ The headers are processed in pairs, so nameValues(0) is the first header's name, and
+ nameValues(1) is the first header's value, nameValues(2) is second header's name,
+ and so on.</div>
 <dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>nameValues</code> - the array of names and values.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the transformed copy</dd>
 </dl>
@@ -647,6 +674,8 @@ extends java.lang.Object</pre>
 <pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;as(java.lang.String&nbsp;contentType)</pre>
 <div class="block">Return a copy of the result with a different Content-Type header.</div>
 <dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>contentType</code> - the content type to set</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the transformed copy</dd>
 </dl>
