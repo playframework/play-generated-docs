@@ -92,7 +92,25 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="play.api.test.WsTestClient.Port" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+              <ol><li name="play.api.test.WsTestClient.InternalWSClient" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="InternalWSClientextendsWSClient"></a>
+      <a id="InternalWSClient:InternalWSClient"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="WsTestClient$InternalWSClient.html"><span class="name">InternalWSClient</span></a><span class="result"> extends <a href="../libs/ws/WSClient.html" class="extype" name="play.api.libs.ws.WSClient">WSClient</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.test.WsTestClient@InternalWSClientextendsWSClient" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Creates a standalone WSClient, using its own ActorSystem and Netty thread pool.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a standalone WSClient, using its own ActorSystem and Netty thread pool.</p><p>This client has no dependencies at all on the underlying system, but is wasteful of resources.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="WsTestClient.html" class="extype" name="play.api.test.WsTestClient">WsTestClient</a></dd></dl></div>
+    </li><li name="play.api.test.WsTestClient.Port" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="Port=Int"></a>
       <a id="Port:Port"></a>
       <h4 class="signature">
@@ -470,18 +488,18 @@
               
         </dd></dl></div>
     </li><li name="play.api.test.WsTestClient#withClient" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="withClient[T](block:play.api.libs.ws.WSClient=&gt;T)(implicitport:play.api.http.Port):T"></a>
-      <a id="withClient[T]((WSClient)⇒T)(http.Port):T"></a>
+      <a id="withClient[T](block:play.api.libs.ws.WSClient=&gt;T)(implicitport:play.api.http.Port,implicitscheme:String):T"></a>
+      <a id="withClient[T]((WSClient)⇒T)(http.Port,String):T"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">withClient</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="block">block: (<a href="../libs/ws/WSClient.html" class="extype" name="play.api.libs.ws.WSClient">WSClient</a>) ⇒ <span class="extype" name="play.api.test.WsTestClient.withClient.T">T</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="port">port: <a href="../http/Port.html" class="extype" name="play.api.http.Port">http.Port</a> = <span class="symbol"><span class="name"><a href="../../package.html">new play.api.http.Port(-1)</a></span></span></span>)</span><span class="result">: <span class="extype" name="play.api.test.WsTestClient.withClient.T">T</span></span>
+        <span class="name">withClient</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="block">block: (<a href="../libs/ws/WSClient.html" class="extype" name="play.api.libs.ws.WSClient">WSClient</a>) ⇒ <span class="extype" name="play.api.test.WsTestClient.withClient.T">T</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="port">port: <a href="../http/Port.html" class="extype" name="play.api.http.Port">http.Port</a> = <span class="symbol"><span class="name"><a href="../../package.html">new play.api.http.Port(-1)</a></span></span></span>, <span name="scheme">scheme: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;http&quot;</span></span>)</span><span class="result">: <span class="extype" name="play.api.test.WsTestClient.withClient.T">T</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.test.WsTestClient$@withClient[T](block:play.api.libs.ws.WSClient=&gt;T)(implicitport:play.api.http.Port):T" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.test.WsTestClient$@withClient[T](block:play.api.libs.ws.WSClient=&gt;T)(implicitport:play.api.http.Port,implicitscheme:String):T" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -496,42 +514,42 @@ for example:</p><pre>Server.withRouter() {
   }
 }</pre></div><dl class="paramcmts block"><dt class="param">block</dt><dd class="cmt"><p>The block of code to run</p></dd><dt class="param">port</dt><dd class="cmt"><p>The port</p></dd><dt>returns</dt><dd class="cmt"><p>The result of the block of code</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="WsTestClient.html" class="extype" name="play.api.test.WsTestClient">WsTestClient</a></dd></dl></div>
     </li><li name="play.api.test.WsTestClient#wsCall" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="wsCall(call:play.api.mvc.Call)(implicitport:WsTestClient.this.Port,implicitclient:play.api.libs.ws.WSClient):play.api.libs.ws.WSRequest"></a>
-      <a id="wsCall(Call)(Port,WSClient):WSRequest"></a>
+      <a id="wsCall(call:play.api.mvc.Call)(implicitport:WsTestClient.this.Port,implicitclient:(WsTestClient.this.Port,String)=&gt;play.api.libs.ws.WSClient,implicitscheme:String):play.api.libs.ws.WSRequest"></a>
+      <a id="wsCall(Call)(Port,(Port,String)⇒WSClient,String):WSRequest"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">wsCall</span><span class="params">(<span name="call">call: <a href="../mvc/Call.html" class="extype" name="play.api.mvc.Call">Call</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="port">port: <a href="#Port=Int" class="extmbr" name="play.api.test.WsTestClient.Port">Port</a></span>, <span name="client">client: <a href="../libs/ws/WSClient.html" class="extype" name="play.api.libs.ws.WSClient">WSClient</a> = <span class="defval" name='<span class="name"><a href="../../package.html">WS.client(play.api.Play.privateMaybeApplication.get)</a></span>'>...</span></span>)</span><span class="result">: <a href="../libs/ws/WSRequest.html" class="extype" name="play.api.libs.ws.WSRequest">WSRequest</a></span>
+        <span class="name">wsCall</span><span class="params">(<span name="call">call: <a href="../mvc/Call.html" class="extype" name="play.api.mvc.Call">Call</a></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="port">port: <a href="#Port=Int" class="extmbr" name="play.api.test.WsTestClient.Port">Port</a></span>, <span name="client">client: (<a href="#Port=Int" class="extmbr" name="play.api.test.WsTestClient.Port">Port</a>, <span class="extype" name="scala.Predef.String">String</span>) ⇒ <a href="../libs/ws/WSClient.html" class="extype" name="play.api.libs.ws.WSClient">WSClient</a> = <span class="symbol">clientProducer</span></span>, <span name="scheme">scheme: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;http&quot;</span></span>)</span><span class="result">: <a href="../libs/ws/WSRequest.html" class="extype" name="play.api.libs.ws.WSRequest">WSRequest</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.test.WsTestClient$@wsCall(call:play.api.mvc.Call)(implicitport:WsTestClient.this.Port,implicitclient:play.api.libs.ws.WSClient):play.api.libs.ws.WSRequest" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.test.WsTestClient$@wsCall(call:play.api.mvc.Call)(implicitport:WsTestClient.this.Port,implicitclient:(WsTestClient.this.Port,String)=&gt;play.api.libs.ws.WSClient,implicitscheme:String):play.api.libs.ws.WSRequest" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Constructs a WS request holder for the given reverse route.</p><div class="fullcomment"><div class="comment cmt"><p>Constructs a WS request holder for the given reverse route.  Optionally takes a WSClient.  Note that the WS client used
+      <p class="shortcomment cmt">Constructs a WS request for the given reverse route.</p><div class="fullcomment"><div class="comment cmt"><p>Constructs a WS request for the given reverse route.  Optionally takes a WSClient producing function.  Note that the WS client used
 by default requires a running Play application (use WithApplication for tests).</p><p>For example:</p><pre><span class="lit">"work"</span> in <span class="kw">new</span> WithApplication() { <span class="kw">implicit</span> app <span class="kw">=&gt;</span>
   wsCall(controllers.routes.Application.index()).get()
 }</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="WsTestClient.html" class="extype" name="play.api.test.WsTestClient">WsTestClient</a></dd></dl></div>
     </li><li name="play.api.test.WsTestClient#wsUrl" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="wsUrl(url:String)(implicitport:WsTestClient.this.Port,implicitclient:play.api.libs.ws.WSClient):play.api.libs.ws.WSRequest"></a>
-      <a id="wsUrl(String)(Port,WSClient):WSRequest"></a>
+      <a id="wsUrl(url:String)(implicitport:WsTestClient.this.Port,implicitclient:(WsTestClient.this.Port,String)=&gt;play.api.libs.ws.WSClient,implicitscheme:String):play.api.libs.ws.WSRequest"></a>
+      <a id="wsUrl(String)(Port,(Port,String)⇒WSClient,String):WSRequest"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">wsUrl</span><span class="params">(<span name="url">url: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="port">port: <a href="#Port=Int" class="extmbr" name="play.api.test.WsTestClient.Port">Port</a></span>, <span name="client">client: <a href="../libs/ws/WSClient.html" class="extype" name="play.api.libs.ws.WSClient">WSClient</a> = <span class="defval" name='<span class="name"><a href="../../package.html">WS.client(play.api.Play.privateMaybeApplication.get)</a></span>'>...</span></span>)</span><span class="result">: <a href="../libs/ws/WSRequest.html" class="extype" name="play.api.libs.ws.WSRequest">WSRequest</a></span>
+        <span class="name">wsUrl</span><span class="params">(<span name="url">url: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="port">port: <a href="#Port=Int" class="extmbr" name="play.api.test.WsTestClient.Port">Port</a></span>, <span name="client">client: (<a href="#Port=Int" class="extmbr" name="play.api.test.WsTestClient.Port">Port</a>, <span class="extype" name="scala.Predef.String">String</span>) ⇒ <a href="../libs/ws/WSClient.html" class="extype" name="play.api.libs.ws.WSClient">WSClient</a> = <span class="symbol">clientProducer</span></span>, <span name="scheme">scheme: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;http&quot;</span></span>)</span><span class="result">: <a href="../libs/ws/WSRequest.html" class="extype" name="play.api.libs.ws.WSRequest">WSRequest</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.test.WsTestClient$@wsUrl(url:String)(implicitport:WsTestClient.this.Port,implicitclient:play.api.libs.ws.WSClient):play.api.libs.ws.WSRequest" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.test.WsTestClient$@wsUrl(url:String)(implicitport:WsTestClient.this.Port,implicitclient:(WsTestClient.this.Port,String)=&gt;play.api.libs.ws.WSClient,implicitscheme:String):play.api.libs.ws.WSRequest" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Constructs a WS request holder for the given relative URL.</p><div class="fullcomment"><div class="comment cmt"><p>Constructs a WS request holder for the given relative URL.  Optionally takes a port and WSClient.  Note that the WS client used
+      <p class="shortcomment cmt">Constructs a WS request holder for the given relative URL.</p><div class="fullcomment"><div class="comment cmt"><p>Constructs a WS request holder for the given relative URL.  Optionally takes a scheme, a port, or a client producing function.  Note that the WS client used
 by default requires a running Play application (use WithApplication for tests).
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="WsTestClient.html" class="extype" name="play.api.test.WsTestClient">WsTestClient</a></dd></dl></div>
     </li></ol>
