@@ -51,7 +51,7 @@
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Trait that provides a new <code>Application</code> instance per ScalaTest <code>Suite</code>.</p><p>By default, this trait creates a new <code>Application</code> for the <code>Suite</code> using default parameter values, which
 is made available via the <code>app</code> field defined in this trait. If your <code>Suite</code> needs a <code>Application</code> with non-default
-parameters, override <code>app</code> to create it the way you need it.</p><p>This <code>SuiteMixin</code> trait's overridden <code>run</code> method calls <code>Play.start</code>, passing in the
+parameters, override <code>app</code> to create it the way you need it.</p><p>This <code>TestSuiteMixin</code> trait's overridden <code>run</code> method calls <code>Play.start</code>, passing in the
 <code>Application</code> provided by <code>app</code>, before executing the <code>Suite</code> via a call to <code>super.run</code>.
 In addition, it places a reference to the <code>Application</code> provided by <code>app</code> into the <code>ConfigMap</code>
 under the key <code>org.scalatestplus.play.app</code>.  This allows any nested <code>Suite</code>s to access the <code>Suite</code>'s
@@ -131,9 +131,9 @@ class BlueSpec extends PlaySpec with ConfiguredApp {
   }
 }
 </pre>
-</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="org.scalatestplus.play.guice.GuiceOneAppPerSuite">GuiceOneAppPerSuite</a> with <span class="extype" name="org.scalatest.Suite">Suite</span></dd><dt>Source</dt><dd><a href="https://github.com/playframework/scalatestplus-play/tree/master/module/src/main/scala/org/scalatestplus/play/guice/GuiceOneAppPerSuite.scala" target="_blank">GuiceOneAppPerSuite.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="org.scalatestplus.play.guice.GuiceOneAppPerSuite">GuiceOneAppPerSuite</a> with <span class="extype" name="org.scalatest.TestSuite">TestSuite</span></dd><dt>Source</dt><dd><a href="https://github.com/playframework/scalatestplus-play/tree/master/module/src/main/scala/org/scalatestplus/play/guice/GuiceOneAppPerSuite.scala" target="_blank">GuiceOneAppPerSuite.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="GuiceFakeApplicationFactory.html" class="extype" name="org.scalatestplus.play.guice.GuiceFakeApplicationFactory">GuiceFakeApplicationFactory</a>, <a href="../FakeApplicationFactory.html" class="extype" name="org.scalatestplus.play.FakeApplicationFactory">FakeApplicationFactory</a>, <a href="../BaseOneAppPerSuite.html" class="extype" name="org.scalatestplus.play.BaseOneAppPerSuite">BaseOneAppPerSuite</a>, <span class="extype" name="org.scalatest.SuiteMixin">SuiteMixin</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="GuiceFakeApplicationFactory.html" class="extype" name="org.scalatestplus.play.guice.GuiceFakeApplicationFactory">GuiceFakeApplicationFactory</a>, <a href="../FakeApplicationFactory.html" class="extype" name="org.scalatestplus.play.FakeApplicationFactory">FakeApplicationFactory</a>, <a href="../BaseOneAppPerSuite.html" class="extype" name="org.scalatestplus.play.BaseOneAppPerSuite">BaseOneAppPerSuite</a>, <span class="extype" name="org.scalatest.TestSuiteMixin">TestSuiteMixin</span>, <span class="extype" name="org.scalatest.SuiteMixin">SuiteMixin</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
             <span class="toggle">Known Subclasses</span>
             <div class="subClasses hiddenContent"><a href="../OneAppPerSuite.html" class="extype" name="org.scalatestplus.play.OneAppPerSuite">OneAppPerSuite</a></div>
@@ -154,7 +154,7 @@ class BlueSpec extends PlaySpec with ConfiguredApp {
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="org.scalatestplus.play.guice.GuiceOneAppPerSuite"><span>GuiceOneAppPerSuite</span></li><li class="in" name="org.scalatestplus.play.guice.GuiceFakeApplicationFactory"><span>GuiceFakeApplicationFactory</span></li><li class="in" name="org.scalatestplus.play.FakeApplicationFactory"><span>FakeApplicationFactory</span></li><li class="in" name="org.scalatestplus.play.BaseOneAppPerSuite"><span>BaseOneAppPerSuite</span></li><li class="in" name="org.scalatest.SuiteMixin"><span>SuiteMixin</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="org.scalatestplus.play.guice.GuiceOneAppPerSuite"><span>GuiceOneAppPerSuite</span></li><li class="in" name="org.scalatestplus.play.guice.GuiceFakeApplicationFactory"><span>GuiceFakeApplicationFactory</span></li><li class="in" name="org.scalatestplus.play.FakeApplicationFactory"><span>FakeApplicationFactory</span></li><li class="in" name="org.scalatestplus.play.BaseOneAppPerSuite"><span>BaseOneAppPerSuite</span></li><li class="in" name="org.scalatest.TestSuiteMixin"><span>TestSuiteMixin</span></li><li class="in" name="org.scalatest.SuiteMixin"><span>SuiteMixin</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -381,8 +381,8 @@ class BlueSpec extends PlaySpec with ConfiguredApp {
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>SuiteMixin</dd></dl></div>
-    </li><li name="org.scalatest.SuiteMixin#withFixture" visbl="prt" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="withFixture(test:SuiteMixin.this.NoArgTest):org.scalatest.Outcome"></a>
+    </li><li name="org.scalatest.TestSuiteMixin#withFixture" visbl="prt" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="withFixture(test:TestSuiteMixin.this.NoArgTest):org.scalatest.Outcome"></a>
       <a id="withFixture((GuiceOneAppPerSuite.this)#NoArgTest):Outcome"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -390,14 +390,14 @@ class BlueSpec extends PlaySpec with ConfiguredApp {
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">withFixture</span><span class="params">(<span name="test">test: (<a href="" class="extype" name="org.scalatestplus.play.guice.GuiceOneAppPerSuite">GuiceOneAppPerSuite</a>.this)#<span class="extype" name="org.scalatest.Suite.NoArgTest">NoArgTest</span></span>)</span><span class="result">: <span class="extype" name="org.scalatest.Outcome">Outcome</span></span>
+        <span class="name">withFixture</span><span class="params">(<span name="test">test: (<a href="" class="extype" name="org.scalatestplus.play.guice.GuiceOneAppPerSuite">GuiceOneAppPerSuite</a>.this)#<span class="extype" name="org.scalatest.TestSuite.NoArgTest">NoArgTest</span></span>)</span><span class="result">: <span class="extype" name="org.scalatest.Outcome">Outcome</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#org.scalatestplus.play.guice.GuiceOneAppPerSuite@withFixture(test:SuiteMixin.this.NoArgTest):org.scalatest.Outcome" title="Permalink" target="_top">
+      <a href="../../../../index.html#org.scalatestplus.play.guice.GuiceOneAppPerSuite@withFixture(test:TestSuiteMixin.this.NoArgTest):org.scalatest.Outcome" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>SuiteMixin</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>TestSuiteMixin</dd></dl></div>
     </li></ol>
             </div>
 
@@ -829,6 +829,8 @@ to nested suites; calls <code>super.run</code>; and lastly ensures <code>Play.st
               <h3>Inherited from <a href="../FakeApplicationFactory.html" class="extype" name="org.scalatestplus.play.FakeApplicationFactory">FakeApplicationFactory</a></h3>
             </div><div class="parent" name="org.scalatestplus.play.BaseOneAppPerSuite">
               <h3>Inherited from <a href="../BaseOneAppPerSuite.html" class="extype" name="org.scalatestplus.play.BaseOneAppPerSuite">BaseOneAppPerSuite</a></h3>
+            </div><div class="parent" name="org.scalatest.TestSuiteMixin">
+              <h3>Inherited from <span class="extype" name="org.scalatest.TestSuiteMixin">TestSuiteMixin</span></h3>
             </div><div class="parent" name="org.scalatest.SuiteMixin">
               <h3>Inherited from <span class="extype" name="org.scalatest.SuiteMixin">SuiteMixin</span></h3>
             </div><div class="parent" name="scala.AnyRef">

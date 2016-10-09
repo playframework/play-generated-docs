@@ -6,20 +6,36 @@ package javaguide.async;
 import org.junit.Test;
 import play.mvc.Result;
 
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionStage;
-import java.util.concurrent.TimeUnit;
+import java.time.Duration;
+import java.util.concurrent.*;
 
+import static java.util.concurrent.CompletableFuture.supplyAsync;
 import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 import static play.mvc.Results.ok;
 
 public class JavaAsync {
 
     @Test
+    public void promiseWithTimeout() throws Exception {
+        //#timeout
+        class MyClass implements play.libs.concurrent.Timeout {
+            CompletionStage<Double> callWithOneSecondTimeout() {
+                return timeout(computePIAsynchronously(), Duration.ofSeconds(1));
+            }
+        }
+        //#timeout
+        final Double actual = new MyClass().callWithOneSecondTimeout().toCompletableFuture().get(1, TimeUnit.SECONDS);
+        final Double expected = Math.PI;
+        assertThat(actual, equalTo(expected));
+    }
+
+    @Test
     public void promisePi() throws Exception {
         //#promise-pi
         CompletionStage<Double> promiseOfPIValue = computePIAsynchronously();
+        // Runs in same thread
         CompletionStage<Result> promiseOfResult = promiseOfPIValue.thenApply(pi ->
                         ok("PI value computed: " + pi)
         );
@@ -30,7 +46,10 @@ public class JavaAsync {
     @Test
     public void promiseAsync() throws Exception {
         //#promise-async
-        CompletionStage<Integer> promiseOfInt = CompletableFuture.supplyAsync(() -> intensiveComputation());
+        // import static java.util.concurrent.CompletableFuture.supplyAsync;
+        // creates new task
+        CompletionStage<Integer> promiseOfInt = supplyAsync(() ->
+                intensiveComputation());
         //#promise-async
         assertEquals(intensiveComputation(), promiseOfInt.toCompletableFuture().get(1, TimeUnit.SECONDS));
     }

@@ -142,14 +142,6 @@ implements <a href="../../play/db/Database.html" title="interface in play.db">Da
 </td>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../play/db/DefaultDatabase.html#DefaultDatabase-java.lang.String-play.Configuration-">DefaultDatabase</a></span>(java.lang.String&nbsp;name,
-               <a href="../../play/Configuration.html" title="class in play">Configuration</a>&nbsp;configuration)</code>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
-<div class="block"><span class="deprecationComment">use the version that accepts Config</span></div>
-</div>
-</td>
-</tr>
-<tr class="rowColor">
 <td class="colOne"><code><span class="memberNameLink"><a href="../../play/db/DefaultDatabase.html#DefaultDatabase-java.lang.String-java.util.Map-">DefaultDatabase</a></span>(java.lang.String&nbsp;name,
                java.util.Map&lt;java.lang.String,? extends java.lang.Object&gt;&nbsp;config)</code>
 <div class="block">Create a default BoneCP-backed database.</div>
@@ -297,24 +289,6 @@ implements <a href="../../play/db/Database.html" title="interface in play.db">Da
 </dl>
 </li>
 </ul>
-<a name="DefaultDatabase-java.lang.String-play.Configuration-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>DefaultDatabase</h4>
-<pre>@Deprecated
-public&nbsp;DefaultDatabase(java.lang.String&nbsp;name,
-                                   <a href="../../play/Configuration.html" title="class in play">Configuration</a>&nbsp;configuration)</pre>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">use the version that accepts Config</span></div>
-<div class="block">Create a default BoneCP-backed database.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>name</code> - name for the db's underlying datasource</dd>
-<dd><code>configuration</code> - the database's configuration</dd>
-</dl>
-</li>
-</ul>
 <a name="DefaultDatabase-java.lang.String-java.util.Map-">
 <!--   -->
 </a>
@@ -395,7 +369,7 @@ public&nbsp;DefaultDatabase(java.lang.String&nbsp;name,
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../play/db/Database.html#getConnection--">Database</a></code></span></div>
 <div class="block">Get a JDBC connection from the underlying data source. Autocommit is
  enabled by default.
-
+ <p>
  Don't forget to release the connection at some point by calling close().</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
@@ -414,7 +388,7 @@ public&nbsp;DefaultDatabase(java.lang.String&nbsp;name,
 <pre>public&nbsp;java.sql.Connection&nbsp;getConnection(boolean&nbsp;autocommit)</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../play/db/Database.html#getConnection-boolean-">Database</a></code></span></div>
 <div class="block">Get a JDBC connection from the underlying data source.
-
+ <p>
  Don't forget to release the connection at some point by calling close().</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>

@@ -104,7 +104,7 @@ subclasses GuiceFakeApplicationFactory
     </span>
       <p class="shortcomment cmt">Trait that provides a new <code>Application</code> instance per ScalaTest <code>Suite</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Trait that provides a new <code>Application</code> instance per ScalaTest <code>Suite</code>.</p><p>By default, this trait creates a new <code>Application</code> for the <code>Suite</code> using default parameter values, which
 is made available via the <code>app</code> field defined in this trait. If your <code>Suite</code> needs a <code>Application</code> with non-default
-parameters, override <code>app</code> to create it the way you need it.</p><p>This <code>SuiteMixin</code> trait's overridden <code>run</code> method calls <code>Play.start</code>, passing in the
+parameters, override <code>app</code> to create it the way you need it.</p><p>This <code>TestSuiteMixin</code> trait's overridden <code>run</code> method calls <code>Play.start</code>, passing in the
 <code>Application</code> provided by <code>app</code>, before executing the <code>Suite</code> via a call to <code>super.run</code>.
 In addition, it places a reference to the <code>Application</code> provided by <code>app</code> into the <code>ConfigMap</code>
 under the key <code>org.scalatestplus.play.app</code>.  This allows any nested <code>Suite</code>s to access the <code>Suite</code>'s
@@ -201,7 +201,7 @@ class BlueSpec extends PlaySpec with ConfiguredApp {
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Trait that provides a new <code>Application</code> instance for each test.</p><div class="fullcomment"><div class="comment cmt"><p>Trait that provides a new <code>Application</code> instance for each test.</p><p>This <code>SuiteMixin</code> trait's overridden <code>withFixture</code> method creates a new <code>Application</code>
+      <p class="shortcomment cmt">Trait that provides a new <code>Application</code> instance for each test.</p><div class="fullcomment"><div class="comment cmt"><p>Trait that provides a new <code>Application</code> instance for each test.</p><p>This <code>TestSuiteMixin</code> trait's overridden <code>withFixture</code> method creates a new <code>Application</code>
 before each test and ensures it is cleaned up after the test has completed. You can
 access the <code>Application</code> from your tests as method <code>app</code> (which is marked implicit).</p><p>By default, this trait creates a new <code>Application</code> for each test using default parameter values, which
 is returned by the <code>newAppForTest</code> method defined in this trait. If your tests need a <code>Application</code> with non-default

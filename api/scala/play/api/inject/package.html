@@ -116,9 +116,9 @@ JSR-330 scope annotations.</p><p>Bindings are provided by instances of <a href="
 lifecycle callbacks for stopping is that constructors are considered the application start callback.  This has
 several advantages:</p><p>- It simplifies implementation, if you want to start something, just do it in the constructor.
 - It simplifies state, there's no transitional state where an object has been created but not started yet. Hence,
-  as long as you have a reference to something, it's safe to use it.
+as long as you have a reference to something, it's safe to use it.
 - It solves startup dependencies in a type safe manner - the order that components must be started is enforced by the
-  order that they must be instantiated due to the component graph.</p><p>Stop hooks are executed when the application is shutdown, in reverse from when they were registered. Due to this
+order that they must be instantiated due to the component graph.</p><p>Stop hooks are executed when the application is shutdown, in reverse from when they were registered. Due to this
 reverse ordering, a component can know that it is safe to use the components it depends on as long as it hasn't
 received a shutdown event.</p><p>To use this, declare a dependency on ApplicationLifecycle, and then register the stop hook when the component is
 started. For example:</p><pre><span class="kw">import</span> play.api.inject.ApplicationLifecycle
@@ -208,7 +208,7 @@ starts up.
       <p class="shortcomment cmt">A binding target.</p><div class="fullcomment"><div class="comment cmt"><p>A binding target.</p><p>This trait captures the four possible types of targets.
 </p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p>The <a href="Module.html" class="extype" name="play.api.inject.Module">Module</a> class for information on how to provide bindings.</p></span></dd></dl></div>
     </li><li name="play.api.inject.BuiltinModule" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="BuiltinModuleextendsModule"></a>
+      <a id="BuiltinModuleextendsSimpleModule"></a>
       <a id="BuiltinModule:BuiltinModule"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -216,10 +216,10 @@ starts up.
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="BuiltinModule.html"><span class="name">BuiltinModule</span></a><span class="result"> extends <a href="Module.html" class="extype" name="play.api.inject.Module">Module</a></span>
+        <a href="BuiltinModule.html"><span class="name">BuiltinModule</span></a><span class="result"> extends <a href="SimpleModule.html" class="extype" name="play.api.inject.SimpleModule">SimpleModule</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.inject.package@BuiltinModuleextendsModule" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.inject.package@BuiltinModuleextendsSimpleModule" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -483,6 +483,23 @@ that Play requires to be dynamically looked up.</p><p>It is intended to just hol
 required.</p><p>The injector is an immutable structure, new components can be added using the <code>+</code> convenience method, which returns
 a new injector with that component included.
 </p></div></div>
+    </li><li name="play.api.inject.SimpleModule" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SimpleModuleextendsModule"></a>
+      <a id="SimpleModule:SimpleModule"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="SimpleModule.html"><span class="name">SimpleModule</span></a><span class="result"> extends <a href="Module.html" class="extype" name="play.api.inject.Module">Module</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.inject.package@SimpleModuleextendsModule" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A simple Play module, which can be configured by passing a function or a list of bindings.</p>
     </li></ol>
             </div>
 

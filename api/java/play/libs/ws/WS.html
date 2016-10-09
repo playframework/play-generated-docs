@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":41,"i1":9,"i2":41};
+var methods = {"i0":41};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],8:["t4","Concrete Methods"],32:["t6","Deprecated Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -106,10 +106,14 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <hr>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">as of 2.6, this class is deprecated in favor of WSAPI.</span></div>
+</div>
 <br>
-<pre>public class <span class="typeNameLabel">WS</span>
+<pre>@Deprecated
+public class <span class="typeNameLabel">WS</span>
 extends java.lang.Object</pre>
-<div class="block">Asynchronous API to to query web services, as an http client.</div>
+<div class="block">Asynchronous API to query web services, as an http client.</div>
 </li>
 </ul>
 </div>
@@ -128,7 +132,9 @@ extends java.lang.Object</pre>
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../play/libs/ws/WS.html#WS--">WS</a></span>()</code>&nbsp;</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../play/libs/ws/WS.html#WS--">WS</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -147,23 +153,12 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>static <a href="../../../play/libs/ws/WSClient.html" title="interface in play.libs.ws">WSClient</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/ws/WS.html#client--">client</a></span>()</code>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
-<div class="block"><span class="deprecationComment">Please use a WSClient instance using DI (since 2.5)</span></div>
-</div>
-</td>
-</tr>
-<tr id="i1" class="rowColor">
-<td class="colFirst"><code>static <a href="../../../play/libs/ws/WSClient.html" title="interface in play.libs.ws">WSClient</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/ws/WS.html#newClient-int-">newClient</a></span>(int&nbsp;port)</code>
-<div class="block">Create a new WSClient.</div>
-</td>
-</tr>
-<tr id="i2" class="altColor">
-<td class="colFirst"><code>static <a href="../../../play/libs/ws/WSRequest.html" title="interface in play.libs.ws">WSRequest</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/ws/WS.html#url-java.lang.String-">url</a></span>(java.lang.String&nbsp;url)</code>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
-<div class="block"><span class="deprecationComment">Please use a WSClient instance using DI (since 2.5)</span></div>
+<div class="block"><span class="deprecationComment">as of 2.6, not to be used.
+    This method is not appropriate outside of testing context, because it makes many
+    assumptions about the url, starts up a new client and actorsystem on every
+    call, and hardcodes the config to something other than the app config.</span></div>
 </div>
 </td>
 </tr>
@@ -196,6 +191,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>WS</h4>
 <pre>public&nbsp;WS()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 </li>
 </ul>
 </li>
@@ -206,47 +202,18 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="client--">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>client</h4>
-<pre>@Deprecated
-public static&nbsp;<a href="../../../play/libs/ws/WSClient.html" title="interface in play.libs.ws">WSClient</a>&nbsp;client()</pre>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Please use a WSClient instance using DI (since 2.5)</span></div>
-<div class="block">Returns the default WSClient object managed by the Play application.</div>
-<dl>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>a configured WSClient</dd>
-</dl>
-</li>
-</ul>
-<a name="url-java.lang.String-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>url</h4>
-<pre>@Deprecated
-public static&nbsp;<a href="../../../play/libs/ws/WSRequest.html" title="interface in play.libs.ws">WSRequest</a>&nbsp;url(java.lang.String&nbsp;url)</pre>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Please use a WSClient instance using DI (since 2.5)</span></div>
-<div class="block">Returns a WSRequest object representing the URL.  You can append additional
- properties on the WSRequest by chaining calls, and execute the request to
- return an asynchronous <code>Promise&lt;WSResponse&gt;</code>.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>url</code> - the URL to request</dd>
-</dl>
-</li>
-</ul>
 <a name="newClient-int-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>newClient</h4>
-<pre>public static&nbsp;<a href="../../../play/libs/ws/WSClient.html" title="interface in play.libs.ws">WSClient</a>&nbsp;newClient(int&nbsp;port)</pre>
+<pre>@Deprecated
+public static&nbsp;<a href="../../../play/libs/ws/WSClient.html" title="interface in play.libs.ws">WSClient</a>&nbsp;newClient(int&nbsp;port)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">as of 2.6, not to be used.
+    This method is not appropriate outside of testing context, because it makes many
+    assumptions about the url, starts up a new client and actorsystem on every
+    call, and hardcodes the config to something other than the app config.</span></div>
 <div class="block">Create a new WSClient.
 
  This client holds on to resources such as connections and threads, and so must be closed after use.

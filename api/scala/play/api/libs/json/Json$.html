@@ -329,14 +329,14 @@ res1: <span class="std">String</span> = <span class="lit">"sometext"</span></pre
     </span>
       <p class="shortcomment cmt">Creates a Format[T] by resolving case class fields &amp; required implicits at COMPILE-time</p><div class="fullcomment"><div class="comment cmt"><p>Creates a Format[T] by resolving case class fields &amp; required implicits at COMPILE-time</p><p>If any missing implicit is discovered, compiler will break with corresponding error.</p><pre><span class="kw">import</span> play.api.libs.json.Json
 
-<span class="kw">case</span> <span class="kw">class</span> User(name: <span class="std">String</span>, age: <span class="std">Int</span>)
+<span class="kw">case</span> <span class="kw">class</span> User(userName: <span class="std">String</span>, age: <span class="std">Int</span>)
 
 <span class="kw">implicit</span> <span class="kw">val</span> userWrites = Json.format[User]
 <span class="cmt">// macro-compiler replaces Json.format[User] by injecting into compile chain</span>
 <span class="cmt">// the exact code you would write yourself. This is strictly equivalent to:</span>
 <span class="kw">implicit</span> <span class="kw">val</span> userWrites = (
-   (__ \ 'name).format[<span class="std">String</span>] and
-   (__ \ 'age).format[<span class="std">Int</span>]
+   (__ \ implicitly[JsonConfiguration].naming(<span class="lit">"userName"</span>)).format[<span class="std">String</span>] and
+   (__ \ implicitly[JsonConfiguration].naming(<span class="lit">"age"</span>)).format[<span class="std">Int</span>]
 )(User.apply, unlift(User.unapply))</pre></div></div>
     </li><li name="play.api.libs.json.Json#fromJson" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="fromJson[T](json:play.api.libs.json.JsValue)(implicitfjs:play.api.libs.json.Reads[T]):play.api.libs.json.JsResult[T]"></a>
@@ -582,14 +582,14 @@ res1: <span class="std">String</span> =
     </span>
       <p class="shortcomment cmt">Creates a Reads[T] by resolving case class fields &amp; required implicits at COMPILE-time.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a Reads[T] by resolving case class fields &amp; required implicits at COMPILE-time.</p><p>If any missing implicit is discovered, compiler will break with corresponding error.</p><pre><span class="kw">import</span> play.api.libs.json.Json
 
-<span class="kw">case</span> <span class="kw">class</span> User(name: <span class="std">String</span>, age: <span class="std">Int</span>)
+<span class="kw">case</span> <span class="kw">class</span> User(userName: <span class="std">String</span>, age: <span class="std">Int</span>)
 
 <span class="kw">implicit</span> <span class="kw">val</span> userReads = Json.reads[User]
 <span class="cmt">// macro-compiler replaces Json.reads[User] by injecting into compile chain</span>
 <span class="cmt">// the exact code you would write yourself. This is strictly equivalent to:</span>
 <span class="kw">implicit</span> <span class="kw">val</span> userReads = (
-   (__ \ 'name).read[<span class="std">String</span>] and
-   (__ \ 'age).read[<span class="std">Int</span>]
+   (__ \ implicitly[JsonConfiguration].naming(<span class="lit">"userName"</span>)).read[<span class="std">String</span>] and
+   (__ \ implicitly[JsonConfiguration].naming(<span class="lit">"age"</span>)).read[<span class="std">Int</span>]
 )(User)</pre></div></div>
     </li><li name="play.api.libs.json.Json#stringify" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="stringify(json:play.api.libs.json.JsValue):String"></a>
@@ -773,14 +773,14 @@ res1: <span class="std">String</span> = {<span class="lit">"field1"</span>:{<spa
     </span>
       <p class="shortcomment cmt">Creates a Writes[T] by resolving case class fields &amp; required implicits at COMPILE-time</p><div class="fullcomment"><div class="comment cmt"><p>Creates a Writes[T] by resolving case class fields &amp; required implicits at COMPILE-time</p><p>If any missing implicit is discovered, compiler will break with corresponding error.</p><pre><span class="kw">import</span> play.api.libs.json.Json
 
-<span class="kw">case</span> <span class="kw">class</span> User(name: <span class="std">String</span>, age: <span class="std">Int</span>)
+<span class="kw">case</span> <span class="kw">class</span> User(userName: <span class="std">String</span>, age: <span class="std">Int</span>)
 
 <span class="kw">implicit</span> <span class="kw">val</span> userWrites = Json.writes[User]
 <span class="cmt">// macro-compiler replaces Json.writes[User] by injecting into compile chain</span>
 <span class="cmt">// the exact code you would write yourself. This is strictly equivalent to:</span>
 <span class="kw">implicit</span> <span class="kw">val</span> userWrites = (
-   (__ \ 'name).write[<span class="std">String</span>] and
-   (__ \ 'age).write[<span class="std">Int</span>]
+   (__ \ implicitly[JsonConfiguration].naming(<span class="lit">"userName"</span>)).write[<span class="std">String</span>] and
+   (__ \ implicitly[JsonConfiguration].naming(<span class="lit">"age"</span>)).write[<span class="std">Int</span>]
 )(unlift(User.unapply))</pre></div></div>
     </li></ol>
             </div>

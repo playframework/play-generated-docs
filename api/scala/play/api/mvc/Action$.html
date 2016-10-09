@@ -47,14 +47,17 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <span class="name">Action</span><span class="result"> extends <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>[<a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>]</span>
+        <span class="name deprecated" title="Deprecated: (Since version 2.6.0) Inject an ActionBuilder (e.g. DefaultActionBuilder) or use AbstractController instead">Action</span><span class="result"> extends <a href="DefaultActionBuilder.html" class="extype" name="play.api.mvc.DefaultActionBuilder">DefaultActionBuilder</a></span>
       </span>
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Helper object to create <code>Action</code> values.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play/src/main/scala/play/api/mvc/Action.scala" target="_blank">Action.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Inject an ActionBuilder (e.g. DefaultActionBuilder) or use AbstractController instead</p></dd><dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play/src/main/scala/play/api/mvc/Action.scala" target="_blank">Action.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>[<a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>], <a href="ActionFunction.html" class="extype" name="play.api.mvc.ActionFunction">ActionFunction</a>[<a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>, <a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>], <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="DefaultActionBuilder.html" class="extype" name="play.api.mvc.DefaultActionBuilder">DefaultActionBuilder</a>, <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>[<a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>, <a href="AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a>], <a href="ActionFunction.html" class="extype" name="play.api.mvc.ActionFunction">ActionFunction</a>[<a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>, <a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>], <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -72,7 +75,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="play.api.mvc.Action"><span>Action</span></li><li class="in" name="play.api.mvc.ActionBuilder"><span>ActionBuilder</span></li><li class="in" name="play.api.mvc.ActionFunction"><span>ActionFunction</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="play.api.mvc.Action"><span>Action</span></li><li class="in" name="play.api.mvc.DefaultActionBuilder"><span>DefaultActionBuilder</span></li><li class="in" name="play.api.mvc.ActionBuilder"><span>ActionBuilder</span></li><li class="in" name="play.api.mvc.ActionFunction"><span>ActionFunction</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -149,18 +152,18 @@
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="play.api.mvc.ActionBuilder#andThen" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="andThen[Q[_]](other:play.api.mvc.ActionFunction[R,Q]):play.api.mvc.ActionBuilder[Q]"></a>
-      <a id="andThen[Q[_]](ActionFunction[Request,Q]):ActionBuilder[Q]"></a>
+      <a id="andThen[Q[_]](other:play.api.mvc.ActionFunction[R,Q]):play.api.mvc.ActionBuilder[Q,B]"></a>
+      <a id="andThen[Q[_]](ActionFunction[Request,Q]):ActionBuilder[Q,AnyContent]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">andThen</span><span class="tparams">[<span name="Q">Q<span class="tparams">[<span name="_">_</span>]</span></span>]</span><span class="params">(<span name="other">other: <a href="ActionFunction.html" class="extype" name="play.api.mvc.ActionFunction">ActionFunction</a>[<a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>, <span class="extype" name="play.api.mvc.ActionBuilder.andThen.Q">Q</span>]</span>)</span><span class="result">: <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>[<span class="extype" name="play.api.mvc.ActionBuilder.andThen.Q">Q</span>]</span>
+        <span class="name">andThen</span><span class="tparams">[<span name="Q">Q<span class="tparams">[<span name="_">_</span>]</span></span>]</span><span class="params">(<span name="other">other: <a href="ActionFunction.html" class="extype" name="play.api.mvc.ActionFunction">ActionFunction</a>[<a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>, <span class="extype" name="play.api.mvc.ActionBuilder.andThen.Q">Q</span>]</span>)</span><span class="result">: <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>[<span class="extype" name="play.api.mvc.ActionBuilder.andThen.Q">Q</span>, <a href="AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.Action$@andThen[Q[_]](other:play.api.mvc.ActionFunction[R,Q]):play.api.mvc.ActionBuilder[Q]" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.Action$@andThen[Q[_]](other:play.api.mvc.ActionFunction[R,Q]):play.api.mvc.ActionBuilder[Q,B]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -186,7 +189,7 @@
   Ok(<span class="lit">"Hello!"</span>)
 }</pre></div><dl class="paramcmts block"><dt class="param">block</dt><dd class="cmt"><p>the action code</p></dd><dt>returns</dt><dd class="cmt"><p>an action</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a></dd></dl></div>
     </li><li name="play.api.mvc.ActionBuilder#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="apply(block:R[play.api.mvc.AnyContent]=&gt;play.api.mvc.Result):play.api.mvc.Action[play.api.mvc.AnyContent]"></a>
+      <a id="apply(block:R[B]=&gt;play.api.mvc.Result):play.api.mvc.Action[B]"></a>
       <a id="apply((Request[AnyContent])⇒Result):Action[AnyContent]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -197,7 +200,7 @@
         <span class="name">apply</span><span class="params">(<span name="block">block: (<a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>[<a href="AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a>]) ⇒ <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>)</span><span class="result">: <a href="Action.html" class="extype" name="play.api.mvc.Action">Action</a>[<a href="AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.Action$@apply(block:R[play.api.mvc.AnyContent]=&gt;play.api.mvc.Result):play.api.mvc.Action[play.api.mvc.AnyContent]" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.Action$@apply(block:R[B]=&gt;play.api.mvc.Result):play.api.mvc.Action[B]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -205,24 +208,24 @@
   Ok(<span class="lit">"Got request ["</span> + request + <span class="lit">"]"</span>)
 }</pre></div><dl class="paramcmts block"><dt class="param">block</dt><dd class="cmt"><p>the action code</p></dd><dt>returns</dt><dd class="cmt"><p>an action</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a></dd></dl></div>
     </li><li name="play.api.mvc.ActionBuilder#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="apply[A](bodyParser:play.api.mvc.BodyParser[A])(block:R[A]=&gt;play.api.mvc.Result):play.api.mvc.Action[A]"></a>
-      <a id="apply[A](BodyParser[A])((Request[A])⇒Result):Action[A]"></a>
+      <a id="apply[A](bodyParser:play.api.mvc.BodyParser[A]):play.api.mvc.ActionBuilder[R,A]"></a>
+      <a id="apply[A](BodyParser[A]):ActionBuilder[Request,A]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">apply</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="bodyParser">bodyParser: <a href="BodyParser.html" class="extype" name="play.api.mvc.BodyParser">BodyParser</a>[<span class="extype" name="play.api.mvc.ActionBuilder.apply.A">A</span>]</span>)</span><span class="params">(<span name="block">block: (<a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>[<span class="extype" name="play.api.mvc.ActionBuilder.apply.A">A</span>]) ⇒ <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>)</span><span class="result">: <a href="Action.html" class="extype" name="play.api.mvc.Action">Action</a>[<span class="extype" name="play.api.mvc.ActionBuilder.apply.A">A</span>]</span>
+        <span class="name">apply</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="bodyParser">bodyParser: <a href="BodyParser.html" class="extype" name="play.api.mvc.BodyParser">BodyParser</a>[<span class="extype" name="play.api.mvc.ActionBuilder.apply.A">A</span>]</span>)</span><span class="result">: <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>[<a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>, <span class="extype" name="play.api.mvc.ActionBuilder.apply.A">A</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.Action$@apply[A](bodyParser:play.api.mvc.BodyParser[A])(block:R[A]=&gt;play.api.mvc.Result):play.api.mvc.Action[A]" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.Action$@apply[A](bodyParser:play.api.mvc.BodyParser[A]):play.api.mvc.ActionBuilder[R,A]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Constructs an <code>Action</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Constructs an <code>Action</code>.</p><p>For example:</p><pre><span class="kw">val</span> echo = Action(parse.anyContent) { request <span class="kw">=&gt;</span>
+      <p class="shortcomment cmt">Constructs an <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a> with the given <a href="BodyParser.html" class="extype" name="play.api.mvc.BodyParser">BodyParser</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Constructs an <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a> with the given <a href="BodyParser.html" class="extype" name="play.api.mvc.BodyParser">BodyParser</a>. The result can then be applied directly to a block.</p><p>For example:</p><pre><span class="kw">val</span> echo = Action(parse.anyContent) { request <span class="kw">=&gt;</span>
   Ok(<span class="lit">"Got request ["</span> + request + <span class="lit">"]"</span>)
-}</pre></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>the type of the request body</p></dd><dt class="param">bodyParser</dt><dd class="cmt"><p>the <code>BodyParser</code> to use to parse the request body</p></dd><dt class="param">block</dt><dd class="cmt"><p>the action code</p></dd><dt>returns</dt><dd class="cmt"><p>an action</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a></dd></dl></div>
+}</pre></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>the type of the request body</p></dd><dt class="param">bodyParser</dt><dd class="cmt"><p>the <code>BodyParser</code> to use to parse the request body</p></dd><dt>returns</dt><dd class="cmt"><p>an action</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a></dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -262,7 +265,7 @@
   }
 }</pre></div><dl class="paramcmts block"><dt class="param">block</dt><dd class="cmt"><p>the action code</p></dd><dt>returns</dt><dd class="cmt"><p>an action</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a></dd></dl></div>
     </li><li name="play.api.mvc.ActionBuilder#async" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="async(block:R[play.api.mvc.AnyContent]=&gt;scala.concurrent.Future[play.api.mvc.Result]):play.api.mvc.Action[play.api.mvc.AnyContent]"></a>
+      <a id="async(block:R[B]=&gt;scala.concurrent.Future[play.api.mvc.Result]):play.api.mvc.Action[B]"></a>
       <a id="async((Request[AnyContent])⇒Future[Result]):Action[AnyContent]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -273,7 +276,7 @@
         <span class="name">async</span><span class="params">(<span name="block">block: (<a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>[<a href="AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a>]) ⇒ <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>)</span><span class="result">: <a href="Action.html" class="extype" name="play.api.mvc.Action">Action</a>[<a href="AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.Action$@async(block:R[play.api.mvc.AnyContent]=&gt;scala.concurrent.Future[play.api.mvc.Result]):play.api.mvc.Action[play.api.mvc.AnyContent]" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.Action$@async(block:R[B]=&gt;scala.concurrent.Future[play.api.mvc.Result]):play.api.mvc.Action[B]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -327,18 +330,18 @@
               
         </dd></dl></div>
     </li><li name="play.api.mvc.ActionFunction#compose" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="compose(other:play.api.mvc.ActionBuilder[R]):play.api.mvc.ActionBuilder[P]"></a>
-      <a id="compose(ActionBuilder[Request]):ActionBuilder[Request]"></a>
+      <a id="compose[B](other:play.api.mvc.ActionBuilder[R,B]):play.api.mvc.ActionBuilder[P,B]"></a>
+      <a id="compose[B](ActionBuilder[Request,B]):ActionBuilder[Request,B]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">compose</span><span class="params">(<span name="other">other: <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>[<a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>]</span>)</span><span class="result">: <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>[<a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>]</span>
+        <span class="name">compose</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="other">other: <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>[<a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>, <span class="extype" name="play.api.mvc.ActionFunction.compose.B">B</span>]</span>)</span><span class="result">: <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>[<a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>, <span class="extype" name="play.api.mvc.ActionFunction.compose.B">B</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.Action$@compose(other:play.api.mvc.ActionBuilder[R]):play.api.mvc.ActionBuilder[P]" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.Action$@compose[B](other:play.api.mvc.ActionBuilder[R,B]):play.api.mvc.ActionBuilder[P,B]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -431,7 +434,7 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="play.api.mvc.ActionFunction#executionContext" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="play.api.mvc.Action#executionContext" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="executionContext:scala.concurrent.ExecutionContext"></a>
       <a id="executionContext:ExecutionContext"></a>
       <h4 class="signature">
@@ -447,8 +450,8 @@
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Get the execution context to run the request in.</p><div class="fullcomment"><div class="comment cmt"><p>Get the execution context to run the request in.  Override this if you want a custom execution context
-</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>The execution context</p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="ActionFunction.html" class="extype" name="play.api.mvc.ActionFunction">ActionFunction</a></dd></dl></div>
+      <p class="shortcomment cmt">Get the execution context to run the request in.</p><div class="fullcomment"><div class="comment cmt"><p>Get the execution context to run the request in.
+</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>The execution context</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.mvc.Action">Action</a> → <a href="ActionFunction.html" class="extype" name="play.api.mvc.ActionFunction">ActionFunction</a></dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
@@ -593,6 +596,23 @@ any other actions, modify the request object or potentially use a different clas
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="play.api.mvc.Action#parser" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="parser:play.api.mvc.BodyParser[play.api.mvc.AnyContent]"></a>
+      <a id="parser:BodyParser[AnyContent]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">parser</span><span class="result">: <a href="BodyParser.html" class="extype" name="play.api.mvc.BodyParser">BodyParser</a>[<a href="AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.Action$@parser:play.api.mvc.BodyParser[play.api.mvc.AnyContent]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>The BodyParser to be used by this ActionBuilder if no other is specified</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.mvc.Action">Action</a> → <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -705,8 +725,10 @@ any other actions, modify the request object or potentially use a different clas
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="play.api.mvc.ActionBuilder">
-              <h3>Inherited from <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>[<a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>]</h3>
+        <div class="parent" name="play.api.mvc.DefaultActionBuilder">
+              <h3>Inherited from <a href="DefaultActionBuilder.html" class="extype" name="play.api.mvc.DefaultActionBuilder">DefaultActionBuilder</a></h3>
+            </div><div class="parent" name="play.api.mvc.ActionBuilder">
+              <h3>Inherited from <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>[<a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>, <a href="AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a>]</h3>
             </div><div class="parent" name="play.api.mvc.ActionFunction">
               <h3>Inherited from <a href="ActionFunction.html" class="extype" name="play.api.mvc.ActionFunction">ActionFunction</a>[<a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>, <a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>]</h3>
             </div><div class="parent" name="scala.AnyRef">

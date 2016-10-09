@@ -17,8 +17,8 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6};
-var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
+var methods = {"i0":6,"i1":6,"i2":38,"i3":6,"i4":6,"i5":6,"i6":6};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],32:["t6","Deprecated Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -48,7 +48,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../play/libs/crypto/CookieSigner.html" title="interface in play.libs.crypto"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li>Next&nbsp;Class</li>
+<li><a href="../../../play/libs/crypto/DefaultCSRFTokenSigner.html" title="class in play.libs.crypto"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../index.html?play/libs/crypto/CSRFTokenSigner.html" target="_top">Frames</a></li>
@@ -99,11 +99,14 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Known Implementing Classes:</dt>
-<dd><a href="../../../play/libs/Crypto.html" title="class in play.libs">Crypto</a></dd>
+<dd><a href="../../../play/libs/crypto/DefaultCSRFTokenSigner.html" title="class in play.libs.crypto">DefaultCSRFTokenSigner</a></dd>
 </dl>
 <hr>
 <br>
 <pre>public interface <span class="typeNameLabel">CSRFTokenSigner</span></pre>
+<div class="block">Cryptographic utilities for generating and validating CSRF tokens.
+ <p>
+ This trait should not be used as a general purpose encryption utility.</div>
 </li>
 </ul>
 </div>
@@ -117,36 +120,56 @@ var activeTableTab = "activeTableTab";
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t6" class="tableTab"><span><a href="javascript:show(32);">Deprecated Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>play.api.libs.crypto.CSRFTokenSigner</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/crypto/CSRFTokenSigner.html#asScala--">asScala</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/crypto/CSRFTokenSigner.html#asScala--">asScala</a></span>()</code>
+<div class="block">Utility method needed for CSRFCheck.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/crypto/CSRFTokenSigner.html#compareSignedTokens-java.lang.String-java.lang.String-">compareSignedTokens</a></span>(java.lang.String&nbsp;tokenA,
-                   java.lang.String&nbsp;tokenB)</code>&nbsp;</td>
+                   java.lang.String&nbsp;tokenB)</code>
+<div class="block">Compare two signed tokens.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/crypto/CSRFTokenSigner.html#constantTimeEquals-java.lang.String-java.lang.String-">constantTimeEquals</a></span>(java.lang.String&nbsp;a,
-                  java.lang.String&nbsp;b)</code>&nbsp;</td>
+                  java.lang.String&nbsp;b)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">since 2.6.0.  Use java.security.MessageDigest.isEqual over this method.</span></div>
+</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/crypto/CSRFTokenSigner.html#extractSignedToken-java.lang.String-">extractSignedToken</a></span>(java.lang.String&nbsp;token)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/crypto/CSRFTokenSigner.html#extractSignedToken-java.lang.String-">extractSignedToken</a></span>(java.lang.String&nbsp;token)</code>
+<div class="block">Extract a signed token that was signed by <a href="../../../play/libs/crypto/CSRFTokenSigner.html#signToken-java.lang.String-"><code>signToken(String)</code></a>.</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/crypto/CSRFTokenSigner.html#generateSignedToken--">generateSignedToken</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/crypto/CSRFTokenSigner.html#generateSignedToken--">generateSignedToken</a></span>()</code>
+<div class="block">Generates a signed token by calling generateToken / signToken.</div>
+</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/crypto/CSRFTokenSigner.html#generateToken--">generateToken</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/crypto/CSRFTokenSigner.html#generateToken--">generateToken</a></span>()</code>
+<div class="block">Generates a cryptographically secure token.</div>
+</td>
+</tr>
+<tr id="i6" class="altColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/crypto/CSRFTokenSigner.html#signToken-java.lang.String-">signToken</a></span>(java.lang.String&nbsp;token)</code>
+<div class="block">Sign a token.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -163,24 +186,6 @@ var activeTableTab = "activeTableTab";
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="asScala--">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>asScala</h4>
-<pre>play.api.libs.crypto.CSRFTokenSigner&nbsp;asScala()</pre>
-</li>
-</ul>
-<a name="extractSignedToken-java.lang.String-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>extractSignedToken</h4>
-<pre>java.lang.String&nbsp;extractSignedToken(java.lang.String&nbsp;token)</pre>
-</li>
-</ul>
 <a name="generateToken--">
 <!--   -->
 </a>
@@ -188,6 +193,7 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <h4>generateToken</h4>
 <pre>java.lang.String&nbsp;generateToken()</pre>
+<div class="block">Generates a cryptographically secure token.</div>
 </li>
 </ul>
 <a name="generateSignedToken--">
@@ -197,6 +203,42 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <h4>generateSignedToken</h4>
 <pre>java.lang.String&nbsp;generateSignedToken()</pre>
+<div class="block">Generates a signed token by calling generateToken / signToken.</div>
+</li>
+</ul>
+<a name="signToken-java.lang.String-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>signToken</h4>
+<pre>java.lang.String&nbsp;signToken(java.lang.String&nbsp;token)</pre>
+<div class="block">Sign a token.  This produces a new token, that has this token signed with a nonce.
+ <p>
+ This primarily exists to defeat the BREACH vulnerability, as it allows the token
+ to effectively be random per request, without actually changing the value.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>token</code> - The token to sign</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The signed token</dd>
+</dl>
+</li>
+</ul>
+<a name="extractSignedToken-java.lang.String-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>extractSignedToken</h4>
+<pre>java.lang.String&nbsp;extractSignedToken(java.lang.String&nbsp;token)</pre>
+<div class="block">Extract a signed token that was signed by <a href="../../../play/libs/crypto/CSRFTokenSigner.html#signToken-java.lang.String-"><code>signToken(String)</code></a>.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>token</code> - The signed token to extract.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The verified raw token, or null if the token isn't valid.</dd>
+</dl>
 </li>
 </ul>
 <a name="compareSignedTokens-java.lang.String-java.lang.String-">
@@ -207,16 +249,33 @@ var activeTableTab = "activeTableTab";
 <h4>compareSignedTokens</h4>
 <pre>boolean&nbsp;compareSignedTokens(java.lang.String&nbsp;tokenA,
                             java.lang.String&nbsp;tokenB)</pre>
+<div class="block">Compare two signed tokens.</div>
 </li>
 </ul>
 <a name="constantTimeEquals-java.lang.String-java.lang.String-">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>constantTimeEquals</h4>
-<pre>boolean&nbsp;constantTimeEquals(java.lang.String&nbsp;a,
-                           java.lang.String&nbsp;b)</pre>
+<pre>@Deprecated
+boolean&nbsp;constantTimeEquals(java.lang.String&nbsp;a,
+                                       java.lang.String&nbsp;b)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">since 2.6.0.  Use java.security.MessageDigest.isEqual over this method.</span></div>
+<div class="block">Constant time equals method.
+ <p>
+ Given a length that both Strings are equal to, this method will always run in constant time.  This prevents
+ timing attacks.</div>
+</li>
+</ul>
+<a name="asScala--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>asScala</h4>
+<pre>play.api.libs.crypto.CSRFTokenSigner&nbsp;asScala()</pre>
+<div class="block">Utility method needed for CSRFCheck.</div>
 </li>
 </ul>
 </li>
@@ -247,7 +306,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../play/libs/crypto/CookieSigner.html" title="interface in play.libs.crypto"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li>Next&nbsp;Class</li>
+<li><a href="../../../play/libs/crypto/DefaultCSRFTokenSigner.html" title="class in play.libs.crypto"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../index.html?play/libs/crypto/CSRFTokenSigner.html" target="_top">Frames</a></li>

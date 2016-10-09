@@ -47,7 +47,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="subNav">
 <ul class="navList">
-<li>Prev&nbsp;Class</li>
+<li><a href="../../../play/libs/concurrent/CustomExecutionContext.html" title="class in play.libs.concurrent"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
 <li><a href="../../../play/libs/concurrent/HttpExecution.html" title="class in play.libs.concurrent"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
@@ -169,17 +169,17 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>static &lt;A&gt;&nbsp;java.util.concurrent.CompletionStage&lt;A&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/concurrent/Futures.html#timeout-A-long-java.util.concurrent.TimeUnit-">timeout</a></span>(A&nbsp;message,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/concurrent/Futures.html#timeout-A-long-java.util.concurrent.TimeUnit-">timeout</a></span>(A&nbsp;value,
        long&nbsp;delay,
        java.util.concurrent.TimeUnit&nbsp;unit)</code>
 <div class="block">Create a CompletionStage that is redeemed after a timeout.</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
-<td class="colFirst"><code>static java.util.concurrent.CompletionStage&lt;java.lang.Void&gt;</code></td>
+<td class="colFirst"><code>static &lt;A&gt;&nbsp;java.util.concurrent.CompletionStage&lt;A&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/concurrent/Futures.html#timeout-long-java.util.concurrent.TimeUnit-">timeout</a></span>(long&nbsp;delay,
        java.util.concurrent.TimeUnit&nbsp;unit)</code>
-<div class="block">Create a CompletionStage timer that throws a PromiseTimeoutException after
+<div class="block">Creates a CompletionStage timer that throws a PromiseTimeoutException after
  a given timeout.</div>
 </td>
 </tr>
@@ -266,17 +266,21 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>timeout</h4>
-<pre>public static&nbsp;&lt;A&gt;&nbsp;java.util.concurrent.CompletionStage&lt;A&gt;&nbsp;timeout(A&nbsp;message,
+<pre>public static&nbsp;&lt;A&gt;&nbsp;java.util.concurrent.CompletionStage&lt;A&gt;&nbsp;timeout(A&nbsp;value,
                                                                   long&nbsp;delay,
                                                                   java.util.concurrent.TimeUnit&nbsp;unit)</pre>
-<div class="block">Create a CompletionStage that is redeemed after a timeout.</div>
+<div class="block">Create a CompletionStage that is redeemed after a timeout.  This method
+ is useful for returning fallback values on timeout.
+
+ The underlying implementation uses TimerTask, which has a
+ resolution in milliseconds.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>message</code> - The message to use to redeem the CompletionStage.</dd>
+<dd><code>value</code> - The result value to use to complete the CompletionStage.</dd>
 <dd><code>delay</code> - The delay (expressed with the corresponding unit).</dd>
 <dd><code>unit</code> - The time unit, i.e. java.util.concurrent.TimeUnit.MILLISECONDS</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>the CompletionStage wrapping the message</dd>
+<dd>the CompletionStage wrapping the result value</dd>
 </dl>
 </li>
 </ul>
@@ -286,18 +290,28 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>timeout</h4>
-<pre>public static&nbsp;java.util.concurrent.CompletionStage&lt;java.lang.Void&gt;&nbsp;timeout(long&nbsp;delay,
-                                                                           java.util.concurrent.TimeUnit&nbsp;unit)</pre>
-<div class="block">Create a CompletionStage timer that throws a PromiseTimeoutException after
+<pre>public static&nbsp;&lt;A&gt;&nbsp;java.util.concurrent.CompletionStage&lt;A&gt;&nbsp;timeout(long&nbsp;delay,
+                                                                  java.util.concurrent.TimeUnit&nbsp;unit)</pre>
+<div class="block">Creates a CompletionStage timer that throws a PromiseTimeoutException after
  a given timeout.
 
- The returned CompletionStage is usually combined with other CompletionStage.</div>
+ The returned CompletionStage is usually combined with other CompletionStage,
+ i.e. <code>completionStage.applyToEither(timeout, Function.identity()) </code>
+
+ The underlying implementation uses TimerTask, which has a
+ resolution in milliseconds.
+
+ A previous implementation used <code>CompletionStage&lt;Void&gt;</code> which made
+ it unsuitable for composition.  Cast with <code>Futures.&lt;Void&gt;timeout</code> if
+ necessary.</div>
 <dl>
+<dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>A</code> - the given type (used when composing Futures)</dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>delay</code> - The delay (expressed with the corresponding unit).</dd>
 <dd><code>unit</code> - The time Unit.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>a CompletionStage without a real value</dd>
+<dd>a CompletionStage that failed exceptionally</dd>
 </dl>
 </li>
 </ul>
@@ -315,7 +329,7 @@ extends java.lang.Object</pre>
  given supplier. The supplier will be called after the delay.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>supplier</code> - The supplier to call to fulfill the Promise.</dd>
+<dd><code>supplier</code> - The supplier to call to fulfill the CompletionStage.</dd>
 <dd><code>delay</code> - The time to wait.</dd>
 <dd><code>unit</code> - The units to use for the delay.</dd>
 <dd><code>executor</code> - The executor to run the supplier in.</dd>
@@ -351,7 +365,7 @@ extends java.lang.Object</pre>
 </div>
 <div class="subNav">
 <ul class="navList">
-<li>Prev&nbsp;Class</li>
+<li><a href="../../../play/libs/concurrent/CustomExecutionContext.html" title="class in play.libs.concurrent"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
 <li><a href="../../../play/libs/concurrent/HttpExecution.html" title="class in play.libs.concurrent"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">

@@ -254,7 +254,7 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/inject/NamedImpl.html#annotationType--">annotationType()</a></span> - Method in class play.inject.<a href="play/inject/NamedImpl.html" title="class in play.inject">NamedImpl</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="play/mvc/BodyParser.AnyContent.html#AnyContent-play.http.HttpErrorHandler-play.api.http.HttpConfiguration-">AnyContent(HttpErrorHandler, HttpConfiguration)</a></span> - Constructor for class play.mvc.<a href="play/mvc/BodyParser.AnyContent.html" title="class in play.mvc">BodyParser.AnyContent</a></dt>
+<dt><span class="memberNameLink"><a href="play/mvc/BodyParser.AnyContent.html#AnyContent-play.http.HttpErrorHandler-play.api.http.HttpConfiguration-play.api.mvc.PlayBodyParsers-">AnyContent(HttpErrorHandler, HttpConfiguration, PlayBodyParsers)</a></span> - Constructor for class play.mvc.<a href="play/mvc/BodyParser.AnyContent.html" title="class in play.mvc">BodyParser.AnyContent</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/test/WithApplication.html#app">app</a></span> - Variable in class play.test.<a href="play/test/WithApplication.html" title="class in play.test">WithApplication</a></dt>
 <dd>&nbsp;</dd>
@@ -508,11 +508,13 @@
 <dd>
 <div class="block">Adapt this to a Scala HttpRequestHandler</div>
 </dd>
-<dt><span class="memberNameLink"><a href="play/libs/Crypto.html#asScala--">asScala()</a></span> - Method in class play.libs.<a href="play/libs/Crypto.html" title="class in play.libs">Crypto</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/libs/crypto/CSRFTokenSigner.html#asScala--">asScala()</a></span> - Method in interface play.libs.crypto.<a href="play/libs/crypto/CSRFTokenSigner.html" title="interface in play.libs.crypto">CSRFTokenSigner</a></dt>
+<dd>
+<div class="block">Utility method needed for CSRFCheck.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="play/libs/crypto/DefaultCSRFTokenSigner.html#asScala--">asScala()</a></span> - Method in class play.libs.crypto.<a href="play/libs/crypto/DefaultCSRFTokenSigner.html" title="class in play.libs.crypto">DefaultCSRFTokenSigner</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/libs/crypto/HMACSHA1CookieSigner.html#asScala--">asScala()</a></span> - Method in class play.libs.crypto.<a href="play/libs/crypto/HMACSHA1CookieSigner.html" title="class in play.libs.crypto">HMACSHA1CookieSigner</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/libs/Scala.html#asScala-java.util.Map-">asScala(Map&lt;A, B&gt;)</a></span> - Static method in class play.libs.<a href="play/libs/Scala.html" title="class in play.libs">Scala</a></dt>
 <dd>
@@ -572,7 +574,14 @@
 <dd>
 <div class="block">Get the message at the first defined key.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="play/mvc/Http.RequestHeader.html#attr-play.api.libs.typedmap.TypedKey-">attr(TypedKey&lt;T&gt;)</a></span> - Method in interface play.mvc.<a href="play/mvc/Http.RequestHeader.html" title="interface in play.mvc">Http.RequestHeader</a></dt>
+<dd>
+<div class="block">Get an attribute by its key or throw an exception if it's not
+ present.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="play/libs/openid/UserInfo.html#attributes--">attributes()</a></span> - Method in class play.libs.openid.<a href="play/libs/openid/UserInfo.html" title="class in play.libs.openid">UserInfo</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/mvc/Http.RequestBuilder.html#attrs">attrs</a></span> - Variable in class play.mvc.<a href="play/mvc/Http.RequestBuilder.html" title="class in play.mvc">Http.RequestBuilder</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Security.AuthenticatedAction.html#AuthenticatedAction-play.inject.Injector-">AuthenticatedAction(Injector)</a></span> - Constructor for class play.mvc.<a href="play/mvc/Security.AuthenticatedAction.html" title="class in play.mvc">Security.AuthenticatedAction</a></dt>
 <dd>&nbsp;</dd>
@@ -712,12 +721,6 @@
 <dd>
 <div class="block">Bind an actor factory.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="play/db/jpa/JPA.html#bindForAsync-javax.persistence.EntityManager-">bindForAsync(EntityManager)</a></span> - Static method in class play.db.jpa.<a href="play/db/jpa/JPA.html" title="class in play.db.jpa">JPA</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>
-<div class="block"><span class="deprecationComment">Use JPAEntityManagerContext.push or JPAEntityManagerContext.pop</span></div>
-</div>
-</dd>
 <dt><span class="memberNameLink"><a href="play/db/jpa/JPA.html#bindForSync-javax.persistence.EntityManager-">bindForSync(EntityManager)</a></span> - Static method in class play.db.jpa.<a href="play/db/jpa/JPA.html" title="class in play.db.jpa">JPA</a></dt>
 <dd>
 <div class="block">Bind an EntityManager to the current HTTP context.</div>
@@ -800,8 +803,6 @@
 <dd>
 <div class="block">Set the body of the request.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="play/mvc/Http.RequestImpl.html#body--">body()</a></span> - Method in class play.mvc.<a href="play/mvc/Http.RequestImpl.html" title="class in play.mvc">Http.RequestImpl</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Result.html#body--">body()</a></span> - Method in class play.mvc.<a href="play/mvc/Result.html" title="class in play.mvc">Result</a></dt>
 <dd>
 <div class="block">Get the body of this result.</div>
@@ -1138,12 +1139,6 @@
 </dd>
 <dt><span class="memberNameLink"><a href="play/libs/ws/ahc/AhcWSAPI.html#client--">client()</a></span> - Method in class play.libs.ws.ahc.<a href="play/libs/ws/ahc/AhcWSAPI.html" title="class in play.libs.ws.ahc">AhcWSAPI</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="play/libs/ws/WS.html#client--">client()</a></span> - Static method in class play.libs.ws.<a href="play/libs/ws/WS.html" title="class in play.libs.ws">WS</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>
-<div class="block"><span class="deprecationComment">Please use a WSClient instance using DI (since 2.5)</span></div>
-</div>
-</dd>
 <dt><span class="memberNameLink"><a href="play/libs/ws/WSAPI.html#client--">client()</a></span> - Method in interface play.libs.ws.<a href="play/libs/ws/WSAPI.html" title="interface in play.libs.ws">WSAPI</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Http.RequestBuilder.html#clientCertificateChain">clientCertificateChain</a></span> - Variable in class play.mvc.<a href="play/mvc/Http.RequestBuilder.html" title="class in play.mvc">Http.RequestBuilder</a></dt>
@@ -1172,10 +1167,6 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/libs/ws/ahc/AhcWSClient.html#close--">close()</a></span> - Method in class play.libs.ws.ahc.<a href="play/libs/ws/ahc/AhcWSClient.html" title="class in play.libs.ws.ahc">AhcWSClient</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="play/libs/ws/ning/NingWSClient.html#close--">close()</a></span> - Method in class play.libs.ws.ning.<a href="play/libs/ws/ning/NingWSClient.html" title="class in play.libs.ws.ning">NingWSClient</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/libs/ws/WSClient.html#close--">close()</a></span> - Method in interface play.libs.ws.<a href="play/libs/ws/WSClient.html" title="interface in play.libs.ws">WSClient</a></dt>
 <dd>
 <div class="block">Closes this client, and releases underlying resources.</div>
@@ -1193,12 +1184,11 @@
 </dd>
 <dt><span class="memberNameLink"><a href="play/libs/Comet.html#Comet--">Comet()</a></span> - Constructor for class play.libs.<a href="play/libs/Comet.html" title="class in play.libs">Comet</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="play/libs/Crypto.html#compareSignedTokens-java.lang.String-java.lang.String-">compareSignedTokens(String, String)</a></span> - Method in class play.libs.<a href="play/libs/Crypto.html" title="class in play.libs">Crypto</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-<div class="block">Compare two signed tokens</div>
-</dd>
 <dt><span class="memberNameLink"><a href="play/libs/crypto/CSRFTokenSigner.html#compareSignedTokens-java.lang.String-java.lang.String-">compareSignedTokens(String, String)</a></span> - Method in interface play.libs.crypto.<a href="play/libs/crypto/CSRFTokenSigner.html" title="interface in play.libs.crypto">CSRFTokenSigner</a></dt>
+<dd>
+<div class="block">Compare two signed tokens.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="play/libs/crypto/DefaultCSRFTokenSigner.html#compareSignedTokens-java.lang.String-java.lang.String-">compareSignedTokens(String, String)</a></span> - Method in class play.libs.crypto.<a href="play/libs/crypto/DefaultCSRFTokenSigner.html" title="class in play.libs.crypto">DefaultCSRFTokenSigner</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/BodyParser.CompletableBodyParser.html#CompletableBodyParser-java.util.concurrent.CompletionStage-akka.stream.Materializer-">CompletableBodyParser(CompletionStage&lt;BodyParser&lt;A&gt;&gt;, Materializer)</a></span> - Constructor for class play.mvc.<a href="play/mvc/BodyParser.CompletableBodyParser.html" title="class in play.mvc">BodyParser.CompletableBodyParser</a></dt>
 <dd>&nbsp;</dd>
@@ -1283,16 +1273,6 @@
 <dd>
 <div class="block">Similar to java.util.concurrent.Callable with a Connection as argument.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="play/db/DB.html#connectionFunction-play.db.ConnectionRunnable-">connectionFunction(ConnectionRunnable)</a></span> - Static method in class play.db.<a href="play/db/DB.html" title="class in play.db">DB</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-<div class="block">Create a Scala function wrapper for ConnectionRunnable.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="play/db/DB.html#connectionFunction-play.db.ConnectionCallable-">connectionFunction(ConnectionCallable&lt;A&gt;)</a></span> - Static method in class play.db.<a href="play/db/DB.html" title="class in play.db">DB</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-<div class="block">Create a Scala function wrapper for ConnectionCallable.</div>
-</dd>
 <dt><a href="play/db/ConnectionPool.html" title="interface in play.db"><span class="typeNameLink">ConnectionPool</span></a> - Interface in <a href="play/db/package-summary.html">play.db</a></dt>
 <dd>
 <div class="block">Connection pool API for managing data sources.</div>
@@ -1303,13 +1283,16 @@
 </dd>
 <dt><span class="memberNameLink"><a href="play/libs/XML.Constants.html#Constants--">Constants()</a></span> - Constructor for class play.libs.<a href="play/libs/XML.Constants.html" title="class in play.libs">XML.Constants</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="play/libs/Crypto.html#constantTimeEquals-java.lang.String-java.lang.String-">constantTimeEquals(String, String)</a></span> - Method in class play.libs.<a href="play/libs/Crypto.html" title="class in play.libs">Crypto</a></dt>
+<dt><span class="memberNameLink"><a href="play/libs/crypto/CSRFTokenSigner.html#constantTimeEquals-java.lang.String-java.lang.String-">constantTimeEquals(String, String)</a></span> - Method in interface play.libs.crypto.<a href="play/libs/crypto/CSRFTokenSigner.html" title="interface in play.libs.crypto">CSRFTokenSigner</a></dt>
+<dd>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>
+<div class="block"><span class="deprecationComment">since 2.6.0.  Use java.security.MessageDigest.isEqual over this method.</span></div>
+</div>
+</dd>
+<dt><span class="memberNameLink"><a href="play/libs/crypto/DefaultCSRFTokenSigner.html#constantTimeEquals-java.lang.String-java.lang.String-">constantTimeEquals(String, String)</a></span> - Method in class play.libs.crypto.<a href="play/libs/crypto/DefaultCSRFTokenSigner.html" title="class in play.libs.crypto">DefaultCSRFTokenSigner</a></dt>
 <dd>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-<div class="block">Constant time equals method.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="play/libs/crypto/CSRFTokenSigner.html#constantTimeEquals-java.lang.String-java.lang.String-">constantTimeEquals(String, String)</a></span> - Method in interface play.libs.crypto.<a href="play/libs/crypto/CSRFTokenSigner.html" title="interface in play.libs.crypto">CSRFTokenSigner</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/data/Form.Field.html#constraints--">constraints()</a></span> - Method in class play.data.<a href="play/data/Form.Field.html" title="class in play.data">Form.Field</a></dt>
 <dd>
 <div class="block">Returns all the constraints associated with this field.</div>
@@ -1334,7 +1317,7 @@
 </dd>
 <dt><a href="play/data/validation/Constraints.MaxLength.html" title="annotation in play.data.validation"><span class="typeNameLink">Constraints.MaxLength</span></a> - Annotation Type in <a href="play/data/validation/package-summary.html">play.data.validation</a></dt>
 <dd>
-<div class="block">Defines a maxmimum length for a string field.</div>
+<div class="block">Defines a maximum length for a string field.</div>
 </dd>
 <dt><a href="play/data/validation/Constraints.MaxLengthValidator.html" title="class in play.data.validation"><span class="typeNameLink">Constraints.MaxLengthValidator</span></a> - Class in <a href="play/data/validation/package-summary.html">play.data.validation</a></dt>
 <dd>
@@ -1346,11 +1329,11 @@
 </dd>
 <dt><a href="play/data/validation/Constraints.Min.html" title="annotation in play.data.validation"><span class="typeNameLink">Constraints.Min</span></a> - Annotation Type in <a href="play/data/validation/package-summary.html">play.data.validation</a></dt>
 <dd>
-<div class="block">Defines a minumum value for a numeric field.</div>
+<div class="block">Defines a minimum value for a numeric field.</div>
 </dd>
 <dt><a href="play/data/validation/Constraints.MinLength.html" title="annotation in play.data.validation"><span class="typeNameLink">Constraints.MinLength</span></a> - Annotation Type in <a href="play/data/validation/package-summary.html">play.data.validation</a></dt>
 <dd>
-<div class="block">Defines a minumum length for a string field.</div>
+<div class="block">Defines a minimum length for a string field.</div>
 </dd>
 <dt><a href="play/data/validation/Constraints.MinLengthValidator.html" title="class in play.data.validation"><span class="typeNameLink">Constraints.MinLengthValidator</span></a> - Class in <a href="play/data/validation/package-summary.html">play.data.validation</a></dt>
 <dd>
@@ -1394,6 +1377,10 @@
 </dd>
 <dt><span class="memberNameLink"><a href="play/libs/oauth/OAuth.ConsumerKey.html#ConsumerKey-java.lang.String-java.lang.String-">ConsumerKey(String, String)</a></span> - Constructor for class play.libs.oauth.<a href="play/libs/oauth/OAuth.ConsumerKey.html" title="class in play.libs.oauth">OAuth.ConsumerKey</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/mvc/Http.RequestHeader.html#containsAttr-play.api.libs.typedmap.TypedKey-">containsAttr(TypedKey&lt;?&gt;)</a></span> - Method in interface play.mvc.<a href="play/mvc/Http.RequestHeader.html" title="interface in play.mvc">Http.RequestHeader</a></dt>
+<dd>
+<div class="block">Check if this object contains an attribute.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Http.HeaderNames.html#CONTENT_DISPOSITION">CONTENT_DISPOSITION</a></span> - Static variable in interface play.mvc.<a href="play/mvc/Http.HeaderNames.html" title="interface in play.mvc">Http.HeaderNames</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Http.HeaderNames.html#CONTENT_ENCODING">CONTENT_ENCODING</a></span> - Static variable in interface play.mvc.<a href="play/mvc/Http.HeaderNames.html" title="interface in play.mvc">Http.HeaderNames</a></dt>
@@ -1541,7 +1528,9 @@
 <div class="block">Extracts the Cookies (an iterator) from this result value.</div>
 </dd>
 <dt><a href="play/libs/crypto/CookieSigner.html" title="interface in play.libs.crypto"><span class="typeNameLink">CookieSigner</span></a> - Interface in <a href="play/libs/crypto/package-summary.html">play.libs.crypto</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Authenticates a cookie by returning a message authentication code (MAC).</div>
+</dd>
 <dt><span class="memberNameLink"><a href="play/i18n/Lang.html#country--">country()</a></span> - Method in class play.i18n.<a href="play/i18n/Lang.html" title="class in play.i18n">Lang</a></dt>
 <dd>
 <div class="block">A valid ISO Country Code.</div>
@@ -1557,12 +1546,6 @@
 <dt><span class="memberNameLink"><a href="play/db/ConnectionPool.html#create-java.lang.String-com.typesafe.config.Config-play.Environment-">create(String, Config, Environment)</a></span> - Method in interface play.db.<a href="play/db/ConnectionPool.html" title="interface in play.db">ConnectionPool</a></dt>
 <dd>
 <div class="block">Create a data source with the given configuration.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="play/db/ConnectionPool.html#create-java.lang.String-play.Configuration-play.Environment-">create(String, Configuration, Environment)</a></span> - Method in interface play.db.<a href="play/db/ConnectionPool.html" title="interface in play.db">ConnectionPool</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>
-<div class="block"><span class="deprecationComment">Use create(String, Config, Environment</span></div>
-</div>
 </dd>
 <dt><span class="memberNameLink"><a href="play/db/DefaultConnectionPool.html#create-java.lang.String-com.typesafe.config.Config-play.Environment-">create(String, Config, Environment)</a></span> - Method in class play.db.<a href="play/db/DefaultConnectionPool.html" title="class in play.db">DefaultConnectionPool</a></dt>
 <dd>&nbsp;</dd>
@@ -1697,16 +1680,6 @@
 <dd>
 <div class="block">Compute the number of milliseconds between the next valid date and the one after.</div>
 </dd>
-<dt><a href="play/libs/Crypto.html" title="class in play.libs"><span class="typeNameLink">Crypto</span></a> - Class in <a href="play/libs/package-summary.html">play.libs</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>
-<div class="block"><span class="deprecationComment">This class is deprecated and will be removed in future versions.</span></div>
-</div>
-</dd>
-<dt><span class="memberNameLink"><a href="play/libs/Crypto.html#Crypto-play.api.libs.Crypto-">Crypto(Crypto)</a></span> - Constructor for class play.libs.<a href="play/libs/Crypto.html" title="class in play.libs">Crypto</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-&nbsp;</dd>
 <dt><a href="play/filters/csrf/CSRFErrorHandler.html" title="interface in play.filters.csrf"><span class="typeNameLink">CSRFErrorHandler</span></a> - Interface in <a href="play/filters/csrf/package-summary.html">play.filters.csrf</a></dt>
 <dd>
 <div class="block">This interface handles the CSRF error.</div>
@@ -1714,7 +1687,9 @@
 <dt><a href="play/filters/csrf/CSRFErrorHandler.DefaultCSRFErrorHandler.html" title="class in play.filters.csrf"><span class="typeNameLink">CSRFErrorHandler.DefaultCSRFErrorHandler</span></a> - Class in <a href="play/filters/csrf/package-summary.html">play.filters.csrf</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="play/libs/crypto/CSRFTokenSigner.html" title="interface in play.libs.crypto"><span class="typeNameLink">CSRFTokenSigner</span></a> - Interface in <a href="play/libs/crypto/package-summary.html">play.libs.crypto</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Cryptographic utilities for generating and validating CSRF tokens.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Http.MimeTypes.html#CSS">CSS</a></span> - Static variable in interface play.mvc.<a href="play/mvc/Http.MimeTypes.html" title="interface in play.mvc">Http.MimeTypes</a></dt>
 <dd>
 <div class="block">Content-Type of css.</div>
@@ -1737,6 +1712,12 @@
 <dd>
 <div class="block">Retrieves the current HTTP context, for the current thread.</div>
 </dd>
+<dt><a href="play/libs/concurrent/CustomExecutionContext.html" title="class in play.libs.concurrent"><span class="typeNameLink">CustomExecutionContext</span></a> - Class in <a href="play/libs/concurrent/package-summary.html">play.libs.concurrent</a></dt>
+<dd>
+<div class="block">Provides a custom execution context from an Akka dispatcher.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="play/libs/concurrent/CustomExecutionContext.html#CustomExecutionContext-akka.actor.ActorSystem-java.lang.String-">CustomExecutionContext(ActorSystem, String)</a></span> - Constructor for class play.libs.concurrent.<a href="play/libs/concurrent/CustomExecutionContext.html" title="class in play.libs.concurrent">CustomExecutionContext</a></dt>
+<dd>&nbsp;</dd>
 </dl>
 <a name="I:D">
 <!--   -->
@@ -1805,12 +1786,6 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/libs/Time.CronExpression.html#daysOfWeek">daysOfWeek</a></span> - Variable in class play.libs.<a href="play/libs/Time.CronExpression.html" title="class in play.libs">Time.CronExpression</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="play/db/DB.html" title="class in play.db"><span class="typeNameLink">DB</span></a> - Class in <a href="play/db/package-summary.html">play.db</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>
-<div class="block"><span class="deprecationComment">Use play.api.Database</span></div>
-</div>
-</dd>
 <dt><a href="play/db/DBApi.html" title="interface in play.db"><span class="typeNameLink">DBApi</span></a> - Interface in <a href="play/db/package-summary.html">play.db</a></dt>
 <dd>
 <div class="block">DB API for managing application databases.</div>
@@ -1849,19 +1824,7 @@
 <dd>
 <div class="block">Log a message with the DEBUG level.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="play/libs/Crypto.html#decryptAES-java.lang.String-">decryptAES(String)</a></span> - Method in class play.libs.<a href="play/libs/Crypto.html" title="class in play.libs">Crypto</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>
-<div class="block"><span class="deprecationComment">This method is deprecated and will be removed in future versions.</span></div>
-</div>
-</dd>
-<dt><span class="memberNameLink"><a href="play/libs/Crypto.html#decryptAES-java.lang.String-java.lang.String-">decryptAES(String, String)</a></span> - Method in class play.libs.<a href="play/libs/Crypto.html" title="class in play.libs">Crypto</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>
-<div class="block"><span class="deprecationComment">This method is deprecated and will be removed in future versions.</span></div>
-</div>
-</dd>
-<dt><span class="memberNameLink"><a href="play/mvc/BodyParser.Default.html#Default-play.http.HttpErrorHandler-play.api.http.HttpConfiguration-">Default(HttpErrorHandler, HttpConfiguration)</a></span> - Constructor for class play.mvc.<a href="play/mvc/BodyParser.Default.html" title="class in play.mvc">BodyParser.Default</a></dt>
+<dt><span class="memberNameLink"><a href="play/mvc/BodyParser.Default.html#Default-play.http.HttpErrorHandler-play.api.http.HttpConfiguration-play.api.mvc.PlayBodyParsers-">Default(HttpErrorHandler, HttpConfiguration, PlayBodyParsers)</a></span> - Constructor for class play.mvc.<a href="play/mvc/BodyParser.Default.html" title="class in play.mvc">BodyParser.Default</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/inject/SourceProvider.html#DEFAULT_INSTANCE">DEFAULT_INSTANCE</a></span> - Static variable in class play.inject.<a href="play/inject/SourceProvider.html" title="class in play.inject">SourceProvider</a></dt>
 <dd>&nbsp;</dd>
@@ -1916,6 +1879,12 @@
 </dd>
 <dt><span class="memberNameLink"><a href="play/filters/csrf/CSRFErrorHandler.DefaultCSRFErrorHandler.html#DefaultCSRFErrorHandler-play.filters.csrf.CSRF.CSRFHttpErrorHandler-">DefaultCSRFErrorHandler(CSRF.CSRFHttpErrorHandler)</a></span> - Constructor for class play.filters.csrf.<a href="play/filters/csrf/CSRFErrorHandler.DefaultCSRFErrorHandler.html" title="class in play.filters.csrf">CSRFErrorHandler.DefaultCSRFErrorHandler</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="play/libs/crypto/DefaultCSRFTokenSigner.html" title="class in play.libs.crypto"><span class="typeNameLink">DefaultCSRFTokenSigner</span></a> - Class in <a href="play/libs/crypto/package-summary.html">play.libs.crypto</a></dt>
+<dd>
+<div class="block">Cryptographic utilities for generating and validating CSRF tokens.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="play/libs/crypto/DefaultCSRFTokenSigner.html#DefaultCSRFTokenSigner-play.api.libs.crypto.CSRFTokenSigner-">DefaultCSRFTokenSigner(CSRFTokenSigner)</a></span> - Constructor for class play.libs.crypto.<a href="play/libs/crypto/DefaultCSRFTokenSigner.html" title="class in play.libs.crypto">DefaultCSRFTokenSigner</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="play/db/DefaultDatabase.html" title="class in play.db"><span class="typeNameLink">DefaultDatabase</span></a> - Class in <a href="play/db/package-summary.html">play.db</a></dt>
 <dd>
 <div class="block">Default delegating implementation of the database API.</div>
@@ -1925,12 +1894,6 @@
 <dt><span class="memberNameLink"><a href="play/db/DefaultDatabase.html#DefaultDatabase-java.lang.String-com.typesafe.config.Config-">DefaultDatabase(String, Config)</a></span> - Constructor for class play.db.<a href="play/db/DefaultDatabase.html" title="class in play.db">DefaultDatabase</a></dt>
 <dd>
 <div class="block">Create a default BoneCP-backed database.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="play/db/DefaultDatabase.html#DefaultDatabase-java.lang.String-play.Configuration-">DefaultDatabase(String, Configuration)</a></span> - Constructor for class play.db.<a href="play/db/DefaultDatabase.html" title="class in play.db">DefaultDatabase</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>
-<div class="block"><span class="deprecationComment">use the version that accepts Config</span></div>
-</div>
 </dd>
 <dt><span class="memberNameLink"><a href="play/db/DefaultDatabase.html#DefaultDatabase-java.lang.String-java.util.Map-">DefaultDatabase(String, Map&lt;String, ? extends Object&gt;)</a></span> - Constructor for class play.db.<a href="play/db/DefaultDatabase.html" title="class in play.db">DefaultDatabase</a></dt>
 <dd>
@@ -2146,10 +2109,6 @@
 <dd>
 <div class="block">Get the EntityManager for a particular persistence unit for this thread.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="play/db/jpa/JPA.html#em-java.lang.String-">em(String)</a></span> - Static method in class play.db.jpa.<a href="play/db/jpa/JPA.html" title="class in play.db.jpa">JPA</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-</dd>
 <dt><span class="memberNameLink"><a href="play/db/jpa/JPA.html#em--">em()</a></span> - Static method in class play.db.jpa.<a href="play/db/jpa/JPA.html" title="class in play.db.jpa">JPA</a></dt>
 <dd>
 <div class="block">Get the default EntityManager for this thread.</div>
@@ -2192,18 +2151,6 @@
 <dt><span class="memberNameLink"><a href="play/db/jpa/JPAEntityManagerContext.html#emStack-boolean-">emStack(boolean)</a></span> - Method in class play.db.jpa.<a href="play/db/jpa/JPAEntityManagerContext.html" title="class in play.db.jpa">JPAEntityManagerContext</a></dt>
 <dd>
 <div class="block">Get the EntityManager stack.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="play/libs/Crypto.html#encryptAES-java.lang.String-">encryptAES(String)</a></span> - Method in class play.libs.<a href="play/libs/Crypto.html" title="class in play.libs">Crypto</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>
-<div class="block"><span class="deprecationComment">This method is deprecated and will be removed in future versions.</span></div>
-</div>
-</dd>
-<dt><span class="memberNameLink"><a href="play/libs/Crypto.html#encryptAES-java.lang.String-java.lang.String-">encryptAES(String, String)</a></span> - Method in class play.libs.<a href="play/libs/Crypto.html" title="class in play.libs">Crypto</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>
-<div class="block"><span class="deprecationComment">This method is deprecated and will be removed in future versions.</span></div>
-</div>
 </dd>
 <dt><span class="memberNameLink"><a href="play/Configuration.html#entrySet--">entrySet()</a></span> - Method in class play.<a href="play/Configuration.html" title="class in play">Configuration</a></dt>
 <dd>
@@ -2356,6 +2303,8 @@
 </dd>
 <dt><span class="memberNameLink"><a href="play/db/evolutions/EvolutionsReader.html#EvolutionsReader--">EvolutionsReader()</a></span> - Constructor for class play.db.evolutions.<a href="play/db/evolutions/EvolutionsReader.html" title="class in play.db.evolutions">EvolutionsReader</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/libs/concurrent/CustomExecutionContext.html#execute-java.lang.Runnable-">execute(Runnable)</a></span> - Method in class play.libs.concurrent.<a href="play/libs/concurrent/CustomExecutionContext.html" title="class in play.libs.concurrent">CustomExecutionContext</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/libs/ws/ahc/AhcWSRequest.html#execute-java.lang.String-">execute(String)</a></span> - Method in class play.libs.ws.ahc.<a href="play/libs/ws/ahc/AhcWSRequest.html" title="class in play.libs.ws.ahc">AhcWSRequest</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/libs/ws/ahc/AhcWSRequest.html#execute--">execute()</a></span> - Method in class play.libs.ws.ahc.<a href="play/libs/ws/ahc/AhcWSRequest.html" title="class in play.libs.ws.ahc">AhcWSRequest</a></dt>
@@ -2381,12 +2330,11 @@
 <dt><span class="memberNameLink"><a href="play/libs/XML.Constants.html#EXTERNAL_PARAMETER_ENTITIES_FEATURE">EXTERNAL_PARAMETER_ENTITIES_FEATURE</a></span> - Static variable in class play.libs.<a href="play/libs/XML.Constants.html" title="class in play.libs">XML.Constants</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/libs/crypto/CSRFTokenSigner.html#extractSignedToken-java.lang.String-">extractSignedToken(String)</a></span> - Method in interface play.libs.crypto.<a href="play/libs/crypto/CSRFTokenSigner.html" title="interface in play.libs.crypto">CSRFTokenSigner</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="play/libs/Crypto.html#extractSignedToken-java.lang.String-">extractSignedToken(String)</a></span> - Method in class play.libs.<a href="play/libs/Crypto.html" title="class in play.libs">Crypto</a></dt>
 <dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-<div class="block">Extract a signed token that was signed by <a href="play/libs/Crypto.html#signToken-java.lang.String-"><code>Crypto.signToken(String)</code></a>.</div>
+<div class="block">Extract a signed token that was signed by <a href="play/libs/crypto/CSRFTokenSigner.html#signToken-java.lang.String-"><code>CSRFTokenSigner.signToken(String)</code></a>.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="play/libs/crypto/DefaultCSRFTokenSigner.html#extractSignedToken-java.lang.String-">extractSignedToken(String)</a></span> - Method in class play.libs.crypto.<a href="play/libs/crypto/DefaultCSRFTokenSigner.html" title="class in play.libs.crypto">DefaultCSRFTokenSigner</a></dt>
+<dd>&nbsp;</dd>
 </dl>
 <a name="I:F">
 <!--   -->
@@ -2858,19 +2806,17 @@
 <div class="block">Helper method that generates the required evolution to properly run Ebean.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="play/libs/crypto/CSRFTokenSigner.html#generateSignedToken--">generateSignedToken()</a></span> - Method in interface play.libs.crypto.<a href="play/libs/crypto/CSRFTokenSigner.html" title="interface in play.libs.crypto">CSRFTokenSigner</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="play/libs/Crypto.html#generateSignedToken--">generateSignedToken()</a></span> - Method in class play.libs.<a href="play/libs/Crypto.html" title="class in play.libs">Crypto</a></dt>
 <dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-<div class="block">Generate a signed token</div>
+<div class="block">Generates a signed token by calling generateToken / signToken.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="play/libs/crypto/DefaultCSRFTokenSigner.html#generateSignedToken--">generateSignedToken()</a></span> - Method in class play.libs.crypto.<a href="play/libs/crypto/DefaultCSRFTokenSigner.html" title="class in play.libs.crypto">DefaultCSRFTokenSigner</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/libs/crypto/CSRFTokenSigner.html#generateToken--">generateToken()</a></span> - Method in interface play.libs.crypto.<a href="play/libs/crypto/CSRFTokenSigner.html" title="interface in play.libs.crypto">CSRFTokenSigner</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="play/libs/Crypto.html#generateToken--">generateToken()</a></span> - Method in class play.libs.<a href="play/libs/Crypto.html" title="class in play.libs">Crypto</a></dt>
 <dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-<div class="block">Generate a cryptographically secure token</div>
+<div class="block">Generates a cryptographically secure token.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="play/libs/crypto/DefaultCSRFTokenSigner.html#generateToken--">generateToken()</a></span> - Method in class play.libs.crypto.<a href="play/libs/crypto/DefaultCSRFTokenSigner.html" title="class in play.libs.crypto">DefaultCSRFTokenSigner</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/cache/AsyncCacheApi.html#get-java.lang.String-">get(String)</a></span> - Method in interface play.cache.<a href="play/cache/AsyncCacheApi.html" title="interface in play.cache">AsyncCacheApi</a></dt>
 <dd>
 <div class="block">Retrieves an object by key.</div>
@@ -2971,6 +2917,10 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/data/Form.html#getArgumentsForConstraint-java.lang.String-java.lang.String-javax.validation.metadata.ConstraintDescriptor-">getArgumentsForConstraint(String, String, ConstraintDescriptor&lt;?&gt;)</a></span> - Method in class play.data.<a href="play/data/Form.html" title="class in play.data">Form</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/mvc/Http.RequestHeader.html#getAttr-play.api.libs.typedmap.TypedKey-">getAttr(TypedKey&lt;T&gt;)</a></span> - Method in interface play.mvc.<a href="play/mvc/Http.RequestHeader.html" title="interface in play.mvc">Http.RequestHeader</a></dt>
+<dd>
+<div class="block">Get an optional attribute by its key.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="play/data/Form.html#getBackedType--">getBackedType()</a></span> - Method in class play.data.<a href="play/data/Form.html" title="class in play.data">Form</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/libs/ws/ahc/AhcWSResponse.html#getBody--">getBody()</a></span> - Method in class play.libs.ws.ahc.<a href="play/libs/ws/ahc/AhcWSResponse.html" title="class in play.libs.ws.ahc">AhcWSResponse</a></dt>
@@ -3058,29 +3008,6 @@
 <dd>
 <div class="block">Get a JDBC connection from the underlying data source.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="play/db/DB.html#getConnection--">getConnection()</a></span> - Static method in class play.db.<a href="play/db/DB.html" title="class in play.db">DB</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-<div class="block">Returns a connection from the default datasource,
- with auto-commit enabled.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="play/db/DB.html#getConnection-boolean-">getConnection(boolean)</a></span> - Static method in class play.db.<a href="play/db/DB.html" title="class in play.db">DB</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-<div class="block">Returns a connection from the default datasource,
- with the specified auto-commit setting.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="play/db/DB.html#getConnection-java.lang.String-">getConnection(String)</a></span> - Static method in class play.db.<a href="play/db/DB.html" title="class in play.db">DB</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-<div class="block">Returns a connection from any datasource, with auto-commit enabled.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="play/db/DB.html#getConnection-java.lang.String-boolean-">getConnection(String, boolean)</a></span> - Static method in class play.db.<a href="play/db/DB.html" title="class in play.db">DB</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-<div class="block">Get a connection from any datasource,
- with the specified auto-commit setting.</div>
-</dd>
 <dt><span class="memberNameLink"><a href="play/db/DefaultDatabase.html#getConnection--">getConnection()</a></span> - Method in class play.db.<a href="play/db/DefaultDatabase.html" title="class in play.db">DefaultDatabase</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/db/DefaultDatabase.html#getConnection-boolean-">getConnection(boolean)</a></span> - Method in class play.db.<a href="play/db/DefaultDatabase.html" title="class in play.db">DefaultDatabase</a></dt>
@@ -3130,16 +3057,6 @@
 <dt><span class="memberNameLink"><a href="play/db/Database.html#getDataSource--">getDataSource()</a></span> - Method in interface play.db.<a href="play/db/Database.html" title="interface in play.db">Database</a></dt>
 <dd>
 <div class="block">The underlying JDBC data source for this database.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="play/db/DB.html#getDataSource--">getDataSource()</a></span> - Static method in class play.db.<a href="play/db/DB.html" title="class in play.db">DB</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-<div class="block">Returns the default datasource.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="play/db/DB.html#getDataSource-java.lang.String-">getDataSource(String)</a></span> - Static method in class play.db.<a href="play/db/DB.html" title="class in play.db">DB</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-<div class="block">Returns specified database.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="play/db/DefaultDatabase.html#getDataSource--">getDataSource()</a></span> - Method in class play.db.<a href="play/db/DefaultDatabase.html" title="class in play.db">DefaultDatabase</a></dt>
 <dd>&nbsp;</dd>
@@ -3618,10 +3535,6 @@
 </dd>
 <dt><span class="memberNameLink"><a href="play/libs/ws/ahc/AhcWSResponse.html#getUnderlying--">getUnderlying()</a></span> - Method in class play.libs.ws.ahc.<a href="play/libs/ws/ahc/AhcWSResponse.html" title="class in play.libs.ws.ahc">AhcWSResponse</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="play/libs/ws/ning/NingWSClient.html#getUnderlying--">getUnderlying()</a></span> - Method in class play.libs.ws.ning.<a href="play/libs/ws/ning/NingWSClient.html" title="class in play.libs.ws.ning">NingWSClient</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/libs/ws/WSClient.html#getUnderlying--">getUnderlying()</a></span> - Method in interface play.libs.ws.<a href="play/libs/ws/WSClient.html" title="interface in play.libs.ws">WSClient</a></dt>
 <dd>
 <div class="block">The underlying implementation of the client, if any.</div>
@@ -3753,8 +3666,6 @@
 <dd>
 <div class="block">Checks if the request has a body.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="play/mvc/Http.RequestImpl.html#hasBody--">hasBody()</a></span> - Method in class play.mvc.<a href="play/mvc/Http.RequestImpl.html" title="class in play.mvc">Http.RequestImpl</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/data/Form.html#hasErrors--">hasErrors()</a></span> - Method in class play.data.<a href="play/data/Form.html" title="class in play.data">Form</a></dt>
 <dd>
 <div class="block">Returns <code>true</code> if there are any errors related to this form.</div>
@@ -3840,6 +3751,12 @@
 <div class="block">Helper functions to run tests.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="play/test/Helpers.html#Helpers--">Helpers()</a></span> - Constructor for class play.test.<a href="play/test/Helpers.html" title="class in play.test">Helpers</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="play/libs/crypto/HMACSHA1CookieSigner.html" title="class in play.libs.crypto"><span class="typeNameLink">HMACSHA1CookieSigner</span></a> - Class in <a href="play/libs/crypto/package-summary.html">play.libs.crypto</a></dt>
+<dd>
+<div class="block">Authenticates a cookie by creating a  message authentication code using HMAC-SHA1.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="play/libs/crypto/HMACSHA1CookieSigner.html#HMACSHA1CookieSigner-play.api.libs.crypto.CookieSigner-">HMACSHA1CookieSigner(CookieSigner)</a></span> - Constructor for class play.libs.crypto.<a href="play/libs/crypto/HMACSHA1CookieSigner.html" title="class in play.libs.crypto">HMACSHA1CookieSigner</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Http.HeaderNames.html#HOST">HOST</a></span> - Static variable in interface play.mvc.<a href="play/mvc/Http.HeaderNames.html" title="interface in play.mvc">Http.HeaderNames</a></dt>
 <dd>&nbsp;</dd>
@@ -4455,12 +4372,6 @@
 </dd>
 <dt><span class="memberNameLink"><a href="play/db/jpa/JPA.html#JPA--">JPA()</a></span> - Constructor for class play.db.jpa.<a href="play/db/jpa/JPA.html" title="class in play.db.jpa">JPA</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="play/db/jpa/JPA.html#jpaApi--">jpaApi()</a></span> - Static method in class play.db.jpa.<a href="play/db/jpa/JPA.html" title="class in play.db.jpa">JPA</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>
-<div class="block"><span class="deprecationComment">as of 2.5.0. Inject a JPAApi instead.</span></div>
-</div>
-</dd>
 <dt><a href="play/db/jpa/JPAApi.html" title="interface in play.db.jpa"><span class="typeNameLink">JPAApi</span></a> - Interface in <a href="play/db/jpa/package-summary.html">play.db.jpa</a></dt>
 <dd>
 <div class="block">JPA API.</div>
@@ -4636,14 +4547,6 @@
 </dd>
 <dt><span class="memberNameLink"><a href="play/inject/guice/GuiceApplicationLoader.html#load-play.ApplicationLoader.Context-">load(ApplicationLoader.Context)</a></span> - Method in class play.inject.guice.<a href="play/inject/guice/GuiceApplicationLoader.html" title="class in play.inject.guice">GuiceApplicationLoader</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="play/libs/Yaml.html#load-java.lang.String-">load(String)</a></span> - Static method in class play.libs.<a href="play/libs/Yaml.html" title="class in play.libs">Yaml</a></dt>
-<dd>
-<div class="block">Load a Yaml file from the classpath.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="play/libs/Yaml.html#load-java.io.InputStream-java.lang.ClassLoader-">load(InputStream, ClassLoader)</a></span> - Static method in class play.libs.<a href="play/libs/Yaml.html" title="class in play.libs">Yaml</a></dt>
-<dd>
-<div class="block">Load the specified InputStream as Yaml.</div>
-</dd>
 <dt><span class="memberNameLink"><a href="play/inject/guice/GuiceApplicationBuilder.html#loadConfig-java.util.function.Function-">loadConfig(Function&lt;Environment, Configuration&gt;)</a></span> - Method in class play.inject.guice.<a href="play/inject/guice/GuiceApplicationBuilder.html" title="class in play.inject.guice">GuiceApplicationBuilder</a></dt>
 <dd>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>
@@ -4889,7 +4792,7 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/MultipartFormatter.html#MultipartFormatter--">MultipartFormatter()</a></span> - Constructor for class play.mvc.<a href="play/mvc/MultipartFormatter.html" title="class in play.mvc">MultipartFormatter</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="play/mvc/BodyParser.MultipartFormData.html#MultipartFormData--">MultipartFormData()</a></span> - Constructor for class play.mvc.<a href="play/mvc/BodyParser.MultipartFormData.html" title="class in play.mvc">BodyParser.MultipartFormData</a></dt>
+<dt><span class="memberNameLink"><a href="play/mvc/BodyParser.MultipartFormData.html#MultipartFormData-play.api.mvc.PlayBodyParsers-">MultipartFormData(PlayBodyParsers)</a></span> - Constructor for class play.mvc.<a href="play/mvc/BodyParser.MultipartFormData.html" title="class in play.mvc">BodyParser.MultipartFormData</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Http.MultipartFormData.html#MultipartFormData--">MultipartFormData()</a></span> - Constructor for class play.mvc.<a href="play/mvc/Http.MultipartFormData.html" title="class in play.mvc">Http.MultipartFormData</a></dt>
 <dd>&nbsp;</dd>
@@ -4947,7 +4850,16 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/libs/ws/WS.html#newClient-int-">newClient(int)</a></span> - Static method in class play.libs.ws.<a href="play/libs/ws/WS.html" title="class in play.libs.ws">WS</a></dt>
 <dd>
-<div class="block">Create a new WSClient.</div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>
+<div class="block"><span class="deprecationComment">as of 2.6, not to be used.
+    This method is not appropriate outside of testing context, because it makes many
+    assumptions about the url, starts up a new client and actorsystem on every
+    call, and hardcodes the config to something other than the app config.</span></div>
+</div>
+</dd>
+<dt><span class="memberNameLink"><a href="play/test/WSTestClient.html#newClient-int-">newClient(int)</a></span> - Static method in class play.test.<a href="play/test/WSTestClient.html" title="class in play.test">WSTestClient</a></dt>
+<dd>
+<div class="block">Create a new WSClient for use in testing.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="play/libs/Json.html#newDefaultMapper--">newDefaultMapper()</a></span> - Static method in class play.libs.<a href="play/libs/Json.html" title="class in play.libs">Json</a></dt>
 <dd>&nbsp;</dd>
@@ -4955,16 +4867,6 @@
 <dd>
 <div class="block">Creates a new empty ObjectNode.</div>
 </dd>
-<dt><a href="play/libs/ws/ning/NingWSClient.html" title="class in play.libs.ws.ning"><span class="typeNameLink">NingWSClient</span></a> - Class in <a href="play/libs/ws/ning/package-summary.html">play.libs.ws.ning</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>
-<div class="block"><span class="deprecationComment">Use AhcWSClient instead</span></div>
-</div>
-</dd>
-<dt><span class="memberNameLink"><a href="play/libs/ws/ning/NingWSClient.html#NingWSClient-org.asynchttpclient.AsyncHttpClientConfig-akka.stream.Materializer-">NingWSClient(AsyncHttpClientConfig, Materializer)</a></span> - Constructor for class play.libs.ws.ning.<a href="play/libs/ws/ning/NingWSClient.html" title="class in play.libs.ws.ning">NingWSClient</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Http.Status.html#NO_CONTENT">NO_CONTENT</a></span> - Static variable in interface play.mvc.<a href="play/mvc/Http.Status.html" title="interface in play.mvc">Http.Status</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/http/HttpEntity.html#NO_ENTITY">NO_ENTITY</a></span> - Static variable in class play.http.<a href="play/http/HttpEntity.html" title="class in play.http">HttpEntity</a></dt>
@@ -5622,8 +5524,6 @@
 <dd>&nbsp;</dd>
 <dt><a href="play/libs/ws/ahc/package-summary.html">play.libs.ws.ahc</a> - package play.libs.ws.ahc</dt>
 <dd>&nbsp;</dd>
-<dt><a href="play/libs/ws/ning/package-summary.html">play.libs.ws.ning</a> - package play.libs.ws.ning</dt>
-<dd>&nbsp;</dd>
 <dt><a href="play/mvc/package-summary.html">play.mvc</a> - package play.mvc</dt>
 <dd>
 <div class="block">Provides the Controller/Action/Result API for handling HTTP requests.</div>
@@ -5708,6 +5608,8 @@
 <dd>
 <div class="block">Get a messages context appropriate for the given request.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="play/libs/concurrent/CustomExecutionContext.html#prepare--">prepare()</a></span> - Method in class play.libs.concurrent.<a href="play/libs/concurrent/CustomExecutionContext.html" title="class in play.libs.concurrent">CustomExecutionContext</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/libs/Json.html#prettyPrint-com.fasterxml.jackson.databind.JsonNode-">prettyPrint(JsonNode)</a></span> - Static method in class play.libs.<a href="play/libs/Json.html" title="class in play.libs">Json</a></dt>
 <dd>
 <div class="block">Convert a JsonNode to its string representation.</div>
@@ -5792,12 +5694,6 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/db/jpa/JPAEntityManagerContext.html#push-javax.persistence.EntityManager-boolean-">push(EntityManager, boolean)</a></span> - Method in class play.db.jpa.<a href="play/db/jpa/JPAEntityManagerContext.html" title="class in play.db.jpa">JPAEntityManagerContext</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="play/db/jpa/JPAEntityManagerContext.html#pushOrPopEm-javax.persistence.EntityManager-boolean-">pushOrPopEm(EntityManager, boolean)</a></span> - Method in class play.db.jpa.<a href="play/db/jpa/JPAEntityManagerContext.html" title="class in play.db.jpa">JPAEntityManagerContext</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>
-<div class="block"><span class="deprecationComment">use push or pop methods</span></div>
-</div>
-</dd>
 <dt><span class="memberNameLink"><a href="play/libs/ws/ahc/AhcWSRequest.html#put-java.lang.String-">put(String)</a></span> - Method in class play.libs.ws.ahc.<a href="play/libs/ws/ahc/AhcWSRequest.html" title="class in play.libs.ws.ahc">AhcWSRequest</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/libs/ws/ahc/AhcWSRequest.html#put-com.fasterxml.jackson.databind.JsonNode-">put(JsonNode)</a></span> - Method in class play.libs.ws.ahc.<a href="play/libs/ws/ahc/AhcWSRequest.html" title="class in play.libs.ws.ahc">AhcWSRequest</a></dt>
@@ -5882,7 +5778,7 @@
 </dd>
 <dt><span class="memberNameLink"><a href="play/mvc/RangeResults.html#RangeResults--">RangeResults()</a></span> - Constructor for class play.mvc.<a href="play/mvc/RangeResults.html" title="class in play.mvc">RangeResults</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="play/mvc/BodyParser.Raw.html#Raw--">Raw()</a></span> - Constructor for class play.mvc.<a href="play/mvc/BodyParser.Raw.html" title="class in play.mvc">BodyParser.Raw</a></dt>
+<dt><span class="memberNameLink"><a href="play/mvc/BodyParser.Raw.html#Raw-play.api.mvc.PlayBodyParsers-">Raw(PlayBodyParsers)</a></span> - Constructor for class play.mvc.<a href="play/mvc/BodyParser.Raw.html" title="class in play.mvc">BodyParser.Raw</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Http.RawBuffer.html#RawBuffer--">RawBuffer()</a></span> - Constructor for class play.mvc.<a href="play/mvc/Http.RawBuffer.html" title="class in play.mvc">Http.RawBuffer</a></dt>
 <dd>&nbsp;</dd>
@@ -6048,6 +5944,8 @@
 <div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
 <div class="block">Creates a configuration error for a specific configuration key.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="play/libs/concurrent/CustomExecutionContext.html#reportFailure-java.lang.Throwable-">reportFailure(Throwable)</a></span> - Method in class play.libs.concurrent.<a href="play/libs/concurrent/CustomExecutionContext.html" title="class in play.libs.concurrent">CustomExecutionContext</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Controller.html#request--">request()</a></span> - Static method in class play.mvc.<a href="play/mvc/Controller.html" title="class in play.mvc">Controller</a></dt>
 <dd>
 <div class="block">Returns the current HTTP request.</div>
@@ -6096,7 +5994,7 @@
 </dd>
 <dt><a href="play/filters/csrf/RequireCSRFCheckAction.html" title="class in play.filters.csrf"><span class="typeNameLink">RequireCSRFCheckAction</span></a> - Class in <a href="play/filters/csrf/package-summary.html">play.filters.csrf</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="play/filters/csrf/RequireCSRFCheckAction.html#RequireCSRFCheckAction-play.filters.csrf.CSRFConfig-play.filters.csrf.CSRF.TokenProvider-play.api.libs.Crypto-play.inject.Injector-">RequireCSRFCheckAction(CSRFConfig, CSRF.TokenProvider, Crypto, Injector)</a></span> - Constructor for class play.filters.csrf.<a href="play/filters/csrf/RequireCSRFCheckAction.html" title="class in play.filters.csrf">RequireCSRFCheckAction</a></dt>
+<dt><span class="memberNameLink"><a href="play/filters/csrf/RequireCSRFCheckAction.html#RequireCSRFCheckAction-play.filters.csrf.CSRFConfig-play.filters.csrf.CSRF.TokenProvider-play.api.libs.crypto.CSRFTokenSigner-play.inject.Injector-">RequireCSRFCheckAction(CSRFConfig, CSRF.TokenProvider, CSRFTokenSigner, Injector)</a></span> - Constructor for class play.filters.csrf.<a href="play/filters/csrf/RequireCSRFCheckAction.html" title="class in play.filters.csrf">RequireCSRFCheckAction</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/data/validation/Constraints.html#required--">required()</a></span> - Static method in class play.data.validation.<a href="play/data/validation/Constraints.html" title="class in play.data.validation">Constraints</a></dt>
 <dd>
@@ -6777,16 +6675,6 @@
 <div class="block">Set the language for the current request, but don't
  change the language cookie.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="play/mvc/Http.Request.html#setUsername-java.lang.String-">setUsername(String)</a></span> - Method in interface play.mvc.<a href="play/mvc/Http.Request.html" title="interface in play.mvc">Http.Request</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>
-<div class="block"><span class="deprecationComment">As of release 2.4, use <a href="play/mvc/Http.Request.html#withUsername-java.lang.String-"><code>Http.Request.withUsername(java.lang.String)</code></a></span></div>
-</div>
-</dd>
-<dt><span class="memberNameLink"><a href="play/mvc/Http.RequestImpl.html#setUsername-java.lang.String-">setUsername(String)</a></span> - Method in class play.mvc.<a href="play/mvc/Http.RequestImpl.html" title="class in play.mvc">Http.RequestImpl</a></dt>
-<dd>
-<div class="block">Sets the username.</div>
-</dd>
 <dt><span class="memberNameLink"><a href="play/libs/ws/ahc/AhcWSRequest.html#setVirtualHost-java.lang.String-">setVirtualHost(String)</a></span> - Method in class play.libs.ws.ahc.<a href="play/libs/ws/ahc/AhcWSRequest.html" title="class in play.libs.ws.ahc">AhcWSRequest</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/libs/ws/WSRequest.html#setVirtualHost-java.lang.String-">setVirtualHost(String)</a></span> - Method in interface play.libs.ws.<a href="play/libs/ws/WSRequest.html" title="interface in play.libs.ws">WSRequest</a></dt>
@@ -6814,11 +6702,20 @@
 <div class="block">Close all entity manager factories.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="play/libs/crypto/CookieSigner.html#sign-java.lang.String-">sign(String)</a></span> - Method in interface play.libs.crypto.<a href="play/libs/crypto/CookieSigner.html" title="interface in play.libs.crypto">CookieSigner</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="play/libs/Crypto.html#sign-java.lang.String-">sign(String)</a></span> - Method in class play.libs.<a href="play/libs/Crypto.html" title="class in play.libs">Crypto</a></dt>
 <dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
+<div class="block">Signs the given String using the application's secret key.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="play/libs/crypto/CookieSigner.html#sign-java.lang.String-byte:A-">sign(String, byte[])</a></span> - Method in interface play.libs.crypto.<a href="play/libs/crypto/CookieSigner.html" title="interface in play.libs.crypto">CookieSigner</a></dt>
+<dd>
+<div class="block">Signs the given String using the given key.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="play/libs/crypto/HMACSHA1CookieSigner.html#sign-java.lang.String-">sign(String)</a></span> - Method in class play.libs.crypto.<a href="play/libs/crypto/HMACSHA1CookieSigner.html" title="class in play.libs.crypto">HMACSHA1CookieSigner</a></dt>
+<dd>
 <div class="block">Signs the given String with HMAC-SHA1 using the application's secret key.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="play/libs/crypto/HMACSHA1CookieSigner.html#sign-java.lang.String-byte:A-">sign(String, byte[])</a></span> - Method in class play.libs.crypto.<a href="play/libs/crypto/HMACSHA1CookieSigner.html" title="class in play.libs.crypto">HMACSHA1CookieSigner</a></dt>
+<dd>
+<div class="block">Signs the given String with HMAC-SHA1 using the given key.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="play/libs/ws/ahc/AhcWSRequest.html#sign-play.libs.ws.WSSignatureCalculator-">sign(WSSignatureCalculator)</a></span> - Method in class play.libs.ws.ahc.<a href="play/libs/ws/ahc/AhcWSRequest.html" title="class in play.libs.ws.ahc">AhcWSRequest</a></dt>
 <dd>&nbsp;</dd>
@@ -6826,13 +6723,12 @@
 <dd>
 <div class="block">Sets an (OAuth) signature calculator.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="play/libs/crypto/CookieSigner.html#signToken-java.lang.String-">signToken(String)</a></span> - Method in interface play.libs.crypto.<a href="play/libs/crypto/CookieSigner.html" title="interface in play.libs.crypto">CookieSigner</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="play/libs/Crypto.html#signToken-java.lang.String-">signToken(String)</a></span> - Method in class play.libs.<a href="play/libs/Crypto.html" title="class in play.libs">Crypto</a></dt>
+<dt><span class="memberNameLink"><a href="play/libs/crypto/CSRFTokenSigner.html#signToken-java.lang.String-">signToken(String)</a></span> - Method in interface play.libs.crypto.<a href="play/libs/crypto/CSRFTokenSigner.html" title="interface in play.libs.crypto">CSRFTokenSigner</a></dt>
 <dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
 <div class="block">Sign a token.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="play/libs/crypto/DefaultCSRFTokenSigner.html#signToken-java.lang.String-">signToken(String)</a></span> - Method in class play.libs.crypto.<a href="play/libs/crypto/DefaultCSRFTokenSigner.html" title="class in play.libs.crypto">DefaultCSRFTokenSigner</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/Environment.html#simple--">simple()</a></span> - Static method in class play.<a href="play/Environment.html" title="class in play">Environment</a></dt>
 <dd>
 <div class="block">A simple environment.</div>
@@ -7018,12 +6914,6 @@
 <dd>
 <div class="block">A CacheApi that makes synchronous calls.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="play/libs/Akka.html#system--">system()</a></span> - Static method in class play.libs.<a href="play/libs/Akka.html" title="class in play.libs">Akka</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>
-<div class="block"><span class="deprecationComment">Please use "@Inject ActorSystem actorSystem", since 2.5.0</span></div>
-</div>
-</dd>
 </dl>
 <a name="I:T">
 <!--   -->
@@ -7032,16 +6922,30 @@
 <dl>
 <dt><span class="memberNameLink"><a href="play/mvc/Http.RequestBuilder.html#tag-java.lang.String-java.lang.String-">tag(String, String)</a></span> - Method in class play.mvc.<a href="play/mvc/Http.RequestBuilder.html" title="class in play.mvc">Http.RequestBuilder</a></dt>
 <dd>
-<div class="block">Puts an extra tag.</div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>
+<div class="block"><span class="deprecationComment">Use <code>putAttr</code> instead.</span></div>
+</div>
 </dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Http.RequestBuilder.html#tags">tags</a></span> - Variable in class play.mvc.<a href="play/mvc/Http.RequestBuilder.html" title="class in play.mvc">Http.RequestBuilder</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Http.RequestBuilder.html#tags--">tags()</a></span> - Method in class play.mvc.<a href="play/mvc/Http.RequestBuilder.html" title="class in play.mvc">Http.RequestBuilder</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>
+<div class="block"><span class="deprecationComment">Use <code>attr</code> or <code>getAttr</code> instead.</span></div>
+</div>
+</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Http.RequestBuilder.html#tags-java.util.Map-">tags(Map&lt;String, String&gt;)</a></span> - Method in class play.mvc.<a href="play/mvc/Http.RequestBuilder.html" title="class in play.mvc">Http.RequestBuilder</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>
+<div class="block"><span class="deprecationComment">Use <code>putAttrs</code> instead.</span></div>
+</div>
+</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Http.RequestHeader.html#tags--">tags()</a></span> - Method in interface play.mvc.<a href="play/mvc/Http.RequestHeader.html" title="interface in play.mvc">Http.RequestHeader</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>
+<div class="block"><span class="deprecationComment">Use <code>attr</code>, <code>withAttr</code>, etc.</span></div>
+</div>
+</dd>
 <dt><span class="memberNameLink"><a href="play/routing/Router.Tags.html#Tags--">Tags()</a></span> - Constructor for class play.routing.<a href="play/routing/Router.Tags.html" title="class in play.routing">Router.Tags</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Http.HeaderNames.html#TE">TE</a></span> - Static variable in interface play.mvc.<a href="play/mvc/Http.HeaderNames.html" title="interface in play.mvc">Http.HeaderNames</a></dt>
@@ -7156,8 +7060,21 @@
 </dd>
 <dt><span class="memberNameLink"><a href="play/libs/concurrent/Futures.html#timeout-long-java.util.concurrent.TimeUnit-">timeout(long, TimeUnit)</a></span> - Static method in class play.libs.concurrent.<a href="play/libs/concurrent/Futures.html" title="class in play.libs.concurrent">Futures</a></dt>
 <dd>
-<div class="block">Create a CompletionStage timer that throws a PromiseTimeoutException after
+<div class="block">Creates a CompletionStage timer that throws a PromiseTimeoutException after
  a given timeout.</div>
+</dd>
+<dt><a href="play/libs/concurrent/Timeout.html" title="interface in play.libs.concurrent"><span class="typeNameLink">Timeout</span></a> - Interface in <a href="play/libs/concurrent/package-summary.html">play.libs.concurrent</a></dt>
+<dd>
+<div class="block">This interface is used to provide a non-blocking timeout on an operation
+ that returns a CompletionStage.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="play/libs/concurrent/Timeout.html#timeout-java.util.concurrent.CompletionStage-long-java.util.concurrent.TimeUnit-">timeout(CompletionStage&lt;A&gt;, long, TimeUnit)</a></span> - Method in interface play.libs.concurrent.<a href="play/libs/concurrent/Timeout.html" title="interface in play.libs.concurrent">Timeout</a></dt>
+<dd>
+<div class="block">Creates a CompletionStage that returns either the input stage, or a timeout.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="play/libs/concurrent/Timeout.html#timeout-java.util.concurrent.CompletionStage-java.time.Duration-">timeout(CompletionStage&lt;A&gt;, Duration)</a></span> - Method in interface play.libs.concurrent.<a href="play/libs/concurrent/Timeout.html" title="interface in play.libs.concurrent">Timeout</a></dt>
+<dd>
+<div class="block">An alias for timeout(stage, delay, unit) that uses a java.time.Duration.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="play/libs/XML.html#toBytes-org.w3c.dom.Document-">toBytes(Document)</a></span> - Static method in class play.libs.<a href="play/libs/XML.html" title="class in play.libs">XML</a></dt>
 <dd>
@@ -7463,16 +7380,6 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/libs/ws/ahc/AhcWSClient.html#url-java.lang.String-">url(String)</a></span> - Method in class play.libs.ws.ahc.<a href="play/libs/ws/ahc/AhcWSClient.html" title="class in play.libs.ws.ahc">AhcWSClient</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="play/libs/ws/ning/NingWSClient.html#url-java.lang.String-">url(String)</a></span> - Method in class play.libs.ws.ning.<a href="play/libs/ws/ning/NingWSClient.html" title="class in play.libs.ws.ning">NingWSClient</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="play/libs/ws/WS.html#url-java.lang.String-">url(String)</a></span> - Static method in class play.libs.ws.<a href="play/libs/ws/WS.html" title="class in play.libs.ws">WS</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>
-<div class="block"><span class="deprecationComment">Please use a WSClient instance using DI (since 2.5)</span></div>
-</div>
-</dd>
 <dt><span class="memberNameLink"><a href="play/libs/ws/WSAPI.html#url-java.lang.String-">url(String)</a></span> - Method in interface play.libs.ws.<a href="play/libs/ws/WSAPI.html" title="interface in play.libs.ws">WSAPI</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/libs/ws/WSClient.html#url-java.lang.String-">url(String)</a></span> - Method in interface play.libs.ws.<a href="play/libs/ws/WSClient.html" title="interface in play.libs.ws">WSClient</a></dt>
@@ -7497,15 +7404,25 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Http.Request.html#username--">username()</a></span> - Method in interface play.mvc.<a href="play/mvc/Http.Request.html" title="interface in play.mvc">Http.Request</a></dt>
 <dd>
-<div class="block">The user name for this request, if defined.</div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>
+<div class="block"><span class="deprecationComment">As of release 2.6, use <code>attr(Security.USERNAME)</code> or <code>getAttr(Security.USERNAME)</code>.</span></div>
+</div>
 </dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Http.RequestBuilder.html#username">username</a></span> - Variable in class play.mvc.<a href="play/mvc/Http.RequestBuilder.html" title="class in play.mvc">Http.RequestBuilder</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Http.RequestBuilder.html#username--">username()</a></span> - Method in class play.mvc.<a href="play/mvc/Http.RequestBuilder.html" title="class in play.mvc">Http.RequestBuilder</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>
+<div class="block"><span class="deprecationComment">Use <code>attr(Security.USERNAME)</code> or <code>getAttr(Security.USERNAME)</code> instead.</span></div>
+</div>
+</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Http.RequestBuilder.html#username-java.lang.String-">username(String)</a></span> - Method in class play.mvc.<a href="play/mvc/Http.RequestBuilder.html" title="class in play.mvc">Http.RequestBuilder</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="play/mvc/Http.RequestImpl.html#username--">username()</a></span> - Method in class play.mvc.<a href="play/mvc/Http.RequestImpl.html" title="class in play.mvc">Http.RequestImpl</a></dt>
+<dd>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>
+<div class="block"><span class="deprecationComment">Use <code>putAttr(Security.USERNAME, username)</code> instead.</span></div>
+</div>
+</dd>
+<dt><span class="memberNameLink"><a href="play/mvc/Security.html#USERNAME">USERNAME</a></span> - Static variable in class play.mvc.<a href="play/mvc/Security.html" title="class in play.mvc">Security</a></dt>
 <dd>&nbsp;</dd>
 </dl>
 <a name="I:V">
@@ -7712,6 +7629,24 @@ the order they are declared.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="play/test/WithApplication.html#WithApplication--">WithApplication()</a></span> - Constructor for class play.test.<a href="play/test/WithApplication.html" title="class in play.test">WithApplication</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/mvc/Http.Request.html#withAttr-play.api.libs.typedmap.TypedKey-T-">withAttr(TypedKey&lt;T&gt;, T)</a></span> - Method in interface play.mvc.<a href="play/mvc/Http.Request.html" title="interface in play.mvc">Http.Request</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/mvc/Http.RequestHeader.html#withAttr-play.api.libs.typedmap.TypedKey-T-">withAttr(TypedKey&lt;T&gt;, T)</a></span> - Method in interface play.mvc.<a href="play/mvc/Http.RequestHeader.html" title="interface in play.mvc">Http.RequestHeader</a></dt>
+<dd>
+<div class="block">Create a new version of this object with an attribute added to it.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="play/mvc/Http.Request.html#withAttrs-play.api.libs.typedmap.TypedEntry...-">withAttrs(TypedEntry&lt;?&gt;...)</a></span> - Method in interface play.mvc.<a href="play/mvc/Http.Request.html" title="interface in play.mvc">Http.Request</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/mvc/Http.RequestHeader.html#withAttrs-play.api.libs.typedmap.TypedEntry...-">withAttrs(TypedEntry&lt;?&gt;...)</a></span> - Method in interface play.mvc.<a href="play/mvc/Http.RequestHeader.html" title="interface in play.mvc">Http.RequestHeader</a></dt>
+<dd>
+<div class="block">Create a new version of this object with several attributes added to it.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="play/mvc/Http.Request.html#withBody-play.mvc.Http.RequestBody-">withBody(Http.RequestBody)</a></span> - Method in interface play.mvc.<a href="play/mvc/Http.Request.html" title="interface in play.mvc">Http.Request</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/mvc/Http.RequestHeader.html#withBody-play.mvc.Http.RequestBody-">withBody(Http.RequestBody)</a></span> - Method in interface play.mvc.<a href="play/mvc/Http.RequestHeader.html" title="interface in play.mvc">Http.RequestHeader</a></dt>
+<dd>
+<div class="block">Attach a body to this header.</div>
+</dd>
 <dt><a href="play/test/WithBrowser.html" title="class in play.test"><span class="typeNameLink">WithBrowser</span></a> - Class in <a href="play/test/package-summary.html">play.test</a></dt>
 <dd>
 <div class="block">Provides a server and browser to JUnit tests.</div>
@@ -7744,86 +7679,6 @@ the order they are declared.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="play/db/Database.html#withConnection-boolean-play.db.ConnectionCallable-">withConnection(boolean, ConnectionCallable&lt;A&gt;)</a></span> - Method in interface play.db.<a href="play/db/Database.html" title="interface in play.db">Database</a></dt>
 <dd>
-<div class="block">Execute a block of code, providing a JDBC connection.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="play/db/DB.html#withConnection-java.lang.String-boolean-play.db.ConnectionRunnable-play.api.Application-">withConnection(String, boolean, ConnectionRunnable, Application)</a></span> - Static method in class play.db.<a href="play/db/DB.html" title="class in play.db">DB</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-<div class="block">Executes a block of code, providing a JDBC connection.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="play/db/DB.html#withConnection-java.lang.String-play.db.ConnectionRunnable-play.api.Application-">withConnection(String, ConnectionRunnable, Application)</a></span> - Static method in class play.db.<a href="play/db/DB.html" title="class in play.db">DB</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-<div class="block">Executes a block of code, providing a JDBC connection.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="play/db/DB.html#withConnection-boolean-play.db.ConnectionRunnable-play.api.Application-">withConnection(boolean, ConnectionRunnable, Application)</a></span> - Static method in class play.db.<a href="play/db/DB.html" title="class in play.db">DB</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-<div class="block">Executes a block of code, providing a JDBC connection.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="play/db/DB.html#withConnection-play.db.ConnectionRunnable-play.api.Application-">withConnection(ConnectionRunnable, Application)</a></span> - Static method in class play.db.<a href="play/db/DB.html" title="class in play.db">DB</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-<div class="block">Execute a block of code, providing a JDBC connection.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="play/db/DB.html#withConnection-java.lang.String-boolean-play.db.ConnectionRunnable-">withConnection(String, boolean, ConnectionRunnable)</a></span> - Static method in class play.db.<a href="play/db/DB.html" title="class in play.db">DB</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-<div class="block">Executes a block of code, providing a JDBC connection.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="play/db/DB.html#withConnection-java.lang.String-play.db.ConnectionRunnable-">withConnection(String, ConnectionRunnable)</a></span> - Static method in class play.db.<a href="play/db/DB.html" title="class in play.db">DB</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-<div class="block">Executes a block of code, providing a JDBC connection.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="play/db/DB.html#withConnection-boolean-play.db.ConnectionRunnable-">withConnection(boolean, ConnectionRunnable)</a></span> - Static method in class play.db.<a href="play/db/DB.html" title="class in play.db">DB</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-<div class="block">Executes a block of code, providing a JDBC connection.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="play/db/DB.html#withConnection-play.db.ConnectionRunnable-">withConnection(ConnectionRunnable)</a></span> - Static method in class play.db.<a href="play/db/DB.html" title="class in play.db">DB</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-<div class="block">Execute a block of code, providing a JDBC connection.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="play/db/DB.html#withConnection-java.lang.String-boolean-play.db.ConnectionCallable-play.api.Application-">withConnection(String, boolean, ConnectionCallable&lt;A&gt;, Application)</a></span> - Static method in class play.db.<a href="play/db/DB.html" title="class in play.db">DB</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-<div class="block">Executes a block of code, providing a JDBC connection.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="play/db/DB.html#withConnection-java.lang.String-play.db.ConnectionCallable-play.api.Application-">withConnection(String, ConnectionCallable&lt;A&gt;, Application)</a></span> - Static method in class play.db.<a href="play/db/DB.html" title="class in play.db">DB</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-<div class="block">Executes a block of code, providing a JDBC connection.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="play/db/DB.html#withConnection-boolean-play.db.ConnectionCallable-play.api.Application-">withConnection(boolean, ConnectionCallable&lt;A&gt;, Application)</a></span> - Static method in class play.db.<a href="play/db/DB.html" title="class in play.db">DB</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-<div class="block">Executes a block of code, providing a JDBC connection.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="play/db/DB.html#withConnection-play.db.ConnectionCallable-play.api.Application-">withConnection(ConnectionCallable&lt;A&gt;, Application)</a></span> - Static method in class play.db.<a href="play/db/DB.html" title="class in play.db">DB</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-<div class="block">Execute a block of code, providing a JDBC connection.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="play/db/DB.html#withConnection-java.lang.String-boolean-play.db.ConnectionCallable-">withConnection(String, boolean, ConnectionCallable&lt;A&gt;)</a></span> - Static method in class play.db.<a href="play/db/DB.html" title="class in play.db">DB</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-<div class="block">Executes a block of code, providing a JDBC connection.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="play/db/DB.html#withConnection-java.lang.String-play.db.ConnectionCallable-">withConnection(String, ConnectionCallable&lt;A&gt;)</a></span> - Static method in class play.db.<a href="play/db/DB.html" title="class in play.db">DB</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-<div class="block">Executes a block of code, providing a JDBC connection.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="play/db/DB.html#withConnection-boolean-play.db.ConnectionCallable-">withConnection(boolean, ConnectionCallable&lt;A&gt;)</a></span> - Static method in class play.db.<a href="play/db/DB.html" title="class in play.db">DB</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-<div class="block">Executes a block of code, providing a JDBC connection.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="play/db/DB.html#withConnection-play.db.ConnectionCallable-">withConnection(ConnectionCallable&lt;A&gt;)</a></span> - Static method in class play.db.<a href="play/db/DB.html" title="class in play.db">DB</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
 <div class="block">Execute a block of code, providing a JDBC connection.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="play/db/DefaultDatabase.html#withConnection-play.db.ConnectionRunnable-">withConnection(ConnectionRunnable)</a></span> - Method in class play.db.<a href="play/db/DefaultDatabase.html" title="class in play.db">DefaultDatabase</a></dt>
@@ -7905,46 +7760,6 @@ the order they are declared.</div>
 <dd>
 <div class="block">Execute a block of code in the scope of a JDBC transaction.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="play/db/DB.html#withTransaction-java.lang.String-play.db.ConnectionRunnable-play.api.Application-">withTransaction(String, ConnectionRunnable, Application)</a></span> - Static method in class play.db.<a href="play/db/DB.html" title="class in play.db">DB</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-<div class="block">Execute a block of code, in the scope of a JDBC transaction.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="play/db/DB.html#withTransaction-play.db.ConnectionRunnable-play.api.Application-">withTransaction(ConnectionRunnable, Application)</a></span> - Static method in class play.db.<a href="play/db/DB.html" title="class in play.db">DB</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-<div class="block">Execute a block of code, in the scope of a JDBC transaction.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="play/db/DB.html#withTransaction-java.lang.String-play.db.ConnectionRunnable-">withTransaction(String, ConnectionRunnable)</a></span> - Static method in class play.db.<a href="play/db/DB.html" title="class in play.db">DB</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-<div class="block">Execute a block of code, in the scope of a JDBC transaction.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="play/db/DB.html#withTransaction-play.db.ConnectionRunnable-">withTransaction(ConnectionRunnable)</a></span> - Static method in class play.db.<a href="play/db/DB.html" title="class in play.db">DB</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-<div class="block">Execute a block of code, in the scope of a JDBC transaction.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="play/db/DB.html#withTransaction-java.lang.String-play.db.ConnectionCallable-play.api.Application-">withTransaction(String, ConnectionCallable&lt;A&gt;, Application)</a></span> - Static method in class play.db.<a href="play/db/DB.html" title="class in play.db">DB</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-<div class="block">Execute a block of code, in the scope of a JDBC transaction.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="play/db/DB.html#withTransaction-play.db.ConnectionCallable-play.api.Application-">withTransaction(ConnectionCallable&lt;A&gt;, Application)</a></span> - Static method in class play.db.<a href="play/db/DB.html" title="class in play.db">DB</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-<div class="block">Execute a block of code, in the scope of a JDBC transaction.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="play/db/DB.html#withTransaction-java.lang.String-play.db.ConnectionCallable-">withTransaction(String, ConnectionCallable&lt;A&gt;)</a></span> - Static method in class play.db.<a href="play/db/DB.html" title="class in play.db">DB</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-<div class="block">Execute a block of code, in the scope of a JDBC transaction.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="play/db/DB.html#withTransaction-play.db.ConnectionCallable-">withTransaction(ConnectionCallable&lt;A&gt;)</a></span> - Static method in class play.db.<a href="play/db/DB.html" title="class in play.db">DB</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
-<div class="block">Execute a block of code, in the scope of a JDBC transaction.</div>
-</dd>
 <dt><span class="memberNameLink"><a href="play/db/DefaultDatabase.html#withTransaction-play.db.ConnectionRunnable-">withTransaction(ConnectionRunnable)</a></span> - Method in class play.db.<a href="play/db/DefaultDatabase.html" title="class in play.db">DefaultDatabase</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/db/DefaultDatabase.html#withTransaction-play.db.ConnectionCallable-">withTransaction(ConnectionCallable&lt;A&gt;)</a></span> - Method in class play.db.<a href="play/db/DefaultDatabase.html" title="class in play.db">DefaultDatabase</a></dt>
@@ -7973,24 +7788,6 @@ the order they are declared.</div>
 <dd>
 <div class="block">Run a block of code in a JPA transaction.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="play/db/jpa/JPA.html#withTransaction-java.util.function.Supplier-">withTransaction(Supplier&lt;T&gt;)</a></span> - Static method in class play.db.jpa.<a href="play/db/jpa/JPA.html" title="class in play.db.jpa">JPA</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>
-<div class="block"><span class="deprecationComment">as of 2.5.0. Inject a JPAApi instead.</span></div>
-</div>
-</dd>
-<dt><span class="memberNameLink"><a href="play/db/jpa/JPA.html#withTransaction-java.lang.Runnable-">withTransaction(Runnable)</a></span> - Static method in class play.db.jpa.<a href="play/db/jpa/JPA.html" title="class in play.db.jpa">JPA</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>
-<div class="block"><span class="deprecationComment">as of 2.5.0. Inject a JPAApi instead.</span></div>
-</div>
-</dd>
-<dt><span class="memberNameLink"><a href="play/db/jpa/JPA.html#withTransaction-java.lang.String-boolean-java.util.function.Supplier-">withTransaction(String, boolean, Supplier&lt;T&gt;)</a></span> - Static method in class play.db.jpa.<a href="play/db/jpa/JPA.html" title="class in play.db.jpa">JPA</a></dt>
-<dd>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>
-<div class="block"><span class="deprecationComment">as of 2.5.0. Inject a JPAApi instead.</span></div>
-</div>
-</dd>
 <dt><span class="memberNameLink"><a href="play/db/jpa/JPAApi.html#withTransaction-java.util.function.Function-">withTransaction(Function&lt;EntityManager, T&gt;)</a></span> - Method in interface play.db.jpa.<a href="play/db/jpa/JPAApi.html" title="interface in play.db.jpa">JPAApi</a></dt>
 <dd>
 <div class="block">Run a block of code with a given EntityManager.</div>
@@ -8017,11 +7814,9 @@ the order they are declared.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Http.Request.html#withUsername-java.lang.String-">withUsername(String)</a></span> - Method in interface play.mvc.<a href="play/mvc/Http.Request.html" title="interface in play.mvc">Http.Request</a></dt>
 <dd>
-<div class="block">Returns a request updated with specified user name</div>
-</dd>
-<dt><span class="memberNameLink"><a href="play/mvc/Http.RequestImpl.html#withUsername-java.lang.String-">withUsername(String)</a></span> - Method in class play.mvc.<a href="play/mvc/Http.RequestImpl.html" title="class in play.mvc">Http.RequestImpl</a></dt>
-<dd>
-<div class="block">This method returns a new request, based on the current underlying with a giving username.</div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>
+<div class="block"><span class="deprecationComment">As of release 2.6, use <code>withAttr(Security.USERNAME, username)</code>.</span></div>
+</div>
 </dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Http.CookieBuilder.html#withValue-java.lang.String-">withValue(String)</a></span> - Method in class play.mvc.<a href="play/mvc/Http.CookieBuilder.html" title="class in play.mvc">Http.CookieBuilder</a></dt>
 <dd>&nbsp;</dd>
@@ -8045,10 +7840,14 @@ the order they are declared.</div>
 <dd>&nbsp;</dd>
 <dt><a href="play/libs/ws/WS.html" title="class in play.libs.ws"><span class="typeNameLink">WS</span></a> - Class in <a href="play/libs/ws/package-summary.html">play.libs.ws</a></dt>
 <dd>
-<div class="block">Asynchronous API to to query web services, as an http client.</div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>
+<div class="block"><span class="deprecationComment">as of 2.6, this class is deprecated in favor of WSAPI.</span></div>
+</div>
 </dd>
 <dt><span class="memberNameLink"><a href="play/libs/ws/WS.html#WS--">WS()</a></span> - Constructor for class play.libs.ws.<a href="play/libs/ws/WS.html" title="class in play.libs.ws">WS</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
+&nbsp;</dd>
 <dt><a href="play/libs/ws/WSAPI.html" title="interface in play.libs.ws"><span class="typeNameLink">WSAPI</span></a> - Interface in <a href="play/libs/ws/package-summary.html">play.libs.ws</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="play/libs/ws/WSAuthScheme.html" title="enum in play.libs.ws"><span class="typeNameLink">WSAuthScheme</span></a> - Enum in <a href="play/libs/ws/package-summary.html">play.libs.ws</a></dt>
@@ -8081,6 +7880,10 @@ the order they are declared.</div>
 <dd>
 <div class="block">Sign a WS call.</div>
 </dd>
+<dt><a href="play/test/WSTestClient.html" title="class in play.test"><span class="typeNameLink">WSTestClient</span></a> - Class in <a href="play/test/package-summary.html">play.test</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/test/WSTestClient.html#WSTestClient--">WSTestClient()</a></span> - Constructor for class play.test.<a href="play/test/WSTestClient.html" title="class in play.test">WSTestClient</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Http.HeaderNames.html#WWW_AUTHENTICATE">WWW_AUTHENTICATE</a></span> - Static variable in interface play.mvc.<a href="play/mvc/Http.HeaderNames.html" title="interface in play.mvc">Http.HeaderNames</a></dt>
 <dd>&nbsp;</dd>
 </dl>
@@ -8107,9 +7910,9 @@ the order they are declared.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="play/libs/XML.html#XML--">XML()</a></span> - Constructor for class play.libs.<a href="play/libs/XML.html" title="class in play.libs">XML</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="play/mvc/BodyParser.Xml.html#Xml-long-play.http.HttpErrorHandler-">Xml(long, HttpErrorHandler)</a></span> - Constructor for class play.mvc.<a href="play/mvc/BodyParser.Xml.html" title="class in play.mvc">BodyParser.Xml</a></dt>
+<dt><span class="memberNameLink"><a href="play/mvc/BodyParser.Xml.html#Xml-long-play.http.HttpErrorHandler-play.api.mvc.PlayBodyParsers-">Xml(long, HttpErrorHandler, PlayBodyParsers)</a></span> - Constructor for class play.mvc.<a href="play/mvc/BodyParser.Xml.html" title="class in play.mvc">BodyParser.Xml</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="play/mvc/BodyParser.Xml.html#Xml-play.api.http.HttpConfiguration-play.http.HttpErrorHandler-">Xml(HttpConfiguration, HttpErrorHandler)</a></span> - Constructor for class play.mvc.<a href="play/mvc/BodyParser.Xml.html" title="class in play.mvc">BodyParser.Xml</a></dt>
+<dt><span class="memberNameLink"><a href="play/mvc/BodyParser.Xml.html#Xml-play.api.http.HttpConfiguration-play.http.HttpErrorHandler-play.api.mvc.PlayBodyParsers-">Xml(HttpConfiguration, HttpErrorHandler, PlayBodyParsers)</a></span> - Constructor for class play.mvc.<a href="play/mvc/BodyParser.Xml.html" title="class in play.mvc">BodyParser.Xml</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Http.MimeTypes.html#XML">XML</a></span> - Static variable in interface play.mvc.<a href="play/mvc/Http.MimeTypes.html" title="interface in play.mvc">Http.MimeTypes</a></dt>
 <dd>
@@ -8132,12 +7935,6 @@ the order they are declared.</div>
 </a>
 <h2 class="title">Y</h2>
 <dl>
-<dt><a href="play/libs/Yaml.html" title="class in play.libs"><span class="typeNameLink">Yaml</span></a> - Class in <a href="play/libs/package-summary.html">play.libs</a></dt>
-<dd>
-<div class="block">Yaml utilities.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="play/libs/Yaml.html#Yaml--">Yaml()</a></span> - Constructor for class play.libs.<a href="play/libs/Yaml.html" title="class in play.libs">Yaml</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/libs/Time.CronExpression.html#YEAR">YEAR</a></span> - Static variable in class play.libs.<a href="play/libs/Time.CronExpression.html" title="class in play.libs">Time.CronExpression</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/libs/Time.CronExpression.html#years">years</a></span> - Variable in class play.libs.<a href="play/libs/Time.CronExpression.html" title="class in play.libs">Time.CronExpression</a></dt>
@@ -8190,8 +7987,6 @@ the order they are declared.</div>
 <dd>
 <div class="block">For internal Play-use only</div>
 </dd>
-<dt><span class="memberNameLink"><a href="play/mvc/Http.RequestImpl.html#Z:Z_underlyingRequest--">_underlyingRequest()</a></span> - Method in class play.mvc.<a href="play/mvc/Http.RequestImpl.html" title="class in play.mvc">Http.RequestImpl</a></dt>
-<dd>&nbsp;</dd>
 </dl>
 <a href="#I:A">A</a>&nbsp;<a href="#I:B">B</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:F">F</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:J">J</a>&nbsp;<a href="#I:K">K</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:N">N</a>&nbsp;<a href="#I:O">O</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:Q">Q</a>&nbsp;<a href="#I:R">R</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:U">U</a>&nbsp;<a href="#I:V">V</a>&nbsp;<a href="#I:W">W</a>&nbsp;<a href="#I:X">X</a>&nbsp;<a href="#I:Y">Y</a>&nbsp;<a href="#I:Z:Z_">_</a>&nbsp;</div>
 <!-- ======= START OF BOTTOM NAVBAR ====== -->

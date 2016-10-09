@@ -43,12 +43,9 @@ sbt.version=0.13.8
 
 ### Specs2 support in a separate module
 
-If you were previously using Play's specs2 support, you now need to explicitly add a dependency on that to your project.  Additionally, specs2 now requires `scalaz-stream` which isn't available on maven central or any other repositories that sbt uses by default, so you need to add the `scalaz-stream` repository as a resolver:
-
+If you were previously using Play's specs2 support, you now need to explicitly add a dependency on that to your project:
 ```scala
 libraryDependencies += specs2 % Test
-
-resolvers += "scalaz-bintray" at "https://dl.bintray.com/scalaz/releases"
 ```
 If you are using a .scala build file, you will need to add the following import `import play.sbt.PlayImport._`
 
@@ -191,12 +188,12 @@ While Play 2.4 won't force you to use the dependency injected versions of compon
 | ------- | --------| -------- |
 | [`Lang`](api/scala/play/api/i18n/Lang$.html) | [`Langs`](api/scala/play/api/i18n/Langs.html) | |
 | [`Messages`](api/scala/play/api/i18n/Messages$.html) | [`MessagesApi`](api/scala/play/api/i18n/MessagesApi.html) | Using one of the `preferred` methods, you can get a [`Messages`](api/scala/play/api/i18n/Messages.html) instance. |
-| [`DB`](api/scala/play/api/db/DB$.html) | [`DBApi`](api/scala/play/api/db/DBApi.html) or better, [`Database`](api/scala/play/api/db/Database.html) | You can get a particular database using the `@NamedDatabase` annotation. |
+| `DB` | [`DBApi`](api/scala/play/api/db/DBApi.html) or better, [`Database`](api/scala/play/api/db/Database.html) | You can get a particular database using the `@NamedDatabase` annotation. |
 | `Cache` | [`CacheApi`](api/scala/play/api/cache/CacheApi.html) or better | You can get a particular cache using the `@NamedCache` annotation. |
 | `Cached` object | [`Cached` instance](api/scala/play/api/cache/Cached.html) | Use an injected instance instead of the companion object. You can use the `@NamedCache` annotation. |
 | [`Akka`](api/scala/play/api/libs/concurrent/Akka$.html) | N/A | No longer needed, just declare a dependency on `ActorSystem` |
-| [`WS`](api/scala/play/api/libs/ws/WS$.html) | [`WSClient`](api/scala/play/api/libs/ws/WSClient.html) | |
-| [`Crypto`](api/scala/play/api/libs/Crypto$.html) | [`Crypto`](api/scala/play/api/libs/Crypto.html) | |
+| `WS` | [`WSClient`](api/scala/play/api/libs/ws/WSClient.html) | |
+| `Crypto` | `Crypto` | |
 | `GlobalSettings` | [`HttpErrorHandler`](api/scala/play/api/http/HttpErrorHandler.html), [`HttpRequestHandler`](api/scala/play/api/http/HttpRequestHandler.html), and [`HttpFilters`](api/scala/play/api/http/HttpFilters.html)| Read the details in the [[GlobalSettings|Migration24#GlobalSettings]] section below. |
 
 #### Java
@@ -205,12 +202,12 @@ While Play 2.4 won't force you to use the dependency injected versions of compon
 | ------- | --------| -------- |
 | [`Lang`](api/java/play/i18n/Lang.html) | [`Langs`](api/java/play/i18n/Langs.html) | Instances of `Lang` objects are still fine to use |
 | [`Messages`](api/java/play/i18n/Messages.html) | [`MessagesApi`](api/java/play/i18n/MessagesApi.html) | Using one of the `preferred` methods, you can get a `Messages` instance, and you can then use `at` to get messages for that lang. |
-| [`DB`](api/java/play/db/DB.html) | [`DBApi`](api/java/play/db/DBApi.html) or better, [`Database`](api/java/play/db/Database.html) | You can get a particular database using the [`@NamedDatabase`](api/java/play/db/NamedDatabase.html) annotation. |
+| `DB` | [`DBApi`](api/java/play/db/DBApi.html) or better, [`Database`](api/java/play/db/Database.html) | You can get a particular database using the [`@NamedDatabase`](api/java/play/db/NamedDatabase.html) annotation. |
 | [`JPA`](api/java/play/db/jpa/JPA.html) | [`JPAApi`](api/java/play/db/jpa/JPAApi.html) | |
 | `Cache` | [`CacheApi`](api/java/play/cache/CacheApi.html) | You can get a particular cache using the [`@NamedCache`](api/java/play/cache/NamedCache.html) annotation. |
 | [`Akka`](api/java/play/libs/Akka.html) | N/A | No longer needed, just declare a dependency on `ActorSystem` |
 | [`WS`](api/java/play/libs/ws/WS.html) | [`WSClient`](api/java/play/libs/ws/WSClient.html) | |
-| [`Crypto`](api/java/play/libs/Crypto.html) | [`Crypto`](api/java/play/libs/Crypto.html) | The old static methods have been removed, an instance can statically be accessed using `play.Play.application().injector().instanceOf(Crypto.class)` |
+| `Crypto` | `Crypto` | The old static methods have been removed, an instance can statically be accessed using `play.Play.application().injector().instanceOf(Crypto.class)` |
 | `GlobalSettings` | [`HttpErrorHandler`](api/java/play/http/HttpErrorHandler.html), [`HttpRequestHandler`](api/java/play/http/HttpRequestHandler.html), and [`HttpFilters`](api/java/play/http/HttpFilters.html)| Read the details in the [[GlobalSettings|Migration24#GlobalSettings]] section below. |
 
 ### GlobalSettings
@@ -470,7 +467,7 @@ Old format | _hex(cipher(plaintext))_ | writes | reads | | reads
 New format I | "1-" + _base64(cipher(plaintext))_ | | | writes | reads
 New format II | "2-" + _base64(iv + cipher(plaintext, iv))_ | | | writes | reads
 
-Usage of the [Java Crypto API](api/java/play/libs/Crypto.html) remains the same even though the output is different:
+Usage of the Java Crypto API remains the same even though the output is different:
 
 ```java
 import play.libs.Crypto;
@@ -479,7 +476,7 @@ String enc = Crypto.encryptAES(orig);
 String dec = Crypto.decryptAES(enc);
 ```
 
-Usage of the [Scala Crypto API](api/scala/play/api/libs/Crypto.html) is also the same:
+Usage of the Scala Crypto API is also the same:
 
 ```scala
 import play.api.libs.Crypto

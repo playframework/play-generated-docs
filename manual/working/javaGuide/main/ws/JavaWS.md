@@ -17,6 +17,8 @@ Now any controller or component that wants to use WS will have to add the follow
 
 @[ws-controller](code/javaguide/ws/Application.java)
 
+> If you are calling out to an [unreliable network](https://queue.acm.org/detail.cfm?id=2655736) or doing any blocking work, including any kind of DNS work such as calling [`java.util.URL.equals()`](https://docs.oracle.com/javase/8/docs/api/java/net/URL.html#equals-java.lang.Object-), then you should use a custom execution context as described in [[ThreadPools]].  You should size the pool to leave a safety margin large enough to account for timeouts, and consider using [`play.libs.concurrent.Futures.timeout`](api/java/play/libs/concurrent/Futures.html) and a [Failsafe Circuit Breaker](https://github.com/jhalterman/failsafe#circuit-breakers).
+
 To build an HTTP request, you start with `ws.url()` to specify the URL.
 
 @[ws-holder](code/javaguide/ws/JavaWS.java)
@@ -170,7 +172,12 @@ You can map a `CompletionStage<WSResponse>` to a `CompletionStage<Result>` that 
 
 @[ws-action](code/javaguide/ws/JavaWS.java)
 
-## Using WSClient
+### Using WSClient with CompletionStage Timeout
+
+If a chain of WS calls does not complete in time, it may be useful to wrap the result in a timeout block, which will return a failed Future if the chain does not complete in time.  
+The best way to do this is with Play's [[non-blocking Timeout feature|JavaAsync]], using [`play.libs.concurrent.Timeout`](api/java/play/libs/concurrent/Timeout.html).
+
+## Directly creating WSClient
 
 We recommend that you get your `WSClient` instances using [[dependency injection|JavaDependencyInjection]] as described above. `WSClient` instances created through dependency injection are simpler to use because they are automatically created when the application starts and cleaned up when the application stops.
 
@@ -185,6 +192,12 @@ Here is an example of how to create a `WSClient` instance by yourself:
 @[ws-custom-client](code/javaguide/ws/JavaWS.java)
 
 @[ws-client](code/javaguide/ws/JavaWS.java)
+
+You can also use [`play.libs.ws.WS.newClient`](api/java/play/libs/ws/WS.html) to create an instance of `WSClient` in a functional test.  See [[JavaTestingWebServiceClients]] for more details. 
+
+Or, you can run the `WSClient` completely standalone without involving a running Play application at all:
+
+@[ws-standalone](code/javaguide/ws/Standalone.java)
 
 Once you are done with your custom client work, you **must** close the client:
 
@@ -221,7 +234,7 @@ There are 3 different timeouts in WS. Reaching a timeout causes the WS request t
 
 The request timeout can be overridden for a specific connection with `setTimeout()` (see "Making a Request" section).
 
-## Configuring WS with SSL
+### Configuring WS with SSL
 
 To configure WS for use with HTTP over SSL/TLS (HTTPS), please see [[Configuring WS SSL|WsSSL]].
 

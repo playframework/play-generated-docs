@@ -17,6 +17,12 @@ A `Future[Result]` will eventually be redeemed with a value of type `Result`. By
 
 The web client will be blocked while waiting for the response, but nothing will be blocked on the server, and server resources can be used to serve other clients.
 
+Using a `Future` is only half of the picture though!  If you are calling out to a blocking API such as JDBC, then you still will need to have your ExecutionStage run with a different executor, to move it off Play's rendering thread pool.  You can do this by creating a subclass of `play.api.libs.concurrent.CustomExecutionContext` with a reference to the [custom dispatcher](http://doc.akka.io/docs/akka/current/scala/dispatchers.html).
+
+@[my-execution-context](code/ScalaAsync.scala)
+
+Please see [[ThreadPools]] for more information on using custom execution contexts effectively.
+
 ## How to create a `Future[Result]`
 
 To create a `Future[Result]` we need another future first: the future that will give us the actual value we need to compute the result:
@@ -51,6 +57,8 @@ Play [[actions|ScalaActions]] are asynchronous by default. For instance, in the 
 
 ## Handling time-outs
 
-It is often useful to handle time-outs properly, to avoid having the web browser block and wait if something goes wrong. You can easily compose a future with a timeout to handle these cases. This can be done using `akka.pattern.after`, which uses your actor system's scheduler to complete the future after a certain amount of time. (Note that we assume you've injected the `actorSystem: ActorSystem` into your controller here to access its scheduler.)
+It is often useful to handle time-outs properly, to avoid having the web browser block and wait if something goes wrong. You can use [`play.api.libs.concurrent.Timeout`](api/scala/play/api/libs/concurrent/Timeout.html) to wrap a Future in a non-blocking timeout.
 
 @[timeout](code/ScalaAsync.scala)
+
+> **Note:** Timeout is not the same as cancellation -- even in case of timeout, the given future will still complete, even though that completed value is not returned.

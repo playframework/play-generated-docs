@@ -57,16 +57,14 @@
 <span class="cmt">// then in a controller</span>
 <span class="kw">def</span> index = Authenticated { <span class="kw">implicit</span> request <span class="kw">=&gt;</span>
   Ok(<span class="lit">"Hello "</span> + request.user)
-}</pre><p>It can also be used from an action builder, for example:</p><pre><span class="kw">class</span> AuthenticatedDbRequest[A](<span class="kw">val</span> user: User,
-                                <span class="kw">val</span> conn: Connection,
-                                request: Request[A]) <span class="kw">extends</span> WrappedRequest[A](request)
+}</pre><p>It can also be used from an action builder, for example:</p><pre><span class="kw">class</span> AuthMessagesRequest[A](<span class="kw">val</span> user: User,
+                              messagesApi: MessagesApi,
+                              request: Request[A]) <span class="kw">extends</span> WrappedRequest[A](request)
 
-<span class="kw">object</span> Authenticated <span class="kw">extends</span> ActionBuilder[AuthenticatedDbRequest] {
-  <span class="kw">def</span> invokeBlock[A](request: Request[A], block: (AuthenticatedDbRequest[A]) <span class="kw">=&gt;</span> Future[Result]) = {
+<span class="kw">class</span> Authenticated @Inject()(messagesApi: MessagesApi) <span class="kw">extends</span> ActionBuilder[AuthMessagesRequest] {
+  <span class="kw">def</span> invokeBlock[A](request: Request[A], block: (AuthMessagesRequest[A]) <span class="kw">=&gt;</span> Future[Result]) = {
     AuthenticatedBuilder(req <span class="kw">=&gt;</span> getUserFromRequest(req)).authenticate(request, { authRequest: AuthenticatedRequest[A, User] <span class="kw">=&gt;</span>
-      DB.withConnection { conn <span class="kw">=&gt;</span>
-        block(<span class="kw">new</span> AuthenticatedDbRequest[A](authRequest.user, conn, request))
-      }
+        block(<span class="kw">new</span> AuthenticatedDbRequest[A](authRequest.user, messagesApi, request))
     })
   }
 }</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play/src/main/scala/play/api/mvc/Security.scala" target="_blank">Security.scala</a></dd></dl><div class="toggleContainer block">
@@ -166,36 +164,36 @@
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="play.api.mvc.Security.AuthenticatedBuilder#apply" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="apply():play.api.mvc.Security.AuthenticatedBuilder[String]"></a>
-      <a id="apply():AuthenticatedBuilder[String]"></a>
+      <a id="apply(defaultParser:play.api.mvc.BodyParser[play.api.mvc.AnyContent])(implicitec:scala.concurrent.ExecutionContext):play.api.mvc.Security.AuthenticatedBuilder[String]"></a>
+      <a id="apply(BodyParser[AnyContent])(ExecutionContext):AuthenticatedBuilder[String]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">apply</span><span class="params">()</span><span class="result">: <a href="Security$$AuthenticatedBuilder.html" class="extype" name="play.api.mvc.Security.AuthenticatedBuilder">AuthenticatedBuilder</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+        <span class="name">apply</span><span class="params">(<span name="defaultParser">defaultParser: <a href="BodyParser.html" class="extype" name="play.api.mvc.BodyParser">BodyParser</a>[<a href="AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: <a href="Security$$AuthenticatedBuilder.html" class="extype" name="play.api.mvc.Security.AuthenticatedBuilder">AuthenticatedBuilder</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.Security$$AuthenticatedBuilder$@apply():play.api.mvc.Security.AuthenticatedBuilder[String]" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.Security$$AuthenticatedBuilder$@apply(defaultParser:play.api.mvc.BodyParser[play.api.mvc.AnyContent])(implicitec:scala.concurrent.ExecutionContext):play.api.mvc.Security.AuthenticatedBuilder[String]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <p class="shortcomment cmt">Simple authenticated action builder that looks up the username from the session
 </p>
     </li><li name="play.api.mvc.Security.AuthenticatedBuilder#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="apply[U](userinfo:play.api.mvc.RequestHeader=&gt;Option[U],onUnauthorized:play.api.mvc.RequestHeader=&gt;play.api.mvc.Result):play.api.mvc.Security.AuthenticatedBuilder[U]"></a>
-      <a id="apply[U]((RequestHeader)⇒Option[U],(RequestHeader)⇒Result):AuthenticatedBuilder[U]"></a>
+      <a id="apply[U](userinfo:play.api.mvc.RequestHeader=&gt;Option[U],defaultParser:play.api.mvc.BodyParser[play.api.mvc.AnyContent],onUnauthorized:play.api.mvc.RequestHeader=&gt;play.api.mvc.Result)(implicitec:scala.concurrent.ExecutionContext):play.api.mvc.Security.AuthenticatedBuilder[U]"></a>
+      <a id="apply[U]((RequestHeader)⇒Option[U],BodyParser[AnyContent],(RequestHeader)⇒Result)(ExecutionContext):AuthenticatedBuilder[U]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">apply</span><span class="tparams">[<span name="U">U</span>]</span><span class="params">(<span name="userinfo">userinfo: (<a href="RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="play.api.mvc.Security.AuthenticatedBuilder.apply.U">U</span>]</span>, <span name="onUnauthorized">onUnauthorized: (<a href="RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a> = <span class="defval" name='<span class="name"><a href="Codec$.html">_ =&gt; Unauthorized(views.html.defaultpages.unauthorized())</a></span>'>...</span></span>)</span><span class="result">: <a href="Security$$AuthenticatedBuilder.html" class="extype" name="play.api.mvc.Security.AuthenticatedBuilder">AuthenticatedBuilder</a>[<span class="extype" name="play.api.mvc.Security.AuthenticatedBuilder.apply.U">U</span>]</span>
+        <span class="name">apply</span><span class="tparams">[<span name="U">U</span>]</span><span class="params">(<span name="userinfo">userinfo: (<a href="RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="play.api.mvc.Security.AuthenticatedBuilder.apply.U">U</span>]</span>, <span name="defaultParser">defaultParser: <a href="BodyParser.html" class="extype" name="play.api.mvc.BodyParser">BodyParser</a>[<a href="AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a>]</span>, <span name="onUnauthorized">onUnauthorized: (<a href="RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a> = <span class="defval" name='<span class="name"><a href="Codec$.html">_ =&gt; Unauthorized(views.html.defaultpages.unauthorized())</a></span>'>...</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result">: <a href="Security$$AuthenticatedBuilder.html" class="extype" name="play.api.mvc.Security.AuthenticatedBuilder">AuthenticatedBuilder</a>[<span class="extype" name="play.api.mvc.Security.AuthenticatedBuilder.apply.U">U</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.Security$$AuthenticatedBuilder$@apply[U](userinfo:play.api.mvc.RequestHeader=&gt;Option[U],onUnauthorized:play.api.mvc.RequestHeader=&gt;play.api.mvc.Result):play.api.mvc.Security.AuthenticatedBuilder[U]" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.Security$$AuthenticatedBuilder$@apply[U](userinfo:play.api.mvc.RequestHeader=&gt;Option[U],defaultParser:play.api.mvc.BodyParser[play.api.mvc.AnyContent],onUnauthorized:play.api.mvc.RequestHeader=&gt;play.api.mvc.Result)(implicitec:scala.concurrent.ExecutionContext):play.api.mvc.Security.AuthenticatedBuilder[U]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>

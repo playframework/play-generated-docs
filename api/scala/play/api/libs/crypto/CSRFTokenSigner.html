@@ -52,12 +52,12 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Cryptographic utilities for generating and validating CSRF tokens.</p><p>This trait should not be used as a general purpose encryption utility.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play/src/main/scala/play/api/libs/crypto/Crypto.scala" target="_blank">Crypto.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play/src/main/scala/play/api/libs/crypto/CSRFTokenSigner.scala" target="_blank">CSRFTokenSigner.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
             <span class="toggle">Known Subclasses</span>
-            <div class="subClasses hiddenContent"><a href="../Crypto.html" class="extype" name="play.api.libs.Crypto">Crypto</a>, <a href="DefaultCSRFTokenSigner.html" class="extype" name="play.api.libs.crypto.DefaultCSRFTokenSigner">DefaultCSRFTokenSigner</a></div>
+            <div class="subClasses hiddenContent"><a href="DefaultCSRFTokenSigner.html" class="extype" name="play.api.libs.crypto.DefaultCSRFTokenSigner">DefaultCSRFTokenSigner</a></div>
           </div></div>
         
 
@@ -116,25 +116,6 @@
     </span>
       <p class="shortcomment cmt">Compare two signed tokens
 </p>
-    </li><li name="play.api.libs.crypto.CSRFTokenSigner#constantTimeEquals" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="constantTimeEquals(a:String,b:String):Boolean"></a>
-      <a id="constantTimeEquals(String,String):Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">abstract </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">constantTimeEquals</span><span class="params">(<span name="a">a: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="b">b: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.crypto.CSRFTokenSigner@constantTimeEquals(a:String,b:String):Boolean" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Constant time equals method.</p><div class="fullcomment"><div class="comment cmt"><p>Constant time equals method.</p><p>Given a length that both Strings are equal to, this method will always run in constant time.  This prevents
-timing attacks.
-</p></div></div>
     </li><li name="play.api.libs.crypto.CSRFTokenSigner#extractSignedToken" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="extractSignedToken(token:String):Option[String]"></a>
       <a id="extractSignedToken(String):Option[String]"></a>
@@ -151,7 +132,7 @@ timing attacks.
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Extract a signed token that was signed by <a href="../Crypto$.html#signToken(token:String):String" class="extmbr" name="play.api.libs.Crypto#signToken">play.api.libs.Crypto.signToken</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Extract a signed token that was signed by <a href="../Crypto$.html#signToken(token:String):String" class="extmbr" name="play.api.libs.Crypto#signToken">play.api.libs.Crypto.signToken</a>.
+      <p class="shortcomment cmt">Extract a signed token that was signed by <span class="extype" name="signToken(String)">signToken(String)</span>.</p><div class="fullcomment"><div class="comment cmt"><p>Extract a signed token that was signed by <span class="extype" name="signToken(String)">signToken(String)</span>.
 </p></div><dl class="paramcmts block"><dt class="param">token</dt><dd class="cmt"><p>The signed token to extract.</p></dd><dt>returns</dt><dd class="cmt"><p>The verified raw token, or None if the token isn't valid.</p></dd></dl></div>
     </li><li name="play.api.libs.crypto.CSRFTokenSigner#generateSignedToken" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="generateSignedToken:String"></a>
@@ -203,9 +184,31 @@ timing attacks.
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Sign a token.</p><div class="fullcomment"><div class="comment cmt"><p>Sign a token.  This produces a new token, that has this token signed with a nonce.</p><p>This primarily exists to defeat the BREACH vulnerability, as it allows the token to effectively be random per
-request, without actually changing the value.
+      <p class="shortcomment cmt">Sign a token.</p><div class="fullcomment"><div class="comment cmt"><p>Sign a token.  This produces a new token, that has this token signed with a nonce.</p><p>This primarily exists to defeat the BREACH vulnerability, as it allows the token
+to effectively be random per request, without actually changing the value.
 </p></div><dl class="paramcmts block"><dt class="param">token</dt><dd class="cmt"><p>The token to sign</p></dd><dt>returns</dt><dd class="cmt"><p>The signed token</p></dd></dl></div>
+    </li><li name="play.api.libs.crypto.CSRFTokenSigner#constantTimeEquals" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="constantTimeEquals(a:String,b:String):Boolean"></a>
+      <a id="constantTimeEquals(String,String):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 2.6.0) Please use scala.tools.nsc.doc.base.MemberLookupBase$$anon$1@65313494 over this method.">constantTimeEquals</span><span class="params">(<span name="a">a: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="b">b: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.crypto.CSRFTokenSigner@constantTimeEquals(a:String,b:String):Boolean" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Constant time equals method.</p><div class="fullcomment"><div class="comment cmt"><p>Constant time equals method.</p><p>Given a length that both Strings are equal to, this method will always
+run in constant time.  This prevents timing attacks.
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Please use <span class="extype" name="java.security.MessageDigest.isEqual(a.getBytes(&quot;utf-8&quot;),">b.getBytes(&quot;utf-8&quot;))</span> over this method.</p></dd></dl></div>
     </li></ol>
             </div>
 

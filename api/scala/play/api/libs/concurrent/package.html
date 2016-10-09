@@ -146,6 +146,29 @@
 }</pre><p>Then to use the above actor in your application, add a qualified injected dependency, like so:</p><pre><span class="kw">class</span> MyController @Inject() (@Named(<span class="lit">"myActor"</span>) myActor: ActorRef) <span class="kw">extends</span> Controller {
   ...
 }</pre></div></div>
+    </li><li name="play.api.libs.concurrent.CustomExecutionContext" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="CustomExecutionContextextendsExecutionContextExecutor"></a>
+      <a id="CustomExecutionContext:CustomExecutionContext"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="CustomExecutionContext.html"><span class="name">CustomExecutionContext</span></a><span class="result"> extends <span class="extype" name="scala.concurrent.ExecutionContextExecutor">ExecutionContextExecutor</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.concurrent.package@CustomExecutionContextextendsExecutionContextExecutor" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">This class defines a custom execution context that delegates to an <span class="extype" name="ActorSystem">ActorSystem</span>.</p><div class="fullcomment"><div class="comment cmt"><p>This class defines a custom execution context that delegates to an <span class="extype" name="ActorSystem">ActorSystem</span>.</p><p>It is very useful for situations in which the default execution context should not
+be used, for example if a database or blocking I/O is being used.</p><p>To define a custom context, subclass DispatcherExecutionContext with the dispatcher
+name and have it bound through dependency injection:</p><pre>@Singleton
+<span class="kw">class</span> DatabaseExecutionContext @Inject()(system: ActorSystem)
+   <span class="kw">extends</span> CustomExecutionContext(system, <span class="lit">"database-dispatcher"</span>)</pre><p>and then have the execution context passed in as a class parameter:</p><pre><span class="kw">class</span> DatabaseService @Inject()(<span class="kw">implicit</span> executionContext: DatabaseExecutionContext) {
+  ...
+}</pre></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="https://www.playframework.com/documentation/latest/ThreadPools">Thread Pools</a></p></span><span class="cmt"><p><a href="http://doc.akka.io/docs/akka/current/java/dispatchers.html">Dispatchers</a></p></span></dd></dl></div>
     </li><li name="play.api.libs.concurrent.ExecutionContextProvider" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ExecutionContextProviderextendsProvider[scala.concurrent.ExecutionContextExecutor]"></a>
       <a id="ExecutionContextProvider:ExecutionContextProvider"></a>
@@ -185,6 +208,23 @@
       </a>
     </span>
       <p class="shortcomment cmt">Support for creating injected child actors.</p>
+    </li><li name="play.api.libs.concurrent.LowPriorityTimeoutImplicits" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="LowPriorityTimeoutImplicitsextendsAnyRef"></a>
+      <a id="LowPriorityTimeoutImplicits:LowPriorityTimeoutImplicits"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="LowPriorityTimeoutImplicits.html"><span class="name">LowPriorityTimeoutImplicits</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.concurrent.package@LowPriorityTimeoutImplicitsextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Low priority timeouts to add <code>withTimeout</code> methods to <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span>.</p>
     </li><li name="play.api.libs.concurrent.MaterializerProvider" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="MaterializerProviderextendsProvider[akka.stream.Materializer]"></a>
       <a id="MaterializerProvider:MaterializerProvider"></a>
@@ -207,6 +247,41 @@
                 <span class="name">@Singleton</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="play.api.libs.concurrent.Timeout" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="TimeoutextendsAnyRef"></a>
+      <a id="Timeout:Timeout"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Timeout.html"><span class="name">Timeout</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.concurrent.package@TimeoutextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">This trait is used to provide a non-blocking timeout on an operation that returns a Future.</p><div class="fullcomment"><div class="comment cmt"><p>This trait is used to provide a non-blocking timeout on an operation that returns a Future.</p><p>Please note that the <a href="../../Application.html" class="extype" name="play.api.Application">play.api.Application</a> default <span class="extype" name="ActorSystem">ActorSystem</span> should
+be used as input here, as the actorSystem.scheduler is responsible for scheduling
+the timeout, using <a href="http://doc.akka.io/docs/akka/current/scala/futures.html#After">akka.pattern.actor</a> under the hood.</p><p>You can dependency inject the ActorSystem as follows to create a Future that will
+timeout after a certain period of time:</p><pre><span class="kw">class</span> MyService(<span class="kw">val</span> actorSystem: ActorSystem) <span class="kw">extends</span> Timeout {
+
+  <span class="kw">def</span> calculateWithTimeout(timeoutDuration: FiniteDuration): Future[<span class="std">Int</span>] = {
+    timeout(actorSystem, timeoutDuration)(rawCalculation())
+  }
+
+  <span class="kw">def</span> rawCalculation(): Future[<span class="std">Int</span>] = {
+    <span class="kw">import</span> akka.pattern.after
+    <span class="kw">implicit</span> <span class="kw">val</span> ec = actorSystem.dispatcher
+    akka.pattern.after(<span class="num">300</span> millis, actorSystem.scheduler)(Future(<span class="num">42</span>))(actorSystem.dispatcher)
+  }
+}</pre><p>You should check for timeout by using <span class="extype" name="Future.recover()">Future.recover()</span> or <span class="extype" name="Future.recoverWith()">Future.recoverWith()</span>
+and checking for <span class="extype" name="TimeoutException">TimeoutException</span>:</p><pre><span class="kw">val</span> future = myService.calculateWithTimeout(<span class="num">100</span> millis).recover {
+  <span class="kw">case</span> _: TimeoutException <span class="kw">=&gt;</span>
+    -<span class="num">1</span>
+}</pre></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="http://docs.scala-lang.org/overviews/core/futures.html" target="_blank">Futures and Promises</a></p></span></dd></dl></div>
     </li></ol>
             </div>
 
@@ -248,7 +323,31 @@
       </a>
     </span>
       <p class="shortcomment cmt">Helper to access the application defined Akka Actor system.</p>
-    </li><li name="play.api.libs.concurrent.Execution" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="play.api.libs.concurrent.Timeout" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Timeout"></a>
+      <a id="Timeout:Timeout"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Timeout$.html"><span class="name">Timeout</span></a><span class="result"> extends <a href="Timeout.html" class="extype" name="play.api.libs.concurrent.Timeout">Timeout</a> with <a href="LowPriorityTimeoutImplicits.html" class="extype" name="play.api.libs.concurrent.LowPriorityTimeoutImplicits">LowPriorityTimeoutImplicits</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.concurrent.package@Timeout" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">This is a static object that can be used to import timeout implicits, as a convenience.</p><div class="fullcomment"><div class="comment cmt"><p>This is a static object that can be used to import timeout implicits, as a convenience.</p><pre><span class="kw">import</span> play.api.libs.concurrent.Timeout._</pre></div></div>
+    </li></ol>
+            </div>
+
+        
+
+        <div id="values" class="values members">
+              <h3>Deprecated Value Members</h3>
+              <ol><li name="play.api.libs.concurrent.Execution" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="Execution"></a>
       <a id="Execution:Execution"></a>
       <h4 class="signature">
@@ -257,20 +356,19 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="Execution$.html"><span class="name">Execution</span></a>
+        <a href="Execution$.html"><span class="name deprecated" title="Deprecated: (Since version 2.6.0) Please see https://www.playframework.com/documentation/2.6.x/Migration26#Execution">Execution</span></a>
       </span>
       </h4><span class="permalink">
       <a href="../../../../index.html#play.api.libs.concurrent.package@Execution" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Please see https://www.playframework.com/documentation/2.6.x/Migration26#Execution</p></dd></dl></div>
     </li></ol>
             </div>
-
-        
-
-        
         </div>
 
         <div id="inheritedMembers">

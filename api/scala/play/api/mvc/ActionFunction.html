@@ -58,7 +58,7 @@ Most users will want to use ActionBuilder instead.
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
             <span class="toggle">Known Subclasses</span>
-            <div class="subClasses hiddenContent"><a href="Action$.html" class="extype" name="play.api.mvc.Action">Action</a>, <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>, <a href="ActionFilter.html" class="extype" name="play.api.mvc.ActionFilter">ActionFilter</a>, <a href="ActionRefiner.html" class="extype" name="play.api.mvc.ActionRefiner">ActionRefiner</a>, <a href="ActionTransformer.html" class="extype" name="play.api.mvc.ActionTransformer">ActionTransformer</a>, <a href="Security$$AuthenticatedBuilder.html" class="extype" name="play.api.mvc.Security.AuthenticatedBuilder">AuthenticatedBuilder</a>, <a href="../../filters/cors/CORSActionBuilder.html" class="extype" name="play.filters.cors.CORSActionBuilder">CORSActionBuilder</a></div>
+            <div class="subClasses hiddenContent"><a href="Action$.html" class="extype" name="play.api.mvc.Action">Action</a>, <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>, <a href="ActionBuilderImpl.html" class="extype" name="play.api.mvc.ActionBuilderImpl">ActionBuilderImpl</a>, <a href="ActionFilter.html" class="extype" name="play.api.mvc.ActionFilter">ActionFilter</a>, <a href="ActionRefiner.html" class="extype" name="play.api.mvc.ActionRefiner">ActionRefiner</a>, <a href="ActionTransformer.html" class="extype" name="play.api.mvc.ActionTransformer">ActionTransformer</a>, <a href="Security$$AuthenticatedBuilder.html" class="extype" name="play.api.mvc.Security.AuthenticatedBuilder">AuthenticatedBuilder</a>, <a href="../../filters/cors/CORSActionBuilder.html" class="extype" name="play.filters.cors.CORSActionBuilder">CORSActionBuilder</a>, <a href="DefaultActionBuilder.html" class="extype" name="play.api.mvc.DefaultActionBuilder">DefaultActionBuilder</a>, <a href="DefaultActionBuilderImpl.html" class="extype" name="play.api.mvc.DefaultActionBuilderImpl">DefaultActionBuilderImpl</a>, <a href="ActionBuilder$$IgnoringBody.html" class="extype" name="play.api.mvc.ActionBuilder.IgnoringBody">IgnoringBody</a></div>
           </div></div>
         
 
@@ -99,7 +99,25 @@ Most users will want to use ActionBuilder instead.
 
         <div id="values" class="values members">
               <h3>Abstract Value Members</h3>
-              <ol><li name="play.api.mvc.ActionFunction#invokeBlock" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+              <ol><li name="play.api.mvc.ActionFunction#executionContext" visbl="prt" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="executionContext:scala.concurrent.ExecutionContext"></a>
+      <a id="executionContext:ExecutionContext"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">executionContext</span><span class="result">: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.ActionFunction@executionContext:scala.concurrent.ExecutionContext" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Get the execution context to run the request in.</p><div class="fullcomment"><div class="comment cmt"><p>Get the execution context to run the request in.
+</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>The execution context</p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
+    </li><li name="play.api.mvc.ActionFunction#invokeBlock" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="invokeBlock[A](request:R[A],block:P[A]=&gt;scala.concurrent.Future[play.api.mvc.Result]):scala.concurrent.Future[play.api.mvc.Result]"></a>
       <a id="invokeBlock[A](R[A],(P[A])⇒Future[Result]):Future[Result]"></a>
       <h4 class="signature">
@@ -233,18 +251,18 @@ any other actions, modify the request object or potentially use a different clas
               
         </dd></dl></div>
     </li><li name="play.api.mvc.ActionFunction#compose" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="compose(other:play.api.mvc.ActionBuilder[R]):play.api.mvc.ActionBuilder[P]"></a>
-      <a id="compose(ActionBuilder[R]):ActionBuilder[P]"></a>
+      <a id="compose[B](other:play.api.mvc.ActionBuilder[R,B]):play.api.mvc.ActionBuilder[P,B]"></a>
+      <a id="compose[B](ActionBuilder[R,B]):ActionBuilder[P,B]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">compose</span><span class="params">(<span name="other">other: <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>[<span class="extype" name="play.api.mvc.ActionFunction.R">R</span>]</span>)</span><span class="result">: <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>[<span class="extype" name="play.api.mvc.ActionFunction.P">P</span>]</span>
+        <span class="name">compose</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="other">other: <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>[<span class="extype" name="play.api.mvc.ActionFunction.R">R</span>, <span class="extype" name="play.api.mvc.ActionFunction.compose.B">B</span>]</span>)</span><span class="result">: <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>[<span class="extype" name="play.api.mvc.ActionFunction.P">P</span>, <span class="extype" name="play.api.mvc.ActionFunction.compose.B">B</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.ActionFunction@compose(other:play.api.mvc.ActionBuilder[R]):play.api.mvc.ActionBuilder[P]" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.ActionFunction@compose[B](other:play.api.mvc.ActionBuilder[R,B]):play.api.mvc.ActionBuilder[P,B]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -301,24 +319,6 @@ any other actions, modify the request object or potentially use a different clas
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="play.api.mvc.ActionFunction#executionContext" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="executionContext:scala.concurrent.ExecutionContext"></a>
-      <a id="executionContext:ExecutionContext"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">executionContext</span><span class="result">: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.ActionFunction@executionContext:scala.concurrent.ExecutionContext" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Get the execution context to run the request in.</p><div class="fullcomment"><div class="comment cmt"><p>Get the execution context to run the request in.  Override this if you want a custom execution context
-</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>The execution context</p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>

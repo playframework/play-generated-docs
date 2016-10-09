@@ -45,11 +45,11 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <span class="name">BaseOneAppPerTest</span><span class="result"> extends <span class="extype" name="org.scalatest.SuiteMixin">SuiteMixin</span> with <a href="AppProvider.html" class="extype" name="org.scalatestplus.play.AppProvider">AppProvider</a></span>
+        <span class="name">BaseOneAppPerTest</span><span class="result"> extends <span class="extype" name="org.scalatest.TestSuiteMixin">TestSuiteMixin</span> with <a href="AppProvider.html" class="extype" name="org.scalatestplus.play.AppProvider">AppProvider</a></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Trait that provides a new <code>Application</code> instance for each test.</p><p>This <code>SuiteMixin</code> trait's overridden <code>withFixture</code> method creates a new <code>Application</code>
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Trait that provides a new <code>Application</code> instance for each test.</p><p>This <code>TestSuiteMixin</code> trait's overridden <code>withFixture</code> method creates a new <code>Application</code>
 before each test and ensures it is cleaned up after the test has completed. You can
 access the <code>Application</code> from your tests as method <code>app</code> (which is marked implicit).</p><p>By default, this trait creates a new <code>Application</code> for each test using default parameter values, which
 is returned by the <code>newAppForTest</code> method defined in this trait. If your tests need a <code>Application</code> with non-default
@@ -81,9 +81,9 @@ class ExampleSpec extends PlaySpec with OneAppPerTest {
   }
 }
 </pre>
-</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="org.scalatestplus.play.BaseOneAppPerTest">BaseOneAppPerTest</a> with <span class="extype" name="org.scalatest.Suite">Suite</span> with <a href="FakeApplicationFactory.html" class="extype" name="org.scalatestplus.play.FakeApplicationFactory">FakeApplicationFactory</a></dd><dt>Source</dt><dd><a href="https://github.com/playframework/scalatestplus-play/tree/master/module/src/main/scala/org/scalatestplus/play/BaseOneAppPerTest.scala" target="_blank">BaseOneAppPerTest.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="org.scalatestplus.play.BaseOneAppPerTest">BaseOneAppPerTest</a> with <span class="extype" name="org.scalatest.TestSuite">TestSuite</span> with <a href="FakeApplicationFactory.html" class="extype" name="org.scalatestplus.play.FakeApplicationFactory">FakeApplicationFactory</a></dd><dt>Source</dt><dd><a href="https://github.com/playframework/scalatestplus-play/tree/master/module/src/main/scala/org/scalatestplus/play/BaseOneAppPerTest.scala" target="_blank">BaseOneAppPerTest.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="AppProvider.html" class="extype" name="org.scalatestplus.play.AppProvider">AppProvider</a>, <span class="extype" name="org.scalatest.SuiteMixin">SuiteMixin</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="AppProvider.html" class="extype" name="org.scalatestplus.play.AppProvider">AppProvider</a>, <span class="extype" name="org.scalatest.TestSuiteMixin">TestSuiteMixin</span>, <span class="extype" name="org.scalatest.SuiteMixin">SuiteMixin</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
             <span class="toggle">Known Subclasses</span>
             <div class="subClasses hiddenContent"><a href="guice/GuiceOneAppPerTest.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneAppPerTest">GuiceOneAppPerTest</a>, <a href="OneAppPerTest.html" class="extype" name="org.scalatestplus.play.OneAppPerTest">OneAppPerTest</a></div>
@@ -104,7 +104,7 @@ class ExampleSpec extends PlaySpec with OneAppPerTest {
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="org.scalatestplus.play.BaseOneAppPerTest"><span>BaseOneAppPerTest</span></li><li class="in" name="org.scalatestplus.play.AppProvider"><span>AppProvider</span></li><li class="in" name="org.scalatest.SuiteMixin"><span>SuiteMixin</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="org.scalatestplus.play.BaseOneAppPerTest"><span>BaseOneAppPerTest</span></li><li class="in" name="org.scalatestplus.play.AppProvider"><span>AppProvider</span></li><li class="in" name="org.scalatest.TestSuiteMixin"><span>TestSuiteMixin</span></li><li class="in" name="org.scalatest.SuiteMixin"><span>SuiteMixin</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -752,7 +752,7 @@ need a <code>Application</code> created with non-default parameter values.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">withFixture</span><span class="params">(<span name="test">test: (<a href="" class="extype" name="org.scalatestplus.play.BaseOneAppPerTest">BaseOneAppPerTest</a>.this)#<span class="extype" name="org.scalatest.Suite.NoArgTest">NoArgTest</span></span>)</span><span class="result">: <span class="extype" name="org.scalatest.Outcome">Outcome</span></span>
+        <span class="name">withFixture</span><span class="params">(<span name="test">test: (<a href="" class="extype" name="org.scalatestplus.play.BaseOneAppPerTest">BaseOneAppPerTest</a>.this)#<span class="extype" name="org.scalatest.TestSuite.NoArgTest">NoArgTest</span></span>)</span><span class="result">: <span class="extype" name="org.scalatest.Outcome">Outcome</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#org.scalatestplus.play.BaseOneAppPerTest@withFixture(test:BaseOneAppPerTest.this.NoArgTest):org.scalatest.Outcome" title="Permalink" target="_top">
@@ -763,7 +763,7 @@ need a <code>Application</code> created with non-default parameter values.
 ensure it is cleaned up after the test completes.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a new <code>Application</code> instance before executing each test, and
 ensure it is cleaned up after the test completes. You can access the <code>Application</code> from
 your tests via <code>app</code>.
-</p></div><dl class="paramcmts block"><dt class="param">test</dt><dd class="cmt"><p>the no-arg test function to run with a fixture</p></dd><dt>returns</dt><dd class="cmt"><p>the <code>Outcome</code> of the test execution</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.scalatestplus.play.BaseOneAppPerTest">BaseOneAppPerTest</a> → SuiteMixin</dd></dl></div>
+</p></div><dl class="paramcmts block"><dt class="param">test</dt><dd class="cmt"><p>the no-arg test function to run with a fixture</p></dd><dt>returns</dt><dd class="cmt"><p>the <code>Outcome</code> of the test execution</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.scalatestplus.play.BaseOneAppPerTest">BaseOneAppPerTest</a> → TestSuiteMixin</dd></dl></div>
     </li></ol>
             </div>
 
@@ -775,6 +775,8 @@ your tests via <code>app</code>.
         <div id="inheritedMembers">
         <div class="parent" name="org.scalatestplus.play.AppProvider">
               <h3>Inherited from <a href="AppProvider.html" class="extype" name="org.scalatestplus.play.AppProvider">AppProvider</a></h3>
+            </div><div class="parent" name="org.scalatest.TestSuiteMixin">
+              <h3>Inherited from <span class="extype" name="org.scalatest.TestSuiteMixin">TestSuiteMixin</span></h3>
             </div><div class="parent" name="org.scalatest.SuiteMixin">
               <h3>Inherited from <span class="extype" name="org.scalatest.SuiteMixin">SuiteMixin</span></h3>
             </div><div class="parent" name="scala.AnyRef">

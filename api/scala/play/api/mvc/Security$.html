@@ -92,7 +92,7 @@
         <div id="types" class="types members">
               <h3>Type Members</h3>
               <ol><li name="play.api.mvc.Security.AuthenticatedBuilder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="AuthenticatedBuilder[U]extendsActionBuilder[[A]play.api.mvc.Security.AuthenticatedRequest[A,U]]"></a>
+      <a id="AuthenticatedBuilder[U]extendsActionBuilder[[A]play.api.mvc.Security.AuthenticatedRequest[A,U],play.api.mvc.AnyContent]"></a>
       <a id="AuthenticatedBuilder[U]:AuthenticatedBuilder[U]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -100,10 +100,10 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="Security$$AuthenticatedBuilder.html"><span class="name">AuthenticatedBuilder</span></a><span class="tparams">[<span name="U">U</span>]</span><span class="result"> extends <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>[[A]<a href="Security$$AuthenticatedRequest.html" class="extype" name="play.api.mvc.Security.AuthenticatedRequest">AuthenticatedRequest</a>[<span class="extype" name="play.api.mvc.Security.&lt;refinement&gt;.R.A">A</span>, <span class="extype" name="play.api.mvc.Security.AuthenticatedBuilder.U">U</span>]]</span>
+        <a href="Security$$AuthenticatedBuilder.html"><span class="name">AuthenticatedBuilder</span></a><span class="tparams">[<span name="U">U</span>]</span><span class="result"> extends <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>[[A]<a href="Security$$AuthenticatedRequest.html" class="extype" name="play.api.mvc.Security.AuthenticatedRequest">AuthenticatedRequest</a>[<span class="extype" name="play.api.mvc.Security.&lt;refinement&gt;.R.A">A</span>, <span class="extype" name="play.api.mvc.Security.AuthenticatedBuilder.U">U</span>], <a href="AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.Security$@AuthenticatedBuilder[U]extendsActionBuilder[[A]play.api.mvc.Security.AuthenticatedRequest[A,U]]" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.Security$@AuthenticatedBuilder[U]extendsActionBuilder[[A]play.api.mvc.Security.AuthenticatedRequest[A,U],play.api.mvc.AnyContent]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -281,16 +281,14 @@ and what to do in case unsuccessful authentication</p><p>For example:</p><pre> <
 <span class="cmt">// then in a controller</span>
 <span class="kw">def</span> index = Authenticated { <span class="kw">implicit</span> request <span class="kw">=&gt;</span>
   Ok(<span class="lit">"Hello "</span> + request.user)
-}</pre><p>It can also be used from an action builder, for example:</p><pre><span class="kw">class</span> AuthenticatedDbRequest[A](<span class="kw">val</span> user: User,
-                                <span class="kw">val</span> conn: Connection,
-                                request: Request[A]) <span class="kw">extends</span> WrappedRequest[A](request)
+}</pre><p>It can also be used from an action builder, for example:</p><pre><span class="kw">class</span> AuthMessagesRequest[A](<span class="kw">val</span> user: User,
+                              messagesApi: MessagesApi,
+                              request: Request[A]) <span class="kw">extends</span> WrappedRequest[A](request)
 
-<span class="kw">object</span> Authenticated <span class="kw">extends</span> ActionBuilder[AuthenticatedDbRequest] {
-  <span class="kw">def</span> invokeBlock[A](request: Request[A], block: (AuthenticatedDbRequest[A]) <span class="kw">=&gt;</span> Future[Result]) = {
+<span class="kw">class</span> Authenticated @Inject()(messagesApi: MessagesApi) <span class="kw">extends</span> ActionBuilder[AuthMessagesRequest] {
+  <span class="kw">def</span> invokeBlock[A](request: Request[A], block: (AuthMessagesRequest[A]) <span class="kw">=&gt;</span> Future[Result]) = {
     AuthenticatedBuilder(req <span class="kw">=&gt;</span> getUserFromRequest(req)).authenticate(request, { authRequest: AuthenticatedRequest[A, User] <span class="kw">=&gt;</span>
-      DB.withConnection { conn <span class="kw">=&gt;</span>
-        block(<span class="kw">new</span> AuthenticatedDbRequest[A](authRequest.user, conn, request))
-      }
+        block(<span class="kw">new</span> AuthenticatedDbRequest[A](authRequest.user, messagesApi, request))
     })
   }
 }</pre></div></div>

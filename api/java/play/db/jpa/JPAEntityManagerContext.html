@@ -17,8 +17,8 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":42};
-var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"],32:["t6","Deprecated Methods"]};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -144,7 +144,7 @@ extends java.lang.ThreadLocal&lt;java.util.Deque&lt;javax.persistence.EntityMana
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t6" class="tableTab"><span><a href="javascript:show(32);">Deprecated Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
@@ -173,15 +173,6 @@ extends java.lang.ThreadLocal&lt;java.util.Deque&lt;javax.persistence.EntityMana
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../play/db/jpa/JPAEntityManagerContext.html#push-javax.persistence.EntityManager-boolean-">push</a></span>(javax.persistence.EntityManager&nbsp;em,
     boolean&nbsp;threadLocalFallback)</code>&nbsp;</td>
-</tr>
-<tr id="i5" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../play/db/jpa/JPAEntityManagerContext.html#pushOrPopEm-javax.persistence.EntityManager-boolean-">pushOrPopEm</a></span>(javax.persistence.EntityManager&nbsp;em,
-           boolean&nbsp;threadLocalFallback)</code>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
-<div class="block"><span class="deprecationComment">use push or pop methods</span></div>
-</div>
-</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -287,30 +278,10 @@ extends java.lang.ThreadLocal&lt;java.util.Deque&lt;javax.persistence.EntityMana
 <a name="pop-boolean-">
 <!--   -->
 </a>
-<ul class="blockList">
+<ul class="blockListLast">
 <li class="blockList">
 <h4>pop</h4>
 <pre>public&nbsp;void&nbsp;pop(boolean&nbsp;threadLocalFallback)</pre>
-</li>
-</ul>
-<a name="pushOrPopEm-javax.persistence.EntityManager-boolean-">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>pushOrPopEm</h4>
-<pre>@Deprecated
-public&nbsp;void&nbsp;pushOrPopEm(javax.persistence.EntityManager&nbsp;em,
-                                    boolean&nbsp;threadLocalFallback)</pre>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">use push or pop methods</span></div>
-<div class="block">Pushes or pops the EntityManager stack depending on the value of the
- em argument. If em is null, then the current EntityManager is popped. If em
- is non-null, then em is pushed onto the stack and becomes the current EntityManager.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>em</code> - the entity manager to push, if null then will pop one off the stack.</dd>
-<dd><code>threadLocalFallback</code> - if true, fall back to a ThreadLocal queue of entity managers if no HTTP.Context object is found.</dd>
-</dl>
 </li>
 </ul>
 </li>

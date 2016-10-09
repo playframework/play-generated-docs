@@ -62,21 +62,26 @@ If you want to define a route that, say, retrieves a client by id, you need to a
 
 > **Note:** A URI pattern may have more than one dynamic part.
 
-The default matching strategy for a dynamic part is defined by the regular expression `[^/]+`, meaning that any dynamic part defined as `:id` will match exactly one URI path segment.
+The default matching strategy for a dynamic part is defined by the regular expression `[^/]+`, meaning that any dynamic part defined as `:id` will match exactly one URI path segment. Unlike other pattern types, path segments are automatically URI-decoded in the route, before being passed to your controller, and encoded in the reverse route.
 
 ### Dynamic parts spanning several /
 
-If you want a dynamic part to capture more than one URI path segment, separated by forward slashes, you can define a dynamic part using the `*id` syntax, which uses the `.*` regular expression:
+If you want a dynamic part to capture more than one URI path segment, separated by forward slashes, you can define a dynamic part using the `*id` syntax, also known as a wildcard pattern, which uses the `.*` regular expression:
 
 @[spanning-path](code/javaguide.http.routing.routes)
 
 Here, for a request like `GET /files/images/logo.png`, the `name` dynamic part will capture the `images/logo.png` value.
+
+Note that *dynamic parts spanning several `/` are not decoded by the router or encoded by the reverse router*. It is your responsibility to validate the raw URI segment as you would for any user input. The reverse router simply does a string concatenation, so you will need to make sure the resulting path is valid, and does not, for example, contain multiple leading slashes or non-ASCII characters.
 
 ### Dynamic parts with custom regular expressions
 
 You can also define your own regular expression for a dynamic part, using the `$id<regex>` syntax:
 
 @[regex-path](code/javaguide.http.routing.routes)
+
+
+Just like with wildcard routes, the parameter is *not decoded by the router or encoded by the reverse router*. You're responsible for validating the input to make sure it makes sense in that context.
 
 ## Call to action generator method
 
@@ -152,7 +157,17 @@ You can then reverse the URL to the `hello` action method, by using the `control
 
 @[reverse-redirect](code/javaguide/http/routing/controllers/Application.java)
 
-> **Note:** There is a `routes` subpackage for each controller package. So the action `controllers.admin.Application.hello` can be reversed via `controllers.admin.routes.Application.hello`.
+> **Note:** There is a `routes` subpackage for each controller package. So the action `controllers.admin.Application.hello` can be reversed via `controllers.admin.routes.Application.hello` (as long as there is no other route before it in the routes file that happens to match the generated path).
+
+The reverse action method works quite simply: it takes your parameters and substitutes them back into the route pattern.  In the case of path segments (`:foo`), the value is encoded before the substitution is done.  For regex and wildcard patterns the string is substituted in raw form, since the value may span multiple segments.  Make sure you escape those components as desired when passing them to the reverse route, and avoid passing unvalidated user input.
+
+## The Default Controller
+
+Play includes a [`Default` controller](api/scala/controllers/Default.html) which provides a handful of useful actions. These can be invoked directly from the routes file:
+
+@[defaultcontroller](code/javaguide.http.routing.defaultcontroller.routes)
+
+In this example, `GET /` redirects to an external website, but it's also possible to redirect to another action (such as `/posts` in the above example).
 
 ## Advanced Routing
 

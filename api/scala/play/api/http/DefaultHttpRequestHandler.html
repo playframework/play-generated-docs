@@ -304,22 +304,24 @@ is the default one, in order to provide support for Java actions.
       <p class="shortcomment cmt">Apply filters to the given action.</p><div class="fullcomment"><div class="comment cmt"><p>Apply filters to the given action.
 </p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="play.api.http.DefaultHttpRequestHandler#filterHandler" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="filterHandler(next:play.api.mvc.RequestHeader=&gt;play.api.mvc.Handler):play.api.mvc.RequestHeader=&gt;play.api.mvc.Handler"></a>
-      <a id="filterHandler((RequestHeader)⇒Handler):(RequestHeader)⇒Handler"></a>
+      <a id="filterHandler(request:play.api.mvc.RequestHeader,handler:play.api.mvc.Handler):play.api.mvc.Handler"></a>
+      <a id="filterHandler(RequestHeader,Handler):Handler"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">filterHandler</span><span class="params">(<span name="next">next: (<a href="../mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <a href="../mvc/Handler.html" class="extype" name="play.api.mvc.Handler">Handler</a></span>)</span><span class="result">: (<a href="../mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <a href="../mvc/Handler.html" class="extype" name="play.api.mvc.Handler">Handler</a></span>
+        <span class="name">filterHandler</span><span class="params">(<span name="request">request: <a href="../mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>, <span name="handler">handler: <a href="../mvc/Handler.html" class="extype" name="play.api.mvc.Handler">Handler</a></span>)</span><span class="result">: <a href="../mvc/Handler.html" class="extype" name="play.api.mvc.Handler">Handler</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.http.DefaultHttpRequestHandler@filterHandler(next:play.api.mvc.RequestHeader=&gt;play.api.mvc.Handler):play.api.mvc.RequestHeader=&gt;play.api.mvc.Handler" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.http.DefaultHttpRequestHandler@filterHandler(request:play.api.mvc.RequestHeader,handler:play.api.mvc.Handler):play.api.mvc.Handler" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Apply any filters to the given handler.</p><div class="fullcomment"><div class="comment cmt"><p>Apply any filters to the given handler.
+      <p class="shortcomment cmt">Update the given handler so that when the handler is run any filters will also be run.</p><div class="fullcomment"><div class="comment cmt"><p>Update the given handler so that when the handler is run any filters will also be run. The
+default behavior is to wrap all <span class="extype" name="EssentialAction">EssentialAction</span>s by calling <code>filterAction</code>, but to leave
+other kinds of handlers unchanged.
 </p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
@@ -595,7 +597,31 @@ routers based on various request parameters.
 
         
 
-        
+        <div id="values" class="values members">
+              <h3>Deprecated Value Members</h3>
+              <ol><li name="play.api.http.DefaultHttpRequestHandler#filterHandler" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="filterHandler(next:play.api.mvc.RequestHeader=&gt;play.api.mvc.Handler):play.api.mvc.RequestHeader=&gt;play.api.mvc.Handler"></a>
+      <a id="filterHandler((RequestHeader)⇒Handler):(RequestHeader)⇒Handler"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use filterHandler(RequestHeader, Handler) instead">filterHandler</span><span class="params">(<span name="next">next: (<a href="../mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <a href="../mvc/Handler.html" class="extype" name="play.api.mvc.Handler">Handler</a></span>)</span><span class="result">: (<a href="../mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <a href="../mvc/Handler.html" class="extype" name="play.api.mvc.Handler">Handler</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.http.DefaultHttpRequestHandler@filterHandler(next:play.api.mvc.RequestHeader=&gt;play.api.mvc.Handler):play.api.mvc.RequestHeader=&gt;play.api.mvc.Handler" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Apply any filters to the given handler.</p><div class="fullcomment"><div class="comment cmt"><p>Apply any filters to the given handler.
+</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use filterHandler(RequestHeader, Handler) instead</p></dd></dl></div>
+    </li></ol>
+            </div>
         </div>
 
         <div id="inheritedMembers">

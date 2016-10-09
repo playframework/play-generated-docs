@@ -99,11 +99,14 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Known Implementing Classes:</dt>
-<dd><a href="../../../play/libs/Crypto.html" title="class in play.libs">Crypto</a></dd>
+<dd><a href="../../../play/libs/crypto/HMACSHA1CookieSigner.html" title="class in play.libs.crypto">HMACSHA1CookieSigner</a></dd>
 </dl>
 <hr>
 <br>
 <pre>public interface <span class="typeNameLabel">CookieSigner</span></pre>
+<div class="block">Authenticates a cookie by returning a message authentication code (MAC).
+ <p>
+ This interface should not be used as a general purpose MAC utility.</div>
 </li>
 </ul>
 </div>
@@ -124,11 +127,16 @@ var activeTableTab = "activeTableTab";
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/crypto/CookieSigner.html#sign-java.lang.String-">sign</a></span>(java.lang.String&nbsp;message)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/crypto/CookieSigner.html#sign-java.lang.String-">sign</a></span>(java.lang.String&nbsp;message)</code>
+<div class="block">Signs the given String using the application's secret key.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/crypto/CookieSigner.html#signToken-java.lang.String-">signToken</a></span>(java.lang.String&nbsp;token)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/crypto/CookieSigner.html#sign-java.lang.String-byte:A-">sign</a></span>(java.lang.String&nbsp;message,
+    byte[]&nbsp;key)</code>
+<div class="block">Signs the given String using the given key.</div>
+</td>
 </tr>
 </table>
 </li>
@@ -152,15 +160,37 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <h4>sign</h4>
 <pre>java.lang.String&nbsp;sign(java.lang.String&nbsp;message)</pre>
+<div class="block">Signs the given String using the application's secret key.
+ <br>
+ By default this uses the platform default JSSE provider.  This can be overridden by defining
+ <code>application.crypto.provider</code> in <code>application.conf</code>.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>message</code> - The message to sign.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>A hexadecimal encoded signature.</dd>
+</dl>
 </li>
 </ul>
-<a name="signToken-java.lang.String-">
+<a name="sign-java.lang.String-byte:A-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>signToken</h4>
-<pre>java.lang.String&nbsp;signToken(java.lang.String&nbsp;token)</pre>
+<h4>sign</h4>
+<pre>java.lang.String&nbsp;sign(java.lang.String&nbsp;message,
+                      byte[]&nbsp;key)</pre>
+<div class="block">Signs the given String using the given key.
+ <br>
+ By default this uses the platform default JSSE provider.  This can be overridden by defining
+ <code>application.crypto.provider</code> in <code>application.conf</code>.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>message</code> - The message to sign.</dd>
+<dd><code>key</code> - The private key to sign with.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>A hexadecimal encoded signature.</dd>
+</dl>
 </li>
 </ul>
 </li>

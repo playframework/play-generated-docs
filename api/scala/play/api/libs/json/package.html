@@ -201,7 +201,7 @@ For example:</p><pre><span class="kw">import</span> play.api.libs.json._
     </span>
       <p class="shortcomment cmt">Default deserializer type classes.</p>
     </li><li name="play.api.libs.json.DefaultWrites" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="DefaultWritesextendsAnyRef"></a>
+      <a id="DefaultWritesextendsLowPriorityWrites"></a>
       <a id="DefaultWrites:DefaultWrites"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -209,10 +209,10 @@ For example:</p><pre><span class="kw">import</span> play.api.libs.json._
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="DefaultWrites.html"><span class="name">DefaultWrites</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a href="DefaultWrites.html"><span class="name">DefaultWrites</span></a><span class="result"> extends <a href="LowPriorityWrites.html" class="extype" name="play.api.libs.json.LowPriorityWrites">LowPriorityWrites</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.json.package@DefaultWritesextendsAnyRef" title="Permalink" target="_top">
+      <a href="../../../../index.html#play.api.libs.json.package@DefaultWritesextendsLowPriorityWrites" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -275,19 +275,19 @@ For example:</p><pre><span class="kw">import</span> play.api.libs.json._
       </a>
     </span>
       <p class="shortcomment cmt">Represent a Json array value.</p>
-    </li><li name="play.api.libs.json.JsBoolean" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="JsBooleanextendsJsValuewithProductwithSerializable"></a>
+    </li><li name="play.api.libs.json.JsBoolean" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="JsBooleanextendsJsValue"></a>
       <a id="JsBoolean:JsBoolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">case class</span>
+        <span class="modifier">sealed abstract </span>
+        <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="JsBoolean.html"><span class="name">JsBoolean</span></a><span class="params">(<span name="value">value: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result"> extends <a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="JsBoolean.html"><span class="name">JsBoolean</span></a><span class="result"> extends <a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.json.package@JsBooleanextendsJsValuewithProductwithSerializable" title="Permalink" target="_top">
+      <a href="../../../../index.html#play.api.libs.json.package@JsBooleanextendsJsValue" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -532,6 +532,40 @@ For example:</p><pre><span class="kw">import</span> play.api.libs.json._
     </span>
       <p class="shortcomment cmt">Generic json value
 </p>
+    </li><li name="play.api.libs.json.JsonConfiguration" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="JsonConfigurationextendsProductwithSerializable"></a>
+      <a id="JsonConfiguration:JsonConfiguration"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="JsonConfiguration.html"><span class="name">JsonConfiguration</span></a><span class="params">(<span name="naming">naming: <a href="JsonNaming.html" class="extype" name="play.api.libs.json.JsonNaming">JsonNaming</a></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.json.package@JsonConfigurationextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.api.libs.json.JsonNaming" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="JsonNamingextendsString=&gt;String"></a>
+      <a id="JsonNaming:JsonNaming"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="JsonNaming.html"><span class="name">JsonNaming</span></a><span class="result"> extends (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.json.package@JsonNamingextendsString=&gt;String" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Naming strategy, to map each class property to the corresponding column.</p>
     </li><li name="play.api.libs.json.KeyPathNode" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="KeyPathNodeextendsPathNodewithProductwithSerializable"></a>
       <a id="KeyPathNode:KeyPathNode"></a>
@@ -545,6 +579,23 @@ For example:</p><pre><span class="kw">import</span> play.api.libs.json._
       </span>
       </h4><span class="permalink">
       <a href="../../../../index.html#play.api.libs.json.package@KeyPathNodeextendsPathNodewithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.api.libs.json.LowPriorityDefaultJsonConfigurationImplicit" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="LowPriorityDefaultJsonConfigurationImplicitextendsAnyRef"></a>
+      <a id="LowPriorityDefaultJsonConfigurationImplicit:LowPriorityDefaultJsonConfigurationImplicit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="LowPriorityDefaultJsonConfigurationImplicit.html"><span class="name">LowPriorityDefaultJsonConfigurationImplicit</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.json.package@LowPriorityDefaultJsonConfigurationImplicitextendsAnyRef" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -565,9 +616,26 @@ For example:</p><pre><span class="kw">import</span> play.api.libs.json._
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Low priority reads.</p><div class="fullcomment"><div class="comment cmt"><p>Low priority reads.</p><p>This exists as a compiler performance optimisation, so that the compiler doesn't have to rule them out when
+      <p class="shortcomment cmt">Low priority reads.</p><div class="fullcomment"><div class="comment cmt"><p>Low priority reads.</p><p>This exists as a compiler performance optimization, so that the compiler doesn't have to rule them out when
 DefaultReads provides a simple match.</p><p>See https://github.com/playframework/playframework/issues/4313 for more details.
 </p></div></div>
+    </li><li name="play.api.libs.json.LowPriorityWrites" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="LowPriorityWritesextendsAnyRef"></a>
+      <a id="LowPriorityWrites:LowPriorityWrites"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed </span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="LowPriorityWrites.html"><span class="name">LowPriorityWrites</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.json.package@LowPriorityWritesextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="play.api.libs.json.OFormat" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="OFormat[A]extendsOWrites[A]withReads[A]withFormat[A]"></a>
       <a id="OFormat[A]:OFormat[A]"></a>
@@ -766,6 +834,23 @@ DefaultReads provides a simple match.</p><p>See https://github.com/playframework
       </a>
     </span>
       <p class="shortcomment cmt">Default Json formatters.</p>
+    </li><li name="play.api.libs.json.JsBoolean" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="JsBoolean"></a>
+      <a id="JsBoolean:JsBoolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="JsBoolean$.html"><span class="name">JsBoolean</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.json.package@JsBoolean" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="play.api.libs.json.JsError" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="JsError"></a>
       <a id="JsError:JsError"></a>
@@ -783,6 +868,23 @@ DefaultReads provides a simple match.</p><p>See https://github.com/playframework
       </a>
     </span>
       
+    </li><li name="play.api.libs.json.JsFalse" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="JsFalse"></a>
+      <a id="JsFalse:JsFalse"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="JsFalse$.html"><span class="name">JsFalse</span></a><span class="result"> extends <a href="JsBoolean.html" class="extype" name="play.api.libs.json.JsBoolean">JsBoolean</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.json.package@JsFalse" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Represents Json Boolean False value.</p>
     </li><li name="play.api.libs.json.JsLookupResult" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="JsLookupResult"></a>
       <a id="JsLookupResult:JsLookupResult"></a>
@@ -885,6 +987,23 @@ DefaultReads provides a simple match.</p><p>See https://github.com/playframework
       </a>
     </span>
       
+    </li><li name="play.api.libs.json.JsTrue" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="JsTrue"></a>
+      <a id="JsTrue:JsTrue"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="JsTrue$.html"><span class="name">JsTrue</span></a><span class="result"> extends <a href="JsBoolean.html" class="extype" name="play.api.libs.json.JsBoolean">JsBoolean</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.json.package@JsTrue" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Represents Json Boolean True value.</p>
     </li><li name="play.api.libs.json.JsUndefined" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="JsUndefined"></a>
       <a id="JsUndefined:JsUndefined"></a>
@@ -936,6 +1055,40 @@ DefaultReads provides a simple match.</p><p>See https://github.com/playframework
       </a>
     </span>
       <p class="shortcomment cmt">Helper functions to handle JsValues.</p>
+    </li><li name="play.api.libs.json.JsonConfiguration" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="JsonConfiguration"></a>
+      <a id="JsonConfiguration:JsonConfiguration"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="JsonConfiguration$.html"><span class="name">JsonConfiguration</span></a><span class="result"> extends <a href="LowPriorityDefaultJsonConfigurationImplicit.html" class="extype" name="play.api.libs.json.LowPriorityDefaultJsonConfigurationImplicit">LowPriorityDefaultJsonConfigurationImplicit</a> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.json.package@JsonConfiguration" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.api.libs.json.JsonNaming" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="JsonNaming"></a>
+      <a id="JsonNaming:JsonNaming"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="JsonNaming$.html"><span class="name">JsonNaming</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.json.package@JsonNaming" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Naming companion</p>
     </li><li name="play.api.libs.json.OFormat" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="OFormat"></a>
       <a id="OFormat:OFormat"></a>

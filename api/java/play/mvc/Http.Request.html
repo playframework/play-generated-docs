@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6,"i1":6,"i2":38,"i3":6,"i4":6};
+var methods = {"i0":6,"i1":6,"i2":38,"i3":6,"i4":6,"i5":6,"i6":38};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],32:["t6","Deprecated Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -103,7 +103,7 @@ var activeTableTab = "activeTableTab";
 </dl>
 <dl>
 <dt>All Known Implementing Classes:</dt>
-<dd><a href="../../play/mvc/Http.RequestImpl.html" title="class in play.mvc">Http.RequestImpl</a></dd>
+<dd><a href="../../play/mvc/Http.RequestImpl.html" title="class in play.mvc">Http.RequestImpl</a>, play.core.j.RequestImpl</dd>
 </dl>
 <dl>
 <dt>Enclosing class:</dt>
@@ -145,23 +145,38 @@ extends <a href="../../play/mvc/Http.RequestHeader.html" title="interface in pla
 </td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/Http.Request.html#setUsername-java.lang.String-">setUsername</a></span>(java.lang.String&nbsp;username)</code>
+<td class="colFirst"><code>java.lang.String</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/Http.Request.html#username--">username</a></span>()</code>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
-<div class="block"><span class="deprecationComment">As of release 2.4, use <a href="../../play/mvc/Http.Request.html#withUsername-java.lang.String-"><code>withUsername(java.lang.String)</code></a></span></div>
+<div class="block"><span class="deprecationComment">As of release 2.6, use <code>attr(Security.USERNAME)</code> or <code>getAttr(Security.USERNAME)</code>.</span></div>
 </div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
-<td class="colFirst"><code>java.lang.String</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/Http.Request.html#username--">username</a></span>()</code>
-<div class="block">The user name for this request, if defined.</div>
+<td class="colFirst"><code>&lt;T&gt;&nbsp;<a href="../../play/mvc/Http.Request.html" title="interface in play.mvc">Http.Request</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/Http.Request.html#withAttr-play.api.libs.typedmap.TypedKey-T-">withAttr</a></span>(play.api.libs.typedmap.TypedKey&lt;T&gt;&nbsp;key,
+        T&nbsp;value)</code>
+<div class="block">Create a new version of this object with an attribute added to it.</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code><a href="../../play/mvc/Http.Request.html" title="interface in play.mvc">Http.Request</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/Http.Request.html#withAttrs-play.api.libs.typedmap.TypedEntry...-">withAttrs</a></span>(play.api.libs.typedmap.TypedEntry&lt;?&gt;...&nbsp;entries)</code>
+<div class="block">Create a new version of this object with several attributes added to it.</div>
+</td>
+</tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code><a href="../../play/mvc/Http.Request.html" title="interface in play.mvc">Http.Request</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/Http.Request.html#withBody-play.mvc.Http.RequestBody-">withBody</a></span>(<a href="../../play/mvc/Http.RequestBody.html" title="class in play.mvc">Http.RequestBody</a>&nbsp;body)</code>
+<div class="block">Attach a body to this header.</div>
+</td>
+</tr>
+<tr id="i6" class="altColor">
+<td class="colFirst"><code><a href="../../play/mvc/Http.Request.html" title="interface in play.mvc">Http.Request</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/Http.Request.html#withUsername-java.lang.String-">withUsername</a></span>(java.lang.String&nbsp;username)</code>
-<div class="block">Returns a request updated with specified user name</div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">As of release 2.6, use <code>withAttr(Security.USERNAME, username)</code>.</span></div>
+</div>
 </td>
 </tr>
 </table>
@@ -170,7 +185,7 @@ extends <a href="../../play/mvc/Http.RequestHeader.html" title="interface in pla
 <!--   -->
 </a>
 <h3>Methods inherited from interface&nbsp;play.mvc.<a href="../../play/mvc/Http.RequestHeader.html" title="interface in play.mvc">Http.RequestHeader</a></h3>
-<code><a href="../../play/mvc/Http.RequestHeader.html#Z:Z_underlyingHeader--">_underlyingHeader</a>, <a href="../../play/mvc/Http.RequestHeader.html#acceptedTypes--">acceptedTypes</a>, <a href="../../play/mvc/Http.RequestHeader.html#acceptLanguages--">acceptLanguages</a>, <a href="../../play/mvc/Http.RequestHeader.html#accepts-java.lang.String-">accepts</a>, <a href="../../play/mvc/Http.RequestHeader.html#charset--">charset</a>, <a href="../../play/mvc/Http.RequestHeader.html#clientCertificateChain--">clientCertificateChain</a>, <a href="../../play/mvc/Http.RequestHeader.html#contentType--">contentType</a>, <a href="../../play/mvc/Http.RequestHeader.html#cookie-java.lang.String-">cookie</a>, <a href="../../play/mvc/Http.RequestHeader.html#cookies--">cookies</a>, <a href="../../play/mvc/Http.RequestHeader.html#getHeader-java.lang.String-">getHeader</a>, <a href="../../play/mvc/Http.RequestHeader.html#getQueryString-java.lang.String-">getQueryString</a>, <a href="../../play/mvc/Http.RequestHeader.html#hasBody--">hasBody</a>, <a href="../../play/mvc/Http.RequestHeader.html#hasHeader-java.lang.String-">hasHeader</a>, <a href="../../play/mvc/Http.RequestHeader.html#headers--">headers</a>, <a href="../../play/mvc/Http.RequestHeader.html#host--">host</a>, <a href="../../play/mvc/Http.RequestHeader.html#method--">method</a>, <a href="../../play/mvc/Http.RequestHeader.html#path--">path</a>, <a href="../../play/mvc/Http.RequestHeader.html#queryString--">queryString</a>, <a href="../../play/mvc/Http.RequestHeader.html#remoteAddress--">remoteAddress</a>, <a href="../../play/mvc/Http.RequestHeader.html#secure--">secure</a>, <a href="../../play/mvc/Http.RequestHeader.html#tags--">tags</a>, <a href="../../play/mvc/Http.RequestHeader.html#uri--">uri</a>, <a href="../../play/mvc/Http.RequestHeader.html#version--">version</a></code></li>
+<code><a href="../../play/mvc/Http.RequestHeader.html#Z:Z_underlyingHeader--">_underlyingHeader</a>, <a href="../../play/mvc/Http.RequestHeader.html#acceptedTypes--">acceptedTypes</a>, <a href="../../play/mvc/Http.RequestHeader.html#acceptLanguages--">acceptLanguages</a>, <a href="../../play/mvc/Http.RequestHeader.html#accepts-java.lang.String-">accepts</a>, <a href="../../play/mvc/Http.RequestHeader.html#attr-play.api.libs.typedmap.TypedKey-">attr</a>, <a href="../../play/mvc/Http.RequestHeader.html#charset--">charset</a>, <a href="../../play/mvc/Http.RequestHeader.html#clientCertificateChain--">clientCertificateChain</a>, <a href="../../play/mvc/Http.RequestHeader.html#containsAttr-play.api.libs.typedmap.TypedKey-">containsAttr</a>, <a href="../../play/mvc/Http.RequestHeader.html#contentType--">contentType</a>, <a href="../../play/mvc/Http.RequestHeader.html#cookie-java.lang.String-">cookie</a>, <a href="../../play/mvc/Http.RequestHeader.html#cookies--">cookies</a>, <a href="../../play/mvc/Http.RequestHeader.html#getAttr-play.api.libs.typedmap.TypedKey-">getAttr</a>, <a href="../../play/mvc/Http.RequestHeader.html#getHeader-java.lang.String-">getHeader</a>, <a href="../../play/mvc/Http.RequestHeader.html#getQueryString-java.lang.String-">getQueryString</a>, <a href="../../play/mvc/Http.RequestHeader.html#hasBody--">hasBody</a>, <a href="../../play/mvc/Http.RequestHeader.html#hasHeader-java.lang.String-">hasHeader</a>, <a href="../../play/mvc/Http.RequestHeader.html#headers--">headers</a>, <a href="../../play/mvc/Http.RequestHeader.html#host--">host</a>, <a href="../../play/mvc/Http.RequestHeader.html#method--">method</a>, <a href="../../play/mvc/Http.RequestHeader.html#path--">path</a>, <a href="../../play/mvc/Http.RequestHeader.html#queryString--">queryString</a>, <a href="../../play/mvc/Http.RequestHeader.html#remoteAddress--">remoteAddress</a>, <a href="../../play/mvc/Http.RequestHeader.html#secure--">secure</a>, <a href="../../play/mvc/Http.RequestHeader.html#tags--">tags</a>, <a href="../../play/mvc/Http.RequestHeader.html#uri--">uri</a>, <a href="../../play/mvc/Http.RequestHeader.html#version--">version</a></code></li>
 </ul>
 </li>
 </ul>
@@ -200,34 +215,83 @@ extends <a href="../../play/mvc/Http.RequestHeader.html" title="interface in pla
 </dl>
 </li>
 </ul>
+<a name="withBody-play.mvc.Http.RequestBody-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>withBody</h4>
+<pre><a href="../../play/mvc/Http.Request.html" title="interface in play.mvc">Http.Request</a>&nbsp;withBody(<a href="../../play/mvc/Http.RequestBody.html" title="class in play.mvc">Http.RequestBody</a>&nbsp;body)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../play/mvc/Http.RequestHeader.html#withBody-play.mvc.Http.RequestBody-">Http.RequestHeader</a></code></span></div>
+<div class="block">Attach a body to this header.</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../play/mvc/Http.RequestHeader.html#withBody-play.mvc.Http.RequestBody-">withBody</a></code>&nbsp;in interface&nbsp;<code><a href="../../play/mvc/Http.RequestHeader.html" title="interface in play.mvc">Http.RequestHeader</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>body</code> - The body to attach.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>A new request with the body attached to the header.</dd>
+</dl>
+</li>
+</ul>
+<a name="withAttr-play.api.libs.typedmap.TypedKey-java.lang.Object-">
+<!--   -->
+</a><a name="withAttr-play.api.libs.typedmap.TypedKey-T-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>withAttr</h4>
+<pre>&lt;T&gt;&nbsp;<a href="../../play/mvc/Http.Request.html" title="interface in play.mvc">Http.Request</a>&nbsp;withAttr(play.api.libs.typedmap.TypedKey&lt;T&gt;&nbsp;key,
+                          T&nbsp;value)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../play/mvc/Http.RequestHeader.html#withAttr-play.api.libs.typedmap.TypedKey-T-">Http.RequestHeader</a></code></span></div>
+<div class="block">Create a new version of this object with an attribute added to it.</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../play/mvc/Http.RequestHeader.html#withAttr-play.api.libs.typedmap.TypedKey-T-">withAttr</a></code>&nbsp;in interface&nbsp;<code><a href="../../play/mvc/Http.RequestHeader.html" title="interface in play.mvc">Http.RequestHeader</a></code></dd>
+<dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>T</code> - The type of attribute.</dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>key</code> - The attribute key.</dd>
+<dd><code>value</code> - The new attribute value.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The new version of this object with the attribute added.</dd>
+</dl>
+</li>
+</ul>
+<a name="withAttrs-play.api.libs.typedmap.TypedEntry...-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>withAttrs</h4>
+<pre><a href="../../play/mvc/Http.Request.html" title="interface in play.mvc">Http.Request</a>&nbsp;withAttrs(play.api.libs.typedmap.TypedEntry&lt;?&gt;...&nbsp;entries)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../play/mvc/Http.RequestHeader.html#withAttrs-play.api.libs.typedmap.TypedEntry...-">Http.RequestHeader</a></code></span></div>
+<div class="block">Create a new version of this object with several attributes added to it.</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../play/mvc/Http.RequestHeader.html#withAttrs-play.api.libs.typedmap.TypedEntry...-">withAttrs</a></code>&nbsp;in interface&nbsp;<code><a href="../../play/mvc/Http.RequestHeader.html" title="interface in play.mvc">Http.RequestHeader</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>entries</code> - The new attributes to add.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The new version of this object with the attributes added.</dd>
+</dl>
+</li>
+</ul>
 <a name="username--">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>username</h4>
-<pre>java.lang.String&nbsp;username()</pre>
+<pre>@Deprecated
+java.lang.String&nbsp;username()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">As of release 2.6, use <code>attr(Security.USERNAME)</code> or <code>getAttr(Security.USERNAME)</code>.</span></div>
 <div class="block">The user name for this request, if defined.
  This is usually set by annotating your Action with <code>@Authenticated</code>.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the username</dd>
-</dl>
-</li>
-</ul>
-<a name="setUsername-java.lang.String-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>setUsername</h4>
-<pre>@Deprecated
-void&nbsp;setUsername(java.lang.String&nbsp;username)</pre>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">As of release 2.4, use <a href="../../play/mvc/Http.Request.html#withUsername-java.lang.String-"><code>withUsername(java.lang.String)</code></a></span></div>
-<div class="block">Defines the user name for this request.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>username</code> - Deprecated</dd>
 </dl>
 </li>
 </ul>
@@ -237,7 +301,9 @@ void&nbsp;setUsername(java.lang.String&nbsp;username)</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>withUsername</h4>
-<pre><a href="../../play/mvc/Http.Request.html" title="interface in play.mvc">Http.Request</a>&nbsp;withUsername(java.lang.String&nbsp;username)</pre>
+<pre>@Deprecated
+<a href="../../play/mvc/Http.Request.html" title="interface in play.mvc">Http.Request</a>&nbsp;withUsername(java.lang.String&nbsp;username)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">As of release 2.6, use <code>withAttr(Security.USERNAME, username)</code>.</span></div>
 <div class="block">Returns a request updated with specified user name</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
