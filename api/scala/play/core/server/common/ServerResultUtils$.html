@@ -280,24 +280,6 @@ force an HTTP 1.0 connection to remain open.
 the case, for example, the response from an Akka HTTP client may have an associated Source that must be consumed
 (or cancelled) before the associated connection can be returned to the connection pool.
 </p></div></div>
-    </li><li name="play.core.server.common.ServerResultUtils#cleanFlashCookie" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="cleanFlashCookie(requestHeader:play.api.mvc.RequestHeader,result:play.api.mvc.Result):play.api.mvc.Result"></a>
-      <a id="cleanFlashCookie(RequestHeader,Result):Result"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">cleanFlashCookie</span><span class="params">(<span name="requestHeader">requestHeader: <a href="../../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>, <span name="result">result: <a href="../../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>)</span><span class="result">: <a href="../../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.core.server.common.ServerResultUtils$@cleanFlashCookie(requestHeader:play.api.mvc.RequestHeader,result:play.api.mvc.Result):play.api.mvc.Result" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Update the result's Set-Cookie header so that it removes any Flash cookies we received
-in the incoming request.</p>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
@@ -514,6 +496,23 @@ in the incoming request.</p>
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="play.core.server.common.ServerResultUtils#prepareCookies" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="prepareCookies(requestHeader:play.api.mvc.RequestHeader,result:play.api.mvc.Result,httpConfiguration:play.api.http.HttpConfiguration):play.api.mvc.Result"></a>
+      <a id="prepareCookies(RequestHeader,Result,HttpConfiguration):Result"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">prepareCookies</span><span class="params">(<span name="requestHeader">requestHeader: <a href="../../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>, <span name="result">result: <a href="../../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>, <span name="httpConfiguration">httpConfiguration: <a href="../../../api/http/HttpConfiguration.html" class="extype" name="play.api.http.HttpConfiguration">HttpConfiguration</a></span>)</span><span class="result">: <a href="../../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.core.server.common.ServerResultUtils$@prepareCookies(requestHeader:play.api.mvc.RequestHeader,result:play.api.mvc.Result,httpConfiguration:play.api.http.HttpConfiguration):play.api.mvc.Result" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Bake the cookies and prepare the new Set-Cookie header.</p>
     </li><li name="play.core.server.common.ServerResultUtils#resultConversionWithErrorHandling" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="resultConversionWithErrorHandling[R](requestHeader:play.api.mvc.RequestHeader,result:play.api.mvc.Result,errorHandler:play.api.http.HttpErrorHandler)(resultConverter:play.api.mvc.Result=&gt;scala.concurrent.Future[R])(fallbackResponse:=&gt;R):scala.concurrent.Future[R]"></a>
       <a id="resultConversionWithErrorHandling[R](RequestHeader,Result,HttpErrorHandler)((Result)⇒Future[R])(⇒R):Future[R]"></a>

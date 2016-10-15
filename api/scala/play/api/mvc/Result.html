@@ -45,7 +45,7 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">Result</span><span class="params">(<span name="header">header: <a href="ResponseHeader.html" class="extype" name="play.api.mvc.ResponseHeader">ResponseHeader</a></span>, <span name="body">body: <a href="../http/HttpEntity.html" class="extype" name="play.api.http.HttpEntity">HttpEntity</a></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name">Result</span><span class="params">(<span name="header">header: <a href="ResponseHeader.html" class="extype" name="play.api.mvc.ResponseHeader">ResponseHeader</a></span>, <span name="body">body: <a href="../http/HttpEntity.html" class="extype" name="play.api.http.HttpEntity">HttpEntity</a></span>, <span name="newSession">newSession: <span class="extype" name="scala.Option">Option</span>[<a href="Session.html" class="extype" name="play.api.mvc.Session">Session</a>] = <span class="symbol">None</span></span>, <span name="newFlash">newFlash: <span class="extype" name="scala.Option">Option</span>[<a href="Flash.html" class="extype" name="play.api.mvc.Flash">Flash</a>] = <span class="symbol">None</span></span>, <span name="newCookies">newCookies: <span class="extype" name="scala.Seq">Seq</span>[<a href="Cookie.html" class="extype" name="play.api.mvc.Cookie">Cookie</a>] = <span class="symbol">Seq.empty</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
@@ -93,7 +93,7 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="play.api.mvc.Result#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(header:play.api.mvc.ResponseHeader,body:play.api.http.HttpEntity):play.api.mvc.Result"></a>
+      <a id="&lt;init&gt;(header:play.api.mvc.ResponseHeader,body:play.api.http.HttpEntity,newSession:Option[play.api.mvc.Session],newFlash:Option[play.api.mvc.Flash],newCookies:Seq[play.api.mvc.Cookie]):play.api.mvc.Result"></a>
       <a id="&lt;init&gt;:Result"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -101,10 +101,10 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">Result</span><span class="params">(<span name="header">header: <a href="ResponseHeader.html" class="extype" name="play.api.mvc.ResponseHeader">ResponseHeader</a></span>, <span name="body">body: <a href="../http/HttpEntity.html" class="extype" name="play.api.http.HttpEntity">HttpEntity</a></span>)</span>
+        <span class="name">Result</span><span class="params">(<span name="header">header: <a href="ResponseHeader.html" class="extype" name="play.api.mvc.ResponseHeader">ResponseHeader</a></span>, <span name="body">body: <a href="../http/HttpEntity.html" class="extype" name="play.api.http.HttpEntity">HttpEntity</a></span>, <span name="newSession">newSession: <span class="extype" name="scala.Option">Option</span>[<a href="Session.html" class="extype" name="play.api.mvc.Session">Session</a>] = <span class="symbol">None</span></span>, <span name="newFlash">newFlash: <span class="extype" name="scala.Option">Option</span>[<a href="Flash.html" class="extype" name="play.api.mvc.Flash">Flash</a>] = <span class="symbol">None</span></span>, <span name="newCookies">newCookies: <span class="extype" name="scala.Seq">Seq</span>[<a href="Cookie.html" class="extype" name="play.api.mvc.Cookie">Cookie</a>] = <span class="symbol">Seq.empty</span></span>)</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.Result@&lt;init&gt;(header:play.api.mvc.ResponseHeader,body:play.api.http.HttpEntity):play.api.mvc.Result" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.Result@&lt;init&gt;(header:play.api.mvc.ResponseHeader,body:play.api.http.HttpEntity,newSession:Option[play.api.mvc.Session],newFlash:Option[play.api.mvc.Flash],newCookies:Seq[play.api.mvc.Cookie]):play.api.mvc.Result" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -237,6 +237,25 @@
       </a>
     </span>
       <p class="shortcomment cmt">Convert this result to a Java result.</p>
+    </li><li name="play.api.mvc.Result#bakeCookies" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="bakeCookies(sessionBaker:play.api.mvc.CookieBaker[play.api.mvc.Session],flashBaker:play.api.mvc.CookieBaker[play.api.mvc.Flash],requestHasFlash:Boolean):play.api.mvc.Result"></a>
+      <a id="bakeCookies(CookieBaker[Session],CookieBaker[Flash],Boolean):Result"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">bakeCookies</span><span class="params">(<span name="sessionBaker">sessionBaker: <a href="CookieBaker.html" class="extype" name="play.api.mvc.CookieBaker">CookieBaker</a>[<a href="Session.html" class="extype" name="play.api.mvc.Session">Session</a>] = <span class="symbol"><span class="name"><a href="DefaultSessionCookieBaker.html">new DefaultSessionCookieBaker()</a></span></span></span>, <span name="flashBaker">flashBaker: <a href="CookieBaker.html" class="extype" name="play.api.mvc.CookieBaker">CookieBaker</a>[<a href="Flash.html" class="extype" name="play.api.mvc.Flash">Flash</a>] = <span class="symbol"><span class="name"><a href="DefaultFlashCookieBaker.html">new DefaultFlashCookieBaker()</a></span></span></span>, <span name="requestHasFlash">requestHasFlash: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <a href="" class="extype" name="play.api.mvc.Result">Result</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.Result@bakeCookies(sessionBaker:play.api.mvc.CookieBaker[play.api.mvc.Session],flashBaker:play.api.mvc.CookieBaker[play.api.mvc.Flash],requestHasFlash:Boolean):play.api.mvc.Result" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Encode the cookies into the Set-Cookie header.</p><div class="fullcomment"><div class="comment cmt"><p>Encode the cookies into the Set-Cookie header. The session is always baked first, followed by the flash cookie,
+followed by all the other cookies in order.
+</p></div></div>
     </li><li name="play.api.mvc.Result#body" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="body:play.api.http.HttpEntity"></a>
       <a id="body:HttpEntity"></a>
@@ -436,6 +455,57 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="play.api.mvc.Result#newCookies" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="newCookies:Seq[play.api.mvc.Cookie]"></a>
+      <a id="newCookies:Seq[Cookie]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">newCookies</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<a href="Cookie.html" class="extype" name="play.api.mvc.Cookie">Cookie</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.Result@newCookies:Seq[play.api.mvc.Cookie]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.api.mvc.Result#newFlash" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="newFlash:Option[play.api.mvc.Flash]"></a>
+      <a id="newFlash:Option[Flash]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">newFlash</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="Flash.html" class="extype" name="play.api.mvc.Flash">Flash</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.Result@newFlash:Option[play.api.mvc.Flash]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.api.mvc.Result#newSession" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="newSession:Option[play.api.mvc.Session]"></a>
+      <a id="newSession:Option[Session]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">newSession</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="Session.html" class="extype" name="play.api.mvc.Session">Session</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.Result@newSession:Option[play.api.mvc.Session]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="scala.AnyRef#notify" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
       <a id="notify():Unit"></a>
