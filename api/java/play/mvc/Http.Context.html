@@ -182,22 +182,25 @@ extends java.lang.Object</pre>
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../play/mvc/Http.Context.html#Context-play.mvc.Http.Request-">Context</a></span>(<a href="../../play/mvc/Http.Request.html" title="interface in play.mvc">Http.Request</a>&nbsp;request)</code>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../play/mvc/Http.Context.html#Context-play.mvc.Http.RequestBuilder-play.core.j.JavaContextComponents-">Context</a></span>(<a href="../../play/mvc/Http.RequestBuilder.html" title="class in play.mvc">Http.RequestBuilder</a>&nbsp;requestBuilder,
+       play.core.j.JavaContextComponents&nbsp;components)</code>
 <div class="block">Creates a new HTTP context.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../play/mvc/Http.Context.html#Context-play.mvc.Http.RequestBuilder-">Context</a></span>(<a href="../../play/mvc/Http.RequestBuilder.html" title="class in play.mvc">Http.RequestBuilder</a>&nbsp;requestBuilder)</code>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../play/mvc/Http.Context.html#Context-play.mvc.Http.Request-play.core.j.JavaContextComponents-">Context</a></span>(<a href="../../play/mvc/Http.Request.html" title="interface in play.mvc">Http.Request</a>&nbsp;request,
+       play.core.j.JavaContextComponents&nbsp;components)</code>
 <div class="block">Creates a new HTTP context.</div>
 </td>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../play/mvc/Http.Context.html#Context-java.lang.Long-play.api.mvc.RequestHeader-play.mvc.Http.Request-java.util.Map-java.util.Map-java.util.Map-">Context</a></span>(java.lang.Long&nbsp;id,
+<td class="colOne"><code><span class="memberNameLink"><a href="../../play/mvc/Http.Context.html#Context-java.lang.Long-play.api.mvc.RequestHeader-play.mvc.Http.Request-java.util.Map-java.util.Map-java.util.Map-play.core.j.JavaContextComponents-">Context</a></span>(java.lang.Long&nbsp;id,
        play.api.mvc.RequestHeader&nbsp;header,
        <a href="../../play/mvc/Http.Request.html" title="interface in play.mvc">Http.Request</a>&nbsp;request,
        java.util.Map&lt;java.lang.String,java.lang.String&gt;&nbsp;sessionData,
        java.util.Map&lt;java.lang.String,java.lang.String&gt;&nbsp;flashData,
-       java.util.Map&lt;java.lang.String,java.lang.Object&gt;&nbsp;args)</code>
+       java.util.Map&lt;java.lang.String,java.lang.Object&gt;&nbsp;args,
+       play.core.j.JavaContextComponents&nbsp;components)</code>
 <div class="block">Creates a new HTTP context.</div>
 </td>
 </tr>
@@ -366,35 +369,39 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="Context-play.mvc.Http.RequestBuilder-">
+<a name="Context-play.mvc.Http.RequestBuilder-play.core.j.JavaContextComponents-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>Context</h4>
-<pre>public&nbsp;Context(<a href="../../play/mvc/Http.RequestBuilder.html" title="class in play.mvc">Http.RequestBuilder</a>&nbsp;requestBuilder)</pre>
+<pre>public&nbsp;Context(<a href="../../play/mvc/Http.RequestBuilder.html" title="class in play.mvc">Http.RequestBuilder</a>&nbsp;requestBuilder,
+               play.core.j.JavaContextComponents&nbsp;components)</pre>
 <div class="block">Creates a new HTTP context.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>requestBuilder</code> - the HTTP request builder</dd>
+<dd><code>requestBuilder</code> - the HTTP request builder.</dd>
+<dd><code>components</code> - the context components.</dd>
 </dl>
 </li>
 </ul>
-<a name="Context-play.mvc.Http.Request-">
+<a name="Context-play.mvc.Http.Request-play.core.j.JavaContextComponents-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>Context</h4>
-<pre>public&nbsp;Context(<a href="../../play/mvc/Http.Request.html" title="interface in play.mvc">Http.Request</a>&nbsp;request)</pre>
+<pre>public&nbsp;Context(<a href="../../play/mvc/Http.Request.html" title="interface in play.mvc">Http.Request</a>&nbsp;request,
+               play.core.j.JavaContextComponents&nbsp;components)</pre>
 <div class="block">Creates a new HTTP context.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>request</code> - the HTTP request</dd>
+<dd><code>components</code> - the context components.</dd>
 </dl>
 </li>
 </ul>
-<a name="Context-java.lang.Long-play.api.mvc.RequestHeader-play.mvc.Http.Request-java.util.Map-java.util.Map-java.util.Map-">
+<a name="Context-java.lang.Long-play.api.mvc.RequestHeader-play.mvc.Http.Request-java.util.Map-java.util.Map-java.util.Map-play.core.j.JavaContextComponents-">
 <!--   -->
 </a>
 <ul class="blockListLast">
@@ -405,7 +412,8 @@ extends java.lang.Object</pre>
                <a href="../../play/mvc/Http.Request.html" title="interface in play.mvc">Http.Request</a>&nbsp;request,
                java.util.Map&lt;java.lang.String,java.lang.String&gt;&nbsp;sessionData,
                java.util.Map&lt;java.lang.String,java.lang.String&gt;&nbsp;flashData,
-               java.util.Map&lt;java.lang.String,java.lang.Object&gt;&nbsp;args)</pre>
+               java.util.Map&lt;java.lang.String,java.lang.Object&gt;&nbsp;args,
+               play.core.j.JavaContextComponents&nbsp;components)</pre>
 <div class="block">Creates a new HTTP context.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -415,6 +423,7 @@ extends java.lang.Object</pre>
 <dd><code>sessionData</code> - the session data extracted from the session cookie</dd>
 <dd><code>flashData</code> - the flash data extracted from the flash cookie</dd>
 <dd><code>args</code> - any arbitrary data to associate with this request context.</dd>
+<dd><code>components</code> - the context components.</dd>
 </dl>
 </li>
 </ul>
