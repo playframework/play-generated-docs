@@ -227,6 +227,25 @@ Implementations must define a no-arg constructor.
                 <span class="name">@Singleton</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="play.api.DefaultMarkerContext" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="DefaultMarkerContextextendsMarkerContext"></a>
+      <a id="DefaultMarkerContext:DefaultMarkerContext"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="DefaultMarkerContext.html"><span class="name">DefaultMarkerContext</span></a><span class="result"> extends <a href="MarkerContext.html" class="extype" name="play.api.MarkerContext">MarkerContext</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@DefaultMarkerContextextendsMarkerContext" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A default marker context.</p><div class="fullcomment"><div class="comment cmt"><p>A default marker context.  This is used by <code>MarkerContext.apply</code>, but can also be used to provide
+explicit typing for markers.  For example, to define a SecurityContext marker, you can define a case
+object extending DefaultMarkerContext</p><pre><span class="kw">case</span> <span class="kw">object</span> SecurityMarkerContext <span class="kw">extends</span> DefaultMarkerContext(MarkerFactory.getMarker(<span class="lit">"SECURITY"</span>))</pre></div></div>
     </li><li name="play.api.Environment" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="EnvironmentextendsProductwithSerializable"></a>
       <a id="Environment:Environment"></a>
@@ -296,6 +315,42 @@ Implementations must define a no-arg constructor.
       </a>
     </span>
       <p class="shortcomment cmt">Typical logger interface.</p>
+    </li><li name="play.api.LowPriorityMarkerContextImplicits" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="LowPriorityMarkerContextImplicitsextendsAnyRef"></a>
+      <a id="LowPriorityMarkerContextImplicits:LowPriorityMarkerContextImplicits"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="LowPriorityMarkerContextImplicits.html"><span class="name">LowPriorityMarkerContextImplicits</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@LowPriorityMarkerContextImplicitsextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.api.MarkerContext" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="MarkerContextextendsAnyRef"></a>
+      <a id="MarkerContext:MarkerContext"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="MarkerContext.html"><span class="name">MarkerContext</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@MarkerContextextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A MarkerContext trait, to provide easy access to org.slf4j.Marker in Logger API.</p><div class="fullcomment"><div class="comment cmt"><p>A MarkerContext trait, to provide easy access to org.slf4j.Marker in Logger API.  This is usually accessed
+with a marker through an implicit conversion from a Marker.</p><pre><span class="kw">implicit</span> <span class="kw">val</span> markerContext: MarkerContext = org.slf4j.MarkerFactory.getMarker(<span class="lit">"EXAMPLEMARKER"</span>)
+log.error(<span class="lit">"This message will be logged with the EXAMPLEMARKER marker"</span>)</pre></div></div>
     </li><li name="play.api.OptionalSourceMapper" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="OptionalSourceMapperextendsAnyRef"></a>
       <a id="OptionalSourceMapper:OptionalSourceMapper"></a>
@@ -454,6 +509,23 @@ Implementations must define a no-arg constructor.
       </span>
       </h4><span class="permalink">
       <a href="../../index.html#play.api.package@LoggerConfigurator" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.api.MarkerContext" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="MarkerContext"></a>
+      <a id="MarkerContext:MarkerContext"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="MarkerContext$.html"><span class="name">MarkerContext</span></a><span class="result"> extends <a href="LowPriorityMarkerContextImplicits.html" class="extype" name="play.api.LowPriorityMarkerContextImplicits">LowPriorityMarkerContextImplicits</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@MarkerContext" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
