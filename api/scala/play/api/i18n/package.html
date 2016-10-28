@@ -124,7 +124,7 @@
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">The internationalisation API.</p><div class="fullcomment"><div class="comment cmt"><p>The internationalisation API.
+      <p class="shortcomment cmt">The Messages API.</p><div class="fullcomment"><div class="comment cmt"><p>The Messages API.
 </p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@Singleton</span><span class="args">()</span>
               
@@ -145,7 +145,7 @@
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Implicit conversions for using i18n with requests and results.</p>
     </li><li name="play.api.i18n.I18nComponents" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="I18nComponentsextendsAnyRef"></a>
       <a id="I18nComponents:I18nComponents"></a>
@@ -165,7 +165,7 @@
       <p class="shortcomment cmt">Injection helper for i18n components
 </p>
     </li><li name="play.api.i18n.I18nModule" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="I18nModuleextendsSimpleModule"></a>
+      <a id="I18nModuleextendsModule"></a>
       <a id="I18nModule:I18nModule"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -173,10 +173,10 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="I18nModule.html"><span class="name">I18nModule</span></a><span class="result"> extends <a href="../inject/SimpleModule.html" class="extype" name="play.api.inject.SimpleModule">SimpleModule</a></span>
+        <a href="I18nModule.html"><span class="name">I18nModule</span></a><span class="result"> extends <a href="../inject/Module.html" class="extype" name="play.api.inject.Module">Module</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.i18n.package@I18nModuleextendsSimpleModule" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.i18n.package@I18nModuleextendsModule" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -197,10 +197,12 @@
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Brings a convenient implicit conversion from <a href="../mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">play.api.mvc.RequestHeader</a> to <a href="Messages.html" class="extype" name="play.api.i18n.Messages">Messages</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Brings a convenient implicit conversion from <a href="../mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">play.api.mvc.RequestHeader</a> to <a href="Messages.html" class="extype" name="play.api.i18n.Messages">Messages</a>.</p><p>Example:</p><pre><span class="kw">import</span> play.api.i18n.Messages
-<span class="kw">class</span> MyController(<span class="kw">val</span> messagesApi: MessagesApi) <span class="kw">extends</span> ControllerLike <span class="kw">with</span> I18nSupport {
+      <p class="shortcomment cmt">Brings convenient implicit conversions from <a href="../mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">play.api.mvc.RequestHeader</a> to <a href="Messages.html" class="extype" name="play.api.i18n.Messages">Messages</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Brings convenient implicit conversions from <a href="../mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">play.api.mvc.RequestHeader</a> to <a href="Messages.html" class="extype" name="play.api.i18n.Messages">Messages</a>.</p><p>Example:</p><pre><span class="kw">import</span> play.api.i18n.Messages
+<span class="kw">class</span> MyController(<span class="kw">val</span> messagesApi: MessagesApi ...)
+  <span class="kw">extends</span> Controller(cc) <span class="kw">with</span> I18nSupport {
   <span class="kw">val</span> action = Action { <span class="kw">implicit</span> request <span class="kw">=&gt;</span>
-    Ok(Messages(<span class="lit">"some.key"</span>)) <span class="cmt">// Uses the client’s preferred language</span>
+    <span class="kw">val</span> messageFromRequest = request.messages(<span class="lit">"hello.world"</span>)
+    Ok(s<span class="lit">"$messageFromRequest"</span>)
   }
 }</pre></div></div>
     </li><li name="play.api.i18n.Lang" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
@@ -220,6 +222,24 @@
       </a>
     </span>
       <p class="shortcomment cmt">A Lang supported by the application.</p>
+    </li><li name="play.api.i18n.LangImplicits" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="LangImplicitsextendsAnyRef"></a>
+      <a id="LangImplicits:LangImplicits"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="LangImplicits.html"><span class="name">LangImplicits</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.i18n.package@LangImplicitsextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A trait for extracting a Messages instance from Langs
+</p>
     </li><li name="play.api.i18n.Langs" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="LangsextendsAnyRef"></a>
       <a id="Langs:Langs"></a>
@@ -238,25 +258,26 @@
     </span>
       <p class="shortcomment cmt">Manages languages in Play
 </p>
-    </li><li name="play.api.i18n.Messages" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="MessagesextendsProductwithSerializable"></a>
+    </li><li name="play.api.i18n.Messages" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="MessagesextendsMessagesProvider"></a>
       <a id="Messages:Messages"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">case class</span>
+        <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="Messages.html"><span class="name">Messages</span></a><span class="params">(<span name="lang">lang: <a href="Lang.html" class="extype" name="play.api.i18n.Lang">Lang</a></span>, <span name="messages">messages: <a href="MessagesApi.html" class="extype" name="play.api.i18n.MessagesApi">MessagesApi</a></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="Messages.html"><span class="name">Messages</span></a><span class="result"> extends <a href="MessagesProvider.html" class="extype" name="play.api.i18n.MessagesProvider">MessagesProvider</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.i18n.package@MessagesextendsProductwithSerializable" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.i18n.package@MessagesextendsMessagesProvider" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Provides messages for a particular language.</p><div class="fullcomment"><div class="comment cmt"><p>Provides messages for a particular language.</p><p>This intended for use to carry both the messages and the current language, particularly useful in templates so that
-both can be captured by one parameter.
-</p></div><dl class="paramcmts block"><dt class="param">lang</dt><dd class="cmt"><p>The lang (context)</p></dd><dt class="param">messages</dt><dd class="cmt"><p>The messages</p></dd></dl></div>
+      <p class="shortcomment cmt">A messages returns string messages using a chosen language.</p><div class="fullcomment"><div class="comment cmt"><p>A messages returns string messages using a chosen language.</p><p>This is commonly backed by a MessagesImpl case class, but does
+extend Product and does not expose MessagesApi as part of
+its interface.
+</p></div></div>
     </li><li name="play.api.i18n.MessagesApi" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="MessagesApiextendsAnyRef"></a>
       <a id="MessagesApi:MessagesApi"></a>
@@ -274,6 +295,43 @@ both can be captured by one parameter.
       </a>
     </span>
       <p class="shortcomment cmt">The internationalisation API.</p>
+    </li><li name="play.api.i18n.MessagesImpl" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="MessagesImplextendsMessageswithProductwithSerializable"></a>
+      <a id="MessagesImpl:MessagesImpl"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="MessagesImpl.html"><span class="name">MessagesImpl</span></a><span class="params">(<span name="lang">lang: <a href="Lang.html" class="extype" name="play.api.i18n.Lang">Lang</a></span>, <span name="messagesApi">messagesApi: <a href="MessagesApi.html" class="extype" name="play.api.i18n.MessagesApi">MessagesApi</a></span>)</span><span class="result"> extends <a href="Messages.html" class="extype" name="play.api.i18n.Messages">Messages</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.i18n.package@MessagesImplextendsMessageswithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Provides messages for a particular language.</p><div class="fullcomment"><div class="comment cmt"><p>Provides messages for a particular language.</p><p>This intended for use to carry both the messages and the current language,
+particularly useful in templates so that both can be captured by one
+parameter.
+</p></div><dl class="paramcmts block"><dt class="param">lang</dt><dd class="cmt"><p>The lang (context)</p></dd><dt class="param">messagesApi</dt><dd class="cmt"><p>The messages API</p></dd></dl></div>
+    </li><li name="play.api.i18n.MessagesProvider" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="MessagesProviderextendsAnyRef"></a>
+      <a id="MessagesProvider:MessagesProvider"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="MessagesProvider.html"><span class="name">MessagesProvider</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.i18n.package@MessagesProviderextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">This trait is used to indicate when a Messages instance can be produced.</p>
     </li></ol>
             </div>
 
@@ -281,7 +339,24 @@ both can be captured by one parameter.
 
         <div id="values" class="values members">
               <h3>Value Members</h3>
-              <ol><li name="play.api.i18n.Lang" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="play.api.i18n.I18nSupport" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="I18nSupport"></a>
+      <a id="I18nSupport:I18nSupport"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="I18nSupport$.html"><span class="name">I18nSupport</span></a><span class="result"> extends <a href="I18NSupportLowPriorityImplicits.html" class="extype" name="play.api.i18n.I18NSupportLowPriorityImplicits">I18NSupportLowPriorityImplicits</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.i18n.package@I18nSupport" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A static object with type enrichment for request and responses.</p><div class="fullcomment"><div class="comment cmt"><p>A static object with type enrichment for request and responses.</p><pre><span class="kw">import</span> I18nSupport._</pre></div></div>
+    </li><li name="play.api.i18n.Lang" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Lang"></a>
       <a id="Lang:Lang"></a>
       <h4 class="signature">
@@ -307,7 +382,7 @@ both can be captured by one parameter.
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="Messages$.html"><span class="name">Messages</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="Messages$.html"><span class="name">Messages</span></a>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.i18n.package@Messages" title="Permalink" target="_top">

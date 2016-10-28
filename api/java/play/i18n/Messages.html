@@ -17,8 +17,8 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":41,"i3":41,"i4":41,"i5":41,"i6":41,"i7":41,"i8":10,"i9":10,"i10":10};
-var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"],32:["t6","Deprecated Methods"]};
+var methods = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -74,13 +74,13 @@ var activeTableTab = "activeTableTab";
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
-<li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
-<li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
 </div>
@@ -91,55 +91,29 @@ var activeTableTab = "activeTableTab";
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
 <div class="subTitle">play.i18n</div>
-<h2 title="Class Messages" class="title">Class Messages</h2>
+<h2 title="Interface Messages" class="title">Interface Messages</h2>
 </div>
 <div class="contentContainer">
-<ul class="inheritance">
-<li>java.lang.Object</li>
-<li>
-<ul class="inheritance">
-<li>play.i18n.Messages</li>
-</ul>
-</li>
-</ul>
 <div class="description">
 <ul class="blockList">
 <li class="blockList">
+<dl>
+<dt>All Known Implementing Classes:</dt>
+<dd><a href="../../play/i18n/MessagesImpl.html" title="class in play.i18n">MessagesImpl</a></dd>
+</dl>
 <hr>
 <br>
-<pre>public class <span class="typeNameLabel">Messages</span>
-extends java.lang.Object</pre>
-<div class="block">A messages and a language.
+<pre>public interface <span class="typeNameLabel">Messages</span></pre>
+<div class="block">A Messages will produce messages using a specific language.
 
- This class serves two purposes. One is for backwards compatibility, it serves the old static API for accessing
- messages.  The other is a new API, which carries an inject messages, and a selected language.
-
- The methods for looking up messages on the old API are called get, on the new API, they are called at. In Play 3.0,
- when we remove the old API, we may alias the at methods to the get names.</div>
+ This interface that is typically backed by MessagesImpl, but does not
+ return MessagesApi.</div>
 </li>
 </ul>
 </div>
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
-<!-- ======== CONSTRUCTOR SUMMARY ======== -->
-<ul class="blockList">
-<li class="blockList"><a name="constructor.summary">
-<!--   -->
-</a>
-<h3>Constructor Summary</h3>
-<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing constructors, and an explanation">
-<caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colOne" scope="col">Constructor and Description</th>
-</tr>
-<tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../play/i18n/Messages.html#Messages-play.i18n.Lang-play.i18n.MessagesApi-">Messages</a></span>(<a href="../../play/i18n/Lang.html" title="class in play.i18n">Lang</a>&nbsp;lang,
-        <a href="../../play/i18n/MessagesApi.html" title="class in play.i18n">MessagesApi</a>&nbsp;messages)</code>&nbsp;</td>
-</tr>
-</table>
-</li>
-</ul>
 <!-- ========== METHOD SUMMARY =========== -->
 <ul class="blockList">
 <li class="blockList"><a name="method.summary">
@@ -147,104 +121,42 @@ extends java.lang.Object</pre>
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t1" class="tableTab"><span><a href="javascript:show(1);">Static Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t6" class="tableTab"><span><a href="javascript:show(32);">Deprecated Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
+<td class="colFirst"><code>play.api.i18n.Messages</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/i18n/Messages.html#asScala--">asScala</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i1" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/i18n/Messages.html#at-java.util.List-java.lang.Object...-">at</a></span>(java.util.List&lt;java.lang.String&gt;&nbsp;keys,
   java.lang.Object...&nbsp;args)</code>
 <div class="block">Get the message at the first defined key.</div>
 </td>
 </tr>
-<tr id="i1" class="rowColor">
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/i18n/Messages.html#at-java.lang.String-java.lang.Object...-">at</a></span>(java.lang.String&nbsp;key,
   java.lang.Object...&nbsp;args)</code>
 <div class="block">Get the message at the given key.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
-<td class="colFirst"><code>static java.lang.String</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/i18n/Messages.html#get-play.i18n.Lang-java.util.List-java.lang.Object...-">get</a></span>(<a href="../../play/i18n/Lang.html" title="class in play.i18n">Lang</a>&nbsp;lang,
-   java.util.List&lt;java.lang.String&gt;&nbsp;keys,
-   java.lang.Object...&nbsp;args)</code>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
-<div class="block"><span class="deprecationComment">Please use messages.at(keys, args)</span></div>
-</div>
-</td>
-</tr>
 <tr id="i3" class="rowColor">
-<td class="colFirst"><code>static java.lang.String</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/i18n/Messages.html#get-play.i18n.Lang-java.lang.String-java.lang.Object...-">get</a></span>(<a href="../../play/i18n/Lang.html" title="class in play.i18n">Lang</a>&nbsp;lang,
-   java.lang.String&nbsp;key,
-   java.lang.Object...&nbsp;args)</code>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
-<div class="block"><span class="deprecationComment">Please use messages.at(key, args). since 2.5.0</span></div>
-</div>
-</td>
-</tr>
-<tr id="i4" class="altColor">
-<td class="colFirst"><code>static java.lang.String</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/i18n/Messages.html#get-java.util.List-java.lang.Object...-">get</a></span>(java.util.List&lt;java.lang.String&gt;&nbsp;keys,
-   java.lang.Object...&nbsp;args)</code>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
-<div class="block"><span class="deprecationComment">use messages.at(keys, args).  Deprecated since 2.5.0</span></div>
-</div>
-</td>
-</tr>
-<tr id="i5" class="rowColor">
-<td class="colFirst"><code>static java.lang.String</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/i18n/Messages.html#get-java.lang.String-java.lang.Object...-">get</a></span>(java.lang.String&nbsp;key,
-   java.lang.Object...&nbsp;args)</code>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
-<div class="block"><span class="deprecationComment">use messages.at(key, args).  Deprecated since 2.5.0</span></div>
-</div>
-</td>
-</tr>
-<tr id="i6" class="altColor">
-<td class="colFirst"><code>static java.lang.Boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/i18n/Messages.html#isDefined-play.i18n.Lang-java.lang.String-">isDefined</a></span>(<a href="../../play/i18n/Lang.html" title="class in play.i18n">Lang</a>&nbsp;lang,
-         java.lang.String&nbsp;key)</code>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
-<div class="block"><span class="deprecationComment">Use messages.isDefinedAt(key).  Deprecated since 2.5.0</span></div>
-</div>
-</td>
-</tr>
-<tr id="i7" class="rowColor">
-<td class="colFirst"><code>static java.lang.Boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/i18n/Messages.html#isDefined-java.lang.String-">isDefined</a></span>(java.lang.String&nbsp;key)</code>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
-<div class="block"><span class="deprecationComment">Use messages.isDefinedAt(key).  Deprecated since 2.5.0</span></div>
-</div>
-</td>
-</tr>
-<tr id="i8" class="altColor">
 <td class="colFirst"><code>java.lang.Boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/i18n/Messages.html#isDefinedAt-java.lang.String-">isDefinedAt</a></span>(java.lang.String&nbsp;key)</code>
 <div class="block">Check if a message key is defined.</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code><a href="../../play/i18n/Lang.html" title="class in play.i18n">Lang</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/i18n/Messages.html#lang--">lang</a></span>()</code>
-<div class="block">The lang for these messages</div>
+<div class="block">Get the lang for these messages.</div>
 </td>
 </tr>
-<tr id="i10" class="altColor">
-<td class="colFirst"><code><a href="../../play/i18n/MessagesApi.html" title="class in play.i18n">MessagesApi</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/i18n/Messages.html#messagesApi--">messagesApi</a></span>()</code>&nbsp;</td>
-</tr>
 </table>
-<ul class="blockList">
-<li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
-<!--   -->
-</a>
-<h3>Methods inherited from class&nbsp;java.lang.Object</h3>
-<code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</code></li>
-</ul>
 </li>
 </ul>
 </li>
@@ -253,184 +165,23 @@ extends java.lang.Object</pre>
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
-<!-- ========= CONSTRUCTOR DETAIL ======== -->
-<ul class="blockList">
-<li class="blockList"><a name="constructor.detail">
-<!--   -->
-</a>
-<h3>Constructor Detail</h3>
-<a name="Messages-play.i18n.Lang-play.i18n.MessagesApi-">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>Messages</h4>
-<pre>public&nbsp;Messages(<a href="../../play/i18n/Lang.html" title="class in play.i18n">Lang</a>&nbsp;lang,
-                <a href="../../play/i18n/MessagesApi.html" title="class in play.i18n">MessagesApi</a>&nbsp;messages)</pre>
-</li>
-</ul>
-</li>
-</ul>
 <!-- ============ METHOD DETAIL ========== -->
 <ul class="blockList">
 <li class="blockList"><a name="method.detail">
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="get-play.i18n.Lang-java.lang.String-java.lang.Object...-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>get</h4>
-<pre>@Deprecated
-public static&nbsp;java.lang.String&nbsp;get(<a href="../../play/i18n/Lang.html" title="class in play.i18n">Lang</a>&nbsp;lang,
-                                               java.lang.String&nbsp;key,
-                                               java.lang.Object...&nbsp;args)</pre>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Please use messages.at(key, args). since 2.5.0</span></div>
-<div class="block">Translates a message.
-
- Uses `java.text.MessageFormat` internally to format the message.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>lang</code> - the message lang</dd>
-<dd><code>key</code> - the message key</dd>
-<dd><code>args</code> - the message arguments</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>the formatted message or a default rendering if the key wasn't defined</dd>
-</dl>
-</li>
-</ul>
-<a name="get-play.i18n.Lang-java.util.List-java.lang.Object...-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>get</h4>
-<pre>@Deprecated
-public static&nbsp;java.lang.String&nbsp;get(<a href="../../play/i18n/Lang.html" title="class in play.i18n">Lang</a>&nbsp;lang,
-                                               java.util.List&lt;java.lang.String&gt;&nbsp;keys,
-                                               java.lang.Object...&nbsp;args)</pre>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Please use messages.at(keys, args)</span></div>
-<div class="block">Translates the first defined message.
-
- Uses `java.text.MessageFormat` internally to format the message.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>lang</code> - the message lang</dd>
-<dd><code>keys</code> - the messages keys</dd>
-<dd><code>args</code> - the message arguments</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>the formatted message or a default rendering if the key wasn't defined</dd>
-</dl>
-</li>
-</ul>
-<a name="get-java.lang.String-java.lang.Object...-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>get</h4>
-<pre>@Deprecated
-public static&nbsp;java.lang.String&nbsp;get(java.lang.String&nbsp;key,
-                                               java.lang.Object...&nbsp;args)</pre>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">use messages.at(key, args).  Deprecated since 2.5.0</span></div>
-<div class="block">Translates a message.
-
- Uses `java.text.MessageFormat` internally to format the message.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>key</code> - the message key</dd>
-<dd><code>args</code> - the message arguments</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>the formatted message or a default rendering if the key wasn't defined</dd>
-</dl>
-</li>
-</ul>
-<a name="get-java.util.List-java.lang.Object...-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>get</h4>
-<pre>@Deprecated
-public static&nbsp;java.lang.String&nbsp;get(java.util.List&lt;java.lang.String&gt;&nbsp;keys,
-                                               java.lang.Object...&nbsp;args)</pre>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">use messages.at(keys, args).  Deprecated since 2.5.0</span></div>
-<div class="block">Translates the first defined message.
-
- Uses `java.text.MessageFormat` internally to format the message.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>keys</code> - the messages keys</dd>
-<dd><code>args</code> - the message arguments</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>the formatted message or a default rendering if the key wasn't defined</dd>
-</dl>
-</li>
-</ul>
-<a name="isDefined-play.i18n.Lang-java.lang.String-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>isDefined</h4>
-<pre>@Deprecated
-public static&nbsp;java.lang.Boolean&nbsp;isDefined(<a href="../../play/i18n/Lang.html" title="class in play.i18n">Lang</a>&nbsp;lang,
-                                                      java.lang.String&nbsp;key)</pre>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Use messages.isDefinedAt(key).  Deprecated since 2.5.0</span></div>
-<div class="block">Check if a message key is defined.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>lang</code> - the message lang</dd>
-<dd><code>key</code> - the message key</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>a Boolean</dd>
-</dl>
-</li>
-</ul>
-<a name="isDefined-java.lang.String-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>isDefined</h4>
-<pre>@Deprecated
-public static&nbsp;java.lang.Boolean&nbsp;isDefined(java.lang.String&nbsp;key)</pre>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Use messages.isDefinedAt(key).  Deprecated since 2.5.0</span></div>
-<div class="block">Check if a message key is defined.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>key</code> - the message key</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>a Boolean</dd>
-</dl>
-</li>
-</ul>
 <a name="lang--">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>lang</h4>
-<pre>public&nbsp;<a href="../../play/i18n/Lang.html" title="class in play.i18n">Lang</a>&nbsp;lang()</pre>
-<div class="block">The lang for these messages</div>
+<pre><a href="../../play/i18n/Lang.html" title="class in play.i18n">Lang</a>&nbsp;lang()</pre>
+<div class="block">Get the lang for these messages.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>the language</dd>
-</dl>
-</li>
-</ul>
-<a name="messagesApi--">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>messagesApi</h4>
-<pre>public&nbsp;<a href="../../play/i18n/MessagesApi.html" title="class in play.i18n">MessagesApi</a>&nbsp;messagesApi()</pre>
-<dl>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>The underlying API</dd>
+<dd>the chosen language</dd>
 </dl>
 </li>
 </ul>
@@ -440,8 +191,8 @@ public static&nbsp;java.lang.Boolean&nbsp;isDefined(java.lang.String&nbsp;key)</
 <ul class="blockList">
 <li class="blockList">
 <h4>at</h4>
-<pre>public&nbsp;java.lang.String&nbsp;at(java.lang.String&nbsp;key,
-                           java.lang.Object...&nbsp;args)</pre>
+<pre>java.lang.String&nbsp;at(java.lang.String&nbsp;key,
+                    java.lang.Object...&nbsp;args)</pre>
 <div class="block">Get the message at the given key.
 
  Uses `java.text.MessageFormat` internally to format the message.</div>
@@ -460,8 +211,8 @@ public static&nbsp;java.lang.Boolean&nbsp;isDefined(java.lang.String&nbsp;key)</
 <ul class="blockList">
 <li class="blockList">
 <h4>at</h4>
-<pre>public&nbsp;java.lang.String&nbsp;at(java.util.List&lt;java.lang.String&gt;&nbsp;keys,
-                           java.lang.Object...&nbsp;args)</pre>
+<pre>java.lang.String&nbsp;at(java.util.List&lt;java.lang.String&gt;&nbsp;keys,
+                    java.lang.Object...&nbsp;args)</pre>
 <div class="block">Get the message at the first defined key.
 
  Uses `java.text.MessageFormat` internally to format the message.</div>
@@ -477,10 +228,10 @@ public static&nbsp;java.lang.Boolean&nbsp;isDefined(java.lang.String&nbsp;key)</
 <a name="isDefinedAt-java.lang.String-">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>isDefinedAt</h4>
-<pre>public&nbsp;java.lang.Boolean&nbsp;isDefinedAt(java.lang.String&nbsp;key)</pre>
+<pre>java.lang.Boolean&nbsp;isDefinedAt(java.lang.String&nbsp;key)</pre>
 <div class="block">Check if a message key is defined.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -488,6 +239,15 @@ public static&nbsp;java.lang.Boolean&nbsp;isDefined(java.lang.String&nbsp;key)</
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>a Boolean</dd>
 </dl>
+</li>
+</ul>
+<a name="asScala--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>asScala</h4>
+<pre>play.api.i18n.Messages&nbsp;asScala()</pre>
 </li>
 </ul>
 </li>
@@ -544,13 +304,13 @@ public static&nbsp;java.lang.Boolean&nbsp;isDefined(java.lang.String&nbsp;key)</
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
-<li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
-<li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
+<li>Constr&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
 </div>
