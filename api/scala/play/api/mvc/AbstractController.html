@@ -49,9 +49,10 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>An alternative to <code>Controller</code> that provides a &quot;parse&quot; field containing parsers and an &quot;Action&quot; method.</p><p>This is intended to provide the idiomatic Play API for actions, allowing you to use &quot;Action&quot; for the default
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>An base controller class that provides a &quot;parse&quot; method containing parsers and an &quot;Action&quot; method, as well as other
+commonly used components.</p><p>This is intended to provide the idiomatic Play API for actions, allowing you to use &quot;Action&quot; for the default
 action builder and &quot;parse&quot; to access Play's default body parsers. You may want to extend this to provide your own
-base controller class.
+base controller class, or write your own version with similar code.
 </p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play/src/main/scala/play/api/mvc/Controller.scala" target="_blank">Controller.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="BaseController.html" class="extype" name="play.api.mvc.BaseController">BaseController</a>, <a href="Rendering.html" class="extype" name="play.api.mvc.Rendering">Rendering</a>, <a href="RequestExtractors.html" class="extype" name="play.api.mvc.RequestExtractors">RequestExtractors</a>, <a href="AcceptExtractors.html" class="extype" name="play.api.mvc.AcceptExtractors">AcceptExtractors</a>, <a href="../http/ContentTypes.html" class="extype" name="play.api.http.ContentTypes">ContentTypes</a>, <a href="../http/HeaderNames.html" class="extype" name="play.api.http.HeaderNames">HeaderNames</a>, <a href="../http/Status.html" class="extype" name="play.api.http.Status">http.Status</a>, <a href="../http/HttpProtocol.html" class="extype" name="play.api.http.HttpProtocol">HttpProtocol</a>, <a href="Results.html" class="extype" name="play.api.mvc.Results">Results</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
@@ -536,7 +537,7 @@ Example of use:</p><pre>request <span class="kw">match</span> {
   <span class="kw">case</span> Accepts.Json() <span class="kw">=&gt;</span> Ok(toJson(value))
   <span class="kw">case</span> _ <span class="kw">=&gt;</span> Ok(views.html.show(value))
 }</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="AcceptExtractors.html" class="extype" name="play.api.mvc.AcceptExtractors">AcceptExtractors</a></dd></dl></div>
-    </li><li name="play.api.mvc.AbstractController#Action" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="play.api.mvc.AbstractController#Action" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="Action:play.api.mvc.ActionBuilder[play.api.mvc.Request,play.api.mvc.AnyContent]"></a>
       <a id="Action:ActionBuilder[Request,AnyContent]"></a>
       <h4 class="signature">
@@ -552,7 +553,10 @@ Example of use:</p><pre>request <span class="kw">match</span> {
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">The default ActionBuilder.</p><div class="fullcomment"><div class="comment cmt"><p>The default ActionBuilder. Used to construct an action, for example:</p><pre><span class="kw">def</span> foo(query: <span class="std">String</span>) = Action {
+  Ok
+}</pre><p>This is meant to be a replacement for the now-deprecated Action object, and can be used in the same way.
+</p></div></div>
     </li><li name="play.api.http.Status#BAD_GATEWAY" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="BAD_GATEWAY:Int"></a>
       <a id="BAD_GATEWAY:Int"></a>
@@ -2815,7 +2819,7 @@ Example of use:</p><pre>request <span class="kw">match</span> {
     </span>
       <p class="shortcomment cmt">Content-Type of text.</p><div class="fullcomment"><div class="comment cmt"><p>Content-Type of text.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../http/ContentTypes.html" class="extype" name="play.api.http.ContentTypes">ContentTypes</a></dd></dl></div>
-    </li><li name="play.api.mvc.AbstractController#TODO" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="play.api.mvc.AbstractController#TODO" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="TODO:play.api.mvc.Action[play.api.mvc.AnyContent]"></a>
       <a id="TODO:Action[AnyContent]"></a>
       <h4 class="signature">
@@ -2831,7 +2835,7 @@ Example of use:</p><pre>request <span class="kw">match</span> {
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Used to mark an action that is still not implemented, e.g.:</p><div class="fullcomment"><div class="comment cmt"><p>Used to mark an action that is still not implemented, e.g.:</p><pre><span class="kw">def</span> action(query: <span class="std">String</span>) = TODO</pre></div></div>
     </li><li name="play.api.http.Status#TOO_MANY_REQUESTS" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="TOO_MANY_REQUESTS:Int"></a>
       <a id="TOO_MANY_REQUESTS:Int"></a>
@@ -3316,6 +3320,24 @@ Example of use:</p><pre>request <span class="kw">match</span> {
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="play.api.mvc.AbstractController#defaultExecutionContext" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="defaultExecutionContext:scala.concurrent.ExecutionContext"></a>
+      <a id="defaultExecutionContext:ExecutionContext"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">defaultExecutionContext</span><span class="result">: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.AbstractController@defaultExecutionContext:scala.concurrent.ExecutionContext" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">The default execution context provided by Play.</p><div class="fullcomment"><div class="comment cmt"><p>The default execution context provided by Play. You should use this for non-blocking code only. You can do so by
+passing it explicitly, or by defining an implicit in your controller like so:</p><pre><span class="kw">implicit</span> <span class="kw">lazy</span> <span class="kw">val</span> executionContext = defaultExecutionContext</pre></div></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -3424,7 +3446,7 @@ Example of use:</p><pre>request <span class="kw">match</span> {
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="play.api.mvc.AbstractController#messagesApi" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="play.api.mvc.AbstractController#messagesApi" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="messagesApi:play.api.i18n.MessagesApi"></a>
       <a id="messagesApi:MessagesApi"></a>
       <h4 class="signature">
@@ -3440,7 +3462,8 @@ Example of use:</p><pre>request <span class="kw">match</span> {
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">The MessagesApi provided by Play.</p><div class="fullcomment"><div class="comment cmt"><p>The MessagesApi provided by Play. This can be used to provide the MessagesApi needed by i18nComponents.
+</p></div></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>
@@ -3492,7 +3515,7 @@ Example of use:</p><pre>request <span class="kw">match</span> {
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="play.api.mvc.AbstractController#parse" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="play.api.mvc.AbstractController#parse" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="parse:play.api.mvc.PlayBodyParsers"></a>
       <a id="parse:PlayBodyParsers"></a>
       <h4 class="signature">
@@ -3508,7 +3531,10 @@ Example of use:</p><pre>request <span class="kw">match</span> {
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">The default body parsers provided by Play.</p><div class="fullcomment"><div class="comment cmt"><p>The default body parsers provided by Play. This can be used along with the Action helper to customize the body
+parser, for example:</p><pre><span class="kw">def</span> foo(query: <span class="std">String</span>) = Action(parse.tolerantJson) { request <span class="kw">=&gt;</span>
+  Ok(request.body)
+}</pre></div></div>
     </li><li name="play.api.mvc.Rendering.render" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="render"></a>
       <a id="render:render"></a>
@@ -3526,6 +3552,24 @@ Example of use:</p><pre>request <span class="kw">match</span> {
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Rendering.html" class="extype" name="play.api.mvc.Rendering">Rendering</a></dd></dl></div>
+    </li><li name="play.api.mvc.AbstractController#supportedLangs" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="supportedLangs:play.api.i18n.Langs"></a>
+      <a id="supportedLangs:Langs"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">supportedLangs</span><span class="result">: <a href="../i18n/Langs.html" class="extype" name="play.api.i18n.Langs">Langs</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.AbstractController@supportedLangs:play.api.i18n.Langs" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">The default Langs provided by Play.</p><div class="fullcomment"><div class="comment cmt"><p>The default Langs provided by Play. Can be used to determine the application's supported languages.
+</p></div></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
