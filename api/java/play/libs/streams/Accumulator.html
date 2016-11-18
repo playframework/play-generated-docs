@@ -439,6 +439,8 @@ extends java.lang.Object</pre>
  Extreme care must be taken when using this accumulator - the source *must always* be materialized and consumed.
  If it isn't, this could lead to resource leaks and deadlocks upstream.</div>
 <dl>
+<dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>E</code> - the "in" type of the parameter.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>An accumulator that forwards the stream to the produced source.</dd>
 </dl>
@@ -455,6 +457,9 @@ extends java.lang.Object</pre>
 <pre>public static&nbsp;&lt;E,A&gt;&nbsp;<a href="../../../play/libs/streams/Accumulator.html" title="class in play.libs.streams">Accumulator</a>&lt;E,A&gt;&nbsp;done(A&nbsp;a)</pre>
 <div class="block">Create a done accumulator with the given value.</div>
 <dl>
+<dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>E</code> - the "in" type of the parameter.</dd>
+<dd><code>A</code> - the materialized result of the accumulator.</dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>a</code> - The done value for the accumulator.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -471,6 +476,9 @@ extends java.lang.Object</pre>
 <pre>public static&nbsp;&lt;E,A&gt;&nbsp;<a href="../../../play/libs/streams/Accumulator.html" title="class in play.libs.streams">Accumulator</a>&lt;E,A&gt;&nbsp;done(java.util.concurrent.CompletionStage&lt;A&gt;&nbsp;a)</pre>
 <div class="block">Create a done accumulator with the given future.</div>
 <dl>
+<dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>E</code> - the "in" type of the parameter.</dd>
+<dd><code>A</code> - the materialized result of the accumulator.</dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>a</code> - A future of the done value.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -488,6 +496,9 @@ extends java.lang.Object</pre>
                                              akka.stream.Materializer&nbsp;materializer)</pre>
 <div class="block">Flatten a completion stage of an accumulator to an accumulator.</div>
 <dl>
+<dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>E</code> - the "in" type of the parameter.</dd>
+<dd><code>A</code> - the materialized result of the accumulator.</dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>stage</code> - the CompletionStage (asynchronous) accumulator</dd>
 <dd><code>materializer</code> - the stream materializer</dd>

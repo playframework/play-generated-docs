@@ -176,21 +176,15 @@ implements <a href="../../play/db/Database.html" title="interface in play.db">Da
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>javax.sql.DataSource</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/db/DefaultDatabase.html#getDataSource--">getDataSource</a></span>()</code>
-<div class="block">The underlying JDBC data source for this database.</div>
-</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/db/DefaultDatabase.html#getDataSource--">getDataSource</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/db/DefaultDatabase.html#getName--">getName</a></span>()</code>
-<div class="block">The configuration name for this database.</div>
-</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/db/DefaultDatabase.html#getName--">getName</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/db/DefaultDatabase.html#getUrl--">getUrl</a></span>()</code>
-<div class="block">The JDBC connection URL this database, i.e.</div>
-</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/db/DefaultDatabase.html#getUrl--">getUrl</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
@@ -320,11 +314,11 @@ implements <a href="../../play/db/Database.html" title="interface in play.db">Da
 <li class="blockList">
 <h4>getName</h4>
 <pre>public&nbsp;java.lang.String&nbsp;getName()</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../play/db/Database.html#getName--">Database</a></code></span></div>
-<div class="block">The configuration name for this database.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../play/db/Database.html#getName--">getName</a></code>&nbsp;in interface&nbsp;<code><a href="../../play/db/Database.html" title="interface in play.db">Database</a></code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the configuration name for this database.</dd>
 </dl>
 </li>
 </ul>
@@ -335,11 +329,11 @@ implements <a href="../../play/db/Database.html" title="interface in play.db">Da
 <li class="blockList">
 <h4>getDataSource</h4>
 <pre>public&nbsp;javax.sql.DataSource&nbsp;getDataSource()</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../play/db/Database.html#getDataSource--">Database</a></code></span></div>
-<div class="block">The underlying JDBC data source for this database.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../play/db/Database.html#getDataSource--">getDataSource</a></code>&nbsp;in interface&nbsp;<code><a href="../../play/db/Database.html" title="interface in play.db">Database</a></code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the underlying JDBC data source for this database.</dd>
 </dl>
 </li>
 </ul>
@@ -350,12 +344,12 @@ implements <a href="../../play/db/Database.html" title="interface in play.db">Da
 <li class="blockList">
 <h4>getUrl</h4>
 <pre>public&nbsp;java.lang.String&nbsp;getUrl()</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../play/db/Database.html#getUrl--">Database</a></code></span></div>
-<div class="block">The JDBC connection URL this database, i.e. `jdbc:...` Normally retrieved
- via a connection.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../play/db/Database.html#getUrl--">getUrl</a></code>&nbsp;in interface&nbsp;<code><a href="../../play/db/Database.html" title="interface in play.db">Database</a></code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the JDBC connection URL this database, i.e. `jdbc:...` Normally retrieved
+ via a connection.</dd>
 </dl>
 </li>
 </ul>
@@ -431,6 +425,8 @@ implements <a href="../../play/db/Database.html" title="interface in play.db">Da
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../play/db/Database.html#withConnection-play.db.ConnectionCallable-">withConnection</a></code>&nbsp;in interface&nbsp;<code><a href="../../play/db/Database.html" title="interface in play.db">Database</a></code></dd>
+<dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>A</code> - the return value's type</dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>block</code> - code to execute</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -472,6 +468,8 @@ implements <a href="../../play/db/Database.html" title="interface in play.db">Da
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../play/db/Database.html#withConnection-boolean-play.db.ConnectionCallable-">withConnection</a></code>&nbsp;in interface&nbsp;<code><a href="../../play/db/Database.html" title="interface in play.db">Database</a></code></dd>
+<dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>A</code> - the return value's type</dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>autocommit</code> - determines whether to autocommit the connection</dd>
 <dd><code>block</code> - code to execute</dd>
@@ -513,6 +511,8 @@ implements <a href="../../play/db/Database.html" title="interface in play.db">Da
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../play/db/Database.html#withTransaction-play.db.ConnectionCallable-">withTransaction</a></code>&nbsp;in interface&nbsp;<code><a href="../../play/db/Database.html" title="interface in play.db">Database</a></code></dd>
+<dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>A</code> - the return value's type</dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>block</code> - code to execute</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -547,6 +547,8 @@ implements <a href="../../play/db/Database.html" title="interface in play.db">Da
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../play/db/Database.html#toScala--">toScala</a></code>&nbsp;in interface&nbsp;<code><a href="../../play/db/Database.html" title="interface in play.db">Database</a></code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the database for scala API.</dd>
 </dl>
 </li>
 </ul>
