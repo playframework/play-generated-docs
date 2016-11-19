@@ -17,8 +17,8 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":9,"i1":9,"i2":9};
-var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],8:["t4","Concrete Methods"]};
+var methods = {"i0":41,"i1":9,"i2":9};
+var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],8:["t4","Concrete Methods"],32:["t6","Deprecated Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -110,7 +110,7 @@ var activeTableTab = "activeTableTab";
 <pre>public class <span class="typeNameLabel">HttpExecution</span>
 extends java.lang.Object</pre>
 <div class="block">ExecutionContexts that preserve the current thread's context ClassLoader and
- Http.Context.</div>
+ Http.Context by passing it through <a href="../../../play/libs/concurrent/HttpExecutionContext.html" title="class in play.libs.concurrent"><code>HttpExecutionContext</code></a>.</div>
 </li>
 </ul>
 </div>
@@ -141,7 +141,7 @@ extends java.lang.Object</pre>
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t1" class="tableTab"><span><a href="javascript:show(1);">Static Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t1" class="tableTab"><span><a href="javascript:show(1);">Static Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t6" class="tableTab"><span><a href="javascript:show(32);">Deprecated Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
@@ -149,8 +149,11 @@ extends java.lang.Object</pre>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>static scala.concurrent.ExecutionContextExecutor</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/concurrent/HttpExecution.html#defaultContext--">defaultContext</a></span>()</code>
-<div class="block">An ExecutionContext that executes work on the application's internal
- ActorSystem dispatcher.</div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">Since 2.6.0, use <a href="../../../play/libs/concurrent/HttpExecutionContext.html#current--"><code>HttpExecutionContext.current()</code></a>
+             from an action, or use <a href="../../../play/libs/concurrent/HttpExecution.html#fromThread-scala.concurrent.ExecutionContext-"><code>fromThread(ExecutionContext)</code></a>
+             with a dependency injected ExecutionContext or ActorSystem directly.</span></div>
+</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
@@ -215,8 +218,10 @@ extends java.lang.Object</pre>
  current thread's context ClassLoader and Http.Context are captured when
  this method is called and preserved for all executed tasks.</div>
 <dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>delegate</code> - the delegate execution context.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>the execution context.</dd>
+<dd>the execution context wrapped in an <a href="../../../play/libs/concurrent/HttpExecutionContext.html" title="class in play.libs.concurrent"><code>HttpExecutionContext</code></a>.</dd>
 </dl>
 </li>
 </ul>
@@ -231,8 +236,10 @@ extends java.lang.Object</pre>
  current thread's context ClassLoader and Http.Context are captured when
  this method is called and preserved for all executed tasks.</div>
 <dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>delegate</code> - the delegate execution context.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>the execution context.</dd>
+<dd>the execution context wrapped in an <a href="../../../play/libs/concurrent/HttpExecutionContext.html" title="class in play.libs.concurrent"><code>HttpExecutionContext</code></a>.</dd>
 </dl>
 </li>
 </ul>
@@ -242,7 +249,11 @@ extends java.lang.Object</pre>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>defaultContext</h4>
-<pre>public static&nbsp;scala.concurrent.ExecutionContextExecutor&nbsp;defaultContext()</pre>
+<pre>@Deprecated
+public static&nbsp;scala.concurrent.ExecutionContextExecutor&nbsp;defaultContext()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Since 2.6.0, use <a href="../../../play/libs/concurrent/HttpExecutionContext.html#current--"><code>HttpExecutionContext.current()</code></a>
+             from an action, or use <a href="../../../play/libs/concurrent/HttpExecution.html#fromThread-scala.concurrent.ExecutionContext-"><code>fromThread(ExecutionContext)</code></a>
+             with a dependency injected ExecutionContext or ActorSystem directly.</span></div>
 <div class="block">An ExecutionContext that executes work on the application's internal
  ActorSystem dispatcher. The current thread's context ClassLoader and
  Http.Context are captured when this method is called and preserved

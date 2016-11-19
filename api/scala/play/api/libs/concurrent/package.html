@@ -266,7 +266,7 @@ name and have it bound through dependency injection:</p><pre>@Singleton
       <p class="shortcomment cmt">This trait is used to provide a non-blocking timeout on an operation that returns a Future.</p><div class="fullcomment"><div class="comment cmt"><p>This trait is used to provide a non-blocking timeout on an operation that returns a Future.</p><p>Please note that the <a href="../../Application.html" class="extype" name="play.api.Application">play.api.Application</a> default <span class="extype" name="ActorSystem">ActorSystem</span> should
 be used as input here, as the actorSystem.scheduler is responsible for scheduling
 the timeout, using <a href="http://doc.akka.io/docs/akka/current/scala/futures.html#After">akka.pattern.actor</a> under the hood.</p><p>You can dependency inject the ActorSystem as follows to create a Future that will
-timeout after a certain period of time:</p><pre><span class="kw">class</span> MyService(<span class="kw">val</span> actorSystem: ActorSystem) <span class="kw">extends</span> Timeout {
+timeout after a certain period of time:</p><pre><span class="kw">class</span> MyService @Inject()(actorSystem: ActorSystem) <span class="kw">extends</span> Timeout {
 
   <span class="kw">def</span> calculateWithTimeout(timeoutDuration: FiniteDuration): Future[<span class="std">Int</span>] = {
     timeout(actorSystem, timeoutDuration)(rawCalculation())
