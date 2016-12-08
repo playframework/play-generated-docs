@@ -109,7 +109,7 @@ For example:</p><pre><span class="kw">val</span> text = ContentTypes.TEXT
     </span>
       <p class="shortcomment cmt">Configuration for action composition.</p><div class="fullcomment"><div class="comment cmt"><p>Configuration for action composition.
 </p></div><dl class="paramcmts block"><dt class="param">controllerAnnotationsFirst</dt><dd class="cmt"><p>If annotations put on controllers should be executed before the ones put on actions.</p></dd><dt class="param">executeActionCreatorActionFirst</dt><dd class="cmt"><p>If the action returned by the action creator should be
-                                        executed before the action composition ones.</p></dd></dl></div>
+                                       executed before the action composition ones.</p></dd></dl></div>
     </li><li name="play.api.http.ContentTypeOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ContentTypeOf[-A]extendsProductwithSerializable"></a>
       <a id="ContentTypeOf[-A]:ContentTypeOf[A]"></a>
@@ -188,6 +188,43 @@ For example:</p><pre><span class="kw">val</span> text = ContentTypes.TEXT
       </a>
     </span>
       <p class="shortcomment cmt">Contains typeclasses for ContentTypeOf.</p>
+    </li><li name="play.api.http.DefaultFileMimeTypes" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DefaultFileMimeTypesextendsFileMimeTypes"></a>
+      <a id="DefaultFileMimeTypes:DefaultFileMimeTypes"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="DefaultFileMimeTypes.html"><span class="name">DefaultFileMimeTypes</span></a><span class="result"> extends <a href="FileMimeTypes.html" class="extype" name="play.api.http.FileMimeTypes">FileMimeTypes</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.http.package@DefaultFileMimeTypesextendsFileMimeTypes" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Default implementation of FileMimeTypes.</p>
+    </li><li name="play.api.http.DefaultFileMimeTypesProvider" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="DefaultFileMimeTypesProviderextendsProvider[play.api.http.FileMimeTypes]"></a>
+      <a id="DefaultFileMimeTypesProvider:DefaultFileMimeTypesProvider"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="DefaultFileMimeTypesProvider.html"><span class="name">DefaultFileMimeTypesProvider</span></a><span class="result"> extends <span class="extype" name="javax.inject.Provider">Provider</span>[<a href="FileMimeTypes.html" class="extype" name="play.api.http.FileMimeTypes">FileMimeTypes</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.http.package@DefaultFileMimeTypesProviderextendsProvider[play.api.http.FileMimeTypes]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@Singleton</span><span class="args">()</span>
+              
+        </dd></dl></div>
     </li><li name="play.api.http.DefaultHttpErrorHandler" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="DefaultHttpErrorHandlerextendsHttpErrorHandler"></a>
       <a id="DefaultHttpErrorHandler:DefaultHttpErrorHandler"></a>
@@ -267,6 +304,60 @@ is the default one, in order to provide support for Java actions.
       </a>
     </span>
       <p class="shortcomment cmt">Default Writeable.</p>
+    </li><li name="play.api.http.FileMimeTypes" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="FileMimeTypesextendsAnyRef"></a>
+      <a id="FileMimeTypes:FileMimeTypes"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="FileMimeTypes.html"><span class="name">FileMimeTypes</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.http.package@FileMimeTypesextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Defines behavior for file type mappings.</p><div class="fullcomment"><div class="comment cmt"><p>Defines behavior for file type mappings.</p><p>This trait is primarily used with results and assets that send files,
+for users who want to send a file without having to specify an explicit
+content type.  For example, a user can send a file with &quot;.json&quot;:</p><pre><span class="kw">implicit</span> <span class="kw">val</span> fileMimeTypes = ...
+<span class="kw">val</span> file = <span class="kw">new</span> File(<span class="lit">"test.json"</span>)
+Ok.sendFile(file) <span class="cmt">// <-- uses implicit fileMimeTypes</span></pre><p>and have a &quot;json&quot; -&gt; &quot;application/json&quot; mapping done implicitly based
+off the file extension.  The Assets controller handles this mapping
+automatically.</p><p>In a controller, an implicit FileMimeTypes object can either be defined
+explicitly:</p><pre><span class="kw">class</span> MyController @Inject()(<span class="kw">implicit</span> <span class="kw">val</span> fileMimeTypes: FileMimeTypes) <span class="kw">extends</span> BaseController {
+   <span class="kw">def</span> sendFile() = ...
+}</pre><p>or, if <a href="../mvc/AbstractController.html" class="extype" name="play.api.mvc.AbstractController">play.api.mvc.AbstractController</a> is extended, then
+an implicit fileMimeTypes instance is already made available from
+<a href="../mvc/ControllerComponents.html" class="extype" name="play.api.mvc.ControllerComponents">play.api.mvc.ControllerComponents</a>, meaning that no explicit import is required:</p><pre><span class="kw">class</span> MyController @Inject()(cc: ControllerComponents) <span class="kw">extends</span> AbstractController(cc) {
+   <span class="kw">def</span> sendFile() = ...
+}</pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@implicitNotFound</span><span class="args">(<span>
+      
+      <span class="defval" name="&quot;You do not have an implicit FileMimeTypes in scope. If you want to bring a FileMimeTypes into context, please use dependency injection.&quot;">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="play.api.http.FileMimeTypesConfiguration" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="FileMimeTypesConfigurationextendsProductwithSerializable"></a>
+      <a id="FileMimeTypesConfiguration:FileMimeTypesConfiguration"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="FileMimeTypesConfiguration.html"><span class="name">FileMimeTypesConfiguration</span></a><span class="params">(<span name="mimeTypes">mimeTypes: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">Map.empty</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.http.package@FileMimeTypesConfigurationextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Configuration for file MIME types, mapping from extension to content type.</p><div class="fullcomment"><div class="comment cmt"><p>Configuration for file MIME types, mapping from extension to content type.
+</p></div><dl class="paramcmts block"><dt class="param">mimeTypes</dt><dd class="cmt"><p>the extension to mime type mapping.</p></dd></dl></div>
     </li><li name="play.api.http.FlashConfiguration" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="FlashConfigurationextendsProductwithSerializable"></a>
       <a id="FlashConfiguration:FlashConfiguration"></a>
@@ -331,7 +422,7 @@ a stream, optionally with trailing headers.
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="HttpConfiguration.html"><span class="name">HttpConfiguration</span></a><span class="params">(<span name="context">context: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;/&quot;</span></span>, <span name="parser">parser: <a href="ParserConfiguration.html" class="extype" name="play.api.http.ParserConfiguration">ParserConfiguration</a> = <span class="symbol">ParserConfiguration()</span></span>, <span name="actionComposition">actionComposition: <a href="ActionCompositionConfiguration.html" class="extype" name="play.api.http.ActionCompositionConfiguration">ActionCompositionConfiguration</a> = <span class="symbol">ActionCompositionConfiguration()</span></span>, <span name="cookies">cookies: <a href="CookiesConfiguration.html" class="extype" name="play.api.http.CookiesConfiguration">CookiesConfiguration</a> = <span class="symbol">CookiesConfiguration()</span></span>, <span name="session">session: <a href="SessionConfiguration.html" class="extype" name="play.api.http.SessionConfiguration">SessionConfiguration</a> = <span class="symbol">SessionConfiguration()</span></span>, <span name="flash">flash: <a href="FlashConfiguration.html" class="extype" name="play.api.http.FlashConfiguration">FlashConfiguration</a> = <span class="symbol">FlashConfiguration()</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="HttpConfiguration.html"><span class="name">HttpConfiguration</span></a><span class="params">(<span name="context">context: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;/&quot;</span></span>, <span name="parser">parser: <a href="ParserConfiguration.html" class="extype" name="play.api.http.ParserConfiguration">ParserConfiguration</a> = <span class="symbol">ParserConfiguration()</span></span>, <span name="actionComposition">actionComposition: <a href="ActionCompositionConfiguration.html" class="extype" name="play.api.http.ActionCompositionConfiguration">ActionCompositionConfiguration</a> = <span class="symbol">ActionCompositionConfiguration()</span></span>, <span name="cookies">cookies: <a href="CookiesConfiguration.html" class="extype" name="play.api.http.CookiesConfiguration">CookiesConfiguration</a> = <span class="symbol">CookiesConfiguration()</span></span>, <span name="session">session: <a href="SessionConfiguration.html" class="extype" name="play.api.http.SessionConfiguration">SessionConfiguration</a> = <span class="symbol">SessionConfiguration()</span></span>, <span name="flash">flash: <a href="FlashConfiguration.html" class="extype" name="play.api.http.FlashConfiguration">FlashConfiguration</a> = <span class="symbol">FlashConfiguration()</span></span>, <span name="fileMimeTypes">fileMimeTypes: <a href="FileMimeTypesConfiguration.html" class="extype" name="play.api.http.FileMimeTypesConfiguration">FileMimeTypesConfiguration</a> = <span class="symbol">FileMimeTypesConfiguration()</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.http.package@HttpConfigurationextendsProductwithSerializable" title="Permalink" target="_top">
@@ -340,7 +431,7 @@ a stream, optionally with trailing headers.
     </span>
       <p class="shortcomment cmt">HTTP related configuration of a Play application
 </p><div class="fullcomment"><div class="comment cmt"><p>HTTP related configuration of a Play application
-</p></div><dl class="paramcmts block"><dt class="param">context</dt><dd class="cmt"><p>The HTTP context</p></dd><dt class="param">parser</dt><dd class="cmt"><p>The parser configuration</p></dd><dt class="param">session</dt><dd class="cmt"><p>The session configuration</p></dd><dt class="param">flash</dt><dd class="cmt"><p>The flash configuration</p></dd></dl></div>
+</p></div><dl class="paramcmts block"><dt class="param">context</dt><dd class="cmt"><p>The HTTP context</p></dd><dt class="param">parser</dt><dd class="cmt"><p>The parser configuration</p></dd><dt class="param">session</dt><dd class="cmt"><p>The session configuration</p></dd><dt class="param">flash</dt><dd class="cmt"><p>The flash configuration</p></dd><dt class="param">fileMimeTypes</dt><dd class="cmt"><p>The fileMimeTypes configuration</p></dd></dl></div>
     </li><li name="play.api.http.HttpEntity" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="HttpEntityextendsAnyRef"></a>
       <a id="HttpEntity:HttpEntity"></a>

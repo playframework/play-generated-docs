@@ -676,6 +676,28 @@ from <code>JsPath.writeNullable</code> which omits the field when None
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="play.api.libs.json.OWrites#transform" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="transform[A](w:play.api.libs.json.OWrites[A])(f:(A,play.api.libs.json.JsObject)=&gt;play.api.libs.json.JsObject):play.api.libs.json.OWrites[A]"></a>
+      <a id="transform[A](OWrites[A])((A,JsObject)⇒JsObject):OWrites[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">transform</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="w">w: <a href="OWrites.html" class="extype" name="play.api.libs.json.OWrites">OWrites</a>[<span class="extype" name="play.api.libs.json.OWrites.transform.A">A</span>]</span>)</span><span class="params">(<span name="f">f: (<span class="extype" name="play.api.libs.json.OWrites.transform.A">A</span>, <a href="JsObject.html" class="extype" name="play.api.libs.json.JsObject">JsObject</a>) ⇒ <a href="JsObject.html" class="extype" name="play.api.libs.json.JsObject">JsObject</a></span>)</span><span class="result">: <a href="OWrites.html" class="extype" name="play.api.libs.json.OWrites">OWrites</a>[<span class="extype" name="play.api.libs.json.OWrites.transform.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.json.OWrites$@transform[A](w:play.api.libs.json.OWrites[A])(f:(A,play.api.libs.json.JsObject)=&gt;play.api.libs.json.JsObject):play.api.libs.json.OWrites[A]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Transforms the resulting <a href="JsObject.html" class="extype" name="play.api.libs.json.JsObject">JsObject</a> using the given function,
+which is also applied with the initial input.</p><div class="fullcomment"><div class="comment cmt"><p>Transforms the resulting <a href="JsObject.html" class="extype" name="play.api.libs.json.JsObject">JsObject</a> using the given function,
+which is also applied with the initial input.
+def transform(transformer: (A, JsObject) =&gt; JsObject): OWrites[A] =
+OWrites[A] { a =&gt; transformer(a, this.writes(a)) }
+</p></div><dl class="paramcmts block"><dt class="param">w</dt><dd class="cmt"><p>the initial writer</p></dd><dt class="param">f</dt><dd class="cmt"><p>the transformer function</p></dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>

@@ -92,7 +92,7 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="play.api.DefaultApplication#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(environment:play.api.Environment,applicationLifecycle:play.api.inject.DefaultApplicationLifecycle,injector:play.api.inject.Injector,configuration:play.api.Configuration,requestHandler:play.api.http.HttpRequestHandler,errorHandler:play.api.http.HttpErrorHandler,actorSystem:akka.actor.ActorSystem,materializer:akka.stream.Materializer):play.api.DefaultApplication"></a>
+      <a id="&lt;init&gt;(environment:play.api.Environment,applicationLifecycle:play.api.inject.DefaultApplicationLifecycle,injector:play.api.inject.Injector,configuration:play.api.Configuration,requestFactory:play.api.mvc.request.RequestFactory,requestHandler:play.api.http.HttpRequestHandler,errorHandler:play.api.http.HttpErrorHandler,actorSystem:akka.actor.ActorSystem,materializer:akka.stream.Materializer):play.api.DefaultApplication"></a>
       <a id="&lt;init&gt;:DefaultApplication"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -100,10 +100,10 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">DefaultApplication</span><span class="params">(<span name="environment">environment: <a href="Environment.html" class="extype" name="play.api.Environment">Environment</a></span>, <span name="applicationLifecycle">applicationLifecycle: <a href="inject/DefaultApplicationLifecycle.html" class="extype" name="play.api.inject.DefaultApplicationLifecycle">DefaultApplicationLifecycle</a></span>, <span name="injector">injector: <a href="inject/Injector.html" class="extype" name="play.api.inject.Injector">Injector</a></span>, <span name="configuration">configuration: <a href="Configuration.html" class="extype" name="play.api.Configuration">Configuration</a></span>, <span name="requestHandler">requestHandler: <a href="http/HttpRequestHandler.html" class="extype" name="play.api.http.HttpRequestHandler">HttpRequestHandler</a></span>, <span name="errorHandler">errorHandler: <a href="http/HttpErrorHandler.html" class="extype" name="play.api.http.HttpErrorHandler">HttpErrorHandler</a></span>, <span name="actorSystem">actorSystem: <span class="extype" name="akka.actor.ActorSystem">ActorSystem</span></span>, <span name="materializer">materializer: <span class="extype" name="akka.stream.Materializer">Materializer</span></span>)</span>
+        <span class="name">DefaultApplication</span><span class="params">(<span name="environment">environment: <a href="Environment.html" class="extype" name="play.api.Environment">Environment</a></span>, <span name="applicationLifecycle">applicationLifecycle: <a href="inject/DefaultApplicationLifecycle.html" class="extype" name="play.api.inject.DefaultApplicationLifecycle">DefaultApplicationLifecycle</a></span>, <span name="injector">injector: <a href="inject/Injector.html" class="extype" name="play.api.inject.Injector">Injector</a></span>, <span name="configuration">configuration: <a href="Configuration.html" class="extype" name="play.api.Configuration">Configuration</a></span>, <span name="requestFactory">requestFactory: <a href="mvc/request/RequestFactory.html" class="extype" name="play.api.mvc.request.RequestFactory">RequestFactory</a></span>, <span name="requestHandler">requestHandler: <a href="http/HttpRequestHandler.html" class="extype" name="play.api.http.HttpRequestHandler">HttpRequestHandler</a></span>, <span name="errorHandler">errorHandler: <a href="http/HttpErrorHandler.html" class="extype" name="play.api.http.HttpErrorHandler">HttpErrorHandler</a></span>, <span name="actorSystem">actorSystem: <span class="extype" name="akka.actor.ActorSystem">ActorSystem</span></span>, <span name="materializer">materializer: <span class="extype" name="akka.stream.Materializer">Materializer</span></span>)</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#play.api.DefaultApplication@&lt;init&gt;(environment:play.api.Environment,applicationLifecycle:play.api.inject.DefaultApplicationLifecycle,injector:play.api.inject.Injector,configuration:play.api.Configuration,requestHandler:play.api.http.HttpRequestHandler,errorHandler:play.api.http.HttpErrorHandler,actorSystem:akka.actor.ActorSystem,materializer:akka.stream.Materializer):play.api.DefaultApplication" title="Permalink" target="_top">
+      <a href="../../index.html#play.api.DefaultApplication@&lt;init&gt;(environment:play.api.Environment,applicationLifecycle:play.api.inject.DefaultApplicationLifecycle,injector:play.api.inject.Injector,configuration:play.api.Configuration,requestFactory:play.api.mvc.request.RequestFactory,requestHandler:play.api.http.HttpRequestHandler,errorHandler:play.api.http.HttpErrorHandler,actorSystem:akka.actor.ActorSystem,materializer:akka.stream.Materializer):play.api.DefaultApplication" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -516,6 +516,24 @@
     </span>
       <p class="shortcomment cmt">The absolute path hosting this application, mainly used by the <code>getFile(path)</code> helper method
 </p><div class="fullcomment"><div class="comment cmt"><p>The absolute path hosting this application, mainly used by the <code>getFile(path)</code> helper method
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.DefaultApplication">DefaultApplication</a> → <a href="Application.html" class="extype" name="play.api.Application">Application</a></dd></dl></div>
+    </li><li name="play.api.DefaultApplication#requestFactory" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="requestFactory:play.api.mvc.request.RequestFactory"></a>
+      <a id="requestFactory:RequestFactory"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">requestFactory</span><span class="result">: <a href="mvc/request/RequestFactory.html" class="extype" name="play.api.mvc.request.RequestFactory">RequestFactory</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.DefaultApplication@requestFactory:play.api.mvc.request.RequestFactory" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">The factory used to create requests for this application.</p><div class="fullcomment"><div class="comment cmt"><p>The factory used to create requests for this application.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.DefaultApplication">DefaultApplication</a> → <a href="Application.html" class="extype" name="play.api.Application">Application</a></dd></dl></div>
     </li><li name="play.api.DefaultApplication#requestHandler" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="requestHandler:play.api.http.HttpRequestHandler"></a>

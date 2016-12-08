@@ -28,7 +28,7 @@
         </head>
         <body class="type">
       <div id="definition">
-        <a href="TypedMap$.html" title="See companion object"><img alt="Class/Object" src="../../../../lib/class_to_object_big.png" /></a>
+        <a href="TypedMap$.html" title="See companion object"><img alt="Trait/Object" src="../../../../lib/trait_to_object_big.png" /></a>
         <p id="owner"><a href="../../../package.html" class="extype" name="play">play</a>.<a href="../../package.html" class="extype" name="play.api">api</a>.<a href="../package.html" class="extype" name="play.api.libs">libs</a>.<a href="package.html" class="extype" name="play.api.libs.typedmap">typedmap</a></p>
         <h1><a href="TypedMap$.html" title="See companion object">TypedMap</a></h1><h3><span class="morelinks"><div>
             Related Docs:
@@ -43,8 +43,8 @@
 
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">class</span>
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
       </span>
       <span class="symbol">
         <span class="name">TypedMap</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
@@ -54,7 +54,10 @@
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A TypedMap is an immutable map containing typed values. Each entry is
 associated with a <a href="TypedKey.html" class="extype" name="play.api.libs.typedmap.TypedKey">TypedKey</a> that can be used to look up the value. A
 <code>TypedKey</code> also defines the type of the value, e.g. a <code>TypedKey[String]</code>
-would be associated with a <code>String</code> value.</p><p>Instances of this class are created with the <code>TypedMap.empty</code> method.
+would be associated with a <code>String</code> value.</p><p>Instances of this class are created with the <code>TypedMap.empty</code> method.</p><p>The elements inside TypedMaps cannot be enumerated. This is a decision
+designed to enforce modularity. It's not possible to accidentally or
+intentionally access a value in a TypedMap without holding the
+corresponding <a href="TypedKey.html" class="extype" name="play.api.libs.typedmap.TypedKey">TypedKey</a>.
 </p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play/src/main/scala/play/api/libs/typedmap/TypedMap.scala" target="_blank">TypedMap.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
@@ -96,10 +99,103 @@ would be associated with a <code>String</code> value.</p><p>Instances of this cl
 
         
 
-        
+        <div id="values" class="values members">
+              <h3>Abstract Value Members</h3>
+              <ol><li name="play.api.libs.typedmap.TypedMap#+" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="+(entries:play.api.libs.typedmap.TypedEntry[_]*):play.api.libs.typedmap.TypedMap"></a>
+      <a id="+(TypedEntry[_]*):TypedMap"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $plus" class="name">+</span><span class="params">(<span name="entries">entries: <a href="TypedEntry.html" class="extype" name="play.api.libs.typedmap.TypedEntry">TypedEntry</a>[_]*</span>)</span><span class="result">: <a href="" class="extype" name="play.api.libs.typedmap.TypedMap">TypedMap</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.typedmap.TypedMap@+(entries:play.api.libs.typedmap.TypedEntry[_]*):play.api.libs.typedmap.TypedMap" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Update the map with several entries, returning a new instance of the map.</p><div class="fullcomment"><div class="comment cmt"><p>Update the map with several entries, returning a new instance of the map.
+</p></div><dl class="paramcmts block"><dt class="param">entries</dt><dd class="cmt"><p>The new entries to add to the map.</p></dd><dt>returns</dt><dd class="cmt"><p>A new instance of the map with the new entries added.</p></dd></dl></div>
+    </li><li name="play.api.libs.typedmap.TypedMap#apply" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="apply[A](key:play.api.libs.typedmap.TypedKey[A]):A"></a>
+      <a id="apply[A](TypedKey[A]):A"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">apply</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="key">key: <a href="TypedKey.html" class="extype" name="play.api.libs.typedmap.TypedKey">TypedKey</a>[<span class="extype" name="play.api.libs.typedmap.TypedMap.apply.A">A</span>]</span>)</span><span class="result">: <span class="extype" name="play.api.libs.typedmap.TypedMap.apply.A">A</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.typedmap.TypedMap@apply[A](key:play.api.libs.typedmap.TypedKey[A]):A" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Get a value from the map, throwing an exception if it is not present.</p><div class="fullcomment"><div class="comment cmt"><p>Get a value from the map, throwing an exception if it is not present.
+</p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>The type of value to retrieve.</p></dd><dt class="param">key</dt><dd class="cmt"><p>The key for the value to retrieve.</p></dd><dt>returns</dt><dd class="cmt"><p>The value, if it is present in the map.</p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="NoSuchElementException"><code>NoSuchElementException</code></span> If the value isn't present in the map.</p></span></dd></dl></div>
+    </li><li name="play.api.libs.typedmap.TypedMap#contains" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="contains(key:play.api.libs.typedmap.TypedKey[_]):Boolean"></a>
+      <a id="contains(TypedKey[_]):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">contains</span><span class="params">(<span name="key">key: <a href="TypedKey.html" class="extype" name="play.api.libs.typedmap.TypedKey">TypedKey</a>[_]</span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.typedmap.TypedMap@contains(key:play.api.libs.typedmap.TypedKey[_]):Boolean" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Check if the map contains a value with the given key.</p><div class="fullcomment"><div class="comment cmt"><p>Check if the map contains a value with the given key.
+</p></div><dl class="paramcmts block"><dt class="param">key</dt><dd class="cmt"><p>The key to check for.</p></dd><dt>returns</dt><dd class="cmt"><p>True if the value is present, false otherwise.</p></dd></dl></div>
+    </li><li name="play.api.libs.typedmap.TypedMap#get" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="get[A](key:play.api.libs.typedmap.TypedKey[A]):Option[A]"></a>
+      <a id="get[A](TypedKey[A]):Option[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">get</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="key">key: <a href="TypedKey.html" class="extype" name="play.api.libs.typedmap.TypedKey">TypedKey</a>[<span class="extype" name="play.api.libs.typedmap.TypedMap.get.A">A</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="play.api.libs.typedmap.TypedMap.get.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.typedmap.TypedMap@get[A](key:play.api.libs.typedmap.TypedKey[A]):Option[A]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Get a value from the map, returning <code>None</code> if it is not present.</p><div class="fullcomment"><div class="comment cmt"><p>Get a value from the map, returning <code>None</code> if it is not present.
+</p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>The type of value to retrieve.</p></dd><dt class="param">key</dt><dd class="cmt"><p>The key for the value to retrieve.</p></dd><dt>returns</dt><dd class="cmt"><p><code>Some</code> value, if it is present in the map, otherwise <code>None</code>.</p></dd></dl></div>
+    </li><li name="play.api.libs.typedmap.TypedMap#updated" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="updated[A](key:play.api.libs.typedmap.TypedKey[A],value:A):play.api.libs.typedmap.TypedMap"></a>
+      <a id="updated[A](TypedKey[A],A):TypedMap"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">updated</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="key">key: <a href="TypedKey.html" class="extype" name="play.api.libs.typedmap.TypedKey">TypedKey</a>[<span class="extype" name="play.api.libs.typedmap.TypedMap.updated.A">A</span>]</span>, <span name="value">value: <span class="extype" name="play.api.libs.typedmap.TypedMap.updated.A">A</span></span>)</span><span class="result">: <a href="" class="extype" name="play.api.libs.typedmap.TypedMap">TypedMap</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.typedmap.TypedMap@updated[A](key:play.api.libs.typedmap.TypedKey[A],value:A):play.api.libs.typedmap.TypedMap" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Update the map with the given key and value, returning a new instance of the map.</p><div class="fullcomment"><div class="comment cmt"><p>Update the map with the given key and value, returning a new instance of the map.
+</p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>The type of value.</p></dd><dt class="param">key</dt><dd class="cmt"><p>The key to set.</p></dd><dt class="param">value</dt><dd class="cmt"><p>The value to use.</p></dd><dt>returns</dt><dd class="cmt"><p>A new instance of the map with the new entry added.</p></dd></dl></div>
+    </li></ol>
+            </div>
 
         <div id="values" class="values members">
-              <h3>Value Members</h3>
+              <h3>Concrete Value Members</h3>
               <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:Any):Boolean"></a>
       <a id="!=(Any):Boolean"></a>
@@ -134,24 +230,6 @@ would be associated with a <code>String</code> value.</p><p>Instances of this cl
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="play.api.libs.typedmap.TypedMap#+" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="+(entries:play.api.libs.typedmap.TypedEntry[_]*):play.api.libs.typedmap.TypedMap"></a>
-      <a id="+(TypedEntry[_]*):TypedMap"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span title="gt4s: $plus" class="name">+</span><span class="params">(<span name="entries">entries: <a href="TypedEntry.html" class="extype" name="play.api.libs.typedmap.TypedEntry">TypedEntry</a>[_]*</span>)</span><span class="result">: <a href="" class="extype" name="play.api.libs.typedmap.TypedMap">TypedMap</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.typedmap.TypedMap@+(entries:play.api.libs.typedmap.TypedEntry[_]*):play.api.libs.typedmap.TypedMap" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Update the map with several entries, returning a new instance of the map.</p><div class="fullcomment"><div class="comment cmt"><p>Update the map with several entries, returning a new instance of the map.
-</p></div><dl class="paramcmts block"><dt class="param">entries</dt><dd class="cmt"><p>The new entries to add to the map.</p></dd><dt>returns</dt><dd class="cmt"><p>A new instance of the map with the new entries added.</p></dd></dl></div>
     </li><li name="scala.AnyRef#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="==(x$1:Any):Boolean"></a>
       <a id="==(Any):Boolean"></a>
@@ -169,24 +247,6 @@ would be associated with a <code>String</code> value.</p><p>Instances of this cl
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="play.api.libs.typedmap.TypedMap#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="apply[A](key:play.api.libs.typedmap.TypedKey[A]):A"></a>
-      <a id="apply[A](TypedKey[A]):A"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">apply</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="key">key: <a href="TypedKey.html" class="extype" name="play.api.libs.typedmap.TypedKey">TypedKey</a>[<span class="extype" name="play.api.libs.typedmap.TypedMap.apply.A">A</span>]</span>)</span><span class="result">: <span class="extype" name="play.api.libs.typedmap.TypedMap.apply.A">A</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.typedmap.TypedMap@apply[A](key:play.api.libs.typedmap.TypedKey[A]):A" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Get a value from the map.</p><div class="fullcomment"><div class="comment cmt"><p>Get a value from the map.
-</p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>The type of value to retrieve.</p></dd><dt class="param">key</dt><dd class="cmt"><p>The key for the value to retrieve.</p></dd><dt>returns</dt><dd class="cmt"><p>The value, if it is present in the map.</p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="NoSuchElementException"><code>NoSuchElementException</code></span> If the value isn't present in the map.</p></span></dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -227,41 +287,6 @@ would be associated with a <code>String</code> value.</p><p>Instances of this cl
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="play.api.libs.typedmap.TypedMap#contains" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="contains(key:play.api.libs.typedmap.TypedKey[_]):Boolean"></a>
-      <a id="contains(TypedKey[_]):Boolean"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">contains</span><span class="params">(<span name="key">key: <a href="TypedKey.html" class="extype" name="play.api.libs.typedmap.TypedKey">TypedKey</a>[_]</span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.typedmap.TypedMap@contains(key:play.api.libs.typedmap.TypedKey[_]):Boolean" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Check if the map contains a value with the given key.</p><div class="fullcomment"><div class="comment cmt"><p>Check if the map contains a value with the given key.
-</p></div><dl class="paramcmts block"><dt class="param">key</dt><dd class="cmt"><p>The key to check for.</p></dd><dt>returns</dt><dd class="cmt"><p>True if the value is present, false otherwise.</p></dd></dl></div>
-    </li><li name="play.api.libs.typedmap.TypedMap#entries" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="entries:scala.collection.immutable.Seq[play.api.libs.typedmap.TypedEntry[_]]"></a>
-      <a id="entries:Seq[TypedEntry[_]]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">entries</span><span class="result">: <span class="extype" name="scala.collection.immutable.Seq">Seq</span>[<a href="TypedEntry.html" class="extype" name="play.api.libs.typedmap.TypedEntry">TypedEntry</a>[_]]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.typedmap.TypedMap@entries:scala.collection.immutable.Seq[play.api.libs.typedmap.TypedEntry[_]]" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Gets the entries present in this map.</p>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -319,24 +344,6 @@ would be associated with a <code>String</code> value.</p><p>Instances of this cl
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="play.api.libs.typedmap.TypedMap#get" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="get[A](key:play.api.libs.typedmap.TypedKey[A]):Option[A]"></a>
-      <a id="get[A](TypedKey[A]):Option[A]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">get</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="key">key: <a href="TypedKey.html" class="extype" name="play.api.libs.typedmap.TypedKey">TypedKey</a>[<span class="extype" name="play.api.libs.typedmap.TypedMap.get.A">A</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="play.api.libs.typedmap.TypedMap.get.A">A</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.typedmap.TypedMap@get[A](key:play.api.libs.typedmap.TypedKey[A]):Option[A]" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Get a value from the map.</p><div class="fullcomment"><div class="comment cmt"><p>Get a value from the map.
-</p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>The type of value to retrieve.</p></dd><dt class="param">key</dt><dd class="cmt"><p>The key for the value to retrieve.</p></dd><dt>returns</dt><dd class="cmt"><p><code>Some</code> value, if it is present in the map, otherwise <code>None</code>.</p></dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>
@@ -456,7 +463,7 @@ would be associated with a <code>String</code> value.</p><p>Instances of this cl
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="play.api.libs.typedmap.TypedMap#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="scala.AnyRef#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
       <a id="toString():String"></a>
       <h4 class="signature">
@@ -465,32 +472,14 @@ would be associated with a <code>String</code> value.</p><p>Instances of this cl
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../../index.html#play.api.libs.typedmap.TypedMap@toString():String" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.libs.typedmap.TypedMap">TypedMap</a> → AnyRef → Any</dd></dl></div>
-    </li><li name="play.api.libs.typedmap.TypedMap#updated" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="updated[A](key:play.api.libs.typedmap.TypedKey[A],value:A):play.api.libs.typedmap.TypedMap"></a>
-      <a id="updated[A](TypedKey[A],A):TypedMap"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">updated</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="key">key: <a href="TypedKey.html" class="extype" name="play.api.libs.typedmap.TypedKey">TypedKey</a>[<span class="extype" name="play.api.libs.typedmap.TypedMap.updated.A">A</span>]</span>, <span name="value">value: <span class="extype" name="play.api.libs.typedmap.TypedMap.updated.A">A</span></span>)</span><span class="result">: <a href="" class="extype" name="play.api.libs.typedmap.TypedMap">TypedMap</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.typedmap.TypedMap@updated[A](key:play.api.libs.typedmap.TypedKey[A],value:A):play.api.libs.typedmap.TypedMap" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Update the map with the given key and value, returning a new instance of the map.</p><div class="fullcomment"><div class="comment cmt"><p>Update the map with the given key and value, returning a new instance of the map.
-</p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>The type of value.</p></dd><dt class="param">key</dt><dd class="cmt"><p>The key to set.</p></dd><dt class="param">value</dt><dd class="cmt"><p>The value to use.</p></dd><dt>returns</dt><dd class="cmt"><p>A new instance of the map with the new entry added.</p></dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>
@@ -558,27 +547,6 @@ would be associated with a <code>String</code> value.</p><p>Instances of this cl
       
       <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
     </span>)</span>
-              
-        </dd></dl></div>
-    </li><li name="play.api.libs.typedmap.TypedMap#withEntries" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="withEntries(entries:play.api.libs.typedmap.TypedEntry[_]*):play.api.libs.typedmap.TypedMap"></a>
-      <a id="withEntries(TypedEntry[_]*):TypedMap"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">withEntries</span><span class="params">(<span name="entries">entries: <a href="TypedEntry.html" class="extype" name="play.api.libs.typedmap.TypedEntry">TypedEntry</a>[_]*</span>)</span><span class="result">: <a href="" class="extype" name="play.api.libs.typedmap.TypedMap">TypedMap</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.typedmap.TypedMap@withEntries(entries:play.api.libs.typedmap.TypedEntry[_]*):play.api.libs.typedmap.TypedMap" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Update the map with several entries, returning a new instance of the map.</p><div class="fullcomment"><div class="comment cmt"><p>Update the map with several entries, returning a new instance of the map.</p><p>This is a variant of the <code>+</code>, provided for use from Java.
-</p></div><dl class="paramcmts block"><dt class="param">entries</dt><dd class="cmt"><p>The new entries to add to the map.</p></dd><dt>returns</dt><dd class="cmt"><p>A new instance of the map with the new entries added.</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@varargs</span><span class="args">()</span>
               
         </dd></dl></div>
     </li></ol>

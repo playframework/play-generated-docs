@@ -318,7 +318,7 @@ For example:</p><pre><span class="kw">import</span> play.api.libs.json._
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="JsError.html"><span class="name">JsError</span></a><span class="params">(<span name="errors">errors: <span class="extype" name="scala.Seq">Seq</span>[(<a href="JsPath.html" class="extype" name="play.api.libs.json.JsPath">JsPath</a>, <span class="extype" name="scala.Seq">Seq</span>[<a href="../../data/validation/ValidationError.html" class="extype" name="play.api.data.validation.ValidationError">ValidationError</a>])]</span>)</span><span class="result"> extends <a href="JsResult.html" class="extype" name="play.api.libs.json.JsResult">JsResult</a>[<span class="extype" name="scala.Nothing">Nothing</span>] with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="JsError.html"><span class="name">JsError</span></a><span class="params">(<span name="errors">errors: <span class="extype" name="scala.Seq">Seq</span>[(<a href="JsPath.html" class="extype" name="play.api.libs.json.JsPath">JsPath</a>, <span class="extype" name="scala.Seq">Seq</span>[<a href="JsonValidationError.html" class="extype" name="play.api.libs.json.JsonValidationError">JsonValidationError</a>])]</span>)</span><span class="result"> extends <a href="JsResult.html" class="extype" name="play.api.libs.json.JsResult">JsResult</a>[<span class="extype" name="scala.Nothing">Nothing</span>] with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../../index.html#play.api.libs.json.package@JsErrorextendsJsResult[Nothing]withProductwithSerializable" title="Permalink" target="_top">
@@ -455,7 +455,7 @@ For example:</p><pre><span class="kw">import</span> play.api.libs.json._
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="JsResultException.html"><span class="name">JsResultException</span></a><span class="params">(<span name="errors">errors: <span class="extype" name="scala.collection.Seq">Seq</span>[(<a href="JsPath.html" class="extype" name="play.api.libs.json.JsPath">JsPath</a>, <span class="extype" name="scala.collection.Seq">Seq</span>[<a href="../../data/validation/ValidationError.html" class="extype" name="play.api.data.validation.ValidationError">ValidationError</a>])]</span>)</span><span class="result"> extends <span class="extype" name="scala.RuntimeException">RuntimeException</span> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="JsResultException.html"><span class="name">JsResultException</span></a><span class="params">(<span name="errors">errors: <span class="extype" name="scala.collection.Seq">Seq</span>[(<a href="JsPath.html" class="extype" name="play.api.libs.json.JsPath">JsPath</a>, <span class="extype" name="scala.collection.Seq">Seq</span>[<a href="JsonValidationError.html" class="extype" name="play.api.libs.json.JsonValidationError">JsonValidationError</a>])]</span>)</span><span class="result"> extends <span class="extype" name="scala.RuntimeException">RuntimeException</span> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../../index.html#play.api.libs.json.package@JsResultExceptionextendsRuntimeExceptionwithProductwithSerializable" title="Permalink" target="_top">
@@ -566,6 +566,23 @@ For example:</p><pre><span class="kw">import</span> play.api.libs.json._
       </a>
     </span>
       <p class="shortcomment cmt">Naming strategy, to map each class property to the corresponding column.</p>
+    </li><li name="play.api.libs.json.JsonValidationError" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="JsonValidationErrorextendsProductwithSerializable"></a>
+      <a id="JsonValidationError:JsonValidationError"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="JsonValidationError.html"><span class="name">JsonValidationError</span></a><span class="params">(<span name="messages">messages: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="args">args: <span class="extype" name="scala.Any">Any</span>*</span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.json.package@JsonValidationErrorextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A JSON validation error representation.</p>
     </li><li name="play.api.libs.json.KeyPathNode" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="KeyPathNodeextendsPathNodewithProductwithSerializable"></a>
       <a id="KeyPathNode:KeyPathNode"></a>
@@ -1089,6 +1106,23 @@ DefaultReads provides a simple match.</p><p>See https://github.com/playframework
       </a>
     </span>
       <p class="shortcomment cmt">Naming companion</p>
+    </li><li name="play.api.libs.json.JsonValidationError" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="JsonValidationError"></a>
+      <a id="JsonValidationError:JsonValidationError"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="JsonValidationError$.html"><span class="name">JsonValidationError</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.json.package@JsonValidationError" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="play.api.libs.json.OFormat" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="OFormat"></a>
       <a id="OFormat:OFormat"></a>

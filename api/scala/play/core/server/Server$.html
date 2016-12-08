@@ -470,6 +470,32 @@
 port. This can be changed by passing in an explicit port with the config parameter.
 </p></div><dl class="paramcmts block"><dt class="param">application</dt><dd class="cmt"><p>The application for the server to server.</p></dd><dt class="param">config</dt><dd class="cmt"><p>The configuration for the server. Defaults to test config with the http port bound to a random
               ephemeral port.</p></dd><dt class="param">block</dt><dd class="cmt"><p>The block of code to run.</p></dd><dt class="param">provider</dt><dd class="cmt"><p>The server provider.</p></dd><dt>returns</dt><dd class="cmt"><p>The result of the block of code.</p></dd></dl></div>
+    </li><li name="play.core.server.Server#withApplicationFromContext" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="withApplicationFromContext[T](config:play.core.server.ServerConfig)(appProducer:play.api.ApplicationLoader.Context=&gt;play.api.Application)(block:play.api.http.Port=&gt;T)(implicitprovider:play.core.server.ServerProvider):T"></a>
+      <a id="withApplicationFromContext[T](ServerConfig)((Context)⇒api.Application)((Port)⇒T)(ServerProvider):T"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">withApplicationFromContext</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="config">config: <a href="ServerConfig.html" class="extype" name="play.core.server.ServerConfig">ServerConfig</a> = <span class="defval" name='<span class="name"><a href="ServerConfig$.html">ServerConfig(port = Some(0), mode = Mode.Test)</a></span>'>...</span></span>)</span><span class="params">(<span name="appProducer">appProducer: (<a href="../../api/ApplicationLoader$$Context.html" class="extype" name="play.api.ApplicationLoader.Context">Context</a>) ⇒ <a href="../../api/Application.html" class="extype" name="play.api.Application">api.Application</a></span>)</span><span class="params">(<span name="block">block: (<a href="../../api/http/Port.html" class="extype" name="play.api.http.Port">Port</a>) ⇒ <span class="extype" name="play.core.server.Server.withApplicationFromContext.T">T</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="provider">provider: <a href="ServerProvider.html" class="extype" name="play.core.server.ServerProvider">ServerProvider</a></span>)</span><span class="result">: <span class="extype" name="play.core.server.Server.withApplicationFromContext.T">T</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.server.Server$@withApplicationFromContext[T](config:play.core.server.ServerConfig)(appProducer:play.api.ApplicationLoader.Context=&gt;play.api.Application)(block:play.api.http.Port=&gt;T)(implicitprovider:play.core.server.ServerProvider):T" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Run a block of code with a server for the application containing routes.</p><div class="fullcomment"><div class="comment cmt"><p>Run a block of code with a server for the application containing routes.</p><p>The passed in block takes the port that the application is running on. By default, this will be a random ephemeral
+port. This can be changed by passing in an explicit port with the config parameter.</p><p>An easy way to set up an application with given routes is to use <span class="extype" name="BuiltInComponentsFromContext">BuiltInComponentsFromContext</span> with
+any extra components needed:</p><pre> Server.withApplicationFromContext(ServerConfig(mode = Mode.Prod, port = <span class="std">Some</span>(<span class="num">0</span>))) { context <span class="kw">=&gt;</span>
+   <span class="kw">new</span> BuiltInComponentsFromContext(context) <span class="kw">with</span> AssetsComponents {
+    <span class="kw">override</span> <span class="kw">def</span> router: Router = Router.from {
+      <span class="kw">case</span> req <span class="kw">=&gt;</span> assets.versioned(<span class="lit">"/testassets"</span>, req.path)
+    }
+  }.application
+} { withClient(block)(_) }</pre></div><dl class="paramcmts block"><dt class="param">config</dt><dd class="cmt"><p>The configuration for the server. Defaults to test config with the http port bound to a random
+              ephemeral port.</p></dd><dt class="param">appProducer</dt><dd class="cmt"><p>A function that takes an <span class="extype" name="ApplicationLoader.Context">ApplicationLoader.Context</span> and produces <span class="extype" name="Application">Application</span></p></dd><dt class="param">block</dt><dd class="cmt"><p>The block of code to run.</p></dd><dt class="param">provider</dt><dd class="cmt"><p>The server provider.</p></dd><dt>returns</dt><dd class="cmt"><p>The result of the block of code.</p></dd></dl></div>
     </li><li name="play.core.server.Server#withRouter" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="withRouter[T](config:play.core.server.ServerConfig)(routes:PartialFunction[play.api.mvc.RequestHeader,play.api.mvc.Handler])(block:play.api.http.Port=&gt;T)(implicitprovider:play.core.server.ServerProvider):T"></a>
       <a id="withRouter[T](ServerConfig)(PartialFunction[RequestHeader,Handler])((Port)⇒T)(ServerProvider):T"></a>
