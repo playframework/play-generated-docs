@@ -107,30 +107,50 @@
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Creates temporary folders inside a single temporary folder.</p><div class="fullcomment"><div class="comment cmt"><p>Creates temporary folders inside a single temporary folder. The folder
-is deleted when the application stops.
+      <p class="shortcomment cmt">Creates temporary folders inside a single temporary folder.</p><div class="fullcomment"><div class="comment cmt"><p>Creates temporary folders inside a single temporary folder. deleting all files on a
+successful application stop.  Note that this will not clean up the filesystem if the
+application / JVM terminates abnormally.
 </p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@Singleton</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="play.api.libs.Files.TemporaryFile" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="TemporaryFileextendsProductwithSerializable"></a>
+    </li><li name="play.api.libs.Files.DefaultTemporaryFileReaper" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="DefaultTemporaryFileReaperextendsFiles.TemporaryFileReaper"></a>
+      <a id="DefaultTemporaryFileReaper:DefaultTemporaryFileReaper"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Files$$DefaultTemporaryFileReaper.html"><span class="name">DefaultTemporaryFileReaper</span></a><span class="result"> extends <a href="Files$$TemporaryFileReaper.html" class="extype" name="play.api.libs.Files.TemporaryFileReaper">TemporaryFileReaper</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.libs.Files$@DefaultTemporaryFileReaperextendsFiles.TemporaryFileReaper" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@Singleton</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="play.api.libs.Files.TemporaryFile" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="TemporaryFileextendsAnyRef"></a>
       <a id="TemporaryFile:TemporaryFile"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">case class</span>
+        <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="Files$$TemporaryFile.html"><span class="name">TemporaryFile</span></a><span class="params">(<span name="file">file: <span class="extype" name="java.io.File">File</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="Files$$TemporaryFile.html"><span class="name">TemporaryFile</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.libs.Files$@TemporaryFileextendsProductwithSerializable" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.libs.Files$@TemporaryFileextendsAnyRef" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">A temporary file hold a reference to a real file, and will delete
-it when the reference is garbaged.</p>
+      
     </li><li name="play.api.libs.Files.TemporaryFileCreator" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="TemporaryFileCreatorextendsAnyRef"></a>
       <a id="TemporaryFileCreator:TemporaryFileCreator"></a>
@@ -151,6 +171,41 @@ it when the reference is garbaged.</p>
 file themselves, but this TemporaryFileCreator implementation may also
 try to clean up any leaked files, e.g. when the Application or JVM stops.
 </p></div></div>
+    </li><li name="play.api.libs.Files.TemporaryFileReaper" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="TemporaryFileReaperextendsAnyRef"></a>
+      <a id="TemporaryFileReaper:TemporaryFileReaper"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Files$$TemporaryFileReaper.html"><span class="name">TemporaryFileReaper</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.libs.Files$@TemporaryFileReaperextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.api.libs.Files.TemporaryFileReaperConfiguration" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="TemporaryFileReaperConfigurationextendsProductwithSerializable"></a>
+      <a id="TemporaryFileReaperConfiguration:TemporaryFileReaperConfiguration"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="Files$$TemporaryFileReaperConfiguration.html"><span class="name">TemporaryFileReaperConfiguration</span></a><span class="params">(<span name="enabled">enabled: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="olderThan">olderThan: <span class="extype" name="scala.concurrent.duration.FiniteDuration">FiniteDuration</span> = <span class="symbol">5.minutes</span></span>, <span name="initialDelay">initialDelay: <span class="extype" name="scala.concurrent.duration.FiniteDuration">FiniteDuration</span> = <span class="symbol">5.minutes</span></span>, <span name="interval">interval: <span class="extype" name="scala.concurrent.duration.FiniteDuration">FiniteDuration</span> = <span class="symbol">5.minutes</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.libs.Files$@TemporaryFileReaperConfigurationextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Configuration for the TemporaryFileReaper.</p><div class="fullcomment"><div class="comment cmt"><p>Configuration for the TemporaryFileReaper.
+</p></div><dl class="paramcmts block"><dt class="param">enabled</dt><dd class="cmt"><p>true if the reaper is enabled, false otherwise.  Default is false.</p></dd><dt class="param">olderThan</dt><dd class="cmt"><p>the period after which the file is considered old. Default 5 minutes.</p></dd><dt class="param">initialDelay</dt><dd class="cmt"><p>the initial delay after application start when the reaper first run.  Default 5 minutes.</p></dd><dt class="param">interval</dt><dd class="cmt"><p>the duration after the initial run during which the reaper will scan for files it can remove.  Default 5 minutes.</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -225,8 +280,7 @@ try to clean up any leaked files, e.g. when the Application or JVM stops.
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Creates temporary folders using the default JRE method.</p><div class="fullcomment"><div class="comment cmt"><p>Creates temporary folders using the default JRE method. Files
-created by this method will not be cleaned up with the application
+      <p class="shortcomment cmt">Creates temporary folders using <span class="extype" name="JFiles.createTempFile">JFiles.createTempFile</span>.</p><div class="fullcomment"><div class="comment cmt"><p>Creates temporary folders using <span class="extype" name="JFiles.createTempFile">JFiles.createTempFile</span>.</p><p>Files created by this method will not be cleaned up with the application
 or JVM stops.
 </p></div></div>
     </li><li name="play.api.libs.Files.TemporaryFile" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
@@ -238,7 +292,7 @@ or JVM stops.
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="Files$$TemporaryFile$.html"><span class="name">TemporaryFile</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="Files$$TemporaryFile$.html"><span class="name">TemporaryFile</span></a>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.libs.Files$@TemporaryFile" title="Permalink" target="_top">
@@ -246,6 +300,23 @@ or JVM stops.
       </a>
     </span>
       <p class="shortcomment cmt">Utilities to manage temporary files.</p>
+    </li><li name="play.api.libs.Files.TemporaryFileReaperConfiguration" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="TemporaryFileReaperConfiguration"></a>
+      <a id="TemporaryFileReaperConfiguration:TemporaryFileReaperConfiguration"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Files$$TemporaryFileReaperConfiguration$.html"><span class="name">TemporaryFileReaperConfiguration</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.libs.Files$@TemporaryFileReaperConfiguration" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>

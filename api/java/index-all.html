@@ -466,6 +466,12 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/libs/crypto/HMACSHA1CookieSigner.html#asScala--">asScala()</a></span> - Method in class play.libs.crypto.<a href="play/libs/crypto/HMACSHA1CookieSigner.html" title="class in play.libs.crypto">HMACSHA1CookieSigner</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/libs/Files.DelegateTemporaryFileCreator.html#asScala--">asScala()</a></span> - Method in class play.libs.<a href="play/libs/Files.DelegateTemporaryFileCreator.html" title="class in play.libs">Files.DelegateTemporaryFileCreator</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/libs/Files.SingletonTemporaryFileCreator.html#asScala--">asScala()</a></span> - Method in class play.libs.<a href="play/libs/Files.SingletonTemporaryFileCreator.html" title="class in play.libs">Files.SingletonTemporaryFileCreator</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/libs/Files.TemporaryFileCreator.html#asScala--">asScala()</a></span> - Method in interface play.libs.<a href="play/libs/Files.TemporaryFileCreator.html" title="interface in play.libs">Files.TemporaryFileCreator</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/libs/Scala.html#asScala-java.util.Map-">asScala(Map&lt;K, V&gt;)</a></span> - Static method in class play.libs.<a href="play/libs/Scala.html" title="class in play.libs">Scala</a></dt>
 <dd>
 <div class="block">Converts a Java Map to Scala.</div>
@@ -768,7 +774,7 @@
 <dd>
 <div class="block">Set a Json Body to this request.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="play/mvc/Http.RequestBuilder.html#bodyMultipart-java.util.List-akka.stream.Materializer-">bodyMultipart(List&lt;Http.MultipartFormData.Part&lt;Source&lt;ByteString, ?&gt;&gt;&gt;, Materializer)</a></span> - Method in class play.mvc.<a href="play/mvc/Http.RequestBuilder.html" title="class in play.mvc">Http.RequestBuilder</a></dt>
+<dt><span class="memberNameLink"><a href="play/mvc/Http.RequestBuilder.html#bodyMultipart-java.util.List-play.libs.Files.TemporaryFileCreator-akka.stream.Materializer-">bodyMultipart(List&lt;Http.MultipartFormData.Part&lt;Source&lt;ByteString, ?&gt;&gt;&gt;, Files.TemporaryFileCreator, Materializer)</a></span> - Method in class play.mvc.<a href="play/mvc/Http.RequestBuilder.html" title="class in play.mvc">Http.RequestBuilder</a></dt>
 <dd>
 <div class="block">Set a Multipart Form url encoded body to this request.</div>
 </dd>
@@ -863,9 +869,18 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Http.RequestBuilder.html#bodyRaw-akka.util.ByteString-">bodyRaw(ByteString)</a></span> - Method in class play.mvc.<a href="play/mvc/Http.RequestBuilder.html" title="class in play.mvc">Http.RequestBuilder</a></dt>
 <dd>
+<div class="block">Set a Binary Data to this request using a singleton temp file creator
+ The <tt>Content-Type</tt> header of the request is set to <tt>application/octet-stream</tt>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="play/mvc/Http.RequestBuilder.html#bodyRaw-akka.util.ByteString-play.libs.Files.TemporaryFileCreator-">bodyRaw(ByteString, Files.TemporaryFileCreator)</a></span> - Method in class play.mvc.<a href="play/mvc/Http.RequestBuilder.html" title="class in play.mvc">Http.RequestBuilder</a></dt>
+<dd>
 <div class="block">Set a Binary Data to this request.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Http.RequestBuilder.html#bodyRaw-byte:A-">bodyRaw(byte[])</a></span> - Method in class play.mvc.<a href="play/mvc/Http.RequestBuilder.html" title="class in play.mvc">Http.RequestBuilder</a></dt>
+<dd>
+<div class="block">Set a Binary Data to this request using a singleton temporary file creator.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="play/mvc/Http.RequestBuilder.html#bodyRaw-byte:A-play.libs.Files.TemporaryFileCreator-">bodyRaw(byte[], Files.TemporaryFileCreator)</a></span> - Method in class play.mvc.<a href="play/mvc/Http.RequestBuilder.html" title="class in play.mvc">Http.RequestBuilder</a></dt>
 <dd>
 <div class="block">Set a Binary Data to this request.</div>
 </dd>
@@ -1477,6 +1492,18 @@
 <dd>
 <div class="block">Generate evolutions.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="play/libs/Files.DelegateTemporaryFileCreator.html#create-java.lang.String-java.lang.String-">create(String, String)</a></span> - Method in class play.libs.<a href="play/libs/Files.DelegateTemporaryFileCreator.html" title="class in play.libs">Files.DelegateTemporaryFileCreator</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/libs/Files.DelegateTemporaryFileCreator.html#create-java.nio.file.Path-">create(Path)</a></span> - Method in class play.libs.<a href="play/libs/Files.DelegateTemporaryFileCreator.html" title="class in play.libs">Files.DelegateTemporaryFileCreator</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/libs/Files.SingletonTemporaryFileCreator.html#create-java.lang.String-java.lang.String-">create(String, String)</a></span> - Method in class play.libs.<a href="play/libs/Files.SingletonTemporaryFileCreator.html" title="class in play.libs">Files.SingletonTemporaryFileCreator</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/libs/Files.SingletonTemporaryFileCreator.html#create-java.nio.file.Path-">create(Path)</a></span> - Method in class play.libs.<a href="play/libs/Files.SingletonTemporaryFileCreator.html" title="class in play.libs">Files.SingletonTemporaryFileCreator</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/libs/Files.TemporaryFileCreator.html#create-java.lang.String-java.lang.String-">create(String, String)</a></span> - Method in interface play.libs.<a href="play/libs/Files.TemporaryFileCreator.html" title="interface in play.libs">Files.TemporaryFileCreator</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/libs/Files.TemporaryFileCreator.html#create-java.nio.file.Path-">create(Path)</a></span> - Method in interface play.libs.<a href="play/libs/Files.TemporaryFileCreator.html" title="interface in play.libs">Files.TemporaryFileCreator</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/libs/typedmap/TypedKey.html#create--">create()</a></span> - Static method in class play.libs.typedmap.<a href="play/libs/typedmap/TypedKey.html" title="class in play.libs.typedmap">TypedKey</a></dt>
 <dd>
 <div class="block">Creates a TypedKey without a name.</div>
@@ -1927,9 +1954,17 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/inject/DelegateInjector.html#DelegateInjector-play.api.inject.Injector-">DelegateInjector(Injector)</a></span> - Constructor for class play.inject.<a href="play/inject/DelegateInjector.html" title="class in play.inject">DelegateInjector</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/libs/Files.DelegateTemporaryFileCreator.html#DelegateTemporaryFileCreator-play.api.libs.Files.TemporaryFileCreator-">DelegateTemporaryFileCreator(Files.TemporaryFileCreator)</a></span> - Constructor for class play.libs.<a href="play/libs/Files.DelegateTemporaryFileCreator.html" title="class in play.libs">Files.DelegateTemporaryFileCreator</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/BodyParser.DelegatingBodyParser.html#DelegatingBodyParser-play.api.mvc.BodyParser-java.util.function.Function-">DelegatingBodyParser(BodyParser&lt;B&gt;, Function&lt;B, A&gt;)</a></span> - Constructor for class play.mvc.<a href="play/mvc/BodyParser.DelegatingBodyParser.html" title="class in play.mvc">BodyParser.DelegatingBodyParser</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/BodyParser.DelegatingMultipartFormDataBodyParser.html#DelegatingMultipartFormDataBodyParser-akka.stream.Materializer-long-">DelegatingMultipartFormDataBodyParser(Materializer, long)</a></span> - Constructor for class play.mvc.<a href="play/mvc/BodyParser.DelegatingMultipartFormDataBodyParser.html" title="class in play.mvc">BodyParser.DelegatingMultipartFormDataBodyParser</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/libs/Files.DelegateTemporaryFileCreator.html#delete-play.libs.Files.TemporaryFile-">delete(Files.TemporaryFile)</a></span> - Method in class play.libs.<a href="play/libs/Files.DelegateTemporaryFileCreator.html" title="class in play.libs">Files.DelegateTemporaryFileCreator</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/libs/Files.SingletonTemporaryFileCreator.html#delete-play.libs.Files.TemporaryFile-">delete(Files.TemporaryFile)</a></span> - Method in class play.libs.<a href="play/libs/Files.SingletonTemporaryFileCreator.html" title="class in play.libs">Files.SingletonTemporaryFileCreator</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/libs/Files.TemporaryFileCreator.html#delete-play.libs.Files.TemporaryFile-">delete(Files.TemporaryFile)</a></span> - Method in interface play.libs.<a href="play/libs/Files.TemporaryFileCreator.html" title="interface in play.libs">Files.TemporaryFileCreator</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/libs/ws/WSRequest.html#delete--">delete()</a></span> - Method in interface play.libs.ws.<a href="play/libs/ws/WSRequest.html" title="interface in play.libs.ws">WSRequest</a></dt>
 <dd>
@@ -2354,6 +2389,14 @@
 <dd>
 <div class="block">Creates a form field.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="play/libs/Files.DelegateTemporaryFile.html#file--">file()</a></span> - Method in class play.libs.<a href="play/libs/Files.DelegateTemporaryFile.html" title="class in play.libs">Files.DelegateTemporaryFile</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/libs/Files.TemporaryFile.html#file--">file()</a></span> - Method in interface play.libs.<a href="play/libs/Files.TemporaryFile.html" title="interface in play.libs">Files.TemporaryFile</a></dt>
+<dd>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>
+<div class="block"><span class="deprecationComment">Use path() over file().</span></div>
+</div>
+</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Http.MultipartFormData.FileInfo.html#FileInfo-java.lang.String-java.lang.String-java.lang.String-">FileInfo(String, String, String)</a></span> - Constructor for class play.mvc.<a href="play/mvc/Http.MultipartFormData.FileInfo.html" title="class in play.mvc">Http.MultipartFormData.FileInfo</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="play/mvc/FileMimeTypes.html" title="class in play.mvc"><span class="typeNameLink">FileMimeTypes</span></a> - Class in <a href="play/mvc/package-summary.html">play.mvc</a></dt>
@@ -2364,6 +2407,33 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Http.MultipartFormData.FilePart.html#FilePart-java.lang.String-java.lang.String-java.lang.String-A-">FilePart(String, String, String, A)</a></span> - Constructor for class play.mvc.<a href="play/mvc/Http.MultipartFormData.FilePart.html" title="class in play.mvc">Http.MultipartFormData.FilePart</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="play/libs/Files.html" title="class in play.libs"><span class="typeNameLink">Files</span></a> - Class in <a href="play/libs/package-summary.html">play.libs</a></dt>
+<dd>
+<div class="block">Contains TemporaryFile and TemporaryFileCreator operations.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="play/libs/Files.html#Files--">Files()</a></span> - Constructor for class play.libs.<a href="play/libs/Files.html" title="class in play.libs">Files</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="play/libs/Files.DelegateTemporaryFile.html" title="class in play.libs"><span class="typeNameLink">Files.DelegateTemporaryFile</span></a> - Class in <a href="play/libs/package-summary.html">play.libs</a></dt>
+<dd>
+<div class="block">Delegates to the Scala implementation.</div>
+</dd>
+<dt><a href="play/libs/Files.DelegateTemporaryFileCreator.html" title="class in play.libs"><span class="typeNameLink">Files.DelegateTemporaryFileCreator</span></a> - Class in <a href="play/libs/package-summary.html">play.libs</a></dt>
+<dd>
+<div class="block">A temporary file creator that delegates to a Scala TemporaryFileCreator.</div>
+</dd>
+<dt><a href="play/libs/Files.SingletonTemporaryFileCreator.html" title="class in play.libs"><span class="typeNameLink">Files.SingletonTemporaryFileCreator</span></a> - Class in <a href="play/libs/package-summary.html">play.libs</a></dt>
+<dd>
+<div class="block">A temporary file creator that uses the Scala play.api.libs.Files.SingletonTemporaryFileCreator
+ class behind the scenes.</div>
+</dd>
+<dt><a href="play/libs/Files.TemporaryFile.html" title="interface in play.libs"><span class="typeNameLink">Files.TemporaryFile</span></a> - Interface in <a href="play/libs/package-summary.html">play.libs</a></dt>
+<dd>
+<div class="block">A temporary file created by a TemporaryFileCreator.</div>
+</dd>
+<dt><a href="play/libs/Files.TemporaryFileCreator.html" title="interface in play.libs"><span class="typeNameLink">Files.TemporaryFileCreator</span></a> - Interface in <a href="play/libs/package-summary.html">play.libs</a></dt>
+<dd>
+<div class="block">This creates temporary files when Play needs to keep overflow data on the filesystem.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="play/data/DynamicForm.html#fill-java.util.Map-">fill(Map)</a></span> - Method in class play.data.<a href="play/data/DynamicForm.html" title="class in play.data">DynamicForm</a></dt>
 <dd>
 <div class="block">Fills the form with existing data.</div>
@@ -5066,6 +5136,10 @@
 <dd>
 <div class="block">Get the application path.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="play/libs/Files.DelegateTemporaryFile.html#path--">path()</a></span> - Method in class play.libs.<a href="play/libs/Files.DelegateTemporaryFile.html" title="class in play.libs">Files.DelegateTemporaryFile</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/libs/Files.TemporaryFile.html#path--">path()</a></span> - Method in interface play.libs.<a href="play/libs/Files.TemporaryFile.html" title="interface in play.libs">Files.TemporaryFile</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Call.html#path--">path()</a></span> - Method in class play.mvc.<a href="play/mvc/Call.html" title="class in play.mvc">Call</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Http.Cookie.html#path--">path()</a></span> - Method in class play.mvc.<a href="play/mvc/Http.Cookie.html" title="class in play.mvc">Http.Cookie</a></dt>
@@ -6333,6 +6407,10 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/data/format/Formatters.SimpleFormatter.html#SimpleFormatter--">SimpleFormatter()</a></span> - Constructor for class play.data.format.<a href="play/data/format/Formatters.SimpleFormatter.html" title="class in play.data.format">Formatters.SimpleFormatter</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/libs/Files.html#singletonTemporaryFileCreator--">singletonTemporaryFileCreator()</a></span> - Static method in class play.libs.<a href="play/libs/Files.html" title="class in play.libs">Files</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/libs/Files.SingletonTemporaryFileCreator.html#SingletonTemporaryFileCreator--">SingletonTemporaryFileCreator()</a></span> - Constructor for class play.libs.<a href="play/libs/Files.SingletonTemporaryFileCreator.html" title="class in play.libs">Files.SingletonTemporaryFileCreator</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Http.RawBuffer.html#size--">size()</a></span> - Method in class play.mvc.<a href="play/mvc/Http.RawBuffer.html" title="class in play.mvc">Http.RawBuffer</a></dt>
 <dd>
 <div class="block">Buffer size.</div>
@@ -6535,6 +6613,10 @@
 <dt><span class="memberNameLink"><a href="play/mvc/Http.HeaderNames.html#TE">TE</a></span> - Static variable in interface play.mvc.<a href="play/mvc/Http.HeaderNames.html" title="interface in play.mvc">Http.HeaderNames</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Http.Status.html#TEMPORARY_REDIRECT">TEMPORARY_REDIRECT</a></span> - Static variable in interface play.mvc.<a href="play/mvc/Http.Status.html" title="interface in play.mvc">Http.Status</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/libs/Files.DelegateTemporaryFile.html#temporaryFileCreator--">temporaryFileCreator()</a></span> - Method in class play.libs.<a href="play/libs/Files.DelegateTemporaryFile.html" title="class in play.libs">Files.DelegateTemporaryFile</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="play/libs/Files.TemporaryFile.html#temporaryFileCreator--">temporaryFileCreator()</a></span> - Method in interface play.libs.<a href="play/libs/Files.TemporaryFile.html" title="interface in play.libs">Files.TemporaryFile</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="play/mvc/Results.html#temporaryRedirect-java.lang.String-">temporaryRedirect(String)</a></span> - Static method in class play.mvc.<a href="play/mvc/Results.html" title="class in play.mvc">Results</a></dt>
 <dd>
