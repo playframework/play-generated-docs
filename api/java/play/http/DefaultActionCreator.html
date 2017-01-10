@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10};
+var methods = {"i0":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -159,12 +159,6 @@ implements <a href="../../play/http/ActionCreator.html" title="interface in play
 <div class="block">Call to create the root Action for a Java controller method call.</div>
 </td>
 </tr>
-<tr id="i1" class="rowColor">
-<td class="colFirst"><code><a href="../../play/mvc/Action.html" title="class in play.mvc">Action</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/http/DefaultActionCreator.html#wrapAction-play.mvc.Action-">wrapAction</a></span>(<a href="../../play/mvc/Action.html" title="class in play.mvc">Action</a>&nbsp;action)</code>
-<div class="block">Call to wrap the outer action of a Java application.</div>
-</td>
-</tr>
 </table>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
@@ -172,6 +166,13 @@ implements <a href="../../play/http/ActionCreator.html" title="interface in play
 </a>
 <h3>Methods inherited from class&nbsp;java.lang.Object</h3>
 <code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</code></li>
+</ul>
+<ul class="blockList">
+<li class="blockList"><a name="methods.inherited.from.class.play.http.ActionCreator">
+<!--   -->
+</a>
+<h3>Methods inherited from interface&nbsp;play.http.<a href="../../play/http/ActionCreator.html" title="interface in play.http">ActionCreator</a></h3>
+<code><a href="../../play/http/ActionCreator.html#wrapAction-play.mvc.Action-">wrapAction</a></code></li>
 </ul>
 </li>
 </ul>
@@ -207,7 +208,7 @@ implements <a href="../../play/http/ActionCreator.html" title="interface in play
 <a name="createAction-play.mvc.Http.Request-java.lang.reflect.Method-">
 <!--   -->
 </a>
-<ul class="blockList">
+<ul class="blockListLast">
 <li class="blockList">
 <h4>createAction</h4>
 <pre>public&nbsp;<a href="../../play/mvc/Action.html" title="class in play.mvc">Action</a>&nbsp;createAction(<a href="../../play/mvc/Http.Request.html" title="interface in play.mvc">Http.Request</a>&nbsp;request,
@@ -225,28 +226,6 @@ implements <a href="../../play/http/ActionCreator.html" title="interface in play
 <dd><code>actionMethod</code> - The action method containing the user code for this Action.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>The default implementation returns a raw Action calling the method.</dd>
-</dl>
-</li>
-</ul>
-<a name="wrapAction-play.mvc.Action-">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>wrapAction</h4>
-<pre>public final&nbsp;<a href="../../play/mvc/Action.html" title="class in play.mvc">Action</a>&nbsp;wrapAction(<a href="../../play/mvc/Action.html" title="class in play.mvc">Action</a>&nbsp;action)</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../play/http/ActionCreator.html#wrapAction-play.mvc.Action-">ActionCreator</a></code></span></div>
-<div class="block">Call to wrap the outer action of a Java application.
-
- This method is passed a fully composed action, allowing a last final global interceptor to be added to the
- action if required.</div>
-<dl>
-<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../play/http/ActionCreator.html#wrapAction-play.mvc.Action-">wrapAction</a></code>&nbsp;in interface&nbsp;<code><a href="../../play/http/ActionCreator.html" title="interface in play.http">ActionCreator</a></code></dd>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>action</code> - The action to wrap.</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>A wrapped action.</dd>
 </dl>
 </li>
 </ul>
