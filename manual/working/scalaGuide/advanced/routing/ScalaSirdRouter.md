@@ -1,4 +1,4 @@
-<!--- Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) 2009-2017 Lightbend Inc. <https://www.lightbend.com> -->
 # String Interpolating Routing DSL
 
 Play provides a DSL for defining embedded routers called the *String Interpolating Routing DSL*, or sird for short.  This DSL has many uses, including embedding a light weight Play server, providing custom or more advanced routing capabilities to a regular Play application, and mocking REST services for testing.
@@ -79,7 +79,7 @@ mainRouter.routes.orElse(injectedOtherRouter.withPrefix("/prefix").routes)
 
 ### Embedding play
 
-An example of embedding a play server with sird router can be found in [[Embedding Play|ScalaEmbeddingPlay]] section.
+An example of embedding a play server with sird router can be found in [[Embedding Play|ScalaEmbeddingPlayAkkaHttp]] section.
 
 ### Providing a DI router
 

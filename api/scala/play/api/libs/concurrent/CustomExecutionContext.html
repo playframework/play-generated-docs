@@ -49,13 +49,13 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>This class defines a custom execution context that delegates to an <span class="extype" name="ActorSystem">ActorSystem</span>.</p><p>It is very useful for situations in which the default execution context should not
-be used, for example if a database or blocking I/O is being used.</p><p>To define a custom context, subclass DispatcherExecutionContext with the dispatcher
-name and have it bound through dependency injection:</p><pre>@Singleton
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>This class defines a custom execution context that delegates to an akka.actor.ActorSystem.</p><p>It is very useful for situations in which the default execution context should not
+be used, for example if a database or blocking I/O is being used.</p><p>To define a custom context, subclass CustomExecutionContext with the dispatcher
+name:</p><pre>@Singleton
 <span class="kw">class</span> DatabaseExecutionContext @Inject()(system: ActorSystem)
-   <span class="kw">extends</span> CustomExecutionContext(system, <span class="lit">"database-dispatcher"</span>)</pre><p>and then have the execution context passed in as a class parameter:</p><pre><span class="kw">class</span> DatabaseService @Inject()(<span class="kw">implicit</span> executionContext: DatabaseExecutionContext) {
+   <span class="kw">extends</span> CustomExecutionContext(system, <span class="lit">"database-dispatcher"</span>)</pre><p>and then bind it in dependency injection:</p><pre>bind[DatabaseExecutionContext].to(classOf[DatabaseExecutionContext]).asEagerSingleton()</pre><p>Then have the execution context passed in as an implicit parameter:</p><pre><span class="kw">class</span> DatabaseService @Inject()(<span class="kw">implicit</span> executionContext: DatabaseExecutionContext) {
   ...
-}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play/src/main/scala/play/api/libs/concurrent/CustomExecutionContext.scala" target="_blank">CustomExecutionContext.scala</a></dd><dt>See also</dt><dd><span class="cmt"><p><a href="https://www.playframework.com/documentation/latest/ThreadPools">Thread Pools</a></p></span><span class="cmt"><p><a href="http://doc.akka.io/docs/akka/current/java/dispatchers.html">Dispatchers</a></p></span></dd></dl><div class="toggleContainer block">
+}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0-M1/framework/src/play/src/main/scala/play/api/libs/concurrent/CustomExecutionContext.scala" target="_blank">CustomExecutionContext.scala</a></dd><dt>See also</dt><dd><span class="cmt"><p><a href="https://www.playframework.com/documentation/latest/ThreadPools">Thread Pools</a></p></span><span class="cmt"><p><a href="http://doc.akka.io/docs/akka/current/java/dispatchers.html">Dispatchers</a></p></span></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.concurrent.ExecutionContextExecutor">ExecutionContextExecutor</span>, <span class="extype" name="java.util.concurrent.Executor">Executor</span>, <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>

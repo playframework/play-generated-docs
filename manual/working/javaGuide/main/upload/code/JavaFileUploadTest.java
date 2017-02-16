@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) 2009-2017 Lightbend Inc. <https://www.lightbend.com>
  */
 import akka.stream.javadsl.FileIO;
 import akka.stream.javadsl.Source;
@@ -27,8 +27,7 @@ public class JavaFileUploadTest extends WithApplication {
 
     @Override
     protected Application provideApplication() {
-        Router router = new RoutingDsl()
-                .POST("/upload").routeTo(() -> ok("File uploaded")).build();
+        Router router = Router.empty();
         play.api.inject.guice.GuiceApplicationBuilder scalaBuilder = new play.api.inject.guice.GuiceApplicationBuilder().additionalRouter(router.asScala());
         return GuiceApplicationBuilder.fromScalaBuilder(scalaBuilder).build();
     }
@@ -51,7 +50,8 @@ public class JavaFileUploadTest extends WithApplication {
 
         Result result = Helpers.route(app, request);
         String content = Helpers.contentAsString(result);
-        assertThat(content, CoreMatchers.equalTo("File uploaded"));
+        //###replace:     assertThat(content, CoreMatchers.equalTo("File uploaded"));
+        assertThat(content, CoreMatchers.containsString("Action Not Found"));
     }
     //#testSyncUpload
 

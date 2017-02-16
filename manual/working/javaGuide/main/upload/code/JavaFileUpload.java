@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) 2009-2017 Lightbend Inc. <https://www.lightbend.com>
  */
 import akka.stream.IOResult;
 import akka.stream.Materializer;
@@ -8,6 +8,8 @@ import akka.stream.javadsl.Sink;
 import akka.stream.javadsl.Source;
 import akka.util.ByteString;
 import org.junit.Test;
+import play.api.http.HttpErrorHandler;
+import play.core.j.JavaHandlerComponents;
 import play.core.parsers.Multipart;
 import play.libs.streams.Accumulator;
 import play.mvc.BodyParser;
@@ -75,8 +77,8 @@ public class JavaFileUpload extends WithApplication {
     public static class MultipartFormDataWithFileBodyParser extends BodyParser.DelegatingMultipartFormDataBodyParser<File> {
 
         @Inject
-        public MultipartFormDataWithFileBodyParser(Materializer materializer, play.api.http.HttpConfiguration config) {
-            super(materializer, config.parser().maxDiskBuffer());
+        public MultipartFormDataWithFileBodyParser(Materializer materializer, play.api.http.HttpConfiguration config, HttpErrorHandler errorHandler) {
+            super(materializer, config.parser().maxDiskBuffer(), errorHandler);
         }
 
         /**
@@ -124,7 +126,7 @@ public class JavaFileUpload extends WithApplication {
         play.libs.Files.TemporaryFileCreator tfc = play.libs.Files.singletonTemporaryFileCreator();
         Source source = FileIO.fromPath(Files.createTempFile("temp", "txt"));
         Http.MultipartFormData.FilePart dp = new Http.MultipartFormData.FilePart<Source>("name", "filename", "text/plain", source);
-        assertThat(contentAsString(call(new javaguide.testhelpers.MockJavaAction() {
+        assertThat(contentAsString(call(new javaguide.testhelpers.MockJavaAction(instanceOf(JavaHandlerComponents.class)) {
                     @BodyParser.Of(MultipartFormDataWithFileBodyParser.class)
                     public Result uploadCustomMultiPart() throws Exception {
                         final Http.MultipartFormData<File> formData = request().body().asMultipartFormData();

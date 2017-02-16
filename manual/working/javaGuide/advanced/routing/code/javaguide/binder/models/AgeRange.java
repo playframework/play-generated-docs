@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) 2009-2017 Lightbend Inc. <https://www.lightbend.com>
  */
 package javaguide.binder.models;
 
@@ -27,7 +27,7 @@ public Optional<AgeRange> bind(String key, Map<String, String[]> data) {
 		return Optional.of(this);
 		
 	} catch (Exception e){ // no parameter match return None
-		return Optional.of(null);
+		return Optional.empty();
 	}
 }
 

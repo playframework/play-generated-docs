@@ -49,7 +49,7 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/play-json/tree/2.6.0-M1/play-json/src/main/scala/play/api/libs/json/JsConstraints.scala" target="_blank">JsConstraints.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/play-json/tree/2.6.0-M3/play-json/jvm/src/main/scala/JsConstraints.scala" target="_blank">JsConstraints.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
@@ -488,6 +488,28 @@ and other cases are Error).</p><p>It runs through JsValue following all JsPath n
 - If one node in JsPath is not found before last node =&gt; returns JsError( &quot;missing-path&quot; )
 - If all nodes are found till last node, it runs through JsValue with last node =&gt;</p><ul><li>If last node if not found =&gt; returns None</li><li>If last node is found with value &quot;null&quot; =&gt; returns None</li><li>If last node is found =&gt; applies implicit Reads[T]
 </li></ul></div></div>
+    </li><li name="play.api.libs.json.PathReads#nullableWithDefault" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="nullableWithDefault[A](path:play.api.libs.json.JsPath,defaultValue:=&gt;Option[A])(implicitreads:play.api.libs.json.Reads[A]):play.api.libs.json.Reads[Option[A]]"></a>
+      <a id="nullableWithDefault[A](JsPath,⇒Option[A])(Reads[A]):Reads[Option[A]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">nullableWithDefault</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="path">path: <a href="JsPath.html" class="extype" name="play.api.libs.json.JsPath">JsPath</a></span>, <span name="defaultValue">defaultValue: ⇒ <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="play.api.libs.json.PathReads.nullableWithDefault.A">A</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="reads">reads: <a href="Reads.html" class="extype" name="play.api.libs.json.Reads">Reads</a>[<span class="extype" name="play.api.libs.json.PathReads.nullableWithDefault.A">A</span>]</span>)</span><span class="result">: <a href="Reads.html" class="extype" name="play.api.libs.json.Reads">Reads</a>[<span class="extype" name="scala.Option">Option</span>[<span class="extype" name="play.api.libs.json.PathReads.nullableWithDefault.A">A</span>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.json.PathReads@nullableWithDefault[A](path:play.api.libs.json.JsPath,defaultValue:=&gt;Option[A])(implicitreads:play.api.libs.json.Reads[A]):play.api.libs.json.Reads[Option[A]]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Reads a Option[T] search nullable field at JsPath (null is None
+and other cases are Error).</p><div class="fullcomment"><div class="comment cmt"><p>Reads a Option[T] search nullable field at JsPath (null is None
+and other cases are Error).</p><p>It runs through JsValue following all JsPath nodes on JsValue except last node:
+- If one node in JsPath is not found before last node =&gt; returns JsError( &quot;missing-path&quot; )
+- If all nodes are found till last node, it runs through JsValue with last node =&gt;</p><ul><li>If last node if not found =&gt; returns JsError( &quot;missing-path&quot; )</li><li>If last node is found with value &quot;null&quot; =&gt; returns None</li><li>If last node is found =&gt; applies implicit Reads[T]
+</li></ul></div></div>
     </li><li name="play.api.libs.json.PathReads#required" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="required(path:play.api.libs.json.JsPath)(implicitreads:play.api.libs.json.Reads[play.api.libs.json.JsValue]):play.api.libs.json.Reads[play.api.libs.json.JsValue]"></a>
       <a id="required(JsPath)(Reads[JsValue]):Reads[JsValue]"></a>
@@ -608,6 +630,23 @@ and other cases are Error).</p><p>It runs through JsValue following all JsPath n
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="play.api.libs.json.PathReads#withDefault" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="withDefault[A](path:play.api.libs.json.JsPath,defaultValue:=&gt;A)(implicitreads:play.api.libs.json.Reads[A]):play.api.libs.json.Reads[A]"></a>
+      <a id="withDefault[A](JsPath,⇒A)(Reads[A]):Reads[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">withDefault</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="path">path: <a href="JsPath.html" class="extype" name="play.api.libs.json.JsPath">JsPath</a></span>, <span name="defaultValue">defaultValue: ⇒ <span class="extype" name="play.api.libs.json.PathReads.withDefault.A">A</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="reads">reads: <a href="Reads.html" class="extype" name="play.api.libs.json.Reads">Reads</a>[<span class="extype" name="play.api.libs.json.PathReads.withDefault.A">A</span>]</span>)</span><span class="result">: <a href="Reads.html" class="extype" name="play.api.libs.json.Reads">Reads</a>[<span class="extype" name="play.api.libs.json.PathReads.withDefault.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.json.PathReads@withDefault[A](path:play.api.libs.json.JsPath,defaultValue:=&gt;A)(implicitreads:play.api.libs.json.Reads[A]):play.api.libs.json.Reads[A]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li></ol>
             </div>
 

@@ -129,7 +129,7 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="AssetsConfiguration.html"><span class="name">AssetsConfiguration</span></a><span class="params">(<span name="defaultCharSet">defaultCharSet: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;utf-8&quot;</span></span>, <span name="enableCaching">enableCaching: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="enableCacheControl">enableCacheControl: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="configuredCacheControl">configuredCacheControl: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]] = <span class="symbol">Map.empty</span></span>, <span name="defaultCacheControl">defaultCacheControl: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;public, max-age=3600&quot;</span></span>, <span name="aggressiveCacheControl">aggressiveCacheControl: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;public, max-age=31536000&quot;</span></span>, <span name="digestAlgorithm">digestAlgorithm: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;md5&quot;</span></span>, <span name="checkForMinified">checkForMinified: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="textContentTypes">textContentTypes: <span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="defval" name="Set(&quot;application/json&quot;, &quot;application/javascript&quot;)">...</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="AssetsConfiguration.html"><span class="name">AssetsConfiguration</span></a><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;/public&quot;</span></span>, <span name="urlPrefix">urlPrefix: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;/assets&quot;</span></span>, <span name="defaultCharSet">defaultCharSet: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;utf-8&quot;</span></span>, <span name="enableCaching">enableCaching: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="enableCacheControl">enableCacheControl: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="configuredCacheControl">configuredCacheControl: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]] = <span class="symbol">Map.empty</span></span>, <span name="defaultCacheControl">defaultCacheControl: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;public, max-age=3600&quot;</span></span>, <span name="aggressiveCacheControl">aggressiveCacheControl: <span class="extype" name="scala.Predef.String">String</span> = <span class="defval" name="&quot;public, max-age=31536000, immutable&quot;">...</span></span>, <span name="digestAlgorithm">digestAlgorithm: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;md5&quot;</span></span>, <span name="checkForMinified">checkForMinified: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="textContentTypes">textContentTypes: <span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="defval" name="Set(&quot;application/json&quot;, &quot;application/javascript&quot;)">...</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../index.html#controllers.package@AssetsConfigurationextendsProductwithSerializable" title="Permalink" target="_top">
@@ -154,23 +154,62 @@
       </a>
     </span>
       
-    </li><li name="controllers.AssetsMetadata" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="AssetsMetadataextendsAnyRef"></a>
+    </li><li name="controllers.AssetsFinder" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="AssetsFinderextendsAnyRef"></a>
+      <a id="AssetsFinder:AssetsFinder"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="AssetsFinder.html"><span class="name">AssetsFinder</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#controllers.package@AssetsFinderextendsAnyRef" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Can be used to find assets according to configured base path and URL base.</p>
+    </li><li name="controllers.AssetsMetadata" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="AssetsMetadataextendsAssetsFinder"></a>
       <a id="AssetsMetadata:AssetsMetadata"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="AssetsMetadata.html"><span class="name">AssetsMetadata</span></a><span class="result"> extends <a href="AssetsFinder.html" class="extype" name="controllers.AssetsFinder">AssetsFinder</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#controllers.package@AssetsMetadataextendsAssetsFinder" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Retains metadata for assets that can be readily cached.</p><div class="fullcomment"><div class="comment cmt"><p>Retains metadata for assets that can be readily cached.</p><p>To get the final path of an asset, you can inject an instance and call finalPath.
+</p></div></div>
+    </li><li name="controllers.AssetsMetadataProvider" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="AssetsMetadataProviderextendsProvider[controllers.DefaultAssetsMetadata]"></a>
+      <a id="AssetsMetadataProvider:AssetsMetadataProvider"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="AssetsMetadata.html"><span class="name">AssetsMetadata</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a href="AssetsMetadataProvider.html"><span class="name">AssetsMetadataProvider</span></a><span class="result"> extends <span class="extype" name="javax.inject.Provider">Provider</span>[<a href="DefaultAssetsMetadata.html" class="extype" name="controllers.DefaultAssetsMetadata">DefaultAssetsMetadata</a>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../index.html#controllers.package@AssetsMetadataextendsAnyRef" title="Permalink" target="_top">
+      <a href="../index.html#controllers.package@AssetsMetadataProviderextendsProvider[controllers.DefaultAssetsMetadata]" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+      <p class="shortcomment cmt">A provider for <a href="AssetsMetadata.html" class="extype" name="controllers.AssetsMetadata">AssetsMetadata</a> that sets up necessary static state for reverse routing.</p><div class="fullcomment"><div class="comment cmt"><p>A provider for <a href="AssetsMetadata.html" class="extype" name="controllers.AssetsMetadata">AssetsMetadata</a> that sets up necessary static state for reverse routing. The <span class="extype" name="PathBindable">PathBindable</span>
+for assets does additional &quot;magic&quot; using statics so routes like <code>routes.Assets.versioned("foo.js") </code> will
+find the minified and digested version of that asset.</p><p>It is also possible to avoid this provider and simply inject <a href="AssetsFinder.html" class="extype" name="controllers.AssetsFinder">AssetsFinder</a>. Then you can call
+<a href="AssetsFinder.html#path(rawPath:String):String" class="extmbr" name="controllers.AssetsFinder#path">AssetsFinder.path</a> to get the final path of an asset according to the path and url prefix in configuration.
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@Singleton</span><span class="args">()</span>
               
         </dd></dl></div>
@@ -211,6 +250,28 @@
 GET   /favicon.ico     controllers.Default.notFound
 GET   /admin           controllers.Default.todo
 GET   /xxx             controllers.Default.error</pre></div></div>
+    </li><li name="controllers.DefaultAssetsMetadata" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="DefaultAssetsMetadataextendsAssetsMetadata"></a>
+      <a id="DefaultAssetsMetadata:DefaultAssetsMetadata"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="DefaultAssetsMetadata.html"><span class="name">DefaultAssetsMetadata</span></a><span class="result"> extends <a href="AssetsMetadata.html" class="extype" name="controllers.AssetsMetadata">AssetsMetadata</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#controllers.package@DefaultAssetsMetadataextendsAssetsMetadata" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Default implementation of <a href="AssetsMetadata.html" class="extype" name="controllers.AssetsMetadata">AssetsMetadata</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Default implementation of <a href="AssetsMetadata.html" class="extype" name="controllers.AssetsMetadata">AssetsMetadata</a>.</p><p>If your application uses reverse routing with assets or the <a href="Assets.html" class="extype" name="controllers.Assets">Assets</a> static object, you should use the
+<a href="AssetsMetadataProvider.html" class="extype" name="controllers.AssetsMetadataProvider">AssetsMetadataProvider</a> to set up needed statics.
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@Singleton</span><span class="args">()</span>
+              
+        </dd></dl></div>
     </li><li name="controllers.ExternalAssets" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ExternalAssetsextendsController"></a>
       <a id="ExternalAssets:ExternalAssets"></a>
@@ -295,23 +356,6 @@ algorithm is preferred:</p><pre><span class="lit">"play.assets.digest.algorithm"
       </span>
       </h4><span class="permalink">
       <a href="../index.html#controllers.package@Execution" title="Permalink" target="_top">
-        <img src="../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
-    </li><li name="controllers.LazyAssetsMetadata" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="LazyAssetsMetadata"></a>
-      <a id="LazyAssetsMetadata:LazyAssetsMetadata"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a href="LazyAssetsMetadata$.html"><span class="name">LazyAssetsMetadata</span></a><span class="result"> extends <a href="AssetsMetadata.html" class="extype" name="controllers.AssetsMetadata">AssetsMetadata</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../index.html#controllers.package@LazyAssetsMetadata" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>

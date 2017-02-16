@@ -1,4 +1,4 @@
-<!--- Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) 2009-2017 Lightbend Inc. <https://www.lightbend.com> -->
 # Play modules
 
 Play uses public modules to augment built-in functionality.  
@@ -182,6 +182,11 @@ To create your own public module or to migrate from a `play.api.Plugin`, please 
 * **Documentation:** <https://github.com/loicdescotte/Play2-HTML5Tags/blob/master/README.md>
 * **Short description:** These tags add client side validation capabilities, based on model constraints (e.g required, email pattern, max|min length...) and specific input fields (date, telephone number, url...) to Play templates
 
+### Scalate
+* **Website:** <https://github.com/scalate/play-scalate>
+* **Documentation:** <https://scalate.github.io/scalate/documentation/index.html>
+* **Short description:** Alternatives to Twirl HTML template support for Jade (like Haml), Mustache, Scaml (also like Haml), SSP (like Velocity), and Scuery (CSS3 selector language)
+
 ### PDF module (Java)
 
 * **Website:** <https://github.com/innoveit/play2-pdf>
@@ -192,12 +197,6 @@ To create your own public module or to migrate from a `play.api.Plugin`, please 
 * **Website:** <https://adrianhurt.github.io/play-bootstrap/>
 * **Repository:** <https://github.com/adrianhurt/play-bootstrap>
 * **Short description:** A library for Bootstrap that gives you an out-of-the-box solution with a set of input helpers and field constructors.
-
-### Play Dok
-
-* **Website:** <https://go.fudok.com/en/>
-* **Documentation:** <https://github.com/cchantep/play-dok/>
-* **Short description:** Library to integrate Fukdok PDF templating service with your Play application.
 
 ### Thymeleaf module (Scala)
 * **Website:** <https://github.com/dmitraver/scala-play-thymeleaf-plugin>
@@ -233,8 +232,13 @@ to Twirl
 
 * **Website:** <https://edulify.github.io/play-sitemap-module.edulify.com/>
 * **Documentation:** <https://github.com/edulify/play-sitemap-module.edulify.com/blob/master/README.md>
-* **Short description:** Automatic [sitemaps](http://www.sitemaps.org/) generator for Play
+* **Short description:** Automatic [sitemaps](https://www.sitemaps.org/) generator for Play
 
+### play-guard (Scala)
+
+* **Website:** <https://github.com/sief/play-guard/>
+* **Documentation:** <https://github.com/sief/play-guard/blob/master/README.md>
+* **Short description:** Play2 module for blocking and throttling abusive requests
 
 
 ## Cloud services

@@ -52,7 +52,7 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Utilities for creating a server that runs around a block of code.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play-server/src/main/scala/play/core/server/Server.scala" target="_blank">Server.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0-M1/framework/src/play-server/src/main/scala/play/core/server/Server.scala" target="_blank">Server.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -487,7 +487,7 @@ port. This can be changed by passing in an explicit port with the config paramet
       </a>
     </span>
       <p class="shortcomment cmt">Run a block of code with a server for the application containing routes.</p><div class="fullcomment"><div class="comment cmt"><p>Run a block of code with a server for the application containing routes.</p><p>The passed in block takes the port that the application is running on. By default, this will be a random ephemeral
-port. This can be changed by passing in an explicit port with the config parameter.</p><p>An easy way to set up an application with given routes is to use <span class="extype" name="BuiltInComponentsFromContext">BuiltInComponentsFromContext</span> with
+port. This can be changed by passing in an explicit port with the config parameter.</p><p>An easy way to set up an application with given routes is to use <a href="../../api/BuiltInComponentsFromContext.html" class="extype" name="play.api.BuiltInComponentsFromContext">play.api.BuiltInComponentsFromContext</a> with
 any extra components needed:</p><pre> Server.withApplicationFromContext(ServerConfig(mode = Mode.Prod, port = <span class="std">Some</span>(<span class="num">0</span>))) { context <span class="kw">=&gt;</span>
    <span class="kw">new</span> BuiltInComponentsFromContext(context) <span class="kw">with</span> AssetsComponents {
     <span class="kw">override</span> <span class="kw">def</span> router: Router = Router.from {
@@ -495,7 +495,7 @@ any extra components needed:</p><pre> Server.withApplicationFromContext(ServerCo
     }
   }.application
 } { withClient(block)(_) }</pre></div><dl class="paramcmts block"><dt class="param">config</dt><dd class="cmt"><p>The configuration for the server. Defaults to test config with the http port bound to a random
-              ephemeral port.</p></dd><dt class="param">appProducer</dt><dd class="cmt"><p>A function that takes an <span class="extype" name="ApplicationLoader.Context">ApplicationLoader.Context</span> and produces <span class="extype" name="Application">Application</span></p></dd><dt class="param">block</dt><dd class="cmt"><p>The block of code to run.</p></dd><dt class="param">provider</dt><dd class="cmt"><p>The server provider.</p></dd><dt>returns</dt><dd class="cmt"><p>The result of the block of code.</p></dd></dl></div>
+              ephemeral port.</p></dd><dt class="param">appProducer</dt><dd class="cmt"><p>A function that takes an ApplicationLoader.Context and produces <a href="../../api/Application.html" class="extype" name="play.api.Application">play.api.Application</a></p></dd><dt class="param">block</dt><dd class="cmt"><p>The block of code to run.</p></dd><dt class="param">provider</dt><dd class="cmt"><p>The server provider.</p></dd><dt>returns</dt><dd class="cmt"><p>The result of the block of code.</p></dd></dl></div>
     </li><li name="play.core.server.Server#withRouter" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="withRouter[T](config:play.core.server.ServerConfig)(routes:PartialFunction[play.api.mvc.RequestHeader,play.api.mvc.Handler])(block:play.api.http.Port=&gt;T)(implicitprovider:play.core.server.ServerProvider):T"></a>
       <a id="withRouter[T](ServerConfig)(PartialFunction[RequestHeader,Handler])((Port)⇒T)(ServerProvider):T"></a>

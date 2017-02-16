@@ -52,7 +52,7 @@
           <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@Singleton</span><span class="args">()</span>
               
-        </dd><dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play/src/main/scala/play/api/Application.scala" target="_blank">Application.scala</a></dd></dl><div class="toggleContainer block">
+        </dd><dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0-M1/framework/src/play/src/main/scala/play/api/Application.scala" target="_blank">Application.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="Application.html" class="extype" name="play.api.Application">Application</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -377,6 +377,26 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="play.api.Application#globalApplicationEnabled" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="globalApplicationEnabled:Boolean"></a>
+      <a id="globalApplicationEnabled:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">globalApplicationEnabled</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.DefaultApplication@globalApplicationEnabled:Boolean" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Returns true if the global application is enabled for this app.</p><div class="fullcomment"><div class="comment cmt"><p>Returns true if the global application is enabled for this app. If set to false, this changes the behavior of
+Play.start, Play.current, and Play.maybeApplication to disallow access to the global application instance,
+also affecting the deprecated Play APIs that use these.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Application.html" class="extype" name="play.api.Application">Application</a></dd></dl></div>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <a id="hashCode():Int"></a>
@@ -761,7 +781,7 @@ be nothing available in the application root path.</p><p>For example, to retriev
       </a>
     </span>
       <p class="shortcomment cmt">Scans the application classloader to retrieve a resource.</p><div class="fullcomment"><div class="comment cmt"><p>Scans the application classloader to retrieve a resource.</p><p>The conf directory is included on the classpath, so this may be used to look up resources, relative to the conf
-directory.</p><p>For example, to retrieve the conf/logger.xml configuration file:</p><pre><span class="kw">val</span> maybeConf = application.resource(<span class="lit">"logger.xml"</span>)</pre></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>the absolute name of the resource (from the classpath root)</p></dd><dt>returns</dt><dd class="cmt"><p>the resource URL, if found</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Application.html" class="extype" name="play.api.Application">Application</a></dd><dt>Annotations</dt><dd>
+directory.</p><p>For example, to retrieve the conf/logback.xml configuration file:</p><pre><span class="kw">val</span> maybeConf = application.resource(<span class="lit">"logback.xml"</span>)</pre></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>the absolute name of the resource (from the classpath root)</p></dd><dt>returns</dt><dd class="cmt"><p>the resource URL, if found</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Application.html" class="extype" name="play.api.Application">Application</a></dd><dt>Annotations</dt><dd>
                 <span class="name">@deprecated</span>
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use Environment#resource instead</p></dd></dl></div>
@@ -782,7 +802,7 @@ directory.</p><p>For example, to retrieve the conf/logger.xml configuration file
       </a>
     </span>
       <p class="shortcomment cmt">Scans the application classloader to retrieve a resource’s contents as a stream.</p><div class="fullcomment"><div class="comment cmt"><p>Scans the application classloader to retrieve a resource’s contents as a stream.</p><p>The conf directory is included on the classpath, so this may be used to look up resources, relative to the conf
-directory.</p><p>For example, to retrieve the conf/logger.xml configuration file:</p><pre><span class="kw">val</span> maybeConf = application.resourceAsStream(<span class="lit">"logger.xml"</span>)</pre></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>the absolute name of the resource (from the classpath root)</p></dd><dt>returns</dt><dd class="cmt"><p>a stream, if found</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Application.html" class="extype" name="play.api.Application">Application</a></dd><dt>Annotations</dt><dd>
+directory.</p><p>For example, to retrieve the conf/logback.xml configuration file:</p><pre><span class="kw">val</span> maybeConf = application.resourceAsStream(<span class="lit">"logback.xml"</span>)</pre></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>the absolute name of the resource (from the classpath root)</p></dd><dt>returns</dt><dd class="cmt"><p>a stream, if found</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Application.html" class="extype" name="play.api.Application">Application</a></dd><dt>Annotations</dt><dd>
                 <span class="name">@deprecated</span>
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use Environment#resourceAsStream instead</p></dd></dl></div>
