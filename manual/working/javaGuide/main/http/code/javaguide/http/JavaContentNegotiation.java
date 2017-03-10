@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com>
+ * Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com>
  */
 package javaguide.http;
 
@@ -32,7 +32,7 @@ public class JavaContentNegotiation extends WithApplication {
                         }
                     }
                     //#negotiate-content
-                }, fakeRequest().header("Accept", "text/html"))),
+                }, fakeRequest().header("Accept", "text/html"), mat)),
                 equalTo("html list of items"));
     }
 

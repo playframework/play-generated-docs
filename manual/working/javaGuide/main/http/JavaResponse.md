@@ -1,4 +1,4 @@
-<!--- Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com> -->
+<!--- Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com> -->
 # Manipulating the response
 
 ## Changing the default Content-Type
@@ -18,10 +18,6 @@ will set the `Content-Type` header to `application/json`.
 This is pretty useful, but sometimes you want to change it. Just use the `as(newContentType)` method on a result to create a new similar result with a different `Content-Type` header:
 
 @[custom-content-type](code/javaguide/http/JavaResponse.java)
-
-You can also set the content type on the HTTP response context:
-
-@[context-content-type](code/javaguide/http/JavaResponse.java)
 
 ## Setting HTTP response headers
 

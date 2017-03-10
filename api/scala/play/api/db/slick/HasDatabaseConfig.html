@@ -28,13 +28,13 @@
         </head>
         <body class="type">
       <div id="definition">
-        <img src="../../../../lib/trait_big.png" />
+        <img alt="Trait" src="../../../../lib/trait_big.png" />
         <p id="owner"><a href="../../../package.html" class="extype" name="play">play</a>.<a href="../../package.html" class="extype" name="play.api">api</a>.<a href="../package.html" class="extype" name="play.api.db">db</a>.<a href="package.html" class="extype" name="play.api.db.slick">slick</a></p>
         <h1>HasDatabaseConfig</h1><h3><span class="morelinks"><div>Related Doc:
             <a href="package.html" class="extype" name="play.api.db.slick">package slick</a>
           </div></span></h3><span class="permalink">
       <a href="../../../../index.html#play.api.db.slick.HasDatabaseConfig" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       </div>
@@ -45,11 +45,11 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <span class="name">HasDatabaseConfig</span><span class="tparams">[<span name="P">P &lt;: <span class="extype" name="slick.profile.BasicProfile">BasicProfile</span></span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <span class="name">HasDatabaseConfig</span><span class="tparams">[<span name="P">P &lt;: <span class="extype" name="slick.basic.BasicProfile">BasicProfile</span></span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Mix-in this trait if you need a Slick database and driver. This is useful if you need to define a Slick
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Mix-in this trait if you need a Slick database and profile. This is useful if you need to define a Slick
 table or need to execute some operation in the database.</p><p>There is only one abstract field, <code>dbConfig</code>, which you can implement by calling <code>DatabaseConfigProvider.get</code>.
 If you are injecting <code>DatabaseConfigProvider</code> instances using dependency injection, prefer using the trait
 <code>HasDatabaseConfigProvider</code> instead of this one.</p><h4>Example</h4><pre><span class="cmt">// model definition</span>
@@ -57,7 +57,7 @@ If you are injecting <code>DatabaseConfigProvider</code> instances using depende
 <span class="cmt">// DAO definition</span>
 <span class="kw">class</span> CatDAO <span class="kw">extends</span> HasDatabaseConfig[RelationalProfile] {
 <span class="kw">protected</span> <span class="kw">val</span> dbConfig = DatabaseConfigProvider.get[RelationalProfile](Play.current)
-<span class="kw">import</span> driver.api._
+<span class="kw">import</span> profile.api._
 
 <span class="kw">private</span> <span class="kw">val</span> Cats = TableQuery[CatsTable]
 <span class="kw">def</span> all() = db.run(Cats.result)
@@ -70,7 +70,7 @@ If you are injecting <code>DatabaseConfigProvider</code> instances using depende
 <span class="kw">def</span> * = (name, color) &lt;&gt; (Cat.tupled, Cat.unapply _)
 }
 }</pre><p>Of course, you do not need to define a DAO to use this trait (the above it is really just an example of usage).
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/play-slick/tree/1.1.0/src/core/src/main/scala/play/api/db/slick/DatabaseConfigProvider.scala" target="_blank">DatabaseConfigProvider.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/play-slick/tree/2.1.0/src/core/src/main/scala/play/api/db/slick/DatabaseConfigProvider.scala" target="_blank">DatabaseConfigProvider.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
@@ -101,7 +101,6 @@ If you are injecting <code>DatabaseConfigProvider</code> instances using depende
               <li class="hideall out"><span>Hide All</span></li>
               <li class="showall in"><span>Show all</span></li>
             </ol>
-            <a href="http://docs.scala-lang.org/overviews/scaladoc/usage.html#members" target="_blank">Learn more about member selection</a>
           </div>
         <div id="visbl">
             <span class="filtertype">Visibility</span>
@@ -118,19 +117,19 @@ If you are injecting <code>DatabaseConfigProvider</code> instances using depende
         <div id="values" class="values members">
               <h3>Abstract Value Members</h3>
               <ol><li name="play.api.db.slick.HasDatabaseConfig#dbConfig" visbl="prt" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="dbConfig:slick.backend.DatabaseConfig[P]"></a>
-      <a id="dbConfig:slick.backend.DatabaseConfig[P]"></a>
+      <a id="dbConfig:slick.basic.DatabaseConfig[P]"></a>
+      <a id="dbConfig:slick.basic.DatabaseConfig[P]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">abstract </span>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">dbConfig</span><span class="result">: <span class="extype" name="slick.backend.DatabaseConfig">slick.backend.DatabaseConfig</span>[<span class="extype" name="play.api.db.slick.HasDatabaseConfig.P">P</span>]</span>
+        <span class="name">dbConfig</span><span class="result">: <span class="extype" name="slick.basic.DatabaseConfig">slick.basic.DatabaseConfig</span>[<span class="extype" name="play.api.db.slick.HasDatabaseConfig.P">P</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.db.slick.HasDatabaseConfig@dbConfig:slick.backend.DatabaseConfig[P]" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
+      <a href="../../../../index.html#play.api.db.slick.HasDatabaseConfig@dbConfig:slick.basic.DatabaseConfig[P]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <p class="shortcomment cmt">The Slick database configuration.</p><div class="fullcomment"><div class="comment cmt"><p>The Slick database configuration.</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
@@ -152,7 +151,7 @@ If you are injecting <code>DatabaseConfigProvider</code> instances using depende
       </span>
       </h4><span class="permalink">
       <a href="../../../../index.html#play.api.db.slick.HasDatabaseConfig@!=(x$1:Any):Boolean" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -169,7 +168,7 @@ If you are injecting <code>DatabaseConfigProvider</code> instances using depende
       </span>
       </h4><span class="permalink">
       <a href="../../../../index.html#play.api.db.slick.HasDatabaseConfig@##():Int" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -186,7 +185,7 @@ If you are injecting <code>DatabaseConfigProvider</code> instances using depende
       </span>
       </h4><span class="permalink">
       <a href="../../../../index.html#play.api.db.slick.HasDatabaseConfig@==(x$1:Any):Boolean" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -203,7 +202,7 @@ If you are injecting <code>DatabaseConfigProvider</code> instances using depende
       </span>
       </h4><span class="permalink">
       <a href="../../../../index.html#play.api.db.slick.HasDatabaseConfig@asInstanceOf[T0]:T0" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
@@ -220,7 +219,7 @@ If you are injecting <code>DatabaseConfigProvider</code> instances using depende
       </span>
       </h4><span class="permalink">
       <a href="../../../../index.html#play.api.db.slick.HasDatabaseConfig@clone():Object" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -232,38 +231,21 @@ If you are injecting <code>DatabaseConfigProvider</code> instances using depende
         </dd></dl></div>
     </li><li name="play.api.db.slick.HasDatabaseConfig#db" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="db:P#Backend#Database"></a>
-      <a id="db:slick.profile.BasicProfile.Backend.Database"></a>
+      <a id="db:slick.basic.BasicProfile.Backend.Database"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">db</span><span class="result">: <span class="extype" name="slick.backend.DatabaseComponent.Database">slick.profile.BasicProfile.Backend.Database</span></span>
+        <span class="name">db</span><span class="result">: <span class="extype" name="slick.basic.BasicBackend.Database">slick.basic.BasicProfile.Backend.Database</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../../index.html#play.api.db.slick.HasDatabaseConfig@db:P#Backend#Database" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <p class="shortcomment cmt">The Slick database extracted from <code>dbConfig</code>.</p><div class="fullcomment"><div class="comment cmt"><p>The Slick database extracted from <code>dbConfig</code>.</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
-    </li><li name="play.api.db.slick.HasDatabaseConfig#driver" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="driver:P"></a>
-      <a id="driver:P"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">driver</span><span class="result">: <span class="extype" name="play.api.db.slick.HasDatabaseConfig.P">P</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.db.slick.HasDatabaseConfig@driver:P" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">The Slick driver extracted from <code>dbConfig</code>.</p><div class="fullcomment"><div class="comment cmt"><p>The Slick driver extracted from <code>dbConfig</code>.</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -277,7 +259,7 @@ If you are injecting <code>DatabaseConfigProvider</code> instances using depende
       </span>
       </h4><span class="permalink">
       <a href="../../../../index.html#play.api.db.slick.HasDatabaseConfig@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
@@ -294,7 +276,7 @@ If you are injecting <code>DatabaseConfigProvider</code> instances using depende
       </span>
       </h4><span class="permalink">
       <a href="../../../../index.html#play.api.db.slick.HasDatabaseConfig@equals(x$1:Any):Boolean" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -311,7 +293,7 @@ If you are injecting <code>DatabaseConfigProvider</code> instances using depende
       </span>
       </h4><span class="permalink">
       <a href="../../../../index.html#play.api.db.slick.HasDatabaseConfig@finalize():Unit" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -334,7 +316,7 @@ If you are injecting <code>DatabaseConfigProvider</code> instances using depende
       </span>
       </h4><span class="permalink">
       <a href="../../../../index.html#play.api.db.slick.HasDatabaseConfig@getClass():Class[_]" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -351,7 +333,7 @@ If you are injecting <code>DatabaseConfigProvider</code> instances using depende
       </span>
       </h4><span class="permalink">
       <a href="../../../../index.html#play.api.db.slick.HasDatabaseConfig@hashCode():Int" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -368,7 +350,7 @@ If you are injecting <code>DatabaseConfigProvider</code> instances using depende
       </span>
       </h4><span class="permalink">
       <a href="../../../../index.html#play.api.db.slick.HasDatabaseConfig@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
@@ -385,7 +367,7 @@ If you are injecting <code>DatabaseConfigProvider</code> instances using depende
       </span>
       </h4><span class="permalink">
       <a href="../../../../index.html#play.api.db.slick.HasDatabaseConfig@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
@@ -402,7 +384,7 @@ If you are injecting <code>DatabaseConfigProvider</code> instances using depende
       </span>
       </h4><span class="permalink">
       <a href="../../../../index.html#play.api.db.slick.HasDatabaseConfig@notify():Unit" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
@@ -419,10 +401,27 @@ If you are injecting <code>DatabaseConfigProvider</code> instances using depende
       </span>
       </h4><span class="permalink">
       <a href="../../../../index.html#play.api.db.slick.HasDatabaseConfig@notifyAll():Unit" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="play.api.db.slick.HasDatabaseConfig#profile" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="profile:P"></a>
+      <a id="profile:P"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">profile</span><span class="result">: <span class="extype" name="play.api.db.slick.HasDatabaseConfig.P">P</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.db.slick.HasDatabaseConfig@profile:P" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">The Slick profile extracted from <code>dbConfig</code>.</p><div class="fullcomment"><div class="comment cmt"><p>The Slick profile extracted from <code>dbConfig</code>.</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -436,7 +435,7 @@ If you are injecting <code>DatabaseConfigProvider</code> instances using depende
       </span>
       </h4><span class="permalink">
       <a href="../../../../index.html#play.api.db.slick.HasDatabaseConfig@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
@@ -453,7 +452,7 @@ If you are injecting <code>DatabaseConfigProvider</code> instances using depende
       </span>
       </h4><span class="permalink">
       <a href="../../../../index.html#play.api.db.slick.HasDatabaseConfig@toString():String" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -470,7 +469,7 @@ If you are injecting <code>DatabaseConfigProvider</code> instances using depende
       </span>
       </h4><span class="permalink">
       <a href="../../../../index.html#play.api.db.slick.HasDatabaseConfig@wait():Unit" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -493,7 +492,7 @@ If you are injecting <code>DatabaseConfigProvider</code> instances using depende
       </span>
       </h4><span class="permalink">
       <a href="../../../../index.html#play.api.db.slick.HasDatabaseConfig@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -516,7 +515,7 @@ If you are injecting <code>DatabaseConfigProvider</code> instances using depende
       </span>
       </h4><span class="permalink">
       <a href="../../../../index.html#play.api.db.slick.HasDatabaseConfig@wait(x$1:Long):Unit" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" />
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -531,7 +530,30 @@ If you are injecting <code>DatabaseConfigProvider</code> instances using depende
 
         
 
-        
+        <div id="values" class="values members">
+              <h3>Deprecated Value Members</h3>
+              <ol><li name="play.api.db.slick.HasDatabaseConfig#driver" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="driver:P"></a>
+      <a id="driver:P"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 2.1) Use profile instead of driver">driver</span><span class="result">: <span class="extype" name="play.api.db.slick.HasDatabaseConfig.P">P</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.db.slick.HasDatabaseConfig@driver:P" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.1)</i> Use <code>profile</code> instead of <code>driver</code></p></dd></dl></div>
+    </li></ol>
+            </div>
         </div>
 
         <div id="inheritedMembers">

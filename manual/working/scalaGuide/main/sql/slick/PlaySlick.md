@@ -7,34 +7,29 @@ The Play Slick module consists of two features:
   - Integration of Slick into Play's application lifecycle.
   - Support for [[Play database evolutions|Evolutions]].
 
-Play Slick currently supports Slick 3.1 with Play 2.4, for both Scala 2.10 and 2.11.
+Play Slick currently supports Slick 3.1 with Play 2.5, for Scala 2.11.
 
-> Note: This guide assumes you already know both Play 2.4 and Slick 3.1.
+> **Note**: This guide assumes you already know both Play 2.5 and Slick 3.1.
 
 ### Getting Help
 
-If you are having trouble using Play Slick, check if the [[FAQ|PlaySlickFAQ]] contains the answer. Otherwise, feel free to reach out to [play-framework user group]. Also, note that if you are seeking help on Slick, the [slick user group] may be a better place.
+If you are having trouble using Play Slick, check if the [[FAQ|PlaySlickFAQ]] contains the answer. Otherwise, feel free to reach out to [play-framework user group](https://groups.google.com/forum/#!forum/play-framework). Also, note that if you are seeking help on Slick, the [slick user group](https://groups.google.com/forum/#!forum/scalaquery) may be a better place.
 
-Finally, if you prefer to get an answer for your Play and Slick questions in a timely manner, and with a well-defined SLA, you may prefer [to get in touch with Typesafe](http://www.typesafe.com/subscription), as it offers commercial support for these technologies.
-
-[play-framework user group]: https://groups.google.com/forum/#!forum/play-framework
-[slick user group]: https://groups.google.com/forum/#!forum/scalaquery
+Finally, if you prefer to get an answer for your Play and Slick questions in a timely manner, and with a well-defined SLA, you may prefer [to get in touch with Lightbend](http://www.lightbend.com/subscription), as it offers commercial support for these technologies.
 
 ## About this release
 
 If you have been using a previous version of Play Slick, you will notice that there have been quite a few major changes. It's recommended to read the [[migration guide|PlaySlickMigrationGuide]] for a smooth upgrade.
 
-While, if this is the first time you are using Play Slick, you will appreciate that the integration of Slick in Play is quite austere. Meaning that if you know both Play and Slick, using Play Slick module should be straightforward.
+While, if this is the first time you are using Play Slick, you will appreciate that the integration of Slick in Play is quite austere. Meaning that if you know both Play and Slick, using the Play Slick module should be straightforward.
 
 ## Setup
 
 Add a library dependency on play-slick:
 
-```scala
-"com.typesafe.play" %% "play-slick" % "1.1.0"
-```
+@[add-library-dependencies](code/slick.sbt)
 
-The above dependency will also bring along the Slick library as a transitive dependency. This implies you don't need to add an explicit dependency on Slick, but you might still do so if needed. A likely reason for wanting to explicitly define a dependency to Slick is if you want to use a newer version than the one bundled with play-slick. Because Slick trailing dot releases are binary compatible, you won't incur any risk in using a different Slick trailing point release than the one that was used to build play-slick.
+The above dependency will also bring along the Slick library as a transitive dependency. This implies you don't need to add an explicit dependency on Slick, but you might still do so if want. A likely reason for wanting to explicitly define a dependency to Slick is if you want to use a newer version than the one bundled with play-slick. Because Slick trailing dot releases are binary compatible, you won't incur any risk in using a different Slick trailing point release than the one that was used to build play-slick.
 
 ### Support for Play database evolutions
 
@@ -42,24 +37,21 @@ Play Slick supports [[Play database evolutions|Evolutions]].
 
 To enable evolutions, you will need the following dependencies:
 
-```scala
-"com.typesafe.play" %% "play-slick" % "1.1.0"
-"com.typesafe.play" %% "play-slick-evolutions" % "1.1.0"
-```
+@[add-dependency-with-evolutions](code/slick.sbt)
 
 Note there is no need to add the Play `evolutions` component to your dependencies, as it is a transitive dependency of the `play-slick-evolutions` module.
 
 ### JDBC driver dependency
 
-Play Slick module does not bundle any JDBC driver. Hence, you will need to explicitly add the JDBC driver(s) you want to use in your application. For instance, if you would like to use an in-memory database such as H2, you will have to add a dependency to it:
+The Play Slick module does not bundle any JDBC driver. Hence, you will need to explicitly add the JDBC driver(s) you want to use in your application. For instance, if you would like to use an in-memory database such as H2, you will have to add a dependency to it:
 
-```
+```scala
 "com.h2database" % "h2" % "${H2_VERSION}" // replace `${H2_VERSION}` with an actual version number
 ```
 
 ## Database Configuration
 
-To have Play Slick module handling the lifecycle of Slick databases, it is important that you never create database's instances explicitly in your code. Rather, you should provide a valid Slick driver and database configuration in your **application.conf** (by convention the default Slick database must be called `default`):
+To have the Play Slick module handling the lifecycle of Slick databases, it is important that you never create database's instances explicitly in your code. Rather, you should provide a valid Slick driver and database configuration in your **application.conf** (by convention the default Slick database must be called `default`):
 
 ```conf
 # Default database configuration
@@ -68,11 +60,11 @@ slick.dbs.default.db.driver="org.h2.Driver"
 slick.dbs.default.db.url="jdbc:h2:mem:play"
 ```
 
-First, note that the above is a valid Slick configuration (for the complete list of configuration parameters that you can use to configure a database see the Slick ScalaDoc for [Database.forConfig] - make sure to expand the `forConfig` row in the doc).
+First, note that the above is a valid Slick configuration (for the complete list of configuration parameters that you can use to configure a database see the Slick ScalaDoc for [Database.forConfig](http://slick.typesafe.com/doc/3.1.0/api/index.html#slick.jdbc.JdbcBackend$DatabaseFactoryDef@forConfig%28path:String,config:com.typesafe.config.Config,driver:java.sql.Driver,classLoader:ClassLoader%29:JdbcBackend.this.Database) - make sure to expand the `forConfig` row in the doc).
 
 Second, the `slick.dbs` prefix before the database's name is configurable. In fact, you may change it by overriding the value of the configuration key `play.slick.db.config`.
 
-Third, in the above configuration `slick.dbs.default.driver` is used to configure the Slick driver, while `slick.dbs.default.db.driver` is the underlying JDBC driver used by Slick's backend. In the above configuration we are configuring Slick to use H2 database, but Slick supports several other databases. Check the [Slick documentation] for a complete list of supported databases, and to find a matching Slick driver.
+Third, in the above configuration `slick.dbs.default.driver` is used to configure the Slick driver, while `slick.dbs.default.db.driver` is the underlying JDBC driver used by Slick's backend. In the above configuration we are configuring Slick to use H2 database, but Slick supports several other databases. Check the [Slick documentation](http://slick.typesafe.com/docs) for a complete list of supported databases, and to find a matching Slick driver.
 
 Slick does not support the `DATABASE_URL` environment variable in the same way as the default Play JBDC connection pool. But starting in version 3.0.3, Slick provides a `DatabaseUrlDataSource` specifically for parsing the environment variable.
 
@@ -82,7 +74,7 @@ slick.dbs.default.db.dataSourceClass = "slick.jdbc.DatabaseUrlDataSource"
 slick.dbs.default.db.properties.driver = "org.postgresql.Driver"
 ```
 
-On some platforms, such as Heroku, you may substitue the `JDBC_DATABASE_URL`, which is in the format `jdbc:vendor://host:port/db?args`, if it is available. For example:
+On some platforms, such as Heroku, you may substitute the `JDBC_DATABASE_URL`, which is in the format `jdbc:vendor://host:port/db?args`, if it is available. For example:
 
 ```conf
 slick.dbs.default.driver="slick.driver.PostgresDriver$"
@@ -90,10 +82,7 @@ slick.dbs.default.db.driver="org.postgresql.Driver"
 slick.dbs.default.db.url=${JDBC_DATABASE_URL}
 ```
 
->> Note: Failing to provide a valid value for both `slick.dbs.default.driver` and `slick.dbs.default.db.driver` will lead to an exception when trying to run your Play application.
-
-[Slick documentation]: http://slick.typesafe.com/docs
-[Database.forConfig]: http://slick.typesafe.com/doc/3.1.0/api/index.html#slick.jdbc.JdbcBackend$DatabaseFactoryDef@forConfig(String,Config,Driver,ClassLoader):Database
+> **Note**: Failing to provide a valid value for both `slick.dbs.default.driver` and `slick.dbs.default.db.driver` will lead to an exception when trying to run your Play application.
 
 To configure several databases:
 
@@ -133,7 +122,7 @@ Injecting a `DatabaseConfig` instance for a different database is also easy. Sim
 
 Of course, you should replace the string `"<db-name>"` with the name of the database's configuration you want to use.
 
-For a full example, have a look at [this sample projet](https://github.com/playframework/play-slick/tree/master/samples/di).
+For a full example, have a look at [this sample project](https://github.com/playframework/play-slick/tree/master/samples/basic).
 
 ### DatabaseConfig via Global Lookup
 
@@ -147,7 +136,7 @@ Looking up a `DatabaseConfig` instance for a different database is also easy. Si
 
 Of course, you should replace the string `"<db-name>"` with the name of the database's configuration you want to use.
 
-For a full example, have a look at [this sample projet](https://github.com/playframework/play-slick/tree/master/samples/basic).
+For a full example, have a look at [this sample project](https://github.com/playframework/play-slick/tree/master/samples/basic).
 
 ### Running a database query in a Controller
 

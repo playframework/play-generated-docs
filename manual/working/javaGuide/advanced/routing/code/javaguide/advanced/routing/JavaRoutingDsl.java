@@ -1,24 +1,26 @@
 /*
- * Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com>
+ * Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com>
  */
 package javaguide.advanced.routing;
 
 import org.junit.Test;
 
 //#imports
-import play.api.routing.Router;
+import play.routing.Router;
 import play.routing.RoutingDsl;
-import play.libs.F;
+import java.util.concurrent.CompletableFuture;
+
 import static play.mvc.Controller.*;
 //#imports
 
 import play.mvc.Result;
+import play.test.WithApplication;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 import static play.test.Helpers.*;
 
-public class JavaRoutingDsl {
+public class JavaRoutingDsl extends WithApplication {
     @Test
     public void simple() {
         //#simple
@@ -76,7 +78,7 @@ public class JavaRoutingDsl {
         //#async
         Router router = new RoutingDsl()
             .GET("/api/items/:id").routeAsync((Integer id) ->
-                F.Promise.pure(ok("Getting item " + id))
+                CompletableFuture.completedFuture(ok("Getting item " + id))
             )
             .build();
         //#async

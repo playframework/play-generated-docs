@@ -28,13 +28,13 @@
         </head>
         <body class="type">
       <div id="definition">
-        <img src="../../../lib/trait_big.png" />
+        <img alt="Trait" src="../../../lib/trait_big.png" />
         <p id="owner"><a href="../../package.html" class="extype" name="play">play</a>.<a href="../package.html" class="extype" name="play.api">api</a>.<a href="package.html" class="extype" name="play.api.inject">inject</a></p>
         <h1>ApplicationLifecycle</h1><h3><span class="morelinks"><div>Related Doc:
             <a href="package.html" class="extype" name="play.api.inject">package inject</a>
           </div></span></h3><span class="permalink">
       <a href="../../../index.html#play.api.inject.ApplicationLifecycle" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       </div>
@@ -65,11 +65,11 @@ started. For example:</p><pre><span class="kw">import</span> play.api.inject.App
 
   <span class="kw">private</span> <span class="kw">val</span> connectionPool = <span class="kw">new</span> SomeConnectionPool()
   applicationLifecycle.addStopHook { () <span class="kw">=&gt;</span>
-    connectionPool.shutdown()
+    Future.successful(connectionPool.shutdown())
   }
 
   ...
-}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.4.11/framework/src/play/src/main/scala/play/api/inject/ApplicationLifecycle.scala" target="_blank">ApplicationLifecycle.scala</a></dd></dl><div class="toggleContainer block">
+}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.5.13/framework/src/play/src/main/scala/play/api/inject/ApplicationLifecycle.scala" target="_blank">ApplicationLifecycle.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
@@ -100,7 +100,6 @@ started. For example:</p><pre><span class="kw">import</span> play.api.inject.App
               <li class="hideall out"><span>Hide All</span></li>
               <li class="showall in"><span>Show all</span></li>
             </ol>
-            <a href="http://docs.scala-lang.org/overviews/scaladoc/usage.html#members" target="_blank">Learn more about member selection</a>
           </div>
         <div id="visbl">
             <span class="filtertype">Visibility</span>
@@ -117,19 +116,19 @@ started. For example:</p><pre><span class="kw">import</span> play.api.inject.App
         <div id="values" class="values members">
               <h3>Abstract Value Members</h3>
               <ol><li name="play.api.inject.ApplicationLifecycle#addStopHook" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="addStopHook(hook:()=&gt;scala.concurrent.Future[Unit]):Unit"></a>
-      <a id="addStopHook(()⇒Future[Unit]):Unit"></a>
+      <a id="addStopHook(hook:()=&gt;scala.concurrent.Future[_]):Unit"></a>
+      <a id="addStopHook(()⇒Future[_]):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">abstract </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">addStopHook</span><span class="params">(<span name="hook">hook: () ⇒ <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="scala.Unit">Unit</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">addStopHook</span><span class="params">(<span name="hook">hook: () ⇒ <span class="extype" name="scala.concurrent.Future">Future</span>[_]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.inject.ApplicationLifecycle@addStopHook(hook:()=&gt;scala.concurrent.Future[Unit]):Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+      <a href="../../../index.html#play.api.inject.ApplicationLifecycle@addStopHook(hook:()=&gt;scala.concurrent.Future[_]):Unit" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <p class="shortcomment cmt">Add a stop hook to be called when the application stops.</p><div class="fullcomment"><div class="comment cmt"><p>Add a stop hook to be called when the application stops.</p><p>The stop hook should redeem the returned future when it is finished shutting down.  It is acceptable to stop
@@ -153,7 +152,7 @@ immediately and return a successful future.
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.ApplicationLifecycle@!=(x$1:Any):Boolean" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -170,7 +169,7 @@ immediately and return a successful future.
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.ApplicationLifecycle@##():Int" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -187,24 +186,24 @@ immediately and return a successful future.
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.ApplicationLifecycle@==(x$1:Any):Boolean" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="play.api.inject.ApplicationLifecycle#addStopHook" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="addStopHook(hook:java.util.concurrent.Callable[play.libs.F.Promise[Void]]):Unit"></a>
-      <a id="addStopHook(Callable[Promise[Void]]):Unit"></a>
+      <a id="addStopHook(hook:java.util.concurrent.Callable[_&lt;:java.util.concurrent.CompletionStage[_]]):Unit"></a>
+      <a id="addStopHook(Callable[_&lt;:CompletionStage[_]]):Unit"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">addStopHook</span><span class="params">(<span name="hook">hook: <span class="extype" name="java.util.concurrent.Callable">Callable</span>[<span class="extype" name="play.libs.F.Promise">Promise</span>[<span class="extype" name="java.lang.Void">Void</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">addStopHook</span><span class="params">(<span name="hook">hook: <span class="extype" name="java.util.concurrent.Callable">Callable</span>[_ &lt;: <span class="extype" name="java.util.concurrent.CompletionStage">CompletionStage</span>[_]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.inject.ApplicationLifecycle@addStopHook(hook:java.util.concurrent.Callable[play.libs.F.Promise[Void]]):Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+      <a href="../../../index.html#play.api.inject.ApplicationLifecycle@addStopHook(hook:java.util.concurrent.Callable[_&lt;:java.util.concurrent.CompletionStage[_]]):Unit" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <p class="shortcomment cmt">Add a stop hook to be called when the application stops.</p><div class="fullcomment"><div class="comment cmt"><p>Add a stop hook to be called when the application stops.</p><p>The stop hook should redeem the returned future when it is finished shutting down.  It is acceptable to stop
@@ -223,7 +222,7 @@ immediately and return a successful future.
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.ApplicationLifecycle@asInstanceOf[T0]:T0" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
@@ -240,7 +239,7 @@ immediately and return a successful future.
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.ApplicationLifecycle@clone():Object" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -263,7 +262,7 @@ immediately and return a successful future.
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.ApplicationLifecycle@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
@@ -280,7 +279,7 @@ immediately and return a successful future.
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.ApplicationLifecycle@equals(x$1:Any):Boolean" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -297,7 +296,7 @@ immediately and return a successful future.
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.ApplicationLifecycle@finalize():Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -320,7 +319,7 @@ immediately and return a successful future.
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.ApplicationLifecycle@getClass():Class[_]" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -337,7 +336,7 @@ immediately and return a successful future.
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.ApplicationLifecycle@hashCode():Int" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -354,7 +353,7 @@ immediately and return a successful future.
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.ApplicationLifecycle@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
@@ -371,7 +370,7 @@ immediately and return a successful future.
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.ApplicationLifecycle@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
@@ -388,7 +387,7 @@ immediately and return a successful future.
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.ApplicationLifecycle@notify():Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
@@ -405,7 +404,7 @@ immediately and return a successful future.
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.ApplicationLifecycle@notifyAll():Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
@@ -422,7 +421,7 @@ immediately and return a successful future.
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.ApplicationLifecycle@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
@@ -439,7 +438,7 @@ immediately and return a successful future.
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.ApplicationLifecycle@toString():String" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -456,7 +455,7 @@ immediately and return a successful future.
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.ApplicationLifecycle@wait():Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -479,7 +478,7 @@ immediately and return a successful future.
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.ApplicationLifecycle@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -502,7 +501,7 @@ immediately and return a successful future.
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.ApplicationLifecycle@wait(x$1:Long):Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>

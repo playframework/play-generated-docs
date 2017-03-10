@@ -1,4 +1,4 @@
-<!--- Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com> -->
+<!--- Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com> -->
 # Handling form submission
 
 ## Overview
@@ -240,6 +240,10 @@ If you are using Play to generate your form HTML, you can generate as many input
 @[form-field-repeat](code/scalaguide/forms/scalaforms/views/repeat.scala.html)
 
 The `min` parameter allows you to display a minimum number of fields even if the corresponding form data are empty.
+
+If you want to access the index of the fields you can use the `repeatWithIndex` helper instead:
+
+@[form-field-repeat-with-index](code/scalaguide/forms/scalaforms/views/repeat.scala.html)
 
 ### Optional values
 

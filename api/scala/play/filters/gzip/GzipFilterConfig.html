@@ -28,7 +28,7 @@
         </head>
         <body class="type">
       <div id="definition">
-        <a href="GzipFilterConfig$.html" title="See companion object"><img src="../../../lib/class_to_object_big.png" /></a>
+        <a href="GzipFilterConfig$.html" title="See companion object"><img alt="Class/Object" src="../../../lib/class_to_object_big.png" /></a>
         <p id="owner"><a href="../../package.html" class="extype" name="play">play</a>.<a href="../package.html" class="extype" name="play.filters">filters</a>.<a href="package.html" class="extype" name="play.filters.gzip">gzip</a></p>
         <h1><a href="GzipFilterConfig$.html" title="See companion object">GzipFilterConfig</a></h1><h3><span class="morelinks"><div>
             Related Docs:
@@ -36,7 +36,7 @@
             | <a href="package.html" class="extype" name="play.filters.gzip">package gzip</a>
           </div></span></h3><span class="permalink">
       <a href="../../../index.html#play.filters.gzip.GzipFilterConfig" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       </div>
@@ -47,14 +47,13 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">GzipFilterConfig</span><span class="params">(<span name="gzip">gzip: <a href="../../api/libs/iteratee/Enumeratee.html" class="extype" name="play.api.libs.iteratee.Enumeratee">Enumeratee</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>], <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]] = <span class="symbol"><span class="name"><a href="Gzip$.html">Gzip.gzip(8192)</a></span></span></span>, <span name="chunkedThreshold">chunkedThreshold: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">102400</span></span>, <span name="shouldGzip">shouldGzip: (<a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>, <a href="../../api/mvc/ResponseHeader.html" class="extype" name="play.api.mvc.ResponseHeader">ResponseHeader</a>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">(_, _) =&gt; true</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name">GzipFilterConfig</span><span class="params">(<span name="bufferSize">bufferSize: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">8192</span></span>, <span name="chunkedThreshold">chunkedThreshold: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">102400</span></span>, <span name="shouldGzip">shouldGzip: (<a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>, <a href="../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">(_, _) =&gt; true</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Configuration for the gzip filter
-</p></div><dl class="paramcmts block"><dt class="param">gzip</dt><dd class="cmt"><p>The gzip enumeratee to use.</p></dd><dt class="param">chunkedThreshold</dt><dd class="cmt"><p>The content length threshold, after which the filter will switch to chunking the result.</p></dd><dt class="param">shouldGzip</dt><dd class="cmt"><p>Whether the given request/result should be gzipped.  This can be used, for example, to implement
-                  black/white lists for gzipping by content type.
-</p></dd></dl><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.4.11/framework/src/play-filters-helpers/src/main/scala/play/filters/gzip/GzipFilter.scala" target="_blank">GzipFilter.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="paramcmts block"><dt class="param">bufferSize</dt><dd class="cmt"><p>The size of the buffer to use for gzipping.</p></dd><dt class="param">chunkedThreshold</dt><dd class="cmt"><p>The content length threshold, after which the filter will switch to chunking the result.</p></dd><dt class="param">shouldGzip</dt><dd class="cmt"><p>Whether the given request/result should be gzipped.  This can be used, for example, to implement
+                  black/white lists for gzipping by content type.</p></dd></dl><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.5.13/framework/src/play-filters-helpers/src/main/scala/play/filters/gzip/GzipFilter.scala" target="_blank">GzipFilter.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -82,7 +81,6 @@
               <li class="hideall out"><span>Hide All</span></li>
               <li class="showall in"><span>Show all</span></li>
             </ol>
-            <a href="http://docs.scala-lang.org/overviews/scaladoc/usage.html#members" target="_blank">Learn more about member selection</a>
           </div>
         <div id="visbl">
             <span class="filtertype">Visibility</span>
@@ -94,8 +92,8 @@
         <div id="allMembers">
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
-              <ol><li name="play.filters.gzip.GzipFilterConfig#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(gzip:play.api.libs.iteratee.Enumeratee[Array[Byte],Array[Byte]],chunkedThreshold:Int,shouldGzip:(play.api.mvc.RequestHeader,play.api.mvc.ResponseHeader)=&gt;Boolean):play.filters.gzip.GzipFilterConfig"></a>
+              <ol><li name="play.filters.gzip.GzipFilterConfig#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="&lt;init&gt;():play.filters.gzip.GzipFilterConfig"></a>
       <a id="&lt;init&gt;:GzipFilterConfig"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -103,16 +101,32 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">GzipFilterConfig</span><span class="params">(<span name="gzip">gzip: <a href="../../api/libs/iteratee/Enumeratee.html" class="extype" name="play.api.libs.iteratee.Enumeratee">Enumeratee</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>], <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]] = <span class="symbol"><span class="name"><a href="Gzip$.html">Gzip.gzip(8192)</a></span></span></span>, <span name="chunkedThreshold">chunkedThreshold: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">102400</span></span>, <span name="shouldGzip">shouldGzip: (<a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>, <a href="../../api/mvc/ResponseHeader.html" class="extype" name="play.api.mvc.ResponseHeader">ResponseHeader</a>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">(_, _) =&gt; true</span></span>)</span>
+        <span class="name">GzipFilterConfig</span><span class="params">()</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.filters.gzip.GzipFilterConfig@&lt;init&gt;(gzip:play.api.libs.iteratee.Enumeratee[Array[Byte],Array[Byte]],chunkedThreshold:Int,shouldGzip:(play.api.mvc.RequestHeader,play.api.mvc.ResponseHeader)=&gt;Boolean):play.filters.gzip.GzipFilterConfig" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+      <a href="../../../index.html#play.filters.gzip.GzipFilterConfig@&lt;init&gt;():play.filters.gzip.GzipFilterConfig" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">gzip</dt><dd class="cmt"><p>The gzip enumeratee to use.</p></dd><dt class="param">chunkedThreshold</dt><dd class="cmt"><p>The content length threshold, after which the filter will switch to chunking the result.</p></dd><dt class="param">shouldGzip</dt><dd class="cmt"><p>Whether the given request/result should be gzipped.  This can be used, for example, to implement
-                  black/white lists for gzipping by content type.
-</p></dd></dl></div>
+      
+    </li><li name="play.filters.gzip.GzipFilterConfig#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="&lt;init&gt;(bufferSize:Int,chunkedThreshold:Int,shouldGzip:(play.api.mvc.RequestHeader,play.api.mvc.Result)=&gt;Boolean):play.filters.gzip.GzipFilterConfig"></a>
+      <a id="&lt;init&gt;:GzipFilterConfig"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">new</span>
+      </span>
+      <span class="symbol">
+        <span class="name">GzipFilterConfig</span><span class="params">(<span name="bufferSize">bufferSize: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">8192</span></span>, <span name="chunkedThreshold">chunkedThreshold: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">102400</span></span>, <span name="shouldGzip">shouldGzip: (<a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>, <a href="../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">(_, _) =&gt; true</span></span>)</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.gzip.GzipFilterConfig@&lt;init&gt;(bufferSize:Int,chunkedThreshold:Int,shouldGzip:(play.api.mvc.RequestHeader,play.api.mvc.Result)=&gt;Boolean):play.filters.gzip.GzipFilterConfig" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">bufferSize</dt><dd class="cmt"><p>The size of the buffer to use for gzipping.</p></dd><dt class="param">chunkedThreshold</dt><dd class="cmt"><p>The content length threshold, after which the filter will switch to chunking the result.</p></dd><dt class="param">shouldGzip</dt><dd class="cmt"><p>Whether the given request/result should be gzipped.  This can be used, for example, to implement
+                  black/white lists for gzipping by content type.</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -135,7 +149,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.filters.gzip.GzipFilterConfig@!=(x$1:Any):Boolean" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -152,7 +166,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.filters.gzip.GzipFilterConfig@##():Int" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -169,7 +183,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.filters.gzip.GzipFilterConfig@==(x$1:Any):Boolean" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -186,10 +200,27 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.filters.gzip.GzipFilterConfig@asInstanceOf[T0]:T0" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="play.filters.gzip.GzipFilterConfig#bufferSize" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="bufferSize:Int"></a>
+      <a id="bufferSize:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">bufferSize</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.gzip.GzipFilterConfig@bufferSize:Int" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">The size of the buffer to use for gzipping.</p>
     </li><li name="play.filters.gzip.GzipFilterConfig#chunkedThreshold" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="chunkedThreshold:Int"></a>
       <a id="chunkedThreshold:Int"></a>
@@ -203,7 +234,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.filters.gzip.GzipFilterConfig@chunkedThreshold:Int" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <p class="shortcomment cmt">The content length threshold, after which the filter will switch to chunking the result.</p>
@@ -220,7 +251,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.filters.gzip.GzipFilterConfig@clone():Object" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -243,7 +274,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.filters.gzip.GzipFilterConfig@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
@@ -260,7 +291,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.filters.gzip.GzipFilterConfig@finalize():Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -283,27 +314,10 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.filters.gzip.GzipFilterConfig@getClass():Class[_]" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="play.filters.gzip.GzipFilterConfig#gzip" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="gzip:play.api.libs.iteratee.Enumeratee[Array[Byte],Array[Byte]]"></a>
-      <a id="gzip:Enumeratee[Array[Byte],Array[Byte]]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">gzip</span><span class="result">: <a href="../../api/libs/iteratee/Enumeratee.html" class="extype" name="play.api.libs.iteratee.Enumeratee">Enumeratee</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>], <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.filters.gzip.GzipFilterConfig@gzip:play.api.libs.iteratee.Enumeratee[Array[Byte],Array[Byte]]" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">The gzip enumeratee to use.</p>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -317,7 +331,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.filters.gzip.GzipFilterConfig@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
@@ -334,7 +348,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.filters.gzip.GzipFilterConfig@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
@@ -351,7 +365,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.filters.gzip.GzipFilterConfig@notify():Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
@@ -368,29 +382,28 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.filters.gzip.GzipFilterConfig@notifyAll():Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="play.filters.gzip.GzipFilterConfig#shouldGzip" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="shouldGzip:(play.api.mvc.RequestHeader,play.api.mvc.ResponseHeader)=&gt;Boolean"></a>
-      <a id="shouldGzip:(RequestHeader,ResponseHeader)⇒Boolean"></a>
+      <a id="shouldGzip:(play.api.mvc.RequestHeader,play.api.mvc.Result)=&gt;Boolean"></a>
+      <a id="shouldGzip:(RequestHeader,Result)⇒Boolean"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">shouldGzip</span><span class="result">: (<a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>, <a href="../../api/mvc/ResponseHeader.html" class="extype" name="play.api.mvc.ResponseHeader">ResponseHeader</a>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>
+        <span class="name">shouldGzip</span><span class="result">: (<a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>, <a href="../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.filters.gzip.GzipFilterConfig@shouldGzip:(play.api.mvc.RequestHeader,play.api.mvc.ResponseHeader)=&gt;Boolean" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+      <a href="../../../index.html#play.filters.gzip.GzipFilterConfig@shouldGzip:(play.api.mvc.RequestHeader,play.api.mvc.Result)=&gt;Boolean" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <p class="shortcomment cmt">Whether the given request/result should be gzipped.</p><div class="fullcomment"><div class="comment cmt"><p>Whether the given request/result should be gzipped.  This can be used, for example, to implement
-                  black/white lists for gzipping by content type.
-</p></div></div>
+                  black/white lists for gzipping by content type.</p></div></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -404,7 +417,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.filters.gzip.GzipFilterConfig@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
@@ -421,7 +434,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.filters.gzip.GzipFilterConfig@wait():Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -444,7 +457,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.filters.gzip.GzipFilterConfig@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -467,7 +480,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.filters.gzip.GzipFilterConfig@wait(x$1:Long):Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -477,6 +490,74 @@
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="play.filters.gzip.GzipFilterConfig#withBufferSize" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="withBufferSize(size:Int):play.filters.gzip.GzipFilterConfig"></a>
+      <a id="withBufferSize(Int):GzipFilterConfig"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">withBufferSize</span><span class="params">(<span name="size">size: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="" class="extype" name="play.filters.gzip.GzipFilterConfig">GzipFilterConfig</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.gzip.GzipFilterConfig@withBufferSize(size:Int):play.filters.gzip.GzipFilterConfig" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.filters.gzip.GzipFilterConfig#withChunkedThreshold" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="withChunkedThreshold(threshold:Int):play.filters.gzip.GzipFilterConfig"></a>
+      <a id="withChunkedThreshold(Int):GzipFilterConfig"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">withChunkedThreshold</span><span class="params">(<span name="threshold">threshold: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="" class="extype" name="play.filters.gzip.GzipFilterConfig">GzipFilterConfig</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.gzip.GzipFilterConfig@withChunkedThreshold(threshold:Int):play.filters.gzip.GzipFilterConfig" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.filters.gzip.GzipFilterConfig#withShouldGzip" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="withShouldGzip(shouldGzip:java.util.function.BiFunction[play.mvc.Http.RequestHeader,play.mvc.Result,Boolean]):play.filters.gzip.GzipFilterConfig"></a>
+      <a id="withShouldGzip(BiFunction[RequestHeader,Result,Boolean]):GzipFilterConfig"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">withShouldGzip</span><span class="params">(<span name="shouldGzip">shouldGzip: <span class="extype" name="java.util.function.BiFunction">BiFunction</span>[<span class="extype" name="play.mvc.Http.RequestHeader">RequestHeader</span>, <span class="extype" name="play.mvc.Result">Result</span>, <span class="extype" name="scala.Boolean">Boolean</span>]</span>)</span><span class="result">: <a href="" class="extype" name="play.filters.gzip.GzipFilterConfig">GzipFilterConfig</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.gzip.GzipFilterConfig@withShouldGzip(shouldGzip:java.util.function.BiFunction[play.mvc.Http.RequestHeader,play.mvc.Result,Boolean]):play.filters.gzip.GzipFilterConfig" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.filters.gzip.GzipFilterConfig#withShouldGzip" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="withShouldGzip(shouldGzip:(play.api.mvc.RequestHeader,play.api.mvc.Result)=&gt;Boolean):play.filters.gzip.GzipFilterConfig"></a>
+      <a id="withShouldGzip((RequestHeader,Result)⇒Boolean):GzipFilterConfig"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">withShouldGzip</span><span class="params">(<span name="shouldGzip">shouldGzip: (<a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>, <a href="../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="play.filters.gzip.GzipFilterConfig">GzipFilterConfig</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.gzip.GzipFilterConfig@withShouldGzip(shouldGzip:(play.api.mvc.RequestHeader,play.api.mvc.Result)=&gt;Boolean):play.filters.gzip.GzipFilterConfig" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li></ol>
             </div>
 

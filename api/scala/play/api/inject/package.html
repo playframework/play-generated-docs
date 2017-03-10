@@ -28,11 +28,11 @@
         </head>
         <body class="value">
       <div id="definition">
-        <img src="../../../lib/package_big.png" />
+        <img alt="Package" src="../../../lib/package_big.png" />
         <p id="owner"><a href="../../package.html" class="extype" name="play">play</a>.<a href="../package.html" class="extype" name="play.api">api</a></p>
         <h1>inject</h1><span class="permalink">
       <a href="../../../index.html#play.api.inject.package" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       </div>
@@ -55,8 +55,7 @@ typically an interface that the component implements, and may be optionally qual
 annotation. A binding key is bound to a <a href="BindingTarget.html" class="extype" name="play.api.inject.BindingTarget">BindingTarget</a>, which describes how the implementation
 of the interface that the binding key represents is constructed or provided.  Bindings may also be scoped using
 JSR-330 scope annotations.</p><p>Bindings are provided by instances of <a href="Module.html" class="extype" name="play.api.inject.Module">Module</a>.</p><p>Out of the box, Play provides an implementation of this abstraction using Guice.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.4.11/framework/src/play/src/main/scala/play/api/inject/package.scala" target="_blank">package.scala</a></dd><dt>See also</dt><dd><span class="cmt"><p>The <a href="Module.html" class="extype" name="play.api.inject.Module">Module</a> class for information on how to provide bindings.
-</p></span></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.5.13/framework/src/play/src/main/scala/play/api/inject/package.scala" target="_blank">package.scala</a></dd><dt>See also</dt><dd><span class="cmt"><p>The <a href="Module.html" class="extype" name="play.api.inject.Module">Module</a> class for information on how to provide bindings.</p></span></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -84,7 +83,6 @@ JSR-330 scope annotations.</p><p>Bindings are provided by instances of <a href="
               <li class="hideall out"><span>Hide All</span></li>
               <li class="showall in"><span>Show all</span></li>
             </ol>
-            <a href="http://docs.scala-lang.org/overviews/scaladoc/usage.html#members" target="_blank">Learn more about member selection</a>
           </div>
         <div id="visbl">
             <span class="filtertype">Visibility</span>
@@ -111,7 +109,7 @@ JSR-330 scope annotations.</p><p>Bindings are provided by instances of <a href="
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.package@ApplicationLifecycleextendsAnyRef" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <p class="shortcomment cmt">Application lifecycle register.</p><div class="fullcomment"><div class="comment cmt"><p>Application lifecycle register.</p><p>This is used to hook into Play lifecycle events, specifically, when Play is stopped. The reason Play only provides
@@ -130,7 +128,7 @@ started. For example:</p><pre><span class="kw">import</span> play.api.inject.App
 
   <span class="kw">private</span> <span class="kw">val</span> connectionPool = <span class="kw">new</span> SomeConnectionPool()
   applicationLifecycle.addStopHook { () <span class="kw">=&gt;</span>
-    connectionPool.shutdown()
+    Future.successful(connectionPool.shutdown())
   }
 
   ...
@@ -148,15 +146,14 @@ started. For example:</p><pre><span class="kw">import</span> play.api.inject.App
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.package@Binding[T]extendsProductwithSerializable" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <p class="shortcomment cmt">A binding.</p><div class="fullcomment"><div class="comment cmt"><p>A binding.</p><p>Bindings are used to bind classes, optionally qualified by a JSR-330 qualifier annotation, to instances, providers or
-implementation classes.</p><p>Bindings may also specify a JSR-330 scope.  If, and only if that scope is <span class="extype" name="javax.inject.Singleton">javax.inject.Singleton</span>, then the
+implementation classes.</p><p>Bindings may also specify a JSR-330 scope.  If, and only if that scope is <a href="http://docs.oracle.com/javase/8/docs/api/javax/inject/Singleton" target="_blank">javax.inject.Singleton</a>, then the
 binding may declare itself to be eagerly instantiated.  In which case, it should be eagerly instantiated when Play
 starts up.
-</p></div><dl class="paramcmts block"><dt class="param">key</dt><dd class="cmt"><p>The binding key.</p></dd><dt class="param">target</dt><dd class="cmt"><p>The binding target.</p></dd><dt class="param">scope</dt><dd class="cmt"><p>The JSR-330 scope.</p></dd><dt class="param">eager</dt><dd class="cmt"><p>Whether the binding should be eagerly instantiated.</p></dd><dt class="param">source</dt><dd class="cmt"><p>Where this object was bound. Used in error reporting.</p></dd></dl><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p>The <a href="Module.html" class="extype" name="play.api.inject.Module">Module</a> class for information on how to provide bindings.
-</p></span></dd></dl></div>
+</p></div><dl class="paramcmts block"><dt class="param">key</dt><dd class="cmt"><p>The binding key.</p></dd><dt class="param">target</dt><dd class="cmt"><p>The binding target.</p></dd><dt class="param">scope</dt><dd class="cmt"><p>The JSR-330 scope.</p></dd><dt class="param">eager</dt><dd class="cmt"><p>Whether the binding should be eagerly instantiated.</p></dd><dt class="param">source</dt><dd class="cmt"><p>Where this object was bound. Used in error reporting.</p></dd></dl><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p>The <a href="Module.html" class="extype" name="play.api.inject.Module">Module</a> class for information on how to provide bindings.</p></span></dd></dl></div>
     </li><li name="play.api.inject.BindingKey" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="BindingKey[T]extendsProductwithSerializable"></a>
       <a id="BindingKey[T]:BindingKey[T]"></a>
@@ -170,12 +167,11 @@ starts up.
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.package@BindingKey[T]extendsProductwithSerializable" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <p class="shortcomment cmt">A binding key.</p><div class="fullcomment"><div class="comment cmt"><p>A binding key.</p><p>A binding key consists of a class and zero or more JSR-330 qualifiers.
-</p></div><dl class="paramcmts block"><dt class="param">clazz</dt><dd class="cmt"><p>The class to bind.</p></dd><dt class="param">qualifier</dt><dd class="cmt"><p>An optional qualifier.</p></dd></dl><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p>The <a href="Module.html" class="extype" name="play.api.inject.Module">Module</a> class for information on how to provide bindings.
-</p></span></dd></dl></div>
+</p></div><dl class="paramcmts block"><dt class="param">clazz</dt><dd class="cmt"><p>The class to bind.</p></dd><dt class="param">qualifier</dt><dd class="cmt"><p>An optional qualifier.</p></dd></dl><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p>The <a href="Module.html" class="extype" name="play.api.inject.Module">Module</a> class for information on how to provide bindings.</p></span></dd></dl></div>
     </li><li name="play.api.inject.BindingKeyTarget" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="BindingKeyTarget[T]extendsBindingTarget[T]withProductwithSerializable"></a>
       <a id="BindingKeyTarget[T]:BindingKeyTarget[T]"></a>
@@ -189,7 +185,7 @@ starts up.
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.package@BindingKeyTarget[T]extendsBindingTarget[T]withProductwithSerializable" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <p class="shortcomment cmt">A binding target that is provided by another key - essentially an alias.</p>
@@ -206,12 +202,11 @@ starts up.
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.package@BindingTarget[T]extendsAnyRef" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <p class="shortcomment cmt">A binding target.</p><div class="fullcomment"><div class="comment cmt"><p>A binding target.</p><p>This trait captures the four possible types of targets.
-</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p>The <a href="Module.html" class="extype" name="play.api.inject.Module">Module</a> class for information on how to provide bindings.
-</p></span></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p>The <a href="Module.html" class="extype" name="play.api.inject.Module">Module</a> class for information on how to provide bindings.</p></span></dd></dl></div>
     </li><li name="play.api.inject.BuiltinModule" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="BuiltinModuleextendsModule"></a>
       <a id="BuiltinModule:BuiltinModule"></a>
@@ -225,7 +220,7 @@ starts up.
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.package@BuiltinModuleextendsModule" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <p class="shortcomment cmt">The Play BuiltinModule.</p><div class="fullcomment"><div class="comment cmt"><p>The Play BuiltinModule.</p><p>Provides all the core components of a Play application. This is typically automatically enabled by Play for an
@@ -244,7 +239,7 @@ application.
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.package@ConfigurationProviderextendsProvider[play.api.Configuration]" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       
@@ -261,12 +256,11 @@ application.
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.package@ConstructionTarget[T]extendsBindingTarget[T]withProductwithSerializable" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <p class="shortcomment cmt">A binding target that is provided by a class.</p><div class="fullcomment"><div class="comment cmt"><p>A binding target that is provided by a class.
-</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p>The <a href="Module.html" class="extype" name="play.api.inject.Module">play.api.inject.Module</a> class for information on how to provide bindings.
-</p></span></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p>The <a href="Module.html" class="extype" name="play.api.inject.Module">play.api.inject.Module</a> class for information on how to provide bindings.</p></span></dd></dl></div>
     </li><li name="play.api.inject.DefaultApplicationLifecycle" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="DefaultApplicationLifecycleextendsApplicationLifecycle"></a>
       <a id="DefaultApplicationLifecycle:DefaultApplicationLifecycle"></a>
@@ -280,7 +274,7 @@ application.
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.package@DefaultApplicationLifecycleextendsApplicationLifecycle" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <p class="shortcomment cmt">Default implementation of the application lifecycle.</p><div class="fullcomment"><div class="comment cmt"><p>Default implementation of the application lifecycle.
@@ -301,14 +295,14 @@ application.
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.package@InjectorextendsAnyRef" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <p class="shortcomment cmt">An injector, capable of providing components.</p><div class="fullcomment"><div class="comment cmt"><p>An injector, capable of providing components.</p><p>This is an abstraction over whatever dependency injection is being used in Play. A minimal implementation may only
 call <code>newInstance</code> on the passed in class.</p><p>This abstraction is primarily provided for libraries that want to remain agnostic to the type of dependency
 injection being used. End users are encouraged to use the facilities provided by the dependency injection framework
-they are using directly, for example, if using Guice, use <span class="extype" name="com.google.inject.Injector">com.google.inject.Injector</span> instead of this.
-</p></div></div>
+they are using directly, for example, if using Guice, use <a href="http://google.github.io/guice/api-docs/latest/javadoc/index.html?com/google/inject/Injector.html" target="_blank">com.google.inject.Injector</a>
+instead of this.</p></div></div>
     </li><li name="play.api.inject.Module" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="ModuleextendsAnyRef"></a>
       <a id="Module:Module"></a>
@@ -322,7 +316,7 @@ they are using directly, for example, if using Guice, use <span class="extype" n
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.package@ModuleextendsAnyRef" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <p class="shortcomment cmt">A Play dependency injection module.</p><div class="fullcomment"><div class="comment cmt"><p>A Play dependency injection module.</p><p>Dependency injection modules can be used by Play plugins to provide bindings for JSR-330 compliant
@@ -336,26 +330,6 @@ injection provider.</p><p>The <code>bind</code> methods are provided only as a D
   bind[Bar].to(<span class="kw">new</span> Bar()),
   bind[Foo].qualifiedWith[SomeQualifier].to[OtherFoo]
 )</pre></div></div>
-    </li><li name="play.api.inject.PluginsProvider" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="PluginsProviderextendsProvider[play.api.Plugins]"></a>
-      <a id="PluginsProvider:PluginsProvider"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">class</span>
-      </span>
-      <span class="symbol">
-        <a href="PluginsProvider.html"><span class="name">PluginsProvider</span></a><span class="result"> extends <span class="extype" name="javax.inject.Provider">Provider</span>[<a href="../Plugins.html" class="extype" name="play.api.Plugins">Plugins</a>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.api.inject.package@PluginsProviderextendsProvider[play.api.Plugins]" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@Singleton</span><span class="args">()</span>
-              
-        </dd></dl></div>
     </li><li name="play.api.inject.ProviderConstructionTarget" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ProviderConstructionTarget[T]extendsBindingTarget[T]withProductwithSerializable"></a>
       <a id="ProviderConstructionTarget[T]:ProviderConstructionTarget[T]"></a>
@@ -365,16 +339,15 @@ injection provider.</p><p>The <code>bind</code> methods are provided only as a D
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="ProviderConstructionTarget.html"><span class="name">ProviderConstructionTarget</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="provider">provider: <span class="extype" name="scala.Predef.Class">Class</span>[_ &lt;: <span class="extype" name="javax.inject.Provider">Provider</span>[<span class="extype" name="play.api.inject.ProviderConstructionTarget.T">T</span>]]</span>)</span><span class="result"> extends <a href="BindingTarget.html" class="extype" name="play.api.inject.BindingTarget">BindingTarget</a>[<span class="extype" name="play.api.inject.ProviderConstructionTarget.T">T</span>] with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="ProviderConstructionTarget.html"><span class="name">ProviderConstructionTarget</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="provider">provider: <span class="extype" name="scala.Predef.Class">Class</span>[_ &lt;: <span class="extype" name="javax.inject.Provider">Provider</span>[_ &lt;: <span class="extype" name="play.api.inject.ProviderConstructionTarget.T">T</span>]]</span>)</span><span class="result"> extends <a href="BindingTarget.html" class="extype" name="play.api.inject.BindingTarget">BindingTarget</a>[<span class="extype" name="play.api.inject.ProviderConstructionTarget.T">T</span>] with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.package@ProviderConstructionTarget[T]extendsBindingTarget[T]withProductwithSerializable" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <p class="shortcomment cmt">A binding target that is provided by a provider class.</p><div class="fullcomment"><div class="comment cmt"><p>A binding target that is provided by a provider class.
-</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p>The <a href="Module.html" class="extype" name="play.api.inject.Module">Module</a> class for information on how to provide bindings.
-</p></span></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p>The <a href="Module.html" class="extype" name="play.api.inject.Module">Module</a> class for information on how to provide bindings.</p></span></dd></dl></div>
     </li><li name="play.api.inject.ProviderTarget" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ProviderTarget[T]extendsBindingTarget[T]withProductwithSerializable"></a>
       <a id="ProviderTarget[T]:ProviderTarget[T]"></a>
@@ -388,12 +361,11 @@ injection provider.</p><p>The <code>bind</code> methods are provided only as a D
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.package@ProviderTarget[T]extendsBindingTarget[T]withProductwithSerializable" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <p class="shortcomment cmt">A binding target that is provided by a provider instance.</p><div class="fullcomment"><div class="comment cmt"><p>A binding target that is provided by a provider instance.
-</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p>The <a href="Module.html" class="extype" name="play.api.inject.Module">Module</a> class for information on how to provide bindings.
-</p></span></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p>The <a href="Module.html" class="extype" name="play.api.inject.Module">Module</a> class for information on how to provide bindings.</p></span></dd></dl></div>
     </li><li name="play.api.inject.QualifierAnnotation" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="QualifierAnnotationextendsAnyRef"></a>
       <a id="QualifierAnnotation:QualifierAnnotation"></a>
@@ -407,13 +379,12 @@ injection provider.</p><p>The <code>bind</code> methods are provided only as a D
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.package@QualifierAnnotationextendsAnyRef" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <p class="shortcomment cmt">A qualifier annotation.</p><div class="fullcomment"><div class="comment cmt"><p>A qualifier annotation.</p><p>Since bindings may specify either annotations, or instances of annotations, this abstraction captures either of
 those two possibilities.
-</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p>The <a href="Module.html" class="extype" name="play.api.inject.Module">Module</a> class for information on how to provide bindings.
-</p></span></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p>The <a href="Module.html" class="extype" name="play.api.inject.Module">Module</a> class for information on how to provide bindings.</p></span></dd></dl></div>
     </li><li name="play.api.inject.QualifierClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="QualifierClass[T&lt;:java.lang.annotation.Annotation]extendsQualifierAnnotationwithProductwithSerializable"></a>
       <a id="QualifierClass[T&lt;:Annotation]:QualifierClass[T]"></a>
@@ -427,12 +398,11 @@ those two possibilities.
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.package@QualifierClass[T&lt;:java.lang.annotation.Annotation]extendsQualifierAnnotationwithProductwithSerializable" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <p class="shortcomment cmt">A qualifier annotation class.</p><div class="fullcomment"><div class="comment cmt"><p>A qualifier annotation class.
-</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p>The <a href="Module.html" class="extype" name="play.api.inject.Module">Module</a> class for information on how to provide bindings.
-</p></span></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p>The <a href="Module.html" class="extype" name="play.api.inject.Module">Module</a> class for information on how to provide bindings.</p></span></dd></dl></div>
     </li><li name="play.api.inject.QualifierInstance" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="QualifierInstance[T&lt;:java.lang.annotation.Annotation]extendsQualifierAnnotationwithProductwithSerializable"></a>
       <a id="QualifierInstance[T&lt;:Annotation]:QualifierInstance[T]"></a>
@@ -446,12 +416,11 @@ those two possibilities.
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.package@QualifierInstance[T&lt;:java.lang.annotation.Annotation]extendsQualifierAnnotationwithProductwithSerializable" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <p class="shortcomment cmt">A qualifier annotation instance.</p><div class="fullcomment"><div class="comment cmt"><p>A qualifier annotation instance.
-</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p>The <a href="Module.html" class="extype" name="play.api.inject.Module">Module</a> class for information on how to provide bindings.
-</p></span></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p>The <a href="Module.html" class="extype" name="play.api.inject.Module">Module</a> class for information on how to provide bindings.</p></span></dd></dl></div>
     </li><li name="play.api.inject.RoutesProvider" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="RoutesProviderextendsProvider[play.api.routing.Router]"></a>
       <a id="RoutesProvider:RoutesProvider"></a>
@@ -465,7 +434,7 @@ those two possibilities.
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.package@RoutesProviderextendsProvider[play.api.routing.Router]" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
@@ -485,7 +454,7 @@ those two possibilities.
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.package@SimpleInjectorextendsInjector" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <p class="shortcomment cmt">A simple map backed injector.</p><div class="fullcomment"><div class="comment cmt"><p>A simple map backed injector.</p><p>This injector is intended for use by compile time injected applications in the transitional period between when Play
@@ -517,12 +486,11 @@ a new injector with that component included.
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.package@BindingKey" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <p class="shortcomment cmt">Constructor for a binding Key that doesn't have a qualifier.</p><div class="fullcomment"><div class="comment cmt"><p>Constructor for a binding Key that doesn't have a qualifier.
-</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p>The <a href="Module.html" class="extype" name="play.api.inject.Module">Module</a> class for information on how to provide bindings.
-</p></span></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p>The <a href="Module.html" class="extype" name="play.api.inject.Module">Module</a> class for information on how to provide bindings.</p></span></dd></dl></div>
     </li><li name="play.api.inject.Modules" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Modules"></a>
       <a id="Modules:Modules"></a>
@@ -536,7 +504,7 @@ a new injector with that component included.
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.package@Modules" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <p class="shortcomment cmt">Locates and loads modules from the Play environment.</p>
@@ -553,7 +521,7 @@ a new injector with that component included.
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.package@NewInstanceInjector" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <p class="shortcomment cmt">An injector that simply creates a new instance of the passed in classes using the classes no-arg constructor.</p>
@@ -570,12 +538,11 @@ a new injector with that component included.
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.package@bind[T](implicitevidence$1:scala.reflect.ClassTag[T]):play.api.inject.BindingKey[T]" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <p class="shortcomment cmt">Create a binding key for the given class.</p><div class="fullcomment"><div class="comment cmt"><p>Create a binding key for the given class.
-</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p>The <a href="Module.html" class="extype" name="play.api.inject.Module">Module</a> class for information on how to provide bindings.
-</p></span></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p>The <a href="Module.html" class="extype" name="play.api.inject.Module">Module</a> class for information on how to provide bindings.</p></span></dd></dl></div>
     </li><li name="play.api.inject#bind" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="bind[T](clazz:Class[T]):play.api.inject.BindingKey[T]"></a>
       <a id="bind[T](Class[T]):BindingKey[T]"></a>
@@ -589,12 +556,11 @@ a new injector with that component included.
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.package@bind[T](clazz:Class[T]):play.api.inject.BindingKey[T]" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <p class="shortcomment cmt">Create a binding key for the given class.</p><div class="fullcomment"><div class="comment cmt"><p>Create a binding key for the given class.
-</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p>The <a href="Module.html" class="extype" name="play.api.inject.Module">Module</a> class for information on how to provide bindings.
-</p></span></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p>The <a href="Module.html" class="extype" name="play.api.inject.Module">Module</a> class for information on how to provide bindings.</p></span></dd></dl></div>
     </li><li name="play.api.inject.guice" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="guice"></a>
       <a id="guice:guice"></a>
@@ -608,7 +574,7 @@ a new injector with that component included.
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.package@guice" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" />
+        <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       

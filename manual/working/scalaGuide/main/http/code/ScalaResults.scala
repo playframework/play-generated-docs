@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com>
+ * Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com>
  */
 package scalaguide.http.scalaresults {
 
@@ -82,7 +82,7 @@ package scalaguide.http.scalaresults {
     }
 
     def testContentType(results: Result, contentType: String) = {
-      testHeader(results, HeaderNames.CONTENT_TYPE, contentType)
+      results.body.contentType must beSome.which { _ must contain(contentType) }
     }
 
     def testHeader(results: Result, key: String, value: String) = {
@@ -94,7 +94,7 @@ package scalaguide.http.scalaresults {
     }
 
     def assertAction[A, T: AsResult](action: Action[A], expectedResponse: Int = OK, request: Request[A] = FakeRequest())(assertions: Future[Result] => T) = {
-      running(FakeApplication()) {
+      running() { app =>
         val result = action(request)
         status(result) must_== expectedResponse
         assertions(result)
