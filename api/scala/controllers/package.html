@@ -141,9 +141,9 @@ GET   /xxx             controllers.Default.error</pre></div></div>
     </span>
       <p class="shortcomment cmt">Controller that serves static resources from an external folder.</p><div class="fullcomment"><div class="comment cmt"><p>Controller that serves static resources from an external folder.
 It useful in development mode if you want to serve static assets that shouldn't be part of the build process.</p><p>Not that this controller is not intented to be used in production mode and can lead to security issues.
-Therefore it is automatically disabled in production mode.</p><p>All assets are served with max-age=3600 cache directive.</p><p>You can use this controller in any application, just by declaring the appropriate route. For example:</p><pre>GET     /assets/?*file               controllers.ExternalAssets.at(path=<span class="lit">"/home/peter/myplayapp/external"</span>, file)
-GET     /assets/?*file               controllers.ExternalAssets.at(path=<span class="lit">"C:\external"</span>, file)
-GET     /assets/?*file               controllers.ExternalAssets.at(path=<span class="lit">"relativeToYourApp"</span>, file)</pre></div></div>
+Therefore it is automatically disabled in production mode.</p><p>All assets are served with max-age=3600 cache directive.</p><p>You can use this controller in any application, just by declaring the appropriate route. For example:</p><pre>GET     /assets/￯ﾻ﾿*file               controllers.ExternalAssets.at(path=<span class="lit">"/home/peter/myplayapp/external"</span>, file)
+GET     /assets/￯ﾻ﾿*file               controllers.ExternalAssets.at(path=<span class="lit">"C:\external"</span>, file)
+GET     /assets/￯ﾻ﾿*file               controllers.ExternalAssets.at(path=<span class="lit">"relativeToYourApp"</span>, file)</pre></div></div>
     </li></ol>
             </div>
 
@@ -176,7 +176,7 @@ The reverse router also uses the digest in order to translate any file to the fo
 example &quot;a.js&quot; may be also found at &quot;d41d8cd98f00b204e9800998ecf8427e-a.js&quot;.
 If there is no digest file found then digest values for ETags are formed by forming a sha1 digest of the last-modified
 time.</p><p>The default digest algorithm to search for is &quot;md5&quot;. You can override this quite easily. For example if the SHA-1
-algorithm is preferred:</p><pre><span class="lit">"assets.digest.algorithm"</span> = <span class="lit">"sha1"</span></pre><p>You can set a custom Cache directive for a particular resource if needed. For example in your application.conf file:</p><pre><span class="lit">"assets.cache./public/images/logo.png"</span> = <span class="lit">"max-age=3600"</span></pre><p>You can use this controller in any application, just by declaring the appropriate route. For example:</p><pre>GET     /assets/?*file               controllers.Assets.at(path=<span class="lit">"/public"</span>, file)</pre></div></div>
+algorithm is preferred:</p><pre><span class="lit">"assets.digest.algorithm"</span> = <span class="lit">"sha1"</span></pre><p>You can set a custom Cache directive for a particular resource if needed. For example in your application.conf file:</p><pre><span class="lit">"assets.cache./public/images/logo.png"</span> = <span class="lit">"max-age=3600"</span></pre><p>You can use this controller in any application, just by declaring the appropriate route. For example:</p><pre>GET     /assets/￯ﾻ﾿*file               controllers.Assets.at(path=<span class="lit">"/public"</span>, file)</pre></div></div>
     </li><li name="controllers.Default" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Default"></a>
       <a id="Default:Default"></a>
