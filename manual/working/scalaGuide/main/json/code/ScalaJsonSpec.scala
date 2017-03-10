@@ -3,20 +3,15 @@
  */
 package scalaguide.json
 
-import play.api.data.validation.ValidationError
-
-import org.junit.runner.RunWith
 import org.specs2.mutable.Specification
-import org.specs2.runner.JUnitRunner
 
-@RunWith(classOf[JUnitRunner])
 class ScalaJsonSpec extends Specification {
 
   val sampleJson = {
     //#convert-from-string
-      import play.api.libs.json._
+    import play.api.libs.json._
 
-      val json: JsValue = Json.parse("""
+    val json: JsValue = Json.parse("""
       {
         "name" : "Watership Down",
         "location" : {
@@ -34,8 +29,8 @@ class ScalaJsonSpec extends Specification {
         } ]
       }
       """)
-      //#convert-from-string
-      json
+    //#convert-from-string
+    json
   }
 
   object SampleModel {
@@ -80,7 +75,7 @@ class ScalaJsonSpec extends Specification {
 
     "allow constructing json using factory methods" in {
       //#convert-from-factory
-      import play.api.libs.json.{JsNull,Json,JsString,JsValue}
+      import play.api.libs.json.{ JsNull, Json, JsString, JsValue }
 
       val json: JsValue = Json.obj(
         "name" -> "Watership Down",
@@ -150,7 +145,8 @@ class ScalaJsonSpec extends Specification {
         def writes(place: Place) = Json.obj(
           "name" -> place.name,
           "location" -> place.location,
-          "residents" -> place.residents)
+          "residents" -> place.residents
+        )
       }
 
       val place = Place(
@@ -208,7 +204,6 @@ class ScalaJsonSpec extends Specification {
 
       (json \ "name").get === JsString("Watership Down")
     }
-
 
     "allow traversing JsValue tree" in {
 
@@ -313,17 +308,18 @@ class ScalaJsonSpec extends Specification {
       // fold
       val nameOption: Option[String] = nameResult.fold(
         invalid = {
-          fieldErrors => fieldErrors.foreach(x => {
+        fieldErrors =>
+          fieldErrors.foreach(x => {
             println("field: " + x._1 + ", errors: " + x._2)
           })
           None
-        },
+      },
         valid = {
-          name => Some(name)
-        }
+        name => Some(name)
+      }
       )
       //#convert-to-type-validate
-      nameResult must beLike {case x: JsSuccess[String] =>  x.get === "Watership Down"}
+      nameResult must beLike { case x: JsSuccess[String] => x.get === "Watership Down" }
     }
 
     "allow converting JsValue to model" in {
@@ -351,7 +347,6 @@ class ScalaJsonSpec extends Specification {
         (JsPath \ "residents").read[Seq[Resident]]
       )(Place.apply _)
 
-
       //###replace: val json = { ... }
       val json = sampleJson
 
@@ -362,8 +357,8 @@ class ScalaJsonSpec extends Specification {
       // JsSuccess(Resident(Bigwig,6,Some(Owsla)),)
       //#convert-to-model
 
-      placeResult must beLike {case x: JsSuccess[Place] =>  x.get.name === "Watership Down"}
-      residentResult must beLike {case x: JsSuccess[Resident] =>  x.get.name === "Bigwig"}
+      placeResult must beLike { case x: JsSuccess[Place] => x.get.name === "Watership Down" }
+      residentResult must beLike { case x: JsSuccess[Resident] => x.get.name === "Bigwig" }
     }
 
   }

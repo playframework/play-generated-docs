@@ -55,7 +55,7 @@ mixed into <a href="MixedPlaySpec.html" class="extype" name="org.scalatestplus.p
 take a no-arg function. <code>MixedFixtures</code> provides several no-arg function classes (classes extending <code>Function0</code>) that
 can be used to provide different fixtures for different tests.</p><p>If a test needs a <code>Application</code>, use the <code>App</code> function, like this:</p><p><pre class="stHighlight">
 "provide an Application" in new App(fakeApp("ehcacheplugin" -&gt; "disabled")) {
-  app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
+  app.configuration.getOptional[String]("ehcacheplugin") mustBe Some("disabled")
 }
 </pre></p><p>If a test needs an <code>Application</code> and running <code>TestServer</code>, use the <code>Server</code> function, like this:</p><p><pre class="stHighlight">
 "send 404 on a bad request" in new Server {
@@ -89,14 +89,14 @@ class ExampleSpec extends MixedPlaySpec {
   // Some helper methods
   def buildApp[A](elems: (String, String)*) = new GuiceApplicationBuilder()
     .configure(Map(elems:_*))
-    .router(Router.from(TestRoute))
+    .router(TestRoutes.router)
     .build()
 
-  def getConfig(key: String)(implicit app: Application) = app.configuration.getString(key)
+  def getConfig(key: String)(implicit app: Application) = app.configuration.getOptional[String](key)
 
   "The App function" must {
     "provide an Application" in new App(buildApp("ehcacheplugin" -> "disabled")) {
-      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
+      app.configuration.getOptional[String]("ehcacheplugin") mustBe Some("disabled")
     }
     "make the Application available implicitly" in new App(buildApp("ehcacheplugin" -> "disabled")) {
       getConfig("ehcacheplugin") mustBe Some("disabled")
@@ -107,7 +107,7 @@ class ExampleSpec extends MixedPlaySpec {
   }
   "The Server function" must {
     "provide an Application" in new Server(buildApp("ehcacheplugin" -> "disabled")) {
-      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
+      app.configuration.getOptional[String]("ehcacheplugin") mustBe Some("disabled")
     }
     "make the Application available implicitly" in new Server(buildApp("ehcacheplugin" -> "disabled")) {
       getConfig("ehcacheplugin") mustBe Some("disabled")
@@ -126,7 +126,7 @@ class ExampleSpec extends MixedPlaySpec {
   }
   "The HtmlUnit function" must {
     "provide an Application" in new HtmlUnit(buildApp("ehcacheplugin" -> "disabled")) {
-      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
+      app.configuration.getOptional[String]("ehcacheplugin") mustBe Some("disabled")
     }
     "make the Application available implicitly" in new HtmlUnit(buildApp("ehcacheplugin" -> "disabled")) {
       getConfig("ehcacheplugin") mustBe Some("disabled")
@@ -151,7 +151,7 @@ class ExampleSpec extends MixedPlaySpec {
   }
   "The Firefox function" must {
     "provide an Application" in new Firefox(buildApp("ehcacheplugin" -> "disabled")) {
-      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
+      app.configuration.getOptional[String]("ehcacheplugin") mustBe Some("disabled")
     }
     "make the Application available implicitly" in new Firefox(buildApp("ehcacheplugin" -> "disabled")) {
       getConfig("ehcacheplugin") mustBe Some("disabled")
@@ -176,7 +176,7 @@ class ExampleSpec extends MixedPlaySpec {
   }
   "The Safari function" must {
     "provide an Application" in new Safari(buildApp("ehcacheplugin" -> "disabled")) {
-      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
+      app.configuration.getOptional[String]("ehcacheplugin") mustBe Some("disabled")
     }
     "make the Application available implicitly" in new Safari(buildApp("ehcacheplugin" -> "disabled")) {
       getConfig("ehcacheplugin") mustBe Some("disabled")
@@ -201,7 +201,7 @@ class ExampleSpec extends MixedPlaySpec {
   }
   "The Chrome function" must {
     "provide an Application" in new Chrome(buildApp("ehcacheplugin" -> "disabled")) {
-      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
+      app.configuration.getOptional[String]("ehcacheplugin") mustBe Some("disabled")
     }
     "make the Application available implicitly" in new Chrome(buildApp("ehcacheplugin" -> "disabled")) {
       getConfig("ehcacheplugin") mustBe Some("disabled")
@@ -226,7 +226,7 @@ class ExampleSpec extends MixedPlaySpec {
   }
   "The InternetExplorer function" must {
     "provide an Application" in new InternetExplorer(buildApp("ehcacheplugin" -> "disabled")) {
-      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
+      app.configuration.getOptional[String]("ehcacheplugin") mustBe Some("disabled")
     }
     "make the Application available implicitly" in new InternetExplorer(buildApp("ehcacheplugin" -> "disabled")) {
       getConfig("ehcacheplugin") mustBe Some("disabled")
@@ -256,7 +256,7 @@ class ExampleSpec extends MixedPlaySpec {
   }
 }
 </pre>
-</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="org.scalatestplus.play.MixedFixtures">MixedFixtures</a> with <span class="extype" name="org.scalatest.fixture.TestSuite">TestSuite</span></dd><dt>Source</dt><dd><a href="https://github.com/playframework/scalatestplus-play/tree/master/module/src/main/scala/org/scalatestplus/play/MixedFixtures.scala" target="_blank">MixedFixtures.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="org.scalatestplus.play.MixedFixtures">MixedFixtures</a> with <span class="extype" name="org.scalatest.fixture.TestSuite">TestSuite</span></dd><dt>Source</dt><dd><a href="https://github.com/playframework/scalatestplus-play/tree/3.0.0-M1/module/src/main/scala/org/scalatestplus/play/MixedFixtures.scala" target="_blank">MixedFixtures.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="org.scalatest.fixture.UnitFixture">UnitFixture</span>, <span class="extype" name="org.scalatest.TestSuiteMixin">TestSuiteMixin</span>, <span class="extype" name="org.scalatest.SuiteMixin">SuiteMixin</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
@@ -272,7 +272,7 @@ class ExampleSpec extends MixedPlaySpec {
               <ol>
                 
                 <li class="alpha in"><span>Alphabetic</span></li>
-                <li class="inherit out"><span>By inheritance</span></li>
+                <li class="inherit out"><span>By Inheritance</span></li>
               </ol>
             </div>
         <div id="ancestors">
@@ -285,7 +285,7 @@ class ExampleSpec extends MixedPlaySpec {
             <span class="filtertype"></span>
             <ol>
               <li class="hideall out"><span>Hide All</span></li>
-              <li class="showall in"><span>Show all</span></li>
+              <li class="showall in"><span>Show All</span></li>
             </ol>
           </div>
         <div id="visbl">

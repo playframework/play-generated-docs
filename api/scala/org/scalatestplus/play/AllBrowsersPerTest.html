@@ -49,7 +49,7 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Trait that uses a <a href="http://doc.scalatest.org/2.1.3/index.html#org.scalatest.FlatSpec@sharedTests" target="_blank"><i>shared test</i></a> approach to enable
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Trait that uses a <a href="http://doc.scalatest.org/3.0.1/index.html#org.scalatest.FlatSpec@sharedTests" target="_blank"><i>shared test</i></a> approach to enable
 you to run the same tests on multiple browsers in a ScalaTest <code>Suite</code>, where a new browser is started before each test
 that needs a browser, and stopped after.</p><p>Note: the difference between this trait and <a href="AllBrowsersPerSuite.html" class="extype" name="org.scalatestplus.play.AllBrowsersPerSuite">AllBrowsersPerSuite</a> is that
 <code>AllBrowsersPerSuite</code> will allow you to write tests that rely on maintaining browser state between the tests. Thus, <code>AllBrowsersPerSuite</code> is a good fit
@@ -58,7 +58,7 @@ each need a brand new browser.</p><p>This trait overrides <code>Suite</code>'s <
 instance before executing each test that needs a browser, closing it after the test completes, and overrides the <code>tags</code> lifecycle method to tag the shared tests so you can
 filter them by browser type.  This trait's self-type, <a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a>,  will ensure
 a <code>TestServer</code> and <code>Application</code> are available to each test. The self-type will require that you mix in either
-<a href="guice/GuiceOneServerPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerSuite">GuiceOneServerPerSuite</a>, <a href="OneServerPerTest.html" class="extype" name="org.scalatestplus.play.OneServerPerTest">OneServerPerTest</a>,
+<a href="guice/GuiceOneServerPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerSuite">GuiceOneServerPerSuite</a>, <a href="guice/GuiceOneServerPerTest.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerTest">GuiceOneServerPerTest</a>,
 <a href="ConfiguredServer.html" class="extype" name="org.scalatestplus.play.ConfiguredServer">ConfiguredServer</a> before you mix in this trait. Your choice among these three
 <code>ServerProvider</code>s will determine the extent to which a <code>TestServer</code> is shared by multiple tests.</p><p>You'll need to place any tests that you want executed by multiple browsers in a <code>sharedTests</code> method. Because all tests in a ScalaTest <code>Suite</code>
 must have unique names, you'll need to append the browser name (available from the <code>BrowserInfo</code> passed
@@ -105,7 +105,7 @@ class ExampleSpec extends PlaySpec with OneServerPerTest with AllBrowsersPerTest
   override def newAppForTest(testData: TestData): Application = new GuiceApplicationBuilder()
     .disable[EhCacheModule]
     .configure("foo" -> "bar")
-    .router(Router.from(TestRoute))
+    .router(TestRoutes.router)
     .build()
 
   // Place tests you want run in different browsers in the `sharedTests` method:
@@ -125,10 +125,10 @@ class ExampleSpec extends PlaySpec with OneServerPerTest with AllBrowsersPerTest
   // in the constructor, the usual place for tests in a `PlaySpec`
   "The AllBrowsersPerTest trait" must {
     "provide a FakeApplication" in {
-      app.configuration.getString("foo") mustBe Some("bar")
+      app.configuration.getOptional[String]("foo") mustBe Some("bar")
     }
     "make the FakeApplication available implicitly" in {
-       def getConfig(key: String)(implicit app: Application) = app.configuration.getString(key)
+       def getConfig(key: String)(implicit app: Application) = app.configuration.getOptional[String](key)
       getConfig("foo") mustBe Some("bar")
     }
     "start the FakeApplication" in {
@@ -181,7 +181,7 @@ with sbt and ask to include only Firefox:</p><p><pre class="stREPL">
 [info] <span class="stGreen">The AllBrowsersPerTest trait</span>
 [info] <span class="stGreen">The AllBrowsersPerTest trait</span>
 </pre>
-</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="org.scalatestplus.play.AllBrowsersPerTest">AllBrowsersPerTest</a> with <span class="extype" name="org.scalatest.TestSuite">TestSuite</span> with <a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a></dd><dt>Source</dt><dd><a href="https://github.com/playframework/scalatestplus-play/tree/master/module/src/main/scala/org/scalatestplus/play/AllBrowsersPerTest.scala" target="_blank">AllBrowsersPerTest.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="org.scalatestplus.play.AllBrowsersPerTest">AllBrowsersPerTest</a> with <span class="extype" name="org.scalatest.TestSuite">TestSuite</span> with <a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a></dd><dt>Source</dt><dd><a href="https://github.com/playframework/scalatestplus-play/tree/3.0.0-M1/module/src/main/scala/org/scalatestplus/play/AllBrowsersPerTest.scala" target="_blank">AllBrowsersPerTest.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="org.scalatest.concurrent.IntegrationPatience">IntegrationPatience</span>, <span class="extype" name="org.scalatest.concurrent.Eventually">Eventually</span>, <span class="extype" name="org.scalatest.concurrent.PatienceConfiguration">PatienceConfiguration</span>, <span class="extype" name="org.scalatest.concurrent.AbstractPatienceConfiguration">AbstractPatienceConfiguration</span>, <span class="extype" name="org.scalatest.concurrent.ScaledTimeSpans">ScaledTimeSpans</span>, <span class="extype" name="org.scalatest.selenium.WebBrowser">WebBrowser</span>, <span class="extype" name="org.scalatest.TestSuiteMixin">TestSuiteMixin</span>, <span class="extype" name="org.scalatest.SuiteMixin">SuiteMixin</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -194,7 +194,7 @@ with sbt and ask to include only Firefox:</p><p><pre class="stREPL">
               <ol>
                 
                 <li class="alpha in"><span>Alphabetic</span></li>
-                <li class="inherit out"><span>By inheritance</span></li>
+                <li class="inherit out"><span>By Inheritance</span></li>
               </ol>
             </div>
         <div id="ancestors">
@@ -207,7 +207,7 @@ with sbt and ask to include only Firefox:</p><p><pre class="stREPL">
             <span class="filtertype"></span>
             <ol>
               <li class="hideall out"><span>Hide All</span></li>
-              <li class="showall in"><span>Show all</span></li>
+              <li class="showall in"><span>Show All</span></li>
             </ol>
           </div>
         <div id="visbl">

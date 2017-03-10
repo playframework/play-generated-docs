@@ -70,10 +70,10 @@ class ExampleSpec extends PlaySpec with GuiceOneAppPerTest {
 
   "The OneAppPerTest trait" must {
     "provide an Application" in {
-      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
+      app.configuration.getOptional[String]("ehcacheplugin") mustBe Some("disabled")
     }
     "make the Application available implicitly" in {
-      def getConfig(key: String)(implicit app: Application) = app.configuration.getString(key)
+      def getConfig(key: String)(implicit app: Application) = app.configuration.getOptional[String](key)
       getConfig("ehcacheplugin") mustBe Some("disabled")
     }
     "start the Application" in {
@@ -82,7 +82,7 @@ class ExampleSpec extends PlaySpec with GuiceOneAppPerTest {
   }
 }
 </pre>
-</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="org.scalatestplus.play.guice.GuiceOneAppPerTest">GuiceOneAppPerTest</a> with <span class="extype" name="org.scalatest.TestSuite">TestSuite</span></dd><dt>Source</dt><dd><a href="https://github.com/playframework/scalatestplus-play/tree/master/module/src/main/scala/org/scalatestplus/play/guice/GuiceOneAppPerTest.scala" target="_blank">GuiceOneAppPerTest.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="org.scalatestplus.play.guice.GuiceOneAppPerTest">GuiceOneAppPerTest</a> with <span class="extype" name="org.scalatest.TestSuite">TestSuite</span></dd><dt>Source</dt><dd><a href="https://github.com/playframework/scalatestplus-play/tree/3.0.0-M1/module/src/main/scala/org/scalatestplus/play/guice/GuiceOneAppPerTest.scala" target="_blank">GuiceOneAppPerTest.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="GuiceFakeApplicationFactory.html" class="extype" name="org.scalatestplus.play.guice.GuiceFakeApplicationFactory">GuiceFakeApplicationFactory</a>, <a href="../FakeApplicationFactory.html" class="extype" name="org.scalatestplus.play.FakeApplicationFactory">FakeApplicationFactory</a>, <a href="../BaseOneAppPerTest.html" class="extype" name="org.scalatestplus.play.BaseOneAppPerTest">BaseOneAppPerTest</a>, <a href="../AppProvider.html" class="extype" name="org.scalatestplus.play.AppProvider">AppProvider</a>, <span class="extype" name="org.scalatest.TestSuiteMixin">TestSuiteMixin</span>, <span class="extype" name="org.scalatest.SuiteMixin">SuiteMixin</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
@@ -98,7 +98,7 @@ class ExampleSpec extends PlaySpec with GuiceOneAppPerTest {
               <ol>
                 
                 <li class="alpha in"><span>Alphabetic</span></li>
-                <li class="inherit out"><span>By inheritance</span></li>
+                <li class="inherit out"><span>By Inheritance</span></li>
               </ol>
             </div>
         <div id="ancestors">
@@ -111,7 +111,7 @@ class ExampleSpec extends PlaySpec with GuiceOneAppPerTest {
             <span class="filtertype"></span>
             <ol>
               <li class="hideall out"><span>Hide All</span></li>
-              <li class="showall in"><span>Show all</span></li>
+              <li class="showall in"><span>Show All</span></li>
             </ol>
           </div>
         <div id="visbl">

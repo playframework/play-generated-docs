@@ -35,15 +35,41 @@ In Play 2.6, the core Play module no longer includes Guice. You will need to con
 libraryDependencies += guice
 ```
 
+### OpenID support moved to separate module
+
+In Play 2.6, the core Play module no longer includes the OpenID support in `play.api.libs.openid` (Scala) and `play.libs.openid` (Java). To use these packages add `openId` to your `libraryDependencies`:
+
+```scala
+libraryDependencies += openId
+```
+
 ### Play JSON moved to separate project
 
-Play JSON has been moved to a separate library hosted at https://github.com/playframework/play-json. Since Play JSON has no depependencies on the rest of Play, the main change is that the `json` value from `PlayImport` will no longer work in your SBT build. Instead, you'll have to specify the library manually:
+Play JSON has been moved to a separate library hosted at https://github.com/playframework/play-json. Since Play JSON has no dependencies on the rest of Play, the main change is that the `json` value from `PlayImport` will no longer work in your SBT build. Instead, you'll have to specify the library manually:
 
 ```scala
 libraryDependencies += "com.typesafe.play" %% "play-json" % "2.6.0"
 ```
 
 Also, Play JSON has a separate versioning scheme, so the version no longer is in sync with the Play version.
+
+### Play Iteratees moved to separate project
+
+Play Iteratees has been moved to a separate library hosted at https://github.com/playframework/play-iteratees. Since Play Iteratees has no dependencies on the rest of Play, the main change is that the you'll have to specify the library manually:
+
+```scala
+libraryDependencies += "com.typesafe.play" %% "play-iteratees" % "2.6.1"
+```
+
+The project also has a sub project that integrates Iteratees with [Reactive Streams](http://www.reactive-streams.org/). You may need to add the following dependency as well: 
+
+```scala
+libraryDependencies += "com.typesafe.play" %% "play-iteratees-reactive-streams" % "2.6.1"
+```
+
+> **Note**: The helper class `play.api.libs.streams.Streams` was moved to `play-iteratees-reactive-streams` and now is called `play.api.libs.iteratee.streams.IterateeStreams`. So you may need to add the Iteratees dependencies and also use the new class where necessary. 
+
+Finally, Play Iteratees has a separate versioning scheme, so the version no longer is in sync with the Play version.
 
 ## Writeable[JsValue] changes
 
@@ -102,6 +128,10 @@ Then in your template you can use `AssetsFinder#path` to find the final path of 
 ```
 
 You can still continue to use reverse routes with `Assets.versioned`, but some global state is required to convert the asset name you provide to the final asset name, which can be problematic if you want to run multiple applications at once.
+
+## Java Form Changes
+
+The `.errors()` method of a `play.data.Form` instance is now deprecated. You should use `allErrors()` instead now which returns a simple `List<ValidationError>` instead of a `Map<String,List<ValidationError>>`. Where before Play 2.6 you called `.errors().get("key")` you can now simply call `.errors("key")`.
 
 ## JPA Migration Notes
 
@@ -176,7 +206,7 @@ The following libraries are no longer dependencies in Play 2.6, so you will need
 
 #### Joda-Time removal
 
-If you can, you could migrate all occurences to Java8 `java.time`.
+If you can, you could migrate all occurrences to Java8 `java.time`.
 
 If you can't and still need to use Joda-Time in Play Forms and Play-Json you can just add the `play-joda` project:
 
@@ -220,13 +250,13 @@ Prior versions of Play prepackaged the H2 database. But to make the core of Play
 If you make use of h2 you can add it to your `build.sbt`:
 
 ```scala
-libraryDependencies += "com.h2database" % "h2" % "1.4.191"
+libraryDependencies += "com.h2database" % "h2" % "1.4.193"
 ```
 
 If you only used it in your test you can also just use the `Test` scope:
 
 ```scala
-libraryDependencies += "com.h2database" % "h2" % "1.4.191" % Test
+libraryDependencies += "com.h2database" % "h2" % "1.4.193" % Test
 ```
 
 The [[H2 Browser|Developing-with-the-H2-Database#H2-Browser]] will still work after you added the dependency.
@@ -276,7 +306,7 @@ public class MyComponent {
 
 ### Request attributes
 
-All request objects now contain *attributes*. Request attributes are a replacement for request *tags*. Tags have now been deprecated and you should upgrade to attributes. Attributes are more powerful than tags; you can use attributes to store objects in requests, wherease tags only supported storing strings.
+All request objects now contain *attributes*. Request attributes are a replacement for request *tags*. Tags have now been deprecated and you should upgrade to attributes. Attributes are more powerful than tags; you can use attributes to store objects in requests, whereas tags only supported storing strings.
 
 #### Request tags deprecation
 
@@ -425,7 +455,7 @@ The deprecated `play.Routes` class used to create a JavaScript router were remov
 * [[Javascript Routing in Scala|ScalaJavascriptRouting]]
 * [[Javascript Routing in Java|JavaJavascriptRouter]]
 
-### Execution
+### `play.api.libs.concurrent.Execution` is deprecated
 
 The `play.api.libs.concurrent.Execution` class has been deprecated, as it was using global mutable state under the hood to pull the "current" application's ExecutionContext.
 
@@ -559,11 +589,196 @@ Or get a custom one:
 ```scala
 val fileMimeTypes = new DefaultFileMimeTypesProvider(FileMimeTypesConfiguration(Map("foo" -> "text/bar"))).get
 ```
+
+## Default Filters
+
+Play now comes with a default set of enabled filters, defined through configuration.  If the property `play.http.filters` is null, then the default is now `play.api.http.EnabledFilters`, which loads up the filters defined by fully qualified class name in the `play.filters.enabled` configuration property.
+
+In Play itself, `play.filters.enabled` is an empty list.  However, the filters library is automatically loaded in SBT as an AutoPlugin called `PlayFilters`, and will append the following values to the `play.filters.enabled` property:
+
+* `play.filters.csrf.CSRFFilter`
+* `play.filters.headers.SecurityHeadersFilter`
+* `play.filters.hosts.AllowedHostsFilter`
+
+This means that on new projects, CSRF protection ([[ScalaCsrf]] / [[JavaCsrf]]), [[SecurityHeaders]] and [[AllowedHostsFilter]] are all defined automatically.
+
+To append to the defaults list, use the `+=`:
+
+```
+play.filters.enabled+=MyFilter
+```
+
+If you have defined your own filters by extending `play.api.http.DefaultHttpFilters`, then you can also combine `EnabledFilters` with your own list in code, so if you have previously defined projects, they still work as usual:
+
+```scala
+class Filters @Inject()(enabledFilters: EnabledFilters, corsFilter: CORSFilter)
+  extends DefaultHttpFilters(enabledFilters.filters :+ corsFilter: _*)
+```
+
+### Testing Default Filters
+
+Because there are several filters enabled, functional tests may need to change slightly to ensure that all the tests pass and requests are valid.  For example, a request that does not have a `Host` HTTP header set to `localhost` will not pass the AllowedHostsFilter and will return a 400 Forbidden response instead.
+
+#### Testing with AllowedHostsFilter
+
+Because the AllowedHostsFilter filter is added automatically, functional tests need to have the Host HTTP header added.
+
+If you are using `FakeRequest` or `Helpers.fakeRequest`, then the `Host` HTTP header is added for you automatically.  If you are using `play.mvc.Http.RequestBuilder`, then you may need to add your own line to add the header manually:
+
+```java
+RequestBuilder request = new RequestBuilder()
+        .method(GET)
+        .header(HeaderNames.HOST, "localhost")
+        .uri("/xx/Kiwi");
+```
+
+#### Testing with CSRFFilter
+
+Because the CSRFFilter filter is added automatically, tests that render a Twirl template that includes `CSRF.formField`, i.e.
+
+```
+@(userForm: Form[UserData])(implicit request: RequestHeader, m: Messages)
+
+<h1>user form</h1>
+
+@request.flash.get("success").getOrElse("")
+
+@helper.form(action = routes.UserController.userPost()) {
+  @helper.CSRF.formField
+  @helper.inputText(userForm("name"))
+  @helper.inputText(userForm("age"))
+  <input type="submit" value="submit"/>
+}
+```
+
+must contain a CSRF token in the request.  In the Scala API, this is done by importing `play.api.test.CSRFTokenHelper._`, which enriches `play.api.test.FakeRequest` with the `withCSRFToken` method:
+
+```scala
+import play.api.test.CSRFTokenHelper._
+
+class UserControllerSpec extends PlaySpec with GuiceOneAppPerTest {
+  "UserController GET" should {
+
+    "render the index page from the application" in {
+      val controller = app.injector.instanceOf[UserController]
+      val request = FakeRequest().withCSRFToken
+      val result = controller.userGet().apply(request)
+
+      status(result) mustBe OK
+      contentType(result) mustBe Some("text/html")
+    }
+  }
+}
+```
+
+In the Java API, this is done by calling `CSRFTokenHelper.addCSRFToken` on a `play.mvc.Http.RequestBuilder` instance:
+
+```
+requestBuilder = CSRFTokenHelper.addCSRFToken(requestBuilder);
+```
+
+### Disabling Default Filters
+
+The simplest way to disable the default filters is to set the list of filters manually in `application.conf`:
+
+```
+play.filters.enabled=[]
+```
+
+This may be useful if you have functional tests that you do not want to go through the default filters.
+
+If you want to remove all filter classes, you can disable it through the `disablePlugins` mechanism:
+
+```
+lazy val root = project.in(file(".")).enablePlugins(PlayScala).disablePlugins(PlayFilters)
+```
+
+or by replacing `EnabledFilters`:
+
+```
+play.http.filters=play.api.http.NoHttpFilters
+```
+
+If you are writing functional tests involving `GuiceApplicationBuilder` and the AllowedHostsFilter is interfering with tests and causing `400` status errors, then you can disable it using `configure`:
+
+```scala
+GuiceApplicationBuilder().configure("play.http.filters" -> "play.api.http.NoHttpFilters")
+```
+
+## Compile Time Default Filters
+
+If you are using compile time dependency injection, then the default filters are resolved at compile time, rather than through runtime.  
+
+This means that the `BuiltInComponents` trait now contains an `httpFilters` method which is left abstract: 
+
+```scala
+trait BuiltInComponents {
+
+  /** A user defined list of filters that is appended to the default filters */
+  def httpFilters: Seq[EssentialFilter]
+}
+```
+
+The default list of filters is defined in `play.filters.HttpFiltersComponents`:
+
+```scala
+trait HttpFiltersComponents
+     extends CSRFComponents
+     with SecurityHeadersComponents
+     with AllowedHostsComponents {
+ 
+   def httpFilters: Seq[EssentialFilter] = Seq(csrfFilter, securityHeadersFilter, allowedHostsFilter)
+}
+```
+
+
+In most cases you will want to mixin HttpFiltersComponents and append your own filters:
+
+```scala
+class MyComponents(context: ApplicationLoader.Context)
+  extends BuiltInComponentsFromContext(context)
+  with play.filters.HttpFiltersComponents {
+
+  lazy val loggingFilter = new LoggingFilter()
+  override def httpFilters = {
+    super.httpFilters :+ loggingFilter
+  }
+}
+```
+
+If you want to filter elements out of the list, you can do the following:
+
+```scala
+class MyComponents(context: ApplicationLoader.Context)
+  extends BuiltInComponentsFromContext(context)
+  with play.filters.HttpFiltersComponents {
+  override def httpFilters = {
+    super.httpFilters.filterNot(_.getClass == classOf[CSRFFilter])
+  }
+}
+```
+
+### Disabling Compile Time Default Filters
+
+To disable the default filters, mixin `play.api.NoHttpFiltersComponents`:
+
+```scala
+class MyComponents(context: ApplicationLoader.Context)
+   extends BuiltInComponentsFromContext(context)
+   with NoHttpFiltersComponents
+   with AssetsComponents {
+
+  lazy val homeController = new HomeController(controllerComponents)
+  lazy val router = new Routes(httpErrorHandler, homeController, assets)
+}
+```
+
 ## Updated libraries
 
-### Fluentlenium
-The Fluentlenium library was updated to version 3.1.1 and as a result the underlying Selenium version changed to [3.0.1](https://seleniumhq.wordpress.com/2016/10/13/selenium-3-0-out-now/). If you were using Selenium's WebDriver API before, there shouldn't be anything to do. Please check [this](https://seleniumhq.wordpress.com/2016/10/04/selenium-3-is-coming/) announcement for further information.
-If you were using the Fluentlenium library you might have to change some syntax to get your tests working again. Please see Fluentlenium's [Migration Guide](http://fluentlenium.org/migration/from-0.13.2-to-1.0-or-3.0/)
+### FluentLenium
+
+The FluentLenium library was updated to version 3.1.1 and as a result the underlying Selenium version changed to [3.0.1](https://seleniumhq.wordpress.com/2016/10/13/selenium-3-0-out-now/). If you were using Selenium's WebDriver API before, there shouldn't be anything to do. Please check [this](https://seleniumhq.wordpress.com/2016/10/04/selenium-3-is-coming/) announcement for further information.
+If you were using the FluentLenium library you might have to change some syntax to get your tests working again. Please see FluentLenium's [Migration Guide](http://fluentlenium.org/migration/from-0.13.2-to-1.0-or-3.0/) for more details about how to adapt your code.
 
 ## Other Configuration changes
 

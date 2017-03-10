@@ -82,9 +82,9 @@
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Trait that uses a <a href="http://doc.scalatest.org/2.1.3/index.html#org.scalatest.FlatSpec@sharedTests" target="_blank"><i>shared test</i></a> approach to enable
+      <p class="shortcomment cmt">Trait that uses a <a href="http://doc.scalatest.org/3.0.1/index.html#org.scalatest.FlatSpec@sharedTests" target="_blank"><i>shared test</i></a> approach to enable
 you to run the same tests on multiple browsers in a ScalaTest <code>Suite</code>, where each kind of browser is started and stopped
-just once for the whole <code>Suite</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Trait that uses a <a href="http://doc.scalatest.org/2.1.3/index.html#org.scalatest.FlatSpec@sharedTests" target="_blank"><i>shared test</i></a> approach to enable
+just once for the whole <code>Suite</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Trait that uses a <a href="http://doc.scalatest.org/3.0.1/index.html#org.scalatest.FlatSpec@sharedTests" target="_blank"><i>shared test</i></a> approach to enable
 you to run the same tests on multiple browsers in a ScalaTest <code>Suite</code>, where each kind of browser is started and stopped
 just once for the whole <code>Suite</code>.</p><p>Note: the difference between this trait and <a href="AllBrowsersPerTest.html" class="extype" name="org.scalatestplus.play.AllBrowsersPerTest">AllBrowsersPerTest</a> is that
 this trait will allow you to write tests that rely on maintaining browser state between the tests. This is a good fit
@@ -93,7 +93,7 @@ instance the first time it is needed  by each test, and close it the first time 
 to share the same browser), and overrides the <code>tags</code> lifecycle method to tag the shared tests so you can
 filter them by browser type.  This trait's self-type, <a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a>,  will ensure
 a <code>TestServer</code> and <code>Application</code> are available to each test. The self-type will require that you mix in either
-<a href="guice/GuiceOneServerPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerSuite">GuiceOneServerPerSuite</a>, <a href="OneServerPerTest.html" class="extype" name="org.scalatestplus.play.OneServerPerTest">OneServerPerTest</a>,
+<a href="guice/GuiceOneServerPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerSuite">GuiceOneServerPerSuite</a>, <a href="guice/GuiceOneServerPerTest.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerTest">GuiceOneServerPerTest</a>,
 <a href="ConfiguredServer.html" class="extype" name="org.scalatestplus.play.ConfiguredServer">ConfiguredServer</a> before you mix in this trait. Your choice among these three
 <code>ServerProvider</code>s will determine the extent to which a <code>TestServer</code> is shared by multiple tests.</p><p>You'll need to place any tests that you want executed by multiple browsers in a <code>sharedTests</code> method. Because all tests in a ScalaTest <code>Suite</code>
 must have unique names, you'll need to append the browser name (available from the <code>BrowserInfo</code> passed
@@ -127,19 +127,20 @@ package org.scalatestplus.play.examples.allbrowserspersuite
 
 import play.api.test._
 import org.scalatestplus.play._
+import org.scalatestplus.play.guice._
 import play.api.{Play, Application}
 import play.api.inject.guice._
 import play.api.routing._
 import play.api.cache.ehcache.EhCacheModule
 
-class ExampleSpec extends PlaySpec with OneServerPerSuite with AllBrowsersPerSuite {
+class ExampleSpec extends PlaySpec with GuiceOneServerPerSuite with AllBrowsersPerSuite {
 
   // Override fakeApplication if you need an Application with other than
   // default parameters.
   def fakeApplication() = new GuiceApplicationBuilder()
     .disable[EhCacheModule]
     .configure("foo" -> "bar")
-    .router(Router.from(TestRoute))
+    .router(TestRoutes.router)
     .build()
 
   // Place tests you want run in different browsers in the `sharedTests` method:
@@ -159,10 +160,10 @@ class ExampleSpec extends PlaySpec with OneServerPerSuite with AllBrowsersPerSui
   // in the constructor, the usual place for tests in a `PlaySpec`
   "The AllBrowsersPerSuite trait" must {
     "provide an Application" in {
-      app.configuration.getString("foo") mustBe Some("bar")
+      app.configuration.getOptional[String]("foo") mustBe Some("bar")
     }
     "make the Application available implicitly" in {
-      def getConfig(key: String)(implicit app: Application) = app.configuration.getString(key)
+      def getConfig(key: String)(implicit app: Application) = app.configuration.getOptional[String](key)
       getConfig("foo") mustBe Some("bar")
     }
     "start the Application" in {
@@ -232,9 +233,9 @@ with sbt and ask to include only Firefox:</p><p><pre class="stREPL">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Trait that uses a <a href="http://doc.scalatest.org/2.1.3/index.html#org.scalatest.FlatSpec@sharedTests" target="_blank"><i>shared test</i></a> approach to enable
+      <p class="shortcomment cmt">Trait that uses a <a href="http://doc.scalatest.org/3.0.1/index.html#org.scalatest.FlatSpec@sharedTests" target="_blank"><i>shared test</i></a> approach to enable
 you to run the same tests on multiple browsers in a ScalaTest <code>Suite</code>, where a new browser is started before each test
-that needs a browser, and stopped after.</p><div class="fullcomment"><div class="comment cmt"><p>Trait that uses a <a href="http://doc.scalatest.org/2.1.3/index.html#org.scalatest.FlatSpec@sharedTests" target="_blank"><i>shared test</i></a> approach to enable
+that needs a browser, and stopped after.</p><div class="fullcomment"><div class="comment cmt"><p>Trait that uses a <a href="http://doc.scalatest.org/3.0.1/index.html#org.scalatest.FlatSpec@sharedTests" target="_blank"><i>shared test</i></a> approach to enable
 you to run the same tests on multiple browsers in a ScalaTest <code>Suite</code>, where a new browser is started before each test
 that needs a browser, and stopped after.</p><p>Note: the difference between this trait and <a href="AllBrowsersPerSuite.html" class="extype" name="org.scalatestplus.play.AllBrowsersPerSuite">AllBrowsersPerSuite</a> is that
 <code>AllBrowsersPerSuite</code> will allow you to write tests that rely on maintaining browser state between the tests. Thus, <code>AllBrowsersPerSuite</code> is a good fit
@@ -243,7 +244,7 @@ each need a brand new browser.</p><p>This trait overrides <code>Suite</code>'s <
 instance before executing each test that needs a browser, closing it after the test completes, and overrides the <code>tags</code> lifecycle method to tag the shared tests so you can
 filter them by browser type.  This trait's self-type, <a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a>,  will ensure
 a <code>TestServer</code> and <code>Application</code> are available to each test. The self-type will require that you mix in either
-<a href="guice/GuiceOneServerPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerSuite">GuiceOneServerPerSuite</a>, <a href="OneServerPerTest.html" class="extype" name="org.scalatestplus.play.OneServerPerTest">OneServerPerTest</a>,
+<a href="guice/GuiceOneServerPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerSuite">GuiceOneServerPerSuite</a>, <a href="guice/GuiceOneServerPerTest.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerTest">GuiceOneServerPerTest</a>,
 <a href="ConfiguredServer.html" class="extype" name="org.scalatestplus.play.ConfiguredServer">ConfiguredServer</a> before you mix in this trait. Your choice among these three
 <code>ServerProvider</code>s will determine the extent to which a <code>TestServer</code> is shared by multiple tests.</p><p>You'll need to place any tests that you want executed by multiple browsers in a <code>sharedTests</code> method. Because all tests in a ScalaTest <code>Suite</code>
 must have unique names, you'll need to append the browser name (available from the <code>BrowserInfo</code> passed
@@ -290,7 +291,7 @@ class ExampleSpec extends PlaySpec with OneServerPerTest with AllBrowsersPerTest
   override def newAppForTest(testData: TestData): Application = new GuiceApplicationBuilder()
     .disable[EhCacheModule]
     .configure("foo" -> "bar")
-    .router(Router.from(TestRoute))
+    .router(TestRoutes.router)
     .build()
 
   // Place tests you want run in different browsers in the `sharedTests` method:
@@ -310,10 +311,10 @@ class ExampleSpec extends PlaySpec with OneServerPerTest with AllBrowsersPerTest
   // in the constructor, the usual place for tests in a `PlaySpec`
   "The AllBrowsersPerTest trait" must {
     "provide a FakeApplication" in {
-      app.configuration.getString("foo") mustBe Some("bar")
+      app.configuration.getOptional[String]("foo") mustBe Some("bar")
     }
     "make the FakeApplication available implicitly" in {
-       def getConfig(key: String)(implicit app: Application) = app.configuration.getString(key)
+       def getConfig(key: String)(implicit app: Application) = app.configuration.getOptional[String](key)
       getConfig("foo") mustBe Some("bar")
     }
     "start the FakeApplication" in {
@@ -437,10 +438,10 @@ class ExampleSpec extends PlaySpec with OneAppPerTest {
 
   "The OneAppPerTest trait" must {
     "provide an Application" in {
-      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
+      app.configuration.getOptional[String]("ehcacheplugin") mustBe Some("disabled")
     }
     "make the Application available implicitly" in {
-      def getConfig(key: String)(implicit app: Application) = app.configuration.getString(key)
+      def getConfig(key: String)(implicit app: Application) = app.configuration.getOptional[String](key)
       getConfig("ehcacheplugin") mustBe Some("disabled")
     }
     "start the Application" in {
@@ -495,10 +496,10 @@ class ExampleSpec extends PlaySpec with OneServerPerSuite {
 
   "The OneServerPerSuite trait" must {
     "provide an Application" in {
-      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
+      app.configuration.getOptional[String]("ehcacheplugin") mustBe Some("disabled")
     }
     "make the Application available implicitly" in {
-      def getConfig(key: String)(implicit app: Application) = app.configuration.getString(key)
+      def getConfig(key: String)(implicit app: Application) = app.configuration.getOptional[String](key)
       getConfig("ehcacheplugin") mustBe Some("disabled")
     }
     "start the Application" in {
@@ -551,10 +552,10 @@ class BlueSpec extends PlaySpec with ConfiguredServer {
 
   "The OneServerPerSuite trait" must {
     "provide an Application" in {
-      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
+      app.configuration.getOptional[String]("ehcacheplugin") mustBe Some("disabled")
     }
     "make the Application available implicitly" in {
-      def getConfig(key: String)(implicit app: Application) = app.configuration.getString(key)
+      def getConfig(key: String)(implicit app: Application) = app.configuration.getOptional[String](key)
       getConfig("ehcacheplugin") mustBe Some("disabled")
     }
     "start the Application" in {
@@ -611,15 +612,15 @@ class ExampleSpec extends PlaySpec with OneServerPerTest {
   // Override newAppForTest or use GuiceOneServerPerTest
   implicit override def newAppForTest(testData: TestData): Application = new GuiceApplicationBuilder()
     .configure(Map("ehcacheplugin" -> "disabled"))
-    .router(Router.from(TestRoute))
+    .router(TestRoutes.router)
     .build()
 
   "The OneServerPerTest trait" must {
     "provide a FakeApplication" in {
-      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
+      app.configuration.getOptional[String]("ehcacheplugin") mustBe Some("disabled")
     }
     "make the FakeApplication available implicitly" in {
-      def getConfig(key: String)(implicit app: Application) = app.configuration.getString(key)
+      def getConfig(key: String)(implicit app: Application) = app.configuration.getOptional[String](key)
       getConfig("ehcacheplugin") mustBe Some("disabled")
     }
     "start the FakeApplication" in {
@@ -750,10 +751,10 @@ class ExampleSpec extends PlaySpec with GuiceOneAppPerSuite {
 
   "The GuiceOneAppPerSuite trait" must {
     "provide a FakeApplication" in {
-      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
+      app.configuration.getOptional[String]("ehcacheplugin") mustBe Some("disabled")
     }
     "make the FakeApplication available implicitly" in {
-      def getConfig(key: String)(implicit app: Application) = app.configuration.getString(key)
+      def getConfig(key: String)(implicit app: Application) = app.configuration.getOptional[String](key)
       getConfig("ehcacheplugin") mustBe Some("disabled")
     }
     "start the FakeApplication" in {
@@ -787,7 +788,7 @@ the <code>WebDriver</code> is placed in the <code>ConfigMap</code> under the key
 information represents the &quot;configured browser&quot; that is passed from the enclosing suite to the nested suites. Trait <code>ConfiguredBrowser</code> extracts this information from
 from the <code>ConfigMap</code> and makes the <code>WebDriver</code> available implicitly from the <code>webDriver</code> method.</p><p>This trait's self-type, <a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a>,  will ensure
 a <code>TestServer</code> and <code>Application</code> are available to each test. The self-type will require that you mix in either
-<a href="guice/GuiceOneServerPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerSuite">GuiceOneServerPerSuite</a>, <a href="OneServerPerTest.html" class="extype" name="org.scalatestplus.play.OneServerPerTest">OneServerPerTest</a>,
+<a href="guice/GuiceOneServerPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerSuite">GuiceOneServerPerSuite</a>, <a href="guice/GuiceOneServerPerTest.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerTest">GuiceOneServerPerTest</a>,
 <a href="ConfiguredServer.html" class="extype" name="org.scalatestplus.play.ConfiguredServer">ConfiguredServer</a> before you mix in this trait. Your choice among these three
 <code>ServerProvider</code>s will determine the extent to which one or more <code>TestServer</code>s are shared by multiple tests.</p><p>To prevent discovery of nested suites you can annotate them with <code>@DoNotDiscover</code>. Here's an example
 taken from the documentation for trait <a href="OneBrowserPerSuite.html" class="extype" name="org.scalatestplus.play.OneBrowserPerSuite">OneBrowserPerSuite</a>:</p><p><pre class="stHighlight">
@@ -806,15 +807,15 @@ class ExampleSpec extends PlaySpec with OneServerPerSuite with OneBrowserPerSuit
   // Override fakeApplication() if you need a Application with other than non-default parameters.
   def fakeApplication(): Application = new GuiceApplicationBuilder()
       .configure("foo" -> "bar", "ehcacheplugin" -> "disabled")
-      .router(Router.from(TestRoute))
+      .router(TestRoutes.router)
       .build()
 
   "The OneBrowserPerSuite trait" must {
     "provide an Application" in {
-      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
+      app.configuration.getOptional[String]("ehcacheplugin") mustBe Some("disabled")
     }
     "make the Application available implicitly" in {
-      def getConfig(key: String)(implicit app: Application) = app.configuration.getString(key)
+      def getConfig(key: String)(implicit app: Application) = app.configuration.getOptional[String](key)
       getConfig("ehcacheplugin") mustBe Some("disabled")
     }
     "start the Application" in {
@@ -880,10 +881,10 @@ class ExampleSpec extends PlaySpec with GuiceOneServerPerSuite {
 
   "The OneServerPerSuite trait" must {
     "provide an Application" in {
-      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
+      app.configuration.getOptional[String]("ehcacheplugin") mustBe Some("disabled")
     }
     "make the Application available implicitly" in {
-      def getConfig(key: String)(implicit app: Application) = app.configuration.getString(key)
+      def getConfig(key: String)(implicit app: Application) = app.configuration.getOptional[String](key)
       getConfig("ehcacheplugin") mustBe Some("disabled")
     }
     "start the Application" in {
@@ -957,7 +958,7 @@ you to fill in the <code>createWebDriver</code> method, usually by mixing in one
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="FirefoxInfo.html"><span class="name">FirefoxInfo</span></a><span class="params">(<span name="firefoxProfile">firefoxProfile: <span class="extype" name="org.openqa.selenium.firefox.FirefoxProfile">FirefoxProfile</span></span>)</span><span class="result"> extends <a href="BrowserInfo.html" class="extype" name="org.scalatestplus.play.BrowserInfo">BrowserInfo</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="FirefoxInfo.html"><span class="name">FirefoxInfo</span></a><span class="params">(<span name="firefoxProfile">firefoxProfile: <span class="extype" name="org.openqa.selenium.firefox.FirefoxProfile">FirefoxProfile</span></span>, <span name="firefoxOptions">firefoxOptions: <span class="extype" name="org.openqa.selenium.firefox.FirefoxOptions">FirefoxOptions</span> = <span class="defval" name='<span class="name"><a href="../../package.html">new FirefoxOptions().setLogLevel(Level.WARNING)</a></span>'>...</span></span>)</span><span class="result"> extends <a href="BrowserInfo.html" class="extype" name="org.scalatestplus.play.BrowserInfo">BrowserInfo</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#org.scalatestplus.play.package@FirefoxInfoextendsBrowserInfowithProductwithSerializable" title="Permalink" target="_top">
@@ -1067,7 +1068,7 @@ mixed into <a href="MixedPlaySpec.html" class="extype" name="org.scalatestplus.p
 take a no-arg function. <code>MixedFixtures</code> provides several no-arg function classes (classes extending <code>Function0</code>) that
 can be used to provide different fixtures for different tests.</p><p>If a test needs a <code>Application</code>, use the <code>App</code> function, like this:</p><p><pre class="stHighlight">
 "provide an Application" in new App(fakeApp("ehcacheplugin" -&gt; "disabled")) {
-  app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
+  app.configuration.getOptional[String]("ehcacheplugin") mustBe Some("disabled")
 }
 </pre></p><p>If a test needs an <code>Application</code> and running <code>TestServer</code>, use the <code>Server</code> function, like this:</p><p><pre class="stHighlight">
 "send 404 on a bad request" in new Server {
@@ -1101,14 +1102,14 @@ class ExampleSpec extends MixedPlaySpec {
   // Some helper methods
   def buildApp[A](elems: (String, String)*) = new GuiceApplicationBuilder()
     .configure(Map(elems:_*))
-    .router(Router.from(TestRoute))
+    .router(TestRoutes.router)
     .build()
 
-  def getConfig(key: String)(implicit app: Application) = app.configuration.getString(key)
+  def getConfig(key: String)(implicit app: Application) = app.configuration.getOptional[String](key)
 
   "The App function" must {
     "provide an Application" in new App(buildApp("ehcacheplugin" -> "disabled")) {
-      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
+      app.configuration.getOptional[String]("ehcacheplugin") mustBe Some("disabled")
     }
     "make the Application available implicitly" in new App(buildApp("ehcacheplugin" -> "disabled")) {
       getConfig("ehcacheplugin") mustBe Some("disabled")
@@ -1119,7 +1120,7 @@ class ExampleSpec extends MixedPlaySpec {
   }
   "The Server function" must {
     "provide an Application" in new Server(buildApp("ehcacheplugin" -> "disabled")) {
-      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
+      app.configuration.getOptional[String]("ehcacheplugin") mustBe Some("disabled")
     }
     "make the Application available implicitly" in new Server(buildApp("ehcacheplugin" -> "disabled")) {
       getConfig("ehcacheplugin") mustBe Some("disabled")
@@ -1138,7 +1139,7 @@ class ExampleSpec extends MixedPlaySpec {
   }
   "The HtmlUnit function" must {
     "provide an Application" in new HtmlUnit(buildApp("ehcacheplugin" -> "disabled")) {
-      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
+      app.configuration.getOptional[String]("ehcacheplugin") mustBe Some("disabled")
     }
     "make the Application available implicitly" in new HtmlUnit(buildApp("ehcacheplugin" -> "disabled")) {
       getConfig("ehcacheplugin") mustBe Some("disabled")
@@ -1163,7 +1164,7 @@ class ExampleSpec extends MixedPlaySpec {
   }
   "The Firefox function" must {
     "provide an Application" in new Firefox(buildApp("ehcacheplugin" -> "disabled")) {
-      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
+      app.configuration.getOptional[String]("ehcacheplugin") mustBe Some("disabled")
     }
     "make the Application available implicitly" in new Firefox(buildApp("ehcacheplugin" -> "disabled")) {
       getConfig("ehcacheplugin") mustBe Some("disabled")
@@ -1188,7 +1189,7 @@ class ExampleSpec extends MixedPlaySpec {
   }
   "The Safari function" must {
     "provide an Application" in new Safari(buildApp("ehcacheplugin" -> "disabled")) {
-      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
+      app.configuration.getOptional[String]("ehcacheplugin") mustBe Some("disabled")
     }
     "make the Application available implicitly" in new Safari(buildApp("ehcacheplugin" -> "disabled")) {
       getConfig("ehcacheplugin") mustBe Some("disabled")
@@ -1213,7 +1214,7 @@ class ExampleSpec extends MixedPlaySpec {
   }
   "The Chrome function" must {
     "provide an Application" in new Chrome(buildApp("ehcacheplugin" -> "disabled")) {
-      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
+      app.configuration.getOptional[String]("ehcacheplugin") mustBe Some("disabled")
     }
     "make the Application available implicitly" in new Chrome(buildApp("ehcacheplugin" -> "disabled")) {
       getConfig("ehcacheplugin") mustBe Some("disabled")
@@ -1238,7 +1239,7 @@ class ExampleSpec extends MixedPlaySpec {
   }
   "The InternetExplorer function" must {
     "provide an Application" in new InternetExplorer(buildApp("ehcacheplugin" -> "disabled")) {
-      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
+      app.configuration.getOptional[String]("ehcacheplugin") mustBe Some("disabled")
     }
     "make the Application available implicitly" in new InternetExplorer(buildApp("ehcacheplugin" -> "disabled")) {
       getConfig("ehcacheplugin") mustBe Some("disabled")
@@ -1289,49 +1290,6 @@ class ExampleSpec extends MixedPlaySpec {
 when different tests in the same test class need different kinds of fixtures. When different tests in the same class
 need the same fixture, you're probably better of extending <a href="PlaySpec.html" class="extype" name="org.scalatestplus.play.PlaySpec">PlaySpec</a> instead.
 </p></div></div>
-    </li><li name="org.scalatestplus.play.OneAppPerSuite" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="OneAppPerSuiteextendsGuiceOneAppPerSuite"></a>
-      <a id="OneAppPerSuite:OneAppPerSuite"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">trait</span>
-      </span>
-      <span class="symbol">
-        <a href="OneAppPerSuite.html"><span class="name">OneAppPerSuite</span></a><span class="result"> extends <a href="guice/GuiceOneAppPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneAppPerSuite">GuiceOneAppPerSuite</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.package@OneAppPerSuiteextendsGuiceOneAppPerSuite" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Synonym for GuiceOneAppPerSuite.</p><div class="fullcomment"><div class="comment cmt"><p>Synonym for GuiceOneAppPerSuite.
-</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@Deprecated</span>
-              
-        </dd></dl></div>
-    </li><li name="org.scalatestplus.play.OneAppPerTest" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="OneAppPerTestextendsGuiceOneAppPerTest"></a>
-      <a id="OneAppPerTest:OneAppPerTest"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">trait</span>
-      </span>
-      <span class="symbol">
-        <a href="OneAppPerTest.html"><span class="name">OneAppPerTest</span></a><span class="result"> extends <a href="guice/GuiceOneAppPerTest.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneAppPerTest">GuiceOneAppPerTest</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.package@OneAppPerTestextendsGuiceOneAppPerTest" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Synonym for GuiceOneAppPerTest
-</p><div class="fullcomment"><div class="comment cmt"><p>Synonym for GuiceOneAppPerTest
-</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@Deprecated</span>
-              
-        </dd></dl></div>
     </li><li name="org.scalatestplus.play.OneBrowserPerSuite" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="OneBrowserPerSuiteextendsTestSuiteMixinwithWebBrowserwithEventuallywithIntegrationPatiencewithBrowserFactory"></a>
       <a id="OneBrowserPerSuite:OneBrowserPerSuite"></a>
@@ -1359,7 +1317,7 @@ all nested suites have completed, after which the <code>WebDriver</code> will be
 This trait also overrides <code>Suite.withFixture</code> to cancel tests automatically if the related
 <code>WebDriver</code> is not available on the host platform.</p><p>This trait's self-type, <a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a>,  will ensure
 a <code>TestServer</code> and <code>Application</code> are available to each test. The self-type will require that you mix in either
-<a href="guice/GuiceOneServerPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerSuite">GuiceOneServerPerSuite</a>, <a href="OneServerPerTest.html" class="extype" name="org.scalatestplus.play.OneServerPerTest">OneServerPerTest</a>,
+<a href="guice/GuiceOneServerPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerSuite">GuiceOneServerPerSuite</a>, <a href="guice/GuiceOneServerPerTest.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerTest">OneServerPerTest</a>,
 <a href="ConfiguredServer.html" class="extype" name="org.scalatestplus.play.ConfiguredServer">ConfiguredServer</a> before you mix in this trait. Your choice among these three
 <code>ServerProvider</code>s will determine the extent to which one or more <code>TestServer</code>s are shared by multiple tests.</p><p>Here's an example that shows demonstrates of the services provided by this trait. Note that
 to use this trait, you must mix in one of the driver factories (this example
@@ -1379,15 +1337,15 @@ class ExampleSpec extends PlaySpec with OneServerPerSuite with OneBrowserPerSuit
   // Override fakeApplication() if you need a Application with other than non-default parameters.
   def fakeApplication(): Application = new GuiceApplicationBuilder()
     .configure("foo" -> "bar", "ehcacheplugin" -> "disabled")
-    .router(Router.from(TestRoute))
+    .router(TestRoutes.router)
     .build()
 
   "The OneBrowserPerSuite trait" must {
     "provide an Application" in {
-      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
+      app.configuration.getOptional[String]("ehcacheplugin") mustBe Some("disabled")
     }
     "make the Application available implicitly" in {
-      def getConfig(key: String)(implicit app: Application) = app.configuration.getString(key)
+      def getConfig(key: String)(implicit app: Application) = app.configuration.getOptional[String](key)
       getConfig("ehcacheplugin") mustBe Some("disabled")
     }
     "start the Application" in {
@@ -1448,10 +1406,10 @@ class BlueSpec extends PlaySpec with ConfiguredServer with ConfiguredBrowser {
 
   "The OneBrowserPerSuite trait" must {
     "provide an Application" in {
-      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
+      app.configuration.getOptional[String]("ehcacheplugin") mustBe Some("disabled")
     }
     "make the Application available implicitly" in {
-      def getConfig(key: String)(implicit app: Application) = app.configuration.getString(key)
+      def getConfig(key: String)(implicit app: Application) = app.configuration.getOptional[String](key)
       getConfig("ehcacheplugin") mustBe Some("disabled")
     }
     "start the Application" in {
@@ -1496,10 +1454,10 @@ abstract class MultiBrowserExampleSpec extends PlaySpec with OneServerPerSuite w
 
   "The OneBrowserPerSuite trait" must {
     "provide an Application" in {
-      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
+      app.configuration.getOptional[String]("ehcacheplugin") mustBe Some("disabled")
     }
     "make the Application available implicitly" in {
-      def getConfig(key: String)(implicit app: Application) = app.configuration.getString(key)
+      def getConfig(key: String)(implicit app: Application) = app.configuration.getOptional[String](key)
       getConfig("ehcacheplugin") mustBe Some("disabled")
     }
     "start the Application" in {
@@ -1630,7 +1588,7 @@ using sbt:</p><p><pre class="stREPL">
 before each test, and ensure it is closed after the test has completed.
 The <code>WebDriver</code> is available (implicitly) from method <code>webDriver</code>.</p><p>This trait's self-type, <a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a>,  will ensure
 a <code>TestServer</code> and <code>Application</code> are available to each test. The self-type will require that you mix in either
-<a href="guice/GuiceOneServerPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerSuite">GuiceOneServerPerSuite</a>, <a href="OneServerPerTest.html" class="extype" name="org.scalatestplus.play.OneServerPerTest">OneServerPerTest</a>,
+<a href="guice/GuiceOneServerPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerSuite">GuiceOneServerPerSuite</a>, <a href="guice/GuiceOneServerPerTest.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerTest">OneServerPerTest</a>,
 <a href="ConfiguredServer.html" class="extype" name="org.scalatestplus.play.ConfiguredServer">ConfiguredServer</a> before you mix in this trait. Your choice among these three
 <code>ServerProvider</code>s will determine the extent to which one or more <code>TestServer</code>s are shared by multiple tests.</p><p>Here's an example that shows demonstrates of the services provided by this trait. Note that
 to use this trait, you must mix in one of the driver factories (this example
@@ -1651,15 +1609,15 @@ class ExampleSpec extends PlaySpec with OneServerPerTest with OneBrowserPerTest 
   // Override newAppForTest if you need an Application with other than non-default parameters.
   override def newAppForTest(testData: TestData): Application = new GuiceApplicationBuilder()
     .configure(Map("ehcacheplugin" -> "disabled"))
-    .router(Router.from(TestRoute))
+    .router(TestRoutes.router)
     .build()
 
   "The OneBrowserPerTest trait" must {
     "provide an Application" in {
-      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
+      app.configuration.getOptional[String]("ehcacheplugin") mustBe Some("disabled")
     }
     "make the Application available implicitly" in {
-      def getConfig(key: String)(implicit app: Application) = app.configuration.getString(key)
+      def getConfig(key: String)(implicit app: Application) = app.configuration.getOptional[String](key)
       getConfig("ehcacheplugin") mustBe Some("disabled")
     }
     "start the Application" in {
@@ -1686,49 +1644,57 @@ class ExampleSpec extends PlaySpec with OneServerPerTest with OneBrowserPerTest 
 }
 </pre>
 </p></div></div>
-    </li><li name="org.scalatestplus.play.OneServerPerSuite" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="OneServerPerSuiteextendsGuiceOneServerPerSuite"></a>
-      <a id="OneServerPerSuite:OneServerPerSuite"></a>
+    </li><li name="org.scalatestplus.play.PhantomJSFactory" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="PhantomJSFactoryextendsBrowserFactory"></a>
+      <a id="PhantomJSFactory:PhantomJSFactory"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="OneServerPerSuite.html"><span class="name">OneServerPerSuite</span></a><span class="result"> extends <a href="guice/GuiceOneServerPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerSuite">GuiceOneServerPerSuite</a></span>
+        <a href="PhantomJSFactory.html"><span class="name">PhantomJSFactory</span></a><span class="result"> extends <a href="BrowserFactory.html" class="extype" name="org.scalatestplus.play.BrowserFactory">BrowserFactory</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.package@OneServerPerSuiteextendsGuiceOneServerPerSuite" title="Permalink" target="_top">
+      <a href="../../../index.html#org.scalatestplus.play.package@PhantomJSFactoryextendsBrowserFactory" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Synonym for GuiceOneServerPerSuite.</p><div class="fullcomment"><div class="comment cmt"><p>Synonym for GuiceOneServerPerSuite.
-</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@Deprecated</span>
-              
-        </dd></dl></div>
-    </li><li name="org.scalatestplus.play.OneServerPerTest" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="OneServerPerTestextendsGuiceOneServerPerTest"></a>
-      <a id="OneServerPerTest:OneServerPerTest"></a>
+      <p class="shortcomment cmt">Factory whose <code>createWebDriver</code> method will either return a new Selenium <code>PhantomJSDriver</code> (created
+using the capabilities specified by <code>phantomCapabilities</code>), or
+<a href="BrowserFactory$$UnavailableDriver.html" class="extype" name="org.scalatestplus.play.BrowserFactory.UnavailableDriver">UnavailableDriver</a>, if Firefox is not available on the host platform.</p><div class="fullcomment"><div class="comment cmt"><p>Factory whose <code>createWebDriver</code> method will either return a new Selenium <code>PhantomJSDriver</code> (created
+using the capabilities specified by <code>phantomCapabilities</code>), or
+<a href="BrowserFactory$$UnavailableDriver.html" class="extype" name="org.scalatestplus.play.BrowserFactory.UnavailableDriver">UnavailableDriver</a>, if Firefox is not available on the host platform.</p><p>Traits <a href="OneBrowserPerSuite.html" class="extype" name="org.scalatestplus.play.OneBrowserPerSuite">OneBrowserPerSuite</a> and
+<a href="OneBrowserPerTest.html" class="extype" name="org.scalatestplus.play.OneBrowserPerTest">OneBrowserPerTest</a> extend <code>BrowserFactory</code> and therefore require
+you to fill in the <code>createWebDriver</code> method, usually by mixing in one of the <code>BrowserFactory</code> subtraits such as
+<code>PhantomJSFactory</code>.
+</p></div></div>
+    </li><li name="org.scalatestplus.play.PhantomJSInfo" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="PhantomJSInfoextendsBrowserInfowithProductwithSerializable"></a>
+      <a id="PhantomJSInfo:PhantomJSInfo"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">trait</span>
+        <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="OneServerPerTest.html"><span class="name">OneServerPerTest</span></a><span class="result"> extends <a href="guice/GuiceOneServerPerTest.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerTest">GuiceOneServerPerTest</a></span>
+        <a href="PhantomJSInfo.html"><span class="name">PhantomJSInfo</span></a><span class="params">(<span name="phantomCapabilities">phantomCapabilities: <span class="extype" name="org.openqa.selenium.remote.DesiredCapabilities">DesiredCapabilities</span> = <span class="symbol"><span class="name"><a href="../../package.html">DesiredCapabilities.phantomjs()</a></span></span></span>)</span><span class="result"> extends <a href="BrowserInfo.html" class="extype" name="org.scalatestplus.play.BrowserInfo">BrowserInfo</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.package@OneServerPerTestextendsGuiceOneServerPerTest" title="Permalink" target="_top">
+      <a href="../../../index.html#org.scalatestplus.play.package@PhantomJSInfoextendsBrowserInfowithProductwithSerializable" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Synonym for GuiceOneServerPerTest
-</p><div class="fullcomment"><div class="comment cmt"><p>Synonym for GuiceOneServerPerTest
-</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@Deprecated</span>
-              
-        </dd></dl></div>
+      <p class="shortcomment cmt">PhantomJS browser info, which encapsulates the browser name, <code>&quot;[PhantomJS]&quot;</code>; tag name, <code>org.scalatest.tags.PhantomJS</code>; and a factory method that produces a Selenium <span class="extype" name="org.openqa.selenium.phantomjs.PhantomJSDriver">org.openqa.selenium.phantomjs.PhantomJSDriver</span>.</p><div class="fullcomment"><div class="comment cmt"><p>PhantomJS browser info, which encapsulates the browser name, <code>&quot;[PhantomJS]&quot;</code>; tag name, <code>org.scalatest.tags.PhantomJS</code>; and a factory method that produces a Selenium <span class="extype" name="org.openqa.selenium.phantomjs.PhantomJSDriver">org.openqa.selenium.phantomjs.PhantomJSDriver</span>.</p><p>This class's superclass, <code>BrowserInfo</code>, is used by <a href="AllBrowsersPerSuite.html" class="extype" name="org.scalatestplus.play.AllBrowsersPerSuite">AllBrowsersPerSuite</a> and
+<a href="AllBrowsersPerTest.html" class="extype" name="org.scalatestplus.play.AllBrowsersPerTest">AllBrowsersPerTest</a>: an <code>IndexedSeq[BrowserInfo]</code> is returned
+from the <code>browsers</code> field of these traits to specify the browsers to share between tests.
+When tests are registered, <code>AllBrowsersPerSuite</code> and <code>AllBrowsersPerTest</code> use the browser name to ensure the tests shared by multiple browsers
+have unique names (the name of each shared test is appended with a browser name). When the tests run, these traits
+use the <code>BrowserInfo</code>'s factory method to create <code>WebDriver</code>s as needed.
+The <code>AllBrowsersPerSuite</code> and <code>AllBrowsersPerTest</code> traits use the  tag name to automatically tag any tests that use
+a particular <code>WebDriver</code> with the appropriate tag so that tests can be dynamically filtered by the browser the use.
+</p></div><dl class="paramcmts block"><dt class="param">phantomCapabilities</dt><dd class="cmt"><p>the <span class="extype" name="DesiredCapabilities">DesiredCapabilities</span> to use when creating new <span class="extype" name="org.openqa.selenium.phantomjs.PhantomJSDriver">org.openqa.selenium.phantomjs.PhantomJSDriver</span>
+                           in the <code>createWebDriver</code> factory method.</p></dd></dl></div>
     </li><li name="org.scalatestplus.play.PlaySpec" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="PlaySpecextendsWordSpecwithMustMatcherswithOptionValueswithWsScalaTestClient"></a>
       <a id="PlaySpec:PlaySpec"></a>
@@ -1746,7 +1712,7 @@ class ExampleSpec extends PlaySpec with OneServerPerTest with OneBrowserPerTest 
       </a>
     </span>
       <p class="shortcomment cmt">Convenience &quot;super Suite&quot; base class for Play tests.</p><div class="fullcomment"><div class="comment cmt"><p>Convenience &quot;super Suite&quot; base class for Play tests.</p><p>Extend this class by default for testing Play apps with the ScalaTest + Play library. You can mix other traits into it to access needed fixtures, such as
-<a href="guice/GuiceOneAppPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneAppPerSuite">GuiceOneAppPerSuite</a>, <span class="extype" name="org.scalatestplus.play.guice..GuiceOneAppPerTest">GuiceOneAppPerTest</span>, <a href="guice/GuiceOneServerPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerSuite">GuiceOneServerPerSuite</a>, <span class="extype" name="org.scalatestplus.play.guice..GuiceOneServerPerTest">GuiceOneServerPerTest</span>, <a href="OneBrowserPerSuite.html" class="extype" name="org.scalatestplus.play.OneBrowserPerSuite">OneBrowserPerSuite</a>, <a href="OneBrowserPerTest.html" class="extype" name="org.scalatestplus.play.OneBrowserPerTest">OneBrowserPerTest</a>, <a href="AllBrowsersPerSuite.html" class="extype" name="org.scalatestplus.play.AllBrowsersPerSuite">AllBrowsersPerSuite</a>, or <a href="AllBrowsersPerTest.html" class="extype" name="org.scalatestplus.play.AllBrowsersPerTest">AllBrowsersPerTest</a> mix If you want to use trait <a href="MixedFixtures.html" class="extype" name="org.scalatestplus.play.MixedFixtures">MixedFixtures</a>, extend <a href="MixedPlaySpec.html" class="extype" name="org.scalatestplus.play.MixedPlaySpec">MixedPlaySpec</a> instead.
+<a href="guice/GuiceOneAppPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneAppPerSuite">GuiceOneAppPerSuite</a>, <a href="guice/GuiceOneAppPerTest.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneAppPerTest">GuiceOneAppPerTest</a>, <a href="guice/GuiceOneServerPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerSuite">GuiceOneServerPerSuite</a>, <a href="guice/GuiceOneServerPerTest.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerTest">GuiceOneServerPerTest</a>, <a href="OneBrowserPerSuite.html" class="extype" name="org.scalatestplus.play.OneBrowserPerSuite">OneBrowserPerSuite</a>, <a href="OneBrowserPerTest.html" class="extype" name="org.scalatestplus.play.OneBrowserPerTest">OneBrowserPerTest</a>, <a href="AllBrowsersPerSuite.html" class="extype" name="org.scalatestplus.play.AllBrowsersPerSuite">AllBrowsersPerSuite</a>, or <a href="AllBrowsersPerTest.html" class="extype" name="org.scalatestplus.play.AllBrowsersPerTest">AllBrowsersPerTest</a> mix If you want to use trait <a href="MixedFixtures.html" class="extype" name="org.scalatestplus.play.MixedFixtures">MixedFixtures</a>, extend <a href="MixedPlaySpec.html" class="extype" name="org.scalatestplus.play.MixedPlaySpec">MixedPlaySpec</a> instead.
 </p></div></div>
     </li><li name="org.scalatestplus.play.PortNumber" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="PortNumberextendsProductwithSerializable"></a>
@@ -1837,6 +1803,92 @@ the <code>WebDriver</code> strategy (i.e., the extent to which <code>WebDriver</
       </a>
     </span>
       <p class="shortcomment cmt">Trait providing convenience methods to create WS requests in tests.</p>
+    </li><li name="org.scalatestplus.play.OneAppPerSuite" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="OneAppPerSuiteextendsGuiceOneAppPerSuite"></a>
+      <a id="OneAppPerSuite:OneAppPerSuite"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="OneAppPerSuite.html"><span class="name deprecated" title="Deprecated: (Since version 2.0.0) Use GuiceOneAppPerSuite instead">OneAppPerSuite</span></a><span class="result"> extends <a href="guice/GuiceOneAppPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneAppPerSuite">GuiceOneAppPerSuite</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.scalatestplus.play.package@OneAppPerSuiteextendsGuiceOneAppPerSuite" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Synonym for GuiceOneAppPerSuite.</p><div class="fullcomment"><div class="comment cmt"><p>Synonym for GuiceOneAppPerSuite.
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.0.0)</i> Use GuiceOneAppPerSuite instead</p></dd></dl></div>
+    </li><li name="org.scalatestplus.play.OneAppPerTest" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="OneAppPerTestextendsGuiceOneAppPerTest"></a>
+      <a id="OneAppPerTest:OneAppPerTest"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="OneAppPerTest.html"><span class="name deprecated" title="Deprecated: (Since version 2.0.0) Use GuiceOneAppPerTest instead">OneAppPerTest</span></a><span class="result"> extends <a href="guice/GuiceOneAppPerTest.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneAppPerTest">GuiceOneAppPerTest</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.scalatestplus.play.package@OneAppPerTestextendsGuiceOneAppPerTest" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Synonym for GuiceOneAppPerTest
+</p><div class="fullcomment"><div class="comment cmt"><p>Synonym for GuiceOneAppPerTest
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.0.0)</i> Use GuiceOneAppPerTest instead</p></dd></dl></div>
+    </li><li name="org.scalatestplus.play.OneServerPerSuite" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="OneServerPerSuiteextendsGuiceOneServerPerSuite"></a>
+      <a id="OneServerPerSuite:OneServerPerSuite"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="OneServerPerSuite.html"><span class="name deprecated" title="Deprecated: (Since version 2.0.0) Use GuiceOneServerPerSuite instead">OneServerPerSuite</span></a><span class="result"> extends <a href="guice/GuiceOneServerPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerSuite">GuiceOneServerPerSuite</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.scalatestplus.play.package@OneServerPerSuiteextendsGuiceOneServerPerSuite" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Synonym for GuiceOneServerPerSuite.</p><div class="fullcomment"><div class="comment cmt"><p>Synonym for GuiceOneServerPerSuite.
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.0.0)</i> Use GuiceOneServerPerSuite instead</p></dd></dl></div>
+    </li><li name="org.scalatestplus.play.OneServerPerTest" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="OneServerPerTestextendsGuiceOneServerPerTest"></a>
+      <a id="OneServerPerTest:OneServerPerTest"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="OneServerPerTest.html"><span class="name deprecated" title="Deprecated: (Since version 2.0.0) Use GuiceOneServerPerTest instead">OneServerPerTest</span></a><span class="result"> extends <a href="guice/GuiceOneServerPerTest.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerTest">GuiceOneServerPerTest</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.scalatestplus.play.package@OneServerPerTestextendsGuiceOneServerPerTest" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Synonym for GuiceOneServerPerTest
+</p><div class="fullcomment"><div class="comment cmt"><p>Synonym for GuiceOneServerPerTest
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.0.0)</i> Use GuiceOneServerPerTest instead</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -1983,6 +2035,23 @@ use the <code>BrowserInfo</code>'s factory method to create <code>WebDriver</cod
 The <code>AllBrowsersPerSuite</code> and <code>AllBrowsersPerTest</code> traits use the  tag name to automatically tag any tests that use
 a particular <code>WebDriver</code> with the appropriate tag so that tests can be dynamically filtered by the browser the use.
 </p></div></div>
+    </li><li name="org.scalatestplus.play.PhantomJSFactory" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="PhantomJSFactory"></a>
+      <a id="PhantomJSFactory:PhantomJSFactory"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="PhantomJSFactory$.html"><span class="name">PhantomJSFactory</span></a><span class="result"> extends <a href="PhantomJSFactory.html" class="extype" name="org.scalatestplus.play.PhantomJSFactory">PhantomJSFactory</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.scalatestplus.play.package@PhantomJSFactory" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Companion object to trait <code>PhantomJSFactory</code> that mixes in the trait.</p>
     </li><li name="org.scalatestplus.play.SafariFactory" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="SafariFactory"></a>
       <a id="SafariFactory:SafariFactory"></a>

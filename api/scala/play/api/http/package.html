@@ -50,7 +50,7 @@
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Contains standard HTTP constants.
 For example:</p><pre><span class="kw">val</span> text = ContentTypes.TEXT
 <span class="kw">val</span> ok = Status.OK
-<span class="kw">val</span> accept = HeaderNames.ACCEPT</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play/src/main/scala/play/api/http/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
+<span class="kw">val</span> accept = HeaderNames.ACCEPT</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0-M2/framework/src/play/src/main/scala/play/api/http/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -63,7 +63,7 @@ For example:</p><pre><span class="kw">val</span> text = ContentTypes.TEXT
               <ol>
                 
                 <li class="alpha in"><span>Alphabetic</span></li>
-                <li class="inherit out"><span>By inheritance</span></li>
+                <li class="inherit out"><span>By Inheritance</span></li>
               </ol>
             </div>
         <div id="ancestors">
@@ -76,7 +76,7 @@ For example:</p><pre><span class="kw">val</span> text = ContentTypes.TEXT
             <span class="filtertype"></span>
             <ol>
               <li class="hideall out"><span>Hide All</span></li>
-              <li class="showall in"><span>Show all</span></li>
+              <li class="showall in"><span>Show All</span></li>
             </ol>
           </div>
         <div id="visbl">
@@ -264,8 +264,8 @@ For example:</p><pre><span class="kw">val</span> text = ContentTypes.TEXT
     </span>
       <p class="shortcomment cmt">A default implementation of HttpFilters that accepts filters as a varargs constructor and exposes them as a
 filters sequence.</p><div class="fullcomment"><div class="comment cmt"><p>A default implementation of HttpFilters that accepts filters as a varargs constructor and exposes them as a
-filters sequence. For example:</p><pre><span class="kw">class</span> Filters @Inject()(csrfFilter: CSRFFilter, corsFilter: CORSFilter)
-  <span class="kw">extends</span> DefaultHttpFilters(csrfFilter, corsFilter)</pre></div></div>
+filters sequence. This is available for runtime DI users who don't want to do things in configuration using play.filters.enabled, because they need more fine grained control over the injected components.</p><p>For example:</p><pre><span class="kw">class</span> Filters @Inject()(defaultFilters: EnabledFilters, corsFilter: CORSFilter)
+  <span class="kw">extends</span> DefaultHttpFilters(defaultFilters.filters :+ corsFilter: _*)</pre></div></div>
     </li><li name="play.api.http.DefaultHttpRequestHandler" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="DefaultHttpRequestHandlerextendsHttpRequestHandler"></a>
       <a id="DefaultHttpRequestHandler:DefaultHttpRequestHandler"></a>
@@ -304,6 +304,23 @@ is the default one, in order to provide support for Java actions.
       </a>
     </span>
       <p class="shortcomment cmt">Default Writeable.</p>
+    </li><li name="play.api.http.EnabledFilters" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="EnabledFiltersextendsHttpFilters"></a>
+      <a id="EnabledFilters:EnabledFilters"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="EnabledFilters.html"><span class="name">EnabledFilters</span></a><span class="result"> extends <a href="HttpFilters.html" class="extype" name="play.api.http.HttpFilters">HttpFilters</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.http.package@EnabledFiltersextendsHttpFilters" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">This class pulls in a list of filters through configuration property, binding them to a list of classes.</p>
     </li><li name="play.api.http.FileMimeTypes" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="FileMimeTypesextendsAnyRef"></a>
       <a id="FileMimeTypes:FileMimeTypes"></a>
@@ -681,7 +698,7 @@ the base class for your custom <a href="HttpRequestHandler.html" class="extype" 
     </span>
       <p class="shortcomment cmt">Common HTTP MIME types</p>
     </li><li name="play.api.http.NoHttpFilters" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="NoHttpFiltersextendsDefaultHttpFilters"></a>
+      <a id="NoHttpFiltersextendsHttpFilters"></a>
       <a id="NoHttpFilters:NoHttpFilters"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -689,10 +706,10 @@ the base class for your custom <a href="HttpRequestHandler.html" class="extype" 
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="NoHttpFilters.html"><span class="name">NoHttpFilters</span></a><span class="result"> extends <a href="DefaultHttpFilters.html" class="extype" name="play.api.http.DefaultHttpFilters">DefaultHttpFilters</a></span>
+        <a href="NoHttpFilters.html"><span class="name">NoHttpFilters</span></a><span class="result"> extends <a href="HttpFilters.html" class="extype" name="play.api.http.HttpFilters">HttpFilters</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.http.package@NoHttpFiltersextendsDefaultHttpFilters" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.http.package@NoHttpFiltersextendsHttpFilters" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -1191,7 +1208,7 @@ based on the location of application.conf.  This should be stable across restart
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Defines all standard HTTP Status.</p>
+      <p class="shortcomment cmt">Defines all standard HTTP status codes, with additional helpers for determining the type of status.</p>
     </li><li name="play.api.http.Writeable" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Writeable"></a>
       <a id="Writeable:Writeable"></a>

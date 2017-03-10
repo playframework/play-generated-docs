@@ -56,7 +56,7 @@ the <code>WebDriver</code> is placed in the <code>ConfigMap</code> under the key
 information represents the &quot;configured browser&quot; that is passed from the enclosing suite to the nested suites. Trait <code>ConfiguredBrowser</code> extracts this information from
 from the <code>ConfigMap</code> and makes the <code>WebDriver</code> available implicitly from the <code>webDriver</code> method.</p><p>This trait's self-type, <a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a>,  will ensure
 a <code>TestServer</code> and <code>Application</code> are available to each test. The self-type will require that you mix in either
-<a href="guice/GuiceOneServerPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerSuite">GuiceOneServerPerSuite</a>, <a href="OneServerPerTest.html" class="extype" name="org.scalatestplus.play.OneServerPerTest">OneServerPerTest</a>,
+<a href="guice/GuiceOneServerPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerSuite">GuiceOneServerPerSuite</a>, <a href="guice/GuiceOneServerPerTest.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerTest">GuiceOneServerPerTest</a>,
 <a href="ConfiguredServer.html" class="extype" name="org.scalatestplus.play.ConfiguredServer">ConfiguredServer</a> before you mix in this trait. Your choice among these three
 <code>ServerProvider</code>s will determine the extent to which one or more <code>TestServer</code>s are shared by multiple tests.</p><p>To prevent discovery of nested suites you can annotate them with <code>@DoNotDiscover</code>. Here's an example
 taken from the documentation for trait <a href="OneBrowserPerSuite.html" class="extype" name="org.scalatestplus.play.OneBrowserPerSuite">OneBrowserPerSuite</a>:</p><p><pre class="stHighlight">
@@ -75,15 +75,15 @@ class ExampleSpec extends PlaySpec with OneServerPerSuite with OneBrowserPerSuit
   // Override fakeApplication() if you need a Application with other than non-default parameters.
   def fakeApplication(): Application = new GuiceApplicationBuilder()
       .configure("foo" -> "bar", "ehcacheplugin" -> "disabled")
-      .router(Router.from(TestRoute))
+      .router(TestRoutes.router)
       .build()
 
   "The OneBrowserPerSuite trait" must {
     "provide an Application" in {
-      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
+      app.configuration.getOptional[String]("ehcacheplugin") mustBe Some("disabled")
     }
     "make the Application available implicitly" in {
-      def getConfig(key: String)(implicit app: Application) = app.configuration.getString(key)
+      def getConfig(key: String)(implicit app: Application) = app.configuration.getOptional[String](key)
       getConfig("ehcacheplugin") mustBe Some("disabled")
     }
     "start the Application" in {
@@ -108,7 +108,7 @@ class ExampleSpec extends PlaySpec with OneServerPerSuite with OneBrowserPerSuit
   }
 }
 </pre>
-</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="org.scalatestplus.play.ConfiguredBrowser">ConfiguredBrowser</a> with <span class="extype" name="org.scalatest.TestSuite">TestSuite</span> with <a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a></dd><dt>Source</dt><dd><a href="https://github.com/playframework/scalatestplus-play/tree/master/module/src/main/scala/org/scalatestplus/play/ConfiguredBrowser.scala" target="_blank">ConfiguredBrowser.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="org.scalatestplus.play.ConfiguredBrowser">ConfiguredBrowser</a> with <span class="extype" name="org.scalatest.TestSuite">TestSuite</span> with <a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a></dd><dt>Source</dt><dd><a href="https://github.com/playframework/scalatestplus-play/tree/3.0.0-M1/module/src/main/scala/org/scalatestplus/play/ConfiguredBrowser.scala" target="_blank">ConfiguredBrowser.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="org.scalatest.concurrent.IntegrationPatience">IntegrationPatience</span>, <span class="extype" name="org.scalatest.concurrent.Eventually">Eventually</span>, <span class="extype" name="org.scalatest.concurrent.PatienceConfiguration">PatienceConfiguration</span>, <span class="extype" name="org.scalatest.concurrent.AbstractPatienceConfiguration">AbstractPatienceConfiguration</span>, <span class="extype" name="org.scalatest.concurrent.ScaledTimeSpans">ScaledTimeSpans</span>, <span class="extype" name="org.scalatest.selenium.WebBrowser">WebBrowser</span>, <span class="extype" name="org.scalatest.TestSuiteMixin">TestSuiteMixin</span>, <span class="extype" name="org.scalatest.SuiteMixin">SuiteMixin</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -121,7 +121,7 @@ class ExampleSpec extends PlaySpec with OneServerPerSuite with OneBrowserPerSuit
               <ol>
                 
                 <li class="alpha in"><span>Alphabetic</span></li>
-                <li class="inherit out"><span>By inheritance</span></li>
+                <li class="inherit out"><span>By Inheritance</span></li>
               </ol>
             </div>
         <div id="ancestors">
@@ -134,7 +134,7 @@ class ExampleSpec extends PlaySpec with OneServerPerSuite with OneBrowserPerSuit
             <span class="filtertype"></span>
             <ol>
               <li class="hideall out"><span>Hide All</span></li>
-              <li class="showall in"><span>Show all</span></li>
+              <li class="showall in"><span>Show All</span></li>
             </ol>
           </div>
         <div id="visbl">
@@ -2729,7 +2729,7 @@ the value that will be returned from the <code>webDriver</code> method, then cal
 <code>super.run</code>.</p><p>If no key matches &quot;org.scalatestplus.play.webDriver&quot; in <code>args.configMap</code>,
 or the associated value is not a <code>WebDriver</code>, throws <code>IllegalArgumentException</code>.
 </p></div><dl class="paramcmts block"><dt class="param">testName</dt><dd class="cmt"><p>an optional name of one test to run. If <code>None</code>, all relevant tests should be run.
-                I.e., <code>None</code> acts like a wildcard that means run all relevant tests in this <code>Suite</code>.</p></dd><dt class="param">args</dt><dd class="cmt"><p>the <code>Args</code> for this run</p></dd><dt>returns</dt><dd class="cmt"><p>a <code>Status</code> object that indicates when all tests and nested suites started by this method have completed, and whether or not a failure occurred.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.scalatestplus.play.ConfiguredBrowser">ConfiguredBrowser</a> → SuiteMixin</dd><dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="IllegalArgumentException"><code>IllegalArgumentException</code></span> if the <code>WebDriver</code> does not appear in <code>args.configMap</code> under the expected key</p></span></dd></dl></div>
+                I.e., <code>None</code> acts like a wildcard that means run all relevant tests in this <code>Suite</code>.</p></dd><dt class="param">args</dt><dd class="cmt"><p>the <code>Args</code> for this run</p></dd><dt>returns</dt><dd class="cmt"><p>a <code>Status</code> object that indicates when all tests and nested suites started by this method have completed, and whether or not a failure occurred.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.scalatestplus.play.ConfiguredBrowser">ConfiguredBrowser</a> → SuiteMixin</dd><dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="java.lang.IllegalArgumentException"><code>java.lang.IllegalArgumentException</code></span> if the <code>WebDriver</code> does not appear in <code>args.configMap</code> under the expected key</p></span></dd></dl></div>
     </li><li name="org.scalatest.concurrent.ScaledTimeSpans#scaled" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="scaled(span:org.scalatest.time.Span):org.scalatest.time.Span"></a>
       <a id="scaled(Span):Span"></a>

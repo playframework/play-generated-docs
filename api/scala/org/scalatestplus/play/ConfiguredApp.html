@@ -70,10 +70,10 @@ class ExampleSpec extends PlaySpec with GuiceOneAppPerSuite {
 
   "The GuiceOneAppPerSuite trait" must {
     "provide a FakeApplication" in {
-      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
+      app.configuration.getOptional[String]("ehcacheplugin") mustBe Some("disabled")
     }
     "make the FakeApplication available implicitly" in {
-      def getConfig(key: String)(implicit app: Application) = app.configuration.getString(key)
+      def getConfig(key: String)(implicit app: Application) = app.configuration.getOptional[String](key)
       getConfig("ehcacheplugin") mustBe Some("disabled")
     }
     "start the FakeApplication" in {
@@ -82,7 +82,7 @@ class ExampleSpec extends PlaySpec with GuiceOneAppPerSuite {
   }
 }
 </pre>
-</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="org.scalatestplus.play.ConfiguredApp">ConfiguredApp</a> with <span class="extype" name="org.scalatest.TestSuite">TestSuite</span></dd><dt>Source</dt><dd><a href="https://github.com/playframework/scalatestplus-play/tree/master/module/src/main/scala/org/scalatestplus/play/ConfiguredApp.scala" target="_blank">ConfiguredApp.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="org.scalatestplus.play.ConfiguredApp">ConfiguredApp</a> with <span class="extype" name="org.scalatest.TestSuite">TestSuite</span></dd><dt>Source</dt><dd><a href="https://github.com/playframework/scalatestplus-play/tree/3.0.0-M1/module/src/main/scala/org/scalatestplus/play/ConfiguredApp.scala" target="_blank">ConfiguredApp.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="org.scalatest.TestSuiteMixin">TestSuiteMixin</span>, <span class="extype" name="org.scalatest.SuiteMixin">SuiteMixin</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -95,7 +95,7 @@ class ExampleSpec extends PlaySpec with GuiceOneAppPerSuite {
               <ol>
                 
                 <li class="alpha in"><span>Alphabetic</span></li>
-                <li class="inherit out"><span>By inheritance</span></li>
+                <li class="inherit out"><span>By Inheritance</span></li>
               </ol>
             </div>
         <div id="ancestors">
@@ -108,7 +108,7 @@ class ExampleSpec extends PlaySpec with GuiceOneAppPerSuite {
             <span class="filtertype"></span>
             <ol>
               <li class="hideall out"><span>Hide All</span></li>
-              <li class="showall in"><span>Show all</span></li>
+              <li class="showall in"><span>Show All</span></li>
             </ol>
           </div>
         <div id="visbl">
@@ -642,7 +642,7 @@ and if it exists, sets it as the <code>Application</code> that will be returned 
 <code>super.run</code>.</p><p>If no key matches &quot;org.scalatestplus.play.app&quot; in <code>args.configMap</code>, or the associated value is
 not a <code>Application</code>, throws <code>IllegalArgumentException</code>.</p><p>To prevent discovery of nested suites you can annotate them with <code>@DoNotDiscover</code>.
 </p></div><dl class="paramcmts block"><dt class="param">testName</dt><dd class="cmt"><p>an optional name of one test to run. If <code>None</code>, all relevant tests should be run.
-                I.e., <code>None</code> acts like a wildcard that means run all relevant tests in this <code>Suite</code>.</p></dd><dt class="param">args</dt><dd class="cmt"><p>the <code>Args</code> for this run</p></dd><dt>returns</dt><dd class="cmt"><p>a <code>Status</code> object that indicates when all tests and nested suites started by this method have completed, and whether or not a failure occurred.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.scalatestplus.play.ConfiguredApp">ConfiguredApp</a> → SuiteMixin</dd><dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="IllegalArgumentException"><code>IllegalArgumentException</code></span> if the <code>Application</code> does not appear in <code>args.configMap</code> under the expected key</p></span></dd></dl></div>
+                I.e., <code>None</code> acts like a wildcard that means run all relevant tests in this <code>Suite</code>.</p></dd><dt class="param">args</dt><dd class="cmt"><p>the <code>Args</code> for this run</p></dd><dt>returns</dt><dd class="cmt"><p>a <code>Status</code> object that indicates when all tests and nested suites started by this method have completed, and whether or not a failure occurred.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.scalatestplus.play.ConfiguredApp">ConfiguredApp</a> → SuiteMixin</dd><dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="java.lang.IllegalArgumentException"><code>java.lang.IllegalArgumentException</code></span> if the <code>Application</code> does not appear in <code>args.configMap</code> under the expected key</p></span></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>

@@ -60,7 +60,7 @@ all nested suites have completed, after which the <code>WebDriver</code> will be
 This trait also overrides <code>Suite.withFixture</code> to cancel tests automatically if the related
 <code>WebDriver</code> is not available on the host platform.</p><p>This trait's self-type, <a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a>,  will ensure
 a <code>TestServer</code> and <code>Application</code> are available to each test. The self-type will require that you mix in either
-<a href="guice/GuiceOneServerPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerSuite">GuiceOneServerPerSuite</a>, <a href="OneServerPerTest.html" class="extype" name="org.scalatestplus.play.OneServerPerTest">OneServerPerTest</a>,
+<a href="guice/GuiceOneServerPerSuite.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerSuite">GuiceOneServerPerSuite</a>, <a href="guice/GuiceOneServerPerTest.html" class="extype" name="org.scalatestplus.play.guice.GuiceOneServerPerTest">OneServerPerTest</a>,
 <a href="ConfiguredServer.html" class="extype" name="org.scalatestplus.play.ConfiguredServer">ConfiguredServer</a> before you mix in this trait. Your choice among these three
 <code>ServerProvider</code>s will determine the extent to which one or more <code>TestServer</code>s are shared by multiple tests.</p><p>Here's an example that shows demonstrates of the services provided by this trait. Note that
 to use this trait, you must mix in one of the driver factories (this example
@@ -80,15 +80,15 @@ class ExampleSpec extends PlaySpec with OneServerPerSuite with OneBrowserPerSuit
   // Override fakeApplication() if you need a Application with other than non-default parameters.
   def fakeApplication(): Application = new GuiceApplicationBuilder()
     .configure("foo" -> "bar", "ehcacheplugin" -> "disabled")
-    .router(Router.from(TestRoute))
+    .router(TestRoutes.router)
     .build()
 
   "The OneBrowserPerSuite trait" must {
     "provide an Application" in {
-      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
+      app.configuration.getOptional[String]("ehcacheplugin") mustBe Some("disabled")
     }
     "make the Application available implicitly" in {
-      def getConfig(key: String)(implicit app: Application) = app.configuration.getString(key)
+      def getConfig(key: String)(implicit app: Application) = app.configuration.getOptional[String](key)
       getConfig("ehcacheplugin") mustBe Some("disabled")
     }
     "start the Application" in {
@@ -149,10 +149,10 @@ class BlueSpec extends PlaySpec with ConfiguredServer with ConfiguredBrowser {
 
   "The OneBrowserPerSuite trait" must {
     "provide an Application" in {
-      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
+      app.configuration.getOptional[String]("ehcacheplugin") mustBe Some("disabled")
     }
     "make the Application available implicitly" in {
-      def getConfig(key: String)(implicit app: Application) = app.configuration.getString(key)
+      def getConfig(key: String)(implicit app: Application) = app.configuration.getOptional[String](key)
       getConfig("ehcacheplugin") mustBe Some("disabled")
     }
     "start the Application" in {
@@ -197,10 +197,10 @@ abstract class MultiBrowserExampleSpec extends PlaySpec with OneServerPerSuite w
 
   "The OneBrowserPerSuite trait" must {
     "provide an Application" in {
-      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
+      app.configuration.getOptional[String]("ehcacheplugin") mustBe Some("disabled")
     }
     "make the Application available implicitly" in {
-      def getConfig(key: String)(implicit app: Application) = app.configuration.getString(key)
+      def getConfig(key: String)(implicit app: Application) = app.configuration.getOptional[String](key)
       getConfig("ehcacheplugin") mustBe Some("disabled")
     }
     "start the Application" in {
@@ -310,7 +310,7 @@ using sbt:</p><p><pre class="stREPL">
 [info] <span class="stGreen">HtmlUnitExampleSpec:</span>
 [info] <span class="stGreen">The OneBrowserPerSuite trait</span>
 </pre>
-</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="org.scalatestplus.play.OneBrowserPerSuite">OneBrowserPerSuite</a> with <span class="extype" name="org.scalatest.TestSuite">TestSuite</span> with <a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a></dd><dt>Source</dt><dd><a href="https://github.com/playframework/scalatestplus-play/tree/master/module/src/main/scala/org/scalatestplus/play/OneBrowserPerSuite.scala" target="_blank">OneBrowserPerSuite.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="org.scalatestplus.play.OneBrowserPerSuite">OneBrowserPerSuite</a> with <span class="extype" name="org.scalatest.TestSuite">TestSuite</span> with <a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a></dd><dt>Source</dt><dd><a href="https://github.com/playframework/scalatestplus-play/tree/3.0.0-M1/module/src/main/scala/org/scalatestplus/play/OneBrowserPerSuite.scala" target="_blank">OneBrowserPerSuite.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="BrowserFactory.html" class="extype" name="org.scalatestplus.play.BrowserFactory">BrowserFactory</a>, <span class="extype" name="org.scalatest.concurrent.IntegrationPatience">IntegrationPatience</span>, <span class="extype" name="org.scalatest.concurrent.Eventually">Eventually</span>, <span class="extype" name="org.scalatest.concurrent.PatienceConfiguration">PatienceConfiguration</span>, <span class="extype" name="org.scalatest.concurrent.AbstractPatienceConfiguration">AbstractPatienceConfiguration</span>, <span class="extype" name="org.scalatest.concurrent.ScaledTimeSpans">ScaledTimeSpans</span>, <span class="extype" name="org.scalatest.selenium.WebBrowser">WebBrowser</span>, <span class="extype" name="org.scalatest.TestSuiteMixin">TestSuiteMixin</span>, <span class="extype" name="org.scalatest.SuiteMixin">SuiteMixin</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -323,7 +323,7 @@ using sbt:</p><p><pre class="stREPL">
               <ol>
                 
                 <li class="alpha in"><span>Alphabetic</span></li>
-                <li class="inherit out"><span>By inheritance</span></li>
+                <li class="inherit out"><span>By Inheritance</span></li>
               </ol>
             </div>
         <div id="ancestors">
@@ -336,7 +336,7 @@ using sbt:</p><p><pre class="stREPL">
             <span class="filtertype"></span>
             <ol>
               <li class="hideall out"><span>Hide All</span></li>
-              <li class="showall in"><span>Show all</span></li>
+              <li class="showall in"><span>Show All</span></li>
             </ol>
           </div>
         <div id="visbl">

@@ -69,15 +69,15 @@ class ExampleSpec extends PlaySpec with OneServerPerTest {
   // Override newAppForTest or use GuiceOneServerPerTest
   implicit override def newAppForTest(testData: TestData): Application = new GuiceApplicationBuilder()
     .configure(Map("ehcacheplugin" -> "disabled"))
-    .router(Router.from(TestRoute))
+    .router(TestRoutes.router)
     .build()
 
   "The OneServerPerTest trait" must {
     "provide a FakeApplication" in {
-      app.configuration.getString("ehcacheplugin") mustBe Some("disabled")
+      app.configuration.getOptional[String]("ehcacheplugin") mustBe Some("disabled")
     }
     "make the FakeApplication available implicitly" in {
-      def getConfig(key: String)(implicit app: Application) = app.configuration.getString(key)
+      def getConfig(key: String)(implicit app: Application) = app.configuration.getOptional[String](key)
       getConfig("ehcacheplugin") mustBe Some("disabled")
     }
     "start the FakeApplication" in {
@@ -97,7 +97,7 @@ class ExampleSpec extends PlaySpec with OneServerPerTest {
   }
 }
 </pre>
-</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="org.scalatestplus.play.BaseOneServerPerTest">BaseOneServerPerTest</a> with <span class="extype" name="org.scalatest.TestSuite">TestSuite</span> with <a href="FakeApplicationFactory.html" class="extype" name="org.scalatestplus.play.FakeApplicationFactory">FakeApplicationFactory</a></dd><dt>Source</dt><dd><a href="https://github.com/playframework/scalatestplus-play/tree/master/module/src/main/scala/org/scalatestplus/play/BaseOneServerPerTest.scala" target="_blank">BaseOneServerPerTest.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="org.scalatestplus.play.BaseOneServerPerTest">BaseOneServerPerTest</a> with <span class="extype" name="org.scalatest.TestSuite">TestSuite</span> with <a href="FakeApplicationFactory.html" class="extype" name="org.scalatestplus.play.FakeApplicationFactory">FakeApplicationFactory</a></dd><dt>Source</dt><dd><a href="https://github.com/playframework/scalatestplus-play/tree/3.0.0-M1/module/src/main/scala/org/scalatestplus/play/BaseOneServerPerTest.scala" target="_blank">BaseOneServerPerTest.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a>, <span class="extype" name="org.scalatest.TestSuiteMixin">TestSuiteMixin</span>, <span class="extype" name="org.scalatest.SuiteMixin">SuiteMixin</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
@@ -113,7 +113,7 @@ class ExampleSpec extends PlaySpec with OneServerPerTest {
               <ol>
                 
                 <li class="alpha in"><span>Alphabetic</span></li>
-                <li class="inherit out"><span>By inheritance</span></li>
+                <li class="inherit out"><span>By Inheritance</span></li>
               </ol>
             </div>
         <div id="ancestors">
@@ -126,7 +126,7 @@ class ExampleSpec extends PlaySpec with OneServerPerTest {
             <span class="filtertype"></span>
             <ol>
               <li class="hideall out"><span>Hide All</span></li>
-              <li class="showall in"><span>Show all</span></li>
+              <li class="showall in"><span>Show All</span></li>
             </ol>
           </div>
         <div id="visbl">

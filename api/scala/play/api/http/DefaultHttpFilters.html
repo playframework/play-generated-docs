@@ -50,13 +50,13 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A default implementation of HttpFilters that accepts filters as a varargs constructor and exposes them as a
-filters sequence. For example:</p><pre><span class="kw">class</span> Filters @Inject()(csrfFilter: CSRFFilter, corsFilter: CORSFilter)
-  <span class="kw">extends</span> DefaultHttpFilters(csrfFilter, corsFilter)</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/framework/src/play/src/main/scala/play/api/http/HttpFilters.scala" target="_blank">HttpFilters.scala</a></dd></dl><div class="toggleContainer block">
+filters sequence. This is available for runtime DI users who don't want to do things in configuration using play.filters.enabled, because they need more fine grained control over the injected components.</p><p>For example:</p><pre><span class="kw">class</span> Filters @Inject()(defaultFilters: EnabledFilters, corsFilter: CORSFilter)
+  <span class="kw">extends</span> DefaultHttpFilters(defaultFilters.filters :+ corsFilter: _*)</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0-M2/framework/src/play/src/main/scala/play/api/http/HttpFilters.scala" target="_blank">HttpFilters.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="HttpFilters.html" class="extype" name="play.api.http.HttpFilters">HttpFilters</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
             <span class="toggle">Known Subclasses</span>
-            <div class="subClasses hiddenContent"><a href="JavaHttpFiltersAdapter.html" class="extype" name="play.api.http.JavaHttpFiltersAdapter">JavaHttpFiltersAdapter</a>, <a href="NoHttpFilters.html" class="extype" name="play.api.http.NoHttpFilters">NoHttpFilters</a>, <a href="NoHttpFilters$.html" class="extype" name="play.api.http.NoHttpFilters">NoHttpFilters</a></div>
+            <div class="subClasses hiddenContent"><a href="JavaHttpFiltersAdapter.html" class="extype" name="play.api.http.JavaHttpFiltersAdapter">JavaHttpFiltersAdapter</a></div>
           </div></div>
         
 
@@ -67,7 +67,7 @@ filters sequence. For example:</p><pre><span class="kw">class</span> Filters @In
               <ol>
                 
                 <li class="alpha in"><span>Alphabetic</span></li>
-                <li class="inherit out"><span>By inheritance</span></li>
+                <li class="inherit out"><span>By Inheritance</span></li>
               </ol>
             </div>
         <div id="ancestors">
@@ -80,7 +80,7 @@ filters sequence. For example:</p><pre><span class="kw">class</span> Filters @In
             <span class="filtertype"></span>
             <ol>
               <li class="hideall out"><span>Hide All</span></li>
-              <li class="showall in"><span>Show all</span></li>
+              <li class="showall in"><span>Show All</span></li>
             </ol>
           </div>
         <div id="visbl">
@@ -93,7 +93,7 @@ filters sequence. For example:</p><pre><span class="kw">class</span> Filters @In
         <div id="allMembers">
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
-              <ol><li name="play.api.http.DefaultHttpFilters#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="play.api.http.DefaultHttpFilters#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="&lt;init&gt;(filters:play.api.mvc.EssentialFilter*):play.api.http.DefaultHttpFilters"></a>
       <a id="&lt;init&gt;:DefaultHttpFilters"></a>
       <h4 class="signature">
@@ -109,7 +109,10 @@ filters sequence. For example:</p><pre><span class="kw">class</span> Filters @In
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@Inject</span><span class="args">()</span>
+              
+        </dd></dl></div>
     </li></ol>
             </div>
 

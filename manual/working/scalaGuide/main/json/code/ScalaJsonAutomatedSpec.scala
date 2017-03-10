@@ -3,15 +3,10 @@
  */
 package scalaguide.json
 
-import play.api.data.validation.ValidationError
 import play.api.libs.json.Json
-import org.junit.runner.RunWith
 import org.specs2.mutable.Specification
-import org.specs2.runner.JUnitRunner
 import play.api.libs.json.JsonNaming.SnakeCase
 
-
-@RunWith(classOf[JUnitRunner])
 class ScalaJsonAutomatedSpec extends Specification {
 
   //#model
@@ -157,7 +152,7 @@ class ScalaJsonAutomatedSpec extends Specification {
 
       implicit val residentWrites = Json.writes[Resident]
 
-      val resident = Resident(name="Fiver", age=4, role=None)
+      val resident = Resident(name = "Fiver", age = 4, role = None)
 
       val residentJson: JsValue = Json.toJson(resident)
       //#auto-case-class-to-JSON
@@ -177,7 +172,8 @@ class ScalaJsonAutomatedSpec extends Specification {
         """{
           "name" : "Fiver",
           "age" : 4
-        }""")
+        }"""
+      )
 
       val residentFromJson: JsResult[Resident] = Json.fromJson[Resident](jsonString)
 
