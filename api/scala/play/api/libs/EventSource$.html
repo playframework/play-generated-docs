@@ -28,13 +28,13 @@
         </head>
         <body class="value">
       <div id="definition">
-        <img alt="Object" src="../../../lib/object_big.png" />
+        <img src="../../../lib/object_big.png" />
         <p id="owner"><a href="../../package.html" class="extype" name="play">play</a>.<a href="../package.html" class="extype" name="play.api">api</a>.<a href="package.html" class="extype" name="play.api.libs">libs</a></p>
         <h1>EventSource</h1><h3><span class="morelinks"><div>Related Doc:
             <a href="package.html" class="extype" name="play.api.libs">package libs</a>
           </div></span></h3><span class="permalink">
       <a href="../../../index.html#play.api.libs.EventSource$" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       </div>
@@ -49,24 +49,8 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>This class provides an easy way to use Server Sent Events (SSE) as a chunked encoding, using an Akka Source.</p><p>Please see the <a href="http://dev.w3.org/html5/eventsource/">Server-Sent Events specification</a> for details.</p><p>An example of how to display an event stream:</p><pre><span class="kw">import</span> java.time.ZonedDateTime
-<span class="kw">import</span> java.time.format.DateTimeFormatter
-<span class="kw">import</span> javax.inject.Singleton
-<span class="kw">import</span> akka.stream.scaladsl.Source
-<span class="kw">import</span> play.api.http.ContentTypes
-<span class="kw">import</span> play.api.libs.EventSource
-<span class="kw">import</span> play.api.mvc._
-
-<span class="kw">import</span> scala.concurrent.duration._
-
-<span class="kw">def</span> liveClock() = Action {
-  <span class="kw">val</span> df: DateTimeFormatter = DateTimeFormatter.ofPattern(<span class="lit">"HH mm ss"</span>)
-  <span class="kw">val</span> tickSource = Source.tick(<span class="num">0</span> millis, <span class="num">100</span> millis, <span class="lit">"TICK"</span>)
-  <span class="kw">val</span> source = tickSource.map { (tick) =&amp;gt;
-    df.format(ZonedDateTime.now())
-  }
-  Ok.chunked(source via EventSource.flow).as(ContentTypes.EVENT_STREAM)
-}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.5.12/framework/src/play/src/main/scala/play/api/libs/EventSource.scala" target="_blank">EventSource.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Helps you format Server-Sent Events</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.4.11/framework/src/play/src/main/scala/play/api/libs/EventSource.scala" target="_blank">EventSource.scala</a></dd><dt>See also</dt><dd><span class="cmt"><p><a href="http://www.w3.org/TR/eventsource/" target="_blank">http://www.w3.org/TR/eventsource/</a>
+</p></span></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -94,6 +78,7 @@
               <li class="hideall out"><span>Hide All</span></li>
               <li class="showall in"><span>Show all</span></li>
             </ol>
+            <a href="http://docs.scala-lang.org/overviews/scaladoc/usage.html#members" target="_blank">Learn more about member selection</a>
           </div>
         <div id="visbl">
             <span class="filtertype">Visibility</span>
@@ -120,10 +105,10 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.libs.EventSource$@EventextendsProductwithSerializable" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">An event encoded with the SSE protocol..</p>
+      
     </li><li name="play.api.libs.EventSource.EventDataExtractor" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="EventDataExtractor[A]extendsProductwithSerializable"></a>
       <a id="EventDataExtractor[A]:EventDataExtractor[A]"></a>
@@ -137,7 +122,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.libs.EventSource$@EventDataExtractor[A]extendsProductwithSerializable" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       
@@ -154,7 +139,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.libs.EventSource$@EventIdExtractor[E]extendsProductwithSerializable" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       
@@ -171,7 +156,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.libs.EventSource$@EventNameExtractor[E]extendsProductwithSerializable" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       
@@ -188,7 +173,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.libs.EventSource$@LowPriorityEventEncoderextendsAnyRef" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       
@@ -205,7 +190,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.libs.EventSource$@LowPriorityEventIdExtractorextendsAnyRef" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       
@@ -222,7 +207,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.libs.EventSource$@LowPriorityEventNameExtractorextendsAnyRef" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       
@@ -246,7 +231,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.libs.EventSource$@!=(x$1:Any):Boolean" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -263,7 +248,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.libs.EventSource$@##():Int" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -280,7 +265,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.libs.EventSource$@==(x$1:Any):Boolean" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -297,7 +282,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.libs.EventSource$@Event" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       
@@ -314,7 +299,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.libs.EventSource$@EventDataExtractor" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       
@@ -331,7 +316,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.libs.EventSource$@EventIdExtractor" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       
@@ -348,10 +333,28 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.libs.EventSource$@EventNameExtractor" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       
+    </li><li name="play.api.libs.EventSource#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="apply[E]()(implicitevidence$1:play.api.libs.EventSource.EventDataExtractor[E],implicitevidence$2:play.api.libs.EventSource.EventNameExtractor[E],implicitevidence$3:play.api.libs.EventSource.EventIdExtractor[E]):play.api.libs.iteratee.Enumeratee[E,play.api.libs.EventSource.Event]"></a>
+      <a id="apply[E]()(EventDataExtractor[E],EventNameExtractor[E],EventIdExtractor[E]):Enumeratee[E,Event]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">apply</span><span class="tparams">[<span name="E">E</span>]</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="EventSource$$EventDataExtractor.html" class="extype" name="play.api.libs.EventSource.EventDataExtractor">EventDataExtractor</a>[<span class="extype" name="play.api.libs.EventSource.apply.E">E</span>]</span>, <span name="arg1">arg1: <a href="EventSource$$EventNameExtractor.html" class="extype" name="play.api.libs.EventSource.EventNameExtractor">EventNameExtractor</a>[<span class="extype" name="play.api.libs.EventSource.apply.E">E</span>]</span>, <span name="arg2">arg2: <a href="EventSource$$EventIdExtractor.html" class="extype" name="play.api.libs.EventSource.EventIdExtractor">EventIdExtractor</a>[<span class="extype" name="play.api.libs.EventSource.apply.E">E</span>]</span>)</span><span class="result">: <a href="iteratee/Enumeratee.html" class="extype" name="play.api.libs.iteratee.Enumeratee">Enumeratee</a>[<span class="extype" name="play.api.libs.EventSource.apply.E">E</span>, <a href="EventSource$$Event.html" class="extype" name="play.api.libs.EventSource.Event">Event</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.libs.EventSource$@apply[E]()(implicitevidence$1:play.api.libs.EventSource.EventDataExtractor[E],implicitevidence$2:play.api.libs.EventSource.EventNameExtractor[E],implicitevidence$3:play.api.libs.EventSource.EventIdExtractor[E]):play.api.libs.iteratee.Enumeratee[E,play.api.libs.EventSource.Event]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Makes an <code>Enumeratee[E, Event]</code>, that is an <span class="extype" name="Enumeratee">Enumeratee</span> transforming <span class="extype" name="E">E</span> values into <a href="EventSource$$Event.html" class="extype" name="play.api.libs.EventSource.Event">Event</a> values.</p><div class="fullcomment"><div class="comment cmt"><p>Makes an <code>Enumeratee[E, Event]</code>, that is an <span class="extype" name="Enumeratee">Enumeratee</span> transforming <span class="extype" name="E">E</span> values into <a href="EventSource$$Event.html" class="extype" name="play.api.libs.EventSource.Event">Event</a> values.</p><p>Usage example:</p><pre><span class="kw">val</span> someDataStream: Enumerator[SomeData] = ???
+Ok.chunked(someDataStream &amp;&gt; EventSource())</pre></div></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <a id="asInstanceOf[T0]:T0"></a>
@@ -365,7 +368,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.libs.EventSource$@asInstanceOf[T0]:T0" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
@@ -382,7 +385,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.libs.EventSource$@clone():Object" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -405,7 +408,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.libs.EventSource$@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
@@ -422,7 +425,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.libs.EventSource$@equals(x$1:Any):Boolean" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -439,7 +442,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.libs.EventSource$@finalize():Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -449,24 +452,6 @@
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="play.api.libs.EventSource#flow" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="flow[E](implicitevidence$4:play.api.libs.EventSource.EventDataExtractor[E],implicitevidence$5:play.api.libs.EventSource.EventNameExtractor[E],implicitevidence$6:play.api.libs.EventSource.EventIdExtractor[E]):akka.stream.scaladsl.Flow[E,play.api.libs.EventSource.Event,_]"></a>
-      <a id="flow[E](EventDataExtractor[E],EventNameExtractor[E],EventIdExtractor[E]):Flow[E,Event,_]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">flow</span><span class="tparams">[<span name="E">E</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="EventSource$$EventDataExtractor.html" class="extype" name="play.api.libs.EventSource.EventDataExtractor">EventDataExtractor</a>[<span class="extype" name="play.api.libs.EventSource.flow.E">E</span>]</span>, <span name="arg1">arg1: <a href="EventSource$$EventNameExtractor.html" class="extype" name="play.api.libs.EventSource.EventNameExtractor">EventNameExtractor</a>[<span class="extype" name="play.api.libs.EventSource.flow.E">E</span>]</span>, <span name="arg2">arg2: <a href="EventSource$$EventIdExtractor.html" class="extype" name="play.api.libs.EventSource.EventIdExtractor">EventIdExtractor</a>[<span class="extype" name="play.api.libs.EventSource.flow.E">E</span>]</span>)</span><span class="result">: <span class="extype" name="akka.stream.scaladsl.Flow">Flow</span>[<span class="extype" name="play.api.libs.EventSource.flow.E">E</span>, <a href="EventSource$$Event.html" class="extype" name="play.api.libs.EventSource.Event">Event</a>, _]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.api.libs.EventSource$@flow[E](implicitevidence$4:play.api.libs.EventSource.EventDataExtractor[E],implicitevidence$5:play.api.libs.EventSource.EventNameExtractor[E],implicitevidence$6:play.api.libs.EventSource.EventIdExtractor[E]):akka.stream.scaladsl.Flow[E,play.api.libs.EventSource.Event,_]" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Makes a <code>Flow[E, Event, _]</code>, given an input source.</p><div class="fullcomment"><div class="comment cmt"><p>Makes a <code>Flow[E, Event, _]</code>, given an input source.</p><p>Usage example:</p><pre><span class="kw">val</span> jsonStream: Source[JsValue, <span class="std">Unit</span>] = createJsonSource()
-Ok.chunked(jsonStream via EventSource.flow).as(ContentTypes.EVENT_STREAM)</pre></div></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>
@@ -480,7 +465,7 @@ Ok.chunked(jsonStream via EventSource.flow).as(ContentTypes.EVENT_STREAM)</pre><
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.libs.EventSource$@getClass():Class[_]" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -497,7 +482,7 @@ Ok.chunked(jsonStream via EventSource.flow).as(ContentTypes.EVENT_STREAM)</pre><
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.libs.EventSource$@hashCode():Int" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -514,7 +499,7 @@ Ok.chunked(jsonStream via EventSource.flow).as(ContentTypes.EVENT_STREAM)</pre><
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.libs.EventSource$@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
@@ -531,7 +516,7 @@ Ok.chunked(jsonStream via EventSource.flow).as(ContentTypes.EVENT_STREAM)</pre><
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.libs.EventSource$@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
@@ -548,7 +533,7 @@ Ok.chunked(jsonStream via EventSource.flow).as(ContentTypes.EVENT_STREAM)</pre><
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.libs.EventSource$@notify():Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
@@ -565,7 +550,7 @@ Ok.chunked(jsonStream via EventSource.flow).as(ContentTypes.EVENT_STREAM)</pre><
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.libs.EventSource$@notifyAll():Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
@@ -582,7 +567,7 @@ Ok.chunked(jsonStream via EventSource.flow).as(ContentTypes.EVENT_STREAM)</pre><
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.libs.EventSource$@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
@@ -599,7 +584,7 @@ Ok.chunked(jsonStream via EventSource.flow).as(ContentTypes.EVENT_STREAM)</pre><
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.libs.EventSource$@toString():String" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -616,7 +601,7 @@ Ok.chunked(jsonStream via EventSource.flow).as(ContentTypes.EVENT_STREAM)</pre><
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.libs.EventSource$@wait():Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -639,7 +624,7 @@ Ok.chunked(jsonStream via EventSource.flow).as(ContentTypes.EVENT_STREAM)</pre><
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.libs.EventSource$@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -662,7 +647,7 @@ Ok.chunked(jsonStream via EventSource.flow).as(ContentTypes.EVENT_STREAM)</pre><
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.libs.EventSource$@wait(x$1:Long):Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -677,33 +662,7 @@ Ok.chunked(jsonStream via EventSource.flow).as(ContentTypes.EVENT_STREAM)</pre><
 
         
 
-        <div id="values" class="values members">
-              <h3>Deprecated Value Members</h3>
-              <ol><li name="play.api.libs.EventSource#apply" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="apply[E]()(implicitevidence$1:play.api.libs.EventSource.EventDataExtractor[E],implicitevidence$2:play.api.libs.EventSource.EventNameExtractor[E],implicitevidence$3:play.api.libs.EventSource.EventIdExtractor[E]):play.api.libs.iteratee.Enumeratee[E,play.api.libs.EventSource.Event]"></a>
-      <a id="apply[E]()(EventDataExtractor[E],EventNameExtractor[E],EventIdExtractor[E]):Enumeratee[E,Event]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 2.5.0) Use apply with an Akka source instead">apply</span><span class="tparams">[<span name="E">E</span>]</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="EventSource$$EventDataExtractor.html" class="extype" name="play.api.libs.EventSource.EventDataExtractor">EventDataExtractor</a>[<span class="extype" name="play.api.libs.EventSource.apply.E">E</span>]</span>, <span name="arg1">arg1: <a href="EventSource$$EventNameExtractor.html" class="extype" name="play.api.libs.EventSource.EventNameExtractor">EventNameExtractor</a>[<span class="extype" name="play.api.libs.EventSource.apply.E">E</span>]</span>, <span name="arg2">arg2: <a href="EventSource$$EventIdExtractor.html" class="extype" name="play.api.libs.EventSource.EventIdExtractor">EventIdExtractor</a>[<span class="extype" name="play.api.libs.EventSource.apply.E">E</span>]</span>)</span><span class="result">: <a href="iteratee/Enumeratee.html" class="extype" name="play.api.libs.iteratee.Enumeratee">Enumeratee</a>[<span class="extype" name="play.api.libs.EventSource.apply.E">E</span>, <a href="EventSource$$Event.html" class="extype" name="play.api.libs.EventSource.Event">Event</a>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.api.libs.EventSource$@apply[E]()(implicitevidence$1:play.api.libs.EventSource.EventDataExtractor[E],implicitevidence$2:play.api.libs.EventSource.EventNameExtractor[E],implicitevidence$3:play.api.libs.EventSource.EventIdExtractor[E]):play.api.libs.iteratee.Enumeratee[E,play.api.libs.EventSource.Event]" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Makes an <code>Enumeratee[E, Event]</code>, that is an <a href="iteratee/Enumeratee.html" class="extype" name="play.api.libs.iteratee.Enumeratee">iteratee.Enumeratee</a> transforming <code>E</code> values
-into <a href="EventSource$$Event.html" class="extype" name="play.api.libs.EventSource.Event">Event</a> values.</p><div class="fullcomment"><div class="comment cmt"><p>Makes an <code>Enumeratee[E, Event]</code>, that is an <a href="iteratee/Enumeratee.html" class="extype" name="play.api.libs.iteratee.Enumeratee">iteratee.Enumeratee</a> transforming <code>E</code> values
-into <a href="EventSource$$Event.html" class="extype" name="play.api.libs.EventSource.Event">Event</a> values.</p><p>Usage example:</p><pre><span class="kw">val</span> someDataStream: Enumerator[SomeData] = ???
-Ok.chunked(someDataStream &amp;&gt; EventSource())</pre></div><dl class="paramcmts block"><dt class="tparam">E</dt><dd class="cmt"><p>from type of the Enumeratee</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.5.0)</i> Use apply with an Akka source instead</p></dd></dl></div>
-    </li></ol>
-            </div>
+        
         </div>
 
         <div id="inheritedMembers">

@@ -1,30 +1,7 @@
-<!--- Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com> -->
 # Creating a new application
 
-## Create a new application
-
-## Create a new application using an existing example project
-
-We provide a number of [sample projects](https://playframework.com/download#examples) that provide good starting points for a new application. These applications already have an SBT launcher included so you don't need to manually install SBT on your system.
-
-To use an example project, download and extract the project you're interested in. Edit the `build.sbt` to customize it for your project:
-
-```scala
-name := "play-scala" // <- Your project's name. Used for generated binaries.
-
-version := "1.0-SNAPSHOT" // <- project version
-```
-
-Then you can run SBT
-```bash
-$ ./sbt
-```
-
-This will load your project and fetch dependencies. You can use the `run` command to run your application.
-
-Next, you can learn about [using the console](https://www.playframework.com/documentation/2.5.x/PlayConsole) provided by SBT.
-
-## Create a new application with Activator
+## Create a new application with the activator command
 
 The `activator` command can be used to create a new Play application.  Activator allows you to select a template that your new application should be based off.  For vanilla Play projects, the names of these templates are `play-scala` for Scala based Play applications, and `play-java` for Java based Play applications.
 
@@ -55,9 +32,19 @@ $ cd my-first-app
 $ activator
 ```
 
-## Create a new application using SBT
+## Create a new application with the Activator UI
 
-It is also possible to create a new Play application using sbt directly.
+New Play applications can also be created with the Activator UI.  To use the Activator UI, run:
+
+```bash
+$ activator ui
+```
+
+You can read the documentation for using the Activator UI [here](https://typesafe.com/activator/docs).
+
+## Create a new application without Activator
+
+It is also possible to create a new Play application without installing Activator, using sbt directly.
 
 > First install [sbt](http://www.scala-sbt.org/) if needed.
 
@@ -67,7 +54,7 @@ In `project/plugins.sbt`, add:
 
 ```scala
 // The Typesafe repository
-resolvers += "Typesafe repository" at "https://repo.typesafe.com/typesafe/maven-releases/"
+resolvers += "Typesafe repository" at "https://repo.typesafe.com/typesafe/releases/"
 
 // Use the Play sbt plugin for Play projects
 addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "%PLAY_VERSION%")
@@ -77,13 +64,13 @@ Be sure to replace `%PLAY_VERSION%` here by the exact version you want to use. I
 
 ```scala
 // Typesafe snapshots
-resolvers += "Typesafe Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots/"
+resolvers += "Typesafe Snapshots" at "https://repo.typesafe.com/typesafe/snapshots/"
 ```
 
 To ensure the proper sbt version is used, make sure you have the following in `project/build.properties`:
 
 ```
-sbt.version=0.13.11
+sbt.version=0.13.8
 ```
 
 In `build.sbt` for Java projects:

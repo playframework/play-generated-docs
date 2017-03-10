@@ -28,11 +28,11 @@
         </head>
         <body class="value">
       <div id="definition">
-        <img alt="Package" src="../../../lib/package_big.png" />
+        <img src="../../../lib/package_big.png" />
         <p id="owner"><a href="../../package.html" class="extype" name="play">play</a>.<a href="../package.html" class="extype" name="play.filters">filters</a></p>
         <h1>gzip</h1><span class="permalink">
       <a href="../../../index.html#play.filters.gzip.package" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       </div>
@@ -79,16 +79,20 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.filters.gzip.package@GzipFilterextendsEssentialFilter" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt">A gzip filter.</p><div class="fullcomment"><div class="comment cmt"><p>A gzip filter.</p><p>This filter may gzip the responses for any requests that aren't HEAD requests and specify an accept encoding of gzip.</p><p>It won't gzip under the following conditions:</p><p>- The response code is 204 or 304 (these codes MUST NOT contain a body, and an empty gzipped response is 20 bytes
+      <p class="shortcomment cmt">A gzip filter.</p><div class="fullcomment"><div class="comment cmt"><p>A gzip filter.</p><p>This filter may gzip the responses for any requests that aren't HEAD requests and specify an accept encoding of gzip.</p><p>It will only gzip non chunked responses.  Chunked responses are often comet responses, gzipping will interfere in
+that case.  If you want to gzip a chunked response, you can apply the gzip enumeratee manually to the enumerator.</p><p>For non chunked responses, it won't gzip under the following conditions:</p><p>- The response code is 204 or 304 (these codes MUST NOT contain a body, and an empty gzipped response is 20 bytes
 long)
 - The response already defines a Content-Encoding header
-- A custom shouldGzip function is supplied and it returns false</p><p>Since gzipping changes the content length of the response, this filter may do some buffering - it will buffer any
-streamed responses that define a content length less than the configured chunked threshold.  Responses that are
-greater in length, or that don't define a content length, will not be buffered, but will be sent as chunked
-responses.
+- The response content type is text/event-stream
+- A custom shouldGzip function is supplied and it returns false</p><p>Since gzipping changes the content length of the response, this filter may do some buffering.  If a content length
+is sent by the action, that content length is filtered out and ignored.  If the connection flag on the result is
+Close, the filter will not attempt to buffer, and will simply rely on the closing the response to signify the end
+of the response.  Otherwise, it will buffer up to the configured chunkedThreshold, which defaults to 100kb.  If the
+response fits in that buffer, the filter will send the content length, otherwise it falls back to sending a chunked
+response, or if the protocol is HTTP/1.0, it closes the connection at the end of the response.
 </p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@Singleton</span><span class="args">()</span>
               
@@ -106,7 +110,7 @@ responses.
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.filters.gzip.package@GzipFilterComponentsextendsAnyRef" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <p class="shortcomment cmt">The gzip filter components.</p>
@@ -119,17 +123,18 @@ responses.
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="GzipFilterConfig.html"><span class="name">GzipFilterConfig</span></a><span class="params">(<span name="bufferSize">bufferSize: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">8192</span></span>, <span name="chunkedThreshold">chunkedThreshold: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">102400</span></span>, <span name="shouldGzip">shouldGzip: (<a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>, <a href="../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">(_, _) =&gt; true</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="GzipFilterConfig.html"><span class="name">GzipFilterConfig</span></a><span class="params">(<span name="gzip">gzip: <a href="../../api/libs/iteratee/Enumeratee.html" class="extype" name="play.api.libs.iteratee.Enumeratee">Enumeratee</a>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>], <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]] = <span class="symbol"><span class="name"><a href="Gzip$.html">Gzip.gzip(8192)</a></span></span></span>, <span name="chunkedThreshold">chunkedThreshold: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">102400</span></span>, <span name="shouldGzip">shouldGzip: (<a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>, <a href="../../api/mvc/ResponseHeader.html" class="extype" name="play.api.mvc.ResponseHeader">ResponseHeader</a>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">(_, _) =&gt; true</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.filters.gzip.package@GzipFilterConfigextendsProductwithSerializable" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <p class="shortcomment cmt">Configuration for the gzip filter
 </p><div class="fullcomment"><div class="comment cmt"><p>Configuration for the gzip filter
-</p></div><dl class="paramcmts block"><dt class="param">bufferSize</dt><dd class="cmt"><p>The size of the buffer to use for gzipping.</p></dd><dt class="param">chunkedThreshold</dt><dd class="cmt"><p>The content length threshold, after which the filter will switch to chunking the result.</p></dd><dt class="param">shouldGzip</dt><dd class="cmt"><p>Whether the given request/result should be gzipped.  This can be used, for example, to implement
-                  black/white lists for gzipping by content type.</p></dd></dl></div>
+</p></div><dl class="paramcmts block"><dt class="param">gzip</dt><dd class="cmt"><p>The gzip enumeratee to use.</p></dd><dt class="param">chunkedThreshold</dt><dd class="cmt"><p>The content length threshold, after which the filter will switch to chunking the result.</p></dd><dt class="param">shouldGzip</dt><dd class="cmt"><p>Whether the given request/result should be gzipped.  This can be used, for example, to implement
+                  black/white lists for gzipping by content type.
+</p></dd></dl></div>
     </li><li name="play.filters.gzip.GzipFilterConfigProvider" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="GzipFilterConfigProviderextendsProvider[play.filters.gzip.GzipFilterConfig]"></a>
       <a id="GzipFilterConfigProvider:GzipFilterConfigProvider"></a>
@@ -143,7 +148,7 @@ responses.
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.filters.gzip.package@GzipFilterConfigProviderextendsProvider[play.filters.gzip.GzipFilterConfig]" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <p class="shortcomment cmt">The gzip filter configuration provider.</p><div class="fullcomment"><div class="comment cmt"><p>The gzip filter configuration provider.
@@ -164,7 +169,7 @@ responses.
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.filters.gzip.package@GzipFilterModuleextendsModule" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <p class="shortcomment cmt">The gzip filter module.</p>
@@ -188,11 +193,28 @@ responses.
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.filters.gzip.package@Gzip" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <p class="shortcomment cmt">Enumeratees for dealing with gzip streams
 </p>
+    </li><li name="play.filters.gzip.GzipFilter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="GzipFilter"></a>
+      <a id="GzipFilter:GzipFilter"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="GzipFilter$.html"><span class="name">GzipFilter</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.gzip.package@GzipFilter" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
+      </a>
+    </span>
+      
     </li><li name="play.filters.gzip.GzipFilterConfig" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="GzipFilterConfig"></a>
       <a id="GzipFilterConfig:GzipFilterConfig"></a>
@@ -206,7 +228,7 @@ responses.
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.filters.gzip.package@GzipFilterConfig" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       

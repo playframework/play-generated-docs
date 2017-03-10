@@ -1,16 +1,14 @@
 /*
- * Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com>
  */
 package javaguide.http
 
-import play.api.Application
-import akka.stream.ActorMaterializer
 import org.specs2.mutable.Specification
 import play.api.mvc.{EssentialAction, RequestHeader}
 import play.api.routing.Router
 import javaguide.http.routing._
 import play.api.test.Helpers._
-import play.api.test.FakeRequest
+import play.api.test.{FakeRequest, FakeApplication}
 import javaguide.testhelpers.MockJavaAction
 import play.libs.F
 
@@ -46,19 +44,12 @@ object JavaRouting extends Specification {
       contentOf(FakeRequest("GET", "/clients"), classOf[defaultvalue.Routes]) must_== "clients page 1"
       contentOf(FakeRequest("GET", "/clients?page=2"), classOf[defaultvalue.Routes]) must_== "clients page 2"
     }
-    "support invoking Default controller actions" in {
-      statusOf(FakeRequest("GET", "/about"), classOf[defaultcontroller.Routes]) must_== SEE_OTHER
-      statusOf(FakeRequest("GET", "/orders"), classOf[defaultcontroller.Routes]) must_== NOT_FOUND
-      statusOf(FakeRequest("GET", "/clients"), classOf[defaultcontroller.Routes]) must_== INTERNAL_SERVER_ERROR
-      statusOf(FakeRequest("GET", "/posts"), classOf[defaultcontroller.Routes]) must_== NOT_IMPLEMENTED
-    }
     "support optional values for parameters" in {
       contentOf(FakeRequest("GET", "/api/list-all")) must_== "version null"
       contentOf(FakeRequest("GET", "/api/list-all?version=3.0")) must_== "version 3.0"
     }
     "support reverse routing" in {
-      running() { app =>
-        implicit val mat = ActorMaterializer()(app.actorSystem)
+      running(FakeApplication()) {
         header("Location", call(new MockJavaAction {
           override def invocation = F.Promise.pure(new javaguide.http.routing.controllers.Application().index())
         }, FakeRequest())) must beSome("/hello/Bob")
@@ -68,24 +59,13 @@ object JavaRouting extends Specification {
   }
 
   def contentOf(rh: RequestHeader, router: Class[_ <: Router] = classOf[Routes]) = {
-    running(_.configure("play.http.router" -> router.getName)) { app =>
-      implicit val mat = ActorMaterializer()(app.actorSystem)
+    val app = FakeApplication(additionalConfiguration = Map("play.http.router" -> router.getName))
+    running(app) {
       contentAsString(app.requestHandler.handlerForRequest(rh)._2 match {
-        case e: EssentialAction => e(rh).run()
+        case e: EssentialAction => e(rh).run
       })
     }
   }
-
-
-  def statusOf(rh: RequestHeader, router: Class[_ <: Router] = classOf[Routes]) = {
-    running(_.configure("play.http.router" -> router.getName)) { app =>
-      implicit val mat = ActorMaterializer()(app.actorSystem)
-      status(app.requestHandler.handlerForRequest(rh)._2 match {
-        case e: EssentialAction => e(rh).run()
-      })
-    }
-  }
-
 }
 
 package routing.query.controllers {
@@ -121,6 +101,3 @@ class Clients extends Controller {
 }
 }
 
-package routing.defaultcontroller.controllers {
-class Default extends _root_.controllers.Default
-}

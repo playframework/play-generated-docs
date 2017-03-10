@@ -1,17 +1,14 @@
 /*
- * Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com>
  */
 package scalaguide.http.routing
 
-import akka.stream.ActorMaterializer
 import org.specs2.mutable.Specification
 import play.api.test.FakeRequest
 import play.api.mvc._
 import play.api.test.Helpers._
 import play.api.test._
 import play.api.routing.Router
-
-import scala.annotation.tailrec
 
 package controllers {
 
@@ -74,10 +71,6 @@ package defaultvalue.controllers {
   }
 }
 
-package defaultcontroller.controllers {
-  class Default extends _root_.controllers.Default
-}
-
 // #reverse-controller
 // ###replace: package controllers
 package reverse.controllers {
@@ -126,12 +119,6 @@ object ScalaRoutingSpec extends Specification {
       contentOf(FakeRequest("GET", "/clients"), classOf[defaultvalue.Routes]) must_== "clients page 1"
       contentOf(FakeRequest("GET", "/clients?page=2"), classOf[defaultvalue.Routes]) must_== "clients page 2"
     }
-    "support invoking Default controller actions" in {
-      statusOf(FakeRequest("GET", "/about"), classOf[defaultcontroller.Routes]) must_== SEE_OTHER
-      statusOf(FakeRequest("GET", "/orders"), classOf[defaultcontroller.Routes]) must_== NOT_FOUND
-      statusOf(FakeRequest("GET", "/clients"), classOf[defaultcontroller.Routes]) must_== INTERNAL_SERVER_ERROR
-      statusOf(FakeRequest("GET", "/posts"), classOf[defaultcontroller.Routes]) must_== NOT_IMPLEMENTED
-    }
     "support optional values for parameters" in {
       contentOf(FakeRequest("GET", "/api/list-all")) must_== "version None"
       contentOf(FakeRequest("GET", "/api/list-all?version=3.0")) must_== "version Some(3.0)"
@@ -151,50 +138,12 @@ object ScalaRoutingSpec extends Specification {
 
   }
 
-  trait Stage extends Handler {
-    def apply(requestHeader: RequestHeader): (RequestHeader, Handler)
-  }
-
-  @tailrec
-  private def applyStages(requestHeader: RequestHeader, handler: Handler): (RequestHeader, Handler) = handler match {
-    case m: Stage =>
-      // Call the ModifyRequest logic to get the new header and handler. The
-      // new handler could have its own modifications to apply to the header
-      // so we call `applyPreprocessingHandlers` recursively on the result.
-      val (newRequestHeader, newHandler) = m.apply(requestHeader)
-      applyStages(newRequestHeader, newHandler)
-    case t: RequestTaggingHandler =>
-      // Call the RequestTaggingHandler logic on this request. This handler
-      // will change the request header, but not the handler itself. Since the
-      // handler hasn't been changed we don't need to call
-      // `applyAllModifications` again. This means RequestTaggingHandlers can
-      // only be one level deep; they do not compose.
-      val newRequestHeader = t.tagRequest(requestHeader)
-      (newRequestHeader, handler)
-    case _ =>
-      // This is a normal handler that doesn't do any preprocessing.
-      (requestHeader, handler)
-  }
-
   def contentOf(rh: RequestHeader, router: Class[_ <: Router] = classOf[Routes]) = {
-    running() { app =>
-      implicit val mat = ActorMaterializer()(app.actorSystem)
+    val app = FakeApplication()
+    running(app) {
       contentAsString(app.injector.instanceOf(router).routes(rh) match {
-        case e: EssentialAction => e(rh).run()
+        case e: EssentialAction => e(rh).run
       })
-    }
-  }
-
-  def statusOf(rh: RequestHeader, router: Class[_ <: Router] = classOf[Routes]) = {
-    running() { app =>
-      implicit val mat = ActorMaterializer()(app.actorSystem)
-      status {
-        val routedHandler = app.injector.instanceOf(router).routes(rh)
-        val (rh2, terminalHandler) = applyStages(rh, routedHandler)
-        terminalHandler match {
-          case e: EssentialAction => e(rh2).run()
-        }
-      }
     }
   }
 }

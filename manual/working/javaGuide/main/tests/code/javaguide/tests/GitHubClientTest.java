@@ -1,15 +1,10 @@
-/*
- * Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com>
- */
 package javaguide.tests;
 
 //#content
-import java.io.IOException;
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 import com.fasterxml.jackson.databind.node.*;
 import org.junit.*;
-import play.routing.Router;
+import play.api.routing.Router;
 import play.libs.Json;
 import play.libs.ws.*;
 import play.routing.RoutingDsl;
@@ -38,24 +33,20 @@ public class GitHubClientTest {
 
         server = Server.forRouter(router);
         ws = WS.newClient(server.httpPort());
-        client = new GitHubClient(ws);
+        client = new GitHubClient();
         client.baseUrl = "";
+        client.ws = ws;
     }
 
     @After
-    public void tearDown() throws IOException {
-        try {
-            ws.close();
-        }
-        finally {
-            server.stop();
-        }
+    public void tearDown() {
+        ws.close();
+        server.stop();
     }
 
     @Test
-    public void repositories() throws Exception {
-        List<String> repos = client.getRepositories()
-                .toCompletableFuture().get(10, TimeUnit.SECONDS);
+    public void repositories() {
+        List<String> repos = client.getRepositories().get(10000);
         assertThat(repos, hasItem("octocat/Hello-World"));
     }
 }

@@ -1,24 +1,21 @@
-/*
- * Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com>
- */
 package javaguide.tests;
 
 //#test-controller-test
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static play.mvc.Http.Status.OK;
-import static play.test.Helpers.*;
-
-import javaguide.tests.controllers.HomeController;
+import static play.test.Helpers.GET;
+import static play.test.Helpers.contentAsString;
+import static play.test.Helpers.route;
+import javaguide.tests.controllers.Application;
 
 import java.util.ArrayList;
 
 import com.google.common.collect.ImmutableMap;
 import org.junit.Test;
 
-import play.Application;
-import play.inject.guice.GuiceApplicationBuilder;
 import play.mvc.Result;
+import play.test.FakeApplication;
 import play.test.Helpers;
 import play.test.WithApplication;
 import play.twirl.api.Content;
@@ -26,18 +23,17 @@ import play.twirl.api.Content;
 public class ApplicationTest extends WithApplication {
   
   @Override
-  protected Application provideApplication() {
-    return new GuiceApplicationBuilder()
-      .configure("play.http.router", "javaguide.tests.Routes")
-      .build();
+  protected FakeApplication provideFakeApplication() {
+    return new FakeApplication(new java.io.File("."), Helpers.class.getClassLoader(),
+        ImmutableMap.of("play.http.router", "javaguide.tests.Routes"), new ArrayList<String>(), null);
   }
 
   @Test
   public void testIndex() {
-    Result result = new HomeController().index();
+    Result result = new Application().index();
     assertEquals(OK, result.status());
-    assertEquals("text/html", result.contentType().get());
-    assertEquals("utf-8", result.charset().get());
+    assertEquals("text/html", result.contentType());
+    assertEquals("utf-8", result.charset());
     assertTrue(contentAsString(result).contains("Welcome"));
   }
 
@@ -48,8 +44,8 @@ public class ApplicationTest extends WithApplication {
   @Test
   public void testCallIndex() {
     Result result = route(
-      //###replace:     fakeRequest()
-      javaguide.tests.controllers.routes.HomeController.index()
+      //###replace:     controllers.routes.Application.index(),
+      javaguide.tests.controllers.routes.Application.index()
     );
     assertEquals(OK, result.status());
   }
@@ -58,7 +54,6 @@ public class ApplicationTest extends WithApplication {
   //#test-template
   @Test
   public void renderTemplate() {
-    //###replace:     Content html = views.html.index.render("Welcome to Play!");
     Content html = javaguide.tests.html.index.render("Welcome to Play!");
     assertEquals("text/html", html.contentType());
     assertTrue(contentAsString(html).contains("Welcome to Play!"));

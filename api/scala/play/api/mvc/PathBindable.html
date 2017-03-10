@@ -28,7 +28,7 @@
         </head>
         <body class="type">
       <div id="definition">
-        <a href="PathBindable$.html" title="See companion object"><img alt="Trait/Object" src="../../../lib/trait_to_object_big.png" /></a>
+        <a href="PathBindable$.html" title="See companion object"><img src="../../../lib/trait_to_object_big.png" /></a>
         <p id="owner"><a href="../../package.html" class="extype" name="play">play</a>.<a href="../package.html" class="extype" name="play.api">api</a>.<a href="package.html" class="extype" name="play.api.mvc">mvc</a></p>
         <h1><a href="PathBindable$.html" title="See companion object">PathBindable</a></h1><h3><span class="morelinks"><div>
             Related Docs:
@@ -36,7 +36,7 @@
             | <a href="package.html" class="extype" name="play.api.mvc">package mvc</a>
           </div></span></h3><span class="permalink">
       <a href="../../../index.html#play.api.mvc.PathBindable" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       </div>
@@ -69,7 +69,7 @@ bind directly from the request path.</p><p>For example, given this class definit
       } <span class="kw">yield</span> user
     }
     <span class="kw">override</span> <span class="kw">def</span> unbind(key: <span class="std">String</span>, user: User): <span class="std">String</span> = {
-      intBinder.unbind(key, user.id)
+      intBinder.unbind(user.id)
     }
   }
 }</pre></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="play.api.mvc.PathBindable">PathBindable</a>[<span class="extype" name="play.api.mvc.PathBindable.A">A</span>]</dd><dt>Annotations</dt><dd>
@@ -78,7 +78,7 @@ bind directly from the request path.</p><p>For example, given this class definit
       <span class="defval" name="&quot;No URL path binder found for type ${A}. Try to implement an implicit PathBindable for this type.&quot;">...</span>
     </span>)</span>
               
-        </dd><dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.5.12/framework/src/play/src/main/scala/play/api/mvc/Binders.scala" target="_blank">Binders.scala</a></dd></dl><div class="toggleContainer block">
+        </dd><dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.4.11/framework/src/play/src/main/scala/play/api/mvc/Binders.scala" target="_blank">Binders.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
@@ -109,6 +109,7 @@ bind directly from the request path.</p><p>For example, given this class definit
               <li class="hideall out"><span>Hide All</span></li>
               <li class="showall in"><span>Show all</span></li>
             </ol>
+            <a href="http://docs.scala-lang.org/overviews/scaladoc/usage.html#members" target="_blank">Learn more about member selection</a>
           </div>
         <div id="visbl">
             <span class="filtertype">Visibility</span>
@@ -137,11 +138,12 @@ bind directly from the request path.</p><p>For example, given this class definit
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.PathBindable@bind(key:String,value:String):Either[String,A]" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <p class="shortcomment cmt">Bind an URL path parameter.</p><div class="fullcomment"><div class="comment cmt"><p>Bind an URL path parameter.
-</p></div><dl class="paramcmts block"><dt class="param">key</dt><dd class="cmt"><p>Parameter key</p></dd><dt class="param">value</dt><dd class="cmt"><p>The value as String (extracted from the URL path)</p></dd><dt>returns</dt><dd class="cmt"><p><code>Right</code> of the value or <code>Left</code> of an error message if the binding failed</p></dd></dl></div>
+</p></div><dl class="paramcmts block"><dt class="param">key</dt><dd class="cmt"><p>Parameter key</p></dd><dt class="param">value</dt><dd class="cmt"><p>The value as String (extracted from the URL path)</p></dd><dt>returns</dt><dd class="cmt"><p><code>Right</code> of the value or <code>Left</code> of an error message if the binding failed
+</p></dd></dl></div>
     </li><li name="play.api.mvc.PathBindable#unbind" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="unbind(key:String,value:A):String"></a>
       <a id="unbind(String,A):String"></a>
@@ -155,11 +157,12 @@ bind directly from the request path.</p><p>For example, given this class definit
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.PathBindable@unbind(key:String,value:A):String" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <p class="shortcomment cmt">Unbind a URL path  parameter.</p><div class="fullcomment"><div class="comment cmt"><p>Unbind a URL path  parameter.
-</p></div><dl class="paramcmts block"><dt class="param">key</dt><dd class="cmt"><p>Parameter key</p></dd><dt class="param">value</dt><dd class="cmt"><p>Parameter value.</p></dd></dl></div>
+</p></div><dl class="paramcmts block"><dt class="param">key</dt><dd class="cmt"><p>Parameter key</p></dd><dt class="param">value</dt><dd class="cmt"><p>Parameter value.
+</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -178,7 +181,7 @@ bind directly from the request path.</p><p>For example, given this class definit
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.PathBindable@!=(x$1:Any):Boolean" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -195,7 +198,7 @@ bind directly from the request path.</p><p>For example, given this class definit
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.PathBindable@##():Int" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -212,7 +215,7 @@ bind directly from the request path.</p><p>For example, given this class definit
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.PathBindable@==(x$1:Any):Boolean" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -229,7 +232,7 @@ bind directly from the request path.</p><p>For example, given this class definit
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.PathBindable@asInstanceOf[T0]:T0" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
@@ -246,7 +249,7 @@ bind directly from the request path.</p><p>For example, given this class definit
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.PathBindable@clone():Object" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -269,7 +272,7 @@ bind directly from the request path.</p><p>For example, given this class definit
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.PathBindable@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
@@ -286,7 +289,7 @@ bind directly from the request path.</p><p>For example, given this class definit
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.PathBindable@equals(x$1:Any):Boolean" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -303,7 +306,7 @@ bind directly from the request path.</p><p>For example, given this class definit
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.PathBindable@finalize():Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -326,7 +329,7 @@ bind directly from the request path.</p><p>For example, given this class definit
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.PathBindable@getClass():Class[_]" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -343,7 +346,7 @@ bind directly from the request path.</p><p>For example, given this class definit
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.PathBindable@hashCode():Int" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -360,7 +363,7 @@ bind directly from the request path.</p><p>For example, given this class definit
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.PathBindable@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
@@ -377,7 +380,7 @@ bind directly from the request path.</p><p>For example, given this class definit
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.PathBindable@javascriptUnbind:String" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <p class="shortcomment cmt">Javascript function to unbind in the Javascript router.</p>
@@ -394,7 +397,7 @@ bind directly from the request path.</p><p>For example, given this class definit
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.PathBindable@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
@@ -411,7 +414,7 @@ bind directly from the request path.</p><p>For example, given this class definit
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.PathBindable@notify():Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
@@ -428,7 +431,7 @@ bind directly from the request path.</p><p>For example, given this class definit
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.PathBindable@notifyAll():Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
@@ -445,7 +448,7 @@ bind directly from the request path.</p><p>For example, given this class definit
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.PathBindable@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
@@ -462,7 +465,7 @@ bind directly from the request path.</p><p>For example, given this class definit
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.PathBindable@toString():String" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -479,7 +482,7 @@ bind directly from the request path.</p><p>For example, given this class definit
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.PathBindable@transform[B](toB:A=&gt;B,toA:B=&gt;A):play.api.mvc.PathBindable[B]" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <p class="shortcomment cmt">Transform this PathBinding[A] to PathBinding[B]
@@ -497,7 +500,7 @@ bind directly from the request path.</p><p>For example, given this class definit
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.PathBindable@wait():Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -520,7 +523,7 @@ bind directly from the request path.</p><p>For example, given this class definit
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.PathBindable@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -543,7 +546,7 @@ bind directly from the request path.</p><p>For example, given this class definit
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.PathBindable@wait(x$1:Long):Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>

@@ -1,9 +1,8 @@
 /*
- * Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com>
  */
 package scalaguide.http.errorhandling
 
-import play.api.inject.guice.GuiceApplicationBuilder
 import play.api.mvc.Action
 import play.api.test._
 
@@ -12,12 +11,12 @@ import scala.reflect.ClassTag
 object ScalaErrorHandling extends PlaySpecification with WsTestClient {
 
   def fakeApp[A](implicit ct: ClassTag[A]) = {
-    GuiceApplicationBuilder()
-      .configure("play.http.errorHandler" -> ct.runtimeClass.getName)
-      .routes {
+    FakeApplication(
+      additionalConfiguration = Map("play.http.errorHandler" -> ct.runtimeClass.getName),
+      withRoutes = {
         case (_, "/error") => Action(_ => throw new RuntimeException("foo"))
       }
-      .build()
+    )
   }
 
   "scala error handling" should {
@@ -50,9 +49,7 @@ import play.api.http.HttpErrorHandler
 import play.api.mvc._
 import play.api.mvc.Results._
 import scala.concurrent._
-import javax.inject.Singleton;
 
-@Singleton
 class ErrorHandler extends HttpErrorHandler {
 
   def onClientError(request: RequestHeader, statusCode: Int, message: String) = {
@@ -81,7 +78,6 @@ import play.api.mvc.Results._
 import play.api.routing.Router
 import scala.concurrent._
 
-@Singleton
 class ErrorHandler @Inject() (
     env: Environment,
     config: Configuration,

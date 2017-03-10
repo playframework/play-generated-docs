@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com>
  */
 package scalaguide.http.scalacontentnegotiation {
 
@@ -8,7 +8,6 @@ package scalaguide.http.scalacontentnegotiation {
   import play.api.test.Helpers._
   import org.specs2.mutable.Specification
   import play.api.libs.json._
-
   import org.junit.runner.RunWith
   import org.specs2.runner.JUnitRunner
   import scala.concurrent.Future
@@ -57,7 +56,7 @@ package scalaguide.http.scalacontentnegotiation {
     }
 
     def assertAction[A, T: AsResult](action: Action[A], expectedResponse: Int = OK, request: Request[A] = FakeRequest())(assertions: Future[Result] => T) = {
-      running() { app =>
+      running(FakeApplication()) {
         val result = action(request)
         status(result) must_== expectedResponse
         assertions(result)

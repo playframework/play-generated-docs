@@ -1,7 +1,7 @@
-/*
- * Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com>
- */
 package javaguide.json;
+/*
+ * Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com>
+ */
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +29,7 @@ public class JavaJsonActions extends WithApplication {
 
     //#person-class
     // Note: can use getters/setters as well; here we just use public fields directly.
-    // if using getters/setters, you can keep the fields `protected` or `private`
+    // if using getters/setters, you can keep keep the fields `protected` or `private`
     public static class Person {
         public String firstName;
         public String lastName;
@@ -65,30 +65,43 @@ public class JavaJsonActions extends WithApplication {
     }
 
     @Test
+    public void customObjectMapper() {
+        //#custom-object-mapper
+        ObjectMapper mapper = new ObjectMapper()
+            // enable features and customize the object mapper here ...
+            .enable(DeserializationFeature.USE_BIG_DECIMAL_FOR_FLOATS)
+            .disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+            // etc.
+        Json.setObjectMapper(mapper);
+        //#custom-object-mapper
+        assertThat(Json.mapper(), equalTo(mapper));
+    }
+
+    @Test
     public void requestAsAnyContentAction() {
         assertThat(contentAsString(
-            call(new JsonRequestAsJsonAction(), fakeRequest().bodyJson(Json.parse("{\"name\":\"Greg\"}")), mat)
+            call(new JsonRequestAsJsonAction(), fakeRequest().bodyJson(Json.parse("{\"name\":\"Greg\"}")))
         ), equalTo("Hello Greg"));
     }
 
     @Test
     public void requestAsJsonAction() {
         assertThat(contentAsString(
-            call(new JsonRequestAsJsonAction(), fakeRequest().bodyJson(Json.parse("{\"name\":\"Greg\"}")), mat)
+            call(new JsonRequestAsJsonAction(), fakeRequest().bodyJson(Json.parse("{\"name\":\"Greg\"}")))
         ), equalTo("Hello Greg"));
     }
 
     @Test
     public void responseAction() {
         assertThat(contentAsString(
-            call(new JsonResponseAction(), fakeRequest(), mat)
+            call(new JsonResponseAction(), fakeRequest())
         ), equalTo("{\"exampleField1\":\"foobar\",\"exampleField2\":\"Hello world!\"}"));
     }
 
     @Test
     public void responseDaoAction() {
         assertThat(contentAsString(
-            call(new JsonResponseDaoAction(), fakeRequest(), mat)
+            call(new JsonResponseDaoAction(), fakeRequest())
         ), equalTo("[{\"firstName\":\"Foo\",\"lastName\":\"Bar\",\"age\":30}]"));
     }
 

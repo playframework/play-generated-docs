@@ -1,6 +1,3 @@
-/*
- * Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com>
- */
 package scalaguide.tests.specs2
 
 // #specs2-mockito

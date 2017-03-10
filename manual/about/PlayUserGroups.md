@@ -1,4 +1,4 @@
-<!--- Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com> -->
 
 # Play User Groups
 
@@ -21,6 +21,10 @@ http://www.meetup.com/Play-Berlin-Brandenburg/
 ## Buenos Aires
 
 http://www.meetup.com/play-argentina/
+
+## Stockholm
+
+http://www.meetup.com/play-stockholm/
 
 ## Belgium
 

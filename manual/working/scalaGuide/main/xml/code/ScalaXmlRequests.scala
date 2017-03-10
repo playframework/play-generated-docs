@@ -1,13 +1,13 @@
 /*
- * Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com>
  */
 package scalaguide.xml.scalaxmlrequests {
 
-import play.api.inject.guice.GuiceApplicationBuilder
 import play.api.mvc._
 import play.api.test._
 import org.junit.runner.RunWith
 import org.specs2.runner.JUnitRunner
+
 
 @RunWith(classOf[JUnitRunner])
 class ScalaXmlRequestsSpec extends PlaySpecification with Controller {
@@ -69,7 +69,7 @@ class ScalaXmlRequestsSpec extends PlaySpecification with Controller {
 
   def testAction[T](action: Action[T], req: Request[T]) = {
 
-    running(GuiceApplicationBuilder().build()) {
+    running(FakeApplication()) {
       val result = action(req)
       status(result) must_== OK
     }

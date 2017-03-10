@@ -1,4 +1,4 @@
-<!--- Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com> -->
 # Accessing an SQL database
 
 ## Configuring JDBC connection pools
@@ -78,63 +78,78 @@ db.customers.driver=org.h2.Driver
 db.customers.url="jdbc:h2:mem:customers"
 ```
 
-## Exposing the datasource through JNDI
-
-Some libraries expect to retrieve the `Datasource` reference from JNDI. You can expose any Play managed datasource via JNDI by adding this configuration in `conf/application.conf`:
-
-```properties
-db.default.driver=org.h2.Driver
-db.default.url="jdbc:h2:mem:play"
-db.default.jndiName=DefaultDS
-```
-
-
-## How to configure SQL log statement
-
-Not all connection pools offer (out of the box) a way to log SQL statements. HikariCP, per instance, suggests that you use the log capacities of your database vendor. From [HikariCP docs](https://github.com/brettwooldridge/HikariCP/tree/dev#log-statement-text--slow-query-logging):
-
-#### *Log Statement Text / Slow Query Logging*
-
-*Like Statement caching, most major database vendors support statement logging through properties of their own driver. This includes Oracle, MySQL, Derby, MSSQL, and others. Some even support slow query logging. We consider this a "development-time" feature. For those few databases that do not support it, jdbcdslog-exp is a good option. Great stuff during development and pre-Production.*
-
-Because of that, Play uses [jdbcdslog-exp](https://github.com/jdbcdslog/jdbcdslog) to enable consistent SQL log statement support for supported pools. The SQL log statement can be configured by database, using `logSql` property:
-
-```properties
-# Default database configuration using PostgreSQL database engine
-db.default.driver=org.postgresql.Driver
-db.default.url="jdbc:postgresql://database.example.com/playdb"
-db.default.logSql=true
-```
-
-After that, you can configure the jdbcdslog-exp [log level as explained in their manual](https://code.google.com/p/jdbcdslog/wiki/UserGuide#Setup_logging_engine). Basically, you need to configure your root logger to `INFO` and then decide what jdbcdslog-exp will log (connections, statements and result sets). Here is an example using `logback.xml` to configure the logs:
-
-@[](/confs/play-logback/logback-play-logSql.xml)
-
-> **Warning**: Keep in mind that this is intended to be used just in development environments and you should not configure it in production, since there is a performance degradation and it will pollute your logs.
-
-## Configuring the JDBC Driver dependency
+## Configuring the JDBC Driver
 
 Play is bundled only with an [H2](http://www.h2database.com) database driver. Consequently, to deploy in production you will need to add your database driver as a dependency.
 
 For example, if you use MySQL5, you need to add a [[dependency|SBTDependencies]] for the connector:
 
 ```scala
-libraryDependencies += "mysql" % "mysql-connector-java" % "5.1.36"
+libraryDependencies += "mysql" % "mysql-connector-java" % "5.1.34"
 ```
 
 Or if the driver can't be found from repositories you can drop the driver into your project's [[unmanaged dependencies|Anatomy]] `lib` directory.
 
+## Accessing the JDBC datasource
+
+The `play.api.db` package provides access to the configured data sources:
+
+```scala
+import play.api.db._
+
+val ds = DB.getDataSource()
+```
+
 ## Obtaining a JDBC connection
 
-There are several ways to retrieve a JDBC connection. The following code show you a JDBC example very simple, working with MySQL 5.*:
+There are several ways to retrieve a JDBC connection. The simplest way is:
 
-@[](code/ScalaControllerInject.scala)
+```scala
+val connection = DB.getConnection()
+```
+
+Following code show you a JDBC example very simple, working with MySQL 5.*:
+
+```scala
+package controllers
+import play.api.Play.current
+import play.api.mvc._
+import play.api.db._
+
+object Application extends Controller {
+
+  def index = Action {
+    var outString = "Number is "
+    val conn = DB.getConnection()
+    try {
+      val stmt = conn.createStatement
+      val rs = stmt.executeQuery("SELECT 9 as testkey ")
+      while (rs.next()) {
+        outString += rs.getString("testkey")
+      }
+    } finally {
+      conn.close()
+    }
+    Ok(outString)
+  }
+
+}
+```
 
 But of course you need to call `close()` at some point on the opened connection to return it to the connection pool. Another way is to let Play manage closing the connection for you:
 
 ```scala
 // access "default" database
-db.withConnection { conn =>
+DB.withConnection { conn =>
+  // do whatever you need with the connection
+}
+```
+
+For a database other than the default:
+
+```scala
+// access "orders" database instead of "default"
+DB.withConnection("orders") { conn =>
   // do whatever you need with the connection
 }
 ```
@@ -146,18 +161,14 @@ The connection will be automatically closed at the end of the block.
 A variant is to set the connection's auto-commit to `false` and to manage a transaction for the block:
 
 ```scala
-db.withTransaction { conn =>
+DB.withTransaction { conn =>
   // do whatever you need with the connection
 }
 ```
 
-For a database other than the default:
-
-@[](code/ScalaInjectNamed.scala)
-
 ## Selecting and configuring the connection pool
 
-Out of the box, Play provides two database connection pool implementations, [HikariCP](https://github.com/brettwooldridge/HikariCP) and [BoneCP](http://www.jolbox.com/). **The default is HikariCP**, but this can be changed by setting the `play.db.pool` property:
+Out of the box, Play provides two database connection pool implementations, [HikariCP](https://github.com/brettwooldridge/HikariCP) and [BoneCP](http://jolbox.com/). **The default is HikariCP**, but this can be changed by setting the `play.db.pool` property:
 
 ```
 play.db.pool=bonecp

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com>
  */
 package javaguide.akka;
 
@@ -12,11 +12,13 @@ import org.junit.Test;
 
 import play.Application;
 import play.inject.guice.GuiceApplicationBuilder;
+import play.libs.F.Promise;
 import play.mvc.Result;
-import scala.compat.java8.FutureConverters;
+import play.test.*;
 import scala.concurrent.duration.Duration;
 
-import java.util.concurrent.*;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
@@ -38,12 +40,8 @@ public class JavaAkka {
         running(app, () -> {
             javaguide.akka.ask.Application controller = app.injector().instanceOf(javaguide.akka.ask.Application.class);
 
-            try {
-                String message = contentAsString(controller.sayHello("world").toCompletableFuture().get(1, TimeUnit.SECONDS));
-                assertThat(message, equalTo("Hello, world"));
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
+            String message = contentAsString(controller.sayHello("world").get(1000));
+            assertThat(message, equalTo("Hello, world"));
         });
     }
 
@@ -56,12 +54,8 @@ public class JavaAkka {
         running(app, () -> {
             javaguide.akka.inject.Application controller = app.injector().instanceOf(javaguide.akka.inject.Application.class);
 
-            try {
-                String message = contentAsString(controller.getConfig().toCompletableFuture().get(1, TimeUnit.SECONDS));
-                assertThat(message, equalTo("foo"));
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
+            String message = contentAsString(controller.getConfig().get(1000));
+            assertThat(message, equalTo("foo"));
         });
     }
 
@@ -74,14 +68,11 @@ public class JavaAkka {
         running(app, () -> {
             ActorRef parent = app.injector().instanceOf(play.inject.Bindings.bind(ActorRef.class).qualifiedWith("parent-actor"));
 
-            try {
-                String message = (String) FutureConverters.toJava(ask(parent, new ParentActorProtocol.GetChild("my.config"), 1000)).thenCompose(child ->
-                        FutureConverters.toJava(ask((ActorRef) child, new ConfiguredChildActorProtocol.GetConfig(), 1000))
-                ).toCompletableFuture().get(5, TimeUnit.SECONDS);
-                assertThat(message, equalTo("foo"));
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
+            String message = (String) Promise.wrap(ask(parent, new ParentActorProtocol.GetChild("my.config"), 1000)).flatMap(child ->
+                    Promise.wrap(ask((ActorRef) child, new ConfiguredChildActorProtocol.GetConfig(), 1000))
+            ).get(5000);
+
+            assertThat(message, equalTo("foo"));
         });
     }
 
@@ -96,10 +87,10 @@ public class JavaAkka {
         Application app = fakeApplication();
         running(app, () -> {
             Result result = MockJavaActionHelper.call(new MockJavaAction() {
-                public CompletionStage<Result> index() {
+                public Promise<Result> index() {
                     return new javaguide.akka.async.Application().index();
                 }
-            }, fakeRequest(), app.getWrappedApplication().materializer());
+            }, fakeRequest());
             assertThat(contentAsString(result), equalTo("Got 2"));
         });
     }

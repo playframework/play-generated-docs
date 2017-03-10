@@ -1,37 +1,39 @@
-<!--- Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com> -->
-# Comet
+<!--- Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com> -->
+# Comet sockets
 
-## Using chunked responses with Comet
+## Using chunked responses to create Comet sockets
 
-A common use of **chunked responses** is to create a Comet socket.
+A good use for **Chunked responses** is to create Comet sockets. A Comet socket is just a chunked `text/html` response containing only `<script>` elements. At each chunk we write a `<script>` tag that is immediately executed by the web browser. This way we can send events live to the web browser from the server: for each message, wrap it into a `<script>` tag that calls a JavaScript callback function, and writes it to the chunked response.
+    
+Let’s write a first proof-of-concept: an enumerator that generates `<script>` tags that each call the browser `console.log` JavaScript function:
+    
+@[manual](code/ScalaComet.scala)
 
-A Comet socket is a chunked `text/html` response containing only `<script>` elements. For each chunk, we write a `<script>` tag containing JavaScript that is immediately executed by the web browser. This way we can send events live to the web browser from the server: for each message, wrap it into a `<script>` tag that calls a JavaScript callback function, and write it to the chunked response.
+If you run this action from a web browser, you will see the three events logged in the browser console.
 
-Because `Ok.chunked` leverages [Akka Streams](http://doc.akka.io/docs/akka/2.4.4/scala/stream/index.html) to take a `Flow[ByteString]`, we can send a `Flow` of elements and transform it so that each element is escaped and wrapped in the Javascript method. The Comet helper automates Comet sockets, pushing an initial blank buffer data for browser compatibility, and supporting both String and JSON messages.
+We can write this in a better way by using `play.api.libs.iteratee.Enumeratee` that is just an adapter to transform an `Enumerator[A]` into another `Enumerator[B]`. Let’s use it to wrap standard messages into the `<script>` tags:
+    
+@[enumeratee](code/ScalaComet.scala)
 
-## Comet Imports
+> **Tip:** Writing `events &> toCometMessage` is just another way of writing `events.through(toCometMessage)`
 
-To use the Comet helper, import the following classes:
+## Using the `play.api.libs.Comet` helper
 
-@[comet-imports](code/ScalaComet.scala)
+We provide a Comet helper to handle these Comet chunked streams that do almost the same stuff that we just wrote.
 
-You will also need a materializer, which is best done by pulling `akka.stream.Materializer` from your [[DI system|ScalaDependencyInjection]].
+> **Note:** Actually it does more, like pushing an initial blank buffer data for browser compatibility, and it supports both String and JSON messages. It can also be extended via type classes to support more message types.
 
-## Using Comet with String Flow
+Let’s just rewrite the previous example to use it:
 
-To push string messages through a Flow, do the following:
+@[helper](code/ScalaComet.scala)
 
-@[comet-string](code/ScalaComet.scala)
+## The forever iframe technique
 
-## Using Comet with JSON Flow
+The standard technique to write a Comet socket is to load an infinite chunked comet response in an HTML `iframe` and to specify a callback calling the parent frame:
 
-To push JSON messages through a Flow, do the following:
+@[iframe](code/ScalaComet.scala)
 
-@[comet-json](code/ScalaComet.scala)
-
-## Using Comet with iframe
-
-The comet helper should typically be used with a `forever-iframe` technique, with an HTML page like:
+With an HTML page like:
 
 ```
 <script type="text/javascript">
@@ -42,19 +44,3 @@ The comet helper should typically be used with a `forever-iframe` technique, wit
 
 <iframe src="/comet"></iframe>
 ```
-
-For an example of a Comet helper, see the [Play 2.5 Clock Template](https://github.com/typesafehub/play-2.5-clock/).
-
-## Debugging Comet
-
-The easiest way to debug a Comet stream that is not working is to use the [`log()`](http://doc.akka.io/docs/akka-stream-and-http-experimental/2.0.3/scala/stream-cookbook.html#Logging_elements_of_a_stream) operation to show any errors involved in mapping data through the stream.
-
-## Legacy Comet with Enumerator
-
-Previously existing Comet functionality is still available through an `Enumeratee` using `Comet.apply`, but it is deprecated and you are encouraged to move to the Akka Streams based version.
-
-If you have existing code that relies heavily on `Enumerator`, you can use [`play.api.libs.streams.Streams`](api/scala/play/api/libs/streams/Streams$.html) and the interoperability with [Reactive Streams](http://doc.akka.io/docs/akka-stream-and-http-experimental/2.0.3/scala/stream-integrations.html#integrating-with-reactive-streams) to convert an Enumerator to a Stream:
-
-@[comet-enumerator](code/ScalaComet.scala)
-
-Also see the [[Streams Migration Guide|StreamsMigration25#Migrating-Enumerators-to-Sources]].

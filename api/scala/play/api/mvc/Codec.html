@@ -28,7 +28,7 @@
         </head>
         <body class="type">
       <div id="definition">
-        <a href="Codec$.html" title="See companion object"><img alt="Class/Object" src="../../../lib/class_to_object_big.png" /></a>
+        <a href="Codec$.html" title="See companion object"><img src="../../../lib/class_to_object_big.png" /></a>
         <p id="owner"><a href="../../package.html" class="extype" name="play">play</a>.<a href="../package.html" class="extype" name="play.api">api</a>.<a href="package.html" class="extype" name="play.api.mvc">mvc</a></p>
         <h1><a href="Codec$.html" title="See companion object">Codec</a></h1><h3><span class="morelinks"><div>
             Related Docs:
@@ -36,7 +36,7 @@
             | <a href="package.html" class="extype" name="play.api.mvc">package mvc</a>
           </div></span></h3><span class="permalink">
       <a href="../../../index.html#play.api.mvc.Codec" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       </div>
@@ -47,12 +47,13 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">Codec</span><span class="params">(<span name="charset">charset: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span name="encode">encode: (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="akka.util.ByteString">ByteString</span></span>, <span name="decode">decode: (<span class="extype" name="akka.util.ByteString">ByteString</span>) ⇒ <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name">Codec</span><span class="params">(<span name="charset">charset: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span name="encode">encode: (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]</span>, <span name="decode">decode: (<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]) ⇒ <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A Codec handle the conversion of String to Byte arrays.
-</p></div><dl class="paramcmts block"><dt class="param">charset</dt><dd class="cmt"><p>The charset to be sent to the client.</p></dd><dt class="param">encode</dt><dd class="cmt"><p>The transformation function.</p></dd></dl><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.5.12/framework/src/play/src/main/scala/play/api/mvc/Results.scala" target="_blank">Results.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="paramcmts block"><dt class="param">charset</dt><dd class="cmt"><p>The charset to be sent to the client.</p></dd><dt class="param">encode</dt><dd class="cmt"><p>The transformation function.
+</p></dd></dl><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.4.11/framework/src/play/src/main/scala/play/api/mvc/Results.scala" target="_blank">Results.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -80,6 +81,7 @@
               <li class="hideall out"><span>Hide All</span></li>
               <li class="showall in"><span>Show all</span></li>
             </ol>
+            <a href="http://docs.scala-lang.org/overviews/scaladoc/usage.html#members" target="_blank">Learn more about member selection</a>
           </div>
         <div id="visbl">
             <span class="filtertype">Visibility</span>
@@ -92,7 +94,7 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="play.api.mvc.Codec#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(charset:String)(encode:String=&gt;akka.util.ByteString,decode:akka.util.ByteString=&gt;String):play.api.mvc.Codec"></a>
+      <a id="&lt;init&gt;(charset:String)(encode:String=&gt;Array[Byte],decode:Array[Byte]=&gt;String):play.api.mvc.Codec"></a>
       <a id="&lt;init&gt;:Codec"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -100,14 +102,15 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">Codec</span><span class="params">(<span name="charset">charset: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span name="encode">encode: (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="akka.util.ByteString">ByteString</span></span>, <span name="decode">decode: (<span class="extype" name="akka.util.ByteString">ByteString</span>) ⇒ <span class="extype" name="scala.Predef.String">String</span></span>)</span>
+        <span class="name">Codec</span><span class="params">(<span name="charset">charset: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span name="encode">encode: (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]</span>, <span name="decode">decode: (<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]) ⇒ <span class="extype" name="scala.Predef.String">String</span></span>)</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.Codec@&lt;init&gt;(charset:String)(encode:String=&gt;akka.util.ByteString,decode:akka.util.ByteString=&gt;String):play.api.mvc.Codec" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+      <a href="../../../index.html#play.api.mvc.Codec@&lt;init&gt;(charset:String)(encode:String=&gt;Array[Byte],decode:Array[Byte]=&gt;String):play.api.mvc.Codec" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">charset</dt><dd class="cmt"><p>The charset to be sent to the client.</p></dd><dt class="param">encode</dt><dd class="cmt"><p>The transformation function.</p></dd></dl></div>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">charset</dt><dd class="cmt"><p>The charset to be sent to the client.</p></dd><dt class="param">encode</dt><dd class="cmt"><p>The transformation function.
+</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -130,7 +133,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.Codec@!=(x$1:Any):Boolean" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -147,7 +150,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.Codec@##():Int" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -164,7 +167,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.Codec@==(x$1:Any):Boolean" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -181,7 +184,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.Codec@asInstanceOf[T0]:T0" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
@@ -198,7 +201,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.Codec@charset:String" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <p class="shortcomment cmt">The charset to be sent to the client.</p>
@@ -215,7 +218,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.Codec@clone():Object" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -226,36 +229,36 @@
               
         </dd></dl></div>
     </li><li name="play.api.mvc.Codec#decode" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="decode:akka.util.ByteString=&gt;String"></a>
-      <a id="decode:(ByteString)⇒String"></a>
+      <a id="decode:Array[Byte]=&gt;String"></a>
+      <a id="decode:(Array[Byte])⇒String"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">decode</span><span class="result">: (<span class="extype" name="akka.util.ByteString">ByteString</span>) ⇒ <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">decode</span><span class="result">: (<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]) ⇒ <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.Codec@decode:akka.util.ByteString=&gt;String" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+      <a href="../../../index.html#play.api.mvc.Codec@decode:Array[Byte]=&gt;String" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       
     </li><li name="play.api.mvc.Codec#encode" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="encode:String=&gt;akka.util.ByteString"></a>
-      <a id="encode:(String)⇒ByteString"></a>
+      <a id="encode:String=&gt;Array[Byte]"></a>
+      <a id="encode:(String)⇒Array[Byte]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">encode</span><span class="result">: (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="akka.util.ByteString">ByteString</span></span>
+        <span class="name">encode</span><span class="result">: (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.Codec@encode:String=&gt;akka.util.ByteString" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+      <a href="../../../index.html#play.api.mvc.Codec@encode:String=&gt;Array[Byte]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <p class="shortcomment cmt">The transformation function.</p>
@@ -272,7 +275,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.Codec@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
@@ -289,7 +292,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.Codec@finalize():Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -312,7 +315,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.Codec@getClass():Class[_]" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -329,7 +332,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.Codec@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
@@ -346,7 +349,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.Codec@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
@@ -363,7 +366,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.Codec@notify():Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
@@ -380,7 +383,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.Codec@notifyAll():Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
@@ -397,7 +400,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.Codec@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
@@ -414,7 +417,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.Codec@wait():Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -437,7 +440,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.Codec@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -460,7 +463,7 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.Codec@wait(x$1:Long):Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com>
  */
 package scalaguide.tests.webservice
 
@@ -28,7 +28,6 @@ import client._
 
 //#full-test
 import play.core.server.Server
-import play.api.Play
 import play.api.routing.sird._
 import play.api.mvc._
 import play.api.libs.json._
@@ -92,7 +91,6 @@ object ScalaTestingWebServiceClients extends Specification with NoTimeConversion
 
     "allow sending a resource" in {
       //#send-resource
-      import play.api.Play
       import play.api.mvc._
       import play.api.routing.sird._
       import play.api.test._
@@ -112,7 +110,6 @@ object ScalaTestingWebServiceClients extends Specification with NoTimeConversion
 
     "allow being dry" in {
       //#with-github-client
-      import play.api.Play
       import play.api.mvc._
       import play.api.routing.sird._
       import play.core.server.Server

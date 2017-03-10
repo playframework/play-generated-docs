@@ -6,7 +6,6 @@ import play.db.ebean.Transactional;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.test.*;
-import play.Application;
 
 import java.util.HashMap;
 import java.util.List;
@@ -19,7 +18,7 @@ import static org.hamcrest.CoreMatchers.*;
 public class JavaEbeanTest extends WithApplication {
 
     @Override
-    protected Application provideApplication() {
+    protected FakeApplication provideFakeApplication() {
         Map<String, String> config = new HashMap<String, String>();
         config.putAll(inMemoryDatabase());
         config.put("ebean.default", "javaguide.ebean.Task");

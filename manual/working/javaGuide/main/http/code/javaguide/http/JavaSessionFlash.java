@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com>
  */
 package javaguide.http;
 
@@ -35,7 +35,7 @@ public class JavaSessionFlash extends WithApplication {
                         }
                     }
                     //#read-session
-                }, fakeRequest().session("connected", "foo"), mat)),
+                }, fakeRequest().session("connected", "foo"))),
                 equalTo("Hello foo"));
     }
 
@@ -48,7 +48,7 @@ public class JavaSessionFlash extends WithApplication {
                 return ok("Welcome!");
             }
             //#store-session
-        }, fakeRequest(), mat).session();
+        }, fakeRequest()).session();
         assertThat(session.get("connected"), equalTo("user@gmail.com"));
     }
 
@@ -61,7 +61,7 @@ public class JavaSessionFlash extends WithApplication {
                 return ok("Bye");
             }
             //#remove-from-session
-        }, fakeRequest().session("connected", "foo"), mat).session();
+        }, fakeRequest().session("connected", "foo")).session();
         assertThat(session.get("connected"), nullValue());
     }
 
@@ -74,7 +74,7 @@ public class JavaSessionFlash extends WithApplication {
                 return ok("Bye");
             }
             //#discard-whole-session
-        }, fakeRequest().session("connected", "foo"), mat).session();
+        }, fakeRequest().session("connected", "foo")).session();
         assertThat(session.get("connected"), nullValue());
     }
 
@@ -90,7 +90,7 @@ public class JavaSessionFlash extends WithApplication {
                         return ok(message);
                     }
                     //#read-flash
-                }, fakeRequest().flash("success", "hi"), mat)),
+                }, fakeRequest().flash("success", "hi"))),
                 equalTo("hi"));
     }
 
@@ -103,7 +103,7 @@ public class JavaSessionFlash extends WithApplication {
                 return redirect("/home");
             }
             //#store-flash
-        }, fakeRequest(), mat).flash();
+        }, fakeRequest()).flash();
         assertThat(flash.get("success"), equalTo("The item has been created"));
     }
 
@@ -114,7 +114,7 @@ public class JavaSessionFlash extends WithApplication {
                 return ok(javaguide.http.views.html.index.render());
             }
         };
-        assertThat(contentAsString(call(index, fakeRequest(), mat)).trim(), equalTo("Welcome!"));
-        assertThat(contentAsString(call(index, fakeRequest().flash("success", "Flashed!"), mat)).trim(), equalTo("Flashed!"));
+        assertThat(contentAsString(call(index, fakeRequest())).trim(), equalTo("Welcome!"));
+        assertThat(contentAsString(call(index, fakeRequest().flash("success", "Flashed!"))).trim(), equalTo("Flashed!"));
     }
 }

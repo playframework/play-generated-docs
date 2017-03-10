@@ -1,15 +1,15 @@
-<!--- Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com> -->
-# Using the SBT console
+<!--- Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com> -->
+# Using the Play console
 
 ## Launching the console
 
-The SBT console is a development console based on sbt that allows you to manage a Play application’s complete development cycle.
+The Play console is a development console based on sbt that allows you to manage a Play application’s complete development cycle.
 
-To launch the Play console, change to the directory of your project, and run SBT (or `activator` in place of the `sbt` command):
+To launch the Play console, change to the directory of your project, and run Activator:
 
 ```bash
 $ cd my-first-app
-$ sbt
+$ activator
 ```
 
 [[images/console.png]]
@@ -67,14 +67,15 @@ Type `console` to enter the interactive Scala console, which allows you to test 
 ```
 
 To start application inside scala console (e.g. to access database):
+```bash
+scala> new play.core.StaticApplication(new java.io.File("."))
+```
 
-@[consoleapp](code/PlayConsole.scala)
-
-[[images/consoleEval.png]]
+[[images/consoleEval.png]] 
 
 ## Debugging
 
-You can ask Play to start a **JPDA** debug port when starting the console. You can then connect using Java debugger. Use the `sbt -jvm-debug <port>` command to do that:
+You can ask Play to start a **JPDA** debug port when starting the console. You can then connect using Java debugger. Use the `activator -jvm-debug <port>` command to do that:
 
 ```bash
 $ activator -jvm-debug 9999
@@ -88,7 +89,7 @@ Listening for transport dt_socket at address: 9999
 
 ## Using sbt features
 
-You can use sbt features such as **triggered execution**.
+The Play console is just a normal sbt console, so you can use sbt features such as **triggered execution**. 
 
 For example, using `~ compile`:
 
@@ -114,10 +115,10 @@ You can also do the same for `~ test`, to continuously test your project each ti
 
 ## Using the play commands directly
 
-You can also run commands directly without entering the Play console. For example, enter `sbt run`:
+You can also run commands directly without entering the Play console. For example, enter `activator run`:
 
 ```bash
-$ sbt run
+$ activator run
 [info] Loading project definition from /Users/jroper/tmp/my-first-app/project
 [info] Set current project to my-first-app (in build file:/Users/jroper/tmp/my-first-app/)
 
@@ -131,5 +132,5 @@ $ sbt run
 The application starts directly. When you quit the server using `Ctrl+D`, you will come back to your OS prompt. Of course, the **triggered execution** is available here as well:
 
 ```bash
-$ sbt ~run
+$ activator ~run
 ```

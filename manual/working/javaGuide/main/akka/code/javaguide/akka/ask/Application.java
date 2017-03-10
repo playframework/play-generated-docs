@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com>
  */
 package javaguide.akka.ask;
 
@@ -9,9 +9,8 @@ import javaguide.akka.HelloActorProtocol.SayHello;
 //#ask
 import akka.actor.*;
 import play.mvc.*;
-import scala.compat.java8.FutureConverters;
+import play.libs.F.*;
 import javax.inject.*;
-import java.util.concurrent.CompletionStage;
 
 import static akka.pattern.Patterns.ask;
 
@@ -24,9 +23,9 @@ public class Application extends Controller {
         helloActor = system.actorOf(HelloActor.props);
     }
 
-    public CompletionStage<Result> sayHello(String name) {
-        return FutureConverters.toJava(ask(helloActor, new SayHello(name), 1000))
-                .thenApply(response -> ok((String) response));
+    public Promise<Result> sayHello(String name) {
+        return Promise.wrap(ask(helloActor, new SayHello(name), 1000))
+                .map(response -> ok((String) response));
     }
 }
 //#ask

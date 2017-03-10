@@ -1,4 +1,4 @@
-<!--- Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com> -->
 # HTTP routing
 
 ## The built-in HTTP router
@@ -16,13 +16,13 @@ Routes are defined in the `conf/routes` file, which is compiled. This means that
 
 ## Dependency Injection
 
-Play supports generating two types of routers, one is a dependency injected router, the other is a static router. The default is the dependency injected router, and that is also the case in the Play seed Activator templates, since we recommend you use dependency-injected controllers. If you need to use static controllers you can switch to the static routes generator by adding the following configuration to your `build.sbt`:
+Play supports generating two types of routers, one is a dependency injected router, the other is a static router.  The default is the static router, but if you created a new Play application using the Play seed Activator templates, your project will include the following configuration in `build.sbt` telling it to use the injected router:
 
 ```scala
-routesGenerator := StaticRoutesGenerator
+routesGenerator := InjectedRoutesGenerator
 ```
 
-The code samples in Play's documentation assumes that you are using the injected routes generator. If you are not using this, you can trivially adapt the code samples for the static routes generator, either by prefixing the controller invocation part of the route with an `@` symbol, or by declaring each of your controllers as an `object` rather than a `class`.
+The code samples in Play's documentation assumes that you are using the injected routes generator.  If you are not using this, you can trivially adapt the code samples for the static routes generator, either by prefixing the controller invocation part of the route with an `@` symbol, or by declaring each of your controllers as an `object` rather than a `class`.
 
 ## The routes file syntax
 
@@ -38,17 +38,9 @@ You can also add comments to the route file, with the `#` character.
 
 @[clients-show-comment](code/scalaguide.http.routing.routes)
 
-You can tell the routes file to use a different router under a specific prefix by using "->" followed by the given prefix:
-
-```
-->      /api                        api.MyRouter
-```
-
-This is especially useful when combined with [[String Interpolating Routing DSL|ScalaSirdRouter]] also known as SIRD routing, or when working with [[sub projects|SBTSubProjects]] that route using several routes files.
-
 ## The HTTP method
 
-The HTTP method can be any of the valid methods supported by HTTP (`GET`, `PATCH`, `POST`, `PUT`, `DELETE`, `HEAD`).
+The HTTP method can be any of the valid methods supported by HTTP (`GET`, `POST`, `PUT`, `DELETE`, `HEAD`).
 
 ## The URI pattern
 
@@ -163,17 +155,3 @@ You can then reverse the URL to the `hello` action method, by using the `control
 > **Note:** There is a `routes` subpackage for each controller package. So the action `controllers.admin.Application.hello` can be reversed via `controllers.admin.routes.Application.hello` (as long as there is no other route before it in the routes file that happens to match the generated path).
 
 The reverse action method works quite simply: it takes your parameters and substitutes them back into the route pattern.  In the case of path segments (`:foo`), the value is encoded before the substitution is done.  For regex and wildcard patterns the string is substituted in raw form, since the value may span multiple segments.  Make sure you escape those components as desired when passing them to the reverse route, and avoid passing unvalidated user input.
-
-## The Default Controller
-
-Play includes a [`Default` controller](api/scala/controllers/Default.html) which provides a handful of useful actions. These can be invoked directly from the routes file:
-
-@[defaultcontroller](code/scalaguide.http.routing.defaultcontroller.routes)
-
-In this example, `GET /` redirects to an external website, but it's also possible to redirect to another action (such as `/posts` in the above example).
-
-## Custom routing
-
-Play provides a DSL for defining embedded routers called the *String Interpolating Routing DSL*, or sird for short.  This DSL has many uses, including embedding a light weight Play server, providing custom or more advanced routing capabilities to a regular Play application, and mocking REST services for testing.
-
-See [[String Interpolating Routing DSL|ScalaSirdRouter]]

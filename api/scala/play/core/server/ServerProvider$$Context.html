@@ -28,13 +28,13 @@
         </head>
         <body class="type">
       <div id="definition">
-        <img alt="Class" src="../../../lib/class_big.png" />
+        <img src="../../../lib/class_big.png" />
         <p id="owner"><a href="../../package.html" class="extype" name="play">play</a>.<a href="../package.html" class="extype" name="play.core">core</a>.<a href="package.html" class="extype" name="play.core.server">server</a>.<a href="ServerProvider$.html" class="extype" name="play.core.server.ServerProvider">ServerProvider</a></p>
         <h1>Context</h1><h3><span class="morelinks"><div>Related Doc:
             <a href="ServerProvider$.html" class="extype" name="play.core.server.ServerProvider">package ServerProvider</a>
           </div></span></h3><span class="permalink">
       <a href="../../../index.html#play.core.server.ServerProvider$$Context" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       </div>
@@ -45,13 +45,14 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">Context</span><span class="params">(<span name="config">config: <a href="ServerConfig.html" class="extype" name="play.core.server.ServerConfig">ServerConfig</a></span>, <span name="appProvider">appProvider: <a href="../ApplicationProvider.html" class="extype" name="play.core.ApplicationProvider">ApplicationProvider</a></span>, <span name="actorSystem">actorSystem: <span class="extype" name="akka.actor.ActorSystem">ActorSystem</span></span>, <span name="materializer">materializer: <span class="extype" name="akka.stream.Materializer">Materializer</span></span>, <span name="stopHook">stopHook: () ⇒ <span class="extype" name="scala.concurrent.Future">Future</span>[_]</span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name">Context</span><span class="params">(<span name="config">config: <a href="ServerConfig.html" class="extype" name="play.core.server.ServerConfig">ServerConfig</a></span>, <span name="appProvider">appProvider: <a href="../ApplicationProvider.html" class="extype" name="play.core.ApplicationProvider">ApplicationProvider</a></span>, <span name="actorSystem">actorSystem: <span class="extype" name="akka.actor.ActorSystem">ActorSystem</span></span>, <span name="stopHook">stopHook: () ⇒ <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="scala.Unit">Unit</span>]</span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>The context for creating a server. Passed to the <code>createServer</code> method.
 </p></div><dl class="paramcmts block"><dt class="param">config</dt><dd class="cmt"><p>Basic server configuration values.</p></dd><dt class="param">appProvider</dt><dd class="cmt"><p>An object which can be queried to get an Application.</p></dd><dt class="param">actorSystem</dt><dd class="cmt"><p>An ActorSystem that the server can use.</p></dd><dt class="param">stopHook</dt><dd class="cmt"><p>A function that should be called by the server when it stops.
-This function can be used to close resources that are provided to the server.</p></dd></dl><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.5.12/framework/src/play-server/src/main/scala/play/core/server/ServerProvider.scala" target="_blank">ServerProvider.scala</a></dd></dl><div class="toggleContainer block">
+This function can be used to close resources that are provided to the server.
+</p></dd></dl><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.4.11/framework/src/play-server/src/main/scala/play/core/server/ServerProvider.scala" target="_blank">ServerProvider.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -79,6 +80,7 @@ This function can be used to close resources that are provided to the server.</p
               <li class="hideall out"><span>Hide All</span></li>
               <li class="showall in"><span>Show all</span></li>
             </ol>
+            <a href="http://docs.scala-lang.org/overviews/scaladoc/usage.html#members" target="_blank">Learn more about member selection</a>
           </div>
         <div id="visbl">
             <span class="filtertype">Visibility</span>
@@ -91,7 +93,7 @@ This function can be used to close resources that are provided to the server.</p
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="play.core.server.ServerProvider.Context#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(config:play.core.server.ServerConfig,appProvider:play.core.ApplicationProvider,actorSystem:akka.actor.ActorSystem,materializer:akka.stream.Materializer,stopHook:()=&gt;scala.concurrent.Future[_]):play.core.server.ServerProvider.Context"></a>
+      <a id="&lt;init&gt;(config:play.core.server.ServerConfig,appProvider:play.core.ApplicationProvider,actorSystem:akka.actor.ActorSystem,stopHook:()=&gt;scala.concurrent.Future[Unit]):play.core.server.ServerProvider.Context"></a>
       <a id="&lt;init&gt;:Context"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -99,15 +101,16 @@ This function can be used to close resources that are provided to the server.</p
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">Context</span><span class="params">(<span name="config">config: <a href="ServerConfig.html" class="extype" name="play.core.server.ServerConfig">ServerConfig</a></span>, <span name="appProvider">appProvider: <a href="../ApplicationProvider.html" class="extype" name="play.core.ApplicationProvider">ApplicationProvider</a></span>, <span name="actorSystem">actorSystem: <span class="extype" name="akka.actor.ActorSystem">ActorSystem</span></span>, <span name="materializer">materializer: <span class="extype" name="akka.stream.Materializer">Materializer</span></span>, <span name="stopHook">stopHook: () ⇒ <span class="extype" name="scala.concurrent.Future">Future</span>[_]</span>)</span>
+        <span class="name">Context</span><span class="params">(<span name="config">config: <a href="ServerConfig.html" class="extype" name="play.core.server.ServerConfig">ServerConfig</a></span>, <span name="appProvider">appProvider: <a href="../ApplicationProvider.html" class="extype" name="play.core.ApplicationProvider">ApplicationProvider</a></span>, <span name="actorSystem">actorSystem: <span class="extype" name="akka.actor.ActorSystem">ActorSystem</span></span>, <span name="stopHook">stopHook: () ⇒ <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="scala.Unit">Unit</span>]</span>)</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.core.server.ServerProvider$$Context@&lt;init&gt;(config:play.core.server.ServerConfig,appProvider:play.core.ApplicationProvider,actorSystem:akka.actor.ActorSystem,materializer:akka.stream.Materializer,stopHook:()=&gt;scala.concurrent.Future[_]):play.core.server.ServerProvider.Context" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+      <a href="../../../index.html#play.core.server.ServerProvider$$Context@&lt;init&gt;(config:play.core.server.ServerConfig,appProvider:play.core.ApplicationProvider,actorSystem:akka.actor.ActorSystem,stopHook:()=&gt;scala.concurrent.Future[Unit]):play.core.server.ServerProvider.Context" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">config</dt><dd class="cmt"><p>Basic server configuration values.</p></dd><dt class="param">appProvider</dt><dd class="cmt"><p>An object which can be queried to get an Application.</p></dd><dt class="param">actorSystem</dt><dd class="cmt"><p>An ActorSystem that the server can use.</p></dd><dt class="param">stopHook</dt><dd class="cmt"><p>A function that should be called by the server when it stops.
-This function can be used to close resources that are provided to the server.</p></dd></dl></div>
+This function can be used to close resources that are provided to the server.
+</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -130,7 +133,7 @@ This function can be used to close resources that are provided to the server.</p
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.core.server.ServerProvider$$Context@!=(x$1:Any):Boolean" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -147,7 +150,7 @@ This function can be used to close resources that are provided to the server.</p
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.core.server.ServerProvider$$Context@##():Int" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -164,7 +167,7 @@ This function can be used to close resources that are provided to the server.</p
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.core.server.ServerProvider$$Context@==(x$1:Any):Boolean" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -181,7 +184,7 @@ This function can be used to close resources that are provided to the server.</p
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.core.server.ServerProvider$$Context@actorSystem:akka.actor.ActorSystem" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <p class="shortcomment cmt">An ActorSystem that the server can use.</p>
@@ -198,7 +201,7 @@ This function can be used to close resources that are provided to the server.</p
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.core.server.ServerProvider$$Context@appProvider:play.core.ApplicationProvider" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <p class="shortcomment cmt">An object which can be queried to get an Application.</p>
@@ -215,7 +218,7 @@ This function can be used to close resources that are provided to the server.</p
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.core.server.ServerProvider$$Context@asInstanceOf[T0]:T0" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
@@ -232,7 +235,7 @@ This function can be used to close resources that are provided to the server.</p
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.core.server.ServerProvider$$Context@clone():Object" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -255,7 +258,7 @@ This function can be used to close resources that are provided to the server.</p
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.core.server.ServerProvider$$Context@config:play.core.server.ServerConfig" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <p class="shortcomment cmt">Basic server configuration values.</p>
@@ -272,7 +275,7 @@ This function can be used to close resources that are provided to the server.</p
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.core.server.ServerProvider$$Context@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
@@ -289,7 +292,7 @@ This function can be used to close resources that are provided to the server.</p
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.core.server.ServerProvider$$Context@finalize():Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -312,7 +315,7 @@ This function can be used to close resources that are provided to the server.</p
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.core.server.ServerProvider$$Context@getClass():Class[_]" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
@@ -329,27 +332,10 @@ This function can be used to close resources that are provided to the server.</p
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.core.server.ServerProvider$$Context@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="play.core.server.ServerProvider.Context#materializer" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="materializer:akka.stream.Materializer"></a>
-      <a id="materializer:Materializer"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">materializer</span><span class="result">: <span class="extype" name="akka.stream.Materializer">Materializer</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.core.server.ServerProvider$$Context@materializer:akka.stream.Materializer" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>
@@ -363,7 +349,7 @@ This function can be used to close resources that are provided to the server.</p
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.core.server.ServerProvider$$Context@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
@@ -380,7 +366,7 @@ This function can be used to close resources that are provided to the server.</p
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.core.server.ServerProvider$$Context@notify():Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
@@ -397,28 +383,29 @@ This function can be used to close resources that are provided to the server.</p
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.core.server.ServerProvider$$Context@notifyAll():Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="play.core.server.ServerProvider.Context#stopHook" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="stopHook:()=&gt;scala.concurrent.Future[_]"></a>
-      <a id="stopHook:()⇒Future[_]"></a>
+      <a id="stopHook:()=&gt;scala.concurrent.Future[Unit]"></a>
+      <a id="stopHook:()⇒Future[Unit]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">stopHook</span><span class="result">: () ⇒ <span class="extype" name="scala.concurrent.Future">Future</span>[_]</span>
+        <span class="name">stopHook</span><span class="result">: () ⇒ <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="scala.Unit">Unit</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.core.server.ServerProvider$$Context@stopHook:()=&gt;scala.concurrent.Future[_]" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+      <a href="../../../index.html#play.core.server.ServerProvider$$Context@stopHook:()=&gt;scala.concurrent.Future[Unit]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <p class="shortcomment cmt">A function that should be called by the server when it stops.</p><div class="fullcomment"><div class="comment cmt"><p>A function that should be called by the server when it stops.
-This function can be used to close resources that are provided to the server.</p></div></div>
+This function can be used to close resources that are provided to the server.
+</p></div></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -432,7 +419,7 @@ This function can be used to close resources that are provided to the server.</p
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.core.server.ServerProvider$$Context@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
@@ -449,7 +436,7 @@ This function can be used to close resources that are provided to the server.</p
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.core.server.ServerProvider$$Context@wait():Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -472,7 +459,7 @@ This function can be used to close resources that are provided to the server.</p
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.core.server.ServerProvider$$Context@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -495,7 +482,7 @@ This function can be used to close resources that are provided to the server.</p
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.core.server.ServerProvider$$Context@wait(x$1:Long):Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
+        <img src="../../../lib/permalink.png" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>

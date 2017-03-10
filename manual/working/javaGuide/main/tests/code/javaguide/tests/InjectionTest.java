@@ -1,6 +1,3 @@
-/*
- * Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com>
- */
 package javaguide.tests;
 
 import static play.test.Helpers.*;
@@ -40,9 +37,7 @@ public class InjectionTest {
       GuiceApplicationBuilder builder = new GuiceApplicationLoader()
           .builder(new Context(Environment.simple()))
           .overrides(testModule);
-      Guice.createInjector(builder.applicationModule()).injectMembers(this);
-
-      Helpers.start(application);
+      Guice.createInjector(builder.applicationModule()).injectMembers(this);      
     }
 
     @After

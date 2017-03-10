@@ -1,67 +1,54 @@
 /*
- * Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com>
  */
-package javaguide.testhelpers {
+package javaguide.testhelpers
 
-import java.util.concurrent.{CompletionStage, CompletableFuture}
-
-import akka.stream.Materializer
 import play.api.mvc.{Action, Request}
-import play.core.j.{DefaultJavaHandlerComponents, JavaHelpers, JavaActionAnnotations, JavaAction}
-import play.http.DefaultActionCreator
+import play.core.j.{JavaHandlerComponents, JavaHelpers, JavaActionAnnotations, JavaAction}
+import play.http.DefaultHttpRequestHandler
 import play.mvc.{Controller, Http, Result}
 import play.api.test.Helpers
+import play.libs.F
 import java.lang.reflect.Method
 
-abstract class MockJavaAction extends Controller with Action[Http.RequestBody] {
-  self =>
+abstract class MockJavaAction extends Controller with Action[Http.RequestBody] { self =>
 
-  private lazy val components = new DefaultJavaHandlerComponents(
-    play.api.Play.current.injector, new DefaultActionCreator
-  )
-
-  private lazy val action = new JavaAction(components) {
+  private lazy val action = new JavaAction(new JavaHandlerComponents(
+    play.api.Play.current.injector, new DefaultHttpRequestHandler
+  )) {
     val annotations = new JavaActionAnnotations(controller, method)
-
-    def parser = {
-      play.HandlerInvokerFactoryAccessor.javaBodyParserToScala(
-        components.getBodyParser(annotations.parser)
-      )
-    }
-
+    def parser = annotations.parser
     def invocation = self.invocation
   }
 
   def parser = action.parser
-
   def apply(request: Request[Http.RequestBody]) = action.apply(request)
 
   private val controller = this.getClass
   private val method = MockJavaActionJavaMocker.findActionMethod(this)
-
   def invocation = {
     method.invoke(this) match {
-      case r: Result => CompletableFuture.completedFuture(r)
-      case f: CompletionStage[_] => f.asInstanceOf[CompletionStage[Result]]
+      case r: Result => F.Promise.pure(r)
+      case f: F.Promise[_] => f.asInstanceOf[F.Promise[Result]]
     }
   }
 }
 
 object MockJavaActionHelper {
-
   import Helpers.defaultAwaitTimeout
 
-  def call(action: Action[Http.RequestBody], requestBuilder: play.mvc.Http.RequestBuilder)(implicit mat: Materializer): Result = {
-    Helpers.await(requestBuilder.body() match {
-      case null =>
-        action.apply(requestBuilder.build()._underlyingRequest)
-      case other =>
-        Helpers.call(action, requestBuilder.build()._underlyingRequest, other.asBytes())
-    }).asJava
+  def call(action: Action[Http.RequestBody], requestBuilder: play.mvc.Http.RequestBuilder): Result = {
+    val result = Helpers.await(action.apply(requestBuilder.build()._underlyingRequest))
+    new Result {
+      def toScala = result
+    }
   }
 
-  def callWithStringBody(action: Action[Http.RequestBody], requestBuilder: play.mvc.Http.RequestBuilder, body: String)(implicit mat: Materializer): Result = {
-    Helpers.await(Helpers.call(action, requestBuilder.build()._underlyingRequest, body)).asJava
+  def callWithStringBody(action: Action[Http.RequestBody], requestBuilder: play.mvc.Http.RequestBuilder, body: String): Result = {
+    val result = Helpers.await(Helpers.call(action, requestBuilder.build()._underlyingRequest, body))
+    new Result {
+      def toScala = result
+    }
   }
 
   def setContext(request: play.mvc.Http.RequestBuilder): Unit = {
@@ -90,17 +77,4 @@ object MockJavaActionJavaMocker {
     theMethod.setAccessible(true)
     theMethod
   }
-}
-
-}
-
-/**
- * javaBodyParserToScala is private to play
- */
-package play {
-
-object HandlerInvokerFactoryAccessor {
-  val javaBodyParserToScala = play.core.routing.HandlerInvokerFactory.javaBodyParserToScala _
-}
-
 }

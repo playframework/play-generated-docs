@@ -1,19 +1,17 @@
 /*
- * Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com>
  */
 package scalaguide.akka {
 
 import akka.actor.ActorSystem
 import org.junit.runner.RunWith
 import org.specs2.runner.JUnitRunner
-
-import scala.concurrent.Await
+import play.api.inject.guice.GuiceApplicationBuilder
 import scala.concurrent.duration._
 import scala.concurrent.ExecutionContext.Implicits.global
+
 import play.api.test._
 import java.io.File
-
-import akka.util.Timeout
 
 class ScalaAkkaSpec extends PlaySpecification {
 
@@ -24,14 +22,11 @@ class ScalaAkkaSpec extends PlaySpecification {
     try {
       block(system)
     } finally {
-      system.terminate()
-      Await.result(system.whenTerminated, Duration.Inf)
+      system.shutdown()
+      system.awaitTermination()
     }
   }
-
-  override def defaultAwaitTimeout: Timeout = 5.seconds
-
-
+  
   "The Akka support" should {
 
     "allow injecting actors" in new WithApplication() {
@@ -43,13 +38,12 @@ class ScalaAkkaSpec extends PlaySpecification {
       import play.api.mvc.Results._
       import actors.HelloActor.SayHello
 
-
       //#ask
       import play.api.libs.concurrent.Execution.Implicits.defaultContext
       import scala.concurrent.duration._
       import akka.pattern.ask
-      implicit val timeout: Timeout = 5.seconds
-
+      implicit val timeout = 5.seconds
+      
       def sayHello(name: String) = Action.async {
         (helloActor ? SayHello(name)).mapTo[String].map { message =>
           Ok(message)
@@ -60,26 +54,27 @@ class ScalaAkkaSpec extends PlaySpecification {
       contentAsString(sayHello("world")(FakeRequest())) must_== "Hello, world"
     }
 
-    "allow binding actors" in new WithApplication(_
+    "allow binding actors" in new WithApplication(new GuiceApplicationBuilder()
       .bindings(new modules.MyModule)
       .configure("my.config" -> "foo")
-    ) { _ =>
+      .build()
+    ) {
       import injection._
-      implicit val timeout: Timeout = 5.seconds
       val controller = app.injector.instanceOf[Application]
       contentAsString(controller.getConfig(FakeRequest())) must_== "foo"
     }
 
-    "allow binding actor factories" in new WithApplication(_
+    "allow binding actor factories" in new WithApplication(new GuiceApplicationBuilder()
       .bindings(new factorymodules.MyModule)
       .configure("my.config" -> "foo")
-    ) { _ =>
+      .build()
+    ) {
       import play.api.inject.bind
       import akka.actor._
       import play.api.libs.concurrent.Execution.Implicits.defaultContext
       import scala.concurrent.duration._
       import akka.pattern.ask
-      implicit val timeout: Timeout = 5.seconds
+      implicit val timeout = 5.seconds
 
       val actor = app.injector.instanceOf(bind[ActorRef].qualifiedWith("parent-actor"))
       val futureConfig = for {

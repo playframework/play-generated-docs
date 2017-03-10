@@ -1,4 +1,4 @@
-<!--- Copyright (C) 2009-2016 Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) 2009-2015 Typesafe Inc. <http://www.typesafe.com> -->
 # Actions, Controllers and Results
 
 ## What is an Action?
@@ -37,11 +37,9 @@ Body parsers will be covered later in this manual.  For now you just need to kno
 
 ## Controllers are action generators
 
-A `Controller` is nothing more than an object that generates `Action` values. Controllers can be defined as classes to take advantage of [[Dependency Injection|ScalaDependencyInjection]] or as objects.
+A `Controller` is nothing more than a singleton object that generates `Action` values. 
 
-> **Note:** Keep in mind that defining controllers as objects will not be supported in future versions of Play. Using classes is the recommended approach.
-
-The simplest use case for defining an action generator is a method with no parameters that returns an `Action` value:
+The simplest use case for defining an action generator is a method with no parameters that returns an `Action` value	:
 
 @[full-controller](code/ScalaActions.scala)
 
@@ -51,7 +49,7 @@ Of course, the action generator method can have parameters, and these parameters
 
 ## Simple results
 
-For now we are just interested in simple results: an HTTP result with a status code, a set of HTTP headers and a body to be sent to the web client.
+For now we are just interested in simple results: An HTTP result with a status code, a set of HTTP headers and a body to be sent to the web client.
 
 These results are defined by `play.api.mvc.Result`:
 
