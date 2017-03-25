@@ -65,11 +65,11 @@ timeout after a certain period of time:</p><pre><span class="kw">class</span> My
     <span class="kw">implicit</span> <span class="kw">val</span> ec = actorSystem.dispatcher
     akka.pattern.after(<span class="num">300</span> millis, actorSystem.scheduler)(Future(<span class="num">42</span>))(actorSystem.dispatcher)
   }
-}</pre><p>You should check for timeout by using <span class="extype" name="scala.concurrent.Future.recover()">scala.concurrent.Future.recover()</span> or <span class="extype" name="scala.concurrent.Future.recoverWith()">scala.concurrent.Future.recoverWith()</span>
-and checking for <span class="extype" name="TimeoutException">TimeoutException</span>:</p><pre><span class="kw">val</span> future = myService.calculateWithTimeout(<span class="num">100</span> millis).recover {
+}</pre><p>You should check for timeout by using <code>scala.concurrent.Future.recover</code> or <code>scala.concurrent.Future.recoverWith</code>
+and checking for <span class="extype" name="scala.concurrent.TimeoutException">scala.concurrent.TimeoutException</span>:</p><pre><span class="kw">val</span> future = myService.calculateWithTimeout(<span class="num">100</span> millis).recover {
   <span class="kw">case</span> _: TimeoutException <span class="kw">=&gt;</span>
     -<span class="num">1</span>
-}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0-M2/framework/src/play/src/main/scala/play/api/libs/concurrent/Timeout.scala" target="_blank">Timeout.scala</a></dd><dt>See also</dt><dd><span class="cmt"><p><a href="http://docs.scala-lang.org/overviews/core/futures.html" target="_blank">Futures and Promises</a></p></span></dd></dl><div class="toggleContainer block">
+}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0-M3/framework/src/play/src/main/scala/play/api/libs/concurrent/Timeout.scala" target="_blank">Timeout.scala</a></dd><dt>See also</dt><dd><span class="cmt"><p><a href="http://docs.scala-lang.org/overviews/core/futures.html" target="_blank">Futures and Promises</a></p></span></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">

@@ -45,17 +45,17 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <span class="name">SessionCookieBaker</span><span class="result"> extends <a href="CookieBaker.html" class="extype" name="play.api.mvc.CookieBaker">CookieBaker</a>[<a href="Session.html" class="extype" name="play.api.mvc.Session">Session</a>]</span>
+        <span class="name">SessionCookieBaker</span><span class="result"> extends <a href="CookieBaker.html" class="extype" name="play.api.mvc.CookieBaker">CookieBaker</a>[<a href="Session.html" class="extype" name="play.api.mvc.Session">Session</a>] with <a href="CookieDataCodec.html" class="extype" name="play.api.mvc.CookieDataCodec">CookieDataCodec</a></span>
       </span>
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Helper utilities to manage the Session cookie.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0-M2/framework/src/play/src/main/scala/play/api/mvc/Session.scala" target="_blank">Session.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0-M3/framework/src/play/src/main/scala/play/api/mvc/Session.scala" target="_blank">Session.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="CookieBaker.html" class="extype" name="play.api.mvc.CookieBaker">CookieBaker</a>[<a href="Session.html" class="extype" name="play.api.mvc.Session">Session</a>], <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="CookieDataCodec.html" class="extype" name="play.api.mvc.CookieDataCodec">CookieDataCodec</a>, <a href="CookieBaker.html" class="extype" name="play.api.mvc.CookieBaker">CookieBaker</a>[<a href="Session.html" class="extype" name="play.api.mvc.Session">Session</a>], <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
             <span class="toggle">Known Subclasses</span>
-            <div class="subClasses hiddenContent"><a href="DefaultSessionCookieBaker.html" class="extype" name="play.api.mvc.DefaultSessionCookieBaker">DefaultSessionCookieBaker</a>, <a href="Session$.html" class="extype" name="play.api.mvc.Session">Session</a></div>
+            <div class="subClasses hiddenContent"><a href="DefaultSessionCookieBaker.html" class="extype" name="play.api.mvc.DefaultSessionCookieBaker">DefaultSessionCookieBaker</a>, <a href="LegacySessionCookieBaker.html" class="extype" name="play.api.mvc.LegacySessionCookieBaker">LegacySessionCookieBaker</a>, <a href="Session$.html" class="extype" name="play.api.mvc.Session">Session</a></div>
           </div></div>
         
 
@@ -73,7 +73,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="play.api.mvc.SessionCookieBaker"><span>SessionCookieBaker</span></li><li class="in" name="play.api.mvc.CookieBaker"><span>CookieBaker</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="play.api.mvc.SessionCookieBaker"><span>SessionCookieBaker</span></li><li class="in" name="play.api.mvc.CookieDataCodec"><span>CookieDataCodec</span></li><li class="in" name="play.api.mvc.CookieBaker"><span>CookieBaker</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -113,24 +113,42 @@
       </a>
     </span>
       
-    </li><li name="play.api.mvc.CookieBaker#cookieSigner" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="cookieSigner:play.api.libs.crypto.CookieSigner"></a>
-      <a id="cookieSigner:CookieSigner"></a>
+    </li><li name="play.api.mvc.CookieDataCodec#decode" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="decode(data:String):Map[String,String]"></a>
+      <a id="decode(String):Map[String,String]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">abstract </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">cookieSigner</span><span class="result">: <a href="../libs/crypto/CookieSigner.html" class="extype" name="play.api.libs.crypto.CookieSigner">CookieSigner</a></span>
+        <span class="name">decode</span><span class="params">(<span name="data">data: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.SessionCookieBaker@cookieSigner:play.api.libs.crypto.CookieSigner" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.SessionCookieBaker@decode(data:String):Map[String,String]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">The cookie signer.</p><div class="fullcomment"><div class="comment cmt"><p>The cookie signer.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="CookieBaker.html" class="extype" name="play.api.mvc.CookieBaker">CookieBaker</a></dd></dl></div>
+      <p class="shortcomment cmt">Decodes from an encoded <code>String</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Decodes from an encoded <code>String</code>.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="CookieDataCodec.html" class="extype" name="play.api.mvc.CookieDataCodec">CookieDataCodec</a></dd></dl></div>
+    </li><li name="play.api.mvc.CookieDataCodec#encode" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="encode(data:Map[String,String]):String"></a>
+      <a id="encode(Map[String,String]):String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">encode</span><span class="params">(<span name="data">data: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.SessionCookieBaker@encode(data:Map[String,String]):String" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Encodes the data as a <code>String</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Encodes the data as a <code>String</code>.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="CookieDataCodec.html" class="extype" name="play.api.mvc.CookieDataCodec">CookieDataCodec</a></dd></dl></div>
     </li></ol>
             </div>
 
@@ -245,24 +263,6 @@
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="play.api.mvc.CookieBaker#decode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="decode(data:String):Map[String,String]"></a>
-      <a id="decode(String):Map[String,String]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">decode</span><span class="params">(<span name="data">data: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.SessionCookieBaker@decode(data:String):Map[String,String]" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Decodes from an encoded <code>String</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Decodes from an encoded <code>String</code>.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="CookieBaker.html" class="extype" name="play.api.mvc.CookieBaker">CookieBaker</a></dd></dl></div>
     </li><li name="play.api.mvc.CookieBaker#decodeCookieToMap" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="decodeCookieToMap(cookie:Option[play.api.mvc.Cookie]):Map[String,String]"></a>
       <a id="decodeCookieToMap(Option[Cookie]):Map[String,String]"></a>
@@ -370,24 +370,6 @@
     </span>
       <p class="shortcomment cmt">Default cookie, returned in case of error or if missing in the HTTP headers.</p><div class="fullcomment"><div class="comment cmt"><p>Default cookie, returned in case of error or if missing in the HTTP headers.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.mvc.SessionCookieBaker">SessionCookieBaker</a> → <a href="CookieBaker.html" class="extype" name="play.api.mvc.CookieBaker">CookieBaker</a></dd></dl></div>
-    </li><li name="play.api.mvc.CookieBaker#encode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="encode(data:Map[String,String]):String"></a>
-      <a id="encode(Map[String,String]):String"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">encode</span><span class="params">(<span name="data">data: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.SessionCookieBaker@encode(data:Map[String,String]):String" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Encodes the data as a <code>String</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Encodes the data as a <code>String</code>.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="CookieBaker.html" class="extype" name="play.api.mvc.CookieBaker">CookieBaker</a></dd></dl></div>
     </li><li name="play.api.mvc.CookieBaker#encodeAsCookie" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="encodeAsCookie(data:T):play.api.mvc.Cookie"></a>
       <a id="encodeAsCookie(Session):Cookie"></a>
@@ -638,6 +620,24 @@
     </span>
       <p class="shortcomment cmt"> The cookie path.</p><div class="fullcomment"><div class="comment cmt"><p> The cookie path.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.mvc.SessionCookieBaker">SessionCookieBaker</a> → <a href="CookieBaker.html" class="extype" name="play.api.mvc.CookieBaker">CookieBaker</a></dd></dl></div>
+    </li><li name="play.api.mvc.SessionCookieBaker#sameSite" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="sameSite:Option[play.api.mvc.Cookie.SameSite]"></a>
+      <a id="sameSite:Option[SameSite]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sameSite</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="Cookie$$SameSite.html" class="extype" name="play.api.mvc.Cookie.SameSite">SameSite</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.SessionCookieBaker@sameSite:Option[play.api.mvc.Cookie.SameSite]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">The value of the SameSite attribute of the cookie.</p><div class="fullcomment"><div class="comment cmt"><p>The value of the SameSite attribute of the cookie. Defaults to no SameSite.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.mvc.SessionCookieBaker">SessionCookieBaker</a> → <a href="CookieBaker.html" class="extype" name="play.api.mvc.CookieBaker">CookieBaker</a></dd></dl></div>
     </li><li name="play.api.mvc.SessionCookieBaker#secure" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="secure:Boolean"></a>
       <a id="secure:Boolean"></a>
@@ -786,7 +786,9 @@
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="play.api.mvc.CookieBaker">
+        <div class="parent" name="play.api.mvc.CookieDataCodec">
+              <h3>Inherited from <a href="CookieDataCodec.html" class="extype" name="play.api.mvc.CookieDataCodec">CookieDataCodec</a></h3>
+            </div><div class="parent" name="play.api.mvc.CookieBaker">
               <h3>Inherited from <a href="CookieBaker.html" class="extype" name="play.api.mvc.CookieBaker">CookieBaker</a>[<a href="Session.html" class="extype" name="play.api.mvc.Session">Session</a>]</h3>
             </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>

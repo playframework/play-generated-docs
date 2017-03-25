@@ -61,17 +61,17 @@ Play Iteratees has been moved to a separate library hosted at https://github.com
 libraryDependencies += "com.typesafe.play" %% "play-iteratees" % "2.6.1"
 ```
 
-The project also has a sub project that integrates Iteratees with [Reactive Streams](http://www.reactive-streams.org/). You may need to add the following dependency as well: 
+The project also has a sub project that integrates Iteratees with [Reactive Streams](http://www.reactive-streams.org/). You may need to add the following dependency as well:
 
 ```scala
 libraryDependencies += "com.typesafe.play" %% "play-iteratees-reactive-streams" % "2.6.1"
 ```
 
-> **Note**: The helper class `play.api.libs.streams.Streams` was moved to `play-iteratees-reactive-streams` and now is called `play.api.libs.iteratee.streams.IterateeStreams`. So you may need to add the Iteratees dependencies and also use the new class where necessary. 
+> **Note**: The helper class `play.api.libs.streams.Streams` was moved to `play-iteratees-reactive-streams` and now is called `play.api.libs.iteratee.streams.IterateeStreams`. So you may need to add the Iteratees dependencies and also use the new class where necessary.
 
 Finally, Play Iteratees has a separate versioning scheme, so the version no longer is in sync with the Play version.
 
-## Writeable[JsValue] changes
+## `Writeable[JsValue]` changes
 
 Previously, the default Scala `Writeable[JsValue]` allowed you to define an implicit `Codec`, which would allow you to write using a different charset. This could be a problem since `application/json` does not act like text-based content types. It only allows Unicode charsets (`UTF-8`, `UTF-16` and `UTF-32`) and does not define a `charset` parameter like many text-based content types.
 
@@ -100,9 +100,49 @@ This trait makes `Action` and `parse` refer to injected instances rather than th
 
 `ControllerComponents` is simply meant to bundle together components typically used in a controller. You may also wish to create your own base controller for your app by extending `BaseController` and injecting your own bundle of components (though Play does not require controllers to implement any particular trait).
 
+## Cookies
+
+For Java users, we now recommend using `Cookie.builder` to create new cookies, for example:
+
+```java
+Cookie cookie = Cookie.builder("color", "blue")
+  .withMaxAge(3600)
+  .withSecure(true)
+  .withHttpOnly(true)
+  .withSameSite(SameSite.STRICT)
+  .build();
+```
+
+This is more readable than a plain constructor call, and will be source-compatible if we add/remove cookie attributes in the future.
+
+### SameSite attribute, enabled for session and flash
+
+Cookies now can have an additional [`SameSite` attribute](http://httpwg.org/http-extensions/draft-ietf-httpbis-cookie-same-site.html), which can be used to prevent CSRF. There are three possible states:
+
+ - No `SameSite`, meaning cookies will be sent for all requests to that domain.
+ - `SameSite=Strict`, meaning the cookie will only be sent for same-site requests (coming from another page on the site) not cross-site requests
+ - `SameSite=Lax`, meaning the cookie will be sent for cross-site requests as top-level navigation, but otherwise only for same-site requests. This will do the correct thing for most sites, but won't prevent certain types of attacks, such as those executed by launching popup windows.
+
+In addition, we have moved the session and flash cookies to use `SameSite=Lax` by default. You can tweak this using configuration. For example:
+
+```
+play.http.session.sameSite = null // no same-site for session
+play.http.flash.sameSite = "strict" // strict same-site for flash
+```
+
+*Note that this feature is currently not supported by many browsers, so you shouldn't rely on it. Chrome and Opera are the only major browsers to support SameSite right now.*
+
+### __Host and __Secure prefixes
+
+We've also added support for the [__Host and __Secure cookie name prefixes](https://tools.ietf.org/html/draft-ietf-httpbis-cookie-prefixes-00#section-3).
+
+This will only affect you if you happen to be using these prefixes for cookie names. If you are, Play will warn when serializing and deserializing those cookies if the proper attributes are not set, then set them for you automatically. To remove the warning, either cease using those prefixes for your cookies, or be sure to set the attributes as follows:
+ - Cookies named with `__Host-` should set `Path=/` and `Secure` attributes.
+ - Cookies named with `__Secure-` should set the `Secure` attribute.
+
 ## Assets
 
-User-facing APIs are generally the same, but we suggest moving over to the `AssetsFinder` API for finding assets and setting up your assets directories in configuration:
+Existing user-facing APIs have not changed, but we suggest moving over to the `AssetsFinder` API for finding assets and setting up your assets directories in configuration:
 
 ```
 play.assets {
@@ -112,11 +152,13 @@ play.assets {
 ```
 
 Then in routes you can do:
+
 ```
 # prefix must match `play.assets.urlPrefix`
 /assets/*file           controllers.Assets.at(file)
 /versionedAssets/*file  controllers.Assets.versioned(file)
 ```
+
 You no longer need to provide an assets path at the start of the argument list, since that's now read from configuration.
 
 Then in your template you can use `AssetsFinder#path` to find the final path of the asset:
@@ -129,9 +171,52 @@ Then in your template you can use `AssetsFinder#path` to find the final path of 
 
 You can still continue to use reverse routes with `Assets.versioned`, but some global state is required to convert the asset name you provide to the final asset name, which can be problematic if you want to run multiple applications at once.
 
-## Java Form Changes
+## Form changes
+
+Starting with Play 2.6 query string parameters will not be bound to a form instance anymore when using `.bindFromRequest()` in combination with `POST`, `PUT` or `PATCH` requests.
+
+### Java Form Changes
 
 The `.errors()` method of a `play.data.Form` instance is now deprecated. You should use `allErrors()` instead now which returns a simple `List<ValidationError>` instead of a `Map<String,List<ValidationError>>`. Where before Play 2.6 you called `.errors().get("key")` you can now simply call `.errors("key")`.
+
+From now on a `validate` method implemented inside a form class (usually used for cross field validation) is part of a class-level constraint. Check out the [[Advanced validation|JavaForms#advanced-validation]] docs for further information on how to use such constraints.
+Existing `validate` methods can easily be migrated by annotating the affected form classes with `@Validate` and, depending on the return type of the validate method, by implementing the `Validatable` interface with the applicable type argument (all defined in `play.data.validation.Constraints`):
+
+| **Return type**                                                                    | **Interface to implement**
+| -----------------------------------------------------------------------------------|-------------------------------------
+| `String`                                                                           | `Validatable<String>`
+| `ValidationError`                                                                  | `Validatable<ValidationError>`
+| `List<ValidationError>`                                                            | `Validatable<List<ValidationError>>`
+| `Map<String,List<ValidationError>>`<br>(not supported anymore; use `List` instead) | `Validatable<List<ValidationError>>`
+
+For example an existing form like:
+
+```java
+public class MyForm {
+    //...
+    public String validate() {
+        //...
+    }
+}
+```
+
+Has to be changed to:
+
+```java
+import play.data.validation.Constraints.Validate;
+import play.data.validation.Constraints.Validatable;
+
+@Validate
+public class MyForm implements Validatable<String> {
+    //...
+    @Override
+    public String validate() {
+        //...
+    }
+}
+```
+
+> **Be aware**: The "old" `validate` method was invoked only after all other constraints were successful before. By default class-level constraints however are called simultaneously with any other constraint annotations - no matter if they passed or failed. To (also) define an order between the constraints you can now use [[constraint groups|JavaForms#defining-the-order-of-constraint-groups]].
 
 ## JPA Migration Notes
 
@@ -143,18 +228,21 @@ See [[I18N API Migration|MessagesMigration26]].
 
 ## Cache APIs Migration Notes
 
-See [[Cache APIs Migration|CacheMigration26]]
+See [[Cache APIs Migration|CacheMigration26]].
+
+## Java Configuration API Migration Notes
+
+See [[Java Configuration Migration|JavaConfigMigration26]].
 
 ## Removed APIs
 
 ### Removed Crypto API
 
-The Crypto API has removed the deprecated class `play.api.libs.Crypto` and `play.libs.Crypto` and `AESCTRCrypter`.  The CSRF references to `Crypto` have been replaced by `CSRFTokenSigner`.  The session cookie references to `Crypto` have been replaced with `CookieSigner`.  Please see [[CryptoMigration25]] for more information.
+The Crypto API has removed the deprecated classes `play.api.libs.Crypto`, `play.libs.Crypto` and `AESCTRCrypter`.  The CSRF references to `Crypto` have been replaced by `CSRFTokenSigner`.  The session cookie references to `Crypto` have been replaced with `CookieSigner`.  Please see [[CryptoMigration25]] for more information.
 
 ### Removed Yaml API
 
-We removed `play.libs.Yaml` since there was no use of it inside of play anymore.
-If you still need support for the Play YAML integration you need to add `snakeyaml` in you `build.sbt`:
+We removed `play.libs.Yaml` since there was no use of it inside of play anymore. If you still need support for the Play YAML integration you need to add `snakeyaml` in you `build.sbt`:
 
 ```scala
 libraryDependencies += "org.yaml" % "snakeyaml" % "1.17"
@@ -201,8 +289,7 @@ Libraries that provide Play DI support should define the `play.application.loade
 
 ### Removed libraries
 
-In order to make the default play distribution a bit smaller we removed some libraries.
-The following libraries are no longer dependencies in Play 2.6, so you will need to manually add them to your build if you use them.
+In order to make the default play distribution a bit smaller we removed some libraries. The following libraries are no longer dependencies in Play 2.6, so you will need to manually add them to your build if you use them.
 
 #### Joda-Time removal
 
@@ -237,8 +324,7 @@ libraryDependencies += "org.joda" % "joda-convert" % "1.8.1"
 
 #### XercesImpl removal
 
-For XML handling Play used the Xerces XML Library. Since modern JVM are using Xerces as a reference implementation we removed it.
-If your project relies on the external package you can simply add it to your `build.sbt`:
+For XML handling Play used the Xerces XML Library. Since modern JVM are using Xerces as a reference implementation we removed it. If your project relies on the external package you can simply add it to your `build.sbt`:
 
 ```scala
 libraryDependencies += "xerces" % "xercesImpl" % "2.11.0"
@@ -246,8 +332,7 @@ libraryDependencies += "xerces" % "xercesImpl" % "2.11.0"
 
 #### H2 removal
 
-Prior versions of Play prepackaged the H2 database. But to make the core of Play smaller we removed it.
-If you make use of h2 you can add it to your `build.sbt`:
+Prior versions of Play prepackaged the H2 database. But to make the core of Play smaller we removed it. If you make use of H2 you can add it to your `build.sbt`:
 
 ```scala
 libraryDependencies += "com.h2database" % "h2" % "1.4.193"
@@ -263,8 +348,7 @@ The [[H2 Browser|Developing-with-the-H2-Database#H2-Browser]] will still work af
 
 #### snakeyaml removal
 
-Play removed `play.libs.Yaml` and therefore the dependency on `snakeyaml` was dropped.
-If you still use it add it to your `build.sbt`:
+Play removed `play.libs.Yaml` and therefore the dependency on `snakeyaml` was dropped. If you still use it add it to your `build.sbt`:
 
 ```scala
 libraryDependencies += "org.yaml" % "snakeyaml" % "1.17"
@@ -272,7 +356,7 @@ libraryDependencies += "org.yaml" % "snakeyaml" % "1.17"
 
 ### Tomcat-servlet-api removal
 
-Play removed the `tomcat-servlet-api` since it was of no use.
+Play removed the `tomcat-servlet-api` since it was of no use. If you still use it add it to your `build.sbt`:
 
 ```scala
 libraryDependencies += "org.apache.tomcat" % "tomcat-servlet-api" % "8.0.33"
@@ -280,7 +364,7 @@ libraryDependencies += "org.apache.tomcat" % "tomcat-servlet-api" % "8.0.33"
 
 ### Akka Migration
 
-The deprecated static methods `play.libs.Akka.system` and `play.api.libs.concurrent.Akka.system` were removed.  Please dependency inject an `ActorSystem` instance for access to the actor system.
+The deprecated static methods `play.libs.Akka.system` and `play.api.libs.concurrent.Akka.system` were removed.  Use dependency injection to get an instance of `ActorSystem` and access the actor system.
 
 For Scala:
 
@@ -306,7 +390,7 @@ public class MyComponent {
 
 ### Request attributes
 
-All request objects now contain *attributes*. Request attributes are a replacement for request *tags*. Tags have now been deprecated and you should upgrade to attributes. Attributes are more powerful than tags; you can use attributes to store objects in requests, whereas tags only supported storing strings.
+All request objects now contain *attributes*. Request attributes are a replacement for request *tags*. Tags have now been deprecated and you should upgrade to attributes. Attributes are more powerful than tags; you can use attributes to store objects in requests, whereas tags only supported storing Strings.
 
 #### Request tags deprecation
 
@@ -354,7 +438,7 @@ Scala after:
 
 ```scala
 object Attrs {
-  val UserName: TypedKey[String] = TypedKey[String]("userName")
+  val UserName: TypedKey[String] = TypedKey("userName")
 }
 // Getting an attribute from a Request or RequestHeader
 val userName: String = req.attrs(Attrs.UserName)
@@ -375,21 +459,21 @@ Scala after:
 
 ```scala
 object Attrs {
-  val UserName: TypedKey[User] = TypedKey[User]("user")
+  val UserName: TypedKey[User] = TypedKey("user")
 }
 ```
 
 #### Calling `FakeRequest.withCookies` no longer updates the `Cookies` header
 
-Internally request cookies are now stored in a request attribute. Previously they were stored in the request's `Cookie` header `String`. This required encoding and decoding the cookie to the header whenever the cookie changed.
+Request cookies are now stored in a request attribute. Previously they were stored in the request's `Cookie` header `String`. This required encoding and decoding the cookie to the header whenever the cookie changed.
 
 Now that cookies are stored in request attributes updating the cookie will change the new cookie attribute but not the `Cookie` HTTP header. This will only affect your tests if you're relying on the fact that calling `withCookies` will update the header.
 
 If you still need the old behavior you can still use `Cookies.encodeCookieHeader` to convert the `Cookie` objects into an HTTP header then store the header with `FakeRequest.withHeaders`.
 
-#### play.api.mvc.Security.username (Scala API), session.username config key and dependent actions helpers are deprecated
+#### `play.api.mvc.Security.username` (Scala API), `session.username` changes
 
-`Security.username` just retrieves the `session.username` key from configuration, which defined the session key used to get the username. It was removed since it required statics to work, and it's fairly easy to implement the same or similar behavior yourself.
+`play.api.mvc.Security.username` (Scala API), `session.username` config key and dependent actions helpers are deprecated. `Security.username` just retrieves the `session.username` key from configuration, which defined the session key used to get the username. It was removed since it required statics to work, and it's fairly easy to implement the same or similar behavior yourself.
 
 You can read the username session key from configuration yourself using `configuration.get[String]("session.username")`.
 
@@ -636,7 +720,7 @@ RequestBuilder request = new RequestBuilder()
 
 Because the CSRFFilter filter is added automatically, tests that render a Twirl template that includes `CSRF.formField`, i.e.
 
-```
+```scala
 @(userForm: Form[UserData])(implicit request: RequestHeader, m: Messages)
 
 <h1>user form</h1>
@@ -707,9 +791,9 @@ GuiceApplicationBuilder().configure("play.http.filters" -> "play.api.http.NoHttp
 
 ## Compile Time Default Filters
 
-If you are using compile time dependency injection, then the default filters are resolved at compile time, rather than through runtime.  
+If you are using compile time dependency injection, then the default filters are resolved at compile time, rather than through runtime.
 
-This means that the `BuiltInComponents` trait now contains an `httpFilters` method which is left abstract: 
+This means that the `BuiltInComponents` trait now contains an `httpFilters` method which is left abstract:
 
 ```scala
 trait BuiltInComponents {
@@ -726,11 +810,10 @@ trait HttpFiltersComponents
      extends CSRFComponents
      with SecurityHeadersComponents
      with AllowedHostsComponents {
- 
+
    def httpFilters: Seq[EssentialFilter] = Seq(csrfFilter, securityHeadersFilter, allowedHostsFilter)
 }
 ```
-
 
 In most cases you will want to mixin HttpFiltersComponents and append your own filters:
 
@@ -773,12 +856,52 @@ class MyComponents(context: ApplicationLoader.Context)
 }
 ```
 
+## JWT Support
+
+Play's session cookie encoding has been switched to use JSON Web Token (JWT) under the hood.  JWT comes with a number of advantages, notably automatic signing with HMAC-SHA-256, and support for automatic "not before" and "expires after" date checks which ensure the session cookie cannot be reused outside of a given time window.
+
+More information is available under [[Configuring the Session Cookie|SettingsSession]] page. 
+
+### Legacy Support
+
+Play's `DefaultSessionCookieBaker` has fallback support for reading session cookies in the old url encoded format, so migrations will not be affected.
+
+To use the previous behavior, bind `SessionCookieBaker` to `LegacySessionCookieBaker` in your module:
+
+```scala
+bind[SessionCookieBaker].to[LegacySessionCookieBaker]
+```
+
+### Custom CookieBakers
+
+If you have custom cookies being used in Play, using the `CookieBaker[T]` trait, then you will need to specify what kind of encoding you want for your custom cookie baker.
+
+The `encode` and `decode` methods that `Map[String, String]` to and from the format found in the browser have been extracted into `CookieDataCodec`.  There are three implementations: `SignedCookieDataCodec`, `JWTCookieDataCodec`, and `FallbackCookieDataCodec`, which respectively represent URL-encoded with an HMAC, or a JWT, or a "read signed or JWT, write JWT" codec.
+  
+To use an implementation, add it to your class:  
+
+```scala
+class MyCookieBaker[T](val secretConfiguration: SecretConfiguration, val jwtConfiguration: JWTConfiguration) extends CookieBaker[T] with JWTCookieDataCodec
+```
+
+and then provide a `JWTConfiguration` case class, using the `JWTConfigurationParser` with the path to your configuration.
+
 ## Updated libraries
+
+### Netty 4.1
+
+Netty was upgraded to [version 4.1](http://netty.io/news/2016/05/26/4-1-0-Final.html). This was possible mainly because version 4.0 was shaded by [[play-ws migration to a standalone module|WSMigration26]]. So, if you are using [[Netty Server|NettyServer]] and some library that depends on Netty 4.0, we recommend that you try to upgrade to a newer version of the library, or you can start to use the [[Akka Server|AkkaHttpServer]].
+
+And if you are, for some reason, directly using Netty classes, you should [adapt your code to this new version](http://netty.io/wiki/new-and-noteworthy-in-4.1.html).
 
 ### FluentLenium
 
 The FluentLenium library was updated to version 3.1.1 and as a result the underlying Selenium version changed to [3.0.1](https://seleniumhq.wordpress.com/2016/10/13/selenium-3-0-out-now/). If you were using Selenium's WebDriver API before, there shouldn't be anything to do. Please check [this](https://seleniumhq.wordpress.com/2016/10/04/selenium-3-is-coming/) announcement for further information.
 If you were using the FluentLenium library you might have to change some syntax to get your tests working again. Please see FluentLenium's [Migration Guide](http://fluentlenium.org/migration/from-0.13.2-to-1.0-or-3.0/) for more details about how to adapt your code.
+
+### HikariCP
+
+HikariCP was updated and a new configuration was introduced: `initializationFailTimeout`. This new configuration should be used to replace `initializationFailFast` which is now deprecated. See [HikariCP changelog](https://github.com/brettwooldridge/HikariCP/blob/dev/CHANGES) and [documentation for `initializationFailTimeout`](https://github.com/brettwooldridge/HikariCP#infrequently-used) to better understand how to use this new configuration.
 
 ## Other Configuration changes
 

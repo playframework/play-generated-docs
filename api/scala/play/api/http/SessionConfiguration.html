@@ -45,12 +45,12 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">SessionConfiguration</span><span class="params">(<span name="cookieName">cookieName: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;PLAY_SESSION&quot;</span></span>, <span name="secure">secure: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="maxAge">maxAge: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.concurrent.duration.FiniteDuration">FiniteDuration</span>] = <span class="symbol">None</span></span>, <span name="httpOnly">httpOnly: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="domain">domain: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="path">path: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;/&quot;</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name">SessionConfiguration</span><span class="params">(<span name="cookieName">cookieName: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;PLAY_SESSION&quot;</span></span>, <span name="secure">secure: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="maxAge">maxAge: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.concurrent.duration.FiniteDuration">FiniteDuration</span>] = <span class="symbol">None</span></span>, <span name="httpOnly">httpOnly: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="domain">domain: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="path">path: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;/&quot;</span></span>, <span name="sameSite">sameSite: <span class="extype" name="scala.Option">Option</span>[<a href="../mvc/Cookie$$SameSite.html" class="extype" name="play.api.mvc.Cookie.SameSite">SameSite</a>] = <span class="symbol"><span class="name"><a href="../../package.html">Some(SameSite.Lax)</a></span></span></span>, <span name="jwt">jwt: <a href="JWTConfiguration.html" class="extype" name="play.api.http.JWTConfiguration">JWTConfiguration</a> = <span class="symbol">JWTConfiguration()</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>The session configuration
-</p></div><dl class="paramcmts block"><dt class="param">cookieName</dt><dd class="cmt"><p>The name of the cookie used to store the session</p></dd><dt class="param">secure</dt><dd class="cmt"><p>Whether the session cookie should set the secure flag or not</p></dd><dt class="param">maxAge</dt><dd class="cmt"><p>The max age of the session, none, use &quot;session&quot; sessions</p></dd><dt class="param">httpOnly</dt><dd class="cmt"><p>Whether the HTTP only attribute of the cookie should be set</p></dd><dt class="param">domain</dt><dd class="cmt"><p>The domain to set for the session cookie, if defined</p></dd></dl><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0-M2/framework/src/play/src/main/scala/play/api/http/HttpConfiguration.scala" target="_blank">HttpConfiguration.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="paramcmts block"><dt class="param">cookieName</dt><dd class="cmt"><p>The name of the cookie used to store the session</p></dd><dt class="param">secure</dt><dd class="cmt"><p>Whether the session cookie should set the secure flag or not</p></dd><dt class="param">maxAge</dt><dd class="cmt"><p>The max age of the session, none, use &quot;session&quot; sessions</p></dd><dt class="param">httpOnly</dt><dd class="cmt"><p>Whether the HTTP only attribute of the cookie should be set</p></dd><dt class="param">domain</dt><dd class="cmt"><p>The domain to set for the session cookie, if defined</p></dd><dt class="param">path</dt><dd class="cmt"><p>The path for which this cookie is valid</p></dd><dt class="param">sameSite</dt><dd class="cmt"><p>The cookie's SameSite attribute</p></dd><dt class="param">jwt</dt><dd class="cmt"><p>The JWT specific information</p></dd></dl><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0-M3/framework/src/play/src/main/scala/play/api/http/HttpConfiguration.scala" target="_blank">HttpConfiguration.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -90,7 +90,7 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="play.api.http.SessionConfiguration#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(cookieName:String,secure:Boolean,maxAge:Option[scala.concurrent.duration.FiniteDuration],httpOnly:Boolean,domain:Option[String],path:String):play.api.http.SessionConfiguration"></a>
+      <a id="&lt;init&gt;(cookieName:String,secure:Boolean,maxAge:Option[scala.concurrent.duration.FiniteDuration],httpOnly:Boolean,domain:Option[String],path:String,sameSite:Option[play.api.mvc.Cookie.SameSite],jwt:play.api.http.JWTConfiguration):play.api.http.SessionConfiguration"></a>
       <a id="&lt;init&gt;:SessionConfiguration"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -98,14 +98,14 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">SessionConfiguration</span><span class="params">(<span name="cookieName">cookieName: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;PLAY_SESSION&quot;</span></span>, <span name="secure">secure: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="maxAge">maxAge: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.concurrent.duration.FiniteDuration">FiniteDuration</span>] = <span class="symbol">None</span></span>, <span name="httpOnly">httpOnly: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="domain">domain: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="path">path: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;/&quot;</span></span>)</span>
+        <span class="name">SessionConfiguration</span><span class="params">(<span name="cookieName">cookieName: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;PLAY_SESSION&quot;</span></span>, <span name="secure">secure: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="maxAge">maxAge: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.concurrent.duration.FiniteDuration">FiniteDuration</span>] = <span class="symbol">None</span></span>, <span name="httpOnly">httpOnly: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="domain">domain: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="path">path: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;/&quot;</span></span>, <span name="sameSite">sameSite: <span class="extype" name="scala.Option">Option</span>[<a href="../mvc/Cookie$$SameSite.html" class="extype" name="play.api.mvc.Cookie.SameSite">SameSite</a>] = <span class="symbol"><span class="name"><a href="../../package.html">Some(SameSite.Lax)</a></span></span></span>, <span name="jwt">jwt: <a href="JWTConfiguration.html" class="extype" name="play.api.http.JWTConfiguration">JWTConfiguration</a> = <span class="symbol">JWTConfiguration()</span></span>)</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.http.SessionConfiguration@&lt;init&gt;(cookieName:String,secure:Boolean,maxAge:Option[scala.concurrent.duration.FiniteDuration],httpOnly:Boolean,domain:Option[String],path:String):play.api.http.SessionConfiguration" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.http.SessionConfiguration@&lt;init&gt;(cookieName:String,secure:Boolean,maxAge:Option[scala.concurrent.duration.FiniteDuration],httpOnly:Boolean,domain:Option[String],path:String,sameSite:Option[play.api.mvc.Cookie.SameSite],jwt:play.api.http.JWTConfiguration):play.api.http.SessionConfiguration" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">cookieName</dt><dd class="cmt"><p>The name of the cookie used to store the session</p></dd><dt class="param">secure</dt><dd class="cmt"><p>Whether the session cookie should set the secure flag or not</p></dd><dt class="param">maxAge</dt><dd class="cmt"><p>The max age of the session, none, use &quot;session&quot; sessions</p></dd><dt class="param">httpOnly</dt><dd class="cmt"><p>Whether the HTTP only attribute of the cookie should be set</p></dd><dt class="param">domain</dt><dd class="cmt"><p>The domain to set for the session cookie, if defined</p></dd></dl></div>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">cookieName</dt><dd class="cmt"><p>The name of the cookie used to store the session</p></dd><dt class="param">secure</dt><dd class="cmt"><p>Whether the session cookie should set the secure flag or not</p></dd><dt class="param">maxAge</dt><dd class="cmt"><p>The max age of the session, none, use &quot;session&quot; sessions</p></dd><dt class="param">httpOnly</dt><dd class="cmt"><p>Whether the HTTP only attribute of the cookie should be set</p></dd><dt class="param">domain</dt><dd class="cmt"><p>The domain to set for the session cookie, if defined</p></dd><dt class="param">path</dt><dd class="cmt"><p>The path for which this cookie is valid</p></dd><dt class="param">sameSite</dt><dd class="cmt"><p>The cookie's SameSite attribute</p></dd><dt class="param">jwt</dt><dd class="cmt"><p>The JWT specific information</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -331,6 +331,23 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="play.api.http.SessionConfiguration#jwt" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="jwt:play.api.http.JWTConfiguration"></a>
+      <a id="jwt:JWTConfiguration"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">jwt</span><span class="result">: <a href="JWTConfiguration.html" class="extype" name="play.api.http.JWTConfiguration">JWTConfiguration</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.http.SessionConfiguration@jwt:play.api.http.JWTConfiguration" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">The JWT specific information</p>
     </li><li name="play.api.http.SessionConfiguration#maxAge" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="maxAge:Option[scala.concurrent.duration.FiniteDuration]"></a>
       <a id="maxAge:Option[FiniteDuration]"></a>
@@ -415,7 +432,24 @@
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">The path for which this cookie is valid</p>
+    </li><li name="play.api.http.SessionConfiguration#sameSite" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="sameSite:Option[play.api.mvc.Cookie.SameSite]"></a>
+      <a id="sameSite:Option[SameSite]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sameSite</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="../mvc/Cookie$$SameSite.html" class="extype" name="play.api.mvc.Cookie.SameSite">SameSite</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.http.SessionConfiguration@sameSite:Option[play.api.mvc.Cookie.SameSite]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">The cookie's SameSite attribute</p>
     </li><li name="play.api.http.SessionConfiguration#secure" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="secure:Boolean"></a>
       <a id="secure:Boolean"></a>
