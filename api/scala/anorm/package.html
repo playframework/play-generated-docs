@@ -49,7 +49,7 @@
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Anorm API</p><p>Use the SQL method to start an SQL query</p><pre><span class="kw">import</span> anorm._
 
-SQL(<span class="lit">"Select 1"</span>)</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/anorm/tree/2.5.2/core/src/main/scala/anorm/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
+SQL(<span class="lit">"Select 1"</span>)</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/anorm/tree/2.5.3/core/src/main/scala/anorm/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -554,7 +554,7 @@ it must be refused in some Anorm context.</p>
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Typeclass for string representation</p>
     </li><li name="anorm.SimpleSql" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="SimpleSql[T]extendsSqlwithProductwithSerializable"></a>
       <a id="SimpleSql[T]:SimpleSql[T]"></a>
@@ -684,6 +684,40 @@ It is a 1-step alternative for SQL(&quot;...&quot;).on(...) functions.</p><pre>S
   company_id = \${computer.companyId}
   WHERE id = \$id
 "</span><span class="lit">""</span>.executeUpdate()</pre></div></div>
+    </li><li name="anorm.StringShow" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="StringShowextendsShow"></a>
+      <a id="StringShow:StringShow"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="StringShow.html"><span class="name">StringShow</span></a><span class="result"> extends <a href="Show.html" class="extype" name="anorm.Show">Show</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#anorm.package@StringShowextendsShow" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="anorm.StringWrapper2" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="StringWrapper2=AnyRef{defstringValue:String}"></a>
+      <a id="StringWrapper2:StringWrapper2"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">type</span>
+      </span>
+      <span class="symbol">
+        <span class="name">StringWrapper2</span><span class="result"> = <span class="extype" name="scala.AnyRef">AnyRef</span> { def stringValue: String }</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#anorm.package@StringWrapper2=AnyRef{defstringValue:String}" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Structural type for oracle.sql.ROWID wrapper.</p>
     </li><li name="anorm.Success" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Success[A]extendsSqlResult[A]withProductwithSerializable"></a>
       <a id="Success[A]:Success[A]"></a>
@@ -718,6 +752,23 @@ It is a 1-step alternative for SQL(&quot;...&quot;).on(...) functions.</p><pre>S
       </a>
     </span>
       <p class="shortcomment cmt">Structural type for timestamp wrapper.</p>
+    </li><li name="anorm.TimestampWrapper2" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="TimestampWrapper2=AnyRef{deftimestampValue:java.sql.Timestamp}"></a>
+      <a id="TimestampWrapper2:TimestampWrapper2"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">type</span>
+      </span>
+      <span class="symbol">
+        <span class="name">TimestampWrapper2</span><span class="result"> = <span class="extype" name="scala.AnyRef">AnyRef</span> { def timestampValue: java.sql.Timestamp }</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#anorm.package@TimestampWrapper2=AnyRef{deftimestampValue:java.sql.Timestamp}" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Structural type for oracle.sql.TIMESTAMP wrapper.</p>
     </li><li name="anorm.ToSql" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="ToSql[A]extendsAnyRef"></a>
       <a id="ToSql[A]:ToSql[A]"></a>
@@ -1219,7 +1270,7 @@ with resolution priority 9.</p>
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="UnexpectedNullableFound.html"><span class="name">UnexpectedNullableFound</span></a><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result"> extends <a href="SqlRequestError.html" class="extype" name="anorm.SqlRequestError">SqlRequestError</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="UnexpectedNullableFound.html"><span class="name">UnexpectedNullableFound</span></a><span class="params">(<span name="reason">reason: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result"> extends <a href="SqlRequestError.html" class="extype" name="anorm.SqlRequestError">SqlRequestError</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../index.html#anorm.package@UnexpectedNullableFoundextendsSqlRequestErrorwithProductwithSerializable" title="Permalink" target="_top">
@@ -1369,7 +1420,7 @@ with resolution priority 9.</p>
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt"></p>
     </li><li name="anorm.NamedParameter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="NamedParameter"></a>
       <a id="NamedParameter:NamedParameter"></a>
@@ -1508,6 +1559,40 @@ SQL(<span class="lit">"..."</span>).onParams(param)</pre></div></div>
       </a>
     </span>
       <p class="shortcomment cmt">SeqParameter factory</p>
+    </li><li name="anorm.Show" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Show"></a>
+      <a id="Show:Show"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Show$.html"><span class="name">Show</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#anorm.package@Show" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="anorm.SimpleSql" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SimpleSql"></a>
+      <a id="SimpleSql:SimpleSql"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="SimpleSql$.html"><span class="name">SimpleSql</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#anorm.package@SimpleSql" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="anorm.Sql" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Sql"></a>
       <a id="Sql:Sql"></a>
@@ -1593,6 +1678,23 @@ SQL(<span class="lit">"..."</span>).onParams(param)</pre></div></div>
       </a>
     </span>
       
+    </li><li name="anorm.StringWrapper2" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="StringWrapper2"></a>
+      <a id="StringWrapper2:StringWrapper2"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="package$$StringWrapper2$.html"><span class="name">StringWrapper2</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#anorm.package@StringWrapper2" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="anorm.TimestampWrapper1" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="TimestampWrapper1"></a>
       <a id="TimestampWrapper1:TimestampWrapper1"></a>
@@ -1606,6 +1708,23 @@ SQL(<span class="lit">"..."</span>).onParams(param)</pre></div></div>
       </span>
       </h4><span class="permalink">
       <a href="../index.html#anorm.package@TimestampWrapper1" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="anorm.TimestampWrapper2" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="TimestampWrapper2"></a>
+      <a id="TimestampWrapper2:TimestampWrapper2"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="package$$TimestampWrapper2$.html"><span class="name">TimestampWrapper2</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#anorm.package@TimestampWrapper2" title="Permalink" target="_top">
         <img src="../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -1644,6 +1763,23 @@ SQL(<span class="lit">"..."</span>).onParams(param)</pre></div></div>
       </a>
     </span>
       <p class="shortcomment cmt">Provided conversions to set statement parameter.</p>
+    </li><li name="anorm.TokenGroup" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="TokenGroup"></a>
+      <a id="TokenGroup:TokenGroup"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="TokenGroup$.html"><span class="name">TokenGroup</span></a><span class="result"> extends <span class="extype" name="scala.runtime.AbstractFunction2">AbstractFunction2</span>[<span class="extype" name="scala.List">List</span>[<span class="extype" name="anorm.StatementToken">StatementToken</span>], <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>], <span class="extype" name="anorm.TokenGroup">TokenGroup</span>] with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../index.html#anorm.package@TokenGroup" title="Permalink" target="_top">
+        <img src="../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="anorm.TupleFlattener" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="TupleFlattener"></a>
       <a id="TupleFlattener:TupleFlattener"></a>
