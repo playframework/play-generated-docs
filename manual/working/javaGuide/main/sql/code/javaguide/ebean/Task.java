@@ -5,7 +5,7 @@ package javaguide.ebean;
 import java.util.*;
 import javax.persistence.*;
 
-import io.ebean.*;
+import com.avaje.ebean.Model;
 import play.data.format.*;
 import play.data.validation.*;
 
@@ -24,6 +24,6 @@ public class Task extends Model {
     @Formats.DateTime(pattern="dd/MM/yyyy")
     public Date dueDate = new Date();
 
-    public static Finder<Long, Task> find = new Finder<Long,Task>(Task.class);
+    public static Model.Finder<Long, Task> find = new Model.Finder<Long,Task>(Task.class);
 }
 //#content

@@ -1,6 +1,6 @@
 package javaguide.ebean;
 
-import io.ebean.Ebean;
+import com.avaje.ebean.Ebean;
 import org.junit.*;
 import play.db.ebean.Transactional;
 import play.mvc.Controller;
@@ -41,7 +41,7 @@ public class JavaEbeanTest extends WithApplication {
         Task.find.ref(34L).delete();
 
         // More complex task query
-        List<Task> cocoTasks = Task.find.query().where()
+        List<Task> cocoTasks = Task.find.where()
                 .ilike("name", "%coco%")
                 .orderBy("dueDate asc")
                 .setFirstRow(0)
@@ -81,7 +81,7 @@ public class JavaEbeanTest extends WithApplication {
         createTask();
 
         //#txrunnable
-        //###insert: import io.ebean.*;
+        //###insert: import com.avaje.ebean.*;
 
         //###insert: ...
 
