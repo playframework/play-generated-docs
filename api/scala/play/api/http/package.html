@@ -50,7 +50,7 @@
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Contains standard HTTP constants.
 For example:</p><pre><span class="kw">val</span> text = ContentTypes.TEXT
 <span class="kw">val</span> ok = Status.OK
-<span class="kw">val</span> accept = HeaderNames.ACCEPT</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0-M4/framework/src/play/src/main/scala/play/api/http/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
+<span class="kw">val</span> accept = HeaderNames.ACCEPT</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0-M5/framework/src/play/src/main/scala/play/api/http/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -91,7 +91,25 @@ For example:</p><pre><span class="kw">val</span> text = ContentTypes.TEXT
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="play.api.http.ActionCompositionConfiguration" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+              <ol><li name="play.api.http.AcceptEncoding" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="AcceptEncodingextendsAnyRef"></a>
+      <a id="AcceptEncoding:AcceptEncoding"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="AcceptEncoding.html"><span class="name">AcceptEncoding</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.http.package@AcceptEncodingextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A representation of the Accept-Encoding header
+</p>
+    </li><li name="play.api.http.ActionCompositionConfiguration" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ActionCompositionConfigurationextendsProductwithSerializable"></a>
       <a id="ActionCompositionConfiguration:ActionCompositionConfiguration"></a>
       <h4 class="signature">
@@ -322,6 +340,28 @@ is the default one, in order to provide support for Java actions.
     </span>
       <p class="shortcomment cmt">This class provides filters that are &quot;automatically&quot; enabled through <code>play.filters.enabled</code>.</p><div class="fullcomment"><div class="comment cmt"><p>This class provides filters that are &quot;automatically&quot; enabled through <code>play.filters.enabled</code>.
 A list of default filters are defined in reference.conf.</p><p>See https://www.playframework.com/documentation/latest/Filters for more information.
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@Singleton</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="play.api.http.EncodingPreference" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="EncodingPreferenceextendsProductwithSerializable"></a>
+      <a id="EncodingPreference:EncodingPreference"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="EncodingPreference.html"><span class="name">EncodingPreference</span></a><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;*&quot;</span></span>, <span name="qValue">qValue: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.BigDecimal">BigDecimal</span>] = <span class="symbol">None</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.http.package@EncodingPreferenceextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A representation of an encoding preference as specified in the Accept-Encoding header.</p><div class="fullcomment"><div class="comment cmt"><p>A representation of an encoding preference as specified in the Accept-Encoding header. This contains an encoding
+name (or *), and an optional q-value.
 </p></div></div>
     </li><li name="play.api.http.FileMimeTypes" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="FileMimeTypesextendsAnyRef"></a>
@@ -348,10 +388,10 @@ off the file extension.  The Assets controller handles this mapping
 automatically.</p><p>In a controller, an implicit FileMimeTypes object can either be defined
 explicitly:</p><pre><span class="kw">class</span> MyController @Inject()(<span class="kw">implicit</span> <span class="kw">val</span> fileMimeTypes: FileMimeTypes) <span class="kw">extends</span> BaseController {
    <span class="kw">def</span> sendFile() = ...
-}</pre><p>or, if <a href="../mvc/AbstractController.html" class="extype" name="play.api.mvc.AbstractController">play.api.mvc.AbstractController</a> is extended, then
+}</pre><p>or, if <a href="../mvc/BaseController.html" class="extype" name="play.api.mvc.BaseController">play.api.mvc.BaseController</a> is extended, then
 an implicit fileMimeTypes instance is already made available from
-<a href="../mvc/ControllerComponents.html" class="extype" name="play.api.mvc.ControllerComponents">play.api.mvc.ControllerComponents</a>, meaning that no explicit import is required:</p><pre><span class="kw">class</span> MyController @Inject()(cc: ControllerComponents) <span class="kw">extends</span> AbstractController(cc) {
-   <span class="kw">def</span> sendFile() = ...
+<a href="../mvc/ControllerComponents.html" class="extype" name="play.api.mvc.ControllerComponents">play.api.mvc.ControllerComponents</a>, meaning that no explicit import is required:</p><pre><span class="kw">class</span> MyController @Inject()(<span class="kw">val</span> controllerComponents: ControllerComponents) <span class="kw">extends</span> BaseController {
+  <span class="kw">def</span> sendFile() = ...
 }</pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@implicitNotFound</span><span class="args">(<span>
       
@@ -867,7 +907,24 @@ based on the location of application.conf.  This should be stable across restart
 
         <div id="values" class="values members">
               <h3>Value Members</h3>
-              <ol><li name="play.api.http.ActionCreator" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="play.api.http.AcceptEncoding" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="AcceptEncoding"></a>
+      <a id="AcceptEncoding:AcceptEncoding"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="AcceptEncoding$.html"><span class="name">AcceptEncoding</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.http.package@AcceptEncoding" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.api.http.ActionCreator" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="ActionCreator"></a>
       <a id="ActionCreator:ActionCreator"></a>
       <h4 class="signature">
@@ -880,6 +937,23 @@ based on the location of application.conf.  This should be stable across restart
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.http.package@ActionCreator" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.api.http.ContentEncoding" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ContentEncoding"></a>
+      <a id="ContentEncoding:ContentEncoding"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ContentEncoding$.html"><span class="name">ContentEncoding</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.http.package@ContentEncoding" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -936,6 +1010,23 @@ based on the location of application.conf.  This should be stable across restart
     </span>
       <p class="shortcomment cmt">A default HTTP error handler that can be used when there's no application available
 </p>
+    </li><li name="play.api.http.EncodingPreference" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="EncodingPreference"></a>
+      <a id="EncodingPreference:EncodingPreference"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="EncodingPreference$.html"><span class="name">EncodingPreference</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.http.package@EncodingPreference" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="play.api.http.HeaderNames" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="HeaderNames"></a>
       <a id="HeaderNames:HeaderNames"></a>

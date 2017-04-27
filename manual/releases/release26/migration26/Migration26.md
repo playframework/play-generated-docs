@@ -17,14 +17,14 @@ addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.6.x")
 
 Where the "x" in `2.6.x` is the minor version of Play you want to use, per instance `2.6.0`.
 
-### sbt upgrade to 0.13.13
+### sbt upgrade to 0.13.15
 
-Although Play 2.6 will still work with sbt 0.13.11, we recommend upgrading to the latest sbt version, 0.13.13.  The 0.13.13 release of sbt has a number of [improvements and bug fixes](https://github.com/sbt/sbt/releases/tag/v0.13.13).
+Although Play 2.6 will still work with sbt 0.13.11, we recommend upgrading to the latest sbt version, 0.13.15.  The 0.13.15 release of sbt has a number of [improvements and bug fixes](http://www.scala-sbt.org/0.13/docs/sbt-0.13-Tech-Previews.html#sbt+0.13.15) (see also the changes in [sbt 0.13.13](http://www.scala-sbt.org/0.13/docs/sbt-0.13-Tech-Previews.html#sbt+0.13.13)).
 
 Update your `project/build.properties` so that it reads:
 
 ```
-sbt.version=0.13.13
+sbt.version=0.13.15
 ```
 
 ### Guice DI support moved to separate module
@@ -71,6 +71,37 @@ libraryDependencies += "com.typesafe.play" %% "play-iteratees-reactive-streams" 
 
 Finally, Play Iteratees has a separate versioning scheme, so the version no longer is in sync with the Play version.
 
+## Scala `Mode` changes
+
+Scala [`Mode`](api/scala/play/api/Mode.html) was refactored from an Enumeration to a hierarchy of case objects. Most of the Scala code won't change because of this refactoring. But, if you are accessing the Scala `Mode` values in your Java code, you will need to change it from:
+
+```java
+// Consider this Java code
+play.api.Mode scalaMode = play.api.Mode.Test();
+```
+
+Must be rewritten to:
+
+```java
+// Consider this Java code
+play.api.Mode scalaMode = play.Mode.TEST.asScala();
+```
+
+It is also easier to convert between Java and Scala modes:
+
+```java
+// In your Java code
+play.api.Mode scalaMode = play.Mode.DEV.asScala();
+```
+
+Or in your Scala code:
+
+```scala
+play.Mode javaMode = play.api.Mode.Dev.asJava
+```
+
+Also, `play.api.Mode.Mode` is now deprecated and you should use `play.api.Mode` instead.
+
 ## `Writeable[JsValue]` changes
 
 Previously, the default Scala `Writeable[JsValue]` allowed you to define an implicit `Codec`, which would allow you to write using a different charset. This could be a problem since `application/json` does not act like text-based content types. It only allows Unicode charsets (`UTF-8`, `UTF-16` and `UTF-32`) and does not define a `charset` parameter like many text-based content types.
@@ -79,26 +110,77 @@ Now, the default `Writeable[JsValue]` takes no implicit parameters and always wr
 
 If you need the old behavior back, you can define a `Writeable` with an arbitrary codec using `play.api.http.Writeable.writeableOf_JsValue(codec, contentType)` for your desired Codec and Content-Type.
 
-## Scala ActionBuilder and BodyParser changes:
+## Scala ActionBuilder and BodyParser changes
 
 The Scala `ActionBuilder` trait has been modified to specify the type of the body as a type parameter, and add an abstract `parser` member as the default body parsers. You will need to modify your ActionBuilders and pass the body parser directly.
 
-The `Action` global object and `BodyParsers.parse` are now deprecated. They are replaced by injectable traits, `DefaultActionBuilder` and `PlayBodyParsers` respectively.
+The `Action` global object and `BodyParsers.parse` are now deprecated. They are replaced by injectable traits, `DefaultActionBuilder` and `PlayBodyParsers` respectively. If you are inside a controller, they are automatically provided by the new `BaseController` trait (see the controller changes below).
 
-To provide a mostly source-compatible API, controllers can extend the `AbstractController` class and pass through the `ControllerComponents` in the constructor:
+## Scala Controller changes
+
+The idiomatic Play controller has in the past required global state. The main places that was needed was in the global `Action` object and `BodyParsers#parse` method.
+
+We have provided several new controller classes with new ways of injecting that state, providing the same syntax:
+ - `BaseController`: a trait with an abstract `ControllerComponents` that can be provided by an implementing class.
+ - `AbstractController`: an abstract class extending `BaseController` with a `ControllerComponents` constructor parameter that can be injected using constructor injection.
+ - `InjectedController`: a trait, extending `BaseController`, that obtains the `ControllerComponents` through method injection (calling a setControllerComponents method). If you are using a runtime DI framework like Guice, this is done automatically.
+
+`ControllerComponents` is simply meant to bundle together components typically used in a controller. You may also wish to create your own base controller for your app by extending `ControllerHelpers` and injecting your own bundle of components. Play does not require your controllers to implement any particular trait.
+
+Note that `BaseController` makes `Action` and `parse` refer to injected instances rather than the global objects, which is usually what you want to do.
+
+Here's an example of code using `AbstractController`:
 
 ```scala
-class FooController @Inject() (components: ControllerComponents) extends AbstractController(components) {
+class FooController @Inject() (components: ControllerComponents)
+    extends AbstractController(components) {
+
   // Action and parse now use the injected components
-  def foo = Action(parse.text) {
+  def foo = Action(parse.json) {
     Ok
   }
 }
 ```
 
-This trait makes `Action` and `parse` refer to injected instances rather than the global objects.
+and using `BaseController`:
 
-`ControllerComponents` is simply meant to bundle together components typically used in a controller. You may also wish to create your own base controller for your app by extending `BaseController` and injecting your own bundle of components (though Play does not require controllers to implement any particular trait).
+```scala
+class FooController @Inject() (val controllerComponents: ControllerComponents) extends BaseController {
+
+  // Action and parse now use the injected components
+  def foo = Action(parse.json) {
+    Ok
+  }
+}
+```
+
+and `InjectedController`:
+
+```scala
+class FooController @Inject() () extends InjectedController {
+
+  // Action and parse now use the injected components
+  def foo = Action(parse.json) {
+    Ok
+  }
+}
+```
+
+`InjectedController` gets its `ControllerComponents` by calling the `setControllerComponents` method, which is called automatically by JSR-330 compliant dependency injection. We do not recommend using `InjectedController` with compile-time injection. If you plan to extensively unit test your controllers manually, we also recommend avoiding `InjectedController` since it hides the dependency.
+
+If you prefer to pass the individial dependencies manually, you can do that instead and extend `ControllerHelpers`, which has no dependencies or state. Here's an example:
+
+```scala
+class Controller @Inject() (
+    action: DefaultActionBuilder,
+    parse: PlayBodyParsers,
+    messagesApi: MessagesApi
+  ) extends ControllerHelpers {
+  def index = action(parse.text) { request =>
+    Ok(messagesApi.preferred(request)("hello.world"))
+  }
+}
+```
 
 ## Cookies
 
@@ -388,6 +470,8 @@ public class MyComponent {
 }
 ```
 
+Also, Akka version used by Play was updated to the 2.5.x. Read Akka [migration guide from 2.4.x to 2.5.x](http://doc.akka.io/docs/akka/2.5/project/migration-guide-2.4.x-2.5.x.html) to see how to adapt your own code if necessary.
+
 ### Request attributes
 
 All request objects now contain *attributes*. Request attributes are a replacement for request *tags*. Tags have now been deprecated and you should upgrade to attributes. Attributes are more powerful than tags; you can use attributes to store objects in requests, whereas tags only supported storing Strings.
@@ -562,7 +646,7 @@ class MyComponentsFromContext(context: ApplicationLoader.Context)
 
 However, there are some good reasons why you may not want to import an execution context even in the general case.  In the general case, the application's execution context is good for rendering actions, and executing CPU-bound activities that do not involve blocking API calls or I/O activity.  If you are calling out to a database, or making network calls, then you may want to define your own custom execution context.
 
-The recommended way to create a custom execution context is through `CustomExecutionContext`, which uses the Akka dispatcher system ([java](http://doc.akka.io/docs/akka/current/java/dispatchers.html) / [scala](http://doc.akka.io/docs/akka/current/scala/dispatchers.html))  so that executors can be defined through configuration.
+The recommended way to create a custom execution context is through `CustomExecutionContext`, which uses the Akka dispatcher system ([java](http://doc.akka.io/docs/akka/2.5/java/dispatchers.html) / [scala](http://doc.akka.io/docs/akka/2.5/scala/dispatchers.html))  so that executors can be defined through configuration.
 
 To use your own execution context, extend the `CustomExecutionContext` abstract class with the full path to the dispatcher in the `application.conf` file:
 
@@ -649,10 +733,10 @@ implicit val fileMimeTypes: FileMimeTypes = ...
 Ok(file) // <-- takes implicit FileMimeTypes
 ```
 
-An implicit instance of `FileMimeTypes` is provided by `AbstractController` through the `ControllerComponents` class, to provide a convenient binding:
+An implicit instance of `FileMimeTypes` is provided by `BaseController` (and its subclass `AbstractController` and subtrait `InjectedController`) through the `ControllerComponents` class, to provide a convenient binding:
 
 ```scala
-class SendFileController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
+class SendFileController @Inject() (cc: ControllerComponents) extends AbstractController(cc) {
 
   def index() = Action { implicit request =>
      val file = readFile()
@@ -907,6 +991,29 @@ class UserInfoCookieBaker @Inject()(service: UserInfoService,
 }
 ```
 
+## Deprecated Futures methods
+
+The following `play.libs.concurrent.Futures` static methods have been deprecated:
+
+* `timeout(A value, long amount, TimeUnit unit)`
+* `timeout(final long delay, final TimeUnit unit)`
+* `delayed(Supplier<A> supplier, long delay, TimeUnit unit, Executor executor)`
+
+A dependency injected instance of `Futures` should be used instead:
+
+```java
+class MyClass {
+    @Inject
+    public MyClass(play.libs.concurrent.Futures futures) {
+        this.futures = futures;
+    }
+
+    CompletionStage<Double> callWithOneSecondTimeout() {
+        return futures.timeout(computePIAsynchronously(), Duration.ofSeconds(1));
+    }
+}
+```
+
 ## Updated libraries
 
 ### Netty 4.1
@@ -917,7 +1024,7 @@ And if you are, for some reason, directly using Netty classes, you should [adapt
 
 ### FluentLenium and Selenium
 
-The FluentLenium library was updated to version 3.1.1 and Selenium was updated to version [3.3.1](https://seleniumhq.wordpress.com/2016/10/13/selenium-3-0-out-now/) (you may want to see the [changelog here](https://raw.githubusercontent.com/SeleniumHQ/selenium/master/java/CHANGELOG)). If you were using Selenium's WebDriver API before, there should not be anything to do. Please check [this](https://seleniumhq.wordpress.com/2016/10/04/selenium-3-is-coming/) announcement for further information.
+The FluentLenium library was updated to version 3.2.0 and Selenium was updated to version [3.3.1](https://seleniumhq.wordpress.com/2016/10/13/selenium-3-0-out-now/) (you may want to see the [changelog here](https://raw.githubusercontent.com/SeleniumHQ/selenium/master/java/CHANGELOG)). If you were using Selenium's WebDriver API before, there should not be anything to do. Please check [this](https://seleniumhq.wordpress.com/2016/10/04/selenium-3-is-coming/) announcement for further information.
 If you were using the FluentLenium library you might have to change some syntax to get your tests working again. Please see FluentLenium's [Migration Guide](http://fluentlenium.org/migration/from-0.13.2-to-1.0-or-3.0/) for more details about how to adapt your code.
 
 ### HikariCP

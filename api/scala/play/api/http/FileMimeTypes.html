@@ -58,17 +58,17 @@ off the file extension.  The Assets controller handles this mapping
 automatically.</p><p>In a controller, an implicit FileMimeTypes object can either be defined
 explicitly:</p><pre><span class="kw">class</span> MyController @Inject()(<span class="kw">implicit</span> <span class="kw">val</span> fileMimeTypes: FileMimeTypes) <span class="kw">extends</span> BaseController {
    <span class="kw">def</span> sendFile() = ...
-}</pre><p>or, if <a href="../mvc/AbstractController.html" class="extype" name="play.api.mvc.AbstractController">play.api.mvc.AbstractController</a> is extended, then
+}</pre><p>or, if <a href="../mvc/BaseController.html" class="extype" name="play.api.mvc.BaseController">play.api.mvc.BaseController</a> is extended, then
 an implicit fileMimeTypes instance is already made available from
-<a href="../mvc/ControllerComponents.html" class="extype" name="play.api.mvc.ControllerComponents">play.api.mvc.ControllerComponents</a>, meaning that no explicit import is required:</p><pre><span class="kw">class</span> MyController @Inject()(cc: ControllerComponents) <span class="kw">extends</span> AbstractController(cc) {
-   <span class="kw">def</span> sendFile() = ...
+<a href="../mvc/ControllerComponents.html" class="extype" name="play.api.mvc.ControllerComponents">play.api.mvc.ControllerComponents</a>, meaning that no explicit import is required:</p><pre><span class="kw">class</span> MyController @Inject()(<span class="kw">val</span> controllerComponents: ControllerComponents) <span class="kw">extends</span> BaseController {
+  <span class="kw">def</span> sendFile() = ...
 }</pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@implicitNotFound</span><span class="args">(<span>
       
       <span class="defval" name="&quot;You do not have an implicit FileMimeTypes in scope. If you want to bring a FileMimeTypes into context, please use dependency injection.&quot;">...</span>
     </span>)</span>
               
-        </dd><dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0-M4/framework/src/play/src/main/scala/play/api/http/FileMimeTypes.scala" target="_blank">FileMimeTypes.scala</a></dd></dl><div class="toggleContainer block">
+        </dd><dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0-M5/framework/src/play/src/main/scala/play/api/http/FileMimeTypes.scala" target="_blank">FileMimeTypes.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">

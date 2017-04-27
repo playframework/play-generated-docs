@@ -64,7 +64,7 @@ Finally, if you want to also enhance models in your tests, you can do this by co
 
 ## Using Model superclass
 
-Ebean defines a convenient superclass for your Ebean model classes, `com.avaje.ebean.Model`. Here is a typical Ebean class, mapped in Play:
+Ebean defines a convenient superclass for your Ebean model classes, `io.ebean.Model`. Here is a typical Ebean class, mapped in Play:
 
 @[content](code/javaguide/ebean/Task.java)
 
@@ -82,7 +82,7 @@ As you can see, we've added a `find` static field, defining a `Finder` for an en
 
 ## Transactional actions
 
-By default Ebean will use transactions. However this transactions will be created before and commited or rollbacked after every single query, update, create or delete, as you can see here:
+By default Ebean will use transactions. However these transactions will be created before and commited or rollbacked after every single query, update, create or delete, as you can see here:
 
 @[transaction](code/javaguide/ebean/JavaEbeanTest.java)
 

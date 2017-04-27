@@ -15,6 +15,9 @@ import java.io._
 import org.junit.runner.RunWith
 import org.specs2.runner.JUnitRunner
 import org.specs2.specification.AfterAll
+import play.api.libs.concurrent.Futures
+
+import scala.concurrent.TimeoutException
 
 //#dependency
 import javax.inject.Inject
@@ -223,7 +226,7 @@ class ScalaWSSpec extends PlaySpecification with Results with AfterAll {
         import play.api.mvc.MultipartFormData._
         val response =
         //#multipart-encoded2
-        ws.url(url).post(Source(FilePart("hello", "hello.txt", Option("text/plain"), FileIO.fromFile(tmpFile)) :: DataPart("key", "value") :: List()))
+        ws.url(url).post(Source(FilePart("hello", "hello.txt", Option("text/plain"), FileIO.fromPath(tmpFile.toPath)) :: DataPart("key", "value") :: List()))
         //#multipart-encoded2
 
         await(response).body must_== "world"
@@ -359,7 +362,7 @@ class ScalaWSSpec extends PlaySpecification with Results with AfterAll {
 
           val downloadedFile: Future[File] = futureResponse.flatMap {
             res =>
-              val outputStream = new FileOutputStream(file)
+              val outputStream = java.nio.file.Files.newOutputStream(file.toPath)
 
               // The sink that writes to the output stream
               val sink = Sink.foreach[ByteString] { bytes =>
@@ -501,6 +504,22 @@ class ScalaWSSpec extends PlaySpecification with Results with AfterAll {
       }
       status(wsAction(FakeRequest())) must_== OK
       //#async-result
+    }
+
+    "allow timeout" in new WithServer() with Injecting {
+      val futures = inject[Futures]
+      val ws = inject[WSClient]
+      //#ws-futures-timeout
+      val result = futures.timeout(1 second) {
+        ws.url(url).get().map { response =>
+          Ok(response.body)
+        }
+      }.recover {
+        case e: scala.concurrent.TimeoutException =>
+          GatewayTimeout
+      }
+      //#ws-futures-timeout
+      status(result) must_== OK
     }
 
     "allow simple programmatic configuration" in new WithApplication() {

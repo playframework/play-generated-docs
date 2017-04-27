@@ -52,12 +52,12 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>The HTTP headers set.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0-M4/framework/src/play/src/main/scala/play/api/mvc/Headers.scala" target="_blank">Headers.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0-M5/framework/src/play/src/main/scala/play/api/mvc/Headers.scala" target="_blank">Headers.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
             <span class="toggle">Known Subclasses</span>
-            <div class="subClasses hiddenContent"><a href="../test/FakeHeaders.html" class="extype" name="play.api.test.FakeHeaders">FakeHeaders</a></div>
+            <div class="subClasses hiddenContent"><a href="../../core/server/akkahttp/AkkaHeadersWrapper.html" class="extype" name="play.core.server.akkahttp.AkkaHeadersWrapper">AkkaHeadersWrapper</a>, <a href="../test/FakeHeaders.html" class="extype" name="play.api.test.FakeHeaders">FakeHeaders</a></div>
           </div></div>
         
 
@@ -375,6 +375,44 @@ it lazily.</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protect
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="play.api.mvc.Headers#hasBody" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="hasBody:Boolean"></a>
+      <a id="hasBody:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">hasBody</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.Headers@hasBody:Boolean" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">True if this request has a body, so we know if we should trigger body parsing.</p><div class="fullcomment"><div class="comment cmt"><p>True if this request has a body, so we know if we should trigger body parsing. The base implementation simply
+checks for the Content-Length or Transfer-Encoding headers, but subclasses (such as fake requests) may return
+true in other cases so the headers need not be updated to reflect the body.
+</p></div></div>
+    </li><li name="play.api.mvc.Headers#hasHeader" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="hasHeader(headerName:String):Boolean"></a>
+      <a id="hasHeader(String):Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">hasHeader</span><span class="params">(<span name="headerName">headerName: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.Headers@hasHeader(headerName:String):Boolean" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Checks if the given header is present.</p><div class="fullcomment"><div class="comment cmt"><p>Checks if the given header is present.
+</p></div><dl class="paramcmts block"><dt class="param">headerName</dt><dd class="cmt"><p>The name of the header (case-insensitive)</p></dd><dt>returns</dt><dd class="cmt"><p><code>true</code> if the request did contain the header.</p></dd></dl></div>
     </li><li name="play.api.mvc.Headers#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <a id="hashCode():Int"></a>

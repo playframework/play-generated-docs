@@ -37,12 +37,16 @@ To create your own public module or to migrate from a `play.api.Plugin`, please 
 * **Website:** <https://github.com/ArpNetworking/sbt-typescript>
 * **Short description:** A plugin for SBT that uses sbt-web to compile typescript resources
 
+### play-webpack Plugin
+* **Website:** <https://github.com/BowlingX/play-webpack>
+* **Short description:** A plugin for SBT to handle webpack generated assets and library to render Javascript on the server with Java's nashorn engine.
+
 ## Authentication (Login & Registration) and Authorization (Restricted Access)
 
 ### Silhouette (Scala)
 
-* **Website:** <http://www.silhouette.rocks/>
-* **Documentation:** <http://www.silhouette.rocks/docs/>
+* **Website:** <https://www.silhouette.rocks/>
+* **Documentation:** <https://www.silhouette.rocks/docs/>
 * **Short description:** An authentication library that supports several authentication methods, including OAuth1, OAuth2, OpenID, CAS, Credentials, Basic Authentication, Two Factor Authentication or custom authentication schemes.
 
 ### Deadbolt 2 Plugin

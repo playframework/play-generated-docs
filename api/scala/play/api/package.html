@@ -47,7 +47,7 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Contains the public API for Scala developers.</p><h6> Access the current Play application </h6><pre><span class="kw">import</span> play.api.Play.current</pre><h6> Read configuration </h6><pre><span class="kw">val</span> poolSize = configuration.getInt(<span class="lit">"engine.pool.size"</span>)</pre><h6> Use the logger </h6><pre>Logger.info(<span class="lit">"Hello!"</span>)</pre><h6> Define a Plugin </h6><pre><span class="kw">class</span> MyPlugin(app: Application) <span class="kw">extends</span> Plugin</pre><h6> Create adhoc applications (for testing) </h6><pre><span class="kw">val</span> application = Application(<span class="kw">new</span> File(<span class="lit">"."</span>), <span class="kw">this</span>.getClass.getClassloader, <span class="std">None</span>, Play.Mode.DEV)</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0-M4/framework/src/play/src/main/scala/play/api/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Contains the public API for Scala developers.</p><h6> Access the current Play application </h6><pre><span class="kw">import</span> play.api.Play.current</pre><h6> Read configuration </h6><pre><span class="kw">val</span> poolSize = configuration.getInt(<span class="lit">"engine.pool.size"</span>)</pre><h6> Use the logger </h6><pre>Logger.info(<span class="lit">"Hello!"</span>)</pre><h6> Define a Plugin </h6><pre><span class="kw">class</span> MyPlugin(app: Application) <span class="kw">extends</span> Plugin</pre><h6> Create adhoc applications (for testing) </h6><pre><span class="kw">val</span> application = Application(<span class="kw">new</span> File(<span class="lit">"."</span>), <span class="kw">this</span>.getClass.getClassloader, <span class="std">None</span>, Play.Mode.DEV)</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0-M5/framework/src/play/src/main/scala/play/api/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -245,7 +245,7 @@ Implementations must define a no-arg constructor.
     </span>
       <p class="shortcomment cmt">A default marker context.</p><div class="fullcomment"><div class="comment cmt"><p>A default marker context.  This is used by <code>MarkerContext.apply</code>, but can also be used to provide
 explicit typing for markers.  For example, to define a SecurityContext marker, you can define a case
-object extending DefaultMarkerContext</p><pre><span class="kw">case</span> <span class="kw">object</span> SecurityMarkerContext <span class="kw">extends</span> DefaultMarkerContext(MarkerFactory.getMarker(<span class="lit">"SECURITY"</span>))</pre></div></div>
+object extending DefaultMarkerContext:</p><pre><span class="kw">case</span> <span class="kw">object</span> SecurityMarkerContext <span class="kw">extends</span> DefaultMarkerContext(MarkerFactory.getMarker(<span class="lit">"SECURITY"</span>))</pre></div></div>
     </li><li name="play.api.Environment" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="EnvironmentextendsProductwithSerializable"></a>
       <a id="Environment:Environment"></a>
@@ -255,7 +255,7 @@ object extending DefaultMarkerContext</p><pre><span class="kw">case</span> <span
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="Environment.html"><span class="name">Environment</span></a><span class="params">(<span name="rootPath">rootPath: <span class="extype" name="java.io.File">File</span></span>, <span name="classLoader">classLoader: <span class="extype" name="java.lang.ClassLoader">ClassLoader</span></span>, <span name="mode">mode: <a href="Mode$.html#Mode=play.api.Mode.Value" class="extmbr" name="play.api.Mode.Mode">Mode.Mode</a></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="Environment.html"><span class="name">Environment</span></a><span class="params">(<span name="rootPath">rootPath: <span class="extype" name="java.io.File">File</span></span>, <span name="classLoader">classLoader: <span class="extype" name="java.lang.ClassLoader">ClassLoader</span></span>, <span name="mode">mode: <a href="Mode.html" class="extype" name="play.api.Mode">Mode</a></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../index.html#play.api.package@EnvironmentextendsProductwithSerializable" title="Permalink" target="_top">
@@ -351,6 +351,24 @@ object extending DefaultMarkerContext</p><pre><span class="kw">case</span> <span
       <p class="shortcomment cmt">A MarkerContext trait, to provide easy access to org.slf4j.Marker in Logger API.</p><div class="fullcomment"><div class="comment cmt"><p>A MarkerContext trait, to provide easy access to org.slf4j.Marker in Logger API.  This is usually accessed
 with a marker through an implicit conversion from a Marker.</p><pre><span class="kw">implicit</span> <span class="kw">val</span> markerContext: MarkerContext = org.slf4j.MarkerFactory.getMarker(<span class="lit">"EXAMPLEMARKER"</span>)
 log.error(<span class="lit">"This message will be logged with the EXAMPLEMARKER marker"</span>)</pre></div></div>
+    </li><li name="play.api.Mode" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="ModeextendsAnyRef"></a>
+      <a id="Mode:Mode"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Mode.html"><span class="name">Mode</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@ModeextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Application mode, either <code>Dev</code>, <code>Test</code>, or <code>Prod</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Application mode, either <code>Dev</code>, <code>Test</code>, or <code>Prod</code>.
+</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><span class="extype" name="play.Mode">play.Mode</span></p></span></dd></dl></div>
     </li><li name="play.api.NoHttpFiltersComponents" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="NoHttpFiltersComponentsextendsAnyRef"></a>
       <a id="NoHttpFiltersComponents:NoHttpFiltersComponents"></a>
@@ -547,6 +565,23 @@ log.error(<span class="lit">"This message will be logged with the EXAMPLEMARKER 
       </a>
     </span>
       
+    </li><li name="play.api.MarkerContexts" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="MarkerContexts"></a>
+      <a id="MarkerContexts:MarkerContexts"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="MarkerContexts$.html"><span class="name">MarkerContexts</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@MarkerContexts" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="play.api.Mode" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Mode"></a>
       <a id="Mode:Mode"></a>
@@ -556,14 +591,14 @@ log.error(<span class="lit">"This message will be logged with the EXAMPLEMARKER 
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="Mode$.html"><span class="name">Mode</span></a><span class="result"> extends <span class="extype" name="scala.Enumeration">Enumeration</span></span>
+        <a href="Mode$.html"><span class="name">Mode</span></a>
       </span>
       </h4><span class="permalink">
       <a href="../../index.html#play.api.package@Mode" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Application mode, either <code>DEV</code>, <code>TEST</code>, or <code>PROD</code>.</p>
+      
     </li><li name="play.api.Play" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Play"></a>
       <a id="Play:Play"></a>
@@ -753,7 +788,7 @@ JSR-330 scope annotations.</p><p>Bindings are provided by instances of <a href="
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Contains the Controller/Action/Result API to handle HTTP requests.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the Controller/Action/Result API to handle HTTP requests.</p><p>For example, a typical controller:</p><pre><span class="kw">object</span> Application <span class="kw">extends</span> Controller {
+      <p class="shortcomment cmt">Contains the Controller/Action/Result API to handle HTTP requests.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the Controller/Action/Result API to handle HTTP requests.</p><p>For example, a typical controller:</p><pre><span class="kw">class</span> HomeController @Inject() (<span class="kw">val</span> controllerComponents: ControllerComponents) <span class="kw">extends</span> BaseController {
 
   <span class="kw">def</span> index = Action {
     Ok(<span class="lit">"It works!"</span>)

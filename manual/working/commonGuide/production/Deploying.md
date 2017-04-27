@@ -100,7 +100,7 @@ Many other types of archive can be generated including:
 * Debian packages
 * System V / init.d and Upstart services in RPM/Debian packages
 
-Please consult the [documentation](http://www.scala-sbt.org/sbt-native-packager) on the native packager plugin for more information.
+Please consult the [documentation](http://sbt-native-packager.readthedocs.io/en/v1.1.5/) on the native packager plugin for more information.
 
 ### Build a server distribution
 
@@ -198,7 +198,7 @@ $ sbt
 [info] Packaging /Users/play-developer/my-first-app/target/scala-2.11/my-first-app_2.11-1.0-SNAPSHOT-sources.jar ...
 [info] Done packaging.
 [info] Wrote /Users/play-developer/my-first-app/target/scala-2.11/my-first-app_2.11-1.0-SNAPSHOT.pom
-[info] Resolving jline#jline;2.12.1 ...
+[info] Resolving jline#jline;2.12.2 ...
 [info] Done updating.
 [info] Main Scala API documentation to /Users/play-developer/my-first-app/target/scala-2.11/api...
 [info] Compiling 8 Scala sources and 1 Java source to /Users/play-developer/my-first-app/target/scala-2.11/classes...

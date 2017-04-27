@@ -51,7 +51,7 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0-M4/framework/src/play-streams/src/main/scala/play/api/libs/streams/Accumulator.scala" target="_blank">Accumulator.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0-M5/framework/src/play-streams/src/main/scala/play/api/libs/streams/Accumulator.scala" target="_blank">Accumulator.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -437,6 +437,26 @@ an immediately available future of <code>a</code>.
       <p class="shortcomment cmt">Create an accumulator that forwards the stream fed into it to the source it produces.</p><div class="fullcomment"><div class="comment cmt"><p>Create an accumulator that forwards the stream fed into it to the source it produces.</p><p>This is useful for when you want to send the consumed stream to another API that takes a Source as input.</p><p>Extreme care must be taken when using this accumulator - the source *must always* be materialized and consumed.
 If it isn't, this could lead to resource leaks and deadlocks upstream.
 </p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>An accumulator that forwards the stream to the produced source.</p></dd></dl></div>
+    </li><li name="play.api.libs.streams.Accumulator#strict" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="strict[E,A](strictHandler:Option[E]=&gt;scala.concurrent.Future[A],toSink:akka.stream.scaladsl.Sink[E,scala.concurrent.Future[A]]):play.api.libs.streams.Accumulator[E,A]"></a>
+      <a id="strict[E,A]((Option[E])⇒Future[A],Sink[E,Future[A]]):Accumulator[E,A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">strict</span><span class="tparams">[<span name="E">E</span>, <span name="A">A</span>]</span><span class="params">(<span name="strictHandler">strictHandler: (<span class="extype" name="scala.Option">Option</span>[<span class="extype" name="play.api.libs.streams.Accumulator.strict.E">E</span>]) ⇒ <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="play.api.libs.streams.Accumulator.strict.A">A</span>]</span>, <span name="toSink">toSink: <span class="extype" name="akka.stream.scaladsl.Sink">Sink</span>[<span class="extype" name="play.api.libs.streams.Accumulator.strict.E">E</span>, <span class="extype" name="scala.concurrent.Future">Future</span>[<span class="extype" name="play.api.libs.streams.Accumulator.strict.A">A</span>]]</span>)</span><span class="result">: <a href="Accumulator.html" class="extype" name="play.api.libs.streams.Accumulator">Accumulator</a>[<span class="extype" name="play.api.libs.streams.Accumulator.strict.E">E</span>, <span class="extype" name="play.api.libs.streams.Accumulator.strict.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.streams.Accumulator$@strict[E,A](strictHandler:Option[E]=&gt;scala.concurrent.Future[A],toSink:akka.stream.scaladsl.Sink[E,scala.concurrent.Future[A]]):play.api.libs.streams.Accumulator[E,A]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Create an accumulator that is capable of handling the stream as a single, possibly empty, element, with a sink
+provided as a fallback if the stream can't be expressed as a single element.</p><div class="fullcomment"><div class="comment cmt"><p>Create an accumulator that is capable of handling the stream as a single, possibly empty, element, with a sink
+provided as a fallback if the stream can't be expressed as a single element.</p><p>This is intended to be able to be used to avoid a stream materialization for strict entities.
+</p></div></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
