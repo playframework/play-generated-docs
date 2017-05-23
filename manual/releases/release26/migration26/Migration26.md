@@ -15,7 +15,7 @@ Update the Play version number in project/plugins.sbt to upgrade Play:
 addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.6.x")
 ```
 
-Where the "x" in `2.6.x` is the minor version of Play you want to use, per instance `2.6.0`.
+Where the "x" in `2.6.x` is the minor version of Play you want to use, for instance `2.6.0`.
 
 ### sbt upgrade to 0.13.15
 
@@ -168,7 +168,7 @@ class FooController @Inject() () extends InjectedController {
 
 `InjectedController` gets its `ControllerComponents` by calling the `setControllerComponents` method, which is called automatically by JSR-330 compliant dependency injection. We do not recommend using `InjectedController` with compile-time injection. If you plan to extensively unit test your controllers manually, we also recommend avoiding `InjectedController` since it hides the dependency.
 
-If you prefer to pass the individial dependencies manually, you can do that instead and extend `ControllerHelpers`, which has no dependencies or state. Here's an example:
+If you prefer to pass the individual dependencies manually, you can do that instead and extend `ControllerHelpers`, which has no dependencies or state. Here's an example:
 
 ```scala
 class Controller @Inject() (
@@ -223,6 +223,20 @@ This will only affect you if you happen to be using these prefixes for cookie na
  - Cookies named with `__Secure-` should set the `Secure` attribute.
 
 ## Assets
+
+### Binding Assets with compile-time DI
+
+If you are using compile-time DI, you should mix in `controllers.AssetsComponents` and use that to obtain the `assets: Assets` controller instance:
+
+```scala
+class MyComponents(context: Context) extends BuiltInComponentsFromContext(context) with AssetsComponents {
+  lazy val router = new Routes(httpErrorHandler, assets)
+}
+```
+
+If you have an existing `lazy val assets: Assets` you can remove it.
+
+### Assets configuration
 
 Existing user-facing APIs have not changed, but we suggest moving over to the `AssetsFinder` API for finding assets and setting up your assets directories in configuration:
 
@@ -316,6 +330,29 @@ See [[Cache APIs Migration|CacheMigration26]].
 
 See [[Java Configuration Migration|JavaConfigMigration26]].
 
+## Scala Configuration API
+
+The Scala `play.api.Configuration` API now has new methods that allow loading any type using a `ConfigLoader`. These new methods expect configuration keys to exist in the configuration file. For example, the following old code:
+
+```scala
+val myConfig: String = configuration.getString("my.config.key").getOrElse("default")
+```
+should be changed to
+```scala
+val myConfig: String = configuration.get[String]("my.config.key")
+```
+and the value "default" should be set in configuration as `my.config.key = default`.
+
+Alternatively, if custom logic is required in the code to obtain the default value, you can set the default to null in your config file (`my.config.key = null`), and read an `Option[T]`:
+```scala
+val myConfigOption: Option[String] = configuration.get[Option[String]]("my.config.key")
+val myConfig: String = myConfigOption.getOrElse(computeDefaultValue())
+```
+
+Also, there are several methods in the old `Configuration` that return Java types, like `getBooleanList`. We recommend using the Scala version `get[Seq[Boolean]]` instead if possible. If that is not possible, you can access the `underlying` Config object and call `getBooleanList` from it.
+
+The deprecation messages on the existing methods also explain how to migrate each method. See [[the Scala Configuration docs|ScalaConfig]] for more details on the proper use of `play.api.Configuration`.
+
 ## Removed APIs
 
 ### Removed Crypto API
@@ -375,21 +412,27 @@ In order to make the default play distribution a bit smaller we removed some lib
 
 #### Joda-Time removal
 
-If you can, you could migrate all occurrences to Java8 `java.time`.
+We recommend using the `java.time` APIs, so we are removing joda-time support from the core of Play.
 
-If you can't and still need to use Joda-Time in Play Forms and Play-Json you can just add the `play-joda` project:
+Play's Scala forms library had some Joda formats. If you don't wish to migrate, you can add the `jodaForms` module in your `build.sbt`:
 
 ```scala
-libraryDependencies += "com.typesafe.play" % "play-joda" % "1.0.0"
+libraryDependencies += jodaForms
 ```
 
-And then import the corresponding Object for Forms:
+And then import the corresponding object:
 
 ```scala
 import play.api.data.JodaForms._
 ```
 
-or for Play-Json
+If you need Joda support in play-json, you can add the following dependency:
+
+```scala
+libraryDependencies += "com.typesafe.play" % "play-json-joda" % playJsonVersion
+```
+
+where `playJsonVersion` is the play-json version you wish to use. Play 2.6.x should be compatible with play-json 2.6.x. Note that play-json is now a separate project (described later).
 
 ```scala
 import play.api.data.JodaWrites._
@@ -867,7 +910,7 @@ or by replacing `EnabledFilters`:
 play.http.filters=play.api.http.NoHttpFilters
 ```
 
-If you are writing functional tests involving `GuiceApplicationBuilder` and the AllowedHostsFilter is interfering with tests and causing `400` status errors, then you can disable it using `configure`:
+If you are writing functional tests involving `GuiceApplicationBuilder` and you want to disable default filters, then you can disable all or some of the filters through configuration by using `configure`:
 
 ```scala
 GuiceApplicationBuilder().configure("play.http.filters" -> "play.api.http.NoHttpFilters")
@@ -1035,7 +1078,8 @@ HikariCP was updated and a new configuration was introduced: `initializationFail
 
 There are some configurations.  The old configuration paths will generally still work, but a deprecation warning will be output at runtime if you use them.  Here is a summary of the changed keys:
 
-| Old key                   | New key                            |
-| ------------------------- | ---------------------------------- |
-| `play.crypto.secret`      | `play.http.secret.key`             |
-| `play.crypto.provider`    | `play.http.secret.provider`        |
+| Old key                       | New key                                 |
+|-------------------------------|-----------------------------------------|
+| `play.crypto.secret`          | `play.http.secret.key`                  |
+| `play.crypto.provider`        | `play.http.secret.provider`             |
+| `play.websocket.buffer.limit` | `play.server.websocket.frame.maxLength` |

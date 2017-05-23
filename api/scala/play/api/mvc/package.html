@@ -53,7 +53,7 @@
     Ok(<span class="lit">"It works!"</span>)
   }
 
-}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0-M5/framework/src/play/src/main/scala/play/api/mvc/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
+}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0-RC1/framework/src/play/src/main/scala/play/api/mvc/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -418,7 +418,7 @@ its Action block.  The critical (abstract) function is transform.
       <p class="shortcomment cmt">AnyContent - XML body
 </p>
     </li><li name="play.api.mvc.BaseController" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="BaseControllerextendsControllerHelpers"></a>
+      <a id="BaseControllerextendsBaseControllerHelpers"></a>
       <a id="BaseController:BaseController"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -426,10 +426,10 @@ its Action block.  The critical (abstract) function is transform.
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="BaseController.html"><span class="name">BaseController</span></a><span class="result"> extends <a href="ControllerHelpers.html" class="extype" name="play.api.mvc.ControllerHelpers">ControllerHelpers</a></span>
+        <a href="BaseController.html"><span class="name">BaseController</span></a><span class="result"> extends <a href="BaseControllerHelpers.html" class="extype" name="play.api.mvc.BaseControllerHelpers">BaseControllerHelpers</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.package@BaseControllerextendsControllerHelpers" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.package@BaseControllerextendsBaseControllerHelpers" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -442,6 +442,25 @@ its Action block.  The critical (abstract) function is transform.
 }</pre><p>This is intended to provide the idiomatic Play API for actions, allowing you to use &quot;Action&quot; for the default
 action builder and &quot;parse&quot; to access Play's default body parsers. You may want to extend this to provide your own
 base controller class, or write your own version with similar code.
+</p></div></div>
+    </li><li name="play.api.mvc.BaseControllerHelpers" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="BaseControllerHelpersextendsControllerHelpers"></a>
+      <a id="BaseControllerHelpers:BaseControllerHelpers"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="BaseControllerHelpers.html"><span class="name">BaseControllerHelpers</span></a><span class="result"> extends <a href="ControllerHelpers.html" class="extype" name="play.api.mvc.ControllerHelpers">ControllerHelpers</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@BaseControllerHelpersextendsControllerHelpers" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Useful prewired mixins for controller components, assuming an available <a href="ControllerComponents.html" class="extype" name="play.api.mvc.ControllerComponents">ControllerComponents</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Useful prewired mixins for controller components, assuming an available <a href="ControllerComponents.html" class="extype" name="play.api.mvc.ControllerComponents">ControllerComponents</a>.</p><p>If you want to extend your own <a href="AbstractController.html" class="extype" name="play.api.mvc.AbstractController">AbstractController</a> but want to use a different base &quot;Action&quot;,
+you can mix in this trait.
 </p></div></div>
     </li><li name="play.api.mvc.BodyParser" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="BodyParser[+A]extendsplay.api.mvc.RequestHeader=&gt;play.api.libs.streams.Accumulator[akka.util.ByteString,Either[play.api.mvc.Result,A]]"></a>
@@ -551,7 +570,7 @@ injecting an instance of PlayBodyParsers (either directly or through <a href="Ba
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">The base controller components dependencies that most controllers rely on.</p>
     </li><li name="play.api.mvc.ControllerHelpers" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="ControllerHelpersextendsResultswithHttpProtocolwithStatuswithHeaderNameswithContentTypeswithRequestExtractorswithRenderingwithRequestImplicits"></a>
       <a id="ControllerHelpers:ControllerHelpers"></a>
@@ -777,6 +796,40 @@ with types very well.
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.mvc.package@DefaultJWTCookieDataCodecextendsJWTCookieDataCodecwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.api.mvc.DefaultMessagesActionBuilderImpl" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DefaultMessagesActionBuilderImplextendsMessagesActionBuilderImpl[play.api.mvc.AnyContent]withMessagesActionBuilder"></a>
+      <a id="DefaultMessagesActionBuilderImpl:DefaultMessagesActionBuilderImpl"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="DefaultMessagesActionBuilderImpl.html"><span class="name">DefaultMessagesActionBuilderImpl</span></a><span class="result"> extends <a href="MessagesActionBuilderImpl.html" class="extype" name="play.api.mvc.MessagesActionBuilderImpl">MessagesActionBuilderImpl</a>[<a href="AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a>] with <a href="MessagesActionBuilder.html" class="extype" name="play.api.mvc.MessagesActionBuilder">MessagesActionBuilder</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@DefaultMessagesActionBuilderImplextendsMessagesActionBuilderImpl[play.api.mvc.AnyContent]withMessagesActionBuilder" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.api.mvc.DefaultMessagesControllerComponents" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DefaultMessagesControllerComponentsextendsMessagesControllerComponentswithProductwithSerializable"></a>
+      <a id="DefaultMessagesControllerComponents:DefaultMessagesControllerComponents"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="DefaultMessagesControllerComponents.html"><span class="name">DefaultMessagesControllerComponents</span></a><span class="params">(<span name="messagesActionBuilder">messagesActionBuilder: <a href="MessagesActionBuilder.html" class="extype" name="play.api.mvc.MessagesActionBuilder">MessagesActionBuilder</a></span>, <span name="actionBuilder">actionBuilder: <a href="DefaultActionBuilder.html" class="extype" name="play.api.mvc.DefaultActionBuilder">DefaultActionBuilder</a></span>, <span name="parsers">parsers: <a href="PlayBodyParsers.html" class="extype" name="play.api.mvc.PlayBodyParsers">PlayBodyParsers</a></span>, <span name="messagesApi">messagesApi: <a href="../i18n/MessagesApi.html" class="extype" name="play.api.i18n.MessagesApi">MessagesApi</a></span>, <span name="langs">langs: <a href="../i18n/Langs.html" class="extype" name="play.api.i18n.Langs">Langs</a></span>, <span name="fileMimeTypes">fileMimeTypes: <a href="../http/FileMimeTypes.html" class="extype" name="play.api.http.FileMimeTypes">FileMimeTypes</a></span>, <span name="executionContext">executionContext: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>)</span><span class="result"> extends <a href="MessagesControllerComponents.html" class="extype" name="play.api.mvc.MessagesControllerComponents">MessagesControllerComponents</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@DefaultMessagesControllerComponentsextendsMessagesControllerComponentswithProductwithSerializable" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -1163,28 +1216,103 @@ for example <code>EssentialAction</code>s and <code>WebSocket</code>s.</p><p>The
       </a>
     </span>
       <p class="shortcomment cmt">The status of a max size flow.</p>
-    </li><li name="play.api.mvc.MessagesAction" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="MessagesActionextendsActionBuilder[play.api.mvc.MessagesRequest,play.api.mvc.AnyContent]"></a>
-      <a id="MessagesAction:MessagesAction"></a>
+    </li><li name="play.api.mvc.MessagesAbstractController" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="MessagesAbstractControllerextendsMessagesBaseController"></a>
+      <a id="MessagesAbstractController:MessagesAbstractController"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="MessagesAbstractController.html"><span class="name">MessagesAbstractController</span></a><span class="result"> extends <a href="MessagesBaseController.html" class="extype" name="play.api.mvc.MessagesBaseController">MessagesBaseController</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@MessagesAbstractControllerextendsMessagesBaseController" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">An abstract controller class that returns a <a href="MessagesRequest.html" class="extype" name="play.api.mvc.MessagesRequest">MessagesRequest</a> as the default Action.</p><div class="fullcomment"><div class="comment cmt"><p>An abstract controller class that returns a <a href="MessagesRequest.html" class="extype" name="play.api.mvc.MessagesRequest">MessagesRequest</a> as the default Action.</p><p>An abstract implementation of <a href="MessagesBaseController.html" class="extype" name="play.api.mvc.MessagesBaseController">MessagesBaseController</a> to make it slightly easier to use.</p><pre><span class="kw">class</span> MyController @Inject()(cc: MessagesControllerComponents) <span class="kw">extends</span> MessagesAbstractController(cc) {
+  <span class="kw">def</span> index = Action { <span class="kw">implicit</span> request: MessagesRequest[AnyContent] <span class="kw">=&gt;</span>
+    Ok(views.html.formTemplate(form)) <span class="cmt">// twirl template with form builders</span>
+  }
+}</pre></div></div>
+    </li><li name="play.api.mvc.MessagesActionBuilder" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="MessagesActionBuilderextendsActionBuilder[play.api.mvc.MessagesRequest,play.api.mvc.AnyContent]"></a>
+      <a id="MessagesActionBuilder:MessagesActionBuilder"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="MessagesActionBuilder.html"><span class="name">MessagesActionBuilder</span></a><span class="result"> extends <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>[<a href="MessagesRequest.html" class="extype" name="play.api.mvc.MessagesRequest">MessagesRequest</a>, <a href="AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@MessagesActionBuilderextendsActionBuilder[play.api.mvc.MessagesRequest,play.api.mvc.AnyContent]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">This trait is an <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a> that provides a <a href="MessagesRequest.html" class="extype" name="play.api.mvc.MessagesRequest">MessagesRequest</a> to the block:</p><div class="fullcomment"><div class="comment cmt"><p>This trait is an <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a> that provides a <a href="MessagesRequest.html" class="extype" name="play.api.mvc.MessagesRequest">MessagesRequest</a> to the block:</p><pre><span class="kw">class</span> MyController @Inject()(
+  messagesAction: MessagesActionBuilder,
+  cc: ControllerComponents
+) <span class="kw">extends</span> AbstractController(cc) {
+  <span class="kw">def</span> index = messagesAction { <span class="kw">implicit</span> request: MessagesRequest[AnyContent] <span class="kw">=&gt;</span>
+     Ok(views.html.formTemplate(form)) <span class="cmt">// twirl template with form builders</span>
+  }
+}</pre><p>This is useful when you don't want to have to add <a href="../i18n/I18nSupport.html" class="extype" name="play.api.i18n.I18nSupport">play.api.i18n.I18nSupport</a> to a controller for form processing.
+</p></div></div>
+    </li><li name="play.api.mvc.MessagesActionBuilderImpl" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="MessagesActionBuilderImpl[B]extendsActionBuilder[play.api.mvc.MessagesRequest,B]"></a>
+      <a id="MessagesActionBuilderImpl[B]:MessagesActionBuilderImpl[B]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="MessagesAction.html"><span class="name">MessagesAction</span></a><span class="result"> extends <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>[<a href="MessagesRequest.html" class="extype" name="play.api.mvc.MessagesRequest">MessagesRequest</a>, <a href="AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a>]</span>
+        <a href="MessagesActionBuilderImpl.html"><span class="name">MessagesActionBuilderImpl</span></a><span class="tparams">[<span name="B">B</span>]</span><span class="result"> extends <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>[<a href="MessagesRequest.html" class="extype" name="play.api.mvc.MessagesRequest">MessagesRequest</a>, <span class="extype" name="play.api.mvc.MessagesActionBuilderImpl.B">B</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.package@MessagesActionextendsActionBuilder[play.api.mvc.MessagesRequest,play.api.mvc.AnyContent]" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.package@MessagesActionBuilderImpl[B]extendsActionBuilder[play.api.mvc.MessagesRequest,B]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">This class is an ActionBuilder that provides a MessagesRequest to the block:</p><div class="fullcomment"><div class="comment cmt"><p>This class is an ActionBuilder that provides a MessagesRequest to the block:</p><pre><span class="kw">class</span> Controller @Inject()(messagesAction: MessagesAction, cc: ControllerComponents) <span class="kw">extends</span> AbstractController(cc) {
-  <span class="kw">def</span> index = messagesAction { <span class="kw">implicit</span> request: MessagesRequest[AnyContent] <span class="kw">=&gt;</span>
-
-  }
-}</pre><p>This is useful when you don't want to have to extend I18nSupport.
-</p></div></div>
+      
+    </li><li name="play.api.mvc.MessagesBaseController" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="MessagesBaseControllerextendsBaseControllerHelpers"></a>
+      <a id="MessagesBaseController:MessagesBaseController"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="MessagesBaseController.html"><span class="name">MessagesBaseController</span></a><span class="result"> extends <a href="BaseControllerHelpers.html" class="extype" name="play.api.mvc.BaseControllerHelpers">BaseControllerHelpers</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@MessagesBaseControllerextendsBaseControllerHelpers" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A base controller that returns a <a href="MessagesRequest.html" class="extype" name="play.api.mvc.MessagesRequest">MessagesRequest</a> as the base Action.</p>
+    </li><li name="play.api.mvc.MessagesControllerComponents" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="MessagesControllerComponentsextendsControllerComponents"></a>
+      <a id="MessagesControllerComponents:MessagesControllerComponents"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="MessagesControllerComponents.html"><span class="name">MessagesControllerComponents</span></a><span class="result"> extends <a href="ControllerComponents.html" class="extype" name="play.api.mvc.ControllerComponents">ControllerComponents</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@MessagesControllerComponentsextendsControllerComponents" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Controller components with a <a href="MessagesActionBuilder.html" class="extype" name="play.api.mvc.MessagesActionBuilder">MessagesActionBuilder</a>.</p>
     </li><li name="play.api.mvc.MessagesRequest" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="MessagesRequest[A]extendsWrappedRequest[A]withPreferredMessagesProviderwithMessagesRequestHeader"></a>
       <a id="MessagesRequest[A]:MessagesRequest[A]"></a>
@@ -1836,6 +1964,23 @@ prevents Play from accessing the real handler until its logic has been run.
       </a>
     </span>
       <p class="shortcomment cmt">Utilities for merging individual cookie values in HTTP cookie headers.</p>
+    </li><li name="play.api.mvc.Cookies" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Cookies"></a>
+      <a id="Cookies:Cookies"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Cookies$.html"><span class="name">Cookies</span></a><span class="result"> extends <a href="CookieHeaderEncoding.html" class="extype" name="play.api.mvc.CookieHeaderEncoding">CookieHeaderEncoding</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@Cookies" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Helper utilities to encode Cookies.</p>
     </li><li name="play.api.mvc.DefaultActionBuilder" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="DefaultActionBuilder"></a>
       <a id="DefaultActionBuilder:DefaultActionBuilder"></a>
@@ -1923,6 +2068,23 @@ prevents Play from accessing the real handler until its logic has been run.
     </span>
       <p class="shortcomment cmt">Compose the action and the Filters to create a new Action
 </p>
+    </li><li name="play.api.mvc.Flash" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Flash"></a>
+      <a id="Flash:Flash"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Flash$.html"><span class="name">Flash</span></a><span class="result"> extends <a href="CookieBaker.html" class="extype" name="play.api.mvc.CookieBaker">CookieBaker</a>[<a href="Flash.html" class="extype" name="play.api.mvc.Flash">Flash</a>] with <a href="UrlEncodedCookieDataCodec.html" class="extype" name="play.api.mvc.UrlEncodedCookieDataCodec">UrlEncodedCookieDataCodec</a> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@Flash" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="play.api.mvc.Handler" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Handler"></a>
       <a id="Handler:Handler"></a>
@@ -2179,6 +2341,23 @@ prevents Play from accessing the real handler until its logic has been run.
       </a>
     </span>
       <p class="shortcomment cmt">Helpers to create secure actions.</p>
+    </li><li name="play.api.mvc.Session" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Session"></a>
+      <a id="Session:Session"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Session$.html"><span class="name">Session</span></a><span class="result"> extends <a href="CookieBaker.html" class="extype" name="play.api.mvc.CookieBaker">CookieBaker</a>[<a href="Session.html" class="extype" name="play.api.mvc.Session">Session</a>] with <a href="FallbackCookieDataCodec.html" class="extype" name="play.api.mvc.FallbackCookieDataCodec">FallbackCookieDataCodec</a> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@Session" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="play.api.mvc.WebSocket" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="WebSocket"></a>
       <a id="WebSocket:WebSocket"></a>
@@ -2241,67 +2420,6 @@ prevents Play from accessing the real handler until its logic has been run.
                 <span class="name">@deprecated</span>
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i></p></dd></dl></div>
-    </li><li name="play.api.mvc.Cookies" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="Cookies"></a>
-      <a id="Cookies:Cookies"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a href="Cookies$.html"><span class="name deprecated" title="Deprecated: (Since version 2.6.0) Inject scala.tools.nsc.doc.base.MemberLookupBase$$anon$1@3e219854 instead">Cookies</span></a><span class="result"> extends <a href="CookieHeaderEncoding.html" class="extype" name="play.api.mvc.CookieHeaderEncoding">CookieHeaderEncoding</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.package@Cookies" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Helper utilities to encode Cookies.</p><div class="fullcomment"><div class="comment cmt"><p>Helper utilities to encode Cookies.
-</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Inject <a href="CookieHeaderEncoding.html" class="extype" name="play.api.mvc.CookieHeaderEncoding">play.api.mvc.CookieHeaderEncoding</a> instead</p></dd></dl></div>
-    </li><li name="play.api.mvc.Flash" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="Flash"></a>
-      <a id="Flash:Flash"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a href="Flash$.html"><span class="name deprecated" title="Deprecated: (Since version 2.6.0) Inject scala.tools.nsc.doc.base.MemberLookupBase$$anon$1@11be8f65 instead">Flash</span></a><span class="result"> extends <a href="FlashCookieBaker.html" class="extype" name="play.api.mvc.FlashCookieBaker">FlashCookieBaker</a> with <a href="UrlEncodedCookieDataCodec.html" class="extype" name="play.api.mvc.UrlEncodedCookieDataCodec">UrlEncodedCookieDataCodec</a> with <span class="extype" name="scala.Serializable">Serializable</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.package@Flash" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Inject <a href="FlashCookieBaker.html" class="extype" name="play.api.mvc.FlashCookieBaker">play.api.mvc.FlashCookieBaker</a> instead</p></dd></dl></div>
-    </li><li name="play.api.mvc.Session" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="Session"></a>
-      <a id="Session:Session"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a href="Session$.html"><span class="name deprecated" title="Deprecated: (Since version 2.6.0) Inject scala.tools.nsc.doc.base.MemberLookupBase$$anon$1@66e7577e instead">Session</span></a><span class="result"> extends <a href="SessionCookieBaker.html" class="extype" name="play.api.mvc.SessionCookieBaker">SessionCookieBaker</a> with <a href="FallbackCookieDataCodec.html" class="extype" name="play.api.mvc.FallbackCookieDataCodec">FallbackCookieDataCodec</a> with <span class="extype" name="scala.Serializable">Serializable</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.package@Session" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Inject <a href="SessionCookieBaker.html" class="extype" name="play.api.mvc.SessionCookieBaker">play.api.mvc.SessionCookieBaker</a> instead</p></dd></dl></div>
     </li></ol>
             </div>
         </div>

@@ -52,7 +52,7 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Utilities related to Lang values.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0-M5/framework/src/play/src/main/scala/play/api/i18n/Langs.scala" target="_blank">Langs.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0-RC1/framework/src/play/src/main/scala/play/api/i18n/Langs.scala" target="_blank">Langs.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -226,12 +226,12 @@
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="play.api.i18n.Lang#defaultLang" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="play.api.i18n.Lang#defaultLang" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="defaultLang:play.api.i18n.Lang"></a>
       <a id="defaultLang:Lang"></a>
       <h4 class="signature">
       <span class="modifier_kind">
-        <span class="modifier">implicit </span>
+        <span class="modifier"></span>
         <span class="kind">lazy val</span>
       </span>
       <span class="symbol">
@@ -242,8 +242,11 @@
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">The default Lang to use if nothing matches (platform default)
-</p>
+      <p class="shortcomment cmt">The default Lang to use if nothing matches (platform default).</p><div class="fullcomment"><div class="comment cmt"><p>The default Lang to use if nothing matches (platform default).</p><p>Pre 2.6.x, defaultLang was an implicit value, meaning that it could be used in implicit scope
+resolution if no Lang was found in local scope.  This setting was too general and resulted
+in bugs where the defaultLang was being used instead of a request.lang, if request was not
+declared as implicit.
+</p></div></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -597,52 +600,7 @@ if language is unrecognized.</p>
 
         
 
-        <div id="values" class="values members">
-              <h3>Deprecated Value Members</h3>
-              <ol><li name="play.api.i18n.Lang#availables" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="availables(implicitapp:play.api.Application):Seq[play.api.i18n.Lang]"></a>
-      <a id="availables(Application):Seq[Lang]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 2.5.0) Inject Langs into your component">availables</span><span class="params">(<span class="implicit">implicit </span><span name="app">app: <a href="../Application.html" class="extype" name="play.api.Application">Application</a></span>)</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<a href="Lang.html" class="extype" name="play.api.i18n.Lang">Lang</a>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.api.i18n.Lang$@availables(implicitapp:play.api.Application):Seq[play.api.i18n.Lang]" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Retrieve Lang availables from the application configuration.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieve Lang availables from the application configuration.</p><pre>play.i18n.langs = [<span class="lit">"fr"</span>, <span class="lit">"en"</span>, <span class="lit">"de"</span>]</pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.5.0)</i> Inject Langs into your component</p></dd></dl></div>
-    </li><li name="play.api.i18n.Lang#preferred" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="preferred(langs:Seq[play.api.i18n.Lang])(implicitapp:play.api.Application):play.api.i18n.Lang"></a>
-      <a id="preferred(Seq[Lang])(Application):Lang"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 2.5.0) Inject Langs into your component">preferred</span><span class="params">(<span name="langs">langs: <span class="extype" name="scala.Seq">Seq</span>[<a href="Lang.html" class="extype" name="play.api.i18n.Lang">Lang</a>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="app">app: <a href="../Application.html" class="extype" name="play.api.Application">Application</a></span>)</span><span class="result">: <a href="Lang.html" class="extype" name="play.api.i18n.Lang">Lang</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.api.i18n.Lang$@preferred(langs:Seq[play.api.i18n.Lang])(implicitapp:play.api.Application):play.api.i18n.Lang" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Guess the preferred lang in the langs set passed as argument.</p><div class="fullcomment"><div class="comment cmt"><p>Guess the preferred lang in the langs set passed as argument.
-The first Lang that matches an available Lang wins, otherwise returns the first Lang available in this application.
-</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.5.0)</i> Inject Langs into your component</p></dd></dl></div>
-    </li></ol>
-            </div>
+        
         </div>
 
         <div id="inheritedMembers">

@@ -1,9 +1,9 @@
 <!DOCTYPE html >
 <html>
         <head>
-          <title>MessagesAction - play.api.mvc.MessagesAction</title>
-          <meta name="description" content="MessagesAction - play.api.mvc.MessagesAction" />
-          <meta name="keywords" content="MessagesAction play.api.mvc.MessagesAction" />
+          <title>MessagesActionBuilder - play.api.mvc.MessagesActionBuilder</title>
+          <meta name="description" content="MessagesActionBuilder - play.api.mvc.MessagesActionBuilder" />
+          <meta name="keywords" content="MessagesActionBuilder play.api.mvc.MessagesActionBuilder" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       <link href="../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
@@ -16,7 +16,7 @@
       <script type="text/javascript">
          if(top === self) {
             var url = '../../../index.html';
-            var hash = 'play.api.mvc.MessagesAction';
+            var hash = 'play.api.mvc.MessagesActionBuilder';
             var anchor = window.location.hash;
             var anchor_opt = '';
             if (anchor.length >= 1)
@@ -28,12 +28,12 @@
         </head>
         <body class="type">
       <div id="definition">
-        <img alt="Class" src="../../../lib/class_big.png" />
+        <img alt="Trait" src="../../../lib/trait_big.png" />
         <p id="owner"><a href="../../package.html" class="extype" name="play">play</a>.<a href="../package.html" class="extype" name="play.api">api</a>.<a href="package.html" class="extype" name="play.api.mvc">mvc</a></p>
-        <h1>MessagesAction</h1><h3><span class="morelinks"><div>Related Doc:
+        <h1>MessagesActionBuilder</h1><h3><span class="morelinks"><div>Related Doc:
             <a href="package.html" class="extype" name="play.api.mvc">package mvc</a>
           </div></span></h3><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.MessagesAction" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.MessagesActionBuilder" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -42,22 +42,28 @@
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">class</span>
+        <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <span class="name">MessagesAction</span><span class="result"> extends <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>[<a href="MessagesRequest.html" class="extype" name="play.api.mvc.MessagesRequest">MessagesRequest</a>, <a href="AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a>]</span>
+        <span class="name">MessagesActionBuilder</span><span class="result"> extends <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>[<a href="MessagesRequest.html" class="extype" name="play.api.mvc.MessagesRequest">MessagesRequest</a>, <a href="AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a>]</span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>This class is an ActionBuilder that provides a MessagesRequest to the block:</p><pre><span class="kw">class</span> Controller @Inject()(messagesAction: MessagesAction, cc: ControllerComponents) <span class="kw">extends</span> AbstractController(cc) {
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>This trait is an <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a> that provides a <a href="MessagesRequest.html" class="extype" name="play.api.mvc.MessagesRequest">MessagesRequest</a> to the block:</p><pre><span class="kw">class</span> MyController @Inject()(
+  messagesAction: MessagesActionBuilder,
+  cc: ControllerComponents
+) <span class="kw">extends</span> AbstractController(cc) {
   <span class="kw">def</span> index = messagesAction { <span class="kw">implicit</span> request: MessagesRequest[AnyContent] <span class="kw">=&gt;</span>
-
+     Ok(views.html.formTemplate(form)) <span class="cmt">// twirl template with form builders</span>
   }
-}</pre><p>This is useful when you don't want to have to extend I18nSupport.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0-M5/framework/src/play/src/main/scala/play/api/mvc/MessagesRequest.scala" target="_blank">MessagesRequest.scala</a></dd></dl><div class="toggleContainer block">
+}</pre><p>This is useful when you don't want to have to add <a href="../i18n/I18nSupport.html" class="extype" name="play.api.i18n.I18nSupport">play.api.i18n.I18nSupport</a> to a controller for form processing.
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0-RC1/framework/src/play/src/main/scala/play/api/mvc/MessagesRequest.scala" target="_blank">MessagesRequest.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>[<a href="MessagesRequest.html" class="extype" name="play.api.mvc.MessagesRequest">MessagesRequest</a>, <a href="AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a>], <a href="ActionFunction.html" class="extype" name="play.api.mvc.ActionFunction">ActionFunction</a>[<a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>, <a href="MessagesRequest.html" class="extype" name="play.api.mvc.MessagesRequest">MessagesRequest</a>], <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
-        </div></div>
+        </div><div class="toggleContainer block">
+            <span class="toggle">Known Subclasses</span>
+            <div class="subClasses hiddenContent"><a href="DefaultMessagesActionBuilderImpl.html" class="extype" name="play.api.mvc.DefaultMessagesActionBuilderImpl">DefaultMessagesActionBuilderImpl</a></div>
+          </div></div>
         
 
       <div id="mbrsel">
@@ -74,7 +80,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="play.api.mvc.MessagesAction"><span>MessagesAction</span></li><li class="in" name="play.api.mvc.ActionBuilder"><span>ActionBuilder</span></li><li class="in" name="play.api.mvc.ActionFunction"><span>ActionFunction</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="play.api.mvc.MessagesActionBuilder"><span>MessagesActionBuilder</span></li><li class="in" name="play.api.mvc.ActionBuilder"><span>ActionBuilder</span></li><li class="in" name="play.api.mvc.ActionFunction"><span>ActionFunction</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -91,37 +97,71 @@
 
       <div id="template">
         <div id="allMembers">
-        <div id="constructors" class="members">
-              <h3>Instance Constructors</h3>
-              <ol><li name="play.api.mvc.MessagesAction#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(parsers:play.api.mvc.PlayBodyParsers,messagesApi:play.api.i18n.MessagesApi):play.api.mvc.MessagesAction"></a>
-      <a id="&lt;init&gt;:MessagesAction"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">new</span>
-      </span>
-      <span class="symbol">
-        <span class="name">MessagesAction</span><span class="params">(<span name="parsers">parsers: <a href="PlayBodyParsers.html" class="extype" name="play.api.mvc.PlayBodyParsers">PlayBodyParsers</a></span>, <span name="messagesApi">messagesApi: <a href="../i18n/MessagesApi.html" class="extype" name="play.api.i18n.MessagesApi">MessagesApi</a></span>)</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.MessagesAction@&lt;init&gt;(parsers:play.api.mvc.PlayBodyParsers,messagesApi:play.api.i18n.MessagesApi):play.api.mvc.MessagesAction" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@Inject</span><span class="args">()</span>
-              
-        </dd></dl></div>
-    </li></ol>
-            </div>
-
         
 
         
 
         <div id="values" class="values members">
-              <h3>Value Members</h3>
+              <h3>Abstract Value Members</h3>
+              <ol><li name="play.api.mvc.ActionFunction#executionContext" visbl="prt" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="executionContext:scala.concurrent.ExecutionContext"></a>
+      <a id="executionContext:ExecutionContext"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">executionContext</span><span class="result">: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.MessagesActionBuilder@executionContext:scala.concurrent.ExecutionContext" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Get the execution context to run the request in.</p><div class="fullcomment"><div class="comment cmt"><p>Get the execution context to run the request in.
+</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>The execution context</p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="ActionFunction.html" class="extype" name="play.api.mvc.ActionFunction">ActionFunction</a></dd></dl></div>
+    </li><li name="play.api.mvc.ActionFunction#invokeBlock" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="invokeBlock[A](request:R[A],block:P[A]=&gt;scala.concurrent.Future[play.api.mvc.Result]):scala.concurrent.Future[play.api.mvc.Result]"></a>
+      <a id="invokeBlock[A](Request[A],(MessagesRequest[A])⇒Future[Result]):Future[Result]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">invokeBlock</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="request">request: <a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>[<span class="extype" name="play.api.mvc.ActionFunction.invokeBlock.A">A</span>]</span>, <span name="block">block: (<a href="MessagesRequest.html" class="extype" name="play.api.mvc.MessagesRequest">MessagesRequest</a>[<span class="extype" name="play.api.mvc.ActionFunction.invokeBlock.A">A</span>]) ⇒ <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.MessagesActionBuilder@invokeBlock[A](request:R[A],block:P[A]=&gt;scala.concurrent.Future[play.api.mvc.Result]):scala.concurrent.Future[play.api.mvc.Result]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Invoke the block.</p><div class="fullcomment"><div class="comment cmt"><p>Invoke the block.  This is the main method that an ActionBuilder has to implement, at this stage it can wrap it in
+any other actions, modify the request object or potentially use a different class to represent the request.
+</p></div><dl class="paramcmts block"><dt class="param">request</dt><dd class="cmt"><p>The request</p></dd><dt class="param">block</dt><dd class="cmt"><p>The block of code to invoke</p></dd><dt>returns</dt><dd class="cmt"><p>A future of the result</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ActionFunction.html" class="extype" name="play.api.mvc.ActionFunction">ActionFunction</a></dd></dl></div>
+    </li><li name="play.api.mvc.ActionBuilder#parser" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="parser:play.api.mvc.BodyParser[B]"></a>
+      <a id="parser:BodyParser[AnyContent]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">parser</span><span class="result">: <a href="BodyParser.html" class="extype" name="play.api.mvc.BodyParser">BodyParser</a>[<a href="AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.MessagesActionBuilder@parser:play.api.mvc.BodyParser[B]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>The BodyParser to be used by this ActionBuilder if no other is specified</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a></dd></dl></div>
+    </li></ol>
+            </div>
+
+        <div id="values" class="values members">
+              <h3>Concrete Value Members</h3>
               <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:Any):Boolean"></a>
       <a id="!=(Any):Boolean"></a>
@@ -134,7 +174,7 @@
         <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.MessagesAction@!=(x$1:Any):Boolean" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.MessagesActionBuilder@!=(x$1:Any):Boolean" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -151,7 +191,7 @@
         <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.MessagesAction@##():Int" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.MessagesActionBuilder@##():Int" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -168,7 +208,7 @@
         <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.MessagesAction@==(x$1:Any):Boolean" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.MessagesActionBuilder@==(x$1:Any):Boolean" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -185,7 +225,7 @@
         <span class="name">andThen</span><span class="tparams">[<span name="Q">Q<span class="tparams">[<span name="_">_</span>]</span></span>]</span><span class="params">(<span name="other">other: <a href="ActionFunction.html" class="extype" name="play.api.mvc.ActionFunction">ActionFunction</a>[<a href="MessagesRequest.html" class="extype" name="play.api.mvc.MessagesRequest">MessagesRequest</a>, <span class="extype" name="play.api.mvc.ActionBuilder.andThen.Q">Q</span>]</span>)</span><span class="result">: <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>[<span class="extype" name="play.api.mvc.ActionBuilder.andThen.Q">Q</span>, <a href="AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.MessagesAction@andThen[Q[_]](other:play.api.mvc.ActionFunction[R,Q]):play.api.mvc.ActionBuilder[Q,B]" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.MessagesActionBuilder@andThen[Q[_]](other:play.api.mvc.ActionFunction[R,Q]):play.api.mvc.ActionBuilder[Q,B]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -203,7 +243,7 @@
         <span class="name">apply</span><span class="params">(<span name="block">block: ⇒ <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>)</span><span class="result">: <a href="Action.html" class="extype" name="play.api.mvc.Action">Action</a>[<a href="AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.MessagesAction@apply(block:=&gt;play.api.mvc.Result):play.api.mvc.Action[play.api.mvc.AnyContent]" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.MessagesActionBuilder@apply(block:=&gt;play.api.mvc.Result):play.api.mvc.Action[play.api.mvc.AnyContent]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -222,7 +262,7 @@
         <span class="name">apply</span><span class="params">(<span name="block">block: (<a href="MessagesRequest.html" class="extype" name="play.api.mvc.MessagesRequest">MessagesRequest</a>[<a href="AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a>]) ⇒ <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>)</span><span class="result">: <a href="Action.html" class="extype" name="play.api.mvc.Action">Action</a>[<a href="AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.MessagesAction@apply(block:R[B]=&gt;play.api.mvc.Result):play.api.mvc.Action[B]" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.MessagesActionBuilder@apply(block:R[B]=&gt;play.api.mvc.Result):play.api.mvc.Action[B]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -241,7 +281,7 @@
         <span class="name">apply</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="bodyParser">bodyParser: <a href="BodyParser.html" class="extype" name="play.api.mvc.BodyParser">BodyParser</a>[<span class="extype" name="play.api.mvc.ActionBuilder.apply.A">A</span>]</span>)</span><span class="result">: <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>[<a href="MessagesRequest.html" class="extype" name="play.api.mvc.MessagesRequest">MessagesRequest</a>, <span class="extype" name="play.api.mvc.ActionBuilder.apply.A">A</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.MessagesAction@apply[A](bodyParser:play.api.mvc.BodyParser[A]):play.api.mvc.ActionBuilder[R,A]" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.MessagesActionBuilder@apply[A](bodyParser:play.api.mvc.BodyParser[A]):play.api.mvc.ActionBuilder[R,A]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -260,7 +300,7 @@
         <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.MessagesAction@asInstanceOf[T0]:T0" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.MessagesActionBuilder@asInstanceOf[T0]:T0" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -277,7 +317,7 @@
         <span class="name">async</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="bodyParser">bodyParser: <a href="BodyParser.html" class="extype" name="play.api.mvc.BodyParser">BodyParser</a>[<span class="extype" name="play.api.mvc.ActionBuilder.async.A">A</span>]</span>)</span><span class="params">(<span name="block">block: (<a href="MessagesRequest.html" class="extype" name="play.api.mvc.MessagesRequest">MessagesRequest</a>[<span class="extype" name="play.api.mvc.ActionBuilder.async.A">A</span>]) ⇒ <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>)</span><span class="result">: <a href="Action.html" class="extype" name="play.api.mvc.Action">Action</a>[<span class="extype" name="play.api.mvc.ActionBuilder.async.A">A</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.MessagesAction@async[A](bodyParser:play.api.mvc.BodyParser[A])(block:R[A]=&gt;scala.concurrent.Future[play.api.mvc.Result]):play.api.mvc.Action[A]" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.MessagesActionBuilder@async[A](bodyParser:play.api.mvc.BodyParser[A])(block:R[A]=&gt;scala.concurrent.Future[play.api.mvc.Result]):play.api.mvc.Action[A]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -298,7 +338,7 @@
         <span class="name">async</span><span class="params">(<span name="block">block: (<a href="MessagesRequest.html" class="extype" name="play.api.mvc.MessagesRequest">MessagesRequest</a>[<a href="AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a>]) ⇒ <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>)</span><span class="result">: <a href="Action.html" class="extype" name="play.api.mvc.Action">Action</a>[<a href="AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.MessagesAction@async(block:R[B]=&gt;scala.concurrent.Future[play.api.mvc.Result]):play.api.mvc.Action[B]" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.MessagesActionBuilder@async(block:R[B]=&gt;scala.concurrent.Future[play.api.mvc.Result]):play.api.mvc.Action[B]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -319,7 +359,7 @@
         <span class="name">async</span><span class="params">(<span name="block">block: ⇒ <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>)</span><span class="result">: <a href="Action.html" class="extype" name="play.api.mvc.Action">Action</a>[<a href="AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.MessagesAction@async(block:=&gt;scala.concurrent.Future[play.api.mvc.Result]):play.api.mvc.Action[play.api.mvc.AnyContent]" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.MessagesActionBuilder@async(block:=&gt;scala.concurrent.Future[play.api.mvc.Result]):play.api.mvc.Action[play.api.mvc.AnyContent]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -340,7 +380,7 @@
         <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.MessagesAction@clone():Object" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.MessagesActionBuilder@clone():Object" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -363,7 +403,7 @@
         <span class="name">compose</span><span class="tparams">[<span name="B">B</span>]</span><span class="params">(<span name="other">other: <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>[<a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>, <span class="extype" name="play.api.mvc.ActionFunction.compose.B">B</span>]</span>)</span><span class="result">: <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>[<a href="MessagesRequest.html" class="extype" name="play.api.mvc.MessagesRequest">MessagesRequest</a>, <span class="extype" name="play.api.mvc.ActionFunction.compose.B">B</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.MessagesAction@compose[B](other:play.api.mvc.ActionBuilder[R,B]):play.api.mvc.ActionBuilder[P,B]" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.MessagesActionBuilder@compose[B](other:play.api.mvc.ActionBuilder[R,B]):play.api.mvc.ActionBuilder[P,B]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -380,7 +420,7 @@
         <span class="name">compose</span><span class="tparams">[<span name="Q">Q<span class="tparams">[<span name="_">_</span>]</span></span>]</span><span class="params">(<span name="other">other: <a href="ActionFunction.html" class="extype" name="play.api.mvc.ActionFunction">ActionFunction</a>[<span class="extype" name="play.api.mvc.ActionFunction.compose.Q">Q</span>, <a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>]</span>)</span><span class="result">: <a href="ActionFunction.html" class="extype" name="play.api.mvc.ActionFunction">ActionFunction</a>[<span class="extype" name="play.api.mvc.ActionFunction.compose.Q">Q</span>, <a href="MessagesRequest.html" class="extype" name="play.api.mvc.MessagesRequest">MessagesRequest</a>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.MessagesAction@compose[Q[_]](other:play.api.mvc.ActionFunction[Q,R]):play.api.mvc.ActionFunction[Q,P]" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.MessagesActionBuilder@compose[Q[_]](other:play.api.mvc.ActionFunction[Q,R]):play.api.mvc.ActionFunction[Q,P]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -398,7 +438,7 @@
         <span class="name">composeAction</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="action">action: <a href="Action.html" class="extype" name="play.api.mvc.Action">Action</a>[<span class="extype" name="play.api.mvc.ActionBuilder.composeAction.A">A</span>]</span>)</span><span class="result">: <a href="Action.html" class="extype" name="play.api.mvc.Action">Action</a>[<span class="extype" name="play.api.mvc.ActionBuilder.composeAction.A">A</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.MessagesAction@composeAction[A](action:play.api.mvc.Action[A]):play.api.mvc.Action[A]" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.MessagesActionBuilder@composeAction[A](action:play.api.mvc.Action[A]):play.api.mvc.Action[A]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -416,7 +456,7 @@
         <span class="name">composeParser</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="bodyParser">bodyParser: <a href="BodyParser.html" class="extype" name="play.api.mvc.BodyParser">BodyParser</a>[<span class="extype" name="play.api.mvc.ActionBuilder.composeParser.A">A</span>]</span>)</span><span class="result">: <a href="BodyParser.html" class="extype" name="play.api.mvc.BodyParser">BodyParser</a>[<span class="extype" name="play.api.mvc.ActionBuilder.composeParser.A">A</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.MessagesAction@composeParser[A](bodyParser:play.api.mvc.BodyParser[A]):play.api.mvc.BodyParser[A]" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.MessagesActionBuilder@composeParser[A](bodyParser:play.api.mvc.BodyParser[A]):play.api.mvc.BodyParser[A]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -434,7 +474,7 @@
         <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.MessagesAction@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.MessagesActionBuilder@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -451,29 +491,11 @@
         <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.MessagesAction@equals(x$1:Any):Boolean" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.MessagesActionBuilder@equals(x$1:Any):Boolean" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="play.api.mvc.MessagesAction#executionContext" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="executionContext:scala.concurrent.ExecutionContext"></a>
-      <a id="executionContext:ExecutionContext"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">executionContext</span><span class="result">: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.MessagesAction@executionContext:scala.concurrent.ExecutionContext" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Get the execution context to run the request in.</p><div class="fullcomment"><div class="comment cmt"><p>Get the execution context to run the request in.
-</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>The execution context</p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.mvc.MessagesAction">MessagesAction</a> → <a href="ActionFunction.html" class="extype" name="play.api.mvc.ActionFunction">ActionFunction</a></dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <a id="finalize():Unit"></a>
@@ -486,7 +508,7 @@
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.MessagesAction@finalize():Unit" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.MessagesActionBuilder@finalize():Unit" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -509,7 +531,7 @@
         <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.MessagesAction@getClass():Class[_]" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.MessagesActionBuilder@getClass():Class[_]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -526,30 +548,11 @@
         <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.MessagesAction@hashCode():Int" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.MessagesActionBuilder@hashCode():Int" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="play.api.mvc.MessagesAction#invokeBlock" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="invokeBlock[A](request:play.api.mvc.Request[A],block:play.api.mvc.MessagesRequest[A]=&gt;scala.concurrent.Future[play.api.mvc.Result]):scala.concurrent.Future[play.api.mvc.Result]"></a>
-      <a id="invokeBlock[A](Request[A],(MessagesRequest[A])⇒Future[Result]):Future[Result]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">invokeBlock</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="request">request: <a href="Request.html" class="extype" name="play.api.mvc.Request">Request</a>[<span class="extype" name="play.api.mvc.MessagesAction.invokeBlock.A">A</span>]</span>, <span name="block">block: (<a href="MessagesRequest.html" class="extype" name="play.api.mvc.MessagesRequest">MessagesRequest</a>[<span class="extype" name="play.api.mvc.MessagesAction.invokeBlock.A">A</span>]) ⇒ <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>)</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.MessagesAction@invokeBlock[A](request:play.api.mvc.Request[A],block:play.api.mvc.MessagesRequest[A]=&gt;scala.concurrent.Future[play.api.mvc.Result]):scala.concurrent.Future[play.api.mvc.Result]" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Invoke the block.</p><div class="fullcomment"><div class="comment cmt"><p>Invoke the block.  This is the main method that an ActionBuilder has to implement, at this stage it can wrap it in
-any other actions, modify the request object or potentially use a different class to represent the request.
-</p></div><dl class="paramcmts block"><dt class="param">request</dt><dd class="cmt"><p>The request</p></dd><dt class="param">block</dt><dd class="cmt"><p>The block of code to invoke</p></dd><dt>returns</dt><dd class="cmt"><p>A future of the result</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.mvc.MessagesAction">MessagesAction</a> → <a href="ActionFunction.html" class="extype" name="play.api.mvc.ActionFunction">ActionFunction</a></dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -562,7 +565,7 @@ any other actions, modify the request object or potentially use a different clas
         <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.MessagesAction@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.MessagesActionBuilder@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -579,7 +582,7 @@ any other actions, modify the request object or potentially use a different clas
         <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.MessagesAction@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.MessagesActionBuilder@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -596,7 +599,7 @@ any other actions, modify the request object or potentially use a different clas
         <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.MessagesAction@notify():Unit" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.MessagesActionBuilder@notify():Unit" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -613,28 +616,11 @@ any other actions, modify the request object or potentially use a different clas
         <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.MessagesAction@notifyAll():Unit" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.MessagesActionBuilder@notifyAll():Unit" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="play.api.mvc.MessagesAction#parser" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="parser:play.api.mvc.BodyParser[play.api.mvc.AnyContent]"></a>
-      <a id="parser:BodyParser[AnyContent]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">parser</span><span class="result">: <a href="BodyParser.html" class="extype" name="play.api.mvc.BodyParser">BodyParser</a>[<a href="AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.MessagesAction@parser:play.api.mvc.BodyParser[play.api.mvc.AnyContent]" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>The BodyParser to be used by this ActionBuilder if no other is specified</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.mvc.MessagesAction">MessagesAction</a> → <a href="ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -647,7 +633,7 @@ any other actions, modify the request object or potentially use a different clas
         <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.MessagesAction@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.MessagesActionBuilder@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -664,7 +650,7 @@ any other actions, modify the request object or potentially use a different clas
         <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.MessagesAction@toString():String" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.MessagesActionBuilder@toString():String" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -681,7 +667,7 @@ any other actions, modify the request object or potentially use a different clas
         <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.MessagesAction@wait():Unit" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.MessagesActionBuilder@wait():Unit" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -704,7 +690,7 @@ any other actions, modify the request object or potentially use a different clas
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.MessagesAction@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.MessagesActionBuilder@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -727,7 +713,7 @@ any other actions, modify the request object or potentially use a different clas
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.MessagesAction@wait(x$1:Long):Unit" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.MessagesActionBuilder@wait(x$1:Long):Unit" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>

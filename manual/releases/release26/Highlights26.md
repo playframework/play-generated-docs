@@ -8,6 +8,17 @@ Play now uses the [Akka-HTTP](http://doc.akka.io/docs/akka-http/current/scala.ht
 
 The Netty backend is still available, and has been upgraded to use Netty 4.1.  You can explicitly configure your project to use Netty [[on the NettyServer page|NettyServer]].
 
+## HTTP/2 support (experimental)
+
+Play now has HTTP/2 support on the Akka HTTP server using the `PlayAkkaHttp2Support` module:
+
+```
+lazy val root = (project in file("."))
+  .enablePlugins(PlayJava, PlayAkkaHttp2Support)
+```
+
+This automates most of the process of setting up HTTP/2. However, it does not work with the `run` command by default. See the [[the Akka HTTP Server page|AkkaHttpServer]] for more details.
+
 ## Request attributes
 
 Requests in Play 2.6 now contain *attributes*. Attributes allow you to store extra information inside request objects. For example, you can write a filter that sets an attribute in the request and then access the attribute value later from within your actions.
@@ -156,7 +167,7 @@ Note that marker contexts are also very useful for "tracer bullet" style logging
 
 @[logging-log-trace-with-tracer-controller](../../working/scalaGuide/main/logging/code/ScalaLoggingSpec.scala)
 
-And then trigger logging with the following TurboFilter in `logback.xml`: 
+And then trigger logging with the following TurboFilter in `logback.xml`:
 
 ```xml
 <turboFilter class="ch.qos.logback.classic.turbo.MarkerFilter">
@@ -169,6 +180,12 @@ And then trigger logging with the following TurboFilter in `logback.xml`:
 For more information, please see [[ScalaLogging]] or [[JavaLogging]].
 
 For more information about using Markers in logging, see [TurboFilters](https://logback.qos.ch/manual/filters.html#TurboFilter) and [marker based triggering](https://logback.qos.ch/manual/appenders.html#OnMarkerEvaluator) sections in the Logback manual.
+
+## Configuration improvements
+
+In the Java API, we have moved to the standard `Config` object from Lightbend's Config library instead of `play.Configuration`. This brings the behavior in line with standard config behavior, as the methods now expect all keys to exist. See [[the Java config migration guide|JavaConfigMigration26]] for migration details.
+
+In the Scala API, we have introduced new methods to the `play.api.Configuration` class to simplify the API and allow loading of custom types. You can now use an implicit `ConfigLoader` to load any custom type you want. Like the `Config` API, the new `Configuration#get[T]` expects the key to exist by default and returns a value of type `T`, but there is also a `ConfigLoader[Option[T]]` that allows `null` config values. See the [[Scala configuration docs|ScalaConfig]] for more details.
 
 ## Security Logging
 
@@ -272,7 +289,7 @@ public class JavaLog4JLoggerConfigurator implements LoggerConfigurator {
 
 ## Java Compile Time Components
 
-Just as Scala, Play now has components to enable [[Java Compile Time Dependency Injection|JavaCompileTimeDependencyInjection]]. The components were created as interfaces that you should `implements` and they provide default implementations. There are components for all the types that could be injected when using [[Runtime Dependency Injection|JavaDependencyInjection]]. To create an application using Compile Time Dependency Injection, you just need to provide an implementation of `play.ApplicationLoader` that uses a custom implementation of `play.BuiltInComponents`, for example:
+Just as in Scala, Play now has components to enable [[Java Compile Time Dependency Injection|JavaCompileTimeDependencyInjection]]. The components were created as interfaces that you should `implements` and they provide default implementations. There are components for all the types that could be injected when using [[Runtime Dependency Injection|JavaDependencyInjection]]. To create an application using Compile Time Dependency Injection, you just need to provide an implementation of `play.ApplicationLoader` that uses a custom implementation of `play.BuiltInComponents`, for example:
 
 ```java
 import play.routing.Router;
@@ -295,7 +312,7 @@ public class MyComponents extends BuiltInComponentsFromContext
 ```
 
 The `play.ApplicationLoader`:
- 
+
 ```java
 import play.ApplicationLoader;
 
@@ -315,14 +332,14 @@ And configure `MyApplicationLoader` as explained in [[Java Compile-Time Dependen
 
 The `MessagesApi` and `Lang` classes are used for internationalization in Play, and are required to display error messages in forms.
 
-In the past, putting together a form in Play has required [multiple steps](https://www.theguardian.com/info/developer-blog/2015/dec/30/how-to-add-a-form-to-a-play-application), and the creation of a `Messages` instance from a request was not discussed in the context of form handling. 
+In the past, putting together a form in Play has required [multiple steps](https://www.theguardian.com/info/developer-blog/2015/dec/30/how-to-add-a-form-to-a-play-application), and the creation of a `Messages` instance from a request was not discussed in the context of form handling.
 
 In addition, it was inconvenient to have a `Messages` instance passed through all template fragments when form handling was required, and `Messages` implicit support was provided directly through the controller trait.  The I18N API has been refined with the addition of a `MessagesProvider` trait, implicits that are tied directly to requests, and the forms documentation has been improved.
 
-The [`MessagesAction`](api/scala/play/api/mvc/MessagesAction.html) has been added.  This action exposes a [`MessagesRequest`](api/scala/play/api/mvc/MessagesRequest.html), which is a [`WrappedRequest`](api/scala/play/api/mvc/WrappedRequest.html) that extends [`MessagesProvider`](api/scala/play/api/i18n/MessagesProvider.html), only a single implicit parameter needs to be made available to templates, and you don't need to extend `Controller` with `I18nSupport`.  This is also useful because to use [[CSRF|ScalaCsrf]] with forms, both a `Request` (technically a `RequestHeader`) and a `Messages` object must be available to the template.
+The [`MessagesActionBuilder`](api/scala/play/api/mvc/MessagesActionBuilder.html) has been added.  This action builder provides a [`MessagesRequest`](api/scala/play/api/mvc/MessagesRequest.html), which is a [`WrappedRequest`](api/scala/play/api/mvc/WrappedRequest.html) that extends [`MessagesProvider`](api/scala/play/api/i18n/MessagesProvider.html), only a single implicit parameter needs to be made available to templates, and you don't need to extend `Controller` with `I18nSupport`.  This is also useful because to use [[CSRF|ScalaCsrf]] with forms, both a `Request` (technically a `RequestHeader`) and a `Messages` object must be available to the template.
 
 ```scala
-class FormController @Inject()(messagesAction: MessagesAction, components: ControllerComponents)
+class FormController @Inject()(messagesAction: MessagesActionBuilder, components: ControllerComponents)
   extends AbstractController(components) {
 
   import play.api.data.Form
@@ -337,9 +354,9 @@ class FormController @Inject()(messagesAction: MessagesAction, components: Contr
 
   def index = messagesAction { implicit request: MessagesRequest[AnyContent] =>
     Ok(views.html.displayForm(userForm))
-  } 
-  
-  def post = ...  
+  }
+
+  def post = ...
 }
 ```
 
@@ -357,7 +374,20 @@ where `displayForm.scala.html` is defined as:
 }
 ```
 
-For more information, please see [[ScalaI18N]] or [[JavaI18N]].
+For more information, please see [[ScalaI18N]].
+
+### Testing Support
+
+Support for creating `MessagesApi` instances has been improved.  Now, when you want to create a [`MessagesApi`](api/scala/play/api/i18n/MessagesApi.html) instance, you can create [`DefaultMessagesApi()`](api/scala/play/api/i18n/DefaultMessagesApi.html) or [`DefaultLangs()`](api/scala/play/api/i18n/DefaultLangs.html) with default arguments.  If you want to specify test messages from configuration or from another source, you can pass in those values:
+
+```scala
+val messagesApi: MessagesApi = {
+    val env = new Environment(new File("."), this.getClass.getClassLoader, Mode.Dev)
+    val config = Configuration.reference ++ Configuration.from(Map("play.i18n.langs" -> Seq("en", "fr", "fr-CH")))
+    val langs = new DefaultLangsProvider(config).get
+    new DefaultMessagesApi(testMessages, langs)
+  }
+```
 
 ## Future Timeout and Delayed Support
 
@@ -479,4 +509,52 @@ public class JPAPersonRepository implements PersonRepository {
 
     ...
 }
+```
+
+## Play WS Improvements
+
+There are substantial improvements to Play WS.  Play WS is now a wrapper around a standalone Play WS implementation, which can be used outside of Play.  In addition, the underlying libraries involved in Play WS have been [shaded](https://github.com/sbt/sbt-assembly#shading), so that the Netty implementation used in Play WS does not conflict with Spark or Play.
+
+Finally, Play WS now supports [HTTP Caching](https://tools.ietf.org/html/rfc7234) if a cache implementation is present.  Using an HTTP cache means savings on repeated requests to backend REST services, and is especially useful when combined with resiliency features such as [`stale-on-error` and `stale-while-revalidate`](https://tools.ietf.org/html/rfc5861).
+
+For more details, please see [[WsCache]] and the [[WS Migration Guide|WSMigration26]].
+
+## Testing Improvements
+
+Some utility classes have been added to the `play.api.test` package in 2.6.x to make functional testing easier with dependency injected components.
+
+### Injecting
+
+There are many functional tests that use the injector directly through the implicit `app`:
+
+```scala
+"test" in new WithApplication() {
+  val executionContext = app.injector.instanceOf[ExecutionContext]
+  ...
+}
+```
+
+Now with the [`Injecting`](api/scala/play/api/test/Injecting.html) trait, you can elide this:
+
+```scala
+"test" in new WithApplication() with Injecting {
+  val executionContext = inject[ExecutionContext]
+  ...
+}
+```
+
+### StubControllerComponents
+
+The [`StubControllerComponentsFactory`](api/scala/play/api/test/StubControllerComponentsFactory.html) creates a stub [`ControllerComponents`](api/scala/play/api/mvc/ControllerComponents.html) that can be used for unit testing a controller:
+
+```scala
+val controller = new MyController(stubControllerComponents())
+```
+
+### StubBodyParser
+
+The [`StubBodyParserFactory`](api/scala/play/api/test/StubBodyParserFactory.html) creates a stub [`BodyParser`](api/scala/play/api/mvc/BodyParser.html) that can be used for unit testing content:
+
+```
+val stubParser = stubBodyParser(AnyContent("hello"))
 ```

@@ -139,15 +139,35 @@ You can test it like:
 
 @[scalatest-examplecontrollerspec](code/specs2/ExampleControllerSpec.scala)
 
+### StubControllerComponents
+
+The [`StubControllerComponentsFactory`](api/scala/play/api/test/StubControllerComponentsFactory.html) creates a stub [`ControllerComponents`](api/scala/play/api/mvc/ControllerComponents.html) that can be used for unit testing a controller:
+
+@[scalatest-stubcontrollercomponents](code/specs2/ExampleHelpersSpec.scala)
+
+### StubBodyParser
+
+The [`StubBodyParserFactory`](api/scala/play/api/test/StubBodyParserFactory.html) creates a stub [`BodyParser`](api/scala/play/api/mvc/BodyParser.html) that can be used for unit testing content:
+
+@[scalatest-stubbodyparser](code/specs2/ExampleHelpersSpec.scala)
+
 ## Unit Testing Forms
 
 Forms are also just regular classes, and can unit tested using Play's Test Helpers. Using [`play.api.test.FakeRequest`](api/scala/play/api/test/FakeRequest.html), you can call `form.bindFromRequest` and test for errors against any custom constraints.
 
-To unit test form processing and render validation errors, you will want a [`MessagesApi`](api/scala/play/api/i18n/MessagesApi.html) instance in implicit scope.  The default implementation of [`MessagesApi`](api/scala/play/api/i18n/MessagesApi.html) is [`DefaultMessagesApi`](api/scala/play/api/i18n/DefaultMessagesApi.html).  For unit testing purposes, [`DefaultMessagesApi`](api/scala/play/api/i18n/DefaultMessagesApi.html) can be instantiated without arguments, and will take a raw map.
+To unit test form processing and render validation errors, you will want a [`MessagesApi`](api/scala/play/api/i18n/MessagesApi.html) instance in implicit scope.  The default implementation of [`MessagesApi`](api/scala/play/api/i18n/MessagesApi.html) is [`DefaultMessagesApi`](api/scala/play/api/i18n/DefaultMessagesApi.html):
   
 You can test it like:
 
 @[scalatest-exampleformspec](code/specs2/ExampleControllerSpec.scala)
+
+When rendering a template that takes form helpers, you can pass in a Messages the same way, or use `Helpers.stubMessages`:
+
+@[scalatest-exampletemplatespec](code/specs2/ExampleControllerSpec.scala)
+
+Or, if you are using a form that uses `CSRF.formField` and requires an implicit request, you can use [`MessagesRequest`] in the template and use `Helpers.stubMessagesRequest`:
+
+@[scalatest-examplecsrftemplatespec](code/specs2/ExampleControllerSpec.scala)
 
 ## Unit Testing EssentialAction
 

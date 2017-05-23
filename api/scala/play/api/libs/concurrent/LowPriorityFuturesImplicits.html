@@ -50,28 +50,21 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Low priority implicits to add <code>withTimeout</code> methods to <span class="extype" name="scala.concurrent.Future">scala.concurrent.Future</span>.</p><p>You can dependency inject the ActorSystem as follows to create a Future that will
-timeout after a certain period of time:</p><pre><span class="kw">class</span> MyService @Inject()(actorSystem: ActorSystem)(<span class="kw">implicit</span> futures: Futures) {
-  <span class="kw">import</span> play.api.libs.concurrent.Implicits._
+timeout after a certain period of time:</p><pre><span class="kw">class</span> MyService @Inject()(piCalculator: PiCalculator)(<span class="kw">implicit</span> futures: Futures) {
 
   <span class="kw">def</span> calculateWithTimeout(timeoutDuration: FiniteDuration): Future[<span class="std">Int</span>] = {
-     rawCalculation().withTimeout(timeoutDuration)
-  }
-
-  <span class="kw">def</span> rawCalculation(): Future[<span class="std">Int</span>] = {
-    <span class="kw">import</span> akka.pattern.after
-    <span class="kw">implicit</span> <span class="kw">val</span> ec = actorSystem.dispatcher
-    akka.pattern.after(<span class="num">300</span> millis, actorSystem.scheduler)(Future(<span class="num">42</span>))
+     piCalculator.rawCalculation().withTimeout(timeoutDuration)
   }
 }</pre><p>You should check for timeout by using <code>scala.concurrent.Future.recover</code> or <code>scala.concurrent.Future.recoverWith</code>
 and checking for <span class="extype" name="scala.concurrent.TimeoutException">scala.concurrent.TimeoutException</span>:</p><pre><span class="kw">val</span> future = myService.calculateWithTimeout(<span class="num">100</span> millis).recover {
   <span class="kw">case</span> _: TimeoutException <span class="kw">=&gt;</span>
     -<span class="num">1</span>
-}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0-M5/framework/src/play/src/main/scala/play/api/libs/concurrent/Futures.scala" target="_blank">Futures.scala</a></dd></dl><div class="toggleContainer block">
+}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0-RC1/framework/src/play/src/main/scala/play/api/libs/concurrent/Futures.scala" target="_blank">Futures.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
             <span class="toggle">Known Subclasses</span>
-            <div class="subClasses hiddenContent"><a href="Futures$.html" class="extype" name="play.api.libs.concurrent.Futures">Futures</a></div>
+            <div class="subClasses hiddenContent"><a href="Futures$.html" class="extype" name="play.api.libs.concurrent.Futures">Futures</a>, <a href="Timeout$.html" class="extype" name="play.api.libs.concurrent.Timeout">Timeout</a></div>
           </div></div>
         
 

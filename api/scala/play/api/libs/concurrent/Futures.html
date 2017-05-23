@@ -51,25 +51,20 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>This trait is used to provide a non-blocking timeout on an operation that returns a Future.</p><p>Please note that the <a href="../../Application.html" class="extype" name="play.api.Application">play.api.Application</a> default ActorSystem should
-be used as input here, as the actorSystem.scheduler is responsible for scheduling
-the timeout, using <a href="http://doc.akka.io/docs/akka/2.5/scala/futures.html#After">akka.pattern.actor</a> under the hood.</p><p>You can dependency inject the ActorSystem as follows to create a Future that will
-timeout after a certain period of time:</p><pre><span class="kw">class</span> MyService @Inject()(actorSystem: ActorSystem) <span class="kw">extends</span> Timeout {
-
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>This trait is used to provide non-blocking timeouts and delays on an operation that returns a Future.</p><p>You can dependency inject the Futures as follows to create a Future that will
+timeout after a certain period of time:</p><pre><span class="kw">class</span> MyService @Inject()(futures: Futures, piCalculator: PiCalculator) <span class="kw">extends</span> Timeout {
   <span class="kw">def</span> calculateWithTimeout(timeoutDuration: FiniteDuration): Future[<span class="std">Int</span>] = {
-    timeout(actorSystem, timeoutDuration)(rawCalculation())
+    futures.timeout(timeoutDuration)(piCalculator.rawCalculation())
   }
-
+}</pre><p>And you can also use a delay to return data after a given period of time.</p><pre><span class="kw">class</span> PiCalculator @Inject()(futures: Futures) {
   <span class="kw">def</span> rawCalculation(): Future[<span class="std">Int</span>] = {
-    <span class="kw">import</span> akka.pattern.after
-    <span class="kw">implicit</span> <span class="kw">val</span> ec = actorSystem.dispatcher
-    akka.pattern.after(<span class="num">300</span> millis, actorSystem.scheduler)(Future(<span class="num">42</span>))(actorSystem.dispatcher)
+    futures.delay(<span class="num">300</span> millis) { Future.successful(<span class="num">42</span>) }
   }
 }</pre><p>You should check for timeout by using <code>scala.concurrent.Future.recover</code> or <code>scala.concurrent.Future.recoverWith</code>
 and checking for <span class="extype" name="scala.concurrent.TimeoutException">scala.concurrent.TimeoutException</span>:</p><pre><span class="kw">val</span> future = myService.calculateWithTimeout(<span class="num">100</span> millis).recover {
   <span class="kw">case</span> _: TimeoutException <span class="kw">=&gt;</span>
     -<span class="num">1</span>
-}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0-M5/framework/src/play/src/main/scala/play/api/libs/concurrent/Futures.scala" target="_blank">Futures.scala</a></dd><dt>See also</dt><dd><span class="cmt"><p><a href="http://docs.scala-lang.org/overviews/core/futures.html" target="_blank">Futures and Promises</a></p></span></dd></dl><div class="toggleContainer block">
+}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0-RC1/framework/src/play/src/main/scala/play/api/libs/concurrent/Futures.scala" target="_blank">Futures.scala</a></dd><dt>See also</dt><dd><span class="cmt"><p><a href="http://docs.scala-lang.org/overviews/core/futures.html" target="_blank">Futures and Promises</a></p></span></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
