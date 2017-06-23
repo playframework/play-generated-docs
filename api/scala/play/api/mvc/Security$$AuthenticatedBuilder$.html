@@ -51,23 +51,7 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>An authenticated action builder.</p><p>This can be used to create an action builder, like so:</p><pre><span class="cmt">// in a Security trait</span>
-<span class="kw">object</span> Authenticated <span class="kw">extends</span> AuthenticatedBuilder(req <span class="kw">=&gt;</span> getUserFromRequest(req))
-
-<span class="cmt">// then in a controller</span>
-<span class="kw">def</span> index = Authenticated { <span class="kw">implicit</span> request <span class="kw">=&gt;</span>
-  Ok(<span class="lit">"Hello "</span> + request.user)
-}</pre><p>It can also be used from an action builder, for example:</p><pre><span class="kw">class</span> AuthMessagesRequest[A](<span class="kw">val</span> user: User,
-                              messagesApi: MessagesApi,
-                              request: Request[A]) <span class="kw">extends</span> WrappedRequest[A](request)
-
-<span class="kw">class</span> Authenticated @Inject()(messagesApi: MessagesApi) <span class="kw">extends</span> ActionBuilder[AuthMessagesRequest] {
-  <span class="kw">def</span> invokeBlock[A](request: Request[A], block: (AuthMessagesRequest[A]) <span class="kw">=&gt;</span> Future[Result]) = {
-    AuthenticatedBuilder(req <span class="kw">=&gt;</span> getUserFromRequest(req)).authenticate(request, { authRequest: AuthenticatedRequest[A, User] <span class="kw">=&gt;</span>
-        block(<span class="kw">new</span> AuthenticatedDbRequest[A](authRequest.user, messagesApi, request))
-    })
-  }
-}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0-RC2/framework/src/play/src/main/scala/play/api/mvc/Security.scala" target="_blank">Security.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0/framework/src/play/src/main/scala/play/api/mvc/Security.scala" target="_blank">Security.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>

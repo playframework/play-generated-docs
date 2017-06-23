@@ -45,14 +45,14 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <span class="name">WSResponse</span><span class="result"> extends <a href="StandaloneWSResponse.html" class="extype" name="play.api.libs.ws.StandaloneWSResponse">StandaloneWSResponse</a></span>
+        <span class="name">WSResponse</span><span class="result"> extends <span class="extype" name="play.api.libs.ws.StandaloneWSResponse">StandaloneWSResponse</span> with <a href="WSBodyReadables.html" class="extype" name="play.api.libs.ws.WSBodyReadables">WSBodyReadables</a></span>
       </span>
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A WS Response that can use Play specific classes.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0-M5/framework/src/play-ws/src/main/scala/play/api/libs/ws/WSResponse.scala" target="_blank">WSResponse.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0/framework/src/play-ws/src/main/scala/play/api/libs/ws/WSResponse.scala" target="_blank">WSResponse.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><a href="StandaloneWSResponse.html" class="extype" name="play.api.libs.ws.StandaloneWSResponse">StandaloneWSResponse</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="WSBodyReadables.html" class="extype" name="play.api.libs.ws.WSBodyReadables">WSBodyReadables</a>, <span class="extype" name="play.api.libs.ws.XMLBodyReadables">XMLBodyReadables</span>, <span class="extype" name="play.api.libs.ws.JsonBodyReadables">JsonBodyReadables</span>, <span class="extype" name="play.api.libs.ws.DefaultBodyReadables">DefaultBodyReadables</span>, <span class="extype" name="play.api.libs.ws.StandaloneWSResponse">StandaloneWSResponse</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
             <span class="toggle">Known Subclasses</span>
             <div class="subClasses hiddenContent"><a href="ahc/AhcWSResponse.html" class="extype" name="play.api.libs.ws.ahc.AhcWSResponse">AhcWSResponse</a></div>
@@ -73,7 +73,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="play.api.libs.ws.WSResponse"><span>WSResponse</span></li><li class="in" name="play.api.libs.ws.StandaloneWSResponse"><span>StandaloneWSResponse</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="play.api.libs.ws.WSResponse"><span>WSResponse</span></li><li class="in" name="play.api.libs.ws.WSBodyReadables"><span>WSBodyReadables</span></li><li class="in" name="play.api.libs.ws.XMLBodyReadables"><span>XMLBodyReadables</span></li><li class="in" name="play.api.libs.ws.JsonBodyReadables"><span>JsonBodyReadables</span></li><li class="in" name="play.api.libs.ws.DefaultBodyReadables"><span>DefaultBodyReadables</span></li><li class="in" name="play.api.libs.ws.StandaloneWSResponse"><span>StandaloneWSResponse</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -96,26 +96,7 @@
 
         <div id="values" class="values members">
               <h3>Abstract Value Members</h3>
-              <ol><li name="play.api.libs.ws.StandaloneWSResponse#allHeaders" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="allHeaders:Map[String,Seq[String]]"></a>
-      <a id="allHeaders:Map[String,Seq[String]]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier">abstract </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">allHeaders</span><span class="result">: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.ws.WSResponse@allHeaders:Map[String,Seq[String]]" title="Permalink" target="_top">
-        <img src="../../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Return the current headers of the request being constructed
-</p><div class="fullcomment"><div class="comment cmt"><p>Return the current headers of the request being constructed
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="StandaloneWSResponse.html" class="extype" name="play.api.libs.ws.StandaloneWSResponse">StandaloneWSResponse</a></dd></dl></div>
-    </li><li name="play.api.libs.ws.StandaloneWSResponse#body" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+              <ol><li name="play.api.libs.ws.WSResponse#body" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="body:String"></a>
       <a id="body:String"></a>
       <h4 class="signature">
@@ -132,8 +113,8 @@
       </a>
     </span>
       <p class="shortcomment cmt">The response body as String.</p><div class="fullcomment"><div class="comment cmt"><p>The response body as String.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="StandaloneWSResponse.html" class="extype" name="play.api.libs.ws.StandaloneWSResponse">StandaloneWSResponse</a></dd></dl></div>
-    </li><li name="play.api.libs.ws.StandaloneWSResponse#bodyAsBytes" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.libs.ws.WSResponse">WSResponse</a> → StandaloneWSResponse</dd></dl></div>
+    </li><li name="play.api.libs.ws.WSResponse#bodyAsBytes" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="bodyAsBytes:akka.util.ByteString"></a>
       <a id="bodyAsBytes:ByteString"></a>
       <h4 class="signature">
@@ -150,8 +131,25 @@
       </a>
     </span>
       <p class="shortcomment cmt">The response body as a byte string.</p><div class="fullcomment"><div class="comment cmt"><p>The response body as a byte string.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="StandaloneWSResponse.html" class="extype" name="play.api.libs.ws.StandaloneWSResponse">StandaloneWSResponse</a></dd></dl></div>
-    </li><li name="play.api.libs.ws.StandaloneWSResponse#cookie" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.libs.ws.WSResponse">WSResponse</a> → StandaloneWSResponse</dd></dl></div>
+    </li><li name="play.api.libs.ws.WSResponse#bodyAsSource" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="bodyAsSource:akka.stream.scaladsl.Source[akka.util.ByteString,_]"></a>
+      <a id="bodyAsSource:Source[ByteString,_]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">bodyAsSource</span><span class="result">: <span class="extype" name="akka.stream.scaladsl.Source">Source</span>[<span class="extype" name="akka.util.ByteString">ByteString</span>, _]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.WSResponse@bodyAsSource:akka.stream.scaladsl.Source[akka.util.ByteString,_]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.libs.ws.WSResponse">WSResponse</a> → StandaloneWSResponse</dd></dl></div>
+    </li><li name="play.api.libs.ws.WSResponse#cookie" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="cookie(name:String):Option[play.api.libs.ws.WSCookie]"></a>
       <a id="cookie(String):Option[WSCookie]"></a>
       <h4 class="signature">
@@ -160,7 +158,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">cookie</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="WSCookie.html" class="extype" name="play.api.libs.ws.WSCookie">WSCookie</a>]</span>
+        <span class="name">cookie</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="play.api.libs.ws.WSCookie">WSCookie</span>]</span>
       </span>
       </h4><span class="permalink">
       <a href="../../../../index.html#play.api.libs.ws.WSResponse@cookie(name:String):Option[play.api.libs.ws.WSCookie]" title="Permalink" target="_top">
@@ -168,8 +166,8 @@
       </a>
     </span>
       <p class="shortcomment cmt">Get only one cookie, using the cookie name.</p><div class="fullcomment"><div class="comment cmt"><p>Get only one cookie, using the cookie name.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="StandaloneWSResponse.html" class="extype" name="play.api.libs.ws.StandaloneWSResponse">StandaloneWSResponse</a></dd></dl></div>
-    </li><li name="play.api.libs.ws.StandaloneWSResponse#cookies" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.libs.ws.WSResponse">WSResponse</a> → StandaloneWSResponse</dd></dl></div>
+    </li><li name="play.api.libs.ws.WSResponse#cookies" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="cookies:Seq[play.api.libs.ws.WSCookie]"></a>
       <a id="cookies:Seq[WSCookie]"></a>
       <h4 class="signature">
@@ -178,7 +176,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">cookies</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<a href="WSCookie.html" class="extype" name="play.api.libs.ws.WSCookie">WSCookie</a>]</span>
+        <span class="name">cookies</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="play.api.libs.ws.WSCookie">WSCookie</span>]</span>
       </span>
       </h4><span class="permalink">
       <a href="../../../../index.html#play.api.libs.ws.WSResponse@cookies:Seq[play.api.libs.ws.WSCookie]" title="Permalink" target="_top">
@@ -186,26 +184,26 @@
       </a>
     </span>
       <p class="shortcomment cmt">Get all the cookies.</p><div class="fullcomment"><div class="comment cmt"><p>Get all the cookies.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="StandaloneWSResponse.html" class="extype" name="play.api.libs.ws.StandaloneWSResponse">StandaloneWSResponse</a></dd></dl></div>
-    </li><li name="play.api.libs.ws.StandaloneWSResponse#header" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="header(key:String):Option[String]"></a>
-      <a id="header(String):Option[String]"></a>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.libs.ws.WSResponse">WSResponse</a> → StandaloneWSResponse</dd></dl></div>
+    </li><li name="play.api.libs.ws.WSResponse#headers" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="headers:Map[String,Seq[String]]"></a>
+      <a id="headers:Map[String,Seq[String]]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">abstract </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">header</span><span class="params">(<span name="key">key: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+        <span class="name">headers</span><span class="result">: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.ws.WSResponse@header(key:String):Option[String]" title="Permalink" target="_top">
+      <a href="../../../../index.html#play.api.libs.ws.WSResponse@headers:Map[String,Seq[String]]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Get a response header.</p><div class="fullcomment"><div class="comment cmt"><p>Get a response header.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="StandaloneWSResponse.html" class="extype" name="play.api.libs.ws.StandaloneWSResponse">StandaloneWSResponse</a></dd></dl></div>
-    </li><li name="play.api.libs.ws.StandaloneWSResponse#json" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <p class="shortcomment cmt">Return the current headers for this response.</p><div class="fullcomment"><div class="comment cmt"><p>Return the current headers for this response.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.libs.ws.WSResponse">WSResponse</a> → StandaloneWSResponse</dd></dl></div>
+    </li><li name="play.api.libs.ws.WSResponse#json" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="json:play.api.libs.json.JsValue"></a>
       <a id="json:JsValue"></a>
       <h4 class="signature">
@@ -221,9 +219,8 @@
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">The response body as Json.</p><div class="fullcomment"><div class="comment cmt"><p>The response body as Json.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="StandaloneWSResponse.html" class="extype" name="play.api.libs.ws.StandaloneWSResponse">StandaloneWSResponse</a></dd></dl></div>
-    </li><li name="play.api.libs.ws.StandaloneWSResponse#status" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      
+    </li><li name="play.api.libs.ws.WSResponse#status" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="status:Int"></a>
       <a id="status:Int"></a>
       <h4 class="signature">
@@ -240,8 +237,8 @@
       </a>
     </span>
       <p class="shortcomment cmt">The response status code.</p><div class="fullcomment"><div class="comment cmt"><p>The response status code.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="StandaloneWSResponse.html" class="extype" name="play.api.libs.ws.StandaloneWSResponse">StandaloneWSResponse</a></dd></dl></div>
-    </li><li name="play.api.libs.ws.StandaloneWSResponse#statusText" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.libs.ws.WSResponse">WSResponse</a> → StandaloneWSResponse</dd></dl></div>
+    </li><li name="play.api.libs.ws.WSResponse#statusText" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="statusText:String"></a>
       <a id="statusText:String"></a>
       <h4 class="signature">
@@ -258,8 +255,8 @@
       </a>
     </span>
       <p class="shortcomment cmt">The response status message.</p><div class="fullcomment"><div class="comment cmt"><p>The response status message.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="StandaloneWSResponse.html" class="extype" name="play.api.libs.ws.StandaloneWSResponse">StandaloneWSResponse</a></dd></dl></div>
-    </li><li name="play.api.libs.ws.StandaloneWSResponse#underlying" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.libs.ws.WSResponse">WSResponse</a> → StandaloneWSResponse</dd></dl></div>
+    </li><li name="play.api.libs.ws.WSResponse#underlying" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="underlying[T]:T"></a>
       <a id="underlying[T]:T"></a>
       <h4 class="signature">
@@ -268,7 +265,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">underlying</span><span class="tparams">[<span name="T">T</span>]</span><span class="result">: <span class="extype" name="play.api.libs.ws.StandaloneWSResponse.underlying.T">T</span></span>
+        <span class="name">underlying</span><span class="tparams">[<span name="T">T</span>]</span><span class="result">: <span class="extype" name="play.api.libs.ws.WSResponse.underlying.T">T</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../../index.html#play.api.libs.ws.WSResponse@underlying[T]:T" title="Permalink" target="_top">
@@ -276,8 +273,8 @@
       </a>
     </span>
       <p class="shortcomment cmt">Get the underlying response object.</p><div class="fullcomment"><div class="comment cmt"><p>Get the underlying response object.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="StandaloneWSResponse.html" class="extype" name="play.api.libs.ws.StandaloneWSResponse">StandaloneWSResponse</a></dd></dl></div>
-    </li><li name="play.api.libs.ws.StandaloneWSResponse#xml" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.libs.ws.WSResponse">WSResponse</a> → StandaloneWSResponse</dd></dl></div>
+    </li><li name="play.api.libs.ws.WSResponse#xml" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="xml:scala.xml.Elem"></a>
       <a id="xml:Elem"></a>
       <h4 class="signature">
@@ -293,8 +290,27 @@
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">The response body as Xml.</p><div class="fullcomment"><div class="comment cmt"><p>The response body as Xml.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="StandaloneWSResponse.html" class="extype" name="play.api.libs.ws.StandaloneWSResponse">StandaloneWSResponse</a></dd></dl></div>
+      
+    </li><li name="play.api.libs.ws.WSResponse#allHeaders" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="allHeaders:Map[String,Seq[String]]"></a>
+      <a id="allHeaders:Map[String,Seq[String]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use response.headers">allHeaders</span><span class="result">: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.WSResponse@allHeaders:Map[String,Seq[String]]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use response.headers</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -368,6 +384,26 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="play.api.libs.ws.WSResponse#body" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="body[T](implicitevidence$1:play.api.libs.ws.BodyReadable[T]):T"></a>
+      <a id="body[T](BodyReadable[T]):T"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">body</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="play.api.libs.ws.BodyReadable">BodyReadable</span>[<span class="extype" name="play.api.libs.ws.WSResponse.body.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="play.api.libs.ws.WSResponse.body.T">T</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.WSResponse@body[T](implicitevidence$1:play.api.libs.ws.BodyReadable[T]):T" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">The response body as the given type.</p><div class="fullcomment"><div class="comment cmt"><p>The response body as the given type.  This renders as the given type.
+You must have a BodyReadable in implicit scope, which is done with</p><pre><span class="kw">class</span> MyClass <span class="kw">extends</span> play.api.libs.ws.WSBodyReadables {
+  <span class="cmt">// JSON and XML body readables</span>
+}</pre><p>The simplest use case is</p><pre><span class="kw">val</span> responseBodyAsString: <span class="std">String</span> = response.getBody[<span class="std">String</span>]</pre><p>But you can also render as JSON</p><pre><span class="kw">val</span> responseBodyAsJson: JsValue = response.getBody[JsValue]</pre><p>or as XML:</p><pre><span class="kw">val</span> xml: Elem = response.getBody[Elem]</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.libs.ws.WSResponse">WSResponse</a> → StandaloneWSResponse</dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a>
       <a id="clone():AnyRef"></a>
@@ -391,6 +427,23 @@
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="play.api.libs.ws.WSResponse#contentType" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="contentType:String"></a>
+      <a id="contentType:String"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">contentType</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.WSResponse@contentType:String" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.libs.ws.WSResponse">WSResponse</a> → StandaloneWSResponse</dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -482,6 +535,40 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="play.api.libs.ws.WSResponse#header" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="header(name:String):Option[String]"></a>
+      <a id="header(String):Option[String]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">header</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.WSResponse@header(name:String):Option[String]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.libs.ws.WSResponse">WSResponse</a> → StandaloneWSResponse</dd></dl></div>
+    </li><li name="play.api.libs.ws.WSResponse#headerValues" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="headerValues(name:String):Seq[String]"></a>
+      <a id="headerValues(String):Seq[String]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">headerValues</span><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.WSResponse@headerValues(name:String):Seq[String]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.libs.ws.WSResponse">WSResponse</a> → StandaloneWSResponse</dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -550,6 +637,125 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="play.api.libs.ws.DefaultBodyReadables#readableAsByteArray" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="readableAsByteArray:play.api.libs.ws.BodyReadable[Array[Byte]]"></a>
+      <a id="readableAsByteArray:BodyReadable[Array[Byte]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">readableAsByteArray</span><span class="result">: <span class="extype" name="play.api.libs.ws.BodyReadable">BodyReadable</span>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.WSResponse@readableAsByteArray:play.api.libs.ws.BodyReadable[Array[Byte]]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>DefaultBodyReadables</dd></dl></div>
+    </li><li name="play.api.libs.ws.DefaultBodyReadables#readableAsByteBuffer" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="readableAsByteBuffer:play.api.libs.ws.BodyReadable[java.nio.ByteBuffer]"></a>
+      <a id="readableAsByteBuffer:BodyReadable[ByteBuffer]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">readableAsByteBuffer</span><span class="result">: <span class="extype" name="play.api.libs.ws.BodyReadable">BodyReadable</span>[<span class="extype" name="java.nio.ByteBuffer">ByteBuffer</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.WSResponse@readableAsByteBuffer:play.api.libs.ws.BodyReadable[java.nio.ByteBuffer]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>DefaultBodyReadables</dd></dl></div>
+    </li><li name="play.api.libs.ws.DefaultBodyReadables#readableAsByteString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="readableAsByteString:play.api.libs.ws.BodyReadable[akka.util.ByteString]"></a>
+      <a id="readableAsByteString:BodyReadable[ByteString]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">readableAsByteString</span><span class="result">: <span class="extype" name="play.api.libs.ws.BodyReadable">BodyReadable</span>[<span class="extype" name="akka.util.ByteString">ByteString</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.WSResponse@readableAsByteString:play.api.libs.ws.BodyReadable[akka.util.ByteString]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>DefaultBodyReadables</dd></dl></div>
+    </li><li name="play.api.libs.ws.JsonBodyReadables#readableAsJson" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="readableAsJson:play.api.libs.ws.BodyReadable[play.api.libs.json.JsValue]"></a>
+      <a id="readableAsJson:BodyReadable[JsValue]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">readableAsJson</span><span class="result">: <span class="extype" name="play.api.libs.ws.BodyReadable">BodyReadable</span>[<a href="../json/JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.WSResponse@readableAsJson:play.api.libs.ws.BodyReadable[play.api.libs.json.JsValue]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>JsonBodyReadables</dd></dl></div>
+    </li><li name="play.api.libs.ws.DefaultBodyReadables#readableAsSource" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="readableAsSource:play.api.libs.ws.BodyReadable[akka.stream.scaladsl.Source[akka.util.ByteString,_]]"></a>
+      <a id="readableAsSource:BodyReadable[Source[ByteString,_]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">readableAsSource</span><span class="result">: <span class="extype" name="play.api.libs.ws.BodyReadable">BodyReadable</span>[<span class="extype" name="akka.stream.scaladsl.Source">Source</span>[<span class="extype" name="akka.util.ByteString">ByteString</span>, _]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.WSResponse@readableAsSource:play.api.libs.ws.BodyReadable[akka.stream.scaladsl.Source[akka.util.ByteString,_]]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>DefaultBodyReadables</dd></dl></div>
+    </li><li name="play.api.libs.ws.DefaultBodyReadables#readableAsString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="readableAsString:play.api.libs.ws.BodyReadable[String]"></a>
+      <a id="readableAsString:BodyReadable[String]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">readableAsString</span><span class="result">: <span class="extype" name="play.api.libs.ws.BodyReadable">BodyReadable</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.WSResponse@readableAsString:play.api.libs.ws.BodyReadable[String]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>DefaultBodyReadables</dd></dl></div>
+    </li><li name="play.api.libs.ws.XMLBodyReadables#readableAsXml" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="readableAsXml:play.api.libs.ws.BodyReadable[scala.xml.Elem]"></a>
+      <a id="readableAsXml:BodyReadable[Elem]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">readableAsXml</span><span class="result">: <span class="extype" name="play.api.libs.ws.BodyReadable">BodyReadable</span>[<span class="extype" name="scala.xml.Elem">Elem</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.ws.WSResponse@readableAsXml:play.api.libs.ws.BodyReadable[scala.xml.Elem]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>XMLBodyReadables</dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -662,8 +868,16 @@
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="play.api.libs.ws.StandaloneWSResponse">
-              <h3>Inherited from <a href="StandaloneWSResponse.html" class="extype" name="play.api.libs.ws.StandaloneWSResponse">StandaloneWSResponse</a></h3>
+        <div class="parent" name="play.api.libs.ws.WSBodyReadables">
+              <h3>Inherited from <a href="WSBodyReadables.html" class="extype" name="play.api.libs.ws.WSBodyReadables">WSBodyReadables</a></h3>
+            </div><div class="parent" name="play.api.libs.ws.XMLBodyReadables">
+              <h3>Inherited from <span class="extype" name="play.api.libs.ws.XMLBodyReadables">XMLBodyReadables</span></h3>
+            </div><div class="parent" name="play.api.libs.ws.JsonBodyReadables">
+              <h3>Inherited from <span class="extype" name="play.api.libs.ws.JsonBodyReadables">JsonBodyReadables</span></h3>
+            </div><div class="parent" name="play.api.libs.ws.DefaultBodyReadables">
+              <h3>Inherited from <span class="extype" name="play.api.libs.ws.DefaultBodyReadables">DefaultBodyReadables</span></h3>
+            </div><div class="parent" name="play.api.libs.ws.StandaloneWSResponse">
+              <h3>Inherited from <span class="extype" name="play.api.libs.ws.StandaloneWSResponse">StandaloneWSResponse</span></h3>
             </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">

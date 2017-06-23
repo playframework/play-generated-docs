@@ -50,7 +50,7 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Helpers to create secure actions.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0-RC2/framework/src/play/src/main/scala/play/api/mvc/Security.scala" target="_blank">Security.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0/framework/src/play/src/main/scala/play/api/mvc/Security.scala" target="_blank">Security.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -107,22 +107,37 @@
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">An authenticated action builder.</p><div class="fullcomment"><div class="comment cmt"><p>An authenticated action builder.</p><p>This can be used to create an action builder, like so:</p><pre><span class="cmt">// in a Security trait</span>
-<span class="kw">object</span> Authenticated <span class="kw">extends</span> AuthenticatedBuilder(req <span class="kw">=&gt;</span> getUserFromRequest(req))
+      <p class="shortcomment cmt">An authenticated action builder.</p><div class="fullcomment"><div class="comment cmt"><p>An authenticated action builder.</p><p>This can be used to create an action builder, like so:</p><pre><span class="kw">class</span> UserAuthenticatedBuilder (parser: BodyParser[AnyContent])(<span class="kw">implicit</span> ec: ExecutionContext)
+  <span class="kw">extends</span> AuthenticatedBuilder[User]({ req: RequestHeader <span class="kw">=&gt;</span>
+  req.session.get(<span class="lit">"user"</span>).map(User)
+}, parser) {
+  @Inject()
+  <span class="kw">def</span> <span class="kw">this</span>(parser: BodyParsers.Default)(<span class="kw">implicit</span> ec: ExecutionContext) = {
+    <span class="kw">this</span>(parser: BodyParser[AnyContent])
+  }
+}</pre><p>You can then use the authenticated builder with other action builders, i.e. to use a
+messagesApi with authentication, you can add:</p><pre> <span class="kw">class</span> AuthMessagesRequest[A](<span class="kw">val</span> user: User,
+                             messagesApi: MessagesApi,
+                             request: Request[A])
+<span class="kw">extends</span> MessagesRequest[A](request, messagesApi)
 
-<span class="cmt">// then in a controller</span>
-<span class="kw">def</span> index = Authenticated { <span class="kw">implicit</span> request <span class="kw">=&gt;</span>
-  Ok(<span class="lit">"Hello "</span> + request.user)
-}</pre><p>It can also be used from an action builder, for example:</p><pre><span class="kw">class</span> AuthenticatedDbRequest[A](<span class="kw">val</span> user: User,
-                                <span class="kw">val</span> conn: Connection,
-                                request: Request[A]) <span class="kw">extends</span> WrappedRequest[A](request)
+<span class="kw">class</span> AuthenticatedActionBuilder(<span class="kw">val</span> parser: BodyParser[AnyContent],
+                                 messagesApi: MessagesApi,
+                                 builder: AuthenticatedBuilder[User])
+                                (<span class="kw">implicit</span> <span class="kw">val</span> executionContext: ExecutionContext)
+    <span class="kw">extends</span> ActionBuilder[AuthMessagesRequest, AnyContent] {
+  <span class="kw">type</span> ResultBlock[A] = (AuthMessagesRequest[A]) <span class="kw">=&gt;</span> Future[Result]
 
-<span class="kw">object</span> Authenticated <span class="kw">extends</span> ActionBuilder[AuthenticatedDbRequest] {
-  <span class="kw">def</span> invokeBlock[A](request: Request[A], block: (AuthenticatedDbRequest[A]) <span class="kw">=&gt;</span> Future[Result]) = {
-    AuthenticatedBuilder(req <span class="kw">=&gt;</span> getUserFromRequest(req)).authenticate(request, { authRequest: AuthenticatedRequest[A, User] <span class="kw">=&gt;</span>
-      DB.withConnection { conn <span class="kw">=&gt;</span>
-        block(<span class="kw">new</span> AuthenticatedDbRequest[A](authRequest.user, conn, request))
-      }
+  @Inject
+  <span class="kw">def</span> <span class="kw">this</span>(parser: BodyParsers.Default,
+           messagesApi: MessagesApi,
+           builder: UserAuthenticatedBuilder)(<span class="kw">implicit</span> ec: ExecutionContext) = {
+    <span class="kw">this</span>(parser: BodyParser[AnyContent], messagesApi, builder)
+  }
+
+  <span class="kw">def</span> invokeBlock[A](request: Request[A], block: ResultBlock[A]): Future[Result] = {
+    builder.authenticate(request, { authRequest: AuthenticatedRequest[A, User] <span class="kw">=&gt;</span>
+      block(<span class="kw">new</span> AuthMessagesRequest[A](authRequest.user, messagesApi, request))
     })
   }
 }</pre></div></div>
@@ -232,7 +247,7 @@ and what to do in case unsuccessful authentication</p><p>For example:</p><pre> <
 <span class="kw">def</span> index = isAuthenticated { username <span class="kw">=&gt;</span> <span class="kw">implicit</span> request <span class="kw">=&gt;</span>
     Ok(<span class="lit">"Hello "</span> + username)
 }</pre></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>the type of the user info value (e.g. <code>String</code> if user info consists only in a user name)</p></dd><dt class="param">userinfo</dt><dd class="cmt"><p>function used to retrieve the user info from the request header</p></dd><dt class="param">onUnauthorized</dt><dd class="cmt"><p>function used to generate alternative result if the user is not authenticated</p></dd><dt class="param">action</dt><dd class="cmt"><p>the action to wrap</p></dd></dl></div>
-    </li><li name="play.api.mvc.Security.AuthenticatedBuilder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="play.api.mvc.Security.AuthenticatedBuilder" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="AuthenticatedBuilder"></a>
       <a id="AuthenticatedBuilder:AuthenticatedBuilder"></a>
       <h4 class="signature">
@@ -248,23 +263,7 @@ and what to do in case unsuccessful authentication</p><p>For example:</p><pre> <
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">An authenticated action builder.</p><div class="fullcomment"><div class="comment cmt"><p>An authenticated action builder.</p><p>This can be used to create an action builder, like so:</p><pre><span class="cmt">// in a Security trait</span>
-<span class="kw">object</span> Authenticated <span class="kw">extends</span> AuthenticatedBuilder(req <span class="kw">=&gt;</span> getUserFromRequest(req))
-
-<span class="cmt">// then in a controller</span>
-<span class="kw">def</span> index = Authenticated { <span class="kw">implicit</span> request <span class="kw">=&gt;</span>
-  Ok(<span class="lit">"Hello "</span> + request.user)
-}</pre><p>It can also be used from an action builder, for example:</p><pre><span class="kw">class</span> AuthMessagesRequest[A](<span class="kw">val</span> user: User,
-                              messagesApi: MessagesApi,
-                              request: Request[A]) <span class="kw">extends</span> WrappedRequest[A](request)
-
-<span class="kw">class</span> Authenticated @Inject()(messagesApi: MessagesApi) <span class="kw">extends</span> ActionBuilder[AuthMessagesRequest] {
-  <span class="kw">def</span> invokeBlock[A](request: Request[A], block: (AuthMessagesRequest[A]) <span class="kw">=&gt;</span> Future[Result]) = {
-    AuthenticatedBuilder(req <span class="kw">=&gt;</span> getUserFromRequest(req)).authenticate(request, { authRequest: AuthenticatedRequest[A, User] <span class="kw">=&gt;</span>
-        block(<span class="kw">new</span> AuthenticatedDbRequest[A](authRequest.user, messagesApi, request))
-    })
-  }
-}</pre></div></div>
+      
     </li><li name="play.api.mvc.Security#WithAuthentication" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="WithAuthentication[A](userinfo:play.api.mvc.RequestHeader=&gt;Option[A])(action:A=&gt;play.api.mvc.EssentialAction):play.api.mvc.EssentialAction"></a>
       <a id="WithAuthentication[A]((RequestHeader)⇒Option[A])((A)⇒EssentialAction):EssentialAction"></a>

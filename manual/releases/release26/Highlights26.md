@@ -2,6 +2,18 @@
 
 This page highlights the new features of Play 2.6. If you want to learn about the changes you need to make when you migrate to Play 2.6, check out the [[Play 2.6 Migration Guide|Migration26]].
 
+## "Global-State-Free" Applications
+
+The biggest under the hood change is that Play no longer relies on global state under the hood.  You can still access the global application through `play.api.Play.current` / `play.Play.application()` in Play 2.6.0, but it is deprecated.  This sets the stage for Play 3.0, where there is no global state at all. 
+
+You can disable access to global application entirely by setting the following configuration value:
+
+```
+play.allowGlobalApplication=false
+```
+
+The above setting will cause an exception on any invocation of `Play.current`.
+
 ## Akka HTTP Server Backend
 
 Play now uses the [Akka-HTTP](http://doc.akka.io/docs/akka-http/current/scala.html) server engine as the default backend.  More detail about Play's integration with Akka-HTTP can be found [[on the Akka HTTP Server page|AkkaHttpServer]].  There is an additional page on [[configuring Akka HTTP|SettingsAkkaHttp]].
@@ -93,22 +105,26 @@ Twirl templates can now be created with a constructor annotation using `@this`. 
 
 As an example, suppose a template has a dependency on a component `TemplateRenderingComponent`, which is not used by the controller.
 
-First, add the `@Inject` annotation to Twirl in `build.sbt`:
-
-```scala
-TwirlKeys.constructorAnnotations += "@javax.inject.Inject()"
-```
-
-Then create a file `IndexTemplate.scala.html` using the `@this` syntax for the constructor. Note that the constructor must be placed **before** the `@()` syntax used for the template's parameters for the `apply` method:
+First create a file `IndexTemplate.scala.html` using the `@this` syntax for the constructor. Note that the constructor must be placed **before** the `@()` syntax used for the template's parameters for the `apply` method:
 
 ```scala
 @this(trc: TemplateRenderingComponent)
-@()
+@(item: Item)
 
 @{trc.render(item)}
 ```
 
-And finally define the controller by injecting the template in the constructor:
+By default all generated Scala template classes Twirl creates with the `@this` syntax within Play will automatically be annotated with `@javax.inject.Inject()`. If desired you can change this behavior in `build.sbt`:
+
+```scala
+// Add one or more annotation(s):
+TwirlKeys.constructorAnnotations += "@java.lang.Deprecated()"
+
+// Or completely replace the default one with your own annotation(s):
+TwirlKeys.constructorAnnotations := Seq("@com.google.inject.Inject()")
+```
+
+Now define the controller by injecting the template in the constructor:
 
 ```scala
 public MyController @Inject()(indexTemplate: views.html.IndexTemplate,
@@ -167,6 +183,27 @@ play.filters.disabled+=MyFilter
 Please see [[the Filters page|Filters]] for more details.
 
 > **NOTE**: If you are migrating from an existing project that does not use CSRF form helpers such as `CSRF.formField`, then you may see "403 Forbidden" on PUT and POST requests, from the CSRF filter.  To check this behavior, please add `<logger name="play.filters.csrf" value="TRACE"/>` to your `logback.xml`.  Likewise, if you are running a Play application on something other than localhost, you must configure the [[AllowedHostsFilter]] to specifically allow the hostname/ip you are connecting from.
+
+### gzip filter
+
+If you have the gzip filter enabled you can now also control which responses are and aren't gzipped based on their content types via `application.conf` (instead of writing you own `Filters` class):
+
+```
+play.filters.gzip {
+
+    contentType {
+
+        # If non empty, then a response will only be compressed if its content type is in this list.
+        whiteList = [ "text/*", "application/javascript", "application/json" ]
+
+        # The black list is only used if the white list is empty.
+        # Compress all responses except the ones whose content type is in this list.
+        blackList = []
+    }
+}
+```
+
+Please see [[the gzip filter page|GzipEncoding]] for more details.
 
 ## JWT Cookies
 
@@ -543,13 +580,29 @@ public class JPAPersonRepository implements PersonRepository {
 }
 ```
 
-## Play WS Improvements
+## Play `WSClient` Improvements
 
-There are substantial improvements to Play WS.  Play WS is now a wrapper around a standalone Play WS implementation, which can be used outside of Play.  In addition, the underlying libraries involved in Play WS have been [shaded](https://github.com/sbt/sbt-assembly#shading), so that the Netty implementation used in Play WS does not conflict with Spark or Play.
+There are substantial improvements to Play `WSClient`.  Play `WSClient` is now a wrapper around the standalone [play-ws](https://github.com/playframework/play-ws) implementation, which can be used outside of Play.  In addition, the underlying libraries involved in [play-ws](https://github.com/playframework/play-ws) have been [shaded](https://github.com/sbt/sbt-assembly#shading), so that the Netty implementation used in it does not conflict with Spark, Play or any other library that uses a different version of Netty.
 
-Finally, Play WS now supports [HTTP Caching](https://tools.ietf.org/html/rfc7234) if a cache implementation is present.  Using an HTTP cache means savings on repeated requests to backend REST services, and is especially useful when combined with resiliency features such as [`stale-on-error` and `stale-while-revalidate`](https://tools.ietf.org/html/rfc5861).
+Finally, there is now support for [HTTP Caching](https://tools.ietf.org/html/rfc7234) if a cache implementation is present.  Using an HTTP cache means savings on repeated requests to backend REST services, and is especially useful when combined with resiliency features such as [`stale-on-error` and `stale-while-revalidate`](https://tools.ietf.org/html/rfc5861).
 
 For more details, please see [[WsCache]] and the [[WS Migration Guide|WSMigration26]].
+
+## Play JSON improvements
+
+### Ability to serialize tuples
+
+Now, tuples are able to be serialized by play-json, and there are `Reads` and `Writes` implementations in the implicit scope. Tuples are serialized to arrays, so `("foo", 2, "bar")` will render as `["foo", 2, "bar"]` in the JSON.
+
+### Scala.js support
+
+Play JSON 2.6.0 now supports Scala.js. You can add the dependency with:
+
+```scala
+libraryDependencies += "com.typesafe.play" %%% "play-json" % version
+```
+
+where `version` is the version you wish to use. The library should effectively work the same as it does on the JVM, except without support for JVM types.
 
 ## Testing Improvements
 
@@ -587,6 +640,35 @@ val controller = new MyController(stubControllerComponents())
 
 The [`StubBodyParserFactory`](api/scala/play/api/test/StubBodyParserFactory.html) creates a stub [`BodyParser`](api/scala/play/api/mvc/BodyParser.html) that can be used for unit testing content:
 
-```
+```scala
 val stubParser = stubBodyParser(AnyContent("hello"))
 ```
+
+## File Upload Improvements
+
+Uploading files uses a `TemporaryFile` API which relies on storing files in a temporary filesystem, as specified in [[ScalaFileUpload]] / [[JavaFileUpload]], accessible through the `ref` attribute.  
+
+Uploading files is an inherently dangerous operation, because unbounded file upload can cause the filesystem to fill up -- as such, the idea behind `TemporaryFile` is that it's only in scope at completion and should be moved out of the temporary file system as soon as possible.  Any temporary files that are not moved are deleted. 
+
+In 2.5.x, TemporaryFile were deleted as the file references were garbage collected, using `finalize`.   However, under [certain conditions](https://github.com/playframework/playframework/issues/5545), garbage collection did not occur in a timely fashion.  The background cleanup has been moved to use [FinalizableReferenceQueue](https://google.github.io/guava/releases/20.0/api/docs/com/google/common/base/FinalizableReferenceQueue.html) and PhantomReferences rather than use `finalize`.
+
+The Java and Scala APIs for `TemporaryFile` has been reworked so that all `TemporaryFile` references come from a `TemporaryFileCreator` trait, and the implementation can be swapped out as necessary, and there's now an [`atomicMoveWithFallback`](api/scala/play/api/libs/Files$$TemporaryFile.html#atomicMoveWithFallback\(to:java.nio.file.Path\):play.api.libs.Files.TemporaryFile) method that uses `StandardCopyOption.ATOMIC_MOVE` if available.
+
+### TemporaryFileReaper
+
+There's also now a [`play.api.libs.Files.TemporaryFileReaper`](api/scala/play/api/libs/Files$$DefaultTemporaryFileReaper.html) that can be enabled to delete temporary files on a scheduled basis using the Akka scheduler, distinct from the garbage collection method.
+
+The reaper is disabled by default, and is enabled through `application.conf`:
+
+```
+play.temporaryFile {
+  reaper {
+    enabled = true
+    initialDelay = "5 minutes"
+    interval = "30 seconds"
+    olderThan = "30 minutes"
+  }
+}
+```
+
+The above configuration will delete files that are more than 30 minutes old, using the "olderThan" property.  It will start the reaper five minutes after the application starts, and will check the filesystem every 30 seconds thereafter.  The reaper is not aware of any existing file uploads, so protracted file uploads may run into the reaper if the system is not carefully configured.

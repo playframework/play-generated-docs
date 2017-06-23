@@ -47,7 +47,7 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Contains the internationalisation API.</p><p>For example, translating a message:</p><pre><span class="kw">val</span> msgString = Messages(<span class="lit">"items.found"</span>, items.size)</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0-RC2/framework/src/play/src/main/scala/play/api/i18n/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Contains the internationalisation API.</p><p>For example, translating a message:</p><pre><span class="kw">val</span> msgString = Messages(<span class="lit">"items.found"</span>, items.size)</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0/framework/src/play/src/main/scala/play/api/i18n/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -239,7 +239,7 @@
     </span>
       <p class="shortcomment cmt">Brings convenient implicit conversions from <a href="../mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">play.api.mvc.RequestHeader</a> to <a href="Messages.html" class="extype" name="play.api.i18n.Messages">Messages</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Brings convenient implicit conversions from <a href="../mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">play.api.mvc.RequestHeader</a> to <a href="Messages.html" class="extype" name="play.api.i18n.Messages">Messages</a>.</p><p>Example:</p><pre><span class="kw">import</span> play.api.i18n.Messages
 <span class="kw">class</span> MyController(<span class="kw">val</span> messagesApi: MessagesApi ...)
-  <span class="kw">extends</span> Controller(cc) <span class="kw">with</span> I18nSupport {
+  <span class="kw">extends</span> AbstractController(cc) <span class="kw">with</span> I18nSupport {
   <span class="kw">val</span> action = Action { <span class="kw">implicit</span> request <span class="kw">=&gt;</span>
     <span class="kw">val</span> messageFromRequest = request.messages(<span class="lit">"hello.world"</span>)
     Ok(s<span class="lit">"$messageFromRequest"</span>)
@@ -361,6 +361,23 @@ its interface.
 particularly useful in templates so that both can be captured by one
 parameter.
 </p></div><dl class="paramcmts block"><dt class="param">lang</dt><dd class="cmt"><p>The lang (context)</p></dd><dt class="param">messagesApi</dt><dd class="cmt"><p>The messages API</p></dd></dl></div>
+    </li><li name="play.api.i18n.MessagesImplicits" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="MessagesImplicitsextendsAnyRef"></a>
+      <a id="MessagesImplicits:MessagesImplicits"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="MessagesImplicits.html"><span class="name">MessagesImplicits</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.i18n.package@MessagesImplicitsextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="play.api.i18n.MessagesProvider" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="MessagesProviderextendsAnyRef"></a>
       <a id="MessagesProvider:MessagesProvider"></a>
@@ -435,7 +452,7 @@ parameter.
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="Messages$.html"><span class="name">Messages</span></a>
+        <a href="Messages$.html"><span class="name">Messages</span></a><span class="result"> extends <a href="MessagesImplicits.html" class="extype" name="play.api.i18n.MessagesImplicits">MessagesImplicits</a></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.i18n.package@Messages" title="Permalink" target="_top">

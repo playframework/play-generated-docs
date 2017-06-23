@@ -10,12 +10,11 @@ import akka.stream.ActorMaterializer
 import play.api.http._
 import play.api.test._
 import play.api.test.Helpers._
-import play.api.mvc.BodyParsers
-import org.specs2.mutable.Specification
+import play.api.mvc.{AbstractController, BodyParsers, Controller, ControllerHelpers}
+import org.specs2.mutable.{Specification, SpecificationLike}
 import org.junit.runner.RunWith
 import org.specs2.runner.JUnitRunner
 import play.api.Logger
-import play.api.mvc.Controller
 
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext
@@ -28,7 +27,7 @@ object User {
 }
 
 @RunWith(classOf[JUnitRunner])
-class ScalaActionsCompositionSpec extends Specification with Controller {
+class ScalaActionsCompositionSpec extends Specification with ControllerHelpers {
 
   "an action composition" should {
 
@@ -44,22 +43,23 @@ class ScalaActionsCompositionSpec extends Specification with Controller {
       }
       //#basic-logging
       implicit val system = ActorSystem()
-      implicit val ec: ExecutionContext = ExecutionContext.Implicits.global
-      val eh: HttpErrorHandler =
-        new DefaultHttpErrorHandler(play.api.Environment.simple(), play.api.Configuration.empty)
-      val parse = PlayBodyParsers(ParserConfiguration(), eh, ActorMaterializer(), SingletonTemporaryFileCreator)
+      implicit val mat = ActorMaterializer()
+      implicit val ec: ExecutionContext = system.dispatcher
+      val parse = PlayBodyParsers()
       val parser = new BodyParsers.Default(parse)
       val loggingAction = new LoggingAction(parser)
 
       //#basic-logging-index
-      class MyController @Inject()(loggingAction: LoggingAction) extends Controller {
+      class MyController @Inject()(loggingAction: LoggingAction,
+                                   cc:ControllerComponents)
+        extends AbstractController(cc) {
         def index = loggingAction {
           Ok("Hello World")
         }
       }
       //#basic-logging-index
 
-      testAction(new MyController(loggingAction).index)
+      testAction(new MyController(loggingAction, Helpers.stubControllerComponents()).index)
 
       //#basic-logging-parse
       def submit = loggingAction(parse.text) { request =>
@@ -68,7 +68,7 @@ class ScalaActionsCompositionSpec extends Specification with Controller {
       //#basic-logging-parse
 
       val request = FakeRequest().withTextBody("hello with the parse")
-      testAction(new MyController(loggingAction).index, request)
+      testAction(new MyController(loggingAction, Helpers.stubControllerComponents()).index, request)
     }
 
     "Wrapping existing actions" in {
@@ -98,10 +98,9 @@ class ScalaActionsCompositionSpec extends Specification with Controller {
       //#actions-wrapping-builder
 
       implicit val system = ActorSystem()
-      implicit val ec: ExecutionContext = ExecutionContext.Implicits.global
-      val eh: HttpErrorHandler =
-        new DefaultHttpErrorHandler(play.api.Environment.simple(), play.api.Configuration.empty)
-      val parse = PlayBodyParsers(ParserConfiguration(), eh, ActorMaterializer(), SingletonTemporaryFileCreator)
+      implicit val mat = ActorMaterializer()
+      implicit val ec: ExecutionContext = system.dispatcher
+      val parse = PlayBodyParsers()
       val parser = new BodyParsers.Default(parse)
       val loggingAction = new LoggingAction(parser)
 
@@ -213,10 +212,9 @@ class ScalaActionsCompositionSpec extends Specification with Controller {
       }
       //#authenticated-action-builder
       implicit val system = ActorSystem()
+      implicit val mat = ActorMaterializer()
       implicit val ec: ExecutionContext = ExecutionContext.Implicits.global
-      val eh: HttpErrorHandler =
-        new DefaultHttpErrorHandler(play.api.Environment.simple(), play.api.Configuration.empty)
-      val parser = new BodyParsers.Default(ParserConfiguration(), eh, ActorMaterializer(), SingletonTemporaryFileCreator)
+      val parser = new BodyParsers.Default()
       val userAction = new UserAction(parser)
 
       def currentUser = userAction { request =>

@@ -50,7 +50,7 @@
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Contains standard HTTP constants.
 For example:</p><pre><span class="kw">val</span> text = ContentTypes.TEXT
 <span class="kw">val</span> ok = Status.OK
-<span class="kw">val</span> accept = HeaderNames.ACCEPT</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0-RC2/framework/src/play/src/main/scala/play/api/http/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
+<span class="kw">val</span> accept = HeaderNames.ACCEPT</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0/framework/src/play/src/main/scala/play/api/http/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -518,7 +518,7 @@ a stream, optionally with trailing headers.
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="HttpErrorConfig.html"><span class="name">HttpErrorConfig</span></a><span class="params">(<span name="showDevErrors">showDevErrors: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="playEditor">playEditor: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="HttpErrorConfig.html"><span class="name">HttpErrorConfig</span></a><span class="params">(<span name="showDevErrors">showDevErrors: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="playEditor">playEditor: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.http.package@HttpErrorConfigextendsProductwithSerializable" title="Permalink" target="_top">
@@ -992,7 +992,7 @@ based on the location of application.conf.  This should be stable across restart
       </a>
     </span>
       <p class="shortcomment cmt">Defines common HTTP Content-Type header values, according to the current available Codec.</p>
-    </li><li name="play.api.http.DefaultHttpErrorHandler" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="play.api.http.DefaultHttpErrorHandler" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="DefaultHttpErrorHandler"></a>
       <a id="DefaultHttpErrorHandler:DefaultHttpErrorHandler"></a>
       <h4 class="signature">
@@ -1008,8 +1008,9 @@ based on the location of application.conf.  This should be stable across restart
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">A default HTTP error handler that can be used when there's no application available
-</p>
+      <p class="shortcomment cmt">A default HTTP error handler that can be used when there's no application available.</p><div class="fullcomment"><div class="comment cmt"><p>A default HTTP error handler that can be used when there's no application available.</p><p>Note: this HttpErrorHandler should ONLY be used in DEV or TEST. The way this displays errors to the user is
+generally not suitable for a production environment.
+</p></div></div>
     </li><li name="play.api.http.EncodingPreference" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="EncodingPreference"></a>
       <a id="EncodingPreference:EncodingPreference"></a>
