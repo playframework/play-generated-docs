@@ -2,6 +2,24 @@
 
 This page highlights the new features of Play 2.6. If you want to learn about the changes you need to make when you migrate to Play 2.6, check out the [[Play 2.6 Migration Guide|Migration26]].
 
+## Scala 2.12 support
+
+Play 2.6 is the first release of Play to have been cross built against Scala 2.12 and 2.11. A number of dependencies were updated so that we can have support for both versions.
+
+You can select which version of Scala you would like to use by setting the `scalaVersion` setting in your `build.sbt`.
+
+For Scala 2.12:
+
+```scala
+scalaVersion := "2.12.2"
+```
+
+For Scala 2.11:
+
+```scala
+scalaVersion := "2.11.11"
+```
+
 ## "Global-State-Free" Applications
 
 The biggest under the hood change is that Play no longer relies on global state under the hood.  You can still access the global application through `play.api.Play.current` / `play.Play.application()` in Play 2.6.0, but it is deprecated.  This sets the stage for Play 3.0, where there is no global state at all. 
@@ -54,7 +72,7 @@ Scala:
 ```scala
 // Create a TypedKey to store a User object
 object Attrs {
-  val User: TypedKey[User] = TypedKey[User].apply("user")
+  val User: TypedKey[User] = TypedKey.apply[User]("user")
 }
 
 // Get the User object from the request
@@ -126,19 +144,7 @@ TwirlKeys.constructorAnnotations := Seq("@com.google.inject.Inject()")
 
 Now define the controller by injecting the template in the constructor:
 
-```scala
-public MyController @Inject()(indexTemplate: views.html.IndexTemplate,
-                              cc: ControllerComponents)
-  extends AbstractController(cc) {
-
-  def index = Action { implicit request =>
-    Ok(indexTemplate())
-  }
-}
-```
-
-or
-
+Java:
 ```java
 public class MyController extends Controller {
 
@@ -153,6 +159,18 @@ public class MyController extends Controller {
     return ok(template.render());
   }
 
+}
+```
+
+Scala:
+```scala
+public MyController @Inject()(indexTemplate: views.html.IndexTemplate,
+                              cc: ControllerComponents)
+  extends AbstractController(cc) {
+
+  def index = Action { implicit request =>
+    Ok(indexTemplate())
+  }
 }
 ```
 
@@ -224,7 +242,7 @@ import play.api._
 logger.info("some info message")(MarkerContext(someMarker))
 ```
 
-This opens the door for implicit markers to be passed for logging in several statements, which makes adding context to logging much easier without resorting to MDC.  In particular, see what you can do with the [Logstash Logback Encoder](https://github.com/logstash/logstash-logback-encoder#event-specific-custom-fields):
+This opens the door for implicit markers to be passed for logging in several statements, which makes adding context to logging much easier without resorting to MDC.  For example, using [Logstash Logback Encoder](https://github.com/logstash/logstash-logback-encoder#loggingevent_custom_event) and an [implicit conversion chain](http://docs.scala-lang.org/tutorials/FAQ/chaining-implicits), request information can be encoded into logging statements automatically:
 
 @[logging-request-context-trait](../../working/scalaGuide/main/logging/code/ScalaLoggingSpec.scala)
 
@@ -246,7 +264,7 @@ And then trigger logging with the following TurboFilter in `logback.xml`:
 </turboFilter>
 ```
 
-For more information, please see [[ScalaLogging]] or [[JavaLogging]].
+For more information, please see [[ScalaLogging|ScalaLogging#Using-Markers-and-Marker-Contexts]] or [[JavaLogging|JavaLogging#Using-Markers]].
 
 For more information about using Markers in logging, see [TurboFilters](https://logback.qos.ch/manual/filters.html#TurboFilter) and [marker based triggering](https://logback.qos.ch/manual/appenders.html#OnMarkerEvaluator) sections in the Logback manual.
 
@@ -269,7 +287,7 @@ The security marker also allows security failures to be triggered or filtered di
 </turboFilter>
 ```
 
-In addition, log events using the security marker can also trigger a message to a Security Information & Event Management (SEIM) engine for further processing.
+In addition, log events using the security marker can also trigger a message to a Security Information & Event Management (SIEM) engine for further processing.
 
 ## Configuring a Custom Logging Framework in Java
 
@@ -502,7 +520,7 @@ For more information, please see [[ScalaAsync]] or [[JavaAsync]].
 
 ## CustomExecutionContext and Thread Pool Sizing
 
-This class defines a custom execution context that delegates to an akka.actor.ActorSystem.  It is very useful for situations in which the default execution context should not be used, for example if a database or blocking I/O is being used.  Detailed information can be found in the [[ThreadPools]] page, but Play 2.6.x adds a `CustomExecutionContext` class that handles the underlying Akka dispatcher lookup.
+This class defines a custom execution context that delegates to an `akka.actor.ActorSystem`.  It is very useful for situations in which the default execution context should not be used, for example if a database or blocking I/O is being used.  Detailed information can be found in the [[ThreadPools]] page, but Play 2.6.x adds a `CustomExecutionContext` class that handles the underlying Akka dispatcher lookup.
 
 ## Updated Templates with Preconfigured CustomExecutionContexts
 
