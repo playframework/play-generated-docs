@@ -52,7 +52,7 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Utilities for creating a server that runs around a block of code.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.1/framework/src/play-server/src/main/scala/play/core/server/Server.scala" target="_blank">Server.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.3/framework/src/play-server/src/main/scala/play/core/server/Server.scala" target="_blank">Server.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -489,7 +489,7 @@ port. This can be changed by passing in an explicit port with the config paramet
       <p class="shortcomment cmt">Run a block of code with a server for the application containing routes.</p><div class="fullcomment"><div class="comment cmt"><p>Run a block of code with a server for the application containing routes.</p><p>The passed in block takes the port that the application is running on. By default, this will be a random ephemeral
 port. This can be changed by passing in an explicit port with the config parameter.</p><p>An easy way to set up an application with given routes is to use <a href="../../api/BuiltInComponentsFromContext.html" class="extype" name="play.api.BuiltInComponentsFromContext">play.api.BuiltInComponentsFromContext</a> with
 any extra components needed:</p><pre> Server.withApplicationFromContext(ServerConfig(mode = Mode.Prod, port = <span class="std">Some</span>(<span class="num">0</span>))) { context <span class="kw">=&gt;</span>
-   <span class="kw">new</span> BuiltInComponentsFromContext(context) <span class="kw">with</span> AssetsComponents {
+   <span class="kw">new</span> BuiltInComponentsFromContext(context) <span class="kw">with</span> AssetsComponents <span class="kw">with</span> play.filters.HttpFiltersComponents {
     <span class="kw">override</span> <span class="kw">def</span> router: Router = Router.from {
       <span class="kw">case</span> req <span class="kw">=&gt;</span> assets.versioned(<span class="lit">"/testassets"</span>, req.path)
     }

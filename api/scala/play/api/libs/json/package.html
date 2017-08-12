@@ -74,7 +74,7 @@ For example:</p><pre><span class="kw">import</span> play.api.libs.json._
      myDataStore.save(user)
      Ok
    }
-}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/play-json/tree/2.6.2/play-json/jvm/src/main/scala/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
+}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/play-json/tree/2.6.3/play-json/jvm/src/main/scala/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -813,7 +813,12 @@ DefaultReads provides a simple match.</p><p>See https://github.com/playframework
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Json deserializer: write an implicit to define a deserializer for any type.</p><div class="fullcomment"><div class="comment cmt"><p>Json deserializer: write an implicit to define a deserializer for any type.
+      <p class="shortcomment cmt">A <code>Reads</code> object describes how to decode JSON into a value.</p><div class="fullcomment"><div class="comment cmt"><p>A <code>Reads</code> object describes how to decode JSON into a value.
+<code>Reads</code> objects are typically provided as implicit values. When <code>Reads</code>
+implicit values are in scope, a program is able to deserialize JSON
+into values of the right type.</p><p>The inverse of a <code>Reads</code> object is a <a href="Writes.html" class="extype" name="play.api.libs.json.Writes">Writes</a> object, which describes
+how to encode a value into JSON. If you combine a <code>Reads</code> and a <code>Writes</code>
+then you get a <a href="Format.html" class="extype" name="play.api.libs.json.Format">Format</a>.
 </p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@implicitNotFound</span><span class="args">(<span>
       

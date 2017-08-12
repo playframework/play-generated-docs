@@ -51,14 +51,19 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Json deserializer: write an implicit to define a deserializer for any type.
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A <code>Reads</code> object describes how to decode JSON into a value.
+<code>Reads</code> objects are typically provided as implicit values. When <code>Reads</code>
+implicit values are in scope, a program is able to deserialize JSON
+into values of the right type.</p><p>The inverse of a <code>Reads</code> object is a <a href="Writes.html" class="extype" name="play.api.libs.json.Writes">Writes</a> object, which describes
+how to encode a value into JSON. If you combine a <code>Reads</code> and a <code>Writes</code>
+then you get a <a href="Format.html" class="extype" name="play.api.libs.json.Format">Format</a>.
 </p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="play.api.libs.json.Reads">Reads</a>[<span class="extype" name="play.api.libs.json.Reads.A">A</span>]</dd><dt>Annotations</dt><dd>
                 <span class="name">@implicitNotFound</span><span class="args">(<span>
       
       <span class="defval" name="&quot;No Json deserializer found for type ${A}. Try to implement an implicit Reads or Format for this type.&quot;">...</span>
     </span>)</span>
               
-        </dd><dt>Source</dt><dd><a href="https://github.com/playframework/play-json/tree/2.6.2/play-json/jvm/src/main/scala/Reads.scala" target="_blank">Reads.scala</a></dd></dl><div class="toggleContainer block">
+        </dd><dt>Source</dt><dd><a href="https://github.com/playframework/play-json/tree/2.6.3/play-json/jvm/src/main/scala/Reads.scala" target="_blank">Reads.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
@@ -478,7 +483,8 @@
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">f</dt><dd class="cmt"><p>the function applied on the result of the current instance,
+      <p class="shortcomment cmt">Create a new <code>Reads</code> which maps the value produced by this <code>Reads</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Create a new <code>Reads</code> which maps the value produced by this <code>Reads</code>.
+</p></div><dl class="paramcmts block"><dt class="tparam">B</dt><dd class="cmt"><p>The type of the value produced by the new <code>Reads</code>.</p></dd><dt class="param">f</dt><dd class="cmt"><p>the function applied on the result of the current instance,
 if successful</p></dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
@@ -531,7 +537,7 @@ if successful</p></dd></dl></div>
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="play.api.libs.json.Reads#orElse" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="play.api.libs.json.Reads#orElse" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="orElse(v:play.api.libs.json.Reads[A]):play.api.libs.json.Reads[A]"></a>
       <a id="orElse(Reads[A]):Reads[A]"></a>
       <h4 class="signature">
@@ -547,7 +553,12 @@ if successful</p></dd></dl></div>
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Creates a new <code>Reads</code>, based on this one, which first executes this
+<code>Reads</code>' logic then, if this <code>Reads</code> resulted in a <code>JsError</code>, runs
+the second <code>Reads</code> on the <a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a new <code>Reads</code>, based on this one, which first executes this
+<code>Reads</code>' logic then, if this <code>Reads</code> resulted in a <code>JsError</code>, runs
+the second <code>Reads</code> on the <a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a>.
+</p></div><dl class="paramcmts block"><dt class="param">v</dt><dd class="cmt"><p>The <code>Reads</code> to run if this one gets a <code>JsError</code>.</p></dd><dt>returns</dt><dd class="cmt"><p>A new <code>Reads</code> with the updated behavior.</p></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>

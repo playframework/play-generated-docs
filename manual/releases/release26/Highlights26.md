@@ -22,7 +22,7 @@ scalaVersion := "2.11.11"
 
 ## "Global-State-Free" Applications
 
-The biggest under the hood change is that Play no longer relies on global state under the hood.  You can still access the global application through `play.api.Play.current` / `play.Play.application()` in Play 2.6.0, but it is deprecated.  This sets the stage for Play 3.0, where there is no global state at all. 
+The biggest under the hood change is that Play no longer relies on global state under the hood.  You can still access the global application through `play.api.Play.current` / `play.Play.application()` in Play 2.6, but it is deprecated.  This sets the stage for Play 3.0, where there is no global state at all. 
 
 You can disable access to global application entirely by setting the following configuration value:
 
@@ -47,7 +47,7 @@ lazy val root = (project in file("."))
   .enablePlugins(PlayJava, PlayAkkaHttp2Support)
 ```
 
-This automates most of the process of setting up HTTP/2. However, it does not work with the `run` command by default. See the [[the Akka HTTP Server page|AkkaHttpServer]] for more details.
+This automates most of the process of setting up HTTP/2. However, it does not work with the `run` command by default. See the [[Akka HTTP Server page|AkkaHttpServer]] for more details.
 
 ## Request attributes
 
@@ -164,7 +164,7 @@ public class MyController extends Controller {
 
 Scala:
 ```scala
-public MyController @Inject()(indexTemplate: views.html.IndexTemplate,
+class MyController @Inject()(indexTemplate: views.html.IndexTemplate,
                               cc: ControllerComponents)
   extends AbstractController(cc) {
 
@@ -373,6 +373,17 @@ public class JavaLog4JLoggerConfigurator implements LoggerConfigurator {
 ```
 
 > **Note**: this implementation is fully compatible with Scala version `LoggerConfigurator` and can even be used in Scala projects if necessary, which means that module creators can provide a Java or Scala implementation of LoggerConfigurator and they will be usable in both Java and Scala projects.
+
+## Separate Java Forms module and PlayMinimalJava plugin
+
+The [[Java forms|JavaForms]] functionality has been split out into a separate module. The forms functionality depends on a few Spring modules and the Hibernate validator, so if you are not using forms, you may wish to remove the Java forms module to avoid those unnecessary dependencies.
+
+This module is automatically included by the `PlayJava` plugin, but can be disabled by using the `PlayMinimalJava` plugin instead:
+
+```
+lazy val root = (project in file("."))
+  .enablePlugins(PlayMinimalJava)
+```
 
 ## Java Compile Time Components
 

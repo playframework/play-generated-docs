@@ -46,7 +46,7 @@ By default, if you have a CORS filter before your CSRF filter, the CSRF filter w
 Play provides a global CSRF filter that can be applied to all requests.  This is the simplest way to add CSRF protection to an application.  To add the filter manually, add it to `application.conf`:
 
 ```
-play.filters.enabled += play.filters.csrf.CsrfFilter
+play.filters.enabled += play.filters.csrf.CSRFFilter
 ```
 
 It is also possible to disable the CSRF filter for a specific route in the routes file. To do this, add the `nocsrf` modifier tag before your route:
@@ -55,7 +55,7 @@ It is also possible to disable the CSRF filter for a specific route in the route
 
 ### Using an implicit request
 
-All CSRF functionality assumes that a implicit [`RequestHeader`](api/scala/play/api/mvc/RequestHeader.html) (or a [`Request`](api/scala/play/api/mvc/Request.html), which extends  [`RequestHeader`](api/scala/play/api/mvc/RequestHeader.html)) is available in implicit scope, and will not compile without one available.  Examples will be shown below.
+All CSRF functionality assumes that an implicit [`RequestHeader`](api/scala/play/api/mvc/RequestHeader.html) (or a [`Request`](api/scala/play/api/mvc/Request.html), which extends  [`RequestHeader`](api/scala/play/api/mvc/RequestHeader.html)) is available in implicit scope, and will not compile without one available.  Examples will be shown below.
 
 #### Defining an implicit Request in Actions
 

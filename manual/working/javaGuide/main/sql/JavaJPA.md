@@ -42,7 +42,7 @@ Here is a sample configuration file to use with Hibernate:
 </persistence>
 ```
 
-Finally you have to tell Play, which persistent unit should be used by your JPA provider. This is done by the `jpa.default` property in your `conf/application.conf`.
+Finally you have to tell Play, which persistent unit should be used by your JPA provider. This is done by setting the `jpa.default` property in your `conf/application.conf`.
 
 ```
 jpa.default=defaultPersistenceUnit
