@@ -283,7 +283,7 @@ var activeTableTab = "activeTableTab";
    public onReceive(Object msg) {
      if (msg instanceof CreateChildActor) {
        ActorRef child = injectedChild(myChildActorFactory.apply(((CreateChildActor) msg).getId()));
-       sender().send(child, self);
+       sender().tell(child, self);
      }
    }
  }
