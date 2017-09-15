@@ -1,6 +1,7 @@
 /*
  * Copyright (C) 2009-2017 Lightbend Inc. <https://www.lightbend.com>
  */
+
 package scalaguide.json
 
 import org.specs2.mutable.Specification
@@ -357,15 +358,15 @@ class ScalaJsonSpec extends Specification {
       // fold
       val nameOption: Option[String] = nameResult.fold(
         invalid = {
-        fieldErrors =>
-          fieldErrors.foreach(x => {
-            println("field: " + x._1 + ", errors: " + x._2)
-          })
-          None
-      },
+          fieldErrors =>
+            fieldErrors.foreach(x => {
+              println("field: " + x._1 + ", errors: " + x._2)
+            })
+            None
+        },
         valid = {
-        name => Some(name)
-      }
+          name => Some(name)
+        }
       )
       //#convert-to-type-validate
       nameResult must beLike { case x: JsSuccess[String] => x.get === "Watership Down" }
