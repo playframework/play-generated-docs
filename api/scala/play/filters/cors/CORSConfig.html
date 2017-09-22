@@ -47,11 +47,11 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">CORSConfig</span><span class="params">(<span name="allowedOrigins">allowedOrigins: <a href="CORSConfig$$Origins.html" class="extype" name="play.filters.cors.CORSConfig.Origins">Origins</a> = <span class="symbol"><span class="name"><a href="../../package.html">Origins.None</a></span></span></span>, <span name="isHttpMethodAllowed">isHttpMethodAllowed: (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">_ =&gt; true</span></span>, <span name="isHttpHeaderAllowed">isHttpHeaderAllowed: (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">_ =&gt; true</span></span>, <span name="exposedHeaders">exposedHeaders: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">Seq.empty</span></span>, <span name="supportsCredentials">supportsCredentials: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="preflightMaxAge">preflightMaxAge: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span> = <span class="symbol">1.hour</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name">CORSConfig</span><span class="params">(<span name="allowedOrigins">allowedOrigins: <a href="CORSConfig$$Origins.html" class="extype" name="play.filters.cors.CORSConfig.Origins">Origins</a> = <span class="symbol"><span class="name"><a href="../../package.html">Origins.None</a></span></span></span>, <span name="isHttpMethodAllowed">isHttpMethodAllowed: (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">_ =&gt; true</span></span>, <span name="isHttpHeaderAllowed">isHttpHeaderAllowed: (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">_ =&gt; true</span></span>, <span name="exposedHeaders">exposedHeaders: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">Seq.empty</span></span>, <span name="supportsCredentials">supportsCredentials: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="preflightMaxAge">preflightMaxAge: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span> = <span class="symbol">1.hour</span></span>, <span name="serveForbiddenOrigins">serveForbiddenOrigins: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Configuration for AbstractCORSPolicy</p><ul><li>allow only requests with origins from a whitelist (by default all origins are allowed)</li><li>allow only HTTP methods from a whitelist for preflight requests (by default all methods are allowed)</li><li>allow only HTTP headers from a whitelist for preflight requests (by default all headers are allowed)</li><li>set custom HTTP headers to be exposed in the response (by default no headers are exposed)</li><li>disable/enable support for credentials (by default credentials support is enabled)</li><li>set how long (in seconds) the results of a preflight request can be cached in a preflight result cache (by default 3600 seconds, 1 hour)
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Configuration for AbstractCORSPolicy</p><ul><li>allow only requests with origins from a whitelist (by default all origins are allowed)</li><li>allow only HTTP methods from a whitelist for preflight requests (by default all methods are allowed)</li><li>allow only HTTP headers from a whitelist for preflight requests (by default all headers are allowed)</li><li>set custom HTTP headers to be exposed in the response (by default no headers are exposed)</li><li>disable/enable support for credentials (by default credentials support is enabled)</li><li>set how long (in seconds) the results of a preflight request can be cached in a preflight result cache (by default 3600 seconds, 1 hour)</li><li>enable/disable serving requests with origins not in whitelist as non-CORS requests (by default they are forbidden)
 </li></ul></div><dl class="paramcmts block"><dt class="param">allowedOrigins</dt><dd class="cmt"><p>
   <a href="http://www.w3.org/TR/cors/#resource-requests" target="_blank">§6.1.2</a>
   <a href="http://www.w3.org/TR/cors/#resource-preflight-requests" target="_blank">§6.2.2</a>
@@ -59,7 +59,7 @@
   <a href="http://www.w3.org/TR/cors/#resource-preflight-requests" target="_blank">§6.2.5</a>
   Always matching is acceptable since the list of methods can be unbounded.</p></dd><dt class="param">isHttpHeaderAllowed</dt><dd class="cmt"><p>
   <a href="http://www.w3.org/TR/cors/#resource-preflight-requests" target="_blank">§6.2.6</a>
-  Always matching is acceptable since the list of headers can be unbounded.</p></dd></dl><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.5.15/framework/src/play-filters-helpers/src/main/scala/play/filters/cors/CORSConfig.scala" target="_blank">CORSConfig.scala</a></dd></dl><div class="toggleContainer block">
+  Always matching is acceptable since the list of headers can be unbounded.</p></dd></dl><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.5.17/framework/src/play-filters-helpers/src/main/scala/play/filters/cors/CORSConfig.scala" target="_blank">CORSConfig.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -98,7 +98,7 @@
         <div id="allMembers">
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
-              <ol><li name="play.filters.cors.CORSConfig#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+              <ol><li name="play.filters.cors.CORSConfig#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="&lt;init&gt;(allowedOrigins:play.filters.cors.CORSConfig.Origins,isHttpMethodAllowed:String=&gt;Boolean,isHttpHeaderAllowed:String=&gt;Boolean,exposedHeaders:Seq[String],supportsCredentials:Boolean,preflightMaxAge:scala.concurrent.duration.Duration):play.filters.cors.CORSConfig"></a>
       <a id="&lt;init&gt;:CORSConfig"></a>
       <h4 class="signature">
@@ -107,10 +107,27 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">CORSConfig</span><span class="params">(<span name="allowedOrigins">allowedOrigins: <a href="CORSConfig$$Origins.html" class="extype" name="play.filters.cors.CORSConfig.Origins">Origins</a> = <span class="symbol"><span class="name"><a href="../../package.html">Origins.None</a></span></span></span>, <span name="isHttpMethodAllowed">isHttpMethodAllowed: (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">_ =&gt; true</span></span>, <span name="isHttpHeaderAllowed">isHttpHeaderAllowed: (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">_ =&gt; true</span></span>, <span name="exposedHeaders">exposedHeaders: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">Seq.empty</span></span>, <span name="supportsCredentials">supportsCredentials: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="preflightMaxAge">preflightMaxAge: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span> = <span class="symbol">1.hour</span></span>)</span>
+        <span class="name">CORSConfig</span><span class="params">(<span name="allowedOrigins">allowedOrigins: <a href="CORSConfig$$Origins.html" class="extype" name="play.filters.cors.CORSConfig.Origins">Origins</a></span>, <span name="isHttpMethodAllowed">isHttpMethodAllowed: (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="isHttpHeaderAllowed">isHttpHeaderAllowed: (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="exposedHeaders">exposedHeaders: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="supportsCredentials">supportsCredentials: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="preflightMaxAge">preflightMaxAge: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>)</span>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.filters.cors.CORSConfig@&lt;init&gt;(allowedOrigins:play.filters.cors.CORSConfig.Origins,isHttpMethodAllowed:String=&gt;Boolean,isHttpHeaderAllowed:String=&gt;Boolean,exposedHeaders:Seq[String],supportsCredentials:Boolean,preflightMaxAge:scala.concurrent.duration.Duration):play.filters.cors.CORSConfig" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.filters.cors.CORSConfig#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="&lt;init&gt;(allowedOrigins:play.filters.cors.CORSConfig.Origins,isHttpMethodAllowed:String=&gt;Boolean,isHttpHeaderAllowed:String=&gt;Boolean,exposedHeaders:Seq[String],supportsCredentials:Boolean,preflightMaxAge:scala.concurrent.duration.Duration,serveForbiddenOrigins:Boolean):play.filters.cors.CORSConfig"></a>
+      <a id="&lt;init&gt;:CORSConfig"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">new</span>
+      </span>
+      <span class="symbol">
+        <span class="name">CORSConfig</span><span class="params">(<span name="allowedOrigins">allowedOrigins: <a href="CORSConfig$$Origins.html" class="extype" name="play.filters.cors.CORSConfig.Origins">Origins</a> = <span class="symbol"><span class="name"><a href="../../package.html">Origins.None</a></span></span></span>, <span name="isHttpMethodAllowed">isHttpMethodAllowed: (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">_ =&gt; true</span></span>, <span name="isHttpHeaderAllowed">isHttpHeaderAllowed: (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">_ =&gt; true</span></span>, <span name="exposedHeaders">exposedHeaders: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">Seq.empty</span></span>, <span name="supportsCredentials">supportsCredentials: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="preflightMaxAge">preflightMaxAge: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span> = <span class="symbol">1.hour</span></span>, <span name="serveForbiddenOrigins">serveForbiddenOrigins: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.cors.CORSConfig@&lt;init&gt;(allowedOrigins:play.filters.cors.CORSConfig.Origins,isHttpMethodAllowed:String=&gt;Boolean,isHttpHeaderAllowed:String=&gt;Boolean,exposedHeaders:Seq[String],supportsCredentials:Boolean,preflightMaxAge:scala.concurrent.duration.Duration,serveForbiddenOrigins:Boolean):play.filters.cors.CORSConfig" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -259,6 +276,40 @@
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="play.filters.cors.CORSConfig#copy" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="copy(allowedOrigins:play.filters.cors.CORSConfig.Origins,isHttpMethodAllowed:String=&gt;Boolean,isHttpHeaderAllowed:String=&gt;Boolean,exposedHeaders:Seq[String],supportsCredentials:Boolean,preflightMaxAge:scala.concurrent.duration.Duration):play.filters.cors.CORSConfig"></a>
+      <a id="copy(Origins,(String)⇒Boolean,(String)⇒Boolean,Seq[String],Boolean,Duration):CORSConfig"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">copy</span><span class="params">(<span name="allowedOrigins">allowedOrigins: <a href="CORSConfig$$Origins.html" class="extype" name="play.filters.cors.CORSConfig.Origins">Origins</a></span>, <span name="isHttpMethodAllowed">isHttpMethodAllowed: (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="isHttpHeaderAllowed">isHttpHeaderAllowed: (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="exposedHeaders">exposedHeaders: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="supportsCredentials">supportsCredentials: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="preflightMaxAge">preflightMaxAge: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>)</span><span class="result">: <a href="" class="extype" name="play.filters.cors.CORSConfig">CORSConfig</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.cors.CORSConfig@copy(allowedOrigins:play.filters.cors.CORSConfig.Origins,isHttpMethodAllowed:String=&gt;Boolean,isHttpHeaderAllowed:String=&gt;Boolean,exposedHeaders:Seq[String],supportsCredentials:Boolean,preflightMaxAge:scala.concurrent.duration.Duration):play.filters.cors.CORSConfig" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.filters.cors.CORSConfig#copy" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="copy(allowedOrigins:play.filters.cors.CORSConfig.Origins,isHttpMethodAllowed:String=&gt;Boolean,isHttpHeaderAllowed:String=&gt;Boolean,exposedHeaders:Seq[String],supportsCredentials:Boolean,preflightMaxAge:scala.concurrent.duration.Duration,serveForbiddenOrigins:Boolean):play.filters.cors.CORSConfig"></a>
+      <a id="copy(Origins,(String)⇒Boolean,(String)⇒Boolean,Seq[String],Boolean,Duration,Boolean):CORSConfig"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">copy</span><span class="params">(<span name="allowedOrigins">allowedOrigins: <a href="CORSConfig$$Origins.html" class="extype" name="play.filters.cors.CORSConfig.Origins">Origins</a> = <span class="symbol">allowedOrigins</span></span>, <span name="isHttpMethodAllowed">isHttpMethodAllowed: (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">isHttpMethodAllowed</span></span>, <span name="isHttpHeaderAllowed">isHttpHeaderAllowed: (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">isHttpHeaderAllowed</span></span>, <span name="exposedHeaders">exposedHeaders: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">exposedHeaders</span></span>, <span name="supportsCredentials">supportsCredentials: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">supportsCredentials</span></span>, <span name="preflightMaxAge">preflightMaxAge: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span> = <span class="symbol">preflightMaxAge</span></span>, <span name="serveForbiddenOrigins">serveForbiddenOrigins: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">serveForbiddenOrigins</span></span>)</span><span class="result">: <a href="" class="extype" name="play.filters.cors.CORSConfig">CORSConfig</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.cors.CORSConfig@copy(allowedOrigins:play.filters.cors.CORSConfig.Origins,isHttpMethodAllowed:String=&gt;Boolean,isHttpHeaderAllowed:String=&gt;Boolean,exposedHeaders:Seq[String],supportsCredentials:Boolean,preflightMaxAge:scala.concurrent.duration.Duration,serveForbiddenOrigins:Boolean):play.filters.cors.CORSConfig" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -452,6 +503,23 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.filters.cors.CORSConfig@preflightMaxAge:scala.concurrent.duration.Duration" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.filters.cors.CORSConfig#serveForbiddenOrigins" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="serveForbiddenOrigins:Boolean"></a>
+      <a id="serveForbiddenOrigins:Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">serveForbiddenOrigins</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.cors.CORSConfig@serveForbiddenOrigins:Boolean" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -759,6 +827,23 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.filters.cors.CORSConfig@withPreflightMaxAge(maxAge:scala.concurrent.duration.Duration):play.filters.cors.CORSConfig" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.filters.cors.CORSConfig#withServeForbiddenOrigins" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="withServeForbiddenOrigins(serveForbiddenOrigins:Boolean):play.filters.cors.CORSConfig"></a>
+      <a id="withServeForbiddenOrigins(Boolean):CORSConfig"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">withServeForbiddenOrigins</span><span class="params">(<span name="serveForbiddenOrigins">serveForbiddenOrigins: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="play.filters.cors.CORSConfig">CORSConfig</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.cors.CORSConfig@withServeForbiddenOrigins(serveForbiddenOrigins:Boolean):play.filters.cors.CORSConfig" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
