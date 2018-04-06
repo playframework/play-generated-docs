@@ -316,30 +316,6 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="play.core.server.Server#getHandlerFor" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getHandlerFor(request:play.api.mvc.RequestHeader):Either[scala.concurrent.Future[play.api.mvc.Result],(play.api.mvc.RequestHeader,play.api.mvc.Handler,play.api.Application)]"></a>
-      <a id="getHandlerFor(RequestHeader):Either[Future[Result],(RequestHeader,Handler,api.Application)]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">getHandlerFor</span><span class="params">(<span name="request">request: <a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>)</span><span class="result">: <span class="extype" name="scala.Either">Either</span>[<span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>], (<a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>, <a href="../../api/mvc/Handler.html" class="extype" name="play.api.mvc.Handler">Handler</a>, <a href="../../api/Application.html" class="extype" name="play.api.Application">api.Application</a>)]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.core.server.NettyServer@getHandlerFor(request:play.api.mvc.RequestHeader):Either[scala.concurrent.Future[play.api.mvc.Result],(play.api.mvc.RequestHeader,play.api.mvc.Handler,play.api.Application)]" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Try to get the handler for a request and return it as a <code>Right</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Try to get the handler for a request and return it as a <code>Right</code>. If we
-can't get the handler for some reason then return a result immediately
-as a <code>Left</code>. Reasons to return a <code>Left</code> value:</p><p>- If there's a &quot;web command&quot; installed that intercepts the request.
-- If we fail to get the <code>Application</code> from the <code>applicationProvider</code>,
-  i.e. if there's an error loading the application.
-- If an exception is thrown.</p><p>NOTE: This will use the ApplicationProvider of the server to get the application instance.
-      Use <code>Server.getHandlerFor(request, provider)</code> to pass a specific application instance
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Server.html" class="extype" name="play.core.server.Server">Server</a></dd></dl></div>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <a id="hashCode():Int"></a>
@@ -672,7 +648,37 @@ as a <code>Left</code>. Reasons to return a <code>Left</code> value:</p><p>- If 
 
         
 
-        
+        <div id="values" class="values members">
+              <h3>Deprecated Value Members</h3>
+              <ol><li name="play.core.server.Server#getHandlerFor" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getHandlerFor(request:play.api.mvc.RequestHeader):Either[scala.concurrent.Future[play.api.mvc.Result],(play.api.mvc.RequestHeader,play.api.mvc.Handler,play.api.Application)]"></a>
+      <a id="getHandlerFor(RequestHeader):Either[Future[Result],(RequestHeader,Handler,api.Application)]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 2.6.13) Use Server.getHandlerFor instead">getHandlerFor</span><span class="params">(<span name="request">request: <a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>)</span><span class="result">: <span class="extype" name="scala.Either">Either</span>[<span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>], (<a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>, <a href="../../api/mvc/Handler.html" class="extype" name="play.api.mvc.Handler">Handler</a>, <a href="../../api/Application.html" class="extype" name="play.api.Application">api.Application</a>)]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.server.NettyServer@getHandlerFor(request:play.api.mvc.RequestHeader):Either[scala.concurrent.Future[play.api.mvc.Result],(play.api.mvc.RequestHeader,play.api.mvc.Handler,play.api.Application)]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Try to get the handler for a request and return it as a <code>Right</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Try to get the handler for a request and return it as a <code>Right</code>. If we
+can't get the handler for some reason then return a result immediately
+as a <code>Left</code>. Reasons to return a <code>Left</code> value:</p><p>- If there's a &quot;web command&quot; installed that intercepts the request.
+- If we fail to get the <code>Application</code> from the <code>applicationProvider</code>,
+  i.e. if there's an error loading the application.
+- If an exception is thrown.</p><p>NOTE: This will use the ApplicationProvider of the server to get the application instance.
+      Use <code>Server.getHandlerFor(request, provider)</code> to pass a specific application instance
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Server.html" class="extype" name="play.core.server.Server">Server</a></dd><dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.13)</i> Use Server.getHandlerFor instead</p></dd></dl></div>
+    </li></ol>
+            </div>
         </div>
 
         <div id="inheritedMembers">
