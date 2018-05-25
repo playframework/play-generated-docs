@@ -1,4 +1,4 @@
-<!--- Copyright (C) 2009-2017 Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) 2009-2018 Lightbend Inc. <https://www.lightbend.com> -->
 # Configuration file syntax and features
 
 > The configuration file used by Play is based on the [Typesafe config library](https://github.com/typesafehub/config).
@@ -44,7 +44,7 @@ There are a couple of special things to know about configuration when running yo
 You can configure extra settings for the `run` command in your `build.sbt`. These settings won't be used when you deploy your application.
 
 ```
-PlayKeys.devSettings := Seq("play.server.http.port" -> "8080")
+PlayKeys.devSettings += "play.server.http.port" -> "8080"
 ```
 
 ### HTTP server settings in `application.conf`
