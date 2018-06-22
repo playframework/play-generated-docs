@@ -133,9 +133,6 @@ class ExampleSpec extends PlaySpec with GuiceOneAppPerSuite {
       def getConfig(key: String)(implicit app: Application) = app.configuration.getOptional[String](key)
       getConfig("ehcacheplugin") mustBe Some("disabled")
     }
-    "start the FakeApplication" in {
-      Play.maybeApplication mustBe Some(app)
-    }
   }
 }
 </pre></p><p>If you have many tests that can share the same <code>Application</code>, and you don't want to put them all into one
@@ -177,9 +174,6 @@ class BlueSpec extends PlaySpec with ConfiguredApp {
     "make the Application available implicitly" in {
       def getConfig(key: String)(implicit app: Application) = app.configuration.getOptional[String](key)
       getConfig("ehcacheplugin") mustBe Some("disabled")
-    }
-    "start the Application" in {
-      Play.maybeApplication mustBe Some(app)
     }
   }
 }
@@ -227,9 +221,6 @@ class ExampleSpec extends PlaySpec with GuiceOneAppPerTest {
     "make the Application available implicitly" in {
       def getConfig(key: String)(implicit app: Application) = app.configuration.getOptional[String](key)
       getConfig("ehcacheplugin") mustBe Some("disabled")
-    }
-    "start the Application" in {
-      Play.maybeApplication mustBe Some(app)
     }
   }
 }

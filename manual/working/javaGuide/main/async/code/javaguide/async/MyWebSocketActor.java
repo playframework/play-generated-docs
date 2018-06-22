@@ -1,12 +1,13 @@
 /*
- * Copyright (C) 2009-2017 Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) 2009-2018 Lightbend Inc. <https://www.lightbend.com>
  */
+
 package javaguide.async;
 
 //#actor
 import akka.actor.*;
 
-public class MyWebSocketActor extends UntypedAbstractActor {
+public class MyWebSocketActor extends AbstractActor {
 
     public static Props props(ActorRef out) {
         return Props.create(MyWebSocketActor.class, out);
@@ -18,10 +19,13 @@ public class MyWebSocketActor extends UntypedAbstractActor {
         this.out = out;
     }
 
-    public void onReceive(Object message) throws Exception {
-        if (message instanceof String) {
-            out.tell("I received your message: " + message, self());
-        }
+    @Override
+    public Receive createReceive() {
+        return receiveBuilder()
+          .match(String.class, message ->
+              out.tell("I received your message: " + message, self())
+            )
+          .build();
     }
 }
 //#actor

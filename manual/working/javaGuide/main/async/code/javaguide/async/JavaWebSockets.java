@@ -1,6 +1,7 @@
 /*
- * Copyright (C) 2009-2017 Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) 2009-2018 Lightbend Inc. <https://www.lightbend.com>
  */
+
 package javaguide.async;
 
 import akka.actor.*;
@@ -20,14 +21,18 @@ import java.util.concurrent.CompletableFuture;
 
 public class JavaWebSockets {
 
-    public static class Actor1 extends UntypedAbstractActor {
+    public static class Actor1 extends AbstractActor {
         private final Closeable someResource;
 
         public Actor1(Closeable someResource) {
             this.someResource = someResource;
         }
 
-        public void onReceive(Object message) throws Exception {
+        @Override
+        public Receive createReceive() {
+            return receiveBuilder()
+              // match() messages here...
+              .build();
         }
 
         //#actor-post-stop
@@ -37,8 +42,12 @@ public class JavaWebSockets {
         //#actor-post-stop
     }
 
-    public static class Actor2 extends UntypedAbstractActor {
-        public void onReceive(Object message) throws Exception {
+    public static class Actor2 extends AbstractActor {
+        @Override
+        public Receive createReceive() {
+            return receiveBuilder()
+              // match() messages here
+              .build();
         }
 
         {

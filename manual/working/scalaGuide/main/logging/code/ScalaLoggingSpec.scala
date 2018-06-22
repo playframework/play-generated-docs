@@ -1,6 +1,7 @@
 /*
- * Copyright (C) 2009-2017 Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) 2009-2018 Lightbend Inc. <https://www.lightbend.com>
  */
+
 package scalaguide.logging
 
 import javax.inject.Inject
@@ -263,7 +264,9 @@ class ScalaLoggingSpec extends Specification with Mockito {
 //#logging-request-context-trait
 trait RequestMarkerContext {
 
-  implicit def requestHeaderToMarkerContext(request: RequestHeader): MarkerContext = {
+  // Adding 'implicit request' enables implicit conversion chaining
+  // See http://docs.scala-lang.org/tutorials/FAQ/chaining-implicits.html
+  implicit def requestHeaderToMarkerContext(implicit request: RequestHeader): MarkerContext = {
     import net.logstash.logback.marker.LogstashMarker
     import net.logstash.logback.marker.Markers._
 
@@ -283,7 +286,7 @@ class ImplicitRequestController @Inject()(cc: ControllerComponents)(implicit oth
   //#logging-log-info-with-request-context
   def asyncIndex = Action.async { implicit request =>
     Future {
-      methodInOtherExecutionContext()
+      methodInOtherExecutionContext() // implicit conversion here
     }(otherExecutionContext)
   }
 

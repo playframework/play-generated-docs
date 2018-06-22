@@ -1,6 +1,7 @@
 /*
- * Copyright (C) 2009-2017 Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) 2009-2018 Lightbend Inc. <https://www.lightbend.com>
  */
+
 package scalaguide.tests.specs2
 
 // #scalatest-examplecontrollerspec
@@ -24,6 +25,7 @@ class ExampleControllerSpec extends PlaySpecification with Results {
   }
 
 }
+// #scalatest-examplecontrollerspec
 
 // #scalatest-exampleformspec
 object FormData {
@@ -76,8 +78,6 @@ class ExampleFormSpec extends PlaySpecification with Results {
   }
 }
 // #scalatest-exampleformspec
-
-// #scalatest-examplecontrollerspec
 
 // #scalatest-exampletemplatespec
 class ExampleTemplateSpec extends PlaySpecification {

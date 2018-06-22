@@ -2,9 +2,47 @@
 
 This page highlights the new features of Play 2.6. If you want to learn about the changes you need to make when you migrate to Play 2.6, check out the [[Play 2.6 Migration Guide|Migration26]].
 
+## Scala 2.12 support
+
+Play 2.6 is the first release of Play to have been cross built against Scala 2.12 and 2.11. A number of dependencies we updated so that we can have support for both versions.
+
+You can select which version of Scala you would like to use by setting the `scalaVersion` setting in your `build.sbt`.
+
+For Scala 2.12:
+
+```scala
+scalaVersion := "2.12.6"
+```
+
+For Scala 2.11:
+
+```scala
+scalaVersion := "2.11.12"
+```
+
+## PlayService sbt plugin (experimental)
+
+As of Play 2.6.8, Play also offers a `PlayService` plugin. This is a much more minimal Play configuration oriented towards microservices. It uses the standard Maven layout instead of the traditional Play layout, and does not include twirl templates or the sbt-web functionality. For example:
+
+```scala
+lazy val root = (project in file("."))
+  .enablePlugins(PlayService)
+  .enablePlugins(RoutesCompiler) // place routes in src/main/resources, or remove if using SIRD/RoutingDsl
+  .settings(
+    scalaVersion := "2.12.6",
+    libraryDependencies ++= Seq(
+      guice, // remove if not using Play's Guice loader
+      akkaHttpServer, // or use nettyServer for Netty
+      logback // add Play logging support
+    )
+  )
+```
+
+**Note**: this plugin is considered *experimental*, which means the API may change. We expect it to be stable in Play 2.7.0.
+
 ## "Global-State-Free" Applications
 
-The biggest under the hood change is that Play no longer relies on global state under the hood.  You can still access the global application through `play.api.Play.current` / `play.Play.application()` in Play 2.6.0, but it is deprecated.  This sets the stage for Play 3.0, where there is no global state at all. 
+The biggest under the hood change is that Play no longer relies on global state.  You can still access the global application through `play.api.Play.current` / `play.Play.application()` in Play 2.6, but it is deprecated.  This sets the stage for Play 3.0, where there is no global state at all.
 
 You can disable access to global application entirely by setting the following configuration value:
 
@@ -16,7 +54,7 @@ The above setting will cause an exception on any invocation of `Play.current`.
 
 ## Akka HTTP Server Backend
 
-Play now uses the [Akka-HTTP](http://doc.akka.io/docs/akka-http/current/scala.html) server engine as the default backend.  More detail about Play's integration with Akka-HTTP can be found [[on the Akka HTTP Server page|AkkaHttpServer]].  There is an additional page on [[configuring Akka HTTP|SettingsAkkaHttp]].
+Play now uses the [Akka-HTTP](https://doc.akka.io/docs/akka-http/current/?language=scala) server engine as the default backend.  More detail about Play's integration with Akka-HTTP can be found [[on the Akka HTTP Server page|AkkaHttpServer]].  There is an additional page on [[configuring Akka HTTP|SettingsAkkaHttp]].
 
 The Netty backend is still available, and has been upgraded to use Netty 4.1.  You can explicitly configure your project to use Netty [[on the NettyServer page|NettyServer]].
 
@@ -29,7 +67,7 @@ lazy val root = (project in file("."))
   .enablePlugins(PlayJava, PlayAkkaHttp2Support)
 ```
 
-This automates most of the process of setting up HTTP/2. However, it does not work with the `run` command by default. See the [[the Akka HTTP Server page|AkkaHttpServer]] for more details.
+This automates most of the process of setting up HTTP/2. However, it does not work with the `run` command by default. See the [[Akka HTTP Server page|AkkaHttpServer]] for more details.
 
 ## Request attributes
 
@@ -54,7 +92,7 @@ Scala:
 ```scala
 // Create a TypedKey to store a User object
 object Attrs {
-  val User: TypedKey[User] = TypedKey[User].apply("user")
+  val User: TypedKey[User] = TypedKey.apply[User]("user")
 }
 
 // Get the User object from the request
@@ -72,7 +110,7 @@ Request tags have now been deprecated and you should migrate to use attributes i
 The routes file syntax now allows you to add "modifiers" to each route that provide custom behavior. We have implemented one such tag in the CSRF filter, the "nocsrf" tag. By default, the following route will not have the CSRF filter applied.
 
 ```
-+ nocsrf # Don't CSRF protect this route 
++ nocsrf # Don't CSRF protect this route
 POST /api/foo/bar ApiController.foobar
 ```
 
@@ -126,19 +164,7 @@ TwirlKeys.constructorAnnotations := Seq("@com.google.inject.Inject()")
 
 Now define the controller by injecting the template in the constructor:
 
-```scala
-public MyController @Inject()(indexTemplate: views.html.IndexTemplate,
-                              cc: ControllerComponents)
-  extends AbstractController(cc) {
-
-  def index = Action { implicit request =>
-    Ok(indexTemplate())
-  }
-}
-```
-
-or
-
+Java:
 ```java
 public class MyController extends Controller {
 
@@ -153,6 +179,18 @@ public class MyController extends Controller {
     return ok(template.render());
   }
 
+}
+```
+
+Scala:
+```scala
+class MyController @Inject()(indexTemplate: views.html.IndexTemplate,
+                              cc: ControllerComponents)
+  extends AbstractController(cc) {
+
+  def index = Action { implicit request =>
+    Ok(indexTemplate())
+  }
 }
 ```
 
@@ -224,7 +262,7 @@ import play.api._
 logger.info("some info message")(MarkerContext(someMarker))
 ```
 
-This opens the door for implicit markers to be passed for logging in several statements, which makes adding context to logging much easier without resorting to MDC.  In particular, see what you can do with the [Logstash Logback Encoder](https://github.com/logstash/logstash-logback-encoder#event-specific-custom-fields):
+This opens the door for implicit markers to be passed for logging in several statements, which makes adding context to logging much easier without resorting to MDC.  For example, using [Logstash Logback Encoder](https://github.com/logstash/logstash-logback-encoder#loggingevent_custom_event) and an [implicit conversion chain](http://docs.scala-lang.org/tutorials/FAQ/chaining-implicits.html), request information can be encoded into logging statements automatically:
 
 @[logging-request-context-trait](../../working/scalaGuide/main/logging/code/ScalaLoggingSpec.scala)
 
@@ -246,7 +284,7 @@ And then trigger logging with the following TurboFilter in `logback.xml`:
 </turboFilter>
 ```
 
-For more information, please see [[ScalaLogging]] or [[JavaLogging]].
+For more information, please see [[ScalaLogging|ScalaLogging#Using-Markers-and-Marker-Contexts]] or [[JavaLogging|JavaLogging#Using-Markers]].
 
 For more information about using Markers in logging, see [TurboFilters](https://logback.qos.ch/manual/filters.html#TurboFilter) and [marker based triggering](https://logback.qos.ch/manual/appenders.html#OnMarkerEvaluator) sections in the Logback manual.
 
@@ -269,7 +307,7 @@ The security marker also allows security failures to be triggered or filtered di
 </turboFilter>
 ```
 
-In addition, log events using the security marker can also trigger a message to a Security Information & Event Management (SEIM) engine for further processing.
+In addition, log events using the security marker can also trigger a message to a Security Information & Event Management (SIEM) engine for further processing.
 
 ## Configuring a Custom Logging Framework in Java
 
@@ -355,6 +393,17 @@ public class JavaLog4JLoggerConfigurator implements LoggerConfigurator {
 ```
 
 > **Note**: this implementation is fully compatible with Scala version `LoggerConfigurator` and can even be used in Scala projects if necessary, which means that module creators can provide a Java or Scala implementation of LoggerConfigurator and they will be usable in both Java and Scala projects.
+
+## Separate Java Forms module and PlayMinimalJava plugin
+
+The [[Java forms|JavaForms]] functionality has been split out into a separate module. The forms functionality depends on a few Spring modules and the Hibernate validator, so if you are not using forms, you may wish to remove the Java forms module to avoid those unnecessary dependencies.
+
+This module is automatically included by the `PlayJava` plugin, but can be disabled by using the `PlayMinimalJava` plugin instead:
+
+```
+lazy val root = (project in file("."))
+  .enablePlugins(PlayMinimalJava)
+```
 
 ## Java Compile Time Components
 
@@ -502,7 +551,7 @@ For more information, please see [[ScalaAsync]] or [[JavaAsync]].
 
 ## CustomExecutionContext and Thread Pool Sizing
 
-This class defines a custom execution context that delegates to an akka.actor.ActorSystem.  It is very useful for situations in which the default execution context should not be used, for example if a database or blocking I/O is being used.  Detailed information can be found in the [[ThreadPools]] page, but Play 2.6.x adds a `CustomExecutionContext` class that handles the underlying Akka dispatcher lookup.
+This class defines a custom execution context that delegates to an `akka.actor.ActorSystem`.  It is very useful for situations in which the default execution context should not be used, for example if a database or blocking I/O is being used.  Detailed information can be found in the [[ThreadPools]] page, but Play 2.6.x adds a `CustomExecutionContext` class that handles the underlying Akka dispatcher lookup.
 
 ## Updated Templates with Preconfigured CustomExecutionContexts
 
@@ -510,7 +559,7 @@ All of the Play example templates on [Play's download page](https://playframewor
 
 For thread pool sizing involving JDBC connection pools, you want a fixed thread pool size matching the connection pool, using a thread pool executor.  Following the advice in [HikariCP's pool sizing page](https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing), you should configure your JDBC connection pool to double the number of physical cores, plus the number of disk spindles.
 
-The dispatcher settings used here come from [Akka dispatcher](http://doc.akka.io/docs/akka/2.5/java/dispatchers.html):
+The dispatcher settings used here come from [Akka dispatcher](https://doc.akka.io/docs/akka/2.5/dispatchers.html?language=java):
 
 ```
 # db connections = ((physical_core_count * 2) + effective_spindle_count)
@@ -590,6 +639,8 @@ For more details, please see [[WsCache]] and the [[WS Migration Guide|WSMigratio
 
 ## Play JSON improvements
 
+There are many improvements included in this release of the JSON library.
+
 ### Ability to serialize tuples
 
 Now, tuples are able to be serialized by play-json, and there are `Reads` and `Writes` implementations in the implicit scope. Tuples are serialized to arrays, so `("foo", 2, "bar")` will render as `["foo", 2, "bar"]` in the JSON.
@@ -603,6 +654,26 @@ libraryDependencies += "com.typesafe.play" %%% "play-json" % version
 ```
 
 where `version` is the version you wish to use. The library should effectively work the same as it does on the JVM, except without support for JVM types.
+
+### Custom naming strategies for automated JSON mapping
+
+It is possible to customize the handlers generated by the `Json` macros (`reads`, `writes` or `format`). Thus, a naming strategy can be defined to map the JSON fields as wanted.
+
+To use a custom naming strategy you need to define implicit instances for `JsonConfiguration` and `JsonNaming`.
+
+Two naming strategies are provided: the default one, using as-is the names of the class properties, and the `JsonNaming.SnakeCase` case one.
+
+A strategy other than the default one can be used as following:
+
+```scala
+import play.api.libs.json._
+
+implicit val config = JsonConfiguration(SnakeCase)
+
+implicit val userFormat: OFormat[PlayUser] = Json.format[PlayUser]
+```
+
+In addition, custom naming strategies can be implemented by providing a `JsonNaming` implementation.
 
 ## Testing Improvements
 
@@ -646,9 +717,9 @@ val stubParser = stubBodyParser(AnyContent("hello"))
 
 ## File Upload Improvements
 
-Uploading files uses a `TemporaryFile` API which relies on storing files in a temporary filesystem, as specified in [[ScalaFileUpload]] / [[JavaFileUpload]], accessible through the `ref` attribute.  
+Uploading files uses a `TemporaryFile` API which relies on storing files in a temporary filesystem, as specified in [[ScalaFileUpload]] / [[JavaFileUpload]], accessible through the `ref` attribute.
 
-Uploading files is an inherently dangerous operation, because unbounded file upload can cause the filesystem to fill up -- as such, the idea behind `TemporaryFile` is that it's only in scope at completion and should be moved out of the temporary file system as soon as possible.  Any temporary files that are not moved are deleted. 
+Uploading files is an inherently dangerous operation, because unbounded file upload can cause the filesystem to fill up -- as such, the idea behind `TemporaryFile` is that it's only in scope at completion and should be moved out of the temporary file system as soon as possible.  Any temporary files that are not moved are deleted.
 
 In 2.5.x, TemporaryFile were deleted as the file references were garbage collected, using `finalize`.   However, under [certain conditions](https://github.com/playframework/playframework/issues/5545), garbage collection did not occur in a timely fashion.  The background cleanup has been moved to use [FinalizableReferenceQueue](https://google.github.io/guava/releases/20.0/api/docs/com/google/common/base/FinalizableReferenceQueue.html) and PhantomReferences rather than use `finalize`.
 

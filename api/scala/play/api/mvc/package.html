@@ -53,7 +53,7 @@
     Ok(<span class="lit">"It works!"</span>)
   }
 
-}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0/framework/src/play/src/main/scala/play/api/mvc/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
+}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.7.0-M1/framework/src/play/src/main/scala/play/api/mvc/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -610,7 +610,7 @@ useful constants.</p><pre><span class="kw">class</span> MyController @Inject() (
       </a>
     </span>
       <p class="shortcomment cmt">An HTTP cookie.</p><div class="fullcomment"><div class="comment cmt"><p>An HTTP cookie.
-</p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>the cookie name</p></dd><dt class="param">value</dt><dd class="cmt"><p>the cookie value</p></dd><dt class="param">maxAge</dt><dd class="cmt"><p>the cookie expiration date in seconds, <code>None</code> for a transient cookie, or a value less than 0 to expire a cookie now</p></dd><dt class="param">path</dt><dd class="cmt"><p>the cookie path, defaulting to the root path <code>/</code></p></dd><dt class="param">domain</dt><dd class="cmt"><p>the cookie domain</p></dd><dt class="param">secure</dt><dd class="cmt"><p>whether this cookie is secured, sent only for HTTPS requests</p></dd><dt class="param">httpOnly</dt><dd class="cmt"><p>whether this cookie is HTTP only, i.e. not accessible from client-side JavaScript code</p></dd></dl></div>
+</p></div><dl class="paramcmts block"><dt class="param">name</dt><dd class="cmt"><p>the cookie name</p></dd><dt class="param">value</dt><dd class="cmt"><p>the cookie value</p></dd><dt class="param">maxAge</dt><dd class="cmt"><p>the cookie expiration date in seconds, <code>None</code> for a transient cookie, or a value 0 or less to expire a cookie now</p></dd><dt class="param">path</dt><dd class="cmt"><p>the cookie path, defaulting to the root path <code>/</code></p></dd><dt class="param">domain</dt><dd class="cmt"><p>the cookie domain</p></dd><dt class="param">secure</dt><dd class="cmt"><p>whether this cookie is secured, sent only for HTTPS requests</p></dd><dt class="param">httpOnly</dt><dd class="cmt"><p>whether this cookie is HTTP only, i.e. not accessible from client-side JavaScript code</p></dd></dl></div>
     </li><li name="play.api.mvc.CookieBaker" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="CookieBaker[T&lt;:AnyRef]extendsAnyRef"></a>
       <a id="CookieBaker[T&lt;:AnyRef]:CookieBaker[T]"></a>
@@ -1314,18 +1314,18 @@ for example <code>EssentialAction</code>s and <code>WebSocket</code>s.</p><p>The
     </span>
       <p class="shortcomment cmt">Controller components with a <a href="MessagesActionBuilder.html" class="extype" name="play.api.mvc.MessagesActionBuilder">MessagesActionBuilder</a>.</p>
     </li><li name="play.api.mvc.MessagesRequest" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="MessagesRequest[A]extendsWrappedRequest[A]withPreferredMessagesProviderwithMessagesRequestHeader"></a>
-      <a id="MessagesRequest[A]:MessagesRequest[A]"></a>
+      <a id="MessagesRequest[+A]extendsWrappedRequest[A]withPreferredMessagesProviderwithMessagesRequestHeader"></a>
+      <a id="MessagesRequest[+A]:MessagesRequest[A]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a href="MessagesRequest.html"><span class="name">MessagesRequest</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <a href="WrappedRequest.html" class="extype" name="play.api.mvc.WrappedRequest">WrappedRequest</a>[<span class="extype" name="play.api.mvc.MessagesRequest.A">A</span>] with <a href="PreferredMessagesProvider.html" class="extype" name="play.api.mvc.PreferredMessagesProvider">PreferredMessagesProvider</a> with <a href="MessagesRequestHeader.html" class="extype" name="play.api.mvc.MessagesRequestHeader">MessagesRequestHeader</a></span>
+        <a href="MessagesRequest.html"><span class="name">MessagesRequest</span></a><span class="tparams">[<span name="A">+A</span>]</span><span class="result"> extends <a href="WrappedRequest.html" class="extype" name="play.api.mvc.WrappedRequest">WrappedRequest</a>[<span class="extype" name="play.api.mvc.MessagesRequest.A">A</span>] with <a href="PreferredMessagesProvider.html" class="extype" name="play.api.mvc.PreferredMessagesProvider">PreferredMessagesProvider</a> with <a href="MessagesRequestHeader.html" class="extype" name="play.api.mvc.MessagesRequestHeader">MessagesRequestHeader</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.package@MessagesRequest[A]extendsWrappedRequest[A]withPreferredMessagesProviderwithMessagesRequestHeader" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.package@MessagesRequest[+A]extendsWrappedRequest[A]withPreferredMessagesProviderwithMessagesRequestHeader" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -1777,31 +1777,6 @@ traits extending <a href="BaseController.html" class="extype" name="play.api.mvc
                 <span class="name">@deprecated</span>
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Your controller should extend AbstractController, BaseController, or InjectedController instead.</p></dd></dl></div>
-    </li><li name="play.api.mvc.RequestTaggingHandler" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="RequestTaggingHandlerextendsHandler"></a>
-      <a id="RequestTaggingHandler:RequestTaggingHandler"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">trait</span>
-      </span>
-      <span class="symbol">
-        <a href="RequestTaggingHandler.html"><span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use Handler.Stage instead">RequestTaggingHandler</span></a><span class="result"> extends <a href="Handler.html" class="extype" name="play.api.mvc.Handler">Handler</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.package@RequestTaggingHandlerextendsHandler" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">A handler that is able to tag requests.</p><div class="fullcomment"><div class="comment cmt"><p>A handler that is able to tag requests. Usually mixed in to other handlers.</p><p>Instead of using the handler you should use <a href="Handler$$Stage.html" class="extype" name="play.api.mvc.Handler.Stage">Handler.Stage</a>.
-<code>Handler.Stage</code> is a handler improves upon the <code>RequestTaggingHandler</code> in several ways:
-(a) <code>Handler.Stage</code> can be nested to arbitrary depth, (b) it doesn't require
-mixing-in and (c) it allows handlers to be rewritten as well as requests, (d) it
-prevents Play from accessing the real handler until its logic has been run.
-</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use Handler.Stage instead</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -2375,6 +2350,40 @@ prevents Play from accessing the real handler until its logic has been run.
       </a>
     </span>
       <p class="shortcomment cmt">Helper utilities to generate WebSocket results.</p>
+    </li><li name="play.api.mvc.akkahttp" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="akkahttp"></a>
+      <a id="akkahttp:akkahttp"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="akkahttp/package.html"><span class="name">akkahttp</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@akkahttp" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.api.mvc.macros" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="macros"></a>
+      <a id="macros:macros"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="macros/package.html"><span class="name">macros</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.package@macros" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="play.api.mvc.request" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="request"></a>
       <a id="request:request"></a>

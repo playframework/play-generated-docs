@@ -1,7 +1,7 @@
-<!--- Copyright (C) 2009-2017 Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) 2009-2018 Lightbend Inc. <https://www.lightbend.com> -->
 # The Logging API
 
-Using logging in your application can be useful for monitoring, debugging, error tracking, and business intelligence. Play provides an API for logging which is accessed through the [`Logger`](api/java/play/Logger.html) class and uses [Logback](https://logback.qos.ch/) as the default logging engine.
+Using logging in your application can be useful for monitoring, debugging, error tracking, and business intelligence. Play uses [`SLF4J`](https://www.slf4j.org) as a logging facade with [Logback](https://logback.qos.ch/) as the default logging engine.
 
 ## Logging architecture
 
@@ -46,7 +46,7 @@ First import the `Logger` class:
 
 ### The default Logger
 
-The `Logger` class serves as the default logger using the name "application." You can use it to write log request statements:
+You can then use the `Logger` to write log request statements:
 
 @[logging-default-logger](code/javaguide/logging/JavaLogging.java)
 
@@ -69,13 +69,43 @@ Note that the messages have the log level, logger name, message, and stack trace
 
 Although it may be tempting to use the default logger everywhere, it's generally a bad design practice. Creating your own loggers with distinct names allows for flexible configuration, filtering of log output, and pinpointing the source of log messages.
 
-You can create a new logger using the `Logger.of` factory method with a name argument:
+You can create a new logger using the `LoggerFactory` with a name argument:
 
 @[logging-create-logger-name](code/javaguide/logging/JavaLogging.java)
 
 A common strategy for logging application events is to use a distinct logger per class using the class name. The logging API supports this with a factory method that takes a class argument:
 
 @[logging-create-logger-class](code/javaguide/logging/JavaLogging.java)
+
+### Using Markers
+
+The SLF4J API has a concept of markers, which act to enrich logging messages and mark out messages as being of special interest.  Markers are especially useful for triggering and filtering -- for example, [OnMarkerEvaluator](https://logback.qos.ch/manual/appenders.html#OnMarkerEvaluator) can send an email when a marker is seen, or particular flows can be marked out to their own appenders.
+
+Markers can be extremely useful, because they can carry extra contextual information for loggers.  For example, using [Logstash Logback Encoder](https://github.com/logstash/logstash-logback-encoder#loggingevent_custom_event), request information can be encoded into logging statements automatically:
+
+@[logging-log-info-with-request-context](code/javaguide/logging/JavaMarkerController.java)
+
+Note that the `requestMarker` method depends on having an `Http.Context` thread local variable in scope, so if you are using [[asynchronous code|JavaAsync]] you must specify an [`HttpExecutionContext`](api/java/play/libs/concurrent/HttpExecutionContext.html):
+
+@[logging-log-info-with-async-request-context](code/javaguide/logging/JavaMarkerController.java)
+
+Note that markers are also very useful for "tracer bullet" style logging, where you want to log on a specific request without explicitly changing log levels.  For example, you can add a marker only when certain conditions are met:
+
+@[logging-log-trace-with-tracer-controller](code/javaguide/logging/JavaTracerController.java)
+
+And then trigger logging with the following TurboFilter in `logback.xml`:
+
+```xml
+<turboFilter class="ch.qos.logback.classic.turbo.MarkerFilter">
+  <Name>TRACER_FILTER</Name>
+  <Marker>TRACER</Marker>
+  <OnMatch>ACCEPT</OnMatch>
+</turboFilter>
+```
+
+At which point you can dynamically set debug statements in response to input.
+
+For more information about using Markers in logging, see [TurboFilters](https://logback.qos.ch/manual/filters.html#TurboFilter) and [marker based triggering](https://logback.qos.ch/manual/appenders.html#OnMarkerEvaluator) sections in the Logback manual.
 
 ### Logging patterns
 

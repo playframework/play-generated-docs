@@ -52,7 +52,7 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Provides information about a Play Application running inside a Play server.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0/framework/src/play/src/main/scala/play/core/ApplicationProvider.scala" target="_blank">ApplicationProvider.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.7.0-M1/framework/src/play/src/main/scala/play/core/ApplicationProvider.scala" target="_blank">ApplicationProvider.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -111,7 +111,7 @@
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Get the application.</p><div class="fullcomment"><div class="comment cmt"><p>Get the application. In dev mode this lazily loads the application.
+      <p class="shortcomment cmt">Get the application.</p><div class="fullcomment"><div class="comment cmt"><p>Get the application. In dev mode this lazily loads the application.</p><p>NOTE: This should be called once per request. Calling multiple times may result in multiple compilations.
 </p></div></div>
     </li></ol>
             </div>
@@ -209,24 +209,6 @@
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="play.core.ApplicationProvider#current" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="current:Option[play.api.Application]"></a>
-      <a id="current:Option[api.Application]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">current</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="../api/Application.html" class="extype" name="play.api.Application">api.Application</a>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#play.core.ApplicationProvider@current:Option[play.api.Application]" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Get the currently loaded application.</p><div class="fullcomment"><div class="comment cmt"><p>Get the currently loaded application. May be empty in dev mode because of compile failure or before first load.
-</p></div></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -301,23 +283,6 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="play.core.ApplicationProvider#handleWebCommand" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="handleWebCommand(requestHeader:play.api.mvc.RequestHeader):Option[play.api.mvc.Result]"></a>
-      <a id="handleWebCommand(RequestHeader):Option[Result]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">handleWebCommand</span><span class="params">(<span name="requestHeader">requestHeader: <a href="../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#play.core.ApplicationProvider@handleWebCommand(requestHeader:play.api.mvc.RequestHeader):Option[play.api.mvc.Result]" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Handle a request directly, without using the application.</p>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <a id="hashCode():Int"></a>
@@ -511,7 +476,52 @@
 
         
 
-        
+        <div id="values" class="values members">
+              <h3>Deprecated Value Members</h3>
+              <ol><li name="play.core.ApplicationProvider#current" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="current:Option[play.api.Application]"></a>
+      <a id="current:Option[api.Application]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 2.6.13) Use ApplicationProvider.get instead">current</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="../api/Application.html" class="extype" name="play.api.Application">api.Application</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.core.ApplicationProvider@current:Option[play.api.Application]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Get the currently loaded application.</p><div class="fullcomment"><div class="comment cmt"><p>Get the currently loaded application. May be empty in dev mode because of compile failure or before first load.
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.13)</i> Use ApplicationProvider.get instead</p></dd></dl></div>
+    </li><li name="play.core.ApplicationProvider#handleWebCommand" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="handleWebCommand(requestHeader:play.api.mvc.RequestHeader):Option[play.api.mvc.Result]"></a>
+      <a id="handleWebCommand(RequestHeader):Option[Result]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 2.7.0) This method is no longer called; WebCommands are now handled by the DefaultHttpRequestHandler">handleWebCommand</span><span class="params">(<span name="requestHeader">requestHeader: <a href="../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.core.ApplicationProvider@handleWebCommand(requestHeader:play.api.mvc.RequestHeader):Option[play.api.mvc.Result]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Handle a request directly, without using the application.</p><div class="fullcomment"><div class="comment cmt"><p>Handle a request directly, without using the application.
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.7.0)</i> This method is no longer called; WebCommands are now handled by the DefaultHttpRequestHandler</p></dd></dl></div>
+    </li></ol>
+            </div>
         </div>
 
         <div id="inheritedMembers">

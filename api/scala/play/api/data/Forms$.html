@@ -58,7 +58,7 @@
     <span class="lit">"dueDate"</span> -&gt; date(<span class="lit">"yyyy-MM-dd"</span>),
     <span class="lit">"done"</span> -&gt; boolean
   )
-)</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0/framework/src/play/src/main/scala/play/api/data/Forms.scala" target="_blank">Forms.scala</a></dd></dl><div class="toggleContainer block">
+)</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.7.0-M1/framework/src/play/src/main/scala/play/api/data/Forms.scala" target="_blank">Forms.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -1044,7 +1044,7 @@ This mapping will not participate to the binding.
   mapping(
     <span class="lit">"email"</span> -&gt; of[<span class="std">String</span>]
   )(User.apply, User.unapply)
-)</pre></div><dl class="paramcmts block"><dt class="param">apply</dt><dd class="cmt"><p>A function able to create a value of T from a value of A1 (If T is case class you can use its own apply function)</p></dd><dt class="param">unapply</dt><dd class="cmt"><p>A function able to create A1 from a value of T (If T is a case class you can use its own unapply function)</p></dd><dt>returns</dt><dd class="cmt"><p>a mapping for type <code>T</code></p></dd></dl></div>
+)</pre></div><dl class="paramcmts block"><dt class="tparam">R</dt><dd class="cmt"><p>the mapped type</p></dd><dt class="param">apply</dt><dd class="cmt"><p>A function able to create a value of R from a value of A1 (If R is case class you can use its own apply function)</p></dd><dt class="param">unapply</dt><dd class="cmt"><p>A function able to create A1 from a value of R (If R is a case class you can use its own unapply function)</p></dd><dt>returns</dt><dd class="cmt"><p>a mapping for type <code>R</code></p></dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>
@@ -1296,22 +1296,22 @@ field that must not be empty, even if present in the form.</p><p>Example:</p><pr
   )
 )</pre></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>a mapping for a type A1</p></dd></dl></div>
     </li><li name="play.api.data.Forms#sqlDate" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="sqlDate(pattern:String,timeZone:java.util.TimeZone):play.api.data.Mapping[java.sql.Date]"></a>
-      <a id="sqlDate(String,TimeZone):Mapping[Date]"></a>
+      <a id="sqlDate(pattern:String):play.api.data.Mapping[java.sql.Date]"></a>
+      <a id="sqlDate(String):Mapping[Date]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">sqlDate</span><span class="params">(<span name="pattern">pattern: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="timeZone">timeZone: <span class="extype" name="java.util.TimeZone">TimeZone</span> = <span class="symbol">java.util.TimeZone.getDefault</span></span>)</span><span class="result">: <a href="Mapping.html" class="extype" name="play.api.data.Mapping">Mapping</a>[<span class="extype" name="java.sql.Date">Date</span>]</span>
+        <span class="name">sqlDate</span><span class="params">(<span name="pattern">pattern: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="Mapping.html" class="extype" name="play.api.data.Mapping">Mapping</a>[<span class="extype" name="java.sql.Date">Date</span>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.data.Forms$@sqlDate(pattern:String,timeZone:java.util.TimeZone):play.api.data.Mapping[java.sql.Date]" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.data.Forms$@sqlDate(pattern:String):play.api.data.Mapping[java.sql.Date]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Constructs a simple mapping for a date field (mapped as <code>sql.Date type</code>).</p><div class="fullcomment"><div class="comment cmt"><p>Constructs a simple mapping for a date field (mapped as <code>sql.Date type</code>).</p><p>For example:</p><pre>Form(<span class="lit">"birthdate"</span> -&gt; sqlDate(<span class="lit">"dd-MM-yyyy"</span>))</pre></div><dl class="paramcmts block"><dt class="param">pattern</dt><dd class="cmt"><p>the date pattern, as defined in <code>java.text.SimpleDateFormat</code></p></dd><dt class="param">timeZone</dt><dd class="cmt"><p>the <code>java.util.TimeZone</code> to use for parsing and formatting</p></dd></dl></div>
+      <p class="shortcomment cmt">Constructs a simple mapping for a date field (mapped as <code>sql.Date type</code>).</p><div class="fullcomment"><div class="comment cmt"><p>Constructs a simple mapping for a date field (mapped as <code>sql.Date type</code>).</p><p>For example:</p><pre>Form(<span class="lit">"birthdate"</span> -&gt; sqlDate(<span class="lit">"dd-MM-yyyy"</span>))</pre></div><dl class="paramcmts block"><dt class="param">pattern</dt><dd class="cmt"><p>the date pattern, as defined in <code>java.text.SimpleDateFormat</code></p></dd></dl></div>
     </li><li name="play.api.data.Forms#sqlDate" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="sqlDate:play.api.data.Mapping[java.sql.Date]"></a>
       <a id="sqlDate:Mapping[Date]"></a>
@@ -1329,6 +1329,40 @@ field that must not be empty, even if present in the form.</p><p>Example:</p><pr
       </a>
     </span>
       <p class="shortcomment cmt">Constructs a simple mapping for a date field (mapped as <code>sql.Date type</code>).</p><div class="fullcomment"><div class="comment cmt"><p>Constructs a simple mapping for a date field (mapped as <code>sql.Date type</code>).</p><p>For example:</p><pre>Form(<span class="lit">"birthdate"</span> -&gt; sqlDate)</pre></div></div>
+    </li><li name="play.api.data.Forms#sqlTimestamp" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="sqlTimestamp(pattern:String,timeZone:java.util.TimeZone):play.api.data.Mapping[java.sql.Timestamp]"></a>
+      <a id="sqlTimestamp(String,TimeZone):Mapping[Timestamp]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sqlTimestamp</span><span class="params">(<span name="pattern">pattern: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="timeZone">timeZone: <span class="extype" name="java.util.TimeZone">TimeZone</span> = <span class="symbol">java.util.TimeZone.getDefault</span></span>)</span><span class="result">: <a href="Mapping.html" class="extype" name="play.api.data.Mapping">Mapping</a>[<span class="extype" name="java.sql.Timestamp">Timestamp</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.data.Forms$@sqlTimestamp(pattern:String,timeZone:java.util.TimeZone):play.api.data.Mapping[java.sql.Timestamp]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Constructs a simple mapping for a Timestamp field (mapped as <code>java.sql.Timestamp type</code>).</p><div class="fullcomment"><div class="comment cmt"><p>Constructs a simple mapping for a Timestamp field (mapped as <code>java.sql.Timestamp type</code>).</p><p>For example:</p><pre>Form(<span class="lit">"birthdate"</span> -&gt; sqlTimestamp(<span class="lit">"dd-MM-yyyy hh:mm:ss"</span>))</pre></div><dl class="paramcmts block"><dt class="param">pattern</dt><dd class="cmt"><p>the date pattern, as defined in <code>java.text.SimpleDateFormat</code></p></dd><dt class="param">timeZone</dt><dd class="cmt"><p>the <code>java.util.TimeZone</code> to use for parsing and formatting</p></dd></dl></div>
+    </li><li name="play.api.data.Forms#sqlTimestamp" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="sqlTimestamp:play.api.data.Mapping[java.sql.Timestamp]"></a>
+      <a id="sqlTimestamp:Mapping[Timestamp]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sqlTimestamp</span><span class="result">: <a href="Mapping.html" class="extype" name="play.api.data.Mapping">Mapping</a>[<span class="extype" name="java.sql.Timestamp">Timestamp</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.data.Forms$@sqlTimestamp:play.api.data.Mapping[java.sql.Timestamp]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Constructs a simple mapping for a timestamp field (mapped as <code>java.sql.Timestamp type</code>).</p><div class="fullcomment"><div class="comment cmt"><p>Constructs a simple mapping for a timestamp field (mapped as <code>java.sql.Timestamp type</code>).</p><p>For example:</p><pre>Form(<span class="lit">"birthdate"</span> -&gt; sqlTimestamp)</pre></div></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -1850,7 +1884,30 @@ field that must not be empty, even if present in the form.</p><p>Example:</p><pr
 
         
 
-        
+        <div id="values" class="values members">
+              <h3>Deprecated Value Members</h3>
+              <ol><li name="play.api.data.Forms#sqlDate" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="sqlDate(pattern:String,timeZone:java.util.TimeZone):play.api.data.Mapping[java.sql.Date]"></a>
+      <a id="sqlDate(String,TimeZone):Mapping[Date]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 2.6.2) Use sqlDate(pattern). SQL dates do not have time zones.">sqlDate</span><span class="params">(<span name="pattern">pattern: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="timeZone">timeZone: <span class="extype" name="java.util.TimeZone">TimeZone</span></span>)</span><span class="result">: <a href="Mapping.html" class="extype" name="play.api.data.Mapping">Mapping</a>[<span class="extype" name="java.sql.Date">Date</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.data.Forms$@sqlDate(pattern:String,timeZone:java.util.TimeZone):play.api.data.Mapping[java.sql.Date]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.2)</i> Use sqlDate(pattern). SQL dates do not have time zones.</p></dd></dl></div>
+    </li></ol>
+            </div>
         </div>
 
         <div id="inheritedMembers">

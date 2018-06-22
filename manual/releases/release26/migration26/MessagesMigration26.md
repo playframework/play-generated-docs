@@ -235,7 +235,7 @@ Because `MessagesRequest` is a `MessagesProvider`, you only have to define the r
 
 Note that because the body of the `MessageRequest` is not relevant to the template, we can use `MessagesRequestHeader` here instead of `MessageRequest[_]`.
 
-Please see [[passing messages to form helpers|ScalaForms#passing-messages-to-form-helpers]] for more details.
+Please see [[passing messages to form helpers|ScalaForms#Passing-MessagesProvider-to-Form-Helpers]] for more details.
 
 ### DefaultMessagesApi component
 
@@ -306,7 +306,7 @@ class MessagesSpec extends PlaySpecification {
 
 ```
 
-If you need to customize the configuration, it's better to add configuration values into the GuiceApplicationBuilder rather than use the DefaultMessagesApiProvider directly.
+If you need to customize the configuration, it's better to add configuration values into the [`GuiceApplicationBuilder`](api/scala/play/api/inject/guice/GuiceApplicationBuilder.html) rather than use the [`DefaultMessagesApiProvider`](api/scala/play/api/i18n/DefaultMessagesApiProvider.html) directly.
 
 ### Deprecated Methods
 

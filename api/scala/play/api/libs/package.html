@@ -48,7 +48,7 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Contains various APIs that are useful while developing web applications.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0/framework/src/play/src/main/scala/play/api/libs/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.7.0-M1/framework/src/play/src/main/scala/play/api/libs/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -108,7 +108,7 @@
       <p class="shortcomment cmt">JSONP helper.</p><div class="fullcomment"><div class="comment cmt"><p>JSONP helper.</p><p>Example of use, provided the following route definition:</p><pre>GET  /my-service       Application.myService(callback: <span class="std">String</span>)</pre><p>The following action definition:</p><pre><span class="kw">def</span> myService(callback: <span class="std">String</span>) = Action {
   <span class="kw">val</span> json = ...
   Ok(Jsonp(callback, json))
-}</pre><p>And the following request:</p><pre>GET /my-service?callback=foo</pre><p>The response will have content type “text/javascript” and will look like the following:</p><pre>foo({...});</pre><p>Another example, showing how to serve either JSON or JSONP from the same action, according to the presence of
+}</pre><p>And the following request:</p><pre>GET /my-service?callback=foo</pre><p>The response will have content type “application/javascript” and will look like the following:</p><pre>foo({...});</pre><p>Another example, showing how to serve either JSON or JSONP from the same action, according to the presence of
 a “callback” parameter in the query string:</p><pre><span class="kw">def</span> myService = Action { <span class="kw">implicit</span> request <span class="kw">=&gt;</span>
   <span class="kw">val</span> json = ...
   request.queryString.get(<span class="lit">"callback"</span>).flatMap(_.headOption) <span class="kw">match</span> {

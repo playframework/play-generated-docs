@@ -1,8 +1,16 @@
-<!--- Copyright (C) 2009-2017 Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) 2009-2018 Lightbend Inc. <https://www.lightbend.com> -->
 # Handling form submission
 
 Before you start with Play forms, read the documentation on the [[Play enhancer|PlayEnhancer]]. The Play enhancer generates accessors for fields in Java classes for you, so that you don't have to generate them yourself. You may decide to use this as a convenience. All the examples below show manually writing accessors for your classes.
 
+## Enabling/Disabling the forms module
+
+By default, Play includes the Java forms module (`play-java-forms`) when enabling the `PlayJava` SBT plugin, so there is nothing to enable if you already have `enablePlugins(PlayJava)` on your project.
+
+The forms module is also available in `PlayImport` as `javaForms`, which can be used with `libraryDependencies += javaForms` in your `build.sbt`.
+
+> **Note:** If you are not using forms, you can remove the forms dependency by using the `PlayMinimalJava` SBT plugin instead of `PlayJava`. This also allows you to remove several transitive dependencies only used by the forms module, including several Spring modules and the Hibernate validator.
+    
 ## Defining a form
 
 The `play.data` package contains several helpers to handle HTTP form data submission and validation. The easiest way to handle a form submission is to define a `play.data.Form` that wraps an existing class:
@@ -29,7 +37,7 @@ You can define additional constraints that will be checked during the binding ph
 
 @[user](code/javaguide/forms/u2/User.java)
 
-> **Tip:** The `play.data.validation.Constraints` class contains several built-in validation annotations.
+> **Tip:** The `play.data.validation.Constraints` class contains several built-in validation annotations. All of these constraint annotations are defined as `@Repeatable`. This lets you, for example, reuse the same annotation on the same element several times but each time with different `groups`. For some constraints however it makes sense to let them repeat itself anyway, like `@ValidateWith` for example.
 
 In the [Advanced validation](#advanced-validation) section further below you will learn how to handle concerns like cross field validation, partial form validation or how to make use of injected components (e.g. to access a database) during validation.
 
@@ -47,7 +55,7 @@ Errors for a particular field can be rendered in the following manner with [`err
 
 @[field-errors](code/javaguide/forms/view.scala.html)
 
-Note that `error.format` takes `messages()` as an argument -- this is an [`play.18n.Messages`](api/java/play/i18n/Messages.html) instance defined in [[JavaI18n]].
+Note that `error.format` takes `messages()` as an argument -- this is an [`play.18n.Messages`](api/java/play/i18n/Messages.html) instance defined in [[JavaI18N]].
 
 ## Filling a form with initial default values
 
@@ -57,9 +65,9 @@ Sometimes you’ll want to fill a form with existing values, typically for editi
 
 > **Tip:** `Form` objects are immutable - calls to methods like `bind()` and `fill()` will return a new object filled with the new data.
 
-## Handling a form that is not related to a Model
+## Handling a form with dynamic fields
 
-You can use a `DynamicForm` if you need to retrieve data from an html form that is not related to a `Model`:
+You can use a `DynamicForm` if you need to retrieve data from an html form with dynamic fields:
 
 @[dynamic](code/javaguide/forms/JavaForms.java)
 

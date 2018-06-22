@@ -1,4 +1,4 @@
-<!--- Copyright (C) 2009-2017 Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) 2009-2018 Lightbend Inc. <https://www.lightbend.com> -->
 # Calling REST APIs with Play WS
 
 Sometimes we would like to call other HTTP services from within a Play application. Play supports this via its [WS library](api/java/play/libs/ws/package-summary.html), which provides a way to make asynchronous HTTP calls.
@@ -34,8 +34,6 @@ Now any controller or component that wants to use WS will have to add the follow
 
 @[ws-controller](code/javaguide/ws/MyClient.java)
 
-> If you are calling out to an [unreliable network](https://queue.acm.org/detail.cfm?id=2655736) or doing any blocking work, including any kind of DNS work such as calling [`java.util.URL.equals()`](https://docs.oracle.com/javase/8/docs/api/java/net/URL.html#equals-java.lang.Object-), then you should use a custom execution context as described in [[ThreadPools]].  You should size the pool to leave a safety margin large enough to account for futures, and consider using [`play.libs.concurrent.Futures.timeout`](api/java/play/libs/concurrent/Futures.html) and a [Failsafe Circuit Breaker](https://github.com/jhalterman/failsafe#circuit-breakers).
-
 To build an HTTP request, you start with `ws.url()` to specify the URL.
 
 @[ws-holder](code/javaguide/ws/JavaWS.java)
@@ -51,6 +49,10 @@ You end by calling a method corresponding to the HTTP method you want to use.  T
 This returns a [`CompletionStage<WSResponse>`](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletionStage.html) where the [`WSResponse`](api/java/play/libs/ws/WSResponse.html) contains the data returned from the server.
 
 > Java 1.8 uses [`CompletionStage`](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletionStage.html) to manage asynchronous code, and Java WS API relies heavily on composing `CompletionStage` together with different methods.  If you have been using an earlier version of Play that used `F.Promise`, then the [CompletionStage section of the migration guide](https://www.playframework.com/documentation/2.5.x/JavaMigration25#Replaced-F.Promise-with-Java-8s-CompletionStage) will be very helpful.
+
+> If you are doing any blocking work, including any kind of DNS work such as calling [`java.util.URL.equals()`](https://docs.oracle.com/javase/8/docs/api/java/net/URL.html#equals-java.lang.Object-), then you should use a custom execution context as described in [[ThreadPools]], preferably through a [`CustomExecutionContext`](api/java/play/libs/concurrent/CustomExecutionContext.html).  You should size the pool to leave a safety margin large enough to account for failures. 
+
+> If you are calling out to an [unreliable network](https://queue.acm.org/detail.cfm?id=2655736), consider using [`Futures.timeout`](api/java/play/libs/concurrent/Futures.html) and a  [circuit breaker](https://martinfowler.com/bliki/CircuitBreaker.html) like [Failsafe](https://github.com/jhalterman/failsafe#circuit-breakers).
 
 ### Request with authentication
 
@@ -128,7 +130,7 @@ The easiest way to post XML data is to use Play's XML support, using [`play.libs
 
 ### Submitting Streaming data
 
-It's also possible to stream data in the request body using [Akka Streams](http://doc.akka.io/docs/akka/current/java/stream/stream-flows-and-basics.html).
+It's also possible to stream data in the request body using [Akka Streams](https://doc.akka.io/docs/akka/current/stream/stream-flows-and-basics.html?language=java).
 
 Here is an example showing how you could stream a large image to a different endpoint for further processing:
 
@@ -138,9 +140,23 @@ The `largeImage` in the code snippet above is a `Source<ByteString, ?>`.
 
 ### Request Filters
 
-You can do additional processing on a [`WSRequest`](api/java/play/libs/ws/WSRequest.html) by adding a request filter.  A request filter is added by extending the `play.libs.ws.WSRequestFilter` trait, and then adding it to the request with [`request.withRequestFilter(filter)`](api/java/play/libs/ws/WSRequest.html#setRequestFilter-play.libs.ws.WSRequestFilter-).
+You can do additional processing on a [`WSRequest`](api/java/play/libs/ws/WSRequest.html) by adding a request filter.  A request filter is added by extending the `play.libs.ws.WSRequestFilter` interface, and then adding it to the request with [`request.setRequestFilter(filter)`](api/java/play/libs/ws/WSRequest.html#setRequestFilter-play.libs.ws.WSRequestFilter-).
 
 @[ws-request-filter](code/javaguide/ws/JavaWS.java)
+
+A sample request filter that logs the request in [cURL](https://curl.haxx.se/) format to SLF4J has been added in `play.libs.ws.ahc.AhcCurlRequestLogger`.
+
+@[ws-curl-logger-filter](code/javaguide/ws/JavaWS.java)
+
+will output:
+
+```
+curl \
+  --verbose \
+  --request GET \
+  --header 'Header-Key: Header value' \
+  'https://www.playframework.com'
+```
 
 ## Processing the Response
 
@@ -148,13 +164,13 @@ Working with the [`WSResponse`](api/java/play/libs/ws/WSResponse.html) is done b
 
 ### Processing a response as JSON
 
-You can process the response as a `JsonNode` by calling `response.asJson()`.
+You can process the response as a `JsonNode` by calling `r.getBody(json())`, using the default method from `play.libs.ws.WSBodyReadables.json()`.
 
 @[ws-response-json](code/javaguide/ws/JavaWS.java)
 
 ### Processing a response as XML
 
-Similarly, you can process the response as XML by calling `response.asXml()`.
+Similarly, you can process the response as XML by calling `r.getBody(xml())`, using the default method from `play.libs.ws.WSBodyReadables.xml()`.
 
 @[ws-response-xml](code/javaguide/ws/JavaWS.java)
 
@@ -162,7 +178,7 @@ Similarly, you can process the response as XML by calling `response.asXml()`.
 
 Calling `get()`, `post()` or `execute()` will cause the body of the response to be loaded into memory before the response is made available.  When you are downloading a large, multi-gigabyte file, this may result in unwelcome garbage collection or even out of memory errors.
 
-You can consume the response's body incrementally by using an [Akka Streams](http://doc.akka.io/docs/akka/current/java/stream/stream-flows-and-basics.html) `Sink`.  The [`stream()`](api/java/play/libs/ws/WSRequest.html#stream--) method on `WSRequest` returns a `CompletionStage<WSResponse>`, where the `WSResponse` contains a [`getBodyAsStream()`](api/java/play/libs/ws/WSResponse.html#getBodyAsStream--) method that provides a `Source<ByteString, ?>`.
+You can consume the response's body incrementally by using an [Akka Streams](https://doc.akka.io/docs/akka/current/stream/stream-flows-and-basics.html?language=java) `Sink`.  The [`stream()`](api/java/play/libs/ws/WSRequest.html#stream--) method on `WSRequest` returns a `CompletionStage<WSResponse>`, where the `WSResponse` contains a [`getBodyAsStream()`](api/java/play/libs/ws/WSResponse.html#getBodyAsStream--) method that provides a `Source<ByteString, ?>`.
 
 > **Note**: In 2.5.x, a `StreamedResponse` was returned in response to a [`request.stream()`](api/java/play/libs/ws/WSRequest.html#stream--) call.  In 2.6.x, a standard [`WSResponse`](api/java/play/libs/ws/WSResponse.html) is returned, and the `getBodyAsSource()` method should be used to return the Source.
 

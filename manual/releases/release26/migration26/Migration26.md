@@ -1,4 +1,4 @@
-<!--- Copyright (C) 2009-2017 Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) 2009-2018 Lightbend Inc. <https://www.lightbend.com> -->
 # Play 2.6 Migration Guide
 
 This is a guide for migrating from Play 2.5 to Play 2.6. If you need to migrate from an earlier version of Play then you must first follow the [[Play 2.5 Migration Guide|Migration25]].
@@ -9,7 +9,7 @@ The following steps need to be taken to update your sbt build before you can loa
 
 ### Play upgrade
 
-Update the Play version number in project/plugins.sbt to upgrade Play:
+Update the Play version number in `project/plugins.sbt` to upgrade Play:
 
 ```scala
 addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.6.x")
@@ -19,9 +19,11 @@ Where the "x" in `2.6.x` is the minor version of Play you want to use, for insta
 
 ### sbt upgrade to 0.13.15
 
-Although Play 2.6 will still work with sbt 0.13.11, we recommend upgrading to the latest sbt version, 0.13.15.  The 0.13.15 release of sbt has a number of [improvements and bug fixes](http://www.scala-sbt.org/0.13/docs/sbt-0.13-Tech-Previews.html#sbt+0.13.15) (see also the changes in [sbt 0.13.13](http://www.scala-sbt.org/0.13/docs/sbt-0.13-Tech-Previews.html#sbt+0.13.13)).
+Play 2.6 requires upgrading to at least sbt 0.13.15. The 0.13.15 release of sbt has a number of [improvements and bug fixes](https://www.scala-sbt.org/0.13/docs/sbt-0.13-Tech-Previews.html#sbt+0.13.15) (see also the changes in [sbt 0.13.13](https://www.scala-sbt.org/0.13/docs/sbt-0.13-Tech-Previews.html#sbt+0.13.13)). 
 
-Update your `project/build.properties` so that it reads:
+sbt 1.x is supported beginning with Play 2.6.6. If you are using other sbt plugins, you may need to check if there is a newer version compatible with sbt 1.x
+
+To update, change your `project/build.properties` so that it reads:
 
 ```
 sbt.version=0.13.15
@@ -51,7 +53,7 @@ Play JSON has been moved to a separate library hosted at https://github.com/play
 libraryDependencies += "com.typesafe.play" %% "play-json" % "2.6.0"
 ```
 
-Also, play-json has a separate release cycle from the core Play library, so the version no longer is in sync with the Play version.
+Also, play-json has a separate release cycle from the core Play library, so the version is no longer in sync with the Play version.
 
 ### Play Iteratees moved to separate project
 
@@ -69,25 +71,25 @@ libraryDependencies += "com.typesafe.play" %% "play-iteratees-reactive-streams" 
 
 > **Note**: The helper class `play.api.libs.streams.Streams` was moved to `play-iteratees-reactive-streams` and now is called `play.api.libs.iteratee.streams.IterateeStreams`. So you may need to add the Iteratees dependencies and also use the new class where necessary.
 
-Finally, Play Iteratees has a separate versioning scheme, so the version no longer is in sync with the Play version.
+Finally, Play Iteratees has a separate versioning scheme, so the version is no longer in sync with the Play version.
 
 ## Akka HTTP as the default server engine
 
-Play now uses the [Akka-HTTP](http://doc.akka.io/docs/akka-http/current/scala.html) server engine as the default backend. If you need to change it back to Netty for some reason (for example, if you are using Netty's [native transports](http://netty.io/wiki/native-transports.html)), see how to do that in [[Netty Server|NettyServer]] documentation.
+Play now uses the [Akka-HTTP](https://doc.akka.io/docs/akka-http/current/?language=scala) server engine as the default backend. If you need to change it back to Netty for some reason (for example, if you are using Netty's [native transports](https://netty.io/wiki/native-transports.html)), see how to do that in [[Netty Server|NettyServer]] documentation.
 
 You can read more at [[Akka HTTP Server Backend|AkkaHttpServer]].
 
 ### Akka HTTP server timeouts
 
-Play 2.5.x does not have a request timeout configuration for [[Netty Server|NettyServer]], which was the default server backend. But Akka HTTP has timeouts for both idle connections and requests (see more details in [[Akka HTTP Settings|SettingsAkkaHttp]] documentation). [Akka HTTP docs](http://doc.akka.io/docs/akka-http/10.0.7/scala/http/common/timeouts.html#akka-http-timeouts) states that:
+Play 2.5.x does not have a request timeout configuration for [[Netty Server|NettyServer]], which was the default server backend. But Akka HTTP has timeouts for both idle connections and requests (see more details in [[Akka HTTP Settings|SettingsAkkaHttp]] documentation). [Akka HTTP docs](https://doc.akka.io/docs/akka-http/current/common/timeouts.html?language=scala#akka-http-timeouts) states that:
 
 > Akka HTTP comes with a variety of built-in timeout mechanisms to protect your servers from malicious attacks or programming mistakes.
 
-And you can see the default values for `akka.http.server.idle-timeout`, `akka.http.server.request-timeout` and `akka.http.server.bind-timeout` [here](http://doc.akka.io/docs/akka-http/current/scala/http/configuration.html). Play has [[its own configurations to define timeouts|SettingsAkkaHttp]], so if you start to see a number of `503 Service Unavailable`, you can change the configurations to values that are more reasonable to your application, for example:
+And you can see the default values for `akka.http.server.idle-timeout`, `akka.http.server.request-timeout` and `akka.http.server.bind-timeout` [here](https://doc.akka.io/docs/akka-http/current/configuration.html?language=scala). Play has [[its own configurations to define timeouts|SettingsAkkaHttp]], so if you start to see a number of `503 Service Unavailable`, you can change the configurations to values that are more reasonable to your application, for example:
 
 ```
 play.server.http.idleTimeout = 60s
-play.server.requestTimeout = 40s
+play.server.akka.requestTimeout = 40s
 ```
 
 ## Scala `Mode` changes
@@ -128,10 +130,6 @@ Previously, the default Scala `Writeable[JsValue]` allowed you to define an impl
 Now, the default `Writeable[JsValue]` takes no implicit parameters and always writes to `UTF-8`. This covers the majority of cases, since most users want to use UTF-8 for JSON. It also allows us to easily use more efficient built-in methods for writing JSON to a byte array.
 
 If you need the old behavior back, you can define a `Writeable` with an arbitrary codec using `play.api.http.Writeable.writeableOf_JsValue(codec, contentType)` for your desired Codec and Content-Type.
-
-## Scala ActionBuilder and BodyParser changes
-
-The Scala `ActionBuilder` trait has been modified to specify the type of the body as a type parameter, and add an abstract `parser` member as the default body parsers. You will need to modify your ActionBuilders and pass the body parser directly.
 
 ## Scala Controller changes
 
@@ -205,42 +203,6 @@ The Scala [`ActionBuilder`](api/scala/play/api/mvc/ActionBuilder.html) trait has
 
 The [`Action`](api/scala/play/api/mvc/Action$.html) global object and [`BodyParsers#parse`](api/scala/play/api/mvc/BodyParsers.html#parse:play.api.mvc.PlayBodyParsers) are now deprecated. They are replaced by injectable traits, [`DefaultActionBuilder`](api/scala/play/api/mvc/DefaultActionBuilder.html) and [`PlayBodyParsers`](api/scala/play/api/mvc/PlayBodyParsers.html) respectively. If you are inside a controller, they are automatically provided by the new [`BaseController`](api/scala/play/api/mvc/BaseController.html) trait (see [the controller changes](#Scala-Controller-changes) above).
 
-## Scala `Mode` changes
-
-Scala [`Mode`](api/scala/play/api/Mode.html) was refactored from an Enumeration to a hierarchy of case objects. Most of the Scala code won't change because of this refactoring. But, if you are accessing the Scala `Mode` values in your Java code, you will need to change it from:
-
-```java
-play.api.Mode scalaMode = play.api.Mode.Test();
-```
-
-Must be rewritten to:
-
-```java
-play.api.Mode scalaMode = play.Mode.TEST.asScala();
-```
-
-It is also easier to convert between Java and Scala modes:
-
-```java
-play.api.Mode scalaMode = play.Mode.DEV.asScala();
-```
-
-Or in your Scala code:
-
-```scala
-play.Mode javaMode = play.api.Mode.Dev.asJava
-```
-
-Also, `play.api.Mode.Mode` is now deprecated and you should use [`play.api.Mode`](api/scala/play/api/Mode.html) instead.
-
-## `Writeable[JsValue]` changes
-
-Previously, the default Scala `Writeable[JsValue]` allowed you to define an implicit `Codec`, which would allow you to write using a different charset. This could be a problem since `application/json` does not act like text-based content types. It only allows Unicode charsets (`UTF-8`, `UTF-16` and `UTF-32`) and does not define a `charset` parameter like many text-based content types.
-
-Now, the default `Writeable[JsValue]` takes no implicit parameters and always writes to `UTF-8`. This covers the majority of cases, since most users want to use UTF-8 for JSON. It also allows us to easily use more efficient built-in methods for writing JSON to a byte array.
-
-If you need the old behavior back, you can define a `Writeable` with an arbitrary codec using `play.api.http.Writeable.writeableOf_JsValue(codec, contentType)` for your desired Codec and Content-Type.
-
 ## Cookies
 
 For Java users, we now recommend using [`play.mvc.Http.Cookie.builder`](api/java/play/mvc/Http.Cookie.html#builder-java.lang.String-java.lang.String-) to create new cookies, for example:
@@ -258,7 +220,7 @@ This is more readable than a plain constructor call, and will be source-compatib
 
 ### SameSite attribute, enabled for session and flash
 
-Cookies now can have an additional [`SameSite` attribute](http://httpwg.org/http-extensions/draft-ietf-httpbis-cookie-same-site.html), which can be used to prevent CSRF. There are three possible states:
+Cookies now can have an additional [`SameSite` attribute](https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site-00), which can be used to prevent CSRF. There are three possible states:
 
  - No `SameSite`, meaning cookies will be sent for all requests to that domain.
  - `SameSite=Strict`, meaning the cookie will only be sent for same-site requests (coming from another page on the site) not cross-site requests
@@ -271,7 +233,7 @@ play.http.session.sameSite = null // no same-site for session
 play.http.flash.sameSite = "strict" // strict same-site for flash
 ```
 
-> **Note**: this feature is currently [not supported by many browsers](http://caniuse.com/#feat=same-site-cookie-attribute), so you should not rely on it. Chrome and Opera are the only major browsers to support SameSite right now.
+> **Note**: this feature is currently [not supported by many browsers](https://caniuse.com/#feat=same-site-cookie-attribute), so you should not rely on it. Chrome and Opera are the only major browsers to support SameSite right now.
 
 ### __Host and __Secure prefixes
 
@@ -311,8 +273,8 @@ Then in routes you can do:
 
 ```
 # prefix must match `play.assets.urlPrefix`
-/assets/*file           controllers.Assets.at(file)
-/versionedAssets/*file  controllers.Assets.versioned(file)
+GET /assets/*file           controllers.Assets.at(file)
+GET /versionedAssets/*file  controllers.Assets.versioned(file)
 ```
 
 You no longer need to provide an assets path at the start of the argument list, since that's now read from configuration.
@@ -329,9 +291,9 @@ You can still continue to use reverse routes with `Assets.versioned`, but some g
 
 ## Form changes
 
-Starting with Play 2.6, query string parameters will not be bound to a form instance anymore when using [`bindFromRequest()`](api/scala/play/api/data/Form.html#bindFromRequest\()\(implicitrequest:play.api.mvc.Request[_]):play.api.data.Form[T]) in combination with `POST`, `PUT` or `PATCH` requests.
+Starting with Play 2.6, query string parameters will not be bound to a form instance anymore when using [`bindFromRequest()`](api/scala/play/api/data/Form.html#bindFromRequest\(\)\(implicitrequest:play.api.mvc.Request[_]\):play.api.data.Form[T]) in combination with `POST`, `PUT` or `PATCH` requests.
 
-Static methods which where already deprecated in 2.5 (e.g. DynamicForm.form()) where removed in this release. Refer to the [[Play 2.5 Migration Guide|Migration25]] for details on how to migrate, in case you still use them.
+Static methods which where already deprecated in 2.5 (e.g. `DynamicForm.form()`) where removed in this release. Refer to the [[Play 2.5 Migration Guide|Migration25]] for details on how to migrate, in case you still use them.
 
 ### Java Form Changes
 
@@ -439,7 +401,7 @@ The Crypto API has removed the deprecated classes `play.api.libs.Crypto`, `play.
 
 ### `Akka` deprecated methods removed
 
-The deprecated static methods `play.libs.Akka.system` and `play.api.libs.concurrent.Akka.system` were removed.  Use dependency injection to get an instance of `ActorSystem` and access the actor system.
+The deprecated static methods `play.libs.Akka.system` and `play.api.libs.concurrent.Akka.system` were removed.  Use dependency injection to get an instance of `ActorSystem` and access to the actor system.
 
 For Scala:
 
@@ -463,7 +425,7 @@ public class MyComponent {
 }
 ```
 
-Also, Play 2.6.x now uses the Akka 2.5.x release series. Read Akka [migration guide from 2.4.x to 2.5.x](http://doc.akka.io/docs/akka/2.5/project/migration-guide-2.4.x-2.5.x.html) to see how to adapt your own code if necessary.
+Also, Play 2.6.x now uses the Akka 2.5.x release series. Read Akka [migration guide from 2.4.x to 2.5.x](https://doc.akka.io/docs/akka/current/project/migration-guide-2.4.x-2.5.x.html?language=scala) to see how to adapt your own code if necessary.
 
 ### Removed Yaml API
 
@@ -556,14 +518,14 @@ import play.api.data.JodaForms._
 If you need Joda support in play-json, you can add the following dependency:
 
 ```scala
-libraryDependencies += "com.typesafe.play" % "play-json-joda" % playJsonVersion
+libraryDependencies += "com.typesafe.play" %% "play-json-joda" % playJsonVersion
 ```
 
 where `playJsonVersion` is the play-json version you wish to use. Play 2.6.x should be compatible with play-json 2.6.x. Note that play-json is now a separate project (described later).
 
 ```scala
-import play.api.data.JodaWrites._
-import play.api.data.JodaReads._
+import play.api.libs.json.JodaWrites._
+import play.api.libs.json.JodaReads._
 ```
 
 ### Joda-Convert removal
@@ -694,11 +656,11 @@ object Attrs {
 
 ### Calling `FakeRequest.withCookies` no longer updates the `Cookies` header
 
-Request cookies are now stored in a request attribute. Previously they were stored in the request's [`Cookie`](api/scala/play/api/mvc/Cookie.html header `String`. This required encoding and decoding the cookie to the header whenever the cookie changed.
+Request cookies are now stored in a request attribute. Previously they were stored in the request's [`Cookie`](api/scala/play/api/mvc/Cookie.html) header `String`. This required encoding and decoding the cookie to the header whenever the cookie changed.
 
-Now that cookies are stored in request attributes updating the cookie will change the new cookie attribute but not the [`Cookie`](api/scala/play/api/mvc/Cookie.html HTTP header. This will only affect your tests if you're relying on the fact that calling `withCookies` will update the header.
+Now that cookies are stored in request attributes updating the cookie will change the new cookie attribute but not the [`Cookie`](api/scala/play/api/mvc/Cookie.html) HTTP header. This will only affect your tests if you're relying on the fact that calling `withCookies` will update the header.
 
-If you still need the old behavior you can still use [`]Cookies.encodeCookieHeader`](api/scala/play/api/mvc/Cookies$.html#encodeCookieHeader\(cookies:Seq[play.api.mvc.Cookie]):String) to convert the [`Cookie`](api/scala/play/api/mvc/Cookie.html) objects into an HTTP header then store the header with `FakeRequest.withHeaders`.
+If you still need the old behavior you can still use [`Cookies.encodeCookieHeader`](api/scala/play/api/mvc/Cookies$.html#encodeCookieHeader\(cookies:Seq[play.api.mvc.Cookie]\):String) to convert the [`Cookie`](api/scala/play/api/mvc/Cookie.html) objects into an HTTP header then store the header with `FakeRequest.withHeaders`.
 
 ### `play.api.mvc.Security.username` (Scala API), `session.username` changes
 
@@ -709,8 +671,8 @@ You can read the username session key from configuration yourself using `configu
 If you're using the `Authenticated(String => EssentialAction)` method, you can easily create your own action to do something similar:
 
 ```scala
-  def AuthenticatedWithUsername(action: String => EssentialAction) =
-    WithAuthentication[String](_.session.get(UsernameKey))(action)
+def AuthenticatedWithUsername(action: String => EssentialAction) =
+  WithAuthentication[String](_.session.get(UsernameKey))(action)
 ```
 
 where `UsernameKey` represents the session key you want to use for the username.
@@ -784,7 +746,7 @@ class MyComponentsFromContext(context: ApplicationLoader.Context)
 
 However, there are some good reasons why you may not want to import an execution context even in the general case.  In the general case, the application's execution context is good for rendering actions, and executing CPU-bound activities that do not involve blocking API calls or I/O activity.  If you are calling out to a database, or making network calls, then you may want to define your own custom execution context.
 
-The recommended way to create a custom execution context is through [`CustomExecutionContext`](api/scala/play/api/libs/concurrent/CustomExecutionContext.html), which uses the Akka dispatcher system ([java](http://doc.akka.io/docs/akka/2.5/java/dispatchers.html) / [scala](http://doc.akka.io/docs/akka/2.5/scala/dispatchers.html))  so that executors can be defined through configuration.
+The recommended way to create a custom execution context is through [`CustomExecutionContext`](api/scala/play/api/libs/concurrent/CustomExecutionContext.html), which uses the Akka dispatcher system ([java](https://doc.akka.io/docs/akka/2.5/dispatchers.html?language=java) / [scala](https://doc.akka.io/docs/akka/2.5/dispatchers.html?language=scala))  so that executors can be defined through configuration.
 
 To use your own execution context, extend the [`CustomExecutionContext`](api/scala/play/api/libs/concurrent/CustomExecutionContext.html) abstract class with the full path to the dispatcher in the `application.conf` file:
 
@@ -930,7 +892,7 @@ If you are migrating from an existing project that does not use CSRF form helper
 
 Adding `CSRF.formField` to your form templates will resolve the error If you are making requests with AJAX, you can place the CSRF token in the HTML page, and then add it to the request using the `Csrf-Token` header.
 
-To check this behavior, please add <logger name="play.filters.csrf" value="TRACE"/> to your logback.xml.
+To check this behavior, please add `<logger name="play.filters.csrf" value="TRACE"/>` to your `logback.xml`.
 
 You may also want to enable SameSite cookies in Play, which provide an additional defense against CSRF attacks.
 
@@ -940,7 +902,7 @@ You may also want to enable SameSite cookies in Play, which provide an additiona
 
 ##### Why it is enabled by default
 
-Browser based attacks are extremely commmon, and security headers can provide a defense in depth to help frustrate those attacks.
+Browser based attacks are extremely common, and security headers can provide a defense in depth to help frustrate those attacks.
 
 ##### What changes do I need to make? 
 
@@ -1199,8 +1161,7 @@ If you have custom cookies being used in Play, using the `CookieBaker[T]` trait,
 
 The `encode` and `decode` methods that `Map[String, String]` to and from the format found in the browser have been extracted into `CookieDataCodec`.  There are three implementations: `FallbackCookieDataCodec`, `JWTCookieDataCodec`, or `UrlEncodedCookieDataCodec`, which respectively represent URL-encoded with an HMAC, or a JWT, or a "read signed or JWT, write JWT" codec.
 
-
-and then provide a `JWTConfiguration` case class, using the `JWTConfigurationParser` with the path to your configuration, or use `JWTConfiguration()` for the defaults.
+You will also need to provide a `JWTConfiguration` case class, using the `JWTConfigurationParser` with the path to your configuration, or use `JWTConfiguration()` for the defaults.
 
 
 ```scala
@@ -1267,7 +1228,7 @@ HikariCP was updated and a new configuration was introduced: `initializationFail
 
 ## Other Configuration changes
 
-There are some configurations.  The old configuration paths will generally still work, but a deprecation warning will be output at runtime if you use them.  Here is a summary of the changed keys:
+There are some configuration changes. The old configuration paths will generally still work, but a deprecation warning will be output at runtime if you use them. Here is a summary of the changed keys:
 
 | Old key                       | New key                                 |
 |-------------------------------|-----------------------------------------|

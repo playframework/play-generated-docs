@@ -47,7 +47,7 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Contains the public API for Scala developers.</p><h6> Access the current Play application </h6><pre><span class="kw">import</span> play.api.Play.current</pre><h6> Read configuration </h6><pre><span class="kw">val</span> poolSize = configuration.getInt(<span class="lit">"engine.pool.size"</span>)</pre><h6> Use the logger </h6><pre>Logger.info(<span class="lit">"Hello!"</span>)</pre><h6> Define a Plugin </h6><pre><span class="kw">class</span> MyPlugin(app: Application) <span class="kw">extends</span> Plugin</pre><h6> Create adhoc applications (for testing) </h6><pre><span class="kw">val</span> application = Application(<span class="kw">new</span> File(<span class="lit">"."</span>), <span class="kw">this</span>.getClass.getClassloader, <span class="std">None</span>, Play.Mode.DEV)</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0/framework/src/play/src/main/scala/play/api/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Contains the public API for Scala developers.</p><h6> Access the current Play application </h6><pre><span class="kw">import</span> play.api.Play.current</pre><h6> Read configuration </h6><pre><span class="kw">val</span> poolSize = configuration.getInt(<span class="lit">"engine.pool.size"</span>)</pre><h6> Use the logger </h6><pre>Logger.info(<span class="lit">"Hello!"</span>)</pre><h6> Define a Plugin </h6><pre><span class="kw">class</span> MyPlugin(app: Application) <span class="kw">extends</span> Plugin</pre><h6> Create adhoc applications (for testing) </h6><pre><span class="kw">val</span> application = Application(<span class="kw">new</span> File(<span class="lit">"."</span>), <span class="kw">this</span>.getClass.getClassloader, <span class="std">None</span>, Play.Mode.DEV)</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.7.0-M1/framework/src/play/src/main/scala/play/api/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -387,12 +387,33 @@ log.error(<span class="lit">"This message will be logged with the EXAMPLEMARKER 
     </span>
       <p class="shortcomment cmt">A component to mix in when no default filters should be mixed in to BuiltInComponents.</p><div class="fullcomment"><div class="comment cmt"><p>A component to mix in when no default filters should be mixed in to BuiltInComponents.
 </p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="BuiltInComponents.html#httpFilters:Seq[play.api.mvc.EssentialFilter]" class="extmbr" name="play.api.BuiltInComponents#httpFilters">BuiltInComponents.httpFilters</a></p></span></dd></dl></div>
-    </li><li name="play.api.OptionalSourceMapper" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="play.api.OptionalDevContext" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="OptionalDevContextextendsAnyRef"></a>
+      <a id="OptionalDevContext:OptionalDevContext"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="OptionalDevContext.html"><span class="name">OptionalDevContext</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@OptionalDevContextextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Represents an <code>Option[DevContext]</code> so that it can be used for dependency
+injection.</p><div class="fullcomment"><div class="comment cmt"><p>Represents an <code>Option[DevContext]</code> so that it can be used for dependency
+injection. We can't easily use a plain <code>Option[DevContext]</code> since Java
+erases the type parameter of that type.
+</p></div></div>
+    </li><li name="play.api.OptionalSourceMapper" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="OptionalSourceMapperextendsAnyRef"></a>
       <a id="OptionalSourceMapper:OptionalSourceMapper"></a>
       <h4 class="signature">
       <span class="modifier_kind">
-        <span class="modifier"></span>
+        <span class="modifier">final </span>
         <span class="kind">class</span>
       </span>
       <span class="symbol">
@@ -403,7 +424,31 @@ log.error(<span class="lit">"This message will be logged with the EXAMPLEMARKER 
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Represents an <code>Option[SourceMapper]</code> so that it can be used for dependency
+injection.</p><div class="fullcomment"><div class="comment cmt"><p>Represents an <code>Option[SourceMapper]</code> so that it can be used for dependency
+injection. We can't easily use a plain <code>Option[SourceMapper]</code> since Java
+erases the type parameter of that type.
+</p></div></div>
+    </li><li name="play.api.OptionalSourceMapperProvider" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="OptionalSourceMapperProviderextendsProvider[play.api.OptionalSourceMapper]"></a>
+      <a id="OptionalSourceMapperProvider:OptionalSourceMapperProvider"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="OptionalSourceMapperProvider.html"><span class="name">OptionalSourceMapperProvider</span></a><span class="result"> extends <span class="extype" name="javax.inject.Provider">Provider</span>[<a href="OptionalSourceMapper.html" class="extype" name="play.api.OptionalSourceMapper">OptionalSourceMapper</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@OptionalSourceMapperProviderextendsProvider[play.api.OptionalSourceMapper]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@Singleton</span><span class="args">()</span>
+              
+        </dd></dl></div>
     </li><li name="play.api.UnexpectedException" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="UnexpectedExceptionextendsPlayExceptionwithProductwithSerializable"></a>
       <a id="UnexpectedException:UnexpectedException"></a>

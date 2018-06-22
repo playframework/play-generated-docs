@@ -50,7 +50,7 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Deserializer for JsNumber.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/play-json/tree/2.6.0/play-json/jvm/src/main/scala/Reads.scala" target="_blank">Reads.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/play-json/tree/2.6.9/play-json/jvm/src/main/scala/play/api/libs/json/Reads.scala" target="_blank">Reads.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="Reads.html" class="extype" name="play.api.libs.json.Reads">Reads</a>[<a href="JsNumber.html" class="extype" name="play.api.libs.json.JsNumber">JsNumber</a>], <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -446,7 +446,8 @@
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">f</dt><dd class="cmt"><p>the function applied on the result of the current instance,
+      <p class="shortcomment cmt">Create a new <code>Reads</code> which maps the value produced by this <code>Reads</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Create a new <code>Reads</code> which maps the value produced by this <code>Reads</code>.
+</p></div><dl class="paramcmts block"><dt class="tparam">B</dt><dd class="cmt"><p>The type of the value produced by the new <code>Reads</code>.</p></dd><dt class="param">f</dt><dd class="cmt"><p>the function applied on the result of the current instance,
 if successful</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Reads.html" class="extype" name="play.api.libs.json.Reads">Reads</a></dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
@@ -515,7 +516,12 @@ if successful</p></dd></dl><dl class="attributes block"> <dt>Definition Classes<
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Reads.html" class="extype" name="play.api.libs.json.Reads">Reads</a></dd></dl></div>
+      <p class="shortcomment cmt">Creates a new <code>Reads</code>, based on this one, which first executes this
+<code>Reads</code>' logic then, if this <code>Reads</code> resulted in a <code>JsError</code>, runs
+the second <code>Reads</code> on the <a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a new <code>Reads</code>, based on this one, which first executes this
+<code>Reads</code>' logic then, if this <code>Reads</code> resulted in a <code>JsError</code>, runs
+the second <code>Reads</code> on the <a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a>.
+</p></div><dl class="paramcmts block"><dt class="param">v</dt><dd class="cmt"><p>The <code>Reads</code> to run if this one gets a <code>JsError</code>.</p></dd><dt>returns</dt><dd class="cmt"><p>A new <code>Reads</code> with the updated behavior.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Reads.html" class="extype" name="play.api.libs.json.Reads">Reads</a></dd></dl></div>
     </li><li name="play.api.libs.json.DefaultReads.JsNumberReads#reads" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="reads(json:play.api.libs.json.JsValue):play.api.libs.json.JsResult[play.api.libs.json.JsNumber]"></a>
       <a id="reads(JsValue):JsResult[JsNumber]"></a>

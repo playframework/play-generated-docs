@@ -84,7 +84,7 @@
     </span>
       <p class="shortcomment cmt">Starts a Play server using Akka HTTP.</p>
     </li><li name="play.core.server.AkkaHttpServerComponents" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="AkkaHttpServerComponentsextendsAnyRef"></a>
+      <a id="AkkaHttpServerComponentsextendsServerComponents"></a>
       <a id="AkkaHttpServerComponents:AkkaHttpServerComponents"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -92,14 +92,14 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="AkkaHttpServerComponents.html"><span class="name">AkkaHttpServerComponents</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a href="AkkaHttpServerComponents.html"><span class="name">AkkaHttpServerComponents</span></a><span class="result"> extends <a href="ServerComponents.html" class="extype" name="play.core.server.ServerComponents">ServerComponents</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.core.server.package@AkkaHttpServerComponentsextendsAnyRef" title="Permalink" target="_top">
+      <a href="../../../index.html#play.core.server.package@AkkaHttpServerComponentsextendsServerComponents" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Components for building a simple Akka HTTP Server.</p>
     </li><li name="play.core.server.AkkaHttpServerProvider" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="AkkaHttpServerProviderextendsServerProvider"></a>
       <a id="AkkaHttpServerProvider:AkkaHttpServerProvider"></a>
@@ -117,6 +117,54 @@
       </a>
     </span>
       <p class="shortcomment cmt">Knows how to create an AkkaHttpServer.</p>
+    </li><li name="play.core.server.DefaultAkkaHttpServerComponents" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="DefaultAkkaHttpServerComponentsextendsAkkaHttpServerComponentswithBuiltInComponentswithNoHttpFiltersComponents"></a>
+      <a id="DefaultAkkaHttpServerComponents:DefaultAkkaHttpServerComponents"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="DefaultAkkaHttpServerComponents.html"><span class="name">DefaultAkkaHttpServerComponents</span></a><span class="result"> extends <a href="AkkaHttpServerComponents.html" class="extype" name="play.core.server.AkkaHttpServerComponents">AkkaHttpServerComponents</a> with <a href="../../api/BuiltInComponents.html" class="extype" name="play.api.BuiltInComponents">api.BuiltInComponents</a> with <a href="../../api/NoHttpFiltersComponents.html" class="extype" name="play.api.NoHttpFiltersComponents">NoHttpFiltersComponents</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.server.package@DefaultAkkaHttpServerComponentsextendsAkkaHttpServerComponentswithBuiltInComponentswithNoHttpFiltersComponents" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A convenient helper trait for constructing an AkkaHttpServer, for example:</p><div class="fullcomment"><div class="comment cmt"><p>A convenient helper trait for constructing an AkkaHttpServer, for example:</p><pre><span class="kw">val</span> components = <span class="kw">new</span> DefaultAkkaHttpServerComponents {
+  <span class="kw">override</span> <span class="kw">lazy</span> <span class="kw">val</span> router = {
+    <span class="kw">case</span> GET(p<span class="lit">"/"</span>) <span class="kw">=&gt;</span> Action(parse.json) { body <span class="kw">=&gt;</span>
+      Ok(<span class="lit">"Hello"</span>)
+    }
+  }
+}
+<span class="kw">val</span> server = components.server</pre></div></div>
+    </li><li name="play.core.server.DefaultNettyServerComponents" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="DefaultNettyServerComponentsextendsNettyServerComponentswithBuiltInComponentswithNoHttpFiltersComponents"></a>
+      <a id="DefaultNettyServerComponents:DefaultNettyServerComponents"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="DefaultNettyServerComponents.html"><span class="name">DefaultNettyServerComponents</span></a><span class="result"> extends <a href="NettyServerComponents.html" class="extype" name="play.core.server.NettyServerComponents">NettyServerComponents</a> with <a href="../../api/BuiltInComponents.html" class="extype" name="play.api.BuiltInComponents">api.BuiltInComponents</a> with <a href="../../api/NoHttpFiltersComponents.html" class="extype" name="play.api.NoHttpFiltersComponents">NoHttpFiltersComponents</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.server.package@DefaultNettyServerComponentsextendsNettyServerComponentswithBuiltInComponentswithNoHttpFiltersComponents" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A convenient helper trait for constructing an NettyServer, for example:</p><div class="fullcomment"><div class="comment cmt"><p>A convenient helper trait for constructing an NettyServer, for example:</p><pre><span class="kw">val</span> components = <span class="kw">new</span> DefaultNettyServerComponents {
+  <span class="kw">override</span> <span class="kw">lazy</span> <span class="kw">val</span> router = {
+    <span class="kw">case</span> GET(p<span class="lit">"/"</span>) <span class="kw">=&gt;</span> Action(parse.json) { body <span class="kw">=&gt;</span>
+      Ok(<span class="lit">"Hello"</span>)
+    }
+  }
+}
+<span class="kw">val</span> server = components.server</pre></div></div>
     </li><li name="play.core.server.NettyServer" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="NettyServerextendsServer"></a>
       <a id="NettyServer:NettyServer"></a>
@@ -136,7 +184,7 @@
       <p class="shortcomment cmt">creates a Server implementation based Netty
 </p>
     </li><li name="play.core.server.NettyServerComponents" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="NettyServerComponentsextendsAnyRef"></a>
+      <a id="NettyServerComponentsextendsServerComponents"></a>
       <a id="NettyServerComponents:NettyServerComponents"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -144,10 +192,10 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a href="NettyServerComponents.html"><span class="name">NettyServerComponents</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a href="NettyServerComponents.html"><span class="name">NettyServerComponents</span></a><span class="result"> extends <a href="ServerComponents.html" class="extype" name="play.core.server.ServerComponents">ServerComponents</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.core.server.package@NettyServerComponentsextendsAnyRef" title="Permalink" target="_top">
+      <a href="../../../index.html#play.core.server.package@NettyServerComponentsextendsServerComponents" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -223,6 +271,23 @@ effect on the JVM, e.g. <code>exit</code> calls <code>System.exit.</code>
       </a>
     </span>
       <p class="shortcomment cmt">Provides generic server behaviour for Play applications.</p>
+    </li><li name="play.core.server.ServerComponents" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ServerComponentsextendsAnyRef"></a>
+      <a id="ServerComponents:ServerComponents"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="ServerComponents.html"><span class="name">ServerComponents</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.server.package@ServerComponentsextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Components to create a Server instance.</p>
     </li><li name="play.core.server.ServerConfig" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ServerConfigextendsProductwithSerializable"></a>
       <a id="ServerConfig:ServerConfig"></a>
@@ -232,7 +297,7 @@ effect on the JVM, e.g. <code>exit</code> calls <code>System.exit.</code>
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="ServerConfig.html"><span class="name">ServerConfig</span></a><span class="params">(<span name="rootDir">rootDir: <span class="extype" name="java.io.File">File</span></span>, <span name="port">port: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="sslPort">sslPort: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="address">address: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="mode">mode: <a href="../../api/Mode.html" class="extype" name="play.api.Mode">api.Mode</a></span>, <span name="properties">properties: <span class="extype" name="java.util.Properties">Properties</span></span>, <span name="configuration">configuration: <a href="../../api/Configuration.html" class="extype" name="play.api.Configuration">api.Configuration</a></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="ServerConfig.html"><span class="name">ServerConfig</span></a><span class="params">(<span name="rootDir">rootDir: <span class="extype" name="java.io.File">File</span></span>, <span name="port">port: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="sslPort">sslPort: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Int">Int</span>]</span>, <span name="address">address: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="mode">mode: <a href="../../api/Mode.html" class="extype" name="play.api.Mode">api.Mode</a></span>, <span name="properties">properties: <span class="extype" name="java.util.Properties">Properties</span></span>, <span name="configuration">configuration: <a href="../../api/Configuration.html" class="extype" name="play.api.Configuration">Configuration</a></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.core.server.package@ServerConfigextendsProductwithSerializable" title="Permalink" target="_top">
@@ -346,7 +411,7 @@ configuration.
 
         <div id="values" class="values members">
               <h3>Value Members</h3>
-              <ol><li name="play.core.server.AkkaHttpServer" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="play.core.server.AkkaHttpServer" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="AkkaHttpServer"></a>
       <a id="AkkaHttpServer:AkkaHttpServer"></a>
       <h4 class="signature">
@@ -355,14 +420,23 @@ configuration.
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="AkkaHttpServer$.html"><span class="name">AkkaHttpServer</span></a>
+        <a href="AkkaHttpServer$.html"><span class="name">AkkaHttpServer</span></a><span class="result"> extends <span class="extype" name="play.core.server.ServerFromRouter">ServerFromRouter</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.core.server.package@AkkaHttpServer" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Creates an AkkaHttpServer from a given router using <span class="extype" name="BuiltInComponents">BuiltInComponents</span>:</p><div class="fullcomment"><div class="comment cmt"><p>Creates an AkkaHttpServer from a given router using <span class="extype" name="BuiltInComponents">BuiltInComponents</span>:</p><pre><span class="kw">val</span> server = AkkaHttpServer.fromRouterWithComponents(ServerConfig(port = <span class="std">Some</span>(<span class="num">9002</span>))) { components <span class="kw">=&gt;</span>
+  <span class="kw">import</span> play.api.mvc.Results._
+  <span class="kw">import</span> components.{ defaultActionBuilder <span class="kw">=&gt;</span> Action }
+  {
+    <span class="kw">case</span> GET(p<span class="lit">"/"</span>) <span class="kw">=&gt;</span> Action {
+      Ok(<span class="lit">"Hello"</span>)
+    }
+  }
+}</pre><p>Use this together with <a href="https://www.playframework.com/documentation/2.6.x/ScalaSirdRouter">Sird Router</a>.
+</p></div></div>
     </li><li name="play.core.server.DevServerStart" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="DevServerStart"></a>
       <a id="DevServerStart:DevServerStart"></a>
@@ -415,7 +489,7 @@ is reloaded whenever its source changes.</p>
       </a>
     </span>
       
-    </li><li name="play.core.server.NettyServer" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="play.core.server.NettyServer" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="NettyServer"></a>
       <a id="NettyServer:NettyServer"></a>
       <h4 class="signature">
@@ -424,14 +498,23 @@ is reloaded whenever its source changes.</p>
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="NettyServer$.html"><span class="name">NettyServer</span></a>
+        <a href="NettyServer$.html"><span class="name">NettyServer</span></a><span class="result"> extends <span class="extype" name="play.core.server.ServerFromRouter">ServerFromRouter</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.core.server.package@NettyServer" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Bootstraps Play application with a NettyServer backend.</p>
+      <p class="shortcomment cmt">Create a Netty server zfrom a given router using <span class="extype" name="BuiltInComponents">BuiltInComponents</span>:</p><div class="fullcomment"><div class="comment cmt"><p>Create a Netty server zfrom a given router using <span class="extype" name="BuiltInComponents">BuiltInComponents</span>:</p><pre><span class="kw">val</span> server = NettyServer.fromRouterWithComponents(ServerConfig(port = <span class="std">Some</span>(<span class="num">9002</span>))) { components <span class="kw">=&gt;</span>
+  <span class="kw">import</span> play.api.mvc.Results._
+  <span class="kw">import</span> components.{ defaultActionBuilder <span class="kw">=&gt;</span> Action }
+  {
+    <span class="kw">case</span> GET(p<span class="lit">"/"</span>) <span class="kw">=&gt;</span> Action {
+      Ok(<span class="lit">"Hello"</span>)
+    }
+  }
+}</pre><p>Use this together with <a href="https://www.playframework.com/documentation/latest/ScalaSirdRouter">Sird Router</a>.
+</p></div></div>
     </li><li name="play.core.server.ProdServerStart" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ProdServerStart"></a>
       <a id="ProdServerStart:ProdServerStart"></a>

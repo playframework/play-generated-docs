@@ -1,15 +1,16 @@
 /*
- * Copyright (C) 2009-2017 Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) 2009-2018 Lightbend Inc. <https://www.lightbend.com>
  */
+
 package javaguide.akka;
 
 //#injected
-import akka.actor.UntypedAbstractActor;
+import akka.actor.AbstractActor;
 import com.typesafe.config.Config;
 
 import javax.inject.Inject;
 
-public class ConfiguredActor extends UntypedAbstractActor {
+public class ConfiguredActor extends AbstractActor {
 
     private Config configuration;
 
@@ -19,10 +20,12 @@ public class ConfiguredActor extends UntypedAbstractActor {
     }
 
     @Override
-    public void onReceive(Object message) throws Exception {
-        if (message instanceof ConfiguredActorProtocol.GetConfig) {
-            sender().tell(configuration.getString("my.config"), self());
-        }
+    public Receive createReceive() {
+        return receiveBuilder()
+          .match(ConfiguredActorProtocol.GetConfig.class, message -> {
+              sender().tell(configuration.getString("my.config"), self());
+          })
+          .build();
     }
 }
 //#injected

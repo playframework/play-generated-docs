@@ -1,6 +1,7 @@
 /*
- * Copyright (C) 2009-2017 Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) 2009-2018 Lightbend Inc. <https://www.lightbend.com>
  */
+
 package javaguide.cache;
 
 import akka.Done;
@@ -52,9 +53,9 @@ public class JavaCache extends WithApplication {
         CompletionStage<Done> result = cache.set("item.key", frontPageNews);
         //#simple-set
         block(result);
-        //#time-set
         }
         {
+        //#time-set	
         // Cache for 15 minutes
         CompletionStage<Done> result = cache.set("item.key", frontPageNews, 60 * 15);
         //#time-set
@@ -105,7 +106,7 @@ public class JavaCache extends WithApplication {
 
         assertThat(contentAsString(call(new Controller1(instanceOf(JavaHandlerComponents.class)), fakeRequest(), mat)), equalTo("Hello world"));
         assertThat(cache.sync().get("homePage"), notNullValue());
-        cache.set("homePage", Results.ok("something else"));
+        cache.sync().set("homePage", Results.ok("something else"));
         assertThat(contentAsString(call(new Controller1(instanceOf(JavaHandlerComponents.class)), fakeRequest(), mat)), equalTo("something else"));
     }
 

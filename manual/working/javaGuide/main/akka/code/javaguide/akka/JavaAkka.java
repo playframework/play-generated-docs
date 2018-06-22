@@ -1,10 +1,11 @@
 /*
- * Copyright (C) 2009-2017 Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) 2009-2018 Lightbend Inc. <https://www.lightbend.com>
  */
+
 package javaguide.akka;
 
 import akka.actor.*;
-import static akka.pattern.Patterns.ask;
+import static akka.pattern.PatternsCS.ask;
 import com.typesafe.config.*;
 import javaguide.testhelpers.MockJavaAction;
 import javaguide.testhelpers.MockJavaActionHelper;
@@ -27,10 +28,14 @@ import static play.test.Helpers.*;
 public class JavaAkka {
 
     private static volatile CountDownLatch latch;
-    public static class MyActor extends UntypedAbstractActor {
+    public static class MyActor extends AbstractActor {
         @Override
-        public void onReceive(Object msg) throws Exception {
-            latch.countDown();
+        public Receive createReceive() {
+            return receiveBuilder()
+              .matchAny(m -> {
+                  latch.countDown();
+              })
+              .build();
         }
     }
 
@@ -77,9 +82,13 @@ public class JavaAkka {
             ActorRef parent = app.injector().instanceOf(play.inject.Bindings.bind(ActorRef.class).qualifiedWith("parent-actor"));
 
             try {
-                String message = (String) FutureConverters.toJava(ask(parent, new ParentActorProtocol.GetChild("my.config"), 1000)).thenCompose(child ->
-                        FutureConverters.toJava(ask((ActorRef) child, new ConfiguredChildActorProtocol.GetConfig(), 1000))
-                ).toCompletableFuture().get(5, TimeUnit.SECONDS);
+                String message = (String) 
+                  ask(parent, new ParentActorProtocol.GetChild("my.config"), 1000)
+                    .thenApply(msg -> (ActorRef) msg)
+                    .thenCompose(child ->
+                        ask(child, new ConfiguredChildActorProtocol.GetConfig(), 1000)
+                    ).toCompletableFuture()
+                    .get(5, TimeUnit.SECONDS);
                 assertThat(message, equalTo("foo"));
             } catch (Exception e) {
                 throw new RuntimeException(e);

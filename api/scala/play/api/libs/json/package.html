@@ -74,7 +74,7 @@ For example:</p><pre><span class="kw">import</span> play.api.libs.json._
      myDataStore.save(user)
      Ok
    }
-}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/play-json/tree/2.6.0/play-json/jvm/src/main/scala/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
+}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/play-json/tree/2.6.9/play-json/jvm/src/main/scala/play/api/libs/json/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -813,7 +813,12 @@ DefaultReads provides a simple match.</p><p>See https://github.com/playframework
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Json deserializer: write an implicit to define a deserializer for any type.</p><div class="fullcomment"><div class="comment cmt"><p>Json deserializer: write an implicit to define a deserializer for any type.
+      <p class="shortcomment cmt">A <code>Reads</code> object describes how to decode JSON into a value.</p><div class="fullcomment"><div class="comment cmt"><p>A <code>Reads</code> object describes how to decode JSON into a value.
+<code>Reads</code> objects are typically provided as implicit values. When <code>Reads</code>
+implicit values are in scope, a program is able to deserialize JSON
+into values of the right type.</p><p>The inverse of a <code>Reads</code> object is a <a href="Writes.html" class="extype" name="play.api.libs.json.Writes">Writes</a> object, which describes
+how to encode a value into JSON. If you combine a <code>Reads</code> and a <code>Writes</code>
+then you get a <a href="Format.html" class="extype" name="play.api.libs.json.Format">Format</a>.
 </p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@implicitNotFound</span><span class="args">(<span>
       
@@ -896,7 +901,7 @@ DefaultReads provides a simple match.</p><p>See https://github.com/playframework
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="JsArray$.html"><span class="name">JsArray</span></a><span class="result"> extends <span class="extype" name="scala.runtime.AbstractFunction1">AbstractFunction1</span>[<span class="extype" name="scala.collection.IndexedSeq">IndexedSeq</span>[<a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a>], <a href="JsArray.html" class="extype" name="play.api.libs.json.JsArray">JsArray</a>] with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="JsArray$.html"><span class="name">JsArray</span></a><span class="result"> extends (<span class="extype" name="scala.collection.IndexedSeq">IndexedSeq</span>[<a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a>]) ⇒ <a href="JsArray.html" class="extype" name="play.api.libs.json.JsArray">JsArray</a> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../../index.html#play.api.libs.json.package@JsArray" title="Permalink" target="_top">
@@ -998,7 +1003,7 @@ DefaultReads provides a simple match.</p><p>See https://github.com/playframework
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a href="JsObject$.html"><span class="name">JsObject</span></a><span class="result"> extends <span class="extype" name="scala.runtime.AbstractFunction1">AbstractFunction1</span>[<span class="extype" name="scala.collection.Seq">Seq</span>[(<span class="extype" name="scala.Predef.String">String</span>, <a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a>)], <a href="JsObject.html" class="extype" name="play.api.libs.json.JsObject">JsObject</a>] with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="JsObject$.html"><span class="name">JsObject</span></a><span class="result"> extends (<span class="extype" name="scala.collection.Seq">Seq</span>[(<span class="extype" name="scala.Predef.String">String</span>, <a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a>)]) ⇒ <a href="JsObject.html" class="extype" name="play.api.libs.json.JsObject">JsObject</a> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../../index.html#play.api.libs.json.package@JsObject" title="Permalink" target="_top">

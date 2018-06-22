@@ -47,14 +47,22 @@
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <span class="name">NettyServer</span>
+        <span class="name">NettyServer</span><span class="result"> extends <span class="extype" name="play.core.server.ServerFromRouter">ServerFromRouter</span></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Bootstraps Play application with a NettyServer backend.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0/framework/src/play-netty-server/src/main/scala/play/core/server/NettyServer.scala" target="_blank">NettyServer.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Create a Netty server zfrom a given router using <span class="extype" name="BuiltInComponents">BuiltInComponents</span>:</p><pre><span class="kw">val</span> server = NettyServer.fromRouterWithComponents(ServerConfig(port = <span class="std">Some</span>(<span class="num">9002</span>))) { components <span class="kw">=&gt;</span>
+  <span class="kw">import</span> play.api.mvc.Results._
+  <span class="kw">import</span> components.{ defaultActionBuilder <span class="kw">=&gt;</span> Action }
+  {
+    <span class="kw">case</span> GET(p<span class="lit">"/"</span>) <span class="kw">=&gt;</span> Action {
+      Ok(<span class="lit">"Hello"</span>)
+    }
+  }
+}</pre><p>Use this together with <a href="https://www.playframework.com/documentation/latest/ScalaSirdRouter">Sird Router</a>.
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.7.0-M1/framework/src/play-netty-server/src/main/scala/play/core/server/NettyServer.scala" target="_blank">NettyServer.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
-          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="play.core.server.ServerFromRouter">ServerFromRouter</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -72,7 +80,7 @@
                 <span class="filtertype">Inherited<br />
                 </span>
                 <ol id="linearization">
-                  <li class="in" name="play.core.server.NettyServer"><span>NettyServer</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  <li class="in" name="play.core.server.NettyServer"><span>NettyServer</span></li><li class="in" name="play.core.server.ServerFromRouter"><span>ServerFromRouter</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                 </ol>
               </div><div id="ancestors">
             <span class="filtertype"></span>
@@ -188,6 +196,23 @@
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="play.core.server.NettyServer#createServerFromRouter" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="createServerFromRouter(serverConf:play.core.server.ServerConfig)(routes:play.core.server.ServerComponentswithplay.api.BuiltInComponents=&gt;play.api.routing.Router):play.core.server.Server"></a>
+      <a id="createServerFromRouter(ServerConfig)((ServerComponentswithapi.BuiltInComponents)⇒Router):Server"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">createServerFromRouter</span><span class="params">(<span name="serverConf">serverConf: <a href="ServerConfig.html" class="extype" name="play.core.server.ServerConfig">ServerConfig</a></span>)</span><span class="params">(<span name="routes">routes: (<a href="ServerComponents.html" class="extype" name="play.core.server.ServerComponents">ServerComponents</a> with <a href="../../api/BuiltInComponents.html" class="extype" name="play.api.BuiltInComponents">api.BuiltInComponents</a>) ⇒ <a href="../../api/routing/Router.html" class="extype" name="play.api.routing.Router">Router</a></span>)</span><span class="result">: <a href="Server.html" class="extype" name="play.core.server.Server">Server</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.server.NettyServer$@createServerFromRouter(serverConf:play.core.server.ServerConfig)(routes:play.core.server.ServerComponentswithplay.api.BuiltInComponents=&gt;play.api.routing.Router):play.core.server.Server" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="" class="extype" name="play.core.server.NettyServer">NettyServer</a> → ServerFromRouter</dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -263,23 +288,24 @@
     </span>
       <p class="shortcomment cmt">Create a Netty server from the given application and server configuration.</p><div class="fullcomment"><div class="comment cmt"><p>Create a Netty server from the given application and server configuration.
 </p></div><dl class="paramcmts block"><dt class="param">application</dt><dd class="cmt"><p>The application.</p></dd><dt class="param">config</dt><dd class="cmt"><p>The server configuration.</p></dd><dt>returns</dt><dd class="cmt"><p>A started Netty server, serving the application.</p></dd></dl></div>
-    </li><li name="play.core.server.NettyServer#fromRouter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="fromRouter(config:play.core.server.ServerConfig)(routes:PartialFunction[play.api.mvc.RequestHeader,play.api.mvc.Handler]):play.core.server.NettyServer"></a>
-      <a id="fromRouter(ServerConfig)(PartialFunction[RequestHeader,Handler]):NettyServer"></a>
+    </li><li name="play.core.server.ServerFromRouter#fromRouterWithComponents" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="fromRouterWithComponents(config:play.core.server.ServerConfig)(routes:play.api.BuiltInComponents=&gt;PartialFunction[play.api.mvc.RequestHeader,play.api.mvc.Handler]):play.core.server.Server"></a>
+      <a id="fromRouterWithComponents(ServerConfig)((api.BuiltInComponents)⇒PartialFunction[RequestHeader,Handler]):Server"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">fromRouter</span><span class="params">(<span name="config">config: <a href="ServerConfig.html" class="extype" name="play.core.server.ServerConfig">ServerConfig</a> = <span class="symbol"><span class="name"><a href="ServerConfig$.html">ServerConfig()</a></span></span></span>)</span><span class="params">(<span name="routes">routes: <span class="extype" name="scala.PartialFunction">PartialFunction</span>[<a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>, <a href="../../api/mvc/Handler.html" class="extype" name="play.api.mvc.Handler">Handler</a>]</span>)</span><span class="result">: <a href="NettyServer.html" class="extype" name="play.core.server.NettyServer">NettyServer</a></span>
+        <span class="name">fromRouterWithComponents</span><span class="params">(<span name="config">config: <a href="ServerConfig.html" class="extype" name="play.core.server.ServerConfig">ServerConfig</a> = <span class="symbol"><span class="name"><a href="ServerConfig$.html">ServerConfig()</a></span></span></span>)</span><span class="params">(<span name="routes">routes: (<a href="../../api/BuiltInComponents.html" class="extype" name="play.api.BuiltInComponents">api.BuiltInComponents</a>) ⇒ <span class="extype" name="scala.PartialFunction">PartialFunction</span>[<a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>, <a href="../../api/mvc/Handler.html" class="extype" name="play.api.mvc.Handler">Handler</a>]</span>)</span><span class="result">: <a href="Server.html" class="extype" name="play.core.server.Server">Server</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.core.server.NettyServer$@fromRouter(config:play.core.server.ServerConfig)(routes:PartialFunction[play.api.mvc.RequestHeader,play.api.mvc.Handler]):play.core.server.NettyServer" title="Permalink" target="_top">
+      <a href="../../../index.html#play.core.server.NettyServer$@fromRouterWithComponents(config:play.core.server.ServerConfig)(routes:play.api.BuiltInComponents=&gt;PartialFunction[play.api.mvc.RequestHeader,play.api.mvc.Handler]):play.core.server.Server" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Create a Netty server from the given router and server config.</p>
+      <p class="shortcomment cmt">Creates a <a href="Server.html" class="extype" name="play.core.server.Server">Server</a> from the given router, using <a href="ServerComponents.html" class="extype" name="play.core.server.ServerComponents">ServerComponents</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a <a href="Server.html" class="extype" name="play.core.server.Server">Server</a> from the given router, using <a href="ServerComponents.html" class="extype" name="play.core.server.ServerComponents">ServerComponents</a>.
+</p></div><dl class="paramcmts block"><dt class="param">config</dt><dd class="cmt"><p>the server configuration</p></dd><dt class="param">routes</dt><dd class="cmt"><p>the routes definitions</p></dd><dt>returns</dt><dd class="cmt"><p>an AkkaHttpServer instance</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd>ServerFromRouter</dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
       <a id="getClass():Class[_]"></a>
@@ -524,11 +550,37 @@
 
         
 
-        
+        <div id="values" class="values members">
+              <h3>Deprecated Value Members</h3>
+              <ol><li name="play.core.server.ServerFromRouter#fromRouter" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="fromRouter(config:play.core.server.ServerConfig)(routes:PartialFunction[play.api.mvc.RequestHeader,play.api.mvc.Handler]):play.core.server.Server"></a>
+      <a id="fromRouter(ServerConfig)(PartialFunction[RequestHeader,Handler]):Server"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 2.7.0) Use fromRouterWithComponents or use DefaultAkkaHttpServerComponents/DefaultNettyServerComponents">fromRouter</span><span class="params">(<span name="config">config: <a href="ServerConfig.html" class="extype" name="play.core.server.ServerConfig">ServerConfig</a> = <span class="symbol"><span class="name"><a href="ServerConfig$.html">ServerConfig()</a></span></span></span>)</span><span class="params">(<span name="routes">routes: <span class="extype" name="scala.PartialFunction">PartialFunction</span>[<a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>, <a href="../../api/mvc/Handler.html" class="extype" name="play.api.mvc.Handler">Handler</a>]</span>)</span><span class="result">: <a href="Server.html" class="extype" name="play.core.server.Server">Server</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.server.NettyServer$@fromRouter(config:play.core.server.ServerConfig)(routes:PartialFunction[play.api.mvc.RequestHeader,play.api.mvc.Handler]):play.core.server.Server" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Creates a <a href="Server.html" class="extype" name="play.core.server.Server">Server</a> from the given router.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a <a href="Server.html" class="extype" name="play.core.server.Server">Server</a> from the given router.
+</p></div><dl class="paramcmts block"><dt class="param">config</dt><dd class="cmt"><p>the server configuration</p></dd><dt class="param">routes</dt><dd class="cmt"><p>the routes definitions</p></dd><dt>returns</dt><dd class="cmt"><p>an AkkaHttpServer instance</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd>ServerFromRouter</dd><dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.7.0)</i> Use fromRouterWithComponents or use DefaultAkkaHttpServerComponents/DefaultNettyServerComponents</p></dd></dl></div>
+    </li></ol>
+            </div>
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="scala.AnyRef">
+        <div class="parent" name="play.core.server.ServerFromRouter">
+              <h3>Inherited from <span class="extype" name="play.core.server.ServerFromRouter">ServerFromRouter</span></h3>
+            </div><div class="parent" name="scala.AnyRef">
               <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>

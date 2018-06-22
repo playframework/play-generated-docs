@@ -53,7 +53,7 @@
 application, you should override <a href="JavaCompatibleHttpRequestHandler.html" class="extype" name="play.api.http.JavaCompatibleHttpRequestHandler">JavaCompatibleHttpRequestHandler</a>; otherwise you can override this for your
 custom handler.</p><p>Technically, this is not the default request handler that Play uses, rather, the <a href="JavaCompatibleHttpRequestHandler.html" class="extype" name="play.api.http.JavaCompatibleHttpRequestHandler">JavaCompatibleHttpRequestHandler</a>
 is the default one, in order to provide support for Java actions.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0/framework/src/play/src/main/scala/play/api/http/HttpRequestHandler.scala" target="_blank">HttpRequestHandler.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.7.0-M1/framework/src/play/src/main/scala/play/api/http/HttpRequestHandler.scala" target="_blank">HttpRequestHandler.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="HttpRequestHandler.html" class="extype" name="play.api.http.HttpRequestHandler">HttpRequestHandler</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
@@ -96,7 +96,7 @@ is the default one, in order to provide support for Java actions.
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="play.api.http.DefaultHttpRequestHandler#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(router:play.api.routing.Router,errorHandler:play.api.http.HttpErrorHandler,configuration:play.api.http.HttpConfiguration,filters:play.api.http.HttpFilters):play.api.http.DefaultHttpRequestHandler"></a>
+      <a id="&lt;init&gt;(webCommands:play.core.WebCommands,optDevContext:play.api.OptionalDevContext,router:play.api.routing.Router,errorHandler:play.api.http.HttpErrorHandler,configuration:play.api.http.HttpConfiguration,filters:play.api.http.HttpFilters):play.api.http.DefaultHttpRequestHandler"></a>
       <a id="&lt;init&gt;:DefaultHttpRequestHandler"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -104,10 +104,10 @@ is the default one, in order to provide support for Java actions.
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">DefaultHttpRequestHandler</span><span class="params">(<span name="router">router: <a href="../routing/Router.html" class="extype" name="play.api.routing.Router">Router</a></span>, <span name="errorHandler">errorHandler: <a href="HttpErrorHandler.html" class="extype" name="play.api.http.HttpErrorHandler">HttpErrorHandler</a></span>, <span name="configuration">configuration: <a href="HttpConfiguration.html" class="extype" name="play.api.http.HttpConfiguration">HttpConfiguration</a></span>, <span name="filters">filters: <a href="HttpFilters.html" class="extype" name="play.api.http.HttpFilters">HttpFilters</a></span>)</span>
+        <span class="name">DefaultHttpRequestHandler</span><span class="params">(<span name="webCommands">webCommands: <a href="../../core/WebCommands.html" class="extype" name="play.core.WebCommands">WebCommands</a></span>, <span name="optDevContext">optDevContext: <a href="../OptionalDevContext.html" class="extype" name="play.api.OptionalDevContext">OptionalDevContext</a></span>, <span name="router">router: <a href="../routing/Router.html" class="extype" name="play.api.routing.Router">Router</a></span>, <span name="errorHandler">errorHandler: <a href="HttpErrorHandler.html" class="extype" name="play.api.http.HttpErrorHandler">HttpErrorHandler</a></span>, <span name="configuration">configuration: <a href="HttpConfiguration.html" class="extype" name="play.api.http.HttpConfiguration">HttpConfiguration</a></span>, <span name="filters">filters: <a href="HttpFilters.html" class="extype" name="play.api.http.HttpFilters">HttpFilters</a></span>)</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.http.DefaultHttpRequestHandler@&lt;init&gt;(router:play.api.routing.Router,errorHandler:play.api.http.HttpErrorHandler,configuration:play.api.http.HttpConfiguration,filters:play.api.http.HttpFilters):play.api.http.DefaultHttpRequestHandler" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.http.DefaultHttpRequestHandler@&lt;init&gt;(webCommands:play.core.WebCommands,optDevContext:play.api.OptionalDevContext,router:play.api.routing.Router,errorHandler:play.api.http.HttpErrorHandler,configuration:play.api.http.HttpConfiguration,filters:play.api.http.HttpFilters):play.api.http.DefaultHttpRequestHandler" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -116,6 +116,23 @@ is the default one, in order to provide support for Java actions.
               
         </dd></dl></div>
     </li><li name="play.api.http.DefaultHttpRequestHandler#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="&lt;init&gt;(webCommands:play.core.WebCommands,optDevContext:Option[play.api.ApplicationLoader.DevContext],router:play.api.routing.Router,errorHandler:play.api.http.HttpErrorHandler,configuration:play.api.http.HttpConfiguration,filters:Seq[play.api.mvc.EssentialFilter]):play.api.http.DefaultHttpRequestHandler"></a>
+      <a id="&lt;init&gt;:DefaultHttpRequestHandler"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">new</span>
+      </span>
+      <span class="symbol">
+        <span class="name">DefaultHttpRequestHandler</span><span class="params">(<span name="webCommands">webCommands: <a href="../../core/WebCommands.html" class="extype" name="play.core.WebCommands">WebCommands</a></span>, <span name="optDevContext">optDevContext: <span class="extype" name="scala.Option">Option</span>[<a href="../ApplicationLoader$$DevContext.html" class="extype" name="play.api.ApplicationLoader.DevContext">DevContext</a>]</span>, <span name="router">router: <a href="../routing/Router.html" class="extype" name="play.api.routing.Router">Router</a></span>, <span name="errorHandler">errorHandler: <a href="HttpErrorHandler.html" class="extype" name="play.api.http.HttpErrorHandler">HttpErrorHandler</a></span>, <span name="configuration">configuration: <a href="HttpConfiguration.html" class="extype" name="play.api.http.HttpConfiguration">HttpConfiguration</a></span>, <span name="filters">filters: <span class="extype" name="scala.Seq">Seq</span>[<a href="../mvc/EssentialFilter.html" class="extype" name="play.api.mvc.EssentialFilter">EssentialFilter</a>]</span>)</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.http.DefaultHttpRequestHandler@&lt;init&gt;(webCommands:play.core.WebCommands,optDevContext:Option[play.api.ApplicationLoader.DevContext],router:play.api.routing.Router,errorHandler:play.api.http.HttpErrorHandler,configuration:play.api.http.HttpConfiguration,filters:Seq[play.api.mvc.EssentialFilter]):play.api.http.DefaultHttpRequestHandler" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.api.http.DefaultHttpRequestHandler#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="&lt;init&gt;(router:play.api.routing.Router,errorHandler:play.api.http.HttpErrorHandler,configuration:play.api.http.HttpConfiguration,filters:play.api.mvc.EssentialFilter*):play.api.http.DefaultHttpRequestHandler"></a>
       <a id="&lt;init&gt;:DefaultHttpRequestHandler"></a>
       <h4 class="signature">
@@ -124,14 +141,37 @@ is the default one, in order to provide support for Java actions.
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">DefaultHttpRequestHandler</span><span class="params">(<span name="router">router: <a href="../routing/Router.html" class="extype" name="play.api.routing.Router">Router</a></span>, <span name="errorHandler">errorHandler: <a href="HttpErrorHandler.html" class="extype" name="play.api.http.HttpErrorHandler">HttpErrorHandler</a></span>, <span name="configuration">configuration: <a href="HttpConfiguration.html" class="extype" name="play.api.http.HttpConfiguration">HttpConfiguration</a></span>, <span name="filters">filters: <a href="../mvc/EssentialFilter.html" class="extype" name="play.api.mvc.EssentialFilter">EssentialFilter</a>*</span>)</span>
+        <span class="name deprecated" title="Deprecated: (Since version 2.7.0) Use the main DefaultHttpRequestHandler constructor">DefaultHttpRequestHandler</span><span class="params">(<span name="router">router: <a href="../routing/Router.html" class="extype" name="play.api.routing.Router">Router</a></span>, <span name="errorHandler">errorHandler: <a href="HttpErrorHandler.html" class="extype" name="play.api.http.HttpErrorHandler">HttpErrorHandler</a></span>, <span name="configuration">configuration: <a href="HttpConfiguration.html" class="extype" name="play.api.http.HttpConfiguration">HttpConfiguration</a></span>, <span name="filters">filters: <a href="../mvc/EssentialFilter.html" class="extype" name="play.api.mvc.EssentialFilter">EssentialFilter</a>*</span>)</span>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.http.DefaultHttpRequestHandler@&lt;init&gt;(router:play.api.routing.Router,errorHandler:play.api.http.HttpErrorHandler,configuration:play.api.http.HttpConfiguration,filters:play.api.mvc.EssentialFilter*):play.api.http.DefaultHttpRequestHandler" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.7.0)</i> Use the main DefaultHttpRequestHandler constructor</p></dd></dl></div>
+    </li><li name="play.api.http.DefaultHttpRequestHandler#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="&lt;init&gt;(router:play.api.routing.Router,errorHandler:play.api.http.HttpErrorHandler,configuration:play.api.http.HttpConfiguration,filters:play.api.http.HttpFilters):play.api.http.DefaultHttpRequestHandler"></a>
+      <a id="&lt;init&gt;:DefaultHttpRequestHandler"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">new</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 2.7.0) Use the main DefaultHttpRequestHandler constructor">DefaultHttpRequestHandler</span><span class="params">(<span name="router">router: <a href="../routing/Router.html" class="extype" name="play.api.routing.Router">Router</a></span>, <span name="errorHandler">errorHandler: <a href="HttpErrorHandler.html" class="extype" name="play.api.http.HttpErrorHandler">HttpErrorHandler</a></span>, <span name="configuration">configuration: <a href="HttpConfiguration.html" class="extype" name="play.api.http.HttpConfiguration">HttpConfiguration</a></span>, <span name="filters">filters: <a href="HttpFilters.html" class="extype" name="play.api.http.HttpFilters">HttpFilters</a></span>)</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.http.DefaultHttpRequestHandler@&lt;init&gt;(router:play.api.routing.Router,errorHandler:play.api.http.HttpErrorHandler,configuration:play.api.http.HttpConfiguration,filters:play.api.http.HttpFilters):play.api.http.DefaultHttpRequestHandler" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.7.0)</i> Use the main DefaultHttpRequestHandler constructor</p></dd></dl></div>
     </li></ol>
             </div>
 

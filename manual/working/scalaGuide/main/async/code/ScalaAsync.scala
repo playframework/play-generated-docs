@@ -1,6 +1,7 @@
 /*
- * Copyright (C) 2009-2017 Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) 2009-2018 Lightbend Inc. <https://www.lightbend.com>
  */
+
 package scalaguide.async.scalaasync
 
 import javax.inject.Inject
@@ -102,11 +103,12 @@ class ScalaAsyncSamples @Inject() (val controllerComponents: ControllerComponent
     import play.api.libs.concurrent.Futures._
 
     def index = Action.async {
-      // futures instance implicit here
+      // You will need an implicit Futures for withTimeout() -- you usually get
+      // that by injecting it into your controller's constructor
       intensiveComputation().withTimeout(1.seconds).map { i =>
         Ok("Got result: " + i)
       }.recover {
-        case e: TimeoutException =>
+        case e: scala.concurrent.TimeoutException =>
           InternalServerError("timeout")
       }
     }

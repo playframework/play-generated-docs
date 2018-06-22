@@ -1,6 +1,7 @@
 /*
- * Copyright (C) 2009-2017 Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) 2009-2018 Lightbend Inc. <https://www.lightbend.com>
  */
+
 package scalaguide.tests.webservice
 
 package client {
@@ -45,11 +46,16 @@ class GitHubClientSpec extends Specification {
   "GitHubClient" should {
     "get all repositories" in {
 
-      Server.withRouter() {
-        case GET(p"/repositories") => Action {
-          Results.Ok(Json.arr(Json.obj("full_name" -> "octocat/Hello-World")))
+      Server.withRouterFromComponents() { components =>
+        import Results._
+        import components.{ defaultActionBuilder => Action }
+        {
+          case GET(p"/repositories") => Action {
+            Ok(Json.arr(Json.obj("full_name" -> "octocat/Hello-World")))
+          }
         }
       } { implicit port =>
+
         WsTestClient.withClient { client =>
           val result = Await.result(
             new GitHubClient(client, "").repositories(), 10.seconds)
@@ -67,9 +73,8 @@ import client._
 import scala.concurrent.Await
 import scala.concurrent.duration._
 import org.specs2.mutable.Specification
-import org.specs2.time.NoTimeConversions
 import play.api.routing.Router
-import play.api.{BuiltInComponents, BuiltInComponentsFromContext}
+import play.api.BuiltInComponentsFromContext
 import play.api.routing.sird._
 import play.filters.HttpFiltersComponents
 
@@ -85,9 +90,13 @@ class ScalaTestingWebServiceClients extends Specification {
       import play.api.routing.sird._
       import play.core.server.Server
 
-      Server.withRouter() {
-        case GET(p"/repositories") => Action {
-          Results.Ok(Json.arr(Json.obj("full_name" -> "octocat/Hello-World")))
+      Server.withRouterFromComponents() { components =>
+        import Results._
+        import components.{ defaultActionBuilder => Action }
+        {
+          case GET(p"/repositories") => Action {
+            Ok(Json.arr(Json.obj("full_name" -> "octocat/Hello-World")))
+          }
         }
       } { implicit port =>
         //#mock-service
@@ -106,7 +115,7 @@ class ScalaTestingWebServiceClients extends Specification {
         new BuiltInComponentsFromContext(context) with HttpFiltersComponents {
           override def router: Router = Router.from {
             case GET(p"/repositories") =>
-              this.defaultActionBuilder { req =>
+              Action { req =>
                 Results.Ok.sendResource("github/repositories.json")(fileMimeTypes)
               }
           }
@@ -131,7 +140,7 @@ class ScalaTestingWebServiceClients extends Specification {
           new BuiltInComponentsFromContext(context) with HttpFiltersComponents{
             override def router: Router = Router.from {
               case GET(p"/repositories") =>
-                this.defaultActionBuilder { req =>
+                Action { req =>
                   Results.Ok.sendResource("github/repositories.json")(fileMimeTypes)
                 }
             }

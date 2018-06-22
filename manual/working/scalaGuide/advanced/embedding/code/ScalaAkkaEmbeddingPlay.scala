@@ -1,9 +1,13 @@
 /*
- * Copyright (C) 2009-2017 Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) 2009-2018 Lightbend Inc. <https://www.lightbend.com>
  */
+
 import org.specs2.mutable.Specification
-import play.api.NoHttpFiltersComponents
+import play.api.{ApplicationLoader, BuiltInComponentsFromContext, Environment}
+import play.api.routing.Router
+import play.core.server.DefaultAkkaHttpServerComponents
 import play.api.test.WsTestClient
+import play.filters.HttpFiltersComponents
 
 import scala.concurrent.Await
 import scala.concurrent.duration.Duration
@@ -17,9 +21,13 @@ class ScalaAkkaEmbeddingPlay extends Specification with WsTestClient {
       import play.api.routing.sird._
       import play.core.server.AkkaHttpServer
 
-      val server = AkkaHttpServer.fromRouter() {
-        case GET(p"/hello/$to") => Action {
-          Results.Ok(s"Hello $to")
+      val server = AkkaHttpServer.fromRouterWithComponents() { components =>
+        import Results._
+        import components.{ defaultActionBuilder => Action }
+        {
+          case GET(p"/hello/$to") => Action {
+            Ok(s"Hello $to")
+          }
         }
       }
 
@@ -39,12 +47,16 @@ class ScalaAkkaEmbeddingPlay extends Specification with WsTestClient {
       import play.api.routing.sird._
       import play.core.server.{AkkaHttpServer, _}
 
-      val server = AkkaHttpServer.fromRouter(ServerConfig(
+      val server = AkkaHttpServer.fromRouterWithComponents(ServerConfig(
         port = Some(19000),
         address = "127.0.0.1"
-      )) {
-        case GET(p"/hello/$to") => Action {
-          Results.Ok(s"Hello $to")
+      )) { components =>
+        import Results._
+        import components.{ defaultActionBuilder => Action }
+        {
+          case GET(p"/hello/$to") => Action {
+            Ok(s"Hello $to")
+          }
         }
       }
       //#config-akka-http
@@ -67,20 +79,22 @@ class ScalaAkkaEmbeddingPlay extends Specification with WsTestClient {
 
       import scala.concurrent.Future
 
-      val components = new AkkaHttpServerComponents with BuiltInComponents with NoHttpFiltersComponents {
+      val components = new DefaultAkkaHttpServerComponents {
 
-        lazy val Action = defaultActionBuilder
-
-        lazy val router = Router.from {
+        override lazy val router: Router = Router.from {
           case GET(p"/hello/$to") => Action {
             Results.Ok(s"Hello $to")
           }
         }
 
-        override lazy val httpErrorHandler = new DefaultHttpErrorHandler(environment,
-          configuration, sourceMapper, Some(router)) {
+        override lazy val httpErrorHandler = new DefaultHttpErrorHandler(
+          environment,
+          configuration,
+          sourceMapper,
+          Some(router)
+        ) {
 
-          override protected def onNotFound(request: RequestHeader, message: String) = {
+          override protected def onNotFound(request: RequestHeader, message: String): Future[Result] = {
             Future.successful(Results.NotFound("Nothing was found!"))
           }
         }
@@ -97,17 +111,20 @@ class ScalaAkkaEmbeddingPlay extends Specification with WsTestClient {
 
     "allow usage from a running application" in {
       //#application-akka-http
-      import play.api.inject.guice.GuiceApplicationBuilder
       import play.api.mvc._
-      import play.api.routing.SimpleRouterImpl
       import play.api.routing.sird._
       import play.core.server.{AkkaHttpServer, ServerConfig}
 
-      val server = AkkaHttpServer.fromApplication(GuiceApplicationBuilder().router(new SimpleRouterImpl({
-        case GET(p"/hello/$to") => Action {
-          Results.Ok(s"Hello $to")
+      val context = ApplicationLoader.Context.create(Environment.simple())
+      val components = new BuiltInComponentsFromContext(context) with HttpFiltersComponents {
+        override def router: Router = Router.from {
+          case GET(p"/hello/$to") => Action {
+            Results.Ok(s"Hello $to")
+          }
         }
-      })).build(), ServerConfig(
+      }
+
+      val server = AkkaHttpServer.fromApplication(components.application, ServerConfig(
         port = Some(19000),
         address = "127.0.0.1"
       ))

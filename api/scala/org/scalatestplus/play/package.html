@@ -166,9 +166,6 @@ class ExampleSpec extends PlaySpec with GuiceOneServerPerSuite with AllBrowsersP
       def getConfig(key: String)(implicit app: Application) = app.configuration.getOptional[String](key)
       getConfig("foo") mustBe Some("bar")
     }
-    "start the Application" in {
-      Play.maybeApplication mustBe Some(app)
-    }
     "provide the port" in {
       port mustBe Helpers.testServerPort
     }
@@ -317,9 +314,6 @@ class ExampleSpec extends PlaySpec with OneServerPerTest with AllBrowsersPerTest
        def getConfig(key: String)(implicit app: Application) = app.configuration.getOptional[String](key)
       getConfig("foo") mustBe Some("bar")
     }
-    "start the FakeApplication" in {
-      Play.maybeApplication mustBe Some(app)
-    }
     "provide the port" in {
       port mustBe Helpers.testServerPort
     }
@@ -444,9 +438,6 @@ class ExampleSpec extends PlaySpec with OneAppPerTest {
       def getConfig(key: String)(implicit app: Application) = app.configuration.getOptional[String](key)
       getConfig("ehcacheplugin") mustBe Some("disabled")
     }
-    "start the Application" in {
-      Play.maybeApplication mustBe Some(app)
-    }
   }
 }
 </pre>
@@ -502,9 +493,6 @@ class ExampleSpec extends PlaySpec with OneServerPerSuite {
       def getConfig(key: String)(implicit app: Application) = app.configuration.getOptional[String](key)
       getConfig("ehcacheplugin") mustBe Some("disabled")
     }
-    "start the Application" in {
-      Play.maybeApplication mustBe Some(app)
-    }
     "provide the port number" in {
       port mustBe Helpers.testServerPort
     }
@@ -557,9 +545,6 @@ class BlueSpec extends PlaySpec with ConfiguredServer {
     "make the Application available implicitly" in {
       def getConfig(key: String)(implicit app: Application) = app.configuration.getOptional[String](key)
       getConfig("ehcacheplugin") mustBe Some("disabled")
-    }
-    "start the Application" in {
-      Play.maybeApplication mustBe Some(app)
     }
     "provide the port number" in {
       port mustBe Helpers.testServerPort
@@ -622,9 +607,6 @@ class ExampleSpec extends PlaySpec with OneServerPerTest {
     "make the FakeApplication available implicitly" in {
       def getConfig(key: String)(implicit app: Application) = app.configuration.getOptional[String](key)
       getConfig("ehcacheplugin") mustBe Some("disabled")
-    }
-    "start the FakeApplication" in {
-      Play.maybeApplication mustBe Some(app)
     }
     "provide the port number" in {
       port mustBe Helpers.testServerPort
@@ -714,6 +696,31 @@ Firefox browsers with different profiles (English, Japanese, etc.).
 you to fill in the <code>createWebDriver</code> method, usually by mixing in one of the <code>BrowserFactory</code> subtraits such as
 <code>ChromeFactory</code>.
 </p></div></div>
+    </li><li name="org.scalatestplus.play.ChromeInfo" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ChromeInfoextendsBrowserInfowithProductwithSerializable"></a>
+      <a id="ChromeInfo:ChromeInfo"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="ChromeInfo.html"><span class="name">ChromeInfo</span></a><span class="params">(<span name="service">service: <span class="extype" name="org.openqa.selenium.chrome.ChromeDriverService">ChromeDriverService</span> = <span class="symbol"><span class="name"><a href="ChromeFactory$.html">ChromeFactory.chromeDriverService</a></span></span></span>, <span name="options">options: <span class="extype" name="org.openqa.selenium.chrome.ChromeOptions">ChromeOptions</span> = <span class="symbol"><span class="name"><a href="ChromeFactory$.html">ChromeFactory.chromeOptions</a></span></span></span>)</span><span class="result"> extends <a href="BrowserInfo.html" class="extype" name="org.scalatestplus.play.BrowserInfo">BrowserInfo</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.scalatestplus.play.package@ChromeInfoextendsBrowserInfowithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Chrome browser info, which encapsulates the browser name, <code>&quot;[Chrome]&quot;</code>; tag name, <code>org.scalatest.tags.ChromeBrowser</code>; and a factory method that produces a Selenium <code>ChromeDriver</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Chrome browser info, which encapsulates the browser name, <code>&quot;[Chrome]&quot;</code>; tag name, <code>org.scalatest.tags.ChromeBrowser</code>; and a factory method that produces a Selenium <code>ChromeDriver</code>.</p><p>This object's superclass, <code>BrowserInfo</code>, is used by <a href="AllBrowsersPerSuite.html" class="extype" name="org.scalatestplus.play.AllBrowsersPerSuite">AllBrowsersPerSuite</a> and
+<a href="AllBrowsersPerTest.html" class="extype" name="org.scalatestplus.play.AllBrowsersPerTest">AllBrowsersPerTest</a>: an <code>IndexedSeq[BrowserInfo]</code> is returned
+from the <code>browsers</code> field of these traits to specify the browsers to share between tests.
+When tests are registered, <code>AllBrowsersPerSuite</code> and <code>AllBrowsersPerTest</code> use the browser name to ensure the tests shared by multiple browsers
+have unique names (the name of each shared test is appended with a browser name). When the tests run, these traits
+use the <code>BrowserInfo</code>'s factory method to create <code>WebDriver</code>s as needed.
+The <code>AllBrowsersPerSuite</code> and <code>AllBrowsersPerTest</code> traits use the  tag name to automatically tag any tests that use
+a particular <code>WebDriver</code> with the appropriate tag so that tests can be dynamically filtered by the browser the use.
+</p></div></div>
     </li><li name="org.scalatestplus.play.ConfiguredApp" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="ConfiguredAppextendsTestSuiteMixin"></a>
       <a id="ConfiguredApp:ConfiguredApp"></a>
@@ -756,9 +763,6 @@ class ExampleSpec extends PlaySpec with GuiceOneAppPerSuite {
     "make the FakeApplication available implicitly" in {
       def getConfig(key: String)(implicit app: Application) = app.configuration.getOptional[String](key)
       getConfig("ehcacheplugin") mustBe Some("disabled")
-    }
-    "start the FakeApplication" in {
-      Play.maybeApplication mustBe Some(app)
     }
   }
 }
@@ -817,9 +821,6 @@ class ExampleSpec extends PlaySpec with OneServerPerSuite with OneBrowserPerSuit
     "make the Application available implicitly" in {
       def getConfig(key: String)(implicit app: Application) = app.configuration.getOptional[String](key)
       getConfig("ehcacheplugin") mustBe Some("disabled")
-    }
-    "start the Application" in {
-      Play.maybeApplication mustBe Some(app)
     }
     "provide the port number" in {
       port mustBe Helpers.testServerPort
@@ -886,9 +887,6 @@ class ExampleSpec extends PlaySpec with GuiceOneServerPerSuite {
     "make the Application available implicitly" in {
       def getConfig(key: String)(implicit app: Application) = app.configuration.getOptional[String](key)
       getConfig("ehcacheplugin") mustBe Some("disabled")
-    }
-    "start the Application" in {
-      Play.maybeApplication mustBe Some(app)
     }
     "provide the port number" in {
       port mustBe Helpers.testServerPort
@@ -958,7 +956,7 @@ you to fill in the <code>createWebDriver</code> method, usually by mixing in one
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="FirefoxInfo.html"><span class="name">FirefoxInfo</span></a><span class="params">(<span name="firefoxProfile">firefoxProfile: <span class="extype" name="org.openqa.selenium.firefox.FirefoxProfile">FirefoxProfile</span></span>, <span name="firefoxOptions">firefoxOptions: <span class="extype" name="org.openqa.selenium.firefox.FirefoxOptions">FirefoxOptions</span> = <span class="defval" name='<span class="name"><a href="../../package.html">new FirefoxOptions().setLogLevel(Level.WARNING)</a></span>'>...</span></span>)</span><span class="result"> extends <a href="BrowserInfo.html" class="extype" name="org.scalatestplus.play.BrowserInfo">BrowserInfo</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="FirefoxInfo.html"><span class="name">FirefoxInfo</span></a><span class="params">(<span name="firefoxProfile">firefoxProfile: <span class="extype" name="org.openqa.selenium.firefox.FirefoxProfile">FirefoxProfile</span></span>, <span name="firefoxOptions">firefoxOptions: <span class="extype" name="org.openqa.selenium.firefox.FirefoxOptions">FirefoxOptions</span> = <span class="symbol"><span class="name"><a href="FirefoxFactory$.html">FirefoxFactory.firefoxOptions</a></span></span></span>)</span><span class="result"> extends <a href="BrowserInfo.html" class="extype" name="org.scalatestplus.play.BrowserInfo">BrowserInfo</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#org.scalatestplus.play.package@FirefoxInfoextendsBrowserInfowithProductwithSerializable" title="Permalink" target="_top">
@@ -1114,9 +1112,6 @@ class ExampleSpec extends MixedPlaySpec {
     "make the Application available implicitly" in new App(buildApp("ehcacheplugin" -> "disabled")) {
       getConfig("ehcacheplugin") mustBe Some("disabled")
     }
-    "start the Application" in new App(buildApp("ehcacheplugin" -> "disabled")) {
-      Play.maybeApplication mustBe Some(app)
-    }
   }
   "The Server function" must {
     "provide an Application" in new Server(buildApp("ehcacheplugin" -> "disabled")) {
@@ -1124,9 +1119,6 @@ class ExampleSpec extends MixedPlaySpec {
     }
     "make the Application available implicitly" in new Server(buildApp("ehcacheplugin" -> "disabled")) {
       getConfig("ehcacheplugin") mustBe Some("disabled")
-    }
-    "start the Application" in new Server(buildApp("ehcacheplugin" -> "disabled")) {
-      Play.maybeApplication mustBe Some(app)
     }
     import Helpers._
     "send 404 on a bad request" in new Server {
@@ -1143,9 +1135,6 @@ class ExampleSpec extends MixedPlaySpec {
     }
     "make the Application available implicitly" in new HtmlUnit(buildApp("ehcacheplugin" -> "disabled")) {
       getConfig("ehcacheplugin") mustBe Some("disabled")
-    }
-    "start the Application" in new HtmlUnit(buildApp("ehcacheplugin" -> "disabled")) {
-      Play.maybeApplication mustBe Some(app)
     }
     import Helpers._
     "send 404 on a bad request" in new HtmlUnit {
@@ -1169,9 +1158,6 @@ class ExampleSpec extends MixedPlaySpec {
     "make the Application available implicitly" in new Firefox(buildApp("ehcacheplugin" -> "disabled")) {
       getConfig("ehcacheplugin") mustBe Some("disabled")
     }
-    "start the Application" in new Firefox(buildApp("ehcacheplugin" -> "disabled")) {
-      Play.maybeApplication mustBe Some(app)
-    }
     import Helpers._
     "send 404 on a bad request" in new Firefox {
       import java.net._
@@ -1193,9 +1179,6 @@ class ExampleSpec extends MixedPlaySpec {
     }
     "make the Application available implicitly" in new Safari(buildApp("ehcacheplugin" -> "disabled")) {
       getConfig("ehcacheplugin") mustBe Some("disabled")
-    }
-    "start the Application" in new Safari(buildApp("ehcacheplugin" -> "disabled")) {
-      Play.maybeApplication mustBe Some(app)
     }
     import Helpers._
     "send 404 on a bad request" in new Safari {
@@ -1219,9 +1202,6 @@ class ExampleSpec extends MixedPlaySpec {
     "make the Application available implicitly" in new Chrome(buildApp("ehcacheplugin" -> "disabled")) {
       getConfig("ehcacheplugin") mustBe Some("disabled")
     }
-    "start the Application" in new Chrome(buildApp("ehcacheplugin" -> "disabled")) {
-      Play.maybeApplication mustBe Some(app)
-    }
     import Helpers._
     "send 404 on a bad request" in new Chrome {
       import java.net._
@@ -1243,9 +1223,6 @@ class ExampleSpec extends MixedPlaySpec {
     }
     "make the Application available implicitly" in new InternetExplorer(buildApp("ehcacheplugin" -> "disabled")) {
       getConfig("ehcacheplugin") mustBe Some("disabled")
-    }
-    "start the Application" in new InternetExplorer(buildApp("ehcacheplugin" -> "disabled")) {
-      Play.maybeApplication mustBe Some(app)
     }
     import Helpers._
     "send 404 on a bad request" in new InternetExplorer {
@@ -1348,9 +1325,6 @@ class ExampleSpec extends PlaySpec with OneServerPerSuite with OneBrowserPerSuit
       def getConfig(key: String)(implicit app: Application) = app.configuration.getOptional[String](key)
       getConfig("ehcacheplugin") mustBe Some("disabled")
     }
-    "start the Application" in {
-      Play.maybeApplication mustBe Some(app)
-    }
     "provide the port number" in {
       port mustBe Helpers.testServerPort
     }
@@ -1412,9 +1386,6 @@ class BlueSpec extends PlaySpec with ConfiguredServer with ConfiguredBrowser {
       def getConfig(key: String)(implicit app: Application) = app.configuration.getOptional[String](key)
       getConfig("ehcacheplugin") mustBe Some("disabled")
     }
-    "start the Application" in {
-      Play.maybeApplication mustBe Some(app)
-    }
     "provide the port number" in {
       port mustBe Helpers.testServerPort
     }
@@ -1459,9 +1430,6 @@ abstract class MultiBrowserExampleSpec extends PlaySpec with OneServerPerSuite w
     "make the Application available implicitly" in {
       def getConfig(key: String)(implicit app: Application) = app.configuration.getOptional[String](key)
       getConfig("ehcacheplugin") mustBe Some("disabled")
-    }
-    "start the Application" in {
-      Play.maybeApplication mustBe Some(app)
     }
     "provide the port number" in {
       port mustBe Helpers.testServerPort
@@ -1620,9 +1588,6 @@ class ExampleSpec extends PlaySpec with OneServerPerTest with OneBrowserPerTest 
       def getConfig(key: String)(implicit app: Application) = app.configuration.getOptional[String](key)
       getConfig("ehcacheplugin") mustBe Some("disabled")
     }
-    "start the Application" in {
-      Play.maybeApplication mustBe Some(app)
-    }
     "provide the port number" in {
       port mustBe Helpers.testServerPort
     }
@@ -1644,57 +1609,6 @@ class ExampleSpec extends PlaySpec with OneServerPerTest with OneBrowserPerTest 
 }
 </pre>
 </p></div></div>
-    </li><li name="org.scalatestplus.play.PhantomJSFactory" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="PhantomJSFactoryextendsBrowserFactory"></a>
-      <a id="PhantomJSFactory:PhantomJSFactory"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">trait</span>
-      </span>
-      <span class="symbol">
-        <a href="PhantomJSFactory.html"><span class="name">PhantomJSFactory</span></a><span class="result"> extends <a href="BrowserFactory.html" class="extype" name="org.scalatestplus.play.BrowserFactory">BrowserFactory</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.package@PhantomJSFactoryextendsBrowserFactory" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Factory whose <code>createWebDriver</code> method will either return a new Selenium <code>PhantomJSDriver</code> (created
-using the capabilities specified by <code>phantomCapabilities</code>), or
-<a href="BrowserFactory$$UnavailableDriver.html" class="extype" name="org.scalatestplus.play.BrowserFactory.UnavailableDriver">UnavailableDriver</a>, if Firefox is not available on the host platform.</p><div class="fullcomment"><div class="comment cmt"><p>Factory whose <code>createWebDriver</code> method will either return a new Selenium <code>PhantomJSDriver</code> (created
-using the capabilities specified by <code>phantomCapabilities</code>), or
-<a href="BrowserFactory$$UnavailableDriver.html" class="extype" name="org.scalatestplus.play.BrowserFactory.UnavailableDriver">UnavailableDriver</a>, if Firefox is not available on the host platform.</p><p>Traits <a href="OneBrowserPerSuite.html" class="extype" name="org.scalatestplus.play.OneBrowserPerSuite">OneBrowserPerSuite</a> and
-<a href="OneBrowserPerTest.html" class="extype" name="org.scalatestplus.play.OneBrowserPerTest">OneBrowserPerTest</a> extend <code>BrowserFactory</code> and therefore require
-you to fill in the <code>createWebDriver</code> method, usually by mixing in one of the <code>BrowserFactory</code> subtraits such as
-<code>PhantomJSFactory</code>.
-</p></div></div>
-    </li><li name="org.scalatestplus.play.PhantomJSInfo" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="PhantomJSInfoextendsBrowserInfowithProductwithSerializable"></a>
-      <a id="PhantomJSInfo:PhantomJSInfo"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">case class</span>
-      </span>
-      <span class="symbol">
-        <a href="PhantomJSInfo.html"><span class="name">PhantomJSInfo</span></a><span class="params">(<span name="phantomCapabilities">phantomCapabilities: <span class="extype" name="org.openqa.selenium.remote.DesiredCapabilities">DesiredCapabilities</span> = <span class="symbol"><span class="name"><a href="../../package.html">DesiredCapabilities.phantomjs()</a></span></span></span>)</span><span class="result"> extends <a href="BrowserInfo.html" class="extype" name="org.scalatestplus.play.BrowserInfo">BrowserInfo</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.package@PhantomJSInfoextendsBrowserInfowithProductwithSerializable" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">PhantomJS browser info, which encapsulates the browser name, <code>&quot;[PhantomJS]&quot;</code>; tag name, <code>org.scalatest.tags.PhantomJS</code>; and a factory method that produces a Selenium <span class="extype" name="org.openqa.selenium.phantomjs.PhantomJSDriver">org.openqa.selenium.phantomjs.PhantomJSDriver</span>.</p><div class="fullcomment"><div class="comment cmt"><p>PhantomJS browser info, which encapsulates the browser name, <code>&quot;[PhantomJS]&quot;</code>; tag name, <code>org.scalatest.tags.PhantomJS</code>; and a factory method that produces a Selenium <span class="extype" name="org.openqa.selenium.phantomjs.PhantomJSDriver">org.openqa.selenium.phantomjs.PhantomJSDriver</span>.</p><p>This class's superclass, <code>BrowserInfo</code>, is used by <a href="AllBrowsersPerSuite.html" class="extype" name="org.scalatestplus.play.AllBrowsersPerSuite">AllBrowsersPerSuite</a> and
-<a href="AllBrowsersPerTest.html" class="extype" name="org.scalatestplus.play.AllBrowsersPerTest">AllBrowsersPerTest</a>: an <code>IndexedSeq[BrowserInfo]</code> is returned
-from the <code>browsers</code> field of these traits to specify the browsers to share between tests.
-When tests are registered, <code>AllBrowsersPerSuite</code> and <code>AllBrowsersPerTest</code> use the browser name to ensure the tests shared by multiple browsers
-have unique names (the name of each shared test is appended with a browser name). When the tests run, these traits
-use the <code>BrowserInfo</code>'s factory method to create <code>WebDriver</code>s as needed.
-The <code>AllBrowsersPerSuite</code> and <code>AllBrowsersPerTest</code> traits use the  tag name to automatically tag any tests that use
-a particular <code>WebDriver</code> with the appropriate tag so that tests can be dynamically filtered by the browser the use.
-</p></div><dl class="paramcmts block"><dt class="param">phantomCapabilities</dt><dd class="cmt"><p>the <span class="extype" name="DesiredCapabilities">DesiredCapabilities</span> to use when creating new <span class="extype" name="org.openqa.selenium.phantomjs.PhantomJSDriver">org.openqa.selenium.phantomjs.PhantomJSDriver</span>
-                           in the <code>createWebDriver</code> factory method.</p></dd></dl></div>
     </li><li name="org.scalatestplus.play.PlaySpec" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="PlaySpecextendsWordSpecwithMustMatcherswithOptionValueswithWsScalaTestClient"></a>
       <a id="PlaySpec:PlaySpec"></a>
@@ -1889,6 +1803,63 @@ the <code>WebDriver</code> strategy (i.e., the extent to which <code>WebDriver</
                 <span class="name">@deprecated</span>
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.0.0)</i> Use GuiceOneServerPerTest instead</p></dd></dl></div>
+    </li><li name="org.scalatestplus.play.PhantomJSFactory" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="PhantomJSFactoryextendsBrowserFactory"></a>
+      <a id="PhantomJSFactory:PhantomJSFactory"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="PhantomJSFactory.html"><span class="name deprecated" title="Deprecated: (Since version 4.0.0) PhantomJS is no longer actively developed, and support will eventually be dropped">PhantomJSFactory</span></a><span class="result"> extends <a href="BrowserFactory.html" class="extype" name="org.scalatestplus.play.BrowserFactory">BrowserFactory</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.scalatestplus.play.package@PhantomJSFactoryextendsBrowserFactory" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Factory whose <code>createWebDriver</code> method will either return a new Selenium <code>PhantomJSDriver</code> (created
+using the capabilities specified by <code>phantomCapabilities</code>), or
+<a href="BrowserFactory$$UnavailableDriver.html" class="extype" name="org.scalatestplus.play.BrowserFactory.UnavailableDriver">UnavailableDriver</a>, if Firefox is not available on the host platform.</p><div class="fullcomment"><div class="comment cmt"><p>Factory whose <code>createWebDriver</code> method will either return a new Selenium <code>PhantomJSDriver</code> (created
+using the capabilities specified by <code>phantomCapabilities</code>), or
+<a href="BrowserFactory$$UnavailableDriver.html" class="extype" name="org.scalatestplus.play.BrowserFactory.UnavailableDriver">UnavailableDriver</a>, if Firefox is not available on the host platform.</p><p>Traits <a href="OneBrowserPerSuite.html" class="extype" name="org.scalatestplus.play.OneBrowserPerSuite">OneBrowserPerSuite</a> and
+<a href="OneBrowserPerTest.html" class="extype" name="org.scalatestplus.play.OneBrowserPerTest">OneBrowserPerTest</a> extend <code>BrowserFactory</code> and therefore require
+you to fill in the <code>createWebDriver</code> method, usually by mixing in one of the <code>BrowserFactory</code> subtraits such as
+<code>PhantomJSFactory</code>.
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 4.0.0)</i> PhantomJS is no longer actively developed, and support will eventually be dropped</p></dd></dl></div>
+    </li><li name="org.scalatestplus.play.PhantomJSInfo" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="PhantomJSInfoextendsBrowserInfowithProductwithSerializable"></a>
+      <a id="PhantomJSInfo:PhantomJSInfo"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="PhantomJSInfo.html"><span class="name deprecated" title="Deprecated: (Since version 4.0.0) PhantomJS is no longer actively developed, and support will eventually be dropped">PhantomJSInfo</span></a><span class="params">(<span name="phantomCapabilities">phantomCapabilities: <span class="extype" name="org.openqa.selenium.remote.DesiredCapabilities">DesiredCapabilities</span> = <span class="symbol"><span class="name"><a href="../../package.html">DesiredCapabilities.phantomjs()</a></span></span></span>)</span><span class="result"> extends <a href="BrowserInfo.html" class="extype" name="org.scalatestplus.play.BrowserInfo">BrowserInfo</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.scalatestplus.play.package@PhantomJSInfoextendsBrowserInfowithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">PhantomJS browser info, which encapsulates the browser name, <code>&quot;[PhantomJS]&quot;</code>; tag name, <code>org.scalatest.tags.PhantomJS</code>; and a factory method that produces a Selenium <span class="extype" name="org.openqa.selenium.phantomjs.PhantomJSDriver">org.openqa.selenium.phantomjs.PhantomJSDriver</span>.</p><div class="fullcomment"><div class="comment cmt"><p>PhantomJS browser info, which encapsulates the browser name, <code>&quot;[PhantomJS]&quot;</code>; tag name, <code>org.scalatest.tags.PhantomJS</code>; and a factory method that produces a Selenium <span class="extype" name="org.openqa.selenium.phantomjs.PhantomJSDriver">org.openqa.selenium.phantomjs.PhantomJSDriver</span>.</p><p>This class's superclass, <code>BrowserInfo</code>, is used by <a href="AllBrowsersPerSuite.html" class="extype" name="org.scalatestplus.play.AllBrowsersPerSuite">AllBrowsersPerSuite</a> and
+<a href="AllBrowsersPerTest.html" class="extype" name="org.scalatestplus.play.AllBrowsersPerTest">AllBrowsersPerTest</a>: an <code>IndexedSeq[BrowserInfo]</code> is returned
+from the <code>browsers</code> field of these traits to specify the browsers to share between tests.
+When tests are registered, <code>AllBrowsersPerSuite</code> and <code>AllBrowsersPerTest</code> use the browser name to ensure the tests shared by multiple browsers
+have unique names (the name of each shared test is appended with a browser name). When the tests run, these traits
+use the <code>BrowserInfo</code>'s factory method to create <code>WebDriver</code>s as needed.
+The <code>AllBrowsersPerSuite</code> and <code>AllBrowsersPerTest</code> traits use the  tag name to automatically tag any tests that use
+a particular <code>WebDriver</code> with the appropriate tag so that tests can be dynamically filtered by the browser the use.
+</p></div><dl class="paramcmts block"><dt class="param">phantomCapabilities</dt><dd class="cmt"><p>the <span class="extype" name="DesiredCapabilities">DesiredCapabilities</span> to use when creating new <span class="extype" name="org.openqa.selenium.phantomjs.PhantomJSDriver">org.openqa.selenium.phantomjs.PhantomJSDriver</span>
+                           in the <code>createWebDriver</code> factory method.</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 4.0.0)</i> PhantomJS is no longer actively developed, and support will eventually be dropped</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -1934,31 +1905,6 @@ used as a placeholder when a driver is not available on the host platform.
       </a>
     </span>
       <p class="shortcomment cmt">Companion object to trait <code>ChromeFactory</code> that mixes in the trait.</p>
-    </li><li name="org.scalatestplus.play.ChromeInfo" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="ChromeInfo"></a>
-      <a id="ChromeInfo:ChromeInfo"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a href="ChromeInfo$.html"><span class="name">ChromeInfo</span></a><span class="result"> extends <a href="BrowserInfo.html" class="extype" name="org.scalatestplus.play.BrowserInfo">BrowserInfo</a> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.package@ChromeInfo" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Chrome browser info, which encapsulates the browser name, <code>&quot;[Chrome]&quot;</code>; tag name, <code>org.scalatest.tags.ChromeBrowser</code>; and a factory method that produces a Selenium <code>ChromeDriver</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Chrome browser info, which encapsulates the browser name, <code>&quot;[Chrome]&quot;</code>; tag name, <code>org.scalatest.tags.ChromeBrowser</code>; and a factory method that produces a Selenium <code>ChromeDriver</code>.</p><p>This object's superclass, <code>BrowserInfo</code>, is used by <a href="AllBrowsersPerSuite.html" class="extype" name="org.scalatestplus.play.AllBrowsersPerSuite">AllBrowsersPerSuite</a> and
-<a href="AllBrowsersPerTest.html" class="extype" name="org.scalatestplus.play.AllBrowsersPerTest">AllBrowsersPerTest</a>: an <code>IndexedSeq[BrowserInfo]</code> is returned
-from the <code>browsers</code> field of these traits to specify the browsers to share between tests.
-When tests are registered, <code>AllBrowsersPerSuite</code> and <code>AllBrowsersPerTest</code> use the browser name to ensure the tests shared by multiple browsers
-have unique names (the name of each shared test is appended with a browser name). When the tests run, these traits
-use the <code>BrowserInfo</code>'s factory method to create <code>WebDriver</code>s as needed.
-The <code>AllBrowsersPerSuite</code> and <code>AllBrowsersPerTest</code> traits use the  tag name to automatically tag any tests that use
-a particular <code>WebDriver</code> with the appropriate tag so that tests can be dynamically filtered by the browser the use.
-</p></div></div>
     </li><li name="org.scalatestplus.play.FirefoxFactory" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="FirefoxFactory"></a>
       <a id="FirefoxFactory:FirefoxFactory"></a>
@@ -2035,23 +1981,6 @@ use the <code>BrowserInfo</code>'s factory method to create <code>WebDriver</cod
 The <code>AllBrowsersPerSuite</code> and <code>AllBrowsersPerTest</code> traits use the  tag name to automatically tag any tests that use
 a particular <code>WebDriver</code> with the appropriate tag so that tests can be dynamically filtered by the browser the use.
 </p></div></div>
-    </li><li name="org.scalatestplus.play.PhantomJSFactory" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="PhantomJSFactory"></a>
-      <a id="PhantomJSFactory:PhantomJSFactory"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a href="PhantomJSFactory$.html"><span class="name">PhantomJSFactory</span></a><span class="result"> extends <a href="PhantomJSFactory.html" class="extype" name="org.scalatestplus.play.PhantomJSFactory">PhantomJSFactory</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#org.scalatestplus.play.package@PhantomJSFactory" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Companion object to trait <code>PhantomJSFactory</code> that mixes in the trait.</p>
     </li><li name="org.scalatestplus.play.SafariFactory" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="SafariFactory"></a>
       <a id="SafariFactory:SafariFactory"></a>
@@ -2094,6 +2023,23 @@ use the <code>BrowserInfo</code>'s factory method to create <code>WebDriver</cod
 The <code>AllBrowsersPerSuite</code> and <code>AllBrowsersPerTest</code> traits use the  tag name to automatically tag any tests that use
 a particular <code>WebDriver</code> with the appropriate tag so that tests can be dynamically filtered by the browser the use.
 </p></div></div>
+    </li><li name="org.scalatestplus.play.components" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="components"></a>
+      <a id="components:components"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="components/package.html"><span class="name">components</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.scalatestplus.play.package@components" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="org.scalatestplus.play.guice" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="guice"></a>
       <a id="guice:guice"></a>
@@ -2116,7 +2062,31 @@ a particular <code>WebDriver</code> with the appropriate tag so that tests can b
 
         
 
-        
+        <div id="values" class="values members">
+              <h3>Deprecated Value Members</h3>
+              <ol><li name="org.scalatestplus.play.PhantomJSFactory" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="PhantomJSFactory"></a>
+      <a id="PhantomJSFactory:PhantomJSFactory"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="PhantomJSFactory$.html"><span class="name deprecated" title="Deprecated: (Since version 4.0.0) PhantomJS is no longer actively developed, and support will eventually be dropped">PhantomJSFactory</span></a><span class="result"> extends <a href="PhantomJSFactory.html" class="extype" name="org.scalatestplus.play.PhantomJSFactory">PhantomJSFactory</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.scalatestplus.play.package@PhantomJSFactory" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Companion object to trait <code>PhantomJSFactory</code> that mixes in the trait.</p><div class="fullcomment"><div class="comment cmt"><p>Companion object to trait <code>PhantomJSFactory</code> that mixes in the trait.
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 4.0.0)</i> PhantomJS is no longer actively developed, and support will eventually be dropped</p></dd></dl></div>
+    </li></ol>
+            </div>
         </div>
 
         <div id="inheritedMembers">

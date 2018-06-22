@@ -28,10 +28,12 @@
         </head>
         <body class="type">
       <div id="definition">
-        <img alt="Class" src="../../lib/class_big.png" />
+        <a href="ApplicationLoader$$Context$.html" title="See companion object"><img alt="Class/Object" src="../../lib/class_to_object_big.png" /></a>
         <p id="owner"><a href="../package.html" class="extype" name="play">play</a>.<a href="package.html" class="extype" name="play.api">api</a>.<a href="ApplicationLoader$.html" class="extype" name="play.api.ApplicationLoader">ApplicationLoader</a></p>
-        <h1>Context</h1><h3><span class="morelinks"><div>Related Doc:
-            <a href="ApplicationLoader$.html" class="extype" name="play.api.ApplicationLoader">package ApplicationLoader</a>
+        <h1><a href="ApplicationLoader$$Context$.html" title="See companion object">Context</a></h1><h3><span class="morelinks"><div>
+            Related Docs:
+            <a href="ApplicationLoader$$Context$.html" title="See companion object">object Context</a>
+            | <a href="ApplicationLoader$.html" class="extype" name="play.api.ApplicationLoader">package ApplicationLoader</a>
           </div></span></h3><span class="permalink">
       <a href="../../index.html#play.api.ApplicationLoader$$Context" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
@@ -45,14 +47,14 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">Context</span><span class="params">(<span name="environment">environment: <a href="Environment.html" class="extype" name="play.api.Environment">Environment</a></span>, <span name="sourceMapper">sourceMapper: <span class="extype" name="scala.Option">Option</span>[<a href="../core/SourceMapper.html" class="extype" name="play.core.SourceMapper">SourceMapper</a>]</span>, <span name="webCommands">webCommands: <a href="../core/WebCommands.html" class="extype" name="play.core.WebCommands">WebCommands</a></span>, <span name="initialConfiguration">initialConfiguration: <a href="Configuration.html" class="extype" name="play.api.Configuration">Configuration</a></span>, <span name="lifecycle">lifecycle: <a href="inject/DefaultApplicationLifecycle.html" class="extype" name="play.api.inject.DefaultApplicationLifecycle">DefaultApplicationLifecycle</a></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name">Context</span><span class="params">(<span name="environment">environment: <a href="Environment.html" class="extype" name="play.api.Environment">Environment</a></span>, <span name="initialConfiguration">initialConfiguration: <a href="Configuration.html" class="extype" name="play.api.Configuration">Configuration</a></span>, <span name="lifecycle">lifecycle: <a href="inject/ApplicationLifecycle.html" class="extype" name="play.api.inject.ApplicationLifecycle">ApplicationLifecycle</a></span>, <span name="devContext">devContext: <span class="extype" name="scala.Option">Option</span>[<a href="ApplicationLoader$$DevContext.html" class="extype" name="play.api.ApplicationLoader.DevContext">DevContext</a>]</span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>The context for loading an application.
-</p></div><dl class="paramcmts block"><dt class="param">environment</dt><dd class="cmt"><p>The environment</p></dd><dt class="param">sourceMapper</dt><dd class="cmt"><p>An optional source mapper</p></dd><dt class="param">webCommands</dt><dd class="cmt"><p>The web command handlers</p></dd><dt class="param">initialConfiguration</dt><dd class="cmt"><p>The initial configuration.  This configuration is not necessarily the same
+</p></div><dl class="paramcmts block"><dt class="param">environment</dt><dd class="cmt"><p>The environment</p></dd><dt class="param">initialConfiguration</dt><dd class="cmt"><p>The initial configuration.  This configuration is not necessarily the same
                             configuration used by the application, as the ApplicationLoader may, through it's own
-                            mechanisms, modify it or completely ignore it.</p></dd></dl><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.6.0/framework/src/play/src/main/scala/play/api/ApplicationLoader.scala" target="_blank">ApplicationLoader.scala</a></dd></dl><div class="toggleContainer block">
+                            mechanisms, modify it or completely ignore it.</p></dd><dt class="param">lifecycle</dt><dd class="cmt"><p>Used to register hooks that run when the application stops.</p></dd><dt class="param">devContext</dt><dd class="cmt"><p>If an application is loaded in dev mode then this additional context is available.</p></dd></dl><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.7.0-M1/framework/src/play/src/main/scala/play/api/ApplicationLoader.scala" target="_blank">ApplicationLoader.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -92,7 +94,7 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="play.api.ApplicationLoader.Context#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(environment:play.api.Environment,sourceMapper:Option[play.core.SourceMapper],webCommands:play.core.WebCommands,initialConfiguration:play.api.Configuration,lifecycle:play.api.inject.DefaultApplicationLifecycle):play.api.ApplicationLoader.Context"></a>
+      <a id="&lt;init&gt;(environment:play.api.Environment,initialConfiguration:play.api.Configuration,lifecycle:play.api.inject.ApplicationLifecycle,devContext:Option[play.api.ApplicationLoader.DevContext]):play.api.ApplicationLoader.Context"></a>
       <a id="&lt;init&gt;:Context"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -100,16 +102,16 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">Context</span><span class="params">(<span name="environment">environment: <a href="Environment.html" class="extype" name="play.api.Environment">Environment</a></span>, <span name="sourceMapper">sourceMapper: <span class="extype" name="scala.Option">Option</span>[<a href="../core/SourceMapper.html" class="extype" name="play.core.SourceMapper">SourceMapper</a>]</span>, <span name="webCommands">webCommands: <a href="../core/WebCommands.html" class="extype" name="play.core.WebCommands">WebCommands</a></span>, <span name="initialConfiguration">initialConfiguration: <a href="Configuration.html" class="extype" name="play.api.Configuration">Configuration</a></span>, <span name="lifecycle">lifecycle: <a href="inject/DefaultApplicationLifecycle.html" class="extype" name="play.api.inject.DefaultApplicationLifecycle">DefaultApplicationLifecycle</a></span>)</span>
+        <span class="name">Context</span><span class="params">(<span name="environment">environment: <a href="Environment.html" class="extype" name="play.api.Environment">Environment</a></span>, <span name="initialConfiguration">initialConfiguration: <a href="Configuration.html" class="extype" name="play.api.Configuration">Configuration</a></span>, <span name="lifecycle">lifecycle: <a href="inject/ApplicationLifecycle.html" class="extype" name="play.api.inject.ApplicationLifecycle">ApplicationLifecycle</a></span>, <span name="devContext">devContext: <span class="extype" name="scala.Option">Option</span>[<a href="ApplicationLoader$$DevContext.html" class="extype" name="play.api.ApplicationLoader.DevContext">DevContext</a>]</span>)</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#play.api.ApplicationLoader$$Context@&lt;init&gt;(environment:play.api.Environment,sourceMapper:Option[play.core.SourceMapper],webCommands:play.core.WebCommands,initialConfiguration:play.api.Configuration,lifecycle:play.api.inject.DefaultApplicationLifecycle):play.api.ApplicationLoader.Context" title="Permalink" target="_top">
+      <a href="../../index.html#play.api.ApplicationLoader$$Context@&lt;init&gt;(environment:play.api.Environment,initialConfiguration:play.api.Configuration,lifecycle:play.api.inject.ApplicationLifecycle,devContext:Option[play.api.ApplicationLoader.DevContext]):play.api.ApplicationLoader.Context" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">environment</dt><dd class="cmt"><p>The environment</p></dd><dt class="param">sourceMapper</dt><dd class="cmt"><p>An optional source mapper</p></dd><dt class="param">webCommands</dt><dd class="cmt"><p>The web command handlers</p></dd><dt class="param">initialConfiguration</dt><dd class="cmt"><p>The initial configuration.  This configuration is not necessarily the same
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">environment</dt><dd class="cmt"><p>The environment</p></dd><dt class="param">initialConfiguration</dt><dd class="cmt"><p>The initial configuration.  This configuration is not necessarily the same
                             configuration used by the application, as the ApplicationLoader may, through it's own
-                            mechanisms, modify it or completely ignore it.</p></dd></dl></div>
+                            mechanisms, modify it or completely ignore it.</p></dd><dt class="param">lifecycle</dt><dd class="cmt"><p>Used to register hooks that run when the application stops.</p></dd><dt class="param">devContext</dt><dd class="cmt"><p>If an application is loaded in dev mode then this additional context is available.</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -210,6 +212,23 @@
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="play.api.ApplicationLoader.Context#devContext" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="devContext:Option[play.api.ApplicationLoader.DevContext]"></a>
+      <a id="devContext:Option[DevContext]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">devContext</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="ApplicationLoader$$DevContext.html" class="extype" name="play.api.ApplicationLoader.DevContext">DevContext</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.ApplicationLoader$$Context@devContext:Option[play.api.ApplicationLoader.DevContext]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">If an application is loaded in dev mode then this additional context is available.</p>
     </li><li name="play.api.ApplicationLoader.Context#environment" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="environment:play.api.Environment"></a>
       <a id="environment:Environment"></a>
@@ -321,22 +340,22 @@
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="play.api.ApplicationLoader.Context#lifecycle" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="lifecycle:play.api.inject.DefaultApplicationLifecycle"></a>
-      <a id="lifecycle:DefaultApplicationLifecycle"></a>
+      <a id="lifecycle:play.api.inject.ApplicationLifecycle"></a>
+      <a id="lifecycle:ApplicationLifecycle"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">lifecycle</span><span class="result">: <a href="inject/DefaultApplicationLifecycle.html" class="extype" name="play.api.inject.DefaultApplicationLifecycle">DefaultApplicationLifecycle</a></span>
+        <span class="name">lifecycle</span><span class="result">: <a href="inject/ApplicationLifecycle.html" class="extype" name="play.api.inject.ApplicationLifecycle">ApplicationLifecycle</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../index.html#play.api.ApplicationLoader$$Context@lifecycle:play.api.inject.DefaultApplicationLifecycle" title="Permalink" target="_top">
+      <a href="../../index.html#play.api.ApplicationLoader$$Context@lifecycle:play.api.inject.ApplicationLifecycle" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      
+      <p class="shortcomment cmt">Used to register hooks that run when the application stops.</p>
     </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a>
       <a id="ne(AnyRef):Boolean"></a>
@@ -388,23 +407,6 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="play.api.ApplicationLoader.Context#sourceMapper" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="sourceMapper:Option[play.core.SourceMapper]"></a>
-      <a id="sourceMapper:Option[SourceMapper]"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name">sourceMapper</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="../core/SourceMapper.html" class="extype" name="play.core.SourceMapper">SourceMapper</a>]</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../index.html#play.api.ApplicationLoader$$Context@sourceMapper:Option[play.core.SourceMapper]" title="Permalink" target="_top">
-        <img src="../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">An optional source mapper</p>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -491,29 +493,55 @@
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="play.api.ApplicationLoader.Context#webCommands" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+    </li></ol>
+            </div>
+
+        
+
+        <div id="values" class="values members">
+              <h3>Deprecated Value Members</h3>
+              <ol><li name="play.api.ApplicationLoader.Context#sourceMapper" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="sourceMapper:Option[play.core.SourceMapper]"></a>
+      <a id="sourceMapper:Option[SourceMapper]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 2.7.0) Use devContext.map(_.sourceMapper) instead">sourceMapper</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="../core/SourceMapper.html" class="extype" name="play.core.SourceMapper">SourceMapper</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.ApplicationLoader$$Context@sourceMapper:Option[play.core.SourceMapper]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.7.0)</i> Use devContext.map(_.sourceMapper) instead</p></dd></dl></div>
+    </li><li name="play.api.ApplicationLoader.Context#webCommands" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="webCommands:play.core.WebCommands"></a>
       <a id="webCommands:WebCommands"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
-        <span class="kind">val</span>
+        <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">webCommands</span><span class="result">: <a href="../core/WebCommands.html" class="extype" name="play.core.WebCommands">WebCommands</a></span>
+        <span class="name deprecated" title="Deprecated: (Since version 2.7.0) WebCommands are no longer a property of ApplicationLoader.Context; they are available via injection or from the BuiltinComponents trait">webCommands</span><span class="result">: <a href="../core/WebCommands.html" class="extype" name="play.core.WebCommands">WebCommands</a></span>
       </span>
       </h4><span class="permalink">
       <a href="../../index.html#play.api.ApplicationLoader$$Context@webCommands:play.core.WebCommands" title="Permalink" target="_top">
         <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">The web command handlers</p>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.7.0)</i> WebCommands are no longer a property of ApplicationLoader.Context; they are available via injection or from the BuiltinComponents trait</p></dd></dl></div>
     </li></ol>
             </div>
-
-        
-
-        
         </div>
 
         <div id="inheritedMembers">

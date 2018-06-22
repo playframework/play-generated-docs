@@ -1,7 +1,7 @@
-<!--- Copyright (C) 2009-2017 Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) 2009-2018 Lightbend Inc. <https://www.lightbend.com> -->
 # Integrating with Akka
 
-[Akka](http://akka.io/) uses the Actor Model to raise the abstraction level and provide a better platform to build correct concurrent and scalable applications. For fault-tolerance it adopts the ‘Let it crash’ model, which has been used with great success in the telecoms industry to build applications that self-heal - systems that never stop. Actors also provide the abstraction for transparent distribution and the basis for truly scalable and fault-tolerant applications.
+[Akka](https://akka.io/) uses the Actor Model to raise the abstraction level and provide a better platform to build correct concurrent and scalable applications. For fault-tolerance it adopts the ‘Let it crash’ model, which has been used with great success in the telecoms industry to build applications that self-heal - systems that never stop. Actors also provide the abstraction for transparent distribution and the basis for truly scalable and fault-tolerant applications.
 
 ## The application actor system
 
@@ -129,3 +129,24 @@ While we recommend you use the built in actor system, as it sets up everything s
 * Register a [[stop hook|ScalaDependencyInjection#Stopping/cleaning-up]] to shut the actor system down when Play shuts down
 * Pass in the correct classloader from the Play [Environment](api/scala/play/api/Application.html) otherwise Akka won't be able to find your applications classes
 * Ensure that either you change the location that Play reads it's akka configuration from using `play.akka.config`, or that you don't read your akka configuration from the default `akka` config, as this will cause problems such as when the systems try to bind to the same remote ports
+
+
+## Akka Coordinated Shutdown
+
+Play terminates the built-in Akka actor system using Akka's [Coordinated Shutdown](https://doc.akka.io/docs/akka/current/actors.html?language=java#coordinated-shutdown). By default Play will run the Coordinated Shutdown using only the last phase where the actor system is terminated. You can override that settings using:
+
+```
+# Runs Akka CoordinatedShutdown for Play's actor system
+# from phase "service-stop". See Akka docs on Coordinated 
+# Shutdown for other phase names. In Play, this defaults 
+# to "actor-system-terminate"
+play.akka.run-cs-from-phase = "service-stop" 
+```
+
+If you are using extra actor systems in your Play Application and tests, make sure they are all terminated and feel free to migrate your termination code from the traditional `actorSystem.terminate()` to the new [Coordinated Shutdown](https://doc.akka.io/docs/akka/current/actors.html?language=scala#coordinated-shutdown)
+
+## Akka Cluster
+
+You can make your Play application join an existing [Akka Cluster](https://doc.akka.io/docs/akka/snapshot/cluster-usage.html). In that case it is recommended that you leave the cluster gracefully. Play ships with Akka's Coordinated Shutdown since Play 2.6 which can take care of that graceful leave but it is disabled. 
+
+If you are joining an Akka Cluster with your Play application and you already have custom Cluster Leave code it is recommended that you replace it and enable Akka's handling using `play.akka.run-cs-from-phase` described above and set it to run from, at least, `before-cluster-shutdown` phase. See [Akka docs](https://doc.akka.io/docs/akka/current/actors.html?language=scala#coordinated-shutdown) for more details.
