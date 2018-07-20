@@ -96,6 +96,10 @@ Other methods that were added to improve Java API:
 
 HikariCP was updated to the latest version which finally removed the configuration `initializationFailFast`, replaced by `initializationFailTimeout`. See [HikariCP changelog](https://github.com/brettwooldridge/HikariCP/blob/dev/CHANGES) and [documentation for `initializationFailTimeout`](https://github.com/brettwooldridge/HikariCP#infrequently-used) to better understand how to use this configuration.
 
+### HikariCP will not fail fast
+
+Play 2.7 changes the default value for HikariCP's `initializationFailTimeout` to `-1`. That means your application will start even if the database is not available. You can revert to the old behavior by configuring `initializationFailTimeout` to `1` which will make the pool to fail fast. See more details at [[SettingsJDBC]].
+
 ## BoneCP removed
 
 BoneCP is removed. If your application is configured to use BoneCP, you need to switch to [HikariCP](http://brettwooldridge.github.io/HikariCP/) which is the default JDBC connection pool.
@@ -132,6 +136,22 @@ The "old" `validate` methods of a Java form will not be executed anymore.
 Like announced in the [[Play 2.6 Migration Guide|Migration26#Java-Form-Changes]] you have to migrate such `validate` methods to [[class-level constraints|JavaForms#advanced-validation]].
 
 > **Important**: When upgrading to Play 2.7 you will not see any compiler warnings indicating that you have to migrate your `validate` methods (because Play executed them via reflection).
+
+## The Java Cache API `get` method has been deprecated in favor of `getOptional`
+
+The `getOptional` methods of the Java `cacheApi` return their results wrapped in an `Optional`.
+
+Changes in `play.cache.SyncCacheApi`:
+
+| **deprecated method**                      | **new method**
+|------------------------------------------|----------------------------------------------------
+| `<T> T get(String key)`                  | `<T> Optional<T> getOptional(String key)`
+
+Changes in `play.cache.AsyncCacheApi`:
+
+| **deprecated method**                      | **new method**
+|------------------------------------------|----------------------------------------------------
+| `<T> CompletionStage<T> get(String key)` | `<T> CompletionStage<Optional<T>> getOptional(String key)`
 
 ## SecurityHeadersFilter's contentSecurityPolicy deprecated for CSPFilter
 

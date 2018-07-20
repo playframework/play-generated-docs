@@ -69,7 +69,7 @@ started. For example:</p><pre><span class="kw">import</span> play.api.inject.App
   }
 
   ...
-}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.7.0-M1/framework/src/play/src/main/scala/play/api/inject/ApplicationLifecycle.scala" target="_blank">ApplicationLifecycle.scala</a></dd></dl><div class="toggleContainer block">
+}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.7.0-M2/framework/src/play/src/main/scala/play/api/inject/ApplicationLifecycle.scala" target="_blank">ApplicationLifecycle.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
@@ -143,14 +143,19 @@ immediately and return a successful future.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">stop</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[_]</span>
+        <span class="name deprecated" title="Deprecated: (Since version 2.7.0) Do not invoke stop() directly. Instead, use CoordinatedShutdown.run to stop and release your resources.">stop</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.concurrent.Future">Future</span>[_]</span>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.inject.ApplicationLifecycle@stop():scala.concurrent.Future[_]" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Call to shutdown the application and execute the registered hooks.</p><div class="fullcomment"><div class="comment cmt"><p>Call to shutdown the application and execute the registered hooks.</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>A future that will be redeemed once all hooks have executed.</p></dd></dl></div>
+      <p class="shortcomment cmt">Call to shutdown the application and execute the registered hooks.</p><div class="fullcomment"><div class="comment cmt"><p>Call to shutdown the application and execute the registered hooks.</p><p>Since 2.7.0, implementations of <code>stop</code> are expected to be idempotent so invoking the method
+several times only runs the process once.
+</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>A future that will be redeemed once all hooks have executed.</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.7.0)</i> Do not invoke stop() directly. Instead, use CoordinatedShutdown.run to stop and release your resources.</p></dd></dl></div>
     </li></ol>
             </div>
 

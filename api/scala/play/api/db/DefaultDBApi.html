@@ -52,7 +52,7 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Default implementation of the DB API.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.7.0-M1/framework/src/play-jdbc/src/main/scala/play/api/db/DefaultDBApi.scala" target="_blank">DefaultDBApi.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.7.0-M2/framework/src/play-jdbc/src/main/scala/play/api/db/DefaultDBApi.scala" target="_blank">DefaultDBApi.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="DBApi.html" class="extype" name="play.api.db.DBApi">DBApi</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -208,23 +208,6 @@
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="play.api.db.DefaultDBApi#connect" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="connect(logConnection:Boolean):Unit"></a>
-      <a id="connect(Boolean):Unit"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">connect</span><span class="params">(<span name="logConnection">logConnection: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.api.db.DefaultDBApi@connect(logConnection:Boolean):Unit" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Try to connect to all data sources.</p>
     </li><li name="play.api.db.DefaultDBApi#database" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="database(name:String):play.api.db.Database"></a>
       <a id="database(String):Database"></a>
@@ -352,6 +335,25 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="play.api.db.DefaultDBApi#initialize" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="initialize(logInitialization:Boolean):Unit"></a>
+      <a id="initialize(Boolean):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">initialize</span><span class="params">(<span name="logInitialization">logInitialization: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.db.DefaultDBApi@initialize(logInitialization:Boolean):Unit" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Try to initialize all the configured databases.</p><div class="fullcomment"><div class="comment cmt"><p>Try to initialize all the configured databases. This ensures that the configurations will be checked, but the application
+initialization will not be affected if one of the databases is offline.
+</p></div><dl class="paramcmts block"><dt class="param">logInitialization</dt><dd class="cmt"><p>if we need to log all the database initialization.</p></dd></dl></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <a id="isInstanceOf[T0]:Boolean"></a>
@@ -546,7 +548,31 @@
 
         
 
-        
+        <div id="values" class="values members">
+              <h3>Deprecated Value Members</h3>
+              <ol><li name="play.api.db.DefaultDBApi#connect" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="connect(logConnection:Boolean):Unit"></a>
+      <a id="connect(Boolean):Unit"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 2.7.0) Use initialize instead, which does not try to connect to the database">connect</span><span class="params">(<span name="logConnection">logConnection: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.db.DefaultDBApi@connect(logConnection:Boolean):Unit" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Try to connect to all data sources.</p><div class="fullcomment"><div class="comment cmt"><p>Try to connect to all data sources.
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.7.0)</i> Use initialize instead, which does not try to connect to the database</p></dd></dl></div>
+    </li></ol>
+            </div>
         </div>
 
         <div id="inheritedMembers">
