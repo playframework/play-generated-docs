@@ -37,9 +37,52 @@ Many deprecated APIs were removed in Play 2.7. If you are still using them, we r
 
 In the future, if you still need to use static instances of application components, you can use [static injection](https://github.com/google/guice/wiki/Injections#static-injections) to inject them using Guice, or manually set static fields on startup in your application loader. These approaches should be forward compatible with future versions of Play, as long as you are careful never to run apps concurrently (e.g., in tests).
 
+Since `Play.current` is still called by some deprecated APIs, when using such APIs, you need to add the following line to your `application.conf` file:
+
+```hocon
+play.allowGlobalApplication = true
+```
+
+For example, when using `play.api.mvc.Action` object with embedded Play and [[Scala Sird Router|ScalaSirdRouter]], it access the global state:
+
+```scala
+import play.api.mvc._
+import play.api.routing.sird._
+import play.core.server._
+
+// It can also be NettyServer
+val server = AkkaHttpServer.fromRouter() {
+  // `Action` in this case is the `Action` object which access global state
+  case GET(p"/") => Action {
+    Results.Ok(s"Hello World")
+  }
+}
+```
+
+The example above either needs you to configure `play.allowGlobalApplication = true` as explained before, or to be rewritten to:
+
+```scala
+import play.api._
+import play.api.mvc._
+import play.api.routing.sird._
+import play.core.server._
+
+// It can also be NettyServer
+val server = AkkaHttpServer.fromRouterWithComponents() { components: BuiltInComponents => {
+    case GET(p"/") => components.defaultActionBuilder {
+      Results.Ok(s"Hello World")
+    }
+  }
+}
+```
+
+## BodyParsers API consistency
+
+The API for body parser was mixing `Integer` and `Long` to define buffer lengths which could lead to overflow of values. The configuration is now uniformed to use `Long`. It means that if you are depending on `play.api.mvc.PlayBodyParsers.DefaultMaxTextLength` for example, you then need to use a `Long`. As such, `play.api.http.ParserConfiguration.maxMemoryBuffer` is now a `Long` too.
+
 ## Guice compatibility changes
 
-Guice was upgraded to version [4.2.0](https://github.com/google/guice/wiki/Guice42), which causes the following breaking changes:
+Guice was upgraded to version [4.2.1](https://github.com/google/guice/wiki/Guice421) (also see [4.2.0 release notes](https://github.com/google/guice/wiki/Guice42)), which causes the following breaking changes:
 
  - `play.test.TestBrowser.waitUntil` expects a `java.util.function.Function` instead of a `com.google.common.base.Function` now.
  - In Scala, when overriding the `configure()` method of `AbstractModule`, you need to prefix that method with the `override` identifier now (because it's non-abstract now).
@@ -86,6 +129,10 @@ By default, routers are unprefixed, so this will only cause a change in behavior
 ## Play WS Updates
 
 In Play 2.6, we extracted most of Play-WS into a [standalone project](https://github.com/playframework/play-ws) that has an independent release cycle. Play-WS now has a significant release that requires some changes in Play itself.
+
+## Run Hooks
+
+`RunHook.afterStarted()` no longer takes an `InetSocketAddress` as a parameter.
 
 ### Scala API
 
@@ -182,77 +229,23 @@ val loader = new GreetingApplicationLoader()
 val application = loader.load(context)
 ```
 
-## Java `Http` changes
+## JPA removals and deprecations
 
-Multiple changes were made to `Http.Context`.
+The class `play.db.jpa.JPA`, which has been deprecated in Play 2.6 already, has finally been removed. Have a look at the [[Play 2.6 JPA Migration notes|JPAMigration26]] if you haven't yet.
 
-### `Http.Context` Request tags removed from `args` 
+With this Play release even more JPA related methods and annotations have been deprecated:
 
-Request tags, which [[have been deprecated|Migration26#Request-tags-deprecation]] in Play 2.6, have finally been removed in Play 2.7.
-Therefore the `args` map of a `Http.Context` instance no longer contains these removed request tags as well.
-Instead you can use the `contextObj.request().attrs()` method now, which provides you the equivalent request attributes.
+* `@play.db.jpa.Transactional`
+* `play.db.jpa.JPAApi.em()`
+* `play.db.jpa.JPAApi.withTransaction(final Runnable block)`
+* `play.db.jpa.JPAApi.withTransaction(Supplier<T> block)`
+* `play.db.jpa.JPAApi.withTransaction(String name, boolean readOnly, Supplier<T> block)`
 
-### `Http.Response` deprecated
+Like already mentioned in the Play 2.6 JPA migration notes, please use a `JPAApi` injected instance as described in [[Using play.db.jpa.JPAApi|JavaJPA#Using-play.db.jpa.JPAApi]] instead of these deprecated methods and annotations.
 
-`Http.Response` was deprecated with other accesses methods to it. It was mainly used to add headers and cookies, but these are already available in `play.mvc.Result` and then the API got a little confused. For Play 2.7, you should migrate code like:
+## Java `Http.Context` changes
 
-```java
-// This uses the deprecated response() APIs
-public Result index1() {
-    response().setHeader("Header", "Value");
-    response().setCookie(Http.Cookie.builder("Cookie", "cookie value").build());
-    response().discardCookie("CookieName");
-    return ok("Hello World");
-}
-```
-
-Should be written as:
-```java
-public Result index2() {
-    return ok("Hello World")
-            .withHeader("Header", "value")
-            .withCookies(Http.Cookie.builder("Cookie", "cookie value").build())
-            .discardCookie("CookieName");
-}
-```
-
-If you have action composition that depends on `Http.Context.response`, you can also rewrite it like. For example, the code below:
-
-```java
-import play.mvc.Action;
-import play.mvc.Http;
-import play.mvc.Result;
-
-import java.util.concurrent.CompletionStage;
-
-public class MyAction extends Action.Simple {
-
-    @Override
-    public CompletionStage<Result> call(Http.Context ctx) {
-        ctx.response().setHeader("Name", "Value");
-        return delegate.call(ctx);
-    }
-}
-```
-
-Should be written as:
-
-```java
-import play.mvc.Action;
-import play.mvc.Http;
-import play.mvc.Result;
-
-import java.util.concurrent.CompletionStage;
-
-public class MyAction extends Action.Simple {
-
-    @Override
-    public CompletionStage<Result> call(Http.Context ctx) {
-        return delegate.call(ctx)
-                .thenApply(result -> result.withHeader("Name", "Value"));
-    }
-}
-```
+See changes made in `play.mvc.Http.Context` APIs. This is only relevant for Java users: [[Java `Http.Context` changes|JavaHttpContextMigration27]].
 
 ## All Java form `validate` methods need to be migrated to class-level constraints
 
@@ -260,6 +253,13 @@ The "old" `validate` methods of a Java form will not be executed anymore.
 Like announced in the [[Play 2.6 Migration Guide|Migration26#Java-Form-Changes]] you have to migrate such `validate` methods to [[class-level constraints|JavaForms#advanced-validation]].
 
 > **Important**: When upgrading to Play 2.7 you will not see any compiler warnings indicating that you have to migrate your `validate` methods (because Play executed them via reflection).
+
+## Java `Form`, `DynamicForm` and `FormFactory` constructors changed
+
+Constructors of the `Form`, `DynamicForm` and `FormFactory` classes (inside `play.data`) that were using a [`Validator`](https://docs.jboss.org/hibernate/stable/beanvalidation/api/javax/validation/Validator.html) param use a [`ValidatorFactory`](https://docs.jboss.org/hibernate/stable/beanvalidation/api/javax/validation/ValidatorFactory.html) param instead now.
+In addition to that, these constructors now also need a [`com.typesafe.config.Config`](https://lightbend.github.io/config/latest/api/com/typesafe/config/Config.html) param.
+E.g. `new Form(..., validator)` becomes `new Form(..., validatorFactory, config)` now.
+This change only effects you if you use the constructors to instantiate a form instead of just using `formFactory.form(SomeForm.class)` - most likely in tests.
 
 ## The Java Cache API `get` method has been deprecated in favor of `getOptional`
 
@@ -306,6 +306,24 @@ public abstract class Controller extends Results implements Status, HeaderNames 
 }
 ```
 
+## Java DI-agnostic Play `Module` API support added and all built-in Java `Module`s type changed
+
+You can now create DI-agnostic Play `Module` with Java by extending `play.inject.Module`, which is more Java friendly as it is using Java APIs and coded in Java as well. Besides, all the existing built-in Java `Module`s, for example, `play.inject.BuiltInModule` and `play.libs.ws.ahc.AhcWSModule`, are no longer extending Scala `play.api.inject.Module` but Java `play.inject.Module`.
+
+Since Java `play.inject.Module` is a subclass of Scala `play.api.inject.Module`, the `Module` instances can still be used in the same way, except the interface is a little different:
+
+```java
+public class MyModule extends play.inject.Module {
+    @Override
+    public java.util.List<play.inject.Binding<?>> bindings(final play.Environment environment, final com.typesafe.config.Config config) {
+        return java.util.Collections.singletonList(
+            // Note: it is bindClass() but not bind()
+            bindClass(MyApi.class).toProvider(MyApiProvider.class)
+        );
+    }
+}
+```
+
 ## Removed libraries
 
 To make the default play distribution a bit smaller we removed some libraries. The following libraries are no longer dependencies in Play 2.7, so you will need to add them manually to your build if you use them.
@@ -334,7 +352,7 @@ Play 2.6.x provided 23.0 version of Guava library. Now it is updated to last act
 
 ### specs2 updated to 4.2.0
 
-The previous version was `3.8.x`. There are many changes and improvements, so we recommend that you read [the release notes](https://github.com/etorreborre/specs2/releases) for the recent versions of Specs2. The used version updated the [Mockito](http://site.mockito.org/) version used to `2.18.x`, so we also have updated it.
+The previous version was `3.8.x`. There are many changes and improvements, so we recommend that you read [the release notes](https://github.com/etorreborre/specs2/releases) for the recent versions of Specs2. The used version updated the [Mockito](https://site.mockito.org/) version used to `2.18.x`, so we also have updated it.
 
 ### Jackson updated to 2.9
 
@@ -342,7 +360,13 @@ Jackson version was updated from 2.8 to 2.9. The release notes for this version 
 
 ### Hibernate Validator updated to 6.0
 
-[Hibernate Validator](http://hibernate.org/validator) was updated to version 6.0 which is now compatible with [Bean Validation](http://beanvalidation.org/) 2.0. See what is new [here](http://hibernate.org/validator/releases/6.0/#whats-new) or read [this detailed blog post](http://in.relation.to/2017/08/07/and-here-comes-hibernate-validator-60/) about the new version.
+[Hibernate Validator](http://hibernate.org/validator/) was updated to version 6.0 which is now compatible with [Bean Validation](https://beanvalidation.org/) 2.0. See what is new [here](http://hibernate.org/validator/releases/6.0/#whats-new) or read [this detailed blog post](http://in.relation.to/2017/08/07/and-here-comes-hibernate-validator-60/) about the new version.
+
+> **Note**: Keep in mind that this version may not be fully compatible with other Hibernate dependencies you may have in your project. For example, if you are using [hibernate-jpamodelgen](https://mvnrepository.com/artifact/org.hibernate/hibernate-jpamodelgen) it is required that you use the latest version to ensure everything will work together:
+>
+> ```scala
+> libraryDependencies += "org.hibernate" % "hibernate-jpamodelgen" % "5.3.6.Final" % "provided"
+> ```
 
 ## Internal changes
 

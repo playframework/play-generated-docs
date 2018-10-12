@@ -47,11 +47,11 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">AllowedHostsConfig</span><span class="params">(<span name="allowed">allowed: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name">AllowedHostsConfig</span><span class="params">(<span name="allowed">allowed: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="shouldProtect">shouldProtect: (<a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">_ =&gt; true</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.7.0-M3/framework/src/play-filters-helpers/src/main/scala/play/filters/hosts/AllowedHostsFilter.scala" target="_blank">AllowedHostsFilter.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.7.0-M4/framework/src/play-filters-helpers/src/main/scala/play/filters/hosts/AllowedHostsFilter.scala" target="_blank">AllowedHostsFilter.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -91,7 +91,7 @@
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="play.filters.hosts.AllowedHostsConfig#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;():play.filters.hosts.AllowedHostsConfig"></a>
+      <a id="&lt;init&gt;(allowed:Seq[String],shouldProtect:play.api.mvc.RequestHeader=&gt;Boolean):play.filters.hosts.AllowedHostsConfig"></a>
       <a id="&lt;init&gt;:AllowedHostsConfig"></a>
       <h4 class="signature">
       <span class="modifier_kind">
@@ -99,27 +99,10 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">AllowedHostsConfig</span><span class="params">()</span>
+        <span class="name">AllowedHostsConfig</span><span class="params">(<span name="allowed">allowed: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="shouldProtect">shouldProtect: (<a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">_ =&gt; true</span></span>)</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.filters.hosts.AllowedHostsConfig@&lt;init&gt;():play.filters.hosts.AllowedHostsConfig" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      
-    </li><li name="play.filters.hosts.AllowedHostsConfig#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(allowed:Seq[String]):play.filters.hosts.AllowedHostsConfig"></a>
-      <a id="&lt;init&gt;:AllowedHostsConfig"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">new</span>
-      </span>
-      <span class="symbol">
-        <span class="name">AllowedHostsConfig</span><span class="params">(<span name="allowed">allowed: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.filters.hosts.AllowedHostsConfig@&lt;init&gt;(allowed:Seq[String]):play.filters.hosts.AllowedHostsConfig" title="Permalink" target="_top">
+      <a href="../../../index.html#play.filters.hosts.AllowedHostsConfig@&lt;init&gt;(allowed:Seq[String],shouldProtect:play.api.mvc.RequestHeader=&gt;Boolean):play.filters.hosts.AllowedHostsConfig" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
@@ -366,6 +349,23 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="play.filters.hosts.AllowedHostsConfig#shouldProtect" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="shouldProtect:play.api.mvc.RequestHeader=&gt;Boolean"></a>
+      <a id="shouldProtect:(RequestHeader)⇒Boolean"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">shouldProtect</span><span class="result">: (<a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.hosts.AllowedHostsConfig@shouldProtect:play.api.mvc.RequestHeader=&gt;Boolean" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>
@@ -465,6 +465,23 @@
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.filters.hosts.AllowedHostsConfig@withHostPatterns(hosts:java.util.List[String]):play.filters.hosts.AllowedHostsConfig" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.filters.hosts.AllowedHostsConfig#withShouldProtect" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="withShouldProtect(shouldProtect:java.util.function.Predicate[play.mvc.Http.RequestHeader]):play.filters.hosts.AllowedHostsConfig"></a>
+      <a id="withShouldProtect(Predicate[RequestHeader]):AllowedHostsConfig"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">withShouldProtect</span><span class="params">(<span name="shouldProtect">shouldProtect: <span class="extype" name="java.util.function.Predicate">Predicate</span>[<span class="extype" name="play.mvc.Http.RequestHeader">RequestHeader</span>]</span>)</span><span class="result">: <a href="" class="extype" name="play.filters.hosts.AllowedHostsConfig">AllowedHostsConfig</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.hosts.AllowedHostsConfig@withShouldProtect(shouldProtect:java.util.function.Predicate[play.mvc.Http.RequestHeader]):play.filters.hosts.AllowedHostsConfig" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>

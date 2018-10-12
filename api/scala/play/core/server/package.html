@@ -254,6 +254,26 @@
       <p class="shortcomment cmt">A ServerProcess that wraps a real JVM process.</p><div class="fullcomment"><div class="comment cmt"><p>A ServerProcess that wraps a real JVM process. Calls have a real
 effect on the JVM, e.g. <code>exit</code> calls <code>System.exit.</code>
 </p></div></div>
+    </li><li name="play.core.server.SelfSignedSSLEngineProvider" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="SelfSignedSSLEngineProviderextendsSSLEngineProvider"></a>
+      <a id="SelfSignedSSLEngineProvider:SelfSignedSSLEngineProvider"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="SelfSignedSSLEngineProvider.html"><span class="name">SelfSignedSSLEngineProvider</span></a><span class="result"> extends <a href="../../server/api/SSLEngineProvider.html" class="extype" name="play.server.api.SSLEngineProvider">SSLEngineProvider</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.server.package@SelfSignedSSLEngineProviderextendsSSLEngineProvider" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">An SSLEngineProvider which simply references the values in the SelfSigned object.</p><div class="fullcomment"><div class="comment cmt"><p>An SSLEngineProvider which simply references the values in the SelfSigned object.</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@ApiMayChange</span><span class="args">()</span>
+              
+        </dd></dl></div>
     </li><li name="play.core.server.Server" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="ServerextendsReloadableServer"></a>
       <a id="Server:Server"></a>
@@ -307,6 +327,52 @@ effect on the JVM, e.g. <code>exit</code> calls <code>System.exit.</code>
       <p class="shortcomment cmt">Common configuration for servers such as NettyServer.</p><div class="fullcomment"><div class="comment cmt"><p>Common configuration for servers such as NettyServer.
 </p></div><dl class="paramcmts block"><dt class="param">rootDir</dt><dd class="cmt"><p>The root directory of the server. Used to find default locations of
 files, log directories, etc.</p></dd><dt class="param">port</dt><dd class="cmt"><p>The HTTP port to use.</p></dd><dt class="param">sslPort</dt><dd class="cmt"><p>The HTTPS port to use.</p></dd><dt class="param">address</dt><dd class="cmt"><p>The socket address to bind to.</p></dd><dt class="param">mode</dt><dd class="cmt"><p>The run mode: dev, test or prod.</p></dd></dl></div>
+    </li><li name="play.core.server.ServerEndpoint" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ServerEndpointextendsProductwithSerializable"></a>
+      <a id="ServerEndpoint:ServerEndpoint"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="ServerEndpoint.html"><span class="name">ServerEndpoint</span></a><span class="params">(<span name="description">description: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="scheme">scheme: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="host">host: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="port">port: <span class="extype" name="scala.Int">Int</span></span>, <span name="expectedHttpVersions">expectedHttpVersions: <span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="expectedServerAttr">expectedServerAttr: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="ssl">ssl: <span class="extype" name="scala.Option">Option</span>[<a href="ServerEndpoint$$ClientSsl.html" class="extype" name="play.core.server.ServerEndpoint.ClientSsl">ClientSsl</a>]</span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.server.package@ServerEndpointextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Contains information about which port and protocol can be used to connect to the server.</p><div class="fullcomment"><div class="comment cmt"><p>Contains information about which port and protocol can be used to connect to the server.
+This class is used to abstract out the details of connecting to different backends
+and protocols. Most tests will operate the same no matter which endpoint they
+are connected to.
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@ApiMayChange</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="play.core.server.ServerEndpoints" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ServerEndpointsextendsProductwithSerializable"></a>
+      <a id="ServerEndpoints:ServerEndpoints"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="ServerEndpoints.html"><span class="name">ServerEndpoints</span></a><span class="params">(<span name="endpoints">endpoints: <span class="extype" name="scala.Seq">Seq</span>[<a href="ServerEndpoint.html" class="extype" name="play.core.server.ServerEndpoint">ServerEndpoint</a>]</span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.server.package@ServerEndpointsextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Wrapper for a sequence of <a href="ServerEndpoint.html" class="extype" name="play.core.server.ServerEndpoint">ServerEndpoint</a>s.</p><div class="fullcomment"><div class="comment cmt"><p>Wrapper for a sequence of <a href="ServerEndpoint.html" class="extype" name="play.core.server.ServerEndpoint">ServerEndpoint</a>s. Has a few convenience methods. Also
+can be used as an implicit parameter to pass around server endpoint information.
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@ApiMayChange</span><span class="args">()</span>
+              
+        </dd></dl></div>
     </li><li name="play.core.server.ServerListenException" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="ServerListenExceptionextendsException"></a>
       <a id="ServerListenException:ServerListenException"></a>
@@ -536,6 +602,26 @@ used in production.</p><div class="fullcomment"><div class="comment cmt"><p>Used
 used in production. The application is loaded and started
 immediately.
 </p></div></div>
+    </li><li name="play.core.server.SelfSigned" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="SelfSigned"></a>
+      <a id="SelfSigned:SelfSigned"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="SelfSigned$.html"><span class="name">SelfSigned</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.server.package@SelfSigned" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Contains a statically initialized self-signed certificate.</p><div class="fullcomment"><div class="comment cmt"><p>Contains a statically initialized self-signed certificate.</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@ApiMayChange</span><span class="args">()</span>
+              
+        </dd></dl></div>
     </li><li name="play.core.server.Server" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Server"></a>
       <a id="Server:Server"></a>
@@ -570,6 +656,26 @@ immediately.
       </a>
     </span>
       
+    </li><li name="play.core.server.ServerEndpoint" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ServerEndpoint"></a>
+      <a id="ServerEndpoint:ServerEndpoint"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ServerEndpoint$.html"><span class="name">ServerEndpoint</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.core.server.package@ServerEndpoint" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@ApiMayChange</span><span class="args">()</span>
+              
+        </dd></dl></div>
     </li><li name="play.core.server.ServerProvider" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="ServerProvider"></a>
       <a id="ServerProvider:ServerProvider"></a>

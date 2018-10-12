@@ -1,3 +1,4 @@
+<!--- Copyright (C) 2009-2018 Lightbend Inc. <https://www.lightbend.com> -->
 # What's new in Play 2.7
 
 This page highlights the new features of Play 2.7. If you want to learn about the changes you need to make when you migrate to Play 2.7, check out the [[Play 2.7 Migration Guide|Migration27]].
@@ -24,15 +25,15 @@ scalaVersion := "2.13.0-M3"
 
 ## Lifecycle managed by Akka's Coordinated Shutdown
 
-Play 2.6 introduced the usage of Akka's [Coordinated Shutdown](https://doc.akka.io/docs/akka/2.5/scala/actors.html#coordinated-shutdown) but still didn't use it all across the core framework or exposed it to the end user. Coordinated Shutdown is an Akka Extension with a registry of tasks that can be run in an ordered fashion during the shutdown of the Actor System.
+Play 2.6 introduced the usage of Akka's [Coordinated Shutdown](https://doc.akka.io/docs/akka/2.5/actors.html?language=scala#coordinated-shutdown) but still didn't use it all across the core framework or exposed it to the end user. Coordinated Shutdown is an Akka Extension with a registry of tasks that can be run in an ordered fashion during the shutdown of the Actor System.
 
 Coordinated Shutdown internally handles Play 2.7 Play's lifecycle and an instance of `CoordinatedShutdown` is available for injection. Coordinated Shutdown gives you fine grained phases - organized as a [directed acyclic graph (DAG)](https://en.wikipedia.org/wiki/Directed_acyclic_graph) - where you can register tasks instead of just having a single phase like Play's application lifecycle. For example, you can add tasks to run before or after server binding, or after all the current requests finishes. Also, you will have better integration with [Akka Cluster](https://doc.akka.io/docs/akka/2.5/common/cluster.html).
 
-You can find more details on the new section on [[Coordinated Shutdown on the Play manual|Shutdown]], or you can have a look at Akka's [reference docs on Coordinated Shutdown](https://doc.akka.io/docs/akka/2.5/scala/actors.html#coordinated-shutdown).
+You can find more details on the new section on [[Coordinated Shutdown on the Play manual|Shutdown]], or you can have a look at Akka's [reference docs on Coordinated Shutdown](https://doc.akka.io/docs/akka/2.5/actors.html?languages=scala#coordinated-shutdown).
 
-## Guice was upgraded to 4.2.0
+## Guice was upgraded to 4.2.1
 
-Guice, the default dependency injection framework used by Play, was upgraded to 4.2.0 (from 4.1.0). Have a look at its [release notes](https://github.com/google/guice/wiki/Guice42). This new Guice version introduces breaking changes, so make sure you check the [[Play 2.7 Migration Guide|Migration27]].
+Guice, the default dependency injection framework used by Play, was upgraded to 4.2.1 (from 4.1.0). Have a look at the [4.2.1](https://github.com/google/guice/wiki/Guice421) and the [4.2.0](https://github.com/google/guice/wiki/Guice42) release notes. This new Guice version introduces breaking changes, so make sure you check the [[Play 2.7 Migration Guide|Migration27]].
 
 ## Constraint annotations offered for Play Java are now @Repeatable
 
@@ -56,6 +57,58 @@ public class MyForm {
 ```
 
 You can of course also make your own custom constraints `@Repeatable` as well and Play will automatically recognise that.
+
+## Payloads for Java `validate` and `isValid` methods
+
+When using [[advanced validation features|JavaForms#Advanced-validation]] you can now pass a `ValidationPayload` object, containing useful information sometimes needed for a validation process, to a Java `validate` or `isValid` method.
+To pass such a payload to a `validate` method just annotate your form with `@ValidateWithPayload` (instead of just `@Validate`) and implement `ValidatableWithPayload` (instead of just `Validatable`):
+
+```java
+import java.util.Map;
+import com.typesafe.config.Config;
+import play.data.validation.Constraints.ValidatableWithPayload;
+import play.data.validation.Constraints.ValidateWithPayload;
+import play.data.validation.Constraints.ValidationPayload;
+import play.i18n.Lang;
+import play.i18n.Messages;
+
+@ValidateWithPayload
+public class SomeForm implements ValidatableWithPayload<String> {
+
+    @Override
+    public String validate(ValidationPayload payload) {
+        Lang lang = payload.getLang();
+        Messages messages = payload.getMessages();
+        Map<String, Object> ctxArgs = payload.getArgs();
+        Config config = payload.getConfig();
+        // ...
+    }
+
+}
+```
+
+In case you wrote your own [[custom class-level constraint|JavaForms#Custom-class-level-constraints-with-DI-support]], you can also pass a payload to an `isValid` method by implementing `PlayConstraintValidatorWithPayload` (instead of just `PlayConstraintValidator`):
+```java
+import javax.validation.ConstraintValidatorContext;
+
+import play.data.validation.Constraints.PlayConstraintValidatorWithPayload;
+import play.data.validation.Constraints.ValidationPayload;
+// ...
+
+public class ValidateWithDBValidator implements PlayConstraintValidatorWithPayload<SomeValidatorAnnotation, SomeValidatableInterface<?>> {
+
+    //...
+
+    @Override
+    public boolean isValid(final SomeValidatableInterface<?> value, final ValidationPayload payload, final ConstraintValidatorContext constraintValidatorContext) {
+        // You can now pass the payload on to your custom validate(...) method:
+        return reportValidationStatus(value.validate(...., payload), constraintValidatorContext);
+    }
+
+}
+```
+
+> **Note:** Don't get confused with `ValidationPayload` and `ConstraintValidatorContext`: The former class is provided by Play and is what you use in your day-to-day work when dealing with forms in Play. The latter class is defined by the [Bean Validation specification](https://beanvalidation.org/2.0/spec/) and is used only internally in Play - with one exception: This class emerges when your write your own custom class-level constraints, like in the last example above, where you only need to pass it on to the `reportValidationStatus` method however anyway.
 
 ## Support for Caffeine
 

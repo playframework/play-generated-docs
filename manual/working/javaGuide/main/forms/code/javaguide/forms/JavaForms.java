@@ -5,6 +5,7 @@
 package javaguide.forms;
 
 import com.google.common.collect.ImmutableMap;
+import com.typesafe.config.Config;
 import org.junit.Test;
 import play.Application;
 import play.core.j.JavaHandlerComponents;
@@ -13,8 +14,13 @@ import play.data.Form;
 import play.data.FormFactory;
 import play.data.format.Formatters;
 import play.data.validation.Constraints.Validate;
+import play.data.validation.Constraints.ValidateWithPayload;
 import play.data.validation.Constraints.Validatable;
+import play.data.validation.Constraints.ValidatableWithPayload;
+import play.data.validation.Constraints.ValidationPayload;
 import play.data.validation.ValidationError;
+import play.i18n.Lang;
+import play.i18n.Messages;
 import play.inject.guice.GuiceApplicationBuilder;
 import play.mvc.*;
 import play.test.WithApplication;
@@ -527,5 +533,37 @@ public class JavaForms extends WithApplication {
             }
         }
     }
+
+    //#payload-validate
+    //###insert: import java.util.Map;
+
+    //###insert: import com.typesafe.config.Config;
+
+    //###insert: import play.data.validation.Constraints.ValidatableWithPayload;
+    //###insert: import play.data.validation.Constraints.ValidateWithPayload;
+    //###insert: import play.data.validation.ValidationError;
+    //###insert: import play.data.validation.ValidationPayload;
+
+    //###insert: import play.i18n.Lang;
+    //###insert: import play.i18n.Messages;
+
+    @ValidateWithPayload
+    //###replace: public class ChangePasswordForm implements ValidatableWithPayload<ValidationError> {
+    public static class ChangePasswordForm implements ValidatableWithPayload<ValidationError> {
+
+        // fields, getters, setters, etc.
+
+        @Override
+        public ValidationError validate(ValidationPayload payload) {
+            Lang lang = payload.getLang();
+            Messages messages = payload.getMessages();
+            Map<String, Object> ctxArgs = payload.getArgs();
+            Config config = payload.getConfig();
+            // ...
+            //###skip: 1
+            return null;
+        }
+    }
+    //#payload-validate
 
 }

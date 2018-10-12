@@ -51,7 +51,7 @@
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>This trait is a RequestHeader that can provide a play.api.i18n.Messages instance.</p><p>This is very useful with when used for forms processing, as the form helpers defined
 in views.helper (e.g. inputText.scala.html) take a MessagesProvider.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.7.0-M3/framework/src/play/src/main/scala/play/api/mvc/MessagesRequest.scala" target="_blank">MessagesRequest.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.7.0-M4/framework/src/play/src/main/scala/play/api/mvc/MessagesRequest.scala" target="_blank">MessagesRequest.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="../i18n/MessagesProvider.html" class="extype" name="play.api.i18n.MessagesProvider">MessagesProvider</a>, <a href="RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
@@ -576,7 +576,7 @@ to allow them to be evaluated on-demand.
       </a>
     </span>
       <p class="shortcomment cmt">Parses the <code>Flash</code> cookie and returns the <code>Flash</code> data.</p><div class="fullcomment"><div class="comment cmt"><p>Parses the <code>Flash</code> cookie and returns the <code>Flash</code> data. The request's flash cookie is stored in an attribute indexed by
-<a href="request/RequestAttrKey$.html#Flash:play.api.libs.typedmap.TypedKey[play.api.mvc.request.Cell[play.api.mvc.Flash]]" class="extmbr" name="play.api.mvc.request.RequestAttrKey#Flash">play.api.mvc.request.RequestAttrKey.Flash</a>. The attribute uses a <a href="request/Cell.html" class="extype" name="play.api.mvc.request.Cell">play.api.mvc.request.Cell</a> to store the session, to allow it to be evaluated on-demand.
+<a href="request/RequestAttrKey$.html#Flash:play.api.libs.typedmap.TypedKey[play.api.mvc.request.Cell[play.api.mvc.Flash]]" class="extmbr" name="play.api.mvc.request.RequestAttrKey#Flash">play.api.mvc.request.RequestAttrKey.Flash</a>. The attribute uses a <a href="request/Cell.html" class="extype" name="play.api.mvc.request.Cell">play.api.mvc.request.Cell</a> to store the flash, to allow it to be evaluated on-demand.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></dd></dl></div>
     </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getClass():Class[_]"></a>
@@ -885,7 +885,7 @@ from the Forwarded-Headers or the X-Forwarded-*-Headers.</p><p>This method deleg
       </a>
     </span>
       <p class="shortcomment cmt">Parses the <code>Session</code> cookie and returns the <code>Session</code> data.</p><div class="fullcomment"><div class="comment cmt"><p>Parses the <code>Session</code> cookie and returns the <code>Session</code> data. The request's session cookie is stored in an attribute indexed by
-<a href="request/RequestAttrKey$.html#Session:play.api.libs.typedmap.TypedKey[play.api.mvc.request.Cell[play.api.mvc.Session]]" class="extmbr" name="play.api.mvc.request.RequestAttrKey#Session">play.api.mvc.request.RequestAttrKey.Session</a>. The attribute uses a Cell to store the session cookie, to allow it to be evaluated on-demand.
+<a href="request/RequestAttrKey$.html#Session:play.api.libs.typedmap.TypedKey[play.api.mvc.request.Cell[play.api.mvc.Session]]" class="extmbr" name="play.api.mvc.request.RequestAttrKey#Session">play.api.mvc.request.RequestAttrKey.Session</a>. The attribute uses a <a href="request/Cell.html" class="extype" name="play.api.mvc.request.Cell">play.api.mvc.request.Cell</a> to store the session cookie, to allow it to be evaluated on-demand.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
@@ -1143,31 +1143,7 @@ This replaces any existing attributes.
 
         
 
-        <div id="values" class="values members">
-              <h3>Deprecated Value Members</h3>
-              <ol><li name="play.api.mvc.RequestHeader#copy" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="copy(id:Long,uri:String,path:String,method:String,version:String,queryString:Map[String,Seq[String]],headers:play.api.mvc.Headers,remoteAddress:String,secure:Boolean,clientCertificateChain:Option[Seq[java.security.cert.X509Certificate]]):play.api.mvc.RequestHeader"></a>
-      <a id="copy(Long,String,String,String,String,Map[String,Seq[String]],Headers,String,Boolean,Option[Seq[X509Certificate]]):RequestHeader"></a>
-      <h4 class="signature">
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use the with* methods instead">copy</span><span class="params">(<span name="id">id: <span class="extype" name="java.lang.Long">Long</span> = <span class="symbol">null</span></span>, <span name="uri">uri: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">null</span></span>, <span name="path">path: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">null</span></span>, <span name="method">method: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol"><span class="name"><a href="RequestHeader.html#method:String">this.method</a></span></span></span>, <span name="version">version: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol"><span class="name"><a href="RequestHeader.html#version:String">this.version</a></span></span></span>, <span name="queryString">queryString: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]] = <span class="symbol">null</span></span>, <span name="headers">headers: <a href="Headers.html" class="extype" name="play.api.mvc.Headers">Headers</a> = <span class="symbol">null</span></span>, <span name="remoteAddress">remoteAddress: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">null</span></span>, <span name="secure">secure: <span class="extype" name="java.lang.Boolean">Boolean</span> = <span class="symbol">null</span></span>, <span name="clientCertificateChain">clientCertificateChain: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="java.security.cert.X509Certificate">X509Certificate</span>]] = <span class="symbol">null</span></span>)</span><span class="result">: <a href="RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></span>
-      </span>
-      </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.MessagesRequestHeader@copy(id:Long,uri:String,path:String,method:String,version:String,queryString:Map[String,Seq[String]],headers:play.api.mvc.Headers,remoteAddress:String,secure:Boolean,clientCertificateChain:Option[Seq[java.security.cert.X509Certificate]]):play.api.mvc.RequestHeader" title="Permalink" target="_top">
-        <img src="../../../lib/permalink.png" alt="Permalink" />
-      </a>
-    </span>
-      <p class="shortcomment cmt">Copy the request.</p><div class="fullcomment"><div class="comment cmt"><p>Copy the request.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a></dd><dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use the with* methods instead</p></dd></dl></div>
-    </li></ol>
-            </div>
+        
         </div>
 
         <div id="inheritedMembers">
