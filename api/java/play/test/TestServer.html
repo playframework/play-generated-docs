@@ -17,6 +17,12 @@
     catch(err) {
     }
 //-->
+var methods = {"i0":10,"i1":10};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
+var altColor = "altColor";
+var rowColor = "rowColor";
+var tableTab = "tableTab";
+var activeTableTab = "activeTableTab";
 </script>
 <noscript>
 <div>JavaScript is disabled on your browser.</div>
@@ -69,13 +75,13 @@
 <li>Nested&nbsp;|&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
-<li><a href="#methods.inherited.from.class.play.api.test.TestServer">Method</a></li>
+<li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
-<li>Method</li>
+<li><a href="#method.detail">Method</a></li>
 </ul>
 </div>
 <a name="skip.navbar.top">
@@ -112,7 +118,7 @@
 <br>
 <pre>public class <span class="typeNameLabel">TestServer</span>
 extends play.api.test.TestServer</pre>
-<div class="block">A test Netty web server.</div>
+<div class="block">A test web server.</div>
 <dl>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../serialized-form.html#play.test.TestServer">Serialized Form</a></dd>
@@ -137,14 +143,14 @@ extends play.api.test.TestServer</pre>
 <tr class="altColor">
 <td class="colOne"><code><span class="memberNameLink"><a href="../../play/test/TestServer.html#TestServer-int-play.Application-">TestServer</a></span>(int&nbsp;port,
           <a href="../../play/Application.html" title="interface in play">Application</a>&nbsp;application)</code>
-<div class="block">A test Netty web server.</div>
+<div class="block">A test web server.</div>
 </td>
 </tr>
 <tr class="rowColor">
 <td class="colOne"><code><span class="memberNameLink"><a href="../../play/test/TestServer.html#TestServer-int-play.Application-int-">TestServer</a></span>(int&nbsp;port,
           <a href="../../play/Application.html" title="interface in play">Application</a>&nbsp;application,
           int&nbsp;sslPort)</code>
-<div class="block">A test Netty web server with HTTPS support</div>
+<div class="block">A test web server with HTTPS support</div>
 </td>
 </tr>
 </table>
@@ -156,6 +162,25 @@ extends play.api.test.TestServer</pre>
 <!--   -->
 </a>
 <h3>Method Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr id="i0" class="altColor">
+<td class="colFirst"><code>java.util.OptionalInt</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/test/TestServer.html#getRunningHttpPort--">getRunningHttpPort</a></span>()</code>
+<div class="block">The HTTP port that the server is running on.</div>
+</td>
+</tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>java.util.OptionalInt</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/test/TestServer.html#getRunningHttpsPort--">getRunningHttpsPort</a></span>()</code>
+<div class="block">The HTTPS port that the server is running on.</div>
+</td>
+</tr>
+</table>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.play.api.test.TestServer">
 <!--   -->
@@ -192,7 +217,7 @@ extends play.api.test.TestServer</pre>
 <h4>TestServer</h4>
 <pre>public&nbsp;TestServer(int&nbsp;port,
                   <a href="../../play/Application.html" title="interface in play">Application</a>&nbsp;application)</pre>
-<div class="block">A test Netty web server.</div>
+<div class="block">A test web server.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>port</code> - HTTP port to bind on.</dd>
@@ -209,13 +234,41 @@ extends play.api.test.TestServer</pre>
 <pre>public&nbsp;TestServer(int&nbsp;port,
                   <a href="../../play/Application.html" title="interface in play">Application</a>&nbsp;application,
                   int&nbsp;sslPort)</pre>
-<div class="block">A test Netty web server with HTTPS support</div>
+<div class="block">A test web server with HTTPS support</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>port</code> - HTTP port to bind on</dd>
 <dd><code>application</code> - The Application to load in this server</dd>
 <dd><code>sslPort</code> - HTTPS port to bind on</dd>
 </dl>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method.detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+<a name="getRunningHttpPort--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getRunningHttpPort</h4>
+<pre>public&nbsp;java.util.OptionalInt&nbsp;getRunningHttpPort()</pre>
+<div class="block">The HTTP port that the server is running on.</div>
+</li>
+</ul>
+<a name="getRunningHttpsPort--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getRunningHttpsPort</h4>
+<pre>public&nbsp;java.util.OptionalInt&nbsp;getRunningHttpsPort()</pre>
+<div class="block">The HTTPS port that the server is running on.</div>
 </li>
 </ul>
 </li>
@@ -273,13 +326,13 @@ extends play.api.test.TestServer</pre>
 <li>Nested&nbsp;|&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
-<li><a href="#methods.inherited.from.class.play.api.test.TestServer">Method</a></li>
+<li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
-<li>Method</li>
+<li><a href="#method.detail">Method</a></li>
 </ul>
 </div>
 <a name="skip.navbar.bottom">
