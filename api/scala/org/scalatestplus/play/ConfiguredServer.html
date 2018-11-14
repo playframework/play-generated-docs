@@ -79,8 +79,8 @@ class ExampleSpec extends PlaySpec with GuiceOneServerPerSuite {
       def getConfig(key: String)(implicit app: Application) = app.configuration.getOptional[String](key)
       getConfig("ehcacheplugin") mustBe Some("disabled")
     }
-    "provide the port number" in {
-      port mustBe Helpers.testServerPort
+    "provide an http endpoint" in {
+      runningServer.endpoints.httpEndpoint must not be empty
     }
     "provide an actual running server" in {
       import Helpers._
@@ -93,7 +93,7 @@ class ExampleSpec extends PlaySpec with GuiceOneServerPerSuite {
   }
 }
 </pre>
-</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="org.scalatestplus.play.ConfiguredServer">ConfiguredServer</a> with <span class="extype" name="org.scalatest.TestSuite">TestSuite</span></dd><dt>Source</dt><dd><a href="https://github.com/playframework/scalatestplus-play/tree/4.0.0-M4/module/src/main/scala/org/scalatestplus/play/ConfiguredServer.scala" target="_blank">ConfiguredServer.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="org.scalatestplus.play.ConfiguredServer">ConfiguredServer</a> with <span class="extype" name="org.scalatest.TestSuite">TestSuite</span></dd><dt>Source</dt><dd><a href="https://github.com/playframework/scalatestplus-play/tree/4.0.0-RC1/module/src/main/scala/org/scalatestplus/play/ConfiguredServer.scala" target="_blank">ConfiguredServer.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a>, <span class="extype" name="org.scalatest.TestSuiteMixin">TestSuiteMixin</span>, <span class="extype" name="org.scalatest.SuiteMixin">SuiteMixin</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -471,6 +471,24 @@ class ExampleSpec extends PlaySpec with GuiceOneServerPerSuite {
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="org.scalatestplus.play.ConfiguredServer#configuredPort" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="configuredPort:Int"></a>
+      <a id="configuredPort:Int"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">configuredPort</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.scalatestplus.play.ConfiguredServer@configuredPort:Int" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">The &quot;configured&quot; port number, passed into <code>run</code> via the <code>ConfigMap</code>, at which the <code>TestServer</code> is running.</p><div class="fullcomment"><div class="comment cmt"><p>The &quot;configured&quot; port number, passed into <code>run</code> via the <code>ConfigMap</code>, at which the <code>TestServer</code> is running.
+</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the configured port number</p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -630,12 +648,12 @@ class ExampleSpec extends PlaySpec with GuiceOneServerPerSuite {
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="org.scalatestplus.play.ConfiguredServer#port" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="org.scalatestplus.play.ServerProvider#port" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="port:Int"></a>
       <a id="port:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
-        <span class="modifier"></span>
+        <span class="modifier">final </span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
@@ -646,15 +664,15 @@ class ExampleSpec extends PlaySpec with GuiceOneServerPerSuite {
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">The &quot;configured&quot; port number, passed into <code>run</code> via the <code>ConfigMap</code>, at which the <code>TestServer</code> is running.</p><div class="fullcomment"><div class="comment cmt"><p>The &quot;configured&quot; port number, passed into <code>run</code> via the <code>ConfigMap</code>, at which the <code>TestServer</code> is running.
-</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the configured port number</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.scalatestplus.play.ConfiguredServer">ConfiguredServer</a> → <a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a></dd></dl></div>
+      <p class="shortcomment cmt">The port used by the <code>TestServer</code>.</p><div class="fullcomment"><div class="comment cmt"><p>The port used by the <code>TestServer</code>.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a></dd></dl></div>
     </li><li name="org.scalatestplus.play.ServerProvider#portNumber" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="portNumber:org.scalatestplus.play.PortNumber"></a>
       <a id="portNumber:PortNumber"></a>
       <h4 class="signature">
       <span class="modifier_kind">
-        <span class="modifier">implicit final </span>
-        <span class="kind">lazy val</span>
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
       </span>
       <span class="symbol">
         <span class="name">portNumber</span><span class="result">: <a href="PortNumber.html" class="extype" name="org.scalatestplus.play.PortNumber">PortNumber</a></span>
@@ -696,6 +714,23 @@ not a <code>Application</code>, or if no key matches &quot;org.scalatestplus.pla
 or the associated value is not an <code>Int</code>, throws <code>IllegalArgumentException</code>.
 </p></div><dl class="paramcmts block"><dt class="param">testName</dt><dd class="cmt"><p>an optional name of one test to run. If <code>None</code>, all relevant tests should be run.
                 I.e., <code>None</code> acts like a wildcard that means run all relevant tests in this <code>Suite</code>.</p></dd><dt class="param">args</dt><dd class="cmt"><p>the <code>Args</code> for this run</p></dd><dt>returns</dt><dd class="cmt"><p>a <code>Status</code> object that indicates when all tests and nested suites started by this method have completed, and whether or not a failure occurred.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.scalatestplus.play.ConfiguredServer">ConfiguredServer</a> → SuiteMixin</dd><dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="java.lang.IllegalArgumentException"><code>java.lang.IllegalArgumentException</code></span> if the <code>Application</code> and/or port number does not appear in <code>args.configMap</code> under the expected keys</p></span></dd></dl></div>
+    </li><li name="org.scalatestplus.play.ConfiguredServer#runningServer" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="runningServer:play.api.test.RunningServer"></a>
+      <a id="runningServer:RunningServer"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">runningServer</span><span class="result">: <a href="../../../play/api/test/RunningServer.html" class="extype" name="play.api.test.RunningServer">RunningServer</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.scalatestplus.play.ConfiguredServer@runningServer:play.api.test.RunningServer" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="" class="extype" name="org.scalatestplus.play.ConfiguredServer">ConfiguredServer</a> → <a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>

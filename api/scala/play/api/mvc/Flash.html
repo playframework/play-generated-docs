@@ -52,7 +52,7 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>HTTP Flash scope.</p><p>Flash data are encoded into an HTTP cookie, and can only contain simple <code>String</code> values.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.7.0-M4/framework/src/play/src/main/scala/play/api/mvc/Flash.scala" target="_blank">Flash.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.7.0-RC3/framework/src/play/src/main/scala/play/api/mvc/Flash.scala" target="_blank">Flash.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -168,23 +168,41 @@
       </a>
     </span>
       <p class="shortcomment cmt">Adds a value to the flash scope, and returns a new flash scope.</p><div class="fullcomment"><div class="comment cmt"><p>Adds a value to the flash scope, and returns a new flash scope.</p><p>For example:</p><pre>flash + (<span class="lit">"success"</span> -&gt; <span class="lit">"Done!"</span>)</pre></div><dl class="paramcmts block"><dt class="param">kv</dt><dd class="cmt"><p>the key-value pair to add</p></dd><dt>returns</dt><dd class="cmt"><p>the modified flash scope</p></dd></dl></div>
-    </li><li name="play.api.mvc.Flash#-" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="-(key:String):play.api.mvc.Flash"></a>
-      <a id="-(String):Flash"></a>
+    </li><li name="play.api.mvc.Flash#++" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="++(kvs:(String,String)*):play.api.mvc.Flash"></a>
+      <a id="++((String,String)*):Flash"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span title="gt4s: $minus" class="name">-</span><span class="params">(<span name="key">key: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="play.api.mvc.Flash">Flash</a></span>
+        <span title="gt4s: $plus$plus" class="name">++</span><span class="params">(<span name="kvs">kvs: (<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>)*</span>)</span><span class="result">: <a href="" class="extype" name="play.api.mvc.Flash">Flash</a></span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../index.html#play.api.mvc.Flash@-(key:String):play.api.mvc.Flash" title="Permalink" target="_top">
+      <a href="../../../index.html#play.api.mvc.Flash@++(kvs:(String,String)*):play.api.mvc.Flash" title="Permalink" target="_top">
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Removes a value from the flash scope.</p><div class="fullcomment"><div class="comment cmt"><p>Removes a value from the flash scope.</p><p>For example:</p><pre>flash - <span class="lit">"success"</span></pre></div><dl class="paramcmts block"><dt class="param">key</dt><dd class="cmt"><p>the key to remove</p></dd><dt>returns</dt><dd class="cmt"><p>the modified flash scope</p></dd></dl></div>
+      <p class="shortcomment cmt">Adds a number of elements provided by the given map object
+and returns a new flash scope with the added elements.</p>
+    </li><li name="play.api.mvc.Flash#-" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="-(keys:String*):play.api.mvc.Flash"></a>
+      <a id="-(String*):Flash"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $minus" class="name">-</span><span class="params">(<span name="keys">keys: <span class="extype" name="scala.Predef.String">String</span>*</span>)</span><span class="result">: <a href="" class="extype" name="play.api.mvc.Flash">Flash</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.Flash@-(keys:String*):play.api.mvc.Flash" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Removes values from the flash scope.</p><div class="fullcomment"><div class="comment cmt"><p>Removes values from the flash scope.</p><p>For example:</p><pre>flash - <span class="lit">"success"</span></pre></div><dl class="paramcmts block"><dt class="param">keys</dt><dd class="cmt"><p>the keys to remove</p></dd><dt>returns</dt><dd class="cmt"><p>the modified flash scope</p></dd></dl></div>
     </li><li name="scala.AnyRef#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="==(x$1:Any):Boolean"></a>
       <a id="==(Any):Boolean"></a>
@@ -202,6 +220,42 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="play.api.mvc.Flash#add" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="add(kv:(String,String)):play.api.mvc.Flash"></a>
+      <a id="add((String,String)):Flash"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">add</span><span class="params">(<span name="kv">kv: (<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>)</span>)</span><span class="result">: <a href="" class="extype" name="play.api.mvc.Flash">Flash</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.Flash@add(kv:(String,String)):play.api.mvc.Flash" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Adds a value to the flash scope, and returns a new flash scope.</p><div class="fullcomment"><div class="comment cmt"><p>Adds a value to the flash scope, and returns a new flash scope.</p><p>This is an alias method to <a href="#+(kv:(String,String)):play.api.mvc.Flash" class="extmbr" name="play.api.mvc.Flash#+">+</a>.
+</p></div><dl class="paramcmts block"><dt class="param">kv</dt><dd class="cmt"><p>the key-value pair to add</p></dd><dt>returns</dt><dd class="cmt"><p>the modified flash scope</p></dd></dl></div>
+    </li><li name="play.api.mvc.Flash#addAll" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="addAll(kvs:Map[String,String]):play.api.mvc.Flash"></a>
+      <a id="addAll(Map[String,String]):Flash"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">addAll</span><span class="params">(<span name="kvs">kvs: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <a href="" class="extype" name="play.api.mvc.Flash">Flash</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.Flash@addAll(kvs:Map[String,String]):play.api.mvc.Flash" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Adds a number of elements provided by the given map object
+and returns a new flash scope with the added elements.</p>
     </li><li name="play.api.mvc.Flash#apply" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="apply(key:String):String"></a>
       <a id="apply(String):String"></a>
@@ -452,6 +506,27 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="play.api.mvc.Flash#remove" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="remove(keys:String*):play.api.mvc.Flash"></a>
+      <a id="remove(String*):Flash"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">remove</span><span class="params">(<span name="keys">keys: <span class="extype" name="scala.Predef.String">String</span>*</span>)</span><span class="result">: <a href="" class="extype" name="play.api.mvc.Flash">Flash</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.mvc.Flash@remove(keys:String*):play.api.mvc.Flash" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Removes values from the flash scope.</p><div class="fullcomment"><div class="comment cmt"><p>Removes values from the flash scope.
+</p></div><dl class="paramcmts block"><dt class="param">keys</dt><dd class="cmt"><p>the keys to remove</p></dd><dt>returns</dt><dd class="cmt"><p>the modified flash scope</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@varargs</span><span class="args">()</span>
+              
+        </dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>

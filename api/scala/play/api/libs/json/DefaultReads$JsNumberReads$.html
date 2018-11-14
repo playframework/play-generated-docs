@@ -50,7 +50,7 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Deserializer for JsNumber.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/play-json/tree/2.6.10/play-json/jvm/src/main/scala/play/api/libs/json/Reads.scala" target="_blank">Reads.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/play-json/tree/2.7.0-RC1/play-json/jvm/src/main/scala/play/api/libs/json/Reads.scala" target="_blank">Reads.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="Reads.html" class="extype" name="play.api.libs.json.Reads">Reads</a>[<a href="JsNumber.html" class="extype" name="play.api.libs.json.JsNumber">JsNumber</a>], <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -220,23 +220,28 @@
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Reads.html" class="extype" name="play.api.libs.json.Reads">Reads</a></dd></dl></div>
-    </li><li name="play.api.libs.json.Reads#compose" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="compose[B&lt;:play.api.libs.json.JsValue](rb:play.api.libs.json.Reads[B]):play.api.libs.json.Reads[A]"></a>
-      <a id="compose[B&lt;:JsValue](Reads[B]):Reads[JsNumber]"></a>
+    </li><li name="play.api.libs.json.Reads#composeWith" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="composeWith[B&lt;:play.api.libs.json.JsValue](rb:play.api.libs.json.Reads[B]):play.api.libs.json.Reads[A]"></a>
+      <a id="composeWith[B&lt;:JsValue](Reads[B]):Reads[JsNumber]"></a>
       <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">compose</span><span class="tparams">[<span name="B">B &lt;: <a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a></span>]</span><span class="params">(<span name="rb">rb: <a href="Reads.html" class="extype" name="play.api.libs.json.Reads">Reads</a>[<span class="extype" name="play.api.libs.json.Reads.compose.B">B</span>]</span>)</span><span class="result">: <a href="Reads.html" class="extype" name="play.api.libs.json.Reads">Reads</a>[<a href="JsNumber.html" class="extype" name="play.api.libs.json.JsNumber">JsNumber</a>]</span>
+        <span class="name">composeWith</span><span class="tparams">[<span name="B">B &lt;: <a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a></span>]</span><span class="params">(<span name="rb">rb: <a href="Reads.html" class="extype" name="play.api.libs.json.Reads">Reads</a>[<span class="extype" name="play.api.libs.json.Reads.composeWith.B">B</span>]</span>)</span><span class="result">: <a href="Reads.html" class="extype" name="play.api.libs.json.Reads">Reads</a>[<a href="JsNumber.html" class="extype" name="play.api.libs.json.JsNumber">JsNumber</a>]</span>
       </span>
       </h4><span class="permalink">
-      <a href="../../../../index.html#play.api.libs.json.DefaultReads$JsNumberReads$@compose[B&lt;:play.api.libs.json.JsValue](rb:play.api.libs.json.Reads[B]):play.api.libs.json.Reads[A]" title="Permalink" target="_top">
+      <a href="../../../../index.html#play.api.libs.json.DefaultReads$JsNumberReads$@composeWith[B&lt;:play.api.libs.json.JsValue](rb:play.api.libs.json.Reads[B]):play.api.libs.json.Reads[A]" title="Permalink" target="_top">
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Reads.html" class="extype" name="play.api.libs.json.Reads">Reads</a></dd></dl></div>
+      <p class="shortcomment cmt">Creates a new <code>Reads</code>, which first passes the input JSON to <code>rb</code>,
+and then it executes this <code>Reads</code> on the pre-processed JSON
+(if <code>rb</code> has successfully handled the input JSON).</p><div class="fullcomment"><div class="comment cmt"><p>Creates a new <code>Reads</code>, which first passes the input JSON to <code>rb</code>,
+and then it executes this <code>Reads</code> on the pre-processed JSON
+(if <code>rb</code> has successfully handled the input JSON).
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Reads.html" class="extype" name="play.api.libs.json.Reads">Reads</a></dd></dl></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a>
       <a id="eq(AnyRef):Boolean"></a>
@@ -521,7 +526,29 @@ if successful</p></dd></dl><dl class="attributes block"> <dt>Definition Classes<
 the second <code>Reads</code> on the <a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a>.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a new <code>Reads</code>, based on this one, which first executes this
 <code>Reads</code>' logic then, if this <code>Reads</code> resulted in a <code>JsError</code>, runs
 the second <code>Reads</code> on the <a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a>.
-</p></div><dl class="paramcmts block"><dt class="param">v</dt><dd class="cmt"><p>The <code>Reads</code> to run if this one gets a <code>JsError</code>.</p></dd><dt>returns</dt><dd class="cmt"><p>A new <code>Reads</code> with the updated behavior.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Reads.html" class="extype" name="play.api.libs.json.Reads">Reads</a></dd></dl></div>
+</p></div><dl class="paramcmts block"><dt class="param">v</dt><dd class="cmt"><p>the <code>Reads</code> to run if this one gets a <code>JsError</code></p></dd><dt>returns</dt><dd class="cmt"><p>A new <code>Reads</code> with the updated behavior.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Reads.html" class="extype" name="play.api.libs.json.Reads">Reads</a></dd></dl></div>
+    </li><li name="play.api.libs.json.Reads#preprocess" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="preprocess(f:PartialFunction[play.api.libs.json.JsValue,play.api.libs.json.JsValue]):play.api.libs.json.Reads[A]"></a>
+      <a id="preprocess(PartialFunction[JsValue,JsValue]):Reads[JsNumber]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">preprocess</span><span class="params">(<span name="f">f: <span class="extype" name="scala.PartialFunction">PartialFunction</span>[<a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a>, <a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a>]</span>)</span><span class="result">: <a href="Reads.html" class="extype" name="play.api.libs.json.Reads">Reads</a>[<a href="JsNumber.html" class="extype" name="play.api.libs.json.JsNumber">JsNumber</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.json.DefaultReads$JsNumberReads$@preprocess(f:PartialFunction[play.api.libs.json.JsValue,play.api.libs.json.JsValue]):play.api.libs.json.Reads[A]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Creates a new <code>Reads</code>, which first transforms the input JSON
+using the given <code>tranformer</code>, and then it executes this <code>Reads</code>
+on the pre-processed JSON.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a new <code>Reads</code>, which first transforms the input JSON
+using the given <code>tranformer</code>, and then it executes this <code>Reads</code>
+on the pre-processed JSON.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Reads.html" class="extype" name="play.api.libs.json.Reads">Reads</a></dd></dl></div>
     </li><li name="play.api.libs.json.DefaultReads.JsNumberReads#reads" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="reads(json:play.api.libs.json.JsValue):play.api.libs.json.JsResult[play.api.libs.json.JsNumber]"></a>
       <a id="reads(JsValue):JsResult[JsNumber]"></a>
@@ -644,12 +671,57 @@ the second <code>Reads</code> on the <a href="JsValue.html" class="extype" name=
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="play.api.libs.json.Reads#widen" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="widen[B&gt;:A]:play.api.libs.json.Reads[B]"></a>
+      <a id="widen[B&gt;:JsNumber]:Reads[B]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">widen</span><span class="tparams">[<span name="B">B &gt;: <a href="JsNumber.html" class="extype" name="play.api.libs.json.JsNumber">JsNumber</a></span>]</span><span class="result">: <a href="Reads.html" class="extype" name="play.api.libs.json.Reads">Reads</a>[<span class="extype" name="play.api.libs.json.Reads.widen.B">B</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.json.DefaultReads$JsNumberReads$@widen[B&gt;:A]:play.api.libs.json.Reads[B]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Widen this <code>Reads</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Widen this <code>Reads</code>.</p><pre><span class="kw">import</span> play.api.libs.json.Reads
+
+<span class="kw">def</span> simple(r: Reads[Dog]): Reads[Animal] = r.widen[Animal]
+
+<span class="kw">def</span> combine(dog: Reads[Dog], cat: Reads[Cat]): Reads[Animal] =
+  dog.orElse(cat).orElse(Reads.failed[Animal](<span class="lit">"Unsupported Animal"</span>))</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Reads.html" class="extype" name="play.api.libs.json.Reads">Reads</a></dd></dl></div>
     </li></ol>
             </div>
 
         
 
-        
+        <div id="values" class="values members">
+              <h3>Deprecated Value Members</h3>
+              <ol><li name="play.api.libs.json.Reads#compose" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="compose[B&lt;:play.api.libs.json.JsValue](rb:play.api.libs.json.Reads[B]):play.api.libs.json.Reads[A]"></a>
+      <a id="compose[B&lt;:JsValue](Reads[B]):Reads[JsNumber]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 2.7.0) Use scala.tools.nsc.doc.base.MemberLookupBase$$anon$1@5942cd86">compose</span><span class="tparams">[<span name="B">B &lt;: <a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a></span>]</span><span class="params">(<span name="rb">rb: <a href="Reads.html" class="extype" name="play.api.libs.json.Reads">Reads</a>[<span class="extype" name="play.api.libs.json.Reads.compose.B">B</span>]</span>)</span><span class="result">: <a href="Reads.html" class="extype" name="play.api.libs.json.Reads">Reads</a>[<a href="JsNumber.html" class="extype" name="play.api.libs.json.JsNumber">JsNumber</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.json.DefaultReads$JsNumberReads$@compose[B&lt;:play.api.libs.json.JsValue](rb:play.api.libs.json.Reads[B]):play.api.libs.json.Reads[A]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Reads.html" class="extype" name="play.api.libs.json.Reads">Reads</a></dd><dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.7.0)</i> Use <a href="#composeWith[B&lt;:play.api.libs.json.JsValue](rb:play.api.libs.json.Reads[B]):play.api.libs.json.Reads[A]" class="extmbr" name="play.api.libs.json.DefaultReads.JsNumberReads#composeWith">composeWith</a></p></dd></dl></div>
+    </li></ol>
+            </div>
         </div>
 
         <div id="inheritedMembers">

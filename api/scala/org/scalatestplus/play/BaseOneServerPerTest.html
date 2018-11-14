@@ -57,7 +57,6 @@ is returned by the <code>newAppForTest</code> method defined in this trait. If y
 parameters, override <code>newAppForTest</code> to return it.</p><p>Here's an example that demonstrates some of the services provided by this trait:</p><p><pre class="stHighlight">
 package org.scalatestplus.play.examples.oneserverpertest
 
-import play.api.test._
 import org.scalatest._
 import org.scalatestplus.play._
 import play.api.{Play, Application}
@@ -80,8 +79,8 @@ class ExampleSpec extends PlaySpec with OneServerPerTest {
       def getConfig(key: String)(implicit app: Application) = app.configuration.getOptional[String](key)
       getConfig("ehcacheplugin") mustBe Some("disabled")
     }
-    "provide the port number" in {
-      port mustBe Helpers.testServerPort
+    "provide an http endpoint" in {
+      runningServer.endpoints.httpEndpoint must not be empty
     }
     "provide an actual running server" in {
       import Helpers._
@@ -94,7 +93,7 @@ class ExampleSpec extends PlaySpec with OneServerPerTest {
   }
 }
 </pre>
-</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="org.scalatestplus.play.BaseOneServerPerTest">BaseOneServerPerTest</a> with <span class="extype" name="org.scalatest.TestSuite">TestSuite</span> with <a href="FakeApplicationFactory.html" class="extype" name="org.scalatestplus.play.FakeApplicationFactory">FakeApplicationFactory</a></dd><dt>Source</dt><dd><a href="https://github.com/playframework/scalatestplus-play/tree/4.0.0-M4/module/src/main/scala/org/scalatestplus/play/BaseOneServerPerTest.scala" target="_blank">BaseOneServerPerTest.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="org.scalatestplus.play.BaseOneServerPerTest">BaseOneServerPerTest</a> with <span class="extype" name="org.scalatest.TestSuite">TestSuite</span> with <a href="FakeApplicationFactory.html" class="extype" name="org.scalatestplus.play.FakeApplicationFactory">FakeApplicationFactory</a></dd><dt>Source</dt><dd><a href="https://github.com/playframework/scalatestplus-play/tree/4.0.0-RC1/module/src/main/scala/org/scalatestplus/play/BaseOneServerPerTest.scala" target="_blank">BaseOneServerPerTest.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a>, <span class="extype" name="org.scalatest.TestSuiteMixin">TestSuiteMixin</span>, <span class="extype" name="org.scalatest.SuiteMixin">SuiteMixin</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
@@ -619,6 +618,23 @@ class ExampleSpec extends PlaySpec with OneServerPerTest {
       <p class="shortcomment cmt">Creates new instance of <code>Application</code> with parameters set to their defaults.</p><div class="fullcomment"><div class="comment cmt"><p>Creates new instance of <code>Application</code> with parameters set to their defaults. Override this method if you
 need an <code>Application</code> created with non-default parameter values.
 </p></div></div>
+    </li><li name="org.scalatestplus.play.BaseOneServerPerTest#newServerForTest" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="newServerForTest(app:play.api.Application,testData:org.scalatest.TestData):play.api.test.RunningServer"></a>
+      <a id="newServerForTest(Application,TestData):RunningServer"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">newServerForTest</span><span class="params">(<span name="app">app: <a href="../../../play/api/Application.html" class="extype" name="play.api.Application">Application</a></span>, <span name="testData">testData: <span class="extype" name="org.scalatest.TestData">TestData</span></span>)</span><span class="result">: <a href="../../../play/api/test/RunningServer.html" class="extype" name="play.api.test.RunningServer">RunningServer</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.scalatestplus.play.BaseOneServerPerTest@newServerForTest(app:play.api.Application,testData:org.scalatest.TestData):play.api.test.RunningServer" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="scala.AnyRef#notify" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
       <a id="notify():Unit"></a>
@@ -653,13 +669,13 @@ need an <code>Application</code> created with non-default parameter values.
       </a>
     </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="org.scalatestplus.play.BaseOneServerPerTest#port" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="org.scalatestplus.play.ServerProvider#port" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="port:Int"></a>
       <a id="port:Int"></a>
       <h4 class="signature">
       <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
       </span>
       <span class="symbol">
         <span class="name">port</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
@@ -669,16 +685,15 @@ need an <code>Application</code> created with non-default parameter values.
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">The port used by the <code>TestServer</code>.</p><div class="fullcomment"><div class="comment cmt"><p>The port used by the <code>TestServer</code>.  By default this will be set to the result returned from
-<code>Helpers.testServerPort</code>. You can override this to provide a different port number.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.scalatestplus.play.BaseOneServerPerTest">BaseOneServerPerTest</a> → <a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a></dd></dl></div>
+      <p class="shortcomment cmt">The port used by the <code>TestServer</code>.</p><div class="fullcomment"><div class="comment cmt"><p>The port used by the <code>TestServer</code>.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a></dd></dl></div>
     </li><li name="org.scalatestplus.play.ServerProvider#portNumber" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="portNumber:org.scalatestplus.play.PortNumber"></a>
       <a id="portNumber:PortNumber"></a>
       <h4 class="signature">
       <span class="modifier_kind">
-        <span class="modifier">implicit final </span>
-        <span class="kind">lazy val</span>
+        <span class="modifier">implicit </span>
+        <span class="kind">def</span>
       </span>
       <span class="symbol">
         <span class="name">portNumber</span><span class="result">: <a href="PortNumber.html" class="extype" name="org.scalatestplus.play.PortNumber">PortNumber</a></span>
@@ -691,6 +706,23 @@ need an <code>Application</code> created with non-default parameter values.
       <p class="shortcomment cmt">Implicit <code>PortNumber</code> instance that wraps <code>port</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Implicit <code>PortNumber</code> instance that wraps <code>port</code>. The value returned from <code>portNumber.value</code>
 will be same as the value of <code>port</code>.
 </p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the configured port number, wrapped in a <code>PortNumber</code></p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a></dd></dl></div>
+    </li><li name="org.scalatestplus.play.BaseOneServerPerTest#runningServer" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="runningServer:play.api.test.RunningServer"></a>
+      <a id="runningServer:RunningServer"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">implicit final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">runningServer</span><span class="result">: <a href="../../../play/api/test/RunningServer.html" class="extype" name="play.api.test.RunningServer">RunningServer</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#org.scalatestplus.play.BaseOneServerPerTest@runningServer:play.api.test.RunningServer" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="org.scalatestplus.play.BaseOneServerPerTest">BaseOneServerPerTest</a> → <a href="ServerProvider.html" class="extype" name="org.scalatestplus.play.ServerProvider">ServerProvider</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
       <a id="synchronized[T0](⇒T0):T0"></a>

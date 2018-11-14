@@ -54,7 +54,7 @@
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Path to a <a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a>;
 As for path to file on FS, there may not be any matching value
 in the parsed JSON.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/play-json/tree/2.6.10/play-json/jvm/src/main/scala/play/api/libs/json/JsPath.scala" target="_blank">JsPath.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/play-json/tree/2.7.0-RC1/play-json/jvm/src/main/scala/play/api/libs/json/JsPath.scala" target="_blank">JsPath.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
@@ -1165,6 +1165,26 @@ default value, null is None and other cases are Error).</p><p>It runs through Js
     </span>
       <p class="shortcomment cmt">Writes a Option[T] at given JsPath
 If None =&gt; doesn't write the field (never writes null actually)
+else =&gt; writes the field using implicit Writes[T]
+</p>
+    </li><li name="play.api.libs.json.JsPath#writeOptionWithNull" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="writeOptionWithNull[T](implicitw:play.api.libs.json.Writes[T]):play.api.libs.json.OWrites[Option[T]]"></a>
+      <a id="writeOptionWithNull[T](Writes[T]):OWrites[Option[T]]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">writeOptionWithNull</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="w">w: <a href="Writes.html" class="extype" name="play.api.libs.json.Writes">Writes</a>[<span class="extype" name="play.api.libs.json.JsPath.writeOptionWithNull.T">T</span>]</span>)</span><span class="result">: <a href="OWrites.html" class="extype" name="play.api.libs.json.OWrites">OWrites</a>[<span class="extype" name="scala.Option">Option</span>[<span class="extype" name="play.api.libs.json.JsPath.writeOptionWithNull.T">T</span>]]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.json.JsPath@writeOptionWithNull[T](implicitw:play.api.libs.json.Writes[T]):play.api.libs.json.OWrites[Option[T]]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Writes a Option[T] at given JsPath
+If None =&gt; writes 'null'
 else =&gt; writes the field using implicit Writes[T]
 </p>
     </li></ol>

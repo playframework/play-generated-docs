@@ -49,7 +49,7 @@
       </span>
       </h4>
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Helper functions to handle JsValues.</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/play-json/tree/2.6.10/play-json/jvm/src/main/scala/play/api/libs/json/Json.scala" target="_blank">Json.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Helper functions to handle JsValues.</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/play-json/tree/2.7.0-RC1/play-json/jvm/src/main/scala/play/api/libs/json/Json.scala" target="_blank">Json.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="JsonFacade.html" class="extype" name="play.api.libs.json.JsonFacade">JsonFacade</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -448,6 +448,38 @@ the case class fields or sealed family, and the required implicits.</p><p>If any
    (__ \ implicitly[JsonConfiguration].naming(<span class="lit">"userName"</span>)).format[<span class="std">String</span>] and
    (__ \ implicitly[JsonConfiguration].naming(<span class="lit">"age"</span>)).format[<span class="std">Int</span>]
 )(User.apply, unlift(User.unapply))</pre></dd></dl></div>
+    </li><li name="play.api.libs.json.Json#formatEnum" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="formatEnum[E&lt;:Enumeration](enum:E):play.api.libs.json.Format[E#Value]"></a>
+      <a id="formatEnum[E&lt;:Enumeration](E):Format[Json.formatEnum.E.Value]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">formatEnum</span><span class="tparams">[<span name="E">E &lt;: <span class="extype" name="scala.Enumeration">Enumeration</span></span>]</span><span class="params">(<span name="enum">enum: <span class="extype" name="play.api.libs.json.Json.formatEnum.E">E</span></span>)</span><span class="result">: <a href="Format.html" class="extype" name="play.api.libs.json.Format">Format</a>[<span class="extype" name="scala.Enumeration.Value">Json.formatEnum.E.Value</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.json.Json$@formatEnum[E&lt;:Enumeration](enum:E):play.api.libs.json.Format[E#Value]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Creates a <code>Format[E]</code> by automatically creating Reads[E] and Writes[E] for any Enumeration E</p><div class="fullcomment"><div class="comment cmt"><p>Creates a <code>Format[E]</code> by automatically creating Reads[E] and Writes[E] for any Enumeration E</p><pre><span class="kw">import</span> play.api.libs.json.Json
+
+<span class="kw">object</span> DayOfWeek <span class="kw">extends</span> <span class="std">Enumeration</span> {
+
+ <span class="kw">type</span> DayOfWeek = Value
+
+ <span class="kw">val</span> Mon = Value(<span class="lit">"Monday"</span>)
+ <span class="kw">val</span> Tue = Value(<span class="lit">"Tuesday"</span>)
+ <span class="kw">val</span> Wed = Value(<span class="lit">"Wednesday"</span>)
+ <span class="cmt">// etc.</span>
+
+  <span class="kw">implicit</span> <span class="kw">val</span> format: Format[DayOfWeek] = Json.formatEnum(DayOfWeek)
+  <span class="cmt">// or 'this' if defining directly in Enum</span>
+  <span class="kw">implicit</span> <span class="kw">val</span> format: Format[DayOfWeek] = Json.formatEnum(<span class="kw">this</span>)
+}</pre><p><b>Json.toJson(Mon)</b> will produce <b>&quot;Monday&quot;</b>
+</p></div><dl class="paramcmts block"><dt class="tparam">E</dt><dd class="cmt"><p>type of Enum</p></dd><dt class="param">enum</dt><dd class="cmt"><p>Enumeration object</p></dd></dl></div>
     </li><li name="play.api.libs.json.Json#fromJson" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="fromJson[T](json:play.api.libs.json.JsValue)(implicitfjs:play.api.libs.json.Reads[T]):play.api.libs.json.JsResult[T]"></a>
       <a id="fromJson[T](JsValue)(Reads[T]):JsResult[T]"></a>
@@ -695,8 +727,8 @@ A String with the json representation.</p></dd></dl><dl class="attributes block"
         <img src="../../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Creates a <code>Reads[T]</code> by resolving, at compile-time,
-the case class fields or sealed family, and the required implicits.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a <code>Reads[T]</code> by resolving, at compile-time,
+      <p class="shortcomment cmt">Creates a <code>Reads[A]</code> by resolving, at compile-time,
+the case class fields or sealed family, and the required implicits.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a <code>Reads[A]</code> by resolving, at compile-time,
 the case class fields or sealed family, and the required implicits.</p><p>If any missing implicit is discovered, compiler will break with corresponding error.
 </p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>the type for which the handler must be materialized</p><pre><span class="kw">import</span> play.api.libs.json.Json
 <span class="kw">case</span> <span class="kw">class</span> User(userName: <span class="std">String</span>, age: <span class="std">Int</span>)
@@ -859,6 +891,74 @@ if a <a href="OWrites.html" class="extype" name="play.api.libs.json.OWrites">OWr
 using explicit compile-time options.</p><div class="fullcomment"><div class="comment cmt"><p>Returns an inference context to call the JSON macros,
 using explicit compile-time options.
 </p></div><dl class="paramcmts block"><dt class="tparam">Opts</dt><dd class="cmt"><p>the compile-time options</p></dd></dl></div>
+    </li><li name="play.api.libs.json.Json#valueFormat" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="valueFormat[A]:play.api.libs.json.Format[A]"></a>
+      <a id="valueFormat[A]:Format[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">valueFormat</span><span class="tparams">[<span name="A">A</span>]</span><span class="result">: <a href="Format.html" class="extype" name="play.api.libs.json.Format">Format</a>[<span class="extype" name="play.api.libs.json.Json.valueFormat.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.json.Json$@valueFormat[A]:play.api.libs.json.Format[A]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Creates a <code>OFormat[T]</code> by resolving, if <code>T</code> is a ValueClass
+(see <a href="#valueReads[A]:play.api.libs.json.Reads[A]" class="extmbr" name="play.api.libs.json.Json#valueReads">valueReads</a> and <a href="#valueWrites[A]:play.api.libs.json.Writes[A]" class="extmbr" name="play.api.libs.json.Json#valueWrites">valueWrites</a>).</p><div class="fullcomment"><div class="comment cmt"><p>Creates a <code>OFormat[T]</code> by resolving, if <code>T</code> is a ValueClass
+(see <a href="#valueReads[A]:play.api.libs.json.Reads[A]" class="extmbr" name="play.api.libs.json.Json#valueReads">valueReads</a> and <a href="#valueWrites[A]:play.api.libs.json.Writes[A]" class="extmbr" name="play.api.libs.json.Json#valueWrites">valueWrites</a>).</p><p>If any missing implicit is discovered, compiler will break with corresponding error.
+</p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>the type for which the handler must be materialized</p><pre><span class="kw">import</span> play.api.libs.json.{ Format, Json }
+<span class="kw">final</span> <span class="kw">class</span> User(<span class="kw">val</span> name: <span class="std">String</span>) <span class="kw">extends</span> <span class="std">AnyVal</span>
+<span class="kw">implicit</span> <span class="kw">val</span> userFormat: Format[User] = Json.valueFormat[User]</pre></dd></dl></div>
+    </li><li name="play.api.libs.json.Json#valueReads" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="valueReads[A]:play.api.libs.json.Reads[A]"></a>
+      <a id="valueReads[A]:Reads[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">valueReads</span><span class="tparams">[<span name="A">A</span>]</span><span class="result">: <a href="Reads.html" class="extype" name="play.api.libs.json.Reads">Reads</a>[<span class="extype" name="play.api.libs.json.Json.valueReads.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.json.Json$@valueReads[A]:play.api.libs.json.Reads[A]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Creates a <code>Reads[A]</code>, if <code>A</code> is a ValueClass,
+by resolving at compile-time the <code>Reads</code> for the underlying type.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a <code>Reads[A]</code>, if <code>A</code> is a ValueClass,
+by resolving at compile-time the <code>Reads</code> for the underlying type.</p><p>If any missing implicit is discovered, compiler will break with corresponding error.
+</p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>the type for which the handler must be materialized</p><pre><span class="kw">import</span> play.api.libs.json.{ Json, Reads }
+<span class="kw">final</span> <span class="kw">class</span> IdText(<span class="kw">val</span> value: <span class="std">String</span>) <span class="kw">extends</span> <span class="std">AnyVal</span>
+<span class="cmt">// Based on provided Reads[String] corresponding to `value: String`</span>
+<span class="kw">val</span> r: Reads[IdText] = Json.valueReads</pre></dd></dl></div>
+    </li><li name="play.api.libs.json.Json#valueWrites" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="valueWrites[A]:play.api.libs.json.Writes[A]"></a>
+      <a id="valueWrites[A]:Writes[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">macro </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">valueWrites</span><span class="tparams">[<span name="A">A</span>]</span><span class="result">: <a href="Writes.html" class="extype" name="play.api.libs.json.Writes">Writes</a>[<span class="extype" name="play.api.libs.json.Json.valueWrites.A">A</span>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.json.Json$@valueWrites[A]:play.api.libs.json.Writes[A]" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Creates a <code>OWrites[T]</code>, if <code>T</code> is a ValueClass,
+by resolving at compile-time the <code>Writes</code> for the underlying type.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a <code>OWrites[T]</code>, if <code>T</code> is a ValueClass,
+by resolving at compile-time the <code>Writes</code> for the underlying type.</p><p>If any missing implicit is discovered, compiler will break with corresponding error.
+</p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>the type for which the handler must be materialized</p><pre><span class="kw">import</span> play.api.libs.json.{ Json, Writes }
+<span class="kw">final</span> <span class="kw">class</span> TextId(<span class="kw">val</span> value: <span class="std">String</span>) <span class="kw">extends</span> <span class="std">AnyVal</span>
+<span class="cmt">// Based on provided Writes[String] corresponding to `value: String`</span>
+<span class="kw">val</span> w: Writes[TextId] = Json.writes[TextId]</pre></dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <a id="wait():Unit"></a>

@@ -52,7 +52,7 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Body parsers officially supported by Play (i.e. built-in to Play)
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.7.0-M4/framework/src/play/src/main/scala/play/api/mvc/BodyParsers.scala" target="_blank">BodyParsers.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.7.0-RC3/framework/src/play/src/main/scala/play/api/mvc/BodyParsers.scala" target="_blank">BodyParsers.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="BodyParserUtils.html" class="extype" name="play.api.mvc.BodyParserUtils">BodyParserUtils</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
@@ -918,7 +918,9 @@ validating the result with the Json reader.
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Parse the body as text if the Content-Type is text/plain.</p><div class="fullcomment"><div class="comment cmt"><p>Parse the body as text if the Content-Type is text/plain.
+      <p class="shortcomment cmt">Parse the body as text if the Content-Type is text/plain.</p><div class="fullcomment"><div class="comment cmt"><p>Parse the body as text if the Content-Type is text/plain.</p><p>If the charset is not explicitly declared, then the default &quot;charset&quot; parameter value is US-ASCII,
+per https://tools.ietf.org/html/rfc6657#section-4.  Use tolerantText if more flexible character
+decoding is desired.
 </p></div><dl class="paramcmts block"><dt class="param">maxLength</dt><dd class="cmt"><p>Max length (in bytes) allowed or returns EntityTooLarge HTTP response.</p></dd></dl></div>
     </li><li name="scala.AnyRef#toString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
@@ -1058,7 +1060,7 @@ validating the result with the Json reader.
         <img src="../../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
-      <p class="shortcomment cmt">Parse the body as text without checking the Content-Type.</p><div class="fullcomment"><div class="comment cmt"><p>Parse the body as text without checking the Content-Type.
+      <p class="shortcomment cmt">Parses the body as text without checking the Content-Type.</p><div class="fullcomment"><div class="comment cmt"><p>Parses the body as text without checking the Content-Type.</p><p>Will attempt to parse content with an explicit charset, but will fallback to UTF-8, ISO-8859-1, and finally US-ASCII if incorrect characters are detected.
 </p></div><dl class="paramcmts block"><dt class="param">maxLength</dt><dd class="cmt"><p>Max length (in bytes) allowed or returns EntityTooLarge HTTP response.</p></dd></dl></div>
     </li><li name="play.api.mvc.PlayBodyParsers#tolerantXml" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="tolerantXml:play.api.mvc.BodyParser[scala.xml.NodeSeq]"></a>

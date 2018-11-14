@@ -50,7 +50,7 @@
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Contains standard HTTP constants.
 For example:</p><pre><span class="kw">val</span> text = ContentTypes.TEXT
 <span class="kw">val</span> ok = Status.OK
-<span class="kw">val</span> accept = HeaderNames.ACCEPT</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.7.0-M4/framework/src/play/src/main/scala/play/api/http/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
+<span class="kw">val</span> accept = HeaderNames.ACCEPT</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.7.0-RC3/framework/src/play/src/main/scala/play/api/http/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -453,6 +453,23 @@ an implicit fileMimeTypes instance is already made available from
       </a>
     </span>
       <p class="shortcomment cmt">Defines all standard HTTP headers.</p>
+    </li><li name="play.api.http.HtmlOrJsonHttpErrorHandler" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="HtmlOrJsonHttpErrorHandlerextendsPreferredMediaTypeHttpErrorHandler"></a>
+      <a id="HtmlOrJsonHttpErrorHandler:HtmlOrJsonHttpErrorHandler"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="HtmlOrJsonHttpErrorHandler.html"><span class="name">HtmlOrJsonHttpErrorHandler</span></a><span class="result"> extends <a href="PreferredMediaTypeHttpErrorHandler.html" class="extype" name="play.api.http.PreferredMediaTypeHttpErrorHandler">PreferredMediaTypeHttpErrorHandler</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.http.package@HtmlOrJsonHttpErrorHandlerextendsPreferredMediaTypeHttpErrorHandler" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">An <a href="HttpErrorHandler.html" class="extype" name="play.api.http.HttpErrorHandler">HttpErrorHandler</a> that uses either HTML or JSON in the response depending on the client's preference.</p>
     </li><li name="play.api.http.HttpChunk" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="HttpChunkextendsAnyRef"></a>
       <a id="HttpChunk:HttpChunk"></a>
@@ -481,7 +498,7 @@ a stream, optionally with trailing headers.
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a href="HttpConfiguration.html"><span class="name">HttpConfiguration</span></a><span class="params">(<span name="context">context: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;/&quot;</span></span>, <span name="parser">parser: <a href="ParserConfiguration.html" class="extype" name="play.api.http.ParserConfiguration">ParserConfiguration</a> = <span class="symbol">ParserConfiguration()</span></span>, <span name="actionComposition">actionComposition: <a href="ActionCompositionConfiguration.html" class="extype" name="play.api.http.ActionCompositionConfiguration">ActionCompositionConfiguration</a> = <span class="symbol">ActionCompositionConfiguration()</span></span>, <span name="cookies">cookies: <a href="CookiesConfiguration.html" class="extype" name="play.api.http.CookiesConfiguration">CookiesConfiguration</a> = <span class="symbol">CookiesConfiguration()</span></span>, <span name="session">session: <a href="SessionConfiguration.html" class="extype" name="play.api.http.SessionConfiguration">SessionConfiguration</a> = <span class="symbol">SessionConfiguration()</span></span>, <span name="flash">flash: <a href="FlashConfiguration.html" class="extype" name="play.api.http.FlashConfiguration">FlashConfiguration</a> = <span class="symbol">FlashConfiguration()</span></span>, <span name="fileMimeTypes">fileMimeTypes: <a href="FileMimeTypesConfiguration.html" class="extype" name="play.api.http.FileMimeTypesConfiguration">FileMimeTypesConfiguration</a> = <span class="symbol">FileMimeTypesConfiguration()</span></span>, <span name="secret">secret: <a href="SecretConfiguration.html" class="extype" name="play.api.http.SecretConfiguration">SecretConfiguration</a> = <span class="symbol">SecretConfiguration()</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a href="HttpConfiguration.html"><span class="name">HttpConfiguration</span></a><span class="params">(<span name="context">context: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;/&quot;</span></span>, <span name="parser">parser: <a href="ParserConfiguration.html" class="extype" name="play.api.http.ParserConfiguration">ParserConfiguration</a> = <span class="symbol">ParserConfiguration()</span></span>, <span name="actionComposition">actionComposition: <a href="ActionCompositionConfiguration.html" class="extype" name="play.api.http.ActionCompositionConfiguration">ActionCompositionConfiguration</a> = <span class="symbol">ActionCompositionConfiguration()</span></span>, <span name="cookies">cookies: <a href="CookiesConfiguration.html" class="extype" name="play.api.http.CookiesConfiguration">CookiesConfiguration</a> = <span class="symbol">CookiesConfiguration()</span></span>, <span name="session">session: <a href="SessionConfiguration.html" class="extype" name="play.api.http.SessionConfiguration">SessionConfiguration</a> = <span class="symbol">SessionConfiguration()</span></span>, <span name="flash">flash: <a href="FlashConfiguration.html" class="extype" name="play.api.http.FlashConfiguration">FlashConfiguration</a> = <span class="symbol">FlashConfiguration()</span></span>, <span name="fileMimeTypes">fileMimeTypes: <a href="FileMimeTypesConfiguration.html" class="extype" name="play.api.http.FileMimeTypesConfiguration">FileMimeTypesConfiguration</a> = <span class="symbol">FileMimeTypesConfiguration()</span></span>, <span name="secret">secret: <a href="SecretConfiguration.html" class="extype" name="play.api.http.SecretConfiguration">SecretConfiguration</a> = <span class="symbol"><span class="name"><a href="SecretConfiguration$.html">SecretConfiguration()</a></span></span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4><span class="permalink">
       <a href="../../../index.html#play.api.http.package@HttpConfigurationextendsProductwithSerializable" title="Permalink" target="_top">
@@ -831,6 +848,27 @@ the <a href="JsonHttpErrorHandler.html#formatDevServerErrorException(exception:T
     </span>
       <p class="shortcomment cmt">A port.</p><div class="fullcomment"><div class="comment cmt"><p>A port.  This class is defined so that ports can be passed around implicitly.
 </p></div></div>
+    </li><li name="play.api.http.PreferredMediaTypeHttpErrorHandler" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="PreferredMediaTypeHttpErrorHandlerextendsHttpErrorHandler"></a>
+      <a id="PreferredMediaTypeHttpErrorHandler:PreferredMediaTypeHttpErrorHandler"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="PreferredMediaTypeHttpErrorHandler.html"><span class="name">PreferredMediaTypeHttpErrorHandler</span></a><span class="result"> extends <a href="HttpErrorHandler.html" class="extype" name="play.api.http.HttpErrorHandler">HttpErrorHandler</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.http.package@PreferredMediaTypeHttpErrorHandlerextendsHttpErrorHandler" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">An <a href="HttpErrorHandler.html" class="extype" name="play.api.http.HttpErrorHandler">HttpErrorHandler</a> that delegates to one of several <a href="HttpErrorHandler.html" class="extype" name="play.api.http.HttpErrorHandler">HttpErrorHandler</a>s based on media type preferences.</p><div class="fullcomment"><div class="comment cmt"><p>An <a href="HttpErrorHandler.html" class="extype" name="play.api.http.HttpErrorHandler">HttpErrorHandler</a> that delegates to one of several <a href="HttpErrorHandler.html" class="extype" name="play.api.http.HttpErrorHandler">HttpErrorHandler</a>s based on media type preferences.</p><p>For example, to create an error handler that handles JSON and HTML, with JSON preferred by the app as default:</p><pre><span class="kw">override</span> <span class="kw">lazy</span> <span class="kw">val</span> httpErrorHandler = PreferredMediaTypeHttpErrorHandler(
+  <span class="lit">"application/json"</span> -&gt; <span class="kw">new</span> JsonHttpErrorHandler()
+  <span class="lit">"text/html"</span> -&gt; <span class="kw">new</span> HtmlHttpErrorHandler(),
+)</pre><p>If the client's preferred media range matches multiple media types in the list, then the first match is chosen.
+</p></div></div>
     </li><li name="play.api.http.SecretConfiguration" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="SecretConfigurationextendsProductwithSerializable"></a>
       <a id="SecretConfiguration:SecretConfiguration"></a>
@@ -848,17 +886,18 @@ the <a href="JsonHttpErrorHandler.html#formatDevServerErrorException(exception:T
       </a>
     </span>
       <p class="shortcomment cmt">The application secret.</p><div class="fullcomment"><div class="comment cmt"><p>The application secret. Must be set. A value of &quot;changeme&quot; will cause the application to fail to start in
-production.</p><p>With the Play secret we want to:</p><p>1) Encourage the practice of *not* using the same secret in dev and prod.
-2) Make it obvious that the secret should be changed.
-3) Ensure that in dev mode, the secret stays stable across restarts.
-4) Ensure that in dev mode, sessions do not interfere with other applications that may be or have been running
+production.</p><p>With the Play secret we want to:</p><p>1. Encourage the practice of *not* using the same secret in dev and prod.
+2. Make it obvious that the secret should be changed.
+3. Ensure that in dev mode, the secret stays stable across restarts.
+4. Ensure that in dev mode, sessions do not interfere with other applications that may be or have been running
   on localhost.  Eg, if I start Play app 1, and it stores a PLAY_SESSION cookie for localhost:9000, then I stop
   it, and start Play app 2, when it reads the PLAY_SESSION cookie for localhost:9000, it should not see the
   session set by Play app 1.  This can be achieved by using different secrets for the two, since if they are
   different, they will simply ignore the session cookie set by the other.</p><p>To achieve 1 and 2, we will, in Activator templates, set the default secret to be &quot;changeme&quot;.  This should make
 it obvious that the secret needs to be changed and discourage using the same secret in dev and prod.</p><p>For safety, if the secret is not set, or if it's changeme, and we are in prod mode, then we will fail fatally.
 This will further enforce both 1 and 2.</p><p>To achieve 3, if in dev or test mode, if the secret is either changeme or not set, we will generate a secret
-based on the location of application.conf.  This should be stable across restarts for a given application.</p><p>To achieve 4, using the location of application.conf to generate the secret should ensure this.
+based on the location of application.conf.  This should be stable across restarts for a given application.</p><p>To achieve 4, using the location of application.conf to generate the secret should ensure this.</p><p>Play secret is checked for a minimum length in production:</p><p>1. If the key is fifteen characters or fewer, a warning will be logged.
+2. If the key is eight characters or fewer, then an error is thrown and the configuration is invalid.
 </p></div><dl class="paramcmts block"><dt class="param">secret</dt><dd class="cmt"><p>the application secret</p></dd><dt class="param">provider</dt><dd class="cmt"><p>the JCE provider to use. If null, uses the platform default</p></dd></dl></div>
     </li><li name="play.api.http.SessionConfiguration" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="SessionConfigurationextendsProductwithSerializable"></a>
@@ -1324,6 +1363,40 @@ generally not suitable for a production environment.
     </span>
       <p class="shortcomment cmt">Implementation of a [HttpRequestHandler] that always returns NotImplemented results
 </p>
+    </li><li name="play.api.http.PreferredMediaTypeHttpErrorHandler" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="PreferredMediaTypeHttpErrorHandler"></a>
+      <a id="PreferredMediaTypeHttpErrorHandler:PreferredMediaTypeHttpErrorHandler"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="PreferredMediaTypeHttpErrorHandler$.html"><span class="name">PreferredMediaTypeHttpErrorHandler</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.http.package@PreferredMediaTypeHttpErrorHandler" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.api.http.SecretConfiguration" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="SecretConfiguration"></a>
+      <a id="SecretConfiguration:SecretConfiguration"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="SecretConfiguration$.html"><span class="name">SecretConfiguration</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.http.package@SecretConfiguration" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="play.api.http.Status" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Status"></a>
       <a id="Status:Status"></a>
