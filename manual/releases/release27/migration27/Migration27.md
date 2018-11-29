@@ -87,17 +87,62 @@ Guice was upgraded to version [4.2.2](https://github.com/google/guice/wiki/Guice
  - `play.test.TestBrowser.waitUntil` expects a `java.util.function.Function` instead of a `com.google.common.base.Function` now.
  - In Scala, when overriding the `configure()` method of `AbstractModule`, you need to prefix that method with the `override` identifier now (because it's non-abstract now).
 
-## `play.Logger` deprecated
+## Static `Logger` singletons deprecated
 
-`play.Logger` has been deprecated in favor of using SLF4J directly. You can create an SLF4J logger with `private static final Logger logger = LoggerFactory.getLogger(YourClass.class);`. If you'd like a more concise solution, you may also consider [Project Lombok's `@Slf4j` annotation](https://projectlombok.org/features/log).
-
-If you have a `logger` entry in your logback.xml referencing the `application` logger, you may remove it.
+Most `static` methods of the Java `play.Logger` and almost all methods of the Scala `play.api.Logger` singleton object have been deprecated. These singletons wrote to the `application` logger, which is referenced in `logback.xml` as:
 
     <logger name="application" level="DEBUG" />
 
-Each logger should have a unique name matching the name of the class where it is used. In this way, you can configure a different log level for each class. You can also set the log level for a given package. For example, to set the log level for all of the Play's internal classes to the info level, you can set:
+If you are concerned about changing your logging configuration, the simplest migration here is to define your own singleton "application" logger using `Logger("application")` (Scala) or `Logger.of("application")` (Java). All logs sent to this logger will work exactly like the Play singleton logger. While we don't recommend this approach in general, it's ultimately up to you. Play and Logback do not force you to use any specific naming scheme for your loggers.
 
-    <logger name="play" level="INFO" />
+If you are comfortable making some straightforward code changes and changing your logging configuration, we instead recommend you create a new logger for each class, with a name matching the class name. This allows you to configure different log levels for each class or package. For example, to set the log level for all `com.example.models` to the info level, you can set in `logback.xml`:
+
+    <logger name="com.example.models" level="INFO" />
+
+To define the logger in each class, you can define:
+
+Java
+: ```java
+import play.Logger;
+private static final Logger.ALogger logger = Logger.of(YourClass.class);
+```
+
+Scala
+: ```scala
+import play.api.Logger
+private val logger = Logger(YourClass.class)
+```
+
+For Scala, Play also provides a `play.api.Logging` trait that can be mixed into a class or trait to add the `val logger: Logger` automatically:
+
+```scala
+import play.api.Logging
+
+class MyClass extends Logging {
+  // `logger` is automaticaly defined by the `Logging` trait:
+  logger.info("hello!")
+}
+```
+
+Of course you can also just use [SLF4J](https://www.slf4j.org/) directly:
+
+Java
+: ```java
+private static final Logger logger = LoggerFactory.getLogger(YourClass.class);
+```
+
+Scala
+: ```scala
+private val logger = LoggerFactory.getLogger(YourClass.class);
+```
+
+If you'd like a more concise solution when using SLF4J directly for Java, you may also consider [Project Lombok's `@Slf4j` annotation](https://projectlombok.org/features/log).
+
+> **NOTE**: `org.slf4j.Logger`, the logging interface of SLF4J, does [not yet](https://jira.qos.ch/browse/SLF4J-371) provide logging methods which accept lambda expression as parameters for lazy evaluation. `play.Logger` and `play.api.Logger`, which are mostly simple wrappers for `org.slf4j.Logger`, provide such methods however.
+
+Once you have migrated away from using the `application` logger, you can remove the `logger` entry in your `logback.xml` referencing it:
+
+    <logger name="application" level="DEBUG" />
 
 ## Evolutions comment syntax changes
 
@@ -279,7 +324,7 @@ Changes in `play.cache.AsyncCacheApi`:
 
 ## SecurityHeadersFilter's contentSecurityPolicy deprecated for CSPFilter
 
-The [[SecurityHeaders filter|SecurityHeaders]] has a `contentSecurityPolicy` property: this is deprecated in 2.7.0.  `contentSecurityPolicy` has been changed from `default-src 'self'` to `null` -- the default setting of `null` means that a `Content-Security-Policy` header will not be added to HTTP responses from the SecurityHeaders filter.  Please use the new [[CSPFilter]] to enable CSP functionality.
+The [[SecurityHeaders filter|SecurityHeaders]] has a `contentSecurityPolicy` property: this is deprecated in 2.7.0.  `contentSecurityPolicy` has been changed from `default-src 'self'` to `null` -- the default setting of `null` means that a `Content-Security-Policy` header will not be added to HTTP responses from the SecurityHeaders filter.  Please use the new [[CSPFilter|CspFilter]] to enable CSP functionality.
 
 If `play.filters.headers.contentSecurityPolicy` is not `null`, you will receive a warning.  It is technically possible to have `contentSecurityPolicy` and the new `CSPFilter` active at the same time, but this is not recommended.
 
@@ -289,13 +334,24 @@ You can enable the new `CSPFilter` by adding it to the `play.filters.enabled` pr
 play.filters.enabled += play.filters.csp.CSPFilter
 ```
 
-> **NOTE**: You will want to review the Content Security Policy closely to ensure it meets your needs.  The new `CSPFilter` is notably more permissive than `default-src ‘self’`, and is based off the Google Strict CSP configuration.  You can use the `report-only` functionality with a [[CSP report controller|CSPFilter#Configuring-CSP-Report-Only]] to review policy violations.
+> **NOTE**: You will want to review the Content Security Policy closely to ensure it meets your needs.  The new `CSPFilter` is notably more permissive than `default-src ‘self’`, and is based off the Google Strict CSP configuration.  You can use the `report-only` functionality with a [[CSP report controller|CspFilter#Configuring-CSP-Report-Only]] to review policy violations.
 
-Please see the documentation in [[CSPFilter]] for more information.
+Please see the documentation in [[CSPFilter|CspFilter]] for more information.
+
+## SameSite attribute for CSRF and language cookie
+
+With Play 2.6 the `SameSite` cookie attribute [[was enabled|Migration26#SameSite-attribute,-enabled-for-session-and-flash]] for session and flash by default.
+The same is true for the CSRF and the language cookie starting with Play 2.7. By default, the `SameSite` attribute of the CSRF cookie will have the same value like the session cookie has and the language cookie will use `SameSite=Lax` by default.
+You can tweak this using configuration. For example:
+
+```
+play.filters.csrf.cookie.sameSite = null // no same-site for csrf cookie
+play.i18n.langCookieSameSite = "strict" // strict same-site for language cookie
+```
 
 ## play.mvc.Results.TODO moved to play.mvc.Controller.TODO
 
-All Play's error pages have been updated to render a CSP nonce if the [[CSP filter|CSPFilter]] is present.  This means that the error page templates must take a request as a parameter.  In 2.6.x, the `TODO` field was previously rendered as a static result instead of an action with an HTTP context, and so may have been called outside the controller.  In 2.7.0, the `TODO` field has been removed, and there is now a `TODO(Http.Request request)` method in `play.mvc.Controller` instead:
+All Play's error pages have been updated to render a CSP nonce if the [[CSPFilter|CspFilter]] is present.  This means that the error page templates must take a request as a parameter.  In 2.6.x, the `TODO` field was previously rendered as a static result instead of an action with an HTTP context, and so may have been called outside the controller.  In 2.7.0, the `TODO` field has been removed, and there is now a `TODO(Http.Request request)` method in `play.mvc.Controller` instead:
 
 ```java
 public abstract class Controller extends Results implements Status, HeaderNames {
@@ -376,6 +432,8 @@ Many changes have been made to Play's internal APIs. These APIs are used interna
 The `getHandlerFor` method on the `Server` trait was used internally by the Play server code when routing requests. It has been removed and replaced with a method of the same name on the `Server` object.
 
 ## CoordinatedShutdown `play.akka.run-cs-from-phase` configuration
+
+The configuration `akka.coordinated-shutdown.exit-jvm` is not supported anymore. When that setting is enabled Play will not start, and an error will be logged. Play ships with default values for `akka.coordinated-shutdown.*` which should be suitable for most scenarios so it's unlikely you'll need to override them. 
 
 The configuration `play.akka.run-cs-from-phase` is not supported anymore and adding it does not affect the application shutdown. A warning is logged if it is present. Play now runs all the phases to ensure that all hooks registered in `ApplicationLifecycle` and all the tasks added to coordinated shutdown are executed. If you need to run `CoordinatedShutdown` from a specific phase, you can always do it manually:
 

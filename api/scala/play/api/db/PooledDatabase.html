@@ -50,7 +50,7 @@
       </h4>
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Default implementation of the database API using a connection pool.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.7.0-RC3/framework/src/play-jdbc/src/main/scala/play/api/db/Databases.scala" target="_blank">Databases.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.7.0-RC8/framework/src/play-jdbc/src/main/scala/play/api/db/Databases.scala" target="_blank">Databases.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><a href="DefaultDatabase.html" class="extype" name="play.api.db.DefaultDatabase">DefaultDatabase</a>, <a href="Database.html" class="extype" name="play.api.db.Database">Database</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -718,6 +718,26 @@ The connection and all created statements are automatically released.
       <p class="shortcomment cmt">Execute a block of code, providing a JDBC connection.</p><div class="fullcomment"><div class="comment cmt"><p>Execute a block of code, providing a JDBC connection.
 The connection and all created statements are automatically released.
 </p></div><dl class="paramcmts block"><dt class="param">block</dt><dd class="cmt"><p>code to execute</p></dd><dt>returns</dt><dd class="cmt"><p>the result of the code block</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DefaultDatabase.html" class="extype" name="play.api.db.DefaultDatabase">DefaultDatabase</a> → <a href="Database.html" class="extype" name="play.api.db.Database">Database</a></dd></dl></div>
+    </li><li name="play.api.db.DefaultDatabase#withTransaction" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="withTransaction[A](isolationLevel:play.api.db.TransactionIsolationLevel)(block:java.sql.Connection=&gt;A):A"></a>
+      <a id="withTransaction[A](TransactionIsolationLevel)((Connection)⇒A):A"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">withTransaction</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="isolationLevel">isolationLevel: <a href="TransactionIsolationLevel.html" class="extype" name="play.api.db.TransactionIsolationLevel">TransactionIsolationLevel</a></span>)</span><span class="params">(<span name="block">block: (<span class="extype" name="java.sql.Connection">Connection</span>) ⇒ <span class="extype" name="play.api.db.DefaultDatabase.withTransaction.A">A</span></span>)</span><span class="result">: <span class="extype" name="play.api.db.DefaultDatabase.withTransaction.A">A</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.api.db.PooledDatabase@withTransaction[A](isolationLevel:play.api.db.TransactionIsolationLevel)(block:java.sql.Connection=&gt;A):A" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Execute a block of code in the scope of a JDBC transaction.</p><div class="fullcomment"><div class="comment cmt"><p>Execute a block of code in the scope of a JDBC transaction.
+The connection and all created statements are automatically released.
+The transaction is automatically committed, unless an exception occurs.
+</p></div><dl class="paramcmts block"><dt class="param">isolationLevel</dt><dd class="cmt"><p>determines transaction isolation level</p></dd><dt class="param">block</dt><dd class="cmt"><p>code to execute</p></dd><dt>returns</dt><dd class="cmt"><p>the result of the code block</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DefaultDatabase.html" class="extype" name="play.api.db.DefaultDatabase">DefaultDatabase</a> → <a href="Database.html" class="extype" name="play.api.db.Database">Database</a></dd></dl></div>
     </li><li name="play.api.db.DefaultDatabase#withTransaction" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="withTransaction[A](block:java.sql.Connection=&gt;A):A"></a>
       <a id="withTransaction[A]((Connection)⇒A):A"></a>

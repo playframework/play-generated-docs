@@ -74,7 +74,7 @@ For example:</p><pre><span class="kw">import</span> play.api.libs.json._
      myDataStore.save(user)
      Ok
    }
-}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/play-json/tree/2.7.0-RC1/play-json/jvm/src/main/scala/play/api/libs/json/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
+}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/play-json/tree/2.7.0-RC2/play-json/jvm/src/main/scala/play/api/libs/json/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
@@ -115,7 +115,43 @@ For example:</p><pre><span class="kw">import</span> play.api.libs.json._
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="play.api.libs.json.ConstraintFormat" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+              <ol><li name="play.api.libs.json.BigDecimalParseSettings" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="BigDecimalParseSettingsextendsProductwithSerializable"></a>
+      <a id="BigDecimalParseSettings:BigDecimalParseSettings"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="BigDecimalParseSettings.html"><span class="name">BigDecimalParseSettings</span></a><span class="params">(<span name="mathContext">mathContext: <span class="extype" name="java.math.MathContext">MathContext</span> = <span class="symbol">MathContext.DECIMAL128</span></span>, <span name="scaleLimit">scaleLimit: <span class="extype" name="scala.Int">Int</span></span>, <span name="digitsLimit">digitsLimit: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.json.package@BigDecimalParseSettingsextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Parse settings for BigDecimals.</p><div class="fullcomment"><div class="comment cmt"><p>Parse settings for BigDecimals. Defines limits that will be used when parsing the BigDecimals, like how many digits
+are accepted.
+</p></div><dl class="paramcmts block"><dt class="param">mathContext</dt><dd class="cmt"><p>the <span class="extype" name="MathContext">MathContext</span> used when parsing.</p></dd><dt class="param">scaleLimit</dt><dd class="cmt"><p>limit the scale, and it is related to the math context used.</p></dd><dt class="param">digitsLimit</dt><dd class="cmt"><p>how many digits are accepted, also related to the math context used.</p></dd></dl></div>
+    </li><li name="play.api.libs.json.BigDecimalSerializerSettings" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="BigDecimalSerializerSettingsextendsProductwithSerializable"></a>
+      <a id="BigDecimalSerializerSettings:BigDecimalSerializerSettings"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="BigDecimalSerializerSettings.html"><span class="name">BigDecimalSerializerSettings</span></a><span class="params">(<span name="minPlain">minPlain: <span class="extype" name="scala.BigDecimal">BigDecimal</span></span>, <span name="maxPlain">maxPlain: <span class="extype" name="scala.BigDecimal">BigDecimal</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.json.package@BigDecimalSerializerSettingsextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.api.libs.json.ConstraintFormat" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="ConstraintFormatextendsAnyRef"></a>
       <a id="ConstraintFormat:ConstraintFormat"></a>
       <h4 class="signature">
@@ -619,6 +655,23 @@ in the parsed JSON.</p>
       </a>
     </span>
       <p class="shortcomment cmt">Naming strategy, to map each class property to the corresponding column.</p>
+    </li><li name="play.api.libs.json.JsonParserSettings" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="JsonParserSettingsextendsProductwithSerializable"></a>
+      <a id="JsonParserSettings:JsonParserSettings"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="JsonParserSettings.html"><span class="name">JsonParserSettings</span></a><span class="params">(<span name="bigDecimalParseSettings">bigDecimalParseSettings: <a href="BigDecimalParseSettings.html" class="extype" name="play.api.libs.json.BigDecimalParseSettings">BigDecimalParseSettings</a></span>, <span name="bigDecimalSerializerSettings">bigDecimalSerializerSettings: <a href="BigDecimalSerializerSettings.html" class="extype" name="play.api.libs.json.BigDecimalSerializerSettings">BigDecimalSerializerSettings</a></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.json.package@JsonParserSettingsextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="play.api.libs.json.JsonValidationError" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="JsonValidationErrorextendsProductwithSerializable"></a>
       <a id="JsonValidationError:JsonValidationError"></a>
@@ -1165,6 +1218,23 @@ the path to the nested <code>score</code> is:</p><pre>JsPath \ <span class="lit"
       </a>
     </span>
       <p class="shortcomment cmt">Naming companion</p>
+    </li><li name="play.api.libs.json.JsonParserSettings" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="JsonParserSettings"></a>
+      <a id="JsonParserSettings:JsonParserSettings"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="JsonParserSettings$.html"><span class="name">JsonParserSettings</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../../index.html#play.api.libs.json.package@JsonParserSettings" title="Permalink" target="_top">
+        <img src="../../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
     </li><li name="play.api.libs.json.JsonValidationError" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="JsonValidationError"></a>
       <a id="JsonValidationError:JsonValidationError"></a>
