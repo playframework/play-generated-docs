@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009-2018 Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) 2009-2019 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package scalaguide.tests.specs2
@@ -69,7 +69,7 @@ class ExampleFormSpec extends PlaySpecification with Results {
       }
 
       def successFunc(userData: UserData) = {
-        Redirect("/").flash("success" -> "success form!")
+        Redirect("/").flashing("success" -> "success form!")
       }
 
       val result = Future.successful(form.bindFromRequest().fold(errorFunc, successFunc))

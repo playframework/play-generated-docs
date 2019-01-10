@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009-2018 Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) 2009-2019 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package javaguide.http;
@@ -133,7 +133,7 @@ public class JavaResponse extends WithApplication {
             //#discard-cookie
             public Result index() {
                 return ok("<h1>Hello World!</h1>").as("text/html")
-                        .discardCookie("theme");
+                        .discardingCookie("theme");
             }
             //#discard-cookie
         }, fakeRequest(), mat).cookies();

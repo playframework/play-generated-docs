@@ -1,4 +1,4 @@
-<!--- Copyright (C) 2009-2018 Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) 2009-2019 Lightbend Inc. <https://www.lightbend.com> -->
 # What's new in Play 2.6
 
 This page highlights the new features of Play 2.6. If you want to learn about the changes you need to make when you migrate to Play 2.6, check out the [[Play 2.6 Migration Guide|Migration26]].
@@ -12,7 +12,7 @@ You can select which version of Scala you would like to use by setting the `scal
 For Scala 2.12:
 
 ```scala
-scalaVersion := "2.12.6"
+scalaVersion := "2.12.8"
 ```
 
 For Scala 2.11:
@@ -30,7 +30,7 @@ lazy val root = (project in file("."))
   .enablePlugins(PlayService)
   .enablePlugins(RoutesCompiler) // place routes in src/main/resources, or remove if using SIRD/RoutingDsl
   .settings(
-    scalaVersion := "2.12.6",
+    scalaVersion := "2.12.8",
     libraryDependencies ++= Seq(
       guice, // remove if not using Play's Guice loader
       akkaHttpServer, // or use nettyServer for Netty

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009-2018 Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) 2009-2019 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package javaguide.http;
@@ -89,7 +89,7 @@ public class JavaSessionFlash extends WithApplication {
         Flash flash = call(new MockJavaAction(instanceOf(JavaHandlerComponents.class)) {
             //#store-flash
             public Result save() {
-                return redirect("/home").flash("success", "The item has been created");
+                return redirect("/home").flashing("success", "The item has been created");
             }
             //#store-flash
         }, fakeRequest(), mat).flash();

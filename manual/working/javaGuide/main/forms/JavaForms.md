@@ -1,4 +1,4 @@
-<!--- Copyright (C) 2009-2018 Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) 2009-2019 Lightbend Inc. <https://www.lightbend.com> -->
 # Handling form submission
 
 Before you start with Play forms, read the documentation on the [[Play enhancer|PlayEnhancer]]. The Play enhancer generates accessors for fields in Java classes for you, so that you don't have to generate them yourself. You may decide to use this as a convenience. All the examples below show manually writing accessors for your classes.
@@ -17,6 +17,7 @@ The `play.data` package contains several helpers to handle HTTP form data submis
 
 @[user](code/javaguide/forms/u1/User.java)
 
+The above form defines an `email` and a `password` text field and a `profilePicture` file input field, meaning the corresponding HTML form has to be defined with the `multipart/form-data` encoding to be able to upload the file.
 As you can see, by default, you have to define getter and setter methods so Play is able to access the Form fields. You can however also enable "direct field access" (for all forms) by setting `play.forms.binding.directFieldAccess = true` in `conf/application.conf`. In this mode Play will ignore the getter and setter methods and will try to directly access the fields:
 
 @[user](code/javaguide/forms/u4/User.java)
@@ -33,7 +34,7 @@ Instead of enabling "direct field access" for all forms, you can enable it only 
 
 > **Note:** The underlying binding is done using [Spring data binder](https://docs.spring.io/spring/docs/4.2.4.RELEASE/spring-framework-reference/html/validation.html).
 
-This form can generate a `User` result value from `HashMap<String,String>` data:
+This form can generate a `User` result value from a `HashMap<String,String>` for the text data and from a `Map<String, FilePart<?>>` for the file data:
 
 @[bind](code/javaguide/forms/JavaForms.java)
 
@@ -258,4 +259,4 @@ Without Payload
 With Payload
 : @[user](code/javaguide/forms/customconstraint/payload/DBAccessForm.java)
 
-> **Tip:** You might have recognised that you could even implement multiple interfaces and therefore add multiple class-level constraint annotations on your form class. Via validation groups you could then just call the desired validate method(s) (or even multiple at once during one validation process).
+> **Tip:** You might have recognized that you could even implement multiple interfaces and therefore add multiple class-level constraint annotations on your form class. Via validation groups you could then just call the desired validate method(s) (or even multiple at once during one validation process).

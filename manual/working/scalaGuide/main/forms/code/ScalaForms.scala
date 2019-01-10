@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009-2018 Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) 2009-2019 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package scalaguide.forms.scalaforms {
@@ -534,7 +534,7 @@ class Application @Inject()(components: ControllerComponents) extends AbstractCo
       },
       contact => {
         val contactId = Contact.save(contact)
-        Redirect(routes.Application.showContact(contactId)).flash("success" -> "Contact saved!")
+        Redirect(routes.Application.showContact(contactId)).flashing("success" -> "Contact saved!")
       }
     )
   }
