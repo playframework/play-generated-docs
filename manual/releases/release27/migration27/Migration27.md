@@ -89,6 +89,39 @@ Other methods that were added to improve Java API:
 
 The API for body parser was mixing `Integer` and `Long` to define buffer lengths which could lead to overflow of values. The configuration is now uniformed to use `Long`. It means that if you are depending on `play.api.mvc.PlayBodyParsers.DefaultMaxTextLength` for example, you then need to use a `Long`. As such, `play.api.http.ParserConfiguration.maxMemoryBuffer` is now a `Long` too.
 
+### New fields and methods added to `FilePart` and `FileInfo`
+
+[`Scala's`](api/scala/play/api/mvc/MultipartFormData$$FilePart.html) and [`Java's`](api/java/play/mvc/Http.MultipartFormData.FilePart.html) `FilePart` classes have two new fields/methods which provide you the file size and the disposition type of a file that was uploaded via the `multipart/form-data` encoding:
+
+* [`fileSize`](api/scala/play/api/mvc/MultipartFormData$$FilePart.html#fileSize:Long) in the Scala API and [`getFileSize()`](api/java/play/mvc/Http.MultipartFormData.FilePart.html#getFileSize--) in the Java API
+* [`dispositionType`](api/scala/play/api/mvc/MultipartFormData$$FilePart.html#dispositionType:String) in the Scala API and [`getDispositionType()`](api/java/play/mvc/Http.MultipartFormData.FilePart.html#getDispositionType--) in the Java API
+
+Scala's [`FileInfo`](api/scala/play/core/parsers/Multipart$.html#FileInfoextendsProductwithSerializable) class does have the `dispositionType` field now as well.
+
+If you have Scala `case` statements containing `FilePart` or `FileInfo` you need to update those statements to also include these new fields, otherwise you get compiler errors:
+
+FilePart
+: ```scala
+case FilePart(key, filename, contentType, file, fileSize, dispositionType) => ...
+// Or if you don't use these new fields:
+case FilePart(key, filename, contentType, file, _, _) => ...
+```
+
+FileInfo
+: ```scala
+case FileInfo(partName, filename, contentType, dispositionType) => ...
+// Or if you don't use these new fields:
+case FileInfo(partName, filename, contentType, _) => ...
+```
+
+### Pass size of uploaded file to `FilePart` when using a custom body parser
+
+When uploading a file via the `multipart/form-data` encoding in [[Play Scala|ScalaFileUpload#Uploading-files-in-a-form-using-multipart/form-data]] or [[Play Java|JavaFileUpload#Uploading-files-in-a-form-using-multipart/form-data]] the `FilePart` now exposes the size of the uploaded file via [`fileSize`](api/scala/play/api/mvc/MultipartFormData$$FilePart.html#fileSize:Long) in the Scala API and [`getFileSize()`](api/java/play/mvc/Http.MultipartFormData.FilePart.html#getFileSize--) in the Java API.
+If you use a custom body parser for a file upload you need to pass the file size to the generated `FilePart` instance yourself. Otherwise the file size will not be set and default to `-1`. Have a look at the updated examples for a custom multipart file part body parser - in these example the `count` of the processed bytes (of the uploaded file) is passed to the created `FilePart` now:
+
+* [[Scala API example|ScalaFileUpload#Writing-your-own-body-parser]]
+* [[Java API example|JavaFileUpload#Writing-a-custom-multipart-file-part-body-parser]]
+
 ### Java's `FilePart` exposes the `TemporaryFile` for uploaded files
 
 By default, [[uploading files|JavaFileUpload]] via the `multipart/form-data` encoding uses a [`TemporaryFile`](api/java/play/libs/Files.TemporaryFile.html) API which relies on storing files in a temporary filesystem.
@@ -114,69 +147,20 @@ if (picture != null) {
 }
 ```
 
-### Differentiate `moveTo` and `copyTo` in `TemporaryFile`
+### Added `copyTo` and renamed the move methods in `TemporaryFile`
 
-Until Play 2.5, `moveTo` method was actually making a copy of the file to the destination and deleting the source. There was a subtle change in Play 2.6 where the file was instead being moved atomically depending on certain conditions. For such cases, both the source and destination end up using the same [`inode`](https://en.wikipedia.org/wiki/Inode) and then deleting the source implies that the destination will be deleted too.
+Until Play 2.5, the `moveTo` method was actually making a copy of the file to the destination and deleting the source. There was a subtle change in Play 2.6 where the file was instead being moved atomically depending on certain conditions. For such cases, both the source and destination end up using the same [`inode`](https://en.wikipedia.org/wiki/Inode).
+To make the API more clear around this, there is now a `copyTo` method which always creates a copy that does not share the `inode` of the source file.
 
-To make the API more clear around this, there are now `moveTo` and `copyTo` methods where `copyTo` always create a copy that does not share the same `inode`. So, if the application is configured to clean up temporary files (see documentation for [[Scala|ScalaFileUpload#Cleaning-up-temporary-files]] or [[Java|JavaFileUpload#Cleaning-up-temporary-files]]) and you want to retain the destination, then use `copyTo` instead of `moveTo`. For example:
+Another change in Play 2.7 is, that methods in `TemporaryFile`, which move a file, have been renamed:
 
-Java
-: ```java
-package controllers;
+| **deprecated method**          | **new method**
+|--------------------------------|-----------------------------------
+| `moveTo(...)`                  | `moveFileTo(...)`
+| `atomicMoveWithFallback(...)`  | `atomicMoveFileWithFallback(...)`
 
-import play.libs.Files;
-import play.mvc.*;
-
-import java.nio.file.Paths;
-
-public class UploadController extends Controller {
-
-    public Result upload(Http.Request request) {
-        Http.MultipartFormData<Files.TemporaryFile> body = request.body().asMultipartFormData();
-        Http.MultipartFormData.FilePart<Files.TemporaryFile> picture = body.getFile("picture");
-        if (picture != null) {
-            String fileName = picture.getFilename();
-            String contentType = picture.getContentType();
-            Files.TemporaryFile file = picture.getRef();
-
-            // Use copyTo if you want to retain the file for sure when using the temporary file
-            // reaper. Use moveTo if you are not using the reaper or don't care about keeping the files.
-            file.copyTo(Paths.get("/tmp/picture/destination.jpg"), true);
-            return ok("File uploaded");
-        } else {
-            return badRequest().flashing("error", "Missing file");
-        }
-    }
-
-}
-```
-
-Scala
-: ```scala
-package controllers
-
-import java.nio.file.Paths
-
-import javax.inject.Inject
-import play.api.mvc._
-
-class UploadController @Inject()(val controllerComponents: ControllerComponents) extends BaseController {
-
-  def upload = Action(parse.multipartFormData) { request =>
-    request.body.file("picture").map { picture =>
-
-      val filename = Paths.get(picture.filename).getFileName
-
-      // Use copyTo if you want to retain the file for sure when using the temporary file
-      // reaper. Use moveTo if you are not using the reaper or don't care about keeping the files.
-      picture.ref.copyTo(Paths.get(s"/tmp/picture/$filename"), replace = true)
-      Ok("File uploaded")
-    }.getOrElse {
-      Redirect(routes.HomeController.index).flashing("error" -> "Missing file")
-    }
-  }
-}
-```
+These new methods return a `Path` instead of a `TemporaryFile` now. Returning a `TemporaryFile` from these methods was a mistake from the beginning, because someone could get the wrong impression that such returned files are actual temporary files, which automatically will be removed by Play's temporary file cleaning facilities eventually at some point - which however isn't true.
+Because these methods are intended to be used when moving files out of Play's internal temp folder (where uploaded files get stored initially), it makes sense that eventually it's a developer's responsibility what to do with a moved destination file (and if, how and when to delete it). Changing the return type now clarifies that.
 
 ### Guice compatibility changes
 
@@ -620,6 +604,13 @@ libraryDependencies += "org.apache.commons" % "commons-lang3" % "3.8.1"
 ```
 
 ## Other important changes
+
+### Application starts when evolutions scripts need to be applied in `DEV` mode
+
+Up until Play 2.6, when a database needed evolutions scripts to be executed in `DEV` mode, an application would abort on startup. Therefore modules which depended on [`ApplicationEvolutions`](api/scala/play/api/db/evolutions/ApplicationEvolutions.html) were not even initialized. This meant you could be sure that if you depend on `ApplicationEvolutions` in a module, all evolution scripts were executed successfully at the time the module got initialized and you could e.g. insert data in the database from within such a module, relying on the fact that the evolutions scripts created tables or other database objects needed for your queries.
+
+Starting with Play 2.7 however, in `DEV` mode the application (and therefore all modules) will now *always* start, no matter if evolutions scripts need to be applied or not. This means you can *not* rely on the fact that evolution scripts were executed successfully and that a certain database structure is availabe at the time a module gets initialized.
+That's why we added [`ApplicationEvolutions.upToDate`](api/scala/play/api/db/evolutions/ApplicationEvolutions.html#upToDate:Boolean) which indicates if the process of applying evolutions is finished or not. Only if that method returns `true` you can be sure that all evolutions scripts were executed successfully. `upToDate` will return `true` at some point eventually, because each time you apply or resolve evolutions scripts in `DEV` mode an application automatically restarts, re-initializing all it's modules.
 
 ### Evolutions comment syntax
 
