@@ -550,7 +550,7 @@ name:</p><pre>@Singleton
 <span class="kw">class</span> DatabaseExecutionContext @Inject()(system: ActorSystem)
    <span class="kw">extends</span> CustomExecutionContext(system, <span class="lit">"database-dispatcher"</span>)</pre><p>and then bind it in dependency injection:</p><pre>bind[DatabaseExecutionContext].to(classOf[DatabaseExecutionContext]).asEagerSingleton()</pre><p>Then have the execution context passed in as an implicit parameter:</p><pre><span class="kw">class</span> DatabaseService @Inject()(<span class="kw">implicit</span> executionContext: DatabaseExecutionContext) {
   ...
-}</pre></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="https://www.playframework.com/documentation/latest/ThreadPools">Thread Pools</a></p></span><span class="cmt"><p><a href="http://doc.akka.io/docs/akka/2.5/scala/dispatchers.html">Dispatchers</a></p></span></dd></dl></div>
+}</pre></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="http://doc.akka.io/docs/akka/2.5/scala/dispatchers.html">Dispatchers</a></p></span><span class="cmt"><p><a href="https://www.playframework.com/documentation/latest/ThreadPools">Thread Pools</a></p></span></dd></dl></div>
     </li><li name="play.api.libs.concurrent.DefaultFutures" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="DefaultFuturesextendsFutures"></a><a id="DefaultFutures:DefaultFutures"></a>
       <span class="permalink">
