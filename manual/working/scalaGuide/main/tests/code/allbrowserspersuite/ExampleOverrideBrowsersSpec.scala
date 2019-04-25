@@ -15,7 +15,8 @@ class ExampleOverrideBrowsersSpec extends PlaySpec with GuiceOneServerPerSuite w
   override lazy val browsers =
     Vector(
       FirefoxInfo(firefoxProfile),
-      ChromeInfo())
+      ChromeInfo()
+    )
 
   // Override app if you need an Application with other than
   // default parameters.
@@ -36,7 +37,8 @@ class ExampleOverrideBrowsersSpec extends PlaySpec with GuiceOneServerPerSuite w
               |   </body>
               | </head>
               |</html>
-            """.stripMargin).as(HTML)
+            """.stripMargin
+          ).as(HTML)
         }
       }).build()
   }

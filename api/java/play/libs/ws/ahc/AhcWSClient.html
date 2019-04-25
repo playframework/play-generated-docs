@@ -115,8 +115,8 @@ var activeTableTab = "activeTableTab";
 extends java.lang.Object
 implements <a href="../../../../play/libs/ws/WSClient.html" title="interface in play.libs.ws">WSClient</a></pre>
 <div class="block">A WS client backed by AsyncHttpClient implementation.
-
- <p>See https://www.playframework.com/documentation/latest/JavaWS for documentation.</div>
+ <p>
+ See https://www.playframework.com/documentation/latest/JavaWS for documentation.</div>
 </li>
 </ul>
 </div>
@@ -172,8 +172,8 @@ implements <a href="../../../../play/libs/ws/WSClient.html" title="interface in 
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../play/libs/ws/ahc/AhcWSClient.html#create-play.api.libs.ws.ahc.AhcWSClientConfig-play.api.libs.ws.ahc.cache.AhcHttpCache-akka.stream.Materializer-">create</a></span>(play.api.libs.ws.ahc.AhcWSClientConfig&nbsp;config,
       play.api.libs.ws.ahc.cache.AhcHttpCache&nbsp;cache,
       akka.stream.Materializer&nbsp;materializer)</code>
-<div class="block">Creates WS client manually from configuration, internally creating a new instance of
- AsyncHttpClient and managing its own thread pool.</div>
+<div class="block">Creates WS client manually from configuration, internally creating a new
+ instance of AsyncHttpClient and managing its own thread pool.</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
@@ -248,11 +248,11 @@ public&nbsp;AhcWSClient(play.libs.ws.ahc.StandaloneAhcWSClient&nbsp;client,
 <pre>public static&nbsp;<a href="../../../../play/libs/ws/ahc/AhcWSClient.html" title="class in play.libs.ws.ahc">AhcWSClient</a>&nbsp;create(play.api.libs.ws.ahc.AhcWSClientConfig&nbsp;config,
                                  play.api.libs.ws.ahc.cache.AhcHttpCache&nbsp;cache,
                                  akka.stream.Materializer&nbsp;materializer)</pre>
-<div class="block">Creates WS client manually from configuration, internally creating a new instance of
- AsyncHttpClient and managing its own thread pool.
-
- <p>This client is not managed as part of Play's lifecycle, and <b>must</b> be closed by calling
- ws.close(), otherwise you will run into memory leaks.</div>
+<div class="block">Creates WS client manually from configuration, internally creating a new
+ instance of AsyncHttpClient and managing its own thread pool.
+ <p>
+ This client is not managed as part of Play's lifecycle, and <b>must</b>
+ be closed by calling ws.close(), otherwise you will run into memory leaks.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>config</code> - a config object, usually from AhcWSClientConfigFactory</dd>
@@ -271,8 +271,7 @@ public&nbsp;AhcWSClient(play.libs.ws.ahc.StandaloneAhcWSClient&nbsp;client,
 <h4>getUnderlying</h4>
 <pre>public&nbsp;java.lang.Object&nbsp;getUnderlying()</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../play/libs/ws/WSClient.html#getUnderlying--">WSClient</a></code></span></div>
-<div class="block">The underlying implementation of the client, if any. You must cast the returned value to the
- type you want.</div>
+<div class="block">The underlying implementation of the client, if any.  You must cast the returned value to the type you want.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../play/libs/ws/WSClient.html#getUnderlying--">getUnderlying</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../play/libs/ws/WSClient.html" title="interface in play.libs.ws">WSClient</a></code></dd>
@@ -304,8 +303,9 @@ public&nbsp;AhcWSClient(play.libs.ws.ahc.StandaloneAhcWSClient&nbsp;client,
 <h4>url</h4>
 <pre>public&nbsp;<a href="../../../../play/libs/ws/WSRequest.html" title="interface in play.libs.ws">WSRequest</a>&nbsp;url(java.lang.String&nbsp;url)</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../play/libs/ws/WSClient.html#url-java.lang.String-">WSClient</a></code></span></div>
-<div class="block">Returns a WSRequest object representing the URL. You can append additional properties on the
- WSRequest by chaining calls, and execute the request to return an asynchronous <code>Promise&lt;WSResponse&gt;</code>.</div>
+<div class="block">Returns a WSRequest object representing the URL.  You can append additional
+ properties on the WSRequest by chaining calls, and execute the request to
+ return an asynchronous <code>Promise&lt;WSResponse&gt;</code>.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../play/libs/ws/WSClient.html#url-java.lang.String-">url</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../play/libs/ws/WSClient.html" title="interface in play.libs.ws">WSClient</a></code></dd>
@@ -326,8 +326,8 @@ public&nbsp;AhcWSClient(play.libs.ws.ahc.StandaloneAhcWSClient&nbsp;client,
            throws java.io.IOException</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../play/libs/ws/WSClient.html#close--">WSClient</a></code></span></div>
 <div class="block">Closes this client, and releases underlying resources.
-
- <p>Use this for manually instantiated clients.</div>
+ <p>
+ Use this for manually instantiated clients.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code>close</code>&nbsp;in interface&nbsp;<code>java.io.Closeable</code></dd>

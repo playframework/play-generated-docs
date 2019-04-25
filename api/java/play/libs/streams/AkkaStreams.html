@@ -208,11 +208,11 @@ extends java.lang.Object</pre>
 <pre>public static&nbsp;&lt;In,FlowIn,Out&gt;&nbsp;akka.stream.javadsl.Flow&lt;In,Out,?&gt;&nbsp;bypassWith(java.util.function.Function&lt;In,<a href="../../../play/libs/F.Either.html" title="class in play.libs">F.Either</a>&lt;FlowIn,Out&gt;&gt;&nbsp;splitter,
                                                                             akka.stream.javadsl.Flow&lt;FlowIn,Out,?&gt;&nbsp;flow)</pre>
 <div class="block">Bypass the given flow using the given splitter function.
-
- <p>If the splitter function returns Left, they will go through the flow. If it returns Right,
- they will bypass the flow.
-
- <p>Uses onlyFirstCanFinishMerge(2) by default.</div>
+ <p>
+ If the splitter function returns Left, they will go through the flow.  If it returns Right, they will bypass the
+ flow.
+ <p>
+ Uses onlyFirstCanFinishMerge(2) by default.</div>
 <dl>
 <dt><span class="paramLabel">Type Parameters:</span></dt>
 <dd><code>In</code> - the In type parameter for Flow</dd>
@@ -236,9 +236,9 @@ extends java.lang.Object</pre>
                                                                             akka.stream.Graph&lt;akka.stream.UniformFanInShape&lt;Out,Out&gt;,?&gt;&nbsp;mergeStrategy,
                                                                             akka.stream.javadsl.Flow&lt;FlowIn,Out,?&gt;&nbsp;flow)</pre>
 <div class="block">Using the given splitter flow, allow messages to bypass a flow.
-
- <p>If the splitter flow produces Left, they will be fed into the flow. If it produces Right,
- they will bypass the flow.</div>
+ <p>
+ If the splitter flow produces Left, they will be fed into the flow. If it produces Right, they will bypass the
+ flow.</div>
 <dl>
 <dt><span class="paramLabel">Type Parameters:</span></dt>
 <dd><code>In</code> - the In type parameter for Flow</dd>
@@ -247,8 +247,7 @@ extends java.lang.Object</pre>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>flow</code> - the original flow.</dd>
 <dd><code>splitter</code> - the splitter function.</dd>
-<dd><code>mergeStrategy</code> - the merge strategy (onlyFirstCanFinishMerge, ignoreAfterFinish,
-     ignoreAfterCancellation)</dd>
+<dd><code>mergeStrategy</code> - the merge strategy (onlyFirstCanFinishMerge, ignoreAfterFinish, ignoreAfterCancellation)</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the flow with a bypass.</dd>
 </dl>
