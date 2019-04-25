@@ -116,23 +116,20 @@ extends java.lang.Object
 implements scala.concurrent.ExecutionContextExecutor</pre>
 <div class="block">Provides a custom execution context from an Akka dispatcher.
 
- Subclass this to create your own custom execution context, using
- the full path to the Akka dispatcher.
+ <p>Subclass this to create your own custom execution context, using the full path to the Akka
+ dispatcher.
 
- <pre>
- <code>
+ <pre><code>
  class MyCustomExecutionContext extends CustomExecutionContext {
    // Dependency inject the actorsystem from elsewhere
    public MyCustomExecutionContext(ActorSystem actorSystem) {
      super(actorSystem, "full.path.to.my-custom-executor");
    }
  }
- </code>
- </pre>
+ </code></pre>
 
- Then use your custom execution context where you have blocking
- operations that require processing outside of Play's main rendering
- thread.</div>
+ Then use your custom execution context where you have blocking operations that require processing
+ outside of Play's main rendering thread.</div>
 <dl>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="http://doc.akka.io/docs/akka/2.5/java/dispatchers.html">Dispatchers</a>, 
