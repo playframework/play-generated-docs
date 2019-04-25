@@ -109,12 +109,12 @@ var activeTableTab = "activeTableTab";
 <br>
 <pre>public abstract class <span class="typeNameLabel">Comet</span>
 extends java.lang.Object</pre>
-<div class="block">Provides an easy way to use a Comet formatted output with <a
- href="http://doc.akka.io/docs/akka/2.5/java/stream/index.html">Akka Streams</a>.
+<div class="block">Provides an easy way to use a Comet formatted output with
+ <a href="http://doc.akka.io/docs/akka/2.5/java/stream/index.html">Akka Streams</a>.
 
- <p>There are two methods that can be used to convert strings and JSON, <code>Comet.string</code> and
- <code>Comet.json</code>. These methods build on top of the base method, <code>Comet.flow</code>, which
- takes a Flow of <code>akka.util.ByteString</code> and organizes it into Comet format.
+ There are two methods that can be used to convert strings and JSON, <code>Comet.string</code>
+ and <code>Comet.json</code>.  These methods build on top of the base method, <code>Comet.flow</code>,
+ which takes a Flow of <code>akka.util.ByteString</code> and organizes it into Comet format.
 
  <pre>
    public Result liveClock() {
@@ -225,8 +225,8 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>string</h4>
 <pre>public static&nbsp;akka.stream.javadsl.Flow&lt;java.lang.String,akka.util.ByteString,akka.NotUsed&gt;&nbsp;string(java.lang.String&nbsp;callbackName)</pre>
-<div class="block">Produces a Flow of escaped ByteString from a series of String elements. Calls out to Comet.flow
- internally.</div>
+<div class="block">Produces a Flow of escaped ByteString from a series of String elements.  Calls
+ out to Comet.flow internally.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>callbackName</code> - the javascript callback method.</dd>
@@ -242,8 +242,8 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>json</h4>
 <pre>public static&nbsp;akka.stream.javadsl.Flow&lt;com.fasterxml.jackson.databind.JsonNode,akka.util.ByteString,akka.NotUsed&gt;&nbsp;json(java.lang.String&nbsp;callbackName)</pre>
-<div class="block">Produces a flow of ByteString using `Json.stringify` from a Flow of JsonNode. Calls out to
- Comet.flow internally.</div>
+<div class="block">Produces a flow of ByteString using `Json.stringify` from a Flow of JsonNode.  Calls
+ out to Comet.flow internally.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>callbackName</code> - the javascript callback method.</dd>

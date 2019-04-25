@@ -114,8 +114,8 @@ var activeTableTab = "activeTableTab";
 <pre>public class <span class="typeNameLabel">DefaultFutures</span>
 extends java.lang.Object
 implements <a href="../../../play/libs/concurrent/Futures.html" title="interface in play.libs.concurrent">Futures</a></pre>
-<div class="block">The default implementation of the Futures trait. This provides an implementation that uses the
- scheduler of the application's ActorSystem.</div>
+<div class="block">The default implementation of the Futures trait.  This provides an
+ implementation that uses the scheduler of the application's ActorSystem.</div>
 </li>
 </ul>
 </div>
@@ -168,8 +168,8 @@ implements <a href="../../../play/libs/concurrent/Futures.html" title="interface
 <td class="colFirst"><code>&lt;A&gt;&nbsp;java.util.concurrent.CompletionStage&lt;A&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/concurrent/DefaultFutures.html#delayed-java.util.concurrent.Callable-java.time.Duration-">delayed</a></span>(java.util.concurrent.Callable&lt;java.util.concurrent.CompletionStage&lt;A&gt;&gt;&nbsp;callable,
        java.time.Duration&nbsp;duration)</code>
-<div class="block">Create a CompletionStage which, after a delay, will be redeemed with the result of a given
- supplier.</div>
+<div class="block">Create a CompletionStage which, after a delay, will be redeemed with the result of a
+ given supplier.</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
@@ -177,8 +177,8 @@ implements <a href="../../../play/libs/concurrent/Futures.html" title="interface
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/concurrent/DefaultFutures.html#delayed-java.util.concurrent.Callable-long-java.util.concurrent.TimeUnit-">delayed</a></span>(java.util.concurrent.Callable&lt;java.util.concurrent.CompletionStage&lt;A&gt;&gt;&nbsp;callable,
        long&nbsp;amount,
        java.util.concurrent.TimeUnit&nbsp;unit)</code>
-<div class="block">Create a CompletionStage which, after a delay, will be redeemed with the result of a given
- supplier.</div>
+<div class="block">Create a CompletionStage which, after a delay, will be redeemed with the result of a
+ given supplier.</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
@@ -254,8 +254,9 @@ public&nbsp;DefaultFutures(play.api.libs.concurrent.Futures&nbsp;delegate)</pre>
                                                            java.util.concurrent.TimeUnit&nbsp;unit)</pre>
 <div class="block">Creates a CompletionStage that returns either the input stage, or a futures.
 
- <p>Note that timeout is not the same as cancellation. Even in case of futures, the given
- completion stage will still complete, even though that completed value is not returned.</div>
+ Note that timeout is not the same as cancellation.  Even in case of futures,
+ the given completion stage will still complete, even though that completed value
+ is not returned.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../play/libs/concurrent/Futures.html#timeout-java.util.concurrent.CompletionStage-long-java.util.concurrent.TimeUnit-">timeout</a></code>&nbsp;in interface&nbsp;<code><a href="../../../play/libs/concurrent/Futures.html" title="interface in play.libs.concurrent">Futures</a></code></dd>
@@ -301,8 +302,8 @@ public&nbsp;DefaultFutures(play.api.libs.concurrent.Futures&nbsp;delegate)</pre>
 <pre>public&nbsp;&lt;A&gt;&nbsp;java.util.concurrent.CompletionStage&lt;A&gt;&nbsp;delayed(java.util.concurrent.Callable&lt;java.util.concurrent.CompletionStage&lt;A&gt;&gt;&nbsp;callable,
                                                            long&nbsp;amount,
                                                            java.util.concurrent.TimeUnit&nbsp;unit)</pre>
-<div class="block">Create a CompletionStage which, after a delay, will be redeemed with the result of a given
- supplier. The supplier will be called after the delay.</div>
+<div class="block">Create a CompletionStage which, after a delay, will be redeemed with the result of a
+ given supplier. The supplier will be called after the delay.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../play/libs/concurrent/Futures.html#delayed-java.util.concurrent.Callable-long-java.util.concurrent.TimeUnit-">delayed</a></code>&nbsp;in interface&nbsp;<code><a href="../../../play/libs/concurrent/Futures.html" title="interface in play.libs.concurrent">Futures</a></code></dd>
@@ -327,14 +328,16 @@ public&nbsp;DefaultFutures(play.api.libs.concurrent.Futures&nbsp;delegate)</pre>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../play/libs/concurrent/Futures.html#delay-java.time.Duration-">Futures</a></code></span></div>
 <div class="block">Creates a completion stage which is only completed after the delay.
 
- <pre><code>
+ <pre>
+ <code>
  Duration expected = Duration.ofSeconds(2);
  long start = System.currentTimeMillis();
  CompletionStage&lt;Long&gt; stage = futures.delay(expected).thenApply((v) -&gt; {
      long end = System.currentTimeMillis();
      return (end - start);
  });
- </code></pre></div>
+ </code>
+ </pre></div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../play/libs/concurrent/Futures.html#delay-java.time.Duration-">delay</a></code>&nbsp;in interface&nbsp;<code><a href="../../../play/libs/concurrent/Futures.html" title="interface in play.libs.concurrent">Futures</a></code></dd>
@@ -374,8 +377,8 @@ public&nbsp;DefaultFutures(play.api.libs.concurrent.Futures&nbsp;delegate)</pre>
 <h4>delayed</h4>
 <pre>public&nbsp;&lt;A&gt;&nbsp;java.util.concurrent.CompletionStage&lt;A&gt;&nbsp;delayed(java.util.concurrent.Callable&lt;java.util.concurrent.CompletionStage&lt;A&gt;&gt;&nbsp;callable,
                                                            java.time.Duration&nbsp;duration)</pre>
-<div class="block">Create a CompletionStage which, after a delay, will be redeemed with the result of a given
- supplier. The supplier will be called after the delay.</div>
+<div class="block">Create a CompletionStage which, after a delay, will be redeemed with the result of a
+ given supplier. The supplier will be called after the delay.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../play/libs/concurrent/Futures.html#delayed-java.util.concurrent.Callable-java.time.Duration-">delayed</a></code>&nbsp;in interface&nbsp;<code><a href="../../../play/libs/concurrent/Futures.html" title="interface in play.libs.concurrent">Futures</a></code></dd>

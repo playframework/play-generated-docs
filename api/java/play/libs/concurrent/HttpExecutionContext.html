@@ -112,11 +112,11 @@ public class <span class="typeNameLabel">HttpExecutionContext</span>
 extends java.lang.Object</pre>
 <div class="block">Execution context for managing Play Java HTTP thread local state.
 
- <p>This is essentially a factory for getting an executor for the current HTTP context. Tasks
- executed by that executor will have the HTTP context setup in them.
+ This is essentially a factory for getting an executor for the current HTTP context.  Tasks executed by that executor
+ will have the HTTP context setup in them.
 
- <p>For example, it may be used in combination with <code>CompletionStage.thenApplyAsync</code>,
- to ensure the callbacks executed when the completion stage is redeemed have the correct context:
+ For example, it may be used in combination with <code>CompletionStage.thenApplyAsync</code>, to ensure the callbacks
+ executed when the completion stage is redeemed have the correct context:
 
  <pre>
      CompletionStage&lt;WSResponse&gt; response = ws.url(...).get();
@@ -125,8 +125,8 @@ extends java.lang.Object</pre>
      }, httpExecutionContext.current());
  </pre>
 
- Note, this is not a Scala execution context, and is not intended to be used where Scala execution
- contexts are required.</div>
+ Note, this is not a Scala execution context, and is not intended to be used where Scala execution contexts are
+ required.</div>
 </li>
 </ul>
 </div>
@@ -217,8 +217,8 @@ public&nbsp;HttpExecutionContext(java.util.concurrent.Executor&nbsp;delegate)</p
 <pre>public&nbsp;java.util.concurrent.Executor&nbsp;current()</pre>
 <div class="block">Get the current executor associated with the current HTTP context.
 
- <p>Note that the returned executor is only valid for the current context. It should be used in
- a transient fashion, long lived references to it should not be kept.</div>
+ Note that the returned executor is only valid for the current context.  It should be used in a transient
+ fashion, long lived references to it should not be kept.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>An executor that will execute its tasks in the current HTTP context.</dd>
