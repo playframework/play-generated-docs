@@ -1,453 +1,44 @@
 <!DOCTYPE html >
 <html>
         <head>
-          <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title></title>
-          <meta name="description" content="" />
-          <meta name="keywords" content="" />
+          <title>Configuration - play.api.Configuration</title>
+          <meta name="description" content="Configuration - play.api.Configuration" />
+          <meta name="keywords" content="Configuration play.api.Configuration" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
-      <link href="../../lib/index.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
       <link href="../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
-      <script type="text/javascript" src="../../lib/jquery.js"></script>
-      <script type="text/javascript" src="../../lib/jquery.panzoom.min.js"></script>
-      <script type="text/javascript" src="../../lib/jquery.mousewheel.min.js"></script>
-      <script type="text/javascript" src="../../lib/index.js"></script>
-      <script type="text/javascript" src="../../index.js"></script>
-      <script type="text/javascript" src="../../lib/scheduler.js"></script>
+      <script type="text/javascript" src="../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../lib/jquery-ui.js"></script>
       <script type="text/javascript" src="../../lib/template.js"></script>
       <script type="text/javascript" src="../../lib/tools.tooltip.js"></script>
       
       <script type="text/javascript">
-        /* this variable can be used by the JS to determine the path to the root document */
-        var toRoot = '../../';
-      </script>
+         if(top === self) {
+            var url = '../../index.html';
+            var hash = 'play.api.Configuration';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
     
         </head>
-        <body>
-      <div id="search">
-        <span id="doc-title"><span id="doc-version"></span></span>
-        <span class="close-results"><span class="left">&lt;</span> Back</span>
-        <div id="textfilter">
-          <span class="input">
-            <input autocapitalize="none" placeholder="Search" id="index-input" type="text" accesskey="/" />
-            <i class="clear material-icons"></i>
-            <i id="search-icon" class="material-icons"></i>
-          </span>
-        </div>
-    </div>
-      <div id="search-results">
-        <div id="search-progress">
-          <div id="progress-fill"></div>
-        </div>
-        <div id="results-content">
-          <div id="entity-results"></div>
-          <div id="member-results"></div>
-        </div>
-      </div>
-      <div id="content-scroll-container" style="-webkit-overflow-scrolling: touch;">
-        <div id="content-container" style="-webkit-overflow-scrolling: touch;">
-          <div id="subpackage-spacer">
-            <div id="packages">
-              <h1>Packages</h1>
-              <ul>
-                <li name="_root_.root" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="_root_"></a><a id="root:_root_"></a>
-      <span class="permalink">
-      <a href="index.html#_root_" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">package</span>
-      </span>
-      <span class="symbol">
-        <a title="" href="../../index.html"><span class="name">root</span></a>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../index.html" class="extype" name="_root_">root</a></dd></dl></div>
-    </li><li name="_root_.play" visbl="pub" class="indented1 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="play"></a><a id="play:play"></a>
-      <span class="permalink">
-      <a href="index.html#play" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">package</span>
-      </span>
-      <span class="symbol">
-        <a title="Play framework." href="../index.html"><span class="name">play</span></a>
-      </span>
-      
-      <p class="shortcomment cmt">Play framework.</p><div class="fullcomment"><div class="comment cmt"><p>Play framework.</p><h4> Play </h4><p><a href="http://www.playframework.com" target="_blank">http://www.playframework.com</a>
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../index.html" class="extype" name="_root_">root</a></dd></dl></div>
-    </li><li name="play.api" visbl="pub" class="indented2 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="api"></a><a id="api:api"></a>
-      <span class="permalink">
-      <a href="../play/index.html#api" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">package</span>
-      </span>
-      <span class="symbol">
-        <a title="Contains the public API for Scala developers." href="index.html"><span class="name">api</span></a>
-      </span>
-      
-      <p class="shortcomment cmt">Contains the public API for Scala developers.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the public API for Scala developers.</p><h6> Access the current Play application </h6><pre><span class="kw">import</span> play.api.Play.current</pre><h6> Read configuration </h6><pre><span class="kw">val</span> poolSize = configuration.getInt(<span class="lit">"engine.pool.size"</span>)</pre><h6> Use the logger </h6><pre>Logger.info(<span class="lit">"Hello!"</span>)</pre><h6> Define a Plugin </h6><pre><span class="kw">class</span> MyPlugin(app: Application) <span class="kw">extends</span> Plugin</pre><h6> Create adhoc applications (for testing) </h6><pre><span class="kw">val</span> application = Application(<span class="kw">new</span> File(<span class="lit">"."</span>), <span class="kw">this</span>.getClass.getClassloader, <span class="std">None</span>, Play.Mode.DEV)</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="play">play</a></dd></dl></div>
-    </li><li name="play.api.cache" visbl="pub" class="indented3 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="cache"></a><a id="cache:cache"></a>
-      <span class="permalink">
-      <a href="../../play/api/index.html#cache" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">package</span>
-      </span>
-      <span class="symbol">
-        <a title="Contains the Cache access API." href="cache/index.html"><span class="name">cache</span></a>
-      </span>
-      
-      <p class="shortcomment cmt">Contains the Cache access API.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the Cache access API.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="play.api">api</a></dd></dl></div>
-    </li><li name="play.api.controllers" visbl="pub" class="indented3 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="controllers"></a><a id="controllers:controllers"></a>
-      <span class="permalink">
-      <a href="../../play/api/index.html#controllers" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">package</span>
-      </span>
-      <span class="symbol">
-        <a title="" href="controllers/index.html"><span class="name">controllers</span></a>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="play.api">api</a></dd></dl></div>
-    </li><li name="play.api.data" visbl="pub" class="indented3 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="data"></a><a id="data:data"></a>
-      <span class="permalink">
-      <a href="../../play/api/index.html#data" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">package</span>
-      </span>
-      <span class="symbol">
-        <a title="Contains data manipulation helpers (typically HTTP form handling)" href="data/index.html"><span class="name">data</span></a>
-      </span>
-      
-      <p class="shortcomment cmt">Contains data manipulation helpers (typically HTTP form handling)</p><div class="fullcomment"><div class="comment cmt"><p>Contains data manipulation helpers (typically HTTP form handling)</p><pre><span class="kw">import</span> play.api.data._
-<span class="kw">import</span> play.api.data.Forms._
-
-<span class="kw">val</span> taskForm = Form(
-  tuple(
-    <span class="lit">"name"</span> -&gt; text(minLength = <span class="num">3</span>),
-    <span class="lit">"dueDate"</span> -&gt; date(<span class="lit">"yyyy-MM-dd"</span>),
-    <span class="lit">"done"</span> -&gt; boolean
-  )
-)</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="play.api">api</a></dd></dl></div>
-    </li><li name="play.api.db" visbl="pub" class="indented3 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="db"></a><a id="db:db"></a>
-      <span class="permalink">
-      <a href="../../play/api/index.html#db" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">package</span>
-      </span>
-      <span class="symbol">
-        <a title="Contains the JDBC database access API." href="db/index.html"><span class="name">db</span></a>
-      </span>
-      
-      <p class="shortcomment cmt">Contains the JDBC database access API.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the JDBC database access API.</p><p>Example, retrieving a connection from the 'customers' datasource:</p><pre><span class="kw">val</span> conn = db.getConnection(<span class="lit">"customers"</span>)</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="play.api">api</a></dd></dl></div>
-    </li><li name="play.api.http" visbl="pub" class="indented3 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="http"></a><a id="http:http"></a>
-      <span class="permalink">
-      <a href="../../play/api/index.html#http" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">package</span>
-      </span>
-      <span class="symbol">
-        <a title="Contains standard HTTP constants." href="http/index.html"><span class="name">http</span></a>
-      </span>
-      
-      <p class="shortcomment cmt">Contains standard HTTP constants.</p><div class="fullcomment"><div class="comment cmt"><p>Contains standard HTTP constants.
-For example:</p><pre><span class="kw">val</span> text = ContentTypes.TEXT
-<span class="kw">val</span> ok = Status.OK
-<span class="kw">val</span> accept = HeaderNames.ACCEPT</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="play.api">api</a></dd></dl></div>
-    </li><li name="play.api.i18n" visbl="pub" class="indented3 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="i18n"></a><a id="i18n:i18n"></a>
-      <span class="permalink">
-      <a href="../../play/api/index.html#i18n" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">package</span>
-      </span>
-      <span class="symbol">
-        <a title="Contains the internationalisation API." href="i18n/index.html"><span class="name">i18n</span></a>
-      </span>
-      
-      <p class="shortcomment cmt">Contains the internationalisation API.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the internationalisation API.</p><p>For example, translating a message:</p><pre><span class="kw">val</span> msgString = Messages(<span class="lit">"items.found"</span>, items.size)</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="play.api">api</a></dd></dl></div>
-    </li><li name="play.api.inject" visbl="pub" class="indented3 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="inject"></a><a id="inject:inject"></a>
-      <span class="permalink">
-      <a href="../../play/api/index.html#inject" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">package</span>
-      </span>
-      <span class="symbol">
-        <a title="Play's runtime dependency injection abstraction." href="inject/index.html"><span class="name">inject</span></a>
-      </span>
-      
-      <p class="shortcomment cmt">Play's runtime dependency injection abstraction.</p><div class="fullcomment"><div class="comment cmt"><p>Play's runtime dependency injection abstraction.</p><p>Play's runtime dependency injection support is built on JSR-330, which provides a specification for declaring how
-dependencies get wired to components.  JSR-330 however does not address how components are provided to or located
-by a DI container.  Play's API seeks to address this in a DI container agnostic way.</p><p>The reason for providing this abstraction is so that Play, the modules it provides, and third party modules can all
-express their bindings in a way that is not specific to any one DI container.</p><p>Components are bound in the DI container.  Each binding is identified by a <a href="inject/BindingKey.html" class="extype" name="play.api.inject.BindingKey">BindingKey</a>, which is
-typically an interface that the component implements, and may be optionally qualified by a JSR-330 qualifier
-annotation. A binding key is bound to a <a href="inject/BindingTarget.html" class="extype" name="play.api.inject.BindingTarget">BindingTarget</a>, which describes how the implementation
-of the interface that the binding key represents is constructed or provided.  Bindings may also be scoped using
-JSR-330 scope annotations.</p><p>Bindings are provided by instances of <a href="inject/Module.html" class="extype" name="play.api.inject.Module">Module</a>.</p><p>Out of the box, Play provides an implementation of this abstraction using Guice.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="play.api">api</a></dd><dt>See also</dt><dd><span class="cmt"><p>The <a href="inject/Module.html" class="extype" name="play.api.inject.Module">Module</a> class for information on how to provide bindings.</p></span></dd></dl></div>
-    </li><li name="play.api.internal" visbl="pub" class="indented3 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="internal"></a><a id="internal:internal"></a>
-      <span class="permalink">
-      <a href="../../play/api/index.html#internal" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">package</span>
-      </span>
-      <span class="symbol">
-        <a title="" href="internal/index.html"><span class="name">internal</span></a>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="play.api">api</a></dd></dl></div>
-    </li><li name="play.api.libs" visbl="pub" class="indented3 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="libs"></a><a id="libs:libs"></a>
-      <span class="permalink">
-      <a href="../../play/api/index.html#libs" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">package</span>
-      </span>
-      <span class="symbol">
-        <a title="Contains various APIs that are useful while developing web applications." href="libs/index.html"><span class="name">libs</span></a>
-      </span>
-      
-      <p class="shortcomment cmt">Contains various APIs that are useful while developing web applications.</p><div class="fullcomment"><div class="comment cmt"><p>Contains various APIs that are useful while developing web applications.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="play.api">api</a></dd></dl></div>
-    </li><li name="play.api.mvc" visbl="pub" class="indented3 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="mvc"></a><a id="mvc:mvc"></a>
-      <span class="permalink">
-      <a href="../../play/api/index.html#mvc" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">package</span>
-      </span>
-      <span class="symbol">
-        <a title="Contains the Controller/Action/Result API to handle HTTP requests." href="mvc/index.html"><span class="name">mvc</span></a>
-      </span>
-      
-      <p class="shortcomment cmt">Contains the Controller/Action/Result API to handle HTTP requests.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the Controller/Action/Result API to handle HTTP requests.</p><p>For example, a typical controller:</p><pre><span class="kw">class</span> HomeController @Inject() (<span class="kw">val</span> controllerComponents: ControllerComponents) <span class="kw">extends</span> BaseController {
-
-  <span class="kw">def</span> index = Action {
-    Ok(<span class="lit">"It works!"</span>)
-  }
-
-}</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="play.api">api</a></dd></dl></div>
-    </li><li name="play.api.routing" visbl="pub" class="indented3 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="routing"></a><a id="routing:routing"></a>
-      <span class="permalink">
-      <a href="../../play/api/index.html#routing" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">package</span>
-      </span>
-      <span class="symbol">
-        <a title="" href="routing/index.html"><span class="name">routing</span></a>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="play.api">api</a></dd></dl></div>
-    </li><li name="play.api.templates" visbl="pub" class="indented3 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="templates"></a><a id="templates:templates"></a>
-      <span class="permalink">
-      <a href="../../play/api/index.html#templates" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">package</span>
-      </span>
-      <span class="symbol">
-        <a title="" href="templates/index.html"><span class="name">templates</span></a>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="play.api">api</a></dd></dl></div>
-    </li><li name="play.api.test" visbl="pub" class="indented3 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="test"></a><a id="test:test"></a>
-      <span class="permalink">
-      <a href="../../play/api/index.html#test" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">package</span>
-      </span>
-      <span class="symbol">
-        <a title="Contains test helpers." href="test/index.html"><span class="name">test</span></a>
-      </span>
-      
-      <p class="shortcomment cmt">Contains test helpers.</p><div class="fullcomment"><div class="comment cmt"><p>Contains test helpers.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="play.api">api</a></dd></dl></div>
-    </li><li class="current-entities indented2">
-                        <a class="object" href="Application$.html" title=""></a>
-                        <a class="trait" href="Application.html" title="A Play application."></a>
-                        <a href="Application.html" title="A Play application.">Application</a>
-                      </li><li class="current-entities indented2">
-                        <a class="object" href="ApplicationLoader$.html" title=""></a>
-                        <a class="trait" href="ApplicationLoader.html" title="Loads an application."></a>
-                        <a href="ApplicationLoader.html" title="Loads an application.">ApplicationLoader</a>
-                      </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="trait" href="BuiltInComponents.html" title="Helper to provide the Play built in components."></a>
-                        <a href="BuiltInComponents.html" title="Helper to provide the Play built in components.">BuiltInComponents</a>
-                      </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="class" href="BuiltInComponentsFromContext.html" title="Helper that provides all the built in components dependencies from the application loader context"></a>
-                        <a href="BuiltInComponentsFromContext.html" title="Helper that provides all the built in components dependencies from the application loader context">BuiltInComponentsFromContext</a>
-                      </li><li class="current-entities indented2">
-                        <a class="object" href="ConfigLoader$.html" title=""></a>
-                        <a class="trait" href="ConfigLoader.html" title="A config loader"></a>
-                        <a href="ConfigLoader.html" title="A config loader">ConfigLoader</a>
-                      </li><li class="current-entities indented2">
-                        <a class="object" href="Configuration$.html" title="This object provides a set of operations to create Configuration values."></a>
-                        <a class="class" href="" title="A full configuration set."></a>
-                        <a href="" title="A full configuration set.">Configuration</a>
-                      </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="class" href="DefaultApplication.html" title=""></a>
-                        <a href="DefaultApplication.html" title="">DefaultApplication</a>
-                      </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="class" href="DefaultMarkerContext.html" title="A default marker context."></a>
-                        <a href="DefaultMarkerContext.html" title="A default marker context.">DefaultMarkerContext</a>
-                      </li><li class="current-entities indented2">
-                        <a class="object" href="Environment$.html" title=""></a>
-                        <a class="class" href="Environment.html" title="The environment for the application."></a>
-                        <a href="Environment.html" title="The environment for the application.">Environment</a>
-                      </li><li class="current-entities indented2">
-                        <a class="object" href="Logger$.html" title="High-level API for logging operations."></a>
-                        <a class="class" href="Logger.html" title="A Play logger."></a>
-                        <a href="Logger.html" title="A Play logger.">Logger</a>
-                      </li><li class="current-entities indented2">
-                        <a class="object" href="LoggerConfigurator$.html" title=""></a>
-                        <a class="trait" href="LoggerConfigurator.html" title="Runs through underlying logger configuration."></a>
-                        <a href="LoggerConfigurator.html" title="Runs through underlying logger configuration.">LoggerConfigurator</a>
-                      </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="trait" href="LoggerLike.html" title="Typical logger interface."></a>
-                        <a href="LoggerLike.html" title="Typical logger interface.">LoggerLike</a>
-                      </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="trait" href="Logging.html" title="A trait that can mixed into a class or trait to add a logger named based on the class name."></a>
-                        <a href="Logging.html" title="A trait that can mixed into a class or trait to add a logger named based on the class name.">Logging</a>
-                      </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="trait" href="LowPriorityMarkerContextImplicits.html" title=""></a>
-                        <a href="LowPriorityMarkerContextImplicits.html" title="">LowPriorityMarkerContextImplicits</a>
-                      </li><li class="current-entities indented2">
-                        <a class="object" href="MarkerContext$.html" title=""></a>
-                        <a class="trait" href="MarkerContext.html" title="A MarkerContext trait, to provide easy access to org.slf4j.Marker in Logger API."></a>
-                        <a href="MarkerContext.html" title="A MarkerContext trait, to provide easy access to org.slf4j.Marker in Logger API.">MarkerContext</a>
-                      </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="object" href="MarkerContexts$.html" title=""></a>
-                        <a href="MarkerContexts$.html" title="">MarkerContexts</a>
-                      </li><li class="current-entities indented2">
-                        <a class="object" href="Mode$.html" title=""></a>
-                        <a class="class" href="Mode.html" title="Application mode, either Dev, Test, or Prod."></a>
-                        <a href="Mode.html" title="Application mode, either Dev, Test, or Prod.">Mode</a>
-                      </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="trait" href="NoHttpFiltersComponents.html" title="A component to mix in when no default filters should be mixed in to BuiltInComponents."></a>
-                        <a href="NoHttpFiltersComponents.html" title="A component to mix in when no default filters should be mixed in to BuiltInComponents.">NoHttpFiltersComponents</a>
-                      </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="class" href="OptionalDevContext.html" title="Represents an Option[DevContext] so that it can be used for dependency injection."></a>
-                        <a href="OptionalDevContext.html" title="Represents an Option[DevContext] so that it can be used for dependency injection.">OptionalDevContext</a>
-                      </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="class" href="OptionalSourceMapper.html" title="Represents an Option[SourceMapper] so that it can be used for dependency injection."></a>
-                        <a href="OptionalSourceMapper.html" title="Represents an Option[SourceMapper] so that it can be used for dependency injection.">OptionalSourceMapper</a>
-                      </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="class" href="OptionalSourceMapperProvider.html" title=""></a>
-                        <a href="OptionalSourceMapperProvider.html" title="">OptionalSourceMapperProvider</a>
-                      </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="object" href="Play$.html" title="High-level API to access Play global features."></a>
-                        <a href="Play$.html" title="High-level API to access Play global features.">Play</a>
-                      </li><li class="current-entities indented2">
-                        <span class="separator"></span>
-                        <a class="class" href="UnexpectedException.html" title="Generic exception for unexpected error cases."></a>
-                        <a href="UnexpectedException.html" title="Generic exception for unexpected error cases.">UnexpectedException</a>
-                      </li>
-              </ul>
-            </div>
-          </div>
-          <div id="content">
-            <body class="class type">
+        <body class="type">
       <div id="definition">
-        <a href="Configuration$.html" title="See companion object"><div class="big-circle class-companion-object">c</div></a>
-        <p id="owner"><a href="../index.html" class="extype" name="play">play</a>.<a href="index.html" class="extype" name="play.api">api</a></p>
-        <h1><a href="Configuration$.html" title="See companion object">Configuration</a><span class="permalink">
-      <a href="../../play/api/Configuration.html" title="Permalink">
-        <i class="material-icons"></i>
+        <a href="Configuration$.html" title="See companion object"><img alt="Class/Object" src="../../lib/class_to_object_big.png" /></a>
+        <p id="owner"><a href="../package.html" class="extype" name="play">play</a>.<a href="package.html" class="extype" name="play.api">api</a></p>
+        <h1><a href="Configuration$.html" title="See companion object">Configuration</a></h1><h3><span class="morelinks"><div>
+            Related Docs:
+            <a href="Configuration$.html" title="See companion object">object Configuration</a>
+            | <a href="package.html" class="extype" name="play.api">package api</a>
+          </div></span></h3><span class="permalink">
+      <a href="../../index.html#play.api.Configuration" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
-    </span></h1>
-        <h3><span class="morelinks"><div>
-            Companion <a href="Configuration$.html" title="See companion object">object Configuration</a>
-          </div></span></h3>
+    </span>
       </div>
 
       <h4 id="signature" class="signature">
@@ -459,66 +50,51 @@ JSR-330 scope annotations.</p><p>Bindings are provided by instances of <a href="
         <span class="name">Configuration</span><span class="params">(<span name="underlying">underlying: <span class="extype" name="com.typesafe.config.Config">Config</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
-
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A full configuration set.</p><p>The underlying implementation is provided by https://github.com/typesafehub/config.
-</p></div><dl class="paramcmts block"><dt class="param">underlying</dt><dd class="cmt"><p>the underlying Config implementation</p></dd></dl><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.7.2/core/play/src/main/scala/play/api/Configuration.scala" target="_blank">Configuration.scala</a></dd></dl><div class="toggleContainer block">
-          <span class="toggle">
-            Linear Supertypes
-          </span>
+</p></div><dl class="paramcmts block"><dt class="param">underlying</dt><dd class="cmt"><p>the underlying Config implementation</p></dd></dl><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.7.0-RC3/framework/src/play/src/main/scala/play/api/Configuration.scala" target="_blank">Configuration.scala</a></dd></dl><div class="toggleContainer block">
+          <span class="toggle">Linear Supertypes</span>
           <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
       <div id="mbrsel">
-        <div class="toggle"></div>
-        <div id="memberfilter">
-          <i class="material-icons arrow"></i>
-          <span class="input">
-            <input id="mbrsel-input" placeholder="Filter all members" type="text" accesskey="/" />
-          </span>
-          <i class="clear material-icons"></i>
-        </div>
-        <div id="filterby">
-          <div id="order">
-            <span class="filtertype">Ordering</span>
-            <ol>
-              
-              <li class="alpha in"><span>Alphabetic</span></li>
-              <li class="inherit out"><span>By Inheritance</span></li>
-            </ol>
-          </div>
-          <div class="ancestors">
-                  <span class="filtertype">Inherited<br />
-                  </span>
-                  <ol id="linearization">
-                    <li class="in" name="play.api.Configuration"><span>Configuration</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
-                  </ol>
-                </div><div class="ancestors">
-              <span class="filtertype"></span>
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
+        <div id="order">
+              <span class="filtertype">Ordering</span>
               <ol>
-                <li class="hideall out"><span>Hide All</span></li>
-                <li class="showall in"><span>Show All</span></li>
+                
+                <li class="alpha in"><span>Alphabetic</span></li>
+                <li class="inherit out"><span>By Inheritance</span></li>
               </ol>
             </div>
-          <div id="visbl">
-              <span class="filtertype">Visibility</span>
-              <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
-            </div>
-        </div>
+        <div id="ancestors">
+                <span class="filtertype">Inherited<br />
+                </span>
+                <ol id="linearization">
+                  <li class="in" name="play.api.Configuration"><span>Configuration</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                </ol>
+              </div><div id="ancestors">
+            <span class="filtertype"></span>
+            <ol>
+              <li class="hideall out"><span>Hide All</span></li>
+              <li class="showall in"><span>Show All</span></li>
+            </ol>
+          </div>
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
       </div>
 
       <div id="template">
         <div id="allMembers">
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
-              <ol><li name="play.api.Configuration#&lt;init&gt;" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(underlying:com.typesafe.config.Config):play.api.Configuration"></a><a id="&lt;init&gt;:Configuration"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#&lt;init&gt;(underlying:com.typesafe.config.Config):play.api.Configuration" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
+              <ol><li name="play.api.Configuration#&lt;init&gt;" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="&lt;init&gt;(underlying:com.typesafe.config.Config):play.api.Configuration"></a>
+      <a id="&lt;init&gt;:Configuration"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">new</span>
@@ -526,7 +102,11 @@ JSR-330 scope annotations.</p><p>Bindings are provided by instances of <a href="
       <span class="symbol">
         <span class="name">Configuration</span><span class="params">(<span name="underlying">underlying: <span class="extype" name="com.typesafe.config.Config">Config</span></span>)</span>
       </span>
-      
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@&lt;init&gt;(underlying:com.typesafe.config.Config):play.api.Configuration" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">underlying</dt><dd class="cmt"><p>the underlying Config implementation</p></dd></dl></div>
     </li></ol>
             </div>
@@ -535,16 +115,12 @@ JSR-330 scope annotations.</p><p>Bindings are provided by instances of <a href="
 
         
 
-        <div class="values members">
+        <div id="values" class="values members">
               <h3>Value Members</h3>
-              <ol>
-                <li name="scala.AnyRef#!=" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="!=(x$1:Any):Boolean"></a><a id="!=(Any):Boolean"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#!=(x$1:Any):Boolean" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
+              <ol><li name="scala.AnyRef#!=" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="!=(x$1:Any):Boolean"></a>
+      <a id="!=(Any):Boolean"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
@@ -552,15 +128,16 @@ JSR-330 scope annotations.</p><p>Bindings are provided by instances of <a href="
       <span class="symbol">
         <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="scala.AnyRef###" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="##():Int"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html###():Int" title="Permalink">
-        <i class="material-icons"></i>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@!=(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef###" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="##():Int"></a>
+      <a id="##():Int"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
@@ -568,15 +145,16 @@ JSR-330 scope annotations.</p><p>Bindings are provided by instances of <a href="
       <span class="symbol">
         <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="play.api.Configuration#++" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="++(other:play.api.Configuration):play.api.Configuration"></a><a id="++(Configuration):Configuration"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#++(other:play.api.Configuration):play.api.Configuration" title="Permalink">
-        <i class="material-icons"></i>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@##():Int" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="play.api.Configuration#++" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="++(other:play.api.Configuration):play.api.Configuration"></a>
+      <a id="++(Configuration):Configuration"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -584,17 +162,18 @@ JSR-330 scope annotations.</p><p>Bindings are provided by instances of <a href="
       <span class="symbol">
         <span title="gt4s: $plus$plus" class="name">++</span><span class="params">(<span name="other">other: <a href="" class="extype" name="play.api.Configuration">Configuration</a></span>)</span><span class="result">: <a href="" class="extype" name="play.api.Configuration">Configuration</a></span>
       </span>
-      
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@++(other:play.api.Configuration):play.api.Configuration" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Merge two configurations.</p><div class="fullcomment"><div class="comment cmt"><p>Merge two configurations. The second configuration overrides the first configuration.
 This is the opposite direction of <code>Config</code>'s <code>withFallback</code> method.
 </p></div></div>
-    </li><li name="scala.AnyRef#==" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="==(x$1:Any):Boolean"></a><a id="==(Any):Boolean"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#==(x$1:Any):Boolean" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
+    </li><li name="scala.AnyRef#==" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="==(x$1:Any):Boolean"></a>
+      <a id="==(Any):Boolean"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
@@ -602,15 +181,16 @@ This is the opposite direction of <code>Config</code>'s <code>withFallback</code
       <span class="symbol">
         <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="scala.Any#asInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="asInstanceOf[T0]:T0"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#asInstanceOf[T0]:T0" title="Permalink">
-        <i class="material-icons"></i>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@==(x$1:Any):Boolean" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.Any#asInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="asInstanceOf[T0]:T0"></a>
+      <a id="asInstanceOf[T0]:T0"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
@@ -618,15 +198,16 @@ This is the opposite direction of <code>Config</code>'s <code>withFallback</code
       <span class="symbol">
         <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
       </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="scala.AnyRef#clone" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="clone():Object"></a><a id="clone():AnyRef"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#clone():Object" title="Permalink">
-        <i class="material-icons"></i>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@asInstanceOf[T0]:T0" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="scala.AnyRef#clone" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="clone():Object"></a>
+      <a id="clone():AnyRef"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -634,23 +215,22 @@ This is the opposite direction of <code>Config</code>'s <code>withFallback</code
       <span class="symbol">
         <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../java/lang/index.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@native</span><span class="args">()</span>
-              
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@clone():Object" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
       <span class="defval" name="classOf[java.lang.CloneNotSupportedException]">...</span>
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="play.api.Configuration#entrySet" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="entrySet:Set[(String,com.typesafe.config.ConfigValue)]"></a><a id="entrySet:Set[(String,ConfigValue)]"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#entrySet:Set[(String,com.typesafe.config.ConfigValue)]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
+    </li><li name="play.api.Configuration#entrySet" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="entrySet:Set[(String,com.typesafe.config.ConfigValue)]"></a>
+      <a id="entrySet:Set[(String,ConfigValue)]"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -658,16 +238,17 @@ This is the opposite direction of <code>Config</code>'s <code>withFallback</code
       <span class="symbol">
         <span class="name">entrySet</span><span class="result">: <span class="extype" name="scala.Predef.Set">Set</span>[(<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="com.typesafe.config.ConfigValue">ConfigValue</span>)]</span>
       </span>
-      
-      <p class="shortcomment cmt">Returns every path as a set of key to value pairs, by recursively iterating through the
-config objects.</p>
-    </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#eq(x$1:AnyRef):Boolean" title="Permalink">
-        <i class="material-icons"></i>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@entrySet:Set[(String,com.typesafe.config.ConfigValue)]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
+      <p class="shortcomment cmt">Returns every path as a set of key to value pairs, by recursively iterating through the
+config objects.</p>
+    </li><li name="scala.AnyRef#eq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="eq(x$1:AnyRef):Boolean"></a>
+      <a id="eq(AnyRef):Boolean"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
@@ -675,15 +256,16 @@ config objects.</p>
       <span class="symbol">
         <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="finalize():Unit"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#finalize():Unit" title="Permalink">
-        <i class="material-icons"></i>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@eq(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#finalize" visbl="prt" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="finalize():Unit"></a>
+      <a id="finalize():Unit"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -691,21 +273,22 @@ config objects.</p>
       <span class="symbol">
         <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../java/lang/index.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@finalize():Unit" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
       <span class="symbol">classOf[java.lang.Throwable]</span>
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="play.api.Configuration#get" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="get[A](path:String)(implicitloader:play.api.ConfigLoader[A]):A"></a><a id="get[A](String)(ConfigLoader[A]):A"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#get[A](path:String)(implicitloader:play.api.ConfigLoader[A]):A" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
+    </li><li name="play.api.Configuration#get" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="get[A](path:String)(implicitloader:play.api.ConfigLoader[A]):A"></a>
+      <a id="get[A](String)(ConfigLoader[A]):A"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -713,15 +296,16 @@ config objects.</p>
       <span class="symbol">
         <span class="name">get</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="loader">loader: <a href="ConfigLoader.html" class="extype" name="play.api.ConfigLoader">ConfigLoader</a>[<span class="extype" name="play.api.Configuration.get.A">A</span>]</span>)</span><span class="result">: <span class="extype" name="play.api.Configuration.get.A">A</span></span>
       </span>
-      
-      <p class="shortcomment cmt">Get the config at the given path.</p>
-    </li><li name="play.api.Configuration#getAndValidate" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="getAndValidate[A](path:String,values:Set[A])(implicitloader:play.api.ConfigLoader[A]):A"></a><a id="getAndValidate[A](String,Set[A])(ConfigLoader[A]):A"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#getAndValidate[A](path:String,values:Set[A])(implicitloader:play.api.ConfigLoader[A]):A" title="Permalink">
-        <i class="material-icons"></i>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@get[A](path:String)(implicitloader:play.api.ConfigLoader[A]):A" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
+      <p class="shortcomment cmt">Get the config at the given path.</p>
+    </li><li name="play.api.Configuration#getAndValidate" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="getAndValidate[A](path:String,values:Set[A])(implicitloader:play.api.ConfigLoader[A]):A"></a>
+      <a id="getAndValidate[A](String,Set[A])(ConfigLoader[A]):A"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -729,15 +313,16 @@ config objects.</p>
       <span class="symbol">
         <span class="name">getAndValidate</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="values">values: <span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="play.api.Configuration.getAndValidate.A">A</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="loader">loader: <a href="ConfigLoader.html" class="extype" name="play.api.ConfigLoader">ConfigLoader</a>[<span class="extype" name="play.api.Configuration.getAndValidate.A">A</span>]</span>)</span><span class="result">: <span class="extype" name="play.api.Configuration.getAndValidate.A">A</span></span>
       </span>
-      
-      <p class="shortcomment cmt">Get the config at the given path and validate against a set of valid values.</p>
-    </li><li name="scala.AnyRef#getClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getClass():Class[_]"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#getClass():Class[_]" title="Permalink">
-        <i class="material-icons"></i>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@getAndValidate[A](path:String,values:Set[A])(implicitloader:play.api.ConfigLoader[A]):A" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
+      <p class="shortcomment cmt">Get the config at the given path and validate against a set of valid values.</p>
+    </li><li name="scala.AnyRef#getClass" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getClass():Class[_]"></a>
+      <a id="getClass():Class[_]"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
@@ -745,18 +330,16 @@ config objects.</p>
       <span class="symbol">
         <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
       </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd><dt>Annotations</dt><dd>
-                <span class="name">@native</span><span class="args">()</span>
-              
-        </dd></dl></div>
-    </li><li name="play.api.Configuration#getDeprecated" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getDeprecated[A](path:String,deprecatedPaths:String*)(implicitevidence$1:play.api.ConfigLoader[A]):A"></a><a id="getDeprecated[A](String,String*)(ConfigLoader[A]):A"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#getDeprecated[A](path:String,deprecatedPaths:String*)(implicitevidence$1:play.api.ConfigLoader[A]):A" title="Permalink">
-        <i class="material-icons"></i>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@getClass():Class[_]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="play.api.Configuration#getDeprecated" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getDeprecated[A](path:String,deprecatedPaths:String*)(implicitevidence$1:play.api.ConfigLoader[A]):A"></a>
+      <a id="getDeprecated[A](String,String*)(ConfigLoader[A]):A"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -764,16 +347,17 @@ config objects.</p>
       <span class="symbol">
         <span class="name">getDeprecated</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="deprecatedPaths">deprecatedPaths: <span class="extype" name="scala.Predef.String">String</span>*</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="ConfigLoader.html" class="extype" name="play.api.ConfigLoader">ConfigLoader</a>[<span class="extype" name="play.api.Configuration.getDeprecated.A">A</span>]</span>)</span><span class="result">: <span class="extype" name="play.api.Configuration.getDeprecated.A">A</span></span>
       </span>
-      
-      <p class="shortcomment cmt">Get a deprecated configuration item.</p><div class="fullcomment"><div class="comment cmt"><p>Get a deprecated configuration item.</p><p>If the deprecated configuration item is defined, it will be returned, and a warning will be logged.</p><p>Otherwise, the configuration from path will be looked up.
-</p></div></div>
-    </li><li name="play.api.Configuration#getDeprecatedWithFallback" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getDeprecatedWithFallback(path:String,deprecated:String,parent:String):play.api.Configuration"></a><a id="getDeprecatedWithFallback(String,String,String):Configuration"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#getDeprecatedWithFallback(path:String,deprecated:String,parent:String):play.api.Configuration" title="Permalink">
-        <i class="material-icons"></i>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@getDeprecated[A](path:String,deprecatedPaths:String*)(implicitevidence$1:play.api.ConfigLoader[A]):A" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
+      <p class="shortcomment cmt">Get a deprecated configuration item.</p><div class="fullcomment"><div class="comment cmt"><p>Get a deprecated configuration item.</p><p>If the deprecated configuration item is defined, it will be returned, and a warning will be logged.</p><p>Otherwise, the configuration from path will be looked up.
+</p></div></div>
+    </li><li name="play.api.Configuration#getDeprecatedWithFallback" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getDeprecatedWithFallback(path:String,deprecated:String,parent:String):play.api.Configuration"></a>
+      <a id="getDeprecatedWithFallback(String,String,String):Configuration"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -781,17 +365,18 @@ config objects.</p>
       <span class="symbol">
         <span class="name">getDeprecatedWithFallback</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="deprecated">deprecated: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="parent">parent: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;&quot;</span></span>)</span><span class="result">: <a href="" class="extype" name="play.api.Configuration">Configuration</a></span>
       </span>
-      
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@getDeprecatedWithFallback(path:String,deprecated:String,parent:String):play.api.Configuration" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Get a deprecated configuration.</p><div class="fullcomment"><div class="comment cmt"><p>Get a deprecated configuration.</p><p>If the deprecated configuration is defined, it will be returned, falling back to the new configuration, and a
 warning will be logged.</p><p>Otherwise, the configuration from path will be looked up and used as is.
 </p></div></div>
-    </li><li name="play.api.Configuration#getMillis" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getMillis(path:String):Long"></a><a id="getMillis(String):Long"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#getMillis(path:String):Long" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
+    </li><li name="play.api.Configuration#getMillis" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getMillis(path:String):Long"></a>
+      <a id="getMillis(String):Long"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -799,16 +384,17 @@ warning will be logged.</p><p>Otherwise, the configuration from path will be loo
       <span class="symbol">
         <span class="name">getMillis</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Long">Long</span></span>
       </span>
-      
-      <p class="shortcomment cmt">Retrieves a configuration value as <code>Milliseconds</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a configuration value as <code>Milliseconds</code>.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
-<span class="kw">val</span> timeout = configuration.getMillis(<span class="lit">"engine.timeout"</span>)</pre><p>The configuration must be provided as:</p><pre>engine.timeout = <span class="num">1</span> second</pre></div></div>
-    </li><li name="play.api.Configuration#getNanos" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getNanos(path:String):Long"></a><a id="getNanos(String):Long"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#getNanos(path:String):Long" title="Permalink">
-        <i class="material-icons"></i>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@getMillis(path:String):Long" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
+      <p class="shortcomment cmt">Retrieves a configuration value as <code>Milliseconds</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a configuration value as <code>Milliseconds</code>.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
+<span class="kw">val</span> timeout = configuration.getMillis(<span class="lit">"engine.timeout"</span>)</pre><p>The configuration must be provided as:</p><pre>engine.timeout = <span class="num">1</span> second</pre></div></div>
+    </li><li name="play.api.Configuration#getNanos" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getNanos(path:String):Long"></a>
+      <a id="getNanos(String):Long"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -816,16 +402,17 @@ warning will be logged.</p><p>Otherwise, the configuration from path will be loo
       <span class="symbol">
         <span class="name">getNanos</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Long">Long</span></span>
       </span>
-      
-      <p class="shortcomment cmt">Retrieves a configuration value as <code>Milliseconds</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a configuration value as <code>Milliseconds</code>.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
-<span class="kw">val</span> timeout = configuration.getNanos(<span class="lit">"engine.timeout"</span>)</pre><p>The configuration must be provided as:</p><pre>engine.timeout = <span class="num">1</span> second</pre></div></div>
-    </li><li name="play.api.Configuration#getOptional" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getOptional[A](path:String)(implicitloader:play.api.ConfigLoader[A]):Option[A]"></a><a id="getOptional[A](String)(ConfigLoader[A]):Option[A]"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#getOptional[A](path:String)(implicitloader:play.api.ConfigLoader[A]):Option[A]" title="Permalink">
-        <i class="material-icons"></i>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@getNanos(path:String):Long" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
+      <p class="shortcomment cmt">Retrieves a configuration value as <code>Milliseconds</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a configuration value as <code>Milliseconds</code>.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
+<span class="kw">val</span> timeout = configuration.getNanos(<span class="lit">"engine.timeout"</span>)</pre><p>The configuration must be provided as:</p><pre>engine.timeout = <span class="num">1</span> second</pre></div></div>
+    </li><li name="play.api.Configuration#getOptional" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getOptional[A](path:String)(implicitloader:play.api.ConfigLoader[A]):Option[A]"></a>
+      <a id="getOptional[A](String)(ConfigLoader[A]):Option[A]"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -833,17 +420,18 @@ warning will be logged.</p><p>Otherwise, the configuration from path will be loo
       <span class="symbol">
         <span class="name">getOptional</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="loader">loader: <a href="ConfigLoader.html" class="extype" name="play.api.ConfigLoader">ConfigLoader</a>[<span class="extype" name="play.api.Configuration.getOptional.A">A</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="play.api.Configuration.getOptional.A">A</span>]</span>
       </span>
-      
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@getOptional[A](path:String)(implicitloader:play.api.ConfigLoader[A]):Option[A]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Get a value that may either not exist or be null.</p><div class="fullcomment"><div class="comment cmt"><p>Get a value that may either not exist or be null. Note that this is not generally considered idiomatic Config
 usage. Instead you should define all config keys in a reference.conf file.
 </p></div></div>
-    </li><li name="play.api.Configuration#getPrototypedMap" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getPrototypedMap(path:String,prototypePath:String):Map[String,play.api.Configuration]"></a><a id="getPrototypedMap(String,String):Map[String,Configuration]"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#getPrototypedMap(path:String,prototypePath:String):Map[String,play.api.Configuration]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
+    </li><li name="play.api.Configuration#getPrototypedMap" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getPrototypedMap(path:String,prototypePath:String):Map[String,play.api.Configuration]"></a>
+      <a id="getPrototypedMap(String,String):Map[String,Configuration]"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -851,16 +439,17 @@ usage. Instead you should define all config keys in a reference.conf file.
       <span class="symbol">
         <span class="name">getPrototypedMap</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="prototypePath">prototypePath: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;prototype.$path&quot;</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <a href="" class="extype" name="play.api.Configuration">Configuration</a>]</span>
       </span>
-      
-      <p class="shortcomment cmt">Get a prototyped map of objects.</p><div class="fullcomment"><div class="comment cmt"><p>Get a prototyped map of objects.</p><p>Each value in the map will fallback to the object loaded from prototype.$path.
-</p></div></div>
-    </li><li name="play.api.Configuration#getPrototypedSeq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getPrototypedSeq(path:String,prototypePath:String):Seq[play.api.Configuration]"></a><a id="getPrototypedSeq(String,String):Seq[Configuration]"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#getPrototypedSeq(path:String,prototypePath:String):Seq[play.api.Configuration]" title="Permalink">
-        <i class="material-icons"></i>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@getPrototypedMap(path:String,prototypePath:String):Map[String,play.api.Configuration]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
+      <p class="shortcomment cmt">Get a prototyped map of objects.</p><div class="fullcomment"><div class="comment cmt"><p>Get a prototyped map of objects.</p><p>Each value in the map will fallback to the object loaded from prototype.$path.
+</p></div></div>
+    </li><li name="play.api.Configuration#getPrototypedSeq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getPrototypedSeq(path:String,prototypePath:String):Seq[play.api.Configuration]"></a>
+      <a id="getPrototypedSeq(String,String):Seq[Configuration]"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -868,16 +457,17 @@ usage. Instead you should define all config keys in a reference.conf file.
       <span class="symbol">
         <span class="name">getPrototypedSeq</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="prototypePath">prototypePath: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;prototype.$path&quot;</span></span>)</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<a href="" class="extype" name="play.api.Configuration">Configuration</a>]</span>
       </span>
-      
-      <p class="shortcomment cmt">Get a prototyped sequence of objects.</p><div class="fullcomment"><div class="comment cmt"><p>Get a prototyped sequence of objects.</p><p>Each object in the sequence will fallback to the object loaded from prototype.$path.
-</p></div></div>
-    </li><li name="play.api.Configuration#globalError" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="globalError(message:String,e:Option[Throwable]):play.api.PlayException"></a><a id="globalError(String,Option[Throwable]):PlayException"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#globalError(message:String,e:Option[Throwable]):play.api.PlayException" title="Permalink">
-        <i class="material-icons"></i>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@getPrototypedSeq(path:String,prototypePath:String):Seq[play.api.Configuration]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
+      <p class="shortcomment cmt">Get a prototyped sequence of objects.</p><div class="fullcomment"><div class="comment cmt"><p>Get a prototyped sequence of objects.</p><p>Each object in the sequence will fallback to the object loaded from prototype.$path.
+</p></div></div>
+    </li><li name="play.api.Configuration#globalError" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="globalError(message:String,e:Option[Throwable]):play.api.PlayException"></a>
+      <a id="globalError(String,Option[Throwable]):PlayException"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -885,16 +475,17 @@ usage. Instead you should define all config keys in a reference.conf file.
       <span class="symbol">
         <span class="name">globalError</span><span class="params">(<span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="e">e: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Throwable">Throwable</span>] = <span class="symbol">None</span></span>)</span><span class="result">: <span class="extype" name="play.api.PlayException">PlayException</span></span>
       </span>
-      
-      <p class="shortcomment cmt">Creates a configuration error for this configuration.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a configuration error for this configuration.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
-<span class="kw">throw</span> configuration.globalError(<span class="lit">"Missing configuration key: [yop.url]"</span>)</pre></div><dl class="paramcmts block"><dt class="param">message</dt><dd class="cmt"><p>the error message</p></dd><dt class="param">e</dt><dd class="cmt"><p>the related exception</p></dd><dt>returns</dt><dd class="cmt"><p>a configuration exception</p></dd></dl></div>
-    </li><li name="play.api.Configuration#has" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="has(path:String):Boolean"></a><a id="has(String):Boolean"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#has(path:String):Boolean" title="Permalink">
-        <i class="material-icons"></i>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@globalError(message:String,e:Option[Throwable]):play.api.PlayException" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
+      <p class="shortcomment cmt">Creates a configuration error for this configuration.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a configuration error for this configuration.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
+<span class="kw">throw</span> configuration.globalError(<span class="lit">"Missing configuration key: [yop.url]"</span>)</pre></div><dl class="paramcmts block"><dt class="param">message</dt><dd class="cmt"><p>the error message</p></dd><dt class="param">e</dt><dd class="cmt"><p>the related exception</p></dd><dt>returns</dt><dd class="cmt"><p>a configuration exception</p></dd></dl></div>
+    </li><li name="play.api.Configuration#has" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="has(path:String):Boolean"></a>
+      <a id="has(String):Boolean"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -902,15 +493,16 @@ usage. Instead you should define all config keys in a reference.conf file.
       <span class="symbol">
         <span class="name">has</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      
-      <p class="shortcomment cmt">Check if the given path exists.</p>
-    </li><li name="scala.Any#isInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="isInstanceOf[T0]:Boolean"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#isInstanceOf[T0]:Boolean" title="Permalink">
-        <i class="material-icons"></i>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@has(path:String):Boolean" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
+      <p class="shortcomment cmt">Check if the given path exists.</p>
+    </li><li name="scala.Any#isInstanceOf" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isInstanceOf[T0]:Boolean"></a>
+      <a id="isInstanceOf[T0]:Boolean"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
@@ -918,15 +510,16 @@ usage. Instead you should define all config keys in a reference.conf file.
       <span class="symbol">
         <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="play.api.Configuration#keys" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="keys:Set[String]"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#keys:Set[String]" title="Permalink">
-        <i class="material-icons"></i>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@isInstanceOf[T0]:Boolean" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="play.api.Configuration#keys" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="keys:Set[String]"></a>
+      <a id="keys:Set[String]"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -934,16 +527,17 @@ usage. Instead you should define all config keys in a reference.conf file.
       <span class="symbol">
         <span class="name">keys</span><span class="result">: <span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
-      
-      <p class="shortcomment cmt">Returns available keys.</p><div class="fullcomment"><div class="comment cmt"><p>Returns available keys.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
-<span class="kw">val</span> keys = configuration.keys</pre></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the set of keys available in this configuration</p></dd></dl></div>
-    </li><li name="scala.AnyRef#ne" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="ne(x$1:AnyRef):Boolean"></a><a id="ne(AnyRef):Boolean"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#ne(x$1:AnyRef):Boolean" title="Permalink">
-        <i class="material-icons"></i>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@keys:Set[String]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
+      <p class="shortcomment cmt">Returns available keys.</p><div class="fullcomment"><div class="comment cmt"><p>Returns available keys.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
+<span class="kw">val</span> keys = configuration.keys</pre></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the set of keys available in this configuration</p></dd></dl></div>
+    </li><li name="scala.AnyRef#ne" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ne(x$1:AnyRef):Boolean"></a>
+      <a id="ne(AnyRef):Boolean"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
@@ -951,15 +545,16 @@ usage. Instead you should define all config keys in a reference.conf file.
       <span class="symbol">
         <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.AnyRef#notify" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="notify():Unit"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#notify():Unit" title="Permalink">
-        <i class="material-icons"></i>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@ne(x$1:AnyRef):Boolean" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#notify" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="notify():Unit"></a>
+      <a id="notify():Unit"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
@@ -967,18 +562,16 @@ usage. Instead you should define all config keys in a reference.conf file.
       <span class="symbol">
         <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@native</span><span class="args">()</span>
-              
-        </dd></dl></div>
-    </li><li name="scala.AnyRef#notifyAll" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="notifyAll():Unit"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#notifyAll():Unit" title="Permalink">
-        <i class="material-icons"></i>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@notify():Unit" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#notifyAll" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="notifyAll():Unit"></a>
+      <a id="notifyAll():Unit"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
@@ -986,18 +579,16 @@ usage. Instead you should define all config keys in a reference.conf file.
       <span class="symbol">
         <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@native</span><span class="args">()</span>
-              
-        </dd></dl></div>
-    </li><li name="play.api.Configuration#reportError" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="reportError(path:String,message:String,e:Option[Throwable]):play.api.PlayException"></a><a id="reportError(String,String,Option[Throwable]):PlayException"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#reportError(path:String,message:String,e:Option[Throwable]):play.api.PlayException" title="Permalink">
-        <i class="material-icons"></i>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@notifyAll():Unit" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="play.api.Configuration#reportError" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="reportError(path:String,message:String,e:Option[Throwable]):play.api.PlayException"></a>
+      <a id="reportError(String,String,Option[Throwable]):PlayException"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -1005,16 +596,17 @@ usage. Instead you should define all config keys in a reference.conf file.
       <span class="symbol">
         <span class="name">reportError</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="message">message: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="e">e: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Throwable">Throwable</span>] = <span class="symbol">None</span></span>)</span><span class="result">: <span class="extype" name="play.api.PlayException">PlayException</span></span>
       </span>
-      
-      <p class="shortcomment cmt">Creates a configuration error for a specific configuration key.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a configuration error for a specific configuration key.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
-<span class="kw">throw</span> configuration.reportError(<span class="lit">"engine.connectionUrl"</span>, <span class="lit">"Cannot connect!"</span>)</pre></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>the configuration key, related to this error</p></dd><dt class="param">message</dt><dd class="cmt"><p>the error message</p></dd><dt class="param">e</dt><dd class="cmt"><p>the related exception</p></dd><dt>returns</dt><dd class="cmt"><p>a configuration exception</p></dd></dl></div>
-    </li><li name="play.api.Configuration#subKeys" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="subKeys:Set[String]"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#subKeys:Set[String]" title="Permalink">
-        <i class="material-icons"></i>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@reportError(path:String,message:String,e:Option[Throwable]):play.api.PlayException" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
+      <p class="shortcomment cmt">Creates a configuration error for a specific configuration key.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a configuration error for a specific configuration key.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
+<span class="kw">throw</span> configuration.reportError(<span class="lit">"engine.connectionUrl"</span>, <span class="lit">"Cannot connect!"</span>)</pre></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>the configuration key, related to this error</p></dd><dt class="param">message</dt><dd class="cmt"><p>the error message</p></dd><dt class="param">e</dt><dd class="cmt"><p>the related exception</p></dd><dt>returns</dt><dd class="cmt"><p>a configuration exception</p></dd></dl></div>
+    </li><li name="play.api.Configuration#subKeys" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="subKeys:Set[String]"></a>
+      <a id="subKeys:Set[String]"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -1022,16 +614,17 @@ usage. Instead you should define all config keys in a reference.conf file.
       <span class="symbol">
         <span class="name">subKeys</span><span class="result">: <span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
-      
-      <p class="shortcomment cmt">Returns sub-keys.</p><div class="fullcomment"><div class="comment cmt"><p>Returns sub-keys.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
-<span class="kw">val</span> subKeys = configuration.subKeys</pre></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the set of direct sub-keys available in this configuration</p></dd></dl></div>
-    </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#synchronized[T0](x$1:=&gt;T0):T0" title="Permalink">
-        <i class="material-icons"></i>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@subKeys:Set[String]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
+      <p class="shortcomment cmt">Returns sub-keys.</p><div class="fullcomment"><div class="comment cmt"><p>Returns sub-keys.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
+<span class="kw">val</span> subKeys = configuration.subKeys</pre></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>the set of direct sub-keys available in this configuration</p></dd></dl></div>
+    </li><li name="scala.AnyRef#synchronized" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="synchronized[T0](x$1:=&gt;T0):T0"></a>
+      <a id="synchronized[T0](⇒T0):T0"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
@@ -1039,15 +632,16 @@ usage. Instead you should define all config keys in a reference.conf file.
       <span class="symbol">
         <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
       </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="play.api.Configuration#underlying" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="underlying:com.typesafe.config.Config"></a><a id="underlying:Config"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#underlying:com.typesafe.config.Config" title="Permalink">
-        <i class="material-icons"></i>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@synchronized[T0](x$1:=&gt;T0):T0" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="play.api.Configuration#underlying" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="underlying:com.typesafe.config.Config"></a>
+      <a id="underlying:Config"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">val</span>
@@ -1055,15 +649,16 @@ usage. Instead you should define all config keys in a reference.conf file.
       <span class="symbol">
         <span class="name">underlying</span><span class="result">: <span class="extype" name="com.typesafe.config.Config">Config</span></span>
       </span>
-      
-      
-    </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="wait():Unit"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#wait():Unit" title="Permalink">
-        <i class="material-icons"></i>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@underlying:com.typesafe.config.Config" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
       </a>
     </span>
+      <p class="shortcomment cmt">the underlying Config implementation</p>
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait():Unit"></a>
+      <a id="wait():Unit"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
@@ -1071,7 +666,11 @@ usage. Instead you should define all config keys in a reference.conf file.
       <span class="symbol">
         <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@wait():Unit" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -1079,13 +678,10 @@ usage. Instead you should define all config keys in a reference.conf file.
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="wait(x$1:Long,x$2:Int):Unit"></a><a id="wait(Long,Int):Unit"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#wait(x$1:Long,x$2:Int):Unit" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long,x$2:Int):Unit"></a>
+      <a id="wait(Long,Int):Unit"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
@@ -1093,7 +689,11 @@ usage. Instead you should define all config keys in a reference.conf file.
       <span class="symbol">
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@wait(x$1:Long,x$2:Int):Unit" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
                 <span class="name">@throws</span><span class="args">(<span>
       
@@ -1101,13 +701,10 @@ usage. Instead you should define all config keys in a reference.conf file.
     </span>)</span>
               
         </dd></dl></div>
-    </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="wait(x$1:Long):Unit"></a><a id="wait(Long):Unit"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#wait(x$1:Long):Unit" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
+    </li><li name="scala.AnyRef#wait" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long):Unit"></a>
+      <a id="wait(Long):Unit"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier">final </span>
         <span class="kind">def</span>
@@ -1115,31 +712,29 @@ usage. Instead you should define all config keys in a reference.conf file.
       <span class="symbol">
         <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
-      
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@wait(x$1:Long):Unit" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@native</span><span class="args">()</span>
-              
                 <span class="name">@throws</span><span class="args">(<span>
       
       <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
     </span>)</span>
               
         </dd></dl></div>
-    </li>
-              </ol>
+    </li></ol>
             </div>
 
         
 
-        <div class="values members">
+        <div id="values" class="values members">
               <h3>Deprecated Value Members</h3>
-              <ol><li name="play.api.Configuration#getBoolean" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getBoolean(path:String):Option[Boolean]"></a><a id="getBoolean(String):Option[Boolean]"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#getBoolean(path:String):Option[Boolean]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
+              <ol><li name="play.api.Configuration#getBoolean" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getBoolean(path:String):Option[Boolean]"></a>
+      <a id="getBoolean(String):Option[Boolean]"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -1147,7 +742,11 @@ usage. Instead you should define all config keys in a reference.conf file.
       <span class="symbol">
         <span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use get[Boolean] with reference config entry">getBoolean</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Boolean">Boolean</span>]</span>
       </span>
-      
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@getBoolean(path:String):Option[Boolean]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Retrieves a configuration value as a <code>Boolean</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a configuration value as a <code>Boolean</code>.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
 <span class="kw">val</span> isEnabled = configuration.getBoolean(<span class="lit">"engine.isEnabled"</span>)</pre><p>A configuration error will be thrown if the configuration value is not a valid <code>Boolean</code>.
 Authorized values are <code>yes</code>/<code>no</code> or <code>true</code>/<code>false</code>.
@@ -1155,13 +754,10 @@ Authorized values are <code>yes</code>/<code>no</code> or <code>true</code>/<cod
                 <span class="name">@deprecated</span>
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use get[Boolean] with reference config entry</p></dd></dl></div>
-    </li><li name="play.api.Configuration#getBooleanList" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getBooleanList(path:String):Option[java.util.List[Boolean]]"></a><a id="getBooleanList(String):Option[List[Boolean]]"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#getBooleanList(path:String):Option[java.util.List[Boolean]]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
+    </li><li name="play.api.Configuration#getBooleanList" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getBooleanList(path:String):Option[java.util.List[Boolean]]"></a>
+      <a id="getBooleanList(String):Option[List[Boolean]]"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -1169,7 +765,11 @@ Authorized values are <code>yes</code>/<code>no</code> or <code>true</code>/<cod
       <span class="symbol">
         <span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use underlying.getBooleanList with reference config entry">getBooleanList</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="java.util.List">List</span>[<span class="extype" name="java.lang.Boolean">Boolean</span>]]</span>
       </span>
-      
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@getBooleanList(path:String):Option[java.util.List[Boolean]]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Retrieves a configuration value as a List of <code>Boolean</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a configuration value as a List of <code>Boolean</code>.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
 <span class="kw">val</span> switches = configuration.getBooleanList(<span class="lit">"board.switches"</span>)</pre><p>The configuration must be provided as:</p><pre>board.switches = [<span class="kw">true</span>, <span class="kw">true</span>, <span class="kw">false</span>]</pre><p>A configuration error will be thrown if the configuration value is not a valid <code>Boolean</code>.
 Authorized values are <code>yes</code>/<code>no</code> or <code>true</code>/<code>false</code>.
@@ -1177,13 +777,10 @@ Authorized values are <code>yes</code>/<code>no</code> or <code>true</code>/<cod
                 <span class="name">@deprecated</span>
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use underlying.getBooleanList with reference config entry</p></dd></dl></div>
-    </li><li name="play.api.Configuration#getBooleanSeq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getBooleanSeq(path:String):Option[Seq[Boolean]]"></a><a id="getBooleanSeq(String):Option[Seq[Boolean]]"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#getBooleanSeq(path:String):Option[Seq[Boolean]]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
+    </li><li name="play.api.Configuration#getBooleanSeq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getBooleanSeq(path:String):Option[Seq[Boolean]]"></a>
+      <a id="getBooleanSeq(String):Option[Seq[Boolean]]"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -1191,7 +788,11 @@ Authorized values are <code>yes</code>/<code>no</code> or <code>true</code>/<cod
       <span class="symbol">
         <span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use get[Seq[Boolean]] with reference config entry">getBooleanSeq</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="java.lang.Boolean">Boolean</span>]]</span>
       </span>
-      
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@getBooleanSeq(path:String):Option[Seq[Boolean]]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Retrieves a configuration value as a Seq of <code>Boolean</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a configuration value as a Seq of <code>Boolean</code>.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
 <span class="kw">val</span> switches = configuration.getBooleanSeq(<span class="lit">"board.switches"</span>)</pre><p>The configuration must be provided as:</p><pre>board.switches = [<span class="kw">true</span>, <span class="kw">true</span>, <span class="kw">false</span>]</pre><p>A configuration error will be thrown if the configuration value is not a valid <code>Boolean</code>.
 Authorized values are <code>yes</code>/<code>no</code> or <code>true</code>/<code>false</code>.
@@ -1199,13 +800,10 @@ Authorized values are <code>yes</code>/<code>no</code> or <code>true</code>/<cod
                 <span class="name">@deprecated</span>
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use get[Seq[Boolean]] with reference config entry</p></dd></dl></div>
-    </li><li name="play.api.Configuration#getBytes" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getBytes(path:String):Option[Long]"></a><a id="getBytes(String):Option[Long]"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#getBytes(path:String):Option[Long]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
+    </li><li name="play.api.Configuration#getBytes" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getBytes(path:String):Option[Long]"></a>
+      <a id="getBytes(String):Option[Long]"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -1213,19 +811,20 @@ Authorized values are <code>yes</code>/<code>no</code> or <code>true</code>/<cod
       <span class="symbol">
         <span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use underlying.getBytes with reference config entry">getBytes</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Long">Long</span>]</span>
       </span>
-      
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@getBytes(path:String):Option[Long]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Retrieves a configuration value as <code>Bytes</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a configuration value as <code>Bytes</code>.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
 <span class="kw">val</span> maxSize = configuration.getBytes(<span class="lit">"engine.maxSize"</span>)</pre><p>The configuration must be provided as:</p><pre>engine.maxSize = <span class="num">512</span>k</pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@deprecated</span>
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use underlying.getBytes with reference config entry</p></dd></dl></div>
-    </li><li name="play.api.Configuration#getBytesList" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getBytesList(path:String):Option[java.util.List[Long]]"></a><a id="getBytesList(String):Option[List[Long]]"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#getBytesList(path:String):Option[java.util.List[Long]]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
+    </li><li name="play.api.Configuration#getBytesList" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getBytesList(path:String):Option[java.util.List[Long]]"></a>
+      <a id="getBytesList(String):Option[List[Long]]"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -1233,19 +832,20 @@ Authorized values are <code>yes</code>/<code>no</code> or <code>true</code>/<cod
       <span class="symbol">
         <span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use underlying.getBytesList with reference config entry">getBytesList</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="java.util.List">List</span>[<span class="extype" name="java.lang.Long">Long</span>]]</span>
       </span>
-      
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@getBytesList(path:String):Option[java.util.List[Long]]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Retrieves a configuration value as a List of <code>Bytes</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a configuration value as a List of <code>Bytes</code>.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
 <span class="kw">val</span> maxSizes = configuration.getBytesList(<span class="lit">"engine.maxSizes"</span>)</pre><p>The configuration must be provided as:</p><pre>engine.maxSizes = [<span class="num">512</span>k, <span class="num">256</span>k, <span class="num">256</span>k]</pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@deprecated</span>
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use underlying.getBytesList with reference config entry</p></dd></dl></div>
-    </li><li name="play.api.Configuration#getBytesSeq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getBytesSeq(path:String):Option[Seq[Long]]"></a><a id="getBytesSeq(String):Option[Seq[Long]]"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#getBytesSeq(path:String):Option[Seq[Long]]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
+    </li><li name="play.api.Configuration#getBytesSeq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getBytesSeq(path:String):Option[Seq[Long]]"></a>
+      <a id="getBytesSeq(String):Option[Seq[Long]]"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -1253,19 +853,20 @@ Authorized values are <code>yes</code>/<code>no</code> or <code>true</code>/<cod
       <span class="symbol">
         <span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use underlying.getBytesList with reference config entry">getBytesSeq</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="java.lang.Long">Long</span>]]</span>
       </span>
-      
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@getBytesSeq(path:String):Option[Seq[Long]]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Retrieves a configuration value as a Seq of <code>Bytes</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a configuration value as a Seq of <code>Bytes</code>.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
 <span class="kw">val</span> maxSizes = configuration.getBytesSeq(<span class="lit">"engine.maxSizes"</span>)</pre><p>The configuration must be provided as:</p><pre>engine.maxSizes = [<span class="num">512</span>k, <span class="num">256</span>k, <span class="num">256</span>k]</pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@deprecated</span>
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use underlying.getBytesList with reference config entry</p></dd></dl></div>
-    </li><li name="play.api.Configuration#getConfig" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getConfig(path:String):Option[play.api.Configuration]"></a><a id="getConfig(String):Option[Configuration]"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#getConfig(path:String):Option[play.api.Configuration]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
+    </li><li name="play.api.Configuration#getConfig" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getConfig(path:String):Option[play.api.Configuration]"></a>
+      <a id="getConfig(String):Option[Configuration]"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -1273,20 +874,21 @@ Authorized values are <code>yes</code>/<code>no</code> or <code>true</code>/<cod
       <span class="symbol">
         <span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use get[Configuration] with reference config entry">getConfig</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<a href="" class="extype" name="play.api.Configuration">Configuration</a>]</span>
       </span>
-      
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@getConfig(path:String):Option[play.api.Configuration]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Retrieves a sub-configuration, i.e.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a sub-configuration, i.e. a configuration instance containing all keys starting with a given prefix.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
 <span class="kw">val</span> engineConfig = configuration.getConfig(<span class="lit">"engine"</span>)</pre><p>The root key of this new configuration will be ‘engine’, and you can access any sub-keys relatively.
 </p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>the root prefix for this sub-configuration</p></dd><dt>returns</dt><dd class="cmt"><p>a new configuration</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@deprecated</span>
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use get[Configuration] with reference config entry</p></dd></dl></div>
-    </li><li name="play.api.Configuration#getConfigList" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getConfigList(path:String):Option[java.util.List[play.api.Configuration]]"></a><a id="getConfigList(String):Option[List[Configuration]]"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#getConfigList(path:String):Option[java.util.List[play.api.Configuration]]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
+    </li><li name="play.api.Configuration#getConfigList" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getConfigList(path:String):Option[java.util.List[play.api.Configuration]]"></a>
+      <a id="getConfigList(String):Option[List[Configuration]]"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -1294,20 +896,21 @@ Authorized values are <code>yes</code>/<code>no</code> or <code>true</code>/<cod
       <span class="symbol">
         <span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use underlying.getConfigList with reference config entry">getConfigList</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="java.util.List">List</span>[<a href="" class="extype" name="play.api.Configuration">Configuration</a>]]</span>
       </span>
-      
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@getConfigList(path:String):Option[java.util.List[play.api.Configuration]]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Retrieves a List of sub-configurations, i.e.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a List of sub-configurations, i.e. a configuration instance for each key that matches the path.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
 <span class="kw">val</span> engineConfigs = configuration.getConfigList(<span class="lit">"engine"</span>)</pre><p>The root key of this new configuration will be &quot;engine&quot;, and you can access any sub-keys relatively.
 </p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@deprecated</span>
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use underlying.getConfigList with reference config entry</p></dd></dl></div>
-    </li><li name="play.api.Configuration#getConfigSeq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getConfigSeq(path:String):Option[Seq[play.api.Configuration]]"></a><a id="getConfigSeq(String):Option[Seq[Configuration]]"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#getConfigSeq(path:String):Option[Seq[play.api.Configuration]]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
+    </li><li name="play.api.Configuration#getConfigSeq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getConfigSeq(path:String):Option[Seq[play.api.Configuration]]"></a>
+      <a id="getConfigSeq(String):Option[Seq[Configuration]]"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -1315,20 +918,21 @@ Authorized values are <code>yes</code>/<code>no</code> or <code>true</code>/<cod
       <span class="symbol">
         <span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use underlying.getConfigList with reference config entry">getConfigSeq</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Seq">Seq</span>[<a href="" class="extype" name="play.api.Configuration">Configuration</a>]]</span>
       </span>
-      
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@getConfigSeq(path:String):Option[Seq[play.api.Configuration]]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Retrieves a Seq of sub-configurations, i.e.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a Seq of sub-configurations, i.e. a configuration instance for each key that matches the path.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
 <span class="kw">val</span> engineConfigs = configuration.getConfigSeq(<span class="lit">"engine"</span>)</pre><p>The root key of this new configuration will be &quot;engine&quot;, and you can access any sub-keys relatively.
 </p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@deprecated</span>
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use underlying.getConfigList with reference config entry</p></dd></dl></div>
-    </li><li name="play.api.Configuration#getDouble" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getDouble(path:String):Option[Double]"></a><a id="getDouble(String):Option[Double]"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#getDouble(path:String):Option[Double]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
+    </li><li name="play.api.Configuration#getDouble" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getDouble(path:String):Option[Double]"></a>
+      <a id="getDouble(String):Option[Double]"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -1336,20 +940,21 @@ Authorized values are <code>yes</code>/<code>no</code> or <code>true</code>/<cod
       <span class="symbol">
         <span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use get[Double] with reference config entry">getDouble</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Double">Double</span>]</span>
       </span>
-      
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@getDouble(path:String):Option[Double]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Retrieves a configuration value as a <code>Double</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a configuration value as a <code>Double</code>.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
 <span class="kw">val</span> population = configuration.getDouble(<span class="lit">"world.population"</span>)</pre><p>A configuration error will be thrown if the configuration value is not a valid <code>Double</code>.
 </p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>the configuration key, relative to the configuration root key</p></dd><dt>returns</dt><dd class="cmt"><p>a configuration value</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@deprecated</span>
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use get[Double] with reference config entry</p></dd></dl></div>
-    </li><li name="play.api.Configuration#getDoubleList" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getDoubleList(path:String):Option[java.util.List[Double]]"></a><a id="getDoubleList(String):Option[List[Double]]"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#getDoubleList(path:String):Option[java.util.List[Double]]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
+    </li><li name="play.api.Configuration#getDoubleList" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getDoubleList(path:String):Option[java.util.List[Double]]"></a>
+      <a id="getDoubleList(String):Option[List[Double]]"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -1357,19 +962,20 @@ Authorized values are <code>yes</code>/<code>no</code> or <code>true</code>/<cod
       <span class="symbol">
         <span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use underlying.getDoubleList with reference config entry">getDoubleList</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="java.util.List">List</span>[<span class="extype" name="java.lang.Double">Double</span>]]</span>
       </span>
-      
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@getDoubleList(path:String):Option[java.util.List[Double]]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Retrieves a configuration value as a List of <code>Double</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a configuration value as a List of <code>Double</code>.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
 <span class="kw">val</span> maxSizes = configuration.getDoubleList(<span class="lit">"engine.maxSizes"</span>)</pre><p>The configuration must be provided as:</p><pre>engine.maxSizes = [<span class="num">5.0</span>, <span class="num">3.34</span>, <span class="num">2.6</span>]</pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@deprecated</span>
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use underlying.getDoubleList with reference config entry</p></dd></dl></div>
-    </li><li name="play.api.Configuration#getDoubleSeq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getDoubleSeq(path:String):Option[Seq[Double]]"></a><a id="getDoubleSeq(String):Option[Seq[Double]]"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#getDoubleSeq(path:String):Option[Seq[Double]]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
+    </li><li name="play.api.Configuration#getDoubleSeq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getDoubleSeq(path:String):Option[Seq[Double]]"></a>
+      <a id="getDoubleSeq(String):Option[Seq[Double]]"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -1377,19 +983,20 @@ Authorized values are <code>yes</code>/<code>no</code> or <code>true</code>/<cod
       <span class="symbol">
         <span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use get[Seq[Double]] with reference config entry">getDoubleSeq</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="java.lang.Double">Double</span>]]</span>
       </span>
-      
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@getDoubleSeq(path:String):Option[Seq[Double]]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Retrieves a configuration value as a Seq of <code>Double</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a configuration value as a Seq of <code>Double</code>.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
 <span class="kw">val</span> maxSizes = configuration.getDoubleSeq(<span class="lit">"engine.maxSizes"</span>)</pre><p>The configuration must be provided as:</p><pre>engine.maxSizes = [<span class="num">5.0</span>, <span class="num">3.34</span>, <span class="num">2.6</span>]</pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@deprecated</span>
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use get[Seq[Double]] with reference config entry</p></dd></dl></div>
-    </li><li name="play.api.Configuration#getInt" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getInt(path:String):Option[Int]"></a><a id="getInt(String):Option[Int]"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#getInt(path:String):Option[Int]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
+    </li><li name="play.api.Configuration#getInt" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getInt(path:String):Option[Int]"></a>
+      <a id="getInt(String):Option[Int]"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -1397,20 +1004,21 @@ Authorized values are <code>yes</code>/<code>no</code> or <code>true</code>/<cod
       <span class="symbol">
         <span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use get[Int] with reference config entry">getInt</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Int">Int</span>]</span>
       </span>
-      
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@getInt(path:String):Option[Int]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Retrieves a configuration value as an <code>Int</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a configuration value as an <code>Int</code>.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
 <span class="kw">val</span> poolSize = configuration.getInt(<span class="lit">"engine.pool.size"</span>)</pre><p>A configuration error will be thrown if the configuration value is not a valid <code>Int</code>.
 </p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>the configuration key, relative to the configuration root key</p></dd><dt>returns</dt><dd class="cmt"><p>a configuration value</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@deprecated</span>
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use get[Int] with reference config entry</p></dd></dl></div>
-    </li><li name="play.api.Configuration#getIntList" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getIntList(path:String):Option[java.util.List[Integer]]"></a><a id="getIntList(String):Option[List[Integer]]"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#getIntList(path:String):Option[java.util.List[Integer]]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
+    </li><li name="play.api.Configuration#getIntList" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getIntList(path:String):Option[java.util.List[Integer]]"></a>
+      <a id="getIntList(String):Option[List[Integer]]"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -1418,19 +1026,20 @@ Authorized values are <code>yes</code>/<code>no</code> or <code>true</code>/<cod
       <span class="symbol">
         <span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use underlying.getIntList with reference config entry">getIntList</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="java.util.List">List</span>[<span class="extype" name="java.lang.Integer">Integer</span>]]</span>
       </span>
-      
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@getIntList(path:String):Option[java.util.List[Integer]]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Retrieves a configuration value as a List of <code>Integer</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a configuration value as a List of <code>Integer</code>.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
 <span class="kw">val</span> maxSizes = configuration.getIntList(<span class="lit">"engine.maxSizes"</span>)</pre><p>The configuration must be provided as:</p><pre>engine.maxSizes = [<span class="num">100</span>, <span class="num">500</span>, <span class="num">2</span>]</pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@deprecated</span>
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use underlying.getIntList with reference config entry</p></dd></dl></div>
-    </li><li name="play.api.Configuration#getIntSeq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getIntSeq(path:String):Option[Seq[Integer]]"></a><a id="getIntSeq(String):Option[Seq[Integer]]"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#getIntSeq(path:String):Option[Seq[Integer]]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
+    </li><li name="play.api.Configuration#getIntSeq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getIntSeq(path:String):Option[Seq[Integer]]"></a>
+      <a id="getIntSeq(String):Option[Seq[Integer]]"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -1438,19 +1047,20 @@ Authorized values are <code>yes</code>/<code>no</code> or <code>true</code>/<cod
       <span class="symbol">
         <span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use get[Seq[Int]] with reference config entry">getIntSeq</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="java.lang.Integer">Integer</span>]]</span>
       </span>
-      
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@getIntSeq(path:String):Option[Seq[Integer]]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Retrieves a configuration value as a Seq of <code>Integer</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a configuration value as a Seq of <code>Integer</code>.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
 <span class="kw">val</span> maxSizes = configuration.getIntSeq(<span class="lit">"engine.maxSizes"</span>)</pre><p>The configuration must be provided as:</p><pre>engine.maxSizes = [<span class="num">100</span>, <span class="num">500</span>, <span class="num">2</span>]</pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@deprecated</span>
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use get[Seq[Int]] with reference config entry</p></dd></dl></div>
-    </li><li name="play.api.Configuration#getList" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getList(path:String):Option[com.typesafe.config.ConfigList]"></a><a id="getList(String):Option[ConfigList]"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#getList(path:String):Option[com.typesafe.config.ConfigList]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
+    </li><li name="play.api.Configuration#getList" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getList(path:String):Option[com.typesafe.config.ConfigList]"></a>
+      <a id="getList(String):Option[ConfigList]"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -1458,19 +1068,20 @@ Authorized values are <code>yes</code>/<code>no</code> or <code>true</code>/<cod
       <span class="symbol">
         <span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use get[ConfigList] with reference config entry">getList</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.typesafe.config.ConfigList">ConfigList</span>]</span>
       </span>
-      
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@getList(path:String):Option[com.typesafe.config.ConfigList]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Gets a list value (with any element type) as a ConfigList, which implements java.util.List&lt;ConfigValue&gt;.</p><div class="fullcomment"><div class="comment cmt"><p>Gets a list value (with any element type) as a ConfigList, which implements java.util.List&lt;ConfigValue&gt;.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
 <span class="kw">val</span> maxSizes = configuration.getList(<span class="lit">"engine.maxSizes"</span>)</pre><p>The configuration must be provided as:</p><pre>engine.maxSizes = [<span class="lit">"foo"</span>, <span class="lit">"bar"</span>]</pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@deprecated</span>
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use get[ConfigList] with reference config entry</p></dd></dl></div>
-    </li><li name="play.api.Configuration#getLong" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getLong(path:String):Option[Long]"></a><a id="getLong(String):Option[Long]"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#getLong(path:String):Option[Long]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
+    </li><li name="play.api.Configuration#getLong" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getLong(path:String):Option[Long]"></a>
+      <a id="getLong(String):Option[Long]"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -1478,20 +1089,21 @@ Authorized values are <code>yes</code>/<code>no</code> or <code>true</code>/<cod
       <span class="symbol">
         <span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use get[Long] with reference config entry">getLong</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Long">Long</span>]</span>
       </span>
-      
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@getLong(path:String):Option[Long]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Retrieves a configuration value as a <code>Long</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a configuration value as a <code>Long</code>.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
 <span class="kw">val</span> duration = configuration.getLong(<span class="lit">"timeout.duration"</span>)</pre><p>A configuration error will be thrown if the configuration value is not a valid <code>Long</code>.
 </p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>the configuration key, relative to the configuration root key</p></dd><dt>returns</dt><dd class="cmt"><p>a configuration value</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@deprecated</span>
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use get[Long] with reference config entry</p></dd></dl></div>
-    </li><li name="play.api.Configuration#getLongList" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getLongList(path:String):Option[java.util.List[Long]]"></a><a id="getLongList(String):Option[List[Long]]"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#getLongList(path:String):Option[java.util.List[Long]]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
+    </li><li name="play.api.Configuration#getLongList" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getLongList(path:String):Option[java.util.List[Long]]"></a>
+      <a id="getLongList(String):Option[List[Long]]"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -1499,19 +1111,20 @@ Authorized values are <code>yes</code>/<code>no</code> or <code>true</code>/<cod
       <span class="symbol">
         <span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use underlying.getLongList with reference config entry">getLongList</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="java.util.List">List</span>[<span class="extype" name="java.lang.Long">Long</span>]]</span>
       </span>
-      
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@getLongList(path:String):Option[java.util.List[Long]]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Retrieves a configuration value as a List of <code>Long</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a configuration value as a List of <code>Long</code>.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
 <span class="kw">val</span> maxSizes = configuration.getLongList(<span class="lit">"engine.maxSizes"</span>)</pre><p>The configuration must be provided as:</p><pre>engine.maxSizes = [<span class="num">10000000000000</span>, <span class="num">500</span>, <span class="num">2000</span>]</pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@deprecated</span>
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use underlying.getLongList with reference config entry</p></dd></dl></div>
-    </li><li name="play.api.Configuration#getLongSeq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getLongSeq(path:String):Option[Seq[Long]]"></a><a id="getLongSeq(String):Option[Seq[Long]]"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#getLongSeq(path:String):Option[Seq[Long]]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
+    </li><li name="play.api.Configuration#getLongSeq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getLongSeq(path:String):Option[Seq[Long]]"></a>
+      <a id="getLongSeq(String):Option[Seq[Long]]"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -1519,19 +1132,20 @@ Authorized values are <code>yes</code>/<code>no</code> or <code>true</code>/<cod
       <span class="symbol">
         <span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use get[Seq[Long]] with reference config entry">getLongSeq</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="java.lang.Long">Long</span>]]</span>
       </span>
-      
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@getLongSeq(path:String):Option[Seq[Long]]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Retrieves a configuration value as a Seq of <code>Long</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a configuration value as a Seq of <code>Long</code>.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
 <span class="kw">val</span> maxSizes = configuration.getLongSeq(<span class="lit">"engine.maxSizes"</span>)</pre><p>The configuration must be provided as:</p><pre>engine.maxSizes = [<span class="num">10000000000000</span>, <span class="num">500</span>, <span class="num">2000</span>]</pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@deprecated</span>
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use get[Seq[Long]] with reference config entry</p></dd></dl></div>
-    </li><li name="play.api.Configuration#getMilliseconds" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getMilliseconds(path:String):Option[Long]"></a><a id="getMilliseconds(String):Option[Long]"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#getMilliseconds(path:String):Option[Long]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
+    </li><li name="play.api.Configuration#getMilliseconds" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getMilliseconds(path:String):Option[Long]"></a>
+      <a id="getMilliseconds(String):Option[Long]"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -1539,19 +1153,20 @@ Authorized values are <code>yes</code>/<code>no</code> or <code>true</code>/<cod
       <span class="symbol">
         <span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use getMillis with reference config entry">getMilliseconds</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Long">Long</span>]</span>
       </span>
-      
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@getMilliseconds(path:String):Option[Long]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Retrieves a configuration value as <code>Milliseconds</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a configuration value as <code>Milliseconds</code>.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
 <span class="kw">val</span> timeout = configuration.getMilliseconds(<span class="lit">"engine.timeout"</span>)</pre><p>The configuration must be provided as:</p><pre>engine.timeout = <span class="num">1</span> second</pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@deprecated</span>
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use getMillis with reference config entry</p></dd></dl></div>
-    </li><li name="play.api.Configuration#getMillisecondsList" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getMillisecondsList(path:String):Option[java.util.List[Long]]"></a><a id="getMillisecondsList(String):Option[List[Long]]"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#getMillisecondsList(path:String):Option[java.util.List[Long]]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
+    </li><li name="play.api.Configuration#getMillisecondsList" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getMillisecondsList(path:String):Option[java.util.List[Long]]"></a>
+      <a id="getMillisecondsList(String):Option[List[Long]]"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -1559,19 +1174,20 @@ Authorized values are <code>yes</code>/<code>no</code> or <code>true</code>/<cod
       <span class="symbol">
         <span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use underlying.getMillisecondsList with reference config entry">getMillisecondsList</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="java.util.List">List</span>[<span class="extype" name="java.lang.Long">Long</span>]]</span>
       </span>
-      
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@getMillisecondsList(path:String):Option[java.util.List[Long]]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Retrieves a configuration value as List of <code>Milliseconds</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a configuration value as List of <code>Milliseconds</code>.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
 <span class="kw">val</span> timeouts = configuration.getMillisecondsList(<span class="lit">"engine.timeouts"</span>)</pre><p>The configuration must be provided as:</p><pre>engine.timeouts = [<span class="num">1</span> second, <span class="num">1</span> second]</pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@deprecated</span>
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use underlying.getMillisecondsList with reference config entry</p></dd></dl></div>
-    </li><li name="play.api.Configuration#getMillisecondsSeq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getMillisecondsSeq(path:String):Option[Seq[Long]]"></a><a id="getMillisecondsSeq(String):Option[Seq[Long]]"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#getMillisecondsSeq(path:String):Option[Seq[Long]]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
+    </li><li name="play.api.Configuration#getMillisecondsSeq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getMillisecondsSeq(path:String):Option[Seq[Long]]"></a>
+      <a id="getMillisecondsSeq(String):Option[Seq[Long]]"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -1579,19 +1195,20 @@ Authorized values are <code>yes</code>/<code>no</code> or <code>true</code>/<cod
       <span class="symbol">
         <span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use get[Seq[Duration]].map(_.toMillis) with reference config entry">getMillisecondsSeq</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="java.lang.Long">Long</span>]]</span>
       </span>
-      
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@getMillisecondsSeq(path:String):Option[Seq[Long]]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Retrieves a configuration value as Seq of <code>Milliseconds</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a configuration value as Seq of <code>Milliseconds</code>.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
 <span class="kw">val</span> timeouts = configuration.getMillisecondsSeq(<span class="lit">"engine.timeouts"</span>)</pre><p>The configuration must be provided as:</p><pre>engine.timeouts = [<span class="num">1</span> second, <span class="num">1</span> second]</pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@deprecated</span>
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use get[Seq[Duration]].map(_.toMillis) with reference config entry</p></dd></dl></div>
-    </li><li name="play.api.Configuration#getNanoseconds" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getNanoseconds(path:String):Option[Long]"></a><a id="getNanoseconds(String):Option[Long]"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#getNanoseconds(path:String):Option[Long]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
+    </li><li name="play.api.Configuration#getNanoseconds" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getNanoseconds(path:String):Option[Long]"></a>
+      <a id="getNanoseconds(String):Option[Long]"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -1599,19 +1216,20 @@ Authorized values are <code>yes</code>/<code>no</code> or <code>true</code>/<cod
       <span class="symbol">
         <span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use getNanos with reference config entry">getNanoseconds</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Long">Long</span>]</span>
       </span>
-      
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@getNanoseconds(path:String):Option[Long]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Retrieves a configuration value as <code>Nanoseconds</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a configuration value as <code>Nanoseconds</code>.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
 <span class="kw">val</span> timeout = configuration.getNanoseconds(<span class="lit">"engine.timeout"</span>)</pre><p>The configuration must be provided as:</p><pre>engine.timeout = <span class="num">1</span> second</pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@deprecated</span>
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use getNanos with reference config entry</p></dd></dl></div>
-    </li><li name="play.api.Configuration#getNanosecondsList" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getNanosecondsList(path:String):Option[java.util.List[Long]]"></a><a id="getNanosecondsList(String):Option[List[Long]]"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#getNanosecondsList(path:String):Option[java.util.List[Long]]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
+    </li><li name="play.api.Configuration#getNanosecondsList" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getNanosecondsList(path:String):Option[java.util.List[Long]]"></a>
+      <a id="getNanosecondsList(String):Option[List[Long]]"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -1619,19 +1237,20 @@ Authorized values are <code>yes</code>/<code>no</code> or <code>true</code>/<cod
       <span class="symbol">
         <span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use underlying.getNanosecondsList with reference config entry">getNanosecondsList</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="java.util.List">List</span>[<span class="extype" name="java.lang.Long">Long</span>]]</span>
       </span>
-      
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@getNanosecondsList(path:String):Option[java.util.List[Long]]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Retrieves a configuration value as List of <code>Nanoseconds</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a configuration value as List of <code>Nanoseconds</code>.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
 <span class="kw">val</span> timeouts = configuration.getNanosecondsList(<span class="lit">"engine.timeouts"</span>)</pre><p>The configuration must be provided as:</p><pre>engine.timeouts = [<span class="num">1</span> second, <span class="num">1</span> second]</pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@deprecated</span>
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use underlying.getNanosecondsList with reference config entry</p></dd></dl></div>
-    </li><li name="play.api.Configuration#getNanosecondsSeq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getNanosecondsSeq(path:String):Option[Seq[Long]]"></a><a id="getNanosecondsSeq(String):Option[Seq[Long]]"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#getNanosecondsSeq(path:String):Option[Seq[Long]]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
+    </li><li name="play.api.Configuration#getNanosecondsSeq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getNanosecondsSeq(path:String):Option[Seq[Long]]"></a>
+      <a id="getNanosecondsSeq(String):Option[Seq[Long]]"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -1639,19 +1258,20 @@ Authorized values are <code>yes</code>/<code>no</code> or <code>true</code>/<cod
       <span class="symbol">
         <span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use get[Seq[Duration]].map(_.toMillis) with reference config entry">getNanosecondsSeq</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="java.lang.Long">Long</span>]]</span>
       </span>
-      
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@getNanosecondsSeq(path:String):Option[Seq[Long]]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Retrieves a configuration value as Seq of <code>Nanoseconds</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a configuration value as Seq of <code>Nanoseconds</code>.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
 <span class="kw">val</span> timeouts = configuration.getNanosecondsSeq(<span class="lit">"engine.timeouts"</span>)</pre><p>The configuration must be provided as:</p><pre>engine.timeouts = [<span class="num">1</span> second, <span class="num">1</span> second]</pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@deprecated</span>
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use get[Seq[Duration]].map(_.toMillis) with reference config entry</p></dd></dl></div>
-    </li><li name="play.api.Configuration#getNumber" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getNumber(path:String):Option[Number]"></a><a id="getNumber(String):Option[Number]"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#getNumber(path:String):Option[Number]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
+    </li><li name="play.api.Configuration#getNumber" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getNumber(path:String):Option[Number]"></a>
+      <a id="getNumber(String):Option[Number]"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -1659,20 +1279,21 @@ Authorized values are <code>yes</code>/<code>no</code> or <code>true</code>/<cod
       <span class="symbol">
         <span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use get[Number] with reference config entry">getNumber</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="java.lang.Number">Number</span>]</span>
       </span>
-      
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@getNumber(path:String):Option[Number]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Retrieves a configuration value as a <code>Number</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a configuration value as a <code>Number</code>.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
 <span class="kw">val</span> counter = configuration.getNumber(<span class="lit">"foo.counter"</span>)</pre><p>A configuration error will be thrown if the configuration value is not a valid <code>Number</code>.
 </p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>the configuration key, relative to the configuration root key</p></dd><dt>returns</dt><dd class="cmt"><p>a configuration value</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@deprecated</span>
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use get[Number] with reference config entry</p></dd></dl></div>
-    </li><li name="play.api.Configuration#getNumberList" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getNumberList(path:String):Option[java.util.List[Number]]"></a><a id="getNumberList(String):Option[List[Number]]"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#getNumberList(path:String):Option[java.util.List[Number]]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
+    </li><li name="play.api.Configuration#getNumberList" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getNumberList(path:String):Option[java.util.List[Number]]"></a>
+      <a id="getNumberList(String):Option[List[Number]]"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -1680,19 +1301,20 @@ Authorized values are <code>yes</code>/<code>no</code> or <code>true</code>/<cod
       <span class="symbol">
         <span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use underlying.getNumberList with reference config entry">getNumberList</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="java.util.List">List</span>[<span class="extype" name="java.lang.Number">Number</span>]]</span>
       </span>
-      
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@getNumberList(path:String):Option[java.util.List[Number]]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Retrieves a configuration value as a List of <code>Number</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a configuration value as a List of <code>Number</code>.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
 <span class="kw">val</span> maxSizes = configuration.getNumberList(<span class="lit">"engine.maxSizes"</span>)</pre><p>The configuration must be provided as:</p><pre>engine.maxSizes = [<span class="num">50</span>, <span class="num">500</span>, <span class="num">5000</span>]</pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@deprecated</span>
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use underlying.getNumberList with reference config entry</p></dd></dl></div>
-    </li><li name="play.api.Configuration#getNumberSeq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getNumberSeq(path:String):Option[Seq[Number]]"></a><a id="getNumberSeq(String):Option[Seq[Number]]"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#getNumberSeq(path:String):Option[Seq[Number]]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
+    </li><li name="play.api.Configuration#getNumberSeq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getNumberSeq(path:String):Option[Seq[Number]]"></a>
+      <a id="getNumberSeq(String):Option[Seq[Number]]"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -1700,19 +1322,20 @@ Authorized values are <code>yes</code>/<code>no</code> or <code>true</code>/<cod
       <span class="symbol">
         <span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use get[Seq[Number]] with reference config entry">getNumberSeq</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="java.lang.Number">Number</span>]]</span>
       </span>
-      
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@getNumberSeq(path:String):Option[Seq[Number]]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Retrieves a configuration value as a Seq of <code>Number</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a configuration value as a Seq of <code>Number</code>.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
 <span class="kw">val</span> maxSizes = configuration.getNumberSeq(<span class="lit">"engine.maxSizes"</span>)</pre><p>The configuration must be provided as:</p><pre>engine.maxSizes = [<span class="num">50</span>, <span class="num">500</span>, <span class="num">5000</span>]</pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@deprecated</span>
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use get[Seq[Number]] with reference config entry</p></dd></dl></div>
-    </li><li name="play.api.Configuration#getObject" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getObject(path:String):Option[com.typesafe.config.ConfigObject]"></a><a id="getObject(String):Option[ConfigObject]"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#getObject(path:String):Option[com.typesafe.config.ConfigObject]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
+    </li><li name="play.api.Configuration#getObject" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getObject(path:String):Option[com.typesafe.config.ConfigObject]"></a>
+      <a id="getObject(String):Option[ConfigObject]"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -1720,19 +1343,20 @@ Authorized values are <code>yes</code>/<code>no</code> or <code>true</code>/<cod
       <span class="symbol">
         <span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use get[ConfigObject] with reference config entry">getObject</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.typesafe.config.ConfigObject">ConfigObject</span>]</span>
       </span>
-      
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@getObject(path:String):Option[com.typesafe.config.ConfigObject]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Retrieves a ConfigObject for this path, which implements Map&lt;String,ConfigValue&gt;</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a ConfigObject for this path, which implements Map&lt;String,ConfigValue&gt;</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
 <span class="kw">val</span> engineProperties = configuration.getObject(<span class="lit">"engine.properties"</span>)</pre><p>The configuration must be provided as:</p><pre>engine.properties = {id: <span class="num">1</span>, power: <span class="num">5</span>}</pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@deprecated</span>
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use get[ConfigObject] with reference config entry</p></dd></dl></div>
-    </li><li name="play.api.Configuration#getObjectList" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getObjectList(path:String):Option[java.util.List[_&lt;:com.typesafe.config.ConfigObject]]"></a><a id="getObjectList(String):Option[List[_&lt;:ConfigObject]]"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#getObjectList(path:String):Option[java.util.List[_&lt;:com.typesafe.config.ConfigObject]]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
+    </li><li name="play.api.Configuration#getObjectList" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getObjectList(path:String):Option[java.util.List[_&lt;:com.typesafe.config.ConfigObject]]"></a>
+      <a id="getObjectList(String):Option[List[_&lt;:ConfigObject]]"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -1740,19 +1364,20 @@ Authorized values are <code>yes</code>/<code>no</code> or <code>true</code>/<cod
       <span class="symbol">
         <span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use underlying.getObjectList with reference config entry">getObjectList</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="java.util.List">List</span>[_ &lt;: <span class="extype" name="com.typesafe.config.ConfigObject">ConfigObject</span>]]</span>
       </span>
-      
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@getObjectList(path:String):Option[java.util.List[_&lt;:com.typesafe.config.ConfigObject]]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Retrieves a configuration value as a List of <code>ConfigObject</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a configuration value as a List of <code>ConfigObject</code>.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
 <span class="kw">val</span> engineProperties = configuration.getObjectList(<span class="lit">"engine.properties"</span>)</pre><p>The configuration must be provided as:</p><pre>engine.properties = [{id: <span class="num">5</span>, power: <span class="num">3</span>}, {id: <span class="num">6</span>, power: <span class="num">20</span>}]</pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@deprecated</span>
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use underlying.getObjectList with reference config entry</p></dd></dl></div>
-    </li><li name="play.api.Configuration#getString" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getString(path:String,validValues:Option[Set[String]]):Option[String]"></a><a id="getString(String,Option[Set[String]]):Option[String]"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#getString(path:String,validValues:Option[Set[String]]):Option[String]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
+    </li><li name="play.api.Configuration#getString" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getString(path:String,validValues:Option[Set[String]]):Option[String]"></a>
+      <a id="getString(String,Option[Set[String]]):Option[String]"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -1760,20 +1385,21 @@ Authorized values are <code>yes</code>/<code>no</code> or <code>true</code>/<cod
       <span class="symbol">
         <span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use get[String] or getAndValidate[String] with reference config entry">getString</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="validValues">validValues: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="scala.Predef.String">String</span>]] = <span class="symbol">None</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
-      
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@getString(path:String,validValues:Option[Set[String]]):Option[String]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Retrieves a configuration value as a <code>String</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a configuration value as a <code>String</code>.</p><p>This method supports an optional set of valid values:</p><pre><span class="kw">val</span> config = Configuration.load()
 <span class="kw">val</span> mode = config.getString(<span class="lit">"engine.mode"</span>, <span class="std">Some</span>(<span class="std">Set</span>(<span class="lit">"dev"</span>,<span class="lit">"prod"</span>)))</pre><p>A configuration error will be thrown if the configuration value does not match any of the required values.
 </p></div><dl class="paramcmts block"><dt class="param">path</dt><dd class="cmt"><p>the configuration key, relative to configuration root key</p></dd><dt class="param">validValues</dt><dd class="cmt"><p>valid values for this configuration</p></dd><dt>returns</dt><dd class="cmt"><p>a configuration value</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@deprecated</span>
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use get[String] or getAndValidate[String] with reference config entry</p></dd></dl></div>
-    </li><li name="play.api.Configuration#getStringList" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getStringList(path:String):Option[java.util.List[String]]"></a><a id="getStringList(String):Option[List[String]]"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#getStringList(path:String):Option[java.util.List[String]]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
+    </li><li name="play.api.Configuration#getStringList" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getStringList(path:String):Option[java.util.List[String]]"></a>
+      <a id="getStringList(String):Option[List[String]]"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -1781,19 +1407,20 @@ Authorized values are <code>yes</code>/<code>no</code> or <code>true</code>/<cod
       <span class="symbol">
         <span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use underlying.getStringList with reference config entry">getStringList</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="java.util.List">List</span>[<span class="extype" name="java.lang.String">String</span>]]</span>
       </span>
-      
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@getStringList(path:String):Option[java.util.List[String]]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Retrieves a configuration value as a List of <code>String</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a configuration value as a List of <code>String</code>.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
 <span class="kw">val</span> names = configuration.getStringList(<span class="lit">"names"</span>)</pre><p>The configuration must be provided as:</p><pre>names = [<span class="lit">"Jim"</span>, <span class="lit">"Bob"</span>, <span class="lit">"Steve"</span>]</pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@deprecated</span>
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use underlying.getStringList with reference config entry</p></dd></dl></div>
-    </li><li name="play.api.Configuration#getStringSeq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getStringSeq(path:String):Option[Seq[String]]"></a><a id="getStringSeq(String):Option[Seq[String]]"></a>
-      <span class="permalink">
-      <a href="../../play/api/Configuration.html#getStringSeq(path:String):Option[Seq[String]]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
+    </li><li name="play.api.Configuration#getStringSeq" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getStringSeq(path:String):Option[Seq[String]]"></a>
+      <a id="getStringSeq(String):Option[Seq[String]]"></a>
+      <h4 class="signature">
       <span class="modifier_kind">
         <span class="modifier"></span>
         <span class="kind">def</span>
@@ -1801,7 +1428,11 @@ Authorized values are <code>yes</code>/<code>no</code> or <code>true</code>/<cod
       <span class="symbol">
         <span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use get[Seq[String]] with reference config entry">getStringSeq</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="java.lang.String">String</span>]]</span>
       </span>
-      
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.Configuration@getStringSeq(path:String):Option[Seq[String]]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
       <p class="shortcomment cmt">Retrieves a configuration value as a Seq of <code>String</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Retrieves a configuration value as a Seq of <code>String</code>.</p><p>For example:</p><pre><span class="kw">val</span> configuration = Configuration.load()
 <span class="kw">val</span> names = configuration.getStringSeq(<span class="lit">"names"</span>)</pre><p>The configuration must be provided as:</p><pre>names = [<span class="lit">"Jim"</span>, <span class="lit">"Bob"</span>, <span class="lit">"Steve"</span>]</pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@deprecated</span>
@@ -1840,9 +1471,7 @@ Authorized values are <code>yes</code>/<code>no</code> or <code>true</code>/<cod
       <div id="tooltip"></div>
 
       <div id="footer">  </div>
-    </body>
-          </div>
-        </div>
-      </div>
+
+
     </body>
       </html>

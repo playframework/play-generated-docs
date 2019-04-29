@@ -1,0 +1,944 @@
+<!DOCTYPE html >
+<html>
+        <head>
+          <title>api - play.api</title>
+          <meta name="description" content="api - play.api" />
+          <meta name="keywords" content="api play.api" />
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link href="../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../lib/template.js"></script>
+      <script type="text/javascript" src="../../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../index.html';
+            var hash = 'play.api.package';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
+    
+        </head>
+        <body class="value">
+      <div id="definition">
+        <img alt="Package" src="../../lib/package_big.png" />
+        <p id="owner"><a href="../package.html" class="extype" name="play">play</a></p>
+        <h1>api</h1><span class="permalink">
+      <a href="../../index.html#play.api.package" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <span class="name">api</span>
+      </span>
+      </h4>
+      
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Contains the public API for Scala developers.</p><h6> Access the current Play application </h6><pre><span class="kw">import</span> play.api.Play.current</pre><h6> Read configuration </h6><pre><span class="kw">val</span> poolSize = configuration.getInt(<span class="lit">"engine.pool.size"</span>)</pre><h6> Use the logger </h6><pre>Logger.info(<span class="lit">"Hello!"</span>)</pre><h6> Define a Plugin </h6><pre><span class="kw">class</span> MyPlugin(app: Application) <span class="kw">extends</span> Plugin</pre><h6> Create adhoc applications (for testing) </h6><pre><span class="kw">val</span> application = Application(<span class="kw">new</span> File(<span class="lit">"."</span>), <span class="kw">this</span>.getClass.getClassloader, <span class="std">None</span>, Play.Mode.DEV)</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.7.0-RC3/framework/src/play/src/main/scala/play/api/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
+          <span class="toggle">Linear Supertypes</span>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+        </div></div>
+        
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
+        <div id="order">
+              <span class="filtertype">Ordering</span>
+              <ol>
+                
+                <li class="alpha in"><span>Alphabetic</span></li>
+                <li class="inherit out"><span>By Inheritance</span></li>
+              </ol>
+            </div>
+        <div id="ancestors">
+                <span class="filtertype">Inherited<br />
+                </span>
+                <ol id="linearization">
+                  <li class="in" name="play.api"><span>api</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                </ol>
+              </div><div id="ancestors">
+            <span class="filtertype"></span>
+            <ol>
+              <li class="hideall out"><span>Hide All</span></li>
+              <li class="showall in"><span>Show All</span></li>
+            </ol>
+          </div>
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        
+
+        <div id="types" class="types members">
+              <h3>Type Members</h3>
+              <ol><li name="play.api.Application" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="ApplicationextendsAnyRef"></a>
+      <a id="Application:Application"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="Application.html"><span class="name">Application</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@ApplicationextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A Play application.</p><div class="fullcomment"><div class="comment cmt"><p>A Play application.</p><p>Application creation is handled by the framework engine.</p><p>If you need to create an ad-hoc application,
+for example in case of unit testing, you can easily achieve this using:</p><pre><span class="kw">val</span> application = <span class="kw">new</span> DefaultApplication(<span class="kw">new</span> File(<span class="lit">"."</span>), <span class="kw">this</span>.getClass.getClassloader, <span class="std">None</span>, Play.Mode.Dev)</pre><p>This will create an application using the current classloader.</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@implicitNotFound</span><span class="args">(<span>
+      
+      <span class="defval" name="&quot;You do not have an implicit Application in scope. If you want to bring the current running Application into context, please use dependency injection.&quot;">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="play.api.ApplicationLoader" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="ApplicationLoaderextendsAnyRef"></a>
+      <a id="ApplicationLoader:ApplicationLoader"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="ApplicationLoader.html"><span class="name">ApplicationLoader</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@ApplicationLoaderextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Loads an application.</p><div class="fullcomment"><div class="comment cmt"><p>Loads an application.  This is responsible for instantiating an application given a context.</p><p>Application loaders are expected to instantiate all parts of an application, wiring everything together. They may
+be manually implemented, if compile time wiring is preferred, or core/third party implementations may be used, for
+example that provide a runtime dependency injection framework.</p><p>During dev mode, an ApplicationLoader will be instantiated once, and called once, each time the application is
+reloaded. In prod mode, the ApplicationLoader will be instantiated and called once when the application is started.</p><p>Out of the box Play provides a Guice module that defines a Java and Scala default implementation based on Guice,
+as well as various helpers like GuiceApplicationBuilder.  This can be used simply by adding the &quot;PlayImport.guice&quot;
+dependency in build.sbt.</p><p>A custom application loader can be configured using the <code>play.application.loader</code> configuration property.
+Implementations must define a no-arg constructor.
+</p></div></div>
+    </li><li name="play.api.BuiltInComponents" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="BuiltInComponentsextendsI18nComponents"></a>
+      <a id="BuiltInComponents:BuiltInComponents"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="BuiltInComponents.html"><span class="name">BuiltInComponents</span></a><span class="result"> extends <a href="i18n/I18nComponents.html" class="extype" name="play.api.i18n.I18nComponents">I18nComponents</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@BuiltInComponentsextendsI18nComponents" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Helper to provide the Play built in components.</p>
+    </li><li name="play.api.BuiltInComponentsFromContext" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="BuiltInComponentsFromContextextendsBuiltInComponents"></a>
+      <a id="BuiltInComponentsFromContext:BuiltInComponentsFromContext"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="BuiltInComponentsFromContext.html"><span class="name">BuiltInComponentsFromContext</span></a><span class="result"> extends <a href="BuiltInComponents.html" class="extype" name="play.api.BuiltInComponents">BuiltInComponents</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@BuiltInComponentsFromContextextendsBuiltInComponents" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Helper that provides all the built in components dependencies from the application loader context
+</p>
+    </li><li name="play.api.ConfigLoader" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ConfigLoader[A]extendsAnyRef"></a>
+      <a id="ConfigLoader[A]:ConfigLoader[A]"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="ConfigLoader.html"><span class="name">ConfigLoader</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@ConfigLoader[A]extendsAnyRef" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A config loader
+</p>
+    </li><li name="play.api.Configuration" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ConfigurationextendsProductwithSerializable"></a>
+      <a id="Configuration:Configuration"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="Configuration.html"><span class="name">Configuration</span></a><span class="params">(<span name="underlying">underlying: <span class="extype" name="com.typesafe.config.Config">Config</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@ConfigurationextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A full configuration set.</p><div class="fullcomment"><div class="comment cmt"><p>A full configuration set.</p><p>The underlying implementation is provided by https://github.com/typesafehub/config.
+</p></div><dl class="paramcmts block"><dt class="param">underlying</dt><dd class="cmt"><p>the underlying Config implementation</p></dd></dl></div>
+    </li><li name="play.api.DefaultApplication" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="DefaultApplicationextendsApplication"></a>
+      <a id="DefaultApplication:DefaultApplication"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="DefaultApplication.html"><span class="name">DefaultApplication</span></a><span class="result"> extends <a href="Application.html" class="extype" name="play.api.Application">Application</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@DefaultApplicationextendsApplication" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@Singleton</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="play.api.DefaultMarkerContext" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="DefaultMarkerContextextendsMarkerContext"></a>
+      <a id="DefaultMarkerContext:DefaultMarkerContext"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="DefaultMarkerContext.html"><span class="name">DefaultMarkerContext</span></a><span class="result"> extends <a href="MarkerContext.html" class="extype" name="play.api.MarkerContext">MarkerContext</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@DefaultMarkerContextextendsMarkerContext" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A default marker context.</p><div class="fullcomment"><div class="comment cmt"><p>A default marker context.  This is used by <code>MarkerContext.apply</code>, but can also be used to provide
+explicit typing for markers.  For example, to define a SecurityContext marker, you can define a case
+object extending DefaultMarkerContext:</p><pre><span class="kw">case</span> <span class="kw">object</span> SecurityMarkerContext <span class="kw">extends</span> DefaultMarkerContext(MarkerFactory.getMarker(<span class="lit">"SECURITY"</span>))</pre></div></div>
+    </li><li name="play.api.Environment" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="EnvironmentextendsProductwithSerializable"></a>
+      <a id="Environment:Environment"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="Environment.html"><span class="name">Environment</span></a><span class="params">(<span name="rootPath">rootPath: <span class="extype" name="java.io.File">File</span></span>, <span name="classLoader">classLoader: <span class="extype" name="java.lang.ClassLoader">ClassLoader</span></span>, <span name="mode">mode: <a href="Mode.html" class="extype" name="play.api.Mode">Mode</a></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@EnvironmentextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">The environment for the application.</p><div class="fullcomment"><div class="comment cmt"><p>The environment for the application.</p><p>Captures concerns relating to the classloader and the filesystem for the application.
+</p></div><dl class="paramcmts block"><dt class="param">rootPath</dt><dd class="cmt"><p>The root path that the application is deployed at.</p></dd><dt class="param">classLoader</dt><dd class="cmt"><p>The classloader that all application classes and resources can be loaded from.</p></dd><dt class="param">mode</dt><dd class="cmt"><p>The mode of the application.</p></dd></dl></div>
+    </li><li name="play.api.Logger" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="LoggerextendsLoggerLike"></a>
+      <a id="Logger:Logger"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Logger.html"><span class="name">Logger</span></a><span class="result"> extends <a href="LoggerLike.html" class="extype" name="play.api.LoggerLike">LoggerLike</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@LoggerextendsLoggerLike" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A Play logger.</p>
+    </li><li name="play.api.LoggerConfigurator" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="LoggerConfiguratorextendsAnyRef"></a>
+      <a id="LoggerConfigurator:LoggerConfigurator"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="LoggerConfigurator.html"><span class="name">LoggerConfigurator</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@LoggerConfiguratorextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Runs through underlying logger configuration.</p>
+    </li><li name="play.api.LoggerLike" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="LoggerLikeextendsAnyRef"></a>
+      <a id="LoggerLike:LoggerLike"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="LoggerLike.html"><span class="name">LoggerLike</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@LoggerLikeextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Typical logger interface.</p>
+    </li><li name="play.api.LowPriorityMarkerContextImplicits" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="LowPriorityMarkerContextImplicitsextendsAnyRef"></a>
+      <a id="LowPriorityMarkerContextImplicits:LowPriorityMarkerContextImplicits"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="LowPriorityMarkerContextImplicits.html"><span class="name">LowPriorityMarkerContextImplicits</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@LowPriorityMarkerContextImplicitsextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.api.MarkerContext" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="MarkerContextextendsAnyRef"></a>
+      <a id="MarkerContext:MarkerContext"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="MarkerContext.html"><span class="name">MarkerContext</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@MarkerContextextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A MarkerContext trait, to provide easy access to org.slf4j.Marker in Logger API.</p><div class="fullcomment"><div class="comment cmt"><p>A MarkerContext trait, to provide easy access to org.slf4j.Marker in Logger API.  This is usually accessed
+with a marker through an implicit conversion from a Marker.</p><pre><span class="kw">implicit</span> <span class="kw">val</span> markerContext: MarkerContext = org.slf4j.MarkerFactory.getMarker(<span class="lit">"EXAMPLEMARKER"</span>)
+log.error(<span class="lit">"This message will be logged with the EXAMPLEMARKER marker"</span>)</pre></div></div>
+    </li><li name="play.api.Mode" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="ModeextendsAnyRef"></a>
+      <a id="Mode:Mode"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">sealed abstract </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="Mode.html"><span class="name">Mode</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@ModeextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Application mode, either <code>Dev</code>, <code>Test</code>, or <code>Prod</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Application mode, either <code>Dev</code>, <code>Test</code>, or <code>Prod</code>.
+</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><span class="extype" name="play.Mode">play.Mode</span></p></span></dd></dl></div>
+    </li><li name="play.api.NoHttpFiltersComponents" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="NoHttpFiltersComponentsextendsAnyRef"></a>
+      <a id="NoHttpFiltersComponents:NoHttpFiltersComponents"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="NoHttpFiltersComponents.html"><span class="name">NoHttpFiltersComponents</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@NoHttpFiltersComponentsextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A component to mix in when no default filters should be mixed in to BuiltInComponents.</p><div class="fullcomment"><div class="comment cmt"><p>A component to mix in when no default filters should be mixed in to BuiltInComponents.
+</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="BuiltInComponents.html#httpFilters:Seq[play.api.mvc.EssentialFilter]" class="extmbr" name="play.api.BuiltInComponents#httpFilters">BuiltInComponents.httpFilters</a></p></span></dd></dl></div>
+    </li><li name="play.api.OptionalDevContext" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="OptionalDevContextextendsAnyRef"></a>
+      <a id="OptionalDevContext:OptionalDevContext"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="OptionalDevContext.html"><span class="name">OptionalDevContext</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@OptionalDevContextextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Represents an <code>Option[DevContext]</code> so that it can be used for dependency
+injection.</p><div class="fullcomment"><div class="comment cmt"><p>Represents an <code>Option[DevContext]</code> so that it can be used for dependency
+injection. We can't easily use a plain <code>Option[DevContext]</code> since Java
+erases the type parameter of that type.
+</p></div></div>
+    </li><li name="play.api.OptionalSourceMapper" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="OptionalSourceMapperextendsAnyRef"></a>
+      <a id="OptionalSourceMapper:OptionalSourceMapper"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="OptionalSourceMapper.html"><span class="name">OptionalSourceMapper</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@OptionalSourceMapperextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Represents an <code>Option[SourceMapper]</code> so that it can be used for dependency
+injection.</p><div class="fullcomment"><div class="comment cmt"><p>Represents an <code>Option[SourceMapper]</code> so that it can be used for dependency
+injection. We can't easily use a plain <code>Option[SourceMapper]</code> since Java
+erases the type parameter of that type.
+</p></div></div>
+    </li><li name="play.api.OptionalSourceMapperProvider" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="OptionalSourceMapperProviderextendsProvider[play.api.OptionalSourceMapper]"></a>
+      <a id="OptionalSourceMapperProvider:OptionalSourceMapperProvider"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="OptionalSourceMapperProvider.html"><span class="name">OptionalSourceMapperProvider</span></a><span class="result"> extends <span class="extype" name="javax.inject.Provider">Provider</span>[<a href="OptionalSourceMapper.html" class="extype" name="play.api.OptionalSourceMapper">OptionalSourceMapper</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@OptionalSourceMapperProviderextendsProvider[play.api.OptionalSourceMapper]" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@Singleton</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="play.api.UnexpectedException" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="UnexpectedExceptionextendsPlayExceptionwithProductwithSerializable"></a>
+      <a id="UnexpectedException:UnexpectedException"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="UnexpectedException.html"><span class="name">UnexpectedException</span></a><span class="params">(<span name="message">message: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="unexpected">unexpected: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Throwable">Throwable</span>] = <span class="symbol">None</span></span>)</span><span class="result"> extends <span class="extype" name="play.api.PlayException">PlayException</span> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@UnexpectedExceptionextendsPlayExceptionwithProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Generic exception for unexpected error cases.</p>
+    </li></ol>
+            </div>
+
+        
+
+        <div id="values" class="values members">
+              <h3>Value Members</h3>
+              <ol><li name="play.api.Application" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Application"></a>
+      <a id="Application:Application"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Application$.html"><span class="name">Application</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@Application" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.api.ApplicationLoader" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ApplicationLoader"></a>
+      <a id="ApplicationLoader:ApplicationLoader"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ApplicationLoader$.html"><span class="name">ApplicationLoader</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@ApplicationLoader" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.api.ConfigLoader" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ConfigLoader"></a>
+      <a id="ConfigLoader:ConfigLoader"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ConfigLoader$.html"><span class="name">ConfigLoader</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@ConfigLoader" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.api.Configuration" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Configuration"></a>
+      <a id="Configuration:Configuration"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Configuration$.html"><span class="name">Configuration</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@Configuration" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">This object provides a set of operations to create <code>Configuration</code> values.</p><div class="fullcomment"><div class="comment cmt"><p>This object provides a set of operations to create <code>Configuration</code> values.</p><p>For example, to load a <code>Configuration</code> in a running application:</p><pre><span class="kw">val</span> config = Configuration.load()
+<span class="kw">val</span> foo = config.getString(<span class="lit">"foo"</span>).getOrElse(<span class="lit">"boo"</span>)</pre><p>The underlying implementation is provided by https://github.com/typesafehub/config.
+</p></div></div>
+    </li><li name="play.api.Environment" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Environment"></a>
+      <a id="Environment:Environment"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Environment$.html"><span class="name">Environment</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@Environment" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.api.Logger" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Logger"></a>
+      <a id="Logger:Logger"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Logger$.html"><span class="name">Logger</span></a><span class="result"> extends <a href="Logger.html" class="extype" name="play.api.Logger">Logger</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@Logger" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">High-level API for logging operations.</p><div class="fullcomment"><div class="comment cmt"><p>High-level API for logging operations.</p><p>For example, logging with the default application logger:</p><pre>Logger.info(<span class="lit">"Hello!"</span>)</pre><p>Logging with a custom logger:</p><pre>Logger(<span class="lit">"my.logger"</span>).info(<span class="lit">"Hello!"</span>)</pre></div></div>
+    </li><li name="play.api.LoggerConfigurator" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="LoggerConfigurator"></a>
+      <a id="LoggerConfigurator:LoggerConfigurator"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="LoggerConfigurator$.html"><span class="name">LoggerConfigurator</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@LoggerConfigurator" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.api.MarkerContext" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="MarkerContext"></a>
+      <a id="MarkerContext:MarkerContext"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="MarkerContext$.html"><span class="name">MarkerContext</span></a><span class="result"> extends <a href="LowPriorityMarkerContextImplicits.html" class="extype" name="play.api.LowPriorityMarkerContextImplicits">LowPriorityMarkerContextImplicits</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@MarkerContext" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.api.MarkerContexts" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="MarkerContexts"></a>
+      <a id="MarkerContexts:MarkerContexts"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="MarkerContexts$.html"><span class="name">MarkerContexts</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@MarkerContexts" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.api.Mode" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Mode"></a>
+      <a id="Mode:Mode"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Mode$.html"><span class="name">Mode</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@Mode" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.api.Play" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Play"></a>
+      <a id="Play:Play"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="Play$.html"><span class="name">Play</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@Play" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">High-level API to access Play global features.</p>
+    </li><li name="play.api.cache" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="cache"></a>
+      <a id="cache:cache"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="cache/package.html"><span class="name">cache</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@cache" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Contains the Cache access API.</p>
+    </li><li name="play.api.controllers" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="controllers"></a>
+      <a id="controllers:controllers"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="controllers/package.html"><span class="name">controllers</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@controllers" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.api.data" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="data"></a>
+      <a id="data:data"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="data/package.html"><span class="name">data</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@data" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Contains data manipulation helpers (typically HTTP form handling)</p><div class="fullcomment"><div class="comment cmt"><p>Contains data manipulation helpers (typically HTTP form handling)</p><pre><span class="kw">import</span> play.api.data._
+<span class="kw">import</span> play.api.data.Forms._
+
+<span class="kw">val</span> taskForm = Form(
+  tuple(
+    <span class="lit">"name"</span> -&gt; text(minLength = <span class="num">3</span>),
+    <span class="lit">"dueDate"</span> -&gt; date(<span class="lit">"yyyy-MM-dd"</span>),
+    <span class="lit">"done"</span> -&gt; boolean
+  )
+)</pre></div></div>
+    </li><li name="play.api.db" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="db"></a>
+      <a id="db:db"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="db/package.html"><span class="name">db</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@db" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Contains the JDBC database access API.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the JDBC database access API.</p><p>Example, retrieving a connection from the 'customers' datasource:</p><pre><span class="kw">val</span> conn = db.getConnection(<span class="lit">"customers"</span>)</pre></div></div>
+    </li><li name="play.api.http" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="http"></a>
+      <a id="http:http"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="http/package.html"><span class="name">http</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@http" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Contains standard HTTP constants.</p><div class="fullcomment"><div class="comment cmt"><p>Contains standard HTTP constants.
+For example:</p><pre><span class="kw">val</span> text = ContentTypes.TEXT
+<span class="kw">val</span> ok = Status.OK
+<span class="kw">val</span> accept = HeaderNames.ACCEPT</pre></div></div>
+    </li><li name="play.api.i18n" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="i18n"></a>
+      <a id="i18n:i18n"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="i18n/package.html"><span class="name">i18n</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@i18n" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Contains the internationalisation API.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the internationalisation API.</p><p>For example, translating a message:</p><pre><span class="kw">val</span> msgString = Messages(<span class="lit">"items.found"</span>, items.size)</pre></div></div>
+    </li><li name="play.api.inject" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="inject"></a>
+      <a id="inject:inject"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="inject/package.html"><span class="name">inject</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@inject" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Play's runtime dependency injection abstraction.</p><div class="fullcomment"><div class="comment cmt"><p>Play's runtime dependency injection abstraction.</p><p>Play's runtime dependency injection support is built on JSR-330, which provides a specification for declaring how
+dependencies get wired to components.  JSR-330 however does not address how components are provided to or located
+by a DI container.  Play's API seeks to address this in a DI container agnostic way.</p><p>The reason for providing this abstraction is so that Play, the modules it provides, and third party modules can all
+express their bindings in a way that is not specific to any one DI container.</p><p>Components are bound in the DI container.  Each binding is identified by a <a href="inject/BindingKey.html" class="extype" name="play.api.inject.BindingKey">BindingKey</a>, which is
+typically an interface that the component implements, and may be optionally qualified by a JSR-330 qualifier
+annotation. A binding key is bound to a <a href="inject/BindingTarget.html" class="extype" name="play.api.inject.BindingTarget">BindingTarget</a>, which describes how the implementation
+of the interface that the binding key represents is constructed or provided.  Bindings may also be scoped using
+JSR-330 scope annotations.</p><p>Bindings are provided by instances of <a href="inject/Module.html" class="extype" name="play.api.inject.Module">Module</a>.</p><p>Out of the box, Play provides an implementation of this abstraction using Guice.
+</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p>The <a href="inject/Module.html" class="extype" name="play.api.inject.Module">Module</a> class for information on how to provide bindings.</p></span></dd></dl></div>
+    </li><li name="play.api.internal" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="internal"></a>
+      <a id="internal:internal"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="internal/package.html"><span class="name">internal</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@internal" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.api.libs" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="libs"></a>
+      <a id="libs:libs"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="libs/package.html"><span class="name">libs</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@libs" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Contains various APIs that are useful while developing web applications.</p>
+    </li><li name="play.api.mvc" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="mvc"></a>
+      <a id="mvc:mvc"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="mvc/package.html"><span class="name">mvc</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@mvc" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Contains the Controller/Action/Result API to handle HTTP requests.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the Controller/Action/Result API to handle HTTP requests.</p><p>For example, a typical controller:</p><pre><span class="kw">class</span> HomeController @Inject() (<span class="kw">val</span> controllerComponents: ControllerComponents) <span class="kw">extends</span> BaseController {
+
+  <span class="kw">def</span> index = Action {
+    Ok(<span class="lit">"It works!"</span>)
+  }
+
+}</pre></div></div>
+    </li><li name="play.api.routing" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="routing"></a>
+      <a id="routing:routing"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="routing/package.html"><span class="name">routing</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@routing" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.api.templates" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="templates"></a>
+      <a id="templates:templates"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="templates/package.html"><span class="name">templates</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@templates" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.api.test" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="test"></a>
+      <a id="test:test"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a href="test/package.html"><span class="name">test</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../index.html#play.api.package@test" title="Permalink" target="_top">
+        <img src="../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Contains test helpers.</p>
+    </li></ol>
+            </div>
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        <div class="parent" name="scala.AnyRef">
+              <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
+            </div><div class="parent" name="scala.Any">
+              <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
+            </div>
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+
+
+    </body>
+      </html>

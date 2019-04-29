@@ -1,0 +1,626 @@
+<!DOCTYPE html >
+<html>
+        <head>
+          <title>csp - play.filters.csp</title>
+          <meta name="description" content="csp - play.filters.csp" />
+          <meta name="keywords" content="csp play.filters.csp" />
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      <link href="../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../lib/jquery.js" id="jquery-js"></script>
+      <script type="text/javascript" src="../../../lib/jquery-ui.js"></script>
+      <script type="text/javascript" src="../../../lib/template.js"></script>
+      <script type="text/javascript" src="../../../lib/tools.tooltip.js"></script>
+      
+      <script type="text/javascript">
+         if(top === self) {
+            var url = '../../../index.html';
+            var hash = 'play.filters.csp.package';
+            var anchor = window.location.hash;
+            var anchor_opt = '';
+            if (anchor.length >= 1)
+              anchor_opt = '@' + anchor.substring(1);
+            window.location.href = url + '#' + hash + anchor_opt;
+         }
+   	  </script>
+    
+        </head>
+        <body class="value">
+      <div id="definition">
+        <img alt="Package" src="../../../lib/package_big.png" />
+        <p id="owner"><a href="../../package.html" class="extype" name="play">play</a>.<a href="../package.html" class="extype" name="play.filters">filters</a></p>
+        <h1>csp</h1><span class="permalink">
+      <a href="../../../index.html#play.filters.csp.package" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <span class="name">csp</span>
+      </span>
+      </h4>
+      
+          <div id="comment" class="fullcommenttop"></div>
+        
+
+      <div id="mbrsel">
+        <div id="textfilter"><span class="pre"></span><span class="input"><input id="mbrsel-input" type="text" accesskey="/" /></span><span class="post"></span></div>
+        
+        
+        <div id="visbl">
+            <span class="filtertype">Visibility</span>
+            <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+          </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        
+
+        <div id="types" class="types members">
+              <h3>Type Members</h3>
+              <ol><li name="play.filters.csp.CSPActionBuilder" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="CSPActionBuilderextendsActionBuilder[play.api.mvc.Request,play.api.mvc.AnyContent]"></a>
+      <a id="CSPActionBuilder:CSPActionBuilder"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="CSPActionBuilder.html"><span class="name">CSPActionBuilder</span></a><span class="result"> extends <a href="../../api/mvc/ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>[<a href="../../api/mvc/Request.html" class="extype" name="play.api.mvc.Request">Request</a>, <a href="../../api/mvc/AnyContent.html" class="extype" name="play.api.mvc.AnyContent">AnyContent</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csp.package@CSPActionBuilderextendsActionBuilder[play.api.mvc.Request,play.api.mvc.AnyContent]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">This trait is used to give a CSP header to the result for a single action.</p><div class="fullcomment"><div class="comment cmt"><p>This trait is used to give a CSP header to the result for a single action.</p><p>To use this in a controller, add something like the following:</p><pre><span class="kw">class</span> CSPActionController @Inject()(cspAction: CSPActionBuilder, cc: ControllerComponents)
+ <span class="kw">extends</span> AbstractController(cc) {
+  <span class="kw">def</span> index = cspAction { <span class="kw">implicit</span> request <span class="kw">=&gt;</span>
+    Ok(<span class="lit">"result containing CSP"</span>)
+  }
+}</pre></div></div>
+    </li><li name="play.filters.csp.CSPComponents" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="CSPComponentsextendsBuiltInComponents"></a>
+      <a id="CSPComponents:CSPComponents"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="CSPComponents.html"><span class="name">CSPComponents</span></a><span class="result"> extends <a href="../../api/BuiltInComponents.html" class="extype" name="play.api.BuiltInComponents">api.BuiltInComponents</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csp.package@CSPComponentsextendsBuiltInComponents" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">The content security policy components, for compile time dependency injection.</p>
+    </li><li name="play.filters.csp.CSPConfig" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="CSPConfigextendsProductwithSerializable"></a>
+      <a id="CSPConfig:CSPConfig"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="CSPConfig.html"><span class="name">CSPConfig</span></a><span class="params">(<span name="reportOnly">reportOnly: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="shouldFilterRequest">shouldFilterRequest: (<a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">_ =&gt; true</span></span>, <span name="nonce">nonce: <a href="CSPNonceConfig.html" class="extype" name="play.filters.csp.CSPNonceConfig">CSPNonceConfig</a> = <span class="symbol">CSPNonceConfig()</span></span>, <span name="hashes">hashes: <span class="extype" name="scala.Seq">Seq</span>[<a href="CSPHashConfig.html" class="extype" name="play.filters.csp.CSPHashConfig">CSPHashConfig</a>] = <span class="symbol">Seq.empty</span></span>, <span name="directives">directives: <span class="extype" name="scala.Seq">Seq</span>[<a href="CSPDirective.html" class="extype" name="play.filters.csp.CSPDirective">CSPDirective</a>] = <span class="symbol">Seq.empty</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csp.package@CSPConfigextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">CSP Configuration.</p><div class="fullcomment"><div class="comment cmt"><p>CSP Configuration.
+</p></div><dl class="paramcmts block"><dt class="param">reportOnly</dt><dd class="cmt"><p>true if the header should be Content-Security-Policy-Report-Only.</p></dd><dt class="param">shouldFilterRequest</dt><dd class="cmt"><p>A function that decides based on the headers of the request if a check is needed.</p></dd><dt class="param">nonce</dt><dd class="cmt"><p>the CSP nonce configuration</p></dd><dt class="param">hashes</dt><dd class="cmt"><p>a list of CSP hashes that can be added to the header</p></dd><dt class="param">directives</dt><dd class="cmt"><p>the CSP directives configuration</p></dd></dl><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="https://www.w3.org/TR/CSP3/">Content Security Policy Level 3</a></p></span></dd></dl></div>
+    </li><li name="play.filters.csp.CSPConfigProvider" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="CSPConfigProviderextendsProvider[play.filters.csp.CSPConfig]"></a>
+      <a id="CSPConfigProvider:CSPConfigProvider"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="CSPConfigProvider.html"><span class="name">CSPConfigProvider</span></a><span class="result"> extends <span class="extype" name="javax.inject.Provider">Provider</span>[<a href="CSPConfig.html" class="extype" name="play.filters.csp.CSPConfig">CSPConfig</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csp.package@CSPConfigProviderextendsProvider[play.filters.csp.CSPConfig]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Provider for Content Security Policy configuration.</p><div class="fullcomment"><div class="comment cmt"><p>Provider for Content Security Policy configuration.
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@Singleton</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="play.filters.csp.CSPDirective" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CSPDirectiveextendsProductwithSerializable"></a>
+      <a id="CSPDirective:CSPDirective"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="CSPDirective.html"><span class="name">CSPDirective</span></a><span class="params">(<span name="name">name: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="value">value: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csp.package@CSPDirectiveextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.filters.csp.CSPFilter" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="CSPFilterextendsEssentialFilter"></a>
+      <a id="CSPFilter:CSPFilter"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="CSPFilter.html"><span class="name">CSPFilter</span></a><span class="result"> extends <a href="../../api/mvc/EssentialFilter.html" class="extype" name="play.api.mvc.EssentialFilter">EssentialFilter</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csp.package@CSPFilterextendsEssentialFilter" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">This filter enables the Content-Security-Policy header in Play for all requests.</p><div class="fullcomment"><div class="comment cmt"><p>This filter enables the Content-Security-Policy header in Play for all requests.</p><p>Please see <a href="https://www.playframework.com/documentation/latest/CspFilter" target="_blank">the documentation</a> for more information.
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@Singleton</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="play.filters.csp.CSPHashConfig" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="CSPHashConfigextendsProductwithSerializable"></a>
+      <a id="CSPHashConfig:CSPHashConfig"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="CSPHashConfig.html"><span class="name">CSPHashConfig</span></a><span class="params">(<span name="algorithm">algorithm: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="hash">hash: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="pattern">pattern: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csp.package@CSPHashConfigextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">CSP Hash Configuration.</p><div class="fullcomment"><div class="comment cmt"><p>CSP Hash Configuration.
+</p></div><dl class="paramcmts block"><dt class="param">algorithm</dt><dd class="cmt"><p>the algorithm from https://www.w3.org/TR/CSP3/#grammardef-hash-algorithm</p></dd><dt class="param">hash</dt><dd class="cmt"><p>set to the hash value in configuration</p></dd><dt class="param">pattern</dt><dd class="cmt"><p>the pattern in directives to substitute with hash.</p></dd></dl></div>
+    </li><li name="play.filters.csp.CSPModule" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CSPModuleextendsSimpleModule"></a>
+      <a id="CSPModule:CSPModule"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="CSPModule.html"><span class="name">CSPModule</span></a><span class="result"> extends <a href="../../api/inject/SimpleModule.html" class="extype" name="play.api.inject.SimpleModule">SimpleModule</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csp.package@CSPModuleextendsSimpleModule" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">The content security policy module.</p>
+    </li><li name="play.filters.csp.CSPNonceConfig" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="CSPNonceConfigextendsProductwithSerializable"></a>
+      <a id="CSPNonceConfig:CSPNonceConfig"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="CSPNonceConfig.html"><span class="name">CSPNonceConfig</span></a><span class="params">(<span name="enabled">enabled: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="pattern">pattern: <span class="extype" name="scala.Predef.String">String</span> = <span class="defval" name='<span class="name"><a href="CPSNonceConfig$.html">CPSNonceConfig.DEFAULT_CSP_NONCE_PATTERN</a></span>'>...</span></span>, <span name="header">header: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csp.package@CSPNonceConfigextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">CSP Nonce Configuration.</p><div class="fullcomment"><div class="comment cmt"><p>CSP Nonce Configuration.
+</p></div><dl class="paramcmts block"><dt class="param">enabled</dt><dd class="cmt"><p>if true, a nonce is generated in processing</p></dd><dt class="param">pattern</dt><dd class="cmt"><p>the pattern in directives to substitute with nonce, DEFAULT_CSP_NONCE_PATTERN by default.</p></dd><dt class="param">header</dt><dd class="cmt"><p>if true, renders HeaderNames.X_CONTENT_SECURITY_POLICY_NONCE_HEADER</p></dd></dl></div>
+    </li><li name="play.filters.csp.CSPProcessor" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="CSPProcessorextendsAnyRef"></a>
+      <a id="CSPProcessor:CSPProcessor"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="CSPProcessor.html"><span class="name">CSPProcessor</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csp.package@CSPProcessorextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">This trait processes a request header for CSP related logic.</p>
+    </li><li name="play.filters.csp.CSPReportActionBuilder" visbl="pub" data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="CSPReportActionBuilderextendsActionBuilder[play.api.mvc.Request,play.filters.csp.ScalaCSPReport]"></a>
+      <a id="CSPReportActionBuilder:CSPReportActionBuilder"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="CSPReportActionBuilder.html"><span class="name">CSPReportActionBuilder</span></a><span class="result"> extends <a href="../../api/mvc/ActionBuilder.html" class="extype" name="play.api.mvc.ActionBuilder">ActionBuilder</a>[<a href="../../api/mvc/Request.html" class="extype" name="play.api.mvc.Request">Request</a>, <a href="ScalaCSPReport.html" class="extype" name="play.filters.csp.ScalaCSPReport">ScalaCSPReport</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csp.package@CSPReportActionBuilderextendsActionBuilder[play.api.mvc.Request,play.filters.csp.ScalaCSPReport]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">CSPReportAction exposes CSP content violations according to the <a href="https://www.w3.org/TR/CSP2/#violation-reports" target="_blank">CSP reporting spec</a></p><div class="fullcomment"><div class="comment cmt"><p>CSPReportAction exposes CSP content violations according to the <a href="https://www.w3.org/TR/CSP2/#violation-reports" target="_blank">CSP reporting spec</a></p><p>Be warned that Firefox and Chrome handle CSP reports very differently, and Firefox
+omits <a href="https://mathiasbynens.be/notes/csp-reports" target="_blank">fields which are in the specification</a>.  As such, many fields
+are optional to ensure browser compatibility.</p><p>To use this in a controller, add something like the following:</p><pre><span class="kw">class</span> CSPReportController @Inject()(cc: ControllerComponents, cspReportAction: CSPReportActionBuilder) <span class="kw">extends</span> AbstractController(cc) {
+
+  <span class="kw">private</span> <span class="kw">val</span> logger = org.slf4j.LoggerFactory.getLogger(getClass)
+
+  <span class="kw">private</span> <span class="kw">def</span> logReport(report: ScalaCSPReport): <span class="std">Unit</span> = {
+    logger.warn(s<span class="lit">"violated-directive: ${report.violatedDirective}, blocked = ${report.blockedUri}, policy = ${report.originalPolicy}"</span>)
+  }
+
+  <span class="kw">val</span> report: Action[ScalaCSPReport] = cspReportAction { request <span class="kw">=&gt;</span>
+    logReport(request.body)
+    Ok(<span class="lit">"{}"</span>).as(JSON)
+  }
+}</pre></div></div>
+    </li><li name="play.filters.csp.CSPReportBodyParser" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="CSPReportBodyParserextendsBodyParser[play.filters.csp.ScalaCSPReport]withBodyParser[play.filters.csp.JavaCSPReport]"></a>
+      <a id="CSPReportBodyParser:CSPReportBodyParser"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="CSPReportBodyParser.html"><span class="name">CSPReportBodyParser</span></a><span class="result"> extends <a href="../../api/mvc/BodyParser.html" class="extype" name="play.api.mvc.BodyParser">BodyParser</a>[<a href="ScalaCSPReport.html" class="extype" name="play.filters.csp.ScalaCSPReport">ScalaCSPReport</a>] with <span class="extype" name="play.mvc.BodyParser">BodyParser</span>[<a href="JavaCSPReport.html" class="extype" name="play.filters.csp.JavaCSPReport">JavaCSPReport</a>]</span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csp.package@CSPReportBodyParserextendsBodyParser[play.filters.csp.ScalaCSPReport]withBodyParser[play.filters.csp.JavaCSPReport]" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.filters.csp.CSPResult" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CSPResultextendsProductwithSerializable"></a>
+      <a id="CSPResult:CSPResult"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="CSPResult.html"><span class="name">CSPResult</span></a><span class="params">(<span name="nonce">nonce: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="directives">directives: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="reportOnly">reportOnly: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="nonceHeader">nonceHeader: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csp.package@CSPResultextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.filters.csp.CSPResultProcessor" visbl="pub" data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="CSPResultProcessorextendsAnyRef"></a>
+      <a id="CSPResultProcessor:CSPResultProcessor"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a href="CSPResultProcessor.html"><span class="name">CSPResultProcessor</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csp.package@CSPResultProcessorextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">A result processor that applies a CSPResult to a play request pipeline -- either an ActionBuilder or a Filter.</p>
+    </li><li name="play.filters.csp.DefaultCSPActionBuilder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="DefaultCSPActionBuilderextendsCSPActionBuilder"></a>
+      <a id="DefaultCSPActionBuilder:DefaultCSPActionBuilder"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="DefaultCSPActionBuilder.html"><span class="name">DefaultCSPActionBuilder</span></a><span class="result"> extends <a href="CSPActionBuilder.html" class="extype" name="play.filters.csp.CSPActionBuilder">CSPActionBuilder</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csp.package@DefaultCSPActionBuilderextendsCSPActionBuilder" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">The default CSPActionBuilder.</p><div class="fullcomment"><div class="comment cmt"><p>The default CSPActionBuilder.</p><p>This is useful for runtime dependency injection.
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@Singleton</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="play.filters.csp.DefaultCSPProcessor" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="DefaultCSPProcessorextendsCSPProcessor"></a>
+      <a id="DefaultCSPProcessor:DefaultCSPProcessor"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="DefaultCSPProcessor.html"><span class="name">DefaultCSPProcessor</span></a><span class="result"> extends <a href="CSPProcessor.html" class="extype" name="play.filters.csp.CSPProcessor">CSPProcessor</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csp.package@DefaultCSPProcessorextendsCSPProcessor" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">The default CSP processor.</p><div class="fullcomment"><div class="comment cmt"><p>The default CSP processor.  This handles processing of a CSP Nonce and hashes into
+a Content-Security-Policy series of directives, based off the CSPConfig.</p><p>If a request has the attribute RequestAttrKey.CSPNonce, then that nonce is used.
+Otherwise, a nonce is generated from 16 bytes of SecureRandom.
+</p></div></div>
+    </li><li name="play.filters.csp.DefaultCSPReportActionBuilder" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DefaultCSPReportActionBuilderextendsActionBuilderImpl[play.filters.csp.ScalaCSPReport]withCSPReportActionBuilder"></a>
+      <a id="DefaultCSPReportActionBuilder:DefaultCSPReportActionBuilder"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="DefaultCSPReportActionBuilder.html"><span class="name">DefaultCSPReportActionBuilder</span></a><span class="result"> extends <a href="../../api/mvc/ActionBuilderImpl.html" class="extype" name="play.api.mvc.ActionBuilderImpl">ActionBuilderImpl</a>[<a href="ScalaCSPReport.html" class="extype" name="play.filters.csp.ScalaCSPReport">ScalaCSPReport</a>] with <a href="CSPReportActionBuilder.html" class="extype" name="play.filters.csp.CSPReportActionBuilder">CSPReportActionBuilder</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csp.package@DefaultCSPReportActionBuilderextendsActionBuilderImpl[play.filters.csp.ScalaCSPReport]withCSPReportActionBuilder" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.filters.csp.DefaultCSPReportBodyParser" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="DefaultCSPReportBodyParserextendsCSPReportBodyParser"></a>
+      <a id="DefaultCSPReportBodyParser:DefaultCSPReportBodyParser"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="DefaultCSPReportBodyParser.html"><span class="name">DefaultCSPReportBodyParser</span></a><span class="result"> extends <a href="CSPReportBodyParser.html" class="extype" name="play.filters.csp.CSPReportBodyParser">CSPReportBodyParser</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csp.package@DefaultCSPReportBodyParserextendsCSPReportBodyParser" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.filters.csp.DefaultCSPResultProcessor" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="DefaultCSPResultProcessorextendsCSPResultProcessor"></a>
+      <a id="DefaultCSPResultProcessor:DefaultCSPResultProcessor"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="DefaultCSPResultProcessor.html"><span class="name">DefaultCSPResultProcessor</span></a><span class="result"> extends <a href="CSPResultProcessor.html" class="extype" name="play.filters.csp.CSPResultProcessor">CSPResultProcessor</a></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csp.package@DefaultCSPResultProcessorextendsCSPResultProcessor" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">This trait is used by CSPActionBuilder and CSPFilter to apply the CSPResult to a
+Play HTTP result as headers.</p><div class="fullcomment"><div class="comment cmt"><p>This trait is used by CSPActionBuilder and CSPFilter to apply the CSPResult to a
+Play HTTP result as headers.</p><p>Appends as <code>play.api.http.HeaderNames.CONTENT_SECURITY_POLICY</code> or
+<code>play.api.http.HeaderNames.CONTENT_SECURITY_POLICY_REPORT_ONLY</code>,
+depending on config.reportOnly.</p><p>If <code>cspResult.nonceHeader</code> is defined then
+<code>play.api.http.HeaderNames.X_CONTENT_SECURITY_POLICY_NONCE_HEADER</code>
+is set as an additional header.
+</p></div></div>
+    </li><li name="play.filters.csp.JavaCSPReport" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="JavaCSPReportextendsAnyRef"></a>
+      <a id="JavaCSPReport:JavaCSPReport"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a href="JavaCSPReport.html"><span class="name">JavaCSPReport</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csp.package@JavaCSPReportextendsAnyRef" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.filters.csp.ScalaCSPReport" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ScalaCSPReportextendsProductwithSerializable"></a>
+      <a id="ScalaCSPReport:ScalaCSPReport"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a href="ScalaCSPReport.html"><span class="name">ScalaCSPReport</span></a><span class="params">(<span name="documentUri">documentUri: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="violatedDirective">violatedDirective: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="blockedUri">blockedUri: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="originalPolicy">originalPolicy: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="effectiveDirective">effectiveDirective: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="referrer">referrer: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="disposition">disposition: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="scriptSample">scriptSample: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="statusCode">statusCode: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Int">Int</span>] = <span class="symbol">None</span></span>, <span name="sourceFile">sourceFile: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="lineNumber">lineNumber: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>, <span name="columnNumber">columnNumber: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csp.package@ScalaCSPReportextendsProductwithSerializable" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">Result of parsing a CSP report.</p>
+    </li></ol>
+            </div>
+
+        
+
+        <div id="values" class="values members">
+              <h3>Value Members</h3>
+              <ol><li name="play.filters.csp.CPSNonceConfig" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CPSNonceConfig"></a>
+      <a id="CPSNonceConfig:CPSNonceConfig"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="CPSNonceConfig$.html"><span class="name">CPSNonceConfig</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csp.package@CPSNonceConfig" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.filters.csp.CSPActionBuilder" visbl="pub" data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="CSPActionBuilder"></a>
+      <a id="CSPActionBuilder:CSPActionBuilder"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="CSPActionBuilder$.html"><span class="name">CSPActionBuilder</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csp.package@CSPActionBuilder" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">This singleton object contains factory methods for creating new CSPActionBuilders.</p><div class="fullcomment"><div class="comment cmt"><p>This singleton object contains factory methods for creating new CSPActionBuilders.</p><p>Useful in compile time dependency injection.
+</p></div></div>
+    </li><li name="play.filters.csp.CSPConfig" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CSPConfig"></a>
+      <a id="CSPConfig:CSPConfig"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="CSPConfig$.html"><span class="name">CSPConfig</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csp.package@CSPConfig" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      <p class="shortcomment cmt">This singleton object contains factory methods to create a CSPConfig instance
+from configuration.</p>
+    </li><li name="play.filters.csp.CSPFilter" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CSPFilter"></a>
+      <a id="CSPFilter:CSPFilter"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="CSPFilter$.html"><span class="name">CSPFilter</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csp.package@CSPFilter" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.filters.csp.CSPProcessor" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CSPProcessor"></a>
+      <a id="CSPProcessor:CSPProcessor"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="CSPProcessor$.html"><span class="name">CSPProcessor</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csp.package@CSPProcessor" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.filters.csp.CSPResultProcessor" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="CSPResultProcessor"></a>
+      <a id="CSPResultProcessor:CSPResultProcessor"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="CSPResultProcessor$.html"><span class="name">CSPResultProcessor</span></a>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csp.package@CSPResultProcessor" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li><li name="play.filters.csp.ScalaCSPReport" visbl="pub" data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ScalaCSPReport"></a>
+      <a id="ScalaCSPReport:ScalaCSPReport"></a>
+      <h4 class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a href="ScalaCSPReport$.html"><span class="name">ScalaCSPReport</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      </h4><span class="permalink">
+      <a href="../../../index.html#play.filters.csp.package@ScalaCSPReport" title="Permalink" target="_top">
+        <img src="../../../lib/permalink.png" alt="Permalink" />
+      </a>
+    </span>
+      
+    </li></ol>
+            </div>
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="Ungrouped">
+              <h3>Ungrouped</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+
+
+    </body>
+      </html>
