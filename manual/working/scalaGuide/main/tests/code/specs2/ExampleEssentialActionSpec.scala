@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009-2018 Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) 2009-2019 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package scalaguide.tests.specs2
@@ -15,7 +15,7 @@ class ExampleEssentialActionSpec extends PlaySpecification {
   "An essential action" should {
     "can parse a JSON body" in new WithApplication() with Injecting {
       val Action = inject[DefaultActionBuilder]
-      val parse = inject[PlayBodyParsers]
+      val parse  = inject[PlayBodyParsers]
 
       val action: EssentialAction = Action(parse.json) { request =>
         val value = (request.body \ "field").as[String]

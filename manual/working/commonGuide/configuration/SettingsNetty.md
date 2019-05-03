@@ -1,4 +1,4 @@
-<!--- Copyright (C) 2009-2018 Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) 2009-2019 Lightbend Inc. <https://www.lightbend.com> -->
 # Configuring Netty Server Backend
 
 The Netty server backend is built on top of [Netty](https://netty.io/).
@@ -29,4 +29,4 @@ play.server {
 
 ## Configuring channel options
 
-The available options are defined in [Netty channel option documentation](https://netty.io/4.1/api/io/netty/channel/ChannelOption.html). If you are using native socket transport you can set [additional options](https://netty.io/4.1/api/io/netty/channel/epoll/EpollChannelOption.html).
+The available options are defined in [Netty channel option documentation](https://netty.io/4.1/api/io/netty/channel/ChannelOption.html). If you are using native socket transport you can set [these](https://netty.io/4.1/api/io/netty/channel/unix/UnixChannelOption.html) and [these](https://netty.io/4.1/api/io/netty/channel/epoll/EpollChannelOption.html) additional options.

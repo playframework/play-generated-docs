@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009-2018 Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) 2009-2019 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package javaguide.advanced.extending;
@@ -12,10 +12,8 @@ import play.inject.Binding;
 
 // #module-class-definition
 public class MyModule extends play.inject.Module {
-    public List<Binding<?>> bindings(Environment environment, Config config) {
-        return Collections.singletonList(
-            bindClass(MyApi.class).toSelf()
-        );
-    }
+  public List<Binding<?>> bindings(Environment environment, Config config) {
+    return Collections.singletonList(bindClass(MyApi.class).toSelf());
+  }
 }
 // #module-class-definition

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009-2018 Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) 2009-2019 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package scalaguide.detailed.filters.csp
@@ -13,8 +13,9 @@ import play.filters.csp.CSPComponents
 
 // #scala-csp-components
 class MyComponents(context: Context)
-  extends BuiltInComponentsFromContext(context)
-    with HttpFiltersComponents with CSPComponents {
+    extends BuiltInComponentsFromContext(context)
+    with HttpFiltersComponents
+    with CSPComponents {
 
   override def httpFilters: Seq[EssentialFilter] = super.httpFilters :+ cspFilter
 

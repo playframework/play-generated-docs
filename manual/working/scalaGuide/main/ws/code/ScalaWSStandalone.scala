@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009-2018 Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) 2009-2019 Lightbend Inc. <https://www.lightbend.com>
  */
 
 //#ws-standalone
@@ -14,9 +14,9 @@ object Main {
   import scala.concurrent.ExecutionContext.Implicits._
 
   def main(args: Array[String]): Unit = {
-    implicit val system = ActorSystem()
+    implicit val system       = ActorSystem()
     implicit val materializer = ActorMaterializer()
-    val wsClient = AhcWSClient()
+    val wsClient              = AhcWSClient()
 
     call(wsClient)
       .andThen { case _ => wsClient.close() }

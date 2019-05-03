@@ -1,4 +1,4 @@
-<!--- Copyright (C) 2009-2018 Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) 2009-2019 Lightbend Inc. <https://www.lightbend.com> -->
 # Play modules
 
 Play uses public modules to augment built-in functionality.  
@@ -7,19 +7,13 @@ To create your own public module or to migrate from a `play.api.Plugin`, please 
 
 ## API hosting
 
-### swagger-play
-* **Website:** <https://github.com/swagger-api/swagger-play>
-* **Short description:** Generate a Swagger API spec from your Play routes file and Swagger annotations
-
 ### iheartradio/play-swagger
-* **Website:** <https://github.com/iheartradio/play-swagger>
-* **Short description:** Write a Swagger spec in your routes file
 
-### zalando/play-swagger
-* **Website:** <https://github.com/zalando/play-swagger>
-* **Short description:** Generate Play code from a Swagger spec
+- **Website:** <https://github.com/iheartradio/play-swagger>
+- **Short description:** Write a Swagger spec in your routes file
 
 ### mohiva/swagger-codegen-play-scala
+
 * **Website:** <https://github.com/mohiva/swagger-codegen-play-scala>
 * **Short description:** Swagger client generator which is based on the PlayWS library
 
@@ -35,11 +29,11 @@ To create your own public module or to migrate from a `play.api.Plugin`, please 
 
 ### Typescript Plugin
 * **Website:** <https://github.com/ArpNetworking/sbt-typescript>
-* **Short description:** A plugin for SBT that uses sbt-web to compile typescript resources
+* **Short description:** A plugin for sbt that uses sbt-web to compile typescript resources
 
 ### play-webpack Plugin
 * **Website:** <https://github.com/BowlingX/play-webpack>
-* **Short description:** A plugin for SBT to handle webpack generated assets and library to render Javascript on the server with Java's nashorn engine.
+* **Short description:** A plugin for sbt to handle webpack generated assets and library to render Javascript on the server with Java's nashorn engine.
 
 ## Authentication (Login & Registration) and Authorization (Restricted Access)
 
@@ -52,7 +46,7 @@ To create your own public module or to migrate from a `play.api.Plugin`, please 
 ### Deadbolt 2 Plugin
 
 * **Website (docs, sample):** <https://github.com/schaloner/deadbolt-2>
-* **Short description:** Deadbolt is an authorisation mechanism for defining access rights to certain controller methods or parts of a view using a simple AND/OR/NOT syntax
+* **Short description:** Deadbolt is an authorization mechanism for defining access rights to certain controller methods or parts of a view using a simple AND/OR/NOT syntax
 
 ### Play-pac4j (Java and Scala)
 
@@ -238,7 +232,7 @@ To create your own public module or to migrate from a `play.api.Plugin`, please 
 to Twirl
 
 ### Handlebars templates (Java and Scala)
- 
+
 * **Website:** <https://github.com/andriykuba/play-handlebars>
 * **Documentation:** <https://github.com/andriykuba/play-handlebars/blob/master/README.md>
 * **Short description:** [Handlebars](http://handlebarsjs.com/) templates based on [Java port](https://github.com/jknack/handlebars.java) of handlebars with special handlers for Play Framework.

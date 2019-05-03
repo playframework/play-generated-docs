@@ -1,4 +1,4 @@
-<!--- Copyright (C) 2009-2018 Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) 2009-2019 Lightbend Inc. <https://www.lightbend.com> -->
 
 # Play User Groups
 
@@ -28,7 +28,6 @@ https://www.meetup.com/play-argentina/
 
 ## Japan
 
-* http://www.playframework-ja.org/
 * https://groups.google.com/forum/?fromgroups#!forum/play_ja
 
 ## Republic of Korea 

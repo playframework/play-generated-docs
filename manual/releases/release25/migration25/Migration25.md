@@ -1,4 +1,4 @@
-<!--- Copyright (C) 2009-2018 Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) 2009-2019 Lightbend Inc. <https://www.lightbend.com> -->
 # Play 2.5 Migration Guide
 
 This is a guide for migrating from Play 2.4 to Play 2.5. If you need to migrate from an earlier version of Play then you must first follow the [[Play 2.4 Migration Guide|Migration24]].
@@ -59,7 +59,7 @@ If your project is using Play Ebean, you need to upgrade it:
 addSbtPlugin("com.typesafe.sbt" % "sbt-play-ebean" % "3.0.0")
 ```
 
-### ScalaTest + Plus upgrade
+### ScalaTest + Play upgrade
 
 If your project is using [[ScalaTest + Play|ScalaTestingWithScalaTest]], you need to upgrade it:
 

@@ -1,10 +1,10 @@
 /*
- * Copyright (C) 2009-2018 Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) 2009-2019 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package javaguide.logging;
 
-//#logging-pattern-mix
+// #logging-pattern-mix
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import play.mvc.Action;
@@ -33,7 +33,6 @@ public class Application extends Controller {
   private static int riskyCalculation() {
     return 10 / (new java.util.Random()).nextInt(2);
   }
-
 }
 
 class AccessLoggingAction extends Action.Simple {
@@ -41,9 +40,13 @@ class AccessLoggingAction extends Action.Simple {
   private static final Logger accessLogger = LoggerFactory.getLogger(AccessLoggingAction.class);
 
   public CompletionStage<Result> call(Http.Request request) {
-    accessLogger.info("method={} uri={} remote-address={}", request.method(), request.uri(), request.remoteAddress());
+    accessLogger.info(
+        "method={} uri={} remote-address={}",
+        request.method(),
+        request.uri(),
+        request.remoteAddress());
 
     return delegate.call(request);
   }
 }
-//#logging-pattern-mix
+// #logging-pattern-mix

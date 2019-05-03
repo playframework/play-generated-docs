@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009-2018 Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) 2009-2019 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package scalaguide.hello {
@@ -11,8 +11,8 @@ package scalaguide.hello {
     import play.twirl.api.Html
 
     object html {
-      def index(): Html = Html("Index page")
-      def hello(): Html = Html("Hello page")
+      def index(): Html             = Html("Index page")
+      def hello(): Html             = Html("Hello page")
       def hello(name: String): Html = Html(s"Hello $name")
     }
   }
