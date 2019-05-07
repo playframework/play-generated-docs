@@ -18,15 +18,15 @@ addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.7.x")
 
 Where the "x" in `2.7.x` is the minor version of Play you want to use, for instance `2.7.0`.
 
-### sbt upgrade to 1.2.7
+### sbt upgrade to 1.2.8
 
 Although Play 2.7 still supports sbt 0.13 series, we recommend that you use sbt 1.x from now. This new version is actively maintained and supported. To update, change your `project/build.properties` so that it reads:
 
 ```
-sbt.version=1.2.7
+sbt.version=1.2.8
 ```
 
-At the time of this writing `1.2.7` is the latest version in the sbt 1.x family, you may be able to use newer versions too. Check for details in the release notes of your minor version of Play 2.7.x. More information at the list of [sbt releases](https://github.com/sbt/sbt/releases).
+At the time of this writing `1.2.8` is the latest version in the sbt 1.x family, you may be able to use newer versions too. Check for details in the release notes of your minor version of Play 2.7.x. More information at the list of [sbt releases](https://github.com/sbt/sbt/releases).
 
 ## API Changes
 
@@ -48,9 +48,20 @@ routesGenerator := StaticRoutesGenerator
 
 See changes made in `play.mvc.Http.Context` APIs. This is only relevant for Java users: [[Java `Http.Context` changes|JavaHttpContextMigration27]].
 
-### Play WS API Changes
+### Play WS Changes
 
 In Play 2.6, we extracted most of Play-WS into a [standalone project](https://github.com/playframework/play-ws) that has an independent release cycle. Play-WS now has a significant release that requires some changes in Play itself.
+
+#### Cookie store handling 
+
+Play-WS 2.0 brings an updated version of [Async-Http-Client](https://github.com/AsyncHttpClient/async-http-client) which has an internal cookie store that is global and can affect your application if you are sending user sensitive cookies in requests to third-party services. For example, since the cookie store is global, the application can mix cookies for a user with cookies for another one when making requests to the same host. There is now a new configuration that you can use to enable or disable the cache:
+
+```HOCON
+# Enables global cache cookie store
+play.ws.ahc.useCookieStore = true
+```
+
+By default, the cache is disabled. This affects other places such as following redirects automatically. Previously, the cookies for the first request were sent in the subsequent request, which is not the case when the cache is disabled. There is currently no way to configure the cache per request.
 
 #### Scala API
 
@@ -536,9 +547,9 @@ If your application is using a version that is newer than the one used by Play, 
 
 HikariCP was updated to the latest version which finally removed the configuration `initializationFailFast`, replaced by `initializationFailTimeout`. See [HikariCP changelog](https://github.com/brettwooldridge/HikariCP/blob/dev/CHANGES) and [documentation for `initializationFailTimeout`](https://github.com/brettwooldridge/HikariCP#infrequently-used) to better understand how to use this configuration.
 
-### `Guava` version updated to 27.0-jre
+### `Guava` version updated to 27.1-jre
 
-Play 2.6.x provided 23.0 version of Guava library. Now it is updated to last actual version, 27.0-jre. Lots of changes were made in the library, and you can see the full changelog [here](https://github.com/google/guava/releases).
+Play 2.6.x provided 23.0 version of Guava library. Now it is updated to last actual version, 27.1-jre. Lots of changes were made in the library, and you can see the full changelog [here](https://github.com/google/guava/releases).
 
 ### specs2 updated to 4.3.5
 
