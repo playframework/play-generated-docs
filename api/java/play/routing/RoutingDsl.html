@@ -142,11 +142,11 @@ extends java.lang.Object</pre>
    public Router getRouter() {
      return this.routingDsl
 
-       .GET("/hello/:to").routeTo(to -&gt; ok("Hello " + to))
+       .GET("/hello/:to").routingTo((req, to) -&gt; ok("Hello " + to))
 
-       .POST("/api/items/:id").routeAsync((Integer id) -&gt; {
+       .POST("/api/items/:id").routingAsync((Http.Request req, Integer id) -&gt; {
          return Items.save(id,
-           Json.fromJson(request().body().asJson(), Item.class)
+           Json.fromJson(req.body().asJson(), Item.class)
          ).map(result -&gt; ok("Saved item with id " + id));
        })
 

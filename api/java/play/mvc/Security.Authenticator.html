@@ -17,8 +17,8 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":42,"i1":10,"i2":42,"i3":10};
-var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"],32:["t6","Deprecated Methods"]};
+var methods = {"i0":10,"i1":10};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -149,34 +149,18 @@ extends <a href="../../play/mvc/Results.html" title="class in play.mvc">Results<
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t6" class="tableTab"><span><a href="javascript:show(32);">Deprecated Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>java.lang.String</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/Security.Authenticator.html#getUsername-play.mvc.Http.Context-">getUsername</a></span>(<a href="../../play/mvc/Http.Context.html" title="class in play.mvc">Http.Context</a>&nbsp;ctx)</code>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
-<div class="block"><span class="deprecationComment">Deprecated as of 2.7.0. Use <code>#getUsername(Request)</code> instead.</span></div>
-</div>
-</td>
-</tr>
-<tr id="i1" class="rowColor">
 <td class="colFirst"><code>java.util.Optional&lt;java.lang.String&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/Security.Authenticator.html#getUsername-play.mvc.Http.Request-">getUsername</a></span>(<a href="../../play/mvc/Http.Request.html" title="interface in play.mvc">Http.Request</a>&nbsp;req)</code>
 <div class="block">Retrieves the username from the HTTP request; the default is to read from the session cookie.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
-<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/Security.Authenticator.html#onUnauthorized-play.mvc.Http.Context-">onUnauthorized</a></span>(<a href="../../play/mvc/Http.Context.html" title="class in play.mvc">Http.Context</a>&nbsp;ctx)</code>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
-<div class="block"><span class="deprecationComment">Deprecated as of 2.7.0. Use <code>#onUnauthorized(Request)</code> instead.</span></div>
-</div>
-</td>
-</tr>
-<tr id="i3" class="rowColor">
+<tr id="i1" class="rowColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/Security.Authenticator.html#onUnauthorized-play.mvc.Http.Request-">onUnauthorized</a></span>(<a href="../../play/mvc/Http.Request.html" title="interface in play.mvc">Http.Request</a>&nbsp;req)</code>
 <div class="block">Generates an alternative result if the user is not authenticated; the default a simple '401
@@ -229,24 +213,6 @@ extends <a href="../../play/mvc/Results.html" title="class in play.mvc">Results<
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="getUsername-play.mvc.Http.Context-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getUsername</h4>
-<pre>@Deprecated
-public&nbsp;java.lang.String&nbsp;getUsername(<a href="../../play/mvc/Http.Context.html" title="class in play.mvc">Http.Context</a>&nbsp;ctx)</pre>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Deprecated as of 2.7.0. Use <code>#getUsername(Request)</code> instead.</span></div>
-<div class="block">Retrieves the username from the HTTP context; the default is to read from the session cookie.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>ctx</code> - the current request context</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>null if the user is not authenticated.</dd>
-</dl>
-</li>
-</ul>
 <a name="getUsername-play.mvc.Http.Request-">
 <!--   -->
 </a>
@@ -260,25 +226,6 @@ public&nbsp;java.lang.String&nbsp;getUsername(<a href="../../play/mvc/Http.Conte
 <dd><code>req</code> - the current request</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the username if the user is authenticated.</dd>
-</dl>
-</li>
-</ul>
-<a name="onUnauthorized-play.mvc.Http.Context-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>onUnauthorized</h4>
-<pre>@Deprecated
-public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;onUnauthorized(<a href="../../play/mvc/Http.Context.html" title="class in play.mvc">Http.Context</a>&nbsp;ctx)</pre>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Deprecated as of 2.7.0. Use <code>#onUnauthorized(Request)</code> instead.</span></div>
-<div class="block">Generates an alternative result if the user is not authenticated; the default a simple '401
- Not Authorized' page.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>ctx</code> - the current request context</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>a <code>401 Not Authorized</code> result</dd>
 </dl>
 </li>
 </ul>

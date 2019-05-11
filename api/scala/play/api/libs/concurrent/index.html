@@ -169,10 +169,6 @@
                         <a href="DefaultFutures.html" title="ActorSystem based timeout.">DefaultFutures</a>
                       </li><li class="current-entities indented4">
                         <span class="separator"></span>
-                        <a class="object" href="Execution$.html" title=""></a>
-                        <a href="Execution$.html" title="">Execution</a>
-                      </li><li class="current-entities indented4">
-                        <span class="separator"></span>
                         <a class="class" href="ExecutionContextProvider.html" title="Provider for the default execution context"></a>
                         <a href="ExecutionContextProvider.html" title="Provider for the default execution context">ExecutionContextProvider</a>
                       </li><li class="current-entities indented4">
@@ -191,10 +187,6 @@
                         <span class="separator"></span>
                         <a class="class" href="MaterializerProvider.html" title="Provider for the default flow materializer"></a>
                         <a href="MaterializerProvider.html" title="Provider for the default flow materializer">MaterializerProvider</a>
-                      </li><li class="current-entities indented4">
-                        <a class="object" href="Timeout$.html" title="This is a static object that can be used to import timeout implicits, as a convenience."></a>
-                        <a class="trait" href="Timeout.html" title="This trait is used to provide a non-blocking timeout on an operation that returns a Future."></a>
-                        <a href="Timeout.html" title="This trait is used to provide a non-blocking timeout on an operation that returns a Future.">Timeout</a>
                       </li><li name="play.api.libs.crypto" visbl="pub" class="indented4 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="crypto"></a><a id="crypto:crypto"></a>
       <span class="permalink">
@@ -680,43 +672,6 @@ and checking for <span class="extype" name="scala.concurrent.TimeoutException">s
                 <span class="name">@Singleton</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="play.api.libs.concurrent.Timeout" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="TimeoutextendsAnyRef"></a><a id="Timeout:Timeout"></a>
-      <span class="permalink">
-      <a href="../../../../play/api/libs/concurrent/index.html#TimeoutextendsAnyRef" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">trait</span>
-      </span>
-      <span class="symbol">
-        <a title="This trait is used to provide a non-blocking timeout on an operation that returns a Future." href="Timeout.html"><span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use play.api.libs.concurrent.Futures.timeout">Timeout</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
-      </span>
-      
-      <p class="shortcomment cmt">This trait is used to provide a non-blocking timeout on an operation that returns a Future.</p><div class="fullcomment"><div class="comment cmt"><p>This trait is used to provide a non-blocking timeout on an operation that returns a Future.</p><p>Please note that the <a href="../../Application.html" class="extype" name="play.api.Application">play.api.Application</a> default <span class="extype" name="ActorSystem">ActorSystem</span> should
-be used as input here, as the actorSystem.scheduler is responsible for scheduling
-the timeout, using <a href="http://doc.akka.io/docs/akka/current/scala/futures.html#After">akka.pattern.actor</a> under the hood.</p><p>You can dependency inject the ActorSystem as follows to create a Future that will
-timeout after a certain period of time:</p><pre><span class="kw">class</span> MyService(<span class="kw">val</span> actorSystem: ActorSystem) <span class="kw">extends</span> Timeout {
-
-  <span class="kw">def</span> calculateWithTimeout(timeoutDuration: FiniteDuration): Future[<span class="std">Int</span>] = {
-    timeout(actorSystem, timeoutDuration)(rawCalculation())
-  }
-
-  <span class="kw">def</span> rawCalculation(): Future[<span class="std">Int</span>] = {
-    <span class="kw">import</span> akka.pattern.after
-    <span class="kw">implicit</span> <span class="kw">val</span> ec = actorSystem.dispatcher
-    akka.pattern.after(<span class="num">300</span> millis, actorSystem.scheduler)(Future(<span class="num">42</span>))(actorSystem.dispatcher)
-  }
-}</pre><p>You should check for timeout by using <span class="extype" name="Future.recover()">Future.recover()</span> or <span class="extype" name="Future.recoverWith()">Future.recoverWith()</span>
-and checking for <span class="extype" name="TimeoutException">TimeoutException</span>:</p><pre><span class="kw">val</span> future = myService.calculateWithTimeout(<span class="num">100</span> millis).recover {
-  <span class="kw">case</span> _: TimeoutException <span class="kw">=&gt;</span>
-    -<span class="num">1</span>
-}</pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use play.api.libs.concurrent.Futures.timeout</p></dd><dt>See also</dt><dd><span class="cmt"><p><a href="http://docs.scala-lang.org/overviews/core/futures.html" target="_blank">Futures and Promises</a></p></span></dd></dl></div>
     </li></ol>
             </div>
 
@@ -779,48 +734,7 @@ and checking for <span class="extype" name="TimeoutException">TimeoutException</
 
         
 
-        <div class="values members">
-              <h3>Deprecated Value Members</h3>
-              <ol><li name="play.api.libs.concurrent.Execution" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="Execution"></a><a id="Execution:Execution"></a>
-      <span class="permalink">
-      <a href="../../../../play/api/libs/concurrent/index.html#Execution" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a title="" href="Execution$.html"><span class="name deprecated" title="Deprecated: (Since version 2.6.0) Please see https://www.playframework.com/documentation/2.6.x/Migration26#play.api.libs.concurrent.Execution-is-deprecated">Execution</span></a>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Please see https://www.playframework.com/documentation/2.6.x/Migration26#play.api.libs.concurrent.Execution-is-deprecated</p></dd></dl></div>
-    </li><li name="play.api.libs.concurrent.Timeout" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="Timeout"></a><a id="Timeout:Timeout"></a>
-      <span class="permalink">
-      <a href="../../../../play/api/libs/concurrent/index.html#Timeout" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a title="This is a static object that can be used to import timeout implicits, as a convenience." href="Timeout$.html"><span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use play.api.libs.concurrent.Futures">Timeout</span></a><span class="result"> extends <a href="Timeout.html" class="extype" name="play.api.libs.concurrent.Timeout">Timeout</a> with <a href="LowPriorityFuturesImplicits.html" class="extype" name="play.api.libs.concurrent.LowPriorityFuturesImplicits">LowPriorityFuturesImplicits</a></span>
-      </span>
-      
-      <p class="shortcomment cmt">This is a static object that can be used to import timeout implicits, as a convenience.</p><div class="fullcomment"><div class="comment cmt"><p>This is a static object that can be used to import timeout implicits, as a convenience.</p><pre><span class="kw">import</span> play.api.libs.concurrent.Timeout._</pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use play.api.libs.concurrent.Futures</p></dd></dl></div>
-    </li></ol>
-            </div>
+        
         </div>
 
         <div id="inheritedMembers">
