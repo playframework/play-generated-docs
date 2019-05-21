@@ -17,8 +17,8 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":42,"i1":10,"i2":10};
-var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"],32:["t6","Deprecated Methods"]};
+var methods = {"i0":6,"i1":42};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],8:["t4","Concrete Methods"],32:["t6","Deprecated Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -209,30 +209,24 @@ extends <a href="../../play/mvc/Results.html" title="class in play.mvc">Results<
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t6" class="tableTab"><span><a href="javascript:show(32);">Deprecated Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t6" class="tableTab"><span><a href="javascript:show(32);">Deprecated Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>java.util.concurrent.CompletionStage&lt;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/Action.html#call-play.mvc.Http.Context-">call</a></span>(<a href="../../play/mvc/Http.Context.html" title="class in play.mvc">Http.Context</a>&nbsp;ctx)</code>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
-<div class="block"><span class="deprecationComment">Since 2.7.0. Use <code>#call(Request)</code> instead. Please see <a
-     href="https://www.playframework.com/documentation/latest/JavaHttpContextMigration27">the
-     migration guide</a> for more details.</span></div>
-</div>
-</td>
-</tr>
-<tr id="i1" class="rowColor">
-<td class="colFirst"><code>java.util.concurrent.CompletionStage&lt;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&gt;</code></td>
+<td class="colFirst"><code>abstract java.util.concurrent.CompletionStage&lt;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/Action.html#call-play.mvc.Http.Request-">call</a></span>(<a href="../../play/mvc/Http.Request.html" title="interface in play.mvc">Http.Request</a>&nbsp;req)</code>
 <div class="block">Executes this action with the given HTTP request and returns the result.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/Action.html#setContextComponents-play.core.j.JavaContextComponents-">setContextComponents</a></span>(play.core.j.JavaContextComponents&nbsp;contextComponents)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/Action.html#setContextComponents-play.core.j.JavaContextComponents-">setContextComponents</a></span>(play.core.j.JavaContextComponents&nbsp;contextComponents)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">Deprecated as of 2.8.0. Method does nothing.</span></div>
+</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -341,28 +335,9 @@ extends <a href="../../play/mvc/Results.html" title="class in play.mvc">Results<
 <ul class="blockList">
 <li class="blockList">
 <h4>setContextComponents</h4>
-<pre>@Inject
-public&nbsp;void&nbsp;setContextComponents(play.core.j.JavaContextComponents&nbsp;contextComponents)</pre>
-</li>
-</ul>
-<a name="call-play.mvc.Http.Context-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>call</h4>
 <pre>@Deprecated
-public&nbsp;java.util.concurrent.CompletionStage&lt;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&gt;&nbsp;call(<a href="../../play/mvc/Http.Context.html" title="class in play.mvc">Http.Context</a>&nbsp;ctx)</pre>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Since 2.7.0. Use <code>#call(Request)</code> instead. Please see <a
-     href="https://www.playframework.com/documentation/latest/JavaHttpContextMigration27">the
-     migration guide</a> for more details.</span></div>
-<div class="block">Executes this action with the given HTTP context and returns the result.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>ctx</code> - the http context in which to execute this action</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>a promise to the action's result</dd>
-</dl>
+public&nbsp;void&nbsp;setContextComponents(play.core.j.JavaContextComponents&nbsp;contextComponents)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Deprecated as of 2.8.0. Method does nothing.</span></div>
 </li>
 </ul>
 <a name="call-play.mvc.Http.Request-">
@@ -371,7 +346,7 @@ public&nbsp;java.util.concurrent.CompletionStage&lt;<a href="../../play/mvc/Resu
 <ul class="blockListLast">
 <li class="blockList">
 <h4>call</h4>
-<pre>public&nbsp;java.util.concurrent.CompletionStage&lt;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&gt;&nbsp;call(<a href="../../play/mvc/Http.Request.html" title="interface in play.mvc">Http.Request</a>&nbsp;req)</pre>
+<pre>public abstract&nbsp;java.util.concurrent.CompletionStage&lt;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&gt;&nbsp;call(<a href="../../play/mvc/Http.Request.html" title="interface in play.mvc">Http.Request</a>&nbsp;req)</pre>
 <div class="block">Executes this action with the given HTTP request and returns the result.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>

@@ -110,13 +110,14 @@ var activeTableTab = "activeTableTab";
 <pre>@Singleton
 public class <span class="typeNameLabel">HttpExecutionContext</span>
 extends java.lang.Object</pre>
-<div class="block">Execution context for managing Play Java HTTP thread local state.
+<div class="block">Execution context for managing the ClassLoader scope.
 
- <p>This is essentially a factory for getting an executor for the current HTTP context. Tasks
- executed by that executor will have the HTTP context setup in them.
+ <p>This is essentially a factory for getting an executor for the current ClassLoader. Tasks
+ executed by that executor will have the same ClassLoader in scope.
 
  <p>For example, it may be used in combination with <code>CompletionStage.thenApplyAsync</code>,
- to ensure the callbacks executed when the completion stage is redeemed have the correct context:
+ to ensure the callbacks executed when the completion stage is redeemed have the correct
+ ClassLoader:
 
  <pre>
      CompletionStage&lt;WSResponse&gt; response = ws.url(...).get();
@@ -165,7 +166,7 @@ extends java.lang.Object</pre>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>java.util.concurrent.Executor</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/concurrent/HttpExecutionContext.html#current--">current</a></span>()</code>
-<div class="block">Get the current executor associated with the current HTTP context.</div>
+<div class="block">Get the current executor associated with the current ClassLoader.</div>
 </td>
 </tr>
 </table>
@@ -215,13 +216,13 @@ public&nbsp;HttpExecutionContext(java.util.concurrent.Executor&nbsp;delegate)</p
 <li class="blockList">
 <h4>current</h4>
 <pre>public&nbsp;java.util.concurrent.Executor&nbsp;current()</pre>
-<div class="block">Get the current executor associated with the current HTTP context.
+<div class="block">Get the current executor associated with the current ClassLoader.
 
- <p>Note that the returned executor is only valid for the current context. It should be used in
- a transient fashion, long lived references to it should not be kept.</div>
+ <p>Note that the returned executor is only valid for the current ClassLoader. It should be used
+ in a transient fashion, long lived references to it should not be kept.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>An executor that will execute its tasks in the current HTTP context.</dd>
+<dd>An executor that will execute its tasks with the current ClassLoader.</dd>
 </dl>
 </li>
 </ul>
