@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":18,"i1":18,"i2":18};
+var methods = {"i0":18,"i1":18,"i2":18,"i3":18};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],16:["t5","Default Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -109,6 +109,7 @@ var activeTableTab = "activeTableTab";
  public class MyModule extends AbstractModule implements AkkaGuiceSupport {
    protected void configure() {
      bindActor(MyActor.class, "myActor");
+     bindTypedActor(HelloActor.class, "hello-actor");
    }
  }
  </pre>
@@ -118,6 +119,7 @@ var activeTableTab = "activeTableTab";
  <pre>
  public class MyController extends Controller {
     @Inject @Named("myActor") ActorRef myActor;
+    @Inject ActorRef&lt;HelloActor.SayHello&gt; helloActor;
    ...
  }
  </pre></div>
@@ -159,6 +161,13 @@ var activeTableTab = "activeTableTab";
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/akka/AkkaGuiceSupport.html#bindActorFactory-java.lang.Class-java.lang.Class-">bindActorFactory</a></span>(java.lang.Class&lt;T&gt;&nbsp;actorClass,
                 java.lang.Class&lt;?&gt;&nbsp;factoryClass)</code>
 <div class="block">Bind an actor factory.</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>default &lt;T&gt;&nbsp;void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/akka/AkkaGuiceSupport.html#bindTypedActor-java.lang.Class-java.lang.String-">bindTypedActor</a></span>(java.lang.Class&lt;? extends akka.actor.typed.Behavior&lt;T&gt;&gt;&nbsp;behaviorClass,
+              java.lang.String&nbsp;name)</code>
+<div class="block">Bind a typed actor.</div>
 </td>
 </tr>
 </table>
@@ -227,7 +236,7 @@ var activeTableTab = "activeTableTab";
 <a name="bindActorFactory-java.lang.Class-java.lang.Class-">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>bindActorFactory</h4>
 <pre>default&nbsp;&lt;T extends akka.actor.Actor&gt;&nbsp;void&nbsp;bindActorFactory(java.lang.Class&lt;T&gt;&nbsp;actorClass,
@@ -246,6 +255,34 @@ var activeTableTab = "activeTableTab";
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>actorClass</code> - The class that implements the actor.</dd>
 <dd><code>factoryClass</code> - The factory interface for creating the actor.</dd>
+</dl>
+</li>
+</ul>
+<a name="bindTypedActor-java.lang.Class-java.lang.String-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>bindTypedActor</h4>
+<pre>@ApiMayChange
+default&nbsp;&lt;T&gt;&nbsp;void&nbsp;bindTypedActor(java.lang.Class&lt;? extends akka.actor.typed.Behavior&lt;T&gt;&gt;&nbsp;behaviorClass,
+                                              java.lang.String&nbsp;name)</pre>
+<div class="block">Bind a typed actor.
+
+ <p>For the given message type <code>T</code> binds <code>Behavior[T]</code> to the given <code>Behavior</code>
+ subclass and <code>ActorRef[T]</code> to an instance of <code>TypedActorRefProvider</code> with the given
+ actor name, so that it can be injected into other components.
+
+ <p>Note that, while the name is used when spawning the actor in the <code>ActorSystem</code>, it is
+ <em>NOT</em> used as a name qualifier for the binding. This is so that you don't need to use
+ <code>Named</code> to qualify all injections of typed actors. Use the underlying
+ API to create multiple, name-annotated bindings.</div>
+<dl>
+<dt><span class="paramLabel">Type Parameters:</span></dt>
+<dd><code>T</code> - The type of the messages the typed actor can handle.</dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>behaviorClass</code> - The <code>Behavior</code> subclass for the typed actor.</dd>
+<dd><code>name</code> - The name of the typed actor.</dd>
 </dl>
 </li>
 </ul>

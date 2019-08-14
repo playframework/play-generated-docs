@@ -136,6 +136,10 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="play.api.libs">libs</a></dd></dl></div>
     </li><li class="current-entities indented4">
+                        <a class="object" href="ActorModule$.html" title="The companion object to hold ActorModule's ActorModule.Aux type alias."></a>
+                        <a class="trait" href="ActorModule.html" title="Allows runtime dependency injection of actor behavior, defined in &quot;functional programming&quot; style."></a>
+                        <a href="ActorModule.html" title="Allows runtime dependency injection of actor behavior, defined in &quot;functional programming&quot; style.">ActorModule</a>
+                      </li><li class="current-entities indented4">
                         <span class="separator"></span>
                         <a class="class" href="ActorRefProvider.html" title="Provider for creating actor refs"></a>
                         <a href="ActorRefProvider.html" title="Provider for creating actor refs">ActorRefProvider</a>
@@ -187,6 +191,10 @@
                         <span class="separator"></span>
                         <a class="class" href="MaterializerProvider.html" title="Provider for the default flow materializer"></a>
                         <a href="MaterializerProvider.html" title="Provider for the default flow materializer">MaterializerProvider</a>
+                      </li><li class="current-entities indented4">
+                        <span class="separator"></span>
+                        <a class="class" href="TypedActorRefProvider.html" title="A singleton Provider of the typed ActorRef[T] resulting from spawning an actor with the Behavior[T] in dependency scope and the given name, in the ActorSystem in dependency scope."></a>
+                        <a href="TypedActorRefProvider.html" title="A singleton Provider of the typed ActorRef[T] resulting from spawning an actor with the Behavior[T] in dependency scope and the given name, in the ActorSystem in dependency scope.">TypedActorRefProvider</a>
                       </li><li name="play.api.libs.crypto" visbl="pub" class="indented4 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="crypto"></a><a id="crypto:crypto"></a>
       <span class="permalink">
@@ -423,7 +431,45 @@ For example:</p><pre><span class="kw">import</span> play.api.libs.json._
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="play.api.libs.concurrent.ActorRefProvider" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+              <ol><li name="play.api.libs.concurrent.ActorModule" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="ActorModuleextendsAbstractModule"></a><a id="ActorModule:ActorModule"></a>
+      <span class="permalink">
+      <a href="../../../../play/api/libs/concurrent/index.html#ActorModuleextendsAbstractModule" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a title="Allows runtime dependency injection of actor behavior, defined in &quot;functional programming&quot; style." href="ActorModule.html"><span class="name">ActorModule</span></a><span class="result"> extends <span class="extype" name="com.google.inject.AbstractModule">AbstractModule</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Allows runtime dependency injection of actor behavior, defined in &quot;functional programming&quot; style.</p><div class="fullcomment"><div class="comment cmt"><p>Allows runtime dependency injection of actor behavior, defined in &quot;functional programming&quot; style.</p><p>1. Mix this trait into the <code>object</code> defining the actor messages and the actor behavior(s),
+2. Define the <code>Message</code> type with actor message class,
+3. Add the <span class="extype" name="com.google.inject.Provides">Provides</span> annotation to the method that returns the
+  (initial) <span class="extype" name="akka.actor.typed.Behavior">Behavior</span> of the actor.
+4. Use the <code>bindTypedActor</code> in <a href="AkkaGuiceSupport.html" class="extype" name="play.api.libs.concurrent.AkkaGuiceSupport">AkkaGuiceSupport</a>, passing the <code>object</code> as the actor module.</p><p>For example:</p><pre><span class="kw">object</span> ConfiguredActor <span class="kw">extends</span> ActorModule {
+  <span class="kw">type</span> Message = GetConfig
+
+  <span class="kw">final</span> <span class="kw">case</span> <span class="kw">class</span> GetConfig(replyTo: ActorRef[<span class="std">String</span>])
+
+  @Provides <span class="kw">def</span> apply(configuration: Configuration): Behavior[GetConfig] = {
+    <span class="cmt">// TODO: Define ConfiguredActor's behavior using the injected configuration.</span>
+    Behaviors.empty
+  }
+}
+
+<span class="kw">final</span> <span class="kw">class</span> AppModule <span class="kw">extends</span> AbstractModule <span class="kw">with</span> AkkaGuiceSupport {
+  <span class="kw">override</span> <span class="kw">def</span> configure() = {
+    bindTypedActor(classOf[ConfiguredActor], <span class="lit">"configured-actor"</span>)
+  }
+}</pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@ApiMayChange</span><span class="args">()</span>
+              
+        </dd><dt>See also</dt><dd><span class="cmt"><p>https://doc.akka.io/docs/akka/snapshot/typed/style-guide.html#functional-versus-object-oriented-style</p></span></dd></dl></div>
+    </li><li name="play.api.libs.concurrent.ActorRefProvider" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="ActorRefProvider[T&lt;:akka.actor.Actor]extendsProvider[akka.actor.ActorRef]"></a><a id="ActorRefProvider[T&lt;:Actor]:ActorRefProvider[T]"></a>
       <span class="permalink">
       <a href="../../../../play/api/libs/concurrent/index.html#ActorRefProvider[T&lt;:akka.actor.Actor]extendsProvider[akka.actor.ActorRef]" title="Permalink">
@@ -495,9 +541,13 @@ For example:</p><pre><span class="kw">import</span> play.api.libs.json._
       <p class="shortcomment cmt">Support for binding actors with Guice.</p><div class="fullcomment"><div class="comment cmt"><p>Support for binding actors with Guice.</p><p>Mix this trait in with a Guice AbstractModule to get convenient support for binding actors.  For example:</p><pre><span class="kw">class</span> MyModule <span class="kw">extends</span> AbstractModule <span class="kw">with</span> AkkaGuiceSupport {
   <span class="kw">def</span> configure = {
     bindActor[MyActor](<span class="lit">"myActor"</span>)
+    bindTypedActor(HelloActor(), <span class="lit">"hello-actor"</span>)
   }
-}</pre><p>Then to use the above actor in your application, add a qualified injected dependency, like so:</p><pre><span class="kw">class</span> MyController @Inject() (@Named(<span class="lit">"myActor"</span>) myActor: ActorRef, <span class="kw">val</span> controllerComponents: ControllerComponents)
-    <span class="kw">extends</span> BaseController {
+}</pre><p>Then to use the above actor in your application, add a qualified injected dependency, like so:</p><pre><span class="kw">class</span> MyController @Inject() (
+    @Named(<span class="lit">"myActor"</span>) myActor: ActorRef,
+    helloActor: ActorRef[HelloActor.SayHello],
+    <span class="kw">val</span> controllerComponents: ControllerComponents,
+) <span class="kw">extends</span> BaseController {
   ...
 }</pre></div></div>
     </li><li name="play.api.libs.concurrent.CoordinatedShutdownProvider" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
@@ -672,6 +722,30 @@ and checking for <span class="extype" name="scala.concurrent.TimeoutException">s
                 <span class="name">@Singleton</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="play.api.libs.concurrent.TypedActorRefProvider" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="TypedActorRefProvider[T]extendsProvider[akka.actor.typed.ActorRef[T]]"></a><a id="TypedActorRefProvider[T]:TypedActorRefProvider[T]"></a>
+      <span class="permalink">
+      <a href="../../../../play/api/libs/concurrent/index.html#TypedActorRefProvider[T]extendsProvider[akka.actor.typed.ActorRef[T]]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a title="A singleton Provider of the typed ActorRef[T] resulting from spawning an actor with the Behavior[T] in dependency scope and the given name, in the ActorSystem in dependency scope." href="TypedActorRefProvider.html"><span class="name">TypedActorRefProvider</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <span class="extype" name="com.google.inject.Provider">Provider</span>[<span class="extype" name="akka.actor.typed.ActorRef">ActorRef</span>[<span class="extype" name="play.api.libs.concurrent.TypedActorRefProvider.T">T</span>]]</span>
+      </span>
+      
+      <p class="shortcomment cmt">A singleton <span class="extype" name="Provider">Provider</span> of the typed <code>ActorRef[T]</code> resulting from spawning an actor with the
+<code>Behavior[T]</code> in dependency scope and the given name, in the <span class="extype" name="ActorSystem">ActorSystem</span> in dependency scope.</p><div class="fullcomment"><div class="comment cmt"><p>A singleton <span class="extype" name="Provider">Provider</span> of the typed <code>ActorRef[T]</code> resulting from spawning an actor with the
+<code>Behavior[T]</code> in dependency scope and the given name, in the <span class="extype" name="ActorSystem">ActorSystem</span> in dependency scope.
+</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>The class of the messages the typed actor can handle.</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@Singleton</span><span class="args">()</span>
+              
+                <span class="name">@ApiMayChange</span><span class="args">()</span>
+              
+        </dd></dl></div>
     </li></ol>
             </div>
 
@@ -680,7 +754,26 @@ and checking for <span class="extype" name="scala.concurrent.TimeoutException">s
         <div class="values members">
               <h3>Value Members</h3>
               <ol>
-                <li name="play.api.libs.concurrent.ActorSystemProvider" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+                <li name="play.api.libs.concurrent.ActorModule" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ActorModule"></a><a id="ActorModule:ActorModule"></a>
+      <span class="permalink">
+      <a href="../../../../play/api/libs/concurrent/index.html#ActorModule" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="The companion object to hold ActorModule's ActorModule.Aux type alias." href="ActorModule$.html"><span class="name">ActorModule</span></a>
+      </span>
+      
+      <p class="shortcomment cmt">The companion object to hold <a href="ActorModule.html" class="extype" name="play.api.libs.concurrent.ActorModule">ActorModule</a>'s <a href="ActorModule$.html#Aux[A]=play.api.libs.concurrent.ActorModule{typeMessage=A}" class="extmbr" name="play.api.libs.concurrent.ActorModule.Aux">ActorModule.Aux</a> type alias.</p><div class="fullcomment"><div class="comment cmt"><p>The companion object to hold <a href="ActorModule.html" class="extype" name="play.api.libs.concurrent.ActorModule">ActorModule</a>'s <a href="ActorModule$.html#Aux[A]=play.api.libs.concurrent.ActorModule{typeMessage=A}" class="extmbr" name="play.api.libs.concurrent.ActorModule.Aux">ActorModule.Aux</a> type alias.</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@ApiMayChange</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="play.api.libs.concurrent.ActorSystemProvider" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="ActorSystemProvider"></a><a id="ActorSystemProvider:ActorSystemProvider"></a>
       <span class="permalink">
       <a href="../../../../play/api/libs/concurrent/index.html#ActorSystemProvider" title="Permalink">
