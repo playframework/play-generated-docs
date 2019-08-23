@@ -17,8 +17,8 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10,"i21":10,"i22":10,"i23":10,"i24":10,"i25":10,"i26":10,"i27":10,"i28":10,"i29":10,"i30":10,"i31":10,"i32":10,"i33":10,"i34":10,"i35":10,"i36":10,"i37":10,"i38":10,"i39":10,"i40":10,"i41":10,"i42":10,"i43":10,"i44":10,"i45":10,"i46":10,"i47":10,"i48":10,"i49":10,"i50":10,"i51":10,"i52":10,"i53":10,"i54":10,"i55":10,"i56":10,"i57":10,"i58":10,"i59":10,"i60":10,"i61":10,"i62":10,"i63":10,"i64":10,"i65":10,"i66":10,"i67":10,"i68":10,"i69":10,"i70":10,"i71":10,"i72":10,"i73":10,"i74":10,"i75":10,"i76":10,"i77":10,"i78":10,"i79":10,"i80":10,"i81":10};
-var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":42,"i17":42,"i18":10,"i19":10,"i20":10,"i21":10,"i22":10,"i23":10,"i24":10,"i25":42,"i26":42,"i27":10,"i28":10,"i29":10,"i30":10,"i31":10,"i32":10,"i33":10,"i34":10,"i35":10,"i36":10,"i37":10,"i38":10,"i39":10,"i40":10,"i41":10,"i42":10,"i43":10,"i44":10,"i45":10,"i46":42,"i47":42,"i48":10,"i49":10,"i50":10,"i51":10,"i52":10,"i53":10,"i54":10,"i55":42,"i56":42,"i57":10,"i58":10,"i59":10,"i60":10,"i61":10,"i62":10,"i63":10,"i64":10,"i65":10,"i66":42,"i67":42,"i68":10,"i69":10,"i70":10,"i71":10,"i72":10,"i73":10,"i74":10,"i75":10,"i76":10,"i77":42,"i78":42,"i79":10,"i80":10,"i81":10,"i82":10,"i83":10,"i84":10,"i85":10,"i86":10,"i87":10,"i88":10,"i89":10,"i90":10,"i91":10,"i92":10,"i93":10};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"],32:["t6","Deprecated Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -145,7 +145,7 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t6" class="tableTab"><span><a href="javascript:show(32);">Deprecated Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
@@ -226,36 +226,37 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 </tr>
 <tr id="i11" class="rowColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendFile-java.io.File-boolean-java.lang.Runnable-java.util.concurrent.Executor-">sendFile</a></span>(java.io.File&nbsp;file,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendFile-java.io.File-boolean-java.util.Optional-">sendFile</a></span>(java.io.File&nbsp;file,
         boolean&nbsp;inline,
-        java.lang.Runnable&nbsp;onClose,
-        java.util.concurrent.Executor&nbsp;executor)</code>
-<div class="block">Sends the given file.</div>
+        java.util.Optional&lt;java.lang.String&gt;&nbsp;fileName)</code>
+<div class="block">Send the given file.</div>
 </td>
 </tr>
 <tr id="i12" class="altColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendFile-java.io.File-boolean-java.lang.String-">sendFile</a></span>(java.io.File&nbsp;file,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendFile-java.io.File-boolean-java.util.Optional-play.mvc.FileMimeTypes-">sendFile</a></span>(java.io.File&nbsp;file,
         boolean&nbsp;inline,
-        java.lang.String&nbsp;fileName)</code>
+        java.util.Optional&lt;java.lang.String&gt;&nbsp;fileName,
+        <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes)</code>
 <div class="block">Send the given file.</div>
 </td>
 </tr>
 <tr id="i13" class="rowColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendFile-java.io.File-boolean-java.lang.String-play.mvc.FileMimeTypes-">sendFile</a></span>(java.io.File&nbsp;file,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendFile-java.io.File-boolean-java.util.Optional-play.mvc.FileMimeTypes-java.lang.Runnable-java.util.concurrent.Executor-">sendFile</a></span>(java.io.File&nbsp;file,
         boolean&nbsp;inline,
-        java.lang.String&nbsp;fileName,
-        <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes)</code>
+        java.util.Optional&lt;java.lang.String&gt;&nbsp;fileName,
+        <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes,
+        java.lang.Runnable&nbsp;onClose,
+        java.util.concurrent.Executor&nbsp;executor)</code>
 <div class="block">Send the given file.</div>
 </td>
 </tr>
 <tr id="i14" class="altColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendFile-java.io.File-boolean-java.lang.String-play.mvc.FileMimeTypes-java.lang.Runnable-java.util.concurrent.Executor-">sendFile</a></span>(java.io.File&nbsp;file,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendFile-java.io.File-boolean-java.util.Optional-java.lang.Runnable-java.util.concurrent.Executor-">sendFile</a></span>(java.io.File&nbsp;file,
         boolean&nbsp;inline,
-        java.lang.String&nbsp;fileName,
-        <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes,
+        java.util.Optional&lt;java.lang.String&gt;&nbsp;fileName,
         java.lang.Runnable&nbsp;onClose,
         java.util.concurrent.Executor&nbsp;executor)</code>
 <div class="block">Send the given file.</div>
@@ -263,22 +264,43 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 </tr>
 <tr id="i15" class="rowColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendFile-java.io.File-boolean-java.lang.String-java.lang.Runnable-java.util.concurrent.Executor-">sendFile</a></span>(java.io.File&nbsp;file,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendFile-java.io.File-boolean-java.lang.Runnable-java.util.concurrent.Executor-">sendFile</a></span>(java.io.File&nbsp;file,
         boolean&nbsp;inline,
-        java.lang.String&nbsp;fileName,
         java.lang.Runnable&nbsp;onClose,
         java.util.concurrent.Executor&nbsp;executor)</code>
-<div class="block">Send the given file.</div>
+<div class="block">Sends the given file.</div>
 </td>
 </tr>
 <tr id="i16" class="altColor">
+<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendFile-java.io.File-boolean-java.lang.String-">sendFile</a></span>(java.io.File&nbsp;file,
+        boolean&nbsp;inline,
+        java.lang.String&nbsp;fileName)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">Deprecated as of 2.8.0. Use to <a href="../../play/mvc/StatusHeader.html#sendFile-java.io.File-boolean-java.util.Optional-"><code>sendFile(File, boolean, Optional)</code></a>.</span></div>
+</div>
+</td>
+</tr>
+<tr id="i17" class="rowColor">
+<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendFile-java.io.File-boolean-java.lang.String-play.mvc.FileMimeTypes-">sendFile</a></span>(java.io.File&nbsp;file,
+        boolean&nbsp;inline,
+        java.lang.String&nbsp;fileName,
+        <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">Deprecated as of 2.8.0. Use to <a href="../../play/mvc/StatusHeader.html#sendFile-java.io.File-boolean-java.util.Optional-play.mvc.FileMimeTypes-"><code>sendFile(File, boolean, Optional,
+     FileMimeTypes)</code></a>.</span></div>
+</div>
+</td>
+</tr>
+<tr id="i18" class="altColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendFile-java.io.File-play.mvc.FileMimeTypes-">sendFile</a></span>(java.io.File&nbsp;file,
         <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes)</code>
 <div class="block">Sends the given file using the default inline mode.</div>
 </td>
 </tr>
-<tr id="i17" class="rowColor">
+<tr id="i19" class="rowColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendFile-java.io.File-play.mvc.FileMimeTypes-java.lang.Runnable-java.util.concurrent.Executor-">sendFile</a></span>(java.io.File&nbsp;file,
         <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes,
@@ -287,43 +309,26 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <div class="block">Sends the given file using the default inline mode.</div>
 </td>
 </tr>
-<tr id="i18" class="altColor">
-<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendFile-java.io.File-java.lang.Runnable-java.util.concurrent.Executor-">sendFile</a></span>(java.io.File&nbsp;file,
-        java.lang.Runnable&nbsp;onClose,
-        java.util.concurrent.Executor&nbsp;executor)</code>
-<div class="block">Sends the given file using the default inline mode.</div>
-</td>
-</tr>
-<tr id="i19" class="rowColor">
-<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendFile-java.io.File-java.lang.String-">sendFile</a></span>(java.io.File&nbsp;file,
-        java.lang.String&nbsp;fileName)</code>
-<div class="block">Send the given file.</div>
-</td>
-</tr>
 <tr id="i20" class="altColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendFile-java.io.File-java.lang.String-play.mvc.FileMimeTypes-">sendFile</a></span>(java.io.File&nbsp;file,
-        java.lang.String&nbsp;fileName,
-        <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendFile-java.io.File-java.util.Optional-">sendFile</a></span>(java.io.File&nbsp;file,
+        java.util.Optional&lt;java.lang.String&gt;&nbsp;fileName)</code>
 <div class="block">Send the given file.</div>
 </td>
 </tr>
 <tr id="i21" class="rowColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendFile-java.io.File-java.lang.String-play.mvc.FileMimeTypes-java.lang.Runnable-java.util.concurrent.Executor-">sendFile</a></span>(java.io.File&nbsp;file,
-        java.lang.String&nbsp;fileName,
-        <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes,
-        java.lang.Runnable&nbsp;onClose,
-        java.util.concurrent.Executor&nbsp;executor)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendFile-java.io.File-java.util.Optional-play.mvc.FileMimeTypes-">sendFile</a></span>(java.io.File&nbsp;file,
+        java.util.Optional&lt;java.lang.String&gt;&nbsp;fileName,
+        <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes)</code>
 <div class="block">Send the given file.</div>
 </td>
 </tr>
 <tr id="i22" class="altColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendFile-java.io.File-java.lang.String-java.lang.Runnable-java.util.concurrent.Executor-">sendFile</a></span>(java.io.File&nbsp;file,
-        java.lang.String&nbsp;fileName,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendFile-java.io.File-java.util.Optional-play.mvc.FileMimeTypes-java.lang.Runnable-java.util.concurrent.Executor-">sendFile</a></span>(java.io.File&nbsp;file,
+        java.util.Optional&lt;java.lang.String&gt;&nbsp;fileName,
+        <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes,
         java.lang.Runnable&nbsp;onClose,
         java.util.concurrent.Executor&nbsp;executor)</code>
 <div class="block">Send the given file.</div>
@@ -331,18 +336,54 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 </tr>
 <tr id="i23" class="rowColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendFile-java.io.File-java.util.Optional-java.lang.Runnable-java.util.concurrent.Executor-">sendFile</a></span>(java.io.File&nbsp;file,
+        java.util.Optional&lt;java.lang.String&gt;&nbsp;fileName,
+        java.lang.Runnable&nbsp;onClose,
+        java.util.concurrent.Executor&nbsp;executor)</code>
+<div class="block">Send the given file.</div>
+</td>
+</tr>
+<tr id="i24" class="altColor">
+<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendFile-java.io.File-java.lang.Runnable-java.util.concurrent.Executor-">sendFile</a></span>(java.io.File&nbsp;file,
+        java.lang.Runnable&nbsp;onClose,
+        java.util.concurrent.Executor&nbsp;executor)</code>
+<div class="block">Sends the given file using the default inline mode.</div>
+</td>
+</tr>
+<tr id="i25" class="rowColor">
+<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendFile-java.io.File-java.lang.String-">sendFile</a></span>(java.io.File&nbsp;file,
+        java.lang.String&nbsp;fileName)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">Deprecated as of 2.8.0. Use to <a href="../../play/mvc/StatusHeader.html#sendFile-java.io.File-java.util.Optional-"><code>sendFile(File, Optional)</code></a>.</span></div>
+</div>
+</td>
+</tr>
+<tr id="i26" class="altColor">
+<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendFile-java.io.File-java.lang.String-play.mvc.FileMimeTypes-">sendFile</a></span>(java.io.File&nbsp;file,
+        java.lang.String&nbsp;fileName,
+        <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">Deprecated as of 2.8.0. Use to <a href="../../play/mvc/StatusHeader.html#sendFile-java.io.File-java.util.Optional-play.mvc.FileMimeTypes-"><code>sendFile(File, Optional, FileMimeTypes)</code></a>.</span></div>
+</div>
+</td>
+</tr>
+<tr id="i27" class="rowColor">
+<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendInputStream-java.io.InputStream-">sendInputStream</a></span>(java.io.InputStream&nbsp;stream)</code>
 <div class="block">Send the given input stream.</div>
 </td>
 </tr>
-<tr id="i24" class="altColor">
+<tr id="i28" class="altColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendInputStream-java.io.InputStream-long-">sendInputStream</a></span>(java.io.InputStream&nbsp;stream,
                long&nbsp;contentLength)</code>
 <div class="block">Send the given input stream.</div>
 </td>
 </tr>
-<tr id="i25" class="rowColor">
+<tr id="i29" class="rowColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendInputStream-java.io.InputStream-long-java.util.Optional-">sendInputStream</a></span>(java.io.InputStream&nbsp;stream,
                long&nbsp;contentLength,
@@ -350,7 +391,7 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <div class="block">Send the given input stream.</div>
 </td>
 </tr>
-<tr id="i26" class="altColor">
+<tr id="i30" class="altColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendInputStream-java.io.InputStream-long-java.util.Optional-java.lang.Runnable-java.util.concurrent.Executor-">sendInputStream</a></span>(java.io.InputStream&nbsp;stream,
                long&nbsp;contentLength,
@@ -360,7 +401,7 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <div class="block">Send the given input stream.</div>
 </td>
 </tr>
-<tr id="i27" class="rowColor">
+<tr id="i31" class="rowColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendInputStream-java.io.InputStream-long-java.lang.Runnable-java.util.concurrent.Executor-">sendInputStream</a></span>(java.io.InputStream&nbsp;stream,
                long&nbsp;contentLength,
@@ -369,14 +410,14 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <div class="block">Send the given input stream.</div>
 </td>
 </tr>
-<tr id="i28" class="altColor">
+<tr id="i32" class="altColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendInputStream-java.io.InputStream-java.util.Optional-">sendInputStream</a></span>(java.io.InputStream&nbsp;stream,
                java.util.Optional&lt;java.lang.String&gt;&nbsp;contentType)</code>
 <div class="block">Send the given input stream.</div>
 </td>
 </tr>
-<tr id="i29" class="rowColor">
+<tr id="i33" class="rowColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendInputStream-java.io.InputStream-java.util.Optional-java.lang.Runnable-java.util.concurrent.Executor-">sendInputStream</a></span>(java.io.InputStream&nbsp;stream,
                java.util.Optional&lt;java.lang.String&gt;&nbsp;contentType,
@@ -385,7 +426,7 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <div class="block">Send the given input stream.</div>
 </td>
 </tr>
-<tr id="i30" class="altColor">
+<tr id="i34" class="altColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendInputStream-java.io.InputStream-java.lang.Runnable-java.util.concurrent.Executor-">sendInputStream</a></span>(java.io.InputStream&nbsp;stream,
                java.lang.Runnable&nbsp;onClose,
@@ -393,33 +434,33 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <div class="block">Send the given input stream.</div>
 </td>
 </tr>
-<tr id="i31" class="rowColor">
+<tr id="i35" class="rowColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendJson-com.fasterxml.jackson.databind.JsonNode-">sendJson</a></span>(com.fasterxml.jackson.databind.JsonNode&nbsp;json)</code>
 <div class="block">Send a json result.</div>
 </td>
 </tr>
-<tr id="i32" class="altColor">
+<tr id="i36" class="altColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendJson-com.fasterxml.jackson.databind.JsonNode-com.fasterxml.jackson.core.JsonEncoding-">sendJson</a></span>(com.fasterxml.jackson.databind.JsonNode&nbsp;json,
         com.fasterxml.jackson.core.JsonEncoding&nbsp;encoding)</code>
 <div class="block">Send a json result.</div>
 </td>
 </tr>
-<tr id="i33" class="rowColor">
+<tr id="i37" class="rowColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendPath-java.nio.file.Path-">sendPath</a></span>(java.nio.file.Path&nbsp;path)</code>
 <div class="block">Sends the given path if it is a valid file.</div>
 </td>
 </tr>
-<tr id="i34" class="altColor">
+<tr id="i38" class="altColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendPath-java.nio.file.Path-boolean-">sendPath</a></span>(java.nio.file.Path&nbsp;path,
         boolean&nbsp;inline)</code>
 <div class="block">Sends the given path if it is a valid file.</div>
 </td>
 </tr>
-<tr id="i35" class="rowColor">
+<tr id="i39" class="rowColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendPath-java.nio.file.Path-boolean-play.mvc.FileMimeTypes-">sendPath</a></span>(java.nio.file.Path&nbsp;path,
         boolean&nbsp;inline,
@@ -427,7 +468,7 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <div class="block">Sends the given path if it is a valid file.</div>
 </td>
 </tr>
-<tr id="i36" class="altColor">
+<tr id="i40" class="altColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendPath-java.nio.file.Path-boolean-play.mvc.FileMimeTypes-java.lang.Runnable-java.util.concurrent.Executor-">sendPath</a></span>(java.nio.file.Path&nbsp;path,
         boolean&nbsp;inline,
@@ -437,63 +478,28 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <div class="block">Sends the given path if it is a valid file.</div>
 </td>
 </tr>
-<tr id="i37" class="rowColor">
-<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendPath-java.nio.file.Path-boolean-java.lang.Runnable-java.util.concurrent.Executor-">sendPath</a></span>(java.nio.file.Path&nbsp;path,
-        boolean&nbsp;inline,
-        java.lang.Runnable&nbsp;onClose,
-        java.util.concurrent.Executor&nbsp;executor)</code>
-<div class="block">Sends the given path if it is a valid file.</div>
-</td>
-</tr>
-<tr id="i38" class="altColor">
-<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendPath-java.nio.file.Path-boolean-java.lang.String-">sendPath</a></span>(java.nio.file.Path&nbsp;path,
-        boolean&nbsp;inline,
-        java.lang.String&nbsp;filename)</code>
-<div class="block">Sends the given path if it is a valid file.</div>
-</td>
-</tr>
-<tr id="i39" class="rowColor">
-<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendPath-java.nio.file.Path-boolean-java.lang.String-play.mvc.FileMimeTypes-">sendPath</a></span>(java.nio.file.Path&nbsp;path,
-        boolean&nbsp;inline,
-        java.lang.String&nbsp;filename,
-        <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes)</code>
-<div class="block">Sends the given path if it is a valid file.</div>
-</td>
-</tr>
-<tr id="i40" class="altColor">
-<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendPath-java.nio.file.Path-boolean-java.lang.String-play.mvc.FileMimeTypes-java.lang.Runnable-java.util.concurrent.Executor-">sendPath</a></span>(java.nio.file.Path&nbsp;path,
-        boolean&nbsp;inline,
-        java.lang.String&nbsp;filename,
-        <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes,
-        java.lang.Runnable&nbsp;onClose,
-        java.util.concurrent.Executor&nbsp;executor)</code>
-<div class="block">Sends the given path if it is a valid file.</div>
-</td>
-</tr>
 <tr id="i41" class="rowColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendPath-java.nio.file.Path-boolean-java.lang.String-java.lang.Runnable-java.util.concurrent.Executor-">sendPath</a></span>(java.nio.file.Path&nbsp;path,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendPath-java.nio.file.Path-boolean-java.util.Optional-">sendPath</a></span>(java.nio.file.Path&nbsp;path,
         boolean&nbsp;inline,
-        java.lang.String&nbsp;filename,
-        java.lang.Runnable&nbsp;onClose,
-        java.util.concurrent.Executor&nbsp;executor)</code>
+        java.util.Optional&lt;java.lang.String&gt;&nbsp;filename)</code>
 <div class="block">Sends the given path if it is a valid file.</div>
 </td>
 </tr>
 <tr id="i42" class="altColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendPath-java.nio.file.Path-play.mvc.FileMimeTypes-">sendPath</a></span>(java.nio.file.Path&nbsp;path,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendPath-java.nio.file.Path-boolean-java.util.Optional-play.mvc.FileMimeTypes-">sendPath</a></span>(java.nio.file.Path&nbsp;path,
+        boolean&nbsp;inline,
+        java.util.Optional&lt;java.lang.String&gt;&nbsp;filename,
         <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes)</code>
 <div class="block">Sends the given path if it is a valid file.</div>
 </td>
 </tr>
 <tr id="i43" class="rowColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendPath-java.nio.file.Path-play.mvc.FileMimeTypes-java.lang.Runnable-java.util.concurrent.Executor-">sendPath</a></span>(java.nio.file.Path&nbsp;path,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendPath-java.nio.file.Path-boolean-java.util.Optional-play.mvc.FileMimeTypes-java.lang.Runnable-java.util.concurrent.Executor-">sendPath</a></span>(java.nio.file.Path&nbsp;path,
+        boolean&nbsp;inline,
+        java.util.Optional&lt;java.lang.String&gt;&nbsp;filename,
         <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes,
         java.lang.Runnable&nbsp;onClose,
         java.util.concurrent.Executor&nbsp;executor)</code>
@@ -502,7 +508,9 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 </tr>
 <tr id="i44" class="altColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendPath-java.nio.file.Path-java.lang.Runnable-java.util.concurrent.Executor-">sendPath</a></span>(java.nio.file.Path&nbsp;path,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendPath-java.nio.file.Path-boolean-java.util.Optional-java.lang.Runnable-java.util.concurrent.Executor-">sendPath</a></span>(java.nio.file.Path&nbsp;path,
+        boolean&nbsp;inline,
+        java.util.Optional&lt;java.lang.String&gt;&nbsp;filename,
         java.lang.Runnable&nbsp;onClose,
         java.util.concurrent.Executor&nbsp;executor)</code>
 <div class="block">Sends the given path if it is a valid file.</div>
@@ -510,52 +518,126 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 </tr>
 <tr id="i45" class="rowColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendPath-java.nio.file.Path-java.lang.String-">sendPath</a></span>(java.nio.file.Path&nbsp;path,
-        java.lang.String&nbsp;filename)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendPath-java.nio.file.Path-boolean-java.lang.Runnable-java.util.concurrent.Executor-">sendPath</a></span>(java.nio.file.Path&nbsp;path,
+        boolean&nbsp;inline,
+        java.lang.Runnable&nbsp;onClose,
+        java.util.concurrent.Executor&nbsp;executor)</code>
 <div class="block">Sends the given path if it is a valid file.</div>
 </td>
 </tr>
 <tr id="i46" class="altColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendPath-java.nio.file.Path-java.lang.String-play.mvc.FileMimeTypes-">sendPath</a></span>(java.nio.file.Path&nbsp;path,
-        java.lang.String&nbsp;filename,
-        <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes)</code>
-<div class="block">Sends the given path if it is a valid file.</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendPath-java.nio.file.Path-boolean-java.lang.String-">sendPath</a></span>(java.nio.file.Path&nbsp;path,
+        boolean&nbsp;inline,
+        java.lang.String&nbsp;filename)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">Deprecated as of 2.8.0. Use to <a href="../../play/mvc/StatusHeader.html#sendPath-java.nio.file.Path-boolean-java.util.Optional-"><code>sendPath(Path, boolean, Optional)</code></a>.</span></div>
+</div>
 </td>
 </tr>
 <tr id="i47" class="rowColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendPath-java.nio.file.Path-java.lang.String-play.mvc.FileMimeTypes-java.lang.Runnable-java.util.concurrent.Executor-">sendPath</a></span>(java.nio.file.Path&nbsp;path,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendPath-java.nio.file.Path-boolean-java.lang.String-play.mvc.FileMimeTypes-">sendPath</a></span>(java.nio.file.Path&nbsp;path,
+        boolean&nbsp;inline,
         java.lang.String&nbsp;filename,
+        <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">Deprecated as of 2.8.0. Use to <a href="../../play/mvc/StatusHeader.html#sendPath-java.nio.file.Path-boolean-java.util.Optional-play.mvc.FileMimeTypes-"><code>sendPath(Path, boolean, Optional,
+     FileMimeTypes)</code></a>.</span></div>
+</div>
+</td>
+</tr>
+<tr id="i48" class="altColor">
+<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendPath-java.nio.file.Path-play.mvc.FileMimeTypes-">sendPath</a></span>(java.nio.file.Path&nbsp;path,
+        <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes)</code>
+<div class="block">Sends the given path if it is a valid file.</div>
+</td>
+</tr>
+<tr id="i49" class="rowColor">
+<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendPath-java.nio.file.Path-play.mvc.FileMimeTypes-java.lang.Runnable-java.util.concurrent.Executor-">sendPath</a></span>(java.nio.file.Path&nbsp;path,
         <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes,
         java.lang.Runnable&nbsp;onClose,
         java.util.concurrent.Executor&nbsp;executor)</code>
 <div class="block">Sends the given path if it is a valid file.</div>
 </td>
 </tr>
-<tr id="i48" class="altColor">
+<tr id="i50" class="altColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendPath-java.nio.file.Path-java.lang.String-java.lang.Runnable-java.util.concurrent.Executor-">sendPath</a></span>(java.nio.file.Path&nbsp;path,
-        java.lang.String&nbsp;filename,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendPath-java.nio.file.Path-java.util.Optional-">sendPath</a></span>(java.nio.file.Path&nbsp;path,
+        java.util.Optional&lt;java.lang.String&gt;&nbsp;filename)</code>
+<div class="block">Sends the given path if it is a valid file.</div>
+</td>
+</tr>
+<tr id="i51" class="rowColor">
+<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendPath-java.nio.file.Path-java.util.Optional-play.mvc.FileMimeTypes-">sendPath</a></span>(java.nio.file.Path&nbsp;path,
+        java.util.Optional&lt;java.lang.String&gt;&nbsp;filename,
+        <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes)</code>
+<div class="block">Sends the given path if it is a valid file.</div>
+</td>
+</tr>
+<tr id="i52" class="altColor">
+<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendPath-java.nio.file.Path-java.util.Optional-play.mvc.FileMimeTypes-java.lang.Runnable-java.util.concurrent.Executor-">sendPath</a></span>(java.nio.file.Path&nbsp;path,
+        java.util.Optional&lt;java.lang.String&gt;&nbsp;filename,
+        <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes,
         java.lang.Runnable&nbsp;onClose,
         java.util.concurrent.Executor&nbsp;executor)</code>
 <div class="block">Sends the given path if it is a valid file.</div>
 </td>
 </tr>
-<tr id="i49" class="rowColor">
+<tr id="i53" class="rowColor">
+<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendPath-java.nio.file.Path-java.util.Optional-java.lang.Runnable-java.util.concurrent.Executor-">sendPath</a></span>(java.nio.file.Path&nbsp;path,
+        java.util.Optional&lt;java.lang.String&gt;&nbsp;filename,
+        java.lang.Runnable&nbsp;onClose,
+        java.util.concurrent.Executor&nbsp;executor)</code>
+<div class="block">Sends the given path if it is a valid file.</div>
+</td>
+</tr>
+<tr id="i54" class="altColor">
+<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendPath-java.nio.file.Path-java.lang.Runnable-java.util.concurrent.Executor-">sendPath</a></span>(java.nio.file.Path&nbsp;path,
+        java.lang.Runnable&nbsp;onClose,
+        java.util.concurrent.Executor&nbsp;executor)</code>
+<div class="block">Sends the given path if it is a valid file.</div>
+</td>
+</tr>
+<tr id="i55" class="rowColor">
+<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendPath-java.nio.file.Path-java.lang.String-">sendPath</a></span>(java.nio.file.Path&nbsp;path,
+        java.lang.String&nbsp;filename)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">Deprecated as of 2.8.0. Use to <a href="../../play/mvc/StatusHeader.html#sendPath-java.nio.file.Path-java.util.Optional-"><code>sendPath(Path, Optional)</code></a>.</span></div>
+</div>
+</td>
+</tr>
+<tr id="i56" class="altColor">
+<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendPath-java.nio.file.Path-java.lang.String-play.mvc.FileMimeTypes-">sendPath</a></span>(java.nio.file.Path&nbsp;path,
+        java.lang.String&nbsp;filename,
+        <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">Deprecated as of 2.8.0. Use to <a href="../../play/mvc/StatusHeader.html#sendPath-java.nio.file.Path-java.util.Optional-play.mvc.FileMimeTypes-"><code>sendPath(Path, Optional, FileMimeTypes)</code></a>.</span></div>
+</div>
+</td>
+</tr>
+<tr id="i57" class="rowColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-">sendResource</a></span>(java.lang.String&nbsp;resourceName)</code>
 <div class="block">Send the given resource.</div>
 </td>
 </tr>
-<tr id="i50" class="altColor">
+<tr id="i58" class="altColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-boolean-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
             boolean&nbsp;inline)</code>
 <div class="block">Send the given resource.</div>
 </td>
 </tr>
-<tr id="i51" class="rowColor">
+<tr id="i59" class="rowColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-boolean-play.mvc.FileMimeTypes-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
             boolean&nbsp;inline,
@@ -563,7 +645,7 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <div class="block">Send the given resource.</div>
 </td>
 </tr>
-<tr id="i52" class="altColor">
+<tr id="i60" class="altColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-boolean-play.mvc.FileMimeTypes-java.lang.Runnable-java.util.concurrent.Executor-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
             boolean&nbsp;inline,
@@ -573,7 +655,45 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <div class="block">Send the given resource.</div>
 </td>
 </tr>
-<tr id="i53" class="rowColor">
+<tr id="i61" class="rowColor">
+<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-boolean-java.util.Optional-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
+            boolean&nbsp;inline,
+            java.util.Optional&lt;java.lang.String&gt;&nbsp;filename)</code>
+<div class="block">Send the given resource.</div>
+</td>
+</tr>
+<tr id="i62" class="altColor">
+<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-boolean-java.util.Optional-play.mvc.FileMimeTypes-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
+            boolean&nbsp;inline,
+            java.util.Optional&lt;java.lang.String&gt;&nbsp;filename,
+            <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes)</code>
+<div class="block">Send the given resource.</div>
+</td>
+</tr>
+<tr id="i63" class="rowColor">
+<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-boolean-java.util.Optional-play.mvc.FileMimeTypes-java.lang.Runnable-java.util.concurrent.Executor-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
+            boolean&nbsp;inline,
+            java.util.Optional&lt;java.lang.String&gt;&nbsp;filename,
+            <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes,
+            java.lang.Runnable&nbsp;onClose,
+            java.util.concurrent.Executor&nbsp;executor)</code>
+<div class="block">Send the given resource.</div>
+</td>
+</tr>
+<tr id="i64" class="altColor">
+<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-boolean-java.util.Optional-java.lang.Runnable-java.util.concurrent.Executor-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
+            boolean&nbsp;inline,
+            java.util.Optional&lt;java.lang.String&gt;&nbsp;filename,
+            java.lang.Runnable&nbsp;onClose,
+            java.util.concurrent.Executor&nbsp;executor)</code>
+<div class="block">Send the given resource.</div>
+</td>
+</tr>
+<tr id="i65" class="rowColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-boolean-java.lang.Runnable-java.util.concurrent.Executor-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
             boolean&nbsp;inline,
@@ -582,52 +702,37 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <div class="block">Send the given resource.</div>
 </td>
 </tr>
-<tr id="i54" class="altColor">
+<tr id="i66" class="altColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-boolean-java.lang.String-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
             boolean&nbsp;inline,
             java.lang.String&nbsp;filename)</code>
-<div class="block">Send the given resource.</div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">Deprecated as of 2.8.0. Use to <code>#sendResource(String, boolean,
+     Optional<String>)</code>.</span></div>
+</div>
 </td>
 </tr>
-<tr id="i55" class="rowColor">
+<tr id="i67" class="rowColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-boolean-java.lang.String-play.mvc.FileMimeTypes-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
             boolean&nbsp;inline,
             java.lang.String&nbsp;filename,
             <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes)</code>
-<div class="block">Send the given resource.</div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">Deprecated as of 2.8.0. Use to <a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-boolean-java.util.Optional-play.mvc.FileMimeTypes-"><code>sendResource(String, boolean, Optional,
+     FileMimeTypes)</code></a>.</span></div>
+</div>
 </td>
 </tr>
-<tr id="i56" class="altColor">
-<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-boolean-java.lang.String-play.mvc.FileMimeTypes-java.lang.Runnable-java.util.concurrent.Executor-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
-            boolean&nbsp;inline,
-            java.lang.String&nbsp;filename,
-            <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes,
-            java.lang.Runnable&nbsp;onClose,
-            java.util.concurrent.Executor&nbsp;executor)</code>
-<div class="block">Send the given resource.</div>
-</td>
-</tr>
-<tr id="i57" class="rowColor">
-<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-boolean-java.lang.String-java.lang.Runnable-java.util.concurrent.Executor-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
-            boolean&nbsp;inline,
-            java.lang.String&nbsp;filename,
-            java.lang.Runnable&nbsp;onClose,
-            java.util.concurrent.Executor&nbsp;executor)</code>
-<div class="block">Send the given resource.</div>
-</td>
-</tr>
-<tr id="i58" class="altColor">
+<tr id="i68" class="altColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-java.lang.ClassLoader-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
             java.lang.ClassLoader&nbsp;classLoader)</code>
 <div class="block">Send the given resource from the given classloader.</div>
 </td>
 </tr>
-<tr id="i59" class="rowColor">
+<tr id="i69" class="rowColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-java.lang.ClassLoader-boolean-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
             java.lang.ClassLoader&nbsp;classLoader,
@@ -635,7 +740,7 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <div class="block">Send the given resource from the given classloader.</div>
 </td>
 </tr>
-<tr id="i60" class="altColor">
+<tr id="i70" class="altColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-java.lang.ClassLoader-boolean-play.mvc.FileMimeTypes-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
             java.lang.ClassLoader&nbsp;classLoader,
@@ -644,7 +749,7 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <div class="block">Send the given resource from the given classloader.</div>
 </td>
 </tr>
-<tr id="i61" class="rowColor">
+<tr id="i71" class="rowColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-java.lang.ClassLoader-boolean-play.mvc.FileMimeTypes-java.lang.Runnable-java.util.concurrent.Executor-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
             java.lang.ClassLoader&nbsp;classLoader,
@@ -655,7 +760,49 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <div class="block">Send the given resource from the given classloader.</div>
 </td>
 </tr>
-<tr id="i62" class="altColor">
+<tr id="i72" class="altColor">
+<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-java.lang.ClassLoader-boolean-java.util.Optional-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
+            java.lang.ClassLoader&nbsp;classLoader,
+            boolean&nbsp;inline,
+            java.util.Optional&lt;java.lang.String&gt;&nbsp;filename)</code>
+<div class="block">Send the given resource from the given classloader.</div>
+</td>
+</tr>
+<tr id="i73" class="rowColor">
+<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-java.lang.ClassLoader-boolean-java.util.Optional-play.mvc.FileMimeTypes-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
+            java.lang.ClassLoader&nbsp;classLoader,
+            boolean&nbsp;inline,
+            java.util.Optional&lt;java.lang.String&gt;&nbsp;filename,
+            <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes)</code>
+<div class="block">Send the given resource from the given classloader.</div>
+</td>
+</tr>
+<tr id="i74" class="altColor">
+<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-java.lang.ClassLoader-boolean-java.util.Optional-play.mvc.FileMimeTypes-java.lang.Runnable-java.util.concurrent.Executor-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
+            java.lang.ClassLoader&nbsp;classLoader,
+            boolean&nbsp;inline,
+            java.util.Optional&lt;java.lang.String&gt;&nbsp;filename,
+            <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes,
+            java.lang.Runnable&nbsp;onClose,
+            java.util.concurrent.Executor&nbsp;executor)</code>
+<div class="block">Send the given resource from the given classloader.</div>
+</td>
+</tr>
+<tr id="i75" class="rowColor">
+<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-java.lang.ClassLoader-boolean-java.util.Optional-java.lang.Runnable-java.util.concurrent.Executor-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
+            java.lang.ClassLoader&nbsp;classLoader,
+            boolean&nbsp;inline,
+            java.util.Optional&lt;java.lang.String&gt;&nbsp;filename,
+            java.lang.Runnable&nbsp;onClose,
+            java.util.concurrent.Executor&nbsp;executor)</code>
+<div class="block">Send the given resource from the given classloader.</div>
+</td>
+</tr>
+<tr id="i76" class="altColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-java.lang.ClassLoader-boolean-java.lang.Runnable-java.util.concurrent.Executor-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
             java.lang.ClassLoader&nbsp;classLoader,
@@ -665,49 +812,32 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <div class="block">Send the given resource from the given classloader.</div>
 </td>
 </tr>
-<tr id="i63" class="rowColor">
+<tr id="i77" class="rowColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-java.lang.ClassLoader-boolean-java.lang.String-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
             java.lang.ClassLoader&nbsp;classLoader,
             boolean&nbsp;inline,
             java.lang.String&nbsp;filename)</code>
-<div class="block">Send the given resource from the given classloader.</div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">Deprecated as of 2.8.0. Use to <a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-java.lang.ClassLoader-boolean-java.util.Optional-"><code>sendResource(String, ClassLoader, boolean,
+     Optional)</code></a>.</span></div>
+</div>
 </td>
 </tr>
-<tr id="i64" class="altColor">
+<tr id="i78" class="altColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-java.lang.ClassLoader-boolean-java.lang.String-play.mvc.FileMimeTypes-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
             java.lang.ClassLoader&nbsp;classLoader,
             boolean&nbsp;inline,
             java.lang.String&nbsp;filename,
             <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes)</code>
-<div class="block">Send the given resource from the given classloader.</div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">Deprecated as of 2.8.0. Use to <a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-java.lang.ClassLoader-boolean-java.util.Optional-play.mvc.FileMimeTypes-"><code>sendResource(String, ClassLoader, boolean,
+     Optional, FileMimeTypes)</code></a>.</span></div>
+</div>
 </td>
 </tr>
-<tr id="i65" class="rowColor">
-<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-java.lang.ClassLoader-boolean-java.lang.String-play.mvc.FileMimeTypes-java.lang.Runnable-java.util.concurrent.Executor-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
-            java.lang.ClassLoader&nbsp;classLoader,
-            boolean&nbsp;inline,
-            java.lang.String&nbsp;filename,
-            <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes,
-            java.lang.Runnable&nbsp;onClose,
-            java.util.concurrent.Executor&nbsp;executor)</code>
-<div class="block">Send the given resource from the given classloader.</div>
-</td>
-</tr>
-<tr id="i66" class="altColor">
-<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-java.lang.ClassLoader-boolean-java.lang.String-java.lang.Runnable-java.util.concurrent.Executor-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
-            java.lang.ClassLoader&nbsp;classLoader,
-            boolean&nbsp;inline,
-            java.lang.String&nbsp;filename,
-            java.lang.Runnable&nbsp;onClose,
-            java.util.concurrent.Executor&nbsp;executor)</code>
-<div class="block">Send the given resource from the given classloader.</div>
-</td>
-</tr>
-<tr id="i67" class="rowColor">
+<tr id="i79" class="rowColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-java.lang.ClassLoader-play.mvc.FileMimeTypes-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
             java.lang.ClassLoader&nbsp;classLoader,
@@ -715,7 +845,7 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <div class="block">Send the given resource from the given classloader.</div>
 </td>
 </tr>
-<tr id="i68" class="altColor">
+<tr id="i80" class="altColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-java.lang.ClassLoader-play.mvc.FileMimeTypes-java.lang.Runnable-java.util.concurrent.Executor-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
             java.lang.ClassLoader&nbsp;classLoader,
@@ -725,7 +855,45 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <div class="block">Send the given resource from the given classloader.</div>
 </td>
 </tr>
-<tr id="i69" class="rowColor">
+<tr id="i81" class="rowColor">
+<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-java.lang.ClassLoader-java.util.Optional-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
+            java.lang.ClassLoader&nbsp;classLoader,
+            java.util.Optional&lt;java.lang.String&gt;&nbsp;fileName)</code>
+<div class="block">Send the given resource from the given classloader.</div>
+</td>
+</tr>
+<tr id="i82" class="altColor">
+<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-java.lang.ClassLoader-java.util.Optional-play.mvc.FileMimeTypes-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
+            java.lang.ClassLoader&nbsp;classLoader,
+            java.util.Optional&lt;java.lang.String&gt;&nbsp;fileName,
+            <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes)</code>
+<div class="block">Send the given resource from the given classloader.</div>
+</td>
+</tr>
+<tr id="i83" class="rowColor">
+<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-java.lang.ClassLoader-java.util.Optional-play.mvc.FileMimeTypes-java.lang.Runnable-java.util.concurrent.Executor-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
+            java.lang.ClassLoader&nbsp;classLoader,
+            java.util.Optional&lt;java.lang.String&gt;&nbsp;fileName,
+            <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes,
+            java.lang.Runnable&nbsp;onClose,
+            java.util.concurrent.Executor&nbsp;executor)</code>
+<div class="block">Send the given resource from the given classloader.</div>
+</td>
+</tr>
+<tr id="i84" class="altColor">
+<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-java.lang.ClassLoader-java.util.Optional-java.lang.Runnable-java.util.concurrent.Executor-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
+            java.lang.ClassLoader&nbsp;classLoader,
+            java.util.Optional&lt;java.lang.String&gt;&nbsp;fileName,
+            java.lang.Runnable&nbsp;onClose,
+            java.util.concurrent.Executor&nbsp;executor)</code>
+<div class="block">Send the given resource from the given classloader.</div>
+</td>
+</tr>
+<tr id="i85" class="rowColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-java.lang.ClassLoader-java.lang.Runnable-java.util.concurrent.Executor-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
             java.lang.ClassLoader&nbsp;classLoader,
@@ -734,52 +902,14 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <div class="block">Send the given resource from the given classloader.</div>
 </td>
 </tr>
-<tr id="i70" class="altColor">
-<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-java.lang.ClassLoader-java.lang.String-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
-            java.lang.ClassLoader&nbsp;classLoader,
-            java.lang.String&nbsp;fileName)</code>
-<div class="block">Send the given resource from the given classloader.</div>
-</td>
-</tr>
-<tr id="i71" class="rowColor">
-<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-java.lang.ClassLoader-java.lang.String-play.mvc.FileMimeTypes-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
-            java.lang.ClassLoader&nbsp;classLoader,
-            java.lang.String&nbsp;fileName,
-            <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes)</code>
-<div class="block">Send the given resource from the given classloader.</div>
-</td>
-</tr>
-<tr id="i72" class="altColor">
-<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-java.lang.ClassLoader-java.lang.String-play.mvc.FileMimeTypes-java.lang.Runnable-java.util.concurrent.Executor-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
-            java.lang.ClassLoader&nbsp;classLoader,
-            java.lang.String&nbsp;fileName,
-            <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes,
-            java.lang.Runnable&nbsp;onClose,
-            java.util.concurrent.Executor&nbsp;executor)</code>
-<div class="block">Send the given resource from the given classloader.</div>
-</td>
-</tr>
-<tr id="i73" class="rowColor">
-<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-java.lang.ClassLoader-java.lang.String-java.lang.Runnable-java.util.concurrent.Executor-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
-            java.lang.ClassLoader&nbsp;classLoader,
-            java.lang.String&nbsp;fileName,
-            java.lang.Runnable&nbsp;onClose,
-            java.util.concurrent.Executor&nbsp;executor)</code>
-<div class="block">Send the given resource from the given classloader.</div>
-</td>
-</tr>
-<tr id="i74" class="altColor">
+<tr id="i86" class="altColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-play.mvc.FileMimeTypes-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
             <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes)</code>
 <div class="block">Send the given resource.</div>
 </td>
 </tr>
-<tr id="i75" class="rowColor">
+<tr id="i87" class="rowColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-play.mvc.FileMimeTypes-java.lang.Runnable-java.util.concurrent.Executor-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
             <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes,
@@ -788,7 +918,41 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <div class="block">Send the given resource.</div>
 </td>
 </tr>
-<tr id="i76" class="altColor">
+<tr id="i88" class="altColor">
+<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-java.util.Optional-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
+            java.util.Optional&lt;java.lang.String&gt;&nbsp;fileName)</code>
+<div class="block">Send the given resource.</div>
+</td>
+</tr>
+<tr id="i89" class="rowColor">
+<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-java.util.Optional-play.mvc.FileMimeTypes-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
+            java.util.Optional&lt;java.lang.String&gt;&nbsp;fileName,
+            <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes)</code>
+<div class="block">Send the given resource.</div>
+</td>
+</tr>
+<tr id="i90" class="altColor">
+<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-java.util.Optional-play.mvc.FileMimeTypes-java.lang.Runnable-java.util.concurrent.Executor-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
+            java.util.Optional&lt;java.lang.String&gt;&nbsp;fileName,
+            <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes,
+            java.lang.Runnable&nbsp;onClose,
+            java.util.concurrent.Executor&nbsp;executor)</code>
+<div class="block">Send the given resource.</div>
+</td>
+</tr>
+<tr id="i91" class="rowColor">
+<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-java.util.Optional-java.lang.Runnable-java.util.concurrent.Executor-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
+            java.util.Optional&lt;java.lang.String&gt;&nbsp;fileName,
+            java.lang.Runnable&nbsp;onClose,
+            java.util.concurrent.Executor&nbsp;executor)</code>
+<div class="block">Send the given resource.</div>
+</td>
+</tr>
+<tr id="i92" class="altColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-java.lang.Runnable-java.util.concurrent.Executor-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
             java.lang.Runnable&nbsp;onClose,
@@ -796,41 +960,7 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <div class="block">Send the given resource.</div>
 </td>
 </tr>
-<tr id="i77" class="rowColor">
-<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-java.lang.String-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
-            java.lang.String&nbsp;fileName)</code>
-<div class="block">Send the given resource.</div>
-</td>
-</tr>
-<tr id="i78" class="altColor">
-<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-java.lang.String-play.mvc.FileMimeTypes-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
-            java.lang.String&nbsp;fileName,
-            <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes)</code>
-<div class="block">Send the given resource.</div>
-</td>
-</tr>
-<tr id="i79" class="rowColor">
-<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-java.lang.String-play.mvc.FileMimeTypes-java.lang.Runnable-java.util.concurrent.Executor-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
-            java.lang.String&nbsp;fileName,
-            <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes,
-            java.lang.Runnable&nbsp;onClose,
-            java.util.concurrent.Executor&nbsp;executor)</code>
-<div class="block">Send the given resource.</div>
-</td>
-</tr>
-<tr id="i80" class="altColor">
-<td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-java.lang.String-java.lang.Runnable-java.util.concurrent.Executor-">sendResource</a></span>(java.lang.String&nbsp;resourceName,
-            java.lang.String&nbsp;fileName,
-            java.lang.Runnable&nbsp;onClose,
-            java.util.concurrent.Executor&nbsp;executor)</code>
-<div class="block">Send the given resource.</div>
-</td>
-</tr>
-<tr id="i81" class="rowColor">
+<tr id="i93" class="rowColor">
 <td class="colFirst"><code><a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../play/mvc/StatusHeader.html#streamed-akka.stream.javadsl.Source-java.util.Optional-java.util.Optional-">streamed</a></span>(akka.stream.javadsl.Source&lt;akka.util.ByteString,?&gt;&nbsp;body,
         java.util.Optional&lt;java.lang.Long&gt;&nbsp;contentLength,
@@ -1251,7 +1381,7 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 </dl>
 </li>
 </ul>
-<a name="sendResource-java.lang.String-java.lang.ClassLoader-java.lang.String-">
+<a name="sendResource-java.lang.String-java.lang.ClassLoader-java.util.Optional-">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -1259,7 +1389,7 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <h4>sendResource</h4>
 <pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendResource(java.lang.String&nbsp;resourceName,
                            java.lang.ClassLoader&nbsp;classLoader,
-                           java.lang.String&nbsp;fileName)</pre>
+                           java.util.Optional&lt;java.lang.String&gt;&nbsp;fileName)</pre>
 <div class="block">Send the given resource from the given classloader.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -1271,7 +1401,7 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 </dl>
 </li>
 </ul>
-<a name="sendResource-java.lang.String-java.lang.ClassLoader-java.lang.String-java.lang.Runnable-java.util.concurrent.Executor-">
+<a name="sendResource-java.lang.String-java.lang.ClassLoader-java.util.Optional-java.lang.Runnable-java.util.concurrent.Executor-">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -1279,7 +1409,7 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <h4>sendResource</h4>
 <pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendResource(java.lang.String&nbsp;resourceName,
                            java.lang.ClassLoader&nbsp;classLoader,
-                           java.lang.String&nbsp;fileName,
+                           java.util.Optional&lt;java.lang.String&gt;&nbsp;fileName,
                            java.lang.Runnable&nbsp;onClose,
                            java.util.concurrent.Executor&nbsp;executor)</pre>
 <div class="block">Send the given resource from the given classloader.</div>
@@ -1296,7 +1426,7 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 </dl>
 </li>
 </ul>
-<a name="sendResource-java.lang.String-java.lang.ClassLoader-java.lang.String-play.mvc.FileMimeTypes-">
+<a name="sendResource-java.lang.String-java.lang.ClassLoader-java.util.Optional-play.mvc.FileMimeTypes-">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -1304,7 +1434,7 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <h4>sendResource</h4>
 <pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendResource(java.lang.String&nbsp;resourceName,
                            java.lang.ClassLoader&nbsp;classLoader,
-                           java.lang.String&nbsp;fileName,
+                           java.util.Optional&lt;java.lang.String&gt;&nbsp;fileName,
                            <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes)</pre>
 <div class="block">Send the given resource from the given classloader.</div>
 <dl>
@@ -1318,7 +1448,7 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 </dl>
 </li>
 </ul>
-<a name="sendResource-java.lang.String-java.lang.ClassLoader-java.lang.String-play.mvc.FileMimeTypes-java.lang.Runnable-java.util.concurrent.Executor-">
+<a name="sendResource-java.lang.String-java.lang.ClassLoader-java.util.Optional-play.mvc.FileMimeTypes-java.lang.Runnable-java.util.concurrent.Executor-">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -1326,7 +1456,7 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <h4>sendResource</h4>
 <pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendResource(java.lang.String&nbsp;resourceName,
                            java.lang.ClassLoader&nbsp;classLoader,
-                           java.lang.String&nbsp;fileName,
+                           java.util.Optional&lt;java.lang.String&gt;&nbsp;fileName,
                            <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes,
                            java.lang.Runnable&nbsp;onClose,
                            java.util.concurrent.Executor&nbsp;executor)</pre>
@@ -1390,14 +1520,14 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 </dl>
 </li>
 </ul>
-<a name="sendResource-java.lang.String-java.lang.String-">
+<a name="sendResource-java.lang.String-java.util.Optional-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>sendResource</h4>
 <pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendResource(java.lang.String&nbsp;resourceName,
-                           java.lang.String&nbsp;fileName)</pre>
+                           java.util.Optional&lt;java.lang.String&gt;&nbsp;fileName)</pre>
 <div class="block">Send the given resource.
 
  <p>The resource will be loaded from the same classloader that this class comes from.</div>
@@ -1410,14 +1540,14 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 </dl>
 </li>
 </ul>
-<a name="sendResource-java.lang.String-java.lang.String-java.lang.Runnable-java.util.concurrent.Executor-">
+<a name="sendResource-java.lang.String-java.util.Optional-java.lang.Runnable-java.util.concurrent.Executor-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>sendResource</h4>
 <pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendResource(java.lang.String&nbsp;resourceName,
-                           java.lang.String&nbsp;fileName,
+                           java.util.Optional&lt;java.lang.String&gt;&nbsp;fileName,
                            java.lang.Runnable&nbsp;onClose,
                            java.util.concurrent.Executor&nbsp;executor)</pre>
 <div class="block">Send the given resource.
@@ -1435,14 +1565,14 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 </dl>
 </li>
 </ul>
-<a name="sendResource-java.lang.String-java.lang.String-play.mvc.FileMimeTypes-">
+<a name="sendResource-java.lang.String-java.util.Optional-play.mvc.FileMimeTypes-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>sendResource</h4>
 <pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendResource(java.lang.String&nbsp;resourceName,
-                           java.lang.String&nbsp;fileName,
+                           java.util.Optional&lt;java.lang.String&gt;&nbsp;fileName,
                            <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes)</pre>
 <div class="block">Send the given resource.
 
@@ -1457,14 +1587,14 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 </dl>
 </li>
 </ul>
-<a name="sendResource-java.lang.String-java.lang.String-play.mvc.FileMimeTypes-java.lang.Runnable-java.util.concurrent.Executor-">
+<a name="sendResource-java.lang.String-java.util.Optional-play.mvc.FileMimeTypes-java.lang.Runnable-java.util.concurrent.Executor-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>sendResource</h4>
 <pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendResource(java.lang.String&nbsp;resourceName,
-                           java.lang.String&nbsp;fileName,
+                           java.util.Optional&lt;java.lang.String&gt;&nbsp;fileName,
                            <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes,
                            java.lang.Runnable&nbsp;onClose,
                            java.util.concurrent.Executor&nbsp;executor)</pre>
@@ -1678,9 +1808,12 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <ul class="blockList">
 <li class="blockList">
 <h4>sendResource</h4>
-<pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendResource(java.lang.String&nbsp;resourceName,
-                           boolean&nbsp;inline,
-                           java.lang.String&nbsp;filename)</pre>
+<pre>@Deprecated
+public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendResource(java.lang.String&nbsp;resourceName,
+                                       boolean&nbsp;inline,
+                                       java.lang.String&nbsp;filename)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Deprecated as of 2.8.0. Use to <code>#sendResource(String, boolean,
+     Optional<String>)</code>.</span></div>
 <div class="block">Send the given resource.
 
  <p>The resource will be loaded from the same classloader that this class comes from.</div>
@@ -1694,7 +1827,7 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 </dl>
 </li>
 </ul>
-<a name="sendResource-java.lang.String-boolean-java.lang.String-java.lang.Runnable-java.util.concurrent.Executor-">
+<a name="sendResource-java.lang.String-boolean-java.util.Optional-">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -1702,7 +1835,29 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <h4>sendResource</h4>
 <pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendResource(java.lang.String&nbsp;resourceName,
                            boolean&nbsp;inline,
-                           java.lang.String&nbsp;filename,
+                           java.util.Optional&lt;java.lang.String&gt;&nbsp;filename)</pre>
+<div class="block">Send the given resource.
+
+ <p>The resource will be loaded from the same classloader that this class comes from.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>resourceName</code> - The path of the resource to load.</dd>
+<dd><code>inline</code> - Whether it should be served as an inline file, or as an attachment.</dd>
+<dd><code>filename</code> - The file name of the resource.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a '200 OK' result containing the resource in the body.</dd>
+</dl>
+</li>
+</ul>
+<a name="sendResource-java.lang.String-boolean-java.util.Optional-java.lang.Runnable-java.util.concurrent.Executor-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>sendResource</h4>
+<pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendResource(java.lang.String&nbsp;resourceName,
+                           boolean&nbsp;inline,
+                           java.util.Optional&lt;java.lang.String&gt;&nbsp;filename,
                            java.lang.Runnable&nbsp;onClose,
                            java.util.concurrent.Executor&nbsp;executor)</pre>
 <div class="block">Send the given resource.
@@ -1727,9 +1882,36 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <ul class="blockList">
 <li class="blockList">
 <h4>sendResource</h4>
+<pre>@Deprecated
+public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendResource(java.lang.String&nbsp;resourceName,
+                                       boolean&nbsp;inline,
+                                       java.lang.String&nbsp;filename,
+                                       <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Deprecated as of 2.8.0. Use to <a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-boolean-java.util.Optional-play.mvc.FileMimeTypes-"><code>sendResource(String, boolean, Optional,
+     FileMimeTypes)</code></a>.</span></div>
+<div class="block">Send the given resource.
+
+ <p>The resource will be loaded from the same classloader that this class comes from.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>resourceName</code> - The path of the resource to load.</dd>
+<dd><code>inline</code> - Whether it should be served as an inline file, or as an attachment.</dd>
+<dd><code>filename</code> - The file name of the resource.</dd>
+<dd><code>fileMimeTypes</code> - Used for file type mapping.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a '200 OK' result containing the resource in the body.</dd>
+</dl>
+</li>
+</ul>
+<a name="sendResource-java.lang.String-boolean-java.util.Optional-play.mvc.FileMimeTypes-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>sendResource</h4>
 <pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendResource(java.lang.String&nbsp;resourceName,
                            boolean&nbsp;inline,
-                           java.lang.String&nbsp;filename,
+                           java.util.Optional&lt;java.lang.String&gt;&nbsp;filename,
                            <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes)</pre>
 <div class="block">Send the given resource.
 
@@ -1745,7 +1927,7 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 </dl>
 </li>
 </ul>
-<a name="sendResource-java.lang.String-boolean-java.lang.String-play.mvc.FileMimeTypes-java.lang.Runnable-java.util.concurrent.Executor-">
+<a name="sendResource-java.lang.String-boolean-java.util.Optional-play.mvc.FileMimeTypes-java.lang.Runnable-java.util.concurrent.Executor-">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -1753,7 +1935,7 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <h4>sendResource</h4>
 <pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendResource(java.lang.String&nbsp;resourceName,
                            boolean&nbsp;inline,
-                           java.lang.String&nbsp;filename,
+                           java.util.Optional&lt;java.lang.String&gt;&nbsp;filename,
                            <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes,
                            java.lang.Runnable&nbsp;onClose,
                            java.util.concurrent.Executor&nbsp;executor)</pre>
@@ -1780,10 +1962,13 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <ul class="blockList">
 <li class="blockList">
 <h4>sendResource</h4>
-<pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendResource(java.lang.String&nbsp;resourceName,
-                           java.lang.ClassLoader&nbsp;classLoader,
-                           boolean&nbsp;inline,
-                           java.lang.String&nbsp;filename)</pre>
+<pre>@Deprecated
+public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendResource(java.lang.String&nbsp;resourceName,
+                                       java.lang.ClassLoader&nbsp;classLoader,
+                                       boolean&nbsp;inline,
+                                       java.lang.String&nbsp;filename)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Deprecated as of 2.8.0. Use to <a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-java.lang.ClassLoader-boolean-java.util.Optional-"><code>sendResource(String, ClassLoader, boolean,
+     Optional)</code></a>.</span></div>
 <div class="block">Send the given resource from the given classloader.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -1796,7 +1981,7 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 </dl>
 </li>
 </ul>
-<a name="sendResource-java.lang.String-java.lang.ClassLoader-boolean-java.lang.String-java.lang.Runnable-java.util.concurrent.Executor-">
+<a name="sendResource-java.lang.String-java.lang.ClassLoader-boolean-java.util.Optional-">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -1805,7 +1990,29 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendResource(java.lang.String&nbsp;resourceName,
                            java.lang.ClassLoader&nbsp;classLoader,
                            boolean&nbsp;inline,
-                           java.lang.String&nbsp;filename,
+                           java.util.Optional&lt;java.lang.String&gt;&nbsp;filename)</pre>
+<div class="block">Send the given resource from the given classloader.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>resourceName</code> - The path of the resource to load.</dd>
+<dd><code>classLoader</code> - The classloader to load it from.</dd>
+<dd><code>inline</code> - Whether it should be served as an inline file, or as an attachment.</dd>
+<dd><code>filename</code> - The file name of the resource.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a '200 OK' result containing the resource in the body.</dd>
+</dl>
+</li>
+</ul>
+<a name="sendResource-java.lang.String-java.lang.ClassLoader-boolean-java.util.Optional-java.lang.Runnable-java.util.concurrent.Executor-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>sendResource</h4>
+<pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendResource(java.lang.String&nbsp;resourceName,
+                           java.lang.ClassLoader&nbsp;classLoader,
+                           boolean&nbsp;inline,
+                           java.util.Optional&lt;java.lang.String&gt;&nbsp;filename,
                            java.lang.Runnable&nbsp;onClose,
                            java.util.concurrent.Executor&nbsp;executor)</pre>
 <div class="block">Send the given resource from the given classloader.</div>
@@ -1829,10 +2036,37 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <ul class="blockList">
 <li class="blockList">
 <h4>sendResource</h4>
+<pre>@Deprecated
+public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendResource(java.lang.String&nbsp;resourceName,
+                                       java.lang.ClassLoader&nbsp;classLoader,
+                                       boolean&nbsp;inline,
+                                       java.lang.String&nbsp;filename,
+                                       <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Deprecated as of 2.8.0. Use to <a href="../../play/mvc/StatusHeader.html#sendResource-java.lang.String-java.lang.ClassLoader-boolean-java.util.Optional-play.mvc.FileMimeTypes-"><code>sendResource(String, ClassLoader, boolean,
+     Optional, FileMimeTypes)</code></a>.</span></div>
+<div class="block">Send the given resource from the given classloader.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>resourceName</code> - The path of the resource to load.</dd>
+<dd><code>classLoader</code> - The classloader to load it from.</dd>
+<dd><code>inline</code> - Whether it should be served as an inline file, or as an attachment.</dd>
+<dd><code>filename</code> - The file name of the resource.</dd>
+<dd><code>fileMimeTypes</code> - Used for file type mapping.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a '200 OK' result containing the resource in the body.</dd>
+</dl>
+</li>
+</ul>
+<a name="sendResource-java.lang.String-java.lang.ClassLoader-boolean-java.util.Optional-play.mvc.FileMimeTypes-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>sendResource</h4>
 <pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendResource(java.lang.String&nbsp;resourceName,
                            java.lang.ClassLoader&nbsp;classLoader,
                            boolean&nbsp;inline,
-                           java.lang.String&nbsp;filename,
+                           java.util.Optional&lt;java.lang.String&gt;&nbsp;filename,
                            <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes)</pre>
 <div class="block">Send the given resource from the given classloader.</div>
 <dl>
@@ -1847,7 +2081,7 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 </dl>
 </li>
 </ul>
-<a name="sendResource-java.lang.String-java.lang.ClassLoader-boolean-java.lang.String-play.mvc.FileMimeTypes-java.lang.Runnable-java.util.concurrent.Executor-">
+<a name="sendResource-java.lang.String-java.lang.ClassLoader-boolean-java.util.Optional-play.mvc.FileMimeTypes-java.lang.Runnable-java.util.concurrent.Executor-">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -1856,7 +2090,7 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendResource(java.lang.String&nbsp;resourceName,
                            java.lang.ClassLoader&nbsp;classLoader,
                            boolean&nbsp;inline,
-                           java.lang.String&nbsp;filename,
+                           java.util.Optional&lt;java.lang.String&gt;&nbsp;filename,
                            <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes,
                            java.lang.Runnable&nbsp;onClose,
                            java.util.concurrent.Executor&nbsp;executor)</pre>
@@ -2050,8 +2284,10 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <ul class="blockList">
 <li class="blockList">
 <h4>sendPath</h4>
-<pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendPath(java.nio.file.Path&nbsp;path,
-                       java.lang.String&nbsp;filename)</pre>
+<pre>@Deprecated
+public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendPath(java.nio.file.Path&nbsp;path,
+                                   java.lang.String&nbsp;filename)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Deprecated as of 2.8.0. Use to <a href="../../play/mvc/StatusHeader.html#sendPath-java.nio.file.Path-java.util.Optional-"><code>sendPath(Path, Optional)</code></a>.</span></div>
 <div class="block">Sends the given path if it is a valid file. Otherwise throws RuntimeExceptions.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -2062,14 +2298,32 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 </dl>
 </li>
 </ul>
-<a name="sendPath-java.nio.file.Path-java.lang.String-java.lang.Runnable-java.util.concurrent.Executor-">
+<a name="sendPath-java.nio.file.Path-java.util.Optional-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>sendPath</h4>
 <pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendPath(java.nio.file.Path&nbsp;path,
-                       java.lang.String&nbsp;filename,
+                       java.util.Optional&lt;java.lang.String&gt;&nbsp;filename)</pre>
+<div class="block">Sends the given path if it is a valid file. Otherwise throws RuntimeExceptions.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>path</code> - The path to send.</dd>
+<dd><code>filename</code> - The file name of the path.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a '200 OK' result containing the file at the provided path</dd>
+</dl>
+</li>
+</ul>
+<a name="sendPath-java.nio.file.Path-java.util.Optional-java.lang.Runnable-java.util.concurrent.Executor-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>sendPath</h4>
+<pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendPath(java.nio.file.Path&nbsp;path,
+                       java.util.Optional&lt;java.lang.String&gt;&nbsp;filename,
                        java.lang.Runnable&nbsp;onClose,
                        java.util.concurrent.Executor&nbsp;executor)</pre>
 <div class="block">Sends the given path if it is a valid file. Otherwise throws RuntimeExceptions.</div>
@@ -2091,8 +2345,30 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <ul class="blockList">
 <li class="blockList">
 <h4>sendPath</h4>
+<pre>@Deprecated
+public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendPath(java.nio.file.Path&nbsp;path,
+                                   java.lang.String&nbsp;filename,
+                                   <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Deprecated as of 2.8.0. Use to <a href="../../play/mvc/StatusHeader.html#sendPath-java.nio.file.Path-java.util.Optional-play.mvc.FileMimeTypes-"><code>sendPath(Path, Optional, FileMimeTypes)</code></a>.</span></div>
+<div class="block">Sends the given path if it is a valid file. Otherwise throws RuntimeExceptions.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>path</code> - The path to send.</dd>
+<dd><code>filename</code> - The file name of the path.</dd>
+<dd><code>fileMimeTypes</code> - Used for file type mapping.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a '200 OK' result containing the file at the provided path</dd>
+</dl>
+</li>
+</ul>
+<a name="sendPath-java.nio.file.Path-java.util.Optional-play.mvc.FileMimeTypes-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>sendPath</h4>
 <pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendPath(java.nio.file.Path&nbsp;path,
-                       java.lang.String&nbsp;filename,
+                       java.util.Optional&lt;java.lang.String&gt;&nbsp;filename,
                        <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes)</pre>
 <div class="block">Sends the given path if it is a valid file. Otherwise throws RuntimeExceptions.</div>
 <dl>
@@ -2105,14 +2381,14 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 </dl>
 </li>
 </ul>
-<a name="sendPath-java.nio.file.Path-java.lang.String-play.mvc.FileMimeTypes-java.lang.Runnable-java.util.concurrent.Executor-">
+<a name="sendPath-java.nio.file.Path-java.util.Optional-play.mvc.FileMimeTypes-java.lang.Runnable-java.util.concurrent.Executor-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>sendPath</h4>
 <pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendPath(java.nio.file.Path&nbsp;path,
-                       java.lang.String&nbsp;filename,
+                       java.util.Optional&lt;java.lang.String&gt;&nbsp;filename,
                        <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes,
                        java.lang.Runnable&nbsp;onClose,
                        java.util.concurrent.Executor&nbsp;executor)</pre>
@@ -2136,9 +2412,11 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <ul class="blockList">
 <li class="blockList">
 <h4>sendPath</h4>
-<pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendPath(java.nio.file.Path&nbsp;path,
-                       boolean&nbsp;inline,
-                       java.lang.String&nbsp;filename)</pre>
+<pre>@Deprecated
+public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendPath(java.nio.file.Path&nbsp;path,
+                                   boolean&nbsp;inline,
+                                   java.lang.String&nbsp;filename)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Deprecated as of 2.8.0. Use to <a href="../../play/mvc/StatusHeader.html#sendPath-java.nio.file.Path-boolean-java.util.Optional-"><code>sendPath(Path, boolean, Optional)</code></a>.</span></div>
 <div class="block">Sends the given path if it is a valid file. Otherwise throws RuntimeExceptions</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -2150,7 +2428,7 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 </dl>
 </li>
 </ul>
-<a name="sendPath-java.nio.file.Path-boolean-java.lang.String-java.lang.Runnable-java.util.concurrent.Executor-">
+<a name="sendPath-java.nio.file.Path-boolean-java.util.Optional-">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -2158,7 +2436,27 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <h4>sendPath</h4>
 <pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendPath(java.nio.file.Path&nbsp;path,
                        boolean&nbsp;inline,
-                       java.lang.String&nbsp;filename,
+                       java.util.Optional&lt;java.lang.String&gt;&nbsp;filename)</pre>
+<div class="block">Sends the given path if it is a valid file. Otherwise throws RuntimeExceptions</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>path</code> - The path to send.</dd>
+<dd><code>inline</code> - Whether it should be served as an inline file, or as an attachment.</dd>
+<dd><code>filename</code> - The file name of the path.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a '200 OK' result containing the file at the provided path</dd>
+</dl>
+</li>
+</ul>
+<a name="sendPath-java.nio.file.Path-boolean-java.util.Optional-java.lang.Runnable-java.util.concurrent.Executor-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>sendPath</h4>
+<pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendPath(java.nio.file.Path&nbsp;path,
+                       boolean&nbsp;inline,
+                       java.util.Optional&lt;java.lang.String&gt;&nbsp;filename,
                        java.lang.Runnable&nbsp;onClose,
                        java.util.concurrent.Executor&nbsp;executor)</pre>
 <div class="block">Sends the given path if it is a valid file. Otherwise throws RuntimeExceptions</div>
@@ -2181,9 +2479,34 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <ul class="blockList">
 <li class="blockList">
 <h4>sendPath</h4>
+<pre>@Deprecated
+public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendPath(java.nio.file.Path&nbsp;path,
+                                   boolean&nbsp;inline,
+                                   java.lang.String&nbsp;filename,
+                                   <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Deprecated as of 2.8.0. Use to <a href="../../play/mvc/StatusHeader.html#sendPath-java.nio.file.Path-boolean-java.util.Optional-play.mvc.FileMimeTypes-"><code>sendPath(Path, boolean, Optional,
+     FileMimeTypes)</code></a>.</span></div>
+<div class="block">Sends the given path if it is a valid file. Otherwise throws RuntimeExceptions</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>path</code> - The path to send.</dd>
+<dd><code>inline</code> - Whether it should be served as an inline file, or as an attachment.</dd>
+<dd><code>filename</code> - The file name of the path.</dd>
+<dd><code>fileMimeTypes</code> - Used for file type mapping.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a '200 OK' result containing the file at the provided path</dd>
+</dl>
+</li>
+</ul>
+<a name="sendPath-java.nio.file.Path-boolean-java.util.Optional-play.mvc.FileMimeTypes-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>sendPath</h4>
 <pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendPath(java.nio.file.Path&nbsp;path,
                        boolean&nbsp;inline,
-                       java.lang.String&nbsp;filename,
+                       java.util.Optional&lt;java.lang.String&gt;&nbsp;filename,
                        <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes)</pre>
 <div class="block">Sends the given path if it is a valid file. Otherwise throws RuntimeExceptions</div>
 <dl>
@@ -2197,7 +2520,7 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 </dl>
 </li>
 </ul>
-<a name="sendPath-java.nio.file.Path-boolean-java.lang.String-play.mvc.FileMimeTypes-java.lang.Runnable-java.util.concurrent.Executor-">
+<a name="sendPath-java.nio.file.Path-boolean-java.util.Optional-play.mvc.FileMimeTypes-java.lang.Runnable-java.util.concurrent.Executor-">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -2205,7 +2528,7 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <h4>sendPath</h4>
 <pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendPath(java.nio.file.Path&nbsp;path,
                        boolean&nbsp;inline,
-                       java.lang.String&nbsp;filename,
+                       java.util.Optional&lt;java.lang.String&gt;&nbsp;filename,
                        <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes,
                        java.lang.Runnable&nbsp;onClose,
                        java.util.concurrent.Executor&nbsp;executor)</pre>
@@ -2398,8 +2721,10 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <ul class="blockList">
 <li class="blockList">
 <h4>sendFile</h4>
-<pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendFile(java.io.File&nbsp;file,
-                       java.lang.String&nbsp;fileName)</pre>
+<pre>@Deprecated
+public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendFile(java.io.File&nbsp;file,
+                                   java.lang.String&nbsp;fileName)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Deprecated as of 2.8.0. Use to <a href="../../play/mvc/StatusHeader.html#sendFile-java.io.File-java.util.Optional-"><code>sendFile(File, Optional)</code></a>.</span></div>
 <div class="block">Send the given file.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -2410,14 +2735,32 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 </dl>
 </li>
 </ul>
-<a name="sendFile-java.io.File-java.lang.String-java.lang.Runnable-java.util.concurrent.Executor-">
+<a name="sendFile-java.io.File-java.util.Optional-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>sendFile</h4>
 <pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendFile(java.io.File&nbsp;file,
-                       java.lang.String&nbsp;fileName,
+                       java.util.Optional&lt;java.lang.String&gt;&nbsp;fileName)</pre>
+<div class="block">Send the given file.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>file</code> - The file to send.</dd>
+<dd><code>fileName</code> - The name of the attachment</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a '200 OK' result containing the file</dd>
+</dl>
+</li>
+</ul>
+<a name="sendFile-java.io.File-java.util.Optional-java.lang.Runnable-java.util.concurrent.Executor-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>sendFile</h4>
+<pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendFile(java.io.File&nbsp;file,
+                       java.util.Optional&lt;java.lang.String&gt;&nbsp;fileName,
                        java.lang.Runnable&nbsp;onClose,
                        java.util.concurrent.Executor&nbsp;executor)</pre>
 <div class="block">Send the given file.</div>
@@ -2439,8 +2782,30 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <ul class="blockList">
 <li class="blockList">
 <h4>sendFile</h4>
+<pre>@Deprecated
+public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendFile(java.io.File&nbsp;file,
+                                   java.lang.String&nbsp;fileName,
+                                   <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Deprecated as of 2.8.0. Use to <a href="../../play/mvc/StatusHeader.html#sendFile-java.io.File-java.util.Optional-play.mvc.FileMimeTypes-"><code>sendFile(File, Optional, FileMimeTypes)</code></a>.</span></div>
+<div class="block">Send the given file.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>file</code> - The file to send.</dd>
+<dd><code>fileName</code> - The name of the attachment</dd>
+<dd><code>fileMimeTypes</code> - Used for file type mapping.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a '200 OK' result containing the file</dd>
+</dl>
+</li>
+</ul>
+<a name="sendFile-java.io.File-java.util.Optional-play.mvc.FileMimeTypes-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>sendFile</h4>
 <pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendFile(java.io.File&nbsp;file,
-                       java.lang.String&nbsp;fileName,
+                       java.util.Optional&lt;java.lang.String&gt;&nbsp;fileName,
                        <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes)</pre>
 <div class="block">Send the given file.</div>
 <dl>
@@ -2453,14 +2818,14 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 </dl>
 </li>
 </ul>
-<a name="sendFile-java.io.File-java.lang.String-play.mvc.FileMimeTypes-java.lang.Runnable-java.util.concurrent.Executor-">
+<a name="sendFile-java.io.File-java.util.Optional-play.mvc.FileMimeTypes-java.lang.Runnable-java.util.concurrent.Executor-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>sendFile</h4>
 <pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendFile(java.io.File&nbsp;file,
-                       java.lang.String&nbsp;fileName,
+                       java.util.Optional&lt;java.lang.String&gt;&nbsp;fileName,
                        <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes,
                        java.lang.Runnable&nbsp;onClose,
                        java.util.concurrent.Executor&nbsp;executor)</pre>
@@ -2484,9 +2849,11 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <ul class="blockList">
 <li class="blockList">
 <h4>sendFile</h4>
-<pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendFile(java.io.File&nbsp;file,
-                       boolean&nbsp;inline,
-                       java.lang.String&nbsp;fileName)</pre>
+<pre>@Deprecated
+public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendFile(java.io.File&nbsp;file,
+                                   boolean&nbsp;inline,
+                                   java.lang.String&nbsp;fileName)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Deprecated as of 2.8.0. Use to <a href="../../play/mvc/StatusHeader.html#sendFile-java.io.File-boolean-java.util.Optional-"><code>sendFile(File, boolean, Optional)</code></a>.</span></div>
 <div class="block">Send the given file.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -2499,7 +2866,7 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 </dl>
 </li>
 </ul>
-<a name="sendFile-java.io.File-boolean-java.lang.String-java.lang.Runnable-java.util.concurrent.Executor-">
+<a name="sendFile-java.io.File-boolean-java.util.Optional-">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -2507,7 +2874,28 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <h4>sendFile</h4>
 <pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendFile(java.io.File&nbsp;file,
                        boolean&nbsp;inline,
-                       java.lang.String&nbsp;fileName,
+                       java.util.Optional&lt;java.lang.String&gt;&nbsp;fileName)</pre>
+<div class="block">Send the given file.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>file</code> - The file to send.</dd>
+<dd><code>fileName</code> - The name of the attachment</dd>
+<dd><code>inline</code> - True if the file should be sent inline, false if it should be sent as an
+     attachment.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a '200 OK' result containing the file</dd>
+</dl>
+</li>
+</ul>
+<a name="sendFile-java.io.File-boolean-java.util.Optional-java.lang.Runnable-java.util.concurrent.Executor-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>sendFile</h4>
+<pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendFile(java.io.File&nbsp;file,
+                       boolean&nbsp;inline,
+                       java.util.Optional&lt;java.lang.String&gt;&nbsp;fileName,
                        java.lang.Runnable&nbsp;onClose,
                        java.util.concurrent.Executor&nbsp;executor)</pre>
 <div class="block">Send the given file.</div>
@@ -2531,9 +2919,35 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <ul class="blockList">
 <li class="blockList">
 <h4>sendFile</h4>
+<pre>@Deprecated
+public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendFile(java.io.File&nbsp;file,
+                                   boolean&nbsp;inline,
+                                   java.lang.String&nbsp;fileName,
+                                   <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Deprecated as of 2.8.0. Use to <a href="../../play/mvc/StatusHeader.html#sendFile-java.io.File-boolean-java.util.Optional-play.mvc.FileMimeTypes-"><code>sendFile(File, boolean, Optional,
+     FileMimeTypes)</code></a>.</span></div>
+<div class="block">Send the given file.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>file</code> - The file to send.</dd>
+<dd><code>fileName</code> - The name of the attachment</dd>
+<dd><code>inline</code> - True if the file should be sent inline, false if it should be sent as an
+     attachment.</dd>
+<dd><code>fileMimeTypes</code> - Used for file type mapping.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a '200 OK' result containing the file</dd>
+</dl>
+</li>
+</ul>
+<a name="sendFile-java.io.File-boolean-java.util.Optional-play.mvc.FileMimeTypes-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>sendFile</h4>
 <pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendFile(java.io.File&nbsp;file,
                        boolean&nbsp;inline,
-                       java.lang.String&nbsp;fileName,
+                       java.util.Optional&lt;java.lang.String&gt;&nbsp;fileName,
                        <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes)</pre>
 <div class="block">Send the given file.</div>
 <dl>
@@ -2548,7 +2962,7 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 </dl>
 </li>
 </ul>
-<a name="sendFile-java.io.File-boolean-java.lang.String-play.mvc.FileMimeTypes-java.lang.Runnable-java.util.concurrent.Executor-">
+<a name="sendFile-java.io.File-boolean-java.util.Optional-play.mvc.FileMimeTypes-java.lang.Runnable-java.util.concurrent.Executor-">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -2556,7 +2970,7 @@ extends <a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a
 <h4>sendFile</h4>
 <pre>public&nbsp;<a href="../../play/mvc/Result.html" title="class in play.mvc">Result</a>&nbsp;sendFile(java.io.File&nbsp;file,
                        boolean&nbsp;inline,
-                       java.lang.String&nbsp;fileName,
+                       java.util.Optional&lt;java.lang.String&gt;&nbsp;fileName,
                        <a href="../../play/mvc/FileMimeTypes.html" title="class in play.mvc">FileMimeTypes</a>&nbsp;fileMimeTypes,
                        java.lang.Runnable&nbsp;onClose,
                        java.util.concurrent.Executor&nbsp;executor)</pre>

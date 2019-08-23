@@ -62,6 +62,11 @@ val projectB = (project in file("projectB"))
   .settings(commonSettings)
 ```
 
+### File serving methods changed the type of their `filename` parameters
+
+Methods for serving files, like `ok(File content, ...)` (and similar) in the [Java API](api/java/play/mvc/Results.html#ok-java.io.File-) or `sendFile`, `sendPath` and `sendResource` in both Java's  [`StatusHeader`](api/java/play/mvc/StatusHeader.html) and Scala's [`Status`](api/scala/play/api/mvc/Results$Status.html) class changed the type of their `filename` parameters: Instead of using a plain `String`, the Scala API now uses an `Option[String]` as return type for its `filename` parameter function. The Java API changed the parameter type to be an `Optional<String>`.
+This API change better reflects the fact that you can pass `None` / `Optional.empty()` if you don't want the `Content-Disposition` header to include a filename.
+
 ### Deprecated APIs were removed
 
 Many APIs that were deprecated in earlier versions were removed in Play 2.8. If you are still using them we recommend migrating to the new APIs before upgrading to Play 2.8. Check the Javadocs and Scaladocs for migration notes. See also the [[migration guide for Play 2.7|Migration27]] for more information.
@@ -163,6 +168,14 @@ Starting with Play 2.8 however, when the computed header ends up being _exactly_
 Therefore this change should not effect you at all, since all browsers adhere to the specs and do not treat this header in any special way but to render content inline, like no header was send.
 
 If you still want to send this exact header however, you can still do that by using the `withHeader(s)` methods from [`Scala's`](api/scala/play/api/mvc/Result.html#withHeaders\(headers:\(String,String\)*\):play.api.mvc.Result) or [`Java's`](api/java/play/mvc/Result.html#withHeader-java.lang.String-java.lang.String-) `Result` class.
+
+### sbt: The `playOmnidoc` key now defaults to `false`
+
+The Play's sbt plugin key `playOmnidoc`, which used to default to `true` (for non-snapshot version of Play) now
+defaults to `false` (and does so in sbt's `Global` scope).  The impact is that any Play app that previously
+enabled the `PlayDocsPlugin` won't get all the documentation they used when running the app and going to
+`http://localhost:9000/@documentation`.  You can reverse this change by setting `ThisBuild / playOmnidoc :=
+true` in your sbt build.
 
 ## Updated libraries
 
