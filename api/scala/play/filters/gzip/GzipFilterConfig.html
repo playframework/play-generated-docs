@@ -163,14 +163,14 @@
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">GzipFilterConfig</span><span class="params">(<span name="bufferSize">bufferSize: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">8192</span></span>, <span name="chunkedThreshold">chunkedThreshold: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">102400</span></span>, <span name="shouldGzip">shouldGzip: (<a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>, <a href="../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">(_, _) =&gt; true</span></span>, <span name="compressionLevel">compressionLevel: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">Deflater.DEFAULT_COMPRESSION</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <span class="name">GzipFilterConfig</span><span class="params">(<span name="bufferSize">bufferSize: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">8192</span></span>, <span name="chunkedThreshold">chunkedThreshold: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">102400</span></span>, <span name="threshold">threshold: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="shouldGzip">shouldGzip: (<a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>, <a href="../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">(_, _) =&gt; true</span></span>, <span name="compressionLevel">compressionLevel: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">Deflater.DEFAULT_COMPRESSION</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       </h4>
 
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Configuration for the gzip filter
-</p></div><dl class="paramcmts block"><dt class="param">bufferSize</dt><dd class="cmt"><p>The size of the buffer to use for gzipping.</p></dd><dt class="param">chunkedThreshold</dt><dd class="cmt"><p>The content length threshold, after which the filter will switch to chunking the result.</p></dd><dt class="param">shouldGzip</dt><dd class="cmt"><p>Whether the given request/result should be gzipped.  This can be used, for example, to implement
-                  black/white lists for gzipping by content type.</p></dd></dl><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/web/play-filters-helpers/src/main/scala/play/filters/gzip/GzipFilter.scala" target="_blank">GzipFilter.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="paramcmts block"><dt class="param">bufferSize</dt><dd class="cmt"><p>The size of the buffer to use for gzipping.</p></dd><dt class="param">chunkedThreshold</dt><dd class="cmt"><p>The content length threshold, after which the filter will switch to chunking the result.</p></dd><dt class="param">threshold</dt><dd class="cmt"><p>The byte threshold for the response body size which controls if a response should be gzipped.</p></dd><dt class="param">shouldGzip</dt><dd class="cmt"><p>Whether the given request/result should be gzipped.  This can be used, for example, to implement
+                  black/white lists for gzipping by content type.</p></dd><dt class="param">compressionLevel</dt><dd class="cmt"><p>Compression level to use for the underlying <span class="extype" name="java.util.zip.Deflater">java.util.zip.Deflater</span> instance.</p></dd></dl><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/web/play-filters-helpers/src/main/scala/play/filters/gzip/GzipFilter.scala" target="_blank">GzipFilter.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -237,9 +237,9 @@
       
       
     </li><li name="play.filters.gzip.GzipFilterConfig#&lt;init&gt;" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(bufferSize:Int,chunkedThreshold:Int,shouldGzip:(play.api.mvc.RequestHeader,play.api.mvc.Result)=&gt;Boolean,compressionLevel:Int):play.filters.gzip.GzipFilterConfig"></a><a id="&lt;init&gt;:GzipFilterConfig"></a>
+      <a id="&lt;init&gt;(bufferSize:Int,chunkedThreshold:Int,threshold:Int,shouldGzip:(play.api.mvc.RequestHeader,play.api.mvc.Result)=&gt;Boolean,compressionLevel:Int):play.filters.gzip.GzipFilterConfig"></a><a id="&lt;init&gt;:GzipFilterConfig"></a>
       <span class="permalink">
-      <a href="../../../play/filters/gzip/GzipFilterConfig.html#&lt;init&gt;(bufferSize:Int,chunkedThreshold:Int,shouldGzip:(play.api.mvc.RequestHeader,play.api.mvc.Result)=&gt;Boolean,compressionLevel:Int):play.filters.gzip.GzipFilterConfig" title="Permalink">
+      <a href="../../../play/filters/gzip/GzipFilterConfig.html#&lt;init&gt;(bufferSize:Int,chunkedThreshold:Int,threshold:Int,shouldGzip:(play.api.mvc.RequestHeader,play.api.mvc.Result)=&gt;Boolean,compressionLevel:Int):play.filters.gzip.GzipFilterConfig" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -248,11 +248,11 @@
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">GzipFilterConfig</span><span class="params">(<span name="bufferSize">bufferSize: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">8192</span></span>, <span name="chunkedThreshold">chunkedThreshold: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">102400</span></span>, <span name="shouldGzip">shouldGzip: (<a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>, <a href="../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">(_, _) =&gt; true</span></span>, <span name="compressionLevel">compressionLevel: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">Deflater.DEFAULT_COMPRESSION</span></span>)</span>
+        <span class="name">GzipFilterConfig</span><span class="params">(<span name="bufferSize">bufferSize: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">8192</span></span>, <span name="chunkedThreshold">chunkedThreshold: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">102400</span></span>, <span name="threshold">threshold: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="shouldGzip">shouldGzip: (<a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>, <a href="../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">(_, _) =&gt; true</span></span>, <span name="compressionLevel">compressionLevel: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">Deflater.DEFAULT_COMPRESSION</span></span>)</span>
       </span>
       
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">bufferSize</dt><dd class="cmt"><p>The size of the buffer to use for gzipping.</p></dd><dt class="param">chunkedThreshold</dt><dd class="cmt"><p>The content length threshold, after which the filter will switch to chunking the result.</p></dd><dt class="param">shouldGzip</dt><dd class="cmt"><p>Whether the given request/result should be gzipped.  This can be used, for example, to implement
-                  black/white lists for gzipping by content type.</p></dd></dl></div>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">bufferSize</dt><dd class="cmt"><p>The size of the buffer to use for gzipping.</p></dd><dt class="param">chunkedThreshold</dt><dd class="cmt"><p>The content length threshold, after which the filter will switch to chunking the result.</p></dd><dt class="param">threshold</dt><dd class="cmt"><p>The byte threshold for the response body size which controls if a response should be gzipped.</p></dd><dt class="param">shouldGzip</dt><dd class="cmt"><p>Whether the given request/result should be gzipped.  This can be used, for example, to implement
+                  black/white lists for gzipping by content type.</p></dd><dt class="param">compressionLevel</dt><dd class="cmt"><p>Compression level to use for the underlying <span class="extype" name="java.util.zip.Deflater">java.util.zip.Deflater</span> instance.</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -558,6 +558,22 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="play.filters.gzip.GzipFilterConfig#threshold" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="threshold:Int"></a>
+      <span class="permalink">
+      <a href="../../../play/filters/gzip/GzipFilterConfig.html#threshold:Int" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">threshold</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      
+      
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <span class="permalink">

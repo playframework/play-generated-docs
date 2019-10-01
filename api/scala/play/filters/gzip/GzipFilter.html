@@ -169,6 +169,8 @@
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A gzip filter.</p><p>This filter may gzip the responses for any requests that aren't HEAD requests and specify an accept encoding of gzip.</p><p>It won't gzip under the following conditions:</p><p>- The response code is 204 or 304 (these codes MUST NOT contain a body, and an empty gzipped response is 20 bytes
 long)
 - The response already defines a Content-Encoding header
+- The size of the response body is equal or smaller than a given threshold. If the body size cannot be determined,
+  then it is assumed the response is over the threshold
 - A custom shouldGzip function is supplied and it returns false</p><p>Since gzipping changes the content length of the response, this filter may do some buffering - it will buffer any
 streamed responses that define a content length less than the configured chunked threshold.  Responses that are
 greater in length, or that don't define a content length, will not be buffered, but will be sent as chunked
@@ -227,9 +229,9 @@ responses.
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="play.filters.gzip.GzipFilter#&lt;init&gt;" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="&lt;init&gt;(bufferSize:Int,chunkedThreshold:Int,shouldGzip:(play.api.mvc.RequestHeader,play.api.mvc.Result)=&gt;Boolean,compressionLevel:Int)(implicitmat:akka.stream.Materializer):play.filters.gzip.GzipFilter"></a><a id="&lt;init&gt;:GzipFilter"></a>
+      <a id="&lt;init&gt;(bufferSize:Int,chunkedThreshold:Int,threshold:Int,shouldGzip:(play.api.mvc.RequestHeader,play.api.mvc.Result)=&gt;Boolean,compressionLevel:Int)(implicitmat:akka.stream.Materializer):play.filters.gzip.GzipFilter"></a><a id="&lt;init&gt;:GzipFilter"></a>
       <span class="permalink">
-      <a href="../../../play/filters/gzip/GzipFilter.html#&lt;init&gt;(bufferSize:Int,chunkedThreshold:Int,shouldGzip:(play.api.mvc.RequestHeader,play.api.mvc.Result)=&gt;Boolean,compressionLevel:Int)(implicitmat:akka.stream.Materializer):play.filters.gzip.GzipFilter" title="Permalink">
+      <a href="../../../play/filters/gzip/GzipFilter.html#&lt;init&gt;(bufferSize:Int,chunkedThreshold:Int,threshold:Int,shouldGzip:(play.api.mvc.RequestHeader,play.api.mvc.Result)=&gt;Boolean,compressionLevel:Int)(implicitmat:akka.stream.Materializer):play.filters.gzip.GzipFilter" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -238,7 +240,7 @@ responses.
         <span class="kind">new</span>
       </span>
       <span class="symbol">
-        <span class="name">GzipFilter</span><span class="params">(<span name="bufferSize">bufferSize: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">8192</span></span>, <span name="chunkedThreshold">chunkedThreshold: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">102400</span></span>, <span name="shouldGzip">shouldGzip: (<a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>, <a href="../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">(_, _) =&gt; true</span></span>, <span name="compressionLevel">compressionLevel: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">Deflater.DEFAULT_COMPRESSION</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="mat">mat: <span class="extype" name="akka.stream.Materializer">Materializer</span></span>)</span>
+        <span class="name">GzipFilter</span><span class="params">(<span name="bufferSize">bufferSize: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">8192</span></span>, <span name="chunkedThreshold">chunkedThreshold: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">102400</span></span>, <span name="threshold">threshold: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">0</span></span>, <span name="shouldGzip">shouldGzip: (<a href="../../api/mvc/RequestHeader.html" class="extype" name="play.api.mvc.RequestHeader">RequestHeader</a>, <a href="../../api/mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>) ⇒ <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">(_, _) =&gt; true</span></span>, <span name="compressionLevel">compressionLevel: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">Deflater.DEFAULT_COMPRESSION</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="mat">mat: <span class="extype" name="akka.stream.Materializer">Materializer</span></span>)</span>
       </span>
       
       
