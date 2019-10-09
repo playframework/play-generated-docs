@@ -137,8 +137,8 @@
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="play.api.libs">libs</a></dd></dl></div>
     </li><li class="current-entities indented4">
                         <a class="object" href="ActorModule$.html" title="The companion object to hold ActorModule's ActorModule.Aux type alias."></a>
-                        <a class="trait" href="" title="Allows runtime dependency injection of actor behavior, defined in &quot;functional programming&quot; style."></a>
-                        <a href="" title="Allows runtime dependency injection of actor behavior, defined in &quot;functional programming&quot; style.">ActorModule</a>
+                        <a class="trait" href="" title="Facilitates runtime dependency injection of &quot;functional programming&quot;-style actor behaviors."></a>
+                        <a href="" title="Facilitates runtime dependency injection of &quot;functional programming&quot;-style actor behaviors.">ActorModule</a>
                       </li><li class="current-entities indented4">
                         <span class="separator"></span>
                         <a class="class" href="ActorRefProvider.html" title="Provider for creating actor refs"></a>
@@ -225,10 +225,10 @@
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Allows runtime dependency injection of actor behavior, defined in &quot;functional programming&quot; style.</p><p>1. Mix this trait into the <code>object</code> defining the actor messages and the actor behavior(s),
-2. Define the <code>Message</code> type with actor message class,
-3. Add the <span class="extype" name="com.google.inject.Provides">Provides</span> annotation to the method that returns the
-  (initial) <span class="extype" name="akka.actor.typed.Behavior">Behavior</span> of the actor.
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Facilitates runtime dependency injection of &quot;functional programming&quot;-style actor behaviors.</p><p>1. Mix this trait into the <code>object</code> defining the actor message(s) and behavior(s);
+2. Define the <code>Message</code> type with actor message class;
+3. Annotate with <span class="extype" name="com.google.inject.Provides">Provides</span> the &quot;create&quot; method that returns the
+  (possibly just initial) <span class="extype" name="akka.actor.typed.Behavior">Behavior</span> of the actor;
 4. Use the <code>bindTypedActor</code> in <a href="AkkaGuiceSupport.html" class="extype" name="play.api.libs.concurrent.AkkaGuiceSupport">AkkaGuiceSupport</a>, passing the <code>object</code> as the actor module.</p><p>For example:</p><pre><span class="kw">object</span> ConfiguredActor <span class="kw">extends</span> ActorModule {
   <span class="kw">type</span> Message = GetConfig
 
@@ -244,7 +244,10 @@
   <span class="kw">override</span> <span class="kw">def</span> configure() = {
     bindTypedActor(classOf[ConfiguredActor], <span class="lit">"configured-actor"</span>)
   }
-}</pre></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+}</pre><p><code>Message</code> is a type member rather than a type parameter is because you can't define, using the
+example above, <code>GetConfig</code> inside the object and also have the object extend
+<code>ActorModule[ConfiguredActor.GetConfig]</code>.
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@ApiMayChange</span><span class="args">()</span>
               
         </dd><dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/master/core/play-guice/src/main/scala/play/api/libs/concurrent/ActorModule.scala" target="_blank">ActorModule.scala</a></dd><dt>See also</dt><dd><span class="cmt"><p>https://doc.akka.io/docs/akka/snapshot/typed/style-guide.html#functional-versus-object-oriented-style</p></span></dd></dl><div class="toggleContainer block">
