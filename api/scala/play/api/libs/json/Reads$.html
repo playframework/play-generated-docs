@@ -450,7 +450,7 @@ For example:</p><pre><span class="kw">import</span> play.api.libs.json._
 
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Default deserializer type classes.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/play-json/tree/2.8.0-M7/play-json/jvm/src/main/scala/play/api/libs/json/Reads.scala" target="_blank">Reads.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/play-json/tree/2.8.0-M6/play-json/jvm/src/main/scala/play/api/libs/json/Reads.scala" target="_blank">Reads.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -2513,11 +2513,10 @@ using the specified temporal unit.
       
       <p class="shortcomment cmt">Reads a Option[T] search optional or nullable field at JsPath (field not found or null is None
 and other cases are Error).</p><div class="fullcomment"><div class="comment cmt"><p>Reads a Option[T] search optional or nullable field at JsPath (field not found or null is None
-and other cases are Error).</p><p>It runs through JsValue following all JsPath nodes on JsValue:
-- If any node in JsPath is not found =&gt; returns None
-- If any node in JsPath is found with value &quot;null&quot; =&gt; returns None
-- If the entire path is found =&gt; applies implicit Reads[T]
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="PathReads.html" class="extype" name="play.api.libs.json.PathReads">PathReads</a></dd></dl></div>
+and other cases are Error).</p><p>It runs through JsValue following all JsPath nodes on JsValue except last node:
+- If one node in JsPath is not found before last node =&gt; returns JsError( &quot;missing-path&quot; )
+- If all nodes are found till last node, it runs through JsValue with last node =&gt;</p><ul><li>If last node if not found =&gt; returns None</li><li>If last node is found with value &quot;null&quot; =&gt; returns None</li><li>If last node is found =&gt; applies implicit Reads[T]
+</li></ul></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="PathReads.html" class="extype" name="play.api.libs.json.PathReads">PathReads</a></dd></dl></div>
     </li><li name="play.api.libs.json.PathReads#nullableWithDefault" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="nullableWithDefault[A](path:play.api.libs.json.JsPath,defaultValue:=&gt;Option[A])(implicitreads:play.api.libs.json.Reads[A]):play.api.libs.json.Reads[Option[A]]"></a><a id="nullableWithDefault[A](JsPath,⇒Option[A])(Reads[A]):Reads[Option[A]]"></a>
       <span class="permalink">
@@ -2535,11 +2534,10 @@ and other cases are Error).</p><p>It runs through JsValue following all JsPath n
       
       <p class="shortcomment cmt">Reads a Option[T] search nullable field at JsPath (null is None
 and other cases are Error).</p><div class="fullcomment"><div class="comment cmt"><p>Reads a Option[T] search nullable field at JsPath (null is None
-and other cases are Error).</p><p>It runs through JsValue following all JsPath nodes on JsValue:
-- If any node in JsPath is not found =&gt; returns default value
-- If the last node in JsPath is found with value &quot;null&quot; =&gt; returns None
-- If the entire path is found =&gt; applies implicit Reads[T]
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="PathReads.html" class="extype" name="play.api.libs.json.PathReads">PathReads</a></dd></dl></div>
+and other cases are Error).</p><p>It runs through JsValue following all JsPath nodes on JsValue except last node:
+- If one node in JsPath is not found before last node =&gt; returns JsError( &quot;missing-path&quot; )
+- If all nodes are found till last node, it runs through JsValue with last node =&gt;</p><ul><li>If last node if not found =&gt; returns JsError( &quot;missing-path&quot; )</li><li>If last node is found with value &quot;null&quot; =&gt; returns None</li><li>If last node is found =&gt; applies implicit Reads[T]
+</li></ul></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="PathReads.html" class="extype" name="play.api.libs.json.PathReads">PathReads</a></dd></dl></div>
     </li><li name="play.api.libs.json.ConstraintReads#of" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="of[A](implicitr:play.api.libs.json.Reads[A]):play.api.libs.json.Reads[A]"></a><a id="of[A](Reads[A]):Reads[A]"></a>
       <span class="permalink">

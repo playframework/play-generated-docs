@@ -450,7 +450,7 @@ For example:</p><pre><span class="kw">import</span> play.api.libs.json._
 
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Companion object and root path.</p><p>For an object <code>{ &quot;name&quot;: &quot;foo&quot; }</code>, the path to the <code>name</code> property is:</p><pre>JsPath \ <span class="lit">"name"</span></pre><p>For an object <code>{ &quot;id&quot;: 1, &quot;nested&quot;: { &quot;score&quot;: 0.12 } }</code>,
-the path to the nested <code>score</code> is:</p><pre>JsPath \ <span class="lit">"nested"</span> \ <span class="lit">"score"</span></pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/play-json/tree/2.8.0-M7/play-json/jvm/src/main/scala/play/api/libs/json/JsPath.scala" target="_blank">JsPath.scala</a></dd></dl><div class="toggleContainer block">
+the path to the nested <code>score</code> is:</p><pre>JsPath \ <span class="lit">"nested"</span> \ <span class="lit">"score"</span></pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/play-json/tree/2.8.0-M6/play-json/jvm/src/main/scala/play/api/libs/json/JsPath.scala" target="_blank">JsPath.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -1285,11 +1285,10 @@ recursive case classes for ex</p><p>Please note that it's not writeOpt to be coh
       
       <p class="shortcomment cmt">Reads a Option[T] search optional or nullable field at JsPath (field not found or null is None
 and other cases are Error).</p><div class="fullcomment"><div class="comment cmt"><p>Reads a Option[T] search optional or nullable field at JsPath (field not found or null is None
-and other cases are Error).</p><p>It runs through JsValue following all JsPath nodes on JsValue:
-- If any node in JsPath is not found =&gt; returns None
-- If any node in JsPath is found with value &quot;null&quot; =&gt; returns None
-- If the entire path is found =&gt; applies implicit Reads[T]
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="JsPath.html" class="extype" name="play.api.libs.json.JsPath">JsPath</a></dd></dl></div>
+and other cases are Error).</p><p>It runs through JsValue following all JsPath nodes on JsValue except last node:
+- If one node in JsPath is not found before last node =&gt; returns JsError( &quot;missing-path&quot; )
+- If all nodes are found till last node, it runs through JsValue with last node =&gt;</p><ul><li>If last node is not found =&gt; returns None</li><li>If last node is found with value &quot;null&quot; =&gt; returns None</li><li>If last node is found =&gt; applies implicit Reads[T]
+</li></ul></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="JsPath.html" class="extype" name="play.api.libs.json.JsPath">JsPath</a></dd></dl></div>
     </li><li name="play.api.libs.json.JsPath#readNullableWithDefault" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="readNullableWithDefault[T](defaultValue:=&gt;Option[T])(implicitr:play.api.libs.json.Reads[T]):play.api.libs.json.Reads[Option[T]]"></a><a id="readNullableWithDefault[T](⇒Option[T])(Reads[T]):Reads[Option[T]]"></a>
       <span class="permalink">
@@ -1308,10 +1307,9 @@ and other cases are Error).</p><p>It runs through JsValue following all JsPath n
       <p class="shortcomment cmt">Reads an Option[T] search optional or nullable field at JsPath (field not found replaced by
 default value, null is None and other cases are Error).</p><div class="fullcomment"><div class="comment cmt"><p>Reads an Option[T] search optional or nullable field at JsPath (field not found replaced by
 default value, null is None and other cases are Error).</p><p>It runs through JsValue following all JsPath nodes on JsValue except last node:
-- If any node in JsPath is not found =&gt; returns default value
-- If any node in JsPath is found with value &quot;null&quot; =&gt; returns None
-- If the entire path is found =&gt; applies implicit Reads[T]
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="JsPath.html" class="extype" name="play.api.libs.json.JsPath">JsPath</a></dd></dl></div>
+- If one node in JsPath is not found before last node =&gt; returns JsError( &quot;missing-path&quot; )
+- If all nodes are found till last node, it runs through JsValue with last node =&gt;</p><ul><li>If last node is not found =&gt; returns default value</li><li>If last node is found with value &quot;null&quot; =&gt; returns None</li><li>If last node is found =&gt; applies implicit Reads[T]
+</li></ul></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="JsPath.html" class="extype" name="play.api.libs.json.JsPath">JsPath</a></dd></dl></div>
     </li><li name="play.api.libs.json.JsPath#readWithDefault" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="readWithDefault[T](defaultValue:=&gt;T)(implicitr:play.api.libs.json.Reads[T]):play.api.libs.json.Reads[T]"></a><a id="readWithDefault[T](⇒T)(Reads[T]):Reads[T]"></a>
       <span class="permalink">
