@@ -1128,59 +1128,7 @@ and what to do in case unsuccessful authentication</p><p>For example:</p><pre> <
 
         
 
-        <div class="values members">
-              <h3>Deprecated Value Members</h3>
-              <ol><li name="play.api.mvc.Security#Authenticated" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="Authenticated(action:String=&gt;play.api.mvc.EssentialAction):play.api.mvc.EssentialAction"></a><a id="Authenticated((String)⇒EssentialAction):EssentialAction"></a>
-      <span class="permalink">
-      <a href="../../../play/api/mvc/Security$.html#Authenticated(action:String=&gt;play.api.mvc.EssentialAction):play.api.mvc.EssentialAction" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use Authenticated(RequestHeader =&gt; Option[String])(String =&gt; EssentialAction)">Authenticated</span><span class="params">(<span name="action">action: (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <a href="EssentialAction.html" class="extype" name="play.api.mvc.EssentialAction">EssentialAction</a></span>)</span><span class="result">: <a href="EssentialAction.html" class="extype" name="play.api.mvc.EssentialAction">EssentialAction</a></span>
-      </span>
-      
-      <p class="shortcomment cmt">Wraps another action, allowing only authenticated HTTP requests.</p><div class="fullcomment"><div class="comment cmt"><p>Wraps another action, allowing only authenticated HTTP requests.</p><p>The user name is retrieved from the (configurable) session cookie, and added to the HTTP request’s
-<code>username</code> attribute. In case of failure it returns an Unauthorized response (401)</p><p>For example:</p><pre> <span class="cmt">//in a Security trait</span>
- <span class="kw">def</span> isAuthenticated(f: <span class="kw">=&gt;</span> <span class="std">String</span> <span class="kw">=&gt;</span> Request[AnyContent] <span class="kw">=&gt;</span> Result) = {
-   Authenticated { user <span class="kw">=&gt;</span>
-     Action(request <span class="kw">=&gt;</span> f(user)(request))
-   }
- }
-<span class="cmt">//then in a controller</span>
-<span class="kw">def</span> index = isAuthenticated { username <span class="kw">=&gt;</span> <span class="kw">implicit</span> request <span class="kw">=&gt;</span>
-    Ok(<span class="lit">"Hello "</span> + username)
-}</pre></div><dl class="paramcmts block"><dt class="param">action</dt><dd class="cmt"><p>the action to wrap</p></dd></dl><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use Authenticated(RequestHeader =&gt; Option[String])(String =&gt; EssentialAction)</p></dd></dl></div>
-    </li><li name="play.api.mvc.Security#username" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="username:String"></a>
-      <span class="permalink">
-      <a href="../../../play/api/mvc/Security$.html#username:String" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">lazy val</span>
-      </span>
-      <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 2.6.0) Security.username is deprecated.">username</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
-      </span>
-      
-      <p class="shortcomment cmt">Key of the username attribute stored in session.</p><div class="fullcomment"><div class="comment cmt"><p>Key of the username attribute stored in session.
-</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Security.username is deprecated.</p></dd></dl></div>
-    </li></ol>
-            </div>
+        
         </div>
 
         <div id="inheritedMembers">
