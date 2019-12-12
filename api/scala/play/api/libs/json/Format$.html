@@ -131,12 +131,10 @@
         <span class="kind">package</span>
       </span>
       <span class="symbol">
-        <a title="Json API For example:" href="index.html"><span class="name">json</span></a>
+        <a title="Json API" href="index.html"><span class="name">json</span></a>
       </span>
       
-      <p class="shortcomment cmt">Json API
-For example:</p><div class="fullcomment"><div class="comment cmt"><p>Json API
-For example:</p><pre><span class="kw">import</span> play.api.libs.json._
+      <p class="shortcomment cmt">Json API</p><div class="fullcomment"><div class="comment cmt"><p>Json API</p><p>For example:</p><pre><span class="kw">import</span> play.api.libs.json._
 <span class="kw">import</span> play.api.libs.functional.syntax._
 
 <span class="kw">case</span> <span class="kw">class</span> User(id: <span class="std">Long</span>, name: <span class="std">String</span>, friends: <span class="std">Seq</span>[User] = <span class="std">Seq</span>.empty)
@@ -151,15 +149,14 @@ For example:</p><pre><span class="kw">import</span> play.api.libs.json._
   )(User.apply, unlift(User.unapply))
 }
 
-<span class="cmt">//then in a controller:</span>
-
-<span class="kw">object</span> MyController <span class="kw">extends</span> Controller {
+<span class="kw">object</span> MyController <span class="kw">extends</span> play.api.mvc.Controller {
    <span class="kw">def</span> displayUserAsJson(id: <span class="std">String</span>) = Action {
       Ok(Json.toJson(User(id.toLong, <span class="lit">"myName"</span>)))
    }
+
    <span class="kw">def</span> saveUser(jsonString: <span class="std">String</span>)= Action {
      <span class="kw">val</span> user = Json.parse(jsonString).as[User]
-     myDataStore.save(user)
+     <span class="cmt">//myDataStore.save(user)</span>
      Ok
    }
 }</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="play.api.libs">libs</a></dd></dl></div>
@@ -450,7 +447,7 @@ For example:</p><pre><span class="kw">import</span> play.api.libs.json._
 
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Default Json formatters.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/play-json/tree/2.8.0/play-json/jvm/src/main/scala/play/api/libs/json/Format.scala" target="_blank">Format.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/play-json/tree/2.8.1/play-json/jvm/src/main/scala/play/api/libs/json/Format.scala" target="_blank">Format.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
