@@ -131,12 +131,10 @@
         <span class="kind">package</span>
       </span>
       <span class="symbol">
-        <a title="Json API For example:" href="index.html"><span class="name">json</span></a>
+        <a title="Json API" href="index.html"><span class="name">json</span></a>
       </span>
       
-      <p class="shortcomment cmt">Json API
-For example:</p><div class="fullcomment"><div class="comment cmt"><p>Json API
-For example:</p><pre><span class="kw">import</span> play.api.libs.json._
+      <p class="shortcomment cmt">Json API</p><div class="fullcomment"><div class="comment cmt"><p>Json API</p><p>For example:</p><pre><span class="kw">import</span> play.api.libs.json._
 <span class="kw">import</span> play.api.libs.functional.syntax._
 
 <span class="kw">case</span> <span class="kw">class</span> User(id: <span class="std">Long</span>, name: <span class="std">String</span>, friends: <span class="std">Seq</span>[User] = <span class="std">Seq</span>.empty)
@@ -151,15 +149,14 @@ For example:</p><pre><span class="kw">import</span> play.api.libs.json._
   )(User.apply, unlift(User.unapply))
 }
 
-<span class="cmt">//then in a controller:</span>
-
-<span class="kw">object</span> MyController <span class="kw">extends</span> Controller {
+<span class="kw">object</span> MyController <span class="kw">extends</span> play.api.mvc.Controller {
    <span class="kw">def</span> displayUserAsJson(id: <span class="std">String</span>) = Action {
       Ok(Json.toJson(User(id.toLong, <span class="lit">"myName"</span>)))
    }
+
    <span class="kw">def</span> saveUser(jsonString: <span class="std">String</span>)= Action {
      <span class="kw">val</span> user = Json.parse(jsonString).as[User]
-     myDataStore.save(user)
+     <span class="cmt">//myDataStore.save(user)</span>
      Ok
    }
 }</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="play.api.libs">libs</a></dd></dl></div>
@@ -447,7 +444,7 @@ For example:</p><pre><span class="kw">import</span> play.api.libs.json._
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/play-json/tree/2.8.0/play-json/jvm/src/main/scala/play/api/libs/json/EnvWrites.scala" target="_blank">EnvWrites.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/play-json/tree/2.8.1/play-json/jvm/src/main/scala/play/api/libs/json/EnvWrites.scala" target="_blank">EnvWrites.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -697,7 +694,7 @@ using '2011-12-03T10:15:30+01:00[Europe/Paris]' format.</p>
 The number of milliseconds since epoch is used.</p><pre><span class="kw">import</span> java.time.Instant
 <span class="kw">import</span> play.api.libs.json.Writes
 
-<span class="kw">implicit</span> <span class="kw">val</span> inWrites = Writes.InstantNumberWrites</pre></div></div>
+<span class="kw">implicit</span> <span class="kw">val</span> inWrites: Writes[Instant] = Writes.InstantEpochMilliWrites</pre></div></div>
     </li><li name="play.api.libs.json.EnvWrites#LocalDateEpochMilliWrites" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="LocalDateEpochMilliWrites:play.api.libs.json.Writes[java.time.LocalDate]"></a><a id="LocalDateEpochMilliWrites:Writes[LocalDate]"></a>
       <span class="permalink">
@@ -717,7 +714,8 @@ The number of milliseconds since epoch is used.</p><pre><span class="kw">import<
 The number of milliseconds since epoch is used.</p><pre><span class="kw">import</span> java.time.LocalDate
 <span class="kw">import</span> play.api.libs.json.Writes
 
-<span class="kw">implicit</span> <span class="kw">val</span> ldnWrites = Writes.LocalDateEpochMilliWrites</pre></div></div>
+<span class="kw">implicit</span> <span class="kw">val</span> ldnWrites: Writes[LocalDate] =
+  Writes.LocalDateEpochMilliWrites</pre></div></div>
     </li><li name="play.api.libs.json.EnvWrites#LocalDateTimeEpochMilliWrites" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="LocalDateTimeEpochMilliWrites:play.api.libs.json.Writes[java.time.LocalDateTime]"></a><a id="LocalDateTimeEpochMilliWrites:Writes[LocalDateTime]"></a>
       <span class="permalink">
@@ -757,7 +755,7 @@ The number of milliseconds since epoch is used.</p><pre><span class="kw">import<
 The nano of day is written.</p><pre><span class="kw">import</span> java.time.LocalTime
 <span class="kw">import</span> play.api.libs.json.Writes
 
-<span class="kw">implicit</span> <span class="kw">val</span> ltnWrites = Writes.LocalTimeNumberWrites</pre></div></div>
+<span class="kw">implicit</span> <span class="kw">val</span> ltnWrites = Writes.LocalTimeNanoOfDayWrites</pre></div></div>
     </li><li name="play.api.libs.json.EnvWrites#ZoneIdWrites" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="ZoneIdWrites:play.api.libs.json.Writes[java.time.ZoneId]"></a><a id="ZoneIdWrites:Writes[ZoneId]"></a>
       <span class="permalink">
@@ -1133,10 +1131,12 @@ The number of milliseconds since epoch is used.</p><pre><span class="kw">import<
       <p class="shortcomment cmt">Serializer for Java8 temporal types (e.g.</p><div class="fullcomment"><div class="comment cmt"><p>Serializer for Java8 temporal types (e.g. <code>java.time.LocalDateTime</code>)
 to be written as JSON string.
 </p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>the Java8 temporal type to be considered: LocalDateTime, ZonedDateTime, Instant</p></dd><dt class="tparam">B</dt><dd class="cmt"><p>Type of formatting argument</p></dd><dt class="param">formatting</dt><dd class="cmt"><p>an argument to instantiate formatter</p><pre><span class="kw">import</span> java.time.LocalDateTime
+<span class="kw">import</span> java.time.format.DateTimeFormatter
+
 <span class="kw">import</span> play.api.libs.json.Writes
 
-<span class="kw">implicit</span> <span class="kw">val</span> temporalWrites: Writes[LocalDateTime] =
-  temporalWrites[LocalDateTime, DateTimeFormatter](
+<span class="kw">implicit</span> <span class="kw">val</span> w: Writes[LocalDateTime] =
+  Writes.temporalWrites[LocalDateTime, DateTimeFormatter](
     DateTimeFormatter.ISO_LOCAL_DATE_TIME)</pre></dd></dl></div>
     </li><li name="scala.AnyRef#toString" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>

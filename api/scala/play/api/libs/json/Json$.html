@@ -131,12 +131,10 @@
         <span class="kind">package</span>
       </span>
       <span class="symbol">
-        <a title="Json API For example:" href="index.html"><span class="name">json</span></a>
+        <a title="Json API" href="index.html"><span class="name">json</span></a>
       </span>
       
-      <p class="shortcomment cmt">Json API
-For example:</p><div class="fullcomment"><div class="comment cmt"><p>Json API
-For example:</p><pre><span class="kw">import</span> play.api.libs.json._
+      <p class="shortcomment cmt">Json API</p><div class="fullcomment"><div class="comment cmt"><p>Json API</p><p>For example:</p><pre><span class="kw">import</span> play.api.libs.json._
 <span class="kw">import</span> play.api.libs.functional.syntax._
 
 <span class="kw">case</span> <span class="kw">class</span> User(id: <span class="std">Long</span>, name: <span class="std">String</span>, friends: <span class="std">Seq</span>[User] = <span class="std">Seq</span>.empty)
@@ -151,15 +149,14 @@ For example:</p><pre><span class="kw">import</span> play.api.libs.json._
   )(User.apply, unlift(User.unapply))
 }
 
-<span class="cmt">//then in a controller:</span>
-
-<span class="kw">object</span> MyController <span class="kw">extends</span> Controller {
+<span class="kw">object</span> MyController <span class="kw">extends</span> play.api.mvc.Controller {
    <span class="kw">def</span> displayUserAsJson(id: <span class="std">String</span>) = Action {
       Ok(Json.toJson(User(id.toLong, <span class="lit">"myName"</span>)))
    }
+
    <span class="kw">def</span> saveUser(jsonString: <span class="std">String</span>)= Action {
      <span class="kw">val</span> user = Json.parse(jsonString).as[User]
-     myDataStore.save(user)
+     <span class="cmt">//myDataStore.save(user)</span>
      Ok
    }
 }</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="play.api.libs">libs</a></dd></dl></div>
@@ -447,7 +444,7 @@ For example:</p><pre><span class="kw">import</span> play.api.libs.json._
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Helper functions to handle JsValues.</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/play-json/tree/2.8.0/play-json/jvm/src/main/scala/play/api/libs/json/Json.scala" target="_blank">Json.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Helper functions to handle JsValues.</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/play-json/tree/2.8.1/play-json/jvm/src/main/scala/play/api/libs/json/Json.scala" target="_blank">Json.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -517,7 +514,9 @@ For example:</p><pre><span class="kw">import</span> play.api.libs.json._
       <p class="shortcomment cmt">Flag to indicate the macros can use the type default values
 (e.g.</p><div class="fullcomment"><div class="comment cmt"><p>Flag to indicate the macros can use the type default values
 (e.g. default values for the case class parameters)
-when applicable.</p><pre>MacroOptions <span class="kw">with</span> DefaultValues</pre></div></div>
+when applicable.</p><pre><span class="kw">import</span> play.api.libs.json._, Json._
+
+<span class="kw">type</span> Opts = MacroOptions <span class="kw">with</span> DefaultValues</pre></div></div>
     </li><li name="play.api.libs.json.Json.JsValueWrapper" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="JsValueWrapperextendsAnyRef"></a><a id="JsValueWrapper:JsValueWrapper"></a>
       <span class="permalink">
@@ -533,13 +532,16 @@ when applicable.</p><pre>MacroOptions <span class="kw">with</span> DefaultValues
         <a title="Next is the trait that allows Simplified Json syntax :" href="Json$$JsValueWrapper.html"><span class="name">JsValueWrapper</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       
-      <p class="shortcomment cmt">Next is the trait that allows Simplified Json syntax :</p><div class="fullcomment"><div class="comment cmt"><p>Next is the trait that allows Simplified Json syntax :</p><p>Example :</p><pre>JsObject(<span class="std">Seq</span>(
+      <p class="shortcomment cmt">Next is the trait that allows Simplified Json syntax :</p><div class="fullcomment"><div class="comment cmt"><p>Next is the trait that allows Simplified Json syntax :</p><p>Example:</p><pre><span class="kw">import</span> play.api.libs.json._
+
+JsObject(<span class="std">Seq</span>(
    <span class="lit">"key1"</span> -&gt; JsString(<span class="lit">"value"</span>),
    <span class="lit">"key2"</span> -&gt; JsNumber(<span class="num">123</span>),
    <span class="lit">"key3"</span> -&gt; JsObject(<span class="std">Seq</span>(<span class="lit">"key31"</span> -&gt; JsString(<span class="lit">"value31"</span>)))
-)) == Json.obj( <span class="lit">"key1"</span> -&gt; <span class="lit">"value"</span>, <span class="lit">"key2"</span> -&gt; <span class="num">123</span>, <span class="lit">"key3"</span> -&gt; obj(<span class="lit">"key31"</span> -&gt; <span class="lit">"value31"</span>))
+)) == Json.obj(
+  <span class="lit">"key1"</span> -&gt; <span class="lit">"value"</span>, <span class="lit">"key2"</span> -&gt; <span class="num">123</span>, <span class="lit">"key3"</span> -&gt; Json.obj(<span class="lit">"key31"</span> -&gt; <span class="lit">"value31"</span>))
 
-JsArray(JsString(<span class="lit">"value"</span>), JsNumber(<span class="num">123</span>), JsBoolean(<span class="kw">true</span>)) == Json.arr( <span class="lit">"value"</span>, <span class="num">123</span>, <span class="kw">true</span> )</pre><p>There is an implicit conversion from any Type with a Json Writes to JsValueWrapper
+JsArray(<span class="std">Seq</span>(JsString(<span class="lit">"value"</span>), JsNumber(<span class="num">123</span>), JsBoolean(<span class="kw">true</span>))) == Json.arr(<span class="lit">"value"</span>, <span class="num">123</span>, <span class="kw">true</span>)</pre><p>There is an implicit conversion from any Type with a Json Writes to JsValueWrapper
 which is an empty trait that shouldn't end into unexpected implicit conversions.
 </p></div></div>
     </li><li name="play.api.libs.json.Json.MacroOptions" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
@@ -557,7 +559,11 @@ which is an empty trait that shouldn't end into unexpected implicit conversions.
         <a title="Compile-time base options for macro usage." href="Json$$MacroOptions.html"><span class="name">MacroOptions</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       
-      <p class="shortcomment cmt">Compile-time base options for macro usage.</p><div class="fullcomment"><div class="comment cmt"><p>Compile-time base options for macro usage.</p><pre>Json.using[Json.MacroOptions].format[Foo]
+      <p class="shortcomment cmt">Compile-time base options for macro usage.</p><div class="fullcomment"><div class="comment cmt"><p>Compile-time base options for macro usage.</p><pre><span class="kw">import</span> play.api.libs.json.Json
+
+<span class="kw">case</span> <span class="kw">class</span> Foo(v: <span class="std">String</span>)
+
+Json.using[Json.MacroOptions].format[Foo]
 <span class="cmt">// equivalent to Json.format[Foo]</span></pre></div></div>
     </li><li name="play.api.libs.json.Json.WithDefaultValues" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="WithDefaultValues=play.api.libs.json.Json.MacroOptionswithplay.api.libs.json.Json.DefaultValues"></a><a id="WithDefaultValues:WithDefaultValues"></a>
@@ -574,7 +580,9 @@ which is an empty trait that shouldn't end into unexpected implicit conversions.
         <span class="name">WithDefaultValues</span><span class="result alias"> = <a href="Json$$MacroOptions.html" class="extype" name="play.api.libs.json.Json.MacroOptions">MacroOptions</a> with <a href="Json$$DefaultValues.html" class="extype" name="play.api.libs.json.Json.DefaultValues">DefaultValues</a></span>
       </span>
       
-      <p class="shortcomment cmt">Alias for <code>MacroOptions with DefaultValues</code></p><div class="fullcomment"><div class="comment cmt"><p>Alias for <code>MacroOptions with DefaultValues</code></p><pre>Json.using[WithDefaultValues]</pre></div></div>
+      <p class="shortcomment cmt">Alias for <code>MacroOptions with DefaultValues</code></p><div class="fullcomment"><div class="comment cmt"><p>Alias for <code>MacroOptions with DefaultValues</code></p><pre><span class="kw">import</span> play.api.libs.json.Json
+
+Json.using[Json.WithDefaultValues]</pre></div></div>
     </li><li name="play.api.libs.json.Json.WithOptions" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="WithOptions[Opts&lt;:play.api.libs.json.Json.MacroOptions]extendsJsonFacade"></a><a id="WithOptions[Opts&lt;:MacroOptions]:WithOptions[Opts]"></a>
       <span class="permalink">
@@ -699,11 +707,13 @@ which is an empty trait that shouldn't end into unexpected implicit conversions.
 escaping all non-ascii characters using <code>\uXXXX</code> syntax.</p><div class="fullcomment"><div class="comment cmt"><p>Converts a <a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a> to its string representation,
 escaping all non-ascii characters using <code>\uXXXX</code> syntax.</p><p>This is particularly useful when the output JSON will be executed as javascript, since JSON is not a strict
 subset of javascript
-(see <a href="http://timelessrepo.com/json-isnt-a-javascript-subset">JSON: The JavaScript subset that isn't</a>).</p><pre>scala&gt; Json.asciiStringify(JsString(<span class="lit">"some\u2028text\u2029"</span>))
-res0: <span class="std">String</span> = <span class="lit">"some\u2028text\u2029"</span>
+(see <a href="http://timelessrepo.com/json-isnt-a-javascript-subset">JSON: The JavaScript subset that isn't</a>).</p><pre><span class="kw">import</span> play.api.libs.json.{ Json, JsString }
 
-scala&gt; Json.stringify(JsString(<span class="lit">"some\u2028text\u2029"</span>))
-res1: <span class="std">String</span> = <span class="lit">"sometext"</span></pre></div><dl class="paramcmts block"><dt class="param">json</dt><dd class="cmt"><p>the JsValue to convert
+Json.asciiStringify(JsString(<span class="lit">"some\\u005Ctext\\u005C"</span>))
+<span class="cmt">// =&gt; "some\\u005Ctext\\u005C"</span>
+
+Json.stringify(JsString(<span class="lit">"some\\u005Ctext\\u005C"</span>))
+<span class="cmt">// =&gt; "sometext"</span></pre></div><dl class="paramcmts block"><dt class="param">json</dt><dd class="cmt"><p>the JsValue to convert
 A String with the json representation with all non-ascii characters escaped.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.libs.json.Json">Json</a> → <a href="JsonFacade.html" class="extype" name="play.api.libs.json.JsonFacade">JsonFacade</a></dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a><a id="clone():AnyRef"></a>
@@ -817,14 +827,15 @@ A String with the json representation with all non-ascii characters escaped.</p>
       <p class="shortcomment cmt">Creates a <code>OFormat[T]</code> by resolving, at compile-time,
 the case class fields or sealed family, and the required implicits.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a <code>OFormat[T]</code> by resolving, at compile-time,
 the case class fields or sealed family, and the required implicits.</p><p>If any missing implicit is discovered, compiler will break with corresponding error.
-</p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>the type for which the handler must be materialized</p><pre><span class="kw">import</span> play.api.libs.json.Json
+</p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>the type for which the handler must be materialized</p><pre><span class="kw">import</span> play.api.libs.functional.syntax._
+<span class="kw">import</span> play.api.libs.json.{ Json, JsonConfiguration, __ }
 
 <span class="kw">case</span> <span class="kw">class</span> User(userName: <span class="std">String</span>, age: <span class="std">Int</span>)
 
-<span class="kw">implicit</span> <span class="kw">val</span> userWrites = Json.format[User]
+<span class="kw">val</span> userFormat1 = Json.format[User]
 <span class="cmt">// macro-compiler replaces Json.format[User] by injecting into compile chain</span>
 <span class="cmt">// the exact code you would write yourself. This is strictly equivalent to:</span>
-<span class="kw">implicit</span> <span class="kw">val</span> userWrites = (
+<span class="kw">val</span> userFormat2 = (
    (__ \ implicitly[JsonConfiguration].naming(<span class="lit">"userName"</span>)).format[<span class="std">String</span>] and
    (__ \ implicitly[JsonConfiguration].naming(<span class="lit">"age"</span>)).format[<span class="std">Int</span>]
 )(User.apply, unlift(User.unapply))</pre></dd></dl></div>
@@ -843,7 +854,7 @@ the case class fields or sealed family, and the required implicits.</p><p>If any
         <span class="name">formatEnum</span><span class="tparams">[<span name="E">E &lt;: <span class="extype" name="scala.Enumeration">Enumeration</span></span>]</span><span class="params">(<span name="enum">enum: <span class="extype" name="play.api.libs.json.Json.formatEnum.E">E</span></span>)</span><span class="result">: <a href="Format.html" class="extype" name="play.api.libs.json.Format">Format</a>[<span class="extype" name="scala.Enumeration.Value">Json.formatEnum.E.Value</span>]</span>
       </span>
       
-      <p class="shortcomment cmt">Creates a <code>Format[E]</code> by automatically creating Reads[E] and Writes[E] for any Enumeration E</p><div class="fullcomment"><div class="comment cmt"><p>Creates a <code>Format[E]</code> by automatically creating Reads[E] and Writes[E] for any Enumeration E</p><pre><span class="kw">import</span> play.api.libs.json.Json
+      <p class="shortcomment cmt">Creates a <code>Format[E]</code> by automatically creating Reads[E] and Writes[E] for any Enumeration E</p><div class="fullcomment"><div class="comment cmt"><p>Creates a <code>Format[E]</code> by automatically creating Reads[E] and Writes[E] for any Enumeration E</p><pre><span class="kw">import</span> play.api.libs.json.{ Format, Json }
 
 <span class="kw">object</span> DayOfWeek <span class="kw">extends</span> <span class="std">Enumeration</span> {
 
@@ -854,10 +865,10 @@ the case class fields or sealed family, and the required implicits.</p><p>If any
  <span class="kw">val</span> Wed = Value(<span class="lit">"Wednesday"</span>)
  <span class="cmt">// etc.</span>
 
-  <span class="kw">implicit</span> <span class="kw">val</span> format: Format[DayOfWeek] = Json.formatEnum(DayOfWeek)
+  <span class="kw">implicit</span> <span class="kw">val</span> format1: Format[DayOfWeek] = Json.formatEnum(DayOfWeek)
   <span class="cmt">// or 'this' if defining directly in Enum</span>
-  <span class="kw">implicit</span> <span class="kw">val</span> format: Format[DayOfWeek] = Json.formatEnum(<span class="kw">this</span>)
-}</pre><p><b>Json.toJson(Mon)</b> will produce <b>&quot;Monday&quot;</b>
+  <span class="kw">implicit</span> <span class="kw">val</span> format2: Format[DayOfWeek] = Json.formatEnum(<span class="kw">this</span>)
+}</pre><p><code>Json.toJson(Mon)</code> will produce <code>&quot;Monday&quot;</code>.
 </p></div><dl class="paramcmts block"><dt class="tparam">E</dt><dd class="cmt"><p>type of Enum</p></dd><dt class="param">enum</dt><dd class="cmt"><p>Enumeration object</p></dd></dl></div>
     </li><li name="play.api.libs.json.Json#fromJson" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="fromJson[T](json:play.api.libs.json.JsValue)(implicitfjs:play.api.libs.json.Reads[T]):play.api.libs.json.JsResult[T]"></a><a id="fromJson[T](JsValue)(Reads[T]):JsResult[T]"></a>
@@ -1073,22 +1084,24 @@ UTF-16 or UTF-32, as per the heuristics in RFC-4627.
       
       <p class="shortcomment cmt">Converts a <a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a> to its pretty string representation using default
 pretty printer (line feeds after each fields and 2-spaces indentation).</p><div class="fullcomment"><div class="comment cmt"><p>Converts a <a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a> to its pretty string representation using default
-pretty printer (line feeds after each fields and 2-spaces indentation).</p><pre>scala&gt; Json.stringify(Json.obj(
+pretty printer (line feeds after each fields and 2-spaces indentation).</p><pre><span class="kw">import</span> play.api.libs.json.Json
+
+<span class="kw">val</span> res0 = Json.obj(
   <span class="lit">"field1"</span> -&gt; Json.obj(
     <span class="lit">"field11"</span> -&gt; <span class="lit">"value11"</span>,
     <span class="lit">"field12"</span> -&gt; Json.arr(<span class="lit">"alpha"</span>, <span class="num">123</span>L)
   )
-))
-res0: <span class="std">String</span> = {<span class="lit">"field1"</span>:{<span class="lit">"field11"</span>:<span class="lit">"value11"</span>,<span class="lit">"field12"</span>:[<span class="lit">"alpha"</span>,<span class="num">123</span>]}}
+)
+<span class="cmt">// =&gt; {"field1":{"field11":"value11","field12":["alpha",123]}}</span>
 
-scala&gt; Json.prettyPrint(res0)
-res1: <span class="std">String</span> =
-{
-  <span class="lit">"field1"</span> : {
-    <span class="lit">"field11"</span> : <span class="lit">"value11"</span>,
-    <span class="lit">"field12"</span> : [ <span class="lit">"alpha"</span>, <span class="num">123</span> ]
-  }
-}</pre></div><dl class="paramcmts block"><dt class="param">json</dt><dd class="cmt"><p>the JsValue to convert
+Json.prettyPrint(res0)
+<span class="cmt">// =&gt;</span>
+<span class="cmt">// {</span>
+<span class="cmt">//   "field1" : {</span>
+<span class="cmt">//     "field11" : "value11",</span>
+<span class="cmt">//     "field12" : [ "alpha", 123 ]</span>
+<span class="cmt">//   }</span>
+<span class="cmt">// }</span></pre></div><dl class="paramcmts block"><dt class="param">json</dt><dd class="cmt"><p>the JsValue to convert
 A String with the json representation.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.libs.json.Json">Json</a> → <a href="JsonFacade.html" class="extype" name="play.api.libs.json.JsonFacade">JsonFacade</a></dd></dl></div>
     </li><li name="play.api.libs.json.Json#reads" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="reads[A]:play.api.libs.json.Reads[A]"></a><a id="reads[A]:Reads[A]"></a>
@@ -1108,14 +1121,15 @@ A String with the json representation.</p></dd></dl><dl class="attributes block"
       <p class="shortcomment cmt">Creates a <code>Reads[A]</code> by resolving, at compile-time,
 the case class fields or sealed family, and the required implicits.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a <code>Reads[A]</code> by resolving, at compile-time,
 the case class fields or sealed family, and the required implicits.</p><p>If any missing implicit is discovered, compiler will break with corresponding error.
-</p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>the type for which the handler must be materialized</p><pre><span class="kw">import</span> play.api.libs.json.Json
+</p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>the type for which the handler must be materialized</p><pre><span class="kw">import</span> play.api.libs.functional.syntax._
+<span class="kw">import</span> play.api.libs.json.{ Json, JsonConfiguration, __ }
 
 <span class="kw">case</span> <span class="kw">class</span> User(userName: <span class="std">String</span>, age: <span class="std">Int</span>)
 
-<span class="kw">implicit</span> <span class="kw">val</span> userReads = Json.reads[User]
+<span class="kw">implicit</span> <span class="kw">val</span> userReads1 = Json.reads[User]
 <span class="cmt">// macro-compiler replaces Json.reads[User] by injecting into compile chain</span>
 <span class="cmt">// the exact code you would write yourself. This is strictly equivalent to:</span>
-<span class="kw">implicit</span> <span class="kw">val</span> userReads = (
+<span class="kw">implicit</span> <span class="kw">val</span> userReads2 = (
    (__ \ implicitly[JsonConfiguration].naming(<span class="lit">"userName"</span>)).read[<span class="std">String</span>] and
    (__ \ implicitly[JsonConfiguration].naming(<span class="lit">"age"</span>)).read[<span class="std">Int</span>]
 )(User)</pre></dd></dl></div>
@@ -1134,16 +1148,17 @@ the case class fields or sealed family, and the required implicits.</p><p>If any
         <span class="name">stringify</span><span class="params">(<span name="json">json: <a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       
-      <p class="shortcomment cmt">Converts a <a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a> to its string representation.</p><div class="fullcomment"><div class="comment cmt"><p>Converts a <a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a> to its string representation.</p><pre>scala&gt; Json.stringify(Json.obj(
+      <p class="shortcomment cmt">Converts a <a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a> to its string representation.</p><div class="fullcomment"><div class="comment cmt"><p>Converts a <a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a> to its string representation.</p><pre><span class="kw">import</span> play.api.libs.json.Json
+
+<span class="kw">val</span> input = Json.obj(
   <span class="lit">"field1"</span> -&gt; Json.obj(
     <span class="lit">"field11"</span> -&gt; <span class="lit">"value11"</span>,
     <span class="lit">"field12"</span> -&gt; Json.arr(<span class="lit">"alpha"</span>, <span class="num">123</span>L)
   )
-))
-res0: <span class="std">String</span> = {<span class="lit">"field1"</span>:{<span class="lit">"field11"</span>:<span class="lit">"value11"</span>,<span class="lit">"field12"</span>:[<span class="lit">"alpha"</span>,<span class="num">123</span>]}}
+)
 
-scala&gt; Json.stringify(res0)
-res1: <span class="std">String</span> = {<span class="lit">"field1"</span>:{<span class="lit">"field11"</span>:<span class="lit">"value11"</span>,<span class="lit">"field12"</span>:[<span class="lit">"alpha"</span>,<span class="num">123</span>]}}</pre></div><dl class="paramcmts block"><dt class="param">json</dt><dd class="cmt"><p>the JsValue to convert</p></dd><dt>returns</dt><dd class="cmt"><p>a String with the json representation</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.libs.json.Json">Json</a> → <a href="JsonFacade.html" class="extype" name="play.api.libs.json.JsonFacade">JsonFacade</a></dd></dl></div>
+Json.stringify(input)
+<span class="cmt">// =&gt; {"field1":{"field11":"value11","field12":["alpha",123]}}</span></pre></div><dl class="paramcmts block"><dt class="param">json</dt><dd class="cmt"><p>the JsValue to convert</p></dd><dt>returns</dt><dd class="cmt"><p>a String with the json representation</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="play.api.libs.json.Json">Json</a> → <a href="JsonFacade.html" class="extype" name="play.api.libs.json.JsonFacade">JsonFacade</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">
@@ -1333,7 +1348,7 @@ by resolving at compile-time the <code>Writes</code> for the underlying type.</p
 <span class="kw">final</span> <span class="kw">class</span> TextId(<span class="kw">val</span> value: <span class="std">String</span>) <span class="kw">extends</span> <span class="std">AnyVal</span>
 
 <span class="cmt">// Based on provided Writes[String] corresponding to `value: String`</span>
-<span class="kw">val</span> w: Writes[TextId] = Json.writes[TextId]</pre></dd></dl></div>
+<span class="kw">val</span> w: Writes[TextId] = Json.valueWrites[TextId]</pre></dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <span class="permalink">
@@ -1420,14 +1435,15 @@ by resolving at compile-time the <code>Writes</code> for the underlying type.</p
       <p class="shortcomment cmt">Creates a <code>OWrites[T]</code> by resolving, at compile-time,
 the case class fields or sealed family, and the required implicits.</p><div class="fullcomment"><div class="comment cmt"><p>Creates a <code>OWrites[T]</code> by resolving, at compile-time,
 the case class fields or sealed family, and the required implicits.</p><p>If any missing implicit is discovered, compiler will break with corresponding error.
-</p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>the type for which the handler must be materialized</p><pre><span class="kw">import</span> play.api.libs.json.Json
+</p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>the type for which the handler must be materialized</p><pre><span class="kw">import</span> play.api.libs.functional.syntax._
+<span class="kw">import</span> play.api.libs.json.{ Json, JsonConfiguration, __ }
 
 <span class="kw">case</span> <span class="kw">class</span> User(userName: <span class="std">String</span>, age: <span class="std">Int</span>)
 
-<span class="kw">implicit</span> <span class="kw">val</span> userWrites = Json.writes[User]
+<span class="kw">implicit</span> <span class="kw">val</span> userWrites1 = Json.writes[User]
 <span class="cmt">// macro-compiler replaces Json.writes[User] by injecting into compile chain</span>
 <span class="cmt">// the exact code you would write yourself. This is strictly equivalent to:</span>
-<span class="kw">implicit</span> <span class="kw">val</span> userWrites = (
+<span class="kw">implicit</span> <span class="kw">val</span> userWrites2 = (
    (__ \ implicitly[JsonConfiguration].naming(<span class="lit">"userName"</span>)).write[<span class="std">String</span>] and
    (__ \ implicitly[JsonConfiguration].naming(<span class="lit">"age"</span>)).write[<span class="std">Int</span>]
 )(unlift(User.unapply))</pre></dd></dl></div>
