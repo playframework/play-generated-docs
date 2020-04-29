@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -187,14 +187,20 @@ implements scala.concurrent.ExecutionContextExecutor</pre>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/Executor.html?is-external=true" title="class or interface in java.util.concurrent">Executor</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/concurrent/CustomExecutionContext.html#current--">current</a></span>()</code>
+<div class="block">Get this executor associated with the current ClassLoader.</div>
+</td>
+</tr>
+<tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/concurrent/CustomExecutionContext.html#execute-java.lang.Runnable-">execute</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Runnable.html?is-external=true" title="class or interface in java.lang">Runnable</a>&nbsp;command)</code>&nbsp;</td>
 </tr>
-<tr id="i1" class="rowColor">
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>scala.concurrent.ExecutionContext</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/concurrent/CustomExecutionContext.html#prepare--">prepare</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../play/libs/concurrent/CustomExecutionContext.html#reportFailure-java.lang.Throwable-">reportFailure</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Throwable.html?is-external=true" title="class or interface in java.lang">Throwable</a>&nbsp;cause)</code>&nbsp;</td>
 </tr>
@@ -276,13 +282,30 @@ implements scala.concurrent.ExecutionContextExecutor</pre>
 <a name="reportFailure-java.lang.Throwable-">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>reportFailure</h4>
 <pre>public&nbsp;void&nbsp;reportFailure(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Throwable.html?is-external=true" title="class or interface in java.lang">Throwable</a>&nbsp;cause)</pre>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code>reportFailure</code>&nbsp;in interface&nbsp;<code>scala.concurrent.ExecutionContext</code></dd>
+</dl>
+</li>
+</ul>
+<a name="current--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>current</h4>
+<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/Executor.html?is-external=true" title="class or interface in java.util.concurrent">Executor</a>&nbsp;current()</pre>
+<div class="block">Get this executor associated with the current ClassLoader.
+
+ <p>Note that the returned executor is only valid for the current ClassLoader. It should be used
+ in a transient fashion, long lived references to it should not be kept.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>This executor that will execute its tasks with the current ClassLoader.</dd>
 </dl>
 </li>
 </ul>
