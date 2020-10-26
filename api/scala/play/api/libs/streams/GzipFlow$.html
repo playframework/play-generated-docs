@@ -184,7 +184,7 @@
 
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A simple Gzip Flow</p><p>GZIPs each chunk separately.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.7.x/core/play-streams/src/main/scala/play/api/libs/streams/GzipFlow.scala" target="_blank">GzipFlow.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.7.6/core/play-streams/src/main/scala/play/api/libs/streams/GzipFlow.scala" target="_blank">GzipFlow.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -402,7 +402,7 @@
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="play.api.libs.streams.GzipFlow#gzip" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="play.api.libs.streams.GzipFlow#gzip" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="gzip(bufferSize:Int,compressionLevel:Int):akka.stream.scaladsl.Flow[akka.util.ByteString,akka.util.ByteString,_]"></a><a id="gzip(Int,Int):Flow[ByteString,ByteString,_]"></a>
       <span class="permalink">
       <a href="../../../../play/api/libs/streams/GzipFlow$.html#gzip(bufferSize:Int,compressionLevel:Int):akka.stream.scaladsl.Flow[akka.util.ByteString,akka.util.ByteString,_]" title="Permalink">
@@ -417,7 +417,9 @@
         <span class="name">gzip</span><span class="params">(<span name="bufferSize">bufferSize: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">512</span></span>, <span name="compressionLevel">compressionLevel: <span class="extype" name="scala.Int">Int</span> = <span class="symbol">Deflater.DEFAULT_COMPRESSION</span></span>)</span><span class="result">: <span class="extype" name="akka.stream.scaladsl.Flow">Flow</span>[<span class="extype" name="akka.util.ByteString">ByteString</span>, <span class="extype" name="akka.util.ByteString">ByteString</span>, _]</span>
       </span>
       
-      <p class="shortcomment cmt">Create a Gzip Flow with the given buffer size.</p>
+      <p class="shortcomment cmt">Create a Gzip Flow with the given buffer size.</p><div class="fullcomment"><div class="comment cmt"><p>Create a Gzip Flow with the given buffer size. The bufferSize controls how much data is sent to the Gzip compressor in
+one go. You can use <code>0</code> or <code>Int.MaxValue</code> to disable the buffer completely.</p><p>In general, it is recommended to turn off the buffer and prevent generation of overlong chunks at the source.
+</p></div></div>
     </li><li name="scala.AnyRef#hashCode" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hashCode():Int"></a>
       <span class="permalink">
