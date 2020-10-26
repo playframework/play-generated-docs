@@ -40,10 +40,10 @@ class SomeTask {
   private void initialize() {
     this.actorSystem
         .scheduler()
-        .scheduleAtFixedRate(
+        .schedule(
             Duration.create(10, TimeUnit.SECONDS), // initialDelay
             Duration.create(1, TimeUnit.MINUTES), // interval
-            () -> actorSystem.log().info("Running block of code"),
+            () -> System.out.println("Running block of code"),
             this.executor // using the custom executor
             );
   }

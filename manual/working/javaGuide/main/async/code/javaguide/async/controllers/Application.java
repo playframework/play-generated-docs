@@ -28,7 +28,7 @@ public class Application extends Controller {
 
   public CompletionStage<Result> index() {
     // Wrap an existing thread pool, using the context from the current thread
-    Executor myEc = HttpExecution.fromThread(myExecutionContext);
+    Executor myEc = HttpExecution.fromThread((Executor) myExecutionContext);
     return supplyAsync(() -> intensiveComputation(), myEc)
         .thenApplyAsync(i -> ok("Got result: " + i), myEc);
   }

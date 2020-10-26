@@ -9,7 +9,7 @@ package scalaguide.upload.fileupload {
   import org.junit.runner.RunWith
   import org.specs2.runner.JUnitRunner
 
-  import democontrollers._
+  import controllers._
   import play.api.libs.Files.SingletonTemporaryFileCreator
   import java.io.File
   import java.nio.file.attribute.PosixFilePermission._
@@ -88,7 +88,7 @@ package scalaguide.upload.fileupload {
         val request = FakeRequest().withBody(tf)
 
         val controllerComponents = app.injector.instanceOf[ControllerComponents]
-        testAction(new democontrollers.HomeController(controllerComponents).upload, request)
+        testAction(new controllers.HomeController(controllerComponents).upload, request)
 
         uploaded.delete()
         success
@@ -110,15 +110,12 @@ package scalaguide.upload.fileupload {
       JFiles.write(path, content.getBytes)
     }
   }
-
-  // Not using `controllers` as package name because it produces resolution collisions
-  // in callsites that also import `play.api._` in Scala 2.13
-  package democontrollers {
+  package controllers {
     class HomeController(controllerComponents: ControllerComponents)(implicit ec: ExecutionContext)
         extends AbstractController(controllerComponents) {
       //#upload-file-directly-action
       def upload = Action(parse.temporaryFile) { request =>
-        request.body.moveTo(Paths.get("/tmp/picture/uploaded"), replace = true)
+        request.body.moveFileTo(Paths.get("/tmp/picture/uploaded"), replace = true)
         Ok("File uploaded")
       }
       //#upload-file-directly-action

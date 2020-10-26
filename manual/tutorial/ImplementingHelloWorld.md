@@ -22,7 +22,7 @@ With any text editor, create a file named `hello.scala.html` and save it in the 
 This Twirl and HTML markup accomplishes the following:
 
 1. The `@` sign tells the template engine to interpret what follows.
-1. In this case, `@main("Hello", assetsFinder)` calls the main template, `main.scala.html` and passes it the page title of `"Hello"` (you can ignore the `assetsFinder` argument for the time being).
+1. In this case, `@main("Hello")` calls the main template, `main.scala.html` and passes it the page title of `"Hello"`.
 1. The content section contains the `Hello World` greeting. The main template will insert this into the body of the page.
 
 Now we are ready to add an action method that will render the new page.
@@ -51,7 +51,7 @@ Open the `conf/routes` file and add the following line:
 
 @[hello-world-hello-route](code/routes)
 
-When you add a route to the `routes` file, Play's routes compiler will automatically generate a router class that calls that action using an instance of your controller. For more information see the [[routing documentation|ScalaRouting#HTTP-routing]]. By default, the controller instances are created using dependency injection (see docs for [[Java|JavaDependencyInjection]] and [[Scala|ScalaDependencyInjection]]).
+When you add a route to the `routes` file, Play's routes compiler will automatically generate a router class that calls that action using an instance of your controller. For more information see the [routing documentation](https://www.playframework.com/documentation/2.6.x/ScalaRouting#HTTP-routing). By default, the controller instances are created using dependency injection (see docs for [[Java|JavaDependencyInjection]] and [[Scala|ScalaDependencyInjection]]).
 
 You are now ready to test the new page. If you stopped the application for some reason, restart it with the `sbt run` command.
 

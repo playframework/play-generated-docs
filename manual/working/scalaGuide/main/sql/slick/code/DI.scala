@@ -6,20 +6,18 @@ package di
 
 import javax.inject.Inject
 
-import scala.concurrent.ExecutionContext
-import scala.concurrent.Future
+import scala.concurrent.{ ExecutionContext, Future }
 import play.api.mvc._
-import play.api.db.slick.DatabaseConfigProvider
-import play.api.db.slick.HasDatabaseConfigProvider
+import play.api.db.slick.{ DatabaseConfigProvider, HasDatabaseConfigProvider }
 
 import slick.jdbc.JdbcProfile
 import UsersSchema._
 
 //#di-database-config
-class Application @Inject() (protected val dbConfigProvider: DatabaseConfigProvider, cc: ControllerComponents)(
-    implicit ec: ExecutionContext
-) extends AbstractController(cc)
-    with HasDatabaseConfigProvider[JdbcProfile] {
+class Application @Inject() (
+  protected val dbConfigProvider: DatabaseConfigProvider,
+  cc: ControllerComponents)(implicit ec: ExecutionContext)
+  extends AbstractController(cc) with HasDatabaseConfigProvider[JdbcProfile] {
   //#di-database-config
 
   import profile.api._
@@ -33,10 +31,7 @@ class Application @Inject() (protected val dbConfigProvider: DatabaseConfigProvi
 import play.db.NamedDatabase
 //#named-di-database-config
 class Application2 @Inject() (
-    @NamedDatabase("<db-name>") protected val dbConfigProvider: DatabaseConfigProvider,
-    cc: ControllerComponents
-)(implicit ec: ExecutionContext)
-    extends AbstractController(cc)
-    with HasDatabaseConfigProvider[JdbcProfile] {
+  @NamedDatabase("<db-name>") protected val dbConfigProvider: DatabaseConfigProvider,
+  cc: ControllerComponents)(implicit ec: ExecutionContext) extends AbstractController(cc) with HasDatabaseConfigProvider[JdbcProfile] {
   //#named-di-database-config
 }

@@ -3,15 +3,13 @@
  */
 package scalaguide.tests.scalatest.oneapppersuite
 
-import org.scalatest.ConfigMap
-import org.scalatest.Outcome
+import org.scalatest.{ ConfigMap, Outcome }
 import org.scalatestplus.play.PlaySpec
 import org.scalatestplus.play.components.OneAppPerSuiteWithComponents
 import play.api._
 import play.api.mvc.Result
 import play.api.test.Helpers._
-import play.api.test.FakeRequest
-import play.api.test.Helpers
+import play.api.test.{ FakeRequest, Helpers }
 
 import scala.concurrent.Future
 
@@ -26,20 +24,17 @@ class ExampleComponentsSpec extends PlaySpec with OneAppPerSuiteWithComponents {
     import play.api.routing.sird._
 
     lazy val router: Router = Router.from({
-      case GET(p"/") =>
-        defaultActionBuilder {
-          Results.Ok("success!")
-        }
+      case GET(p"/") => defaultActionBuilder {
+        Results.Ok("success!")
+      }
     })
-    override lazy val configuration: Configuration =
-      Configuration("foo" -> "bar", "ehcacheplugin" -> "disabled").withFallback(context.initialConfiguration)
+    override lazy val configuration: Configuration = context.initialConfiguration ++ Configuration("foo" -> "bar", "ehcacheplugin" -> "disabled")
   }
   // #scalacomponentstest-inlinecomponents
 
   "The OneAppPerSuiteWithComponents trait" must {
     "provide an Application" in {
-      import play.api.test.Helpers.GET
-      import play.api.test.Helpers.route
+      import play.api.test.Helpers.{ GET, route }
       val Some(result: Future[Result]) = route(app, FakeRequest(GET, "/"))
       Helpers.contentAsString(result) must be("success!")
     }
@@ -49,3 +44,4 @@ class ExampleComponentsSpec extends PlaySpec with OneAppPerSuiteWithComponents {
   }
 }
 // #scalacomponentstest-oneapppersuite
+

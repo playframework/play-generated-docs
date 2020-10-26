@@ -53,35 +53,27 @@ public class Twitter extends Controller {
   }
 
   public Result auth(Http.Request request) {
-    Optional<String> verifier = request.queryString("oauth_verifier");
-    Result result =
-        verifier
-            .filter(s -> !s.isEmpty())
-            .map(
-                s -> {
-                  RequestToken requestToken = getSessionTokenPair(request).get();
-                  RequestToken accessToken = TWITTER.retrieveAccessToken(requestToken, s);
-                  return redirect(routes.Twitter.homeTimeline())
-                      .addingToSession(request, "token", accessToken.token)
-                      .addingToSession(request, "secret", accessToken.secret);
-                })
-            .orElseGet(
-                () -> {
-                  String url = routes.Twitter.auth().absoluteURL(request);
-                  RequestToken requestToken = TWITTER.retrieveRequestToken(url);
-                  return redirect(TWITTER.redirectUrl(requestToken.token))
-                      .addingToSession(request, "token", requestToken.token)
-                      .addingToSession(request, "secret", requestToken.secret);
-                });
-
-    return result;
+    String verifier = request.getQueryString("oauth_verifier");
+    if (Strings.isNullOrEmpty(verifier)) {
+      String url = routes.Twitter.auth().absoluteURL(request);
+      RequestToken requestToken = TWITTER.retrieveRequestToken(url);
+      return redirect(TWITTER.redirectUrl(requestToken.token))
+          .addingToSession(request, "token", requestToken.token)
+          .addingToSession(request, "secret", requestToken.secret);
+    } else {
+      RequestToken requestToken = getSessionTokenPair(request).get();
+      RequestToken accessToken = TWITTER.retrieveAccessToken(requestToken, verifier);
+      return redirect(routes.Twitter.homeTimeline())
+          .addingToSession(request, "token", accessToken.token)
+          .addingToSession(request, "secret", accessToken.secret);
+    }
   }
 
   private Optional<RequestToken> getSessionTokenPair(Http.Request request) {
     return request
         .session()
-        .get("token")
-        .map(token -> new RequestToken(token, request.session().get("secret").get()));
+        .getOptional("token")
+        .map(token -> new RequestToken(token, request.session().getOptional("secret").get()));
   }
 }
 // #ws-oauth-controller

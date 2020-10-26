@@ -15,6 +15,7 @@ import scala.concurrent.ExecutionContext
 import scala.concurrent.Future
 import org.slf4j._
 import play.api._
+import play.api.libs.Files.SingletonTemporaryFileCreator
 import play.api.mvc._
 
 import play.api.test._
@@ -138,9 +139,11 @@ class ScalaLoggingSpec extends Specification with Mockito {
       //#logging-pattern-mix
 
       import akka.actor._
+      import akka.stream.ActorMaterializer
+      import play.api.http._
       import akka.stream.Materializer
       implicit val system               = ActorSystem()
-      implicit val mat                  = Materializer.matFromSystem
+      implicit val mat                  = ActorMaterializer()
       implicit val ec: ExecutionContext = system.dispatcher
       val controller =
         new Application(new AccessLoggingAction(new BodyParsers.Default()), Helpers.stubControllerComponents())
