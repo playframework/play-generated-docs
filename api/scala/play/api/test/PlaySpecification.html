@@ -101,7 +101,7 @@
         <a title="Contains the public API for Scala developers." href="../index.html"><span class="name">api</span></a>
       </span>
       
-      <p class="shortcomment cmt">Contains the public API for Scala developers.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the public API for Scala developers.</p><h6> Access the current Play application </h6><pre><span class="kw">import</span> play.api.Play.current</pre><h6> Read configuration </h6><pre><span class="kw">val</span> poolSize = configuration.getInt(<span class="lit">"engine.pool.size"</span>)</pre><h6> Use the logger </h6><pre>Logger.info(<span class="lit">"Hello!"</span>)</pre><h6> Define a Plugin </h6><pre><span class="kw">class</span> MyPlugin(app: Application) <span class="kw">extends</span> Plugin</pre><h6> Create adhoc applications (for testing) </h6><pre><span class="kw">val</span> application = Application(<span class="kw">new</span> File(<span class="lit">"."</span>), <span class="kw">this</span>.getClass.getClassloader, <span class="std">None</span>, Play.Mode.DEV)</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../index.html" class="extype" name="play">play</a></dd></dl></div>
+      <p class="shortcomment cmt">Contains the public API for Scala developers.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the public API for Scala developers.</p><h6> Read configuration </h6><pre><span class="kw">val</span> poolSize = configuration.getInt(<span class="lit">"engine.pool.size"</span>)</pre><h6> Use the logger </h6><pre>Logger.info(<span class="lit">"Hello!"</span>)</pre><h6> Define a Plugin </h6><pre><span class="kw">class</span> MyPlugin(app: Application) <span class="kw">extends</span> Plugin</pre><h6> Create adhoc applications (for testing) </h6><pre><span class="kw">val</span> application = Application(<span class="kw">new</span> File(<span class="lit">"."</span>), <span class="kw">this</span>.getClass.getClassloader, <span class="std">None</span>, Play.Mode.DEV)</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../index.html" class="extype" name="play">play</a></dd></dl></div>
     </li><li name="play.api.test" visbl="pub" class="indented3 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="test"></a><a id="test:test"></a>
       <span class="permalink">
@@ -127,10 +127,6 @@
                         <a class="object" href="ApplicationFactory$.html" title=""></a>
                         <a class="trait" href="ApplicationFactory.html" title="Creates an Application."></a>
                         <a href="ApplicationFactory.html" title="Creates an Application.">ApplicationFactory</a>
-                      </li><li class="current-entities indented3">
-                        <span class="separator"></span>
-                        <a class="object" href="CSRFTokenHelper$.html" title="Exposes methods to make using requests with CSRF tokens easier."></a>
-                        <a href="CSRFTokenHelper$.html" title="Exposes methods to make using requests with CSRF tokens easier.">CSRFTokenHelper</a>
                       </li><li class="current-entities indented3">
                         <span class="separator"></span>
                         <a class="trait" href="DefaultAwaitTimeout.html" title=""></a>
@@ -179,10 +175,6 @@
                         <span class="separator"></span>
                         <a class="trait" href="Injecting.html" title="A trait declared on a class that contains an def app: Application, and can provide instances of a class."></a>
                         <a href="Injecting.html" title="A trait declared on a class that contains an def app: Application, and can provide instances of a class.">Injecting</a>
-                      </li><li class="current-entities indented3">
-                        <span class="separator"></span>
-                        <a class="object" href="NoMaterializer$.html" title="In 99% of cases, when running tests against the result body, you don't actually need a materializer since it's a strict body."></a>
-                        <a href="NoMaterializer$.html" title="In 99% of cases, when running tests against the result body, you don't actually need a materializer since it's a strict body.">NoMaterializer</a>
                       </li><li class="current-entities indented3">
                         <span class="separator"></span>
                         <a class="object" href="NoTemporaryFileCreator$.html" title="A temporary file creator with no implementation."></a>
@@ -297,7 +289,7 @@
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Play specs2 specification.</p><p>This trait excludes some of the mixins provided in the default specs2 specification that clash with Play helpers
 methods.  It also mixes in the Play test helpers and types for convenience.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.7.x/testkit/play-specs2/src/main/scala/play/api/test/PlaySpecification.scala" target="_blank">PlaySpecification.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.8.5/testkit/play-specs2/src/main/scala/play/api/test/PlaySpecification.scala" target="_blank">PlaySpecification.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -370,7 +362,7 @@ set it to a lower value. This is because in normal usage we'll need to wait
 for the full length of time to show that nothing has happened in that time.
 If the value is too high then we'll spend a lot of time waiting during normal
 usage. If it is too low, however, we may miss events that occur after the
-timeout has finished. This is a necessary tradeoff.</p><p>Where possible, tests should avoid using a NegativeTimeout. Tests will often
+timeout has finished. This is a necessary trade-off.</p><p>Where possible, tests should avoid using a NegativeTimeout. Tests will often
 know exactly when an event should occur. In this case they can perform a
 check for the event immediately rather than using using NegativeTimeout.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DefaultAwaitTimeout.html" class="extype" name="play.api.test.DefaultAwaitTimeout">DefaultAwaitTimeout</a></dd></dl></div>
@@ -3262,6 +3254,22 @@ check for the event immediately rather than using using NegativeTimeout.
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../http/HttpProtocol.html" class="extype" name="play.api.http.HttpProtocol">HttpProtocol</a></dd></dl></div>
+    </li><li name="play.api.http.HttpProtocol#HTTP_2_0" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="HTTP_2_0:String"></a>
+      <span class="permalink">
+      <a href="../../../play/api/test/PlaySpecification.html#HTTP_2_0:String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">HTTP_2_0</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../http/HttpProtocol.html" class="extype" name="play.api.http.HttpProtocol">HttpProtocol</a></dd></dl></div>
     </li><li name="play.api.http.Status#HTTP_VERSION_NOT_SUPPORTED" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="HTTP_VERSION_NOT_SUPPORTED:Int"></a>
       <span class="permalink">
@@ -5938,9 +5946,9 @@ check for the event immediately rather than using using NegativeTimeout.
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>NumericBaseMatchers</dd></dl></div>
     </li><li name="org.specs2.matcher.EitherBaseMatchers#beLeft" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="beLeft[T]:org.specs2.matcher.LeftMatcher[T]"></a><a id="beLeft[T]:LeftMatcher[T]"></a>
+      <a id="beLeft[T](implicitp:org.specs2.control.ImplicitParameters.ImplicitParam):org.specs2.matcher.LeftMatcher[T]"></a><a id="beLeft[T](org.specs2.control.ImplicitParameters.ImplicitParam):LeftMatcher[T]"></a>
       <span class="permalink">
-      <a href="../../../play/api/test/PlaySpecification.html#beLeft[T]:org.specs2.matcher.LeftMatcher[T]" title="Permalink">
+      <a href="../../../play/api/test/PlaySpecification.html#beLeft[T](implicitp:org.specs2.control.ImplicitParameters.ImplicitParam):org.specs2.matcher.LeftMatcher[T]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -5949,7 +5957,7 @@ check for the event immediately rather than using using NegativeTimeout.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">beLeft</span><span class="tparams">[<span name="T">T</span>]</span><span class="result">: <span class="extype" name="org.specs2.matcher.LeftMatcher">LeftMatcher</span>[<span class="extype" name="org.specs2.matcher.EitherBaseMatchers.beLeft.T">T</span>]</span>
+        <span class="name">beLeft</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="p">p: <span class="extype" name="org.specs2.control.ImplicitParameters.ImplicitParam">org.specs2.control.ImplicitParameters.ImplicitParam</span></span>)</span><span class="result">: <span class="extype" name="org.specs2.matcher.LeftMatcher">LeftMatcher</span>[<span class="extype" name="org.specs2.matcher.EitherBaseMatchers.beLeft.T">T</span>]</span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>EitherBaseMatchers</dd></dl></div>
@@ -6130,9 +6138,9 @@ check for the event immediately rather than using using NegativeTimeout.
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyBaseMatchers</dd></dl></div>
     </li><li name="org.specs2.matcher.EitherBaseMatchers#beRight" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="beRight[T]:org.specs2.matcher.RightMatcher[T]"></a><a id="beRight[T]:RightMatcher[T]"></a>
+      <a id="beRight[T](implicitp:org.specs2.control.ImplicitParameters.ImplicitParam):org.specs2.matcher.RightMatcher[T]"></a><a id="beRight[T](org.specs2.control.ImplicitParameters.ImplicitParam):RightMatcher[T]"></a>
       <span class="permalink">
-      <a href="../../../play/api/test/PlaySpecification.html#beRight[T]:org.specs2.matcher.RightMatcher[T]" title="Permalink">
+      <a href="../../../play/api/test/PlaySpecification.html#beRight[T](implicitp:org.specs2.control.ImplicitParameters.ImplicitParam):org.specs2.matcher.RightMatcher[T]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -6141,7 +6149,7 @@ check for the event immediately rather than using using NegativeTimeout.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">beRight</span><span class="tparams">[<span name="T">T</span>]</span><span class="result">: <span class="extype" name="org.specs2.matcher.RightMatcher">RightMatcher</span>[<span class="extype" name="org.specs2.matcher.EitherBaseMatchers.beRight.T">T</span>]</span>
+        <span class="name">beRight</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="p">p: <span class="extype" name="org.specs2.control.ImplicitParameters.ImplicitParam">org.specs2.control.ImplicitParameters.ImplicitParam</span></span>)</span><span class="result">: <span class="extype" name="org.specs2.matcher.RightMatcher">RightMatcher</span>[<span class="extype" name="org.specs2.matcher.EitherBaseMatchers.beRight.T">T</span>]</span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>EitherBaseMatchers</dd></dl></div>
@@ -6162,9 +6170,9 @@ check for the event immediately rather than using using NegativeTimeout.
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>EitherBaseMatchers</dd></dl></div>
     </li><li name="org.specs2.matcher.OptionBaseMatchers#beSome" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="beSome[T]:org.specs2.matcher.SomeMatcher[T]"></a><a id="beSome[T]:SomeMatcher[T]"></a>
+      <a id="beSome[T](implicitp:org.specs2.control.ImplicitParameters.ImplicitParam):org.specs2.matcher.SomeMatcher[T]"></a><a id="beSome[T](org.specs2.control.ImplicitParameters.ImplicitParam):SomeMatcher[T]"></a>
       <span class="permalink">
-      <a href="../../../play/api/test/PlaySpecification.html#beSome[T]:org.specs2.matcher.SomeMatcher[T]" title="Permalink">
+      <a href="../../../play/api/test/PlaySpecification.html#beSome[T](implicitp:org.specs2.control.ImplicitParameters.ImplicitParam):org.specs2.matcher.SomeMatcher[T]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -6173,7 +6181,7 @@ check for the event immediately rather than using using NegativeTimeout.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">beSome</span><span class="tparams">[<span name="T">T</span>]</span><span class="result">: <span class="extype" name="org.specs2.matcher.SomeMatcher">SomeMatcher</span>[<span class="extype" name="org.specs2.matcher.OptionBaseMatchers.beSome.T">T</span>]</span>
+        <span class="name">beSome</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="p">p: <span class="extype" name="org.specs2.control.ImplicitParameters.ImplicitParam">org.specs2.control.ImplicitParameters.ImplicitParam</span></span>)</span><span class="result">: <span class="extype" name="org.specs2.matcher.SomeMatcher">SomeMatcher</span>[<span class="extype" name="org.specs2.matcher.OptionBaseMatchers.beSome.T">T</span>]</span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>OptionBaseMatchers</dd></dl></div>
@@ -7434,7 +7442,7 @@ check for the event immediately rather than using using NegativeTimeout.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">contentAsBytes</span><span class="params">(<span name="of">of: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="timeout">timeout: <span class="extype" name="akka.util.Timeout">Timeout</span></span>, <span name="mat">mat: <span class="extype" name="akka.stream.Materializer">Materializer</span> = <span class="symbol"><span class="name"><a href="NoMaterializer$.html">NoMaterializer</a></span></span></span>)</span><span class="result">: <span class="extype" name="akka.util.ByteString">ByteString</span></span>
+        <span class="name">contentAsBytes</span><span class="params">(<span name="of">of: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="timeout">timeout: <span class="extype" name="akka.util.Timeout">Timeout</span></span>, <span name="mat">mat: <span class="extype" name="akka.stream.Materializer">Materializer</span> = <span class="symbol"><span class="name"><a href="../../../akka/index.html">NoMaterializer</a></span></span></span>)</span><span class="result">: <span class="extype" name="akka.util.ByteString">ByteString</span></span>
       </span>
       
       <p class="shortcomment cmt">Extracts the content as bytes.</p><div class="fullcomment"><div class="comment cmt"><p>Extracts the content as bytes.
@@ -7485,7 +7493,7 @@ check for the event immediately rather than using using NegativeTimeout.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">contentAsJson</span><span class="params">(<span name="of">of: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="timeout">timeout: <span class="extype" name="akka.util.Timeout">Timeout</span></span>, <span name="mat">mat: <span class="extype" name="akka.stream.Materializer">Materializer</span> = <span class="symbol"><span class="name"><a href="NoMaterializer$.html">NoMaterializer</a></span></span></span>)</span><span class="result">: <a href="../libs/json/JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a></span>
+        <span class="name">contentAsJson</span><span class="params">(<span name="of">of: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="timeout">timeout: <span class="extype" name="akka.util.Timeout">Timeout</span></span>, <span name="mat">mat: <span class="extype" name="akka.stream.Materializer">Materializer</span> = <span class="symbol"><span class="name"><a href="../../../akka/index.html">NoMaterializer</a></span></span></span>)</span><span class="result">: <a href="../libs/json/JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a></span>
       </span>
       
       <p class="shortcomment cmt">Extracts the content as Json.</p><div class="fullcomment"><div class="comment cmt"><p>Extracts the content as Json.
@@ -7536,7 +7544,7 @@ check for the event immediately rather than using using NegativeTimeout.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">contentAsString</span><span class="params">(<span name="of">of: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="timeout">timeout: <span class="extype" name="akka.util.Timeout">Timeout</span></span>, <span name="mat">mat: <span class="extype" name="akka.stream.Materializer">Materializer</span> = <span class="symbol"><span class="name"><a href="NoMaterializer$.html">NoMaterializer</a></span></span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">contentAsString</span><span class="params">(<span name="of">of: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="timeout">timeout: <span class="extype" name="akka.util.Timeout">Timeout</span></span>, <span name="mat">mat: <span class="extype" name="akka.stream.Materializer">Materializer</span> = <span class="symbol"><span class="name"><a href="../../../akka/index.html">NoMaterializer</a></span></span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       
       <p class="shortcomment cmt">Extracts the content as String.</p><div class="fullcomment"><div class="comment cmt"><p>Extracts the content as String.
@@ -8158,10 +8166,26 @@ different because the Play server automatically adds those cookies and merges th
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>EventuallyMatchers</dd></dl></div>
-    </li><li name="org.specs2.execute.EventuallyResults#eventually" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="eventually[T](result:=&gt;T)(implicitevidence$2:org.specs2.execute.AsResult[T]):T"></a><a id="eventually[T](⇒T)(AsResult[T]):T"></a>
+    </li><li name="org.specs2.matcher.EventuallyMatchers#eventually" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="eventually[T](nested:=&gt;org.specs2.matcher.Matcher[T],retries:Int,sleep:Int=&gt;scala.concurrent.duration.Duration):org.specs2.matcher.Matcher[T]"></a><a id="eventually[T](⇒Matcher[T],Int,(Int)⇒Duration):Matcher[T]"></a>
       <span class="permalink">
-      <a href="../../../play/api/test/PlaySpecification.html#eventually[T](result:=&gt;T)(implicitevidence$2:org.specs2.execute.AsResult[T]):T" title="Permalink">
+      <a href="../../../play/api/test/PlaySpecification.html#eventually[T](nested:=&gt;org.specs2.matcher.Matcher[T],retries:Int,sleep:Int=&gt;scala.concurrent.duration.Duration):org.specs2.matcher.Matcher[T]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">eventually</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="nested">nested: ⇒ <span class="extype" name="org.specs2.matcher.Matcher">Matcher</span>[<span class="extype" name="org.specs2.matcher.EventuallyMatchers.eventually.T">T</span>]</span>, <span name="retries">retries: <span class="extype" name="scala.Int">Int</span></span>, <span name="sleep">sleep: (<span class="extype" name="scala.Int">Int</span>) ⇒ <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>)</span><span class="result">: <span class="extype" name="org.specs2.matcher.Matcher">Matcher</span>[<span class="extype" name="org.specs2.matcher.EventuallyMatchers.eventually.T">T</span>]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>EventuallyMatchers</dd></dl></div>
+    </li><li name="org.specs2.execute.EventuallyResults#eventually" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="eventually[T](result:=&gt;T)(implicitevidence$3:org.specs2.execute.AsResult[T]):T"></a><a id="eventually[T](⇒T)(AsResult[T]):T"></a>
+      <span class="permalink">
+      <a href="../../../play/api/test/PlaySpecification.html#eventually[T](result:=&gt;T)(implicitevidence$3:org.specs2.execute.AsResult[T]):T" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -8175,9 +8199,9 @@ different because the Play server automatically adds those cookies and merges th
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>EventuallyResults</dd></dl></div>
     </li><li name="org.specs2.execute.EventuallyResults#eventually" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="eventually[T](retries:Int,sleep:scala.concurrent.duration.Duration)(result:=&gt;T)(implicitevidence$1:org.specs2.execute.AsResult[T]):T"></a><a id="eventually[T](Int,Duration)(⇒T)(AsResult[T]):T"></a>
+      <a id="eventually[T](retries:Int,sleep:scala.concurrent.duration.Duration)(result:=&gt;T)(implicitevidence$2:org.specs2.execute.AsResult[T]):T"></a><a id="eventually[T](Int,Duration)(⇒T)(AsResult[T]):T"></a>
       <span class="permalink">
-      <a href="../../../play/api/test/PlaySpecification.html#eventually[T](retries:Int,sleep:scala.concurrent.duration.Duration)(result:=&gt;T)(implicitevidence$1:org.specs2.execute.AsResult[T]):T" title="Permalink">
+      <a href="../../../play/api/test/PlaySpecification.html#eventually[T](retries:Int,sleep:scala.concurrent.duration.Duration)(result:=&gt;T)(implicitevidence$2:org.specs2.execute.AsResult[T]):T" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -8187,6 +8211,22 @@ different because the Play server automatically adds those cookies and merges th
       </span>
       <span class="symbol">
         <span class="name">eventually</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="retries">retries: <span class="extype" name="scala.Int">Int</span></span>, <span name="sleep">sleep: <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>)</span><span class="params">(<span name="result">result: ⇒ <span class="extype" name="org.specs2.execute.EventuallyResults.eventually.T">T</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="org.specs2.execute.AsResult">AsResult</span>[<span class="extype" name="org.specs2.execute.EventuallyResults.eventually.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="org.specs2.execute.EventuallyResults.eventually.T">T</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>EventuallyResults</dd></dl></div>
+    </li><li name="org.specs2.execute.EventuallyResults#eventually" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="eventually[T](retries:Int,sleep:Int=&gt;scala.concurrent.duration.Duration)(result:=&gt;T)(implicitevidence$1:org.specs2.execute.AsResult[T]):T"></a><a id="eventually[T](Int,(Int)⇒Duration)(⇒T)(AsResult[T]):T"></a>
+      <span class="permalink">
+      <a href="../../../play/api/test/PlaySpecification.html#eventually[T](retries:Int,sleep:Int=&gt;scala.concurrent.duration.Duration)(result:=&gt;T)(implicitevidence$1:org.specs2.execute.AsResult[T]):T" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">eventually</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="retries">retries: <span class="extype" name="scala.Int">Int</span></span>, <span name="sleep">sleep: (<span class="extype" name="scala.Int">Int</span>) ⇒ <span class="extype" name="scala.concurrent.duration.Duration">Duration</span></span>)</span><span class="params">(<span name="result">result: ⇒ <span class="extype" name="org.specs2.execute.EventuallyResults.eventually.T">T</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <span class="extype" name="org.specs2.execute.AsResult">AsResult</span>[<span class="extype" name="org.specs2.execute.EventuallyResults.eventually.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="org.specs2.execute.EventuallyResults.eventually.T">T</span></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>EventuallyResults</dd></dl></div>
@@ -9650,9 +9690,9 @@ different because the Play server automatically adds those cookies and merges th
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>LazyParameters</dd></dl></div>
     </li><li name="org.specs2.matcher.EitherBaseMatchers#left" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="left[T]:org.specs2.matcher.LeftMatcher[Nothing]"></a><a id="left[T]:LeftMatcher[Nothing]"></a>
+      <a id="left[T](implicitp:org.specs2.control.ImplicitParameters.ImplicitParam):org.specs2.matcher.LeftMatcher[Nothing]"></a><a id="left[T](org.specs2.control.ImplicitParameters.ImplicitParam):LeftMatcher[Nothing]"></a>
       <span class="permalink">
-      <a href="../../../play/api/test/PlaySpecification.html#left[T]:org.specs2.matcher.LeftMatcher[Nothing]" title="Permalink">
+      <a href="../../../play/api/test/PlaySpecification.html#left[T](implicitp:org.specs2.control.ImplicitParameters.ImplicitParam):org.specs2.matcher.LeftMatcher[Nothing]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -9661,7 +9701,7 @@ different because the Play server automatically adds those cookies and merges th
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">left</span><span class="tparams">[<span name="T">T</span>]</span><span class="result">: <span class="extype" name="org.specs2.matcher.LeftMatcher">LeftMatcher</span>[<span class="extype" name="scala.Nothing">Nothing</span>]</span>
+        <span class="name">left</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="p">p: <span class="extype" name="org.specs2.control.ImplicitParameters.ImplicitParam">org.specs2.control.ImplicitParameters.ImplicitParam</span></span>)</span><span class="result">: <span class="extype" name="org.specs2.matcher.LeftMatcher">LeftMatcher</span>[<span class="extype" name="scala.Nothing">Nothing</span>]</span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>EitherBaseMatchers</dd></dl></div>
@@ -10474,9 +10514,9 @@ different because the Play server automatically adds those cookies and merges th
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>FutureBaseMatchers</dd></dl></div>
     </li><li name="org.specs2.matcher.EitherBaseMatchers#right" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="right[T]:org.specs2.matcher.RightMatcher[Nothing]"></a><a id="right[T]:RightMatcher[Nothing]"></a>
+      <a id="right[T](implicitp:org.specs2.control.ImplicitParameters.ImplicitParam):org.specs2.matcher.RightMatcher[Nothing]"></a><a id="right[T](org.specs2.control.ImplicitParameters.ImplicitParam):RightMatcher[Nothing]"></a>
       <span class="permalink">
-      <a href="../../../play/api/test/PlaySpecification.html#right[T]:org.specs2.matcher.RightMatcher[Nothing]" title="Permalink">
+      <a href="../../../play/api/test/PlaySpecification.html#right[T](implicitp:org.specs2.control.ImplicitParameters.ImplicitParam):org.specs2.matcher.RightMatcher[Nothing]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -10485,7 +10525,7 @@ different because the Play server automatically adds those cookies and merges th
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">right</span><span class="tparams">[<span name="T">T</span>]</span><span class="result">: <span class="extype" name="org.specs2.matcher.RightMatcher">RightMatcher</span>[<span class="extype" name="scala.Nothing">Nothing</span>]</span>
+        <span class="name">right</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="p">p: <span class="extype" name="org.specs2.control.ImplicitParameters.ImplicitParam">org.specs2.control.ImplicitParameters.ImplicitParam</span></span>)</span><span class="result">: <span class="extype" name="org.specs2.matcher.RightMatcher">RightMatcher</span>[<span class="extype" name="scala.Nothing">Nothing</span>]</span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>EitherBaseMatchers</dd></dl></div>
@@ -13056,29 +13096,7 @@ testserver.port
 
         
 
-        <div class="values members">
-              <h3>Deprecated Value Members</h3>
-              <ol><li name="play.api.http.Status#TOO_MANY_REQUEST" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="TOO_MANY_REQUEST:Int"></a>
-      <span class="permalink">
-      <a href="../../../play/api/test/PlaySpecification.html#TOO_MANY_REQUEST:Int" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">val</span>
-      </span>
-      <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use TOO_MANY_REQUESTS instead">TOO_MANY_REQUEST</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../http/Status.html" class="extype" name="play.api.http.Status">Status</a></dd><dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use TOO_MANY_REQUESTS instead</p></dd></dl></div>
-    </li></ol>
-            </div>
+        
         </div>
 
         <div id="inheritedMembers">

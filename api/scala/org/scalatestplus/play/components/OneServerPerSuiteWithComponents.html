@@ -217,7 +217,7 @@ class ExampleComponentsSpec extends PlaySpec with OneServerPerSuiteWithComponent
       }
     })
 
-    override lazy val configuration: Configuration = context.initialConfiguration ++ Configuration("foo" -> "bar", "ehcacheplugin" -> "disabled")
+    override lazy val configuration: Configuration = Configuration("foo" -> "bar", "ehcacheplugin" -> "disabled").withFallback(context.initialConfiguration)
   }
 
   "The OneServerPerSuiteWithComponents trait" must {
@@ -264,7 +264,7 @@ class NestedExampleSpec extends Suites(
       }
     })
 
-    override lazy val configuration: Configuration = context.initialConfiguration ++ Configuration("ehcacheplugin" -> "disabled")
+    override lazy val configuration: Configuration = Configuration("ehcacheplugin" -> "disabled").withFallback(context.initialConfiguration)
 
   }
 }
@@ -303,7 +303,7 @@ class NestedExampleSpec extends Suites(
   }
 }
 </pre>
-</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="org.scalatestplus.play.components.OneServerPerSuiteWithComponents">OneServerPerSuiteWithComponents</a> with <span class="extype" name="org.scalatest.TestSuite">TestSuite</span></dd><dt>Source</dt><dd><a href="https://github.com/playframework/scalatestplus-play/tree/4.0.3/module/src/main/scala/org/scalatestplus/play/components/OneServerPerSuiteWithComponents.scala" target="_blank">OneServerPerSuiteWithComponents.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="org.scalatestplus.play.components.OneServerPerSuiteWithComponents">OneServerPerSuiteWithComponents</a> with <span class="extype" name="org.scalatest.TestSuite">TestSuite</span></dd><dt>Source</dt><dd><a href="https://github.com/playframework/scalatestplus-play/tree/5.0.0/module/src/main/scala/org/scalatestplus/play/components/OneServerPerSuiteWithComponents.scala" target="_blank">OneServerPerSuiteWithComponents.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>

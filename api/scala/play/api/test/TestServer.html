@@ -101,7 +101,7 @@
         <a title="Contains the public API for Scala developers." href="../index.html"><span class="name">api</span></a>
       </span>
       
-      <p class="shortcomment cmt">Contains the public API for Scala developers.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the public API for Scala developers.</p><h6> Access the current Play application </h6><pre><span class="kw">import</span> play.api.Play.current</pre><h6> Read configuration </h6><pre><span class="kw">val</span> poolSize = configuration.getInt(<span class="lit">"engine.pool.size"</span>)</pre><h6> Use the logger </h6><pre>Logger.info(<span class="lit">"Hello!"</span>)</pre><h6> Define a Plugin </h6><pre><span class="kw">class</span> MyPlugin(app: Application) <span class="kw">extends</span> Plugin</pre><h6> Create adhoc applications (for testing) </h6><pre><span class="kw">val</span> application = Application(<span class="kw">new</span> File(<span class="lit">"."</span>), <span class="kw">this</span>.getClass.getClassloader, <span class="std">None</span>, Play.Mode.DEV)</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../index.html" class="extype" name="play">play</a></dd></dl></div>
+      <p class="shortcomment cmt">Contains the public API for Scala developers.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the public API for Scala developers.</p><h6> Read configuration </h6><pre><span class="kw">val</span> poolSize = configuration.getInt(<span class="lit">"engine.pool.size"</span>)</pre><h6> Use the logger </h6><pre>Logger.info(<span class="lit">"Hello!"</span>)</pre><h6> Define a Plugin </h6><pre><span class="kw">class</span> MyPlugin(app: Application) <span class="kw">extends</span> Plugin</pre><h6> Create adhoc applications (for testing) </h6><pre><span class="kw">val</span> application = Application(<span class="kw">new</span> File(<span class="lit">"."</span>), <span class="kw">this</span>.getClass.getClassloader, <span class="std">None</span>, Play.Mode.DEV)</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../index.html" class="extype" name="play">play</a></dd></dl></div>
     </li><li name="play.api.test" visbl="pub" class="indented3 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="test"></a><a id="test:test"></a>
       <span class="permalink">
@@ -127,10 +127,6 @@
                         <a class="object" href="ApplicationFactory$.html" title=""></a>
                         <a class="trait" href="ApplicationFactory.html" title="Creates an Application."></a>
                         <a href="ApplicationFactory.html" title="Creates an Application.">ApplicationFactory</a>
-                      </li><li class="current-entities indented3">
-                        <span class="separator"></span>
-                        <a class="object" href="CSRFTokenHelper$.html" title="Exposes methods to make using requests with CSRF tokens easier."></a>
-                        <a href="CSRFTokenHelper$.html" title="Exposes methods to make using requests with CSRF tokens easier.">CSRFTokenHelper</a>
                       </li><li class="current-entities indented3">
                         <span class="separator"></span>
                         <a class="trait" href="DefaultAwaitTimeout.html" title=""></a>
@@ -179,10 +175,6 @@
                         <span class="separator"></span>
                         <a class="trait" href="Injecting.html" title="A trait declared on a class that contains an def app: Application, and can provide instances of a class."></a>
                         <a href="Injecting.html" title="A trait declared on a class that contains an def app: Application, and can provide instances of a class.">Injecting</a>
-                      </li><li class="current-entities indented3">
-                        <span class="separator"></span>
-                        <a class="object" href="NoMaterializer$.html" title="In 99% of cases, when running tests against the result body, you don't actually need a materializer since it's a strict body."></a>
-                        <a href="NoMaterializer$.html" title="In 99% of cases, when running tests against the result body, you don't actually need a materializer since it's a strict body.">NoMaterializer</a>
                       </li><li class="current-entities indented3">
                         <span class="separator"></span>
                         <a class="object" href="NoTemporaryFileCreator$.html" title="A temporary file creator with no implementation."></a>
@@ -298,7 +290,7 @@
 
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A test web server.
-</p></div><dl class="paramcmts block"><dt class="param">config</dt><dd class="cmt"><p>The server configuration.</p></dd><dt class="param">application</dt><dd class="cmt"><p>The Application to load in this server.</p></dd><dt class="param">serverProvider</dt><dd class="cmt"><p>The type of server to use. If not provided, uses Play's default provider.</p></dd></dl><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.7.x/testkit/play-test/src/main/scala/play/api/test/TestServer.scala" target="_blank">TestServer.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="paramcmts block"><dt class="param">config</dt><dd class="cmt"><p>The server configuration.</p></dd><dt class="param">application</dt><dd class="cmt"><p>The Application to load in this server.</p></dd><dt class="param">serverProvider</dt><dd class="cmt"><p>The type of server to use. If not provided, uses Play's default provider.</p></dd></dl><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.8.5/testkit/play-test/src/main/scala/play/api/test/TestServer.scala" target="_blank">TestServer.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -567,6 +559,26 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="play.api.test.TestServer#isRunning" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isRunning:Boolean"></a>
+      <span class="permalink">
+      <a href="../../../play/api/test/TestServer.html#isRunning:Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isRunning</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">True if the server is running either on HTTP or HTTPS port.</p><div class="fullcomment"><div class="comment cmt"><p>True if the server is running either on HTTP or HTTPS port.
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@ApiMayChange</span><span class="args">()</span>
+              
+        </dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a><a id="ne(AnyRef):Boolean"></a>
       <span class="permalink">
@@ -791,30 +803,7 @@
 
         
 
-        <div class="values members">
-              <h3>Deprecated Value Members</h3>
-              <ol><li name="play.api.test.TestServer#port" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="port:Int"></a>
-      <span class="permalink">
-      <a href="../../../play/api/test/TestServer.html#port:Int" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 2.6.4) Using runningHttpPort or runningHttpsPort instead">port</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
-      </span>
-      
-      <p class="shortcomment cmt">The port that the server is running on.</p><div class="fullcomment"><div class="comment cmt"><p>The port that the server is running on.
-</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.4)</i> Using runningHttpPort or runningHttpsPort instead</p></dd></dl></div>
-    </li></ol>
-            </div>
+        
         </div>
 
         <div id="inheritedMembers">

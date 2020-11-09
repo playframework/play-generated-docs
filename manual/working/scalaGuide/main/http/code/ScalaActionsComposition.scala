@@ -4,9 +4,8 @@
 
 package scalaguide.http.scalaactionscomposition {
   import javax.inject.Inject
-
   import akka.actor._
-  import akka.stream.ActorMaterializer
+  import akka.stream.Materializer
   import play.api.test._
   import play.api.test.Helpers._
   import play.api.mvc._
@@ -29,7 +28,7 @@ package scalaguide.http.scalaactionscomposition {
   class ScalaActionsCompositionSpec extends Specification with ControllerHelpers {
     "an action composition" should {
       implicit val system               = ActorSystem()
-      implicit val mat                  = ActorMaterializer()
+      implicit val mat                  = Materializer.matFromSystem
       implicit val ec: ExecutionContext = system.dispatcher
       val parse                         = PlayBodyParsers()
       val defaultParser                 = new BodyParsers.Default(parse)
@@ -290,7 +289,7 @@ package scalaguide.http.scalaactionscomposition {
         expectedResponse: Int = OK
     )(assertions: Future[Result] => T) = {
       running() { app =>
-        implicit val mat = ActorMaterializer()(app.actorSystem)
+        implicit val mat = app.materializer
         val result       = action(request).run()
         status(result) must_== expectedResponse
         assertions(result)

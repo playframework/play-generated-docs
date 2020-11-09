@@ -101,7 +101,7 @@
         <a title="Contains the public API for Scala developers." href="../../index.html"><span class="name">api</span></a>
       </span>
       
-      <p class="shortcomment cmt">Contains the public API for Scala developers.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the public API for Scala developers.</p><h6> Access the current Play application </h6><pre><span class="kw">import</span> play.api.Play.current</pre><h6> Read configuration </h6><pre><span class="kw">val</span> poolSize = configuration.getInt(<span class="lit">"engine.pool.size"</span>)</pre><h6> Use the logger </h6><pre>Logger.info(<span class="lit">"Hello!"</span>)</pre><h6> Define a Plugin </h6><pre><span class="kw">class</span> MyPlugin(app: Application) <span class="kw">extends</span> Plugin</pre><h6> Create adhoc applications (for testing) </h6><pre><span class="kw">val</span> application = Application(<span class="kw">new</span> File(<span class="lit">"."</span>), <span class="kw">this</span>.getClass.getClassloader, <span class="std">None</span>, Play.Mode.DEV)</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../index.html" class="extype" name="play">play</a></dd></dl></div>
+      <p class="shortcomment cmt">Contains the public API for Scala developers.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the public API for Scala developers.</p><h6> Read configuration </h6><pre><span class="kw">val</span> poolSize = configuration.getInt(<span class="lit">"engine.pool.size"</span>)</pre><h6> Use the logger </h6><pre>Logger.info(<span class="lit">"Hello!"</span>)</pre><h6> Define a Plugin </h6><pre><span class="kw">class</span> MyPlugin(app: Application) <span class="kw">extends</span> Plugin</pre><h6> Create adhoc applications (for testing) </h6><pre><span class="kw">val</span> application = Application(<span class="kw">new</span> File(<span class="lit">"."</span>), <span class="kw">this</span>.getClass.getClassloader, <span class="std">None</span>, Play.Mode.DEV)</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../index.html" class="extype" name="play">play</a></dd></dl></div>
     </li><li name="play.api.libs" visbl="pub" class="indented3 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="libs"></a><a id="libs:libs"></a>
       <span class="permalink">
@@ -198,9 +198,7 @@
         <span class="name">json</span>
       </span>
       
-      <p class="shortcomment cmt">Json API
-For example:</p><div class="fullcomment"><div class="comment cmt"><p>Json API
-For example:</p><pre><span class="kw">import</span> play.api.libs.json._
+      <p class="shortcomment cmt">Json API</p><div class="fullcomment"><div class="comment cmt"><p>Json API</p><p>For example:</p><pre><span class="kw">import</span> play.api.libs.json._
 <span class="kw">import</span> play.api.libs.functional.syntax._
 
 <span class="kw">case</span> <span class="kw">class</span> User(id: <span class="std">Long</span>, name: <span class="std">String</span>, friends: <span class="std">Seq</span>[User] = <span class="std">Seq</span>.empty)
@@ -215,15 +213,14 @@ For example:</p><pre><span class="kw">import</span> play.api.libs.json._
   )(User.apply, unlift(User.unapply))
 }
 
-<span class="cmt">//then in a controller:</span>
-
-<span class="kw">object</span> MyController <span class="kw">extends</span> Controller {
+<span class="kw">object</span> MyController <span class="kw">extends</span> play.api.mvc.Controller {
    <span class="kw">def</span> displayUserAsJson(id: <span class="std">String</span>) = Action {
       Ok(Json.toJson(User(id.toLong, <span class="lit">"myName"</span>)))
    }
+
    <span class="kw">def</span> saveUser(jsonString: <span class="std">String</span>)= Action {
      <span class="kw">val</span> user = Json.parse(jsonString).as[User]
-     myDataStore.save(user)
+     <span class="cmt">//myDataStore.save(user)</span>
      Ok
    }
 }</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="play.api.libs">libs</a></dd></dl></div>
@@ -291,6 +288,14 @@ For example:</p><pre><span class="kw">import</span> play.api.libs.json._
                         <span class="separator"></span>
                         <a class="trait" href="DefaultWrites.html" title="Default Serializers."></a>
                         <a href="DefaultWrites.html" title="Default Serializers.">DefaultWrites</a>
+                      </li><li class="current-entities indented4">
+                        <span class="separator"></span>
+                        <a class="trait" href="EnvKeyReads.html" title=""></a>
+                        <a href="EnvKeyReads.html" title="">EnvKeyReads</a>
+                      </li><li class="current-entities indented4">
+                        <span class="separator"></span>
+                        <a class="trait" href="EnvKeyWrites.html" title=""></a>
+                        <a href="EnvKeyWrites.html" title="">EnvKeyWrites</a>
                       </li><li class="current-entities indented4">
                         <span class="separator"></span>
                         <a class="trait" href="EnvReads.html" title=""></a>
@@ -411,6 +416,14 @@ For example:</p><pre><span class="kw">import</span> play.api.libs.json._
                         <span class="separator"></span>
                         <a class="class" href="KeyPathNode.html" title=""></a>
                         <a href="KeyPathNode.html" title="">KeyPathNode</a>
+                      </li><li class="current-entities indented4">
+                        <a class="object" href="KeyReads$.html" title=""></a>
+                        <a class="trait" href="KeyReads.html" title="Used to read object key for types other than String."></a>
+                        <a href="KeyReads.html" title="Used to read object key for types other than String.">KeyReads</a>
+                      </li><li class="current-entities indented4">
+                        <a class="object" href="KeyWrites$.html" title=""></a>
+                        <a class="trait" href="KeyWrites.html" title="Used to write object key for types other than String."></a>
+                        <a href="KeyWrites.html" title="Used to write object key for types other than String.">KeyWrites</a>
                       </li><li class="current-entities indented4">
                         <span class="separator"></span>
                         <a class="trait" href="LowPriorityDefaultReads.html" title="Low priority reads."></a>
@@ -576,8 +589,7 @@ For example:</p><pre><span class="kw">import</span> play.api.libs.json._
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Json API
-For example:</p><pre><span class="kw">import</span> play.api.libs.json._
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Json API</p><p>For example:</p><pre><span class="kw">import</span> play.api.libs.json._
 <span class="kw">import</span> play.api.libs.functional.syntax._
 
 <span class="kw">case</span> <span class="kw">class</span> User(id: <span class="std">Long</span>, name: <span class="std">String</span>, friends: <span class="std">Seq</span>[User] = <span class="std">Seq</span>.empty)
@@ -592,18 +604,17 @@ For example:</p><pre><span class="kw">import</span> play.api.libs.json._
   )(User.apply, unlift(User.unapply))
 }
 
-<span class="cmt">//then in a controller:</span>
-
-<span class="kw">object</span> MyController <span class="kw">extends</span> Controller {
+<span class="kw">object</span> MyController <span class="kw">extends</span> play.api.mvc.Controller {
    <span class="kw">def</span> displayUserAsJson(id: <span class="std">String</span>) = Action {
       Ok(Json.toJson(User(id.toLong, <span class="lit">"myName"</span>)))
    }
+
    <span class="kw">def</span> saveUser(jsonString: <span class="std">String</span>)= Action {
      <span class="kw">val</span> user = Json.parse(jsonString).as[User]
-     myDataStore.save(user)
+     <span class="cmt">//myDataStore.save(user)</span>
      Ok
    }
-}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/play-json/tree/2.7.4/play-json/jvm/src/main/scala/play/api/libs/json/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
+}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/play-json/tree/2.8.1/play-json/jvm/src/main/scala/play/api/libs/json/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -785,6 +796,38 @@ are accepted.
       </span>
       
       <p class="shortcomment cmt">Default Serializers.</p>
+    </li><li name="play.api.libs.json.EnvKeyReads" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="EnvKeyReadsextendsAnyRef"></a><a id="EnvKeyReads:EnvKeyReads"></a>
+      <span class="permalink">
+      <a href="../../../../play/api/libs/json/EnvKeyReads.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="EnvKeyReads.html"><span class="name">EnvKeyReads</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      
+      
+    </li><li name="play.api.libs.json.EnvKeyWrites" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="EnvKeyWritesextendsAnyRef"></a><a id="EnvKeyWrites:EnvKeyWrites"></a>
+      <span class="permalink">
+      <a href="../../../../play/api/libs/json/EnvKeyWrites.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="EnvKeyWrites.html"><span class="name">EnvKeyWrites</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      
+      
     </li><li name="play.api.libs.json.EnvReads" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="EnvReadsextendsAnyRef"></a><a id="EnvReads:EnvReads"></a>
       <span class="permalink">
@@ -1212,6 +1255,40 @@ in the parsed JSON.</p>
       </span>
       
       
+    </li><li name="play.api.libs.json.KeyReads" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="KeyReads[T]extendsAnyRef"></a><a id="KeyReads[T]:KeyReads[T]"></a>
+      <span class="permalink">
+      <a href="../../../../play/api/libs/json/KeyReads.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a title="Used to read object key for types other than String." href="KeyReads.html"><span class="name">KeyReads</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Used to read object key for types other than <code>String</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Used to read object key for types other than <code>String</code>.
+</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="Reads$.html#keyMapReads[K,V](implicitevidence$1:play.api.libs.json.KeyReads[K],implicitfmtv:play.api.libs.json.Reads[V]):play.api.libs.json.Reads[scala.collection.immutable.Map[K,V]]" class="extmbr" name="play.api.libs.json.Reads#keyMapReads">Reads.keyMapReads</a></p></span></dd></dl></div>
+    </li><li name="play.api.libs.json.KeyWrites" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="KeyWrites[T]extendsAnyRef"></a><a id="KeyWrites[T]:KeyWrites[T]"></a>
+      <span class="permalink">
+      <a href="../../../../play/api/libs/json/KeyWrites.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a title="Used to write object key for types other than String." href="KeyWrites.html"><span class="name">KeyWrites</span></a><span class="tparams">[<span name="T">T</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Used to write object key for types other than <code>String</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Used to write object key for types other than <code>String</code>.
+</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="Writes$.html#keyMapWrites[K,V,M[K,V]&lt;:play.api.libs.json.MapWrites.Map[K,V]](implicitevidence$4:play.api.libs.json.KeyWrites[K],implicitevidence$5:play.api.libs.json.Writes[V]):play.api.libs.json.OWrites[M[K,V]]" class="extmbr" name="play.api.libs.json.Writes#keyMapWrites">Writes.keyMapWrites</a></p></span></dd></dl></div>
     </li><li name="play.api.libs.json.LowPriorityDefaultReads" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="LowPriorityDefaultReadsextendsEnvReads"></a><a id="LowPriorityDefaultReads:LowPriorityDefaultReads"></a>
       <span class="permalink">
@@ -1263,7 +1340,7 @@ DefaultReads provides a simple match.</p><p>See https://github.com/playframework
       
       
     </li><li name="play.api.libs.json.OWrites" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="OWrites[-A]extendsWrites[A]"></a><a id="OWrites[-A]:OWrites[A]"></a>
+      <a id="OWrites[A]extendsWrites[A]"></a><a id="OWrites[A]:OWrites[A]"></a>
       <span class="permalink">
       <a href="../../../../play/api/libs/json/OWrites.html" title="Permalink">
         <i class="material-icons"></i>
@@ -1274,7 +1351,7 @@ DefaultReads provides a simple match.</p><p>See https://github.com/playframework
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a title="" href="OWrites.html"><span class="name">OWrites</span></a><span class="tparams">[<span name="A">-A</span>]</span><span class="result"> extends <a href="Writes.html" class="extype" name="play.api.libs.json.Writes">Writes</a>[<span class="extype" name="play.api.libs.json.OWrites.A">A</span>]</span>
+        <a title="" href="OWrites.html"><span class="name">OWrites</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <a href="Writes.html" class="extype" name="play.api.libs.json.Writes">Writes</a>[<span class="extype" name="play.api.libs.json.OWrites.A">A</span>]</span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
@@ -1409,7 +1486,7 @@ then you get a <a href="Format.html" class="extype" name="play.api.libs.json.For
       
       
     </li><li name="play.api.libs.json.Writes" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="Writes[-A]extendsAnyRef"></a><a id="Writes[-A]:Writes[A]"></a>
+      <a id="Writes[A]extendsAnyRef"></a><a id="Writes[A]:Writes[A]"></a>
       <span class="permalink">
       <a href="../../../../play/api/libs/json/Writes.html" title="Permalink">
         <i class="material-icons"></i>
@@ -1420,7 +1497,7 @@ then you get a <a href="Format.html" class="extype" name="play.api.libs.json.For
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a title="Json serializer: write an implicit to define a serializer for any type" href="Writes.html"><span class="name">Writes</span></a><span class="tparams">[<span name="A">-A</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a title="Json serializer: write an implicit to define a serializer for any type" href="Writes.html"><span class="name">Writes</span></a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       
       <p class="shortcomment cmt">Json serializer: write an implicit to define a serializer for any type
@@ -1600,8 +1677,12 @@ then you get a <a href="Format.html" class="extype" name="play.api.libs.json.For
         <a title="Companion object and root path." href="JsPath$.html"><span class="name">JsPath</span></a><span class="result"> extends <a href="JsPath.html" class="extype" name="play.api.libs.json.JsPath">JsPath</a></span>
       </span>
       
-      <p class="shortcomment cmt">Companion object and root path.</p><div class="fullcomment"><div class="comment cmt"><p>Companion object and root path.</p><p>For an object <code>{ &quot;name&quot;: &quot;foo&quot; }</code>, the path to the <code>name</code> property is:</p><pre>JsPath \ <span class="lit">"name"</span></pre><p>For an object <code>{ &quot;id&quot;: 1, &quot;nested&quot;: { &quot;score&quot;: 0.12 } }</code>,
-the path to the nested <code>score</code> is:</p><pre>JsPath \ <span class="lit">"nested"</span> \ <span class="lit">"score"</span></pre></div></div>
+      <p class="shortcomment cmt">Companion object and root path.</p><div class="fullcomment"><div class="comment cmt"><p>Companion object and root path.</p><p>For an object <code>{ &quot;name&quot;: &quot;foo&quot; }</code>, the path to the <code>name</code> property is:</p><pre><span class="kw">import</span> play.api.libs.json.JsPath
+
+JsPath \ <span class="lit">"name"</span></pre><p>For an object <code>{ &quot;id&quot;: 1, &quot;nested&quot;: { &quot;score&quot;: 0.12 } }</code>,
+the path to the nested <code>score</code> is:</p><pre><span class="kw">import</span> play.api.libs.json.JsPath
+
+JsPath \ <span class="lit">"nested"</span> \ <span class="lit">"score"</span></pre></div></div>
     </li><li name="play.api.libs.json.JsResult" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="JsResult"></a><a id="JsResult:JsResult"></a>
       <span class="permalink">
@@ -1743,6 +1824,38 @@ the path to the nested <code>score</code> is:</p><pre>JsPath \ <span class="lit"
       </span>
       <span class="symbol">
         <a title="" href="JsonValidationError$.html"><span class="name">JsonValidationError</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      
+      
+    </li><li name="play.api.libs.json.KeyReads" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="KeyReads"></a><a id="KeyReads:KeyReads"></a>
+      <span class="permalink">
+      <a href="../../../../play/api/libs/json/KeyReads$.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="KeyReads$.html"><span class="name">KeyReads</span></a><span class="result"> extends <a href="EnvKeyReads.html" class="extype" name="play.api.libs.json.EnvKeyReads">EnvKeyReads</a></span>
+      </span>
+      
+      
+    </li><li name="play.api.libs.json.KeyWrites" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="KeyWrites"></a><a id="KeyWrites:KeyWrites"></a>
+      <span class="permalink">
+      <a href="../../../../play/api/libs/json/KeyWrites$.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="KeyWrites$.html"><span class="name">KeyWrites</span></a><span class="result"> extends <a href="EnvKeyWrites.html" class="extype" name="play.api.libs.json.EnvKeyWrites">EnvKeyWrites</a></span>
       </span>
       
       

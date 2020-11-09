@@ -101,7 +101,7 @@
         <a title="Contains the public API for Scala developers." href="../../index.html"><span class="name">api</span></a>
       </span>
       
-      <p class="shortcomment cmt">Contains the public API for Scala developers.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the public API for Scala developers.</p><h6> Access the current Play application </h6><pre><span class="kw">import</span> play.api.Play.current</pre><h6> Read configuration </h6><pre><span class="kw">val</span> poolSize = configuration.getInt(<span class="lit">"engine.pool.size"</span>)</pre><h6> Use the logger </h6><pre>Logger.info(<span class="lit">"Hello!"</span>)</pre><h6> Define a Plugin </h6><pre><span class="kw">class</span> MyPlugin(app: Application) <span class="kw">extends</span> Plugin</pre><h6> Create adhoc applications (for testing) </h6><pre><span class="kw">val</span> application = Application(<span class="kw">new</span> File(<span class="lit">"."</span>), <span class="kw">this</span>.getClass.getClassloader, <span class="std">None</span>, Play.Mode.DEV)</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../index.html" class="extype" name="play">play</a></dd></dl></div>
+      <p class="shortcomment cmt">Contains the public API for Scala developers.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the public API for Scala developers.</p><h6> Read configuration </h6><pre><span class="kw">val</span> poolSize = configuration.getInt(<span class="lit">"engine.pool.size"</span>)</pre><h6> Use the logger </h6><pre>Logger.info(<span class="lit">"Hello!"</span>)</pre><h6> Define a Plugin </h6><pre><span class="kw">class</span> MyPlugin(app: Application) <span class="kw">extends</span> Plugin</pre><h6> Create adhoc applications (for testing) </h6><pre><span class="kw">val</span> application = Application(<span class="kw">new</span> File(<span class="lit">"."</span>), <span class="kw">this</span>.getClass.getClassloader, <span class="std">None</span>, Play.Mode.DEV)</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../index.html" class="extype" name="play">play</a></dd></dl></div>
     </li><li name="play.api.libs" visbl="pub" class="indented3 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="libs"></a><a id="libs:libs"></a>
       <span class="permalink">
@@ -184,7 +184,7 @@
 
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Provides a flow that is handled by an actor.</p><p>See https://github.com/akka/akka/issues/16985.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.7.x/core/play-streams/src/main/scala/play/api/libs/streams/ActorFlow.scala" target="_blank">ActorFlow.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.8.5/core/play-streams/src/main/scala/play/api/libs/streams/ActorFlow.scala" target="_blank">ActorFlow.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -305,8 +305,8 @@
       </span>
       
       <p class="shortcomment cmt">Create a flow that is handled by an actor.</p><div class="fullcomment"><div class="comment cmt"><p>Create a flow that is handled by an actor.</p><p>Messages can be sent downstream by sending them to the actor passed into the props function.  This actor meets
-the contract of the actor returned by <a href="http://doc.akka.io/api/akka/current/index.html#akka.stream.scaladsl.Source$@actorRef[T](bufferSize:Int,overflowStrategy:akka.stream.OverflowStrategy):akka.stream.scaladsl.Source[T,akka.actor.ActorRef]" target="_blank">akka.stream.scaladsl.Source.actorRef</a>.</p><p>The props function should return the props for an actor to handle the flow. This actor will be created using the
-passed in <a href="http://doc.akka.io/api/akka/current/index.html#akka.actor.ActorRefFactory" target="_blank">akka.actor.ActorRefFactory</a>. Each message received will be sent to the actor - there is no back pressure,
+the contract of the actor returned by <a href="https://doc.akka.io/api/akka/2.6/akka/stream/scaladsl/Source$.html#actorRef[T](bufferSize:Int,overflowStrategy:akka.stream.OverflowStrategy):akka.stream.scaladsl.Source[T,akka.actor.ActorRef" target="_blank">https://doc.akka.io/api/akka/2.6/akka/stream/scaladsl/Source$.html#actorRef[T](bufferSize:Int,overflowStrategy:akka.stream.OverflowStrategy):akka.stream.scaladsl.Source[T,akka.actor.ActorRef</a> akka.stream.scaladsl.Source.actorRef]].</p><p>The props function should return the props for an actor to handle the flow. This actor will be created using the
+passed in <a href="https://doc.akka.io/api/akka/2.6/akka/actor/ActorRefFactory.html" target="_blank">akka.actor.ActorRefFactory</a>. Each message received will be sent to the actor - there is no back pressure,
 if the actor is unable to process the messages, they will queue up in the actors mailbox. The upstream can be
 cancelled by the actor terminating itself.
 </p></div><dl class="paramcmts block"><dt class="param">props</dt><dd class="cmt"><p>A function that creates the props for actor to handle the flow.</p></dd><dt class="param">bufferSize</dt><dd class="cmt"><p>The maximum number of elements to buffer.</p></dd><dt class="param">overflowStrategy</dt><dd class="cmt"><p>The strategy for how to handle a buffer overflow.</p></dd></dl></div>

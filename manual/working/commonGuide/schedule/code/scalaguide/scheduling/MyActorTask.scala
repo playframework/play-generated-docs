@@ -17,7 +17,7 @@ import scala.concurrent.duration._
 class MyActorTask @Inject() (actorSystem: ActorSystem, @Named("some-actor") someActor: ActorRef)(
     implicit executionContext: ExecutionContext
 ) {
-  actorSystem.scheduler.schedule(
+  actorSystem.scheduler.scheduleAtFixedRate(
     initialDelay = 0.microseconds,
     interval = 30.seconds,
     receiver = someActor,

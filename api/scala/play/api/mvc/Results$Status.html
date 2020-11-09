@@ -101,7 +101,7 @@
         <a title="Contains the public API for Scala developers." href="../index.html"><span class="name">api</span></a>
       </span>
       
-      <p class="shortcomment cmt">Contains the public API for Scala developers.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the public API for Scala developers.</p><h6> Access the current Play application </h6><pre><span class="kw">import</span> play.api.Play.current</pre><h6> Read configuration </h6><pre><span class="kw">val</span> poolSize = configuration.getInt(<span class="lit">"engine.pool.size"</span>)</pre><h6> Use the logger </h6><pre>Logger.info(<span class="lit">"Hello!"</span>)</pre><h6> Define a Plugin </h6><pre><span class="kw">class</span> MyPlugin(app: Application) <span class="kw">extends</span> Plugin</pre><h6> Create adhoc applications (for testing) </h6><pre><span class="kw">val</span> application = Application(<span class="kw">new</span> File(<span class="lit">"."</span>), <span class="kw">this</span>.getClass.getClassloader, <span class="std">None</span>, Play.Mode.DEV)</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../index.html" class="extype" name="play">play</a></dd></dl></div>
+      <p class="shortcomment cmt">Contains the public API for Scala developers.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the public API for Scala developers.</p><h6> Read configuration </h6><pre><span class="kw">val</span> poolSize = configuration.getInt(<span class="lit">"engine.pool.size"</span>)</pre><h6> Use the logger </h6><pre>Logger.info(<span class="lit">"Hello!"</span>)</pre><h6> Define a Plugin </h6><pre><span class="kw">class</span> MyPlugin(app: Application) <span class="kw">extends</span> Plugin</pre><h6> Create adhoc applications (for testing) </h6><pre><span class="kw">val</span> application = Application(<span class="kw">new</span> File(<span class="lit">"."</span>), <span class="kw">this</span>.getClass.getClassloader, <span class="std">None</span>, Play.Mode.DEV)</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../index.html" class="extype" name="play">play</a></dd></dl></div>
     </li><li name="play.api.mvc" visbl="pub" class="indented3 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="mvc"></a><a id="mvc:mvc"></a>
       <span class="permalink">
@@ -173,7 +173,7 @@
 
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Generates default <code>Result</code> from a content type, headers and content.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.7.x/core/play/src/main/scala/play/api/mvc/Results.scala" target="_blank">Results.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.8.5/core/play/src/main/scala/play/api/mvc/Results.scala" target="_blank">Results.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -414,9 +414,9 @@ followed by all the other cookies in order.
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a></dd></dl></div>
     </li><li name="play.api.mvc.Results.Status#chunked" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="chunked[C](content:akka.stream.scaladsl.Source[C,_])(implicitwriteable:play.api.http.Writeable[C]):play.api.mvc.Result"></a><a id="chunked[C](Source[C,_])(Writeable[C]):Result"></a>
+      <a id="chunked[C](content:akka.stream.scaladsl.Source[C,_],inline:Boolean,fileName:Option[String])(implicitwriteable:play.api.http.Writeable[C],implicitfileMimeTypes:play.api.http.FileMimeTypes):play.api.mvc.Result"></a><a id="chunked[C](Source[C,_],Boolean,Option[String])(Writeable[C],FileMimeTypes):Result"></a>
       <span class="permalink">
-      <a href="../../../play/api/mvc/Results$Status.html#chunked[C](content:akka.stream.scaladsl.Source[C,_])(implicitwriteable:play.api.http.Writeable[C]):play.api.mvc.Result" title="Permalink">
+      <a href="../../../play/api/mvc/Results$Status.html#chunked[C](content:akka.stream.scaladsl.Source[C,_],inline:Boolean,fileName:Option[String])(implicitwriteable:play.api.http.Writeable[C],implicitfileMimeTypes:play.api.http.FileMimeTypes):play.api.mvc.Result" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -425,13 +425,35 @@ followed by all the other cookies in order.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">chunked</span><span class="tparams">[<span name="C">C</span>]</span><span class="params">(<span name="content">content: <span class="extype" name="akka.stream.scaladsl.Source">Source</span>[<span class="extype" name="play.api.mvc.Results.Status.chunked.C">C</span>, _]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="writeable">writeable: <a href="../http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<span class="extype" name="play.api.mvc.Results.Status.chunked.C">C</span>]</span>)</span><span class="result">: <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>
+        <span class="name">chunked</span><span class="tparams">[<span name="C">C</span>]</span><span class="params">(<span name="content">content: <span class="extype" name="akka.stream.scaladsl.Source">Source</span>[<span class="extype" name="play.api.mvc.Results.Status.chunked.C">C</span>, _]</span>, <span name="inline">inline: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="fileName">fileName: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="writeable">writeable: <a href="../http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<span class="extype" name="play.api.mvc.Results.Status.chunked.C">C</span>]</span>, <span name="fileMimeTypes">fileMimeTypes: <a href="../http/FileMimeTypes.html" class="extype" name="play.api.http.FileMimeTypes">FileMimeTypes</a></span>)</span><span class="result">: <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>
       </span>
       
       <p class="shortcomment cmt">Feed the content as the response, using chunked transfer encoding.</p><div class="fullcomment"><div class="comment cmt"><p>Feed the content as the response, using chunked transfer encoding.</p><p>Chunked transfer encoding is only supported for HTTP 1.1 clients.  If the client is an HTTP 1.0 client, Play will
 instead return a 505 error code.</p><p>Chunked encoding allows the server to send a response where the content length is not known, or for potentially
 infinite streams, while still allowing the connection to be kept alive and reused for the next request.
-</p></div><dl class="paramcmts block"><dt class="param">content</dt><dd class="cmt"><p>Source providing the content to stream.</p></dd></dl></div>
+</p></div><dl class="paramcmts block"><dt class="param">content</dt><dd class="cmt"><p>Source providing the content to stream.</p></dd><dt class="param">inline</dt><dd class="cmt"><p>If the content should be rendered inline or as attachment.</p></dd><dt class="param">fileName</dt><dd class="cmt"><p>Function to retrieve the file name rendered in the <code>Content-Disposition</code> header. By default the name
+     of the file is used. The response will also automatically include the MIME type in the <code>Content-Type</code> header
+     deducing it from this file name if the <code>implicit fileMimeTypes</code> includes it or fallback to the content-type of the
+     <code>implicit writeable</code> if unknown.</p></dd></dl></div>
+    </li><li name="play.api.mvc.Results.Status#chunked" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="chunked[C](content:akka.stream.scaladsl.Source[C,_],contentType:Option[String])(implicitwriteable:play.api.http.Writeable[C]):play.api.mvc.Result"></a><a id="chunked[C](Source[C,_],Option[String])(Writeable[C]):Result"></a>
+      <span class="permalink">
+      <a href="../../../play/api/mvc/Results$Status.html#chunked[C](content:akka.stream.scaladsl.Source[C,_],contentType:Option[String])(implicitwriteable:play.api.http.Writeable[C]):play.api.mvc.Result" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">chunked</span><span class="tparams">[<span name="C">C</span>]</span><span class="params">(<span name="content">content: <span class="extype" name="akka.stream.scaladsl.Source">Source</span>[<span class="extype" name="play.api.mvc.Results.Status.chunked.C">C</span>, _]</span>, <span name="contentType">contentType: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">None</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="writeable">writeable: <a href="../http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<span class="extype" name="play.api.mvc.Results.Status.chunked.C">C</span>]</span>)</span><span class="result">: <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Feed the content as the response, using chunked transfer encoding.</p><div class="fullcomment"><div class="comment cmt"><p>Feed the content as the response, using chunked transfer encoding.</p><p>Chunked transfer encoding is only supported for HTTP 1.1 clients.  If the client is an HTTP 1.0 client, Play will
+instead return a 505 error code.</p><p>Chunked encoding allows the server to send a response where the content length is not known, or for potentially
+infinite streams, while still allowing the connection to be kept alive and reused for the next request.
+</p></div><dl class="paramcmts block"><dt class="param">content</dt><dd class="cmt"><p>Source providing the content to stream.</p></dd><dt class="param">contentType</dt><dd class="cmt"><p>an optional content type.</p></dd></dl></div>
     </li><li name="scala.AnyRef#clone" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="clone():Object"></a><a id="clone():AnyRef"></a>
       <span class="permalink">
@@ -727,7 +749,27 @@ infinite streams, while still allowing the connection to be kept alive and reuse
       </span>
       
       <p class="shortcomment cmt">Example:</p><div class="fullcomment"><div class="comment cmt"><p>Example:</p><pre>Ok.removingFromSession(<span class="lit">"foo"</span>)</pre></div><dl class="paramcmts block"><dt class="param">keys</dt><dd class="cmt"><p>Keys to remove from session</p></dd><dt class="param">request</dt><dd class="cmt"><p>Current request</p></dd><dt>returns</dt><dd class="cmt"><p>A copy of this result with <code>keys</code> removed from its session scope.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a></dd></dl></div>
-    </li><li name="play.api.mvc.Results.Status#sendEntity" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="play.api.mvc.Results.Status#sendEntity" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="sendEntity(entity:play.api.http.HttpEntity,inline:Boolean,fileName:Option[String])(implicitfileMimeTypes:play.api.http.FileMimeTypes):play.api.mvc.Result"></a><a id="sendEntity(HttpEntity,Boolean,Option[String])(FileMimeTypes):Result"></a>
+      <span class="permalink">
+      <a href="../../../play/api/mvc/Results$Status.html#sendEntity(entity:play.api.http.HttpEntity,inline:Boolean,fileName:Option[String])(implicitfileMimeTypes:play.api.http.FileMimeTypes):play.api.mvc.Result" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">sendEntity</span><span class="params">(<span name="entity">entity: <a href="../http/HttpEntity.html" class="extype" name="play.api.http.HttpEntity">HttpEntity</a></span>, <span name="inline">inline: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="fileName">fileName: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="fileMimeTypes">fileMimeTypes: <a href="../http/FileMimeTypes.html" class="extype" name="play.api.http.FileMimeTypes">FileMimeTypes</a></span>)</span><span class="result">: <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Send an HTTP entity with this status.</p><div class="fullcomment"><div class="comment cmt"><p>Send an HTTP entity with this status.
+</p></div><dl class="paramcmts block"><dt class="param">entity</dt><dd class="cmt"><p>The entity to send.</p></dd><dt class="param">inline</dt><dd class="cmt"><p>If the content should be rendered inline or as attachment.</p></dd><dt class="param">fileName</dt><dd class="cmt"><p>Function to retrieve the file name rendered in the <code>Content-Disposition</code> header. By default the name
+     of the file is used. The response will also automatically include the MIME type in the <code>Content-Type</code> header
+     deducing it from this file name if the <code>implicit fileMimeTypes</code> includes it or fallback to <code>application/octet-stream</code>
+     if unknown.</p></dd></dl></div>
+    </li><li name="play.api.mvc.Results.Status#sendEntity" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="sendEntity(entity:play.api.http.HttpEntity):play.api.mvc.Result"></a><a id="sendEntity(HttpEntity):Result"></a>
       <span class="permalink">
       <a href="../../../play/api/mvc/Results$Status.html#sendEntity(entity:play.api.http.HttpEntity):play.api.mvc.Result" title="Permalink">
@@ -742,11 +784,12 @@ infinite streams, while still allowing the connection to be kept alive and reuse
         <span class="name">sendEntity</span><span class="params">(<span name="entity">entity: <a href="../http/HttpEntity.html" class="extype" name="play.api.http.HttpEntity">HttpEntity</a></span>)</span><span class="result">: <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>
       </span>
       
-      <p class="shortcomment cmt">Send an HTTP entity with this status.</p>
+      <p class="shortcomment cmt">Send an HTTP entity with this status.</p><div class="fullcomment"><div class="comment cmt"><p>Send an HTTP entity with this status.
+</p></div><dl class="paramcmts block"><dt class="param">entity</dt><dd class="cmt"><p>The entity to send.</p></dd></dl></div>
     </li><li name="play.api.mvc.Results.Status#sendFile" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="sendFile(content:java.io.File,inline:Boolean,fileName:java.io.File=&gt;String,onClose:()=&gt;Unit)(implicitec:scala.concurrent.ExecutionContext,implicitfileMimeTypes:play.api.http.FileMimeTypes):play.api.mvc.Result"></a><a id="sendFile(File,Boolean,(File)⇒String,()⇒Unit)(ExecutionContext,FileMimeTypes):Result"></a>
+      <a id="sendFile(content:java.io.File,inline:Boolean,fileName:java.io.File=&gt;Option[String],onClose:()=&gt;Unit)(implicitec:scala.concurrent.ExecutionContext,implicitfileMimeTypes:play.api.http.FileMimeTypes):play.api.mvc.Result"></a><a id="sendFile(File,Boolean,(File)⇒Option[String],()⇒Unit)(ExecutionContext,FileMimeTypes):Result"></a>
       <span class="permalink">
-      <a href="../../../play/api/mvc/Results$Status.html#sendFile(content:java.io.File,inline:Boolean,fileName:java.io.File=&gt;String,onClose:()=&gt;Unit)(implicitec:scala.concurrent.ExecutionContext,implicitfileMimeTypes:play.api.http.FileMimeTypes):play.api.mvc.Result" title="Permalink">
+      <a href="../../../play/api/mvc/Results$Status.html#sendFile(content:java.io.File,inline:Boolean,fileName:java.io.File=&gt;Option[String],onClose:()=&gt;Unit)(implicitec:scala.concurrent.ExecutionContext,implicitfileMimeTypes:play.api.http.FileMimeTypes):play.api.mvc.Result" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -755,15 +798,18 @@ infinite streams, while still allowing the connection to be kept alive and reuse
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">sendFile</span><span class="params">(<span name="content">content: <span class="extype" name="java.io.File">File</span></span>, <span name="inline">inline: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="fileName">fileName: (<span class="extype" name="java.io.File">File</span>) ⇒ <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">_.getName</span></span>, <span name="onClose">onClose: () ⇒ <span class="extype" name="scala.Unit">Unit</span> = <span class="symbol">() =&gt; ()</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>, <span name="fileMimeTypes">fileMimeTypes: <a href="../http/FileMimeTypes.html" class="extype" name="play.api.http.FileMimeTypes">FileMimeTypes</a></span>)</span><span class="result">: <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>
+        <span class="name">sendFile</span><span class="params">(<span name="content">content: <span class="extype" name="java.io.File">File</span></span>, <span name="inline">inline: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="fileName">fileName: (<span class="extype" name="java.io.File">File</span>) ⇒ <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">Option(_).map(_.getName)</span></span>, <span name="onClose">onClose: () ⇒ <span class="extype" name="scala.Unit">Unit</span> = <span class="symbol">() =&gt; ()</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>, <span name="fileMimeTypes">fileMimeTypes: <a href="../http/FileMimeTypes.html" class="extype" name="play.api.http.FileMimeTypes">FileMimeTypes</a></span>)</span><span class="result">: <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>
       </span>
       
       <p class="shortcomment cmt">Send a file.</p><div class="fullcomment"><div class="comment cmt"><p>Send a file.
-</p></div><dl class="paramcmts block"><dt class="param">content</dt><dd class="cmt"><p>The file to send.</p></dd><dt class="param">inline</dt><dd class="cmt"><p>Use Content-Disposition inline or attachment.</p></dd><dt class="param">fileName</dt><dd class="cmt"><p>Function to retrieve the file name. By default the name of the file is used.</p></dd></dl></div>
+</p></div><dl class="paramcmts block"><dt class="param">content</dt><dd class="cmt"><p>The file to send.</p></dd><dt class="param">inline</dt><dd class="cmt"><p>Use Content-Disposition inline or attachment.</p></dd><dt class="param">fileName</dt><dd class="cmt"><p>Function to retrieve the file name rendered in the <code>Content-Disposition</code> header. By default the name
+     of the file is used. The response will also automatically include the MIME type in the <code>Content-Type</code> header
+     deducing it from this file name if the <code>implicit fileMimeTypes</code> includes it or fallback to <code>application/octet-stream</code>
+     if unknown.</p></dd><dt class="param">onClose</dt><dd class="cmt"><p>Useful in order to perform cleanup operations (e.g. deleting a temporary file generated for a download).</p></dd></dl></div>
     </li><li name="play.api.mvc.Results.Status#sendPath" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="sendPath(content:java.nio.file.Path,inline:Boolean,fileName:java.nio.file.Path=&gt;String,onClose:()=&gt;Unit)(implicitec:scala.concurrent.ExecutionContext,implicitfileMimeTypes:play.api.http.FileMimeTypes):play.api.mvc.Result"></a><a id="sendPath(Path,Boolean,(Path)⇒String,()⇒Unit)(ExecutionContext,FileMimeTypes):Result"></a>
+      <a id="sendPath(content:java.nio.file.Path,inline:Boolean,fileName:java.nio.file.Path=&gt;Option[String],onClose:()=&gt;Unit)(implicitec:scala.concurrent.ExecutionContext,implicitfileMimeTypes:play.api.http.FileMimeTypes):play.api.mvc.Result"></a><a id="sendPath(Path,Boolean,(Path)⇒Option[String],()⇒Unit)(ExecutionContext,FileMimeTypes):Result"></a>
       <span class="permalink">
-      <a href="../../../play/api/mvc/Results$Status.html#sendPath(content:java.nio.file.Path,inline:Boolean,fileName:java.nio.file.Path=&gt;String,onClose:()=&gt;Unit)(implicitec:scala.concurrent.ExecutionContext,implicitfileMimeTypes:play.api.http.FileMimeTypes):play.api.mvc.Result" title="Permalink">
+      <a href="../../../play/api/mvc/Results$Status.html#sendPath(content:java.nio.file.Path,inline:Boolean,fileName:java.nio.file.Path=&gt;Option[String],onClose:()=&gt;Unit)(implicitec:scala.concurrent.ExecutionContext,implicitfileMimeTypes:play.api.http.FileMimeTypes):play.api.mvc.Result" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -772,15 +818,18 @@ infinite streams, while still allowing the connection to be kept alive and reuse
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">sendPath</span><span class="params">(<span name="content">content: <span class="extype" name="java.nio.file.Path">Path</span></span>, <span name="inline">inline: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="fileName">fileName: (<span class="extype" name="java.nio.file.Path">Path</span>) ⇒ <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">_.getFileName.toString</span></span>, <span name="onClose">onClose: () ⇒ <span class="extype" name="scala.Unit">Unit</span> = <span class="symbol">() =&gt; ()</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>, <span name="fileMimeTypes">fileMimeTypes: <a href="../http/FileMimeTypes.html" class="extype" name="play.api.http.FileMimeTypes">FileMimeTypes</a></span>)</span><span class="result">: <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>
+        <span class="name">sendPath</span><span class="params">(<span name="content">content: <span class="extype" name="java.nio.file.Path">Path</span></span>, <span name="inline">inline: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="fileName">fileName: (<span class="extype" name="java.nio.file.Path">Path</span>) ⇒ <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="defval" name="Option(_).map(_.getFileName.toString)">...</span></span>, <span name="onClose">onClose: () ⇒ <span class="extype" name="scala.Unit">Unit</span> = <span class="symbol">() =&gt; ()</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>, <span name="fileMimeTypes">fileMimeTypes: <a href="../http/FileMimeTypes.html" class="extype" name="play.api.http.FileMimeTypes">FileMimeTypes</a></span>)</span><span class="result">: <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>
       </span>
       
       <p class="shortcomment cmt">Send a path.</p><div class="fullcomment"><div class="comment cmt"><p>Send a path.
-</p></div><dl class="paramcmts block"><dt class="param">content</dt><dd class="cmt"><p>The path to send.</p></dd><dt class="param">inline</dt><dd class="cmt"><p>Use Content-Disposition inline or attachment.</p></dd><dt class="param">fileName</dt><dd class="cmt"><p>Function to retrieve the file name. By default the name of the file is used.</p></dd></dl></div>
+</p></div><dl class="paramcmts block"><dt class="param">content</dt><dd class="cmt"><p>The path to send.</p></dd><dt class="param">inline</dt><dd class="cmt"><p>Use Content-Disposition inline or attachment.</p></dd><dt class="param">fileName</dt><dd class="cmt"><p>Function to retrieve the file name rendered in the <code>Content-Disposition</code> header. By default the name
+     of the file is used. The response will also automatically include the MIME type in the <code>Content-Type</code> header
+     deducing it from this file name if the <code>implicit fileMimeTypes</code> includes it or fallback to <code>application/octet-stream</code>
+     if unknown.</p></dd><dt class="param">onClose</dt><dd class="cmt"><p>Useful in order to perform cleanup operations (e.g. deleting a temporary file generated for a download).</p></dd></dl></div>
     </li><li name="play.api.mvc.Results.Status#sendResource" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="sendResource(resource:String,classLoader:ClassLoader,inline:Boolean)(implicitfileMimeTypes:play.api.http.FileMimeTypes):play.api.mvc.Result"></a><a id="sendResource(String,ClassLoader,Boolean)(FileMimeTypes):Result"></a>
+      <a id="sendResource(resource:String,classLoader:ClassLoader,inline:Boolean,fileName:String=&gt;Option[String],onClose:()=&gt;Unit)(implicitec:scala.concurrent.ExecutionContext,implicitfileMimeTypes:play.api.http.FileMimeTypes):play.api.mvc.Result"></a><a id="sendResource(String,ClassLoader,Boolean,(String)⇒Option[String],()⇒Unit)(ExecutionContext,FileMimeTypes):Result"></a>
       <span class="permalink">
-      <a href="../../../play/api/mvc/Results$Status.html#sendResource(resource:String,classLoader:ClassLoader,inline:Boolean)(implicitfileMimeTypes:play.api.http.FileMimeTypes):play.api.mvc.Result" title="Permalink">
+      <a href="../../../play/api/mvc/Results$Status.html#sendResource(resource:String,classLoader:ClassLoader,inline:Boolean,fileName:String=&gt;Option[String],onClose:()=&gt;Unit)(implicitec:scala.concurrent.ExecutionContext,implicitfileMimeTypes:play.api.http.FileMimeTypes):play.api.mvc.Result" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -789,11 +838,14 @@ infinite streams, while still allowing the connection to be kept alive and reuse
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">sendResource</span><span class="params">(<span name="resource">resource: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="classLoader">classLoader: <span class="extype" name="java.lang.ClassLoader">ClassLoader</span> = <span class="symbol"><span class="name"><a href="Results$.html">Results.getClass.getClassLoader</a></span></span></span>, <span name="inline">inline: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="fileMimeTypes">fileMimeTypes: <a href="../http/FileMimeTypes.html" class="extype" name="play.api.http.FileMimeTypes">FileMimeTypes</a></span>)</span><span class="result">: <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>
+        <span class="name">sendResource</span><span class="params">(<span name="resource">resource: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="classLoader">classLoader: <span class="extype" name="java.lang.ClassLoader">ClassLoader</span> = <span class="symbol"><span class="name"><a href="Results$.html">Results.getClass.getClassLoader</a></span></span></span>, <span name="inline">inline: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="fileName">fileName: (<span class="extype" name="scala.Predef.String">String</span>) ⇒ <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">Option(_).map(_.split('/').last)</span></span>, <span name="onClose">onClose: () ⇒ <span class="extype" name="scala.Unit">Unit</span> = <span class="symbol">() =&gt; ()</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="ec">ec: <span class="extype" name="scala.concurrent.ExecutionContext">ExecutionContext</span></span>, <span name="fileMimeTypes">fileMimeTypes: <a href="../http/FileMimeTypes.html" class="extype" name="play.api.http.FileMimeTypes">FileMimeTypes</a></span>)</span><span class="result">: <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>
       </span>
       
       <p class="shortcomment cmt">Send the given resource from the given classloader.</p><div class="fullcomment"><div class="comment cmt"><p>Send the given resource from the given classloader.
-</p></div><dl class="paramcmts block"><dt class="param">resource</dt><dd class="cmt"><p>The path of the resource to load.</p></dd><dt class="param">classLoader</dt><dd class="cmt"><p>The classloader to load it from, defaults to the classloader for this class.</p></dd><dt class="param">inline</dt><dd class="cmt"><p>Whether it should be served as an inline file, or as an attachment.</p></dd></dl></div>
+</p></div><dl class="paramcmts block"><dt class="param">resource</dt><dd class="cmt"><p>The path of the resource to load.</p></dd><dt class="param">classLoader</dt><dd class="cmt"><p>The classloader to load it from, defaults to the classloader for this class.</p></dd><dt class="param">inline</dt><dd class="cmt"><p>Whether it should be served as an inline file, or as an attachment.</p></dd><dt class="param">fileName</dt><dd class="cmt"><p>Function to retrieve the file name rendered in the <code>Content-Disposition</code> header. By default the name
+     of the file is used. The response will also automatically include the MIME type in the <code>Content-Type</code> header
+     deducing it from this file name if the <code>implicit fileMimeTypes</code> includes it or fallback to <code>application/octet-stream</code>
+     if unknown.</p></dd><dt class="param">onClose</dt><dd class="cmt"><p>Useful in order to perform cleanup operations (e.g. deleting a temporary file generated for a download).</p></dd></dl></div>
     </li><li name="play.api.mvc.Result#session" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="session(implicitrequest:play.api.mvc.RequestHeader):play.api.mvc.Session"></a><a id="session(RequestHeader):Session"></a>
       <span class="permalink">
@@ -810,6 +862,27 @@ infinite streams, while still allowing the connection to be kept alive and reuse
       </span>
       
       <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">request</dt><dd class="cmt"><p>Current request</p></dd><dt>returns</dt><dd class="cmt"><p>The session carried by this result. Reads the request’s session if this result does not modify the session.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a></dd></dl></div>
+    </li><li name="play.api.mvc.Results.Status#streamed" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="streamed[C](content:akka.stream.scaladsl.Source[C,_],contentLength:Option[Long],inline:Boolean,fileName:Option[String])(implicitwriteable:play.api.http.Writeable[C],implicitfileMimeTypes:play.api.http.FileMimeTypes):play.api.mvc.Result"></a><a id="streamed[C](Source[C,_],Option[Long],Boolean,Option[String])(Writeable[C],FileMimeTypes):Result"></a>
+      <span class="permalink">
+      <a href="../../../play/api/mvc/Results$Status.html#streamed[C](content:akka.stream.scaladsl.Source[C,_],contentLength:Option[Long],inline:Boolean,fileName:Option[String])(implicitwriteable:play.api.http.Writeable[C],implicitfileMimeTypes:play.api.http.FileMimeTypes):play.api.mvc.Result" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">streamed</span><span class="tparams">[<span name="C">C</span>]</span><span class="params">(<span name="content">content: <span class="extype" name="akka.stream.scaladsl.Source">Source</span>[<span class="extype" name="play.api.mvc.Results.Status.streamed.C">C</span>, _]</span>, <span name="contentLength">contentLength: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Long">Long</span>]</span>, <span name="inline">inline: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="fileName">fileName: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="writeable">writeable: <a href="../http/Writeable.html" class="extype" name="play.api.http.Writeable">Writeable</a>[<span class="extype" name="play.api.mvc.Results.Status.streamed.C">C</span>]</span>, <span name="fileMimeTypes">fileMimeTypes: <a href="../http/FileMimeTypes.html" class="extype" name="play.api.http.FileMimeTypes">FileMimeTypes</a></span>)</span><span class="result">: <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Feed the content as the response, using a streamed entity.</p><div class="fullcomment"><div class="comment cmt"><p>Feed the content as the response, using a streamed entity.</p><p>It will use the given Content-Type, but if is not present, then it fallsback
+to use the <span class="extype" name="Writeable">Writeable</span> contentType.
+</p></div><dl class="paramcmts block"><dt class="param">content</dt><dd class="cmt"><p>Source providing the content to stream.</p></dd><dt class="param">contentLength</dt><dd class="cmt"><p>an optional content length.</p></dd><dt class="param">inline</dt><dd class="cmt"><p>If the content should be rendered inline or as attachment.</p></dd><dt class="param">fileName</dt><dd class="cmt"><p>Function to retrieve the file name rendered in the <code>Content-Disposition</code> header. By default the name
+     of the file is used. The response will also automatically include the MIME type in the <code>Content-Type</code> header
+     deducing it from this file name if the <code>implicit fileMimeTypes</code> includes it or fallback to the content-type of the
+     <code>implicit writeable</code> if unknown.</p></dd></dl></div>
     </li><li name="play.api.mvc.Results.Status#streamed" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="streamed[C](content:akka.stream.scaladsl.Source[C,_],contentLength:Option[Long],contentType:Option[String])(implicitwriteable:play.api.http.Writeable[C]):play.api.mvc.Result"></a><a id="streamed[C](Source[C,_],Option[Long],Option[String])(Writeable[C]):Result"></a>
       <span class="permalink">
@@ -960,7 +1033,9 @@ list will override existing ones.</p><p>For example:</p><pre>Redirect(routes.App
         <span class="name">withDateHeaders</span><span class="params">(<span name="headers">headers: (<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="java.time.ZonedDateTime">ZonedDateTime</span>)*</span>)</span><span class="result">: <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a></span>
       </span>
       
-      <p class="shortcomment cmt">Add a header with a DateTime formatted using the default http date format</p><div class="fullcomment"><div class="comment cmt"><p>Add a header with a DateTime formatted using the default http date format</p></div><dl class="paramcmts block"><dt class="param">headers</dt><dd class="cmt"><p>the headers with a DateTime to add to this result.</p></dd><dt>returns</dt><dd class="cmt"><p>the new result.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a></dd></dl></div>
+      <p class="shortcomment cmt">Add a header with a DateTime formatted using the default http date format
+</p><div class="fullcomment"><div class="comment cmt"><p>Add a header with a DateTime formatted using the default http date format
+</p></div><dl class="paramcmts block"><dt class="param">headers</dt><dd class="cmt"><p>the headers with a DateTime to add to this result.</p></dd><dt>returns</dt><dd class="cmt"><p>the new result.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a></dd></dl></div>
     </li><li name="play.api.mvc.Result#withHeaders" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="withHeaders(headers:(String,String)*):play.api.mvc.Result"></a><a id="withHeaders((String,String)*):Result"></a>
       <span class="permalink">

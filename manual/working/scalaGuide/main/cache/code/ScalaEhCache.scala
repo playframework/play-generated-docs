@@ -4,7 +4,6 @@
 
 package scalaguide.ehcache {
   import akka.Done
-  import akka.stream.ActorMaterializer
   import org.junit.runner.RunWith
   import org.specs2.runner.JUnitRunner
   import org.specs2.execute.AsResult
@@ -92,7 +91,7 @@ package scalaguide.ehcache {
 
       "cached page" in {
         running() { app =>
-          implicit val mat = ActorMaterializer()(app.actorSystem)
+          implicit val mat = app.materializer
           val cachedApp    = app.injector.instanceOf[cachedaction.Application1]
           val result       = cachedApp.index(FakeRequest()).run()
           status(result) must_== 200
@@ -108,7 +107,7 @@ package scalaguide.ehcache {
 
       "control cache" in {
         running() { app =>
-          implicit val mat = ActorMaterializer()(app.actorSystem)
+          implicit val mat = app.materializer
           val cachedApp    = app.injector.instanceOf[cachedaction.Application1]
           val result0      = cachedApp.get(1)(FakeRequest("GET", "/resource/1")).run()
           status(result0) must_== 200
@@ -119,7 +118,7 @@ package scalaguide.ehcache {
 
       "control cache" in {
         running() { app =>
-          implicit val mat = ActorMaterializer()(app.actorSystem)
+          implicit val mat = app.materializer
           val cachedApp    = app.injector.instanceOf[cachedaction.Application2]
           val result0      = cachedApp.get(1)(FakeRequest("GET", "/resource/1")).run()
           status(result0) must_== 200
@@ -141,7 +140,7 @@ package scalaguide.ehcache {
         expectedResponse: Int = OK
     )(assertions: Future[Result] => T) = {
       running() { app =>
-        implicit val mat = ActorMaterializer()(app.actorSystem)
+        implicit val mat = app.materializer
         val result       = action(request).run()
         status(result) must_== expectedResponse
         assertions(result)
