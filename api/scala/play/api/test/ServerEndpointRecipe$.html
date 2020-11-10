@@ -101,7 +101,7 @@
         <a title="Contains the public API for Scala developers." href="../index.html"><span class="name">api</span></a>
       </span>
       
-      <p class="shortcomment cmt">Contains the public API for Scala developers.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the public API for Scala developers.</p><h6> Read configuration </h6><pre><span class="kw">val</span> poolSize = configuration.getInt(<span class="lit">"engine.pool.size"</span>)</pre><h6> Use the logger </h6><pre>Logger.info(<span class="lit">"Hello!"</span>)</pre><h6> Define a Plugin </h6><pre><span class="kw">class</span> MyPlugin(app: Application) <span class="kw">extends</span> Plugin</pre><h6> Create adhoc applications (for testing) </h6><pre><span class="kw">val</span> application = Application(<span class="kw">new</span> File(<span class="lit">"."</span>), <span class="kw">this</span>.getClass.getClassloader, <span class="std">None</span>, Play.Mode.DEV)</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../index.html" class="extype" name="play">play</a></dd></dl></div>
+      <p class="shortcomment cmt">Contains the public API for Scala developers.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the public API for Scala developers.</p><h6> Access the current Play application </h6><pre><span class="kw">import</span> play.api.Play.current</pre><h6> Read configuration </h6><pre><span class="kw">val</span> poolSize = configuration.getInt(<span class="lit">"engine.pool.size"</span>)</pre><h6> Use the logger </h6><pre>Logger.info(<span class="lit">"Hello!"</span>)</pre><h6> Define a Plugin </h6><pre><span class="kw">class</span> MyPlugin(app: Application) <span class="kw">extends</span> Plugin</pre><h6> Create adhoc applications (for testing) </h6><pre><span class="kw">val</span> application = Application(<span class="kw">new</span> File(<span class="lit">"."</span>), <span class="kw">this</span>.getClass.getClassloader, <span class="std">None</span>, Play.Mode.DEV)</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../index.html" class="extype" name="play">play</a></dd></dl></div>
     </li><li name="play.api.test" visbl="pub" class="indented3 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="test"></a><a id="test:test"></a>
       <span class="permalink">
@@ -127,6 +127,10 @@
                         <a class="object" href="ApplicationFactory$.html" title=""></a>
                         <a class="trait" href="ApplicationFactory.html" title="Creates an Application."></a>
                         <a href="ApplicationFactory.html" title="Creates an Application.">ApplicationFactory</a>
+                      </li><li class="current-entities indented3">
+                        <span class="separator"></span>
+                        <a class="object" href="CSRFTokenHelper$.html" title="Exposes methods to make using requests with CSRF tokens easier."></a>
+                        <a href="CSRFTokenHelper$.html" title="Exposes methods to make using requests with CSRF tokens easier.">CSRFTokenHelper</a>
                       </li><li class="current-entities indented3">
                         <span class="separator"></span>
                         <a class="trait" href="DefaultAwaitTimeout.html" title=""></a>
@@ -175,6 +179,10 @@
                         <span class="separator"></span>
                         <a class="trait" href="Injecting.html" title="A trait declared on a class that contains an def app: Application, and can provide instances of a class."></a>
                         <a href="Injecting.html" title="A trait declared on a class that contains an def app: Application, and can provide instances of a class.">Injecting</a>
+                      </li><li class="current-entities indented3">
+                        <span class="separator"></span>
+                        <a class="object" href="NoMaterializer$.html" title="In 99% of cases, when running tests against the result body, you don't actually need a materializer since it's a strict body."></a>
+                        <a href="NoMaterializer$.html" title="In 99% of cases, when running tests against the result body, you don't actually need a materializer since it's a strict body.">NoMaterializer</a>
                       </li><li class="current-entities indented3">
                         <span class="separator"></span>
                         <a class="object" href="NoTemporaryFileCreator$.html" title="A temporary file creator with no implementation."></a>
@@ -292,7 +300,7 @@
           <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@ApiMayChange</span><span class="args">()</span>
               
-        </dd><dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.8.5/testkit/play-test/src/main/scala/play/api/test/ServerEndpointRecipe.scala" target="_blank">ServerEndpointRecipe.scala</a></dd></dl><div class="toggleContainer block">
+        </dd><dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.7.x/testkit/play-test/src/main/scala/play/api/test/ServerEndpointRecipe.scala" target="_blank">ServerEndpointRecipe.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -397,6 +405,134 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="play.api.test.ServerEndpointRecipe#AkkaHttp11Encrypted" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="AkkaHttp11Encrypted:play.api.test.HttpsServerEndpointRecipe"></a><a id="AkkaHttp11Encrypted:HttpsServerEndpointRecipe"></a>
+      <span class="permalink">
+      <a href="../../../play/api/test/ServerEndpointRecipe$.html#AkkaHttp11Encrypted:play.api.test.HttpsServerEndpointRecipe" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">AkkaHttp11Encrypted</span><span class="result">: <a href="HttpsServerEndpointRecipe.html" class="extype" name="play.api.test.HttpsServerEndpointRecipe">HttpsServerEndpointRecipe</a></span>
+      </span>
+      
+      
+    </li><li name="play.api.test.ServerEndpointRecipe#AkkaHttp11Plaintext" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="AkkaHttp11Plaintext:play.api.test.HttpServerEndpointRecipe"></a><a id="AkkaHttp11Plaintext:HttpServerEndpointRecipe"></a>
+      <span class="permalink">
+      <a href="../../../play/api/test/ServerEndpointRecipe$.html#AkkaHttp11Plaintext:play.api.test.HttpServerEndpointRecipe" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">AkkaHttp11Plaintext</span><span class="result">: <a href="HttpServerEndpointRecipe.html" class="extype" name="play.api.test.HttpServerEndpointRecipe">HttpServerEndpointRecipe</a></span>
+      </span>
+      
+      
+    </li><li name="play.api.test.ServerEndpointRecipe#AkkaHttp20Encrypted" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="AkkaHttp20Encrypted:play.api.test.HttpsServerEndpointRecipe"></a><a id="AkkaHttp20Encrypted:HttpsServerEndpointRecipe"></a>
+      <span class="permalink">
+      <a href="../../../play/api/test/ServerEndpointRecipe$.html#AkkaHttp20Encrypted:play.api.test.HttpsServerEndpointRecipe" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">AkkaHttp20Encrypted</span><span class="result">: <a href="HttpsServerEndpointRecipe.html" class="extype" name="play.api.test.HttpsServerEndpointRecipe">HttpsServerEndpointRecipe</a></span>
+      </span>
+      
+      
+    </li><li name="play.api.test.ServerEndpointRecipe#AkkaHttp20Plaintext" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="AkkaHttp20Plaintext:play.api.test.HttpServerEndpointRecipe"></a><a id="AkkaHttp20Plaintext:HttpServerEndpointRecipe"></a>
+      <span class="permalink">
+      <a href="../../../play/api/test/ServerEndpointRecipe$.html#AkkaHttp20Plaintext:play.api.test.HttpServerEndpointRecipe" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">AkkaHttp20Plaintext</span><span class="result">: <a href="HttpServerEndpointRecipe.html" class="extype" name="play.api.test.HttpServerEndpointRecipe">HttpServerEndpointRecipe</a></span>
+      </span>
+      
+      
+    </li><li name="play.api.test.ServerEndpointRecipe#AllRecipes" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="AllRecipes:Seq[play.api.test.ServerEndpointRecipe]"></a><a id="AllRecipes:Seq[ServerEndpointRecipe]"></a>
+      <span class="permalink">
+      <a href="../../../play/api/test/ServerEndpointRecipe$.html#AllRecipes:Seq[play.api.test.ServerEndpointRecipe]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">AllRecipes</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<a href="ServerEndpointRecipe.html" class="extype" name="play.api.test.ServerEndpointRecipe">ServerEndpointRecipe</a>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">All non-experimental server endpoint recipes.</p>
+    </li><li name="play.api.test.ServerEndpointRecipe#AllRecipesIncludingExperimental" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="AllRecipesIncludingExperimental:Seq[play.api.test.ServerEndpointRecipe]"></a><a id="AllRecipesIncludingExperimental:Seq[ServerEndpointRecipe]"></a>
+      <span class="permalink">
+      <a href="../../../play/api/test/ServerEndpointRecipe$.html#AllRecipesIncludingExperimental:Seq[play.api.test.ServerEndpointRecipe]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">AllRecipesIncludingExperimental</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<a href="ServerEndpointRecipe.html" class="extype" name="play.api.test.ServerEndpointRecipe">ServerEndpointRecipe</a>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">All server endpoint recipes including experimental.</p>
+    </li><li name="play.api.test.ServerEndpointRecipe#Netty11Encrypted" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Netty11Encrypted:play.api.test.HttpsServerEndpointRecipe"></a><a id="Netty11Encrypted:HttpsServerEndpointRecipe"></a>
+      <span class="permalink">
+      <a href="../../../play/api/test/ServerEndpointRecipe$.html#Netty11Encrypted:play.api.test.HttpsServerEndpointRecipe" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">Netty11Encrypted</span><span class="result">: <a href="HttpsServerEndpointRecipe.html" class="extype" name="play.api.test.HttpsServerEndpointRecipe">HttpsServerEndpointRecipe</a></span>
+      </span>
+      
+      
+    </li><li name="play.api.test.ServerEndpointRecipe#Netty11Plaintext" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Netty11Plaintext:play.api.test.HttpServerEndpointRecipe"></a><a id="Netty11Plaintext:HttpServerEndpointRecipe"></a>
+      <span class="permalink">
+      <a href="../../../play/api/test/ServerEndpointRecipe$.html#Netty11Plaintext:play.api.test.HttpServerEndpointRecipe" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">Netty11Plaintext</span><span class="result">: <a href="HttpServerEndpointRecipe.html" class="extype" name="play.api.test.HttpServerEndpointRecipe">HttpServerEndpointRecipe</a></span>
+      </span>
+      
+      
     </li><li name="scala.Any#asInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <span class="permalink">

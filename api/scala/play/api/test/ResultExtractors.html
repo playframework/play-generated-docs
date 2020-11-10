@@ -101,7 +101,7 @@
         <a title="Contains the public API for Scala developers." href="../index.html"><span class="name">api</span></a>
       </span>
       
-      <p class="shortcomment cmt">Contains the public API for Scala developers.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the public API for Scala developers.</p><h6> Read configuration </h6><pre><span class="kw">val</span> poolSize = configuration.getInt(<span class="lit">"engine.pool.size"</span>)</pre><h6> Use the logger </h6><pre>Logger.info(<span class="lit">"Hello!"</span>)</pre><h6> Define a Plugin </h6><pre><span class="kw">class</span> MyPlugin(app: Application) <span class="kw">extends</span> Plugin</pre><h6> Create adhoc applications (for testing) </h6><pre><span class="kw">val</span> application = Application(<span class="kw">new</span> File(<span class="lit">"."</span>), <span class="kw">this</span>.getClass.getClassloader, <span class="std">None</span>, Play.Mode.DEV)</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../index.html" class="extype" name="play">play</a></dd></dl></div>
+      <p class="shortcomment cmt">Contains the public API for Scala developers.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the public API for Scala developers.</p><h6> Access the current Play application </h6><pre><span class="kw">import</span> play.api.Play.current</pre><h6> Read configuration </h6><pre><span class="kw">val</span> poolSize = configuration.getInt(<span class="lit">"engine.pool.size"</span>)</pre><h6> Use the logger </h6><pre>Logger.info(<span class="lit">"Hello!"</span>)</pre><h6> Define a Plugin </h6><pre><span class="kw">class</span> MyPlugin(app: Application) <span class="kw">extends</span> Plugin</pre><h6> Create adhoc applications (for testing) </h6><pre><span class="kw">val</span> application = Application(<span class="kw">new</span> File(<span class="lit">"."</span>), <span class="kw">this</span>.getClass.getClassloader, <span class="std">None</span>, Play.Mode.DEV)</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../index.html" class="extype" name="play">play</a></dd></dl></div>
     </li><li name="play.api.test" visbl="pub" class="indented3 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="test"></a><a id="test:test"></a>
       <span class="permalink">
@@ -127,6 +127,10 @@
                         <a class="object" href="ApplicationFactory$.html" title=""></a>
                         <a class="trait" href="ApplicationFactory.html" title="Creates an Application."></a>
                         <a href="ApplicationFactory.html" title="Creates an Application.">ApplicationFactory</a>
+                      </li><li class="current-entities indented3">
+                        <span class="separator"></span>
+                        <a class="object" href="CSRFTokenHelper$.html" title="Exposes methods to make using requests with CSRF tokens easier."></a>
+                        <a href="CSRFTokenHelper$.html" title="Exposes methods to make using requests with CSRF tokens easier.">CSRFTokenHelper</a>
                       </li><li class="current-entities indented3">
                         <span class="separator"></span>
                         <a class="trait" href="DefaultAwaitTimeout.html" title=""></a>
@@ -175,6 +179,10 @@
                         <span class="separator"></span>
                         <a class="trait" href="Injecting.html" title="A trait declared on a class that contains an def app: Application, and can provide instances of a class."></a>
                         <a href="Injecting.html" title="A trait declared on a class that contains an def app: Application, and can provide instances of a class.">Injecting</a>
+                      </li><li class="current-entities indented3">
+                        <span class="separator"></span>
+                        <a class="object" href="NoMaterializer$.html" title="In 99% of cases, when running tests against the result body, you don't actually need a materializer since it's a strict body."></a>
+                        <a href="NoMaterializer$.html" title="In 99% of cases, when running tests against the result body, you don't actually need a materializer since it's a strict body.">NoMaterializer</a>
                       </li><li class="current-entities indented3">
                         <span class="separator"></span>
                         <a class="object" href="NoTemporaryFileCreator$.html" title="A temporary file creator with no implementation."></a>
@@ -287,7 +295,7 @@
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="play.api.test.ResultExtractors">ResultExtractors</a> with <a href="../http/HeaderNames.html" class="extype" name="play.api.http.HeaderNames">HeaderNames</a> with <a href="../http/Status.html" class="extype" name="play.api.http.Status">Status</a></dd><dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.8.5/testkit/play-test/src/main/scala/play/api/test/Helpers.scala" target="_blank">Helpers.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="play.api.test.ResultExtractors">ResultExtractors</a> with <a href="../http/HeaderNames.html" class="extype" name="play.api.http.HeaderNames">HeaderNames</a> with <a href="../http/Status.html" class="extype" name="play.api.http.Status">Status</a></dd><dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.7.x/testkit/play-test/src/main/scala/play/api/test/Helpers.scala" target="_blank">Helpers.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -497,7 +505,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">contentAsBytes</span><span class="params">(<span name="of">of: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="timeout">timeout: <span class="extype" name="akka.util.Timeout">Timeout</span></span>, <span name="mat">mat: <span class="extype" name="akka.stream.Materializer">Materializer</span> = <span class="symbol"><span class="name"><a href="../../../akka/index.html">NoMaterializer</a></span></span></span>)</span><span class="result">: <span class="extype" name="akka.util.ByteString">ByteString</span></span>
+        <span class="name">contentAsBytes</span><span class="params">(<span name="of">of: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="timeout">timeout: <span class="extype" name="akka.util.Timeout">Timeout</span></span>, <span name="mat">mat: <span class="extype" name="akka.stream.Materializer">Materializer</span> = <span class="symbol"><span class="name"><a href="NoMaterializer$.html">NoMaterializer</a></span></span></span>)</span><span class="result">: <span class="extype" name="akka.util.ByteString">ByteString</span></span>
       </span>
       
       <p class="shortcomment cmt">Extracts the content as bytes.</p>
@@ -545,7 +553,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">contentAsJson</span><span class="params">(<span name="of">of: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="timeout">timeout: <span class="extype" name="akka.util.Timeout">Timeout</span></span>, <span name="mat">mat: <span class="extype" name="akka.stream.Materializer">Materializer</span> = <span class="symbol"><span class="name"><a href="../../../akka/index.html">NoMaterializer</a></span></span></span>)</span><span class="result">: <a href="../libs/json/JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a></span>
+        <span class="name">contentAsJson</span><span class="params">(<span name="of">of: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="timeout">timeout: <span class="extype" name="akka.util.Timeout">Timeout</span></span>, <span name="mat">mat: <span class="extype" name="akka.stream.Materializer">Materializer</span> = <span class="symbol"><span class="name"><a href="NoMaterializer$.html">NoMaterializer</a></span></span></span>)</span><span class="result">: <a href="../libs/json/JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a></span>
       </span>
       
       <p class="shortcomment cmt">Extracts the content as Json.</p>
@@ -593,7 +601,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">contentAsString</span><span class="params">(<span name="of">of: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="timeout">timeout: <span class="extype" name="akka.util.Timeout">Timeout</span></span>, <span name="mat">mat: <span class="extype" name="akka.stream.Materializer">Materializer</span> = <span class="symbol"><span class="name"><a href="../../../akka/index.html">NoMaterializer</a></span></span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">contentAsString</span><span class="params">(<span name="of">of: <span class="extype" name="scala.concurrent.Future">Future</span>[<a href="../mvc/Result.html" class="extype" name="play.api.mvc.Result">Result</a>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="timeout">timeout: <span class="extype" name="akka.util.Timeout">Timeout</span></span>, <span name="mat">mat: <span class="extype" name="akka.stream.Materializer">Materializer</span> = <span class="symbol"><span class="name"><a href="NoMaterializer$.html">NoMaterializer</a></span></span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       
       <p class="shortcomment cmt">Extracts the content as String.</p>

@@ -6,6 +6,7 @@ package javaguide.http
 
 import java.util.concurrent.CompletableFuture
 
+import akka.stream.ActorMaterializer
 import org.specs2.mutable.Specification
 import play.api.mvc.EssentialAction
 import play.api.mvc.RequestHeader
@@ -60,13 +61,9 @@ class JavaRouting extends Specification {
       contentOf(FakeRequest("GET", "/api/list-all")) must_== "version null"
       contentOf(FakeRequest("GET", "/api/list-all?version=3.0")) must_== "version 3.0"
     }
-    "support list values for parameters" in {
-      contentOf(FakeRequest("GET", "/api/list-items?item=apples&item=bananas")) must_== "params apples,bananas"
-      contentOf(FakeRequest("GET", "/api/list-int-items?item=1&item=42")) must_== "params 1,42"
-    }
     "support reverse routing" in {
       running() { app =>
-        implicit val mat = app.materializer
+        implicit val mat = ActorMaterializer()(app.actorSystem)
         header(
           "Location",
           call(
@@ -83,7 +80,7 @@ class JavaRouting extends Specification {
 
   def contentOf(rh: RequestHeader, router: Class[_ <: Router] = classOf[Routes]) = {
     running(_.configure("play.http.router" -> router.getName)) { app =>
-      implicit val mat = app.materializer
+      implicit val mat = ActorMaterializer()(app.actorSystem)
       contentAsString(app.requestHandler.handlerForRequest(rh)._2 match {
         case e: EssentialAction => e(rh).run()
       })
@@ -92,7 +89,7 @@ class JavaRouting extends Specification {
 
   def statusOf(rh: RequestHeader, router: Class[_ <: Router] = classOf[Routes]) = {
     running(_.configure("play.http.router" -> router.getName)) { app =>
-      implicit val mat = app.materializer
+      implicit val mat = ActorMaterializer()(app.actorSystem)
       status(app.requestHandler.handlerForRequest(rh)._2 match {
         case e: EssentialAction => e(rh).run()
       })

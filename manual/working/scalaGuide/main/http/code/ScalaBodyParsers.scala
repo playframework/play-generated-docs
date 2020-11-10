@@ -3,6 +3,7 @@
  */
 
 package scalaguide.http.scalabodyparsers {
+  import akka.stream.ActorMaterializer
   import play.api.http.Writeable
   import play.api.libs.json.JsValue
   import play.api.libs.json.Json
@@ -10,6 +11,7 @@ package scalaguide.http.scalabodyparsers {
   import play.api.test._
   import play.api.test.Helpers._
   import org.specs2.mutable.Around
+  import org.specs2.mutable.Specification
   import org.specs2.mutable.SpecificationLike
   import org.junit.runner.RunWith
   import org.specs2.runner.JUnitRunner
@@ -90,10 +92,8 @@ package scalaguide.http.scalabodyparsers {
         testAction(save, helloRequest.withSession("username" -> "player"))
       }
 
-      "body parser combining" in new WithController() {
-        val save = new scalaguide.http.scalabodyparsers.full.Application(
-          Helpers.stubControllerComponents(playBodyParsers = stubPlayBodyParsers(app.materializer))
-        ).save
+      "body parser combining" in {
+        val save = new scalaguide.http.scalabodyparsers.full.Application(Helpers.stubControllerComponents()).save
         testAction(save, helloRequest.withSession("username" -> "player"))
       }
 
@@ -109,7 +109,7 @@ package scalaguide.http.scalabodyparsers {
       }
 
       "body parser limit file" in new WithController() {
-        implicit val mat = app.materializer
+        implicit val mat = ActorMaterializer()(app.actorSystem)
         val storeInUserFile =
           new scalaguide.http.scalabodyparsers.full.Application(controllerComponents).storeInUserFile
         //#body-parser-limit-file
@@ -193,7 +193,7 @@ package scalaguide.http.scalabodyparsers {
         expectedResponse: Int = OK
     )(assertions: Future[Result] => T) = {
       running() { app =>
-        implicit val mat = app.materializer
+        implicit val mat = ActorMaterializer()(app.actorSystem)
         val result       = call(action, request)
         status(result) must_== expectedResponse
         assertions(result)

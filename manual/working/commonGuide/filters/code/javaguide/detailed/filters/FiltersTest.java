@@ -7,6 +7,7 @@ package javaguide.detailed.filters;
 import org.junit.Test;
 import play.api.mvc.PlayBodyParsers;
 import play.api.test.CSRFTokenHelper;
+import play.core.j.JavaContextComponents;
 import play.mvc.Http;
 import play.mvc.Results;
 import play.routing.Router;
@@ -22,7 +23,9 @@ public class FiltersTest extends WithApplication {
   @Test
   public void testRequestBuilder() {
     Router router =
-        new RoutingDsl(instanceOf(play.mvc.BodyParser.Default.class))
+        new RoutingDsl(
+                instanceOf(play.mvc.BodyParser.Default.class),
+                instanceOf(JavaContextComponents.class))
             .GET("/xx/Kiwi")
             .routingTo(request -> Results.ok("success"))
             .build();
@@ -41,7 +44,9 @@ public class FiltersTest extends WithApplication {
   @Test
   public void test() {
     Router router =
-        new RoutingDsl(instanceOf(play.mvc.BodyParser.Default.class))
+        new RoutingDsl(
+                instanceOf(play.mvc.BodyParser.Default.class),
+                instanceOf(JavaContextComponents.class))
             .POST("/xx/Kiwi")
             .routingTo(request -> Results.ok("success"))
             .build();

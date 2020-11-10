@@ -130,7 +130,7 @@
                         <a class="class" href="AssetsModule.html" title=""></a>
                         <a href="AssetsModule.html" title="">AssetsModule</a>
                       </li><li class="current-entities indented1">
-                        <span class="separator"></span>
+                        <a class="object" href="Default$.html" title=""></a>
                         <a class="class" href="Default.html" title="Default actions ready to use as is from your routes file."></a>
                         <a href="Default.html" title="Default actions ready to use as is from your routes file.">Default</a>
                       </li><li class="current-entities indented1">
@@ -288,11 +288,11 @@
       </span>
       <span class="symbol">
         <a title="" href="AssetsConfiguration.html"><span class="name">AssetsConfiguration</span></a><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;/public&quot;</span></span>, <span name="urlPrefix">urlPrefix: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;/assets&quot;</span></span>, <span name="defaultCharSet">defaultCharSet: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;utf-8&quot;</span></span>, <span name="enableCaching">enableCaching: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="enableCacheControl">enableCacheControl: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="configuredCacheControl">configuredCacheControl: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]] = <span class="symbol">Map.empty</span></span>, <span name="defaultCacheControl">defaultCacheControl: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;public, max-age=3600&quot;</span></span>, <span name="aggressiveCacheControl">aggressiveCacheControl: <span class="extype" name="scala.Predef.String">String</span> = <span class="defval" name="&quot;public, max-age=31536000, immutable&quot;">...</span></span>, <span name="digestAlgorithm">digestAlgorithm: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;md5&quot;</span></span>, <span name="checkForMinified">checkForMinified: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">true</span></span>, <span name="textContentTypes">textContentTypes: <span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="defval" name="Set(&quot;application/json&quot;, &quot;application/javascript&quot;)">...</span></span>, <span name="encodings">encodings: <span class="extype" name="scala.Seq">Seq</span>[<a href="AssetEncoding.html" class="extype" name="controllers.AssetEncoding">AssetEncoding</a>] = <span class="defval" name='<span class="name"><a href="AssetEncoding$.html">Seq(
-      AssetEncoding.Brotli,
-      AssetEncoding.Gzip,
-      AssetEncoding.Xz,
-      AssetEncoding.Bzip2
-    )</a></span>'>...</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+        AssetEncoding.Brotli,
+        AssetEncoding.Gzip,
+        AssetEncoding.Xz,
+        AssetEncoding.Bzip2
+      )</a></span>'>...</span></span>)</span><span class="result"> extends <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       
       
@@ -375,9 +375,9 @@
         <a title="A provider for AssetsMetadata that sets up necessary static state for reverse routing." href="AssetsMetadataProvider.html"><span class="name">AssetsMetadataProvider</span></a><span class="result"> extends <span class="extype" name="javax.inject.Provider">Provider</span>[<a href="DefaultAssetsMetadata.html" class="extype" name="controllers.DefaultAssetsMetadata">DefaultAssetsMetadata</a>]</span>
       </span>
       
-      <p class="shortcomment cmt">A provider for <a href="AssetsMetadata.html" class="extype" name="controllers.AssetsMetadata">AssetsMetadata</a> that sets up necessary static state for reverse routing.</p><div class="fullcomment"><div class="comment cmt"><p>A provider for <a href="AssetsMetadata.html" class="extype" name="controllers.AssetsMetadata">AssetsMetadata</a> that sets up necessary static state for reverse routing. The
-<a href="../play/api/mvc/PathBindable.html" class="extype" name="play.api.mvc.PathBindable">PathBindable</a> for assets does additional &quot;magic&quot; using statics so routes
-like <code>routes.Assets.versioned(&quot;foo.js&quot;)</code> will find the minified and digested version of that asset.</p><p>It is also possible to avoid this provider and simply inject <a href="AssetsFinder.html" class="extype" name="controllers.AssetsFinder">AssetsFinder</a>. Then you can call
+      <p class="shortcomment cmt">A provider for <a href="AssetsMetadata.html" class="extype" name="controllers.AssetsMetadata">AssetsMetadata</a> that sets up necessary static state for reverse routing.</p><div class="fullcomment"><div class="comment cmt"><p>A provider for <a href="AssetsMetadata.html" class="extype" name="controllers.AssetsMetadata">AssetsMetadata</a> that sets up necessary static state for reverse routing. The <a href="../play/api/mvc/PathBindable.html" class="extype" name="play.api.mvc.PathBindable">PathBindable</a>
+for assets does additional &quot;magic&quot; using statics so routes like <code>routes.Assets.versioned("foo.js") </code> will
+find the minified and digested version of that asset.</p><p>It is also possible to avoid this provider and simply inject <a href="AssetsFinder.html" class="extype" name="controllers.AssetsFinder">AssetsFinder</a>. Then you can call
 <code>AssetsFinder.path</code> to get the final path of an asset according to the path and url prefix in configuration.
 </p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@Singleton</span><span class="args">()</span>
@@ -495,7 +495,7 @@ GET     /assets/﻿*file               controllers.ExternalAssets.at(path=<span 
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a title="Controller that serves static resources." href="Assets$.html"><span class="name">Assets</span></a>
+        <a title="Controller that serves static resources." href="Assets$.html"><span class="name">Assets</span></a><span class="result"> extends <a href="AssetsBuilder.html" class="extype" name="controllers.AssetsBuilder">AssetsBuilder</a></span>
       </span>
       
       <p class="shortcomment cmt">Controller that serves static resources.</p><div class="fullcomment"><div class="comment cmt"><p>Controller that serves static resources.</p><p>Resources are searched in the classpath.</p><p>It handles Last-Modified and ETag header automatically.
@@ -546,7 +546,29 @@ algorithm is preferred:</p><pre><span class="lit">"play.assets.digest.algorithm"
 
         
 
-        
+        <div class="values members">
+              <h3>Deprecated Value Members</h3>
+              <ol><li name="controllers.Default" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Default"></a><a id="Default:Default"></a>
+      <span class="permalink">
+      <a href="../controllers/Default$.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="Default$.html"><span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use Default class instead">Default</span></a><span class="result"> extends <a href="Default.html" class="extype" name="controllers.Default">Default</a></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use Default class instead</p></dd></dl></div>
+    </li></ol>
+            </div>
         </div>
 
         <div id="inheritedMembers">

@@ -101,7 +101,7 @@
         <a title="Contains the public API for Scala developers." href="../index.html"><span class="name">api</span></a>
       </span>
       
-      <p class="shortcomment cmt">Contains the public API for Scala developers.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the public API for Scala developers.</p><h6> Read configuration </h6><pre><span class="kw">val</span> poolSize = configuration.getInt(<span class="lit">"engine.pool.size"</span>)</pre><h6> Use the logger </h6><pre>Logger.info(<span class="lit">"Hello!"</span>)</pre><h6> Define a Plugin </h6><pre><span class="kw">class</span> MyPlugin(app: Application) <span class="kw">extends</span> Plugin</pre><h6> Create adhoc applications (for testing) </h6><pre><span class="kw">val</span> application = Application(<span class="kw">new</span> File(<span class="lit">"."</span>), <span class="kw">this</span>.getClass.getClassloader, <span class="std">None</span>, Play.Mode.DEV)</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../index.html" class="extype" name="play">play</a></dd></dl></div>
+      <p class="shortcomment cmt">Contains the public API for Scala developers.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the public API for Scala developers.</p><h6> Access the current Play application </h6><pre><span class="kw">import</span> play.api.Play.current</pre><h6> Read configuration </h6><pre><span class="kw">val</span> poolSize = configuration.getInt(<span class="lit">"engine.pool.size"</span>)</pre><h6> Use the logger </h6><pre>Logger.info(<span class="lit">"Hello!"</span>)</pre><h6> Define a Plugin </h6><pre><span class="kw">class</span> MyPlugin(app: Application) <span class="kw">extends</span> Plugin</pre><h6> Create adhoc applications (for testing) </h6><pre><span class="kw">val</span> application = Application(<span class="kw">new</span> File(<span class="lit">"."</span>), <span class="kw">this</span>.getClass.getClassloader, <span class="std">None</span>, Play.Mode.DEV)</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../index.html" class="extype" name="play">play</a></dd></dl></div>
     </li><li name="play.api.http" visbl="pub" class="indented3 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="http"></a><a id="http:http"></a>
       <span class="permalink">
@@ -246,10 +246,6 @@ For example:</p><pre><span class="kw">val</span> text = ContentTypes.TEXT
                         <a class="object" href="HttpErrorHandlerExceptions$.html" title="Extracted so the Java default error handler can reuse this functionality"></a>
                         <a href="HttpErrorHandlerExceptions$.html" title="Extracted so the Java default error handler can reuse this functionality">HttpErrorHandlerExceptions</a>
                       </li><li class="current-entities indented3">
-                        <span class="separator"></span>
-                        <a class="class" href="HttpErrorInfo.html" title="Used as request attribute which gets attached to the request that gets passed to an error handler."></a>
-                        <a href="HttpErrorInfo.html" title="Used as request attribute which gets attached to the request that gets passed to an error handler.">HttpErrorInfo</a>
-                      </li><li class="current-entities indented3">
                         <a class="object" href="HttpFilters$.html" title=""></a>
                         <a class="trait" href="HttpFilters.html" title="Provides filters to the play.api.http.HttpRequestHandler."></a>
                         <a href="HttpFilters.html" title="Provides filters to the play.api.http.HttpRequestHandler.">HttpFilters</a>
@@ -289,6 +285,10 @@ For example:</p><pre><span class="kw">val</span> text = ContentTypes.TEXT
                         <span class="separator"></span>
                         <a class="class" href="JsonHttpErrorHandler.html" title="An alternative default HTTP error handler which will render errors as JSON messages instead of HTML pages."></a>
                         <a href="JsonHttpErrorHandler.html" title="An alternative default HTTP error handler which will render errors as JSON messages instead of HTML pages.">JsonHttpErrorHandler</a>
+                      </li><li class="current-entities indented3">
+                        <span class="separator"></span>
+                        <a class="object" href="LazyHttpErrorHandler$.html" title="A lazy HTTP error handler, that looks up the error handler from the current application"></a>
+                        <a href="LazyHttpErrorHandler$.html" title="A lazy HTTP error handler, that looks up the error handler from the current application">LazyHttpErrorHandler</a>
                       </li><li class="current-entities indented3">
                         <span class="separator"></span>
                         <a class="trait" href="LowPriorityWriteables.html" title="Default Writeable with lower priority."></a>
@@ -371,7 +371,7 @@ For example:</p><pre><span class="kw">val</span> text = ContentTypes.TEXT
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Configuration for action composition.
 </p></div><dl class="paramcmts block"><dt class="param">controllerAnnotationsFirst</dt><dd class="cmt"><p>If annotations put on controllers should be executed before the ones put on actions.</p></dd><dt class="param">executeActionCreatorActionFirst</dt><dd class="cmt"><p>If the action returned by the action creator should be
-                                       executed before the action composition ones.</p></dd></dl><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.8.5/core/play/src/main/scala/play/api/http/HttpConfiguration.scala" target="_blank">HttpConfiguration.scala</a></dd></dl><div class="toggleContainer block">
+                                       executed before the action composition ones.</p></dd></dl><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.7.x/core/play/src/main/scala/play/api/http/HttpConfiguration.scala" target="_blank">HttpConfiguration.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>

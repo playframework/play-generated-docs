@@ -1,5 +1,5 @@
 <!--- Copyright (C) Lightbend Inc. <https://www.lightbend.com> -->
-# Using JPA to access your database
+# Integrating with JPA
 
 ## Adding dependencies to your project
 
@@ -17,7 +17,7 @@ JPA requires the datasource to be accessible via [JNDI](https://www.oracle.com/t
 db.default.jndiName=DefaultDS
 ```
 
-See the [[Database docs|AccessingAnSQLDatabase]] for more information about how to configure your datasource.
+See the [[Java Database docs|JavaDatabase]] for more information about how to configure your datasource.
 
 ## Creating a Persistence Unit
 
@@ -56,7 +56,7 @@ Running Play in development mode while using JPA will work fine, but in order to
 
 > **Note:** More information on how to configure externalized resources can be found [[here|sbtCookbook#Configure-externalized-resources]].
 The above settings makes sure the `persistence.xml` file will always stay *inside* the generated application `jar` file.
-This is a requirement by the [JPA specification](https://download.oracle.com/otn-pub/jcp/persistence-2_1-fr-eval-spec/JavaPersistence.pdf). According to it the `persistence.xml` file has to be in the *same* `jar` file where its persistence-units' entities live, otherwise these entities won't be availabe for the persistence-units. (You could, however, explicitly add a `jar` file containing entities via `<jar-file>xxx.jar</jar-file>` to a persistence-unit - but that doesn't work well with Play as it would fail with a `FileNotFoundException` in development mode because there is no `jar` file that will be generated in that mode. Further that wouldn't work well in production mode too because when deploying an application, the name of the generated application `jar` file changes with each new release as the current version of the application gets appended to it.)
+This is a requirement by the [JPA specification](http://download.oracle.com/otn-pub/jcp/persistence-2_1-fr-eval-spec/JavaPersistence.pdf). According to it the `persistence.xml` file has to be in the *same* `jar` file where its persistence-units' entities live, otherwise these entities won't be availabe for the persistence-units. (You could, however, explicitly add a `jar` file containing entities via `<jar-file>xxx.jar</jar-file>` to a persistence-unit - but that doesn't work well with Play as it would fail with a `FileNotFoundException` in development mode because there is no `jar` file that will be generated in that mode. Further that wouldn't work well in production mode too because when deploying an application, the name of the generated application `jar` file changes with each new release as the current version of the application gets appended to it.)
 
 ## Using `play.db.jpa.JPAApi`
 
@@ -97,7 +97,7 @@ database.dispatcher {
 
 The `JPAApi` provides you various `withTransaction(...)` methods to execute arbitrary code inside a JPA transaction. These methods however do not include a custom execution context and therefore must be wrapped inside a `CompletableFuture` with an IO bound execution context.
 
-### Examples
+### Examples:
 
 Using [`JPAApi.withTransaction(Function<EntityManager, T>)`](api/java/play/db/jpa/JPAApi.html#withTransaction-java.util.function.Function-):
 

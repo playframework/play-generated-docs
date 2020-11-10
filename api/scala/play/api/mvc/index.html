@@ -101,7 +101,7 @@
         <a title="Contains the public API for Scala developers." href="../index.html"><span class="name">api</span></a>
       </span>
       
-      <p class="shortcomment cmt">Contains the public API for Scala developers.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the public API for Scala developers.</p><h6> Read configuration </h6><pre><span class="kw">val</span> poolSize = configuration.getInt(<span class="lit">"engine.pool.size"</span>)</pre><h6> Use the logger </h6><pre>Logger.info(<span class="lit">"Hello!"</span>)</pre><h6> Define a Plugin </h6><pre><span class="kw">class</span> MyPlugin(app: Application) <span class="kw">extends</span> Plugin</pre><h6> Create adhoc applications (for testing) </h6><pre><span class="kw">val</span> application = Application(<span class="kw">new</span> File(<span class="lit">"."</span>), <span class="kw">this</span>.getClass.getClassloader, <span class="std">None</span>, Play.Mode.DEV)</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../index.html" class="extype" name="play">play</a></dd></dl></div>
+      <p class="shortcomment cmt">Contains the public API for Scala developers.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the public API for Scala developers.</p><h6> Access the current Play application </h6><pre><span class="kw">import</span> play.api.Play.current</pre><h6> Read configuration </h6><pre><span class="kw">val</span> poolSize = configuration.getInt(<span class="lit">"engine.pool.size"</span>)</pre><h6> Use the logger </h6><pre>Logger.info(<span class="lit">"Hello!"</span>)</pre><h6> Define a Plugin </h6><pre><span class="kw">class</span> MyPlugin(app: Application) <span class="kw">extends</span> Plugin</pre><h6> Create adhoc applications (for testing) </h6><pre><span class="kw">val</span> application = Application(<span class="kw">new</span> File(<span class="lit">"."</span>), <span class="kw">this</span>.getClass.getClassloader, <span class="std">None</span>, Play.Mode.DEV)</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../index.html" class="extype" name="play">play</a></dd></dl></div>
     </li><li name="play.api.cache" visbl="pub" class="indented3 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="cache"></a><a id="cache:cache"></a>
       <span class="permalink">
@@ -119,22 +119,6 @@
       
       <p class="shortcomment cmt">Contains the Cache access API.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the Cache access API.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="play.api">api</a></dd></dl></div>
-    </li><li name="play.api.cluster" visbl="pub" class="indented3 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="cluster"></a><a id="cluster:cluster"></a>
-      <span class="permalink">
-      <a href="../../../play/api/cluster/index.html" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">package</span>
-      </span>
-      <span class="symbol">
-        <a title="" href="../cluster/index.html"><span class="name">cluster</span></a>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="play.api">api</a></dd></dl></div>
     </li><li name="play.api.controllers" visbl="pub" class="indented3 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="controllers"></a><a id="controllers:controllers"></a>
       <span class="permalink">
@@ -367,7 +351,7 @@ JSR-330 scope annotations.</p><p>Bindings are provided by instances of <a href="
                         <a class="class" href="Accepting.html" title="Convenient class to generate extractors checking if a given mime type matches the Accept header of a request."></a>
                         <a href="Accepting.html" title="Convenient class to generate extractors checking if a given mime type matches the Accept header of a request.">Accepting</a>
                       </li><li class="current-entities indented3">
-                        <span class="separator"></span>
+                        <a class="object" href="Action$.html" title="Helper object to create Action values."></a>
                         <a class="trait" href="Action.html" title="An action is essentially a (Request[A] =&gt; Result) function that handles a request and generates a result to be sent to the client."></a>
                         <a href="Action.html" title="An action is essentially a (Request[A] =&gt; Result) function that handles a request and generates a result to be sent to the client.">Action</a>
                       </li><li class="current-entities indented3">
@@ -439,13 +423,13 @@ JSR-330 scope annotations.</p><p>Bindings are provided by instances of <a href="
                         <a class="trait" href="BodyParser.html" title="A body parser parses the HTTP request body content."></a>
                         <a href="BodyParser.html" title="A body parser parses the HTTP request body content.">BodyParser</a>
                       </li><li class="current-entities indented3">
-                        <a class="object" href="BodyParserUtils$.html" title=""></a>
+                        <span class="separator"></span>
                         <a class="trait" href="BodyParserUtils.html" title="A set of reusable body parsers and utilities that do not require configuration."></a>
                         <a href="BodyParserUtils.html" title="A set of reusable body parsers and utilities that do not require configuration.">BodyParserUtils</a>
                       </li><li class="current-entities indented3">
-                        <span class="separator"></span>
                         <a class="object" href="BodyParsers$.html" title="Default BodyParsers."></a>
-                        <a href="BodyParsers$.html" title="Default BodyParsers.">BodyParsers</a>
+                        <a class="trait" href="BodyParsers.html" title="Legacy body parsers trait."></a>
+                        <a href="BodyParsers.html" title="Legacy body parsers trait.">BodyParsers</a>
                       </li><li class="current-entities indented3">
                         <span class="separator"></span>
                         <a class="class" href="Call.html" title="Defines a Call, which describes an HTTP request and can be used to create links or fill redirect data."></a>
@@ -454,6 +438,10 @@ JSR-330 scope annotations.</p><p>Bindings are provided by instances of <a href="
                         <a class="object" href="Codec$.html" title="Default Codec support."></a>
                         <a class="class" href="Codec.html" title="A Codec handle the conversion of String to Byte arrays."></a>
                         <a href="Codec.html" title="A Codec handle the conversion of String to Byte arrays.">Codec</a>
+                      </li><li class="current-entities indented3">
+                        <span class="separator"></span>
+                        <a class="trait" href="Controller.html" title="Implements deprecated controller functionality."></a>
+                        <a href="Controller.html" title="Implements deprecated controller functionality.">Controller</a>
                       </li><li class="current-entities indented3">
                         <span class="separator"></span>
                         <a class="trait" href="ControllerComponents.html" title="The base controller components dependencies that most controllers rely on."></a>
@@ -817,7 +805,7 @@ JSR-330 scope annotations.</p><p>Bindings are provided by instances of <a href="
     Ok(<span class="lit">"It works!"</span>)
   }
 
-}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.8.5/core/play/src/main/scala/play/api/mvc/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
+}</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.7.x/core/play/src/main/scala/play/api/mvc/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -1251,6 +1239,26 @@ you can mix in this trait.
       </span>
       
       <p class="shortcomment cmt">A set of reusable body parsers and utilities that do not require configuration.</p>
+    </li><li name="play.api.mvc.BodyParsers" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="BodyParsersextendsAnyRef"></a><a id="BodyParsers:BodyParsers"></a>
+      <span class="permalink">
+      <a href="../../../play/api/mvc/BodyParsers.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a title="Legacy body parsers trait." href="BodyParsers.html"><span class="name">BodyParsers</span></a><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Legacy body parsers trait.</p><div class="fullcomment"><div class="comment cmt"><p>Legacy body parsers trait. Basically all this does is define a &quot;parse&quot; member with a PlayBodyParsers instance
+constructed from the running app's settings. If no app is running, we create parsers using default settings and an
+internally-created materializer. This is done to support legacy behavior. Instead of using this trait, we suggest
+injecting an instance of PlayBodyParsers (either directly or through <a href="BaseController.html" class="extype" name="play.api.mvc.BaseController">BaseController</a> or one of its subclasses).
+</p></div></div>
     </li><li name="play.api.mvc.Call" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="CallextendsCallwithProductwithSerializable"></a><a id="Call:Call"></a>
       <span class="permalink">
@@ -2439,6 +2447,27 @@ signed code.</p>
 using request attributes instead. See the <code>attr</code>, <code>withAttr</code>, etc
 methods.
 </p></div></div>
+    </li><li name="play.api.mvc.Controller" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="ControllerextendsControllerHelperswithBodyParsers"></a><a id="Controller:Controller"></a>
+      <span class="permalink">
+      <a href="../../../play/api/mvc/Controller.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a title="Implements deprecated controller functionality." href="Controller.html"><span class="name deprecated" title="Deprecated: (Since version 2.6.0) Your controller should extend AbstractController, BaseController, or InjectedController instead.">Controller</span></a><span class="result"> extends <a href="ControllerHelpers.html" class="extype" name="play.api.mvc.ControllerHelpers">ControllerHelpers</a> with <a href="BodyParsers.html" class="extype" name="play.api.mvc.BodyParsers">BodyParsers</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Implements deprecated controller functionality.</p><div class="fullcomment"><div class="comment cmt"><p>Implements deprecated controller functionality. We recommend moving away from this and using one of the classes or
+traits extending <a href="BaseController.html" class="extype" name="play.api.mvc.BaseController">BaseController</a> instead.
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Your controller should extend AbstractController, BaseController, or InjectedController instead.</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -2513,22 +2542,6 @@ methods.
       </span>
       
       <p class="shortcomment cmt">Helper object to construct <code>BodyParser</code> values.</p>
-    </li><li name="play.api.mvc.BodyParserUtils" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="BodyParserUtils"></a><a id="BodyParserUtils:BodyParserUtils"></a>
-      <span class="permalink">
-      <a href="../../../play/api/mvc/BodyParserUtils$.html" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a title="" href="BodyParserUtils$.html"><span class="name">BodyParserUtils</span></a>
-      </span>
-      
-      
     </li><li name="play.api.mvc.BodyParsers" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="BodyParsers"></a><a id="BodyParsers:BodyParsers"></a>
       <span class="permalink">
@@ -2541,7 +2554,7 @@ methods.
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a title="Default BodyParsers." href="BodyParsers$.html"><span class="name">BodyParsers</span></a>
+        <a title="Default BodyParsers." href="BodyParsers$.html"><span class="name">BodyParsers</span></a><span class="result"> extends <a href="BodyParsers.html" class="extype" name="play.api.mvc.BodyParsers">BodyParsers</a></span>
       </span>
       
       <p class="shortcomment cmt">Default BodyParsers.</p>
@@ -2719,7 +2732,7 @@ methods.
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a title="" href="Flash$.html"><span class="name">Flash</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a title="" href="Flash$.html"><span class="name">Flash</span></a><span class="result"> extends <a href="CookieBaker.html" class="extype" name="play.api.mvc.CookieBaker">CookieBaker</a>[<a href="Flash.html" class="extype" name="play.api.mvc.Flash">Flash</a>] with <a href="UrlEncodedCookieDataCodec.html" class="extype" name="play.api.mvc.UrlEncodedCookieDataCodec">UrlEncodedCookieDataCodec</a> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       
       
@@ -2992,7 +3005,7 @@ methods.
         <span class="kind">object</span>
       </span>
       <span class="symbol">
-        <a title="" href="Session$.html"><span class="name">Session</span></a><span class="result"> extends <span class="extype" name="scala.Serializable">Serializable</span></span>
+        <a title="" href="Session$.html"><span class="name">Session</span></a><span class="result"> extends <a href="CookieBaker.html" class="extype" name="play.api.mvc.CookieBaker">CookieBaker</a>[<a href="Session.html" class="extype" name="play.api.mvc.Session">Session</a>] with <a href="FallbackCookieDataCodec.html" class="extype" name="play.api.mvc.FallbackCookieDataCodec">FallbackCookieDataCodec</a> with <span class="extype" name="scala.Serializable">Serializable</span></span>
       </span>
       
       
@@ -3018,7 +3031,30 @@ methods.
 
         
 
-        
+        <div class="values members">
+              <h3>Deprecated Value Members</h3>
+              <ol><li name="play.api.mvc.Action" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="Action"></a><a id="Action:Action"></a>
+      <span class="permalink">
+      <a href="../../../play/api/mvc/Action$.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="Helper object to create Action values." href="Action$.html"><span class="name deprecated" title="Deprecated: (Since version 2.6.0)">Action</span></a><span class="result"> extends <a href="DefaultActionBuilder.html" class="extype" name="play.api.mvc.DefaultActionBuilder">DefaultActionBuilder</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Helper object to create <code>Action</code> values.</p><div class="fullcomment"><div class="comment cmt"><p>Helper object to create <code>Action</code> values.
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i></p></dd></dl></div>
+    </li></ol>
+            </div>
         </div>
 
         <div id="inheritedMembers">

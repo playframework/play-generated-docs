@@ -13,6 +13,7 @@ import javax.inject.Inject;
 import play.api.mvc.AnyContent;
 import play.api.mvc.BodyParser;
 import play.api.mvc.PlayBodyParsers;
+import play.core.j.JavaContextComponents;
 import play.mvc.Http;
 import play.routing.Router;
 import play.routing.RoutingDsl;
@@ -125,9 +126,11 @@ public class JavaRoutingDsl extends WithApplication {
   public void createNewRoutingDsl() {
     play.mvc.BodyParser.Default bodyParser =
         app.injector().instanceOf(play.mvc.BodyParser.Default.class);
+    JavaContextComponents javaContextComponents =
+        app.injector().instanceOf(JavaContextComponents.class);
 
     // #new-routing-dsl
-    RoutingDsl routingDsl = new RoutingDsl(bodyParser);
+    RoutingDsl routingDsl = new RoutingDsl(bodyParser, javaContextComponents);
     // #new-routing-dsl
     Router router =
         routingDsl.GET("/hello/:to").routingTo((request, to) -> ok("Hello " + to)).build();

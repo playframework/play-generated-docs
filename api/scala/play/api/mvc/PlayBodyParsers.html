@@ -101,7 +101,7 @@
         <a title="Contains the public API for Scala developers." href="../index.html"><span class="name">api</span></a>
       </span>
       
-      <p class="shortcomment cmt">Contains the public API for Scala developers.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the public API for Scala developers.</p><h6> Read configuration </h6><pre><span class="kw">val</span> poolSize = configuration.getInt(<span class="lit">"engine.pool.size"</span>)</pre><h6> Use the logger </h6><pre>Logger.info(<span class="lit">"Hello!"</span>)</pre><h6> Define a Plugin </h6><pre><span class="kw">class</span> MyPlugin(app: Application) <span class="kw">extends</span> Plugin</pre><h6> Create adhoc applications (for testing) </h6><pre><span class="kw">val</span> application = Application(<span class="kw">new</span> File(<span class="lit">"."</span>), <span class="kw">this</span>.getClass.getClassloader, <span class="std">None</span>, Play.Mode.DEV)</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../index.html" class="extype" name="play">play</a></dd></dl></div>
+      <p class="shortcomment cmt">Contains the public API for Scala developers.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the public API for Scala developers.</p><h6> Access the current Play application </h6><pre><span class="kw">import</span> play.api.Play.current</pre><h6> Read configuration </h6><pre><span class="kw">val</span> poolSize = configuration.getInt(<span class="lit">"engine.pool.size"</span>)</pre><h6> Use the logger </h6><pre>Logger.info(<span class="lit">"Hello!"</span>)</pre><h6> Define a Plugin </h6><pre><span class="kw">class</span> MyPlugin(app: Application) <span class="kw">extends</span> Plugin</pre><h6> Create adhoc applications (for testing) </h6><pre><span class="kw">val</span> application = Application(<span class="kw">new</span> File(<span class="lit">"."</span>), <span class="kw">this</span>.getClass.getClassloader, <span class="std">None</span>, Play.Mode.DEV)</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../index.html" class="extype" name="play">play</a></dd></dl></div>
     </li><li name="play.api.mvc" visbl="pub" class="indented3 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="mvc"></a><a id="mvc:mvc"></a>
       <span class="permalink">
@@ -185,7 +185,7 @@
                         <a class="class" href="Accepting.html" title="Convenient class to generate extractors checking if a given mime type matches the Accept header of a request."></a>
                         <a href="Accepting.html" title="Convenient class to generate extractors checking if a given mime type matches the Accept header of a request.">Accepting</a>
                       </li><li class="current-entities indented3">
-                        <span class="separator"></span>
+                        <a class="object" href="Action$.html" title="Helper object to create Action values."></a>
                         <a class="trait" href="Action.html" title="An action is essentially a (Request[A] =&gt; Result) function that handles a request and generates a result to be sent to the client."></a>
                         <a href="Action.html" title="An action is essentially a (Request[A] =&gt; Result) function that handles a request and generates a result to be sent to the client.">Action</a>
                       </li><li class="current-entities indented3">
@@ -257,13 +257,13 @@
                         <a class="trait" href="BodyParser.html" title="A body parser parses the HTTP request body content."></a>
                         <a href="BodyParser.html" title="A body parser parses the HTTP request body content.">BodyParser</a>
                       </li><li class="current-entities indented3">
-                        <a class="object" href="BodyParserUtils$.html" title=""></a>
+                        <span class="separator"></span>
                         <a class="trait" href="BodyParserUtils.html" title="A set of reusable body parsers and utilities that do not require configuration."></a>
                         <a href="BodyParserUtils.html" title="A set of reusable body parsers and utilities that do not require configuration.">BodyParserUtils</a>
                       </li><li class="current-entities indented3">
-                        <span class="separator"></span>
                         <a class="object" href="BodyParsers$.html" title="Default BodyParsers."></a>
-                        <a href="BodyParsers$.html" title="Default BodyParsers.">BodyParsers</a>
+                        <a class="trait" href="BodyParsers.html" title="Legacy body parsers trait."></a>
+                        <a href="BodyParsers.html" title="Legacy body parsers trait.">BodyParsers</a>
                       </li><li class="current-entities indented3">
                         <span class="separator"></span>
                         <a class="class" href="Call.html" title="Defines a Call, which describes an HTTP request and can be used to create links or fill redirect data."></a>
@@ -272,6 +272,10 @@
                         <a class="object" href="Codec$.html" title="Default Codec support."></a>
                         <a class="class" href="Codec.html" title="A Codec handle the conversion of String to Byte arrays."></a>
                         <a href="Codec.html" title="A Codec handle the conversion of String to Byte arrays.">Codec</a>
+                      </li><li class="current-entities indented3">
+                        <span class="separator"></span>
+                        <a class="trait" href="Controller.html" title="Implements deprecated controller functionality."></a>
+                        <a href="Controller.html" title="Implements deprecated controller functionality.">Controller</a>
                       </li><li class="current-entities indented3">
                         <span class="separator"></span>
                         <a class="trait" href="ControllerComponents.html" title="The base controller components dependencies that most controllers rely on."></a>
@@ -583,7 +587,7 @@
 
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Body parsers officially supported by Play (i.e. built-in to Play)
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.8.5/core/play/src/main/scala/play/api/mvc/BodyParsers.scala" target="_blank">BodyParsers.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.7.x/core/play/src/main/scala/play/api/mvc/BodyParsers.scala" target="_blank">BodyParsers.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -693,23 +697,6 @@
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="play.api.mvc.PlayBodyParsers#DefaultAllowEmptyFileUploads" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="DefaultAllowEmptyFileUploads:Boolean"></a>
-      <span class="permalink">
-      <a href="../../../play/api/mvc/PlayBodyParsers.html#DefaultAllowEmptyFileUploads:Boolean" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">DefaultAllowEmptyFileUploads</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
-      </span>
-      
-      <p class="shortcomment cmt">If empty file uploads are allowed (no matter if filename or file is empty)
-</p>
     </li><li name="play.api.mvc.PlayBodyParsers#DefaultMaxDiskLength" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="DefaultMaxDiskLength:Long"></a>
       <span class="permalink">
@@ -1012,23 +999,6 @@ HTTP response.
       
       <p class="shortcomment cmt">Store the body content into a file.</p><div class="fullcomment"><div class="comment cmt"><p>Store the body content into a file.
 </p></div><dl class="paramcmts block"><dt class="param">to</dt><dd class="cmt"><p>The file used to store the content.</p></dd></dl></div>
-    </li><li name="play.api.mvc.PlayBodyParsers#file" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="file(to:java.io.File,maxLength:Long):play.api.mvc.BodyParser[java.io.File]"></a><a id="file(File,Long):BodyParser[File]"></a>
-      <span class="permalink">
-      <a href="../../../play/api/mvc/PlayBodyParsers.html#file(to:java.io.File,maxLength:Long):play.api.mvc.BodyParser[java.io.File]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">file</span><span class="params">(<span name="to">to: <span class="extype" name="java.io.File">File</span></span>, <span name="maxLength">maxLength: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <a href="BodyParser.html" class="extype" name="play.api.mvc.BodyParser">BodyParser</a>[<span class="extype" name="java.io.File">File</span>]</span>
-      </span>
-      
-      <p class="shortcomment cmt">Store the body content into a file.</p><div class="fullcomment"><div class="comment cmt"><p>Store the body content into a file.
-</p></div><dl class="paramcmts block"><dt class="param">to</dt><dd class="cmt"><p>The file used to store the content.</p></dd><dt class="param">maxLength</dt><dd class="cmt"><p>Max length (in bytes) allowed or returns EntityTooLarge HTTP response.</p></dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="finalize():Unit"></a>
       <span class="permalink">
@@ -1080,7 +1050,7 @@ HTTP response.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">form</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="form">form: <a href="../data/Form.html" class="extype" name="play.api.data.Form">Form</a>[<span class="extype" name="play.api.mvc.PlayBodyParsers.form.A">A</span>]</span>, <span name="maxLength">maxLength: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Long">Long</span>] = <span class="symbol">None</span></span>, <span name="onErrors">onErrors: (<a href="../data/Form.html" class="extype" name="play.api.data.Form">Form</a>[<span class="extype" name="play.api.mvc.PlayBodyParsers.form.A">A</span>]) ⇒ <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a> = <span class="symbol"><span class="name"><a href="Results$.html">(_: Form[A]) =&gt; Results.BadRequest</a></span></span></span>)</span><span class="result">: <a href="BodyParser.html" class="extype" name="play.api.mvc.BodyParser">BodyParser</a>[<span class="extype" name="play.api.mvc.PlayBodyParsers.form.A">A</span>]</span>
+        <span class="name">form</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="form">form: <a href="../data/Form.html" class="extype" name="play.api.data.Form">Form</a>[<span class="extype" name="play.api.mvc.PlayBodyParsers.form.A">A</span>]</span>, <span name="maxLength">maxLength: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Long">Long</span>] = <span class="symbol">None</span></span>, <span name="onErrors">onErrors: (<a href="../data/Form.html" class="extype" name="play.api.data.Form">Form</a>[<span class="extype" name="play.api.mvc.PlayBodyParsers.form.A">A</span>]) ⇒ <a href="Result.html" class="extype" name="play.api.mvc.Result">Result</a> = <span class="defval" name='<span class="name"><a href="Results$.html">(formErrors: Form[A]) =&gt; Results.BadRequest</a></span>'>...</span></span>)</span><span class="result">: <a href="BodyParser.html" class="extype" name="play.api.mvc.BodyParser">BodyParser</a>[<span class="extype" name="play.api.mvc.PlayBodyParsers.form.A">A</span>]</span>
       </span>
       
       <p class="shortcomment cmt">Parse the body and binds it to a given form model.</p><div class="fullcomment"><div class="comment cmt"><p>Parse the body and binds it to a given form model.</p><pre><span class="kw">case</span> <span class="kw">class</span> User(name: <span class="std">String</span>)
@@ -1263,24 +1233,6 @@ validating the result with the Json reader.
       <p class="shortcomment cmt">Wrap an existing BodyParser with a maxLength constraints.</p><div class="fullcomment"><div class="comment cmt"><p>Wrap an existing BodyParser with a maxLength constraints.
 </p></div><dl class="paramcmts block"><dt class="param">maxLength</dt><dd class="cmt"><p>The max length allowed</p></dd><dt class="param">parser</dt><dd class="cmt"><p>The BodyParser to wrap</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BodyParserUtils.html" class="extype" name="play.api.mvc.BodyParserUtils">BodyParserUtils</a></dd></dl></div>
     </li><li name="play.api.mvc.PlayBodyParsers#multipartFormData" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="multipartFormData[A](filePartHandler:play.core.parsers.Multipart.FilePartHandler[A],maxLength:Long,allowEmptyFiles:Boolean):play.api.mvc.BodyParser[play.api.mvc.MultipartFormData[A]]"></a><a id="multipartFormData[A](FilePartHandler[A],Long,Boolean):BodyParser[MultipartFormData[A]]"></a>
-      <span class="permalink">
-      <a href="../../../play/api/mvc/PlayBodyParsers.html#multipartFormData[A](filePartHandler:play.core.parsers.Multipart.FilePartHandler[A],maxLength:Long,allowEmptyFiles:Boolean):play.api.mvc.BodyParser[play.api.mvc.MultipartFormData[A]]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">multipartFormData</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="filePartHandler">filePartHandler: <a href="../../core/parsers/Multipart$.html#FilePartHandler[A]=play.core.parsers.Multipart.FileInfo=&gt;play.api.libs.streams.Accumulator[akka.util.ByteString,play.api.mvc.MultipartFormData.FilePart[A]]" class="extmbr" name="play.core.parsers.Multipart.FilePartHandler">FilePartHandler</a>[<span class="extype" name="play.api.mvc.PlayBodyParsers.multipartFormData.A">A</span>]</span>, <span name="maxLength">maxLength: <span class="extype" name="scala.Long">Long</span> = <span class="symbol"><span class="name"><a href="#DefaultMaxDiskLength:Long">DefaultMaxDiskLength</a></span></span></span>, <span name="allowEmptyFiles">allowEmptyFiles: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol"><span class="name"><a href="#DefaultAllowEmptyFileUploads:Boolean">DefaultAllowEmptyFileUploads</a></span></span></span>)</span><span class="result">: <a href="BodyParser.html" class="extype" name="play.api.mvc.BodyParser">BodyParser</a>[<a href="MultipartFormData.html" class="extype" name="play.api.mvc.MultipartFormData">MultipartFormData</a>[<span class="extype" name="play.api.mvc.PlayBodyParsers.multipartFormData.A">A</span>]]</span>
-      </span>
-      
-      <p class="shortcomment cmt">Parse the content as multipart/form-data
-</p><div class="fullcomment"><div class="comment cmt"><p>Parse the content as multipart/form-data
-</p></div><dl class="paramcmts block"><dt class="param">filePartHandler</dt><dd class="cmt"><p>Handles file parts.</p></dd><dt class="param">maxLength</dt><dd class="cmt"><p>Max length (in bytes) allowed or returns EntityTooLarge HTTP response.</p></dd><dt class="param">allowEmptyFiles</dt><dd class="cmt"><p>If empty file uploads are allowed (no matter if filename or file is empty)</p></dd></dl><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="#DefaultMaxDiskLength:Long" class="extmbr" name="play.api.mvc.PlayBodyParsers#DefaultMaxDiskLength">DefaultMaxDiskLength</a></p></span><span class="cmt"><p><a href="Results$.html#EntityTooLarge:Results.this.Status" class="extmbr" name="play.api.mvc.Results#EntityTooLarge">Results.EntityTooLarge</a></p></span></dd></dl></div>
-    </li><li name="play.api.mvc.PlayBodyParsers#multipartFormData" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="multipartFormData[A](filePartHandler:play.core.parsers.Multipart.FilePartHandler[A],maxLength:Long):play.api.mvc.BodyParser[play.api.mvc.MultipartFormData[A]]"></a><a id="multipartFormData[A](FilePartHandler[A],Long):BodyParser[MultipartFormData[A]]"></a>
       <span class="permalink">
       <a href="../../../play/api/mvc/PlayBodyParsers.html#multipartFormData[A](filePartHandler:play.core.parsers.Multipart.FilePartHandler[A],maxLength:Long):play.api.mvc.BodyParser[play.api.mvc.MultipartFormData[A]]" title="Permalink">
@@ -1292,48 +1244,12 @@ validating the result with the Json reader.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">multipartFormData</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="filePartHandler">filePartHandler: <a href="../../core/parsers/Multipart$.html#FilePartHandler[A]=play.core.parsers.Multipart.FileInfo=&gt;play.api.libs.streams.Accumulator[akka.util.ByteString,play.api.mvc.MultipartFormData.FilePart[A]]" class="extmbr" name="play.core.parsers.Multipart.FilePartHandler">FilePartHandler</a>[<span class="extype" name="play.api.mvc.PlayBodyParsers.multipartFormData.A">A</span>]</span>, <span name="maxLength">maxLength: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <a href="BodyParser.html" class="extype" name="play.api.mvc.BodyParser">BodyParser</a>[<a href="MultipartFormData.html" class="extype" name="play.api.mvc.MultipartFormData">MultipartFormData</a>[<span class="extype" name="play.api.mvc.PlayBodyParsers.multipartFormData.A">A</span>]]</span>
+        <span class="name">multipartFormData</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span name="filePartHandler">filePartHandler: <a href="../../core/parsers/Multipart$.html#FilePartHandler[A]=play.core.parsers.Multipart.FileInfo=&gt;play.api.libs.streams.Accumulator[akka.util.ByteString,play.api.mvc.MultipartFormData.FilePart[A]]" class="extmbr" name="play.core.parsers.Multipart.FilePartHandler">FilePartHandler</a>[<span class="extype" name="play.api.mvc.PlayBodyParsers.multipartFormData.A">A</span>]</span>, <span name="maxLength">maxLength: <span class="extype" name="scala.Long">Long</span> = <span class="symbol"><span class="name"><a href="#DefaultMaxDiskLength:Long">DefaultMaxDiskLength</a></span></span></span>)</span><span class="result">: <a href="BodyParser.html" class="extype" name="play.api.mvc.BodyParser">BodyParser</a>[<a href="MultipartFormData.html" class="extype" name="play.api.mvc.MultipartFormData">MultipartFormData</a>[<span class="extype" name="play.api.mvc.PlayBodyParsers.multipartFormData.A">A</span>]]</span>
       </span>
       
       <p class="shortcomment cmt">Parse the content as multipart/form-data
 </p><div class="fullcomment"><div class="comment cmt"><p>Parse the content as multipart/form-data
 </p></div><dl class="paramcmts block"><dt class="param">filePartHandler</dt><dd class="cmt"><p>Handles file parts.</p></dd><dt class="param">maxLength</dt><dd class="cmt"><p>Max length (in bytes) allowed or returns EntityTooLarge HTTP response.</p></dd></dl><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="#DefaultMaxDiskLength:Long" class="extmbr" name="play.api.mvc.PlayBodyParsers#DefaultMaxDiskLength">DefaultMaxDiskLength</a></p></span><span class="cmt"><p><a href="Results$.html#EntityTooLarge:Results.this.Status" class="extmbr" name="play.api.mvc.Results#EntityTooLarge">Results.EntityTooLarge</a></p></span></dd></dl></div>
-    </li><li name="play.api.mvc.PlayBodyParsers#multipartFormData" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="multipartFormData(maxLength:Long,allowEmptyFiles:Boolean):play.api.mvc.BodyParser[play.api.mvc.MultipartFormData[play.api.libs.Files.TemporaryFile]]"></a><a id="multipartFormData(Long,Boolean):BodyParser[MultipartFormData[TemporaryFile]]"></a>
-      <span class="permalink">
-      <a href="../../../play/api/mvc/PlayBodyParsers.html#multipartFormData(maxLength:Long,allowEmptyFiles:Boolean):play.api.mvc.BodyParser[play.api.mvc.MultipartFormData[play.api.libs.Files.TemporaryFile]]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">multipartFormData</span><span class="params">(<span name="maxLength">maxLength: <span class="extype" name="scala.Long">Long</span></span>, <span name="allowEmptyFiles">allowEmptyFiles: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="BodyParser.html" class="extype" name="play.api.mvc.BodyParser">BodyParser</a>[<a href="MultipartFormData.html" class="extype" name="play.api.mvc.MultipartFormData">MultipartFormData</a>[<a href="../libs/Files$$TemporaryFile.html" class="extype" name="play.api.libs.Files.TemporaryFile">TemporaryFile</a>]]</span>
-      </span>
-      
-      <p class="shortcomment cmt">Parse the content as multipart/form-data
-</p><div class="fullcomment"><div class="comment cmt"><p>Parse the content as multipart/form-data
-</p></div><dl class="paramcmts block"><dt class="param">maxLength</dt><dd class="cmt"><p>Max length (in bytes) allowed or returns EntityTooLarge HTTP response.</p></dd><dt class="param">allowEmptyFiles</dt><dd class="cmt"><p>If empty file uploads are allowed (no matter if filename or file is empty)</p></dd></dl></div>
-    </li><li name="play.api.mvc.PlayBodyParsers#multipartFormData" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="multipartFormData(allowEmptyFiles:Boolean):play.api.mvc.BodyParser[play.api.mvc.MultipartFormData[play.api.libs.Files.TemporaryFile]]"></a><a id="multipartFormData(Boolean):BodyParser[MultipartFormData[TemporaryFile]]"></a>
-      <span class="permalink">
-      <a href="../../../play/api/mvc/PlayBodyParsers.html#multipartFormData(allowEmptyFiles:Boolean):play.api.mvc.BodyParser[play.api.mvc.MultipartFormData[play.api.libs.Files.TemporaryFile]]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">multipartFormData</span><span class="params">(<span name="allowEmptyFiles">allowEmptyFiles: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="BodyParser.html" class="extype" name="play.api.mvc.BodyParser">BodyParser</a>[<a href="MultipartFormData.html" class="extype" name="play.api.mvc.MultipartFormData">MultipartFormData</a>[<a href="../libs/Files$$TemporaryFile.html" class="extype" name="play.api.libs.Files.TemporaryFile">TemporaryFile</a>]]</span>
-      </span>
-      
-      <p class="shortcomment cmt">Parse the content as multipart/form-data
-</p><div class="fullcomment"><div class="comment cmt"><p>Parse the content as multipart/form-data
-</p></div><dl class="paramcmts block"><dt class="param">allowEmptyFiles</dt><dd class="cmt"><p>If empty file uploads are allowed (no matter if filename or file is empty)</p></dd></dl></div>
     </li><li name="play.api.mvc.PlayBodyParsers#multipartFormData" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="multipartFormData(maxLength:Long):play.api.mvc.BodyParser[play.api.mvc.MultipartFormData[play.api.libs.Files.TemporaryFile]]"></a><a id="multipartFormData(Long):BodyParser[MultipartFormData[TemporaryFile]]"></a>
       <span class="permalink">
@@ -1488,23 +1404,6 @@ validating the result with the Json reader.
       </span>
       
       <p class="shortcomment cmt">Store the body content into a temporary file.</p>
-    </li><li name="play.api.mvc.PlayBodyParsers#temporaryFile" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="temporaryFile(maxLength:Long):play.api.mvc.BodyParser[play.api.libs.Files.TemporaryFile]"></a><a id="temporaryFile(Long):BodyParser[TemporaryFile]"></a>
-      <span class="permalink">
-      <a href="../../../play/api/mvc/PlayBodyParsers.html#temporaryFile(maxLength:Long):play.api.mvc.BodyParser[play.api.libs.Files.TemporaryFile]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">temporaryFile</span><span class="params">(<span name="maxLength">maxLength: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <a href="BodyParser.html" class="extype" name="play.api.mvc.BodyParser">BodyParser</a>[<a href="../libs/Files$$TemporaryFile.html" class="extype" name="play.api.libs.Files.TemporaryFile">TemporaryFile</a>]</span>
-      </span>
-      
-      <p class="shortcomment cmt">Store the body content into a temporary file.</p><div class="fullcomment"><div class="comment cmt"><p>Store the body content into a temporary file.
-</p></div><dl class="paramcmts block"><dt class="param">maxLength</dt><dd class="cmt"><p>Max length (in bytes) allowed or returns EntityTooLarge HTTP response.</p></dd></dl></div>
     </li><li name="play.api.mvc.PlayBodyParsers#text" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="text:play.api.mvc.BodyParser[String]"></a><a id="text:BodyParser[String]"></a>
       <span class="permalink">
@@ -1606,25 +1505,6 @@ decoding is desired.
       
       <p class="shortcomment cmt">Parse the body as Form url encoded without checking the Content-Type.</p><div class="fullcomment"><div class="comment cmt"><p>Parse the body as Form url encoded without checking the Content-Type.
 </p></div><dl class="paramcmts block"><dt class="param">maxLength</dt><dd class="cmt"><p>Max length (in bytes) allowed or returns EntityTooLarge HTTP response.</p></dd></dl></div>
-    </li><li name="play.api.mvc.PlayBodyParsers#tolerantJson" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="tolerantJson[A](implicitreader:play.api.libs.json.Reads[A]):play.api.mvc.BodyParser[A]"></a><a id="tolerantJson[A](Reads[A]):BodyParser[A]"></a>
-      <span class="permalink">
-      <a href="../../../play/api/mvc/PlayBodyParsers.html#tolerantJson[A](implicitreader:play.api.libs.json.Reads[A]):play.api.mvc.BodyParser[A]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">tolerantJson</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="reader">reader: <a href="../libs/json/Reads.html" class="extype" name="play.api.libs.json.Reads">Reads</a>[<span class="extype" name="play.api.mvc.PlayBodyParsers.tolerantJson.A">A</span>]</span>)</span><span class="result">: <a href="BodyParser.html" class="extype" name="play.api.mvc.BodyParser">BodyParser</a>[<span class="extype" name="play.api.mvc.PlayBodyParsers.tolerantJson.A">A</span>]</span>
-      </span>
-      
-      <p class="shortcomment cmt">Parse the body as Json without checking the Content-Type,
-validating the result with the Json reader.</p><div class="fullcomment"><div class="comment cmt"><p>Parse the body as Json without checking the Content-Type,
-validating the result with the Json reader.
-</p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>the type to read and validate from the body.</p></dd><dt class="param">reader</dt><dd class="cmt"><p>a Json reader for type A.</p></dd></dl></div>
     </li><li name="play.api.mvc.PlayBodyParsers#tolerantJson" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="tolerantJson:play.api.mvc.BodyParser[play.api.libs.json.JsValue]"></a><a id="tolerantJson:BodyParser[JsValue]"></a>
       <span class="permalink">
@@ -1865,7 +1745,48 @@ validating the result with the Json reader.
 
         
 
-        
+        <div class="values members">
+              <h3>Deprecated Value Members</h3>
+              <ol><li name="play.api.mvc.PlayBodyParsers#urlFormEncoded" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="urlFormEncoded:play.api.mvc.BodyParser[Map[String,Seq[String]]]"></a><a id="urlFormEncoded:BodyParser[Map[String,Seq[String]]]"></a>
+      <span class="permalink">
+      <a href="../../../play/api/mvc/PlayBodyParsers.html#urlFormEncoded:play.api.mvc.BodyParser[Map[String,Seq[String]]]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use formUrlEncoded">urlFormEncoded</span><span class="result">: <a href="BodyParser.html" class="extype" name="play.api.mvc.BodyParser">BodyParser</a>[<span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]]]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use formUrlEncoded</p></dd></dl></div>
+    </li><li name="play.api.mvc.PlayBodyParsers#urlFormEncoded" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="urlFormEncoded(maxLength:Long):play.api.mvc.BodyParser[Map[String,Seq[String]]]"></a><a id="urlFormEncoded(Long):BodyParser[Map[String,Seq[String]]]"></a>
+      <span class="permalink">
+      <a href="../../../play/api/mvc/PlayBodyParsers.html#urlFormEncoded(maxLength:Long):play.api.mvc.BodyParser[Map[String,Seq[String]]]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: (Since version 2.6.0) Use formUrlEncoded">urlFormEncoded</span><span class="params">(<span name="maxLength">maxLength: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <a href="BodyParser.html" class="extype" name="play.api.mvc.BodyParser">BodyParser</a>[<span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]]]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Use formUrlEncoded</p></dd></dl></div>
+    </li></ol>
+            </div>
         </div>
 
         <div id="inheritedMembers">
