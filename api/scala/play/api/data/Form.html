@@ -177,6 +177,10 @@
 }</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="play.api.data">data</a></dd></dl></div>
     </li><li class="current-entities indented3">
                         <span class="separator"></span>
+                        <a class="class" href="DefaultFormBinding.html" title=""></a>
+                        <a href="DefaultFormBinding.html" title="">DefaultFormBinding</a>
+                      </li><li class="current-entities indented3">
+                        <span class="separator"></span>
                         <a class="class" href="Field.html" title="A form field."></a>
                         <a href="Field.html" title="A form field.">Field</a>
                       </li><li class="current-entities indented3">
@@ -187,6 +191,10 @@
                         <a class="object" href="Form$.html" title="Provides a set of operations for creating Form values."></a>
                         <a class="class" href="" title="Helper to manage HTML form description, submission and validation."></a>
                         <a href="" title="Helper to manage HTML form description, submission and validation.">Form</a>
+                      </li><li class="current-entities indented3">
+                        <a class="object" href="FormBinding$.html" title=""></a>
+                        <a class="trait" href="FormBinding.html" title=""></a>
+                        <a href="FormBinding.html" title="">FormBinding</a>
                       </li><li class="current-entities indented3">
                         <a class="object" href="FormError$.html" title=""></a>
                         <a class="class" href="FormError.html" title="A form error."></a>
@@ -351,7 +359,7 @@
     <span class="lit">"age"</span> -&gt; of[<span class="std">Int</span>],
     <span class="lit">"email"</span> -&gt; of[<span class="std">String</span>]
   )(User.apply)(User.unapply)
-)</pre></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>the type managed by this form</p></dd><dt class="param">mapping</dt><dd class="cmt"><p>the form mapping, which describes all form fields</p></dd><dt class="param">data</dt><dd class="cmt"><p>the current form data, used to display the form</p></dd><dt class="param">errors</dt><dd class="cmt"><p>the collection of errors associated with this form</p></dd><dt class="param">value</dt><dd class="cmt"><p>a concrete value of type <code>T</code> if the form submission was successful</p></dd></dl><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.7.x/core/play/src/main/scala/play/api/data/Form.scala" target="_blank">Form.scala</a></dd></dl><div class="toggleContainer block">
+)</pre></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>the type managed by this form</p></dd><dt class="param">mapping</dt><dd class="cmt"><p>the form mapping, which describes all form fields</p></dd><dt class="param">data</dt><dd class="cmt"><p>the current form data, used to display the form</p></dd><dt class="param">errors</dt><dd class="cmt"><p>the collection of errors associated with this form</p></dd><dt class="param">value</dt><dd class="cmt"><p>a concrete value of type <code>T</code> if the form submission was successful</p></dd></dl><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.7.8/core/play/src/main/scala/play/api/data/Form.scala" target="_blank">Form.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -508,9 +516,9 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="play.api.data.Form#bind" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="bind(data:play.api.libs.json.JsValue,maxChars:Int):play.api.data.Form[T]"></a><a id="bind(JsValue,Int):Form[T]"></a>
+      <a id="bind(data:play.api.libs.json.JsValue,maxChars:Long):play.api.data.Form[T]"></a><a id="bind(JsValue,Long):Form[T]"></a>
       <span class="permalink">
-      <a href="../../../play/api/data/Form.html#bind(data:play.api.libs.json.JsValue,maxChars:Int):play.api.data.Form[T]" title="Permalink">
+      <a href="../../../play/api/data/Form.html#bind(data:play.api.libs.json.JsValue,maxChars:Long):play.api.data.Form[T]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -519,7 +527,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">bind</span><span class="params">(<span name="data">data: <a href="../libs/json/JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a></span>, <span name="maxChars">maxChars: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="" class="extype" name="play.api.data.Form">Form</a>[<span class="extype" name="play.api.data.Form.T">T</span>]</span>
+        <span class="name">bind</span><span class="params">(<span name="data">data: <a href="../libs/json/JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a></span>, <span name="maxChars">maxChars: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <a href="" class="extype" name="play.api.data.Form">Form</a>[<span class="extype" name="play.api.data.Form.T">T</span>]</span>
       </span>
       
       <p class="shortcomment cmt">Binds data to this form, i.e.</p><div class="fullcomment"><div class="comment cmt"><p>Binds data to this form, i.e. handles form submission.
@@ -559,9 +567,9 @@
       
       
     </li><li name="play.api.data.Form#bindFromRequest" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="bindFromRequest()(implicitrequest:play.api.mvc.Request[_]):play.api.data.Form[T]"></a><a id="bindFromRequest()(Request[_]):Form[T]"></a>
+      <a id="bindFromRequest()(implicitrequest:play.api.mvc.Request[_],implicitformBinding:play.api.data.FormBinding):play.api.data.Form[T]"></a><a id="bindFromRequest()(Request[_],FormBinding):Form[T]"></a>
       <span class="permalink">
-      <a href="../../../play/api/data/Form.html#bindFromRequest()(implicitrequest:play.api.mvc.Request[_]):play.api.data.Form[T]" title="Permalink">
+      <a href="../../../play/api/data/Form.html#bindFromRequest()(implicitrequest:play.api.mvc.Request[_],implicitformBinding:play.api.data.FormBinding):play.api.data.Form[T]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -570,7 +578,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">bindFromRequest</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="request">request: <a href="../mvc/Request.html" class="extype" name="play.api.mvc.Request">Request</a>[_]</span>)</span><span class="result">: <a href="" class="extype" name="play.api.data.Form">Form</a>[<span class="extype" name="play.api.data.Form.T">T</span>]</span>
+        <span class="name">bindFromRequest</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="request">request: <a href="../mvc/Request.html" class="extype" name="play.api.mvc.Request">Request</a>[_]</span>, <span name="formBinding">formBinding: <a href="FormBinding.html" class="extype" name="play.api.data.FormBinding">FormBinding</a></span>)</span><span class="result">: <a href="" class="extype" name="play.api.data.Form">Form</a>[<span class="extype" name="play.api.data.Form.T">T</span>]</span>
       </span>
       
       <p class="shortcomment cmt">Binds request data to this form, i.e.</p><div class="fullcomment"><div class="comment cmt"><p>Binds request data to this form, i.e. handles form submission.
