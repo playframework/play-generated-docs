@@ -262,7 +262,7 @@ package customapplicationloader {
       val extra = Configuration("a" -> 1)
       initialBuilder
         .in(context.environment)
-        .loadConfig(extra ++ context.initialConfiguration)
+        .loadConfig(context.initialConfiguration.withFallback(extra))
         .overrides(overrides(context): _*)
     }
   }

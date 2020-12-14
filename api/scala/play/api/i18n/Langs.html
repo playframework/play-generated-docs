@@ -101,7 +101,7 @@
         <a title="Contains the public API for Scala developers." href="../index.html"><span class="name">api</span></a>
       </span>
       
-      <p class="shortcomment cmt">Contains the public API for Scala developers.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the public API for Scala developers.</p><h6> Access the current Play application </h6><pre><span class="kw">import</span> play.api.Play.current</pre><h6> Read configuration </h6><pre><span class="kw">val</span> poolSize = configuration.getInt(<span class="lit">"engine.pool.size"</span>)</pre><h6> Use the logger </h6><pre>Logger.info(<span class="lit">"Hello!"</span>)</pre><h6> Define a Plugin </h6><pre><span class="kw">class</span> MyPlugin(app: Application) <span class="kw">extends</span> Plugin</pre><h6> Create adhoc applications (for testing) </h6><pre><span class="kw">val</span> application = Application(<span class="kw">new</span> File(<span class="lit">"."</span>), <span class="kw">this</span>.getClass.getClassloader, <span class="std">None</span>, Play.Mode.DEV)</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../index.html" class="extype" name="play">play</a></dd></dl></div>
+      <p class="shortcomment cmt">Contains the public API for Scala developers.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the public API for Scala developers.</p><h6> Read configuration </h6><pre><span class="kw">val</span> poolSize = configuration.getInt(<span class="lit">"engine.pool.size"</span>)</pre><h6> Use the logger </h6><pre>Logger.info(<span class="lit">"Hello!"</span>)</pre><h6> Define a Plugin </h6><pre><span class="kw">class</span> MyPlugin(app: Application) <span class="kw">extends</span> Plugin</pre><h6> Create adhoc applications (for testing) </h6><pre><span class="kw">val</span> application = Application(<span class="kw">new</span> File(<span class="lit">"."</span>), <span class="kw">this</span>.getClass.getClassloader, <span class="std">None</span>, Play.Mode.DEV)</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../index.html" class="extype" name="play">play</a></dd></dl></div>
     </li><li name="play.api.i18n" visbl="pub" class="indented3 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="i18n"></a><a id="i18n:i18n"></a>
       <span class="permalink">
@@ -211,7 +211,7 @@
 
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Manages languages in Play
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.7.x/core/play/src/main/scala/play/api/i18n/Langs.scala" target="_blank">Langs.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.8.7/core/play/src/main/scala/play/api/i18n/Langs.scala" target="_blank">Langs.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -286,24 +286,6 @@
       </span>
       
       <p class="shortcomment cmt">The available languages.</p><div class="fullcomment"><div class="comment cmt"><p>The available languages.</p><p>These can be configured in <code>application.conf</code>, like so:</p><pre>play.i18n.langs = [<span class="lit">"fr"</span>, <span class="lit">"en"</span>, <span class="lit">"de"</span>]</pre></div></div>
-    </li><li name="play.api.i18n.Langs#preferred" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="preferred(candidates:Seq[play.api.i18n.Lang]):play.api.i18n.Lang"></a><a id="preferred(Seq[Lang]):Lang"></a>
-      <span class="permalink">
-      <a href="../../../play/api/i18n/Langs.html#preferred(candidates:Seq[play.api.i18n.Lang]):play.api.i18n.Lang" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier">abstract </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">preferred</span><span class="params">(<span name="candidates">candidates: <span class="extype" name="scala.Seq">Seq</span>[<a href="Lang.html" class="extype" name="play.api.i18n.Lang">Lang</a>]</span>)</span><span class="result">: <a href="Lang.html" class="extype" name="play.api.i18n.Lang">Lang</a></span>
-      </span>
-      
-      <p class="shortcomment cmt">Select a preferred language, given the list of candidates.</p><div class="fullcomment"><div class="comment cmt"><p>Select a preferred language, given the list of candidates.</p><p>Will select the preferred language, based on what languages are available, or return the default language if
-none of the candidates are available.
-</p></div></div>
     </li></ol>
             </div>
 
@@ -576,6 +558,24 @@ none of the candidates are available.
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="play.api.i18n.Langs#preferred" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="preferred(candidates:Seq[play.api.i18n.Lang]):play.api.i18n.Lang"></a><a id="preferred(Seq[Lang]):Lang"></a>
+      <span class="permalink">
+      <a href="../../../play/api/i18n/Langs.html#preferred(candidates:Seq[play.api.i18n.Lang]):play.api.i18n.Lang" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">preferred</span><span class="params">(<span name="candidates">candidates: <span class="extype" name="scala.Seq">Seq</span>[<a href="Lang.html" class="extype" name="play.api.i18n.Lang">Lang</a>]</span>)</span><span class="result">: <a href="Lang.html" class="extype" name="play.api.i18n.Lang">Lang</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Select a preferred language, given the list of candidates.</p><div class="fullcomment"><div class="comment cmt"><p>Select a preferred language, given the list of candidates.</p><p>Will select the preferred language, based on what languages are available, or return the default language if
+none of the candidates are available.</p><p>This implements the Matching of Language Tags specified in RFC 4647 section 3.4.
+</p></div><dl class="paramcmts block"><dt class="param">candidates</dt><dd class="cmt"><p>List of candidates ordered by user's preferences</p></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">

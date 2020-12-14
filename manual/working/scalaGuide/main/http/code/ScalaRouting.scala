@@ -4,7 +4,6 @@
 
 package scalaguide.http.routing
 
-import akka.stream.ActorMaterializer
 import org.specs2.mutable.Specification
 import play.api.test.FakeRequest
 import play.api.mvc._
@@ -56,7 +55,9 @@ package controllers {
   }
 
   class Api @Inject() (cc: ControllerComponents) extends AbstractController(cc) {
-    def list(version: Option[String]) = Action(Ok("version " + version))
+    def list(version: Option[String])   = Action(Ok("version " + version))
+    def listItems(params: List[String]) = Action(Ok("params " + params.mkString(",")))
+    def listIntItems(params: List[Int]) = Action(Ok("params " + params.mkString(",")))
     def newThing = Action(parse.json) { request =>
       Ok(request.body)
     }
@@ -144,6 +145,10 @@ object ScalaRoutingSpec extends Specification {
       contentOf(FakeRequest("GET", "/api/list-all")) must_== "version None"
       contentOf(FakeRequest("GET", "/api/list-all?version=3.0")) must_== "version Some(3.0)"
     }
+    "support list values for parameters" in {
+      contentOf(FakeRequest("GET", "/api/list-items?item=apples&item=bananas")) must_== "params apples,bananas"
+      contentOf(FakeRequest("GET", "/api/list-int-items?item=1&item=42")) must_== "params 1,42"
+    }
     "support reverse routing" in {
       import Results.Redirect
       import reverse.controllers.routes
@@ -161,7 +166,7 @@ object ScalaRoutingSpec extends Specification {
 
   def contentOf(rh: RequestHeader, router: Class[_ <: Router] = classOf[Routes]) = {
     running() { app =>
-      implicit val mat = ActorMaterializer()(app.actorSystem)
+      implicit val mat = app.materializer
       contentAsString {
         val routedHandler          = app.injector.instanceOf(router).routes(rh)
         val (rh2, terminalHandler) = Handler.applyStages(rh, routedHandler)
@@ -174,7 +179,7 @@ object ScalaRoutingSpec extends Specification {
 
   def statusOf(rh: RequestHeader, router: Class[_ <: Router] = classOf[Routes]) = {
     running() { app =>
-      implicit val mat = ActorMaterializer()(app.actorSystem)
+      implicit val mat = app.materializer
       status {
         val routedHandler          = app.injector.instanceOf(router).routes(rh)
         val (rh2, terminalHandler) = Handler.applyStages(rh, routedHandler)

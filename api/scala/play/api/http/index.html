@@ -101,7 +101,7 @@
         <a title="Contains the public API for Scala developers." href="../index.html"><span class="name">api</span></a>
       </span>
       
-      <p class="shortcomment cmt">Contains the public API for Scala developers.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the public API for Scala developers.</p><h6> Access the current Play application </h6><pre><span class="kw">import</span> play.api.Play.current</pre><h6> Read configuration </h6><pre><span class="kw">val</span> poolSize = configuration.getInt(<span class="lit">"engine.pool.size"</span>)</pre><h6> Use the logger </h6><pre>Logger.info(<span class="lit">"Hello!"</span>)</pre><h6> Define a Plugin </h6><pre><span class="kw">class</span> MyPlugin(app: Application) <span class="kw">extends</span> Plugin</pre><h6> Create adhoc applications (for testing) </h6><pre><span class="kw">val</span> application = Application(<span class="kw">new</span> File(<span class="lit">"."</span>), <span class="kw">this</span>.getClass.getClassloader, <span class="std">None</span>, Play.Mode.DEV)</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../index.html" class="extype" name="play">play</a></dd></dl></div>
+      <p class="shortcomment cmt">Contains the public API for Scala developers.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the public API for Scala developers.</p><h6> Read configuration </h6><pre><span class="kw">val</span> poolSize = configuration.getInt(<span class="lit">"engine.pool.size"</span>)</pre><h6> Use the logger </h6><pre>Logger.info(<span class="lit">"Hello!"</span>)</pre><h6> Define a Plugin </h6><pre><span class="kw">class</span> MyPlugin(app: Application) <span class="kw">extends</span> Plugin</pre><h6> Create adhoc applications (for testing) </h6><pre><span class="kw">val</span> application = Application(<span class="kw">new</span> File(<span class="lit">"."</span>), <span class="kw">this</span>.getClass.getClassloader, <span class="std">None</span>, Play.Mode.DEV)</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../index.html" class="extype" name="play">play</a></dd></dl></div>
     </li><li name="play.api.cache" visbl="pub" class="indented3 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="cache"></a><a id="cache:cache"></a>
       <span class="permalink">
@@ -119,6 +119,22 @@
       
       <p class="shortcomment cmt">Contains the Cache access API.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the Cache access API.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="play.api">api</a></dd></dl></div>
+    </li><li name="play.api.cluster" visbl="pub" class="indented3 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="cluster"></a><a id="cluster:cluster"></a>
+      <span class="permalink">
+      <a href="../../../play/api/cluster/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../cluster/index.html"><span class="name">cluster</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="play.api">api</a></dd></dl></div>
     </li><li name="play.api.controllers" visbl="pub" class="indented3 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="controllers"></a><a id="controllers:controllers"></a>
       <span class="permalink">
@@ -320,6 +336,10 @@ For example:</p><pre><span class="kw">val</span> text = ContentTypes.TEXT
                         <a class="object" href="HttpErrorHandlerExceptions$.html" title="Extracted so the Java default error handler can reuse this functionality"></a>
                         <a href="HttpErrorHandlerExceptions$.html" title="Extracted so the Java default error handler can reuse this functionality">HttpErrorHandlerExceptions</a>
                       </li><li class="current-entities indented3">
+                        <span class="separator"></span>
+                        <a class="class" href="HttpErrorInfo.html" title="Used as request attribute which gets attached to the request that gets passed to an error handler."></a>
+                        <a href="HttpErrorInfo.html" title="Used as request attribute which gets attached to the request that gets passed to an error handler.">HttpErrorInfo</a>
+                      </li><li class="current-entities indented3">
                         <a class="object" href="HttpFilters$.html" title=""></a>
                         <a class="trait" href="HttpFilters.html" title="Provides filters to the play.api.http.HttpRequestHandler."></a>
                         <a href="HttpFilters.html" title="Provides filters to the play.api.http.HttpRequestHandler.">HttpFilters</a>
@@ -359,10 +379,6 @@ For example:</p><pre><span class="kw">val</span> text = ContentTypes.TEXT
                         <span class="separator"></span>
                         <a class="class" href="JsonHttpErrorHandler.html" title="An alternative default HTTP error handler which will render errors as JSON messages instead of HTML pages."></a>
                         <a href="JsonHttpErrorHandler.html" title="An alternative default HTTP error handler which will render errors as JSON messages instead of HTML pages.">JsonHttpErrorHandler</a>
-                      </li><li class="current-entities indented3">
-                        <span class="separator"></span>
-                        <a class="object" href="LazyHttpErrorHandler$.html" title="A lazy HTTP error handler, that looks up the error handler from the current application"></a>
-                        <a href="LazyHttpErrorHandler$.html" title="A lazy HTTP error handler, that looks up the error handler from the current application">LazyHttpErrorHandler</a>
                       </li><li class="current-entities indented3">
                         <span class="separator"></span>
                         <a class="trait" href="LowPriorityWriteables.html" title="Default Writeable with lower priority."></a>
@@ -590,7 +606,7 @@ JSR-330 scope annotations.</p><p>Bindings are provided by instances of <a href="
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Contains standard HTTP constants.
 For example:</p><pre><span class="kw">val</span> text = ContentTypes.TEXT
 <span class="kw">val</span> ok = Status.OK
-<span class="kw">val</span> accept = HeaderNames.ACCEPT</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.7.x/core/play/src/main/scala/play/api/http/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
+<span class="kw">val</span> accept = HeaderNames.ACCEPT</pre></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.8.7/core/play/src/main/scala/play/api/http/package.scala" target="_blank">package.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -1088,6 +1104,28 @@ a stream, optionally with trailing headers.
       
       <p class="shortcomment cmt">Component for handling HTTP errors in Play.</p><div class="fullcomment"><div class="comment cmt"><p>Component for handling HTTP errors in Play.
 </p></div><dl class="attributes block"> <dt>Since</dt><dd><p>2.4.0</p></dd></dl></div>
+    </li><li name="play.api.http.HttpErrorInfo" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="HttpErrorInfoextendsHttpErrorInfowithProductwithSerializable"></a><a id="HttpErrorInfo:HttpErrorInfo"></a>
+      <span class="permalink">
+      <a href="../../../play/api/http/HttpErrorInfo.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">case class</span>
+      </span>
+      <span class="symbol">
+        <a title="Used as request attribute which gets attached to the request that gets passed to an error handler." href="HttpErrorInfo.html"><span class="name">HttpErrorInfo</span></a><span class="params">(<span name="origin">origin: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result"> extends <span class="extype" name="play.http.HttpErrorInfo">http.HttpErrorInfo</span> with <span class="extype" name="scala.Product">Product</span> with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Used as request attribute which gets attached to the request that gets passed to an error
+handler.</p><div class="fullcomment"><div class="comment cmt"><p>Used as request attribute which gets attached to the request that gets passed to an error
+handler. Contains additional information useful for handling an error.
+</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
+                <span class="name">@ApiMayChange</span><span class="args">()</span>
+              
+        </dd></dl></div>
     </li><li name="play.api.http.HttpFilters" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
       <a id="HttpFiltersextendsAnyRef"></a><a id="HttpFilters:HttpFilters"></a>
       <span class="permalink">
@@ -1934,31 +1972,7 @@ generally not suitable for a production environment.
 
         
 
-        <div class="values members">
-              <h3>Deprecated Value Members</h3>
-              <ol><li name="play.api.http.LazyHttpErrorHandler" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="LazyHttpErrorHandler"></a><a id="LazyHttpErrorHandler:LazyHttpErrorHandler"></a>
-      <span class="permalink">
-      <a href="../../../play/api/http/LazyHttpErrorHandler$.html" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a title="A lazy HTTP error handler, that looks up the error handler from the current application" href="LazyHttpErrorHandler$.html"><span class="name deprecated" title="Deprecated: (Since version 2.7.0) Access the global state. Inject a HttpErrorHandler instead">LazyHttpErrorHandler</span></a><span class="result"> extends <a href="HttpErrorHandler.html" class="extype" name="play.api.http.HttpErrorHandler">HttpErrorHandler</a></span>
-      </span>
-      
-      <p class="shortcomment cmt">A lazy HTTP error handler, that looks up the error handler from the current application
-</p><div class="fullcomment"><div class="comment cmt"><p>A lazy HTTP error handler, that looks up the error handler from the current application
-</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.7.0)</i> Access the global state. Inject a HttpErrorHandler instead</p></dd></dl></div>
-    </li></ol>
-            </div>
+        
         </div>
 
         <div id="inheritedMembers">
