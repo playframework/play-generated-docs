@@ -101,7 +101,7 @@
         <a title="Contains the public API for Scala developers." href="../../index.html"><span class="name">api</span></a>
       </span>
       
-      <p class="shortcomment cmt">Contains the public API for Scala developers.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the public API for Scala developers.</p><h6> Read configuration </h6><pre><span class="kw">val</span> poolSize = configuration.getInt(<span class="lit">"engine.pool.size"</span>)</pre><h6> Use the logger </h6><pre>Logger.info(<span class="lit">"Hello!"</span>)</pre><h6> Define a Plugin </h6><pre><span class="kw">class</span> MyPlugin(app: Application) <span class="kw">extends</span> Plugin</pre><h6> Create adhoc applications (for testing) </h6><pre><span class="kw">val</span> application = Application(<span class="kw">new</span> File(<span class="lit">"."</span>), <span class="kw">this</span>.getClass.getClassloader, <span class="std">None</span>, Play.Mode.DEV)</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../index.html" class="extype" name="play">play</a></dd></dl></div>
+      <p class="shortcomment cmt">Contains the public API for Scala developers.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the public API for Scala developers.</p><h6> Access the current Play application </h6><pre><span class="kw">import</span> play.api.Play.current</pre><h6> Read configuration </h6><pre><span class="kw">val</span> poolSize = configuration.getInt(<span class="lit">"engine.pool.size"</span>)</pre><h6> Use the logger </h6><pre>Logger.info(<span class="lit">"Hello!"</span>)</pre><h6> Define a Plugin </h6><pre><span class="kw">class</span> MyPlugin(app: Application) <span class="kw">extends</span> Plugin</pre><h6> Create adhoc applications (for testing) </h6><pre><span class="kw">val</span> application = Application(<span class="kw">new</span> File(<span class="lit">"."</span>), <span class="kw">this</span>.getClass.getClassloader, <span class="std">None</span>, Play.Mode.DEV)</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../index.html" class="extype" name="play">play</a></dd></dl></div>
     </li><li name="play.api.libs" visbl="pub" class="indented3 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="libs"></a><a id="libs:libs"></a>
       <span class="permalink">
@@ -131,10 +131,12 @@
         <span class="kind">package</span>
       </span>
       <span class="symbol">
-        <a title="Json API" href="index.html"><span class="name">json</span></a>
+        <a title="Json API For example:" href="index.html"><span class="name">json</span></a>
       </span>
       
-      <p class="shortcomment cmt">Json API</p><div class="fullcomment"><div class="comment cmt"><p>Json API</p><p>For example:</p><pre><span class="kw">import</span> play.api.libs.json._
+      <p class="shortcomment cmt">Json API
+For example:</p><div class="fullcomment"><div class="comment cmt"><p>Json API
+For example:</p><pre><span class="kw">import</span> play.api.libs.json._
 <span class="kw">import</span> play.api.libs.functional.syntax._
 
 <span class="kw">case</span> <span class="kw">class</span> User(id: <span class="std">Long</span>, name: <span class="std">String</span>, friends: <span class="std">Seq</span>[User] = <span class="std">Seq</span>.empty)
@@ -149,14 +151,15 @@
   )(User.apply, unlift(User.unapply))
 }
 
-<span class="kw">object</span> MyController <span class="kw">extends</span> play.api.mvc.Controller {
+<span class="cmt">//then in a controller:</span>
+
+<span class="kw">object</span> MyController <span class="kw">extends</span> Controller {
    <span class="kw">def</span> displayUserAsJson(id: <span class="std">String</span>) = Action {
       Ok(Json.toJson(User(id.toLong, <span class="lit">"myName"</span>)))
    }
-
    <span class="kw">def</span> saveUser(jsonString: <span class="std">String</span>)= Action {
      <span class="kw">val</span> user = Json.parse(jsonString).as[User]
-     <span class="cmt">//myDataStore.save(user)</span>
+     myDataStore.save(user)
      Ok
    }
 }</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="play.api.libs">libs</a></dd></dl></div>
@@ -224,14 +227,6 @@
                         <span class="separator"></span>
                         <a class="trait" href="DefaultWrites.html" title="Default Serializers."></a>
                         <a href="DefaultWrites.html" title="Default Serializers.">DefaultWrites</a>
-                      </li><li class="current-entities indented4">
-                        <span class="separator"></span>
-                        <a class="trait" href="EnvKeyReads.html" title=""></a>
-                        <a href="EnvKeyReads.html" title="">EnvKeyReads</a>
-                      </li><li class="current-entities indented4">
-                        <span class="separator"></span>
-                        <a class="trait" href="EnvKeyWrites.html" title=""></a>
-                        <a href="EnvKeyWrites.html" title="">EnvKeyWrites</a>
                       </li><li class="current-entities indented4">
                         <span class="separator"></span>
                         <a class="trait" href="EnvReads.html" title=""></a>
@@ -353,14 +348,6 @@
                         <a class="class" href="KeyPathNode.html" title=""></a>
                         <a href="KeyPathNode.html" title="">KeyPathNode</a>
                       </li><li class="current-entities indented4">
-                        <a class="object" href="KeyReads$.html" title=""></a>
-                        <a class="trait" href="KeyReads.html" title="Used to read object key for types other than String."></a>
-                        <a href="KeyReads.html" title="Used to read object key for types other than String.">KeyReads</a>
-                      </li><li class="current-entities indented4">
-                        <a class="object" href="KeyWrites$.html" title=""></a>
-                        <a class="trait" href="KeyWrites.html" title="Used to write object key for types other than String."></a>
-                        <a href="KeyWrites.html" title="Used to write object key for types other than String.">KeyWrites</a>
-                      </li><li class="current-entities indented4">
                         <span class="separator"></span>
                         <a class="trait" href="LowPriorityDefaultReads.html" title="Low priority reads."></a>
                         <a href="LowPriorityDefaultReads.html" title="Low priority reads.">LowPriorityDefaultReads</a>
@@ -445,7 +432,7 @@
 
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Represents a Json null value.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/play-json/tree/2.8.1/play-json/jvm/src/main/scala/play/api/libs/json/JsValue.scala" target="_blank">JsValue.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/play-json/tree/2.7.4/play-json/jvm/src/main/scala/play/api/libs/json/JsValue.scala" target="_blank">JsValue.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>

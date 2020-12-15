@@ -101,7 +101,7 @@
         <a title="Contains the public API for Scala developers." href="../index.html"><span class="name">api</span></a>
       </span>
       
-      <p class="shortcomment cmt">Contains the public API for Scala developers.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the public API for Scala developers.</p><h6> Read configuration </h6><pre><span class="kw">val</span> poolSize = configuration.getInt(<span class="lit">"engine.pool.size"</span>)</pre><h6> Use the logger </h6><pre>Logger.info(<span class="lit">"Hello!"</span>)</pre><h6> Define a Plugin </h6><pre><span class="kw">class</span> MyPlugin(app: Application) <span class="kw">extends</span> Plugin</pre><h6> Create adhoc applications (for testing) </h6><pre><span class="kw">val</span> application = Application(<span class="kw">new</span> File(<span class="lit">"."</span>), <span class="kw">this</span>.getClass.getClassloader, <span class="std">None</span>, Play.Mode.DEV)</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../index.html" class="extype" name="play">play</a></dd></dl></div>
+      <p class="shortcomment cmt">Contains the public API for Scala developers.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the public API for Scala developers.</p><h6> Access the current Play application </h6><pre><span class="kw">import</span> play.api.Play.current</pre><h6> Read configuration </h6><pre><span class="kw">val</span> poolSize = configuration.getInt(<span class="lit">"engine.pool.size"</span>)</pre><h6> Use the logger </h6><pre>Logger.info(<span class="lit">"Hello!"</span>)</pre><h6> Define a Plugin </h6><pre><span class="kw">class</span> MyPlugin(app: Application) <span class="kw">extends</span> Plugin</pre><h6> Create adhoc applications (for testing) </h6><pre><span class="kw">val</span> application = Application(<span class="kw">new</span> File(<span class="lit">"."</span>), <span class="kw">this</span>.getClass.getClassloader, <span class="std">None</span>, Play.Mode.DEV)</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../index.html" class="extype" name="play">play</a></dd></dl></div>
     </li><li name="play.api.mvc" visbl="pub" class="indented3 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="mvc"></a><a id="mvc:mvc"></a>
       <span class="permalink">
@@ -185,7 +185,7 @@
                         <a class="class" href="Accepting.html" title="Convenient class to generate extractors checking if a given mime type matches the Accept header of a request."></a>
                         <a href="Accepting.html" title="Convenient class to generate extractors checking if a given mime type matches the Accept header of a request.">Accepting</a>
                       </li><li class="current-entities indented3">
-                        <span class="separator"></span>
+                        <a class="object" href="Action$.html" title="Helper object to create Action values."></a>
                         <a class="trait" href="Action.html" title="An action is essentially a (Request[A] =&gt; Result) function that handles a request and generates a result to be sent to the client."></a>
                         <a href="Action.html" title="An action is essentially a (Request[A] =&gt; Result) function that handles a request and generates a result to be sent to the client.">Action</a>
                       </li><li class="current-entities indented3">
@@ -257,13 +257,13 @@
                         <a class="trait" href="BodyParser.html" title="A body parser parses the HTTP request body content."></a>
                         <a href="BodyParser.html" title="A body parser parses the HTTP request body content.">BodyParser</a>
                       </li><li class="current-entities indented3">
-                        <a class="object" href="BodyParserUtils$.html" title=""></a>
+                        <span class="separator"></span>
                         <a class="trait" href="BodyParserUtils.html" title="A set of reusable body parsers and utilities that do not require configuration."></a>
                         <a href="BodyParserUtils.html" title="A set of reusable body parsers and utilities that do not require configuration.">BodyParserUtils</a>
                       </li><li class="current-entities indented3">
-                        <span class="separator"></span>
                         <a class="object" href="BodyParsers$.html" title="Default BodyParsers."></a>
-                        <a href="BodyParsers$.html" title="Default BodyParsers.">BodyParsers</a>
+                        <a class="trait" href="BodyParsers.html" title="Legacy body parsers trait."></a>
+                        <a href="BodyParsers.html" title="Legacy body parsers trait.">BodyParsers</a>
                       </li><li class="current-entities indented3">
                         <span class="separator"></span>
                         <a class="class" href="Call.html" title="Defines a Call, which describes an HTTP request and can be used to create links or fill redirect data."></a>
@@ -272,6 +272,10 @@
                         <a class="object" href="Codec$.html" title="Default Codec support."></a>
                         <a class="class" href="Codec.html" title="A Codec handle the conversion of String to Byte arrays."></a>
                         <a href="Codec.html" title="A Codec handle the conversion of String to Byte arrays.">Codec</a>
+                      </li><li class="current-entities indented3">
+                        <span class="separator"></span>
+                        <a class="trait" href="Controller.html" title="Implements deprecated controller functionality."></a>
+                        <a href="Controller.html" title="Implements deprecated controller functionality.">Controller</a>
                       </li><li class="current-entities indented3">
                         <span class="separator"></span>
                         <a class="trait" href="ControllerComponents.html" title="The base controller components dependencies that most controllers rely on."></a>
@@ -586,7 +590,7 @@
 <code>EssentialAction</code> consumes the request body (an <code>ByteString</code>) and returns
 a <code>Result</code>.</p><p>An <code>EssentialAction</code> is a <code>Handler</code>, which means it is one of the objects
 that Play uses to handle requests.
-</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="play.api.mvc.EssentialAction">EssentialAction</a></dd><dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.8.7/core/play/src/main/scala/play/api/mvc/Action.scala" target="_blank">Action.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Self Type</dt><dd><a href="" class="extype" name="play.api.mvc.EssentialAction">EssentialAction</a></dd><dt>Source</dt><dd><a href="https://github.com/playframework/playframework/tree/2.7.x/core/play/src/main/scala/play/api/mvc/Action.scala" target="_blank">Action.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -595,7 +599,7 @@ that Play uses to handle requests.
             <span class="toggle">
               Known Subclasses
             </span>
-            <div class="subClasses hiddenContent"><a href="Action.html" class="extype" name="play.api.mvc.Action">Action</a>, <a href="../../core/j/JavaAction.html" class="extype" name="play.core.j.JavaAction">JavaAction</a></div>
+            <div class="subClasses hiddenContent"><a href="Action.html" class="extype" name="play.api.mvc.Action">Action</a>, <a href="../../core/j/JavaAction.html" class="extype" name="play.core.j.JavaAction">JavaAction</a>, <a href="../../filters/csrf/CSRFAction.html" class="extype" name="play.filters.csrf.CSRFAction">CSRFAction</a></div>
           </div></div>
         
 
@@ -749,7 +753,8 @@ that Play uses to handle requests.
         <span class="name">apply</span><span class="params">()</span><span class="result">: <a href="" class="extype" name="play.api.mvc.EssentialAction">EssentialAction</a></span>
       </span>
       
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>itself, for better support in the routes file.</p></dd></dl></div>
+      <p class="shortcomment cmt">Returns itself, for better support in the routes file.</p><div class="fullcomment"><div class="comment cmt"><p>Returns itself, for better support in the routes file.
+</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>itself</p></dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <span class="permalink">

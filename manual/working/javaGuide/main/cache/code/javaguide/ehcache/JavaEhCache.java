@@ -7,7 +7,6 @@ package javaguide.ehcache;
 import akka.Done;
 import com.google.common.collect.ImmutableMap;
 import org.junit.Test;
-import org.junit.Ignore;
 import play.Application;
 import play.cache.AsyncCacheApi;
 import play.cache.Cached;
@@ -65,7 +64,7 @@ public class JavaEhCache extends WithApplication {
       block(result);
     }
     // #get
-    CompletionStage<Optional<News>> news = cache.get("item.key");
+    CompletionStage<Optional<News>> news = cache.getOptional("item.key");
     // #get
     assertThat(block(news).get(), equalTo(frontPageNews));
     // #get-or-else
@@ -83,7 +82,7 @@ public class JavaEhCache extends WithApplication {
       // #removeAll
       block(result);
     }
-    assertThat(cache.sync().get("item.key"), equalTo(Optional.empty()));
+    assertThat(cache.sync().getOptional("item.key"), equalTo(Optional.empty()));
   }
 
   private CompletionStage<News> lookUpFrontPageNews() {
@@ -104,7 +103,6 @@ public class JavaEhCache extends WithApplication {
     // #http
   }
 
-  @Ignore
   @Test
   public void http() {
     AsyncCacheApi cache = app.injector().instanceOf(AsyncCacheApi.class);
@@ -113,7 +111,7 @@ public class JavaEhCache extends WithApplication {
         contentAsString(
             call(new Controller1(instanceOf(JavaHandlerComponents.class)), fakeRequest(), mat)),
         equalTo("Hello world"));
-    assertThat(cache.sync().get("homePage").get(), notNullValue());
+    assertThat(cache.sync().getOptional("homePage").get(), notNullValue());
     cache.set("homePage", Results.ok("something else"));
     assertThat(
         contentAsString(

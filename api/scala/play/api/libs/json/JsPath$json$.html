@@ -101,7 +101,7 @@
         <a title="Contains the public API for Scala developers." href="../../index.html"><span class="name">api</span></a>
       </span>
       
-      <p class="shortcomment cmt">Contains the public API for Scala developers.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the public API for Scala developers.</p><h6> Read configuration </h6><pre><span class="kw">val</span> poolSize = configuration.getInt(<span class="lit">"engine.pool.size"</span>)</pre><h6> Use the logger </h6><pre>Logger.info(<span class="lit">"Hello!"</span>)</pre><h6> Define a Plugin </h6><pre><span class="kw">class</span> MyPlugin(app: Application) <span class="kw">extends</span> Plugin</pre><h6> Create adhoc applications (for testing) </h6><pre><span class="kw">val</span> application = Application(<span class="kw">new</span> File(<span class="lit">"."</span>), <span class="kw">this</span>.getClass.getClassloader, <span class="std">None</span>, Play.Mode.DEV)</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../index.html" class="extype" name="play">play</a></dd></dl></div>
+      <p class="shortcomment cmt">Contains the public API for Scala developers.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the public API for Scala developers.</p><h6> Access the current Play application </h6><pre><span class="kw">import</span> play.api.Play.current</pre><h6> Read configuration </h6><pre><span class="kw">val</span> poolSize = configuration.getInt(<span class="lit">"engine.pool.size"</span>)</pre><h6> Use the logger </h6><pre>Logger.info(<span class="lit">"Hello!"</span>)</pre><h6> Define a Plugin </h6><pre><span class="kw">class</span> MyPlugin(app: Application) <span class="kw">extends</span> Plugin</pre><h6> Create adhoc applications (for testing) </h6><pre><span class="kw">val</span> application = Application(<span class="kw">new</span> File(<span class="lit">"."</span>), <span class="kw">this</span>.getClass.getClassloader, <span class="std">None</span>, Play.Mode.DEV)</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../index.html" class="extype" name="play">play</a></dd></dl></div>
     </li><li name="play.api.libs" visbl="pub" class="indented3 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="libs"></a><a id="libs:libs"></a>
       <span class="permalink">
@@ -131,10 +131,12 @@
         <span class="kind">package</span>
       </span>
       <span class="symbol">
-        <a title="Json API" href="index.html"><span class="name">json</span></a>
+        <a title="Json API For example:" href="index.html"><span class="name">json</span></a>
       </span>
       
-      <p class="shortcomment cmt">Json API</p><div class="fullcomment"><div class="comment cmt"><p>Json API</p><p>For example:</p><pre><span class="kw">import</span> play.api.libs.json._
+      <p class="shortcomment cmt">Json API
+For example:</p><div class="fullcomment"><div class="comment cmt"><p>Json API
+For example:</p><pre><span class="kw">import</span> play.api.libs.json._
 <span class="kw">import</span> play.api.libs.functional.syntax._
 
 <span class="kw">case</span> <span class="kw">class</span> User(id: <span class="std">Long</span>, name: <span class="std">String</span>, friends: <span class="std">Seq</span>[User] = <span class="std">Seq</span>.empty)
@@ -149,14 +151,15 @@
   )(User.apply, unlift(User.unapply))
 }
 
-<span class="kw">object</span> MyController <span class="kw">extends</span> play.api.mvc.Controller {
+<span class="cmt">//then in a controller:</span>
+
+<span class="kw">object</span> MyController <span class="kw">extends</span> Controller {
    <span class="kw">def</span> displayUserAsJson(id: <span class="std">String</span>) = Action {
       Ok(Json.toJson(User(id.toLong, <span class="lit">"myName"</span>)))
    }
-
    <span class="kw">def</span> saveUser(jsonString: <span class="std">String</span>)= Action {
      <span class="kw">val</span> user = Json.parse(jsonString).as[User]
-     <span class="cmt">//myDataStore.save(user)</span>
+     myDataStore.save(user)
      Ok
    }
 }</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="play.api.libs">libs</a></dd></dl></div>
@@ -213,7 +216,7 @@ in the parsed JSON.
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/play-json/tree/2.8.1/play-json/jvm/src/main/scala/play/api/libs/json/JsPath.scala" target="_blank">JsPath.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/play-json/tree/2.7.4/play-json/jvm/src/main/scala/play/api/libs/json/JsPath.scala" target="_blank">JsPath.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -373,15 +376,13 @@ in the parsed JSON.
         <span class="name">copyFrom</span><span class="tparams">[<span name="A">A &lt;: <a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a></span>]</span><span class="params">(<span name="reads">reads: <a href="Reads.html" class="extype" name="play.api.libs.json.Reads">Reads</a>[<span class="extype" name="play.api.libs.json.JsPath.json.copyFrom.A">A</span>]</span>)</span><span class="result">: <a href="Reads.html" class="extype" name="play.api.libs.json.Reads">Reads</a>[<a href="JsObject.html" class="extype" name="play.api.libs.json.JsObject">JsObject</a>]</span>
       </span>
       
-      <p class="shortcomment cmt"><code>(<u> \ 'key).json.copyFrom(reads)<code> is a </code>Reads[JsObject]<code> that:
-- copies a <a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a> using passed </code>Reads[A]<code>
-- creates a new branch from </code>JsPath<code> and copies previous value into it</code></u></code></p><div class="fullcomment"><div class="comment cmt"><p><code>(<u> \ 'key).json.copyFrom(reads)<code> is a </code>Reads[JsObject]<code> that:
-- copies a <a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a> using passed </code>Reads[A]<code>
-- creates a new branch from </code>JsPath<code> and copies previous value into it</code></u></code></p><p>Useful to copy a value from a JSON branch into another branch.</p><p>Example:</p><pre><span class="kw">import</span> play.api.libs.json.{ Json, __ }
-
-<span class="kw">val</span> js = Json.obj(<span class="lit">"key1"</span> -&gt; <span class="lit">"value1"</span>, <span class="lit">"key2"</span> -&gt; <span class="lit">"value2"</span>)
+      <p class="shortcomment cmt">(<code><u><code> \ 'key).json.copyFrom(reads) is a Reads[JsObject] that:
+- copies a JsValue using passed Reads[A]
+- creates a new branch from JsPath and copies previous value into it</code></u></code></p><div class="fullcomment"><div class="comment cmt"><p>(<code><u><code> \ 'key).json.copyFrom(reads) is a Reads[JsObject] that:
+- copies a JsValue using passed Reads[A]
+- creates a new branch from JsPath and copies previous value into it</code></u></code></p><p>Useful to copy a value from a Json branch into another branch</p><p>Example :</p><pre><span class="kw">val</span> js = Json.obj(<span class="lit">"key1"</span> -&gt; <span class="lit">"value1"</span>, <span class="lit">"key2"</span> -&gt; <span class="lit">"value2"</span>)
 js.validate( (__ \ 'key3).json.copyFrom((__ \ 'key2).json.pick))
-<span class="cmt">// =&gt; JsSuccess({"key3":"value2"},/key2)</span></pre></div></div>
+<span class="kw">=&gt;</span> JsSuccess({<span class="lit">"key3"</span>:<span class="lit">"value2"</span>},/key2)</pre></div></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
       <span class="permalink">
@@ -559,17 +560,15 @@ js.validate( (__ \ 'key3).json.copyFrom((__ \ 'key2).json.pick))
         <span class="name">pick</span><span class="result">: <a href="Reads.html" class="extype" name="play.api.libs.json.Reads">Reads</a>[<a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a>]</span>
       </span>
       
-      <p class="shortcomment cmt"><code>(<u> \ 'key).json.pick<code> is a </code>Reads[JsValue]<code> that:
-- picks the given value at the given </code>JsPath<code> (WITHOUT THE PATH) from the input JS
-- validates this element as an object of type <a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a>
-- returns a </code>JsResult[JsValue]<code></code></u></code></p><div class="fullcomment"><div class="comment cmt"><p><code>(<u> \ 'key).json.pick<code> is a </code>Reads[JsValue]<code> that:
-- picks the given value at the given </code>JsPath<code> (WITHOUT THE PATH) from the input JS
-- validates this element as an object of type <a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a>
-- returns a </code>JsResult[JsValue]<code></code></u></code></p><p>Useful to pick a <a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a> at a given <code>JsPath</code></p><p>Example:</p><pre><span class="kw">import</span> play.api.libs.json.{ Json, __ }
-
-<span class="kw">val</span> js = Json.obj(<span class="lit">"key1"</span> -&gt; <span class="lit">"value1"</span>, <span class="lit">"key2"</span> -&gt; <span class="lit">"value2"</span>)
+      <p class="shortcomment cmt">(<code><u><code> \ 'key).json.pick is a Reads[JsValue] that:
+- picks the given value at the given JsPath (WITHOUT THE PATH) from the input JS
+- validates this element as an object of type JsValue
+- returns a JsResult[JsValue]</code></u></code></p><div class="fullcomment"><div class="comment cmt"><p>(<code><u><code> \ 'key).json.pick is a Reads[JsValue] that:
+- picks the given value at the given JsPath (WITHOUT THE PATH) from the input JS
+- validates this element as an object of type JsValue
+- returns a JsResult[JsValue]</code></u></code></p><p>Useful to pick a JsValue at a given JsPath</p><p>Example :</p><pre><span class="kw">val</span> js = Json.obj(<span class="lit">"key1"</span> -&gt; <span class="lit">"value1"</span>, <span class="lit">"key2"</span> -&gt; <span class="lit">"value2"</span>)
 js.validate((__ \ 'key2).json.pick)
-<span class="cmt">// =&gt; JsSuccess("value2",/key2)</span></pre></div></div>
+<span class="kw">=&gt;</span> JsSuccess(<span class="lit">"value2"</span>,/key2)</pre></div></div>
     </li><li name="play.api.libs.json.JsPath.json#pick" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="pick[A&lt;:play.api.libs.json.JsValue](implicitr:play.api.libs.json.Reads[A]):play.api.libs.json.Reads[A]"></a><a id="pick[A&lt;:JsValue](Reads[A]):Reads[A]"></a>
       <span class="permalink">
@@ -585,17 +584,15 @@ js.validate((__ \ 'key2).json.pick)
         <span class="name">pick</span><span class="tparams">[<span name="A">A &lt;: <a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a></span>]</span><span class="params">(<span class="implicit">implicit </span><span name="r">r: <a href="Reads.html" class="extype" name="play.api.libs.json.Reads">Reads</a>[<span class="extype" name="play.api.libs.json.JsPath.json.pick.A">A</span>]</span>)</span><span class="result">: <a href="Reads.html" class="extype" name="play.api.libs.json.Reads">Reads</a>[<span class="extype" name="play.api.libs.json.JsPath.json.pick.A">A</span>]</span>
       </span>
       
-      <p class="shortcomment cmt"><code>(<u> \ 'key).json.pick[A &lt;: JsValue]<code> is a </code>Reads[A]<code> that:
-- picks the given value at the given </code>JsPath<code> (WITHOUT THE PATH) from the input JS
+      <p class="shortcomment cmt">(<code><u><code> \ 'key).json.pick[A &lt;: JsValue] is a Reads[A] that:
+- picks the given value at the given JsPath (WITHOUT THE PATH) from the input JS
 - validates this element as an object of type A (inheriting JsValue)
-- returns a </code>JsResult[A]<code></code></u></code></p><div class="fullcomment"><div class="comment cmt"><p><code>(<u> \ 'key).json.pick[A &lt;: JsValue]<code> is a </code>Reads[A]<code> that:
-- picks the given value at the given </code>JsPath<code> (WITHOUT THE PATH) from the input JS
+- returns a JsResult[A]</code></u></code></p><div class="fullcomment"><div class="comment cmt"><p>(<code><u><code> \ 'key).json.pick[A &lt;: JsValue] is a Reads[A] that:
+- picks the given value at the given JsPath (WITHOUT THE PATH) from the input JS
 - validates this element as an object of type A (inheriting JsValue)
-- returns a </code>JsResult[A]<code></code></u></code></p><p>Useful to pick a typed JsValue at a given JsPath</p><p>Example:</p><pre><span class="kw">import</span> play.api.libs.json.{ Json, JsNumber, __ }
-
-<span class="kw">val</span> js = Json.obj(<span class="lit">"key1"</span> -&gt; <span class="lit">"value1"</span>, <span class="lit">"key2"</span> -&gt; <span class="num">123</span>)
+- returns a JsResult[A]</code></u></code></p><p>Useful to pick a typed JsValue at a given JsPath</p><p>Example :</p><pre><span class="kw">val</span> js = Json.obj(<span class="lit">"key1"</span> -&gt; <span class="lit">"value1"</span>, <span class="lit">"key2"</span> -&gt; <span class="num">123</span>)
 js.validate((__ \ 'key2).json.pick[JsNumber])
-<span class="cmt">// =&gt; JsSuccess(JsNumber(123),/key2)</span></pre></div></div>
+<span class="kw">=&gt;</span> JsSuccess(JsNumber(<span class="num">123</span>),/key2)</pre></div></div>
     </li><li name="play.api.libs.json.JsPath.json#pickBranch" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="pickBranch:play.api.libs.json.Reads[play.api.libs.json.JsObject]"></a><a id="pickBranch:Reads[JsObject]"></a>
       <span class="permalink">
@@ -611,17 +608,15 @@ js.validate((__ \ 'key2).json.pick[JsNumber])
         <span class="name">pickBranch</span><span class="result">: <a href="Reads.html" class="extype" name="play.api.libs.json.Reads">Reads</a>[<a href="JsObject.html" class="extype" name="play.api.libs.json.JsObject">JsObject</a>]</span>
       </span>
       
-      <p class="shortcomment cmt"><code>(<u> \ 'key).json.pickBranch<code> is a </code>Reads[JsObject]<code> that:
-- copies the given branch (</code>JsPath<code> + relative <a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a>) from the input JS at this given </code>JsPath<code>
-- creates a </code>JsObject<code> from </code>JsPath<code> and </code>JsValue<code>
-- returns a </code>JsResult[JsObject]<code></code></u></code></p><div class="fullcomment"><div class="comment cmt"><p><code>(<u> \ 'key).json.pickBranch<code> is a </code>Reads[JsObject]<code> that:
-- copies the given branch (</code>JsPath<code> + relative <a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a>) from the input JS at this given </code>JsPath<code>
-- creates a </code>JsObject<code> from </code>JsPath<code> and </code>JsValue<code>
-- returns a </code>JsResult[JsObject]<code></code></u></code></p><p>Useful to create/validate an <a href="JsObject.html" class="extype" name="play.api.libs.json.JsObject">JsObject</a> from a single <code>JsPath</code> (potentially modifying it)</p><p>Example:</p><pre><span class="kw">import</span> play.api.libs.json.{ Json, __ }
-
-<span class="kw">val</span> js = Json.obj(<span class="lit">"key1"</span> -&gt; <span class="lit">"value1"</span>, <span class="lit">"key2"</span> -&gt; Json.obj( <span class="lit">"key21"</span> -&gt; <span class="lit">"value2"</span>) )
+      <p class="shortcomment cmt">(<code><u><code> \ 'key).json.pickBranch is a Reads[JsObject] that:
+- copies the given branch (JsPath + relative JsValue) from the input JS at this given JsPath
+- creates a JsObject from JsPath and JsValue
+- returns a JsResult[JsObject]</code></u></code></p><div class="fullcomment"><div class="comment cmt"><p>(<code><u><code> \ 'key).json.pickBranch is a Reads[JsObject] that:
+- copies the given branch (JsPath + relative JsValue) from the input JS at this given JsPath
+- creates a JsObject from JsPath and JsValue
+- returns a JsResult[JsObject]</code></u></code></p><p>Useful to create/validate an JsObject from a single JsPath (potentially modifying it)</p><p>Example :</p><pre><span class="kw">val</span> js = Json.obj(<span class="lit">"key1"</span> -&gt; <span class="lit">"value1"</span>, <span class="lit">"key2"</span> -&gt; Json.obj( <span class="lit">"key21"</span> -&gt; <span class="lit">"value2"</span>) )
 js.validate( (__ \ 'key2).json.pickBranch )
-<span class="cmt">// =&gt; JsSuccess({"key2":{"key21":"value2"}},/key2)</span></pre></div></div>
+<span class="kw">=&gt;</span> JsSuccess({<span class="lit">"key2"</span>:{<span class="lit">"key21"</span>:<span class="lit">"value2"</span>}},/key2)</pre></div></div>
     </li><li name="play.api.libs.json.JsPath.json#pickBranch" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="pickBranch[A&lt;:play.api.libs.json.JsValue](reads:play.api.libs.json.Reads[A]):play.api.libs.json.Reads[play.api.libs.json.JsObject]"></a><a id="pickBranch[A&lt;:JsValue](Reads[A]):Reads[JsObject]"></a>
       <span class="permalink">
@@ -637,19 +632,17 @@ js.validate( (__ \ 'key2).json.pickBranch )
         <span class="name">pickBranch</span><span class="tparams">[<span name="A">A &lt;: <a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a></span>]</span><span class="params">(<span name="reads">reads: <a href="Reads.html" class="extype" name="play.api.libs.json.Reads">Reads</a>[<span class="extype" name="play.api.libs.json.JsPath.json.pickBranch.A">A</span>]</span>)</span><span class="result">: <a href="Reads.html" class="extype" name="play.api.libs.json.Reads">Reads</a>[<a href="JsObject.html" class="extype" name="play.api.libs.json.JsObject">JsObject</a>]</span>
       </span>
       
-      <p class="shortcomment cmt"><code>(<u> \ 'key).json.pickBranch[A &lt;: JsValue](readsOfA)<code> is a </code>Reads[JsObject]<code> that:
-- copies the given branch (</code>JsPath<code> + relative <a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a>) from the input JS at this given </code>JsPath<code>
-- validates this relative </code>JsValue<code> as an object of type A (inheriting </code>JsValue<code>) potentially modifying it
-- creates a <a href="JsObject.html" class="extype" name="play.api.libs.json.JsObject">JsObject</a> from </code>JsPath<code> and validated </code>JsValue<code>
-- returns a </code>JsResult[JsObject]<code></code></u></code></p><div class="fullcomment"><div class="comment cmt"><p><code>(<u> \ 'key).json.pickBranch[A &lt;: JsValue](readsOfA)<code> is a </code>Reads[JsObject]<code> that:
-- copies the given branch (</code>JsPath<code> + relative <a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a>) from the input JS at this given </code>JsPath<code>
-- validates this relative </code>JsValue<code> as an object of type A (inheriting </code>JsValue<code>) potentially modifying it
-- creates a <a href="JsObject.html" class="extype" name="play.api.libs.json.JsObject">JsObject</a> from </code>JsPath<code> and validated </code>JsValue<code>
-- returns a </code>JsResult[JsObject]<code></code></u></code></p><p>Useful to create/validate an <a href="JsObject.html" class="extype" name="play.api.libs.json.JsObject">JsObject</a> from a single <code>JsPath</code> (potentially modifying it)</p><p>Example:</p><pre><span class="kw">import</span> play.api.libs.json.{ Json, JsString, __ }
-
-<span class="kw">val</span> js = Json.obj(<span class="lit">"key1"</span> -&gt; <span class="lit">"value1"</span>, <span class="lit">"key2"</span> -&gt; Json.obj( <span class="lit">"key21"</span> -&gt; <span class="lit">"value2"</span>) )
+      <p class="shortcomment cmt">(<code><u><code> \ 'key).json.pickBranch[A &lt;: JsValue](readsOfA) is a Reads[JsObject] that:
+- copies the given branch (JsPath + relative JsValue) from the input JS at this given JsPath
+- validates this relative JsValue as an object of type A (inheriting JsValue) potentially modifying it
+- creates a JsObject from JsPath and validated JsValue
+- returns a JsResult[JsObject]</code></u></code></p><div class="fullcomment"><div class="comment cmt"><p>(<code><u><code> \ 'key).json.pickBranch[A &lt;: JsValue](readsOfA) is a Reads[JsObject] that:
+- copies the given branch (JsPath + relative JsValue) from the input JS at this given JsPath
+- validates this relative JsValue as an object of type A (inheriting JsValue) potentially modifying it
+- creates a JsObject from JsPath and validated JsValue
+- returns a JsResult[JsObject]</code></u></code></p><p>Useful to create/validate an JsObject from a single JsPath (potentially modifying it)</p><p>Example :</p><pre><span class="kw">val</span> js = Json.obj(<span class="lit">"key1"</span> -&gt; <span class="lit">"value1"</span>, <span class="lit">"key2"</span> -&gt; Json.obj( <span class="lit">"key21"</span> -&gt; <span class="lit">"value2"</span>) )
 js.validate( (__ \ 'key2).json.pickBranch[JsString]( (__ \ 'key21).json.pick[JsString].map( (js: JsString) <span class="kw">=&gt;</span> JsString(js.value ++ <span class="lit">"3456"</span>) ) ) )
-<span class="cmt">// =&gt; JsSuccess({"key2":"value23456"},/key2/key21)</span></pre></div></div>
+<span class="kw">=&gt;</span> JsSuccess({<span class="lit">"key2"</span>:<span class="lit">"value23456"</span>},/key2/key21)</pre></div></div>
     </li><li name="play.api.libs.json.JsPath.json#prune" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="prune:play.api.libs.json.Reads[play.api.libs.json.JsObject]"></a><a id="prune:Reads[JsObject]"></a>
       <span class="permalink">
@@ -665,11 +658,9 @@ js.validate( (__ \ 'key2).json.pickBranch[JsString]( (__ \ 'key21).json.pick[JsS
         <span class="name">prune</span><span class="result">: <a href="Reads.html" class="extype" name="play.api.libs.json.Reads">Reads</a>[<a href="JsObject.html" class="extype" name="play.api.libs.json.JsObject">JsObject</a>]</span>
       </span>
       
-      <p class="shortcomment cmt"><code>(<u> \ 'key).json.prune<code> is </code>Reads[JsObject]<code> that prunes the branch and returns remaining <a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a>.</code></u></code></p><div class="fullcomment"><div class="comment cmt"><p><code>(<u> \ 'key).json.prune<code> is </code>Reads[JsObject]<code> that prunes the branch and returns remaining <a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a>.</code></u></code></p><p>Example:</p><pre><span class="kw">import</span> play.api.libs.json.{ Json, __ }
-
-<span class="kw">val</span> js = Json.obj(<span class="lit">"key1"</span> -&gt; <span class="lit">"value1"</span>, <span class="lit">"key2"</span> -&gt; <span class="lit">"value2"</span>)
+      <p class="shortcomment cmt">(<code><u><code> \ 'key).json.prune is Reads[JsObject] that prunes the branch and returns remaining JsValue</code></u></code></p><div class="fullcomment"><div class="comment cmt"><p>(<code><u><code> \ 'key).json.prune is Reads[JsObject] that prunes the branch and returns remaining JsValue</code></u></code></p><p>Example :</p><pre><span class="kw">val</span> js = Json.obj(<span class="lit">"key1"</span> -&gt; <span class="lit">"value1"</span>, <span class="lit">"key2"</span> -&gt; <span class="lit">"value2"</span>)
 js.validate( (__ \ 'key2).json.prune )
-<span class="cmt">// =&gt; JsSuccess({"key1":"value1"},/key2)</span></pre></div></div>
+<span class="kw">=&gt;</span> JsSuccess({<span class="lit">"key1"</span>:<span class="lit">"value1"</span>},/key2)</pre></div></div>
     </li><li name="play.api.libs.json.JsPath.json#put" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="put(a:=&gt;play.api.libs.json.JsValue):play.api.libs.json.Reads[play.api.libs.json.JsObject]"></a><a id="put(⇒JsValue):Reads[JsObject]"></a>
       <span class="permalink">
@@ -685,16 +676,14 @@ js.validate( (__ \ 'key2).json.prune )
         <span class="name">put</span><span class="params">(<span name="a">a: ⇒ <a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a></span>)</span><span class="result">: <a href="Reads.html" class="extype" name="play.api.libs.json.Reads">Reads</a>[<a href="JsObject.html" class="extype" name="play.api.libs.json.JsObject">JsObject</a>]</span>
       </span>
       
-      <p class="shortcomment cmt"><code>(<u> \ 'key).put(fixedValue)<code> is a </code>Reads[JsObject]<code> that:
-- creates a <a href="JsObject.html" class="extype" name="play.api.libs.json.JsObject">JsObject</a> setting A (inheriting <a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a>) at given </code>JsPath<code>
-- returns a </code>JsResult[JsObject]<code></code></u></code></p><div class="fullcomment"><div class="comment cmt"><p><code>(<u> \ 'key).put(fixedValue)<code> is a </code>Reads[JsObject]<code> that:
-- creates a <a href="JsObject.html" class="extype" name="play.api.libs.json.JsObject">JsObject</a> setting A (inheriting <a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a>) at given </code>JsPath<code>
-- returns a </code>JsResult[JsObject]<code></code></u></code></p><p>This <code>Reads</code> doesn't care about the input JS and is mainly used to set a fixed at a given <code>JsPath</code>
-Please that <code>A</code> is passed by name allowing to use an expression reevaluated at each time.</p><p>Example:</p><pre><span class="kw">import</span> play.api.libs.json.{ Json, JsNumber, __ }
-
-<span class="kw">val</span> js = Json.obj(<span class="lit">"key1"</span> -&gt; <span class="lit">"value1"</span>, <span class="lit">"key2"</span> -&gt; <span class="lit">"value2"</span>)
+      <p class="shortcomment cmt">(<code><u><code> \ 'key).put(fixedValue) is a Reads[JsObject] that:
+- creates a JsObject setting A (inheriting JsValue) at given JsPath
+- returns a JsResult[JsObject]</code></u></code></p><div class="fullcomment"><div class="comment cmt"><p>(<code><u><code> \ 'key).put(fixedValue) is a Reads[JsObject] that:
+- creates a JsObject setting A (inheriting JsValue) at given JsPath
+- returns a JsResult[JsObject]</code></u></code></p><p>This Reads doesn't care about the input JS and is mainly used to set a fixed at a given JsPath
+Please that A is passed by name allowing to use an expression reevaluated at each time.</p><p>Example :</p><pre><span class="kw">val</span> js = Json.obj(<span class="lit">"key1"</span> -&gt; <span class="lit">"value1"</span>, <span class="lit">"key2"</span> -&gt; <span class="lit">"value2"</span>)
 js.validate( (__ \ 'key3).json.put( { JsNumber((<span class="kw">new</span> java.util.Date).getTime()) } ) )
-<span class="cmt">// =&gt; JsSuccess({"key3":1376419773171},)</span></pre></div></div>
+<span class="kw">=&gt;</span> JsSuccess({<span class="lit">"key3"</span>:<span class="num">1376419773171</span>},)</pre></div></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">
@@ -742,17 +731,15 @@ js.validate( (__ \ 'key3).json.put( { JsNumber((<span class="kw">new</span> java
         <span class="name">update</span><span class="tparams">[<span name="A">A &lt;: <a href="JsValue.html" class="extype" name="play.api.libs.json.JsValue">JsValue</a></span>]</span><span class="params">(<span name="reads">reads: <a href="Reads.html" class="extype" name="play.api.libs.json.Reads">Reads</a>[<span class="extype" name="play.api.libs.json.JsPath.json.update.A">A</span>]</span>)</span><span class="result">: <a href="Reads.html" class="extype" name="play.api.libs.json.Reads">Reads</a>[<a href="JsObject.html" class="extype" name="play.api.libs.json.JsObject">JsObject</a>]</span>
       </span>
       
-      <p class="shortcomment cmt"><code>(<u> \ 'key).json.update(reads)<code> is the most complex </code>Reads[JsObject]<code> but the most powerful:
-- copies the whole </code>JsValue =&gt; A<code>
-- applies the passed </code>Reads[A]<code> on </code>JsValue =&gt; B<code>
-- deep merges both </code>JsValues (A ++ B)<code> so </code>B<code> overwrites </code>A<code> identical branches</code></u></code></p><div class="fullcomment"><div class="comment cmt"><p><code>(<u> \ 'key).json.update(reads)<code> is the most complex </code>Reads[JsObject]<code> but the most powerful:
-- copies the whole </code>JsValue =&gt; A<code>
-- applies the passed </code>Reads[A]<code> on </code>JsValue =&gt; B<code>
-- deep merges both </code>JsValues (A ++ B)<code> so </code>B<code> overwrites </code>A<code> identical branches</code></u></code></p><p>Please note that if you have prune a branch in <code>B</code>, it is still in <code>A</code> so you'll see it in the result</p><p>Example:</p><pre><span class="kw">import</span> play.api.libs.json.{ Json, JsString, __ }
-
-<span class="kw">val</span> js = Json.obj(<span class="lit">"key1"</span> -&gt; <span class="lit">"value1"</span>, <span class="lit">"key2"</span> -&gt; <span class="lit">"value2"</span>)
+      <p class="shortcomment cmt">(<code><u><code> \ 'key).json.update(reads) is the most complex Reads[JsObject] but the most powerful:
+- copies the whole JsValue =&gt; A
+- applies the passed Reads[A] on JsValue =&gt; B
+- deep merges both JsValues (A ++ B) so B overwrites A identical branches</code></u></code></p><div class="fullcomment"><div class="comment cmt"><p>(<code><u><code> \ 'key).json.update(reads) is the most complex Reads[JsObject] but the most powerful:
+- copies the whole JsValue =&gt; A
+- applies the passed Reads[A] on JsValue =&gt; B
+- deep merges both JsValues (A ++ B) so B overwrites A identical branches</code></u></code></p><p>Please note that if you have prune a branch in B, it is still in A so you'll see it in the result</p><p>Example :</p><pre><span class="kw">val</span> js = Json.obj(<span class="lit">"key1"</span> -&gt; <span class="lit">"value1"</span>, <span class="lit">"key2"</span> -&gt; <span class="lit">"value2"</span>)
 js.validate(__.json.update((__ \ 'key3).json.put(JsString(<span class="lit">"value3"</span>))))
-<span class="cmt">// =&gt; JsSuccess({"key1":"value1","key2":"value2","key3":"value3"},)</span></pre></div></div>
+<span class="kw">=&gt;</span> JsSuccess({<span class="lit">"key1"</span>:<span class="lit">"value1"</span>,<span class="lit">"key2"</span>:<span class="lit">"value2"</span>,<span class="lit">"key3"</span>:<span class="lit">"value3"</span>},)</pre></div></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <span class="permalink">

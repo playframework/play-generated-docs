@@ -3,24 +3,21 @@
  */
 package oneserverpersuite
 
-import org.scalatest.DoNotDiscover
-import org.scalatest.Suites
-import org.scalatest.TestSuite
+import org.scalatest.{ DoNotDiscover, Suites, TestSuite }
 import org.scalatestplus.play.components._
-import org.scalatestplus.play.ConfiguredServer
-import org.scalatestplus.play.PlaySpec
+import org.scalatestplus.play.{ ConfiguredServer, PlaySpec }
 import play.api._
 import play.api.mvc.Result
 import play.api.test.Helpers._
-import play.api.test.FakeRequest
-import play.api.test.Helpers
+import play.api.test.{ FakeRequest, Helpers }
 
 import scala.concurrent.Future
 
-class NestedExampleSpec
-    extends Suites(new OneSpec, new TwoSpec, new RedSpec, new BlueSpec)
-    with OneServerPerSuiteWithComponents
-    with TestSuite {
+class NestedExampleSpec extends Suites(
+  new OneSpec,
+  new TwoSpec,
+  new RedSpec,
+  new BlueSpec) with OneServerPerSuiteWithComponents with TestSuite {
   // Override fakeApplication if you need an Application with other than non-default parameters.
   override def components: BuiltInComponents = new BuiltInComponentsFromContext(context) with NoHttpFiltersComponents {
 
@@ -29,14 +26,12 @@ class NestedExampleSpec
     import play.api.routing.sird._
 
     lazy val router: Router = Router.from({
-      case GET(p"/") =>
-        defaultActionBuilder {
-          Results.Ok("success!")
-        }
+      case GET(p"/") => defaultActionBuilder {
+        Results.Ok("success!")
+      }
     })
 
-    override lazy val configuration: Configuration =
-      Configuration("ehcacheplugin" -> "disabled").withFallback(context.initialConfiguration)
+    override lazy val configuration: Configuration = context.initialConfiguration ++ Configuration("ehcacheplugin" -> "disabled")
 
   }
 }
@@ -61,8 +56,7 @@ class NestedExampleSpec
 
   "The NestedExampleSpeccc" must {
     "provide an Application" in {
-      import play.api.test.Helpers.GET
-      import play.api.test.Helpers.route
+      import play.api.test.Helpers.{ GET, route }
       val Some(result: Future[Result]) = route(app, FakeRequest(GET, "/"))
       Helpers.contentAsString(result) must be("success!")
     }

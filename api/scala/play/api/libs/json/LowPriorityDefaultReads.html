@@ -101,7 +101,7 @@
         <a title="Contains the public API for Scala developers." href="../../index.html"><span class="name">api</span></a>
       </span>
       
-      <p class="shortcomment cmt">Contains the public API for Scala developers.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the public API for Scala developers.</p><h6> Read configuration </h6><pre><span class="kw">val</span> poolSize = configuration.getInt(<span class="lit">"engine.pool.size"</span>)</pre><h6> Use the logger </h6><pre>Logger.info(<span class="lit">"Hello!"</span>)</pre><h6> Define a Plugin </h6><pre><span class="kw">class</span> MyPlugin(app: Application) <span class="kw">extends</span> Plugin</pre><h6> Create adhoc applications (for testing) </h6><pre><span class="kw">val</span> application = Application(<span class="kw">new</span> File(<span class="lit">"."</span>), <span class="kw">this</span>.getClass.getClassloader, <span class="std">None</span>, Play.Mode.DEV)</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../index.html" class="extype" name="play">play</a></dd></dl></div>
+      <p class="shortcomment cmt">Contains the public API for Scala developers.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the public API for Scala developers.</p><h6> Access the current Play application </h6><pre><span class="kw">import</span> play.api.Play.current</pre><h6> Read configuration </h6><pre><span class="kw">val</span> poolSize = configuration.getInt(<span class="lit">"engine.pool.size"</span>)</pre><h6> Use the logger </h6><pre>Logger.info(<span class="lit">"Hello!"</span>)</pre><h6> Define a Plugin </h6><pre><span class="kw">class</span> MyPlugin(app: Application) <span class="kw">extends</span> Plugin</pre><h6> Create adhoc applications (for testing) </h6><pre><span class="kw">val</span> application = Application(<span class="kw">new</span> File(<span class="lit">"."</span>), <span class="kw">this</span>.getClass.getClassloader, <span class="std">None</span>, Play.Mode.DEV)</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../index.html" class="extype" name="play">play</a></dd></dl></div>
     </li><li name="play.api.libs" visbl="pub" class="indented3 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="libs"></a><a id="libs:libs"></a>
       <span class="permalink">
@@ -131,10 +131,12 @@
         <span class="kind">package</span>
       </span>
       <span class="symbol">
-        <a title="Json API" href="index.html"><span class="name">json</span></a>
+        <a title="Json API For example:" href="index.html"><span class="name">json</span></a>
       </span>
       
-      <p class="shortcomment cmt">Json API</p><div class="fullcomment"><div class="comment cmt"><p>Json API</p><p>For example:</p><pre><span class="kw">import</span> play.api.libs.json._
+      <p class="shortcomment cmt">Json API
+For example:</p><div class="fullcomment"><div class="comment cmt"><p>Json API
+For example:</p><pre><span class="kw">import</span> play.api.libs.json._
 <span class="kw">import</span> play.api.libs.functional.syntax._
 
 <span class="kw">case</span> <span class="kw">class</span> User(id: <span class="std">Long</span>, name: <span class="std">String</span>, friends: <span class="std">Seq</span>[User] = <span class="std">Seq</span>.empty)
@@ -149,14 +151,15 @@
   )(User.apply, unlift(User.unapply))
 }
 
-<span class="kw">object</span> MyController <span class="kw">extends</span> play.api.mvc.Controller {
+<span class="cmt">//then in a controller:</span>
+
+<span class="kw">object</span> MyController <span class="kw">extends</span> Controller {
    <span class="kw">def</span> displayUserAsJson(id: <span class="std">String</span>) = Action {
       Ok(Json.toJson(User(id.toLong, <span class="lit">"myName"</span>)))
    }
-
    <span class="kw">def</span> saveUser(jsonString: <span class="std">String</span>)= Action {
      <span class="kw">val</span> user = Json.parse(jsonString).as[User]
-     <span class="cmt">//myDataStore.save(user)</span>
+     myDataStore.save(user)
      Ok
    }
 }</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="play.api.libs">libs</a></dd></dl></div>
@@ -224,14 +227,6 @@
                         <span class="separator"></span>
                         <a class="trait" href="DefaultWrites.html" title="Default Serializers."></a>
                         <a href="DefaultWrites.html" title="Default Serializers.">DefaultWrites</a>
-                      </li><li class="current-entities indented4">
-                        <span class="separator"></span>
-                        <a class="trait" href="EnvKeyReads.html" title=""></a>
-                        <a href="EnvKeyReads.html" title="">EnvKeyReads</a>
-                      </li><li class="current-entities indented4">
-                        <span class="separator"></span>
-                        <a class="trait" href="EnvKeyWrites.html" title=""></a>
-                        <a href="EnvKeyWrites.html" title="">EnvKeyWrites</a>
                       </li><li class="current-entities indented4">
                         <span class="separator"></span>
                         <a class="trait" href="EnvReads.html" title=""></a>
@@ -353,14 +348,6 @@
                         <a class="class" href="KeyPathNode.html" title=""></a>
                         <a href="KeyPathNode.html" title="">KeyPathNode</a>
                       </li><li class="current-entities indented4">
-                        <a class="object" href="KeyReads$.html" title=""></a>
-                        <a class="trait" href="KeyReads.html" title="Used to read object key for types other than String."></a>
-                        <a href="KeyReads.html" title="Used to read object key for types other than String.">KeyReads</a>
-                      </li><li class="current-entities indented4">
-                        <a class="object" href="KeyWrites$.html" title=""></a>
-                        <a class="trait" href="KeyWrites.html" title="Used to write object key for types other than String."></a>
-                        <a href="KeyWrites.html" title="Used to write object key for types other than String.">KeyWrites</a>
-                      </li><li class="current-entities indented4">
                         <span class="separator"></span>
                         <a class="trait" href="" title="Low priority reads."></a>
                         <a href="" title="Low priority reads.">LowPriorityDefaultReads</a>
@@ -446,7 +433,7 @@
       
           <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Low priority reads.</p><p>This exists as a compiler performance optimization, so that the compiler doesn't have to rule them out when
 DefaultReads provides a simple match.</p><p>See https://github.com/playframework/playframework/issues/4313 for more details.
-</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/play-json/tree/2.8.1/play-json/jvm/src/main/scala/play/api/libs/json/Reads.scala" target="_blank">Reads.scala</a></dd></dl><div class="toggleContainer block">
+</p></div><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/play-json/tree/2.7.4/play-json/jvm/src/main/scala/play/api/libs/json/Reads.scala" target="_blank">Reads.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -1031,9 +1018,7 @@ Accepts date/time formats as '2011-12-03T10:15:30', '2011-12-03T10:15:30+01:00' 
       </span>
       
       <p class="shortcomment cmt">Reads for the <code>java.time.Instant</code> type.</p><div class="fullcomment"><div class="comment cmt"><p>Reads for the <code>java.time.Instant</code> type.
-</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>Type of argument to instantiate date parser</p></dd><dt class="param">parsing</dt><dd class="cmt"><p>Argument to instantiate date parser. Actually either a pattern (string) or a formatter (<code>java.time.format.DateTimeFormatter</code>)</p></dd><dt class="param">corrector</dt><dd class="cmt"><p>a simple string transformation function that can be used to transform input String before parsing. Useful when standards are not exactly respected and require a few tweaks. Function <code>identity</code> can be passed if no correction is needed.</p></dd><dt class="param">p</dt><dd class="cmt"><p>Typeclass instance based on <code>parsing</code></p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="EnvReads.html" class="extype" name="play.api.libs.json.EnvReads">EnvReads</a></dd><dt>See also</dt><dd><span class="cmt"><p><a href="EnvWrites$TemporalFormatter.html" class="extype" name="play.api.libs.json.EnvWrites.TemporalFormatter">DefaultWrites.TemporalFormatter</a></p><pre><span class="kw">import</span> java.time.format.DateTimeFormatter
-
-<span class="kw">import</span> play.api.libs.json.Reads.instantReads
+</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>Type of argument to instantiate date parser</p></dd><dt class="param">parsing</dt><dd class="cmt"><p>Argument to instantiate date parser. Actually either a pattern (string) or a formatter (<code>java.time.format.DateTimeFormatter</code>)</p></dd><dt class="param">corrector</dt><dd class="cmt"><p>a simple string transformation function that can be used to transform input String before parsing. Useful when standards are not exactly respected and require a few tweaks. Function <code>identity</code> can be passed if no correction is needed.</p></dd><dt class="param">p</dt><dd class="cmt"><p>Typeclass instance based on <code>parsing</code></p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="EnvReads.html" class="extype" name="play.api.libs.json.EnvReads">EnvReads</a></dd><dt>See also</dt><dd><span class="cmt"><p><a href="EnvWrites$TemporalFormatter.html" class="extype" name="play.api.libs.json.EnvWrites.TemporalFormatter">DefaultWrites.TemporalFormatter</a></p><pre><span class="kw">import</span> play.api.libs.json.Reads.instantReads
 
 <span class="kw">val</span> customReads1 = instantReads(<span class="lit">"dd/MM/yyyy, HH:mm:ss"</span>)
 <span class="kw">val</span> customReads2 = instantReads(DateTimeFormatter.ISO_INSTANT)
@@ -1153,22 +1138,6 @@ using the specified temporal unit.
       </span>
       
       <p class="shortcomment cmt">Deserializer of Java Period from a number (integer) of years.</p><div class="fullcomment"><div class="comment cmt"><p>Deserializer of Java Period from a number (integer) of years.</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="EnvReads.html" class="extype" name="play.api.libs.json.EnvReads">EnvReads</a></dd></dl></div>
-    </li><li name="play.api.libs.json.LowPriorityDefaultReads#keyMapReads" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="keyMapReads[K,V](implicitevidence$1:play.api.libs.json.KeyReads[K],implicitfmtv:play.api.libs.json.Reads[V]):play.api.libs.json.Reads[scala.collection.immutable.Map[K,V]]"></a><a id="keyMapReads[K,V](KeyReads[K],Reads[V]):Reads[Map[K,V]]"></a>
-      <span class="permalink">
-      <a href="../../../../play/api/libs/json/LowPriorityDefaultReads.html#keyMapReads[K,V](implicitevidence$1:play.api.libs.json.KeyReads[K],implicitfmtv:play.api.libs.json.Reads[V]):play.api.libs.json.Reads[scala.collection.immutable.Map[K,V]]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier">implicit </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">keyMapReads</span><span class="tparams">[<span name="K">K</span>, <span name="V">V</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="KeyReads.html" class="extype" name="play.api.libs.json.KeyReads">KeyReads</a>[<span class="extype" name="play.api.libs.json.LowPriorityDefaultReads.keyMapReads.K">K</span>]</span>, <span name="fmtv">fmtv: <a href="Reads.html" class="extype" name="play.api.libs.json.Reads">Reads</a>[<span class="extype" name="play.api.libs.json.LowPriorityDefaultReads.keyMapReads.V">V</span>]</span>)</span><span class="result">: <a href="Reads.html" class="extype" name="play.api.libs.json.Reads">Reads</a>[<span class="extype" name="scala.collection.immutable.Map">Map</span>[<span class="extype" name="play.api.libs.json.LowPriorityDefaultReads.keyMapReads.K">K</span>, <span class="extype" name="play.api.libs.json.LowPriorityDefaultReads.keyMapReads.V">V</span>]]</span>
-      </span>
-      
-      
     </li><li name="play.api.libs.json.EnvReads#localDateReads" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="localDateReads[T](parsing:T,corrector:String=&gt;String)(implicitp:T=&gt;EnvReads.this.TemporalParser[java.time.LocalDate]):play.api.libs.json.Reads[java.time.LocalDate]"></a><a id="localDateReads[T](T,(String)⇒String)((T)⇒TemporalParser[LocalDate]):Reads[LocalDate]"></a>
       <span class="permalink">
@@ -1185,9 +1154,7 @@ using the specified temporal unit.
       </span>
       
       <p class="shortcomment cmt">Reads for the <code>java.time.LocalDate</code> type.</p><div class="fullcomment"><div class="comment cmt"><p>Reads for the <code>java.time.LocalDate</code> type.
-</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>Type of argument to instantiate date parser</p></dd><dt class="param">parsing</dt><dd class="cmt"><p>Argument to instantiate date parser. Actually either a pattern (string) or a formatter (<code>java.time.format.DateTimeFormatter</code>)</p></dd><dt class="param">corrector</dt><dd class="cmt"><p>a simple string transformation function that can be used to transform input String before parsing. Useful when standards are not exactly respected and require a few tweaks. Function <code>identity</code> can be passed if no correction is needed.</p></dd><dt class="param">p</dt><dd class="cmt"><p>Typeclass instance based on <code>parsing</code></p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="EnvReads.html" class="extype" name="play.api.libs.json.EnvReads">EnvReads</a></dd><dt>See also</dt><dd><span class="cmt"><p><a href="EnvWrites$TemporalFormatter.html" class="extype" name="play.api.libs.json.EnvWrites.TemporalFormatter">DefaultWrites.TemporalFormatter</a></p><pre><span class="kw">import</span> java.time.format.DateTimeFormatter
-
-<span class="kw">import</span> play.api.libs.json.Reads.localDateReads
+</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>Type of argument to instantiate date parser</p></dd><dt class="param">parsing</dt><dd class="cmt"><p>Argument to instantiate date parser. Actually either a pattern (string) or a formatter (<code>java.time.format.DateTimeFormatter</code>)</p></dd><dt class="param">corrector</dt><dd class="cmt"><p>a simple string transformation function that can be used to transform input String before parsing. Useful when standards are not exactly respected and require a few tweaks. Function <code>identity</code> can be passed if no correction is needed.</p></dd><dt class="param">p</dt><dd class="cmt"><p>Typeclass instance based on <code>parsing</code></p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="EnvReads.html" class="extype" name="play.api.libs.json.EnvReads">EnvReads</a></dd><dt>See also</dt><dd><span class="cmt"><p><a href="EnvWrites$TemporalFormatter.html" class="extype" name="play.api.libs.json.EnvWrites.TemporalFormatter">DefaultWrites.TemporalFormatter</a></p><pre><span class="kw">import</span> play.api.libs.json.Reads.localDateReads
 
 <span class="kw">val</span> customReads1 = localDateReads(<span class="lit">"dd/MM/yyyy, HH:mm:ss"</span>)
 <span class="kw">val</span> customReads2 = localDateReads(DateTimeFormatter.ISO_DATE)
@@ -1208,9 +1175,7 @@ using the specified temporal unit.
       </span>
       
       <p class="shortcomment cmt">Reads for the <code>java.time.LocalDateTime</code> type.</p><div class="fullcomment"><div class="comment cmt"><p>Reads for the <code>java.time.LocalDateTime</code> type.
-</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>Type of argument to instantiate date/time parser</p></dd><dt class="param">parsing</dt><dd class="cmt"><p>Argument to instantiate date/time parser. Actually either a pattern (string) or a formatter (<code>java.time.format.DateTimeFormatter</code>)</p></dd><dt class="param">corrector</dt><dd class="cmt"><p>a simple string transformation function that can be used to transform input String before parsing. Useful when standards are not exactly respected and require a few tweaks. Function <code>identity</code> can be passed if no correction is needed.</p></dd><dt class="param">p</dt><dd class="cmt"><p>Typeclass instance based on <code>parsing</code></p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="EnvReads.html" class="extype" name="play.api.libs.json.EnvReads">EnvReads</a></dd><dt>See also</dt><dd><span class="cmt"><p><a href="EnvWrites$TemporalFormatter.html" class="extype" name="play.api.libs.json.EnvWrites.TemporalFormatter">DefaultWrites.TemporalFormatter</a></p><pre><span class="kw">import</span> java.time.format.DateTimeFormatter
-
-<span class="kw">import</span> play.api.libs.json.Reads.localDateTimeReads
+</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>Type of argument to instantiate date/time parser</p></dd><dt class="param">parsing</dt><dd class="cmt"><p>Argument to instantiate date/time parser. Actually either a pattern (string) or a formatter (<code>java.time.format.DateTimeFormatter</code>)</p></dd><dt class="param">corrector</dt><dd class="cmt"><p>a simple string transformation function that can be used to transform input String before parsing. Useful when standards are not exactly respected and require a few tweaks. Function <code>identity</code> can be passed if no correction is needed.</p></dd><dt class="param">p</dt><dd class="cmt"><p>Typeclass instance based on <code>parsing</code></p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="EnvReads.html" class="extype" name="play.api.libs.json.EnvReads">EnvReads</a></dd><dt>See also</dt><dd><span class="cmt"><p><a href="EnvWrites$TemporalFormatter.html" class="extype" name="play.api.libs.json.EnvWrites.TemporalFormatter">DefaultWrites.TemporalFormatter</a></p><pre><span class="kw">import</span> play.api.libs.json.Reads.localDateTimeReads
 
 <span class="kw">val</span> customReads1 = localDateTimeReads(<span class="lit">"dd/MM/yyyy, HH:mm:ss"</span>)
 <span class="kw">val</span> customReads2 = localDateTimeReads(DateTimeFormatter.ISO_DATE_TIME)
@@ -1232,9 +1197,7 @@ using the specified temporal unit.
       </span>
       
       <p class="shortcomment cmt">Reads for the <code>java.time.LocalTime</code> type.</p><div class="fullcomment"><div class="comment cmt"><p>Reads for the <code>java.time.LocalTime</code> type.
-</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>Type of argument to instantiate time parser</p></dd><dt class="param">parsing</dt><dd class="cmt"><p>Argument to instantiate time parser. Actually either a pattern (string) or a formatter (<code>java.time.format.DateTimeFormatter</code>)</p></dd><dt class="param">corrector</dt><dd class="cmt"><p>a simple string transformation function that can be used to transform input String before parsing. Useful when standards are not exactly respected and require a few tweaks. Function <code>identity</code> can be passed if no correction is needed.</p></dd><dt class="param">p</dt><dd class="cmt"><p>Typeclass instance based on <code>parsing</code></p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="EnvReads.html" class="extype" name="play.api.libs.json.EnvReads">EnvReads</a></dd><dt>See also</dt><dd><span class="cmt"><p><a href="EnvWrites$TemporalFormatter.html" class="extype" name="play.api.libs.json.EnvWrites.TemporalFormatter">DefaultWrites.TemporalFormatter</a></p><pre><span class="kw">import</span> java.time.format.DateTimeFormatter
-
-<span class="kw">import</span> play.api.libs.json.Reads.localTimeReads
+</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>Type of argument to instantiate time parser</p></dd><dt class="param">parsing</dt><dd class="cmt"><p>Argument to instantiate time parser. Actually either a pattern (string) or a formatter (<code>java.time.format.DateTimeFormatter</code>)</p></dd><dt class="param">corrector</dt><dd class="cmt"><p>a simple string transformation function that can be used to transform input String before parsing. Useful when standards are not exactly respected and require a few tweaks. Function <code>identity</code> can be passed if no correction is needed.</p></dd><dt class="param">p</dt><dd class="cmt"><p>Typeclass instance based on <code>parsing</code></p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="EnvReads.html" class="extype" name="play.api.libs.json.EnvReads">EnvReads</a></dd><dt>See also</dt><dd><span class="cmt"><p><a href="EnvWrites$TemporalFormatter.html" class="extype" name="play.api.libs.json.EnvWrites.TemporalFormatter">DefaultWrites.TemporalFormatter</a></p><pre><span class="kw">import</span> play.api.libs.json.Reads.localTimeReads
 
 <span class="kw">val</span> customReads1 = localTimeReads(<span class="lit">"dd/MM/yyyy, HH:mm:ss"</span>)
 <span class="kw">val</span> customReads2 = localTimeReads(DateTimeFormatter.ISO_TIME)
@@ -1342,9 +1305,7 @@ using the specified temporal unit.
       
       <p class="shortcomment cmt">Reads for the <code>java.time.OffsetDateTime</code> type.</p><div class="fullcomment"><div class="comment cmt"><p>Reads for the <code>java.time.OffsetDateTime</code> type.</p><p>Note: it is intentionally not supported to read an OffsetDateTime
 from a number.
-</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>the type of argument to instantiate date/time parser</p></dd><dt class="param">parsing</dt><dd class="cmt"><p>The argument to instantiate date/time parser. Actually either a pattern (string) or a formatter (<code>java.time.format.DateTimeFormatter</code>)</p></dd><dt class="param">corrector</dt><dd class="cmt"><p>a simple string transformation function that can be used to transform input String before parsing. Useful when standards are not exactly respected and require a few tweaks. Function <code>identity</code> can be passed if no correction is needed.</p></dd><dt class="param">p</dt><dd class="cmt"><p>the implicit conversion based on <code>parsing</code></p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="EnvReads.html" class="extype" name="play.api.libs.json.EnvReads">EnvReads</a></dd><dt>See also</dt><dd><span class="cmt"><p><a href="EnvWrites$TemporalFormatter.html" class="extype" name="play.api.libs.json.EnvWrites.TemporalFormatter">DefaultWrites.TemporalFormatter</a></p><pre><span class="kw">import</span> java.time.format.DateTimeFormatter
-
-<span class="kw">import</span> play.api.libs.json.Reads.offsetDateTimeReads
+</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>the type of argument to instantiate date/time parser</p></dd><dt class="param">parsing</dt><dd class="cmt"><p>The argument to instantiate date/time parser. Actually either a pattern (string) or a formatter (<code>java.time.format.DateTimeFormatter</code>)</p></dd><dt class="param">corrector</dt><dd class="cmt"><p>a simple string transformation function that can be used to transform input String before parsing. Useful when standards are not exactly respected and require a few tweaks. Function <code>identity</code> can be passed if no correction is needed.</p></dd><dt class="param">p</dt><dd class="cmt"><p>the implicit conversion based on <code>parsing</code></p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="EnvReads.html" class="extype" name="play.api.libs.json.EnvReads">EnvReads</a></dd><dt>See also</dt><dd><span class="cmt"><p><a href="EnvWrites$TemporalFormatter.html" class="extype" name="play.api.libs.json.EnvWrites.TemporalFormatter">DefaultWrites.TemporalFormatter</a></p><pre><span class="kw">import</span> play.api.libs.json.Reads.offsetDateTimeReads
 
 <span class="kw">val</span> customReads1 = offsetDateTimeReads(<span class="lit">"dd/MM/yyyy, HH:mm:ss (Z)"</span>)
 <span class="kw">val</span> customReads2 = offsetDateTimeReads(DateTimeFormatter.ISO_OFFSET_DATE_TIME)
@@ -1499,9 +1460,7 @@ from a number.
       </span>
       
       <p class="shortcomment cmt">Reads for the <code>java.time.ZonedDateTime</code> type.</p><div class="fullcomment"><div class="comment cmt"><p>Reads for the <code>java.time.ZonedDateTime</code> type.
-</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>Type of argument to instantiate date/time parser</p></dd><dt class="param">parsing</dt><dd class="cmt"><p>Argument to instantiate date/time parser. Actually either a pattern (string) or a formatter (<code>java.time.format.DateTimeFormatter</code>)</p></dd><dt class="param">corrector</dt><dd class="cmt"><p>a simple string transformation function that can be used to transform input String before parsing. Useful when standards are not exactly respected and require a few tweaks. Function <code>identity</code> can be passed if no correction is needed.</p></dd><dt class="param">p</dt><dd class="cmt"><p>Typeclass instance based on <code>parsing</code></p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="EnvReads.html" class="extype" name="play.api.libs.json.EnvReads">EnvReads</a></dd><dt>See also</dt><dd><span class="cmt"><p><a href="EnvWrites$TemporalFormatter.html" class="extype" name="play.api.libs.json.EnvWrites.TemporalFormatter">DefaultWrites.TemporalFormatter</a></p><pre><span class="kw">import</span> java.time.format.DateTimeFormatter
-
-<span class="kw">import</span> play.api.libs.json.Reads.zonedDateTimeReads
+</p></div><dl class="paramcmts block"><dt class="tparam">T</dt><dd class="cmt"><p>Type of argument to instantiate date/time parser</p></dd><dt class="param">parsing</dt><dd class="cmt"><p>Argument to instantiate date/time parser. Actually either a pattern (string) or a formatter (<code>java.time.format.DateTimeFormatter</code>)</p></dd><dt class="param">corrector</dt><dd class="cmt"><p>a simple string transformation function that can be used to transform input String before parsing. Useful when standards are not exactly respected and require a few tweaks. Function <code>identity</code> can be passed if no correction is needed.</p></dd><dt class="param">p</dt><dd class="cmt"><p>Typeclass instance based on <code>parsing</code></p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="EnvReads.html" class="extype" name="play.api.libs.json.EnvReads">EnvReads</a></dd><dt>See also</dt><dd><span class="cmt"><p><a href="EnvWrites$TemporalFormatter.html" class="extype" name="play.api.libs.json.EnvWrites.TemporalFormatter">DefaultWrites.TemporalFormatter</a></p><pre><span class="kw">import</span> play.api.libs.json.Reads.zonedDateTimeReads
 
 <span class="kw">val</span> customReads1 = zonedDateTimeReads(<span class="lit">"dd/MM/yyyy, HH:mm:ss"</span>)
 <span class="kw">val</span> customReads2 = zonedDateTimeReads(DateTimeFormatter.ISO_DATE_TIME)

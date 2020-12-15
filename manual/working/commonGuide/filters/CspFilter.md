@@ -70,18 +70,9 @@ If `play.filters.headers.contentSecurityPolicy` is not null, you will receive a 
 
 > **Note:** You will want to review the Content Security Policy specified in the CSP filter closely to ensure it meets your needs, as it differs substantially from the previous `contentSecurityPolicy`.
 
-### Configuring CSP Reports
+### Configuring CSP Report Only
 
-When the CSP `report-to` or `report-uri` CSP directives in `conf/application.conf` are configured, a page that violates the directives will send a report to the given URL.
-
-```hocon
-play.filters.csp {
-  directives {
-    report-to = "http://localhost:9000/report-to"
-    report-uri = ${play.filters.csp.directives.report-to}
-  }
-}
-```
+CSP has a feature which will place CSP violations into a "report only" mode, which results in the browser allowing the page to render and sending a CSP report to a given URL.
 
 CSP reports are formatted as JSON.  For your convenience, Play provides a body parser that can parse a CSP report, useful when first adopting a CSP policy.  You can add a CSP report controller to send or store the CSP report at your convenience:
 
@@ -100,14 +91,16 @@ POST     /report-to                 controllers.CSPReportController.report
 
 Note that if you have the CSRF filter enabled, you may need `+ nocsrf` route modifier, or add `play.filters.csrf.contentType.whiteList += "application/csp-report"` to `application.conf` to whitelist CSP reports.
 
-### Configuring CSP Report Only
-
-CSP also has a "report only" feature which results in the browser allowing the page to render, while still sending a CSP report to a given URL. 
-
-The report feature is enabled by setting the `reportOnly` flag in addition to configuring the `report-to` and `report-uri` CSP directives in `conf/application.conf`:
+The report feature is enabled by setting the `reportOnly` flag, and configuring the `report-to` and `report-uri` CSP directives in `conf/application.conf`:
 
 ```hocon
-play.filters.csp.reportOnly = true
+play.filters.csp {
+  reportOnly = true
+  directives {
+    report-to = "http://localhost:9000/report-to"
+    report-uri = ${play.filters.csp.directives.report-to}
+  }
+}
 ```
 
 CSP reports come in four different styles: "Blink", "Firefox", "Webkit", and "Old Webkit".  Zack Tollman has a good blog post [What to Expect When Expecting Content Security Policy Reports](https://www.tollmanz.com/content-security-policy-report-samples/) that discusses each style in detail.

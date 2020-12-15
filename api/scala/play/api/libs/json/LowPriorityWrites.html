@@ -101,7 +101,7 @@
         <a title="Contains the public API for Scala developers." href="../../index.html"><span class="name">api</span></a>
       </span>
       
-      <p class="shortcomment cmt">Contains the public API for Scala developers.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the public API for Scala developers.</p><h6> Read configuration </h6><pre><span class="kw">val</span> poolSize = configuration.getInt(<span class="lit">"engine.pool.size"</span>)</pre><h6> Use the logger </h6><pre>Logger.info(<span class="lit">"Hello!"</span>)</pre><h6> Define a Plugin </h6><pre><span class="kw">class</span> MyPlugin(app: Application) <span class="kw">extends</span> Plugin</pre><h6> Create adhoc applications (for testing) </h6><pre><span class="kw">val</span> application = Application(<span class="kw">new</span> File(<span class="lit">"."</span>), <span class="kw">this</span>.getClass.getClassloader, <span class="std">None</span>, Play.Mode.DEV)</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../index.html" class="extype" name="play">play</a></dd></dl></div>
+      <p class="shortcomment cmt">Contains the public API for Scala developers.</p><div class="fullcomment"><div class="comment cmt"><p>Contains the public API for Scala developers.</p><h6> Access the current Play application </h6><pre><span class="kw">import</span> play.api.Play.current</pre><h6> Read configuration </h6><pre><span class="kw">val</span> poolSize = configuration.getInt(<span class="lit">"engine.pool.size"</span>)</pre><h6> Use the logger </h6><pre>Logger.info(<span class="lit">"Hello!"</span>)</pre><h6> Define a Plugin </h6><pre><span class="kw">class</span> MyPlugin(app: Application) <span class="kw">extends</span> Plugin</pre><h6> Create adhoc applications (for testing) </h6><pre><span class="kw">val</span> application = Application(<span class="kw">new</span> File(<span class="lit">"."</span>), <span class="kw">this</span>.getClass.getClassloader, <span class="std">None</span>, Play.Mode.DEV)</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../index.html" class="extype" name="play">play</a></dd></dl></div>
     </li><li name="play.api.libs" visbl="pub" class="indented3 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="libs"></a><a id="libs:libs"></a>
       <span class="permalink">
@@ -131,10 +131,12 @@
         <span class="kind">package</span>
       </span>
       <span class="symbol">
-        <a title="Json API" href="index.html"><span class="name">json</span></a>
+        <a title="Json API For example:" href="index.html"><span class="name">json</span></a>
       </span>
       
-      <p class="shortcomment cmt">Json API</p><div class="fullcomment"><div class="comment cmt"><p>Json API</p><p>For example:</p><pre><span class="kw">import</span> play.api.libs.json._
+      <p class="shortcomment cmt">Json API
+For example:</p><div class="fullcomment"><div class="comment cmt"><p>Json API
+For example:</p><pre><span class="kw">import</span> play.api.libs.json._
 <span class="kw">import</span> play.api.libs.functional.syntax._
 
 <span class="kw">case</span> <span class="kw">class</span> User(id: <span class="std">Long</span>, name: <span class="std">String</span>, friends: <span class="std">Seq</span>[User] = <span class="std">Seq</span>.empty)
@@ -149,14 +151,15 @@
   )(User.apply, unlift(User.unapply))
 }
 
-<span class="kw">object</span> MyController <span class="kw">extends</span> play.api.mvc.Controller {
+<span class="cmt">//then in a controller:</span>
+
+<span class="kw">object</span> MyController <span class="kw">extends</span> Controller {
    <span class="kw">def</span> displayUserAsJson(id: <span class="std">String</span>) = Action {
       Ok(Json.toJson(User(id.toLong, <span class="lit">"myName"</span>)))
    }
-
    <span class="kw">def</span> saveUser(jsonString: <span class="std">String</span>)= Action {
      <span class="kw">val</span> user = Json.parse(jsonString).as[User]
-     <span class="cmt">//myDataStore.save(user)</span>
+     myDataStore.save(user)
      Ok
    }
 }</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="play.api.libs">libs</a></dd></dl></div>
@@ -224,14 +227,6 @@
                         <span class="separator"></span>
                         <a class="trait" href="DefaultWrites.html" title="Default Serializers."></a>
                         <a href="DefaultWrites.html" title="Default Serializers.">DefaultWrites</a>
-                      </li><li class="current-entities indented4">
-                        <span class="separator"></span>
-                        <a class="trait" href="EnvKeyReads.html" title=""></a>
-                        <a href="EnvKeyReads.html" title="">EnvKeyReads</a>
-                      </li><li class="current-entities indented4">
-                        <span class="separator"></span>
-                        <a class="trait" href="EnvKeyWrites.html" title=""></a>
-                        <a href="EnvKeyWrites.html" title="">EnvKeyWrites</a>
                       </li><li class="current-entities indented4">
                         <span class="separator"></span>
                         <a class="trait" href="EnvReads.html" title=""></a>
@@ -353,14 +348,6 @@
                         <a class="class" href="KeyPathNode.html" title=""></a>
                         <a href="KeyPathNode.html" title="">KeyPathNode</a>
                       </li><li class="current-entities indented4">
-                        <a class="object" href="KeyReads$.html" title=""></a>
-                        <a class="trait" href="KeyReads.html" title="Used to read object key for types other than String."></a>
-                        <a href="KeyReads.html" title="Used to read object key for types other than String.">KeyReads</a>
-                      </li><li class="current-entities indented4">
-                        <a class="object" href="KeyWrites$.html" title=""></a>
-                        <a class="trait" href="KeyWrites.html" title="Used to write object key for types other than String."></a>
-                        <a href="KeyWrites.html" title="Used to write object key for types other than String.">KeyWrites</a>
-                      </li><li class="current-entities indented4">
                         <span class="separator"></span>
                         <a class="trait" href="LowPriorityDefaultReads.html" title="Low priority reads."></a>
                         <a href="LowPriorityDefaultReads.html" title="Low priority reads.">LowPriorityDefaultReads</a>
@@ -444,7 +431,7 @@
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/play-json/tree/2.8.1/play-json/jvm/src/main/scala/play/api/libs/json/Writes.scala" target="_blank">Writes.scala</a></dd></dl><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><dl class="attributes block"> <dt>Source</dt><dd><a href="https://github.com/playframework/play-json/tree/2.7.4/play-json/jvm/src/main/scala/play/api/libs/json/Writes.scala" target="_blank">Writes.scala</a></dd></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -525,7 +512,25 @@
         <div class="values members">
               <h3>Value Members</h3>
               <ol>
-                <li name="play.api.libs.json.EnvWrites.TemporalFormatter" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+                <li name="play.api.libs.json.EnvWrites.JsonNodeWrites" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="JsonNodeWrites"></a><a id="JsonNodeWrites:JsonNodeWrites"></a>
+      <span class="permalink">
+      <a href="../../../../play/api/libs/json/EnvWrites$JsonNodeWrites$.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">implicit </span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="Serializer for Jackson JsonNode" href="EnvWrites$JsonNodeWrites$.html"><span class="name">JsonNodeWrites</span></a><span class="result"> extends <a href="Writes.html" class="extype" name="play.api.libs.json.Writes">Writes</a>[<span class="extype" name="com.fasterxml.jackson.databind.JsonNode">JsonNode</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Serializer for Jackson JsonNode
+</p><div class="fullcomment"><div class="comment cmt"><p>Serializer for Jackson JsonNode
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="EnvWrites.html" class="extype" name="play.api.libs.json.EnvWrites">EnvWrites</a></dd></dl></div>
+    </li><li name="play.api.libs.json.EnvWrites.TemporalFormatter" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="TemporalFormatter"></a><a id="TemporalFormatter:TemporalFormatter"></a>
       <span class="permalink">
       <a href="../../../../play/api/libs/json/EnvWrites$TemporalFormatter$.html" title="Permalink">
@@ -722,7 +727,7 @@ using '2011-12-03T10:15:30+01:00[Europe/Paris]' format.
 The number of milliseconds since epoch is used.</p><pre><span class="kw">import</span> java.time.Instant
 <span class="kw">import</span> play.api.libs.json.Writes
 
-<span class="kw">implicit</span> <span class="kw">val</span> inWrites: Writes[Instant] = Writes.InstantEpochMilliWrites</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="EnvWrites.html" class="extype" name="play.api.libs.json.EnvWrites">EnvWrites</a></dd></dl></div>
+<span class="kw">implicit</span> <span class="kw">val</span> inWrites = Writes.InstantNumberWrites</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="EnvWrites.html" class="extype" name="play.api.libs.json.EnvWrites">EnvWrites</a></dd></dl></div>
     </li><li name="play.api.libs.json.EnvWrites#LocalDateEpochMilliWrites" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="LocalDateEpochMilliWrites:play.api.libs.json.Writes[java.time.LocalDate]"></a><a id="LocalDateEpochMilliWrites:Writes[LocalDate]"></a>
       <span class="permalink">
@@ -742,8 +747,7 @@ The number of milliseconds since epoch is used.</p><pre><span class="kw">import<
 The number of milliseconds since epoch is used.</p><pre><span class="kw">import</span> java.time.LocalDate
 <span class="kw">import</span> play.api.libs.json.Writes
 
-<span class="kw">implicit</span> <span class="kw">val</span> ldnWrites: Writes[LocalDate] =
-  Writes.LocalDateEpochMilliWrites</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="EnvWrites.html" class="extype" name="play.api.libs.json.EnvWrites">EnvWrites</a></dd></dl></div>
+<span class="kw">implicit</span> <span class="kw">val</span> ldnWrites = Writes.LocalDateEpochMilliWrites</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="EnvWrites.html" class="extype" name="play.api.libs.json.EnvWrites">EnvWrites</a></dd></dl></div>
     </li><li name="play.api.libs.json.EnvWrites#LocalDateTimeEpochMilliWrites" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="LocalDateTimeEpochMilliWrites:play.api.libs.json.Writes[java.time.LocalDateTime]"></a><a id="LocalDateTimeEpochMilliWrites:Writes[LocalDateTime]"></a>
       <span class="permalink">
@@ -783,7 +787,7 @@ The number of milliseconds since epoch is used.</p><pre><span class="kw">import<
 The nano of day is written.</p><pre><span class="kw">import</span> java.time.LocalTime
 <span class="kw">import</span> play.api.libs.json.Writes
 
-<span class="kw">implicit</span> <span class="kw">val</span> ltnWrites = Writes.LocalTimeNanoOfDayWrites</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="EnvWrites.html" class="extype" name="play.api.libs.json.EnvWrites">EnvWrites</a></dd></dl></div>
+<span class="kw">implicit</span> <span class="kw">val</span> ltnWrites = Writes.LocalTimeNumberWrites</pre></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="EnvWrites.html" class="extype" name="play.api.libs.json.EnvWrites">EnvWrites</a></dd></dl></div>
     </li><li name="play.api.libs.json.EnvWrites#ZoneIdWrites" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ZoneIdWrites:play.api.libs.json.Writes[java.time.ZoneId]"></a><a id="ZoneIdWrites:Writes[ZoneId]"></a>
       <span class="permalink">
@@ -969,22 +973,6 @@ The number of milliseconds since epoch is used.</p><pre><span class="kw">import<
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="play.api.libs.json.LowPriorityWrites#iterableWrites2" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="iterableWrites2[A,I](implicitev:I&lt;:&lt;Iterable[A],implicitw:play.api.libs.json.Writes[A]):play.api.libs.json.Writes[I]"></a><a id="iterableWrites2[A,I](&lt;:&lt;[I,Iterable[A]],Writes[A]):Writes[I]"></a>
-      <span class="permalink">
-      <a href="../../../../play/api/libs/json/LowPriorityWrites.html#iterableWrites2[A,I](implicitev:I&lt;:&lt;Iterable[A],implicitw:play.api.libs.json.Writes[A]):play.api.libs.json.Writes[I]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier">implicit </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">iterableWrites2</span><span class="tparams">[<span name="A">A</span>, <span name="I">I</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="ev">ev: <span class="extype" name="scala.Predef.&lt;:&lt;">&lt;:&lt;</span>[<span class="extype" name="play.api.libs.json.LowPriorityWrites.iterableWrites2.I">I</span>, <span class="extype" name="scala.collection.Iterable">Iterable</span>[<span class="extype" name="play.api.libs.json.LowPriorityWrites.iterableWrites2.A">A</span>]]</span>, <span name="w">w: <a href="Writes.html" class="extype" name="play.api.libs.json.Writes">Writes</a>[<span class="extype" name="play.api.libs.json.LowPriorityWrites.iterableWrites2.A">A</span>]</span>)</span><span class="result">: <a href="Writes.html" class="extype" name="play.api.libs.json.Writes">Writes</a>[<span class="extype" name="play.api.libs.json.LowPriorityWrites.iterableWrites2.I">I</span>]</span>
-      </span>
-      
-      <p class="shortcomment cmt">Serializer for Iterable types.</p>
     </li><li name="play.api.libs.json.EnvWrites#javaDurationMillisWrites" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="javaDurationMillisWrites:play.api.libs.json.Writes[java.time.Duration]"></a><a id="javaDurationMillisWrites:Writes[Duration]"></a>
       <span class="permalink">
@@ -1038,24 +1026,6 @@ The number of milliseconds since epoch is used.</p><pre><span class="kw">import<
       <p class="shortcomment cmt">Serializer of Java Period using ISO representation
 (e.g.</p><div class="fullcomment"><div class="comment cmt"><p>Serializer of Java Period using ISO representation
 (e.g. P2D for 2 days).
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="EnvWrites.html" class="extype" name="play.api.libs.json.EnvWrites">EnvWrites</a></dd></dl></div>
-    </li><li name="play.api.libs.json.EnvWrites#jsonNodeWrites" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="jsonNodeWrites[T&lt;:com.fasterxml.jackson.databind.JsonNode]:play.api.libs.json.Writes[T]"></a><a id="jsonNodeWrites[T&lt;:JsonNode]:Writes[T]"></a>
-      <span class="permalink">
-      <a href="../../../../play/api/libs/json/LowPriorityWrites.html#jsonNodeWrites[T&lt;:com.fasterxml.jackson.databind.JsonNode]:play.api.libs.json.Writes[T]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier">implicit </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">jsonNodeWrites</span><span class="tparams">[<span name="T">T &lt;: <span class="extype" name="com.fasterxml.jackson.databind.JsonNode">JsonNode</span></span>]</span><span class="result">: <a href="Writes.html" class="extype" name="play.api.libs.json.Writes">Writes</a>[<span class="extype" name="play.api.libs.json.EnvWrites.jsonNodeWrites.T">T</span>]</span>
-      </span>
-      
-      <p class="shortcomment cmt">Serializer for Jackson JsonNode
-</p><div class="fullcomment"><div class="comment cmt"><p>Serializer for Jackson JsonNode
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="EnvWrites.html" class="extype" name="play.api.libs.json.EnvWrites">EnvWrites</a></dd></dl></div>
     </li><li name="play.api.libs.json.EnvWrites#localeObjectWrites" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="localeObjectWrites:play.api.libs.json.OWrites[java.util.Locale]"></a><a id="localeObjectWrites:OWrites[Locale]"></a>
@@ -1143,25 +1113,6 @@ The number of milliseconds since epoch is used.</p><pre><span class="kw">import<
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="play.api.libs.json.LowPriorityWrites#stringableWrites" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="stringableWrites[T](implicitconv:T=&gt;String):play.api.libs.json.Writes[T]"></a><a id="stringableWrites[T]((T)⇒String):Writes[T]"></a>
-      <span class="permalink">
-      <a href="../../../../play/api/libs/json/LowPriorityWrites.html#stringableWrites[T](implicitconv:T=&gt;String):play.api.libs.json.Writes[T]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier">implicit </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">stringableWrites</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="conv">conv: (<span class="extype" name="play.api.libs.json.LowPriorityWrites.stringableWrites.T">T</span>) ⇒ <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="Writes.html" class="extype" name="play.api.libs.json.Writes">Writes</a>[<span class="extype" name="play.api.libs.json.LowPriorityWrites.stringableWrites.T">T</span>]</span>
-      </span>
-      
-      <p class="shortcomment cmt">Serializer for any type that is provided an implicit conversion to String
-(e.g.</p><div class="fullcomment"><div class="comment cmt"><p>Serializer for any type that is provided an implicit conversion to String
-(e.g. tagged types).
-</p></div></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">
@@ -1196,12 +1147,10 @@ The number of milliseconds since epoch is used.</p><pre><span class="kw">import<
       <p class="shortcomment cmt">Serializer for Java8 temporal types (e.g.</p><div class="fullcomment"><div class="comment cmt"><p>Serializer for Java8 temporal types (e.g. <code>java.time.LocalDateTime</code>)
 to be written as JSON string.
 </p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>the Java8 temporal type to be considered: LocalDateTime, ZonedDateTime, Instant</p></dd><dt class="tparam">B</dt><dd class="cmt"><p>Type of formatting argument</p></dd><dt class="param">formatting</dt><dd class="cmt"><p>an argument to instantiate formatter</p><pre><span class="kw">import</span> java.time.LocalDateTime
-<span class="kw">import</span> java.time.format.DateTimeFormatter
-
 <span class="kw">import</span> play.api.libs.json.Writes
 
-<span class="kw">implicit</span> <span class="kw">val</span> w: Writes[LocalDateTime] =
-  Writes.temporalWrites[LocalDateTime, DateTimeFormatter](
+<span class="kw">implicit</span> <span class="kw">val</span> temporalWrites: Writes[LocalDateTime] =
+  temporalWrites[LocalDateTime, DateTimeFormatter](
     DateTimeFormatter.ISO_LOCAL_DATE_TIME)</pre></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="EnvWrites.html" class="extype" name="play.api.libs.json.EnvWrites">EnvWrites</a></dd></dl></div>
     </li><li name="scala.AnyRef#toString" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="toString():String"></a>
@@ -1219,23 +1168,22 @@ to be written as JSON string.
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="play.api.libs.json.LowPriorityWrites#uriWrites" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="uriWrites:play.api.libs.json.Writes[java.net.URI]"></a><a id="uriWrites:Writes[URI]"></a>
+    </li><li name="play.api.libs.json.LowPriorityWrites#traversableWrites" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="traversableWrites[A](implicitevidence$4:play.api.libs.json.Writes[A]):play.api.libs.json.Writes[Traversable[A]]"></a><a id="traversableWrites[A](Writes[A]):Writes[Traversable[A]]"></a>
       <span class="permalink">
-      <a href="../../../../play/api/libs/json/LowPriorityWrites.html#uriWrites:play.api.libs.json.Writes[java.net.URI]" title="Permalink">
+      <a href="../../../../play/api/libs/json/LowPriorityWrites.html#traversableWrites[A](implicitevidence$4:play.api.libs.json.Writes[A]):play.api.libs.json.Writes[Traversable[A]]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
       <span class="modifier_kind">
         <span class="modifier">implicit </span>
-        <span class="kind">val</span>
+        <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">uriWrites</span><span class="result">: <a href="Writes.html" class="extype" name="play.api.libs.json.Writes">Writes</a>[<span class="extype" name="java.net.URI">URI</span>]</span>
+        <span class="name">traversableWrites</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="Writes.html" class="extype" name="play.api.libs.json.Writes">Writes</a>[<span class="extype" name="play.api.libs.json.LowPriorityWrites.traversableWrites.A">A</span>]</span>)</span><span class="result">: <a href="Writes.html" class="extype" name="play.api.libs.json.Writes">Writes</a>[<span class="extype" name="scala.collection.Traversable">Traversable</span>[<span class="extype" name="play.api.libs.json.LowPriorityWrites.traversableWrites.A">A</span>]]</span>
       </span>
       
-      <p class="shortcomment cmt">Serializer for java.net.URI
-</p>
+      <p class="shortcomment cmt">Serializer for Traversables types.</p>
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <span class="permalink">
@@ -1369,45 +1317,6 @@ to be written as JSON string.
                 <span class="name">@deprecated</span>
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Include play-json-joda as a dependency and use JodaWrites.DefaultJodaLocalTimeWrites</p></dd></dl></div>
-    </li><li name="play.api.libs.json.EnvWrites.JsonNodeWrites" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="JsonNodeWrites"></a><a id="JsonNodeWrites:JsonNodeWrites"></a>
-      <span class="permalink">
-      <a href="../../../../play/api/libs/json/EnvWrites$JsonNodeWrites$.html" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a title="" href="EnvWrites$JsonNodeWrites$.html"><span class="name deprecated" title="Deprecated: (Since version 2.8.0) Use jsonNodeWrites">JsonNodeWrites</span></a><span class="result"> extends <a href="Writes.html" class="extype" name="play.api.libs.json.Writes">Writes</a>[<span class="extype" name="com.fasterxml.jackson.databind.JsonNode">JsonNode</span>]</span>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="EnvWrites.html" class="extype" name="play.api.libs.json.EnvWrites">EnvWrites</a></dd><dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.8.0)</i> Use <code>jsonNodeWrites</code></p></dd></dl></div>
-    </li><li name="play.api.libs.json.LowPriorityWrites#iterableWrites" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="iterableWrites[A,M[T]&lt;:Iterable[T]](implicitw:play.api.libs.json.Writes[A]):play.api.libs.json.Writes[M[A]]"></a><a id="iterableWrites[A,M[T]&lt;:Iterable[T]](Writes[A]):Writes[M[A]]"></a>
-      <span class="permalink">
-      <a href="../../../../play/api/libs/json/LowPriorityWrites.html#iterableWrites[A,M[T]&lt;:Iterable[T]](implicitw:play.api.libs.json.Writes[A]):play.api.libs.json.Writes[M[A]]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 2.8.1) Use iterableWrites2">iterableWrites</span><span class="tparams">[<span name="A">A</span>, <span name="M">M<span class="tparams">[<span name="T">T</span>]</span> &lt;: <span class="extype" name="scala.collection.Iterable">Iterable</span>[<span class="extype" name="play.api.libs.json.LowPriorityWrites.iterableWrites.M.T">T</span>]</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="w">w: <a href="Writes.html" class="extype" name="play.api.libs.json.Writes">Writes</a>[<span class="extype" name="play.api.libs.json.LowPriorityWrites.iterableWrites.A">A</span>]</span>)</span><span class="result">: <a href="Writes.html" class="extype" name="play.api.libs.json.Writes">Writes</a>[<span class="extype" name="play.api.libs.json.LowPriorityWrites.iterableWrites.M">M</span>[<span class="extype" name="play.api.libs.json.LowPriorityWrites.iterableWrites.A">A</span>]]</span>
-      </span>
-      
-      <p class="shortcomment cmt">Serializer for Iterable types.</p><div class="fullcomment"><div class="comment cmt"><p>Serializer for Iterable types.</p><p>Deprecated due to incompatibility with non <code>_[_]</code> shapes, #368.
-</p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.8.1)</i> Use <code>iterableWrites2</code></p></dd></dl></div>
     </li><li name="play.api.libs.json.EnvWrites#jodaDateWrites" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="jodaDateWrites(pattern:String):play.api.libs.json.Writes[org.joda.time.DateTime]"></a><a id="jodaDateWrites(String):Writes[DateTime]"></a>
       <span class="permalink">
@@ -1465,25 +1374,6 @@ to be written as JSON string.
                 <span class="name">@deprecated</span>
               
         </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.6.0)</i> Include play-json-joda as a dependency and use JodaWrites.jodaLocalTimeWrites</p></dd></dl></div>
-    </li><li name="play.api.libs.json.LowPriorityWrites#traversableWrites" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="traversableWrites[A](implicitevidence$6:play.api.libs.json.Writes[A]):play.api.libs.json.Writes[Traversable[A]]"></a><a id="traversableWrites[A](Writes[A]):Writes[Traversable[A]]"></a>
-      <span class="permalink">
-      <a href="../../../../play/api/libs/json/LowPriorityWrites.html#traversableWrites[A](implicitevidence$6:play.api.libs.json.Writes[A]):play.api.libs.json.Writes[Traversable[A]]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name deprecated" title="Deprecated: (Since version 2.8.0) Use iterableWrites">traversableWrites</span><span class="tparams">[<span name="A">A</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="arg0">arg0: <a href="Writes.html" class="extype" name="play.api.libs.json.Writes">Writes</a>[<span class="extype" name="play.api.libs.json.LowPriorityWrites.traversableWrites.A">A</span>]</span>)</span><span class="result">: <a href="Writes.html" class="extype" name="play.api.libs.json.Writes">Writes</a>[<span class="extype" name="scala.collection.Traversable">Traversable</span>[<span class="extype" name="play.api.libs.json.LowPriorityWrites.traversableWrites.A">A</span>]]</span>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Annotations</dt><dd>
-                <span class="name">@deprecated</span>
-              
-        </dd><dt>Deprecated</dt><dd class="cmt"><p><i>(Since version 2.8.0)</i> Use <code>iterableWrites</code></p></dd></dl></div>
     </li></ol>
             </div>
         </div>

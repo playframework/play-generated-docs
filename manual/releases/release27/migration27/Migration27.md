@@ -107,20 +107,17 @@ Some payloads expand in memory when being parsed. So, the memory representation 
 It is also possible to relax the `maxMemoryBuffer` in specific cases. It is possible the JSON representation and the expanded representation differ in size and you need to use different limits. You can use a form binding with a customized limit using:
 
 ```scala
-class MyController @Inject()(cc: ControllerComponents) {
-
-  // This will be the action that handles our form post
-  def myMethod = Action { implicit request: Request[_] =>
-    // create a new formBinding instance with increased limit 
-    val defaultFormBinding: FormBinding = cc.parsers.formBinding(300*1024) // limit to 300KiB
-    form.bindFromRequest()(request, formBinding)
-    ...
-  }
-
+// Assuming you have:
+class MyController @Inject()(cc: MessagesControllerComponents) {
+  ...
+  // create a new formBinding instance with increased limit 
+  val formBinding = cc.parsers.formBinding(300*1024) // limit to 300KiB
+  val formValidationResult = form.bindFromRequest()(request, formBinding)
+  ...
 }
 ```
 
-Controllers will always have a `FormBinding` instance build to honor the `play.http.parser.maxMemoryBuffer`. If you use your forms from some code outside a Controller, you may need to provide an implicit `FormBinding`. For example, if you write unit tests you can use the `FormBinding` provided in `play.api.data.FormBinding.Implicits._` which uses a hardcoded limit that is good enough for tests. Add the implicit in scope: 
+Controllers will always have a `FormBinding` instance build to honor the `play.http.parser.maxMemoryBuffer`. If you use the Forms from code outside a Controller, you may need to provide a `FormBinding`. For example, is you write unit tests you can use a `FormBinding` provided in `play.api.data.FormBinding.Implicits._` which uses a hardcoded limit which is good enough for tests. Add the implicit in scope: 
 
 ````scala
 import play.api.data.FormBinding.Implicits._
@@ -243,7 +240,7 @@ class MyClass extends Logging {
 }
 ```
 
-Of course you can also just use [SLF4J](http://www.slf4j.org/) directly:
+Of course you can also just use [SLF4J](https://www.slf4j.org/) directly:
 
 Java
 : ```java
@@ -587,7 +584,7 @@ Jackson version was updated from 2.8 to 2.9. The release notes for this version 
 
 ### Hibernate Validator updated to 6.0
 
-[Hibernate Validator](http://hibernate.org/validator/) was updated to version 6.0 which is now compatible with [Bean Validation](https://beanvalidation.org/) 2.0. See what is new [here](http://hibernate.org/validator/releases/6.0/#whats-new) or read [this detailed blog post](https://in.relation.to/2017/08/07/and-here-comes-hibernate-validator-60/) about the new version.
+[Hibernate Validator](http://hibernate.org/validator/) was updated to version 6.0 which is now compatible with [Bean Validation](https://beanvalidation.org/) 2.0. See what is new [here](http://hibernate.org/validator/releases/6.0/#whats-new) or read [this detailed blog post](http://in.relation.to/2017/08/07/and-here-comes-hibernate-validator-60/) about the new version.
 
 > **Note**: Keep in mind that this version may not be fully compatible with other Hibernate dependencies you may have in your project. For example, if you are using [hibernate-jpamodelgen](https://mvnrepository.com/artifact/org.hibernate/hibernate-jpamodelgen) it is required that you use the latest version to ensure everything will work together:
 >
@@ -602,7 +599,7 @@ To make the default play distribution a bit smaller we removed some libraries. T
 
 ### BoneCP removed
 
-BoneCP is removed. If your application is configured to use BoneCP, you need to switch to [HikariCP](https://github.com/brettwooldridge/HikariCP) which is the default JDBC connection pool.
+BoneCP is removed. If your application is configured to use BoneCP, you need to switch to [HikariCP](http://brettwooldridge.github.io/HikariCP/) which is the default JDBC connection pool.
 
 ```hocon
 play.db.pool = "default"  # Use the default connection pool provided by the platform (HikariCP)

@@ -22,7 +22,9 @@ public class JavaTracerController extends Controller {
 
   private Marker tracer(Http.Request request) {
     Marker marker = MarkerFactory.getDetachedMarker("dynamic"); // base do-nothing marker...
-    request.queryString("trace").ifPresent(s -> marker.add(tracerMarker));
+    if (request.getQueryString("trace") != null) {
+      marker.add(tracerMarker);
+    }
     return marker;
   }
 
