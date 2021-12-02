@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009-2019 Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
  */
 
 package scalaguide.json
@@ -100,12 +100,13 @@ class ScalaJsonCombinatorsSpec extends Specification {
       import SampleModel._
 
       import play.api.libs.json._
-      import play.api.libs.functional.syntax._
 
       //###replace: val json = { ... }
       val json: JsValue = sampleJson
 
       //#reads-complex-builder
+      import play.api.libs.functional.syntax._ // Combinator syntax
+
       val locationReadsBuilder =
         (JsPath \ "lat").read[Double] and
           (JsPath \ "long").read[Double]
