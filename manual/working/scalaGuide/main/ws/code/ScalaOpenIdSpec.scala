@@ -28,7 +28,7 @@ class ScalaOpenIdSpec extends PlaySpecification {
     "be injectable" in new WithApplication() with Injecting {
       val controller =
         new IdController(inject[OpenIdClient], inject[ControllerComponents])(inject[ExecutionContext]) with Logging {
-          //#flow
+          // #flow
           def login = Action {
             Ok(views.html.login())
           }
@@ -42,7 +42,8 @@ class ScalaOpenIdSpec extends PlaySpecification {
               { error =>
                 logger.info(s"bad request ${error.toString}")
                 Future.successful(BadRequest(error.toString))
-              }, { openId =>
+              },
+              { openId =>
                 openIdClient
                   .redirectURL(openId, routes.Application.openIdCallback.absoluteURL())
                   .map(url => Redirect(url))
@@ -61,16 +62,16 @@ class ScalaOpenIdSpec extends PlaySpecification {
                   Redirect(routes.Application.login)
               }
           }
-          //#flow
+          // #flow
 
           def extended(openId: String)(implicit request: RequestHeader) = {
-            //#extended
+            // #extended
             openIdClient.redirectURL(
               openId,
               routes.Application.openIdCallback.absoluteURL(),
               Seq("email" -> "http://schema.openid.net/contact/email")
             )
-            //#extended
+            // #extended
           }
         }
       controller must beAnInstanceOf[IdController]
