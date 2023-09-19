@@ -1,4 +1,5 @@
-<!--- Copyright (C) Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com> -->
+
 # sbt Cookbook
 
 ## Hooking into Play's dev mode
@@ -84,6 +85,6 @@ For example if you want to only display errors:
 
 ## Fork and parallel execution in test
 
-By default parallel execution is disabled and fork is enabled. You can change this behavior by setting `parallelExecution in Test` and/or `fork in Test`:
+By default parallel execution is disabled and fork is enabled. You can change this behavior by setting `Test / parallelExecution` and/or `Test / fork`:
 
 @[fork-parallel-test](code/cookbook.sbt)

@@ -1,4 +1,5 @@
-<!--- Copyright (C) Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com> -->
+
 # Allowed hosts filter
 
 Play provides a filter that lets you configure which hosts can access your application. This is useful to prevent cache poisoning attacks. For a detailed description of how this attack works, see [this blog post](https://www.skeletonscribe.net/2013/05/practical-http-host-header-attacks.html). The filter introduces a whitelist of allowed hosts and sends a 400 (Bad Request) response to all requests with a host that do not match the whitelist.
@@ -19,7 +20,7 @@ play.filters.enabled += play.filters.hosts.AllowedHostsFilter
 
 ## Configuring allowed hosts
 
-You can configure which hosts the filter allows using `application.conf`. See the Play filters [`reference.conf`](resources/confs/filters-helpers/reference.conf) to see the defaults.
+You can configure which hosts the filter allows using `application.conf`. See the Play filters [`reference.conf`](resources/confs/play-filters-helpers/reference.conf) to see the defaults.
 
 `play.filters.hosts.allowed` is a list of strings of the form `.example.com` or `example.com`. With a leading dot, the pattern will match example.com and all subdomains (`www.example.com`, `foo.example.com`, `foo.bar.example.com`, etc.). Without the leading dot it will just match the exact domain. If your application runs on a specific port, you can also include a port number, for instance `.example.com:8080`.
 
@@ -51,7 +52,7 @@ With this configuration, routes tagged with `anyhost` will be exempt from the al
 GET           /healthcheck          controllers.HealthController.healthcheck
 ```
 
-If the whitelist is empty and the blacklist is defined, the allowed hosts filter will only be applied to hosts defined in the blacklist. For example, the following config will only apply the allowed hosts filter to routes tagged with `external`.
+If the whitelist is empty and the blacklist is defined, the allowed hosts filter will only be applied to routes that are tagged with a tag present in the blacklist configuration. For example, the following config will only apply the allowed hosts filter to routes tagged with `external`.
 
 ```
 play.filters.hosts.routeModifiers.whiteList = []

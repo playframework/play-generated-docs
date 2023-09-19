@@ -1,29 +1,26 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package javaguide.logging;
 
+import static net.logstash.logback.marker.Markers.append;
+
+import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Marker;
-import play.libs.concurrent.HttpExecutionContext;
+import play.libs.concurrent.ClassLoaderExecutionContext;
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
 
-import javax.inject.Inject;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionStage;
-
-import static net.logstash.logback.marker.Markers.append;
-
 public class JavaMarkerController extends Controller {
-  private final HttpExecutionContext httpExecutionContext;
+  private final ClassLoaderExecutionContext ClassLoaderExecutionContext;
 
   @Inject
-  public JavaMarkerController(HttpExecutionContext httpExecutionContext) {
-    this.httpExecutionContext = httpExecutionContext;
+  public JavaMarkerController(ClassLoaderExecutionContext ClassLoaderExecutionContext) {
+    this.ClassLoaderExecutionContext = ClassLoaderExecutionContext;
   }
 
   private static final Logger logger = LoggerFactory.getLogger(JavaMarkerController.class);

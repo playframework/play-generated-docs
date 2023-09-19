@@ -1,4 +1,5 @@
-<!--- Copyright (C) Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com> -->
+
 # What's new in Play 2.6
 
 This page highlights the new features of Play 2.6. If you want to learn about the changes you need to make when you migrate to Play 2.6, check out the [[Play 2.6 Migration Guide|Migration26]].
@@ -12,7 +13,7 @@ You can select which version of Scala you would like to use by setting the `scal
 For Scala 2.12:
 
 ```scala
-scalaVersion := "2.12.14"
+scalaVersion := "2.12.18"
 ```
 
 For Scala 2.11:
@@ -30,7 +31,7 @@ lazy val root = (project in file("."))
   .enablePlugins(PlayService)
   .enablePlugins(RoutesCompiler) // place routes in src/main/resources, or remove if using SIRD/RoutingDsl
   .settings(
-    scalaVersion := "2.12.14",
+    scalaVersion := "2.12.18",
     libraryDependencies ++= Seq(
       guice, // remove if not using Play's Guice loader
       akkaHttpServer, // or use nettyServer for Netty
@@ -55,7 +56,7 @@ The above setting will cause an exception on any invocation of `Play.current`.
 
 ## Akka HTTP Server Backend
 
-Play now uses the [Akka-HTTP](https://doc.akka.io/docs/akka-http/current/?language=scala) server engine as the default backend.  More detail about Play's integration with Akka-HTTP can be found [[on the Akka HTTP Server page|AkkaHttpServer]].  There is an additional page on [[configuring Akka HTTP|SettingsAkkaHttp]].
+Play now uses the [Akka-HTTP](https://doc.akka.io/docs/akka-http/10.0/?language=scala) server engine as the default backend.  More detail about Play's integration with Akka-HTTP can be found [[on the Akka HTTP Server page|AkkaHttpServer]].  There is an additional page on [[configuring Akka HTTP|SettingsAkkaHttp]].
 
 The Netty backend is still available, and has been upgraded to use Netty 4.1.  You can explicitly configure your project to use Netty [[on the NettyServer page|NettyServer]].
 

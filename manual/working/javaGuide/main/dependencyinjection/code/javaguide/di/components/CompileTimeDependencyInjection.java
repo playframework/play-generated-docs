@@ -1,5 +1,5 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package javaguide.di.components;
@@ -48,7 +48,7 @@ public class CompileTimeDependencyInjection {
   // #basic-my-components
 
   // #basic-logger-configurator
-  // ###insert: import scala.compat.java8.OptionConverters;
+  // ###insert: import scala.jdk.javaapi.OptionConverters;
   public class MyAppLoaderWithLoggerConfiguration implements ApplicationLoader {
     @Override
     public Application load(Context context) {
@@ -116,7 +116,8 @@ public class CompileTimeDependencyInjection {
     @Override
     public Router router() {
       HomeController homeController = new HomeController();
-      Assets assets = new Assets(scalaHttpErrorHandler(), assetsMetadata());
+      Assets assets =
+          new Assets(scalaHttpErrorHandler(), assetsMetadata(), environment().asScala());
       // ###replace: return new router.Routes(scalaHttpErrorHandler(), homeController,
       // assets).asJava();
       return new javaguide.dependencyinjection.Routes(

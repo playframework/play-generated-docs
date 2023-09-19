@@ -1,20 +1,20 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package scalaguide.tests.specs2
 
 // #specs2-mockito
-import org.specs2.mock._
-import org.specs2.mutable._
-
 import java.util._
 
-class ExampleMockitoSpec extends Specification with Mockito {
+import org.mockito.Mockito._
+import org.specs2.mutable._
+
+class ExampleMockitoSpec extends Specification {
   "MyService#isDailyData" should {
     "return true if the data is from today" in {
-      val mockDataService = mock[DataService]
-      mockDataService.findData.returns(Data(retrievalDate = new java.util.Date()))
+      val mockDataService = mock(classOf[DataService])
+      when(mockDataService.findData).thenReturn(Data(retrievalDate = new java.util.Date()))
 
       val myService = new MyService() {
         override def dataService = mockDataService

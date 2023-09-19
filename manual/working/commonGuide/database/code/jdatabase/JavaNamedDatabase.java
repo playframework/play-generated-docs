@@ -1,19 +1,17 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package jdatabase;
 
 // #java-jdbc-named-database
 
-import javax.inject.Inject;
-import javax.inject.Singleton;
-
-import play.db.NamedDatabase;
-import play.db.Database;
-
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
+import javax.inject.Inject;
+import javax.inject.Singleton;
+import play.db.Database;
+import play.db.NamedDatabase;
 
 @Singleton
 class JavaNamedDatabase {

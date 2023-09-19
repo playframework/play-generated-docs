@@ -1,11 +1,9 @@
-//
-// Copyright (C) Lightbend Inc. <https://www.lightbend.com>
-//
+// Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
 
 //#no-scaladoc
-sources in (Compile, doc) := Seq.empty
+Compile / doc / sources := Seq.empty
 
-publishArtifact in (Compile, packageDoc) := false
+Compile / packageDoc / publishArtifact := false
 //#no-scaladoc
 
 //#publish-repo

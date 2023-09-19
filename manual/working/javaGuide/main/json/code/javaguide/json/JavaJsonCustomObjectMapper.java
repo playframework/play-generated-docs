@@ -1,19 +1,13 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package javaguide.json;
 
-import play.Application;
-import play.ApplicationLoader;
-import play.inject.guice.GuiceApplicationBuilder;
-import play.inject.guice.GuiceApplicationLoader;
-
-import play.libs.Json;
-import javax.inject.Provider;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import javax.inject.Provider;
+import play.libs.Json;
 
 // #custom-java-object-mapper
 public class JavaJsonCustomObjectMapper implements Provider<ObjectMapper> {

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009-2016 Typesafe Inc. <http://www.typesafe.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 package scalaguide.tests.scalatest
 
@@ -10,11 +10,12 @@ import org.scalatest.wordspec.FixtureAnyWordSpec
 import org.scalatestplus.play._
 import play.api.http.MimeTypes
 import play.api.test._
+import play.api.test.Helpers._
 // #scalafunctionaltest-imports
 
 import play.api.mvc._
 
-import play.api.test.Helpers.{ GET => GET_REQUEST, _ }
+import play.api.test.Helpers.{ GET => GET_REQUEST }
 import play.api.Application
 import play.api.libs.ws._
 import play.api.inject.guice._
@@ -49,19 +50,23 @@ class ScalaFunctionalTestSpec extends MixedPlaySpec with Results {
 
     // #scalafunctionaltest-respondtoroute
     "respond to the index Action" in new App(applicationWithRouter) {
-      val Some(result) = route(app, FakeRequest(GET_REQUEST, "/Bob"))
+      override def running() = {
+        val Some(result) = route(app, FakeRequest(GET_REQUEST, "/Bob"))
 
-      status(result) mustEqual OK
-      contentType(result) mustEqual Some("text/html")
-      contentAsString(result) must include("Hello Bob")
+        status(result) mustEqual OK
+        contentType(result) mustEqual Some("text/html")
+        contentAsString(result) must include("Hello Bob")
+      }
     }
     // #scalafunctionaltest-respondtoroute
 
     // #scalafunctionaltest-testview
     "render index template" in new App {
-      val html = views.html.index("Coco")
+      override def running() = {
+        val html = views.html.index("Coco")
 
-      contentAsString(html) must include("Hello Coco")
+        contentAsString(html) must include("Hello Coco")
+      }
     }
     // #scalafunctionaltest-testview
 
@@ -69,10 +74,12 @@ class ScalaFunctionalTestSpec extends MixedPlaySpec with Results {
     val appWithMemoryDatabase = new GuiceApplicationBuilder().configure(inMemoryDatabase("test")).build()
     "run an application" in new App(appWithMemoryDatabase) {
 
-      val Some(macintosh) = Computer.findById(21)
+      override def running() = {
+        val Some(macintosh) = Computer.findById(21)
 
-      macintosh.name mustEqual "Macintosh"
-      macintosh.introduced.value mustEqual "1984-01-24"
+        macintosh.name mustEqual "Macintosh"
+        macintosh.introduced.value mustEqual "1984-01-24"
+      }
     }
     // #scalafunctionaltest-testmodel
 
@@ -108,31 +115,35 @@ class ScalaFunctionalTestSpec extends MixedPlaySpec with Results {
 
     "run in a browser" in new HtmlUnit(appFun = { applicationWithBrowser }) {
 
-      // Check the home page
-      go to "http://localhost:" + port
-      pageTitle mustEqual "Hello Guest"
+      override def running() = {
+        // Check the home page
+        go to "http://localhost:" + port
+        pageTitle mustEqual "Hello Guest"
 
-      click.on(linkText("click me"))
+        click.on(linkText("click me"))
 
-      currentUrl mustEqual "http://localhost:" + port + "/login"
-      pageTitle mustEqual "Hello Coco"
+        currentUrl mustEqual "http://localhost:" + port + "/login"
+        pageTitle mustEqual "Hello Coco"
+      }
     }
     // #scalafunctionaltest-testwithbrowser
 
     // #scalafunctionaltest-testpaymentgateway
-    "test server logic" in new Server(appFun = { applicationWithBrowser }, port = 19001) { port =>
-      implicit val wsClient = app.injector.instanceOf[WSClient]
+    "test server logic" in new Server(appFun = { applicationWithBrowser }, port = 19001) {
+      override def running() = {
+        implicit val wsClient: WSClient = app.injector.instanceOf[WSClient]
 
-      val myPublicAddress       = s"localhost:$port"
-      val testPaymentGatewayURL = s"http://$myPublicAddress"
-      // The test payment gateway requires a callback to this server before it returns a result...
-      val callbackURL = s"http://$myPublicAddress/callback"
+        val myPublicAddress       = s"localhost:$port"
+        val testPaymentGatewayURL = s"http://$myPublicAddress"
+        // The test payment gateway requires a callback to this server before it returns a result...
+        val callbackURL = s"http://$myPublicAddress/callback"
 
-      // await is from play.api.test.FutureAwaits
-      val response =
-        await(wsClient.url(testPaymentGatewayURL).addQueryStringParameters("callbackURL" -> callbackURL).get())
+        // await is from play.api.test.FutureAwaits
+        val response =
+          await(wsClient.url(testPaymentGatewayURL).addQueryStringParameters("callbackURL" -> callbackURL).get())
 
-      response.status mustEqual OK
+        response.status mustEqual OK
+      }
     }
     // #scalafunctionaltest-testpaymentgateway
 
@@ -147,8 +158,10 @@ class ScalaFunctionalTestSpec extends MixedPlaySpec with Results {
       .build()
 
     "test WS logic" in new Server(appFun = appWithRoutes, port = 3333) {
-      val wsClient = app.injector.instanceOf[WSClient]
-      await(wsClient.url("http://localhost:3333").get()).status mustEqual OK
+      override def running() = {
+        val wsClient = app.injector.instanceOf[WSClient]
+        await(wsClient.url("http://localhost:3333").get()).status mustEqual OK
+      }
     }
     // #scalafunctionaltest-testws
   }

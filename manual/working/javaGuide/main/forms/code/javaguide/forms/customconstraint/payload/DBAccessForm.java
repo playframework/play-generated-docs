@@ -1,13 +1,13 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package javaguide.forms.customconstraint.payload;
 
 // #user
 import play.data.validation.Constraints;
-import play.data.validation.ValidationError;
 import play.data.validation.Constraints.ValidationPayload;
+import play.data.validation.ValidationError;
 import play.db.Database;
 
 @ValidateWithDB

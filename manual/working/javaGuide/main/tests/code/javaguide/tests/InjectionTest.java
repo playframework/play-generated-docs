@@ -1,22 +1,18 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package javaguide.tests;
 
-import static play.test.Helpers.*;
 import static org.junit.Assert.*;
-
-import javax.inject.Inject;
+import static play.test.Helpers.*;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Module;
-
+import javax.inject.Inject;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Test;
-
 import play.Application;
 import play.ApplicationLoader.Context;
 import play.Environment;

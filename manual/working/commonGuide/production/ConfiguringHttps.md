@@ -1,4 +1,5 @@
-<!--- Copyright (C) Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com> -->
+
 # Configuring HTTPS
 
 Play can be configured to serve HTTPS.  To enable this, simply tell Play which port to listen to using the `https.port` system property.  For example:
@@ -17,7 +18,7 @@ HTTPS configuration can either be supplied using system properties or in `applic
 
 By default, Play will generate itself a self-signed certificate, however typically this will not be suitable for serving a website.  Play uses Java key stores to configure SSL certificates and keys.
 
-Signing authorities often provide instructions on how to create a Java keystore (typically with reference to Tomcat configuration).  The official Oracle documentation on how to generate keystores using the JDK keytool utility can be found [here](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html).  There is also an example in the [Generating X.509 Certificates](https://lightbend.github.io/ssl-config/CertificateGeneration.html) section.
+Signing authorities often provide instructions on how to create a Java keystore (typically with reference to Tomcat configuration).  The official Oracle documentation on how to generate keystores using the JDK keytool utility can be found [here](https://docs.oracle.com/en/java/javase/11/tools/keytool.html).  There is also an example in the [Generating X.509 Certificates](https://lightbend.github.io/ssl-config/CertificateGeneration.html) section.
 
 Having created your keystore, the following configuration properties can be used to configure Play to use it:
 
@@ -28,7 +29,7 @@ Having created your keystore, the following configuration properties can be used
 
 ### SSL Certificates from a custom SSL Engine
 
-Another alternative to configure the SSL certificates is to provide a custom [SSLEngine](https://docs.oracle.com/javase/8/docs/api/javax/net/ssl/SSLEngine.html).  This is also useful in cases where a customized `SSLEngine` is required, such as in the case of client authentication. In Java, an implementation must be provided for [`play.server.SSLEngineProvider`](api/java/play/server/SSLEngineProvider.html) and in Scala, an implementation must be provided for [`play.server.api.SSLEngineProvider`](api/scala/play/server/api/SSLEngineProvider.html). For example:
+Another alternative to configure the SSL certificates is to provide a custom [SSLEngine](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/javax/net/ssl/SSLEngine.html).  This is also useful in cases where a customized `SSLEngine` is required, such as in the case of client authentication. In Java, an implementation must be provided for [`play.server.SSLEngineProvider`](api/java/play/server/SSLEngineProvider.html) and in Scala, an implementation must be provided for [`play.server.api.SSLEngineProvider`](api/scala/play/server/api/SSLEngineProvider.html). For example:
 
 Scala
 : @[scalaexample](code/scalaguide/CustomSSLEngineProvider.scala)
@@ -56,10 +57,8 @@ To disable binding on the HTTP port, set the `http.port` system property to be `
 
 ## Production usage of HTTPS
 
-If Play is serving HTTPS in production, it should be running JDK 1.8.  JDK 1.8 provides a number of new features that make JSSE feasible as a [TLS termination layer](https://blog.ivanristic.com/2014/03/ssl-tls-improvements-in-java-8.html).  If not using JDK 1.8, using a [[reverse proxy|HTTPServer]] in front of Play will give better control and security of HTTPS.
-
 If you intend to use Play for TLS termination layer, please note the following settings:
 
-* **[`SSLParameters.setUseCipherSuiteorder()`](https://docs.oracle.com/javase/8/docs/technotes/guides/security/jsse/JSSERefGuide.html#cipher_suite_preference)** - Reorders cipher suite order to the server's preference.
+* **[`SSLParameters.setUseCipherSuiteorder()`](https://docs.oracle.com/en/java/javase/11/security/java-secure-socket-extension-jsse-reference-guide.html#GUID-EFC2FACC-680C-42CE-A3A9-E9A6673EA813)** - Reorders cipher suite order to the server's preference.
 * **-Djdk.tls.ephemeralDHKeySize=2048** - Increases the key size in a DH key exchange.
 * **-Djdk.tls.rejectClientInitiatedRenegotiation=true** - Rejects client renegotiation.

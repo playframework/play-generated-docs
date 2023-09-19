@@ -1,4 +1,5 @@
-<!--- Copyright (C) Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com> -->
+
 # Production Configuration
 
 There are a number of different types of configuration that you can configure in production.  The three mains types are:
@@ -13,7 +14,7 @@ Each of these types have different methods to configure them.
 
 Play has a number of configurable settings. You can configure database connection URLs, the application secret, the HTTP port, SSL configuration, and so on.
 
-Most of Play's configuration is defined in various `.conf` files, which use the [HOCON format](https://github.com/typesafehub/config/blob/master/HOCON.md). The main configuration file that you'll use is the `application.conf` file. You can find this file at `conf/application.conf` within your project. The `application.conf` file is loaded from the classpath at runtime (or you can override where it is loaded from). There can only be one `application.conf` per project.
+Most of Play's configuration is defined in various `.conf` files, which use the [HOCON format](https://github.com/typesafehub/config/blob/main/HOCON.md). The main configuration file that you'll use is the `application.conf` file. You can find this file at `conf/application.conf` within your project. The `application.conf` file is loaded from the classpath at runtime (or you can override where it is loaded from). There can only be one `application.conf` per project.
 
 Other `.conf` files are loaded too. Libraries define default settings in `reference.conf` files. These files are stored in the libraries' JARs—one `reference.conf` per JAR—and aggregated together at runtime. The `reference.conf` files provide defaults; they are overridden by any settings defined in the `application.conf` file.
 

@@ -1,4 +1,5 @@
-<!--- Copyright (C) Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com> -->
+
 # Testing your application
 
 Writing tests for your application can be an involved process. Play offers integration with both [ScalaTest](http://www.scalatest.org) and [specs2](https://etorreborre.github.io/specs2/) and provides helpers and application stubs to make testing your application as easy as possible. For the details of using your preferred test framework with Play, see the pages on [[ScalaTest|ScalaTestingWithScalaTest]] or [[specs2|ScalaTestingWithSpecs2]].

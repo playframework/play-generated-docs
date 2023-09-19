@@ -1,5 +1,5 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package javaguide.forms.customconstraint.nopayload;
@@ -7,9 +7,7 @@ package javaguide.forms.customconstraint.nopayload;
 // #constraint
 import javax.inject.Inject;
 import javax.validation.ConstraintValidatorContext;
-
 import play.data.validation.Constraints.PlayConstraintValidator;
-
 import play.db.Database;
 
 public class ValidateWithDBValidator

@@ -1,23 +1,22 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package javaguide.testhelpers {
+  import java.lang.reflect.Method
   import java.util.concurrent.CompletableFuture
   import java.util.concurrent.CompletionStage
 
+  import scala.concurrent.ExecutionContext
+
+  import akka.stream.Materializer
   import play.api.mvc.Action
   import play.api.mvc.Request
+  import play.api.test.Helpers
   import play.core.j._
   import play.mvc.Controller
   import play.mvc.Http
   import play.mvc.Result
-  import play.api.test.Helpers
-  import java.lang.reflect.Method
-
-  import akka.stream.Materializer
-
-  import scala.concurrent.ExecutionContext
 
   abstract class MockJavaAction(handlerComponents: JavaHandlerComponents)
       extends Controller
@@ -26,11 +25,11 @@ package javaguide.testhelpers {
 
     private lazy val action = new JavaAction(handlerComponents) {
       val annotations =
-        new JavaActionAnnotations(controller, method, handlerComponents.httpConfiguration.actionComposition)
+        new JavaActionAnnotations(controller, method, this.handlerComponents.httpConfiguration.actionComposition)
 
       def parser = {
         play.HandlerInvokerFactoryAccessor.javaBodyParserToScala(
-          handlerComponents.getBodyParser(annotations.parser)
+          this.handlerComponents.getBodyParser(annotations.parser)
         )
       }
 
@@ -101,7 +100,7 @@ package javaguide.testhelpers {
       val maybeMethod = obj.getClass.getDeclaredMethods.find { method =>
         !method.isSynthetic &&
         (method.getParameterCount == 0 ||
-        (method.getParameterCount == 1 && method.getParameterTypes()(0) == classOf[Http.Request]))
+          (method.getParameterCount == 1 && method.getParameterTypes()(0) == classOf[Http.Request]))
       }
       val theMethod = maybeMethod.getOrElse(
         throw new RuntimeException("MockJavaAction must declare at least one non synthetic method")

@@ -1,4 +1,5 @@
-<!--- Copyright (C) Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com> -->
+
 # Configuring the Akka HTTP server backend
 
 By default, Play uses the [[Akka HTTP server backend|AkkaHttpServer]].
@@ -11,9 +12,9 @@ The configurations above are specific to Akka HTTP server backend, but other mor
  
 @[](/confs/play-server/reference.conf)
 
-You can read more about the configuration settings in the [Akka HTTP documentation](https://doc.akka.io/docs/akka-http/current/configuration.html?language=scala).
+You can read more about the configuration settings in the [Akka HTTP documentation](https://doc.akka.io/docs/akka-http/10.2/configuration.html?language=scala).
 
-> **Note:** Akka HTTP has a number of [timeouts configurations](https://doc.akka.io/docs/akka-http/current/common/timeouts.html?language=scala#server-timeouts) that you can use to protect your application from attacks or programming mistakes. The Akka HTTP Server in Play will automatically recognize all these Akka configurations. For example, if you have `idle-timeout` and `request-timeout` configurations like below:
+> **Note:** Akka HTTP has a number of [timeouts configurations](https://doc.akka.io/docs/akka-http/10.2/common/timeouts.html?language=scala#server-timeouts) that you can use to protect your application from attacks or programming mistakes. The Akka HTTP Server in Play will automatically recognize all these Akka configurations. For example, if you have `idle-timeout` and `request-timeout` configurations like below:
 >
 > ```
 > akka.http.server.idle-timeout = 20s

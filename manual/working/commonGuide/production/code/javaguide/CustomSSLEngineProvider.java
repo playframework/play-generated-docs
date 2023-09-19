@@ -1,16 +1,15 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package javaguide;
 
 // #javaexample
-import play.server.ApplicationProvider;
-import play.server.SSLEngineProvider;
-
+import java.security.NoSuchAlgorithmException;
 import javax.inject.Inject;
 import javax.net.ssl.*;
-import java.security.NoSuchAlgorithmException;
+import play.server.ApplicationProvider;
+import play.server.SSLEngineProvider;
 
 public class CustomSSLEngineProvider implements SSLEngineProvider {
 

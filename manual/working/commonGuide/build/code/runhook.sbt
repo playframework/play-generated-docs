@@ -1,10 +1,8 @@
-//
-// Copyright (C) Lightbend Inc. <https://www.lightbend.com>
-//
+// Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
 
 // You can't define objects at the root level of an sbt file, so we do it inside a def
 def Grunt(base: File) = {
-  //#grunt-before-started
+  // #grunt-before-started
   import play.sbt.PlayRunHook
   import sbt._
   import scala.sys.process.Process
@@ -22,7 +20,7 @@ def Grunt(base: File) = {
       GruntProcess
     }
   }
-  //#grunt-before-started
+  // #grunt-before-started
   Grunt(base)
 }
 
@@ -31,7 +29,7 @@ PlayKeys.playRunHooks += Grunt(baseDirectory.value)
 //#grunt-build-sbt
 
 def Grunt2(base: File) = {
-  //#grunt-watch
+  // #grunt-watch
   import play.sbt.PlayRunHook
   import sbt._
   import java.net.InetSocketAddress
@@ -61,6 +59,6 @@ def Grunt2(base: File) = {
       GruntProcess
     }
   }
-  //#grunt-watch
+  // #grunt-watch
   Grunt(base)
 }

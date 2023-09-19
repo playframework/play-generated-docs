@@ -1,20 +1,18 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package javaguide.tests;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.Collections;
+import java.util.Map;
 import org.junit.Test;
-
 import play.i18n.Lang;
 import play.i18n.Langs;
 import play.i18n.Messages;
 import play.i18n.MessagesApi;
-
-import java.util.Collections;
-import java.util.Map;
 
 public class MessagesTest {
 

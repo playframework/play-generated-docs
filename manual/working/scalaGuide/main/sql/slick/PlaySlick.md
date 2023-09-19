@@ -13,9 +13,7 @@ Previous versions support previous versions of Play! as well as Scala 2.11 and S
 
 ## Getting Help
 
-If you are having trouble using Play Slick, check if the [[FAQ|PlaySlickFAQ]] contains the answer. Otherwise, feel free to reach out to [play-framework user community](https://discuss.playframework.com). Also, note that if you are seeking help on Slick, the [slick user community](https://scala-slick.org/community/) may be a better place.
-
-Finally, if you prefer to get an answer for your Play and Slick questions in a timely manner, and with a well-defined SLA, you may prefer [to get in touch with Lightbend](https://www.lightbend.com/subscription), as it offers commercial support for these technologies.
+If you are having trouble using Play Slick, check if the [[FAQ|PlaySlickFAQ]] contains the answer. Otherwise, feel free to reach out to [Play Discussion Forum](https://github.com/playframework/playframework/discussions). Also, note that if you are seeking help on Slick, the [slick user community](https://scala-slick.org/community/) may be a better place.
 
 ## About this release
 
@@ -74,7 +72,7 @@ slick.dbs.default.db.dataSourceClass = "slick.jdbc.DatabaseUrlDataSource"
 slick.dbs.default.db.properties.driver = "org.postgresql.Driver"
 ```
 
-On some platforms, such as Heroku, you may [substitute](https://github.com/lightbend/config/blob/master/HOCON.md#substitution-fallback-to-environment-variables) the `JDBC_DATABASE_URL` environment variable, which is in the format `jdbc:vendor://host:port/db?args`, if it is available. For example:
+On some platforms, such as Heroku, you may [substitute](https://github.com/lightbend/config/blob/main/HOCON.md#substitution-fallback-to-environment-variables) the `JDBC_DATABASE_URL` environment variable, which is in the format `jdbc:vendor://host:port/db?args`, if it is available. For example:
 
 ```conf
 slick.dbs.default.profile="slick.jdbc.PostgresProfile$"
@@ -128,7 +126,7 @@ Of course, you should replace the string `"<db-name>"` with the name of the data
 
 > Note: To access the database object, you need only call the function `db` on the `HasDatabaseConfig` trait. You do not need to reference the dbConfigProvider constructor parameter.
 
-For a full example, have a look at [this sample project](https://github.com/playframework/play-slick/tree/master/samples/basic).
+For a full example, have a look at [this sample project](https://github.com/playframework/play-samples/tree/HEAD/play-scala-slick-example/samples/basic).
 
 ### Compile-time dependency injection
 

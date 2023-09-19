@@ -1,12 +1,10 @@
-//
-// Copyright (C) Lightbend Inc. <https://www.lightbend.com>
-//
+// Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
 
 //#assembly
-mainClass in assembly := Some("play.core.server.ProdServerStart")
-fullClasspath in assembly += Attributed.blank(PlayKeys.playPackageAssets.value)
+assembly / mainClass := Some("play.core.server.ProdServerStart")
+assembly / fullClasspath += Attributed.blank(PlayKeys.playPackageAssets.value)
 
-assemblyMergeStrategy in assembly := {
+assembly / assemblyMergeStrategy := {
   case manifest if manifest.contains("MANIFEST.MF") =>
     // We don't need manifest files since sbt-assembly will create
     // one with the given settings
@@ -16,7 +14,7 @@ assemblyMergeStrategy in assembly := {
     MergeStrategy.concat
   case x =>
     // For all the other files, use the default sbt-assembly merge strategy
-    val oldStrategy = (assemblyMergeStrategy in assembly).value
+    val oldStrategy = (assembly / assemblyMergeStrategy).value
     oldStrategy(x)
 }
 //#assembly

@@ -1,11 +1,13 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package javaguide.detailed.filters;
 
+import static play.test.Helpers.GET;
+import static play.test.Helpers.POST;
+
 import org.junit.Test;
-import play.api.mvc.PlayBodyParsers;
 import play.api.test.CSRFTokenHelper;
 import play.mvc.Http;
 import play.mvc.Results;
@@ -13,9 +15,6 @@ import play.routing.Router;
 import play.routing.RoutingDsl;
 import play.test.Helpers;
 import play.test.WithApplication;
-
-import static play.test.Helpers.GET;
-import static play.test.Helpers.POST;
 
 public class FiltersTest extends WithApplication {
 

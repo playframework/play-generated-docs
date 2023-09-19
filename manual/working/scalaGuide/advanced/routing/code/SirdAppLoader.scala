@@ -1,13 +1,13 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
-import play.api.ApplicationLoader.Context
 import play.api._
-import play.api.mvc.Results._
 import play.api.mvc._
-import play.api.routing.Router
+import play.api.mvc.Results._
 import play.api.routing.sird._
+import play.api.routing.Router
+import play.api.ApplicationLoader.Context
 
 //#load
 class SirdAppLoader extends ApplicationLoader {

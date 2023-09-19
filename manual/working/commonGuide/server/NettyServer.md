@@ -1,4 +1,5 @@
-<!--- Copyright (C) Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com> -->
+
 # Netty Server Backend
 
 Prior to Play 2.6.x, Play used the Netty server backend as the default.  In 2.6.x, the default backend was changed to Akka HTTP, but you can still manually select the Netty backend server in your project.

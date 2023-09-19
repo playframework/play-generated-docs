@@ -1,17 +1,17 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package javaguide.tests;
 
 // #database-test
+import static org.junit.Assert.*;
+
+import java.sql.Connection;
+import org.junit.*;
 import play.db.Database;
 import play.db.Databases;
 import play.db.evolutions.*;
-import java.sql.Connection;
-
-import org.junit.*;
-import static org.junit.Assert.*;
 
 public class DatabaseTest {
 

@@ -1,26 +1,24 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package javaguide.http;
 
+import static javaguide.testhelpers.MockJavaActionHelper.call;
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.*;
+import static play.test.Helpers.*;
+
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
-
+import javaguide.testhelpers.MockJavaAction;
 import org.junit.Test;
 import play.core.j.JavaHandlerComponents;
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
-
-import javaguide.testhelpers.MockJavaAction;
 import play.test.WithApplication;
-
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
-import static play.test.Helpers.*;
-import static javaguide.testhelpers.MockJavaActionHelper.call;
 
 public class JavaActions extends WithApplication {
   @Test

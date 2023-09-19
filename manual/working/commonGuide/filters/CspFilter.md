@@ -1,4 +1,5 @@
-<!--- Copyright (C) Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com> -->
+
 # Configuring Content Security Policy Headers
 
 A good content security policy (CSP) is an essential part of securing a website.  Used properly, CSP can make XSS and injection much harder for attackers, although some attacks are [still possible](https://csp.withgoogle.com/docs/faq.html#caveats).
@@ -141,9 +142,9 @@ Scala
 
 A CSP nonce is a "one time only" value (n=once) that is generated on every request and can be inserted into the body of inline content to whitelist content.
 
-Play defines a nonce through [`play.filters.csp.DefaultCSPProcessor`](api/scala/play/filters/csp/DefaultCSPProcessor.html) if `play.filters.csp.nonce.enabled` is true.  If a request has the attribute [`play.api.mvc.request.RequestAttrKey.CSPNonce`](api/scala/play/api/mvc/request/RequestAttrKey$.html), then that nonce is used.  Otherwise, a nonce is generated from 16 bytes of [`java.security.SecureRandom`](https://docs.oracle.com/javase/8/docs/api/java/security/SecureRandom.html).
+Play defines a nonce through [`play.filters.csp.DefaultCSPProcessor`](api/scala/play/filters/csp/DefaultCSPProcessor.html) if `play.filters.csp.nonce.enabled` is true.  If a request has the attribute [`play.api.mvc.request.RequestAttrKey.CSPNonce`](api/scala/play/api/mvc/request/RequestAttrKey$.html), then that nonce is used.  Otherwise, a nonce is generated from 16 bytes of [`java.security.SecureRandom`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/security/SecureRandom.html).
 
-@[csp-nonce](/confs/filters-helpers/reference.conf)
+@[csp-nonce](/confs/play-filters-helpers/reference.conf)
 
 Accessing the CSP nonce from a Twirl template is shown in [[Using CSP in Page Templates|CspFilter#Using-CSP-in-Page-Templates]].
 
@@ -177,7 +178,7 @@ The [CSP cheat sheet](https://scotthelme.co.uk/csp-cheat-sheet/) is a good refer
 
 The default policy defined in `CSPFilter` is based off Google's [Strict CSP Policy](https://csp.withgoogle.com/docs/strict-csp.html):
 
-@[csp-directives](/confs/filters-helpers/reference.conf)
+@[csp-directives](/confs/play-filters-helpers/reference.conf)
 
 > **Note:** Google's Strict CSP policy is a good place to start, but it does not completely define a content security policy.  Please consult with a security team to determine the right policy for your site.  
 
@@ -221,7 +222,7 @@ Using `CSPNonce.attrMap` is appropriate in cases where existing helpers take a m
 
 For ease of use, there are [`style`](api/scala/views/html/helper/style$.html), and [`script`](api/scala/views/html/helper/script$.html) helpers that will wrap existing inline blocks.  These are useful for adding simple bits of inline Javascript and CSS.
 
-Because these helpers are generated from Twirl templates, Scaladoc does not provide the correct source reference for these helpers. The source code for these helpers can be seen on [Github](https://github.com/playframework/playframework/blob/master/core/play/src/main/scala/views/helper/) for a more complete view.
+Because these helpers are generated from Twirl templates, Scaladoc does not provide the correct source reference for these helpers. The source code for these helpers can be seen on [Github](https://github.com/playframework/playframework/blob/main/core/play/src/main/scala/views/helper/) for a more complete view.
 
 ##### Style Helper
 

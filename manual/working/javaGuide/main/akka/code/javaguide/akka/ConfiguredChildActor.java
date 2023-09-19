@@ -1,5 +1,5 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package javaguide.akka;
@@ -8,7 +8,6 @@ package javaguide.akka;
 import akka.actor.AbstractActor;
 import com.google.inject.assistedinject.Assisted;
 import com.typesafe.config.Config;
-
 import javax.inject.Inject;
 
 public class ConfiguredChildActor extends AbstractActor {

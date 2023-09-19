@@ -1,12 +1,12 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package javaguide.http.routing.controllers;
 
 import play.mvc.Controller;
-import play.mvc.Result;
 import play.mvc.Http;
+import play.mvc.Result;
 
 public class Application extends Controller {
 

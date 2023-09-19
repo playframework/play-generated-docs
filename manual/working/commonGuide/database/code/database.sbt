@@ -1,6 +1,4 @@
-//
-// Copyright (C) Lightbend Inc. <https://www.lightbend.com>
-//
+// Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
 
 //#jdbc-java-dependencies
 libraryDependencies ++= Seq(
@@ -16,6 +14,6 @@ libraryDependencies ++= Seq(
 
 //#jdbc-driver-dependencies
 libraryDependencies ++= Seq(
-  "mysql" % "mysql-connector-java" % "5.1.41"
+  "com.mysql" % "mysql-connector-j" % "8.0.33"
 )
 //#jdbc-driver-dependencies

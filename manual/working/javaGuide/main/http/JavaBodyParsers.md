@@ -1,4 +1,5 @@
-<!--- Copyright (C) Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com> -->
+
 # Body parsers
 
 ## What is a body parser?
@@ -53,6 +54,8 @@ The body parsers that Play provides out of the box are all inner classes of the 
 - [`FormUrlEncoded`](api/java/play/mvc/BodyParser.FormUrlEncoded.html): Parses the body as a form.
 - [`MultipartFormData`](api/java/play/mvc/BodyParser.MultipartFormData.html): Parses the body as a multipart form, storing file parts to files.
 - [`Empty`](api/java/play/mvc/BodyParser.Empty.html): Does not parse the body, rather it ignores it.
+
+A body parser applied to a [[WebSocket|JavaWebSockets]] is disregarded, functioning as if `@BodyParser.Of(BodyParser.Empty.class)` were used. Since an initial WebSocket request cannot contain a body, parsing will not occur.
 
 ### Content length limits
 
@@ -117,3 +120,7 @@ However, when that's not feasible, for example when the body you need to parse i
 A full description of how to use Akka Streams is beyond the scope of this documentation - the best place to start is to read the [Akka Streams documentation](https://doc.akka.io/docs/akka/2.6/stream/index.html?language=java).  However, the following shows a CSV parser, which builds on the [Parsing lines from a stream of ByteStrings](https://doc.akka.io/docs/akka/2.6/stream/stream-cookbook.html?language=java#parsing-lines-from-a-stream-of-bytestrings) documentation from the Akka Streams cookbook:
 
 @[csv](code/javaguide/http/JavaBodyParsers.java)
+
+## Deferred body parsing
+
+By default body parsing takes place before [[action composition|JavaActionsComposition]] happens. It's however possible to defer body parsing _after_ action composition took place. More details can be found [[here|JavaActionsComposition#Action-composition-in-interaction-with-body-parsing]].

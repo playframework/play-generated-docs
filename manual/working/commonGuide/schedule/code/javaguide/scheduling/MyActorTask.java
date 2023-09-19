@@ -1,19 +1,17 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 // ###replace: package tasks;
 package javaguide.scheduling;
 
-import javax.inject.Named;
-import javax.inject.Inject;
-
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
+import java.util.concurrent.TimeUnit;
+import javax.inject.Inject;
+import javax.inject.Named;
 import scala.concurrent.ExecutionContext;
 import scala.concurrent.duration.Duration;
-
-import java.util.concurrent.TimeUnit;
 
 public class MyActorTask {
 

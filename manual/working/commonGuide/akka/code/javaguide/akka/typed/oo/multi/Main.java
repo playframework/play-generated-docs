@@ -1,12 +1,11 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package javaguide.akka.typed.oo.multi;
 
 import akka.actor.typed.ActorRef;
 import javaguide.akka.typed.oo.*;
-
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Singleton;

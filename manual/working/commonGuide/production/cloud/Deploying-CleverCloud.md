@@ -1,4 +1,5 @@
-<!--- Copyright (C) Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com> -->
+
 # Deploying to Clever Cloud
 [Clever Cloud](https://www.clever-cloud.com/en/) is a Platform as a Service solution. You can deploy on it Scala, Java, PHP, Python and Node.js applications. Its main particularity is that it supports **automatic vertical and horizontal scaling**.
 
@@ -15,16 +16,16 @@ To deploy your application on Clever Cloud, just use git to push your code to th
 
 ```bash
 $ git remote add <your-remote-name> <your-git-deployment-url>
-$ git push <your-remote-name> master
+$ git push <your-remote-name> main
 ```
 
-**Important tip: do not forget to push to the remote master branch.**
+**Important tip: do not forget to push to the remote main branch.**
 
 If you work in a different branch, just use: 
 
 ```bash
 $ git remote add <your-remote-name> <your-git-deployment-url>
-$ git push <your-remote-name> <your-branch-name>:master
+$ git push <your-remote-name> <your-branch-name>:main
 ```
 
 <br/>

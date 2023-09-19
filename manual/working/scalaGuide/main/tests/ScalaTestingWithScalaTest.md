@@ -1,4 +1,4 @@
-<!--- Copyright (C) 2009-2016 Typesafe Inc. <http://www.typesafe.com> -->
+<!--- Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com> -->
 # Testing your application with ScalaTest
 
 Writing tests for your application can be an involved process. Play provides helpers and application stubs, and ScalaTest provides an integration library, _ScalaTest + Play_, to make testing your application as easy as possible.
@@ -35,7 +35,7 @@ In _ScalaTest + Play_, you define test classes by extending the [`PlaySpec`](api
 
 @[scalatest-stackspec](code/StackSpec.scala)
 
-You can alternatively [define your own base classes](http://scalatest.org/user_guide/defining_base_classes) instead of using `PlaySpec`.
+You can alternatively [define your own base classes](https://www.scalatest.org/user_guide/defining_base_classes) instead of using `PlaySpec`.
 
 You can run your tests with Play itself, or in IntelliJ IDEA (using the [Scala plugin](https://confluence.jetbrains.com/display/SCA/Scala+Plugin+for+IntelliJ+IDEA)) or in Eclipse (using the [Scala IDE](http://scala-ide.org/) and the [ScalaTest Eclipse plugin](http://scalatest.org/user_guide/using_scalatest_with_eclipse)).  Please see the [[IDE page|IDE]] for more details.
 

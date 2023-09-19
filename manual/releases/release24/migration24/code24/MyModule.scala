@@ -1,15 +1,16 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
+
 package scaladoc {
   package module {
 
     import mycomponent._
+    import play.api.inject.Binding
+    import play.api.inject.Module
 //#module-decl
     import play.api.Configuration
     import play.api.Environment
-    import play.api.inject.Binding
-    import play.api.inject.Module
 
     class MyModule extends Module {
       def bindings(environment: Environment, configuration: Configuration): Seq[Binding[_]] = {

@@ -1,18 +1,18 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
+
+import scala.concurrent.duration.Duration
+import scala.concurrent.Await
 
 import org.specs2.mutable.Specification
 import play.api.routing.Router
 import play.api.test.WsTestClient
 
-import scala.concurrent.Await
-import scala.concurrent.duration.Duration
-
 class ScalaAkkaEmbeddingPlay extends Specification with WsTestClient {
   "Embedding play with akka" should {
     "be very simple" in {
-      //#simple-akka-http
+      // #simple-akka-http
       import play.api.mvc._
       import play.api.routing.sird._
       import play.core.server.AkkaHttpServer
@@ -27,19 +27,19 @@ class ScalaAkkaEmbeddingPlay extends Specification with WsTestClient {
             }
         }
       }
-      //#simple-akka-http
+      // #simple-akka-http
 
       try {
         testRequest(9000)
       } finally {
-        //#stop-akka-http
+        // #stop-akka-http
         server.stop()
-        //#stop-akka-http
+        // #stop-akka-http
       }
     }
 
     "be configurable with akka" in {
-      //#config-akka-http
+      // #config-akka-http
       import play.api.mvc._
       import play.api.routing.sird._
       import play.core.server.AkkaHttpServer
@@ -60,7 +60,7 @@ class ScalaAkkaEmbeddingPlay extends Specification with WsTestClient {
             }
         }
       }
-      //#config-akka-http
+      // #config-akka-http
 
       try {
         testRequest(19000)
@@ -70,7 +70,7 @@ class ScalaAkkaEmbeddingPlay extends Specification with WsTestClient {
     }
 
     "allow overriding components" in {
-      //#components-akka-http
+      // #components-akka-http
       import play.api.http.DefaultHttpErrorHandler
       import play.api.mvc._
       import play.api.routing.Router
@@ -87,7 +87,7 @@ class ScalaAkkaEmbeddingPlay extends Specification with WsTestClient {
             }
         }
 
-        override lazy val httpErrorHandler = new DefaultHttpErrorHandler(
+        override lazy val httpErrorHandler: DefaultHttpErrorHandler = new DefaultHttpErrorHandler(
           environment,
           configuration,
           devContext.map(_.sourceMapper),
@@ -99,7 +99,7 @@ class ScalaAkkaEmbeddingPlay extends Specification with WsTestClient {
         }
       }
       val server = components.server
-      //#components-akka-http
+      // #components-akka-http
 
       try {
         testRequest(9000)
@@ -109,7 +109,7 @@ class ScalaAkkaEmbeddingPlay extends Specification with WsTestClient {
     }
 
     "allow usage from a running application" in {
-      //#application-akka-http
+      // #application-akka-http
       import play.api.mvc._
       import play.api.routing.sird._
       import play.core.server.AkkaHttpServer
@@ -136,7 +136,7 @@ class ScalaAkkaEmbeddingPlay extends Specification with WsTestClient {
           address = "127.0.0.1"
         )
       )
-      //#application-akka-http
+      // #application-akka-http
 
       try {
         testRequest(19000)
@@ -146,7 +146,7 @@ class ScalaAkkaEmbeddingPlay extends Specification with WsTestClient {
     }
 
     "allow usage from with logger configurator" in {
-      //#logger-akka-http
+      // #logger-akka-http
       import play.api.mvc._
       import play.api.routing.sird._
       import play.filters.HttpFiltersComponents
@@ -179,7 +179,7 @@ class ScalaAkkaEmbeddingPlay extends Specification with WsTestClient {
           address = "127.0.0.1"
         )
       )
-      //#logger-akka-http
+      // #logger-akka-http
 
       try {
         testRequest(19000)
@@ -190,8 +190,9 @@ class ScalaAkkaEmbeddingPlay extends Specification with WsTestClient {
   }
 
   def testRequest(port: Int) = {
-    withClient { client =>
-      Await.result(client.url("/hello/world").get(), Duration.Inf).body must_== "Hello world"
-    }(new play.api.http.Port(port))
+    import play.api.libs.ws.DefaultBodyReadables.readableAsString
+    withClient { client => Await.result(client.url("/hello/world").get(), Duration.Inf).body must_== "Hello world" }(
+      new play.api.http.Port(port)
+    )
   }
 }

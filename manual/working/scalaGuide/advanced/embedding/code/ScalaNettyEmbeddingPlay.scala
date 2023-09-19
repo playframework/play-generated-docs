@@ -1,19 +1,19 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package scalaguide.advanced.embedding
 
+import scala.concurrent.duration.Duration
+import scala.concurrent.Await
+
 import org.specs2.mutable.Specification
 import play.api.test.WsTestClient
-
-import scala.concurrent.Await
-import scala.concurrent.duration.Duration
 
 class ScalaNettyEmbeddingPlay extends Specification with WsTestClient {
   "Embedding play" should {
     "be very simple" in {
-      //#simple
+      // #simple
       import play.api.mvc._
       import play.api.routing.sird._
       import play.core.server._
@@ -27,19 +27,19 @@ class ScalaNettyEmbeddingPlay extends Specification with WsTestClient {
             }
         }
       }
-      //#simple
+      // #simple
 
       try {
         testRequest(9000)
       } finally {
-        //#stop
+        // #stop
         server.stop()
-        //#stop
+        // #stop
       }
     }
 
     "be configurable" in {
-      //#config
+      // #config
       import play.api.mvc._
       import play.api.routing.sird._
       import play.core.server._
@@ -58,7 +58,7 @@ class ScalaNettyEmbeddingPlay extends Specification with WsTestClient {
             }
         }
       }
-      //#config
+      // #config
 
       try {
         testRequest(19000)
@@ -68,7 +68,7 @@ class ScalaNettyEmbeddingPlay extends Specification with WsTestClient {
     }
 
     "allow overriding components" in {
-      //#components
+      // #components
       import play.api.http.DefaultHttpErrorHandler
       import play.api.mvc._
       import play.api.routing.Router
@@ -85,7 +85,7 @@ class ScalaNettyEmbeddingPlay extends Specification with WsTestClient {
             }
         }
 
-        override lazy val httpErrorHandler =
+        override lazy val httpErrorHandler: DefaultHttpErrorHandler =
           new DefaultHttpErrorHandler(environment, configuration, devContext.map(_.sourceMapper), Some(router)) {
             protected override def onNotFound(request: RequestHeader, message: String) = {
               Future.successful(Results.NotFound("Nothing was found!"))
@@ -93,7 +93,7 @@ class ScalaNettyEmbeddingPlay extends Specification with WsTestClient {
           }
       }
       val server = components.server
-      //#components
+      // #components
 
       try {
         testRequest(9000)
@@ -103,7 +103,7 @@ class ScalaNettyEmbeddingPlay extends Specification with WsTestClient {
     }
 
     "work with logger configurator" in {
-      //#logger-configurator
+      // #logger-configurator
       import play.api.mvc._
       import play.api.routing.Router
       import play.api.routing.sird._
@@ -128,7 +128,7 @@ class ScalaNettyEmbeddingPlay extends Specification with WsTestClient {
       }
 
       val server = components.server
-      //#logger-configurator
+      // #logger-configurator
 
       try {
         testRequest(9000)
@@ -139,8 +139,9 @@ class ScalaNettyEmbeddingPlay extends Specification with WsTestClient {
   }
 
   def testRequest(port: Int) = {
-    withClient { client =>
-      Await.result(client.url("/hello/world").get(), Duration.Inf).body must_== "Hello world"
-    }(new play.api.http.Port(port))
+    import play.api.libs.ws.DefaultBodyReadables.readableAsString
+    withClient { client => Await.result(client.url("/hello/world").get(), Duration.Inf).body must_== "Hello world" }(
+      new play.api.http.Port(port)
+    )
   }
 }

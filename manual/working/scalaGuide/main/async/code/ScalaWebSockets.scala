@@ -1,23 +1,25 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package scalaguide.async.websockets
 
-import play.api.http.websocket.TextMessage
-import play.api.http.websocket.Message
-import play.api.test._
 import scala.concurrent.Future
 import scala.concurrent.Promise
 
+import play.api.http.websocket.Message
+import play.api.http.websocket.TextMessage
+import play.api.test._
+
 class ScalaWebSockets extends PlaySpecification {
   import java.io.Closeable
-  import play.api.mvc.Result
-  import play.api.mvc.WebSocket
-  import play.api.libs.json.Json
-  import play.api.libs.streams.ActorFlow
+
   import akka.stream.scaladsl._
   import akka.stream.Materializer
+  import play.api.libs.json.Json
+  import play.api.libs.streams.ActorFlow
+  import play.api.mvc.Result
+  import play.api.mvc.WebSocket
 
   "Scala WebSockets" should {
     def runWebSocket[In, Out](webSocket: WebSocket, in: Source[Message, _], expectOut: Int)(
@@ -47,103 +49,123 @@ class ScalaWebSockets extends PlaySpecification {
       import akka.actor._
 
       "allow creating a simple echoing actor" in new WithApplication() {
-        val controller = app.injector.instanceOf[Controller1.Application]
-        runWebSocket(controller.socket, Source.single(TextMessage("foo")), 1) must beRight.like {
-          case list => list must_== List(TextMessage("I received your message: foo"))
+        override def running() = {
+          val controller = app.injector.instanceOf[Controller1.Application]
+          runWebSocket(controller.socket, Source.single(TextMessage("foo")), 1) must beRight.like {
+            case list => list must_== List(TextMessage("I received your message: foo"))
+          }
         }
       }
 
       "allow cleaning up" in new WithApplication() {
-        val closed = Promise[Boolean]()
-        val someResource = new Closeable() {
-          def close() = closed.success(true)
-        }
-        class MyActor extends Actor {
-          def receive = PartialFunction.empty
-
-          //#actor-post-stop
-          override def postStop() = {
-            someResource.close()
+        override def running() = {
+          val closed = Promise[Boolean]()
+          val someResource = new Closeable() {
+            def close() = closed.success(true)
           }
-          //#actor-post-stop
+          class MyActor extends Actor {
+            def receive: PartialFunction[Any, Nothing] = PartialFunction.empty
+
+            // #actor-post-stop
+            override def postStop() = {
+              someResource.close()
+            }
+            // #actor-post-stop
+          }
+
+          implicit def actorSystem: ActorSystem = app.injector.instanceOf[ActorSystem]
+
+          runWebSocket(
+            WebSocket.accept[String, String](req => ActorFlow.actorRef(out => Props(new MyActor))),
+            Source.empty,
+            0
+          ) must beRight[List[Message]]
+          await(closed.future) must_== true
         }
-
-        implicit def actorSystem = app.injector.instanceOf[ActorSystem]
-
-        runWebSocket(
-          WebSocket.accept[String, String](req => ActorFlow.actorRef(out => Props(new MyActor))),
-          Source.empty,
-          0
-        ) must beRight[List[Message]]
-        await(closed.future) must_== true
       }
 
       "allow closing the WebSocket" in new WithApplication() {
-        class MyActor extends Actor {
-          def receive = PartialFunction.empty
+        override def running() = {
+          class MyActor extends Actor {
+            def receive: PartialFunction[Any, Nothing] = PartialFunction.empty
 
-          //#actor-stop
-          import akka.actor.PoisonPill
+            // #actor-stop
 
-          self ! PoisonPill
-          //#actor-stop
+            import akka.actor.PoisonPill
+
+            self ! PoisonPill
+            // #actor-stop
+          }
+
+          implicit def actorSystem: ActorSystem = app.injector.instanceOf[ActorSystem]
+
+          runWebSocket(
+            WebSocket.accept[String, String](req => ActorFlow.actorRef(out => Props(new MyActor))),
+            Source.maybe,
+            0
+          ) must beRight[List[Message]]
         }
-
-        implicit def actorSystem = app.injector.instanceOf[ActorSystem]
-
-        runWebSocket(
-          WebSocket.accept[String, String](req => ActorFlow.actorRef(out => Props(new MyActor))),
-          Source.maybe,
-          0
-        ) must beRight[List[Message]]
       }
 
       "allow rejecting the WebSocket" in new WithApplication() {
-        val controller = app.injector.instanceOf[Controller2.Application]
-        runWebSocket(controller.socket, Source.empty, 0) must beLeft.which { result =>
-          result.header.status must_== FORBIDDEN
+        override def running() = {
+          val controller = app.injector.instanceOf[Controller2.Application]
+          runWebSocket(controller.socket, Source.empty, 0) must beLeft.which { result =>
+            result.header.status must_== FORBIDDEN
+          }
         }
       }
 
       "allow creating a json actor" in new WithApplication() {
-        val json       = Json.obj("foo" -> "bar")
-        val controller = app.injector.instanceOf[Controller4.Application]
-        runWebSocket(controller.socket, Source.single(TextMessage(Json.stringify(json))), 1) must beRight.which { out =>
-          out must_== List(TextMessage(Json.stringify(json)))
+        override def running() = {
+          val json       = Json.obj("foo" -> "bar")
+          val controller = app.injector.instanceOf[Controller4.Application]
+          runWebSocket(controller.socket, Source.single(TextMessage(Json.stringify(json))), 1) must beRight.which {
+            out =>
+              out must_== List(TextMessage(Json.stringify(json)))
+          }
         }
       }
 
       "allow creating a higher level object actor" in new WithApplication() {
-        val controller = app.injector.instanceOf[Controller5.Application]
-        runWebSocket(
-          controller.socket,
-          Source.single(TextMessage(Json.stringify(Json.toJson(Controller5.InEvent("blah"))))),
-          1
-        ) must beRight.which { out =>
-          out must_== List(TextMessage(Json.stringify(Json.toJson(Controller5.OutEvent("blah")))))
+        override def running() = {
+          val controller = app.injector.instanceOf[Controller5.Application]
+          runWebSocket(
+            controller.socket,
+            Source.single(TextMessage(Json.stringify(Json.toJson(Controller5.InEvent("blah"))))),
+            1
+          ) must beRight.which { out =>
+            out must_== List(TextMessage(Json.stringify(Json.toJson(Controller5.OutEvent("blah")))))
+          }
         }
       }
     }
 
     "support iteratees" in {
       "iteratee1" in new WithApplication() {
-        val controller = app.injector.instanceOf[Controller6]
-        runWebSocket(controller.socket, Source.empty, 1) must beRight.which { out =>
-          out must_== List(TextMessage("Hello!"))
+        override def running() = {
+          val controller = app.injector.instanceOf[Controller6]
+          runWebSocket(controller.socket, Source.empty, 1) must beRight.which { out =>
+            out must_== List(TextMessage("Hello!"))
+          }
         }
       }
 
       "iteratee2" in new WithApplication() {
-        val controller = app.injector.instanceOf[Controller7]
-        runWebSocket(controller.socket, Source.maybe, 1) must beRight.which { out =>
-          out must_== List(TextMessage("Hello!"))
+        override def running() = {
+          val controller = app.injector.instanceOf[Controller7]
+          runWebSocket(controller.socket, Source.maybe, 1) must beRight.which { out =>
+            out must_== List(TextMessage("Hello!"))
+          }
         }
       }
 
       "iteratee3" in new WithApplication() {
-        val controller = app.injector.instanceOf[Controller8]
-        runWebSocket(controller.socket, Source.single(TextMessage("foo")), 1) must beRight.which { out =>
-          out must_== List(TextMessage("I received your message: foo"))
+        override def running() = {
+          val controller = app.injector.instanceOf[Controller8]
+          runWebSocket(controller.socket, Source.single(TextMessage("foo")), 1) must beRight.which { out =>
+            out must_== List(TextMessage("I received your message: foo"))
+          }
         }
       }
     }
@@ -157,28 +179,29 @@ class ScalaWebSockets extends PlaySpecification {
 }
 
 object Controller1 {
+  // format: off
   import Actor1.MyWebSocketActor
+  // format: on
 
-  //#actor-accept
-  import play.api.mvc._
-  import play.api.libs.streams.ActorFlow
+  // #actor-accept
   import javax.inject.Inject
+
   import akka.actor.ActorSystem
   import akka.stream.Materializer
+  import play.api.libs.streams.ActorFlow
+  import play.api.mvc._
 
   class Application @Inject() (cc: ControllerComponents)(implicit system: ActorSystem, mat: Materializer)
       extends AbstractController(cc) {
     def socket = WebSocket.accept[String, String] { request =>
-      ActorFlow.actorRef { out =>
-        MyWebSocketActor.props(out)
-      }
+      ActorFlow.actorRef { out => MyWebSocketActor.props(out) }
     }
   }
-  //#actor-accept
+  // #actor-accept
 }
 
 object Actor1 {
-  //#example-actor
+  // #example-actor
   import akka.actor._
 
   object MyWebSocketActor {
@@ -191,18 +214,21 @@ object Actor1 {
         out ! ("I received your message: " + msg)
     }
   }
-  //#example-actor
+  // #example-actor
 }
 
 object Controller2 {
+  // format: off
   import Actor1.MyWebSocketActor
+  // format: on
 
-  //#actor-try-accept
-  import play.api.mvc._
-  import play.api.libs.streams.ActorFlow
+  // #actor-try-accept
   import javax.inject.Inject
+
   import akka.actor.ActorSystem
   import akka.stream.Materializer
+  import play.api.libs.streams.ActorFlow
+  import play.api.mvc._
 
   class Application @Inject() (cc: ControllerComponents)(implicit system: ActorSystem, mat: Materializer)
       extends AbstractController(cc) {
@@ -210,9 +236,7 @@ object Controller2 {
       Future.successful(request.session.get("user") match {
         case None => Left(Forbidden)
         case Some(_) =>
-          Right(ActorFlow.actorRef { out =>
-            MyWebSocketActor.props(out)
-          })
+          Right(ActorFlow.actorRef { out => MyWebSocketActor.props(out) })
       })
     }
   }
@@ -234,35 +258,34 @@ object Controller4 {
     def props(out: ActorRef) = Props(new MyWebSocketActor(out))
   }
 
-  //#actor-json
-  import play.api.libs.json._
-  import play.api.mvc._
-  import play.api.libs.streams.ActorFlow
+  // #actor-json
   import javax.inject.Inject
+
   import akka.actor.ActorSystem
   import akka.stream.Materializer
+  import play.api.libs.json._
+  import play.api.libs.streams.ActorFlow
+  import play.api.mvc._
 
   class Application @Inject() (cc: ControllerComponents)(implicit system: ActorSystem, mat: Materializer)
       extends AbstractController(cc) {
     def socket = WebSocket.accept[JsValue, JsValue] { request =>
-      ActorFlow.actorRef { out =>
-        MyWebSocketActor.props(out)
-      }
+      ActorFlow.actorRef { out => MyWebSocketActor.props(out) }
     }
   }
-  //#actor-json
+  // #actor-json
 }
 
 object Controller5 {
   case class InEvent(foo: String)
   case class OutEvent(bar: String)
 
-  //#actor-json-formats
+  // #actor-json-formats
   import play.api.libs.json._
 
-  implicit val inEventFormat  = Json.format[InEvent]
-  implicit val outEventFormat = Json.format[OutEvent]
-  //#actor-json-formats
+  implicit val inEventFormat: Format[InEvent]   = Json.format[InEvent]
+  implicit val outEventFormat: Format[OutEvent] = Json.format[OutEvent]
+  // #actor-json-formats
 
   import akka.actor._
 
@@ -277,35 +300,34 @@ object Controller5 {
     def props(out: ActorRef) = Props(new MyWebSocketActor(out))
   }
 
-  //#actor-json-frames
+  // #actor-json-frames
   import play.api.mvc.WebSocket.MessageFlowTransformer
 
-  implicit val messageFlowTransformer = MessageFlowTransformer.jsonMessageFlowTransformer[InEvent, OutEvent]
-  //#actor-json-frames
+  implicit val messageFlowTransformer: MessageFlowTransformer[InEvent, OutEvent] =
+    MessageFlowTransformer.jsonMessageFlowTransformer[InEvent, OutEvent]
+  // #actor-json-frames
 
-  //#actor-json-in-out
-  import play.api.mvc._
-
-  import play.api.libs.streams.ActorFlow
+  // #actor-json-in-out
   import javax.inject.Inject
+
   import akka.actor.ActorSystem
   import akka.stream.Materializer
+  import play.api.libs.streams.ActorFlow
+  import play.api.mvc._
 
   class Application @Inject() (cc: ControllerComponents)(implicit system: ActorSystem, mat: Materializer)
       extends AbstractController(cc) {
     def socket = WebSocket.accept[InEvent, OutEvent] { request =>
-      ActorFlow.actorRef { out =>
-        MyWebSocketActor.props(out)
-      }
+      ActorFlow.actorRef { out => MyWebSocketActor.props(out) }
     }
   }
-  //#actor-json-in-out
+  // #actor-json-in-out
 }
 
 class Controller6 {
-  //#streams1
-  import play.api.mvc._
+  // #streams1
   import akka.stream.scaladsl._
+  import play.api.mvc._
 
   def socket = WebSocket.accept[String, String] { request =>
     // Log events to the console
@@ -316,13 +338,13 @@ class Controller6 {
 
     Flow.fromSinkAndSource(in, out)
   }
-  //#streams1
+  // #streams1
 }
 
 class Controller7 {
-  //#streams2
-  import play.api.mvc._
+  // #streams2
   import akka.stream.scaladsl._
+  import play.api.mvc._
 
   def socket = WebSocket.accept[String, String] { request =>
     // Just ignore the input
@@ -333,13 +355,13 @@ class Controller7 {
 
     Flow.fromSinkAndSource(in, out)
   }
-  //#streams2
+  // #streams2
 }
 
 class Controller8 {
-  //#streams3
-  import play.api.mvc._
+  // #streams3
   import akka.stream.scaladsl._
+  import play.api.mvc._
 
   def socket = WebSocket.accept[String, String] { request =>
     // log the message to stdout and send response back to client
@@ -348,5 +370,5 @@ class Controller8 {
       "I received your message: " + msg
     }
   }
-  //#streams3
+  // #streams3
 }

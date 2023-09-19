@@ -1,5 +1,5 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package detailedtopics.configuration.gzipencoding
@@ -8,6 +8,7 @@ import play.api.test._
 
 class GzipEncoding extends PlaySpecification {
   import javax.inject.Inject
+
   import play.api.http.DefaultHttpFilters
   import play.filters.gzip.GzipFilter
 
@@ -21,11 +22,12 @@ class GzipEncoding extends PlaySpecification {
         def Action       = app.injector.instanceOf[DefaultActionBuilder]
 
         val filter =
-          //#should-gzip
+          // #should-gzip
           new GzipFilter(
-            shouldGzip = (request, response) => response.body.contentType.exists(_.startsWith("text/html"))
+            shouldGzip =
+              (request: RequestHeader, response: Result) => response.body.contentType.exists(_.startsWith("text/html"))
           )
-        //#should-gzip
+        // #should-gzip
 
         header(CONTENT_ENCODING, filter(Action(Results.Ok("foo")))(gzipRequest).run()) must beNone
       }

@@ -1,4 +1,5 @@
-<!--- Copyright (C) Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com> -->
+
 # About Play releases
 
 Visit the [changelog page](https://www.playframework.com/changelog) to get started with the latest Play releases. This page lists all past Play releases starting from 2.x.

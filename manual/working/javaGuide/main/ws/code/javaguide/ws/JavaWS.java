@@ -1,5 +1,5 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package javaguide.ws;
@@ -216,7 +216,7 @@ public class JavaWS {
         throws IOException, FileNotFoundException, InterruptedException, ExecutionException {
       String url = "http://example.com";
       // #stream-to-file
-      File file = File.createTempFile("stream-to-file-", ".txt");
+      File file = java.nio.file.Files.createTempFile("stream-to-file-", ".txt").toFile();
       OutputStream outputStream = java.nio.file.Files.newOutputStream(file.toPath());
 
       // Make the request

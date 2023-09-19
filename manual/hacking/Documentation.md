@@ -1,4 +1,5 @@
-<!--- Copyright (C) Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com> -->
+
 # Guidelines for writing Play documentation
 
 The Play documentation is written in Markdown format, with code samples extracted from compiled, run and tested source files.
@@ -61,7 +62,7 @@ For example:
 
 ```scala
 //#controller
-//###replace: package controllers
+// ###replace: package controllers
 package foo.bar.controllers
 
 import javax.inject.Inject

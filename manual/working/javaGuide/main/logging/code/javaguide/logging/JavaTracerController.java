@@ -1,16 +1,15 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package javaguide.logging;
 
+import javax.inject.Singleton;
 import org.slf4j.Marker;
 import org.slf4j.MarkerFactory;
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
-
-import javax.inject.Singleton;
 
 @Singleton
 // #logging-log-trace-with-tracer-controller

@@ -1,4 +1,5 @@
-<!--- Copyright (C) Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com> -->
+
 # Testing with databases
 
 While it is possible to write functional tests using [[ScalaTest|ScalaFunctionalTestingWithScalaTest]] or [[specs2|ScalaFunctionalTestingWithSpecs2]] that test database access code by starting up a full application including the database, starting up a full application is not often desirable, due to the complexity of having many more components started and running just to test one small part of your application.
@@ -98,6 +99,10 @@ Sometimes it will be impractical to put your custom evolution scripts in code.  
 @[apply-evolutions-custom-path](code/database/ScalaTestingWithDatabases.scala)
 
 This will load evolutions, in the same structure and format as is done for development and production, from `testdatabase/evolutions/<databasename>/<n>.sql`.
+
+If you store evolution scripts outside your project folder, you can use the [`EnvironmentEvolutionsReader`](api/scala/play/api/db/evolutions/EnvironmentEvolutionsReader.html) to load the scripts from an absolute path on your filesystem or from a relative path as seen from your project folder:
+
+@[apply-evolutions-absolute-relative-path](code/database/ScalaTestingWithDatabases.scala)
 
 ### Allowing Play to manage evolutions
 

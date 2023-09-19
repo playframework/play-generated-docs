@@ -1,14 +1,15 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package sdatabase
 //#scala-jdbc-named-database
 import javax.inject.Inject
-import play.api.db.Database
-import play.db.NamedDatabase
 
 import scala.concurrent.Future
+
+import play.api.db.Database
+import play.db.NamedDatabase
 
 class ScalaNamedDatabase @Inject() (
     @NamedDatabase("orders") ordersDatabase: Database,

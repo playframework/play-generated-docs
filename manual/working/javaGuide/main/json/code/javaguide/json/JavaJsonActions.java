@@ -1,30 +1,27 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package javaguide.json;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import org.junit.Test;
-import play.core.j.JavaHandlerComponents;
-import play.mvc.Http;
-import play.mvc.Result;
-import play.libs.Json;
-
-import play.mvc.BodyParser;
-
-import javaguide.testhelpers.MockJavaAction;
-import play.test.WithApplication;
-
+import static javaguide.testhelpers.MockJavaActionHelper.call;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.*;
 import static play.test.Helpers.*;
-import static javaguide.testhelpers.MockJavaActionHelper.call;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import javaguide.testhelpers.MockJavaAction;
+import org.junit.Test;
+import play.core.j.JavaHandlerComponents;
+import play.libs.Json;
+import play.mvc.BodyParser;
+import play.mvc.Http;
+import play.mvc.Result;
+import play.test.WithApplication;
 
 public class JavaJsonActions extends WithApplication {
 

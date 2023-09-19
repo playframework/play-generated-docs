@@ -1,4 +1,5 @@
-<!--- Copyright (C) Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com> -->
+
 # Streaming HTTP responses
 
 ## Standard responses and `Content-Length` header
@@ -71,7 +72,7 @@ For this kind of response we have to use **Chunked transfer encoding**.
 >
 > <https://en.wikipedia.org/wiki/Chunked_transfer_encoding>
 
-The advantage is that we can serve the data **live**, meaning that we send chunks of data as soon as they are available. The drawback is that since the web browser doesn’t know the content size, it is not able to display a proper download progress bar.
+The advantage is that we can serve the data **live**, meaning that we send chunks of data as soon as they are available. The drawback is that since the web browser doesn't know the content size, it is not able to display a proper download progress bar.
 
 Let’s say that we have a service somewhere that provides a dynamic `InputStream` computing some data. First we have to create an `Source` for this stream:
 

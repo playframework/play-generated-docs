@@ -1,4 +1,5 @@
-<!--- Copyright (C) Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com> -->
+
 # Setting up your preferred IDE
 
 Working with Play is easy. You don’t even need a sophisticated IDE, because Play compiles and refreshes the modifications you make to your source files automatically, so you can easily work using a simple text editor.
@@ -121,8 +122,6 @@ play.editor="http://localhost:63342/api/file/?file=%s&line=%s"
 You can also set play.editor from `build.sbt`:
 
 ```scala
-fork := true // required for "sbt run" to pick up javaOptions
-
 javaOptions += "-Dplay.editor=http://localhost:63342/api/file/?file=%s&line=%s"
 ```
 

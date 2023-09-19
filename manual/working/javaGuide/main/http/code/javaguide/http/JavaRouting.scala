@@ -1,23 +1,22 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package javaguide.http
 
 import java.util.concurrent.CompletableFuture
 
+import javaguide.http.routing._
+import javaguide.testhelpers.MockJavaAction
 import org.specs2.mutable.Specification
 import play.api.mvc.EssentialAction
 import play.api.mvc.RequestHeader
 import play.api.routing.Router
-import javaguide.http.routing._
-
-import play.api.test.Helpers._
 import play.api.test.FakeRequest
-import javaguide.testhelpers.MockJavaAction
-
+import play.api.test.Helpers._
 import play.core.j.JavaHandlerComponents
 import play.mvc.Http
+import play.mvc.Result
 
 class JavaRouting extends Specification {
   "the java router" should {
@@ -71,7 +70,7 @@ class JavaRouting extends Specification {
           "Location",
           call(
             new MockJavaAction(app.injector.instanceOf[JavaHandlerComponents]) {
-              override def invocation(req: Http.Request) =
+              override def invocation(req: Http.Request): CompletableFuture[Result] =
                 CompletableFuture.completedFuture(new javaguide.http.routing.controllers.Application().index())
             },
             FakeRequest()

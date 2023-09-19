@@ -1,22 +1,21 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package javaguide.tests;
 
+import static org.hamcrest.core.IsCollectionContaining.*;
+import static org.junit.Assert.*;
+import static play.mvc.Controller.*;
+
 import com.fasterxml.jackson.databind.node.*;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 import org.junit.Test;
 import play.libs.Json;
 import play.libs.ws.WSClient;
 import play.routing.RoutingDsl;
 import play.server.Server;
-
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
-import static org.hamcrest.core.IsCollectionContaining.*;
-import static org.junit.Assert.*;
-import static play.mvc.Controller.*;
 
 public class JavaTestingWebServiceClients {
 

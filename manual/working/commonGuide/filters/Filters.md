@@ -1,4 +1,5 @@
-<!--- Copyright (C) Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com> -->
+
 # Built-in HTTP filters
 
 Play provides several standard filters that can modify the HTTP behavior of your application. You can also write your own filters in either [[Java|JavaHttpFilters]] or [[Scala|ScalaHttpFilters]].
@@ -9,6 +10,7 @@ Play provides several standard filters that can modify the HTTP behavior of your
 - [[Configuring CSP|CspFilter]]
 - [[Configuring allowed hosts|AllowedHostsFilter]]
 - [[Configuring Redirect HTTPS filter|RedirectHttpsFilter]]
+- [[Configuring the IP filter|IPFilter]]
 
 ## Default Filters
 

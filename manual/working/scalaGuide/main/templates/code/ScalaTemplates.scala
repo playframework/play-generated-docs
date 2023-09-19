@@ -1,6 +1,7 @@
 /*
- * Copyright (C) 2009-2019 Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
+
 package scalaguide.templates
 
 import org.specs2.mutable.Specification
@@ -41,9 +42,9 @@ object ScalaTemplatesSpec extends Specification {
       val c = Customer("mr customer")
       val o = List(Order("foo"), Order("bar"))
 
-      //#invoke-template
+      // #invoke-template
       val content = views.html.Application.index(c, o)
-      //#invoke-template
+      // #invoke-template
 
       val body = content.body
       body must contain("mr customer")
@@ -52,12 +53,12 @@ object ScalaTemplatesSpec extends Specification {
     }
 
     "support string interpolation" in {
-      //#string-interpolation
+      // #string-interpolation
       import play.twirl.api.StringInterpolation
 
       val name = "Martin"
       val p    = html"<p>Hello $name</p>"
-      //#string-interpolation
+      // #string-interpolation
 
       p.body must_== "<p>Hello Martin</p>"
     }
@@ -99,7 +100,7 @@ object ScalaTemplatesSpec extends Specification {
     "allow comments on the first line" in {
       val body = html.firstLineComment("blah").body
       body must contain("blah")
-      body must not contain ("Home page")
+      body must not contain "Home page"
     }
 
     {
@@ -143,7 +144,7 @@ object ScalaTemplatesSpec extends Specification {
       }
 
       "allow comments" in {
-        body must not contain ("This is a comment")
+        body must not contain "This is a comment"
       }
 
       "allow intering raw HTML" in {
@@ -156,9 +157,9 @@ object ScalaTemplatesSpec extends Specification {
 
       body must contain("User(Foo,Bar)")
       body must contain("value inside option")
-      body must not contain ("Option(value inside option)")
+      body must not contain "Option(value inside option)"
       body must contain("firstlast")
-      body must not contain ("List")
+      body must not contain "List"
       body must contain("helloUser(Foo,Bar)value inside optionfirstlast")
     }
   }

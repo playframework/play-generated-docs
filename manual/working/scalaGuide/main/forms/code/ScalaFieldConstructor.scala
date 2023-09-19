@@ -1,13 +1,13 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package scalaguide.forms.scalafieldconstructor {
   import org.specs2.mutable.Specification
   import play.api.http.HttpConfiguration
+  import play.api.i18n._
   import play.api.Configuration
   import play.api.Environment
-  import play.api.i18n._
 
   class ScalaFieldConstructorSpec extends Specification {
     val environment                 = Environment.simple()
@@ -29,9 +29,9 @@ package scalaguide.forms.scalafieldconstructor {
   }
 
   object MyForm {
+    import html.models.User
     import play.api.data.Form
     import play.api.data.Forms._
-    import html.models.User
 
     val form = Form(
       mapping(
@@ -44,12 +44,15 @@ package scalaguide.forms.scalafieldconstructor {
 //#form-myfield-helper
     object MyHelpers {
       import views.html.helper.FieldConstructor
-      implicit val myFields = FieldConstructor(html.myFieldConstructorTemplate.f)
+      implicit val myFields: FieldConstructor = FieldConstructor(html.myFieldConstructorTemplate.f)
     }
 //#form-myfield-helper
   }
 
   package html.models {
     case class User(username: String)
+    object User {
+      def unapply(u: User): Option[String] = Some(u.username)
+    }
   }
 }

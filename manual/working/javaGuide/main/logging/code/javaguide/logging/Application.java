@@ -1,19 +1,18 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package javaguide.logging;
 
 // #logging-pattern-mix
+import java.util.concurrent.CompletionStage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import play.mvc.Action;
 import play.mvc.Controller;
 import play.mvc.Http;
-import play.mvc.Http.Request;
 import play.mvc.Result;
 import play.mvc.With;
-import java.util.concurrent.CompletionStage;
 
 public class Application extends Controller {
 

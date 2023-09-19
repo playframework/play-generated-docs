@@ -1,13 +1,13 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package javaguide.application.httpfilters;
 
 // #essential-filter-example
+import akka.util.ByteString;
 import java.util.concurrent.Executor;
 import javax.inject.Inject;
-import akka.util.ByteString;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import play.libs.streams.Accumulator;

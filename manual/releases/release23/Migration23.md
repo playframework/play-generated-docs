@@ -1,4 +1,5 @@
-<!--- Copyright (C) Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com> -->
+
 # Play 2.3 Migration Guide
 
 This is a guide for migrating from Play 2.2 to Play 2.3. If you need to migrate from an earlier version of Play then you must first follow the [[Play 2.2 Migration Guide|Migration22]].

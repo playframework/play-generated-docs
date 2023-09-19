@@ -1,5 +1,5 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package javaguide.tests;
@@ -11,9 +11,7 @@ import static play.mvc.Http.Status.OK;
 import static play.test.Helpers.*;
 
 import javaguide.tests.controllers.HomeController;
-
 import org.junit.Test;
-
 import play.mvc.Result;
 import play.twirl.api.Content;
 

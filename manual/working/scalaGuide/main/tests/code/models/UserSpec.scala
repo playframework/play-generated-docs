@@ -1,5 +1,5 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package scalaguide.tests
@@ -28,7 +28,3 @@ class AnotherSpec extends Specification {
     // #assertion-example
   }
 }
-
-// #import-mockito
-import org.specs2.mock._
-// #import-mockito

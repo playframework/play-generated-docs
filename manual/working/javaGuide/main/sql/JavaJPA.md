@@ -1,5 +1,9 @@
-<!--- Copyright (C) Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com> -->
+
 # Using JPA to access your database
+
+> **Important Note:**
+> Please be aware that JPA bean validation is currently not supported in Play 2.9. For further information, [[see details further below|JavaJPA#Bean-Validation-Not-Currently-Supported-in-Play-2.9]].
 
 ## Adding dependencies to your project
 
@@ -26,10 +30,11 @@ Next you have to create a proper `persistence.xml` JPA configuration file. Put i
 Here is a sample configuration file to use with Hibernate:
 
 ```xml
-<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
-             version="2.1">
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+             version="3.0">
 
     <persistence-unit name="defaultPersistenceUnit" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
@@ -60,7 +65,7 @@ This is a requirement by the [JPA specification](https://download.oracle.com/otn
 
 ## Using `play.db.jpa.JPAApi`
 
-Play offers you a convenient API to work with [Entity Manager](https://docs.oracle.com/javaee/7/api/javax/persistence/EntityManager.html) and Transactions. This API is defined by [`play.db.jpa.JPAApi`](api/java/play/db/jpa/JPAApi.html), which can be injected at other objects like the code below:
+Play offers you a convenient API to work with [Entity Manager](https://jakarta.ee/specifications/persistence/3.1/apidocs/jakarta.persistence/jakarta/persistence/entitymanager) and Transactions. This API is defined by [`play.db.jpa.JPAApi`](api/java/play/db/jpa/JPAApi.html), which can be injected at other objects like the code below:
 
 @[jpa-repository-api-inject](code/JPARepository.java)
 
@@ -99,13 +104,23 @@ The `JPAApi` provides you various `withTransaction(...)` methods to execute arbi
 
 ### Examples
 
-Using [`JPAApi.withTransaction(Function<EntityManager, T>)`](api/java/play/db/jpa/JPAApi.html#withTransaction-java.util.function.Function-):
+Using [`JPAApi.withTransaction(Function<EntityManager, T>)`](api/java/play/db/jpa/JPAApi.html#withTransaction\(java.util.function.Function\)):
 
 @[jpa-withTransaction-function](code/JPARepository.java)
 
-Using [`JPAApi.withTransaction(Consumer<EntityManager>)`](api/java/play/db/jpa/JPAApi.html#withTransaction-java.util.function.Consumer-) to run a batch update:
+Using [`JPAApi.withTransaction(Consumer<EntityManager>)`](api/java/play/db/jpa/JPAApi.html#withTransaction\(java.util.function.Consumer\)) to run a batch update:
 
 @[jpa-withTransaction-consumer](code/JPARepository.java)
+
+## Bean Validation Not Currently Supported in Play 2.9
+
+The [JPA specification defines a validation mode](https://jakarta.ee/specifications/persistence/3.1/jakarta-persistence-spec-3.1.html#a2366) that enables entity validation. If this mode isn't overridden by the user (e.g., `<validation-mode>...</validation-mode>` [in the `persistence.xml`](https://jakarta.ee/specifications/persistence/3.1/jakarta-persistence-spec-3.1.html#persistence-xml-schema) or via a [property](https://github.com/hibernate/hibernate-orm/blob/6.2.2/hibernate-core/src/main/java/org/hibernate/cfg/AvailableSettings.java#L192)), it defaults to `AUTO`. This means that Hibernate [automatically](https://github.com/hibernate/hibernate-orm/blob/6.2.2/hibernate-core/src/main/java/org/hibernate/integrator/internal/IntegratorServiceImpl.java#L30) tries [to detect](https://github.com/hibernate/hibernate-orm/blob/6.2.2/hibernate-core/src/main/java/org/hibernate/boot/beanvalidation/BeanValidationIntegrator.java#L111-L112C1) the presence of a Bean Validation reference implementation (such as Hibernate Validator) on the classpath and, if found, automatically activates that bean validation. If no implementation is detected, no validation occurs. However, [an exception is thrown](https://github.com/hibernate/hibernate-orm/blob/6.2.2/hibernate-core/src/main/java/org/hibernate/boot/beanvalidation/BeanValidationIntegrator.java#L183-L190) if the mode was _manually_ set to something other than `NONE`.
+
+The challenge arises with Play and Hibernate ORM 6+. In this version, Hibernate ORM no longer detects Hibernate Validator version 6.x (which Play utilizes) on the classpath, as it continues to use `javax.validation`. Hibernate ORM 6+, however, [only detects](https://github.com/hibernate/hibernate-orm/blob/6.2.2/hibernate-core/src/main/java/org/hibernate/boot/beanvalidation/TypeSafeActivator.java#L71-L76) `jakarta.validation` classes.
+
+While Hibernate Validator version 7.x has transitioned to Jakarta, upgrading to that version in Play is currently challenging. Play employs libraries in Play-Java-Forms to assist with binding, but only a newer version of these libraries has adopted Jakarta and supports Hibernate Validator 7. Unfortunately, these newer library versions are only compatible with Java 17. Since Play 2.9 continues to support Java 11, upgrading is not feasible. Attempting to manually override the hibernate-validator version to 7.x will result in a breakage of Play-Java-Form functionality.
+
+If the absence of Bean Validation poses an issue for your use case, please [inform us](https://github.com/playframework/playframework/issues/new). This way, we can explore potential solutions to address this challenge.
 
 ## Enabling Play database evolutions
 

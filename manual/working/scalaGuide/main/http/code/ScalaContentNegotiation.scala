@@ -1,32 +1,32 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package scalaguide.http.scalacontentnegotiation {
+  import scala.concurrent.Future
+
+  import org.junit.runner.RunWith
+  import org.specs2.execute.AsResult
+  import org.specs2.mutable.SpecificationLike
+  import org.specs2.runner.JUnitRunner
+  import play.api.libs.json._
   import play.api.mvc._
   import play.api.test._
   import play.api.test.Helpers._
-  import play.api.libs.json._
-  import org.junit.runner.RunWith
-  import org.specs2.mutable.SpecificationLike
-  import org.specs2.runner.JUnitRunner
-
-  import scala.concurrent.Future
-  import org.specs2.execute.AsResult
 
   @RunWith(classOf[JUnitRunner])
   class ScalaContentNegotiation extends AbstractController(Helpers.stubControllerComponents()) with SpecificationLike {
     "A Scala Content Negotiation" should {
       "negotiate accept type" in {
-        //#negotiate_accept_type
-        val list = Action { implicit request =>
+        // #negotiate_accept_type
+        val list: Action[AnyContent] = Action { implicit request =>
           val items = Item.findAll
           render {
             case Accepts.Html() => Ok(views.html.list(items))
             case Accepts.Json() => Ok(Json.toJson(items))
           }
         }
-        //#negotiate_accept_type
+        // #negotiate_accept_type
 
         val requestHtml = FakeRequest().withHeaders(ACCEPT -> "text/html")
         assertAction(list, OK, requestHtml)(r => contentAsString(r) === "<html>1,2,3</html>")
@@ -36,15 +36,15 @@ package scalaguide.http.scalacontentnegotiation {
       }
 
       "negotiate accept type" in {
-        val list = Action { implicit request =>
+        val list: Action[AnyContent] = Action { implicit request =>
           def ??? = Ok("ok")
-          //#extract_custom_accept_type
+          // #extract_custom_accept_type
           val AcceptsMp3 = Accepting("audio/mp3")
           render {
             case AcceptsMp3() => ???
           }
         }
-        //#extract_custom_accept_type
+        // #extract_custom_accept_type
 
         val requestHtml = FakeRequest().withHeaders(ACCEPT -> "audio/mp3")
         assertAction(list, OK, requestHtml)(r => contentAsString(r) === "ok")

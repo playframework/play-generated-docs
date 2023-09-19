@@ -1,12 +1,14 @@
+// Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
+
 // #add-sbt-eclipse-plugin
-addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "5.2.4")
+addSbtPlugin("com.github.sbt" % "sbt-eclipse" % "6.0.0")
 // #add-sbt-eclipse-plugin
 
 // #sbt-eclipse-plugin-preTasks
 // Compile the project before generating Eclipse files, so
 // that generated .scala or .class files for views and routes are present
 
-EclipseKeys.preTasks := Seq(compile in Compile, compile in Test)
+EclipseKeys.preTasks := Seq(Compile / compile, Test / compile)
 // #sbt-eclipse-plugin-preTasks
 
 // #sbt-eclipse-plugin-projectFlavor
@@ -18,5 +20,5 @@ EclipseKeys.createSrc := EclipseCreateSrc.ValueSet(EclipseCreateSrc.ManagedClass
 // #sbt-eclipse-plugin-projectFlavor
 
 // #sbt-eclipse-plugin-skipParents
-EclipseKeys.skipParents in ThisBuild := false
+ThisBuild / EclipseKeys.skipParents := false
 // #sbt-eclipse-plugin-skipParents

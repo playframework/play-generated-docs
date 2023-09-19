@@ -1,4 +1,5 @@
-<!--- Copyright (C) Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com> -->
+
 # Overview of the build system
 
 The Play build system uses [sbt](https://www.scala-sbt.org/), a high-performance integrated build for Scala and Java projects.  Using `sbt` as our build tool brings certain requirements to play which are explained on this page.
@@ -44,6 +45,12 @@ Finally, you need to enable an sbt plugin on your project to "Play-ify" it. This
  - `PlayScala`: a standard Play Scala project.
  - `PlayJava`: a standard Play Java project, with the [[forms|JavaForms]] module.
  - `PlayMinimalJava`: a minimal Play Java project, without forms support.
+
+By default, the `PlayJava` and `PlayScala` plugins do not depend on any specific dependency injection solution. If you want to use Play's Guice module, add `guice` to your library dependencies:	
+
+```scala	
+libraryDependencies += guice	
+``` 
 
 ### Using scala for building
 

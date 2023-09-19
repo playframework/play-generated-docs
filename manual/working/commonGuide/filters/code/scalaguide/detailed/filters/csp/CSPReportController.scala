@@ -1,11 +1,12 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package scalaguide.detailed.filters.csp
 
-import play.api.mvc._
 import javax.inject._
+
+import play.api.mvc._
 import play.filters.csp.CSPReportActionBuilder
 import play.filters.csp.ScalaCSPReport
 

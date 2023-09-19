@@ -1,27 +1,28 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package scalaguide.logging
 
 import javax.inject.Inject
 
-import org.junit.runner.RunWith
-import org.specs2.mock.Mockito
-import org.specs2.mutable.Specification
-import org.specs2.runner.JUnitRunner
-
 import scala.concurrent.ExecutionContext
 import scala.concurrent.Future
+
+import org.junit.runner.RunWith
+import org.mockito.ArgumentMatchers._
+import org.mockito.Mockito
+import org.mockito.Mockito._
 import org.slf4j._
+import org.specs2.mutable.Specification
+import org.specs2.runner.JUnitRunner
 import play.api._
 import play.api.mvc._
-
 import play.api.test._
 import play.api.test.Helpers._
 
 @RunWith(classOf[JUnitRunner])
-class ScalaLoggingSpec extends Specification with Mockito {
+class ScalaLoggingSpec extends Specification {
   private def riskyCalculation: Int = {
     10 / scala.util.Random.nextInt(2)
   }
@@ -30,12 +31,12 @@ class ScalaLoggingSpec extends Specification with Mockito {
     "properly log" in {
       val logger = new play.api.LoggerLike {
         // Mock underlying logger implementation
-        val logger = mock[org.slf4j.Logger].smart
-        logger.isDebugEnabled().returns(true)
-        logger.isErrorEnabled().returns(true)
+        val logger = mock(classOf[org.slf4j.Logger], RETURNS_SMART_NULLS)
+        when(logger.isDebugEnabled()).thenReturn(true)
+        when(logger.isErrorEnabled()).thenReturn(true)
       }
 
-      //#logging-example
+      // #logging-example
       // Log some debug info
       logger.debug("Attempting risky calculation.")
 
@@ -50,24 +51,25 @@ class ScalaLoggingSpec extends Specification with Mockito {
           logger.error("Exception with riskyCalculation", t)
         }
       }
-      //#logging-example
+      // #logging-example
 
-      there.was(atLeastOne(logger.logger).isDebugEnabled())
-      there.was(atLeastOne(logger.logger).debug(anyString))
-      there.was(atMostOne(logger.logger).isErrorEnabled())
-      there.was(atMostOne(logger.logger).error(anyString, any[Throwable]))
+      verify(logger.logger, Mockito.atLeastOnce()).isDebugEnabled()
+      verify(logger.logger, Mockito.atLeastOnce()).debug(anyString)
+      verify(logger.logger, Mockito.atMostOnce()).isErrorEnabled()
+      verify(logger.logger, Mockito.atMostOnce()).error(anyString, any[Throwable])
+      ok
     }
   }
 
   "Creating a Logger" should {
     "return a new Logger with specified name" in {
-      //#logging-import
+      // #logging-import
       import play.api.Logger
-      //#logging-import
+      // #logging-import
 
-      //#logging-create-logger-name
+      // #logging-create-logger-name
       val accessLogger: Logger = Logger("access")
-      //#logging-create-logger-name
+      // #logging-create-logger-name
 
       accessLogger.underlyingLogger.getName must equalTo("access")
     }
@@ -75,21 +77,21 @@ class ScalaLoggingSpec extends Specification with Mockito {
     "return a new Logger with class name" in {
       import play.api.Logger
 
-      //#logging-create-logger-class
+      // #logging-create-logger-class
       val logger: Logger = Logger(this.getClass())
-      //#logging-create-logger-class
+      // #logging-create-logger-class
 
       logger.underlyingLogger.getName must equalTo("scalaguide.logging.ScalaLoggingSpec")
     }
 
     "use Logging trait" in {
-      //#logging-trait
+      // #logging-trait
       import play.api.Logging
 
       class MyClassWithLogging extends Logging {
         logger.info("Using the trait")
       }
-      //#logging-trait
+      // #logging-trait
 
       new MyClassWithLogging()
       success
@@ -104,7 +106,7 @@ class ScalaLoggingSpec extends Specification with Mockito {
 //        def apply[T](name: String): play.api.Logger = new play.api.Logger(mock[org.slf4j.Logger].smart)
 //      }
 
-      //#logging-pattern-mix
+      // #logging-pattern-mix
       import scala.concurrent.Future
       import play.api.Logger
       import play.api.mvc._
@@ -135,12 +137,12 @@ class ScalaLoggingSpec extends Specification with Mockito {
           }
         }
       }
-      //#logging-pattern-mix
+      // #logging-pattern-mix
 
       import akka.actor._
       import akka.stream.Materializer
-      implicit val system               = ActorSystem()
-      implicit val mat                  = Materializer.matFromSystem
+      implicit val system: ActorSystem  = ActorSystem()
+      implicit val mat: Materializer    = Materializer.matFromSystem
       implicit val ec: ExecutionContext = system.dispatcher
       val controller =
         new Application(new AccessLoggingAction(new BodyParsers.Default()), Helpers.stubControllerComponents())
@@ -150,7 +152,7 @@ class ScalaLoggingSpec extends Specification with Mockito {
     }
 
     "allow for use in filters" in {
-      //#logging-pattern-filter
+      // #logging-pattern-filter
       import javax.inject.Inject
       import akka.stream.Materializer
       import scala.concurrent.ExecutionContext.Implicits.global
@@ -174,7 +176,7 @@ class ScalaLoggingSpec extends Specification with Mockito {
           resultFuture
         }
       }
-      //#logging-pattern-filter
+      // #logging-pattern-filter
 
       ok
     }
@@ -186,37 +188,37 @@ class ScalaLoggingSpec extends Specification with Mockito {
 
       val logger: Logger = Logger("access")
 
-      //#logging-underlying
+      // #logging-underlying
       val underlyingLogger: org.slf4j.Logger = logger.underlyingLogger
       val loggerName                         = underlyingLogger.getName()
-      //#logging-underlying
+      // #logging-underlying
 
       loggerName must equalTo("access")
     }
   }
 
-  //#logging-default-marker-context
+  // #logging-default-marker-context
   val someMarker: org.slf4j.Marker = MarkerFactory.getMarker("SOMEMARKER")
   case object SomeMarkerContext extends play.api.DefaultMarkerContext(someMarker)
-  //#logging-default-marker-context
+  // #logging-default-marker-context
 
   "MarkerContext" should {
     "return some marker" in {
       import play.api.Logger
       val logger: Logger = Logger("access")
 
-      //#logging-marker-context
+      // #logging-marker-context
       val marker: org.slf4j.Marker = MarkerFactory.getMarker("SOMEMARKER")
       val mc: MarkerContext        = MarkerContext(marker)
-      //#logging-marker-context
-      mc.marker must beSome.which(_ must be_==(marker))
+      // #logging-marker-context
+      mc.marker must beSome[Marker].which(_ must be_==(marker))
     }
 
     "logger.info with explicit marker context" in {
       import play.api.Logger
       val logger: Logger = Logger("access")
 
-      //#logging-log-info-with-explicit-markercontext
+      // #logging-log-info-with-explicit-markercontext
       // use a typed marker as input
       logger.info("log message with explicit marker context with case object")(SomeMarkerContext)
 
@@ -224,7 +226,7 @@ class ScalaLoggingSpec extends Specification with Mockito {
       val otherMarker: Marker               = MarkerFactory.getMarker("OTHER")
       val otherMarkerContext: MarkerContext = MarkerContext(otherMarker)
       logger.info("log message with explicit marker context")(otherMarkerContext)
-      //#logging-log-info-with-explicit-markercontext
+      // #logging-log-info-with-explicit-markercontext
 
       success
     }
@@ -233,36 +235,38 @@ class ScalaLoggingSpec extends Specification with Mockito {
       import play.api.Logger
       val logger: Logger = Logger("access")
 
-      //#logging-log-info-with-implicit-markercontext
+      // #logging-log-info-with-implicit-markercontext
       val marker: Marker             = MarkerFactory.getMarker("SOMEMARKER")
       implicit val mc: MarkerContext = MarkerContext(marker)
 
       // Use the implicit MarkerContext in logger.info...
       logger.info("log message with implicit marker context")
-      //#logging-log-info-with-implicit-markercontext
+      // #logging-log-info-with-implicit-markercontext
 
-      mc.marker must beSome.which(_ must be_==(marker))
+      mc.marker must beSome[Marker].which(_ must be_==(marker))
     }
 
     "implicitly convert a Marker to a MarkerContext" in {
       import play.api.Logger
       val logger: Logger = Logger("access")
 
-      //#logging-log-info-with-implicit-conversion
+      // #logging-log-info-with-implicit-conversion
       val mc: MarkerContext = MarkerFactory.getMarker("SOMEMARKER")
 
       // Use the marker that has been implicitly converted to MarkerContext
       logger.info("log message with implicit marker context")(mc)
-      //#logging-log-info-with-implicit-conversion
+      // #logging-log-info-with-implicit-conversion
 
       success
     }
 
     "implicitly pass marker context in controller" in new WithApplication() with Injecting {
-      val controller = inject[ImplicitRequestController]
+      override def running() = {
+        val controller = inject[ImplicitRequestController]
 
-      val result = controller.asyncIndex()(FakeRequest())
-      contentAsString(result) must be_==("testing")
+        val result = controller.asyncIndex()(FakeRequest())
+        contentAsString(result) must be_==("testing")
+      }
     }
   }
 }
@@ -288,7 +292,7 @@ class ImplicitRequestController @Inject() (cc: ControllerComponents)(implicit ot
     with RequestMarkerContext {
   private val logger = play.api.Logger(getClass)
 
-  //#logging-log-info-with-request-context
+  // #logging-log-info-with-request-context
   def asyncIndex = Action.async { implicit request =>
     Future {
       methodInOtherExecutionContext() // implicit conversion here
@@ -299,7 +303,7 @@ class ImplicitRequestController @Inject() (cc: ControllerComponents)(implicit ot
     logger.debug("index: ") // same as above
     Ok("testing")
   }
-  //#logging-log-info-with-request-context
+  // #logging-log-info-with-request-context
 }
 
 //#logging-log-trace-with-tracer-controller

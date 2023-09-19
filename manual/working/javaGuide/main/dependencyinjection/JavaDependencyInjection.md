@@ -1,4 +1,5 @@
-<!--- Copyright (C) Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com> -->
+
 # Dependency Injection
 
 Dependency injection is a widely used design pattern that helps to separate your components' behaviour from dependency resolution.  Components declare their dependencies, usually as constructor parameters, and a dependency injection framework helps you wire together those components so you don't have to do so manually.
@@ -31,7 +32,7 @@ We explain how to customize the default bindings and application loader in more 
 
 ## Declaring dependencies
 
-If you have a component, such as a controller, and it requires some other components as dependencies, then this can be declared using the [@Inject](https://docs.oracle.com/javaee/7/api/javax/inject/Inject.html) annotation.  The `@Inject` annotation can be used on fields or on constructors.  For example, to use field injection:
+If you have a component, such as a controller, and it requires some other components as dependencies, then this can be declared using the [@Inject](https://javax-inject.github.io/javax-inject/api/javax/inject/Inject.html) annotation.  The `@Inject` annotation can be used on fields or on constructors.  For example, to use field injection:
 
 @[field](code/javaguide/di/field/MyComponent.java)
 
@@ -67,7 +68,7 @@ The dependency injection system manages the lifecycle of injected components, cr
 
 ## Singletons
 
-Sometimes you may have a component that holds some state, such as a cache, or a connection to an external resource, or a component might be expensive to create. In these cases it may be important that there is only one instance of that component. This can be achieved using the [@Singleton](https://docs.oracle.com/javaee/7/api/javax/inject/Singleton.html) annotation:
+Sometimes you may have a component that holds some state, such as a cache, or a connection to an external resource, or a component might be expensive to create. In these cases it may be important that there is only one instance of that component. This can be achieved using the [@Singleton](https://javax-inject.github.io/javax-inject/api/javax/inject/Singleton.html) annotation:
 
 @[singleton](code/javaguide/di/CurrentSharePrice.java)
 
@@ -106,7 +107,7 @@ The simplest way to bind an implementation to an interface is to use the Guice [
 
 #### Programmatic bindings
 
-In some more complex situations, you may want to provide more complex bindings, such as when you have multiple implementations of the one interface, which are qualified by [@Named](https://docs.oracle.com/javaee/7/api/javax/inject/Named.html) annotations.  In these cases, you can implement a custom Guice [Module](https://google.github.io/guice/api-docs/latest/javadoc/index.html?com/google/inject/Module.html):
+In some more complex situations, you may want to provide more complex bindings, such as when you have multiple implementations of the one interface, which are qualified by [@Named](https://javax-inject.github.io/javax-inject/api/javax/inject/Named.html) annotations.  In these cases, you can implement a custom Guice [Module](https://google.github.io/guice/api-docs/latest/javadoc/index.html?com/google/inject/Module.html):
 
 @[guice-module](code/javaguide/di/guice/Module.java)
 
@@ -194,3 +195,15 @@ When you override the [`ApplicationLoader`](api/java/play/ApplicationLoader.html
     play.application.loader = "modules.CustomApplicationLoader"
 
 You're not limited to using Guice for dependency injection. By overriding the `ApplicationLoader` you can take control of how the application is initialized.
+
+## Adding dependency to a class without touching subclasses
+
+Sometimes you may want to add new dependency to some base class which may have many subclasses.
+To avoid providing the dependency directly to each of them you may add it as an injectable field.
+This approach can reduce the testability of the class so use it with care.
+
+@[class-field-dependency-injection](code/javaguide/di/guice/classfield/Counter.java)
+@[class-field-dependency-injection](code/javaguide/di/guice/classfield/NoopCounter.java)
+@[class-field-dependency-injection](code/javaguide/di/guice/classfield/LiveCounter.java)
+@[class-field-dependency-injection](code/javaguide/di/guice/classfield/BaseController.java)
+@[class-field-dependency-injection](code/javaguide/di/guice/classfield/SubclassController.java)

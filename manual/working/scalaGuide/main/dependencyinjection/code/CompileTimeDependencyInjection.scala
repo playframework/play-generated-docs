@@ -1,13 +1,13 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package scalaguide.dependencyinjection
 
 import java.io.File
 
-import org.specs2.mutable.Specification
 import _root_.controllers.AssetsMetadata
+import org.specs2.mutable.Specification
 
 class CompileTimeDependencyInjection extends Specification {
   import play.api._
@@ -41,8 +41,8 @@ class CompileTimeDependencyInjection extends Specification {
 package basic {
 //#basic
   import play.api._
-  import play.api.ApplicationLoader.Context
   import play.api.routing.Router
+  import play.api.ApplicationLoader.Context
   import play.filters.HttpFiltersComponents
 
   class MyApplicationLoader extends ApplicationLoader {
@@ -69,10 +69,12 @@ package basic {
 }
 
 package messages {
+  // format: off
   import play.api._
-  import play.api.ApplicationLoader.Context
   import play.api.routing.Router
+  import play.api.ApplicationLoader.Context
   import play.filters.HttpFiltersComponents
+  // format: on
 
 //#messages
   import play.api.i18n._
@@ -93,8 +95,8 @@ package messages {
 }
 
 package routers {
-  import scalaguide.dependencyinjection.controllers
   import scalaguide.dependencyinjection.bar
+  import scalaguide.dependencyinjection.controllers
 
   object router {
     type Routes = scalaguide.dependencyinjection.Routes
@@ -119,7 +121,7 @@ package routers {
     lazy val barRoutes             = new bar.Routes(httpErrorHandler)
     lazy val applicationController = new controllers.Application(controllerComponents)
 
-    lazy val router = new Routes(httpErrorHandler, applicationController, barRoutes, assets)
+    lazy val router: Routes = new Routes(httpErrorHandler, applicationController, barRoutes, assets)
   }
 //#routers
 }
@@ -129,6 +131,7 @@ package controllers {
 
   import play.api.http.HttpErrorHandler
   import play.api.mvc._
+  import play.api.Environment
 
   class Application @Inject() (cc: ControllerComponents) extends AbstractController(cc) {
     def index = Action(Ok)
@@ -136,9 +139,10 @@ package controllers {
   }
 
   trait AssetsComponents extends _root_.controllers.AssetsComponents {
-    override lazy val assets = new controllers.Assets(httpErrorHandler, assetsMetadata)
+    override lazy val assets: scalaguide.dependencyinjection.controllers.Assets =
+      new scalaguide.dependencyinjection.controllers.Assets(httpErrorHandler, assetsMetadata, environment)
   }
 
-  class Assets(errorHandler: HttpErrorHandler, assetsMetadata: AssetsMetadata)
-      extends _root_.controllers.Assets(errorHandler, assetsMetadata)
+  class Assets(errorHandler: HttpErrorHandler, assetsMetadata: AssetsMetadata, environment: Environment)
+      extends _root_.controllers.Assets(errorHandler, assetsMetadata, environment)
 }

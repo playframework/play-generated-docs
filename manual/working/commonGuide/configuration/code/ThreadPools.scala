@@ -1,28 +1,29 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package detailedtopics.configuration.threadpools
 
 import javax.inject.Inject
 
-import play.api.mvc._
-import play.api.test._
-import play.api._
-import com.typesafe.config.ConfigFactory
-import akka.actor.ActorSystem
-
 import scala.concurrent.ExecutionContext
 import scala.concurrent.Future
 import scala.concurrent.TimeoutException
 
+import akka.actor.ActorSystem
+import com.typesafe.config.ConfigFactory
 import org.specs2.execute.AsResult
+import play.api._
+import play.api.mvc._
+import play.api.test._
 
 class ThreadPoolsSpec extends PlaySpecification {
   "Play's thread pools" should {
     "make a global thread pool available" in new WithApplication() {
-      val controller = app.injector.instanceOf[Samples]
-      contentAsString(controller.someAsyncAction(FakeRequest())) must startWith("The answer is 42")
+      override def running() = {
+        val controller = app.injector.instanceOf[Samples]
+        contentAsString(controller.someAsyncAction(FakeRequest())) must startWith("The answer is 42")
+      }
     }
 
     "allow configuring a custom thread pool" in runningWithConfig(
@@ -36,34 +37,36 @@ class ThreadPoolsSpec extends PlaySpecification {
       #my-context-config """
     ) { implicit app =>
       val akkaSystem = app.actorSystem
-      //#my-context-usage
+      // #my-context-usage
       val myExecutionContext: ExecutionContext = akkaSystem.dispatchers.lookup("my-context")
-      //#my-context-usage
+      // #my-context-usage
       await(Future(Thread.currentThread().getName)(myExecutionContext)) must startWith("application-my-context")
 
-      //#my-context-explicit
+      // #my-context-explicit
       Future {
         // Some blocking or expensive code here
       }(myExecutionContext)
-      //#my-context-explicit
+      // #my-context-explicit
 
       {
-        //#my-context-implicit
+        // #my-context-implicit
         implicit val ec = myExecutionContext
 
         Future {
           // Some blocking or expensive code here
         }
-        //#my-context-implicit
+        // #my-context-implicit
       }
       success
     }
 
     "allow access to the application classloader" in new WithApplication() {
-      val myClassName = "java.lang.String"
-      //#using-app-classloader
-      val myClass = app.classloader.loadClass(myClassName)
-      //#using-app-classloader
+      override def running() = {
+        val myClassName = "java.lang.String"
+        // #using-app-classloader
+        val myClass = app.classloader.loadClass(myClassName)
+        // #using-app-classloader
+      }
     }
 
     "allow a synchronous thread pool" in {
@@ -120,7 +123,7 @@ class ThreadPoolsSpec extends PlaySpecification {
     #many-specific-config """
     ) { implicit app =>
       val akkaSystem = app.actorSystem
-      //#many-specific-contexts
+      // #many-specific-contexts
       object Contexts {
         implicit val simpleDbLookups: ExecutionContext = akkaSystem.dispatchers.lookup("contexts.simple-db-lookups")
         implicit val expensiveDbLookups: ExecutionContext =
@@ -129,7 +132,7 @@ class ThreadPoolsSpec extends PlaySpecification {
         implicit val expensiveCpuOperations: ExecutionContext =
           akkaSystem.dispatchers.lookup("contexts.expensive-cpu-operations")
       }
-      //#many-specific-contexts
+      // #many-specific-contexts
       def test(context: ExecutionContext, name: String) = {
         await(Future(Thread.currentThread().getName)(context)) must startWith("application-contexts." + name)
       }
@@ -152,9 +155,7 @@ class Samples @Inject() (components: ControllerComponents)(implicit ec: Executio
     extends AbstractController(components) {
   def someAsyncAction = Action.async {
     someCalculation()
-      .map { result =>
-        Ok(s"The answer is $result")
-      }
+      .map { result => Ok(s"The answer is $result") }
       .recover {
         case e: TimeoutException =>
           InternalServerError("Calculation timed out!")

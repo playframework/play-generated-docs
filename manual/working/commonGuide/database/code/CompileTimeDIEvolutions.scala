@@ -1,15 +1,15 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 //#compile-time-di-evolutions
+import play.api.db.evolutions.EvolutionsComponents
+import play.api.db.DBComponents
+import play.api.db.Database
+import play.api.db.HikariCPComponents
+import play.api.routing.Router
 import play.api.ApplicationLoader.Context
 import play.api.BuiltInComponentsFromContext
-import play.api.db.Database
-import play.api.db.DBComponents
-import play.api.db.HikariCPComponents
-import play.api.db.evolutions.EvolutionsComponents
-import play.api.routing.Router
 import play.filters.HttpFiltersComponents
 
 class AppComponents(cntx: Context)
@@ -21,7 +21,7 @@ class AppComponents(cntx: Context)
   // this will actually run the database migrations on startup
   applicationEvolutions
 
-  //###skip: 1
+  // ###skip: 1
   val router = Router.empty
 }
 //#compile-time-di-evolutions

@@ -1,4 +1,5 @@
-<!--- Copyright (C) Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com> -->
+
 # Action composition
 
 This chapter introduces several ways to define generic action functionality.
@@ -26,6 +27,10 @@ You also mix several actions by using custom action annotations:
 > **Note:**  Every request **must** be served by a distinct instance of your `play.mvc.Action`. If a singleton pattern is used, requests will be routed incorrectly during multiple request scenarios. For example, if you are using Spring as a DI container for Play, you need to make sure that your action beans are prototype scoped.
 
 > **Note:**  [`play.mvc.Security.Authenticated`](api/java/play/mvc/Security.Authenticated.html) and [`play.cache.Cached`](api/java/play/cache/Cached.html) annotations and the corresponding predefined Actions are shipped with Play. See the relevant API documentation for more information.
+
+## Action annotations and WebSocket action methods
+
+By default, action composition is not applied when handling `WebSocket`s. A guide how to enable action composition, including an example, can be found in the [[WebSockets documentation|JavaWebSockets#WebSockets-and-Action-composition]].
 
 ## Defining custom action annotations
 
@@ -74,6 +79,41 @@ You will now see the whole action composition chain with the according annotatio
 [debug] play.mvc.Action - 1. ...
 [debug] play.mvc.Action - 2. ...
 [debug] play.mvc.Action - ### End of action order
+```
+
+## Action composition in interaction with body parsing
+
+By default [[body parsing|JavaBodyParsers]] takes place before action composition happens, meaning you are able to access the already parsed request body inside every action's `call(...)` method via `request.body()`. However, there are use cases where it makes sense to defer body parsing _after_ action composition took place. For example:
+
+- When you want to pass request specific information to the body parser via [[request attributes|Highlights26#Request-attributes]]. E.g. user dependent maximum file upload size or user dependent credentials for a webservice or object storage where the body parser should redirect an upload to.
+- When using action composition for (granular) [[authorization|ModuleDirectory#Authentication-(Login-&-Registration)-and-Authorization-(Restricted-Access)]] you may not want to even parse the request body and cancel the request early if permission checks fail.
+
+Of course, when deferring body parsing, the request body won't be parsed yet inside a `call(...)` method and therefore `request.body()` will return `null`.
+
+You can enable deferred body parsing globally in `conf/application.conf`:
+
+```
+play.server.deferBodyParsing = true
+```
+
+Just be aware that, like all `play.server.*` config keys, this config won't be picked up by Play when running in DEV mode, but only in PROD mode. To set this config in DEV mode you have to set it in `build.sbt`:
+
+```
+PlayKeys.devSettings += "play.server.deferBodyParsing" -> "true"
+```
+
+Instead of enabling deferred body parsing globally, you can enable it just for specific routes by using the [[routes modifier|JavaRouting#The-routes-file-syntax]] `deferBodyParsing`:
+
+```
++ deferBodyParsing
+POST    /      controllers.HomeController.uploadFileToS3(request: Request)
+```
+
+The opposite is true as well. If you globally enable deferred body parsing you can disable it for specific routes by using the [[routes modifier|JavaRouting#The-routes-file-syntax]] `dontDeferBodyParsing`:
+
+```
++ dontDeferBodyParsing
+POST    /      controllers.HomeController.processUpload(request: Request)
 ```
 
 ## Using Dependency Injection

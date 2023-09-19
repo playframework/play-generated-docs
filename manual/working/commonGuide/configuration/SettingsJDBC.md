@@ -1,4 +1,5 @@
-<!--- Copyright (C) Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com> -->
+
 # Configuring the JDBC pool
 
 The Play JDBC datasource is managed by [HikariCP](https://github.com/brettwooldridge/HikariCP).
@@ -34,5 +35,11 @@ In addition to the classical `driver`, `url`, `username`, `password` configurati
 When you need to specify some settings for a connection pool, you can override the prototype settings.  For example, to set maximumPoolSize for HikariCP, you would set the following in your `application.conf` file:
 
 ```properties
-play.db.prototype.hikaricp.maximumPoolSize = 15
+db.default.hikaricp.maximumPoolSize = 15
+```
+
+In case you need to specify some driver-specific properties for connections in the pool, you can set them in the dataSource configuration. For example, to set queryTimeout of the jdbc SQLServerDriver using HikariCP, you would set the following in your `application.conf` file:
+
+```properties
+db.default.hikaricp.dataSource.queryTimeout = 15
 ```

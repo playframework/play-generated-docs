@@ -1,4 +1,5 @@
-<!--- Copyright (C) Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com> -->
+
 # Managing library dependencies
 
 > **Note:** Some sections of this page were copied from the sbt manual, specifically from the [Library Dependencies](https://www.scala-sbt.org/1.x/docs/Library-Dependencies.html) page. You can refer to that page for a more detailed and updated version of the information here.
@@ -37,7 +38,7 @@ If you use `groupID %% artifactID % revision` rather than `groupID % artifactID 
 
 @[explicit-scala-version-dep](code/dependencies.sbt)
 
-Assuming the `scalaVersion` for your build is `2.13.6`, the following is identical (note the double `%%` after `"org.scala-tools"`):
+Assuming the `scalaVersion` for your build is `2.13.12`, the following is identical (note the double `%%` after `"org.scala-tools"`):
 
 @[auto-scala-version-dep](code/dependencies.sbt)
 
@@ -61,4 +62,4 @@ sbt has extensive documentation about how to manage conflict between your depend
 
 [sbt: Dependencies Conflict Management](https://www.scala-sbt.org/1.x/docs/Library-Management.html#Conflict+Management)
 
-You can also use [sbt-dependency-graph](https://github.com/jrudolph/sbt-dependency-graph) to have a better visualization of your dependency tree. See also our page about [[debugging sbt|sbtDebugging]] common problems.
+You can also use [sbt-dependency-graph](https://github.com/sbt/sbt-dependency-graph) to have a better visualization of your dependency tree. See also our page about [[debugging sbt|sbtDebugging]] common problems.

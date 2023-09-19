@@ -1,4 +1,5 @@
-<!--- Copyright (C) Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com> -->
+
 # Learning from Play Examples
 
 [Lightbend Tech Hub](https://developer.lightbend.com/start/?group=play) offers downloadable Play examples for Java and Scala. Play has many features, so rather than pack them all into one project, we've organized many examples that each showcase a Play feature or demonstrate a common use case. The zip files include everything you need to build and run the examples, including a distribution of the sbt and Gradle. Refer to the `README.md` file in the top-level project directory to learn more about the example.

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package javaguide.async;
@@ -64,11 +64,12 @@ public class JavaWebSockets {
     private Materializer materializer;
 
     // #actor-reject
-    public WebSocket socket(Http.Request req) {
+    public WebSocket socket() {
       return WebSocket.Text.acceptOrResult(
           request ->
               CompletableFuture.completedFuture(
-                  req.session()
+                  request
+                      .session()
                       .get("user")
                       .map(
                           user ->

@@ -1,4 +1,5 @@
-<!--- Copyright (C) Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com> -->
+
 # Testing your application
 
 Writing tests for your application can be an involved process. Play supports [JUnit](https://junit.org/junit4/) and provides helpers and application stubs to make testing your application as easy as possible.
@@ -26,12 +27,11 @@ The default way to test a Play application is with [JUnit](https://junit.org/jun
 > **Note:** A new process is forked each time `test` or `test-only` is run.  The new process uses default JVM settings.  Custom settings can be added to `build.sbt`.  For example:
 
 > ```scala
-> javaOptions in Test ++= Seq(
+> Test / javaOptions ++= Seq(
 >   "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=9998",
 >   "-Xms512M",
 >   "-Xmx1536M",
->   "-Xss1M",
->   "-XX:MaxPermSize=384M"
+>   "-Xss1M"
 > )
 > ```
 
@@ -95,6 +95,6 @@ As a template is a just a method, you can execute it from a test and check the r
 
 ## Unit testing with Messages
 
-If you need a `play.i18n.MessagesApi` instance for unit testing, you can use [`play.test.Helpers.stubMessagesApi()`](api/java/play/test/Helpers.html#stubMessagesApi-java.util.Map-play.i18n.Langs-) to provide one:
+If you need a `play.i18n.MessagesApi` instance for unit testing, you can use [`play.test.Helpers.stubMessagesApi()`](api/java/play/test/Helpers.html#stubMessagesApi\(java.util.Map,play.i18n.Langs\)) to provide one:
 
 @[test-messages](code/javaguide/tests/MessagesTest.java)

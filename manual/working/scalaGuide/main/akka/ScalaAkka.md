@@ -1,4 +1,5 @@
-<!--- Copyright (C) Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com> -->
+
 # Integrating with Akka
 
 [Akka](https://akka.io/) uses the Actor Model to raise the abstraction level and provide a better platform to build correct concurrent and scalable applications. For fault-tolerance it adopts the ‘Let it crash’ model, which has been used with great success in the telecoms industry to build applications that self-heal - systems that never stop. Actors also provide the abstraction for transparent distribution and the basis for truly scalable and fault-tolerant applications.
@@ -97,21 +98,6 @@ akka.actor.debug.receive = on
 
 For Akka logging configuration, see [[configuring logging|SettingsLogger]].
 
-### Changing configuration prefix
-
-In case you want to use the `akka.*` settings for another Akka actor system, you can tell Play to load its Akka settings from another location.
-
-```
-play.akka.config = "my-akka"
-```
-
-Now settings will be read from the `my-akka` prefix instead of the `akka` prefix.
-
-```
-my-akka.actor.default-dispatcher.fork-join-executor.parallelism-max = 64
-my-akka.actor.debug.receive = on
-```
-
 ### Built-in actor system name
 
 By default the name of the Play actor system is `application`. You can change this via an entry in the `conf/application.conf`:
@@ -128,7 +114,7 @@ While we recommend you use the built in actor system, as it sets up everything s
 
 * Register a [[stop hook|ScalaDependencyInjection#Stopping/cleaning-up]] to shut the actor system down when Play shuts down
 * Pass in the correct classloader from the Play [Environment](api/scala/play/api/Application.html) otherwise Akka won't be able to find your applications classes
-* Ensure that either you change the location that Play reads its akka configuration from using `play.akka.config`, or that you don't read your akka configuration from the default `akka` config, as this will cause problems such as when the systems try to bind to the same remote ports
+* Ensure that you don't read your akka configuration from the default `akka` config, which is used by Play's actor system already, as this will cause problems such as when the systems try to bind to the same remote ports
 
 
 ## Akka Coordinated Shutdown
@@ -149,12 +135,82 @@ If you want to use a newer version of Akka, one that is not used by Play yet, yo
 
 @[akka-update](code/scalaguide.akkaupdate.sbt)
 
-Of course, other Akka artifacts can be added transitively. Use [sbt-dependency-graph](https://github.com/jrudolph/sbt-dependency-graph) to better inspect your build and check which ones you need to add explicitly.
+Of course, other Akka artifacts can be added transitively. Use [sbt-dependency-graph](https://github.com/sbt/sbt-dependency-graph) to better inspect your build and check which ones you need to add explicitly.
 
-If you also want to update Akka HTTP, you should also add its dependencies explicitly:
+If you haven't switched to the Netty server backend and therefore are using Play's default Akka HTTP server backend, you also have to update Akka HTTP. Therefore, you need to add its dependencies explicitly as well:
 
 @[akka-http-update](code/scalaguide.akkaupdate.sbt)
 
+### Important note on using Akka HTTP 10.5.0 or newer with Scala 3
+
+Starting with Akka version [2.7.0](https://github.com/akka/akka/pull/31561) and Akka HTTP version [10.4.0](https://doc.akka.io/docs/akka-http/current/release-notes/10.4.x.html#10-4-0), those libraries are published under the  [Business Source License (BSL) v1.1](https://doc.akka.io/docs/akka/current/project/licenses.html). This means that when using these Akka or Akka HTTP versions (or newer), your company might need to pay license fees. For more details, refer to the [Akka License FAQ](https://www.lightbend.com/akka/license-faq). On another note, starting with Akka HTTP version 10.5.0 [native Scala 3 artifacts get published](https://github.com/akka/akka-http/releases/tag/v10.5.0).
+Play does not ship with those newer versions, but instead it defaults to using Akka 2.6 and Akka HTTP 10.2.x. You are free to upgrade to the newer commercial versions, as described in the previous section.  However, if you choose to do so and want to use Scala 3, you need to set `akkaHttpScala3Artifacts := true`  to exclude any Akka HTTP Scala 2.13 artifacts that Play depends on by default:
+
+@[akka-exclude-213artifacts](code/scalaguide.akkaupdate.sbt)
+
+This is necessary because Play uses the `for3Use2_13` cross version [workaround](https://www.scala-lang.org/blog/2021/04/08/scala-3-in-sbt.html#using-scala-213-libraries-in-scala-3) to make Akka HTTP 10.2.x work with Scala 3. The above setting disables this behaviour to make sure there are no Akka HTTP Scala 2 artifacts on the classpath (which very likely will conflict with the Akka HTTP Scala 3 artifacts you upgrade to).
+
+Be aware, however, that using this `akkaHttpScala3Artifacts` approach only works when the `PlayAkkaHttpServer` sbt plugin is enabled. If the plugin is not active, but the `play-akka-http-server` dependency is pulled in directly like
+
+```scala
+lazy val root = project.in(file("."))
+  // PlayAkkaHttpServer, PlayScala, etc. not activated
+  .settings(
+    // ...
+    Compile / mainClass := Some("play.core.server.ProdServerStart"),
+    libraryDependencies ++= Seq(
+      "com.typesafe.play" %% "play-akka-http-server" % "<play_version>",
+    )
+  )
+```
+
+you have to manually apply what `akkaHttpScala3Artifacts` would do:
+
+```scala
+val akkaDeps =
+  Seq("akka-actor", "akka-actor-typed", "akka-slf4j", "akka-serialization-jackson", "akka-stream")
+val scala2Deps = Map(
+  "com.typesafe.akka"            -> ("2.6.21", akkaDeps),
+  "com.typesafe"                 -> ("0.6.1", Seq("ssl-config-core")),
+  "com.fasterxml.jackson.module" -> ("2.14.3", Seq("jackson-module-scala"))
+)
+
+lazy val root = project.in(file("."))
+  // PlayAkkaHttpServer, PlayScala, PlayJava, etc. not activated
+  .settings(
+    // ...
+    Compile / mainClass := Some("play.core.server.ProdServerStart"),
+    libraryDependencies ++= Seq(
+      "com.typesafe.play" %% "play-akka-http-server" % "<play_version>",
+    )
+    // Work around needed because akka-http 10.2.x is not published for Scala 3
+    excludeDependencies ++=
+      (if (scalaBinaryVersion.value == "3") {
+        scala2Deps.flatMap(e => e._2._2.map(_ + "_3").map(ExclusionRule(e._1, _))).toSeq
+      } else {
+        Seq.empty
+      }),
+    libraryDependencies ++=
+      (if (scalaBinaryVersion.value == "3") {
+        scala2Deps.flatMap(e => e._2._2.map(e._1 %% _ % e._2._1).map(_.cross(CrossVersion.for3Use2_13))).toSeq
+      } else {
+        Seq.empty
+      }),
+  )
+```
+
+### Using Cluster Sharding and Akka HTTP without native Scala 3 artifacts
+
+If you use Scala 3 and Akka HTTP version 10.4 or earlier (which does not provide native Scala 3 artifacts) and want to use [[Cluster Sharding for Akka Typed|AkkaClusterSharding]] you have to apply the `for3Use2_13` cross version [workaround](https://www.scala-lang.org/blog/2021/04/08/scala-3-in-sbt.html#using-scala-213-libraries-in-scala-3) to make things work:
+
+```sbt
+libraryDependencies += clusterSharding
+libraryDependencies += ("com.typesafe.akka" %% "akka-cluster-sharding-typed" % "2.6.21").cross(CrossVersion.for3Use2_13)
+excludeDependencies += sbt.ExclusionRule("com.typesafe.akka", "akka-cluster-sharding-typed_3")
+```
+
+This configuration ensures that Cluster Sharding for Akka Typed can be used seamlessly with Scala 3 and Akka HTTP versions that lack native Scala 3 artifacts.
+
 > **Note:** When doing such updates, keep in mind that you need to follow Akka's [Binary Compatibility Rules](https://doc.akka.io/docs/akka/2.6/common/binary-compatibility-rules.html). And if you are manually adding other Akka artifacts, remember to keep the version of all the Akka artifacts consistent since [mixed versioning is not allowed](https://doc.akka.io/docs/akka/2.6/common/binary-compatibility-rules.html#mixed-versioning-is-not-allowed).
 
-> **Note:** When resolving dependencies, sbt will get the newest one declared for this project or added transitively. It means that if Play depends on a newer Akka (or Akka HTTP) version than the one you are declaring, Play version wins. See more details about [how sbt does evictions here](https://www.scala-sbt.org/1.x/docs/Library-Management.html#Eviction+warning).
+> **Note:** When resolving dependencies, sbt will get the newest one declared for this project or added transitively. It means that if Play depends on a newer Akka (or Akka HTTP) version than the one you are declaring, Play's version wins. See more details about [how sbt does evictions here](https://www.scala-sbt.org/1.x/docs/Library-Management.html#Eviction+warning).

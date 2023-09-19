@@ -1,4 +1,5 @@
-<!--- Copyright (C) Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com> -->
+
 # Javascript Routing
 
 The play router is able to generate Javascript code to handle routing from Javascript running client side back to your application. The Javascript router aids in refactoring your application. If you change the structure of your URLs or parameter names your Javascript gets automatically updated to use that new structure.

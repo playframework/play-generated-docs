@@ -1,13 +1,14 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package sdatabase
 //#scala-jdbc-database
 import javax.inject.Inject
-import play.api.db.Database
 
 import scala.concurrent.Future
+
+import play.api.db.Database
 
 class ScalaApplicationDatabase @Inject() (db: Database, databaseExecutionContext: DatabaseExecutionContext) {
   def updateSomething(): Unit = {

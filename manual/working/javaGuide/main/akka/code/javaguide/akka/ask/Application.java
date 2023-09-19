@@ -1,5 +1,5 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package javaguide.akka.ask;
@@ -10,7 +10,7 @@ import javaguide.akka.HelloActorProtocol.SayHello;
 // #ask
 import akka.actor.*;
 import play.mvc.*;
-import scala.compat.java8.FutureConverters;
+import scala.jdk.javaapi.FutureConverters;
 import javax.inject.*;
 import java.util.concurrent.CompletionStage;
 
@@ -27,7 +27,7 @@ public class Application extends Controller {
   }
 
   public CompletionStage<Result> sayHello(String name) {
-    return FutureConverters.toJava(ask(helloActor, new SayHello(name), 1000))
+    return FutureConverters.asJava(ask(helloActor, new SayHello(name), 1000))
         .thenApply(response -> ok((String) response));
   }
 }

@@ -1,28 +1,26 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package javaguide.akka;
 
-import akka.actor.*;
 import static akka.pattern.Patterns.ask;
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.*;
+import static play.test.Helpers.*;
+
+import akka.actor.*;
 import com.typesafe.config.*;
+import java.util.concurrent.*;
 import javaguide.testhelpers.MockJavaAction;
 import javaguide.testhelpers.MockJavaActionHelper;
 import org.junit.Test;
-
 import play.Application;
 import play.core.j.JavaHandlerComponents;
 import play.inject.guice.GuiceApplicationBuilder;
 import play.mvc.Result;
 import scala.concurrent.*;
 import scala.concurrent.duration.Duration;
-
-import java.util.concurrent.*;
-
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
-import static play.test.Helpers.*;
 
 public class JavaAkka {
 

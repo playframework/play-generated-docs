@@ -1,16 +1,10 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 // #log4j2-class
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
-import org.slf4j.ILoggerFactory;
-import play.Environment;
-import play.LoggerConfigurator;
-import play.Mode;
-import play.api.PlayException;
-
 import java.io.File;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -18,13 +12,19 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import org.slf4j.ILoggerFactory;
+import org.slf4j.LoggerFactory;
+import play.Environment;
+import play.LoggerConfigurator;
+import play.Mode;
+import play.api.PlayException;
 
 // ###skip: 1
 /*
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.*;
 import org.apache.logging.log4j.core.config.Configurator;
-//###skip: 1
+// ###skip: 1
 */
 
 public class JavaLog4JLoggerConfigurator implements LoggerConfigurator {
@@ -65,7 +65,7 @@ public class JavaLog4JLoggerConfigurator implements LoggerConfigurator {
       LoggerContext loggerContext = (LoggerContext) LogManager.getContext(false);
       loggerContext.setConfigLocation(config.get().toURI());
 
-      factory = org.slf4j.impl.StaticLoggerBinder.getSingleton().getLoggerFactory();
+      factory = LoggerFactory.getILoggerFactory();
     } catch (URISyntaxException ex) {
       throw new PlayException(
           "log4j2.xml resource was not found",

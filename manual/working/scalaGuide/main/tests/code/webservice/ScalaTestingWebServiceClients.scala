@@ -1,5 +1,5 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package scalaguide.tests.webservice
@@ -8,37 +8,36 @@ package client {
 //#client
   import javax.inject.Inject
 
-  import play.api.libs.ws.WSClient
-
   import scala.concurrent.ExecutionContext
   import scala.concurrent.Future
+
+  import play.api.libs.ws.WSClient
 
   class GitHubClient(ws: WSClient, baseUrl: String)(implicit ec: ExecutionContext) {
     @Inject def this(ws: WSClient, ec: ExecutionContext) = this(ws, "https://api.github.com")(ec)
 
     def repositories(): Future[Seq[String]] = {
-      ws.url(baseUrl + "/repositories").get().map { response =>
-        (response.json \\ "full_name").map(_.as[String]).toSeq
-      }
+      ws.url(baseUrl + "/repositories").get().map { response => (response.json \\ "full_name").map(_.as[String]).toSeq }
     }
   }
 //#client
 }
 
 package test {
+  // format: off
   import client._
+  // format: on
 
 //#full-test
-  import play.core.server.Server
-  import play.api.routing.sird._
-  import play.api.mvc._
-  import play.api.libs.json._
-  import play.api.test._
-
-  import scala.concurrent.Await
   import scala.concurrent.duration._
+  import scala.concurrent.Await
 
   import org.specs2.mutable.Specification
+  import play.api.libs.json._
+  import play.api.mvc._
+  import play.api.routing.sird._
+  import play.api.test._
+  import play.core.server.Server
 
   class GitHubClientSpec extends Specification {
     import scala.concurrent.ExecutionContext.Implicits.global
@@ -66,13 +65,14 @@ package test {
 //#full-test
 }
 
-import client._
-import scala.concurrent.Await
 import scala.concurrent.duration._
+import scala.concurrent.Await
+
+import client._
 import org.specs2.mutable.Specification
+import play.api.routing.sird._
 import play.api.routing.Router
 import play.api.BuiltInComponentsFromContext
-import play.api.routing.sird._
 import play.filters.HttpFiltersComponents
 
 class ScalaTestingWebServiceClients extends Specification {
@@ -80,7 +80,7 @@ class ScalaTestingWebServiceClients extends Specification {
 
   "webservice testing" should {
     "allow mocking a service" in {
-      //#mock-service
+      // #mock-service
       import play.api.libs.json._
       import play.api.mvc._
       import play.api.routing.sird._
@@ -96,13 +96,13 @@ class ScalaTestingWebServiceClients extends Specification {
             }
         }
       } { implicit port =>
-        //#mock-service
+        // #mock-service
         ok
       }
     }
 
     "allow sending a resource" in {
-      //#send-resource
+      // #send-resource
       import play.api.mvc._
       import play.api.routing.sird._
       import play.api.test._
@@ -112,13 +112,11 @@ class ScalaTestingWebServiceClients extends Specification {
         new BuiltInComponentsFromContext(context) with HttpFiltersComponents {
           override def router: Router = Router.from {
             case GET(p"/repositories") =>
-              Action { req =>
-                Results.Ok.sendResource("github/repositories.json")(executionContext, fileMimeTypes)
-              }
+              Action { req => Results.Ok.sendResource("github/repositories.json")(executionContext, fileMimeTypes) }
           }
         }.application
       } { implicit port =>
-        //#send-resource
+        // #send-resource
         WsTestClient.withClient { client =>
           Await.result(new GitHubClient(client, "").repositories(), 10.seconds) must_== Seq("octocat/Hello-World")
         }
@@ -126,7 +124,7 @@ class ScalaTestingWebServiceClients extends Specification {
     }
 
     "allow being dry" in {
-      //#with-github-client
+      // #with-github-client
       import play.api.mvc._
       import play.api.routing.sird._
       import play.core.server.Server
@@ -137,25 +135,19 @@ class ScalaTestingWebServiceClients extends Specification {
           new BuiltInComponentsFromContext(context) with HttpFiltersComponents {
             override def router: Router = Router.from {
               case GET(p"/repositories") =>
-                Action { req =>
-                  Results.Ok.sendResource("github/repositories.json")(executionContext, fileMimeTypes)
-                }
+                Action { req => Results.Ok.sendResource("github/repositories.json")(executionContext, fileMimeTypes) }
             }
           }.application
-        } { implicit port =>
-          WsTestClient.withClient { client =>
-            block(new GitHubClient(client, ""))
-          }
-        }
+        } { implicit port => WsTestClient.withClient { client => block(new GitHubClient(client, "")) } }
       }
-      //#with-github-client
+      // #with-github-client
 
-      //#with-github-test
+      // #with-github-test
       withGitHubClient { client =>
         val result = Await.result(client.repositories(), 10.seconds)
         result must_== Seq("octocat/Hello-World")
       }
-      //#with-github-test
+      // #with-github-test
     }
   }
 }

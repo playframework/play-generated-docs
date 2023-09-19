@@ -1,4 +1,5 @@
-<!--- Copyright (C) Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com> -->
+
 # Dependency Injection
 
 Dependency injection is a widely used design pattern that helps separate your components' behaviour from dependency resolution.  Play supports both runtime dependency injection based on [JSR 330](https://jcp.org/en/jsr/detail?id=330) (described in this page) and [[compile time dependency injection|ScalaCompileTimeDependencyInjection]] in Scala.
@@ -6,6 +7,12 @@ Dependency injection is a widely used design pattern that helps separate your co
 Runtime dependency injection is so called because the dependency graph is created, wired and validated at runtime.  If a dependency cannot be found for a particular component, you won't get an error until you run your application.
 
 Play supports [Guice](https://github.com/google/guice) out of the box, but other JSR 330 implementations can be plugged in. The [Guice wiki](https://github.com/google/guice/wiki/) is a great resource for learning more about the features of Guice and DI design patterns in general.
+
+Play's sbt plugins do not provide any specific dependency injection framework by default. If you want to use Play's Guice module, add it explicitly to your library dependencies as follows:
+
+```scala	
+libraryDependencies += guice	
+``` 
 
 > **Note:** Guice is a Java library and the examples in this documentation use Guice's built-in Java API. If you prefer a Scala DSL you might wish to use the [scala-guice](https://github.com/codingwell/scala-guice) or [sse-guice](https://github.com/sptz45/sse-guice) library.
 
@@ -31,7 +38,7 @@ We explain how to customize the default bindings and application loader in more 
 
 ## Declaring runtime DI dependencies
 
-If you have a component, such as a controller, and it requires some other components as dependencies, then this can be declared using the [@Inject](https://docs.oracle.com/javaee/7/api/javax/inject/Inject.html) annotation.  The `@Inject` annotation can be used on fields or on constructors. We recommend that you use it on constructors, for example:
+If you have a component, such as a controller, and it requires some other components as dependencies, then this can be declared using the [@Inject](https://javax-inject.github.io/javax-inject/api/javax/inject/Inject.html) annotation.  The `@Inject` annotation can be used on fields or on constructors. We recommend that you use it on constructors, for example:
 
 @[constructor](code/RuntimeDependencyInjection.scala)
 
@@ -57,7 +64,7 @@ The dependency injection system manages the lifecycle of injected components, cr
 
 ## Singletons
 
-Sometimes you may have a component that holds some state, such as a cache, or a connection to an external resource, or a component might be expensive to create. In these cases it may be important that there is only be one instance of that component. This can be achieved using the [@Singleton](https://docs.oracle.com/javaee/7/api/javax/inject/Singleton.html) annotation:
+Sometimes you may have a component that holds some state, such as a cache, or a connection to an external resource, or a component might be expensive to create. In these cases it may be important that there is only be one instance of that component. This can be achieved using the [@Singleton](https://javax-inject.github.io/javax-inject/api/javax/inject/Singleton.html) annotation:
 
 @[singleton](code/RuntimeDependencyInjection.scala)
 
@@ -93,7 +100,7 @@ The simplest way to bind an implementation to an interface is to use the Guice [
 
 #### Programmatic bindings
 
-In some more complex situations, you may want to provide more complex bindings, such as when you have multiple implementations of the one trait, which are qualified by [@Named](https://docs.oracle.com/javaee/7/api/javax/inject/Named.html) annotations.  In these cases, you can implement a custom Guice [Module](https://google.github.io/guice/api-docs/latest/javadoc/index.html?com/google/inject/Module.html):
+In some more complex situations, you may want to provide more complex bindings, such as when you have multiple implementations of the one trait, which are qualified by [@Named](https://javax-inject.github.io/javax-inject/api/javax/inject/Named.html) annotations.  In these cases, you can implement a custom Guice [Module](https://google.github.io/guice/api-docs/latest/javadoc/index.html?com/google/inject/Module.html):
 
 @[guice-module](code/RuntimeDependencyInjection.scala)
 
@@ -178,3 +185,11 @@ When you override the [`ApplicationLoader`](api/scala/play/api/ApplicationLoader
     play.application.loader = "modules.CustomApplicationLoader"
 
 You're not limited to using Guice for dependency injection. By overriding the `ApplicationLoader` you can take control of how the application is initialized. Find out more in the [[next section|ScalaCompileTimeDependencyInjection]].
+
+## Adding dependency to a class without touching subclasses
+
+Sometimes you may want to add new dependency to some base class which may have many subclasses.
+To avoid providing the dependency directly to each of them you may add it as an injectable field.
+This approach can reduce the testability of the class so use it with care.
+
+@[class-field-dependency-injection](code/RuntimeDependencyInjection.scala)

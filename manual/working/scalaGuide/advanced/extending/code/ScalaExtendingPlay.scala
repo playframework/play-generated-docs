@@ -1,5 +1,5 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package scalaguide.advanced.extending
@@ -40,7 +40,7 @@ class MyCode {
 }
 
 class MyModule extends play.api.inject.Module {
-  def bindings(environment: Environment, configuration: Configuration) = {
+  def bindings(environment: Environment, configuration: Configuration): Seq[play.api.inject.Binding[_]] = {
     Seq(bind[MyCode].toInstance(new MyCode))
   }
 }
@@ -48,7 +48,7 @@ class MyModule extends play.api.inject.Module {
 
 // #builtin-module-definition
 class MyI18nModule extends play.api.inject.Module {
-  def bindings(environment: Environment, configuration: Configuration) = {
+  def bindings(environment: Environment, configuration: Configuration): Seq[play.api.inject.Binding[_]] = {
     Seq(
       bind[Langs].toProvider[DefaultLangsProvider],
       bind[MessagesApi].toProvider[MyMessagesApiProvider]

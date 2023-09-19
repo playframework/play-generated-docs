@@ -1,13 +1,10 @@
 /*
- * Copyright (C) 2009-2020 Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package scalaguide.json
 
 import org.specs2.mutable.Specification
-import play.api.libs.json.JsNumber
-import play.api.libs.json.JsString
-import play.api.libs.json.Json
 
 class ScalaJsonSpec extends Specification {
   val sampleJson = {
@@ -48,8 +45,9 @@ class ScalaJsonSpec extends Specification {
     "parse json" in {
       import play.api.libs.json._
       val json = sampleJson
-      (json \ "name").get.must_==(JsString("Watership Down"))
-      (json \ "location" \ "lat").get.must_==(JsNumber(51.235685))
+
+      (json \ "name").toOption mustEqual Some(JsString("Watership Down"))
+      (json \ "location" \ "lat").toOption mustEqual Some(JsNumber(51.235685))
     }
 
     "allow constructing json using case classes" in {
@@ -81,17 +79,15 @@ class ScalaJsonSpec extends Specification {
         )
       )
       //#convert-from-classes
-      (json \ "name").get.must_==(JsString("Watership Down"))
+
+      (json \ "name").toOption mustEqual Some(JsString("Watership Down"))
     }
 
     "allow constructing json using factory methods" in {
       //#convert-from-factory
-      import play.api.libs.json.JsNull
-      import play.api.libs.json.Json
-      import play.api.libs.json.JsString
-      import play.api.libs.json.JsValue
+      import play.api.libs.json.{JsNull,Json,JsString,JsObject}
 
-      val json: JsValue = Json.obj(
+      val json: JsObject = Json.obj(
         "name"     -> "Watership Down",
         "location" -> Json.obj("lat" -> 51.235685, "long" -> -1.309197),
         "residents" -> Json.arr(
@@ -108,7 +104,44 @@ class ScalaJsonSpec extends Specification {
         )
       )
       //#convert-from-factory
-      (json \ "name").get.must_==(JsString("Watership Down"))
+
+      (json \ "name").toOption mustEqual Some(JsString("Watership Down"))
+    }
+
+    "allow constructing json using builder" in {
+      //#object-builder
+      import play.api.libs.json.{ JsNull, Json, JsString, JsObject }
+
+      def asJson(active: Boolean): JsObject = {
+        val builder = Json.newBuilder
+
+        builder ++= Seq(
+          "name" -> "Watership Down",
+          "location" -> Json.obj(
+            "lat" -> 51.235685D, "long" -> -1.309197D))
+
+        if (active) {
+          builder += "active" -> true
+        }
+
+        builder += "residents" -> Seq(
+          Json.obj(
+            "name" -> "Fiver",
+            "age"  -> 4,
+            "role" -> JsNull
+          ),
+          Json.obj(
+            "name" -> "Bigwig",
+            "age"  -> 6,
+            "role" -> "Owsla"
+          ))
+
+        builder.result()
+      }
+      //#object-builder
+
+      (asJson(true) \ "name").
+        toOption mustEqual Some(JsString("Watership Down"))
     }
 
     "allow converting simple types" in {
@@ -139,14 +172,14 @@ class ScalaJsonSpec extends Specification {
       //#convert-from-model
       import play.api.libs.json._
 
-      implicit val locationWrites = new Writes[Location] {
+      implicit val locationWrites: Writes[Location] = new Writes[Location] {
         def writes(location: Location) = Json.obj(
           "lat"  -> location.lat,
           "long" -> location.long
         )
       }
 
-      implicit val residentWrites = new Writes[Resident] {
+      implicit val residentWrites: Writes[Resident] = new Writes[Resident] {
         def writes(resident: Resident) = Json.obj(
           "name" -> resident.name,
           "age"  -> resident.age,
@@ -154,7 +187,7 @@ class ScalaJsonSpec extends Specification {
         )
       }
 
-      implicit val placeWrites = new Writes[Place] {
+      implicit val placeWrites: Writes[Place] = new Writes[Place] {
         def writes(place: Place) = Json.obj(
           "name"      -> place.name,
           "location"  -> place.location,
@@ -174,7 +207,7 @@ class ScalaJsonSpec extends Specification {
       val json = Json.toJson(place)
       //#convert-from-model
 
-      (json \ "name").get === JsString("Watership Down")
+      (json \ "name").toOption === Some(JsString("Watership Down"))
     }
 
     "allow converting models preferred" in {
@@ -187,19 +220,19 @@ class ScalaJsonSpec extends Specification {
       implicit val locationWrites: Writes[Location] = (
         (JsPath \ "lat").write[Double] and
           (JsPath \ "long").write[Double]
-      )(unlift(Location.unapply))
+      )(l => (l.lat, l.long))
 
       implicit val residentWrites: Writes[Resident] = (
         (JsPath \ "name").write[String] and
           (JsPath \ "age").write[Int] and
           (JsPath \ "role").writeNullable[String]
-      )(unlift(Resident.unapply))
+      )(r => (r.name, r.age, r.role))
 
       implicit val placeWrites: Writes[Place] = (
         (JsPath \ "name").write[String] and
           (JsPath \ "location").write[Location] and
           (JsPath \ "residents").write[Seq[Resident]]
-      )(unlift(Place.unapply))
+      )(p => (p.name, p.location, p.residents))
       //#convert-from-model-prefwrites
 
       val place = Place(
@@ -214,7 +247,7 @@ class ScalaJsonSpec extends Specification {
       val json = Json.toJson(place)
       //#convert-from-model
 
-      (json \ "name").get === JsString("Watership Down")
+      (json \ "name").toOption === Some(JsString("Watership Down"))
     }
 
     "allow traversing JsValue tree" in {
@@ -222,19 +255,20 @@ class ScalaJsonSpec extends Specification {
       val json = sampleJson
 
       //#traverse-simple-path
-      val lat = (json \ "location" \ "lat").get
-      // returns JsNumber(51.235685)
-      val bigwig = (json \ "residents" \ 1).get
-      // returns {"name":"Bigwig","age":6,"role":"Owsla"}
+      val lat = (json \ "location" \ "lat").toOption
+      // returns some JsNumber(51.235685)
+      val bigwig = (json \ "residents" \ 1).toOption
+      // returns some {"name":"Bigwig","age":6,"role":"Owsla"}
 
       //#traverse-simple-path
 
       val expected = Json.parse(
         """{"name":"Bigwig","age":6,"role":"Owsla"}"""
       )
-      bigwig.mustEqual(expected)
 
-      lat === JsNumber(51.235685)
+      bigwig mustEqual Some(expected)
+
+      lat === Some(JsNumber(51.235685))
 
       //#traverse-recursive-path
       val names = json \\ "name"
@@ -282,10 +316,11 @@ class ScalaJsonSpec extends Specification {
         json("bogus")
         assert(false)
       } catch {
-        case e: NoSuchElementException =>
+        case _: NoSuchElementException =>
       }
 
-      (bigwig \ "name").get === JsString("Bigwig")
+      bigwig.flatMap(
+        obj => (obj \ "name").toOption) === Some(JsString("Bigwig"))
     }
 
     "allow converting JsValue to String" in {
@@ -416,6 +451,27 @@ class ScalaJsonSpec extends Specification {
 
       placeResult.must(beLike { case JsSuccess(Place(name, _, _), _)       => name === "Watership Down" })
       residentResult.must(beLike { case JsSuccess(Resident(name, _, _), _) => name === "Bigwig" })
+    }
+
+    "handle simple tuples" in {
+      //#handle-simple-tuples
+      import play.api.libs.json._
+
+      val tuple3Reads: Reads[(String, Int, Boolean)] =
+        Reads.tuple3[String, Int, Boolean]("name", "age", "isStudent")
+
+      val tuple3Writes: OWrites[(String, Int, Boolean)] =
+        OWrites.tuple3[String, Int, Boolean]("name", "age", "isStudent")
+
+      val tuple3ExampleJson: JsObject =
+        Json.obj("name" -> "Bob", "age" -> 30, "isStudent" -> false)
+
+      val tuple3Example = Tuple3("Bob", 30, false)
+
+      tuple3Writes.writes(tuple3Example) mustEqual tuple3ExampleJson
+
+      tuple3Reads.reads(tuple3ExampleJson) mustEqual JsSuccess(tuple3Example)
+      //#handle-simple-tuples
     }
   }
 }

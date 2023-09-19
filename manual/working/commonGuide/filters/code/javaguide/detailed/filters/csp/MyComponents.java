@@ -1,18 +1,17 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package javaguide.detailed.filters.csp;
 
+import java.util.ArrayList;
+import java.util.List;
 import play.ApplicationLoader;
 import play.BuiltInComponentsFromContext;
 import play.filters.components.CSPComponents;
 import play.filters.components.HttpFiltersComponents;
 import play.mvc.EssentialFilter;
 import play.routing.Router;
-
-import java.util.ArrayList;
-import java.util.List;
 
 // #java-csp-components
 public class MyComponents extends BuiltInComponentsFromContext

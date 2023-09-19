@@ -1,4 +1,5 @@
-<!--- Copyright (C) Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com> -->
+
 # Anatomy of a Play application
 
 ## The Play application layout
@@ -111,6 +112,7 @@ project/target
 target
 tmp
 dist
+.bsp
 .cache
 RUNNING_PID
 ```

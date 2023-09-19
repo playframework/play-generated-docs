@@ -1,20 +1,17 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package javaguide.tests;
 
+import static org.junit.Assert.*;
+import static play.test.Helpers.NOT_FOUND;
+
 import java.util.OptionalInt;
 import java.util.concurrent.*;
-
 import org.junit.*;
-
-import play.test.*;
 import play.libs.ws.*;
-
-import static org.junit.Assert.*;
-
-import static play.test.Helpers.NOT_FOUND;
+import play.test.*;
 
 // #test-withserver
 public class ServerFunctionalTest extends WithServer {

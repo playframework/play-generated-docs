@@ -1,4 +1,5 @@
-<!--- Copyright (C) Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com> -->
+
 # Writing functional tests with specs2
 
 Play provides a number of classes and convenience methods that assist with functional testing.  Most of these can be found either in the [`play.api.test`](api/scala/play/api/test/index.html) package or in the [`Helpers`](api/scala/play/api/test/Helpers$.html) object.
@@ -27,7 +28,7 @@ Sometimes you want to test the real HTTP stack from within your test, in which c
 
 @[scalafunctionaltest-testpaymentgateway](code/specs2/ScalaFunctionalTestSpec.scala)
 
-The `port` value contains the port number the server is running on.  By default this is 19001, however you can change this either by passing the port into [`WithServer`](api/scala/play/api/test/WithServer.html), or by setting the system property `testserver.port`.  This can be useful for integrating with continuous integration servers, so that ports can be dynamically reserved for each build.
+The `port` value contains the port number the server is running on.  By default a random port is assigned, however you can change this either by passing the port into [`WithServer`](api/scala/play/api/test/WithServer.html), or by setting the system property `testserver.port`.  This can be useful for integrating with continuous integration servers, so that ports can be dynamically reserved for each build. You can also configure the address the testserver binds to with the system property `testserver.address`. If unset it uses the play server default of `"0.0.0.0"`.
 
 An application can also be passed to the test server, which is useful for setting up custom routes and testing WS calls:
 

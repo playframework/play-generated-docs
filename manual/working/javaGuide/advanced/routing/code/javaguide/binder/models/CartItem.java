@@ -1,5 +1,5 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package javaguide.binder.models;
@@ -7,8 +7,6 @@ package javaguide.binder.models;
 import java.net.URLEncoder;
 import java.util.Map;
 import java.util.Optional;
-
-import play.libs.F;
 import play.libs.F.*;
 import play.mvc.QueryStringBindable;
 

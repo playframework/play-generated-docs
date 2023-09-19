@@ -1,20 +1,20 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package scalaguide.cache {
+  import scala.concurrent.duration._
+  import scala.concurrent.Await
+  import scala.concurrent.ExecutionContext
+  import scala.concurrent.Future
+
   import akka.Done
   import org.junit.runner.RunWith
-  import org.specs2.runner.JUnitRunner
   import org.specs2.execute.AsResult
-
-  import play.api.test._
-  import play.api.mvc._
+  import org.specs2.runner.JUnitRunner
   import play.api.libs.json.Json
-  import scala.concurrent.Await
-  import scala.concurrent.Future
-  import scala.concurrent.duration._
-  import scala.concurrent.ExecutionContext
+  import play.api.mvc._
+  import play.api.test._
 
   @RunWith(classOf[JUnitRunner])
   class ScalaCacheSpec extends AbstractController(Helpers.stubControllerComponents()) with PlaySpecification {
@@ -35,25 +35,25 @@ package scalaguide.cache {
 
       "a cache" in withCache { cache =>
         val connectedUser = User("xf")
-        //#set-value
+        // #set-value
         val result: Future[Done] = cache.set("item.key", connectedUser)
-        //#set-value
+        // #set-value
         Await.result(result, 1.second)
 
-        //#get-value
+        // #get-value
         val futureMaybeUser: Future[Option[User]] = cache.get[User]("item.key")
-        //#get-value
+        // #get-value
 
         val maybeUser = Await.result(futureMaybeUser, 1.second)
         maybeUser must beSome(connectedUser)
 
-        //#remove-value
+        // #remove-value
         val removeResult: Future[Done] = cache.remove("item.key")
-        //#remove-value
+        // #remove-value
 
-        //#removeAll-values
+        // #removeAll-values
         val removeAllResult: Future[Done] = cache.removeAll()
-        //#removeAll-values
+        // #removeAll-values
 
         Await.result(removeResult, 1.second)
 
@@ -62,22 +62,22 @@ package scalaguide.cache {
 
       "a cache or get user" in withCache { cache =>
         val connectedUser = "xf"
-        //#retrieve-missing
+        // #retrieve-missing
         val futureUser: Future[User] = cache.getOrElseUpdate[User]("item.key") {
           User.findById(connectedUser)
         }
-        //#retrieve-missing
+        // #retrieve-missing
         val user = Await.result(futureUser, 1.second)
         user must beEqualTo(User(connectedUser))
       }
 
       "cache with expiry" in withCache { cache =>
         val connectedUser = "xf"
-        //#set-value-expiration
+        // #set-value-expiration
         import scala.concurrent.duration._
 
         val result: Future[Done] = cache.set("item.key", connectedUser, 5.minutes)
-        //#set-value-expiration
+        // #set-value-expiration
         Await.result(result, 1.second)
         ok
       }
@@ -129,9 +129,7 @@ package scalaguide.cache {
     }
 
     def testAction[A](action: EssentialAction, request: => Request[A] = FakeRequest(), expectedResponse: Int = OK) = {
-      assertAction(action, request, expectedResponse) { result =>
-        success
-      }
+      assertAction(action, request, expectedResponse) { result => success }
     }
 
     def assertAction[A, T: AsResult](
@@ -158,9 +156,10 @@ package scalaguide.cache {
 
   package inject {
 //#inject
+    import javax.inject.Inject
+
     import play.api.cache._
     import play.api.mvc._
-    import javax.inject.Inject
 
     class Application @Inject() (cache: AsyncCacheApi, cc: ControllerComponents) extends AbstractController(cc) {}
 //#inject
@@ -168,9 +167,10 @@ package scalaguide.cache {
 
   package qualified {
 //#qualified
+    import javax.inject.Inject
+
     import play.api.cache._
     import play.api.mvc._
-    import javax.inject.Inject
 
     class Application @Inject() (
         @NamedCache("session-cache") sessionCache: AsyncCacheApi,
@@ -181,36 +181,35 @@ package scalaguide.cache {
 
   package cachedaction {
 //#cached-action-app
-    import play.api.cache.Cached
     import javax.inject.Inject
+
+    import play.api.cache.Cached
 
     class Application @Inject() (cached: Cached, cc: ControllerComponents) extends AbstractController(cc) {}
 //#cached-action-app
 
     class Application1 @Inject() (cached: Cached, cc: ControllerComponents)(implicit ec: ExecutionContext)
         extends AbstractController(cc) {
-      //#cached-action
+      // #cached-action
       def index = cached("homePage") {
         Action {
           Ok("Hello world")
         }
       }
-      //#cached-action
+      // #cached-action
 
       import play.api.mvc.Security._
 
-      //#composition-cached-action
+      // #composition-cached-action
       def userProfile = WithAuthentication(_.session.get("username")) { userId =>
         cached(req => "profile." + userId) {
           Action.async {
-            User.find(userId).map { user =>
-              Ok(views.html.profile(user))
-            }
+            User.find(userId).map { user => Ok(views.html.profile(user)) }
           }
         }
       }
-      //#composition-cached-action
-      //#cached-action-control
+      // #composition-cached-action
+      // #cached-action-control
       def get(index: Int) = cached.status(_ => "/resource/" + index, 200) {
         Action {
           if (index > 0) {
@@ -220,10 +219,10 @@ package scalaguide.cache {
           }
         }
       }
-      //#cached-action-control
+      // #cached-action-control
     }
     class Application2 @Inject() (cached: Cached, cc: ControllerComponents) extends AbstractController(cc) {
-      //#cached-action-control-404
+      // #cached-action-control-404
       def get(index: Int) = {
         val caching = cached
           .status(_ => "/resource/" + index, 200)
@@ -239,7 +238,7 @@ package scalaguide.cache {
           }
         }
       }
-      //#cached-action-control-404
+      // #cached-action-control-404
     }
   }
 

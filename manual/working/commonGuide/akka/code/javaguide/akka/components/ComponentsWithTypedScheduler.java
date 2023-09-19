@@ -1,5 +1,5 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package javaguide.akka.components;
@@ -9,8 +9,8 @@ import play.ApplicationLoader;
 import play.BuiltInComponentsFromContext;
 import play.components.AkkaTypedComponents;
 import play.controllers.AssetsComponents;
-import play.routing.Router;
 import play.filters.components.HttpFiltersComponents;
+import play.routing.Router;
 
 public class ComponentsWithTypedScheduler extends BuiltInComponentsFromContext
     implements AkkaTypedComponents, AssetsComponents, HttpFiltersComponents {

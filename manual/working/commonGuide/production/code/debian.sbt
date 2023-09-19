@@ -1,14 +1,12 @@
-//
-// Copyright (C) Lightbend Inc. <https://www.lightbend.com>
-//
+// Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
 
 //#debian
 lazy val root = (project in file("."))
   .enablePlugins(PlayScala, DebianPlugin)
 
-maintainer in Linux := "First Lastname <first.last@example.com>"
+Linux / maintainer := "First Lastname <first.last@example.com>"
 
-packageSummary in Linux := "My custom package summary"
+Linux / packageSummary := "My custom package summary"
 
 packageDescription := "My longer package description"
 //#debian

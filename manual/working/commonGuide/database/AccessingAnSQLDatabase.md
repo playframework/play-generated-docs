@@ -1,4 +1,5 @@
-<!--- Copyright (C) Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com> -->
+
 # Accessing an SQL database
 
 > **NOTE**: JDBC is a blocking operation that will cause threads to wait.  You can negatively impact the performance of your Play application by running JDBC queries directly in your controller!  Please see the "Configuring a CustomExecutionContext" section.
@@ -109,7 +110,7 @@ db.default.password="a strong password"
 
 ### Exposing the datasource through JNDI
 
-Some libraries expect to retrieve the `Datasource` reference from [JNDI](https://docs.oracle.com/javase/tutorial/jndi/overview/index.html). You can expose any Play managed datasource via JDNI by adding this configuration in `conf/application.conf`:
+Some libraries expect to retrieve the `Datasource` reference from [JNDI](https://docs.oracle.com/javase/tutorial/jndi/overview/index.html). You can expose any Play managed datasource via JNDI by adding this configuration in `conf/application.conf`:
 
 ```properties
 db.default.driver=org.h2.Driver

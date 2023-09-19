@@ -1,5 +1,5 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 package scalaguide.slick
 package di
@@ -20,7 +20,7 @@ class Application @Inject() (protected val dbConfigProvider: DatabaseConfigProvi
     ec: ExecutionContext
 ) extends AbstractController(cc)
     with HasDatabaseConfigProvider[JdbcProfile] {
-  //#di-database-config
+  // #di-database-config
 
   import profile.api._
 
@@ -38,5 +38,5 @@ class Application2 @Inject() (
 )(implicit ec: ExecutionContext)
     extends AbstractController(cc)
     with HasDatabaseConfigProvider[JdbcProfile] {
-  //#named-di-database-config
+  // #named-di-database-config
 }

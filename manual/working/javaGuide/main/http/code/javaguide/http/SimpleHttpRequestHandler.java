@@ -1,19 +1,18 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package javaguide.advanced.httprequesthandlers;
 
 // #simple
 import javax.inject.Inject;
-
-import play.routing.Router;
 import play.api.mvc.Handler;
-import play.http.*;
-import play.mvc.*;
-import play.libs.streams.Accumulator;
 import play.core.j.JavaHandler;
 import play.core.j.JavaHandlerComponents;
+import play.http.*;
+import play.libs.streams.Accumulator;
+import play.mvc.*;
+import play.routing.Router;
 
 public class SimpleHttpRequestHandler implements HttpRequestHandler {
   private final Router router;

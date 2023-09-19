@@ -1,4 +1,5 @@
-<!--- Copyright (C) 2009-2013 Typesafe Inc. <http://www.typesafe.com> -->
+<!--- Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com> -->
+
 # The template engine
 
 ## A type safe template engine based on Scala
@@ -168,7 +169,7 @@ For example to output raw HTML:
 
 ## String interpolation
 
-The template engine can be used as a [string interpolator](http://docs.scala-lang.org/overviews/core/string-interpolation.html). You basically trade the “@” for a “$”:
+The template engine can be used as a [string interpolator](https://docs.scala-lang.org/overviews/core/string-interpolation.html). You basically trade the “@” for a “$”:
 
 @[string-interpolation](code/ScalaTemplates.scala)
 

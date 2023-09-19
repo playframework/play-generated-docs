@@ -1,4 +1,5 @@
-<!--- Copyright (C) Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com> -->
+
 # Integrating with Akka Typed
 
 Akka 2.6 marked the new typed Actor API ("Akka Typed") as stable. The typed API is now officially the main API for Akka. In the typed API, each actor needs to declares which message type it is able to handle and the type system enforces that only messages of this type can be sent to the actor. Although Play does not fully adopt Akka Typed, we already provide some APIs to better integrate it in Play applications.

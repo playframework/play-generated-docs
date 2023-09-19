@@ -1,4 +1,4 @@
-<!--- Copyright (C) Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com> -->
 # JSON basics
 
 Modern web applications often need to parse and generate data in the JSON (JavaScript Object Notation) format. Play supports this via its [JSON library](api/scala/play/api/libs/json/index.html).
@@ -72,6 +72,10 @@ Represents a path into a `JsValue` structure, analogous to XPath for XML. This i
 `Json.obj` and `Json.arr` can simplify construction a bit. Note that most values don't need to be explicitly wrapped by JsValue classes, the factory methods use implicit conversion (more on this below).
 
 @[convert-from-factory](code/ScalaJsonSpec.scala)
+
+You also can use `Json.newBuilder` to create `JsObject`:
+
+@[object-builder](code/ScalaJsonSpec.scala)
 
 ### Using Writes converters
 
@@ -191,3 +195,9 @@ To convert from JsValue to a model, you must define implicit `Reads[T]` where `T
 @[sample-model](code/ScalaJsonSpec.scala)
 
 @[convert-to-model](code/ScalaJsonSpec.scala)
+
+### Using simple tuples
+
+Simple JSON object can be reads as and writes from simple tuples.
+
+@[handle-simple-tuples](code/ScalaJsonSpec.scala)

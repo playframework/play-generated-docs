@@ -1,11 +1,21 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package javaguide.cache;
 
+import static javaguide.testhelpers.MockJavaActionHelper.call;
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.*;
+import static play.test.Helpers.*;
+
 import akka.Done;
 import com.google.common.collect.ImmutableMap;
+import java.util.Collections;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
+import javaguide.testhelpers.MockJavaAction;
 import org.junit.Test;
 import play.Application;
 import play.cache.AsyncCacheApi;
@@ -13,19 +23,6 @@ import play.cache.Cached;
 import play.core.j.JavaHandlerComponents;
 import play.mvc.*;
 import play.test.WithApplication;
-
-import javaguide.testhelpers.MockJavaAction;
-
-import java.lang.Throwable;
-import java.util.Collections;
-import java.util.concurrent.CompletionStage;
-import java.util.concurrent.CompletableFuture;
-import java.util.Optional;
-
-import static javaguide.testhelpers.MockJavaActionHelper.call;
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
-import static play.test.Helpers.*;
 
 public class JavaCache extends WithApplication {
 

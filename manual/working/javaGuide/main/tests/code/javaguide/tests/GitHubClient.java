@@ -1,16 +1,15 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package javaguide.tests;
 
 // #client
+import com.fasterxml.jackson.databind.JsonNode;
 import java.util.*;
 import java.util.concurrent.CompletionStage;
 import java.util.stream.Collectors;
 import javax.inject.Inject;
-
-import com.fasterxml.jackson.databind.JsonNode;
 import play.libs.ws.WSClient;
 
 class GitHubClient {

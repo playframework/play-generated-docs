@@ -1,4 +1,5 @@
-<!--- Copyright (C) Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com> -->
+
 # Configuring Security Headers
 
 Play provides a security headers filter that can be used to configure some default headers in the HTTP response to mitigate security issues and provide an extra level of defense for new applications.
@@ -34,7 +35,7 @@ Any of the headers can be disabled by setting a configuration value of `null`, f
 play.filters.headers.frameOptions = null
 ```
 
-For a full listing of configuration options, see the Play filters [`reference.conf`](resources/confs/filters-helpers/reference.conf).
+For a full listing of configuration options, see the Play filters [`reference.conf`](resources/confs/play-filters-helpers/reference.conf).
 
 ## Action-specific overrides
 

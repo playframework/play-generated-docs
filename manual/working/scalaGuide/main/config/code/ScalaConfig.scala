@@ -1,22 +1,21 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package scalaguide.config
 
+import java.net.URI
 import javax.inject.Inject
 
 import com.typesafe.config.Config
 import org.junit.runner.RunWith
+import org.specs2.mutable.SpecificationLike
 import org.specs2.runner.JUnitRunner
-import play.api.ConfigLoader
-import play.api.Configuration
 import play.api.mvc._
 import play.api.test.Helpers
 import play.api.test.PlaySpecification
-import java.net.URI
-
-import org.specs2.mutable.SpecificationLike
+import play.api.ConfigLoader
+import play.api.Configuration
 
 @RunWith(classOf[JUnitRunner])
 class ScalaConfigSpec extends AbstractController(Helpers.stubControllerComponents()) with PlaySpecification {
@@ -42,7 +41,7 @@ class ScalaConfigSpec extends AbstractController(Helpers.stubControllerComponent
     }
 
     "get different types of keys" in {
-      //#config-get
+      // #config-get
 
       // foo = bar
       config.get[String]("foo")
@@ -56,11 +55,11 @@ class ScalaConfigSpec extends AbstractController(Helpers.stubControllerComponent
       // listOfFoos = ["bar", "baz"]
       config.get[Seq[String]]("listOfFoos")
 
-      //#config-get
+      // #config-get
 
-      //#config-validate
+      // #config-validate
       config.getAndValidate[String]("foo", Set("bar", "baz"))
-      //#config-validate
+      // #config-validate
 
       // check that a bad key doesn't work
       config.get[String]("bogus") must throwAn[Exception]
@@ -69,13 +68,13 @@ class ScalaConfigSpec extends AbstractController(Helpers.stubControllerComponent
     }
 
     "allow defining custom config loaders" in {
-      //#config-loader-get
+      // #config-loader-get
       // app.config = {
       //   title = "My App
       //   baseUri = "https://example.com/"
       // }
       config.get[AppConfig]("app.config")
-      //#config-loader-get
+      // #config-loader-get
 
       ok
     }

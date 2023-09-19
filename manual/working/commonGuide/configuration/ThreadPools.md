@@ -1,7 +1,8 @@
-<!--- Copyright (C) Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com> -->
+
 # Understanding Play thread pools
 
-Play Framework is, from the bottom up, an asynchronous web framework.  Streams are handled asynchronously using iteratees.  Thread pools in Play are tuned to use fewer threads than in traditional web frameworks, since IO in play-core never blocks.
+Play Framework is, from the bottom up, an asynchronous web framework. Thread pools in Play are tuned to use fewer threads than in traditional web frameworks, since IO in play-core never blocks.
 
 Because of this, if you plan to write blocking IO code, or code that could potentially do a lot of CPU intensive work, you need to know exactly which thread pool is bearing that workload, and you need to tune it accordingly.  Doing blocking IO without taking this into account is likely to result in very poor performance from Play Framework, for example, you may see only a few requests per second being handled, while CPU usage sits at 5%.  In comparison, benchmarks on typical development hardware (eg, a MacBook Pro) have shown Play to be able to handle workloads in the hundreds or even thousands of requests per second without a sweat when tuned correctly.
 
@@ -42,9 +43,9 @@ In most situations, the appropriate execution context to use will be the **Play 
 
 @[global-thread-pool](code/ThreadPools.scala)
 
-or using [`CompletionStage`](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletionStage.html) with an [`HttpExecutionContext`](api/java/play/libs/concurrent/HttpExecutionContext.html) in Java code:
+or using [`CompletionStage`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/concurrent/CompletionStage.html) with an [`ClassLoaderExecutionContext`](api/java/play/libs/concurrent/ClassLoaderExecutionContext.html) in Java code:
 
-@[http-execution-context](code/detailedtopics/httpec/MyController.java)
+@[cl-execution-context](code/detailedtopics/clec/MyController.java)
 
 This execution context connects directly to the Application's `ActorSystem` and uses Akka's [default dispatcher][akka-default-dispatcher].
 
@@ -88,7 +89,7 @@ Class loaders need special handling in a multithreaded environment such as a Pla
 
 ### Application class loader
 
-In a Play application the [thread context class loader](https://docs.oracle.com/javase/8/docs/api/java/lang/Thread.html#getContextClassLoader--) may not always be able to load application classes. You should explicitly use the application class loader to load classes.
+In a Play application the [thread context class loader](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Thread.html#getContextClassLoader\(\)) may not always be able to load application classes. You should explicitly use the application class loader to load classes.
 
 Java
 : @[using-app-classloader](code/detailedtopics/ThreadPoolsJava.java)
@@ -98,17 +99,17 @@ Scala
 
 Being explicit about loading classes is most important when running Play in development mode (using `run`) rather than production mode. That's because Play's development mode uses multiple class loaders so that it can support automatic application reloading. Some of Play's threads might be bound to a class loader that only knows about a subset of your application's classes.
 
-In some cases you may not be able to explicitly use the application classloader. This is sometimes the case when using third party libraries. In this case you may need to set the [thread context class loader](https://docs.oracle.com/javase/8/docs/api/java/lang/Thread.html#getContextClassLoader--) explicitly before you call the third party code. If you do, remember to restore the context class loader back to its previous value once you've finished calling the third party code.
+In some cases you may not be able to explicitly use the application classloader. This is sometimes the case when using third party libraries. In this case you may need to set the [thread context class loader](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Thread.html#getContextClassLoader\(\)) explicitly before you call the third party code. If you do, remember to restore the context class loader back to its previous value once you've finished calling the third party code.
 
 ### Switching threads
 
-The problem with class loaders however is that as soon as control switches to another thread, you lose access to the original class loader. So if you were to map a `CompletionStage` using `thenApplyAsync`, or using `thenApply` at a point in time after the `Future` associated with that `CompletionStage` had completed, and you then try to access the original class loader, it probably won't work .  To address this, Play provides an [`HttpExecutionContext`](api/java/play/libs/concurrent/HttpExecutionContext.html).  This allows you to capture the current class loader in an `Executor`, which you can then pass to the `CompletionStage` `*Async` methods such as `thenApplyAsync()`, and when the executor executes your callback, it will ensure the class loader remains in scope.
+The problem with class loaders however is that as soon as control switches to another thread, you lose access to the original class loader. So if you were to map a `CompletionStage` using `thenApplyAsync`, or using `thenApply` at a point in time after the `Future` associated with that `CompletionStage` had completed, and you then try to access the original class loader, it probably won't work .  To address this, Play provides an [`ClassLoaderExecutionContext`](api/java/play/libs/concurrent/ClassLoaderExecutionContext.html).  This allows you to capture the current class loader in an `Executor`, which you can then pass to the `CompletionStage` `*Async` methods such as `thenApplyAsync()`, and when the executor executes your callback, it will ensure the class loader remains in scope.
 
-To use the `HttpExecutionContext`, inject it into your component, and then pass the current execution context anytime a `CompletionStage` is interacted with.  For example:
+To use the `ClassLoaderExecutionContext`, inject it into your component, and then pass the current execution context anytime a `CompletionStage` is interacted with.  For example:
 
-@[http-execution-context](code/detailedtopics/httpec/MyController.java)
+@[cl-execution-context](code/detailedtopics/clec/MyController.java)
 
-If you have a custom executor, you can wrap it in an `HttpExecutionContext` simply by passing it to the `HttpExecutionContext`s constructor.
+If you have a custom executor, you can wrap it in an `ClassLoaderExecutionContext` simply by passing it to the `ClassLoaderExecutionContext`s constructor.
 
 ## Best practices
 

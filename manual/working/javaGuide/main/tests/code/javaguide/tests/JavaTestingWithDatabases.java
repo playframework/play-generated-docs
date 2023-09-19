@@ -1,22 +1,21 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package javaguide.tests;
 
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.*;
+
 import com.google.common.collect.ImmutableMap;
-
-import play.db.Database;
-import play.db.Databases;
-
-import play.db.evolutions.*;
-import org.junit.*;
-
 import java.sql.Connection;
 import java.sql.SQLException;
-
-import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
+import org.junit.*;
+import play.Environment;
+import play.api.db.evolutions.EnvironmentEvolutionsReader;
+import play.db.Database;
+import play.db.Databases;
+import play.db.evolutions.*;
 
 public class JavaTestingWithDatabases {
 
@@ -149,6 +148,29 @@ public class JavaTestingWithDatabases {
       Evolutions.applyEvolutions(
           database, Evolutions.fromClassLoader(getClass().getClassLoader(), "testdatabase/"));
       // #apply-evolutions-custom-path
+    } finally {
+      database.shutdown();
+    }
+  }
+
+  @Test
+  public void absoluteRelativePathEvolutions() throws Exception {
+    Database database = Databases.inMemory();
+    try {
+      // #apply-evolutions-absolute-relative-path
+      // ###insert: import play.Environment;
+      // ###insert: import play.api.db.evolutions.EnvironmentEvolutionsReader;
+
+      // Absolute path
+      Evolutions.applyEvolutions(
+          database,
+          new EnvironmentEvolutionsReader(Environment.simple().asScala(), "/opt/db_migration"));
+
+      // Relative path (based on your project's root folder)
+      Evolutions.applyEvolutions(
+          database,
+          new EnvironmentEvolutionsReader(Environment.simple().asScala(), "../db_migration"));
+      // #apply-evolutions-absolute-relative-path
     } finally {
       database.shutdown();
     }

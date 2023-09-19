@@ -1,14 +1,15 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package javaguide.binder.controllers;
 
 // #javascript-router-resource-imports
-import play.mvc.Http;
-import play.routing.JavaScriptReverseRouter;
 import play.mvc.Controller;
+import play.mvc.Http;
 import play.mvc.Result;
+import play.routing.JavaScriptReverseRouter;
+
 // #javascript-router-resource-imports
 
 public class Application extends Controller {

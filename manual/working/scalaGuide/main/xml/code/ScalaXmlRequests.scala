@@ -1,16 +1,17 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package scalaguide.xml.scalaxmlrequests {
-  import play.api.test._
+  import scala.language.postfixOps
+  import scala.xml.NodeSeq
+
   import org.junit.runner.RunWith
   import org.specs2.runner.JUnitRunner
-  import play.api.Application
   import play.api.mvc._
   import play.api.mvc.Results._
-
-  import scala.xml.NodeSeq
+  import play.api.test._
+  import play.api.Application
 
   @RunWith(classOf[JUnitRunner])
   class ScalaXmlRequestsSpec extends PlaySpecification {
@@ -22,68 +23,70 @@ package scalaguide.xml.scalaxmlrequests {
 
     "A scala XML request" should {
       "request body as xml" in new WithApplication {
-        //#xml-request-body-asXml
-        def sayHello = Action { request =>
-          request.body.asXml
-            .map { xml =>
-              (xml \\ "name" headOption)
+        override def running() = {
+          // #xml-request-body-asXml
+          def sayHello = Action { request =>
+            request.body.asXml
+              .map { xml =>
+                (xml \\ "name" headOption)
                 .map(_.text)
-                .map { name =>
-                  Ok("Hello " + name)
-                }
+                .map { name => Ok("Hello " + name) }
                 .getOrElse {
                   BadRequest("Missing parameter [name]")
                 }
-            }
-            .getOrElse {
-              BadRequest("Expecting Xml data")
-            }
+              }
+              .getOrElse {
+                BadRequest("Expecting Xml data")
+              }
+          }
+
+          // #xml-request-body-asXml
+
+          val request = FakeRequest().withXmlBody(<name>XF</name>).map(_.xml)
+          status(call(sayHello, request)) must beEqualTo(Helpers.OK)
         }
-
-        //#xml-request-body-asXml
-
-        private val request = FakeRequest().withXmlBody(<name>XF</name>).map(_.xml)
-        status(call(sayHello, request)) must beEqualTo(Helpers.OK)
       }
 
       "request body as xml body parser" in new WithApplication {
-        //#xml-request-body-parser
-        def sayHello = Action(parse.xml) { request =>
-          (request.body \\ "name" headOption)
+        override def running() = {
+          // #xml-request-body-parser
+          def sayHello = Action(parse.xml) { request =>
+            (request.body \\ "name" headOption)
             .map(_.text)
-            .map { name =>
-              Ok("Hello " + name)
-            }
+            .map { name => Ok("Hello " + name) }
             .getOrElse {
               BadRequest("Missing parameter [name]")
             }
+          }
+
+          // #xml-request-body-parser
+
+          val request = FakeRequest().withXmlBody(<name>XF</name>).map(_.xml)
+          status(call(sayHello, request)) must beEqualTo(Helpers.OK)
         }
-
-        //#xml-request-body-parser
-
-        private val request = FakeRequest().withXmlBody(<name>XF</name>).map(_.xml)
-        status(call(sayHello, request)) must beEqualTo(Helpers.OK)
       }
 
       "request body as xml body parser and xml response" in new WithApplication {
-        //#xml-request-body-parser-xml-response
-        def sayHello = Action(parse.xml) { request =>
-          (request.body \\ "name" headOption)
+        override def running() = {
+          // #xml-request-body-parser-xml-response
+          def sayHello = Action(parse.xml) { request =>
+            (request.body \\ "name" headOption)
             .map(_.text)
             .map { name =>
               Ok(<message status="OK">Hello
-              {name}
-            </message>)
+                  {name}
+                </message>)
             }
             .getOrElse {
               BadRequest(<message status="KO">Missing parameter [name]</message>)
             }
+          }
+
+          // #xml-request-body-parser-xml-response
+
+          val request = FakeRequest().withXmlBody(<name>XF</name>).map(_.xml)
+          status(call(sayHello, request)) must beEqualTo(Helpers.OK)
         }
-
-        //#xml-request-body-parser-xml-response
-
-        private val request = FakeRequest().withXmlBody(<name>XF</name>).map(_.xml)
-        status(call(sayHello, request)) must beEqualTo(Helpers.OK)
       }
     }
   }

@@ -1,4 +1,5 @@
-<!--- Copyright (C) Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com> -->
+
 # Building Play from source
 
 If you want to use some unreleased changes for Play, or you want to contribute to the development of Play yourself, you'll need to compile Play from the source code. You’ll need a [Git client](https://git-scm.com/) to fetch the source.
@@ -15,7 +16,7 @@ From the shell, first checkout the Play source:
 $ git clone git://github.com/playframework/playframework.git
 ```
 
-Checkout the branch you want, `master` is the current development branch, while stable branches for major releases are named with a `.x`, for example, `2.8.x`.
+Checkout the branch you want, `main` is the current development branch, while stable branches for major releases are named with a `.x`, for example, `2.8.x`.
 
 Now run `sbt`:
 
@@ -38,7 +39,7 @@ This will build and publish Play for the default Scala version. If you want to p
 Or to publish for a specific Scala version:
 
 ```bash
-> ++ 2.13.6 publishLocal
+> ++ 2.13.12 publishLocal
 ```
 
 ## Build the documentation

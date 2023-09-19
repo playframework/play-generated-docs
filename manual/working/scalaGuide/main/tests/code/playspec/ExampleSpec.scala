@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009-2016 Typesafe Inc. <http://www.typesafe.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 package scalaguide.tests.scalatest.playspec
 
@@ -44,7 +44,7 @@ class ExampleSpec extends PlaySpec with GuiceOneServerPerSuite with ScalaFutures
 
     "wsUrl works correctly" in {
       implicit val ws: WSClient = app.injector.instanceOf(classOf[WSClient])
-      val futureResult          = wsUrl("/testing").get
+      val futureResult          = wsUrl("/testing").get()
       val body                  = futureResult.futureValue.body
       val expectedBody =
         """
@@ -61,7 +61,7 @@ class ExampleSpec extends PlaySpec with GuiceOneServerPerSuite with ScalaFutures
 
     "wsCall works correctly" in {
       implicit val ws: WSClient = app.injector.instanceOf(classOf[WSClient])
-      val futureResult          = wsCall(Call("get", "/testing")).get
+      val futureResult          = wsCall(Call("get", "/testing")).get()
       val body                  = futureResult.futureValue.body
       val expectedBody =
         """

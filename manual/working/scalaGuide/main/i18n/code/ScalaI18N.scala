@@ -1,5 +1,5 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package scalaguide.i18n.scalai18n {
@@ -19,8 +19,9 @@ package scalaguide.i18n.scalai18n {
     }
   }
 
-  //#i18n-messagescontroller
+  // #i18n-messagescontroller
   import javax.inject.Inject
+
   import play.api.i18n._
 
   class MyMessagesController @Inject() (mcc: MessagesControllerComponents) extends MessagesAbstractController(mcc) {
@@ -41,30 +42,31 @@ package scalaguide.i18n.scalai18n {
       Ok(views.html.formpage())
     }
   }
-  //#i18n-messagescontroller
+  // #i18n-messagescontroller
 
-  //#i18n-support
+  // #i18n-support
   import javax.inject.Inject
+
   import play.api.i18n._
 
   class MySupportController @Inject() (val controllerComponents: ControllerComponents)
       extends BaseController
       with I18nSupport {
-    def index = Action { implicit request =>
+    def index: Action[AnyContent] = Action { implicit request =>
       // type enrichment through I18nSupport
       val messages: Messages = request.messages
       val message: String    = messages("info.error")
       Ok(message)
     }
 
-    def messages2 = Action { implicit request =>
+    def messages2: Action[AnyContent] = Action { implicit request =>
       // type enrichment through I18nSupport
       val lang: Lang      = request.lang
       val message: String = messagesApi("info.error")(lang)
       Ok(message)
     }
 
-    def messages3 = Action { request =>
+    def messages3: Action[AnyContent] = Action { request =>
       // direct access with no implicits required
       val messages: Messages = messagesApi.preferred(request)
       val lang               = messages.lang
@@ -72,13 +74,13 @@ package scalaguide.i18n.scalai18n {
       Ok(message)
     }
 
-    def messages4 = Action { implicit request =>
+    def messages4: Action[AnyContent] = Action { implicit request =>
       // takes implicit Messages, converted using request2messages
       // template defined with @()(implicit messages: Messages)
       Ok(views.html.formpage())
     }
   }
-  //#i18n-support
+  // #i18n-support
 
   @RunWith(classOf[JUnitRunner])
   class ScalaI18nSpec extends AbstractController(Helpers.stubControllerComponents()) with PlaySpecification {
@@ -86,19 +88,23 @@ package scalaguide.i18n.scalai18n {
 
     "An i18nsupport controller" should {
       "return the right message" in new WithApplication(GuiceApplicationBuilder().loadConfig(conf).build()) {
-        val controller = app.injector.instanceOf[MySupportController]
+        override def running() = {
+          val controller = app.injector.instanceOf[MySupportController]
 
-        val result = controller.index(FakeRequest())
-        contentAsString(result) must contain("You aren't logged in!")
+          val result = controller.index(FakeRequest())
+          contentAsString(result) must contain("You aren't logged in!")
+        }
       }
     }
 
     "An messages controller" should {
       "return the right message" in new WithApplication(GuiceApplicationBuilder().loadConfig(conf).build()) {
-        val controller = app.injector.instanceOf[MyMessagesController]
+        override def running() = {
+          val controller = app.injector.instanceOf[MyMessagesController]
 
-        val result = controller.index(FakeRequest())
-        contentAsString(result) must contain("You aren't logged in!")
+          val result = controller.index(FakeRequest())
+          contentAsString(result) must contain("You aren't logged in!")
+        }
       }
     }
 
@@ -111,15 +117,15 @@ package scalaguide.i18n.scalai18n {
       implicit val lang = Lang("en")
 
       "escape single quotes" in {
-        //#apostrophe-messages
+        // #apostrophe-messages
         messagesApi("info.error") == "You aren't logged in!"
-        //#apostrophe-messages
+        // #apostrophe-messages
       }
 
       "escape parameter substitution" in {
-        //#parameter-escaping
+        // #parameter-escaping
         messagesApi("example.formatting") == "When using MessageFormat, '{0}' is replaced with the first parameter."
-        //#parameter-escaping
+        // #parameter-escaping
       }
     }
   }

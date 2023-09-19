@@ -1,5 +1,5 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package scalaguide.akka.typed.oo
@@ -7,14 +7,15 @@ package multi
 
 import javax.inject.Inject
 import javax.inject.Provider
-import akka.actor.ActorSystem
+
 import akka.actor.typed.scaladsl.adapter._
 import akka.actor.typed.ActorRef
+import akka.actor.ActorSystem
+import com.google.inject.name.Names
 import com.google.inject.AbstractModule
 import com.google.inject.TypeLiteral
-import com.google.inject.name.Names
-import play.api.Configuration
 import play.api.libs.concurrent.AkkaGuiceSupport
+import play.api.Configuration
 
 object AppModule extends AbstractModule with AkkaGuiceSupport {
   override def configure() = {

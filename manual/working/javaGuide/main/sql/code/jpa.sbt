@@ -1,11 +1,9 @@
-//
-// Copyright (C) Lightbend Inc. <https://www.lightbend.com>
-//
+// Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
 
 //#jpa-sbt-dependencies
 libraryDependencies ++= Seq(
   javaJpa,
-  "org.hibernate" % "hibernate-core" % "5.4.27.Final" // replace by your jpa implementation
+  "org.hibernate" % "hibernate-core" % "6.3.0.Final" // replace by your jpa implementation
 )
 //#jpa-sbt-dependencies
 

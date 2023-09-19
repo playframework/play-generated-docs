@@ -1,20 +1,19 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package javaguide.akka.typed;
 
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.*;
+
 import com.google.inject.Module;
+import java.util.Collections;
 import org.junit.Test;
 import play.ApplicationLoader;
 import play.Environment;
 import play.inject.Injector;
 import play.inject.guice.GuiceApplicationBuilder;
-
-import java.util.Collections;
-
-import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
 
 public final class AkkaTypedDocTest {
   @Test

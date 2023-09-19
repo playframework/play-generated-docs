@@ -1,19 +1,17 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package javaguide.detailed.filters;
 
 // #filters-combine-enabled-filters
+import java.util.ArrayList;
+import java.util.List;
+import javax.inject.Inject;
 import play.api.http.EnabledFilters;
 import play.filters.cors.CORSFilter;
 import play.http.DefaultHttpFilters;
 import play.mvc.EssentialFilter;
-
-import javax.inject.Inject;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class Filters extends DefaultHttpFilters {
 

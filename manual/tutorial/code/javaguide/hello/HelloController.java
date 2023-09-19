@@ -1,13 +1,11 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package javaguide.hello;
 
-import controllers.AssetsFinder;
-import play.mvc.*;
-
 import javax.inject.Inject;
+import play.mvc.*;
 
 public class HelloController extends Controller {
 
@@ -16,9 +14,8 @@ public class HelloController extends Controller {
 
   // #hello-world-index-action
   public Result index() {
-    // ###replace:        return ok(views.html.index.render("Your new application is
-    // ready."));
-    return ok(javaguide.hello.html.index.render("Your new application is ready."));
+    // ###replace: return ok(views.html.index.render("Your app is ready."));
+    return ok(javaguide.hello.html.index.render("Your app is ready."));
   }
   // #hello-world-index-action
 

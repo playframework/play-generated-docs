@@ -1,22 +1,20 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package detailedtopics.configuration.gzipencoding;
 
 import akka.stream.Materializer;
-import play.mvc.EssentialFilter;
-import play.filters.gzip.GzipFilter;
-import play.filters.gzip.GzipFilterConfig;
-import play.http.HttpFilters;
-import play.mvc.Http;
-import play.mvc.Result;
-
-import javax.inject.Inject;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.BiFunction;
+import javax.inject.Inject;
+import play.filters.gzip.GzipFilter;
+import play.filters.gzip.GzipFilterConfig;
+import play.http.HttpFilters;
+import play.mvc.EssentialFilter;
+import play.mvc.Http;
+import play.mvc.Result;
 
 public class CustomFilters implements HttpFilters {
 

@@ -1,18 +1,20 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package scalaguide.http.routing
 
 import org.specs2.mutable.Specification
-import play.api.test.FakeRequest
 import play.api.mvc._
-import play.api.test.Helpers._
-import play.api.test._
 import play.api.routing.Router
+import play.api.test._
+import play.api.test.FakeRequest
+import play.api.test.Helpers._
 
 package controllers {
   import javax.inject.Inject
+
+  import play.api.libs.json.JsValue
 
   object Client {
     def findById(id: Long) = Some("showing client " + id)
@@ -23,9 +25,7 @@ package controllers {
     def show(id: Long) = Action {
       Client
         .findById(id)
-        .map { client =>
-          Ok(views.html.Clients.display(client))
-        }
+        .map { client => Ok(views.html.Clients.display(client)) }
         .getOrElse(NotFound)
     }
     // #show-client-action
@@ -42,9 +42,7 @@ package controllers {
     // #show-page-action
     def show(page: String) = Action {
       loadContentFromDatabase(page)
-        .map { htmlContent =>
-          Ok(htmlContent).as("text/html")
-        }
+        .map { htmlContent => Ok(htmlContent).as("text/html") }
         .getOrElse(NotFound)
     }
     // #show-page-action
@@ -55,12 +53,10 @@ package controllers {
   }
 
   class Api @Inject() (cc: ControllerComponents) extends AbstractController(cc) {
-    def list(version: Option[String])   = Action(Ok("version " + version))
-    def listItems(params: List[String]) = Action(Ok("params " + params.mkString(",")))
-    def listIntItems(params: List[Int]) = Action(Ok("params " + params.mkString(",")))
-    def newThing = Action(parse.json) { request =>
-      Ok(request.body)
-    }
+    def list(version: Option[String])                       = Action(Ok("version " + version))
+    def listItems(params: List[String]): Action[AnyContent] = Action(Ok("params " + params.mkString(",")))
+    def listIntItems(params: List[Int])                     = Action(Ok("params " + params.mkString(",")))
+    def newThing: Action[JsValue]                           = Action(parse.json) { request => Ok(request.body) }
   }
 }
 

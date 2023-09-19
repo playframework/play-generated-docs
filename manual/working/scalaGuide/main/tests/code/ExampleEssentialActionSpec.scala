@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009-2016 Typesafe Inc. <http://www.typesafe.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 package scalaguide.tests.scalatest
 
@@ -15,8 +15,8 @@ import play.api.test._
 // #scalatest-exampleessentialactionspec
 class ExampleEssentialActionSpec extends PlaySpec with GuiceOneAppPerSuite {
 
-  implicit lazy val materializer: Materializer = app.materializer
-  implicit lazy val Action                     = app.injector.instanceOf(classOf[DefaultActionBuilder])
+  implicit lazy val materializer: Materializer   = app.materializer
+  implicit lazy val Action: DefaultActionBuilder = app.injector.instanceOf(classOf[DefaultActionBuilder])
 
   "An essential action" should {
     "can parse a JSON body" in {

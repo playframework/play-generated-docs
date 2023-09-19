@@ -1,18 +1,17 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package scalaguide.tests.specs2
 
-import play.api.test._
-
-import org.specs2.execute.Result
 import org.specs2.execute.AsResult
+import org.specs2.execute.Result
+import play.api.test._
 
 class WithDbDataSpec extends PlaySpecification {
   // #scalafunctionaltest-withdbdata
   abstract class WithDbData extends WithApplication {
-    override def around[T: AsResult](t: => T): Result = super.around {
+    override def wrap[T: AsResult](t: => T): Result = super.wrap {
       setupData()
       t
     }
@@ -24,10 +23,14 @@ class WithDbDataSpec extends PlaySpecification {
 
   "Computer model" should {
     "be retrieved by id" in new WithDbData {
-      // your test code
+      override def running() = {
+        // your test code
+      }
     }
     "be retrieved by email" in new WithDbData {
-      // your test code
+      override def running() = {
+        // your test code
+      }
     }
   }
   // #scalafunctionaltest-withdbdata

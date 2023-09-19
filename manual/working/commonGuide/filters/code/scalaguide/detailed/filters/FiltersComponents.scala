@@ -1,20 +1,20 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package scalaguide.detailed.filters
 
 // #appending-filters-compile-time-di
 import akka.util.ByteString
-import play.api.ApplicationLoader
-import play.api.BuiltInComponentsFromContext
-import play.api.NoHttpFiltersComponents
 import play.api.libs.streams.Accumulator
 import play.api.mvc.EssentialAction
 import play.api.mvc.EssentialFilter
 import play.api.mvc.RequestHeader
 import play.api.mvc.Result
 import play.api.routing.Router
+import play.api.ApplicationLoader
+import play.api.BuiltInComponentsFromContext
+import play.api.NoHttpFiltersComponents
 import play.filters.csrf.CSRFFilter
 
 // ###replace: class MyAppComponents(context: ApplicationLoader.Context)

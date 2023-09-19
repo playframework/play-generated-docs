@@ -1,4 +1,5 @@
-<!--- Copyright (C) Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com> -->
+
 # Configuring gzip encoding
 
 Play provides a gzip filter that can be used to gzip responses.
@@ -13,12 +14,12 @@ play.filters.enabled += "play.filters.gzip.GzipFilter"
 
 ## Configuring the gzip filter
 
-The gzip filter supports a small number of tuning configuration options, which can be configured from `application.conf`.  To see the available configuration options, see the Play filters [`reference.conf`](resources/confs/filters-helpers/reference.conf).
+The gzip filter supports a small number of tuning configuration options, which can be configured from `application.conf`.  To see the available configuration options, see the Play filters [`reference.conf`](resources/confs/play-filters-helpers/reference.conf).
 
 
 ## Compression Level
 
-You can configure the compression level by using `play.filters.gzip.compressionLevel`. The values must be between `-1` and `9`, inclusive, and they follow the semantics defined by [`java.util.zip.Deflater`](https://docs.oracle.com/javase/8/docs/api/java/util/zip/Deflater.html). For example, the default configuration is `-1`, which is the [default compression level](https://docs.oracle.com/javase/8/docs/api/java/util/zip/Deflater.html#DEFAULT_COMPRESSION) and `9` is the [best compression](https://docs.oracle.com/javase/8/docs/api/java/util/zip/Deflater.html#BEST_COMPRESSION). For example:
+You can configure the compression level by using `play.filters.gzip.compressionLevel`. The values must be between `-1` and `9`, inclusive, and they follow the semantics defined by [`java.util.zip.Deflater`](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/zip/Deflater.html). For example, the default configuration is `-1`, which is the [default compression level](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/zip/Deflater.html#DEFAULT_COMPRESSION) and `9` is the [best compression](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/zip/Deflater.html#BEST_COMPRESSION). For example:
 
 ```
 play.filters.gzip.compressionLevel = 9

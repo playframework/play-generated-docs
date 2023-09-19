@@ -1,28 +1,27 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package scalaguide.forms.scalaforms {
-  import javax.inject.Inject
-
   import java.net.URL
-
-  import play.api.Configuration
-  import play.api.Environment
-  import play.api.i18n._
-
-  import scalaguide.forms.scalaforms.controllers.routes
-  import play.api.mvc._
-  import play.api.test.WithApplication
-  import play.api.test._
-  import play.api.test._
-  import org.specs2.mutable.Specification
-  import org.junit.runner.RunWith
-  import org.specs2.runner.JUnitRunner
+  import javax.inject.Inject
 
   import scala.concurrent.ExecutionContext
   import scala.concurrent.Future
 
+  import org.junit.runner.RunWith
+  import org.specs2.mutable.Specification
+  import org.specs2.runner.JUnitRunner
+  import play.api.i18n._
+  import play.api.libs.json.JsValue
+  import play.api.mvc._
+  import play.api.test._
+  import play.api.test.WithApplication
+  import play.api.Configuration
+  import play.api.Environment
+  import scalaguide.forms.scalaforms.controllers.routes
+
+// format: off
 // #form-imports
   import play.api.data._
   import play.api.data.Forms._
@@ -31,6 +30,7 @@ package scalaguide.forms.scalaforms {
 // #validation-imports
   import play.api.data.validation.Constraints._
 // #validation-imports
+// format: on
 
   @RunWith(classOf[JUnitRunner])
   class ScalaFormsSpec extends Specification with ControllerHelpers {
@@ -39,102 +39,121 @@ package scalaguide.forms.scalaforms {
 
     "A scala forms" should {
       "generate from map" in new WithApplication {
-        val controller = app.injector.instanceOf[controllers.Application]
-        val userForm   = controller.userForm
+        override def running() = {
+          val controller = app.injector.instanceOf[controllers.Application]
+          val userForm   = controller.userForm
 
-        //#userForm-generate-map
-        val anyData  = Map("name" -> "bob", "age" -> "21")
-        val userData = userForm.bind(anyData).get
-        //#userForm-generate-map
+          // #userForm-generate-map
+          val anyData  = Map("name" -> "bob", "age" -> "21")
+          val userData = userForm.bind(anyData).get
+          // #userForm-generate-map
 
-        userData.name === "bob"
+          userData.name === "bob"
+        }
       }
 
       "generate from request" in new WithApplication {
-        import play.api.libs.json.Json
-        import play.api.data.FormBinding.Implicits._
+        override def running() = {
+          import play.api.data.FormBinding.Implicits._
+          import play.api.libs.json.Json
 
-        val controller = app.injector.instanceOf[controllers.Application]
-        val userForm   = controller.userForm
+          val controller = app.injector.instanceOf[controllers.Application]
+          val userForm   = controller.userForm
 
-        val anyData          = Json.parse("""{"name":"bob","age":"21"}""")
-        implicit val request = FakeRequest().withBody(anyData)
-        //#userForm-generate-request
-        val userData = userForm.bindFromRequest.get
-        //#userForm-generate-request
+          val anyData                                = Json.parse("""{"name":"bob","age":"21"}""")
+          implicit val request: FakeRequest[JsValue] = FakeRequest().withBody(anyData)
+          // #userForm-generate-request
+          val userData = userForm.bindFromRequest().get
+          // #userForm-generate-request
 
-        userData.name === "bob"
+          userData.name === "bob"
+        }
       }
 
       "get user info from form" in new WithApplication {
-        val controller = app.injector.instanceOf[controllers.Application]
-        controller.userFormName === "bob"
-        controller.userFormVerifyName === "bob"
-        controller.userFormConstraintsName === "bob"
-        controller.userFormConstraints2Name === "bob"
-        controller.userFormConstraintsAdhocName === "bob"
-        controller.userFormNestedWorkCity === "Shanghai"
-        controller.userFormRepeatedEmails === List("benewu@gmail.com", "bob@gmail.com")
-        controller.userFormOptionalEmail === None
-        controller.userFormStaticId === 23
-        controller.userFormTupleName === "bob"
+        override def running() = {
+          val controller = app.injector.instanceOf[controllers.Application]
+          controller.userFormName === "bob"
+          controller.userFormVerifyName === "bob"
+          controller.userFormConstraintsName === "bob"
+          controller.userFormConstraints2Name === "bob"
+          controller.userFormConstraintsAdhocName === "bob"
+          controller.userFormNestedWorkCity === "Shanghai"
+          controller.userFormRepeatedEmails === List("benewu@gmail.com", "bob@gmail.com")
+          controller.userFormOptionalEmail === None
+          controller.userFormStaticId === 23
+          controller.userFormTupleName === "bob"
+        }
       }
 
       "handling form with errors" in new WithApplication {
-        val controller           = app.injector.instanceOf[controllers.Application]
-        val userFormConstraints2 = controller.userFormConstraints2
+        override def running() = {
+          val controller           = app.injector.instanceOf[controllers.Application]
+          val userFormConstraints2 = controller.userFormConstraints2
 
-        implicit val request = FakeRequest().withFormUrlEncodedBody("name" -> "", "age" -> "25")
+          implicit val request: FakeRequest[AnyContentAsFormUrlEncoded] =
+            FakeRequest().withFormUrlEncodedBody("name" -> "", "age" -> "25")
 
-        //#userForm-constraints-2-with-errors
-        val boundForm = userFormConstraints2.bind(Map("bob" -> "", "age" -> "25"))
-        boundForm.hasErrors must beTrue
-        //#userForm-constraints-2-with-errors
+          // #userForm-constraints-2-with-errors
+          val boundForm = userFormConstraints2.bind(Map("bob" -> "", "age" -> "25"))
+          boundForm.hasErrors must beTrue
+          // #userForm-constraints-2-with-errors
+        }
       }
 
       "handling binding failure" in new WithApplication {
-        val controller = app.injector.instanceOf[controllers.Application]
-        val userForm   = controller.userFormConstraints
+        override def running() = {
+          val controller = app.injector.instanceOf[controllers.Application]
+          val userForm   = controller.userFormConstraints
 
-        implicit val request = FakeRequest().withFormUrlEncodedBody("name" -> "", "age" -> "25")
-        import play.api.data.FormBinding.Implicits._
+          implicit val request: FakeRequest[AnyContentAsFormUrlEncoded] =
+            FakeRequest().withFormUrlEncodedBody("name" -> "", "age" -> "25")
+          import play.api.data.FormBinding.Implicits._
 
-        val boundForm = userForm.bindFromRequest
-        boundForm.hasErrors must beTrue
+          val boundForm = userForm.bindFromRequest()
+          boundForm.hasErrors must beTrue
+        }
       }
 
       "display global errors user template" in new WithApplication {
-        val controller = app.injector.instanceOf[controllers.Application]
-        val userForm   = controller.userFormConstraintsAdHoc
+        override def running() = {
+          val controller = app.injector.instanceOf[controllers.Application]
+          val userForm   = controller.userFormConstraintsAdHoc
 
-        import play.api.data.FormBinding.Implicits._
-        implicit val request = FakeRequest().withFormUrlEncodedBody("name" -> "Johnny Utah", "age" -> "25")
+          import play.api.data.FormBinding.Implicits._
+          implicit val request: FakeRequest[AnyContentAsFormUrlEncoded] =
+            FakeRequest().withFormUrlEncodedBody("name" -> "Johnny Utah", "age" -> "25")
 
-        val boundForm = userForm.bindFromRequest
-        boundForm.hasGlobalErrors must beTrue
+          val boundForm = userForm.bindFromRequest()
+          boundForm.hasGlobalErrors must beTrue
 
-        val html = views.html.user(boundForm)
-        html.body must contain("Failed form constraints!")
+          val html = views.html.user(boundForm)
+          html.body must contain("Failed form constraints!")
+        }
       }
 
       "map single values" in new WithApplication {
-        //#form-single-value
-        val singleForm = Form(
-          single(
-            "email" -> email
+        override def running() = {
+          // #form-single-value
+          val singleForm = Form(
+            single(
+              "email" -> email
+            )
           )
-        )
 
-        val emailValue = singleForm.bind(Map("email" -> "bob@example.com")).get
-        //#form-single-value
-        emailValue must beEqualTo("bob@example.com")
+          val emailValue = singleForm.bind(Map("email" -> "bob@example.com")).get
+          // #form-single-value
+          emailValue must beEqualTo("bob@example.com")
+        }
       }
 
       "fill selects with options and set their defaults" in new WithApplication {
-        val controller = app.injector.instanceOf[controllers.Application]
-        val boundForm  = controller.filledAddressSelectForm
-        val html       = views.html.select(boundForm)
-        html.body must contain("option value=\"London\" selected")
+        override def running() = {
+          val controller = app.injector.instanceOf[controllers.Application]
+          val boundForm  = controller.filledAddressSelectForm
+          val html       = views.html.select(boundForm)
+          html.body must contain("option value=\"London\" selected")
+        }
       }
     }
   }
@@ -149,29 +168,54 @@ package scalaguide.forms.scalaforms {
 
 // We are sneaky and want these classes available without exposing our test package structure.
   package views.html {
+
+    import scalaguide.forms.scalafieldconstructor.html.models.User
+
 //#userData-define
     case class UserData(name: String, age: Int)
+    object UserData {
+      def unapply(u: UserData): Option[(String, Int)] = Some(u.name, u.age)
+    }
 //#userData-define
 
 // #userData-nested
     case class HomeAddressData(street: String, city: String)
+    object HomeAddressData {
+      def unapply(u: HomeAddressData): Option[(String, String)] = Some(u.street, u.city)
+    }
 
     case class WorkAddressData(street: String, city: String)
+    object WorkAddressData {
+      def unapply(w: WorkAddressData): Option[(String, String)] = Some(w.street, w.city)
+    }
 
     case class UserAddressData(name: String, homeAddress: HomeAddressData, workAddress: WorkAddressData)
+    object UserAddressData {
+      def unapply(u: UserAddressData): Option[(String, HomeAddressData, WorkAddressData)] =
+        Some(u.name, u.homeAddress, u.workAddress)
+    }
 
 // #userData-nested
 
 // #userListData
     case class UserListData(name: String, emails: List[String])
+    object UserListData {
+      def unapply(u: UserListData): Option[(String, List[String])] = Some(u.name, u.emails)
+    }
 // #userListData
 
 // #userData-optional
     case class UserOptionalData(name: String, email: Option[String])
+    object UserOptionalData {
+      def unapply(u: UserOptionalData): Option[(String, Option[String])] = Some(u.name, u.email)
+    }
 // #userData-optional
 
 // #userData-custom-datatype
     case class UserCustomData(name: String, website: java.net.URL)
+    object UserCustomData {
+      def unapply(u: UserCustomData): Option[(String, java.net.URL)] = Some(u.name, u.website)
+    }
 // #userData-custom-datatype
   }
 
@@ -186,9 +230,15 @@ package scalaguide.forms.scalaforms {
 
     object Contact {
       def save(contact: Contact): Int = 99
+      def unapply(c: Contact): Option[(String, String, Option[String], Seq[ContactInformation])] =
+        Some(c.firstname, c.lastname, c.company, c.informations)
     }
 
     case class ContactInformation(label: String, email: Option[String], phones: List[String])
+    object ContactInformation {
+      def unapply(c: ContactInformation): Option[(String, Option[String], List[String])] =
+        Some(c.label, c.email, c.phones)
+    }
 // #contact-define
   }
 
@@ -199,46 +249,46 @@ package scalaguide.forms.scalaforms {
     class Application @Inject() (components: ControllerComponents)
         extends AbstractController(components)
         with I18nSupport {
-      //#userForm-define
+      // #userForm-define
       val userForm = Form(
         mapping(
           "name" -> text,
           "age"  -> number
         )(UserData.apply)(UserData.unapply)
       )
-      //#userForm-define
+      // #userForm-define
 
       def home(id: Int = 0) = Action {
         Ok("Welcome!")
       }
 
       // #form-render
-      def index = Action { implicit request =>
-        Ok(views.html.user(userForm))
-      }
+      def index: Action[AnyContent] = Action { implicit request => Ok(views.html.user(userForm)) }
       // #form-render
 
-      def userPostHandlingFailure() = Action { implicit request =>
+      def userPostHandlingFailure(): Action[AnyContent] = Action { implicit request =>
         val userForm = userFormConstraints
 
-        //#userForm-handling-failure
-        userForm.bindFromRequest.fold(
-          formWithErrors => {
-            // binding failure, you retrieve the form containing errors:
-            BadRequest(views.html.user(formWithErrors))
-          },
-          userData => {
-            /* binding success, you get the actual value. */
-            val newUser = models.User(userData.name, userData.age)
-            val id      = models.User.create(newUser)
-            Redirect(routes.Application.home(id))
-          }
-        )
-      //#userForm-handling-failure
+        // #userForm-handling-failure
+        userForm
+          .bindFromRequest()
+          .fold(
+            formWithErrors => {
+              // binding failure, you retrieve the form containing errors:
+              BadRequest(views.html.user(formWithErrors))
+            },
+            userData => {
+              /* binding success, you get the actual value. */
+              val newUser = models.User(userData.name, userData.age)
+              val id      = models.User.create(newUser)
+              Redirect(routes.Application.home(id))
+            }
+          )
+        // #userForm-handling-failure
       }
 
       // #form-bodyparser
-      val userPost = Action(parse.form(userForm)) { implicit request =>
+      val userPost: Action[UserData] = Action(parse.form(userForm)) { implicit request =>
         val userData = request.body
         val newUser  = models.User(userData.name, userData.age)
         val id       = models.User.create(newUser)
@@ -247,7 +297,7 @@ package scalaguide.forms.scalaforms {
       // #form-bodyparser
 
       // #form-bodyparser-errors
-      val userPostWithErrors = Action(
+      val userPostWithErrors: Action[UserData] = Action(
         parse.form(
           userForm,
           onErrors = (formWithErrors: Form[UserData]) => {
@@ -263,41 +313,39 @@ package scalaguide.forms.scalaforms {
       }
       // #form-bodyparser-errors
 
-      def submit = Action { implicit request =>
-        BadRequest("Not used")
-      }
+      def submit: Action[AnyContent] = Action { implicit request => BadRequest("Not used") }
 
       val userFormName = {
-        //#userForm-get
+        // #userForm-get
         val anyData        = Map("name" -> "bob", "age" -> "18")
         val user: UserData = userForm.bind(anyData).get
-        //#userForm-get
+        // #userForm-get
 
-        //#userForm-filled
+        // #userForm-filled
         val filledForm = userForm.fill(UserData("Bob", 18))
-        //#userForm-filled
+        // #userForm-filled
 
         user.name
       }
 
-      //#addressSelectForm-constraint
+      // #addressSelectForm-constraint
       val addressSelectForm: Form[HomeAddressData] = Form(
         mapping(
           "street" -> text,
           "city"   -> text
         )(HomeAddressData.apply)(HomeAddressData.unapply)
       )
-      //#addressSelectForm-constraint
+      // #addressSelectForm-constraint
 
       val filledAddressSelectForm = {
-        //#addressSelectForm-filled
+        // #addressSelectForm-filled
         val selectedFormValues = HomeAddressData(street = "Main St", city = "London")
         val filledForm         = addressSelectForm.fill(selectedFormValues)
-        //#addressSelectForm-filled
+        // #addressSelectForm-filled
         filledForm
       }
 
-      //#userForm-verify
+      // #userForm-verify
       val userFormVerify = Form(
         mapping(
           "name"   -> text,
@@ -305,7 +353,7 @@ package scalaguide.forms.scalaforms {
           "accept" -> checked("Please accept the terms and conditions")
         )((name, age, _) => UserData(name, age))((user: UserData) => Some(user.name, user.age, false))
       )
-      //#userForm-verify
+      // #userForm-verify
 
       val userFormVerifyName = {
         val anyData        = Map("name" -> "bob", "age" -> "18", "accept" -> "true")
@@ -313,14 +361,14 @@ package scalaguide.forms.scalaforms {
         user.name
       }
 
-      //#userForm-constraints
+      // #userForm-constraints
       val userFormConstraints = Form(
         mapping(
           "name" -> text.verifying(nonEmpty),
           "age"  -> number.verifying(min(0), max(100))
         )(UserData.apply)(UserData.unapply)
       )
-      //#userForm-constraints
+      // #userForm-constraints
 
       val userFormConstraintsName = {
         val anyData        = Map("name" -> "bob", "age" -> "18", "accept" -> "true")
@@ -328,14 +376,14 @@ package scalaguide.forms.scalaforms {
         user.name
       }
 
-      //#userForm-constraints-2
+      // #userForm-constraints-2
       val userFormConstraints2 = Form(
         mapping(
           "name" -> nonEmptyText,
           "age"  -> number(min = 0, max = 100)
         )(UserData.apply)(UserData.unapply)
       )
-      //#userForm-constraints-2
+      // #userForm-constraints-2
 
       val userFormConstraints2Name = {
         val anyData        = Map("name" -> "bob", "age" -> "18", "accept" -> "true")
@@ -343,7 +391,7 @@ package scalaguide.forms.scalaforms {
         user.name
       }
 
-      //#userForm-constraints-ad-hoc
+      // #userForm-constraints-ad-hoc
       def validate(name: String, age: Int) = {
         name match {
           case "bob" if age >= 18 =>
@@ -367,7 +415,7 @@ package scalaguide.forms.scalaforms {
             }
         )
       )
-      //#userForm-constraints-ad-hoc
+      // #userForm-constraints-ad-hoc
 
       val userFormConstraintsAdhocName = {
         val anyData  = Map("name" -> "bob", "age" -> "18")
@@ -375,7 +423,7 @@ package scalaguide.forms.scalaforms {
         formData.name
       }
 
-      //#userForm-nested
+      // #userForm-nested
       val userFormNested: Form[UserAddressData] = Form(
         mapping(
           "name" -> text,
@@ -389,7 +437,7 @@ package scalaguide.forms.scalaforms {
           )(WorkAddressData.apply)(WorkAddressData.unapply)
         )(UserAddressData.apply)(UserAddressData.unapply)
       )
-      //#userForm-nested
+      // #userForm-nested
 
       val userFormNestedWorkCity = {
         val anyData = Map(
@@ -403,14 +451,14 @@ package scalaguide.forms.scalaforms {
         user.workAddress.city
       }
 
-      //#userForm-repeated
+      // #userForm-repeated
       val userFormRepeated = Form(
         mapping(
           "name"   -> text,
           "emails" -> list(email)
         )(UserListData.apply)(UserListData.unapply)
       )
-      //#userForm-repeated
+      // #userForm-repeated
 
       val userFormRepeatedEmails = {
         val anyData = Map("name" -> "bob", "emails[0]" -> "benewu@gmail.com", "emails[1]" -> "bob@gmail.com")
@@ -419,14 +467,14 @@ package scalaguide.forms.scalaforms {
         user.emails
       }
 
-      //#userForm-optional
+      // #userForm-optional
       val userFormOptional = Form(
         mapping(
           "name"  -> text,
           "email" -> optional(email)
         )(UserOptionalData.apply)(UserOptionalData.unapply)
       )
-      //#userForm-optional
+      // #userForm-optional
 
       val userFormOptionalEmail = {
         val anyData = Map("name" -> "bob")
@@ -435,18 +483,21 @@ package scalaguide.forms.scalaforms {
         user.email
       }
 
-      //#userForm-default
+      // #userForm-default
       Form(
         mapping(
           "name" -> default(text, "Bob"),
           "age"  -> default(number, 18)
         )(UserData.apply)(UserData.unapply)
       )
-      //#userForm-default
+      // #userForm-default
 
       case class UserStaticData(id: Long, name: String, email: Option[String])
+      object UserStaticData {
+        def unapply(u: UserStaticData): Option[(Long, String, Option[String])] = Some(u.id, u.name, u.email)
+      }
 
-      //#userForm-static-value
+      // #userForm-static-value
       val userFormStatic = Form(
         mapping(
           "id"    -> ignored(23L),
@@ -454,26 +505,26 @@ package scalaguide.forms.scalaforms {
           "email" -> optional(email)
         )(UserStaticData.apply)(UserStaticData.unapply)
       )
-      //#userForm-static-value
+      // #userForm-static-value
 
-      //#userForm-custom-datatype
+      // #userForm-custom-datatype
       val userFormCustom = Form(
         mapping(
           "name"    -> text,
           "website" -> of[URL]
         )(UserCustomData.apply)(UserCustomData.unapply)
       )
-      //#userForm-custom-datatype
+      // #userForm-custom-datatype
 
-      //#userForm-custom-formatter
-      import play.api.data.format.Formatter
+      // #userForm-custom-formatter
       import play.api.data.format.Formats._
+      import play.api.data.format.Formatter
       implicit object UrlFormatter extends Formatter[URL] {
-        override val format                                       = Some(("format.url", Nil))
+        override val format: Option[(String, Seq[Any])]           = Some(("format.url", Nil))
         override def bind(key: String, data: Map[String, String]) = parsing(new URL(_), "error.url", Nil)(key, data)
         override def unbind(key: String, value: URL)              = Map(key -> value.toString)
       }
-      //#userForm-custom-formatter
+      // #userForm-custom-formatter
 
       val userFormStaticId = {
         val anyData = Map("id" -> "1", "name" -> "bob")
@@ -521,7 +572,7 @@ package scalaguide.forms.scalaforms {
       // #contact-form
 
       // #contact-edit
-      def editContact = Action { implicit request =>
+      def editContact: Action[AnyContent] = Action { implicit request =>
         val existingContact = Contact(
           "Fake",
           "Contact",
@@ -549,16 +600,18 @@ package scalaguide.forms.scalaforms {
       // #contact-edit
 
       // #contact-save
-      def saveContact = Action { implicit request =>
-        contactForm.bindFromRequest.fold(
-          formWithErrors => {
-            BadRequest(views.html.contact.form(formWithErrors))
-          },
-          contact => {
-            val contactId = Contact.save(contact)
-            Redirect(routes.Application.showContact(contactId)).flashing("success" -> "Contact saved!")
-          }
-        )
+      def saveContact: Action[AnyContent] = Action { implicit request =>
+        contactForm
+          .bindFromRequest()
+          .fold(
+            formWithErrors => {
+              BadRequest(views.html.contact.form(formWithErrors))
+            },
+            contact => {
+              val contactId = Contact.save(contact)
+              Redirect(routes.Application.showContact(contactId)).flashing("success" -> "Contact saved!")
+            }
+          )
       }
       // #contact-save
 
@@ -581,9 +634,7 @@ package scalaguide.forms.scalaforms {
         )(views.html.UserData.apply)(views.html.UserData.unapply)
       )
 
-      def index = Action { implicit request =>
-        Ok(views.html.user(userForm))
-      }
+      def index: Action[AnyContent] = Action { implicit request => Ok(views.html.user(userForm)) }
     }
 //#messages-controller
 
@@ -601,15 +652,13 @@ package scalaguide.forms.scalaforms {
         )(views.html.UserData.apply)(views.html.UserData.unapply)
       )
 
-      def index = messagesAction { implicit request: MessagesRequest[AnyContent] =>
-        Ok(views.html.messages(userForm))
-      }
+      def index = messagesAction { implicit request: MessagesRequest[AnyContent] => Ok(views.html.messages(userForm)) }
 
       def post = TODO
     }
 //#messages-request-controller
 
-    //#messages-abstract-controller
+    // #messages-abstract-controller
     // Form with Action extending MessagesAbstractController
     class MessagesFormController @Inject() (components: MessagesControllerComponents)
         extends MessagesAbstractController(components) {
@@ -623,12 +672,10 @@ package scalaguide.forms.scalaforms {
         )(views.html.UserData.apply)(views.html.UserData.unapply)
       )
 
-      def index = Action { implicit request: MessagesRequest[AnyContent] =>
-        Ok(views.html.messages(userForm))
-      }
+      def index = Action { implicit request: MessagesRequest[AnyContent] => Ok(views.html.messages(userForm)) }
 
       def post() = TODO
     }
-    //#messages-abstract-controller
+    // #messages-abstract-controller
   }
 }

@@ -1,20 +1,15 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package javaguide.ws;
 
 // #ws-streams-controller
-import javax.inject.Inject;
-
 import akka.stream.Materializer;
 import akka.stream.javadsl.*;
-import akka.util.ByteString;
-
-import play.mvc.*;
+import javax.inject.Inject;
 import play.libs.ws.*;
-
-import scala.compat.java8.FutureConverters;
+import play.mvc.*;
 
 public class MyController extends Controller {
 

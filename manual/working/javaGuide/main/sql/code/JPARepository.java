@@ -1,15 +1,14 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package javaguide.sql;
 
 // #jpa-repository-api-inject
-import play.db.jpa.JPAApi;
-
-import javax.inject.*;
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.concurrent.*;
+import javax.inject.*;
+import play.db.jpa.JPAApi;
 
 @Singleton
 public class JPARepository {

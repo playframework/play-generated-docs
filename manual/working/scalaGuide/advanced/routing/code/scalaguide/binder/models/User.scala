@@ -1,11 +1,12 @@
 /*
- * Copyright (C) Lightbend Inc. <https://www.lightbend.com>
+ * Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com>
  */
 
 package scalaguide.binder.models
 
 import scala.Left
 import scala.Right
+
 import play.api.mvc.PathBindable
 import play.api.Logging
 
@@ -22,17 +23,17 @@ object User extends Logging {
     Some(user)
   }
 
-  //#bind
-  implicit def pathBinder(implicit intBinder: PathBindable[Int]) = new PathBindable[User] {
+  // #bind
+  implicit def pathBinder(implicit intBinder: PathBindable[Int]): PathBindable[User] = new PathBindable[User] {
     override def bind(key: String, value: String): Either[String, User] = {
       for {
-        id   <- intBinder.bind(key, value).right
-        user <- User.findById(id).toRight("User not found").right
+        id   <- intBinder.bind(key, value)
+        user <- User.findById(id).toRight("User not found")
       } yield user
     }
     override def unbind(key: String, user: User): String = {
       user.id.toString
     }
   }
-  //#bind
+  // #bind
 }

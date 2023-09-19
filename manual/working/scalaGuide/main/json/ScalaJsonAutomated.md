@@ -1,4 +1,4 @@
-<!--- Copyright (C) Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com> -->
 # JSON automated mapping
 
 If the JSON maps directly to a class, we provide a handy macro so that you don't have to write the `Reads[T]`, `Writes[T]`, or `Format[T]` manually. Given the following case class:
@@ -30,16 +30,16 @@ And a complete example of automatically parsing JSON to a case class is:
 
 The [value classes](https://docs.scala-lang.org/overviews/core/value-classes.html) are also supported. Given the following value class, based on a `String` value:
 
-@[valueClass](code/ScalaJsonAutomatedSpec.scala)
+@[valueClass](code-2/Scala2JsonAutomatedSpec.scala)
 
 Then it's also possible to generate a `Reads[IdText]` using the following macro (as `String` is already supported):
 
-@[value-reads](code/ScalaJsonAutomatedSpec.scala)
+@[value-reads](code-2/Scala2JsonAutomatedSpec.scala)
 
 As for case classes, similar macros exists for a `Writes[T]` or a `Format[T]`:
 
-@[value-writes](code/ScalaJsonAutomatedSpec.scala)
-@[value-format](code/ScalaJsonAutomatedSpec.scala)
+@[value-writes](code-2/Scala2JsonAutomatedSpec.scala)
+@[value-format](code-2/Scala2JsonAutomatedSpec.scala)
 
 > Note: To be able to access JSON from `request.body.asJson`, the request must have a `Content-Type` header of `application/json`. You can relax this constraint by using the [[`tolerantJson` body parser|ScalaBodyParsers#Choosing-an-explicit-body-parser]].
 
@@ -49,9 +49,16 @@ The above example can be made even more concise by using body parsers with a typ
 
 The macros work for classes and traits meeting the following requirements.
 
+**Class in Scala 2.x:**
+
 - It must have a companion object having `apply` and `unapply` methods.
 - The return types of the `unapply` must match the argument types of the `apply` method.
 - The parameter names of the `apply` method must be the same as the property names desired in the JSON.
+
+**Class in Scala 3.1.x:** (+3.1.2-RC2)
+
+- It must be provided a [`Conversion`](https://dotty.epfl.ch/api/scala/Conversion.html) to a `_ <: Product`.
+- It must be provided a valid [`ProductOf`](https://dotty.epfl.ch/api/scala/deriving/Mirror$.html#ProductOf-0).
 
 Case classes automatically meet these requirements. For custom classes or traits, you might have to implement them.
 

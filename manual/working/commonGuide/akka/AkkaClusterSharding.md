@@ -1,4 +1,5 @@
-<!--- Copyright (C) Lightbend Inc. <https://www.lightbend.com> -->
+<!--- Copyright (C) from 2022 The Play Framework Contributors <https://github.com/playframework>, 2011-2021 Lightbend Inc. <https://www.lightbend.com> -->
+
 # Cluster Sharding for Akka Typed (incubating)
 
 Play provides an [incubating](https://developer.lightbend.com/docs/lightbend-platform/introduction/getting-help/support-terminology.html) module for integration with [Akka Cluster Sharding Typed](https://doc.akka.io/docs/akka/2.6/typed/cluster-sharding.html). To enable this module, add the following dependency to your build:
