@@ -2,7 +2,8 @@
 
 # Play 2.9 Migration Guide
 
-This guide is for migrating from Play 2.8 to Play 2.9. See the [[Play 2.8 Migration Guide|Migration28]] to upgrade from Play 2.7.
+* This guide is for migrating from Play 2.8 to Play 2.9. See the [[Play 2.8 Migration Guide|Migration28]] to upgrade from Play 2.7.
+* If you have completed this migration guide and want to proceed with migrating your application to [Play 3.0](https://www.playframework.com/documentation/latest/Highlights30) (built on Pekko and Pekko HTTP), please refer to the [Play 3.0 Migration Guide](https://www.playframework.com/documentation/latest/Migration30) for further instructions.
 
 ## How to migrate
 
@@ -42,7 +43,7 @@ In case you passed a `-javaagent:jetty-alpn-agent-*.jar` flag to your Play appli
 
 ### Upgrading Akka and Akka HTTP
 
-If you wish to upgrade beyond Akka 2.6 and Akka HTTP 10.2, you can do that with the assistance of our [[Play Scala|ScalaAkka#Updating-Akka-version]] or [[Play Java|JavaAkka#Updating-Akka-version]] update guides. We also strongly encourage you to review:
+If you wish to upgrade beyond Akka 2.6 and Akka HTTP 10.2, you can do that with the assistance of our [Play Scala](https://www.playframework.com/documentation/2.9.x/ScalaAkka#Updating-Akka-version) or [Play Java](https://www.playframework.com/documentation/2.9.x/JavaAkka#Updating-Akka-version) update guides. We also strongly encourage you to review:
 
 - [[How Play Deals with Akka’s License Change|General#How-Play-Deals-with-Akkas-License-Change]]
 

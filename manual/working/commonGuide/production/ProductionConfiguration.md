@@ -14,7 +14,7 @@ Each of these types have different methods to configure them.
 
 Play has a number of configurable settings. You can configure database connection URLs, the application secret, the HTTP port, SSL configuration, and so on.
 
-Most of Play's configuration is defined in various `.conf` files, which use the [HOCON format](https://github.com/typesafehub/config/blob/main/HOCON.md). The main configuration file that you'll use is the `application.conf` file. You can find this file at `conf/application.conf` within your project. The `application.conf` file is loaded from the classpath at runtime (or you can override where it is loaded from). There can only be one `application.conf` per project.
+Most of Play's configuration is defined in various `.conf` files, which use the [HOCON format](https://github.com/lightbend/config/blob/main/HOCON.md). The main configuration file that you'll use is the `application.conf` file. You can find this file at `conf/application.conf` within your project. The `application.conf` file is loaded from the classpath at runtime (or you can override where it is loaded from). There can only be one `application.conf` per project.
 
 Other `.conf` files are loaded too. Libraries define default settings in `reference.conf` files. These files are stored in the libraries' JARs—one `reference.conf` per JAR—and aggregated together at runtime. The `reference.conf` files provide defaults; they are overridden by any settings defined in the `application.conf` file.
 
@@ -119,11 +119,11 @@ Here, the override field `my.key = ${?MY_KEY_ENV}` simply vanishes if there's no
 
 ### Server configuration options
 
-Play's default HTTP server implementation is Akka HTTP, and this provides a large number of ways to tune and configure the server, including the size of parser buffers, whether keep alive is used, and so on.
+Play's default HTTP server implementation is Pekko HTTP, and this provides a large number of ways to tune and configure the server, including the size of parser buffers, whether keep alive is used, and so on.
 
 A full list of server configuration options, including defaults, can be seen here:
 
-@[](/confs/play-akka-http-server/reference.conf)
+@[](/confs/play-pekko-http-server/reference.conf)
 
 You can also use Netty as the HTTP server, which also provides its own configurations. A full list of Netty server configuration, including the defaults, can be seen below:
 
@@ -131,7 +131,7 @@ You can also use Netty as the HTTP server, which also provides its own configura
 
 > **Note**: The Netty server backend is not the default in 2.6.x, and so must be [[specifically enabled|NettyServer]].
 
-The configurations above are specific to the Akka HTTP and Netty server backend, but other more generic configurations are also available:
+The configurations above are specific to the Pekko HTTP and Netty server backend, but other more generic configurations are also available:
 
 @[](/confs/play-server/reference.conf)
 

@@ -130,7 +130,7 @@ The easiest way to post XML data is to use Play's XML support, using [`play.libs
 
 ### Submitting Streaming data
 
-It's also possible to stream data in the request body using [Akka Streams](https://doc.akka.io/docs/akka/2.6/stream/stream-flows-and-basics.html?language=java).
+It's also possible to stream data in the request body using [Pekko Streams](https://pekko.apache.org/docs/pekko/1.0/stream/stream-flows-and-basics.html?language=java).
 
 Here is an example showing how you could stream a large image to a different endpoint for further processing:
 
@@ -178,7 +178,7 @@ Similarly, you can process the response as XML by calling `r.getBody(xml())`, us
 
 Calling `get()`, `post()` or `execute()` will cause the body of the response to be loaded into memory before the response is made available.  When you are downloading a large, multi-gigabyte file, this may result in unwelcome garbage collection or even out of memory errors.
 
-You can consume the response's body incrementally by using an [Akka Streams](https://doc.akka.io/docs/akka/2.6/stream/stream-flows-and-basics.html?language=java) `Sink`.  The [`stream()`](api/java/play/libs/ws/WSRequest.html#stream\(\)) method on `WSRequest` returns a `CompletionStage<WSResponse>`, where the `WSResponse` contains a [`getBodyAsStream()`](api/java/play/libs/ws/WSResponse.html#getBodyAsStream\(\)) method that provides a `Source<ByteString, ?>`.
+You can consume the response's body incrementally by using an [Pekko Streams](https://pekko.apache.org/docs/pekko/1.0/stream/stream-flows-and-basics.html?language=java) `Sink`.  The [`stream()`](api/java/play/libs/ws/WSRequest.html#stream\(\)) method on `WSRequest` returns a `CompletionStage<WSResponse>`, where the `WSResponse` contains a [`getBodyAsStream()`](api/java/play/libs/ws/WSResponse.html#getBodyAsStream\(\)) method that provides a `Source<ByteString, ?>`.
 
 > **Note**: In 2.5.x, a `StreamedResponse` was returned in response to a [`request.stream()`](api/java/play/libs/ws/WSRequest.html#stream\(\)) call.  In 2.6.x, a standard [`WSResponse`](api/java/play/libs/ws/WSResponse.html) is returned, and the `getBodyAsSource()` method should be used to return the Source.
 
@@ -286,7 +286,7 @@ You can create a custom body writable to a request as follows, using an `InMemor
 If you want to call WS outside of Play altogether, you can use the standalone version of Play WS, which does not depend on any Play libraries.  You can do this by adding `play-ahc-ws-standalone` to your project:
 
 ```scala
-libraryDependencies += "com.typesafe.play" %% "play-ahc-ws-standalone" % playWSStandalone
+libraryDependencies += "org.playframework" %% "play-ahc-ws-standalone" % playWSStandalone
 ```
 
 Please see <https://github.com/playframework/play-ws> and the [[2.6 migration guide|WSMigration26]] for more information.
