@@ -3,7 +3,7 @@
 # Play 2.9 Migration Guide
 
 * This guide is for migrating from Play 2.8 to Play 2.9. See the [[Play 2.8 Migration Guide|Migration28]] to upgrade from Play 2.7.
-* If you have completed this migration guide and want to proceed with migrating your application to [Play 3.0](https://www.playframework.com/documentation/latest/Highlights30) (built on Pekko and Pekko HTTP), please refer to the [Play 3.0 Migration Guide](https://www.playframework.com/documentation/latest/Migration30) for further instructions.
+* If you have completed this migration guide and want to proceed with migrating your application to [[Play 3.0|Highlights30]] (built on Pekko and Pekko HTTP), please refer to the [[Play 3.0 Migration Guide|Migration30]] for further instructions.
 
 ## How to migrate
 
@@ -190,6 +190,20 @@ To:
 ```xml
 <property name="jakarta.persistence.jdbc.driver" value="..."/>
 ```
+
+Additionally, we have received [reports](https://github.com/orgs/playframework/discussions/11985#discussioncomment-7379124) indicating that it may be necessary, if applicable, to change the provider in the configuration from:
+
+```xml
+<provider>org.hibernate.ejb.HibernatePersistence</provider>
+```
+
+to:
+
+```xml
+<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+```
+
+in order to ensure that Hibernate works properly with Play 2.9.
 
 > Although `version="3.0"` and `persistence_3_0.xsd` are used, this XML declaration is correct for the [latest](https://jakarta.ee/specifications/persistence/3.1/) Jakarta Persistence 3.1. This is because in Jakarta Persistence 3.1, the `persistence.xml` schema remains unchanged. To avoid duplication, the 3.0 schema is reused for the version update: https://jakarta.ee/xml/ns/persistence/
 

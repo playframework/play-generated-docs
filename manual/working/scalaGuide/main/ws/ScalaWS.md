@@ -178,11 +178,11 @@ The WSResponse extends [`play.api.libs.ws.WSBodyReadables`](api/scala/play/api/l
 
 ### Processing a response as JSON
 
-You can process the response as a [JSON object](https://static.javadoc.io/org.playframework/play-json_2.13/2.9.2/play/api/libs/json/JsValue.html) by calling `response.json`.
+You can process the response as a [JSON object](https://www.javadoc.io/doc/org.playframework/play-json_2.13/3.0.0/play/api/libs/json/JsValue.html) by calling `response.json`.
 
 @[scalaws-process-json](code/ScalaWSSpec.scala)
 
-The JSON library has a [[useful feature|ScalaJsonCombinators]] that will map an implicit [`Reads[T]`](https://static.javadoc.io/org.playframework/play-json_2.13/2.9.2/play/api/libs/json/Reads.html) directly to a class:
+The JSON library has a [[useful feature|ScalaJsonCombinators]] that will map an implicit [`Reads[T]`](https://www.javadoc.io/doc/org.playframework/play-json_2.13/3.0.0/play/api/libs/json/Reads.html) directly to a class:
 
 @[scalaws-process-json-with-implicit](code/ScalaWSSpec.scala)
 
@@ -300,7 +300,7 @@ You can create a custom body writable to a request as follows, using an `BodyWri
 
 ## Accessing AsyncHttpClient
 
-You can get access to the underlying [AsyncHttpClient](https://static.javadoc.io/org.asynchttpclient/async-http-client/2.10.0/org/asynchttpclient/AsyncHttpClient.html) from a `WSClient`.
+You can get access to the underlying [AsyncHttpClient](https://www.javadoc.io/doc/org.asynchttpclient/async-http-client/2.12.3/org/asynchttpclient/AsyncHttpClient.html) from a `WSClient`.
 
 @[underlying](code/ScalaWSSpec.scala)
 
@@ -335,7 +335,7 @@ The request timeout can be overridden for a specific connection with `withReques
 
 The following advanced settings can be configured on the underlying AsyncHttpClientConfig.
 
-Please refer to the [AsyncHttpClientConfig Documentation](https://static.javadoc.io/org.asynchttpclient/async-http-client/2.10.0/org/asynchttpclient/DefaultAsyncHttpClientConfig.Builder.html) for more information.
+Please refer to the [AsyncHttpClientConfig Documentation](https://www.javadoc.io/doc/org.asynchttpclient/async-http-client/2.12.3/org/asynchttpclient/DefaultAsyncHttpClientConfig.Builder.html) for more information.
 
 * `play.ws.ahc.keepAlive`
 * `play.ws.ahc.maxConnectionsPerHost`
