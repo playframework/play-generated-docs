@@ -38,7 +38,7 @@ If you use `groupID %% artifactID % revision` rather than `groupID % artifactID 
 
 @[explicit-scala-version-dep](code/dependencies.sbt)
 
-Assuming the `scalaVersion` for your build is `2.13.12`, the following is identical (note the double `%%` after `"org.scala-tools"`):
+Assuming the `scalaVersion` for your build is `2.13.13`, the following is identical (note the double `%%` after `"org.scala-tools"`):
 
 @[auto-scala-version-dep](code/dependencies.sbt)
 
@@ -46,7 +46,7 @@ The idea is that many dependencies are compiled for multiple Scala versions, and
 
 ### Resolvers
 
-sbt uses the standard Maven2 repository and the Typesafe Releases (<https://repo.typesafe.com/typesafe/releases>) repositories by default. If your dependency isn't on one of the default repositories, you'll have to add a resolver to help Ivy find it.
+By default, sbt uses the Maven Central and, depending on the sbt version you are using, may use other repositories. You can find those repositories within sbt [here](https://github.com/sbt/sbt/blob/v1.9.6/launch/src/main/input_resources/sbt/sbt.boot.properties#L13-L19) (choose the tag corresponding to your sbt version).
 
 Use the `resolvers` setting key to add your own resolver. For example:
 
