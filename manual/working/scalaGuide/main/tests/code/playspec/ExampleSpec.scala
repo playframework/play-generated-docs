@@ -23,19 +23,18 @@ class ExampleSpec extends PlaySpec with GuiceOneServerPerSuite with ScalaFutures
     import play.api.mvc.Results._
 
     GuiceApplicationBuilder()
-      .appRoutes(app => {
-        case ("GET", "/testing") =>
-          app.injector.instanceOf(classOf[DefaultActionBuilder]) {
-            Ok("""
-                 |<html>
-                 | <head>
-                 |   <title>Test Page</title>
-                 |   <body>
-                 |     <input type='button' name='b' value='Click Me' onclick='document.title="scalatest"' />
-                 |   </body>
-                 | </head>
-                 |</html>""".stripMargin).as(HTML)
-          }
+      .appRoutes(app => { case ("GET", "/testing") =>
+        app.injector.instanceOf(classOf[DefaultActionBuilder]) {
+          Ok("""
+               |<html>
+               | <head>
+               |   <title>Test Page</title>
+               |   <body>
+               |     <input type='button' name='b' value='Click Me' onclick='document.title="scalatest"' />
+               |   </body>
+               | </head>
+               |</html>""".stripMargin).as(HTML)
+        }
       })
       .build()
   }
@@ -46,7 +45,7 @@ class ExampleSpec extends PlaySpec with GuiceOneServerPerSuite with ScalaFutures
       implicit val ws: WSClient = app.injector.instanceOf(classOf[WSClient])
       val futureResult          = wsUrl("/testing").get()
       val body                  = futureResult.futureValue.body
-      val expectedBody =
+      val expectedBody          =
         """
           |<html>
           | <head>
@@ -63,7 +62,7 @@ class ExampleSpec extends PlaySpec with GuiceOneServerPerSuite with ScalaFutures
       implicit val ws: WSClient = app.injector.instanceOf(classOf[WSClient])
       val futureResult          = wsCall(Call("get", "/testing")).get()
       val body                  = futureResult.futureValue.body
-      val expectedBody =
+      val expectedBody          =
         """
           |<html>
           | <head>
